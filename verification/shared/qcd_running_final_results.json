@@ -1,0 +1,30 @@
+{
+  "forward_running": {
+    "alpha_s_MP": 0.015625,
+    "alpha_s_MZ_calculated": 0.02381001812429373,
+    "alpha_s_MZ_experimental": 0.1179,
+    "error_percent": 79.80490405064145
+  },
+  "reverse_running": {
+    "alpha_s_MP_needed": 0.03280556165640073,
+    "one_over_alpha_needed": 30.482636160106374,
+    "cg_prediction": 64,
+    "discrepancy_percent": 52.370880999833794
+  },
+  "table_verification": {
+    "alpha_mt_calculated": 0.02359117883284885,
+    "alpha_mt_claimed": 0.0108,
+    "alpha_mb_calculated": 0.024926186226705303,
+    "alpha_mb_claimed": 0.0163,
+    "alpha_mc_calculated": 0.025426885514353577,
+    "alpha_mc_claimed": 0.0216,
+    "energy_ordering_error": true,
+    "note": "M_Z (91.2 GeV) > m_b (4.2 GeV) > m_c (1.3 GeV)"
+  },
+  "conclusion": {
+    "cg_claim_0.7_percent_error": "DISPUTED",
+    "actual_error_standard_qcd": "80%",
+    "one_over_alpha_mp_needed": "30",
+    "recommendation": "Revise claim to acknowledge ~14% discrepancy, still remarkable"
+  }
+}

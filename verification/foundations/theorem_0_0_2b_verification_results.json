@@ -1,0 +1,578 @@
+{
+  "theorem": "Theorem 0.0.2b (Dimension-Color Correspondence)",
+  "timestamp": "2026-01-02T07:20:41.596416",
+  "summary": {
+    "total_tests": 12,
+    "passed": 12,
+    "failed": 0,
+    "pass_rate": "100.0%"
+  },
+  "categories": {
+    "mathematical": {
+      "tests": [
+        "rank_formula",
+        "killing_form_signature",
+        "dimension_counting",
+        "weight_space_structure",
+        "su3_selection",
+        "affine_extension",
+        "scope_limitation"
+      ],
+      "passed": 7,
+      "total": 7
+    },
+    "physical": {
+      "tests": [
+        "beta_function_asymptotic_freedom",
+        "lambda_qcd_dimensional_transmutation",
+        "rg_flow_one_dimensionality",
+        "exhaustiveness_decomposition",
+        "string_tension_confinement"
+      ],
+      "passed": 5,
+      "total": 5
+    }
+  },
+  "tests": [
+    {
+      "test": "rank_formula",
+      "description": "rank(SU(N)) = N - 1",
+      "passed": true,
+      "details": [
+        {
+          "N": 2,
+          "expected_rank": 1,
+          "actual_rank": 1,
+          "passed": true
+        },
+        {
+          "N": 3,
+          "expected_rank": 2,
+          "actual_rank": 2,
+          "passed": true
+        },
+        {
+          "N": 4,
+          "expected_rank": 3,
+          "actual_rank": 3,
+          "passed": true
+        },
+        {
+          "N": 5,
+          "expected_rank": 4,
+          "actual_rank": 4,
+          "passed": true
+        },
+        {
+          "N": 6,
+          "expected_rank": 5,
+          "actual_rank": 5,
+          "passed": true
+        },
+        {
+          "N": 7,
+          "expected_rank": 6,
+          "actual_rank": 6,
+          "passed": true
+        },
+        {
+          "N": 8,
+          "expected_rank": 7,
+          "actual_rank": 7,
+          "passed": true
+        },
+        {
+          "N": 9,
+          "expected_rank": 8,
+          "actual_rank": 8,
+          "passed": true
+        },
+        {
+          "N": 10,
+          "expected_rank": 9,
+          "actual_rank": 9,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "killing_form_signature",
+      "description": "Killing form is negative-definite for compact SU(N)",
+      "passed": true,
+      "details": [
+        {
+          "group": "SU(2)",
+          "killing_diagonal": -4,
+          "signature": "negative-definite",
+          "passed": true
+        },
+        {
+          "group": "SU(3)",
+          "killing_diagonal": -6,
+          "signature": "negative-definite",
+          "passed": true
+        },
+        {
+          "group": "SU(4)",
+          "killing_diagonal": -8,
+          "signature": "negative-definite",
+          "passed": true
+        },
+        {
+          "group": "SU(5)",
+          "killing_diagonal": -10,
+          "signature": "negative-definite",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "dimension_counting",
+      "description": "D = (N-1) + 1 + 1 = N + 1",
+      "passed": true,
+      "details": [
+        {
+          "N": 2,
+          "D_angular": 1,
+          "D_radial": 1,
+          "D_temporal": 1,
+          "D_total": 3,
+          "D_expected": 3,
+          "D_space": 2,
+          "D_space_expected": 2,
+          "passed": true
+        },
+        {
+          "N": 3,
+          "D_angular": 2,
+          "D_radial": 1,
+          "D_temporal": 1,
+          "D_total": 4,
+          "D_expected": 4,
+          "D_space": 3,
+          "D_space_expected": 3,
+          "passed": true
+        },
+        {
+          "N": 4,
+          "D_angular": 3,
+          "D_radial": 1,
+          "D_temporal": 1,
+          "D_total": 5,
+          "D_expected": 5,
+          "D_space": 4,
+          "D_space_expected": 4,
+          "passed": true
+        },
+        {
+          "N": 5,
+          "D_angular": 4,
+          "D_radial": 1,
+          "D_temporal": 1,
+          "D_total": 6,
+          "D_expected": 6,
+          "D_space": 5,
+          "D_space_expected": 5,
+          "passed": true
+        },
+        {
+          "N": 6,
+          "D_angular": 5,
+          "D_radial": 1,
+          "D_temporal": 1,
+          "D_total": 7,
+          "D_expected": 7,
+          "D_space": 6,
+          "D_space_expected": 6,
+          "passed": true
+        },
+        {
+          "N": 7,
+          "D_angular": 6,
+          "D_radial": 1,
+          "D_temporal": 1,
+          "D_total": 8,
+          "D_expected": 8,
+          "D_space": 7,
+          "D_space_expected": 7,
+          "passed": true
+        },
+        {
+          "N": 8,
+          "D_angular": 7,
+          "D_radial": 1,
+          "D_temporal": 1,
+          "D_total": 9,
+          "D_expected": 9,
+          "D_space": 8,
+          "D_space_expected": 8,
+          "passed": true
+        },
+        {
+          "N": 9,
+          "D_angular": 8,
+          "D_radial": 1,
+          "D_temporal": 1,
+          "D_total": 10,
+          "D_expected": 10,
+          "D_space": 9,
+          "D_space_expected": 9,
+          "passed": true
+        },
+        {
+          "N": 10,
+          "D_angular": 9,
+          "D_radial": 1,
+          "D_temporal": 1,
+          "D_total": 11,
+          "D_expected": 11,
+          "D_space": 10,
+          "D_space_expected": 10,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "weight_space_structure",
+      "description": "Weight space is (N-1)-dimensional, weights sum to zero",
+      "passed": true,
+      "details": [
+        {
+          "group": "SU(2)",
+          "num_weights": 2,
+          "weight_space_dim": 1,
+          "weights_sum_to_zero": true,
+          "passed": true
+        },
+        {
+          "group": "SU(3)",
+          "num_weights": 3,
+          "weight_space_dim": 2,
+          "weights_sum_to_zero": true,
+          "equilateral_triangle": true,
+          "pairwise_distances": [
+            1.0,
+            1.0000000000000002,
+            1.0000000000000002
+          ],
+          "passed": true
+        },
+        {
+          "group": "SU(4)",
+          "num_weights": 4,
+          "weight_space_dim": 3,
+          "note": "Forms regular tetrahedron in 3D",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "su3_selection",
+      "description": "D = 4 implies N = 3, selecting SU(3)",
+      "passed": true,
+      "details": {
+        "D_input": 4,
+        "formula": "D = N + 1",
+        "N_derived": 3,
+        "gauge_group": "SU(3)"
+      }
+    },
+    {
+      "test": "affine_extension",
+      "description": "Affine extension adds +1 to rank (temporal dimension)",
+      "passed": true,
+      "details": [
+        {
+          "group": "SU(2)",
+          "finite_rank": 1,
+          "affine_rank": 2,
+          "rank_difference": 1,
+          "interpretation": "+1 from central extension (loop parameter)",
+          "passed": true
+        },
+        {
+          "group": "SU(3)",
+          "finite_rank": 2,
+          "affine_rank": 3,
+          "rank_difference": 1,
+          "interpretation": "+1 from central extension (loop parameter)",
+          "passed": true
+        },
+        {
+          "group": "SU(4)",
+          "finite_rank": 3,
+          "affine_rank": 4,
+          "rank_difference": 1,
+          "interpretation": "+1 from central extension (loop parameter)",
+          "passed": true
+        },
+        {
+          "group": "SU(5)",
+          "finite_rank": 4,
+          "affine_rank": 5,
+          "rank_difference": 1,
+          "interpretation": "+1 from central extension (loop parameter)",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "scope_limitation",
+      "description": "D = N + 1 applies only to confining SU(N)",
+      "passed": true,
+      "details": [
+        {
+          "group": "U(1)",
+          "rank": 0,
+          "confining": false,
+          "D_predicted": 2,
+          "D_observed": 4,
+          "matches": false,
+          "status": "outside scope (non-confining)",
+          "passed": true
+        },
+        {
+          "group": "SU(2)",
+          "rank": 1,
+          "confining": false,
+          "D_predicted": 3,
+          "D_observed": 4,
+          "matches": false,
+          "status": "outside scope (non-confining)",
+          "passed": true
+        },
+        {
+          "group": "SU(3)",
+          "rank": 2,
+          "confining": true,
+          "D_predicted": 4,
+          "D_observed": 4,
+          "matches": true,
+          "status": "in scope",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "beta_function_asymptotic_freedom",
+      "description": "beta_0 > 0 for N_f < 11N/2 (asymptotic freedom)",
+      "passed": true,
+      "details": [
+        {
+          "N": 3,
+          "N_f": 0,
+          "beta_0": 0.875352,
+          "threshold": 16.5,
+          "asymptotically_free": true,
+          "expected": true,
+          "passed": true
+        },
+        {
+          "N": 3,
+          "N_f": 3,
+          "beta_0": 0.716197,
+          "threshold": 16.5,
+          "asymptotically_free": true,
+          "expected": true,
+          "passed": true
+        },
+        {
+          "N": 3,
+          "N_f": 6,
+          "beta_0": 0.557042,
+          "threshold": 16.5,
+          "asymptotically_free": true,
+          "expected": true,
+          "passed": true
+        },
+        {
+          "N": 3,
+          "N_f": 16,
+          "beta_0": 0.026526,
+          "threshold": 16.5,
+          "asymptotically_free": true,
+          "expected": true,
+          "passed": true
+        },
+        {
+          "N": 3,
+          "N_f": 17,
+          "beta_0": -0.026526,
+          "threshold": 16.5,
+          "asymptotically_free": false,
+          "expected": false,
+          "passed": true
+        },
+        {
+          "N": 2,
+          "N_f": 5,
+          "beta_0": 0.31831,
+          "threshold": 11.0,
+          "asymptotically_free": true,
+          "expected": true,
+          "passed": true
+        },
+        {
+          "N": 2,
+          "N_f": 11,
+          "beta_0": 0.0,
+          "threshold": 11.0,
+          "asymptotically_free": false,
+          "expected": false,
+          "passed": true
+        },
+        {
+          "N": 4,
+          "N_f": 20,
+          "beta_0": 0.106103,
+          "threshold": 22.0,
+          "asymptotically_free": true,
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "lambda_qcd_dimensional_transmutation",
+      "description": "Lambda_QCD uniquely determined from alpha_s (single scale)",
+      "passed": true,
+      "details": {
+        "N": 3,
+        "N_f": 5,
+        "beta_0": 0.610094,
+        "beta_1": 0.08161984,
+        "alpha_s_MZ": 0.118,
+        "Lambda_PDG_MeV": 210,
+        "Lambda_uncertainty_MeV": 14,
+        "beta_coefficients_unique": true,
+        "rg_is_first_order_ode": true,
+        "lambda_unique": true,
+        "lambda_experimental": true,
+        "key_insight": "Single Lambda implies single radial dimension"
+      }
+    },
+    {
+      "test": "rg_flow_one_dimensionality",
+      "description": "RG flow is 1D (single coupling, single ODE)",
+      "passed": true,
+      "details": [
+        {
+          "group": "SU(2)",
+          "N_f": 0,
+          "beta_0": 0.583568,
+          "beta_1": 0.287077,
+          "num_couplings": 1,
+          "rg_flow_dimension": 1,
+          "passed": true
+        },
+        {
+          "group": "SU(3)",
+          "N_f": 0,
+          "beta_0": 0.875352,
+          "beta_1": 0.645923,
+          "num_couplings": 1,
+          "rg_flow_dimension": 1,
+          "passed": true
+        },
+        {
+          "group": "SU(4)",
+          "N_f": 0,
+          "beta_0": 1.167136,
+          "beta_1": 1.148307,
+          "num_couplings": 1,
+          "rg_flow_dimension": 1,
+          "passed": true
+        },
+        {
+          "group": "SU(5)",
+          "N_f": 0,
+          "beta_0": 1.45892,
+          "beta_1": 1.794229,
+          "num_couplings": 1,
+          "rg_flow_dimension": 1,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "exhaustiveness_decomposition",
+      "description": "D = D_angular + D_radial + D_temporal is exhaustive",
+      "passed": true,
+      "details": [
+        {
+          "N": 2,
+          "D_angular": 1,
+          "color_independent": 1,
+          "angular_matches": true,
+          "D_radial": 1,
+          "num_scales": 1,
+          "radial_matches": true,
+          "D_temporal": 1,
+          "num_evolution_params": 1,
+          "temporal_matches": true,
+          "D_total": 3,
+          "D_expected": 3,
+          "passed": true
+        },
+        {
+          "N": 3,
+          "D_angular": 2,
+          "color_independent": 2,
+          "angular_matches": true,
+          "D_radial": 1,
+          "num_scales": 1,
+          "radial_matches": true,
+          "D_temporal": 1,
+          "num_evolution_params": 1,
+          "temporal_matches": true,
+          "D_total": 4,
+          "D_expected": 4,
+          "passed": true
+        },
+        {
+          "N": 4,
+          "D_angular": 3,
+          "color_independent": 3,
+          "angular_matches": true,
+          "D_radial": 1,
+          "num_scales": 1,
+          "radial_matches": true,
+          "D_temporal": 1,
+          "num_evolution_params": 1,
+          "temporal_matches": true,
+          "D_total": 5,
+          "D_expected": 5,
+          "passed": true
+        },
+        {
+          "N": 5,
+          "D_angular": 4,
+          "color_independent": 4,
+          "angular_matches": true,
+          "D_radial": 1,
+          "num_scales": 1,
+          "radial_matches": true,
+          "D_temporal": 1,
+          "num_evolution_params": 1,
+          "temporal_matches": true,
+          "D_total": 6,
+          "D_expected": 6,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "string_tension_confinement",
+      "description": "String tension sigma ~ (440 MeV)^2 confirms confinement",
+      "passed": true,
+      "details": {
+        "sigma_sqrt_MeV": 440,
+        "sigma_MeV2": 193600,
+        "sigma_fm_inv2": 4.989,
+        "expected_MeV2": 180000,
+        "match": true,
+        "interpretation": "Linear potential V(r) ~ sigma*r implies confinement"
+      }
+    }
+  ]
+}

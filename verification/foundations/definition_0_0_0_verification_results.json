@@ -1,0 +1,359 @@
+{
+  "title": "Definition 0.0.0 Verification Results",
+  "date": "2025-12-15",
+  "sections": {
+    "1_weights": {
+      "fundamental_weights": {
+        "R": [
+          0.5,
+          0.2886751345948129
+        ],
+        "G": [
+          -0.5,
+          0.2886751345948129
+        ],
+        "B": [
+          0.0,
+          -0.5773502691896258
+        ],
+        "R_bar": [
+          -0.5,
+          -0.2886751345948129
+        ],
+        "G_bar": [
+          0.5,
+          -0.2886751345948129
+        ],
+        "B_bar": [
+          -0.0,
+          0.5773502691896258
+        ]
+      },
+      "triangle_verification": {
+        "is_equilateral": true,
+        "side_length": 1.0,
+        "centroid": [
+          0.0,
+          0.0
+        ],
+        "centroid_at_origin": true,
+        "d_RG": 1.0,
+        "d_GB": 1.0000000000000002,
+        "d_BR": 1.0000000000000002
+      },
+      "roots": {
+        "\u03b1_1": [
+          1.0,
+          0.0
+        ],
+        "\u03b1_2": [
+          -0.5,
+          0.8660254037844388
+        ],
+        "\u03b1_1 + \u03b1_2": [
+          0.5,
+          0.8660254037844388
+        ],
+        "-\u03b1_1": [
+          -1.0,
+          -0.0
+        ],
+        "-\u03b1_2": [
+          0.5,
+          -0.8660254037844388
+        ],
+        "-(\u03b1_1 + \u03b1_2)": [
+          -0.5,
+          -0.8660254037844388
+        ]
+      }
+    },
+    "2_stella": {
+      "num_vertices": 8,
+      "vertex_labels": [
+        "R",
+        "G",
+        "B",
+        "apex_up",
+        "R_bar",
+        "G_bar",
+        "B_bar",
+        "apex_down"
+      ],
+      "num_edges": 12,
+      "tetrahedra_regular": {
+        "T_plus_regular": true,
+        "T_minus_regular": true,
+        "T_plus_edge_length": 1.0,
+        "T_minus_edge_length": 1.0,
+        "all_lengths": [
+          1.0,
+          1.0000000000000002,
+          1.0000000000000002,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0000000000000002,
+          1.0000000000000002,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "3_symmetry": {
+      "tetrahedral_symmetry": {
+        "group_name": "T_d (full tetrahedral symmetry)",
+        "order": 24,
+        "note": "Full symmetry of ONE tetrahedron"
+      },
+      "stella_full_symmetry": {
+        "group_name": "S_4 \u00d7 Z_2 (stella octangula compound)",
+        "order": 48,
+        "note": "Full geometric symmetry of two interlocked tetrahedra"
+      },
+      "su3_compatible_symmetry": {
+        "group_name": "S_3 \u00d7 Z_2",
+        "order": 12,
+        "S3_part": "Weyl group - color permutations",
+        "Z2_part": "Charge conjugation",
+        "note": "Symmetries preserving weight labeling"
+      },
+      "relevant_for_definition": {
+        "group_name": "S_3 \u00d7 Z_2",
+        "order": 12,
+        "S3_part": "Weyl group - color permutations",
+        "Z2_part": "Charge conjugation",
+        "note": "Symmetries preserving weight labeling"
+      }
+    },
+    "4_apex": {
+      "justification": {
+        "without_apex": {
+          "num_vertices": 6,
+          "dimension": 2,
+          "is_coplanar": true,
+          "structure": "Two disconnected triangles",
+          "satisfies_GR1": true,
+          "satisfies_GR2": true,
+          "satisfies_GR3": true,
+          "is_connected": false,
+          "forms_polyhedron": false
+        },
+        "with_apex": {
+          "num_vertices": 8,
+          "dimension": 3,
+          "structure": "Two interlocked tetrahedra (stella octangula)",
+          "satisfies_GR1": true,
+          "satisfies_GR2": true,
+          "satisfies_GR3": true,
+          "is_connected": true,
+          "forms_polyhedron": true
+        },
+        "apex_weight_image": [
+          0,
+          0
+        ],
+        "weight_labeling_injective": false,
+        "justification": [
+          "(1) Polyhedral requirement: A polyhedral complex must be 3D for nontrivial faces",
+          "(2) Tetrahedral completion: 3 vertices span 2D; 4th vertex (apex) needed for 3D tetrahedron",
+          "(3) Connectivity: Without cross-edges or apexes, two triangles are disconnected",
+          "(4) Physical: Radial/confinement direction requires extension beyond 2D weight space"
+        ]
+      },
+      "weight_labeling": {
+        "map": {
+          "R": [
+            0.5,
+            0.2886751345948129
+          ],
+          "G": [
+            -0.5,
+            0.2886751345948129
+          ],
+          "B": [
+            0.0,
+            -0.5773502691896258
+          ],
+          "R_bar": [
+            -0.5,
+            -0.2886751345948129
+          ],
+          "G_bar": [
+            0.5,
+            -0.2886751345948129
+          ],
+          "B_bar": [
+            -0.0,
+            0.5773502691896258
+          ],
+          "apex_up": [
+            0,
+            0
+          ],
+          "apex_down": [
+            0,
+            0
+          ]
+        },
+        "is_injective": false,
+        "domain_size": 8,
+        "image_size": 7,
+        "image_counts": {
+          "(np.float64(0.5), np.float64(0.2886751345948129))": [
+            "R"
+          ],
+          "(np.float64(-0.5), np.float64(0.2886751345948129))": [
+            "G"
+          ],
+          "(np.float64(0.0), np.float64(-0.5773502691896258))": [
+            "B"
+          ],
+          "(np.float64(-0.5), np.float64(-0.2886751345948129))": [
+            "R_bar"
+          ],
+          "(np.float64(0.5), np.float64(-0.2886751345948129))": [
+            "G_bar"
+          ],
+          "(np.float64(-0.0), np.float64(0.5773502691896258))": [
+            "B_bar"
+          ],
+          "(np.int64(0), np.int64(0))": [
+            "apex_up",
+            "apex_down"
+          ]
+        },
+        "non_injective_points": [
+          [
+            "(np.int64(0), np.int64(0))",
+            [
+              "apex_up",
+              "apex_down"
+            ]
+          ]
+        ],
+        "conclusion": "\u03b9 is a weight LABELING (surjective onto weights \u222a {0}), NOT an embedding (not injective)"
+      }
+    },
+    "5_dimensions": {
+      "SU(2)": {
+        "N": 2,
+        "rank": 1,
+        "weight_space_dim": 1,
+        "span_of_weight_vertices": 1,
+        "physical_polyhedron_dim": 2,
+        "note": "SU(2): weight space is 1D, polyhedron is 2D"
+      },
+      "SU(3)": {
+        "N": 3,
+        "rank": 2,
+        "weight_space_dim": 2,
+        "span_of_weight_vertices": 2,
+        "physical_polyhedron_dim": 3,
+        "note": "SU(3): weight space is 2D, polyhedron is 3D"
+      },
+      "SU(4)": {
+        "N": 4,
+        "rank": 3,
+        "weight_space_dim": 3,
+        "span_of_weight_vertices": 3,
+        "physical_polyhedron_dim": 4,
+        "note": "SU(4): weight space is 3D, polyhedron is 4D"
+      },
+      "SU(N)": {
+        "rank": "N-1",
+        "weight_space_dim": "N-1",
+        "span_of_weight_vertices": "N-1",
+        "physical_polyhedron_dim": "N",
+        "formula": "D_physical = rank + 1 = N"
+      },
+      "clarification": {
+        "MIN2_interpretation": "dim(span(\u03b9(V))) refers to weight space dimension = rank",
+        "physical_interpretation": "Actual polyhedron embedded in R^(rank+1) = R^N",
+        "distinction": "These are DIFFERENT dimensions with different meanings"
+      }
+    },
+    "6_candidates": {
+      "stella_octangula": {
+        "vertices": 8,
+        "symmetry": "S_3 \u00d7 Z_2 (compatible with SU(3))",
+        "GR1": "PASS - Contains fund + antifund weights",
+        "GR2": "PASS - Aut(P) \u2192 Weyl(SU(3)) is surjective",
+        "GR3": "PASS - Conjugation involution exists",
+        "MIN1": "PASS - Minimal vertices for 3D polyhedron",
+        "MIN2": "PASS - Minimal dimension (rank+1 = 3)",
+        "MIN3": "PASS - 12 edges (6 per tetrahedron)",
+        "verdict": "SATISFIES ALL"
+      },
+      "octahedron": {
+        "vertices": 6,
+        "symmetry": "S_4 \u00d7 Z_2 (order 48)",
+        "GR1": "PASS - 6 vertices can hold 6 weights",
+        "GR2": "FAIL - S_4 \u2260 S_3, no compatible homomorphism",
+        "GR3": "Could be made to work",
+        "MIN1": "Would be better if it worked",
+        "MIN2": "Embedding dimension = 3",
+        "MIN3": "12 edges",
+        "verdict": "FAILS GR2 (wrong symmetry group)",
+        "detailed_reason": "Octahedron has Oh symmetry. Restricting to orientation-preserving gives O \u2245 S_4. Cannot map S_4 \u2192 S_3 in a way compatible with weight labeling."
+      },
+      "cube": {
+        "vertices": 8,
+        "symmetry": "S_4 \u00d7 Z_2 (same as octahedron)",
+        "GR1": "FAIL - 8 vertices but wrong configuration for weights",
+        "GR2": "FAIL - S_4 \u2260 S_3",
+        "GR3": "Has antipodal involution",
+        "MIN1": "Same as stella (8 vertices)",
+        "MIN2": "Embedding dimension = 3",
+        "MIN3": "12 edges",
+        "verdict": "FAILS GR1 and GR2"
+      },
+      "icosahedron": {
+        "vertices": 12,
+        "symmetry": "A_5 \u00d7 Z_2 (order 120)",
+        "GR1": "More vertices than needed",
+        "GR2": "FAIL - A_5 \u2260 S_3",
+        "GR3": "Has antipodal",
+        "MIN1": "FAIL - 12 > 8, not minimal",
+        "MIN2": "Embedding dimension = 3",
+        "MIN3": "30 edges (too many)",
+        "verdict": "FAILS MIN1 and GR2"
+      },
+      "two_triangles_2D": {
+        "vertices": 6,
+        "symmetry": "S_3 \u00d7 Z_2 (correct!)",
+        "GR1": "PASS - Exactly 6 weight vertices",
+        "GR2": "PASS - Correct symmetry",
+        "GR3": "PASS - Central inversion",
+        "MIN1": "PASS - Minimal vertex count",
+        "MIN2": "PASS - 2D is minimal weight space dimension",
+        "MIN3": "6 edges (minimal)",
+        "verdict": "VALID 2D realization!",
+        "note": "This IS a valid minimal geometric realization in 2D. The stella octangula is the minimal 3D realization."
+      },
+      "hexagon": {
+        "vertices": 6,
+        "symmetry": "D_6 (dihedral, order 12)",
+        "GR1": "Can place 6 weights at vertices",
+        "GR2": "FAIL - D_6 \u2260 S_3 \u00d7 Z_2",
+        "GR3": "Has central inversion",
+        "MIN1": "Would be minimal",
+        "MIN2": "2D",
+        "MIN3": "6 edges",
+        "verdict": "FAILS GR2 (D_6 has wrong structure)",
+        "detailed_reason": "D_6 = C_6 \u22ca Z_2 includes 6-fold rotation, but S_3 has only 3-fold. Not compatible."
+      }
+    },
+    "7_phi": {
+      "Aut_P_order": 12,
+      "Weyl_G_order": 6,
+      "phi_is_surjective": true,
+      "kernel_of_phi": "Z_2 (charge conjugation)",
+      "kernel_order": 2,
+      "check": "|Aut(P)| / |ker(\u03c6)| = 12 / 2 = 6 = |Weyl(G)| \u2713",
+      "conclusion": "\u03c6 is surjective (and its kernel is exactly the Z_2 from GR3)"
+    }
+  }
+}

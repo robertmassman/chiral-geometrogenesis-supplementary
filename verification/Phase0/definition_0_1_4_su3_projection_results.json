@@ -1,0 +1,85 @@
+{
+  "theorem": "SU(3) Weight Space Projection Perpendicularity",
+  "date": "2025-12-15",
+  "projection_matrix": [
+    [
+      0.0,
+      0.43301270189221924,
+      0.43301270189221924
+    ],
+    [
+      0.5,
+      -0.25,
+      0.25
+    ]
+  ],
+  "vertex_projection_verified": true,
+  "boundary_results": [
+    {
+      "boundary": "R-G",
+      "root": "RG",
+      "projected_normal": [
+        -1.0,
+        0.0
+      ],
+      "expected": [
+        -1.0,
+        0.0
+      ],
+      "match": true,
+      "cos_angle": -1.0,
+      "is_parallel": true,
+      "line_direction": [
+        -0.0,
+        -1.0
+      ],
+      "perp_dot": 0.0,
+      "is_perpendicular": true
+    },
+    {
+      "boundary": "G-B",
+      "root": "GB",
+      "projected_normal": [
+        0.5,
+        -0.8660254037844388
+      ],
+      "expected": [
+        0.5,
+        -0.8660254037844388
+      ],
+      "match": true,
+      "cos_angle": -1.0,
+      "is_parallel": true,
+      "line_direction": [
+        0.8660254037844386,
+        0.4999999999999999
+      ],
+      "perp_dot": 0.0,
+      "is_perpendicular": true
+    },
+    {
+      "boundary": "B-R",
+      "root": "BR",
+      "projected_normal": [
+        0.5,
+        0.8660254037844388
+      ],
+      "expected": [
+        0.5,
+        0.8660254037844388
+      ],
+      "match": true,
+      "cos_angle": -1.0,
+      "is_parallel": true,
+      "line_direction": [
+        -0.8660254037844386,
+        0.4999999999999999
+      ],
+      "perp_dot": 0.0,
+      "is_perpendicular": true
+    }
+  ],
+  "all_parallel": true,
+  "all_perpendicular": true,
+  "verified": true
+}

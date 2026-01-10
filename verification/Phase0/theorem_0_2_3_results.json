@@ -1,0 +1,174 @@
+{
+  "theorem": "0.2.3",
+  "title": "Stable Convergence Point",
+  "parameters": {
+    "epsilon": 0.5,
+    "K": 1.0,
+    "a0": 1.0
+  },
+  "results": {
+    "test_1": {
+      "test_name": "Equal Pressure at Center",
+      "P_R": 0.7999999999999998,
+      "P_G": 0.7999999999999998,
+      "P_B": 0.7999999999999998,
+      "P_0_theoretical": 0.8,
+      "max_deviation": 2.220446049250313e-16,
+      "pressure_variance": 0.0,
+      "passed": true
+    },
+    "test_2": {
+      "test_name": "Field Vanishes but Energy Persists",
+      "chi_squared_at_center": 0.0,
+      "rho_at_center": 1.919999999999999,
+      "rho_theoretical": 1.9200000000000004,
+      "field_vanishes": true,
+      "energy_matches": true,
+      "passed": true
+    },
+    "test_3": {
+      "test_name": "Reduced Hessian Eigenvalues",
+      "eigenvalues_computed": [
+        0.75,
+        2.25
+      ],
+      "eigenvalues_expected": [
+        0.75,
+        2.25
+      ],
+      "all_positive": true,
+      "eigenvalue_match": true,
+      "trace_computed": 3.0,
+      "trace_expected": 3.0,
+      "det_computed": 1.6875,
+      "det_expected": 1.6875,
+      "passed": true
+    },
+    "test_4": {
+      "test_name": "Dynamical Jacobian Eigenvalues",
+      "jacobian_eigenvalues": [
+        -1.125,
+        -0.375
+      ],
+      "expected_eigenvalues": [
+        -1.125,
+        -0.375
+      ],
+      "all_negative": true,
+      "eigenvalue_match": true,
+      "J_equals_neg_half_H": true,
+      "passed": true
+    },
+    "test_5": {
+      "test_name": "Energy Coefficient \u03b1",
+      "alpha_formula": 0.2048,
+      "alpha_numerical_isotropic": 1.8423938002970486,
+      "epsilon": 0.5,
+      "epsilon_critical": 0.5773502691896258,
+      "alpha_positive": true,
+      "numerical_positive": true,
+      "limit_small_correct": true,
+      "limit_critical_correct": true,
+      "passed": true
+    },
+    "test_6": {
+      "test_name": "Matrix M Eigenvalues",
+      "M_matrix": [
+        [
+          1.0000000000000002,
+          -0.3333333333333334,
+          0.3333333333333334
+        ],
+        [
+          -0.3333333333333334,
+          1.0000000000000002,
+          0.3333333333333334
+        ],
+        [
+          0.3333333333333334,
+          0.3333333333333334,
+          1.0000000000000002
+        ]
+      ],
+      "eigenvalues_computed": [
+        0.33333333333333337,
+        1.3333333333333335,
+        1.3333333333333337
+      ],
+      "eigenvalues_expected": [
+        0.3333333333333333,
+        1.3333333333333333,
+        1.3333333333333333
+      ],
+      "trace_computed": 3.000000000000001,
+      "trace_expected": 3.0,
+      "eigenvector_alignment": 1.0000000000000002,
+      "eigenvalue_match": true,
+      "passed": true
+    },
+    "test_7": {
+      "test_name": "SO(3) Ensemble Averaging",
+      "n_samples": 10000,
+      "M_averaged": [
+        [
+          1.0044905240848814,
+          0.0018850835461447862,
+          -0.0022618316086222114
+        ],
+        [
+          0.0018850835461447855,
+          0.9927073587684612,
+          0.001309876161836966
+        ],
+        [
+          -0.002261831608622208,
+          0.0013098761618369655,
+          1.002802117146665
+        ]
+      ],
+      "frobenius_deviation": 0.010098003699473878,
+      "expected_error": 0.019148542155126767,
+      "trace_averaged": 3.0000000000000075,
+      "eigenvalues_averaged": [
+        0.992151633968524,
+        1.0017362153893274,
+        1.0061121506421569
+      ],
+      "passed": true
+    },
+    "test_8": {
+      "test_name": "Uniqueness of Center",
+      "all_equidistant": true,
+      "variance_at_center": 0.0,
+      "variance_zero": true,
+      "all_directions_increase": true,
+      "unique_solution_at_origin": true,
+      "passed": true
+    },
+    "test_9": {
+      "test_name": "Lyapunov Stability",
+      "initial_perturbation": [
+        0.3,
+        -0.2
+      ],
+      "initial_deviation": 0.36055512754639896,
+      "final_deviation": 1.320308179443797e-09,
+      "fitted_decay_rate": 0.3892614380260614,
+      "expected_decay_rate_slow": 0.375,
+      "expected_decay_rate_fast": 1.125,
+      "converged": true,
+      "decay_rate_reasonable": true,
+      "is_monotonic": true,
+      "passed": true
+    }
+  },
+  "plots": [
+    "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/theorem_0_2_3_origin_of_time_and_matter.png",
+    "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/theorem_0_2_3_pressure_equality.png",
+    "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/theorem_0_2_3_field_vs_energy.png",
+    "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/theorem_0_2_3_lyapunov_decay.png",
+    "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/theorem_0_2_3_alpha_vs_epsilon.png",
+    "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/theorem_0_2_3_anisotropy.png"
+  ],
+  "all_passed": true
+}

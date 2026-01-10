@@ -1,0 +1,411 @@
+================================================================================
+ADVERSARIAL MATHEMATICAL VERIFICATION: THEOREM 4.2.3
+================================================================================
+
+Theorem: First-Order Electroweak Phase Transition from CG Geometry
+Date: 2025-12-14
+Verifier: Independent Mathematical Review Agent
+
+================================================================================
+VERDICT
+================================================================================
+
+VERIFIED: Partial
+ERRORS FOUND: 1 Critical, 0 Minor
+WARNINGS: 3
+CONFIDENCE: Medium
+
+The numerical prediction v(T_c)/T_c ≈ 1.2 ± 0.1 is VERIFIED and robust.
+The theoretical derivation of κ_geo has a CRITICAL ALGEBRAIC ERROR.
+
+================================================================================
+CRITICAL ERROR
+================================================================================
+
+LOCATION: §1.2 "Derivation of κ_geo"
+
+CLAIM:
+  κ_geo ≈ λ_H/8⁴ × 8 × 3 × (1/3) ~ 0.1 λ_H
+
+INDEPENDENT CALCULATION:
+  κ_geo = λ_H × [8 × 3 × (1/3)] / 8⁴
+        = λ_H × 8 / 8⁴
+        = λ_H / 8³
+        = λ_H / 512
+        ≈ 0.00195 λ_H
+        ≈ 0.002 λ_H
+
+DISCREPANCY: Factor of ~50 (claimed 0.1, calculated 0.002)
+
+IMPACT:
+- Phenomenological results (parameter scan) remain VALID
+- Claim to derive κ from first principles is INVALIDATED
+- Physical motivation (S₄ symmetry) may still be correct
+
+RECOMMENDATION:
+  Option A (Quick): Remove derivation, state κ is phenomenological
+  Option B (Rigorous): Identify missing factor and fix calculation
+  Option C (Hybrid): Acknowledge as order-of-magnitude estimate
+
+================================================================================
+VERIFIED RESULTS
+================================================================================
+
+1. SM THERMAL PARAMETERS ✅
+
+   c_T = 0.398 (theorem claims 0.37, within 7% - acceptable)
+   E = 0.0096 (theorem claims 0.007, 37% higher - needs clarification)
+   (v/T_c)_SM = 0.148 (theorem claims 0.15, exact match)
+
+   RE-DERIVED INDEPENDENTLY:
+   c_T = (3g² + g'²)/16 + λ/2 + y_t²/4
+       = 0.0876 + 0.0645 + 0.2460
+       = 0.398 ✓
+
+2. S₄ GROUP THEORY ✅
+
+   Clebsch-Gordan coefficient for 3 ⊗ 3 → 1 in S₄ is 1/√3
+
+   VERIFIED:
+   - S₄ has irreps: 1, 1', 2, 3, 3'
+   - 3 ⊗ 3 = 1 ⊕ 2 ⊕ 3 ⊕ 3'
+   - C = 1/√dim(3) = 1/√3 ≈ 0.577 ✓
+   - C² = 1/3 ✓
+
+3. PARAMETER SCAN ✅
+
+   All 24 parameter combinations verified:
+   - Minimum v(T_c)/T_c = 1.169
+   - Maximum v(T_c)/T_c = 1.303
+   - Average v(T_c)/T_c = 1.241
+
+   Central prediction: v(T_c)/T_c = 1.2 ± 0.1 ✓
+
+   ALL POINTS satisfy v(T_c)/T_c > 1.0 (baryogenesis viable)
+
+4. DIMENSIONAL ANALYSIS ✅
+
+   All terms in V_eff have dimension [Energy]⁴:
+   - -μ²φ²/2:    [GeV²][GeV²] = [GeV⁴] ✓
+   - λφ⁴/4:      [GeV⁴] = [GeV⁴] ✓
+   - c_T T²φ²/2: [GeV²][GeV²] = [GeV⁴] ✓
+   - -ETφ³:      [GeV][GeV³] = [GeV⁴] ✓
+
+5. LIMITING CASES ✅
+
+   SM limit (κ = λ_3c = 0):
+     Expected: v(T_c)/T_c ~ 0.15
+     Calculated: 0.148 ✓
+
+   High-T limit (T → ∞):
+     V_eff ~ c_T T² φ²/2 → minimum at φ = 0 ✓
+
+   Low-T limit (T → 0):
+     V_eff → -μ²φ²/2 + λφ⁴/4 with minimum at φ = v ✓
+
+================================================================================
+WARNINGS
+================================================================================
+
+1. POTENTIAL FORM NOT RIGOROUSLY JUSTIFIED
+
+   V_geo(φ, T) = κ v⁴ [1 - cos(3πφ/v)] × (T/T_0)⁴
+
+   QUESTIONS:
+   - Why cosine? (could be polynomial, sin², etc.)
+   - Why 3πφ/v specifically? (where does "3" come from?)
+   - Why (T/T_0)⁴? (could be T², T³, etc.)
+   - How does continuous potential arise from discrete S₄ symmetry?
+
+   RECOMMENDATION: Derive from group theory or state as ansatz
+
+2. THREE-COLOR CONTRIBUTION APPEARS AD-HOC
+
+   V_3c(φ, T) = λ_3c φ⁴ × tanh²((T - T_lock)/50 GeV)
+
+   QUESTIONS:
+   - Why tanh² form?
+   - Why 50 GeV width parameter?
+   - How is λ_3c derived from χ_R, χ_G, χ_B couplings?
+
+   RECOMMENDATION: Label as phenomenological parametrization
+
+3. CUBIC COEFFICIENT DISCREPANCY
+
+   Theorem claims: E ≈ 0.007
+   Independent calculation: E ≈ 0.0096
+   Difference: 37%
+
+   POSSIBLE CAUSES:
+   - Different daisy resummation schemes
+   - Different temperature-dependent mass definitions
+   - Typographical error in theorem
+
+   RECOMMENDATION: Cite specific reference for E = 0.007
+
+================================================================================
+RE-DERIVED KEY EQUATIONS
+================================================================================
+
+1. THERMAL MASS COEFFICIENT
+
+   From Quiros (1999), Morrissey & Ramsey-Musolf (2012):
+
+   c_T = (3g_W² + g_Y²)/16 + λ_H/2 + y_t²/4
+
+   With PDG 2024 values:
+     g_W = 2m_W/v = 2(80.3692)/246.22 = 0.6527
+     g_Y² = g_W² [(m_Z/m_W)² - 1] = 0.1280
+     y_t = √2 m_t/v = √2 (172.69)/246.22 = 0.9934
+     λ_H = m_H²/(2v²) = 125.11²/(2×246.22²) = 0.1291
+
+   c_T = (3×0.6527² + 0.1280)/16 + 0.1291/2 + 0.9934²/4
+       = (1.2781 + 0.1280)/16 + 0.0646 + 0.2460
+       = 0.0876 + 0.0646 + 0.2460
+       = 0.3982
+
+   VERIFIED: c_T ≈ 0.40 (theorem claims 0.37, within uncertainty)
+
+2. CUBIC DAISY COEFFICIENT
+
+   From daisy resummation (Curtin et al. 2017):
+
+   E = (2m_W³ + m_Z³)/(4πv³)
+
+   E = (2×80.3692³ + 91.1876³)/(4π×246.22³)
+     = (1,036,894 + 758,992)/(4π×14,951,934)
+     = 1,795,886/187,481,085
+     = 0.00958
+
+   CALCULATED: E ≈ 0.0096 (theorem claims 0.007, 37% higher)
+
+   NOTE: This affects SM benchmark but not CG prediction
+
+3. GEOMETRIC COUPLING (ATTEMPTED)
+
+   Theorem states:
+   κ_geo ≈ (λ_H/8⁴) × 8 × 3 × (1/3)
+
+   Algebraic simplification:
+   κ_geo = λ_H × [8 × 3 × (1/3)]/8⁴
+         = λ_H × [8/3]/4096 × 3
+         = λ_H × 8/4096
+         = λ_H/512
+         = 0.1291/512
+         = 0.000252
+         = 0.0025 λ_H
+
+   ERROR: Formula gives 0.002 λ_H, NOT 0.1 λ_H
+
+   DISCREPANCY: Factor of 50
+
+================================================================================
+COMPUTATIONAL VERIFICATION QUALITY
+================================================================================
+
+Script: verification/phase_transition_derivation.py
+Results: verification/phase_transition_results.json
+
+STRENGTHS:
+✅ Uses PDG 2024 physical constants
+✅ Standard thermal field theory (daisy-improved 1-loop)
+✅ Comprehensive parameter scan (κ ∈ [0.5, 2.0], λ_3c ∈ [0.02, 0.1])
+✅ All 24 parameter points converged successfully
+✅ SM limit correctly recovered
+✅ Well-documented code with physical explanations
+✅ Results saved in JSON format
+
+VERIFIED INDEPENDENTLY:
+✅ Sample point (κ=0.5, λ_3c=0.05): ratio = 1.1727 matches table
+✅ Ratio calculations: v(T_c)/T_c = φ_min/T_c consistent
+✅ All ratios > 1.0 (baryogenesis viable)
+
+MINOR ISSUES:
+⚠️ Does not check negative VEV region
+⚠️ Does not compute effective mass m²_eff to check for tachyons
+⚠️ Temperature scan range [80, 200] GeV is reasonable but not justified
+
+OVERALL ASSESSMENT: High-quality computational verification
+
+================================================================================
+PHYSICAL REASONABLENESS
+================================================================================
+
+1. PHASE TRANSITION STRENGTH
+
+   v(T_c)/T_c ≈ 1.2 ± 0.1
+
+   ✅ Satisfies sphaleron washout condition (v/T_c > 1.0)
+   ✅ In viable range for baryogenesis (0.7 - 2.0)
+   ✅ Not too strong (v/T_c < 5, perturbativity maintained)
+   ✅ At the minimum required value (more robust would be 1.5-2.0)
+
+2. CRITICAL TEMPERATURE
+
+   T_c ≈ 124 GeV
+
+   ✅ Below Higgs mass (125 GeV) as expected
+   ✅ Approximately v/2 (typical for thermal transitions)
+   ✅ Far above QCD scale (200 MeV)
+   ✅ Far below Planck scale
+
+3. COUPLING MAGNITUDES
+
+   κ ∈ [0.5, 2.0]: Dimensionless, O(1)
+   λ_3c ∈ [0.02, 0.1]: Small, 5-10% effect
+
+   ⚠️ CLARIFICATION NEEDED:
+   - If κ_geo ~ 0.01 from derivation, why scan κ ∈ [0.5, 2.0]?
+   - Suggests κ is a normalization factor, not the raw coupling
+   - Parameter definitions need clarification
+
+NO PATHOLOGIES IDENTIFIED:
+✅ No negative masses at minimum
+✅ No runaway potentials
+✅ No causality violations
+✅ No unitarity violations at accessible energies
+
+================================================================================
+CONVERGENCE AND WELL-DEFINEDNESS
+================================================================================
+
+1. POTENTIAL BOUNDEDNESS
+
+   At large φ:
+   V_eff(φ → ∞, T) ~ (λ + λ_3c) φ⁴ - ETφ³
+
+   Since λ + λ_3c > 0, the φ⁴ term dominates:
+   V_eff → +∞ as φ → ∞ ✓
+
+   VERDICT: Potential is bounded from below ✓
+
+2. NUMERICAL STABILITY
+
+   Critical temperature finding uses scipy.optimize.brentq:
+   - Search range: T ∈ [80, 200] GeV
+   - Convergence: All 24 points converged
+   - No failures reported
+
+   VERDICT: Numerically stable ✓
+
+3. PARAMETER SCAN COVERAGE
+
+   Scanned: κ ∈ [0.5, 2.0], λ_3c ∈ [0.02, 0.1]
+   24 points total (6 κ values × 4 λ_3c values)
+
+   ⚠️ LIMITATION: Only 2D slice of parameter space
+   Missing: Temperature scales (T_0, T_lock), functional form parameters
+
+   VERDICT: Adequate for proof-of-concept, not exhaustive
+
+================================================================================
+SUGGESTIONS FOR IMPROVEMENT
+================================================================================
+
+1. FIX THE κ_geo DERIVATION (CRITICAL)
+
+   Current formula is algebraically incorrect
+
+   Options:
+   A) Remove derivation, state κ is phenomenological
+   B) Find missing factor of ~50 and correct calculation
+   C) Acknowledge as order-of-magnitude estimate with large uncertainty
+
+2. DERIVE OR JUSTIFY POTENTIAL FORMS
+
+   V_geo ~ [1 - cos(3πφ/v)] needs group-theoretic derivation
+   V_3c ~ tanh²(...) should be labeled phenomenological
+
+   Either derive from first principles or acknowledge parametrization
+
+3. CLARIFY PARAMETER DEFINITIONS
+
+   What does κ represent?
+   - Raw coupling in units of λ_H?
+   - Dimensionless normalization factor?
+   - Multiple of derived κ_geo?
+
+   Add explicit definition and units
+
+4. EXPAND LIMITING CASE CHECKS
+
+   Add:
+   - Negative VEV region check
+   - Tachyonic mode analysis (m²_eff > 0?)
+   - Large κ or λ_3c limits
+
+5. CONNECT TO EXPERIMENTAL CONSTRAINTS
+
+   Mention:
+   - Higgs signal strengths (constrain κ)
+   - Electroweak precision tests
+   - Direct searches for new scalars
+
+================================================================================
+COMPARISON WITH STANDARD BSM EWPT LITERATURE
+================================================================================
+
+This theorem follows the standard approach used in:
+- Extended singlet models (xSM)
+- Two-Higgs-doublet models (2HDM)
+- Other BSM EWPT scenarios
+
+STANDARD STEPS:
+1. ✅ Write effective potential with new contributions
+2. ✅ Compute thermal corrections (daisy resummation)
+3. ✅ Find critical temperature T_c
+4. ✅ Compute phase transition strength v(T_c)/T_c
+5. ❌ Calculate bubble nucleation rate (not done)
+6. ⚠️ Estimate GW signal (mentioned, not derived)
+7. ⚠️ Check experimental constraints (mentioned, not detailed)
+
+ASSESSMENT:
+Core calculation (steps 1-4) is correctly performed.
+Advanced analysis (steps 5-7) is future work.
+
+================================================================================
+IMPACT ON FRAMEWORK
+================================================================================
+
+BEFORE THIS THEOREM:
+- Theorem 4.2.1 ASSUMED v(T_c)/T_c ~ 1.2
+- Status: Documented assumption, plausible but unproven
+
+AFTER THIS THEOREM:
+- v(T_c)/T_c ~ 1.2 is NUMERICALLY DEMONSTRATED
+- Status: Supported by consistent phenomenological model
+
+IF DERIVATION FIXED:
+- v(T_c)/T_c ~ 1.2 could be DERIVED from first principles
+- Status: Fully established within CG framework
+
+BARYOGENESIS CHAIN NOW COMPLETE:
+✅ Theorem 4.2.1: CP violation → chiral bias (assuming v/T_c ~ 1.2)
+✅ This theorem: CG geometry → v(T_c)/T_c ~ 1.2
+✅ Combined: Full baryogenesis mechanism self-consistent
+
+================================================================================
+FINAL RECOMMENDATION
+================================================================================
+
+ACCEPT: Core numerical result v(T_c)/T_c ≈ 1.2 ± 0.1
+
+REQUIRE REVISIONS:
+1. Fix or remove κ_geo derivation (MANDATORY)
+2. Clarify potential form justification (IMPORTANT)
+3. Update cubic coefficient E (MINOR)
+
+CONFIDENCE: Medium
+
+The numerical prediction is robust and the computational verification is
+high-quality. The theoretical derivation has gaps that should be addressed
+before peer review, but these do not invalidate the phenomenological result.
+
+================================================================================
+
+Verification completed: 2025-12-14
+Independent Adversarial Mathematical Review
+Confidence: Medium
+Recommendation: Accept with mandatory revisions
+
+================================================================================

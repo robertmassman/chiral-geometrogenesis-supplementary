@@ -1,0 +1,39 @@
+{
+  "theorem": "5.3.2",
+  "analysis": "MPD Action Principle Derivation",
+  "date": "2025-12-15",
+  "action_principle": {
+    "lagrangian": "L = -mc\u00b2 + (1/2) S_\u03bc\u03bd (\u03c9^\u03bc\u03bd + K^\u03bc\u03bd)",
+    "torsion_coupling": "K_\u03bb\u03bc\u03bd = (\u03ba_T/2) \u03b5_\u03bb\u03bc\u03bd\u03c1 J_5^\u03c1"
+  },
+  "mpd_equations": {
+    "momentum": "Dp^\u03bc/d\u03c4 = -(1/2) R^\u03bc_\u03bd\u03c1\u03c3 u^\u03bd S^\u03c1\u03c3 + K^\u03bc_\u03bd\u03c1 S^\u03bd\u03c3 u_\u03c3 u^\u03c1",
+    "spin": "DS^\u03bc\u03bd/d\u03c4 = 2 p^[\u03bc u^\u03bd] + 2 K^[\u03bc_\u03c1\u03c3 S^\u03bd]\u03c1 u^\u03c3"
+  },
+  "multipole_expansion": {
+    "monopole": "p^\u03bc = \u222b T^\u03bc\u03bd n_\u03bd d\u00b3x (momentum)",
+    "dipole": "S^\u03bc\u03bd = 2 \u222b \u03c3^[\u03bc T^\u03bd]\u03c1 n_\u03c1 d\u00b3x (spin)",
+    "approximation": "pole-dipole (neglect quadrupole)"
+  },
+  "numerical_results": {
+    "torsion_force_N": 6.825628305802493e-89,
+    "gravitational_force_N": 5.538392301262071e-51,
+    "force_ratio": 1.2324205174572214e-38,
+    "precession_rate_rad_s": 1.0456330007361875e-32,
+    "precession_rate_mas_yr": 6.80625759333244e-17,
+    "precession_period_years": 1.904130107079095e+25
+  },
+  "consistency_checks": {
+    "force_units": "PASS",
+    "torque_units": "PASS",
+    "gr_limit": "PASS",
+    "momentum_conservation": "PASS",
+    "angular_momentum": "PASS"
+  },
+  "references": [
+    "Dixon (1970) Proc. R. Soc. A 314, 499",
+    "Hojman (1978) Phys. Rev. D 18, 2741",
+    "Yasskin & Stoeger (1980) Phys. Rev. D 21, 2081",
+    "Kleinert (1995) arXiv:hep-th/9503074"
+  ]
+}

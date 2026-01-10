@@ -1,0 +1,102 @@
+{
+  "issue_1_logical_priority": {
+    "center": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "incoherent_sum": 1.919999999999999,
+      "coherent_magnitude_sq": 9.86076131526265e-32,
+      "potential": 7.195127940810001e-05,
+      "E_pre_lorentzian": 1.920071951279407
+    },
+    "vertex_R": {
+      "position": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "incoherent_sum": 16.23510204081633,
+      "coherent_magnitude_sq": 13.37469387755102,
+      "potential": 178.6556089952924,
+      "E_pre_lorentzian": 194.8907110361087
+    },
+    "intermediate": {
+      "position": [
+        0.2886751345948129,
+        0.2886751345948129,
+        0.2886751345948129
+      ],
+      "incoherent_sum": 4.595041322314049,
+      "coherent_magnitude_sq": 2.115702479338843,
+      "potential": 4.440376420624398,
+      "E_pre_lorentzian": 9.035417742938447
+    },
+    "verification": {
+      "center_chi_magnitude": 3.1401849173675503e-16,
+      "center_energy": 1.920071951279407,
+      "test_pass": true,
+      "conclusion": "Theorem 0.2.4 provides valid pre-Lorentzian energy without Noether"
+    }
+  },
+  "issue_2_mapping": {
+    "center": {
+      "incoherent": 1.919999999999999,
+      "coherent": 9.86076131526265e-32,
+      "gradient": 6.553599999999996,
+      "T_00": 6.553671951279404
+    },
+    "vertex": {
+      "incoherent": 16.23510204081633,
+      "coherent": 13.37469387755102,
+      "gradient": 0.22109187838400657,
+      "T_00": 179.41168862877845
+    },
+    "mapping_formula": {
+      "description": "|\u03c7_total|\u00b2 = \u03a3|a_c|\u00b2 - (a_R*a_G + a_G*a_B + a_B*a_R)",
+      "verification": true
+    }
+  },
+  "issue_3_dimensions": {
+    "dimensional_analysis": {
+      "[a_0]": "[length]",
+      "[P_0]": "[length]^{-2}",
+      "[x_c]": "[length]",
+      "[2 a_0 P_0^2 x_c]": "[length]^{-2} = [mass]^2 = [\u2207\u03c7]",
+      "consistent": true
+    },
+    "numerical_verification": {
+      "P_0": 0.7999999999999998,
+      "grad_numerical": [
+        {
+          "real": 0.7390083445627212,
+          "imag": 1.2799999999999996
+        },
+        {
+          "real": 0.7390083445627202,
+          "imag": -1.2799999999999996
+        },
+        {
+          "real": 1.4780166891254418,
+          "imag": -2.220446049250313e-16
+        }
+      ],
+      "grad_formula": [
+        {
+          "real": 0.7390083445627211,
+          "imag": 1.2799999999999994
+        },
+        {
+          "real": 0.7390083445627201,
+          "imag": -1.2799999999999994
+        },
+        {
+          "real": 1.4780166891254416,
+          "imag": -2.8421709430403993e-16
+        }
+      ],
+      "match": true
+    }
+  }
+}

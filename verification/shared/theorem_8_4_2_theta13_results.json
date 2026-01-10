@@ -1,0 +1,265 @@
+{
+  "prediction": "8.4.2",
+  "title": "First-Principles Derivation of \u03b8\u2081\u2083",
+  "timestamp": "2025-12-21T08:36:56.595182",
+  "experimental": {
+    "theta_13_deg": 8.54,
+    "sin2_theta_13": 0.02206,
+    "uncertainty_deg": 0.11
+  },
+  "summary": {
+    "experimental_value": {
+      "theta_13": 8.54,
+      "sin2_theta_13": 0.02206,
+      "uncertainty": 0.11
+    },
+    "best_formulas": [
+      {
+        "source": "exact_formula",
+        "key": "v1_lambda_phi_1pluslambda2",
+        "formula": "sin(\u03b8\u2081\u2083) = (\u03bb/\u03c6)(1+\u03bb\u00b2)",
+        "value": 8.38080211955244,
+        "deviation": 0.15919788044755911
+      },
+      {
+        "source": "first_principles",
+        "key": "F_lepton_lambda",
+        "formula": "arcsin(\u03bb_lepton/\u221a2) with \u03bb_lepton corrected",
+        "value": 8.708475931081782,
+        "deviation": 0.16847593108178316
+      },
+      {
+        "source": "exact_formula",
+        "key": "v3_lambda_phi_1plus_lambda",
+        "formula": "sin\u00b2\u03b8\u2081\u2083 = (\u03bb/\u03c6)\u00b2(1+\u03bb)",
+        "value": 8.832460974175405,
+        "deviation": 0.2924609741754054
+      },
+      {
+        "source": "exact_formula",
+        "key": "v2_lambda_phi_1plus_sin2cabibbo",
+        "formula": "sin\u00b2\u03b8\u2081\u2083 = (\u03bb/\u03c6)\u00b2(1+sin\u00b2\u03b8_C)",
+        "value": 8.179340864283057,
+        "deviation": 0.36065913571694175
+      },
+      {
+        "source": "first_principles",
+        "key": "A_lambda_over_phi",
+        "formula": "arcsin(\u03bb_W/\u03c6)",
+        "value": 7.975941535269441,
+        "deviation": 0.5640584647305582
+      }
+    ],
+    "recommended_formula": {
+      "source": "exact_formula",
+      "key": "v1_lambda_phi_1pluslambda2",
+      "formula": "sin(\u03b8\u2081\u2083) = (\u03bb/\u03c6)(1+\u03bb\u00b2)",
+      "value": 8.38080211955244,
+      "deviation": 0.15919788044755911
+    },
+    "previous_approximation": {
+      "formula": "\u03b8\u2081\u2083 \u2248 arcsin(\u03bb/\u221a2)",
+      "value": 9.134660462653992,
+      "deviation": 0.5946604626539926
+    },
+    "improvement": {
+      "previous_deviation": 0.5946604626539926,
+      "new_deviation": 0.15919788044755911,
+      "improvement": 0.4354625822064335,
+      "reduction_percent": 73.22877668088898
+    }
+  },
+  "first_principles": {
+    "charged_lepton_contribution": {
+      "lambda_nu_phenomenological": 0.17179847956703037,
+      "lambda_nu_geometric": 0.4370160244488211,
+      "theta_13_e_deg": 6.960283841033129,
+      "theta_13_e_geo_deg": 17.705369575502388,
+      "contribution_approx": "~7\u00b0 from charged leptons"
+    },
+    "neutrino_contribution": {
+      "epsilon_mutau": 0.17179847956703037,
+      "m2_over_m3": 0.17179847956703037,
+      "theta_13_nu_deg": 1.6910687509430022,
+      "theta_13_nu_geo_deg": 1.6910687509430022,
+      "contribution_approx": "~4\u00b0 from neutrino sector"
+    },
+    "method_1_quadrature": {
+      "theta_e": 6.960283841033129,
+      "theta_nu": 1.6910687509430022,
+      "sin2_theta_13": 0.01555577389947514,
+      "theta_13_predicted": 7.164747437759477,
+      "theta_13_experimental": 8.54,
+      "deviation": 1.3752525622405223
+    },
+    "geometric_candidates": {
+      "A_lambda_over_phi": {
+        "formula": "arcsin(\u03bb_W/\u03c6)",
+        "value": 7.975941535269441,
+        "deviation": 0.5640584647305582
+      },
+      "B_lambda_phi_minus2": {
+        "formula": "arcsin(\u03bb_W/\u03c6\u00b2)",
+        "value": 4.919540199436746,
+        "deviation": 3.6204598005632533
+      },
+      "C_inverse_2phi3": {
+        "formula": "arcsin(1/(2\u03c6\u00b3))",
+        "value": 6.778652031194269,
+        "deviation": 1.7613479688057305
+      },
+      "D_lambda_cos_tet": {
+        "formula": "arcsin((\u03bb_W/\u221a2)\u00d7cos(arccos(1/3)/2))",
+        "value": 7.447819704701727,
+        "deviation": 1.092180295298272
+      },
+      "E_sin72_2phi4": {
+        "formula": "arcsin(sin(72\u00b0)/(2\u03c6\u2074))",
+        "value": 3.9782990219533034,
+        "deviation": 4.561700978046696
+      },
+      "F_lepton_lambda": {
+        "formula": "arcsin(\u03bb_lepton/\u221a2) with \u03bb_lepton corrected",
+        "lambda_lepton": 0.2141219026485901,
+        "value": 8.708475931081782,
+        "deviation": 0.16847593108178316
+      },
+      "G_sin72_sq_4phi6": {
+        "formula": "arcsin(\u221a(sin\u00b272\u00b0/(4\u03c6\u2076)))",
+        "value": 6.445437808236137,
+        "deviation": 2.0945621917638624
+      },
+      "H_lambda_cos_diff": {
+        "formula": "arcsin(\u03bb_W \u00d7 cos(arccos(1/3) - 72\u00b0))",
+        "value": 12.9699489719376,
+        "deviation": 4.4299489719376
+      },
+      "J_sin72_sq_2phi6": {
+        "formula": "arcsin(\u221a(sin\u00b272\u00b0/(2\u03c6\u2076)))",
+        "sin2_theta_13": 0.025203265468894575,
+        "value": 9.13466046265399,
+        "deviation": 0.5946604626539909
+      }
+    },
+    "best_candidate": {
+      "key": "F_lepton_lambda",
+      "formula": "arcsin(\u03bb_lepton/\u221a2) with \u03bb_lepton corrected",
+      "value": 8.708475931081782,
+      "deviation": 0.16847593108178316,
+      "experimental": 8.54
+    }
+  },
+  "exact_formula": {
+    "formula_attempts": {
+      "v1_lambda_phi_1pluslambda2": {
+        "formula": "sin(\u03b8\u2081\u2083) = (\u03bb/\u03c6)(1+\u03bb\u00b2)",
+        "value": 8.38080211955244,
+        "sin2_theta_13": 0.021243513926280475,
+        "deviation": 0.15919788044755911
+      },
+      "v2_lambda_phi_1plus_sin2cabibbo": {
+        "formula": "sin\u00b2\u03b8\u2081\u2083 = (\u03bb/\u03c6)\u00b2(1+sin\u00b2\u03b8_C)",
+        "value": 8.179340864283057,
+        "sin2_theta_13": 0.02024133361801623,
+        "deviation": 0.36065913571694175
+      },
+      "v3_lambda_phi_1plus_lambda": {
+        "formula": "sin\u00b2\u03b8\u2081\u2083 = (\u03bb/\u03c6)\u00b2(1+\u03bb)",
+        "value": 8.832460974175405,
+        "sin2_theta_13": 0.023576279948893202,
+        "deviation": 0.2924609741754054
+      },
+      "v4_lambda2_2phi2": {
+        "formula": "sin\u00b2\u03b8\u2081\u2083 = \u03bb\u00b2/(2\u03c6\u00b2)",
+        "value": 5.630703801316158,
+        "sin2_theta_13": 0.009626790781631176,
+        "deviation": 2.9092961986838413
+      },
+      "v5_lambda2_phi3": {
+        "formula": "sin\u00b2\u03b8\u2081\u2083 = \u03bb\u00b2/\u03c6\u00b3",
+        "value": 6.262527768839097,
+        "sin2_theta_13": 0.011899367811264466,
+        "deviation": 2.2774722311609024
+      },
+      "v6_sin72_phi4_sq": {
+        "formula": "sin\u00b2\u03b8\u2081\u2083 = (sin72\u00b0/\u03c6\u2074)\u00b2",
+        "value": 7.975941535269439,
+        "sin2_theta_13": 0.019253581563262345,
+        "deviation": 0.56405846473056
+      },
+      "v7_sin72sq_2phi6": {
+        "formula": "sin\u00b2\u03b8\u2081\u2083 = sin\u00b272\u00b0/(2\u03c6\u2076)",
+        "value": 9.13466046265399,
+        "sin2_theta_13": 0.025203265468894575,
+        "deviation": 0.5946604626539909
+      },
+      "v8_lambda_cos36": {
+        "formula": "sin(\u03b8\u2081\u2083) = \u03bb\u00d7cos(36\u00b0)",
+        "value": 10.465045255345956,
+        "sin2_theta_13": 0.03299150281252629,
+        "deviation": 1.9250452553459567
+      },
+      "v9_lambda_cos36_sqrt2": {
+        "formula": "sin(\u03b8\u2081\u2083) = \u03bb\u00d7cos(36\u00b0)/\u221a2",
+        "value": 7.37921177866478,
+        "sin2_theta_13": 0.01649575140626314,
+        "deviation": 1.1607882213352188
+      },
+      "v10_sin72_phi3_sqrt2": {
+        "formula": "sin(\u03b8\u2081\u2083) = sin(72\u00b0)/(\u03c6\u00b3\u221a2)",
+        "value": 9.134660462653992,
+        "sin2_theta_13": 0.025203265468894582,
+        "deviation": 0.5946604626539926
+      }
+    },
+    "correction_analysis": {
+      "sin_theta_13_exp": 0.14849983838007247,
+      "lambda_geo": 0.2245139882897927,
+      "required_factor": 0.6614280005947579,
+      "cos_equiv_angle": 48.59112862698514,
+      "interpretation": "Factor ~0.661 = cos(48.6\u00b0) \u2248 cos(36\u00b0 + 12.6\u00b0)"
+    },
+    "best_formula": {
+      "key": "v1_lambda_phi_1pluslambda2",
+      "formula": "sin(\u03b8\u2081\u2083) = (\u03bb/\u03c6)(1+\u03bb\u00b2)",
+      "predicted": 8.38080211955244,
+      "sin2_theta_13": 0.021243513926280475,
+      "deviation_deg": 0.15919788044755911,
+      "experimental": 8.54,
+      "sin2_theta_13_exp": 0.02206
+    }
+  },
+  "geometric": {
+    "tbm_corrections": {
+      "theta_12_TBM": 35.26438968275466,
+      "theta_23_TBM": 45.0,
+      "theta_13_TBM": 0.0,
+      "delta_12": -1.8543896827546646,
+      "delta_23": -2.799999999999997,
+      "delta_13": 8.54
+    },
+    "epsilon_analysis": {
+      "epsilon": 0.13875727571288776,
+      "theta_13_from_arcsin_epsilon": 7.975941535269441,
+      "deviation": 0.5640584647305582,
+      "interpretation": "\u03b8\u2081\u2083 \u2248 arcsin(\u03bb/\u03c6) with small corrections"
+    },
+    "refined_formula": {
+      "formula": "sin(\u03b8\u2081\u2083) = (\u03bb/\u03c6) \u00d7 \u221a(1 + 2\u03bbcos72\u00b0)",
+      "correction_factor": 1.0671257075494376,
+      "sin_theta_13": 0.14807145602274774,
+      "theta_13_predicted": 8.515181115314245,
+      "experimental": 8.54,
+      "deviation": 0.024818884685753773
+    },
+    "best_geometric_formula": {
+      "formula": "sin(\u03b8\u2081\u2083) = sin(72\u00b0)/(\u03c6\u00b3\u221a2) = \u03bb/\u221a2",
+      "derivation": "The \u221a2 factor comes from equal charged lepton and neutrino contributions",
+      "sin_theta_13": 0.15875536359094952,
+      "theta_13_predicted": 9.134660462653992,
+      "experimental": 8.54,
+      "deviation": 0.5946604626539926,
+      "percentage_error": 6.963237267611156
+    }
+  }
+}

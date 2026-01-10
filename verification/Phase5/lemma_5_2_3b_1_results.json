@@ -1,0 +1,23 @@
+{
+  "lemma": "5.2.3b.1",
+  "title": "FCC Lattice Spacing Coefficient from Stella Octangula Geometry",
+  "verified": true,
+  "coefficient": 5.074272804780513,
+  "lattice_spacing_ratio": 2.252614659630118,
+  "checks": {
+    "algebraic_derivation": true,
+    "numerical_values": true,
+    "geometric_claims": true,
+    "factor_origins": true,
+    "consistency_checks": true,
+    "correction_verified": true
+  },
+  "numerical_results": {
+    "8": 8,
+    "1/sqrt(3)": 0.5773502691896258,
+    "ln(3)": 1.0986122886681098,
+    "coefficient (8/sqrt(3))*ln(3)": 5.074272804780513,
+    "a/l_P": 2.252614659630118,
+    "S/A (verification)": 0.25
+  }
+}

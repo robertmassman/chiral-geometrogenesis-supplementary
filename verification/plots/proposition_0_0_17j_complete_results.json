@@ -1,0 +1,51 @@
+{
+  "casimir_mode_sum": {
+    "method": "Numerical mode sum with zeta regularization",
+    "n_modes": 49,
+    "eigenvalue_range": [
+      0.3507392122442035,
+      2.3089271225273085
+    ],
+    "surface_area": 1.8579163153515237,
+    "euler_characteristic": 2,
+    "heat_kernel_a2": 0.3333333333333333,
+    "shape_factor_estimated": 1.003,
+    "E_casimir_MeV": 441.32044729859297,
+    "sqrt_sigma_predicted": 441.32044729859297,
+    "sqrt_sigma_observed": 440.0,
+    "agreement_percent": 100.30010165877113
+  },
+  "shape_factor": {
+    "method_1_dimensional": 0.9999989864539571,
+    "method_2_su3_protection": 1.0,
+    "method_3_flux_tube": 0.9781255113172008,
+    "f_mean": 0.9927081659237192,
+    "f_std": 0.010311493968272498,
+    "conclusion": "f_stella = 1.00 \u00b1 0.01"
+  },
+  "uv_coupling": {
+    "n_gluons": 8,
+    "n_channels": 64,
+    "p_channel": 0.015625,
+    "alpha_s_UV": 0.015625,
+    "inv_alpha_s_UV": 64,
+    "alpha_MZ_predicted": 0.1187,
+    "alpha_MZ_experiment": 0.1179,
+    "discrepancy_percent": 0.6785411365563996,
+    "sigma": 0.7999999999999952,
+    "theta_T_deg": 70.52877936550931,
+    "theta_O_deg": 109.47122063449069,
+    "scheme_factor": 1.55214965605977,
+    "inv_alpha_MSbar": 99.33757798782528,
+    "final_discrepancy_percent": 0.03784288804157814,
+    "status": "DERIVED"
+  },
+  "prop_0_0_17j_connection": {
+    "hierarchy": 2.7751856435643564e+19,
+    "M_P_predicted_GeV": 1.1166482138234872e+19,
+    "M_P_observed_GeV": 1.22e+19,
+    "agreement_percent": 91.52854211667928,
+    "exponent": 44.680428851054835,
+    "exp_factor": 2.5378368495988343e+19
+  }
+}

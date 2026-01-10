@@ -1,0 +1,145 @@
+{
+  "wilson_coefficients": {
+    "c_H": {
+      "value": 0.12932540237292617,
+      "expected": 0.13,
+      "match": true
+    },
+    "c_box": {
+      "value": 1.0,
+      "expected": 1.0,
+      "match": true
+    },
+    "c_HW": {
+      "value": 0.42510400000000004,
+      "expected": 0.42,
+      "match": true
+    },
+    "c_HB": {
+      "value": 0.12744899999999998,
+      "expected": 0.13,
+      "match": true
+    },
+    "c_T": {
+      "value": 0.23122,
+      "expected": 0.23,
+      "match": true
+    }
+  },
+  "cutoff_scale": {
+    "Lambda_base_TeV": 3.0913271711323564,
+    "Lambda_min_TeV": 7.728317927830891,
+    "Lambda_max_TeV": 14.838370421435311,
+    "G_eff_min": 2.5,
+    "G_eff_max": 4.8,
+    "range_overlap": true
+  },
+  "oblique_parameters_10TeV": {
+    "S_CG": 0.022829871022248784,
+    "T_CG": 0.019174775345827202,
+    "U_CG": 0.0,
+    "S_tension_sigma": 0.3282987102224878,
+    "T_tension_sigma": 0.09021020545143998,
+    "U_tension_sigma": 0.11111111111111112,
+    "all_within_2sigma": true
+  },
+  "w_mass_10TeV": {
+    "Lambda_TeV": 10,
+    "delta_m_W_MeV": 10.336157650290241,
+    "m_W_CG_GeV": 80.36733615765029,
+    "CMS_tension_sigma": 0.7208240050787402,
+    "PDG_tension_sigma": 0.14013852253539943,
+    "within_2sigma_CMS": true,
+    "within_2sigma_PDG": true
+  },
+  "higgs_trilinear_10TeV": {
+    "Lambda_TeV": 10,
+    "c_H": 0.12932540237292617,
+    "kappa_lambda": 1.00181548,
+    "delta_kappa_percent": 0.18154800000000001,
+    "within_LHC_bounds": true
+  },
+  "form_factor": {
+    "Lambda_TeV": 10,
+    "n": 1.0,
+    "form_factors": {
+      "500": {
+        "F": 0.9975062344139651,
+        "deviation_percent": 0.24937655860348684
+      },
+      "1000": {
+        "F": 0.9900990099009901,
+        "deviation_percent": 0.990099009900991
+      },
+      "2000": {
+        "F": 0.9615384615384615,
+        "deviation_percent": 3.8461538461538547
+      },
+      "5000": {
+        "F": 0.8,
+        "deviation_percent": 19.999999999999996
+      }
+    },
+    "reasonable_behavior": true
+  },
+  "chi_star_spectrum": {
+    "m_chi_star_min_TeV": 8.0,
+    "m_chi_star_max_TeV": 12.0,
+    "gap_ratio_min": 32.520325203252035,
+    "gap_ratio_max": 60.97560975609756,
+    "width_ratio": 1.0,
+    "above_LHC_exclusion": true
+  },
+  "dimensional_analysis": {
+    "checks_passed": 8,
+    "checks_total": 8,
+    "all_pass": true
+  },
+  "lambda_range": {
+    "Lambda_tests": {
+      "5": {
+        "W_tension": 3.8529929900154123,
+        "S_tension": 1.0131948408899512,
+        "T_tension": 0.38915917819424006,
+        "all_within_2sigma": false
+      },
+      "8": {
+        "W_tension": 1.3081056897547252,
+        "S_tension": 0.4567167347226373,
+        "T_tension": 0.0003284460178749662,
+        "all_within_2sigma": true
+      },
+      "10": {
+        "W_tension": 0.7208240050787402,
+        "S_tension": 0.3282987102224878,
+        "T_tension": 0.09021020545143998,
+        "all_within_2sigma": true
+      },
+      "12": {
+        "W_tension": 0.4018067936501114,
+        "S_tension": 0.2585407709878388,
+        "T_tension": 0.13903486489683334,
+        "all_within_2sigma": true
+      },
+      "15": {
+        "W_tension": 0.1407927115725339,
+        "S_tension": 0.20146609343221683,
+        "T_tension": 0.17898231353397331,
+        "all_within_2sigma": true
+      }
+    },
+    "passing_Lambdas": [
+      8,
+      10,
+      12,
+      15
+    ],
+    "recommended_range": "[8, 15] TeV"
+  },
+  "summary": {
+    "tests_passed": 9,
+    "tests_total": 9,
+    "pass_rate": 1.0,
+    "overall_status": "PASS"
+  }
+}

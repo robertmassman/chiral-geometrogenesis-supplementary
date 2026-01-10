@@ -1,0 +1,368 @@
+{
+  "theorem": "0.2.1",
+  "title": "Total Field from Superposition",
+  "parameters": {
+    "epsilon": 0.5,
+    "a0": 1.0
+  },
+  "all_passed": true,
+  "passed_count": 12,
+  "total_count": 12,
+  "results": [
+    {
+      "test": "superposition_formula",
+      "passed": true,
+      "points": [
+        {
+          "point": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "chi_direct": {
+            "real": -2.220446049250313e-16,
+            "imag": 2.220446049250313e-16
+          },
+          "chi_sum": {
+            "real": -2.220446049250313e-16,
+            "imag": 2.220446049250313e-16
+          },
+          "error": 0.0,
+          "matches": true
+        },
+        {
+          "point": [
+            0.1,
+            0.2,
+            0.3
+          ],
+          "chi_direct": {
+            "real": 0.8558916390306842,
+            "imag": -0.06662698106771808
+          },
+          "chi_sum": {
+            "real": 0.8558916390306842,
+            "imag": -0.06662698106771808
+          },
+          "error": 0.0,
+          "matches": true
+        },
+        {
+          "point": [
+            0.2886751345948129,
+            0.2886751345948129,
+            0.2886751345948129
+          ],
+          "chi_direct": {
+            "real": 1.4545454545454546,
+            "imag": 2.220446049250313e-16
+          },
+          "chi_sum": {
+            "real": 1.4545454545454546,
+            "imag": 2.220446049250313e-16
+          },
+          "error": 0.0,
+          "matches": true
+        },
+        {
+          "point": [
+            0.05773502691896258,
+            -0.05773502691896258,
+            -0.2886751345948129
+          ],
+          "chi_direct": {
+            "real": -0.41350601344454796,
+            "imag": 0.2319607349094519
+          },
+          "chi_sum": {
+            "real": -0.41350601344454796,
+            "imag": 0.2319607349094519
+          },
+          "error": 0.0,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "test": "energy_density_positive",
+      "passed": true,
+      "n_points_tested": 106,
+      "min_rho": 0.195850227061812,
+      "max_rho": 16.23510204081633,
+      "all_positive": true
+    },
+    {
+      "test": "center_node",
+      "passed": true,
+      "chi_total(0)": {
+        "real": -2.220446049250313e-16,
+        "imag": 2.220446049250313e-16,
+        "magnitude": 3.1401849173675503e-16
+      },
+      "rho(0)": 1.919999999999999,
+      "expected_rho(0)": 1.9200000000000004,
+      "rho_error": 1.3322676295501878e-15,
+      "chi_is_zero": true,
+      "rho_is_nonzero": true
+    },
+    {
+      "test": "alternative_form",
+      "passed": true,
+      "formula": "|\u03c7|\u00b2 = (a\u2080\u00b2/2)[(P_R-P_G)\u00b2 + (P_G-P_B)\u00b2 + (P_B-P_R)\u00b2]",
+      "points": [
+        {
+          "point": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "chi_sq_direct": 9.86076131526265e-32,
+          "chi_sq_alternative": 0.0,
+          "error": 9.86076131526265e-32,
+          "matches": true
+        },
+        {
+          "point": [
+            0.1,
+            0.2,
+            0.3
+          ],
+          "chi_sq_direct": 0.7369896523688292,
+          "chi_sq_alternative": 0.7369896523688292,
+          "error": 0.0,
+          "matches": true
+        },
+        {
+          "point": [
+            0.2886751345948129,
+            0.2886751345948129,
+            0.2886751345948129
+          ],
+          "chi_sq_direct": 2.115702479338843,
+          "chi_sq_alternative": 2.115702479338843,
+          "error": 0.0,
+          "matches": true
+        },
+        {
+          "point": [
+            0.3,
+            -0.2,
+            0.1
+          ],
+          "chi_sq_direct": 0.27465493095247345,
+          "chi_sq_alternative": 0.27465493095247323,
+          "error": 2.220446049250313e-16,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "test": "nonzero_gradient_at_center",
+      "passed": true,
+      "gradient": {
+        "x": {
+          "real": 0.7390083445627212,
+          "imag": 1.2799999999999996
+        },
+        "y": {
+          "real": 0.7390083445627202,
+          "imag": -1.2799999999999996
+        },
+        "z": {
+          "real": 1.4780166891254418,
+          "imag": -2.220446049250313e-16
+        }
+      },
+      "magnitude": 2.559999999999999,
+      "expected_magnitude": 2.5600000000000005,
+      "is_nonzero": true
+    },
+    {
+      "test": "energy_at_special_points",
+      "passed": true,
+      "center": {
+        "rho": 1.919999999999999,
+        "expected": 1.9200000000000004,
+        "error": 1.3322676295501878e-15
+      },
+      "vertex_R": {
+        "rho": 16.23510204081633,
+        "expected": 16.235102040816326,
+        "error": 3.552713678800501e-15
+      },
+      "ratio_vertex_to_center": 8.455782312925177,
+      "vertex_greater_than_center": true
+    },
+    {
+      "test": "energy_integral_convergence",
+      "passed": true,
+      "epsilon": 0.5,
+      "R_max": 10.0,
+      "numerical_integral": 18.48466143464898,
+      "analytical_integral": 18.48466143464898,
+      "asymptotic_value": 19.739208802178716,
+      "relative_error": 0.0,
+      "is_finite": true
+    },
+    {
+      "test": "real_imaginary_parts",
+      "passed": true,
+      "formula_real": "Re[\u03c7] = a\u2080[P_R - (P_G + P_B)/2]",
+      "formula_imag": "Im[\u03c7] = a\u2080(\u221a3/2)(P_G - P_B)",
+      "points": [
+        {
+          "point": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "chi_real": -2.220446049250313e-16,
+          "expected_real": 0.0,
+          "real_error": 2.220446049250313e-16,
+          "chi_imag": 2.220446049250313e-16,
+          "expected_imag": 0.0,
+          "imag_error": 2.220446049250313e-16,
+          "matches": true
+        },
+        {
+          "point": [
+            0.1,
+            0.2,
+            0.3
+          ],
+          "chi_real": 0.8558916390306842,
+          "expected_real": 0.8558916390306843,
+          "real_error": 1.1102230246251565e-16,
+          "chi_imag": -0.06662698106771808,
+          "expected_imag": -0.06662698106771828,
+          "imag_error": 1.942890293094024e-16,
+          "matches": true
+        },
+        {
+          "point": [
+            0.2886751345948129,
+            0.2886751345948129,
+            0.2886751345948129
+          ],
+          "chi_real": 1.4545454545454546,
+          "expected_real": 1.4545454545454546,
+          "real_error": 0.0,
+          "chi_imag": 2.220446049250313e-16,
+          "expected_imag": 0.0,
+          "imag_error": 2.220446049250313e-16,
+          "matches": true
+        },
+        {
+          "point": [
+            0.3,
+            -0.2,
+            0.1
+          ],
+          "chi_real": 0.0839855060612493,
+          "expected_real": 0.08398550606124933,
+          "real_error": 2.7755575615628914e-17,
+          "chi_imag": 0.5173020063020337,
+          "expected_imag": 0.5173020063020335,
+          "imag_error": 2.220446049250313e-16,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "test": "cube_roots_identity",
+      "passed": true,
+      "sum": {
+        "real": -2.220446049250313e-16,
+        "imag": 3.3306690738754696e-16
+      },
+      "sum_magnitude": 4.002966042486721e-16,
+      "omega": {
+        "real": -0.49999999999999983,
+        "imag": 0.8660254037844387
+      },
+      "omega_squared": {
+        "real": -0.5000000000000004,
+        "imag": -0.8660254037844384
+      },
+      "omega_cubed": {
+        "real": 0.9999999999999998,
+        "imag": -4.772891088663143e-16
+      },
+      "omega_cubed_is_one": true
+    },
+    {
+      "test": "coherent_vs_incoherent_energy",
+      "passed": true,
+      "center": {
+        "chi_sq": 9.86076131526265e-32,
+        "rho": 1.919999999999999,
+        "difference": 1.919999999999999,
+        "note": "At center: \u03c7\u00b2 = 0 (destructive interference), \u03c1 > 0 (energy conserved)"
+      },
+      "off_center": {
+        "point": [
+          0.2,
+          0.1,
+          0.3
+        ],
+        "chi_sq": 0.736989652368829,
+        "rho": 2.72954996522032,
+        "difference": 1.992560312851491,
+        "ratio_chi_sq_to_rho": 0.27000408923063685
+      }
+    },
+    {
+      "test": "gradient_formula",
+      "passed": true,
+      "points": [
+        {
+          "point": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "analytical_magnitude": 2.559999999999999,
+          "numerical_magnitude": 2.5600000018775626,
+          "error": 1.9607529132126643e-09,
+          "matches": true
+        },
+        {
+          "point": [
+            0.1,
+            0.2,
+            0.3
+          ],
+          "analytical_magnitude": 3.303370072270959,
+          "numerical_magnitude": 3.30337007285112,
+          "error": 1.1281170441485462e-09,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "test": "scaling_with_epsilon",
+      "passed": true,
+      "epsilons": [
+        0.1,
+        0.2,
+        0.5,
+        1.0
+      ],
+      "energies": [
+        97.43949071772265,
+        48.09171992663603,
+        18.48466143464898,
+        8.621270233004205
+      ],
+      "products_E_times_epsilon": [
+        9.743949071772265,
+        9.618343985327208,
+        9.24233071732449,
+        8.621270233004205
+      ],
+      "mean_product": 9.306473501857042,
+      "max_relative_deviation": 0.07362652122913249,
+      "note": "E_total ~ 1/\u03b5 (products should be constant)"
+    }
+  ]
+}

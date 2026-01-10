@@ -1,0 +1,46 @@
+{
+  "summary": {
+    "issue_10": {
+      "title": "S\u2084\u00d7\u2124\u2082 \u2192 SU(2) custodial protection",
+      "resolution": "S\u2084 3D rep \u2282 SO(3), so S\u2084-invariant functions are SO(3)-invariant. Custodial breaking enters only through g' \u2260 0, giving c_T ~ sin\u00b2\u03b8_W.",
+      "status": "RESOLVED"
+    },
+    "issue_9": {
+      "title": "Multi-scale structure",
+      "resolution": "\u039b_QCD and f_\u03c0 are QCD inputs, not CG outputs. CG uses f_\u03c0 to set the geometric cutoff \u039b = 4\u03c0v\u00b2/f_\u03c0.",
+      "status": "RESOLVED"
+    },
+    "issue_6": {
+      "title": "Cutoff scale derivation",
+      "resolution": "\u039b = 4\u03c0v\u00b2/f_\u03c0 from NJL analogy with effective decay constant f_eff = v\u00b2/f_\u03c0. Document formula \u039b = 4\u03c0v\u221a(v/f_\u03c0) has error (gives 160 TeV, not 8 TeV).",
+      "status": "RESOLVED - FORMULA ERROR FOUND"
+    },
+    "issue_8": {
+      "title": "\u03c7* mass gap proof",
+      "resolution": "S\u2084\u00d7\u2124\u2082 representation theory: Higgs is 1\u207a (breathing mode), \u03c7* is 3\u207a (deformation mode). Gap m_\u03c7*/m_h ~ \u039b/v ~ 64 is protected by symmetry.",
+      "status": "RESOLVED"
+    },
+    "issue_7": {
+      "title": "Wilson coefficient matching",
+      "resolution": "Tree-level matching gives c_H = \u03bb_\u03c7, c_HW = g\u00b2g_\u03c7\u00b2, c_HB = g'\u00b2g_\u03c7\u00b2, c_T = sin\u00b2\u03b8_W g_\u03c7\u00b2, c_\u25a1 = g_\u03c7\u00b2. All match dimensional estimates.",
+      "status": "RESOLVED"
+    }
+  },
+  "wilson_coefficients": {
+    "c_H": 0.13,
+    "c_box": 1.0,
+    "c_HW": 0.42471288999999995,
+    "c_HB": 0.12773476,
+    "c_T": 0.23122
+  },
+  "cutoff_scales": {
+    "Lambda_correct_TeV": 8191.691142647264,
+    "Lambda_naive_TeV": 3.094091772667515,
+    "Lambda_wrong_TeV": 159.20378189194582
+  },
+  "mass_gap": {
+    "m_h_GeV": 125.11,
+    "m_chi_star_GeV": 10000,
+    "gap_ratio": 79.92966189753017
+  }
+}

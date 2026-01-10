@@ -1,0 +1,365 @@
+{
+  "timestamp": "2025-12-15T12:52:20.684227",
+  "definition": "Definition 0.0.0 (Minimal Geometric Realization)",
+  "analysis_type": "coxeter_killing_form",
+  "coxeter_a2": {
+    "simple_roots": {
+      "alpha_1": [
+        1,
+        0
+      ],
+      "alpha_2": [
+        -0.5,
+        0.8660254037844386
+      ]
+    },
+    "all_roots": [
+      [
+        1,
+        0
+      ],
+      [
+        -0.5,
+        0.8660254037844386
+      ],
+      [
+        0.5,
+        0.8660254037844386
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0.5,
+        -0.8660254037844386
+      ],
+      [
+        -0.5,
+        -0.8660254037844386
+      ]
+    ],
+    "root_count": 6,
+    "coxeter_matrix": [
+      [
+        1,
+        3
+      ],
+      [
+        3,
+        1
+      ]
+    ],
+    "coxeter_number": 3,
+    "weyl_group": {
+      "order": 6,
+      "elements": [
+        [
+          "e",
+          [
+            1.0,
+            0.5
+          ]
+        ],
+        [
+          "s_1",
+          [
+            -1.0,
+            0.5
+          ]
+        ],
+        [
+          "s_2",
+          [
+            0.9330127018922193,
+            0.6160254037844387
+          ]
+        ],
+        [
+          "s_1 s_2",
+          [
+            -0.9330127018922193,
+            0.6160254037844387
+          ]
+        ],
+        [
+          "s_2 s_1",
+          [
+            -0.06698729810778059,
+            -1.1160254037844386
+          ]
+        ],
+        [
+          "s_1 s_2 s_1",
+          [
+            0.9330127018922193,
+            0.6160254037844387
+          ]
+        ]
+      ],
+      "is_S3": true
+    },
+    "relations": {
+      "(s_1 s_2)^3 = e": true,
+      "s_1^2 = e": true,
+      "s_2^2 = e": true
+    },
+    "weyl_chambers": {
+      "count": 6,
+      "fundamental_chamber": "{ v : <v, \u03b1_1> > 0 and <v, \u03b1_2> > 0 }"
+    }
+  },
+  "killing_form": {
+    "killing_form": {
+      "formula": "B(X, Y) = 2N Tr(XY) = 6 Tr(XY) for su(3)",
+      "on_cartan": "Restricted to Cartan subalgebra h"
+    },
+    "cartan_subalgebra": {
+      "dimension": 2,
+      "basis": [
+        "T_3 = (1/2) diag(1, -1, 0)",
+        "T_8 = (1/(2\u221a3)) diag(1, 1, -2)"
+      ],
+      "normalization": "Tr(T_a T_b) = (1/2) \u03b4_ab"
+    },
+    "weight_space_metric": {
+      "type": "Euclidean (proportional to identity)",
+      "metric_tensor": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "comment": "Killing form induces Euclidean metric on h*"
+    },
+    "root_properties": {
+      "alpha_1_length": 1.0,
+      "alpha_2_length": 0.9999999999999999,
+      "roots_equal_length": 1,
+      "root_angle_degrees": 120.00000000000001
+    },
+    "cartan_matrix": {
+      "expected": [
+        [
+          2,
+          -1
+        ],
+        [
+          -1,
+          2
+        ]
+      ],
+      "computed": [
+        [
+          2.0,
+          -1.0000000000000002
+        ],
+        [
+          -1.0,
+          2.0
+        ]
+      ],
+      "match": true
+    },
+    "weight_triangle": {
+      "side_RG": 1.0,
+      "side_GB": 1.0000000000000002,
+      "side_BR": 1.0000000000000002,
+      "is_equilateral": true
+    }
+  },
+  "construction_comparison": {
+    "coxeter_complex": {
+      "name": "Coxeter Complex \u03a3(W, S)",
+      "type": "Infinite simplicial complex",
+      "dimension": 2,
+      "vertices": "Infinite (cosets W/W_I for parabolic subgroups)",
+      "chambers": 6,
+      "properties": [
+        "Thin (each codim-1 face in exactly 2 chambers)",
+        "Gallery connected",
+        "W-equivariant"
+      ]
+    },
+    "root_polytope": {
+      "name": "Root Polytope",
+      "type": "Convex polytope",
+      "dimension": 2,
+      "vertices": 6,
+      "shape": "Regular hexagon",
+      "edges": 6,
+      "properties": [
+        "Centrosymmetric (closed under negation)",
+        "Weyl group invariant"
+      ]
+    },
+    "weight_polytope_fund": {
+      "name": "Weight Polytope (fundamental rep)",
+      "type": "Convex polytope",
+      "dimension": 2,
+      "vertices": 3,
+      "shape": "Equilateral triangle",
+      "edges": 3,
+      "properties": [
+        "Convex hull of weights of \u03c1",
+        "Weyl group permutes vertices"
+      ]
+    },
+    "geometric_realization": {
+      "name": "Geometric Realization (Definition 0.0.0)",
+      "type": "Finite polyhedral complex (non-convex)",
+      "dimension": 3,
+      "vertices": 8,
+      "shape": "Stella octangula (two tetrahedra)",
+      "edges": 12,
+      "faces": 8,
+      "properties": [
+        "Encodes fund + anti-fund weights",
+        "Non-convex (interpenetrating)",
+        "Includes apex vertices (trivial weight)",
+        "Full S_3 \u00d7 Z_2 symmetry"
+      ]
+    },
+    "key_differences": {
+      "finite_vs_infinite": "Coxeter complex is infinite; our realization is finite",
+      "convex_vs_nonconvex": "Root/weight polytopes are convex; stella octangula is not",
+      "dimension": "Standard constructions are 2D; our realization is 3D",
+      "representation_content": "Our realization encodes fund + anti-fund; weight polytope encodes single rep",
+      "conjugation": "Our realization includes charge conjugation structure"
+    }
+  },
+  "davis_connections": {
+    "davis_reference": {
+      "author": "Michael W. Davis",
+      "title": "The Geometry and Topology of Coxeter Groups",
+      "publisher": "Princeton University Press",
+      "year": 2008,
+      "isbn": "978-0-691-13138-2"
+    },
+    "relevant_chapters": {
+      "ch_3": {
+        "title": "Coxeter Groups",
+        "relevance": "W(A_2) = S_3 is a finite Coxeter group; our construction uses this"
+      },
+      "ch_4": {
+        "title": "More Combinatorics of Coxeter Groups",
+        "relevance": "Coset structure and parabolic subgroups"
+      },
+      "ch_6": {
+        "title": "Geometric Reflection Groups",
+        "relevance": "A_2 as reflection group in Euclidean plane"
+      },
+      "ch_7": {
+        "title": "The Complex \u03a3",
+        "relevance": "Coxeter complex construction; our realization is finite analog"
+      },
+      "appendix_b": {
+        "title": "Root Systems",
+        "relevance": "A_2 root system corresponds to stella edges"
+      }
+    },
+    "key_theorems": {
+      "theorem_6_4_3": {
+        "statement": "W is a discrete reflection group in S^n, E^n, or H^n",
+        "our_use": "W(A_2) acts as reflections on weight space"
+      },
+      "theorem_7_2_4": {
+        "statement": "Coxeter complex is CAT(0)",
+        "our_use": "Geometric properties of weight space"
+      }
+    },
+    "how_we_differ": {
+      "1": "Davis studies infinite Coxeter complexes; we construct finite realization",
+      "2": "Davis works in pure mathematics; we add physical interpretation",
+      "3": "Davis doesn't include conjugation (Z_2 extension); we do",
+      "4": "Our 3D embedding uses confinement physics, not pure Coxeter theory"
+    },
+    "what_davis_validates": {
+      "1": "The Weyl group W(A_2) = S_3 structure is standard",
+      "2": "Reflection representation on weight space is well-established",
+      "3": "The root system geometry matches A_2 Dynkin diagram",
+      "4": "Our simplicial structure is consistent with Coxeter theory"
+    }
+  },
+  "extended_metric": {
+    "normalizations": {
+      "physicist_convention": {
+        "description": "Tr(T_a T_b) = (1/2) \u03b4_ab (Gell-Mann matrices)",
+        "root_length_squared": 2,
+        "killing_form_factor": 6
+      },
+      "mathematician_convention": {
+        "description": "Roots have length sqrt(2)",
+        "simple_roots_orthonormal": false,
+        "inner_product": "(\u03b1_i, \u03b1_j) = 2 \u03b4_ij - A_ij"
+      },
+      "our_convention": {
+        "description": "Simple root \u03b1_1 = (1, 0), unit length",
+        "weight_space_metric": "Euclidean on R^2",
+        "advantage": "Direct geometric interpretation"
+      }
+    },
+    "gram_matrix": {
+      "in_root_basis": [
+        [
+          1.0,
+          -0.5
+        ],
+        [
+          -0.5,
+          0.9999999999999999
+        ]
+      ],
+      "determinant": 0.7499999999999999,
+      "positive_definite": 1
+    },
+    "fundamental_weights": {
+      "omega_1": [
+        0.5,
+        0.28867513459481287
+      ],
+      "omega_2": [
+        0.0,
+        0.5773502691896257
+      ],
+      "formula": "\u03c9_i = \u03a3_j (A^{-1})_ij \u03b1_j"
+    },
+    "coroots": {
+      "alpha_1_vee": [
+        2.0,
+        0.0
+      ],
+      "alpha_2_vee": [
+        -1.0000000000000002,
+        1.7320508075688774
+      ]
+    },
+    "pairing_verification": {
+      "<\u03c9_1, \u03b1_1^\u2228>": 1.0,
+      "<\u03c9_1, \u03b1_2^\u2228>": -1.1102230246251565e-16,
+      "<\u03c9_2, \u03b1_1^\u2228>": 0.0,
+      "<\u03c9_2, \u03b1_2^\u2228>": 1.0,
+      "correct": true
+    },
+    "weight_relation": {
+      "w_R": "\u03c9_1 (highest weight of fund)",
+      "w_G": "\u03c9_1 - \u03b1_1 = s_1(\u03c9_1)",
+      "w_B": "\u03c9_1 - \u03b1_1 - \u03b1_2 = s_2 s_1(\u03c9_1)"
+    }
+  },
+  "summary": {
+    "all_checks_passed": true,
+    "checks": {
+      "Coxeter group is S_3": true,
+      "Coxeter relations satisfied": true,
+      "Cartan matrix verified": true,
+      "Weight triangle equilateral": true,
+      "Gram matrix positive definite": 1,
+      "Fundamental weight pairing": true
+    }
+  }
+}

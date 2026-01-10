@@ -1,0 +1,264 @@
+{
+  "theorem": "0.0.2",
+  "verification_type": "medium_priority",
+  "date": "2025-12-15",
+  "tests": {
+    "generator_conventions": {
+      "lambda_3_hermitian": true,
+      "lambda_8_hermitian": true,
+      "T_3": [
+        [
+          0.5,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "T_8": [
+        [
+          0.2886751345948129,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.2886751345948129,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.5773502691896258
+        ]
+      ],
+      "X_3_anti_hermitian": true,
+      "X_8_anti_hermitian": true,
+      "convention_note": "Physics: T_a = \u03bb_a/2 (Hermitian), [T_a, T_b] = i f_{abc} T_c. Math: X_a = i T_a (anti-Hermitian), [X_a, X_b] = f_{abc} X_c. Theorem 0.0.2 uses the PHYSICS convention (Hermitian generators).",
+      "f_123_check": true,
+      "f_123_value": 2
+    },
+    "coordinate_bases": {
+      "T3_T8_basis": {
+        "description": "T\u2083 = \u03bb\u2083/2, T\u2088 = \u03bb\u2088/2 (standard physics generators)",
+        "w_R": [
+          0.5,
+          0.2886751345948129
+        ],
+        "w_G": [
+          -0.5,
+          0.2886751345948129
+        ],
+        "w_B": [
+          0.0,
+          -0.5773502691896258
+        ],
+        "sum_check": [
+          0.0,
+          0.0
+        ]
+      },
+      "T3_Y_basis": {
+        "description": "T\u2083 = \u03bb\u2083/2, Y = hypercharge = \u03bb\u2088/\u221a3",
+        "w_R": [
+          0.5,
+          0.3333333333333333
+        ],
+        "w_G": [
+          -0.5,
+          0.3333333333333333
+        ],
+        "w_B": [
+          0.0,
+          -0.6666666666666666
+        ],
+        "sum_check": [
+          0.0,
+          0.0
+        ]
+      },
+      "T3T8_to_T3Y_transformation": {
+        "matrix": [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.1547005383792517
+          ]
+        ],
+        "w_R_transformed": [
+          0.5,
+          0.3333333333333334
+        ],
+        "w_G_transformed": [
+          -0.5,
+          0.3333333333333334
+        ],
+        "w_B_transformed": [
+          0.0,
+          -0.6666666666666669
+        ],
+        "matches_T3Y": true
+      },
+      "Killing_orthonormal_basis": {
+        "description": "Orthonormal w.r.t. Killing form: (H\u2081, H\u2082)/\u221a12",
+        "w_R": [
+          0.2886751345948129,
+          0.16666666666666669
+        ],
+        "w_G": [
+          -0.2886751345948129,
+          0.16666666666666669
+        ],
+        "w_B": [
+          0.0,
+          -0.33333333333333337
+        ]
+      }
+    },
+    "equilateral_verification": {
+      "T3T8_euclidean_distances": {
+        "d_RG": 1.0,
+        "d_GB": 1.0000000000000002,
+        "d_BR": 1.0000000000000002,
+        "equilateral": true
+      },
+      "T3T8_killing_distances": {
+        "d_RG": 0.28867513459481287,
+        "d_GB": 0.2886751345948129,
+        "d_BR": 0.2886751345948129,
+        "equilateral": true,
+        "expected_distance": 0.2886751345948129
+      },
+      "T3Y_euclidean_distances": {
+        "d_RG": 1.0,
+        "d_GB": 1.118033988749895,
+        "d_BR": 1.118033988749895,
+        "equilateral": false,
+        "note": "NOT equilateral in naive Euclidean - this is expected!"
+      },
+      "T3Y_killing_distances": {
+        "metric_tensor": [
+          [
+            0.08333333333333333,
+            0.0
+          ],
+          [
+            0.0,
+            0.06249999999999997
+          ]
+        ],
+        "d_RG": 0.28867513459481287,
+        "d_GB": 0.2886751345948128,
+        "d_BR": 0.2886751345948128,
+        "equilateral": true,
+        "note": "Equilateral in Killing metric even though not in Euclidean!"
+      }
+    },
+    "theorem_1_1_1_reconciliation": {
+      "coordinate_relation": {
+        "T3_same": true,
+        "Y_from_T8": "Y = (2/\u221a3) \u00d7 T\u2088",
+        "physical_meaning": "Y is hypercharge, T\u2088 is the normalized Gell-Mann generator \u03bb\u2088/2"
+      },
+      "verify_R": {
+        "T3_match": true,
+        "Y_from_T8": 0.3333333333333334,
+        "Y_expected": 0.3333333333333333,
+        "match": true
+      },
+      "verify_G": {
+        "T3_match": true,
+        "Y_from_T8": 0.3333333333333334,
+        "Y_expected": 0.3333333333333333,
+        "match": true
+      },
+      "verify_B": {
+        "T3_match": true,
+        "Y_from_T8": -0.6666666666666669,
+        "Y_expected": -0.6666666666666666,
+        "match": true
+      },
+      "physical_interpretation": {
+        "T3": "Third component of isospin (u,d,s quark quantum number)",
+        "T8": "Eighth Gell-Mann generator / 2",
+        "Y": "Hypercharge = (B + S)/2 where B=baryon number, S=strangeness",
+        "relation": "Y = (2/\u221a3) T\u2088 = (1/\u221a3) \u03bb\u2088",
+        "gell_mann_neeman": "Q = T\u2083 + Y/2 (electric charge formula)"
+      },
+      "killing_metric_transformation": {
+        "g_T3T8": [
+          [
+            0.08333333333333333,
+            0.0
+          ],
+          [
+            0.0,
+            0.08333333333333333
+          ]
+        ],
+        "g_T3Y": [
+          [
+            0.08333333333333333,
+            0.0
+          ],
+          [
+            0.0,
+            0.06249999999999997
+          ]
+        ],
+        "transformation_matrix_M": [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.1547005383792517
+          ]
+        ],
+        "note": "Killing metric is diagonal in (T\u2083, T\u2088), but NOT in (T\u2083, Y)"
+      }
+    },
+    "lqg_comparison": {
+      "chiral_geometrogenesis_gamma": {
+        "value": 0.15142417490204899,
+        "formula": "\u221a3 \u00d7 ln(3) / (4\u03c0)",
+        "origin": "SU(3) representation theory via stella octangula"
+      },
+      "lqg_immirzi_values": {
+        "schwarzschild_entropy": 0.12738402314094804,
+        "barbero_original": 0.2375,
+        "isolated_horizons": 0.12363732107732497,
+        "note": "Different values from different derivations"
+      },
+      "comparison": {
+        "ratio_to_schwarzschild": 1.1887218755408673,
+        "ratio_to_barbero": 0.6375754732717852,
+        "same_order_of_magnitude": true,
+        "physical_significance": "Both encode area-quantization from gauge group structure"
+      },
+      "references": {
+        "immirzi_1997": "Immirzi, G. (1997). Real and complex connections for canonical gravity. Class. Quantum Grav. 14, L177",
+        "rovelli_thiemann_1998": "Rovelli, C. & Thiemann, T. (1998). The Immirzi parameter in LQG. Phys. Rev. D 57, 1009",
+        "rovelli_2004": "Rovelli, C. (2004). Quantum Gravity. Cambridge University Press",
+        "ashtekar_baez_1998": "Ashtekar, A., Baez, J., et al. (1998). Quantum geometry of isolated horizons. Adv. Theor. Math. Phys. 4, 1"
+      }
+    }
+  },
+  "summary": {
+    "passed": 5,
+    "total": 5,
+    "all_pass": true
+  }
+}

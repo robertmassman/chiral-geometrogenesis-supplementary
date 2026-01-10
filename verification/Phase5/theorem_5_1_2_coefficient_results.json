@@ -1,0 +1,15 @@
+{
+  "M_P_GeV": 1.2209e+19,
+  "H_0_GeV": 1.4378e-42,
+  "Omega_Lambda": 0.6847,
+  "rho_obs_GeV4": 2.495e-47,
+  "rho_simple": 3.081464338316401e-46,
+  "rho_holographic": 1.3038975613139947e-46,
+  "rho_Friedmann": 3.678227110533388e-47,
+  "rho_refined": 2.518482102582211e-47,
+  "ratio_simple": 12.350558470206018,
+  "ratio_holographic": 5.226042329915811,
+  "ratio_Friedmann": 1.4742393228590736,
+  "ratio_refined": 1.0094116643616078,
+  "coefficient_refined": 0.08173004215126556
+}

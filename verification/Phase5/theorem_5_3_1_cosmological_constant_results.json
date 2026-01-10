@@ -1,0 +1,69 @@
+{
+  "analysis": "Torsion and Cosmological Constant",
+  "theorem": "5.3.1",
+  "date": "2025-12-15T09:07:24.423115",
+  "sections": {
+    "CC_problem": {
+      "rho_Lambda_obs_J_m3": 5.297770457529128e-10,
+      "rho_Planck_J_m3": 4.632298481391536e+113,
+      "ratio": 8.74386408117809e+122,
+      "problem_orders": 122.94170339811215
+    },
+    "torsion_vacuum": {
+      "v_chi_GeV": 246,
+      "omega_cosmo": 2.2e-18,
+      "J_5_estimate": 1.569627210729539e-92,
+      "rho_torsion_J_m3": 1.3407218087502275e-237,
+      "ratio_to_observed": 2.5307283875329285e-228
+    },
+    "cancellation": {
+      "J_5_needed_squared": 8.512377974742777e+166,
+      "J_5_max_planck": 1.5451295801839679e+105,
+      "ratio": 1.8882545630693394e-22,
+      "cancellation_possible": "True"
+    },
+    "dark_energy": {
+      "w_torsion": 1,
+      "w_observed": -1,
+      "can_explain_dark_energy": false,
+      "reason": "Wrong equation of state (w=+1 vs w=-1)"
+    },
+    "coincidence": {
+      "tracking_mechanism": "T ~ \u03ba_T v_\u03c7\u00b2 H",
+      "rho_tracking": 9.734831639035677e-187,
+      "gap_orders": 176.73576469227294
+    },
+    "Lambda_today": {
+      "T_today_m_inv": 1e-60,
+      "Lambda_torsion_m2": 1e-120,
+      "Lambda_obs_m2": 1.1e-52,
+      "ratio": 9.09090909090909e-69,
+      "gap_orders": 68.04139268515823
+    },
+    "comparison": {
+      "rho_matter_kg_m3": 2.5969393621077916e-27,
+      "Lambda_torsion_from_matter": 5.623623356836498e-175,
+      "gap_orders": 122.29137645912176
+    },
+    "conclusions": {
+      "torsion_contribution_negligible": true,
+      "gap_to_observed_orders": 68,
+      "wrong_equation_of_state": true,
+      "solves_CC_problem": false,
+      "framework_status": "CONSISTENT - correctly predicts negligible contribution",
+      "implications": [
+        "Torsion cannot explain dark energy",
+        "Torsion cannot solve CC problem",
+        "Framework is consistent with observations",
+        "Dark energy requires other physics"
+      ]
+    }
+  },
+  "final_verdict": {
+    "torsion_explains_dark_energy": false,
+    "torsion_solves_CC_problem": false,
+    "contribution_orders_below": 68,
+    "equation_of_state_wrong": true,
+    "framework_status": "CONSISTENT - correctly predicts negligible effect"
+  }
+}

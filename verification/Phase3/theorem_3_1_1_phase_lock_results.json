@@ -1,0 +1,161 @@
+{
+  "timestamp": "2025-12-15T09:51:55.336445",
+  "theorem": "3.1.1",
+  "title": "Phase-Locked Cycles Verification",
+  "parameters": {
+    "omega": 1.0,
+    "K": 4.705417346991592,
+    "omega_0_GeV": 0.14,
+    "v_chi_GeV": 0.0922,
+    "Lambda_GeV": 1.0,
+    "g_chi": 1.0
+  },
+  "results": {
+    "limit_cycle_existence": {
+      "equilibrium_phases_deg": [
+        0.0,
+        119.99999999999999,
+        239.99999999999997
+      ],
+      "derivatives_at_eq": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "expected_derivative": 1.0,
+      "coupling_contribution": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "all_equal_omega": true
+    },
+    "stability": {
+      "jacobian": [
+        [
+          -4.705417347594665,
+          2.352708673825088,
+          2.352708673825088
+        ],
+        [
+          2.352708673825088,
+          -4.705417347594665,
+          2.352708673825088
+        ],
+        [
+          2.352708673825088,
+          2.352708673825088,
+          -4.705417347594665
+        ]
+      ],
+      "eigenvalues": [
+        -7.058126021419753,
+        -7.058126021419752,
+        5.5511513856850656e-11
+      ],
+      "lambda_1_theory": -1.7645315051218469,
+      "lambda_2_theory": -5.293594515365541,
+      "all_non_positive": true,
+      "stable": "True"
+    },
+    "convergence": {
+      "n_samples": 50,
+      "mean_convergence_time": 0.8828828828828829,
+      "std_convergence_time": 0.27934205902422543,
+      "physical_convergence_time_s": 4.149549549549549e-24,
+      "all_converged_to_120": true,
+      "final_separations_deg": [
+        [
+          120.00000000000027,
+          120.00000000000027
+        ],
+        [
+          120.00000000000068,
+          119.99999999999946
+        ],
+        [
+          120.00000000000068,
+          119.99999999999946
+        ],
+        [
+          119.99999999999986,
+          119.99999999999986
+        ],
+        [
+          120.00000000000027,
+          119.99999999999986
+        ]
+      ]
+    },
+    "color_neutrality": {
+      "color_sum_at_eq": 4.002966042486721e-16,
+      "max_color_sum_on_cycle": 1.0900558419132247e-14,
+      "mean_color_sum_on_cycle": 3.602596353039484e-15,
+      "neutrality_maintained": "True"
+    },
+    "chirality": {
+      "perturbation_strength": 0.1,
+      "psi1_near_target_fraction": 0.9995,
+      "psi2_near_target_fraction": 1.0,
+      "phases_advance_fraction": 0.9969984992496248,
+      "chirality_persists": "True",
+      "final_separation_deg": [
+        119.99999999999986,
+        119.99999999999986
+      ],
+      "returns_to_equilibrium": "True"
+    },
+    "mass_generation": {
+      "measured_period": 6.283185307179591,
+      "expected_period": 6.283185307179586,
+      "period_error": 7.067899292141149e-16,
+      "measured_omega_ratio": 0.9999999999999993,
+      "omega_physical_GeV": 0.14,
+      "mass_base_MeV": 12.908000000000001,
+      "predicted_masses": {
+        "u": {
+          "eta_f": 0.201,
+          "predicted_MeV": 2.5945080000000007,
+          "pdg_MeV": 2.16,
+          "ratio": 1.2011611111111113
+        },
+        "d": {
+          "eta_f": 0.435,
+          "predicted_MeV": 5.61498,
+          "pdg_MeV": 4.67,
+          "ratio": 1.2023511777301927
+        },
+        "s": {
+          "eta_f": 8.69,
+          "predicted_MeV": 112.17052000000001,
+          "pdg_MeV": 93.4,
+          "ratio": 1.200969164882227
+        }
+      },
+      "period_matches": "True"
+    },
+    "secular_approximation": {
+      "omega_0_GeV": 0.14,
+      "ratios": {
+        "u": 64.81481481481482,
+        "d": 29.978586723768743,
+        "s": 1.498929336188437,
+        "c": 0.11023622047244096,
+        "b": 0.033492822966507185,
+        "t": 0.0008107012565869478
+      },
+      "quark_validity": {
+        "u": true,
+        "d": true,
+        "s": true,
+        "c": "via_equivalence",
+        "b": "via_equivalence",
+        "t": "via_equivalence"
+      },
+      "light_quarks_valid": true,
+      "heavy_quarks_via_equivalence": true,
+      "convergence_vs_period": 0.033823767660832685
+    }
+  },
+  "overall_status": "VERIFIED"
+}

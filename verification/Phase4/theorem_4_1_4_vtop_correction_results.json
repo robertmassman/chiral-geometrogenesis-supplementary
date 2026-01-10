@@ -1,0 +1,22 @@
+{
+  "error_location": "Theorem-4.1.4-Derivation, \u00a79.2.2-9.2.3",
+  "error_type": "Dimensional inconsistency in V_top formula",
+  "original_formula": "V_top = g_top \u00d7 |Q| \u00d7 \u222b d\u00b3x \u03c1\u0303_B P_total",
+  "original_g_top": "g_top = 1/(e\u00b3 f_\u03c0) = 0.096 GeV\u207b\u00b9",
+  "original_dimensions": "[V_top] = [1/length] (WRONG)",
+  "required_dimensions": "[V_top] = [energy]",
+  "corrected_formula": "V_top = g_top \u00d7 |Q| \u00d7 I_P",
+  "corrected_g_top": "g_top = f_\u03c0/e = 19.0 MeV",
+  "corrected_dimensions": "[V_top] = [energy] (CORRECT)",
+  "new_definitions": {
+    "x_tilde": "x\u0303 = x \u00d7 (e f_\u03c0), dimensionless position",
+    "P_tilde": "P\u0303_total = P_total / (e f_\u03c0)\u00b2, dimensionless pressure",
+    "I_P": "I_P = \u222b d\u00b3x\u0303 \u03c1\u0303_B(x\u0303) \u00d7 P\u0303_total(x\u0303), dimensionless overlap integral"
+  },
+  "numerical_values": {
+    "f_pi_MeV": 92.1,
+    "e_skyrme": 4.84,
+    "g_top_MeV": 19.02892561983471,
+    "V_top_estimate_MeV": 19.02892561983471
+  }
+}

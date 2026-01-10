@@ -1,0 +1,258 @@
+{
+  "face_weight": {
+    "face_centers_3d": [
+      [
+        0.3333333333333333,
+        0.3333333333333333,
+        -0.3333333333333333
+      ],
+      [
+        0.3333333333333333,
+        -0.3333333333333333,
+        0.3333333333333333
+      ],
+      [
+        -0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      [
+        -0.3333333333333333,
+        -0.3333333333333333,
+        -0.3333333333333333
+      ],
+      [
+        -0.3333333333333333,
+        -0.3333333333333333,
+        0.3333333333333333
+      ],
+      [
+        -0.3333333333333333,
+        0.3333333333333333,
+        -0.3333333333333333
+      ],
+      [
+        0.3333333333333333,
+        -0.3333333333333333,
+        -0.3333333333333333
+      ],
+      [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ]
+    ],
+    "projected_centers_2d": [
+      [
+        0.0,
+        0.5443310539518174
+      ],
+      [
+        0.4714045207910316,
+        -0.2721655269759087
+      ],
+      [
+        -0.4714045207910316,
+        -0.2721655269759087
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -0.5443310539518174
+      ],
+      [
+        -0.4714045207910316,
+        0.2721655269759087
+      ],
+      [
+        0.4714045207910316,
+        0.2721655269759087
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "adjoint_weights_2d": [
+      [
+        1,
+        0
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        -0.5,
+        0.8660254037844386
+      ],
+      [
+        0.5,
+        -0.8660254037844386
+      ],
+      [
+        0.5,
+        0.8660254037844386
+      ],
+      [
+        -0.5,
+        -0.8660254037844386
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "projection_basis": {
+      "e1": [
+        0.7071067811865475,
+        -0.7071067811865475,
+        0.0
+      ],
+      "e2": [
+        0.4082482904638631,
+        0.4082482904638631,
+        -0.8164965809277261
+      ],
+      "normal": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ]
+    }
+  },
+  "vertex_weight": {
+    "fundamental_weights": {
+      "R": [
+        0.5,
+        0.2886751345948129
+      ],
+      "G": [
+        -0.5,
+        0.2886751345948129
+      ],
+      "B": [
+        0.0,
+        -0.5773502691896258
+      ]
+    },
+    "anti_fundamental_weights": {
+      "R\u0304": [
+        -0.5,
+        -0.2886751345948129
+      ],
+      "\u1e20": [
+        0.5,
+        -0.2886751345948129
+      ],
+      "B\u0304": [
+        -0.0,
+        0.5773502691896258
+      ]
+    },
+    "observation": "The 6 edges of a single tetrahedron match the 6 roots of SU(3). The 2 Cartan generators may correspond to the two tetrahedra's relative orientation or the overall structure."
+  },
+  "edge_root": {
+    "edges_3d": [
+      [
+        0,
+        -2,
+        -2
+      ],
+      [
+        -2,
+        0,
+        -2
+      ],
+      [
+        -2,
+        -2,
+        0
+      ],
+      [
+        -2,
+        2,
+        0
+      ],
+      [
+        -2,
+        0,
+        2
+      ],
+      [
+        0,
+        -2,
+        2
+      ]
+    ],
+    "edges_2d_projected": [
+      [
+        1.414213562373095,
+        0.8164965809277261
+      ],
+      [
+        -1.414213562373095,
+        0.8164965809277261
+      ],
+      [
+        0.0,
+        -1.6329931618554523
+      ],
+      [
+        -2.82842712474619,
+        0.0
+      ],
+      [
+        -1.414213562373095,
+        -2.4494897427831783
+      ],
+      [
+        1.414213562373095,
+        -2.4494897427831783
+      ]
+    ],
+    "roots": {
+      "\u03b1\u2081": [
+        1,
+        0
+      ],
+      "-\u03b1\u2081": [
+        -1,
+        0
+      ],
+      "\u03b1\u2082": [
+        -0.5,
+        0.8660254037844386
+      ],
+      "-\u03b1\u2082": [
+        0.5,
+        -0.8660254037844386
+      ],
+      "\u03b1\u2081+\u03b1\u2082": [
+        0.5,
+        0.8660254037844386
+      ],
+      "-(\u03b1\u2081+\u03b1\u2082)": [
+        -0.5,
+        -0.8660254037844386
+      ]
+    },
+    "pattern_match": false,
+    "conclusion": "The edge and root patterns differ. The correspondence is not geometric."
+  },
+  "derivation": {
+    "edge_root_correspondence": true,
+    "cartan_from_structure": false,
+    "derivation_status": "PARTIAL",
+    "what_works": "The 6 edges of a tetrahedron project onto a hexagonal pattern matching the 6 roots of SU(3). This is a genuine geometric fact.",
+    "what_doesnt_work": "The 2 Cartan generators do NOT have a clear geometric origin from the stella octangula structure. They arise from the group theory (rank = 2 for SU(3)), not from the geometry.",
+    "revised_claim": "The stella octangula geometry ENCODES the 6 roots of SU(3) via its edge structure. The 2 Cartan generators are algebraically required (rank = 2) but not geometrically derived. The total 8 = 6 + 2 is thus PARTIALLY geometric."
+  }
+}

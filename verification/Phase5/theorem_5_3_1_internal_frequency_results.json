@@ -1,0 +1,39 @@
+{
+  "theorem": "5.3.1",
+  "analysis": "Internal Frequency Specification",
+  "frequency_origin": "Phase evolution of chiral field \u03c7 = v_\u03c7 e^{i\u03b8}",
+  "key_relation": "\u03c9 = d\u03b8/dt from Theorem 0.2.2",
+  "natural_scales": {
+    "Hubble": {
+      "omega_s-1": 2.2e-18,
+      "context": "Cosmological vacuum"
+    },
+    "QCD": {
+      "omega_s-1": 3.0385348976190205e+23,
+      "context": "Hadron physics"
+    },
+    "Electroweak": {
+      "omega_s-1": 3.7373979240713956e+26,
+      "context": "Standard Model"
+    },
+    "GUT": {
+      "omega_s-1": 1.5192674488095104e+40,
+      "context": "Grand unification"
+    },
+    "Planck": {
+      "omega_s-1": 1.8548586303621166e+43,
+      "context": "Quantum gravity"
+    }
+  },
+  "torsion_scaling": {
+    "formula": "T ~ \u03ba_T \u00d7 v_\u03c7\u00b2 \u00d7 \u03c9",
+    "reference": "T ~ 10\u207b\u2075\u2079 m\u207b\u00b9 at \u03c9 ~ H\u2080",
+    "Planck_check": "T(\u03c9_Planck) ~ 1/l_P \u2713"
+  },
+  "determination": {
+    "ground_state": "\u03c9 = H\u2080 (cosmological vacuum oscillation)",
+    "particle": "\u03c9 = m \u00d7 c\u00b2 / \u210f (rest mass frequency)",
+    "dynamical": "Determined by initial/boundary conditions"
+  },
+  "conclusion": "\u03c9 is not free parameter - determined by Theorem 0.2.2 and context"
+}

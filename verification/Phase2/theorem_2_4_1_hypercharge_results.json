@@ -1,0 +1,143 @@
+{
+  "theorem": "2.4.1",
+  "script": "hypercharge",
+  "tests": [
+    {
+      "name": "Tr(Y) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Manual trace calculation",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Y is Hermitian",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "Y commutes with SU(3)",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "Y commutes with SU(2)",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y \u00b7 \u03bb_1) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y \u00b7 \u03bb_2) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y \u00b7 \u03bb_3) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y \u00b7 \u03bb_4) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y \u00b7 \u03bb_5) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y \u00b7 \u03bb_6) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y \u00b7 \u03bb_7) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y \u00b7 \u03bb_8) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y \u00b7 \u03c3_1/2) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y \u00b7 \u03c3_2/2) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y \u00b7 \u03c3_3/2) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Normalization factor = sqrt(3/5)",
+      "expected": "0.7745966692414834",
+      "computed": "0.7745966692414834",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y_GUT\u00b2) = Tr(T\u2083\u00b2)",
+      "expected": "0.5",
+      "computed": "0.5",
+      "passed": true
+    },
+    {
+      "name": "Q values match expected",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "Tr(Q) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y\u00b2) = 5/6",
+      "expected": "0.8333333333333334",
+      "computed": "0.8333333333333333",
+      "passed": true
+    },
+    {
+      "name": "Tr(T\u2083\u00b2) = 1/2",
+      "expected": "0.5",
+      "computed": "0.5",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 22,
+    "passed": 22,
+    "failed": 0
+  }
+}

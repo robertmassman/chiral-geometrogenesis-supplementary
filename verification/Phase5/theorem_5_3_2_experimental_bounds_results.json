@@ -1,0 +1,43 @@
+{
+  "theorem": "5.3.2",
+  "analysis": "Experimental Torsion Bounds Comparison",
+  "date": "2025-12-15",
+  "experimental_references": {
+    "heckel_2006": {
+      "citation": "Heckel et al., Phys. Rev. Lett. 97, 021603 (2006)",
+      "description": "Polarized electron torsion balance",
+      "constraint": "|b\u0303^e| < 5.0e-21 eV",
+      "implied_torsion_limit": "|T| < 1.01e-05 m\u207b\u00b9"
+    },
+    "kostelecky_2008": {
+      "citation": "Kosteleck\u00fd, Russell, Tasson, Phys. Rev. Lett. 100, 111102 (2008)",
+      "description": "Torsion constraints from Lorentz violation bounds",
+      "torsion_limit": "|T| < 1e-27 m\u207b\u00b9"
+    },
+    "heckel_2008": {
+      "citation": "Heckel et al., Phys. Rev. D 78, 092006 (2008)",
+      "description": "Spin-coupled forces torsion balance",
+      "g_a_squared_limit": 3.8e-40
+    }
+  },
+  "theoretical_predictions": {
+    "polarized_iron": {
+      "torsion": 1.1634236168806323e-49,
+      "precession_mas_yr": 6.8e-17
+    },
+    "earth_unpolarized": {
+      "torsion": 0.0,
+      "precession_mas_yr": 0.0
+    },
+    "neutron_star": {
+      "torsion": 2.737467333836782e-36
+    }
+  },
+  "comparison": {
+    "orders_below_heckel": 43.939805098372155,
+    "orders_below_lorentz_violation": 21.934262124501174,
+    "orders_below_gpb_precision": 17.02482358372503,
+    "all_predictions_safe": true
+  },
+  "conclusion": "All theoretical predictions are 10-20+ orders below experimental sensitivity. Framework is consistent with all null results."
+}

@@ -1,0 +1,221 @@
+{
+  "prediction": "8.2.3",
+  "title": "Pre-Geometric Relics",
+  "date": "2025-12-21",
+  "status": "NOVEL",
+  "cmb": {
+    "amplitude_conservative": 3.157753292125772e-52,
+    "amplitude_optimistic": 2.0198666072568036e-16,
+    "invariant_multipoles": [
+      0,
+      3,
+      4,
+      6,
+      8,
+      9,
+      10,
+      12
+    ],
+    "quadrupole_prediction": "Suppressed (no S\u2084 invariant at \u2113=2)",
+    "detection_prospects": "Marginal for optimistic scenario"
+  },
+  "gravitational_waves": {
+    "qcd_scale": {
+      "T_GeV": 0.2,
+      "f_peak_Hz": 3.3e-08,
+      "breakdown": {
+        "bubble_collision": 3.3381852815598047e-09,
+        "sound_wave": 5.1884593308827973e-11,
+        "turbulence": 2.552269999533749e-09,
+        "total": 5.942339874402382e-09,
+        "dominant_source": "bubble"
+      },
+      "Omega_peak": 5.942339874402382e-09
+    },
+    "ew_scale": {
+      "T_GeV": 246,
+      "f_peak_Hz": 4.0589999999999996e-05,
+      "breakdown": {
+        "bubble_collision": 3.3381852815598047e-09,
+        "sound_wave": 5.1884593308827973e-11,
+        "turbulence": 2.552269999533749e-09,
+        "total": 5.942339874402382e-09,
+        "dominant_source": "bubble"
+      },
+      "Omega_peak": 5.942339874402382e-09
+    },
+    "gut_scale": {
+      "T_GeV": 1e+16,
+      "f_peak_Hz": 1650000000.0,
+      "Omega_peak": 5.942339874402382e-09
+    },
+    "nanograv_compatibility": {
+      "alpha=0.1": {
+        "alpha": 0.1,
+        "beta_over_H": 30,
+        "f_peak": 9.900000000000001e-09,
+        "Omega_total": 4.577146288236198e-08,
+        "Omega_sw": 1.7294864436275993e-10,
+        "Omega_bubble": 3.709094757288672e-08,
+        "ratio_to_nanograv": 45.77146288236197
+      },
+      "alpha=0.3": {
+        "alpha": 0.3,
+        "beta_over_H": 30,
+        "f_peak": 9.900000000000001e-09,
+        "Omega_total": 3.4227237334347793e-07,
+        "Omega_sw": 8.818203268249812e-09,
+        "Omega_bubble": 1.711227572820177e-07,
+        "ratio_to_nanograv": 342.2723733434779
+      },
+      "alpha=0.5": {
+        "alpha": 0.5,
+        "beta_over_H": 30,
+        "f_peak": 9.900000000000001e-09,
+        "Omega_total": 8.55317207576419e-07,
+        "Omega_sw": 4.411703874649612e-08,
+        "Omega_bubble": 2.681721300813009e-07,
+        "ratio_to_nanograv": 855.3172075764189
+      },
+      "alpha=1.0": {
+        "alpha": 1.0,
+        "beta_over_H": 30,
+        "f_peak": 9.900000000000001e-09,
+        "Omega_total": 2.770060727714362e-06,
+        "Omega_sw": 2.769629022108844e-07,
+        "Omega_bubble": 3.394053521341465e-07,
+        "ratio_to_nanograv": 2770.0607277143617
+      },
+      "alpha=2.0": {
+        "alpha": 2.0,
+        "beta_over_H": 30,
+        "f_peak": 9.900000000000001e-09,
+        "Omega_total": 7.301032899939375e-06,
+        "Omega_sw": 1.0754430516580105e-06,
+        "Omega_bubble": 2.681721300813009e-07,
+        "ratio_to_nanograv": 7301.032899939374
+      },
+      "alpha=5.0": {
+        "alpha": 5.0,
+        "beta_over_H": 30,
+        "f_peak": 9.900000000000001e-09,
+        "Omega_total": 1.6789683626313593e-05,
+        "Omega_sw": 3.1971551398364637e-06,
+        "Omega_bubble": 1.0475473831300815e-07,
+        "ratio_to_nanograv": 16789.683626313592
+      }
+    },
+    "detection_prospects": "PTA detectable if \u03b1 \u2273 1 (strong first-order transition)"
+  },
+  "domain_walls": {
+    "qcd_tension_GeV3": 0.008000000000000002,
+    "qcd_allowed": false,
+    "resolution": "S\u2084 is explicitly broken by \u2124\u2083 \u2282 SU(3) and chiral anomaly",
+    "prediction": "No cosmic strings or monopoles from S\u2084 \u00d7 \u2124\u2082 breaking"
+  },
+  "cmb_enhancement": {
+    "mechanisms": {
+      "sound_wave_coupling": {
+        "mechanism": "Sound wave coupling to S\u2084 density modes",
+        "enhancement_factor": 10,
+        "uncertainty": "1 order of magnitude",
+        "status": "Needs detailed calculation"
+      },
+      "parametric_resonance": {
+        "mechanism": "Parametric resonance in reheating",
+        "n_oscillations": 100,
+        "resonance_width_mu": 0.1,
+        "enhancement_factor": 22026.465794806718,
+        "log10_enhancement": 4.342944819032518,
+        "status": "Requires reheating model"
+      },
+      "isocurvature_conversion": {
+        "mechanism": "Isocurvature-to-adiabatic conversion",
+        "n_fields": 3,
+        "conversion_efficiency": 0.1,
+        "enhancement_factor": 17.32050807568877,
+        "status": "Not yet developed in framework"
+      },
+      "pressure_function_resonance": {
+        "mechanism": "Pressure function overlap at vertices",
+        "n_vertices": 8,
+        "colors_per_vertex": 3,
+        "enhancement_factor": 3.0,
+        "status": "Qualitative estimate"
+      },
+      "explicit_breaking_effect": {
+        "mechanism": "Weaker explicit S\u2084 breaking",
+        "breaking_fraction": 0.01,
+        "lifetime_enhancement": 100.0,
+        "amplitude_enhancement": 10.0,
+        "wall_decay_constraint": "Must still decay before BBN"
+      }
+    },
+    "combined": {
+      "individual_factors": {
+        "sound_wave_coupling": 5,
+        "parametric_resonance": "10-1000000.0",
+        "isocurvature_conversion": 30,
+        "pressure_resonance": 3,
+        "explicit_breaking": 10
+      },
+      "combined_enhancement": {
+        "conservative": 50.0,
+        "optimistic": 150000000.0,
+        "typical": 86602.54037844387
+      },
+      "conclusion": "Enhancement of 10\u00b2 - 10\u2076 possible, but Planck suppression dominates"
+    },
+    "enhanced_amplitudes": {
+      "conservative": 1.5788766460628862e-50,
+      "optimistic": 3.029799910885205e-08
+    },
+    "detection_assessment": "Still below 10\u207b\u00b9\u2070, but non-Gaussianity may be observable"
+  },
+  "summary": {
+    "cmb_detectable": false,
+    "gw_detectable": true,
+    "walls_detectable": false,
+    "overall_testability": "MEDIUM - requires GUT-scale emergence",
+    "unique_signatures": [
+      "S\u2084 symmetry in CMB angular patterns",
+      "First-order PT spectrum in GWs",
+      "Correlated with low quadrupole anomaly"
+    ],
+    "primary_uncertainty": "Emergence temperature unknown (QCD vs GUT scale)"
+  },
+  "multipole_content": {
+    "0": 2.3413077033840004e-30,
+    "1": 8.091739380474541e-34,
+    "2": 2.8402796585846696e-34,
+    "3": 4.406211161226229e-34,
+    "4": 9.630594258490694e-34,
+    "5": 6.857628074876322e-35,
+    "6": 9.04053324319748e-35,
+    "7": 1.5231897928297705e-34,
+    "8": 3.410168321672248e-35
+  },
+  "verification_checks": [
+    {
+      "test": "CMB amplitude (conservative) is undetectable",
+      "passed": true
+    },
+    {
+      "test": "GW frequency (QCD or EW) in PTA band",
+      "passed": true
+    },
+    {
+      "test": "QCD domain walls problematic",
+      "passed": true
+    },
+    {
+      "test": "No S\u2084 invariant at \u2113=2",
+      "passed": true
+    },
+    {
+      "test": "S\u2084 group theory: no invariant at \u2113=2, one at \u2113=3",
+      "passed": true
+    }
+  ],
+  "all_checks_passed": true
+}

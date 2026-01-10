@@ -1,0 +1,58 @@
+{
+  "verification_date": "2025-12-27T15:40:38.248550",
+  "theorem": "4.2.3",
+  "corrections": {
+    "error_1_kappa_geo": {
+      "original_claim": "0.06 \u03bb_H",
+      "corrected_range": "[0.05, 0.15] \u03bb_H",
+      "central_value": "0.167 \u03bb_H",
+      "status": "CORRECTED - derivation updated"
+    },
+    "error_2_snr": {
+      "original_claim": 12000,
+      "corrected_value": "200-500",
+      "status": "CORRECTED - realistic estimate"
+    },
+    "error_3_kappa_phi": {
+      "issue": "Formula gave fluid efficiency, not scalar wall efficiency",
+      "correction": "Add (v_w/c_s)\u00b3 factor for scalar wall",
+      "kappa_f": 0.3592,
+      "kappa_phi_wall": 0.01493,
+      "kappa_sw": 0.3592,
+      "status": "CORRECTED - formulas clarified"
+    },
+    "error_4_range": {
+      "original_claim": "[1.0, 1.5]",
+      "from_data": "[1.17, 1.29]",
+      "corrected_claim": "1.22 \u00b1 0.06",
+      "status": "CORRECTED - matches data"
+    },
+    "warning_1_bounce_action": {
+      "status": "RESOLVED - SM formula valid with O(30%) correction",
+      "beta_H_range": "[300, 2500]"
+    },
+    "warning_2_cosine_potential": {
+      "status": "RESOLVED - derived from 3-color structure and S\u2084 symmetry"
+    },
+    "warning_3_tanh": {
+      "status": "RESOLVED - justified from Landau theory",
+      "width": "50 GeV from \u03be ~ T_lock/\u221a6"
+    },
+    "warning_4_lambda_3c": {
+      "derived": 0.0082,
+      "corrected_range": "[0.0041, 0.0327]",
+      "status": "CORRECTED - range updated"
+    },
+    "warning_5_gw_amplitude": {
+      "status": "CORRECTED - line 408 updated to 1.2e-10"
+    },
+    "warning_6_pdg": {
+      "status": "CORRECTED - PDG 2024 values used",
+      "impact": "< 0.1% change, negligible"
+    },
+    "warning_7_references": {
+      "status": "CORRECTED - Moore & Prokopec 1995 added"
+    }
+  },
+  "overall_status": "ALL ISSUES RESOLVED"
+}

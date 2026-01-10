@@ -1,0 +1,40 @@
+{
+  "theorem": "5.3.1",
+  "analysis": "Quantum Corrections to Torsion Coupling",
+  "key_findings": {
+    "kappa_T_running": {
+      "runs": false,
+      "reason": "\u03ba_T = \u03c0G/c\u2074 is proportional to Newton's constant G, which does not run in perturbative QG"
+    },
+    "four_fermion_running": {
+      "runs": true,
+      "beta_function": "\u03b2(G_4f) ~ (N_f/8\u03c0\u00b2) \u00d7 G_4f \u00d7 (\u03bc/M_P)\u00b2",
+      "effect": "Logarithmic running suppressed by (E/M_P)\u00b2"
+    },
+    "loop_corrections": {
+      "magnitude": "(E/M_P)\u00b2 ~ 10\u207b\u00b3\u00b2 at LHC energies",
+      "negligible": true
+    },
+    "perturbativity": {
+      "valid_up_to": "~0.6 \u00d7 M_P",
+      "breakdown_scale_GeV": 6.224132523813292e+18
+    },
+    "anomalous_dimension": {
+      "J5_current": 0,
+      "J5_squared": "Non-zero but suppressed"
+    }
+  },
+  "physical_conclusions": [
+    "\u03ba_T does NOT run with energy scale",
+    "Four-fermion coupling has weak logarithmic running",
+    "Quantum corrections are negligible (< 10\u207b\u00b3\u2070) at accessible energies",
+    "Perturbation theory valid up to ~0.6 M_P",
+    "No new hierarchy problem from torsion quantum corrections"
+  ],
+  "numerical_values": {
+    "kappa_T_SI": 2.5958093035562147e-44,
+    "G_4f_GeV-2": 1.8853603890747273e+46,
+    "E_perturbativity_GeV": 6.224132523813292e+18,
+    "quantum_correction_at_LHC": 1.3149308270670483e-30
+  }
+}

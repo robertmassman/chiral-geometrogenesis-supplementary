@@ -1,0 +1,156 @@
+{
+  "issue_1_chi_ngen": {
+    "chi_single_tetra": 2,
+    "chi_stella": 4,
+    "td_order": 24,
+    "a4_order": 12,
+    "a4_irreps": [
+      1,
+      1,
+      1,
+      3
+    ],
+    "n_gen_from_a4": 3,
+    "causal_analysis": {
+      "common_source": "Stella Octangula (two interpenetrating tetrahedra)",
+      "chi_4_from": "Two S\u00b2 components: \u03c7 = \u03c7(S\u00b2) + \u03c7(S\u00b2) = 2 + 2 = 4",
+      "n_gen_from": "T_d symmetry \u2192 A\u2084 subgroup \u2192 3 one-dim irreps",
+      "relationship": "CORRELATED through common geometric origin, not CAUSAL",
+      "correct_statement": "The stella octangula geometry produces BOTH \u03c7=4 AND N_gen=3"
+    }
+  },
+  "issue_1_harmonics": {
+    "td_decomposition": {
+      "0": "A1",
+      "1": "T2",
+      "2": "E + T2",
+      "3": "A2 + T1 + T2",
+      "4": "A1 + E + T1 + T2",
+      "5": "E + 2T1 + T2",
+      "6": "A1 + A2 + E + T1 + 2T2",
+      "7": "A2 + E + 2T1 + 2T2",
+      "8": "2A1 + E + T1 + 2T2"
+    },
+    "a1_modes": [
+      0,
+      4,
+      6,
+      8
+    ],
+    "energies": {
+      "0": 0,
+      "4": 20,
+      "6": 42,
+      "8": 72
+    },
+    "E_confine": 50,
+    "modes_below_cutoff": [
+      0,
+      4,
+      6
+    ],
+    "n_gen": 3
+  },
+  "issue_2_gluon_face": {
+    "is_rigorous_derivation": false,
+    "is_heuristic": true,
+    "is_coincidence": true,
+    "explanation": "The equality 8 faces = 8 gluons is a numerical coincidence. The face count comes from 2 \u00d7 4 (two tetrahedra), while the gluon count comes from 3\u00b2 - 1 (SU(3) adjoint dimension). These are different algebraic structures that happen to give the same number.",
+    "what_is_real": "What IS real is that SU(3) is the correct gauge group for color, and the stella octangula provides a geometric realization of the SU(3) weight structure (via its 8 vertices as color/anti-color).",
+    "recommendation": "Downgrade to 'observational correspondence' or 'mnemonic'"
+  },
+  "issue_2_vertex_gen": {
+    "vertices_t_plus": [
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        -1,
+        -1
+      ],
+      [
+        -1,
+        1,
+        -1
+      ],
+      [
+        -1,
+        -1,
+        1
+      ]
+    ],
+    "vertices_t_minus": [
+      [
+        -1,
+        -1,
+        -1
+      ],
+      [
+        -1,
+        1,
+        1
+      ],
+      [
+        1,
+        -1,
+        1
+      ],
+      [
+        1,
+        1,
+        -1
+      ]
+    ],
+    "total_vertices": 8,
+    "representation_interpretation": {
+      "vertices": "States in 3 \u2295 3\u0304 representation",
+      "generators": "Operators in adjoint (8) representation",
+      "relationship": "Generators act on states: 8 \u00d7 6 \u2192 6",
+      "mismatch": "Vertices are states, generators are operators"
+    },
+    "conclusion": "The 8 vertices and 8 generators are different mathematical objects. Vertices represent color states (fundamental rep), generators represent color-changing operators (adjoint rep). The coincidence 8 = 8 arises because dim(adj) = N\u00b2 - 1 = 8 for SU(3), and we have 2 tetrahedra \u00d7 4 vertices = 8 total, but these are not the same 8."
+  },
+  "issue_3_asymmetry": {
+    "chi_role": "NECESSARY but not SUFFICIENT",
+    "topology_provides": [
+      "Two-component structure (matter/antimatter sectors)",
+      "Baryon number quantization (B \u2208 \u2124)",
+      "Existence of instantons (non-trivial \u03c0\u2083)"
+    ],
+    "dynamics_provides": [
+      "Asymmetry magnitude (sphaleron/instanton rate)",
+      "CP violation (CKM matrix)",
+      "Phase transition dynamics"
+    ],
+    "correct_statement": "The \u03c7 = 2 + 2 structure is NECESSARY for the matter-antimatter separation (Sakharov condition 1), but the MAGNITUDE Y_B \u2248 10\u207b\u00b9\u2070 is determined by the instanton dynamics (Theorem 4.2.1), not by \u03c7 = 4 alone.",
+    "recommendation": "Revise Mechanism 4 to state: '\u03c7 = 2 + 2 enables matter-antimatter separation; the magnitude Y_B is derived in Theorem 4.2.1 from instanton physics.'"
+  },
+  "issue_4_limits": {
+    "large_N": {
+      "chi_behavior": "Invariant (\u03c7 = 4 for any two S\u00b2)",
+      "adjoint_behavior": "Grows as N\u00b2 - 1",
+      "correspondence_breaks": "Face-gluon correspondence only works for N=3"
+    },
+    "classical_limit": {
+      "chi": "Preserved",
+      "homotopy": "Preserved",
+      "baryon_quantization": "Preserved",
+      "instanton_rate": "Suppressed (instantons are quantum tunneling)"
+    },
+    "high_T": {
+      "chi": "Preserved",
+      "z3_center": "Restored (symmetric phase)",
+      "confinement": "Absent (deconfined)",
+      "physical_interpretation": "Above T_c, the dynamical effects of topology change, but the topology itself persists"
+    },
+    "weak_coupling": {
+      "chi": "Preserved",
+      "homotopy": "Preserved",
+      "instantons": "Suppressed (but non-zero for any g > 0)",
+      "baryon_violation": "Exponentially small"
+    }
+  }
+}

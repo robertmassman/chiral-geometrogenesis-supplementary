@@ -1,0 +1,170 @@
+{
+  "theorem": "Theorem 5.1.1 - Stress-Energy Tensor",
+  "verification_date": "2025-12-14",
+  "parameters": {
+    "Lambda_QCD_MeV": 200.00000000000003,
+    "omega_0": 3.038534897619021e+23,
+    "v_0_MeV": 92.0,
+    "lambda_chi": 1.0,
+    "epsilon": 0.5
+  },
+  "tests": [
+    {
+      "test": "Dimensional consistency",
+      "passed": true,
+      "value": null,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "test": "T_00 > 0 at all positions (WEC)",
+      "passed": true,
+      "value": null,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "test": "Time derivative formula |\u2202_t \u03c7|^2 = \u03c9_0^2 v_\u03c7^2",
+      "passed": true,
+      "value": null,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "test": "WEC satisfied at all positions",
+      "passed": true,
+      "value": null,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "test": "NEC satisfied at all positions",
+      "passed": true,
+      "value": null,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "test": "DEC satisfied at all positions",
+      "passed": true,
+      "value": null,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "test": "Energy conservation \u2202_i T^i0 \u2248 0",
+      "passed": true,
+      "value": null,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "test": "Center formula correct",
+      "passed": true,
+      "value": null,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "test": "Consistency with Theorem 0.2.4",
+      "passed": true,
+      "value": null,
+      "expected": null,
+      "tolerance": null
+    }
+  ],
+  "summary": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0
+  },
+  "warnings": [
+    "SEC violated at intermediate"
+  ],
+  "position_data": {
+    "center": {
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "v_chi": 55950499.26476712,
+      "T_00": 3.816701899887526e+92,
+      "temporal_kinetic": 2.8902565205689086e+62,
+      "gradient_energy": 1.6471611645710025e+32,
+      "potential": 3.816701899887526e+92,
+      "T_0i_norm": 4.226073320409272e+47,
+      "at_center": false
+    },
+    "vertex_R": {
+      "position": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "v_chi": 5.160834656879075e+23,
+      "T_00": 8.550364030812003e+94,
+      "temporal_kinetic": 2.459055597068505e+94,
+      "gradient_energy": 3.151978044112365e+45,
+      "potential": 6.091308433743498e+94,
+      "T_0i_norm": 1.2450613806617423e+70,
+      "at_center": false
+    },
+    "vertex_G": {
+      "position": [
+        -0.5,
+        0.8660254037844386,
+        0.0
+      ],
+      "v_chi": 5.160834656879076e+23,
+      "T_00": 8.550364030812008e+94,
+      "temporal_kinetic": 2.459055597068506e+94,
+      "gradient_energy": 3.1519780811854894e+45,
+      "potential": 6.0913084337435025e+94,
+      "T_0i_norm": 1.2450613663683025e+70,
+      "at_center": false
+    },
+    "vertex_B": {
+      "position": [
+        -0.5,
+        -0.8660254037844386,
+        0.0
+      ],
+      "v_chi": 5.160834656879075e+23,
+      "T_00": 8.550364030812003e+94,
+      "temporal_kinetic": 2.459055597068505e+94,
+      "gradient_energy": 3.151978735926455e+45,
+      "potential": 6.091308433743498e+94,
+      "T_0i_norm": 1.2450616776151513e+70,
+      "at_center": false
+    },
+    "intermediate": {
+      "position": [
+        0.3,
+        0.2,
+        0.1
+      ],
+      "v_chi": 9.563893923860384e+22,
+      "T_00": 9.524399610052936e+92,
+      "temporal_kinetic": 8.444967029012234e+92,
+      "gradient_energy": 2.0086465380590482e+47,
+      "potential": 1.0794325810407018e+92,
+      "T_0i_norm": 1.4950947963031983e+70,
+      "at_center": false
+    },
+    "asymptotic": {
+      "position": [
+        10.0,
+        0.0,
+        0.0
+      ],
+      "v_chi": 4.6389525005654576e+20,
+      "T_00": 3.816816502710405e+92,
+      "temporal_kinetic": 1.9868647672312097e+88,
+      "gradient_energy": 2.1868842183010006e+40,
+      "potential": 3.816617816233682e+92,
+      "T_0i_norm": 9.551184027710684e+63,
+      "at_center": false
+    }
+  }
+}

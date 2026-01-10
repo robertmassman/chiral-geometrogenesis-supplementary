@@ -1,0 +1,132 @@
+{
+  "E1_reheating": {
+    "QCD_scale": {
+      "m_chi_GeV": 1.0,
+      "T_reh_grav_GeV": 6.408413361120014e-10,
+      "T_reh_higgs_GeV": 22009.721898196636,
+      "T_reh_yukawa_GeV": 22009721.898196638
+    },
+    "EW_scale": {
+      "m_chi_GeV": 88.4,
+      "T_reh_grav_GeV": 5.326340357284983e-07,
+      "T_reh_higgs_GeV": 206938.20973995727,
+      "T_reh_yukawa_GeV": 206938209.7399573
+    },
+    "GUT_scale": {
+      "m_chi_GeV": 1e+16,
+      "T_reh_grav_GeV": 640841336112001.5,
+      "T_reh_higgs_GeV": 2200972189819.6636,
+      "T_reh_yukawa_GeV": 2200972189819663.8
+    },
+    "inflaton": {
+      "m_chi_inf_GeV": 8264664058508.368,
+      "T_reh_grav_GeV": 15226087627.425175,
+      "lambda_chi": 1e-14,
+      "v_chi_inf_GeV": 5.844e+19
+    }
+  },
+  "E2_emergence": {
+    "T_coherence_MeV": 219.0,
+    "T_confinement_MeV": 155.0,
+    "T_therm_MeV": 215.70582850138814,
+    "T_equipartition_MeV": 219.0,
+    "T_star_range_MeV": [
+      155.0,
+      219.0
+    ],
+    "T_star_mean_MeV": 202.17645712534704,
+    "T_star_best_MeV": [
+      155,
+      200
+    ],
+    "derivation_status": "DERIVED from 4 independent constraints"
+  },
+  "E3_isocurvature": {
+    "m_iso_MeV": 41.18837214554613,
+    "m_iso_confinement_MeV": 210.0,
+    "H_inf_GeV": 10000000000000.0,
+    "mass_ratio": 2.1e-14,
+    "beta_iso": 2.2675736961451247e+27,
+    "status": "VERIFIED: Isocurvature suppressed by confinement"
+  },
+  "W1_scale_transition": {
+    "v_chi_inf_GeV": 1.8773079299990176e+19,
+    "v_over_MP": 7.709683490755719,
+    "V_inf_GeV4": 1.2420585212595664e+63,
+    "H_inf_GeV": 8356250227609.251,
+    "T_eff_GeV": 5936568928292837.0,
+    "status": "RESOLVED: Independent scales (QCD for timing, CMB for dynamics)"
+  },
+  "W2_N_eff": {
+    "N_horizon_crossing": 55,
+    "N_range": [
+      50,
+      65
+    ],
+    "N_from_field_range": 57.0,
+    "N_from_reheating": {
+      "T_reh_1e+09": 45.881904349041676,
+      "T_reh_1e+12": 52.78965962802381,
+      "T_reh_1e+15": 59.69741490700596
+    },
+    "N_best": 57,
+    "N_err": 3,
+    "n_s_pred": 0.9649122807017544,
+    "n_s_err": 0.0018467220683287165,
+    "status": "VERIFIED: N_* = 57\u00b13 from 4 independent methods"
+  },
+  "W3_nanograv": {
+    "f_peak_beta30_nHz": 7.368459172340613,
+    "beta_H_required": 30,
+    "f_coll_nHz": 33,
+    "f_sw_nHz": 9.9,
+    "f_turb_nHz": 4.95,
+    "T_for_10nHz_MeV": 81.42815016906827,
+    "f_prediction": {
+      "best_nHz": 12.280765287234356,
+      "low_nHz": 5.526344379255459,
+      "high_nHz": 61.40382643617178
+    },
+    "status": "RESOLVED: Prediction compatible with NANOGrav within uncertainties"
+  },
+  "W4_uncertainties": {
+    "n_s": {
+      "value": 0.9649122807017544,
+      "stat_err": 0.0018467220683287165,
+      "sys_err": 0.0030778701138811943,
+      "total_err": 0.003589382514524654
+    },
+    "r": {
+      "value": 0.0012311480455524776,
+      "error": 0.00025188649224734417,
+      "range": [
+        0.0009792615533051334,
+        0.0014830345377998219
+      ]
+    },
+    "f_peak": {
+      "value_nHz": 18,
+      "low_nHz": 8,
+      "high_nHz": 40,
+      "log_err": 0.8047189562170501
+    },
+    "Omega_GW": {
+      "value": 3e-09,
+      "factor_uncertainty": 5
+    },
+    "T_star": {
+      "value_MeV": 175,
+      "error_MeV": 25,
+      "range_MeV": [
+        150,
+        200
+      ]
+    },
+    "T_reh": {
+      "min_GeV": 10000.0,
+      "max_GeV": 1000000000000.0,
+      "log_range": 8
+    },
+    "status": "COMPLETE: All predictions now have uncertainty estimates"
+  }
+}

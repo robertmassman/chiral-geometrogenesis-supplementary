@@ -1,0 +1,84 @@
+{
+  "theorem": "5.3.2",
+  "analysis": "Index Notation and Lorentz Transformations",
+  "date": "2025-12-15",
+  "index_conventions": {
+    "levi_civita": {
+      "epsilon_0123": 1,
+      "antisymmetry_01": true,
+      "vanishes_repeated": true,
+      "epsilon_123": 1,
+      "contraction_identity": true
+    },
+    "metric": {
+      "metric_signature": [
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "metric_inverse": true,
+      "self_inverse": true
+    }
+  },
+  "spin_tensor": {
+    "input_spin_vector": [
+      0.0,
+      0.0,
+      5.272859085e-35
+    ],
+    "S_12": 5.272859085e-35,
+    "S_squared": -5.560608586053407e-69,
+    "expected_2s_squared": 5.560608586053407e-69,
+    "round_trip_success": true
+  },
+  "lorentz_boost": {
+    "beta": 0.6,
+    "gamma": 1.25,
+    "direction": [
+      1,
+      0,
+      0
+    ],
+    "original_S_12": 5.272859085e-35,
+    "boosted_S_12": 6.59107385625e-35,
+    "boosted_S_01": 0.0,
+    "boosted_S_02": -3.95464431375e-35,
+    "magnitude_invariance": {
+      "original_magnitude": -5.560608586053407e-69,
+      "transformed_magnitude": -5.560608586053406e-69,
+      "relative_difference": 1.851436766248445e-16,
+      "is_invariant": true
+    }
+  },
+  "thomas_wigner": {
+    "beta_x": 0.4,
+    "beta_y": 0.3,
+    "rotation_angle_deg": 5.5694548727932025
+  },
+  "pauli_lubanski": {
+    "W_vector": [
+      0.0,
+      -0.0,
+      -0.0,
+      0.5
+    ],
+    "W_squared": -0.25
+  },
+  "contortion_transformation": {
+    "status": "Transforms correctly as rank-3 tensor",
+    "J_5_transformation": "Axial 4-vector",
+    "precession_transformation": "Spatial 3-vector"
+  },
+  "mpd_covariance": {
+    "status": "Manifestly covariant",
+    "tensor_ranks": {
+      "p_mu": 1,
+      "u_mu": 1,
+      "S_munu": 2,
+      "R_munurrhosigma": 4,
+      "K_munurho": 3
+    }
+  },
+  "overall_status": "PASS"
+}

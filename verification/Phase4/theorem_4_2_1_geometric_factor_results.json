@@ -1,0 +1,17 @@
+{
+  "alpha": 2.0943951023931953,
+  "R_hadron_GeV_inv": 5.0,
+  "grad_phi_GeV": 0.41887902047863906,
+  "I_profile_analytical": 1.5707963267948966,
+  "I_profile_numerical": 1.5707963267948961,
+  "cos_theta_avg": 0.5,
+  "R_soliton_GeV_inv": 0.0040650406504065045,
+  "scale_ratio": 0.0008130081300813009,
+  "G_calculated": 0.0008513801229240632,
+  "G_uncertainty": 0.6708203932499369,
+  "G_range": [
+    0.0001,
+    0.005
+  ],
+  "G_central_theorem": 0.002
+}

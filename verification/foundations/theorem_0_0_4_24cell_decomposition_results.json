@@ -1,0 +1,48 @@
+{
+  "title": "24-cell Vertex Decomposition Analysis",
+  "date": "2025-12-26",
+  "tests": [
+    {
+      "name": "24-cell vertex count",
+      "value": 24,
+      "passed": true,
+      "notes": "24 vertices = D4 root system"
+    },
+    {
+      "name": "D4 root count",
+      "value": 24,
+      "passed": true,
+      "notes": "6 pairs \u00d7 4 sign combinations = 24"
+    },
+    {
+      "name": "A4 root count",
+      "value": 20,
+      "passed": true,
+      "notes": "5\u00d74 = 20 roots of form e_i - e_j"
+    },
+    {
+      "name": "A4 roots satisfy \u03a3x_i = 0",
+      "value": "all",
+      "passed": true,
+      "notes": "A4 lives in hyperplane \u03a3x_i = 0 in \u211d\u2075"
+    },
+    {
+      "name": "D5 root count",
+      "value": 40,
+      "passed": true,
+      "notes": "\u00b1e_i \u00b1 e_j for 1 \u2264 i < j \u2264 5"
+    },
+    {
+      "name": "D5 = A4 + extras",
+      "value": "40 = 20 + 20",
+      "passed": true,
+      "notes": "The decomposition 40 = 20 + 20 in so(10)"
+    }
+  ],
+  "clarification": "\nORIGINAL TEXT (Section 3.5.1b):\n\n\"The 24-cell's 24 vertices contain these 20 roots plus 4 additional\nsinglet-direction vertices.\"\n\nCORRECTED TEXT:\n\n\"The 24-cell's 24 vertices correspond exactly to the D4 root system.\nThe connection to SU(5) arises through the embedding chain:\n\n    D4 \u2282 D5 = so(10) \u2283 su(5) \u2295 u(1)\n\nThe D5 (so(10)) root system has 40 roots, which decompose as:\n- 20 roots forming the A4 = su(5) subsystem\n- 20 additional roots carrying U(1) charge\n\nThe 24-cell thus encodes D4 \u2282 so(10), and through the maximal\nsubgroup relation so(10) \u2283 su(5) \u2295 u(1), the SU(5) gauge structure\nis geometrically determined.\n\nNote: The 24 vertices of the 24-cell do NOT directly contain the\n20 A4 roots; rather, D4 and A4 are both contained in D5.\"\n\n---\n\nThis correction:\n1. Removes the incorrect \"20 + 4 = 24\" claim\n2. Clarifies the embedding chain D4 \u2282 D5 \u2283 A4\n3. Provides the correct decomposition 40 = 20 + 20 in D5\n4. Is consistent with the Issue C1 resolution\n",
+  "summary": {
+    "passed": 6,
+    "total": 6,
+    "key_insight": "24 = D4 roots; 40 = A4 + extras in D5; NOT 24 = 20 + 4"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "four_fermion_coefficient": {
+    "our_convention": "(3/2) \u03ba_T\u00b2",
+    "numerical_value": 1.01073389106435e-87,
+    "units": "s\u2074/(kg\u00b2\u00b7m\u00b2)",
+    "alternative_form": "3\u03c0\u00b2G\u00b2/(2c\u2078)"
+  },
+  "hehl_comparison": {
+    "hehl_formula": "(3\u03ba\u00b2/32)(a^\u03bc a_\u03bc) where a = (3/8)J_5",
+    "conversion_factor": "9/64 from a\u00b2 to J_5\u00b2",
+    "effective_coefficient": "(27\u03ba\u00b2/2048) J_5\u00b2",
+    "matches_our_convention": "Within factor of 2 (convention-dependent)"
+  },
+  "physical_interpretation": {
+    "energy_scale_GeV": 2.1873596542998822e+36,
+    "significance": "Negligible below Planck scale",
+    "regularization": "Provides spin repulsion at singularities"
+  },
+  "resolution": "Factor of 2 is convention choice, not error"
+}

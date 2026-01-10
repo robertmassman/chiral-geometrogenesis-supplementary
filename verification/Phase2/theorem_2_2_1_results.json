@@ -1,0 +1,182 @@
+{
+  "theorem": "2.2.1",
+  "name": "Phase-Locked Oscillation of Color Fields",
+  "date": "2025-12-29T18:59:21.941531",
+  "parameters": {
+    "K": 1.0,
+    "omega": 1.0,
+    "alpha": 2.0943951023931953
+  },
+  "tests": {
+    "test_1_convergence": {
+      "test_name": "Convergence to Equilibrium",
+      "passed": true,
+      "tolerance": 0.01,
+      "trials": [
+        {
+          "initial": [
+            0.0,
+            0.5235987755982988,
+            1.0471975511965976
+          ],
+          "final_psi1_deg": 120.00000000073062,
+          "final_psi2_deg": 120.00000000073022,
+          "max_error_deg": 7.306370214257991e-10,
+          "passed": 1
+        },
+        {
+          "initial": [
+            0.0,
+            1.5707963267948966,
+            3.141592653589793
+          ],
+          "final_psi1_deg": 120.00000000061786,
+          "final_psi2_deg": 120.00000000061827,
+          "max_error_deg": 6.182743856390559e-10,
+          "passed": 1
+        },
+        {
+          "initial": [
+            0.0,
+            1.0471975511965976,
+            2.0943951023931953
+          ],
+          "final_psi1_deg": 120.00000000056046,
+          "final_psi2_deg": 120.00000000056046,
+          "max_error_deg": 5.60464623748775e-10,
+          "passed": 1
+        },
+        {
+          "initial": [
+            0.5,
+            1.0,
+            1.5
+          ],
+          "final_psi1_deg": 120.00000000076483,
+          "final_psi2_deg": 120.00000000076483,
+          "max_error_deg": 7.648343453608948e-10,
+          "passed": 1
+        },
+        {
+          "initial": [
+            0.0,
+            0.1,
+            0.2
+          ],
+          "final_psi1_deg": 120.0000000008324,
+          "final_psi2_deg": 120.00000000083159,
+          "max_error_deg": 8.324147712326316e-10,
+          "passed": 1
+        }
+      ]
+    },
+    "test_2_eigenvalues": {
+      "test_name": "Jacobian Eigenvalues",
+      "passed": 1,
+      "K": 1.0,
+      "tolerance": 0.05,
+      "numerical_eigenvalues": [
+        -1.5000000002094172,
+        -1.5000000002094172
+      ],
+      "theoretical_eigenvalues": [
+        -1.5,
+        -1.5
+      ],
+      "observed_eigenvalues": [
+        -1.5,
+        -1.5
+      ],
+      "stability_check": true,
+      "max_error_percent": 1.3961143352503314e-08
+    },
+    "test_3_decay_rate": {
+      "test_name": "Exponential Decay Rate",
+      "passed": 1,
+      "K": 1.0,
+      "tolerance_percent": 5.0,
+      "measured_rate": -1.4936016249716149,
+      "theoretical_rate": -1.5,
+      "relative_error_percent": 0.42655833522567593
+    },
+    "test_4_basin": {
+      "test_name": "Basin of Attraction",
+      "passed": true,
+      "K": 1.0,
+      "n_samples": 200,
+      "n_FP1": 200,
+      "n_FP2": 0,
+      "n_other": 0,
+      "fraction_covered": 1.0
+    },
+    "test_5_color_neutrality": {
+      "test_name": "Color Neutrality",
+      "passed": 1,
+      "tolerance": 1e-06,
+      "magnitude": 7.845047080571502e-13
+    },
+    "test_6_K_scaling": {
+      "test_name": "Eigenvalue Scaling",
+      "passed": 1,
+      "tolerance_percent": 5.0,
+      "K_values": [
+        {
+          "K": 0.5,
+          "numerical": [
+            -0.7500000001047086,
+            -0.7500000001047086
+          ],
+          "expected_eigenvalue": -0.75,
+          "stable": true,
+          "max_error_percent": 1.3961143352503314e-08,
+          "passed": 1
+        },
+        {
+          "K": 1.0,
+          "numerical": [
+            -1.5000000002094172,
+            -1.5000000002094172
+          ],
+          "expected_eigenvalue": -1.5,
+          "stable": true,
+          "max_error_percent": 1.3961143352503314e-08,
+          "passed": 1
+        },
+        {
+          "K": 2.0,
+          "numerical": [
+            -3.0000000004188343,
+            -3.0000000004188343
+          ],
+          "expected_eigenvalue": -3.0,
+          "stable": true,
+          "max_error_percent": 1.3961143352503314e-08,
+          "passed": 1
+        },
+        {
+          "K": 5.0,
+          "numerical": [
+            -7.500000001047086,
+            -7.500000001047086
+          ],
+          "expected_eigenvalue": -7.5,
+          "stable": true,
+          "max_error_percent": 1.3961146313098045e-08,
+          "passed": 1
+        },
+        {
+          "K": 10.0,
+          "numerical": [
+            -15.000000002094172,
+            -15.000000002094172
+          ],
+          "expected_eigenvalue": -15.0,
+          "stable": true,
+          "max_error_percent": 1.3961146313098045e-08,
+          "passed": 1
+        }
+      ]
+    }
+  },
+  "all_passed": true
+}

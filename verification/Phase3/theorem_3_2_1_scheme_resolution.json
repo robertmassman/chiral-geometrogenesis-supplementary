@@ -1,0 +1,133 @@
+{
+  "title": "Theorem 3.2.1 Renormalization Scheme Analysis",
+  "date": "2025-12-14",
+  "schemes": {
+    "on_shell": {
+      "sin2_theta_W": 0.22320267795009474,
+      "g": 0.6528243034684429,
+      "g_prime": 0.3499388454619213,
+      "m_W_reconstructed": 80.3692,
+      "m_Z_reconstructed": 91.18759999999999,
+      "rho": 1.0000000000000002,
+      "m_W_error_pct": 0.0,
+      "m_Z_error_pct": 1.5584196442500957e-14
+    },
+    "ms_bar": {
+      "sin2_theta_W": 0.23122,
+      "g": 0.6517340199093395,
+      "g_prime": 0.3574226344275484,
+      "m_W_predicted": 80.23497519103879,
+      "m_Z_predicted": 91.50876294292293,
+      "rho": 0.9999999999999997,
+      "m_W_error_pct": 0.16701025885690193,
+      "m_Z_error_pct": 0.35220023657046
+    }
+  },
+  "theorem_original": {
+    "g": 0.653,
+    "g_prime": 0.357,
+    "v": 246,
+    "sin2_theta_W_stated": 0.231,
+    "sin2_theta_W_from_couplings": 0.23011132817436958,
+    "m_W": 80.319,
+    "m_Z": 91.53861306574402,
+    "m_W_error_pct": 0.06246173907417741,
+    "m_Z_error_pct": 0.3849350851914218
+  },
+  "corrected_on_shell": {
+    "g": 0.6528243034684429,
+    "g_prime": 0.3499388454619213,
+    "sin2_theta_W": 0.22320267795009474,
+    "cos2_theta_W": 0.7767973220499053,
+    "v": 246.22,
+    "m_W": 80.3692,
+    "m_Z": 91.18759999999999,
+    "rho": 1.0000000000000002
+  },
+  "edits_needed": {
+    "statement_file": {
+      "section": "\u00a71.1 Symbol Table",
+      "changes": {
+        "g": {
+          "old": 0.653,
+          "new": 0.6528
+        },
+        "g_prime": {
+          "old": 0.357,
+          "new": 0.3499
+        },
+        "sin2_theta_W": {
+          "old": 0.231,
+          "new": 0.2232
+        },
+        "add_note": "On-shell scheme: sin\u00b2\u03b8_W \u2261 1 - m_W\u00b2/m_Z\u00b2"
+      }
+    },
+    "derivation_file": {
+      "sections": [
+        "\u00a75.3",
+        "\u00a75.5 (new)"
+      ],
+      "changes": [
+        "Update sin\u00b2\u03b8_W value and scheme clarification in \u00a75.3",
+        "Add new \u00a75.5 explaining renormalization scheme choice"
+      ]
+    }
+  },
+  "yukawa_verification": {
+    "top": {
+      "mass_GeV": 172.69,
+      "mass_err_GeV": 0.3,
+      "yukawa": 0.9918793765177882,
+      "yukawa_err": 0.001723109693412105
+    },
+    "bottom": {
+      "mass_GeV": 4.18,
+      "mass_err_GeV": 0.03,
+      "yukawa": 0.024008661728208664,
+      "yukawa_err": 0.00017231096934121053
+    },
+    "charm": {
+      "mass_GeV": 1.27,
+      "mass_err_GeV": 0.02,
+      "yukawa": 0.0072944977021112455,
+      "yukawa_err": 0.00011487397956080702
+    },
+    "strange": {
+      "mass_GeV": 0.09340000000000001,
+      "mass_err_GeV": 0.0086,
+      "yukawa": 0.0005364614845489688,
+      "yukawa_err": 4.9395811211147013e-05
+    },
+    "down": {
+      "mass_GeV": 0.0047,
+      "mass_err_GeV": 0.0002,
+      "yukawa": 2.6995385196789648e-05,
+      "yukawa_err": 1.14873979560807e-06
+    },
+    "up": {
+      "mass_GeV": 0.00216,
+      "mass_err_GeV": 7.000000000000001e-05,
+      "yukawa": 1.2406389792567159e-05,
+      "yukawa_err": 4.020589284628246e-07
+    },
+    "tau": {
+      "mass_GeV": 1.7768599999999999,
+      "mass_err_GeV": 0.00011999999999999999,
+      "yukawa": 0.010205748966120776,
+      "yukawa_err": 6.89243877364842e-07
+    },
+    "muon": {
+      "mass_GeV": 0.1056584,
+      "mass_err_GeV": 1.0000000000000001e-07,
+      "yukawa": 0.0006068700441013786,
+      "yukawa_err": 5.743698978040351e-10
+    },
+    "electron": {
+      "mass_GeV": 0.0005109989499999999,
+      "mass_err_GeV": 1.0000000000000001e-11,
+      "yukawa": 2.935024146894692e-06,
+      "yukawa_err": 5.743698978040352e-14
+    }
+  }
+}

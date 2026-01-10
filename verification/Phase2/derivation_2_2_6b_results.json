@@ -1,0 +1,117 @@
+{
+  "timestamp": "2026-01-03T17:46:38.092007",
+  "theorem": "Derivation-2.2.6b-QCD-EM-Coupling-Efficiency",
+  "passed": 13,
+  "total": 13,
+  "success_rate": "100.0%",
+  "sigma_value": "3K/4 (UPDATED)",
+  "tests": [
+    {
+      "name": "Energy ratio k_BT/\u039b_QCD at 300K",
+      "passed": true,
+      "calculated": 1.2925999893217766e-10,
+      "expected": 1.29e-10,
+      "k_B_T_meV": 2.585199978643553e-05,
+      "tolerance": 0.1
+    },
+    {
+      "name": "Fourth power (k_BT/\u039b_QCD)^4",
+      "passed": "True",
+      "calculated": 2.791621869987029e-40,
+      "expected": 2.8e-40,
+      "log10_diff": 0.0013014393465056173
+    },
+    {
+      "name": "Vacuum polarization \u03b5 at 300K",
+      "passed": "True",
+      "calculated": 2.0371448889248295e-42,
+      "expected": 2e-42,
+      "log10_ratio": 0.007991922988998106
+    },
+    {
+      "name": "T^4 scaling verification",
+      "passed": true,
+      "epsilon_ratio": 16.0,
+      "expected_ratio": 16.0,
+      "scaling_exponent": 4.0
+    },
+    {
+      "name": "QGP saturation \u03b5 = 1 at T > T_c",
+      "passed": true,
+      "T_K": 1978570339724.289,
+      "T_c_K": 1798700308840.2627,
+      "epsilon": 1.0
+    },
+    {
+      "name": "Phase-space contraction \u03c3 = 3K/4",
+      "passed": true,
+      "calculated_sigma": 2.2785e+23,
+      "expected_sigma": 2.28e+23,
+      "K_inv_s": 3.038e+23,
+      "ratio_to_K": 0.75
+    },
+    {
+      "name": "Gibbs entropy rate k_B \u00d7 \u03c3",
+      "passed": true,
+      "calculated": 3.1458087465,
+      "expected": 3.1,
+      "units": "J/(K\u22c5s\u22c5hadron)"
+    },
+    {
+      "name": "Thermodynamic entropy rate per mole",
+      "passed": "True",
+      "calculated": 3.8591795557413286e-18,
+      "expected": 2e-18,
+      "log10_ratio": 0.28546498976243967
+    },
+    {
+      "name": "No spontaneous heating (\u03b5 << 1)",
+      "passed": true,
+      "epsilon": 2.0371448889248295e-42,
+      "threshold": 1e-30
+    },
+    {
+      "name": "QGP thermalization time",
+      "passed": true,
+      "calculated_fm_c": 1.3157448233486941,
+      "expected_range": [
+        0.2,
+        2.0
+      ]
+    },
+    {
+      "name": "Boltzmann suppression exp(-\u039b_QCD/k_BT)",
+      "passed": "True",
+      "calculated": "underflow",
+      "exponent": -7736345414.366722
+    },
+    {
+      "name": "KSS bound \u03b7/s \u2265 1/(4\u03c0)",
+      "passed": true,
+      "kss_bound": 0.07957747154594767,
+      "qgp_observed_range": [
+        0.07957747154594767,
+        0.1989436788648692
+      ],
+      "note": "Consistency check with framework"
+    },
+    {
+      "name": "Limiting cases",
+      "passed": true,
+      "results": [
+        [
+          "T \u2192 0: \u03b5 \u2192 0",
+          true
+        ],
+        [
+          "T \u2192 T_c\u207b: \u03b5 < 1",
+          true
+        ],
+        [
+          "T > T_c: \u03b5 = 1",
+          true
+        ]
+      ]
+    }
+  ]
+}

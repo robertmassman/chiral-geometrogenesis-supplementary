@@ -1,0 +1,120 @@
+{
+  "vW_calculation": {
+    "geometric_ratio": 0.5773502691896258,
+    "v_W_QCD_GeV": 0.05311622476544557,
+    "v_W_EW_GeV": 142.02816622064793,
+    "vertices": {
+      "R": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "G": [
+        0.5773502691896258,
+        -0.5773502691896258,
+        -0.5773502691896258
+      ],
+      "B": [
+        -0.5773502691896258,
+        0.5773502691896258,
+        -0.5773502691896258
+      ],
+      "W": [
+        -0.5773502691896258,
+        -0.5773502691896258,
+        0.5773502691896258
+      ]
+    },
+    "domain_suppression": 0.5,
+    "v_W_suppressed_GeV": 71.01408311032397,
+    "v_W_primary_GeV": 142.02816622064793
+  },
+  "phi_W_calculation": {
+    "cos_angle": -1.0000000000000002,
+    "angle_deg": NaN,
+    "is_antipodal": true,
+    "phi_W": 3.141592653589793,
+    "relationship": "EXACT ANTIPODAL"
+  },
+  "portal_coupling": {
+    "epsilon_values": [
+      0.3,
+      0.5,
+      0.7,
+      1.0
+    ],
+    "lambda_values": [
+      0.06222984340564648,
+      0.035826756508391636,
+      0.018435487768722277,
+      0.0
+    ],
+    "lambda_numerical": 0.08352061050592198,
+    "lambda_best": 0.035826756508391636,
+    "lambda_range": [
+      0.0,
+      0.06222984340564648
+    ]
+  },
+  "soliton_mass": {
+    "skyrme_e": 5.0,
+    "mass_coefficient": 11.84352528130723,
+    "v_W_GeV": 142.02816622064793,
+    "M_W_GeV": 1682.1141772919493,
+    "M_W_TeV": 1.6821141772919492,
+    "mass_table": [
+      {
+        "v_W": 70,
+        "M_W_GeV": 829.046769691506,
+        "M_W_TeV": 0.829046769691506
+      },
+      {
+        "v_W": 100,
+        "M_W_GeV": 1184.352528130723,
+        "M_W_TeV": 1.184352528130723
+      },
+      {
+        "v_W": 142,
+        "M_W_GeV": 1681.7805899456266,
+        "M_W_TeV": 1.6817805899456266
+      },
+      {
+        "v_W": 200,
+        "M_W_GeV": 2368.705056261446,
+        "M_W_TeV": 2.368705056261446
+      }
+    ]
+  },
+  "relic_abundance": {
+    "M_W_GeV": 1682.1141772919493,
+    "lambda_HP": 0.035826756508391636,
+    "sigma_v": 1.277693549094427e-28,
+    "Omega_h2_ann": 23.47980861393773,
+    "ratio_to_observed": 195.66507178281444,
+    "status": "REQUIRES ADJUSTMENT of \u03bb_H\u03a6 or M_W",
+    "lambda_optimal": 0.5011458581795583
+  },
+  "direct_detection": {
+    "mu_N": 0.9384761181572296,
+    "sigma_SI_GeV2": 4.133655331868088e-20,
+    "sigma_SI_cm2": 1.607991924096686e-47,
+    "lz_status": "ABOVE LZ bounds \u2717",
+    "darwin_status": "DETECTABLE at DARWIN \u2713",
+    "lambda_max_allowed": 0.028253064470620717
+  },
+  "consistency_checks": {
+    "bbn_passed": true,
+    "T_freezeout_GeV": 84.10570886459746,
+    "unitarity_passed": true,
+    "lambda_max": 4.1887902047863905,
+    "geom_passed": true,
+    "v_W_expected": 142.02816622064793,
+    "geom_deviation": 0.0,
+    "mass_passed": true,
+    "M_W_expected": 1682.1141772919493,
+    "mass_deviation": 0.0,
+    "relic_passed": false,
+    "relic_deviation": 194.66507178281444,
+    "all_passed": true
+  }
+}

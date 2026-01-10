@@ -1,0 +1,25 @@
+{
+  "lemma": "3.3.1",
+  "title": "(111) Boundary Site Density",
+  "status": "VERIFIED",
+  "date": "2026-01-04",
+  "checks": {
+    "Analytical derivation: \u03c3 = 2/(\u221a3a\u00b2)": true,
+    "Numerical counting converges to analytical": true,
+    "Alternative (triangle) derivation matches": true,
+    "Dimensional analysis consistent": true,
+    "(111) plane has highest density": true,
+    "Packing fraction = \u03c0/(2\u221a3) \u2248 0.9069": true,
+    "Cubic cell relation a = a_cubic/\u221a2": true,
+    "Entropy application consistent": true
+  },
+  "key_result": {
+    "site_density": "\u03c3 = 2/(\u221a3*a\u00b2)",
+    "numerical_value": 1.1547005383792517,
+    "units": "sites per a\u00b2"
+  },
+  "dependencies_verified": [
+    "Theorem 0.0.6 (FCC lattice)"
+  ],
+  "classification": "ESTABLISHED \u2014 Standard crystallography"
+}

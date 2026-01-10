@@ -1,0 +1,512 @@
+{
+  "metadata": {
+    "date": "2025-12-14",
+    "description": "Computational verification of \u03b3=1/4 derivation",
+    "total_tests": 57,
+    "passed_tests": 57,
+    "failed_tests": 0,
+    "success_rate": 1.0
+  },
+  "physical_constants": {
+    "c": 299792458.0,
+    "G": 6.6743e-11,
+    "hbar": 1.0545718176461565e-34,
+    "k_B": 1.380649e-23,
+    "l_P": 1.6162550244237053e-35,
+    "M_P": 2.1764343427178984e-08,
+    "M_sun": 1.989e+30
+  },
+  "black_holes": [
+    {
+      "M": 1.989e+30,
+      "M_label": "1 M_\u2609",
+      "r_s": 2954.126555055405,
+      "kappa": 15211859783034.268,
+      "T_H": 6.168429716410343e-08,
+      "beta": 0.00012382782869256283,
+      "A": 109665003.59645963,
+      "S": 1.4490106337369605e+54,
+      "S_over_kB": 1.0495141297585124e+77
+    },
+    {
+      "M": 1.989e+31,
+      "M_label": "10 M_\u2609",
+      "r_s": 29541.26555055405,
+      "kappa": 1521185978303.4268,
+      "T_H": 6.1684297164103426e-09,
+      "beta": 0.0012382782869256282,
+      "A": 10966500359.645962,
+      "S": 1.4490106337369604e+56,
+      "S_over_kB": 1.0495141297585123e+79
+    },
+    {
+      "M": 1.989e+36,
+      "M_label": "10\u2076 M_\u2609 (SMBH)",
+      "r_s": 2954126555.0554047,
+      "kappa": 15211859.783034269,
+      "T_H": 6.168429716410344e-14,
+      "beta": 123.82782869256282,
+      "A": 1.0966500359645959e+20,
+      "S": 1.4490106337369605e+66,
+      "S_over_kB": 1.0495141297585124e+89
+    }
+  ],
+  "test_results": [
+    {
+      "name": "\u03ba = c\u00b2/(2r_s) for 1 M_\u2609",
+      "passed": true,
+      "expected": 15211859783034.268,
+      "actual": 15211859783034.268,
+      "relative_error": 0.0,
+      "message": "\u03ba = 1.521186e+13 m/s\u00b2, c\u00b2/(2r_s) = 1.521186e+13 m/s\u00b2"
+    },
+    {
+      "name": "\u03ba = c\u2074/(4GM) for 1 M_\u2609",
+      "passed": true,
+      "expected": 15211859783034.268,
+      "actual": 15211859783034.268,
+      "relative_error": 0.0,
+      "message": "\u03ba = 1.521186e+13 m/s\u00b2, c\u2074/(4GM) = 1.521186e+13 m/s\u00b2"
+    },
+    {
+      "name": "Dimensional analysis of \u03ba for 1 M_\u2609",
+      "passed": true,
+      "expected": 0.0,
+      "actual": 0.0,
+      "relative_error": 0.0,
+      "message": "\u03ba has correct dimensions: [c\u2074/(GM)] = [m\u2074/s\u2074] / [m\u00b3/kg/s\u00b2 \u00b7 kg] = [m/s\u00b2]"
+    },
+    {
+      "name": "\u03ba = c\u00b2/(2r_s) for 10 M_\u2609",
+      "passed": true,
+      "expected": 1521185978303.4268,
+      "actual": 1521185978303.4268,
+      "relative_error": 0.0,
+      "message": "\u03ba = 1.521186e+12 m/s\u00b2, c\u00b2/(2r_s) = 1.521186e+12 m/s\u00b2"
+    },
+    {
+      "name": "\u03ba = c\u2074/(4GM) for 10 M_\u2609",
+      "passed": true,
+      "expected": 1521185978303.4268,
+      "actual": 1521185978303.4268,
+      "relative_error": 0.0,
+      "message": "\u03ba = 1.521186e+12 m/s\u00b2, c\u2074/(4GM) = 1.521186e+12 m/s\u00b2"
+    },
+    {
+      "name": "Dimensional analysis of \u03ba for 10 M_\u2609",
+      "passed": true,
+      "expected": 0.0,
+      "actual": 0.0,
+      "relative_error": 0.0,
+      "message": "\u03ba has correct dimensions: [c\u2074/(GM)] = [m\u2074/s\u2074] / [m\u00b3/kg/s\u00b2 \u00b7 kg] = [m/s\u00b2]"
+    },
+    {
+      "name": "\u03ba = c\u00b2/(2r_s) for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 15211859.783034269,
+      "actual": 15211859.783034269,
+      "relative_error": 0.0,
+      "message": "\u03ba = 1.521186e+07 m/s\u00b2, c\u00b2/(2r_s) = 1.521186e+07 m/s\u00b2"
+    },
+    {
+      "name": "\u03ba = c\u2074/(4GM) for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 15211859.783034269,
+      "actual": 15211859.783034269,
+      "relative_error": 0.0,
+      "message": "\u03ba = 1.521186e+07 m/s\u00b2, c\u2074/(4GM) = 1.521186e+07 m/s\u00b2"
+    },
+    {
+      "name": "Dimensional analysis of \u03ba for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 0.0,
+      "actual": 0.0,
+      "relative_error": 0.0,
+      "message": "\u03ba has correct dimensions: [c\u2074/(GM)] = [m\u2074/s\u2074] / [m\u00b3/kg/s\u00b2 \u00b7 kg] = [m/s\u00b2]"
+    },
+    {
+      "name": "T_H = \u210f\u03ba/(2\u03c0k_Bc) for 1 M_\u2609",
+      "passed": true,
+      "expected": 6.168429716410343e-08,
+      "actual": 6.168429716410343e-08,
+      "relative_error": 0.0,
+      "message": "T_H = 6.168430e-08 K"
+    },
+    {
+      "name": "\u03b2 = \u210f/(k_B T_H) for 1 M_\u2609",
+      "passed": true,
+      "expected": 0.00012382782869256283,
+      "actual": 0.00012382782869256283,
+      "relative_error": 0.0,
+      "message": "\u03b2 = 1.238278e-04 s"
+    },
+    {
+      "name": "\u03b2 = 4\u03c0r_s/c for 1 M_\u2609",
+      "passed": true,
+      "expected": 0.00012382782869256283,
+      "actual": 0.00012382782869256283,
+      "relative_error": 0.0,
+      "message": "\u03b2 = 1.238278e-04 s, 4\u03c0r_s/c = 1.238278e-04 s"
+    },
+    {
+      "name": "\u03b2 = 2\u03c0c/\u03ba for 1 M_\u2609",
+      "passed": true,
+      "expected": 0.00012382782869256283,
+      "actual": 0.00012382782869256283,
+      "relative_error": 0.0,
+      "message": "\u03b2 = 1.238278e-04 s, 2\u03c0c/\u03ba = 1.238278e-04 s"
+    },
+    {
+      "name": "T_H literature value for 1 M_\u2609",
+      "passed": true,
+      "expected": 6.17e-08,
+      "actual": 6.168429716410343e-08,
+      "relative_error": 0.00025450301291049467,
+      "message": "T_H = 6.168430e-08 K (literature: 6.17e-08 K)"
+    },
+    {
+      "name": "T_H = \u210f\u03ba/(2\u03c0k_Bc) for 10 M_\u2609",
+      "passed": true,
+      "expected": 6.1684297164103426e-09,
+      "actual": 6.1684297164103426e-09,
+      "relative_error": 0.0,
+      "message": "T_H = 6.168430e-09 K"
+    },
+    {
+      "name": "\u03b2 = \u210f/(k_B T_H) for 10 M_\u2609",
+      "passed": true,
+      "expected": 0.0012382782869256282,
+      "actual": 0.0012382782869256282,
+      "relative_error": 0.0,
+      "message": "\u03b2 = 1.238278e-03 s"
+    },
+    {
+      "name": "\u03b2 = 4\u03c0r_s/c for 10 M_\u2609",
+      "passed": true,
+      "expected": 0.0012382782869256282,
+      "actual": 0.0012382782869256282,
+      "relative_error": 0.0,
+      "message": "\u03b2 = 1.238278e-03 s, 4\u03c0r_s/c = 1.238278e-03 s"
+    },
+    {
+      "name": "\u03b2 = 2\u03c0c/\u03ba for 10 M_\u2609",
+      "passed": true,
+      "expected": 0.0012382782869256282,
+      "actual": 0.0012382782869256282,
+      "relative_error": 0.0,
+      "message": "\u03b2 = 1.238278e-03 s, 2\u03c0c/\u03ba = 1.238278e-03 s"
+    },
+    {
+      "name": "T_H = \u210f\u03ba/(2\u03c0k_Bc) for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 6.168429716410344e-14,
+      "actual": 6.168429716410344e-14,
+      "relative_error": 0.0,
+      "message": "T_H = 6.168430e-14 K"
+    },
+    {
+      "name": "\u03b2 = \u210f/(k_B T_H) for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 123.82782869256282,
+      "actual": 123.82782869256282,
+      "relative_error": 0.0,
+      "message": "\u03b2 = 1.238278e+02 s"
+    },
+    {
+      "name": "\u03b2 = 4\u03c0r_s/c for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 123.82782869256282,
+      "actual": 123.82782869256282,
+      "relative_error": 0.0,
+      "message": "\u03b2 = 1.238278e+02 s, 4\u03c0r_s/c = 1.238278e+02 s"
+    },
+    {
+      "name": "\u03b2 = 2\u03c0c/\u03ba for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 123.82782869256282,
+      "actual": 123.82782869256282,
+      "relative_error": 0.0,
+      "message": "\u03b2 = 1.238278e+02 s, 2\u03c0c/\u03ba = 1.238278e+02 s"
+    },
+    {
+      "name": "A = 4\u03c0r_s\u00b2 for 1 M_\u2609",
+      "passed": true,
+      "expected": 109665003.59645963,
+      "actual": 109665003.59645963,
+      "relative_error": 0.0,
+      "message": "A = 1.096650e+08 m\u00b2"
+    },
+    {
+      "name": "A = 16\u03c0G\u00b2M\u00b2/c\u2074 for 1 M_\u2609",
+      "passed": true,
+      "expected": 109665003.59645961,
+      "actual": 109665003.59645963,
+      "relative_error": 1.3587891036488068e-16,
+      "message": "A = 1.096650e+08 m\u00b2, 16\u03c0G\u00b2M\u00b2/c\u2074 = 1.096650e+08 m\u00b2"
+    },
+    {
+      "name": "First law dM = (\u03ba/8\u03c0G)dA for 1 M_\u2609",
+      "passed": true,
+      "expected": 219439.61739141642,
+      "actual": 219439.67219647765,
+      "relative_error": 2.497500141080835e-07,
+      "message": "dA (actual) = 2.194397e+05 m\u00b2, dA (predicted) = 2.194396e+05 m\u00b2"
+    },
+    {
+      "name": "8\u03c0 factor from Einstein equations",
+      "passed": true,
+      "expected": 25.132741228718345,
+      "actual": 25.132741228718345,
+      "relative_error": 0.0,
+      "message": "8\u03c0 factor confirmed from Einstein field equations"
+    },
+    {
+      "name": "A = 4\u03c0r_s\u00b2 for 10 M_\u2609",
+      "passed": true,
+      "expected": 10966500359.645962,
+      "actual": 10966500359.645962,
+      "relative_error": 0.0,
+      "message": "A = 1.096650e+10 m\u00b2"
+    },
+    {
+      "name": "A = 16\u03c0G\u00b2M\u00b2/c\u2074 for 10 M_\u2609",
+      "passed": true,
+      "expected": 10966500359.64596,
+      "actual": 10966500359.645962,
+      "relative_error": 1.739250052670473e-16,
+      "message": "A = 1.096650e+10 m\u00b2, 16\u03c0G\u00b2M\u00b2/c\u2074 = 1.096650e+10 m\u00b2"
+    },
+    {
+      "name": "First law dM = (\u03ba/8\u03c0G)dA for 10 M_\u2609",
+      "passed": true,
+      "expected": 21943961.739141647,
+      "actual": 21943967.219652176,
+      "relative_error": 2.4975021491203114e-07,
+      "message": "dA (actual) = 2.194397e+07 m\u00b2, dA (predicted) = 2.194396e+07 m\u00b2"
+    },
+    {
+      "name": "8\u03c0 factor from Einstein equations",
+      "passed": true,
+      "expected": 25.132741228718345,
+      "actual": 25.132741228718345,
+      "relative_error": 0.0,
+      "message": "8\u03c0 factor confirmed from Einstein field equations"
+    },
+    {
+      "name": "A = 4\u03c0r_s\u00b2 for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 1.0966500359645959e+20,
+      "actual": 1.0966500359645959e+20,
+      "relative_error": 0.0,
+      "message": "A = 1.096650e+20 m\u00b2"
+    },
+    {
+      "name": "A = 16\u03c0G\u00b2M\u00b2/c\u2074 for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 1.096650035964596e+20,
+      "actual": 1.0966500359645959e+20,
+      "relative_error": 1.4940044191571922e-16,
+      "message": "A = 1.096650e+20 m\u00b2, 16\u03c0G\u00b2M\u00b2/c\u2074 = 1.096650e+20 m\u00b2"
+    },
+    {
+      "name": "First law dM = (\u03ba/8\u03c0G)dA for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 2.1943961739141645e+17,
+      "actual": 2.1943967219654656e+17,
+      "relative_error": 2.497503280214183e-07,
+      "message": "dA (actual) = 2.194397e+17 m\u00b2, dA (predicted) = 2.194396e+17 m\u00b2"
+    },
+    {
+      "name": "8\u03c0 factor from Einstein equations",
+      "passed": true,
+      "expected": 25.132741228718345,
+      "actual": 25.132741228718345,
+      "relative_error": 0.0,
+      "message": "8\u03c0 factor confirmed from Einstein field equations"
+    },
+    {
+      "name": "S = (4\u03c0Gk_B/\u210f)M\u00b2 for 1 M_\u2609",
+      "passed": true,
+      "expected": 1.4490106337369605e+54,
+      "actual": 1.4490106337369605e+54,
+      "relative_error": 0.0,
+      "message": "S = 1.449011e+54 J/K"
+    },
+    {
+      "name": "S = (k_B c\u00b3/4G\u210f)A for 1 M_\u2609",
+      "passed": true,
+      "expected": 1.4490106337369607e+54,
+      "actual": 1.4490106337369605e+54,
+      "relative_error": 1.174188646370935e-16,
+      "message": "S = 1.449011e+54 J/K, (k_B c\u00b3/4G\u210f)A = 1.449011e+54 J/K"
+    },
+    {
+      "name": "S = k_B A/(4\u2113_P\u00b2) for 1 M_\u2609",
+      "passed": true,
+      "expected": 1.4490106337369608e+54,
+      "actual": 1.4490106337369605e+54,
+      "relative_error": 2.34837729274187e-16,
+      "message": "S = 1.449011e+54 J/K, k_B A/(4\u2113_P\u00b2) = 1.449011e+54 J/K"
+    },
+    {
+      "name": "\u03b3 = 1/4 exactly for 1 M_\u2609",
+      "passed": true,
+      "expected": 0.25,
+      "actual": 0.24999999999999994,
+      "relative_error": 2.220446049250313e-16,
+      "message": "\u03b3 = 0.250000000000000 (exact: 0.250000000000000)"
+    },
+    {
+      "name": "S/k_B = A/(4\u2113_P\u00b2) for 1 M_\u2609",
+      "passed": true,
+      "expected": 1.0495141297585126e+77,
+      "actual": 1.0495141297585124e+77,
+      "relative_error": 2.4498011012066897e-16,
+      "message": "S/k_B = 1.049514e+77, A/(4\u2113_P\u00b2) = 1.049514e+77"
+    },
+    {
+      "name": "S = (4\u03c0Gk_B/\u210f)M\u00b2 for 10 M_\u2609",
+      "passed": true,
+      "expected": 1.4490106337369604e+56,
+      "actual": 1.4490106337369604e+56,
+      "relative_error": 0.0,
+      "message": "S = 1.449011e+56 J/K"
+    },
+    {
+      "name": "S = (k_B c\u00b3/4G\u210f)A for 10 M_\u2609",
+      "passed": true,
+      "expected": 1.4490106337369604e+56,
+      "actual": 1.4490106337369604e+56,
+      "relative_error": 0.0,
+      "message": "S = 1.449011e+56 J/K, (k_B c\u00b3/4G\u210f)A = 1.449011e+56 J/K"
+    },
+    {
+      "name": "S = k_B A/(4\u2113_P\u00b2) for 10 M_\u2609",
+      "passed": true,
+      "expected": 1.4490106337369606e+56,
+      "actual": 1.4490106337369604e+56,
+      "relative_error": 1.502961467354797e-16,
+      "message": "S = 1.449011e+56 J/K, k_B A/(4\u2113_P\u00b2) = 1.449011e+56 J/K"
+    },
+    {
+      "name": "\u03b3 = 1/4 exactly for 10 M_\u2609",
+      "passed": true,
+      "expected": 0.25,
+      "actual": 0.24999999999999997,
+      "relative_error": 1.1102230246251565e-16,
+      "message": "\u03b3 = 0.250000000000000 (exact: 0.250000000000000)"
+    },
+    {
+      "name": "S/k_B = A/(4\u2113_P\u00b2) for 10 M_\u2609",
+      "passed": true,
+      "expected": 1.0495141297585125e+79,
+      "actual": 1.0495141297585123e+79,
+      "relative_error": 1.5678727047722816e-16,
+      "message": "S/k_B = 1.049514e+79, A/(4\u2113_P\u00b2) = 1.049514e+79"
+    },
+    {
+      "name": "S = (4\u03c0Gk_B/\u210f)M\u00b2 for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 1.4490106337369605e+66,
+      "actual": 1.4490106337369605e+66,
+      "relative_error": 0.0,
+      "message": "S = 1.449011e+66 J/K"
+    },
+    {
+      "name": "S = (k_B c\u00b3/4G\u210f)A for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 1.4490106337369602e+66,
+      "actual": 1.4490106337369605e+66,
+      "relative_error": 2.5820681397748095e-16,
+      "message": "S = 1.449011e+66 J/K, (k_B c\u00b3/4G\u210f)A = 1.449011e+66 J/K"
+    },
+    {
+      "name": "S = k_B A/(4\u2113_P\u00b2) for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 1.4490106337369603e+66,
+      "actual": 1.4490106337369605e+66,
+      "relative_error": 1.2910340698874048e-16,
+      "message": "S = 1.449011e+66 J/K, k_B A/(4\u2113_P\u00b2) = 1.449011e+66 J/K"
+    },
+    {
+      "name": "\u03b3 = 1/4 exactly for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 0.25,
+      "actual": 0.25000000000000006,
+      "relative_error": 2.220446049250313e-16,
+      "message": "\u03b3 = 0.250000000000000 (exact: 0.250000000000000)"
+    },
+    {
+      "name": "S/k_B = A/(4\u2113_P\u00b2) for 10\u2076 M_\u2609 (SMBH)",
+      "passed": true,
+      "expected": 1.0495141297585123e+89,
+      "actual": 1.0495141297585124e+89,
+      "relative_error": 1.3467923982576024e-16,
+      "message": "S/k_B = 1.049514e+89, A/(4\u2113_P\u00b2) = 1.049514e+89"
+    },
+    {
+      "name": "2\u03c0 factor from thermal periodicity",
+      "passed": true,
+      "expected": 6.283185307179586,
+      "actual": 6.283185307179586,
+      "relative_error": 0.0,
+      "message": "2\u03c0 arises from thermal periodicity \u03b2 ~ 1/T in Euclidean QFT"
+    },
+    {
+      "name": "8\u03c0 factor from Einstein equations",
+      "passed": true,
+      "expected": 25.132741228718345,
+      "actual": 25.132741228718345,
+      "relative_error": 0.0,
+      "message": "8\u03c0 arises from Einstein field equations R_\u03bc\u03bd - (1/2)g_\u03bc\u03bd R = 8\u03c0G T_\u03bc\u03bd"
+    },
+    {
+      "name": "\u03b3 = 2\u03c0/8\u03c0 = 1/4 explicitly",
+      "passed": true,
+      "expected": 0.25,
+      "actual": 0.25,
+      "relative_error": 0.0,
+      "message": "\u03b3 = 2\u03c0/8\u03c0 = 0.250000000000000 = 1/4 exactly"
+    },
+    {
+      "name": "Factor of 4 in \u03ba = c\u00b3/(4GM) gives \u03b3 = 1/4",
+      "passed": true,
+      "expected": 0.25,
+      "actual": 0.25,
+      "relative_error": 0.0,
+      "message": "The factor 1/4 in \u03b3 comes from the factor 4 in \u03ba = c\u00b3/(4GM)"
+    },
+    {
+      "name": "Bekenstein-Hawking formula confirmed",
+      "passed": true,
+      "expected": 0.25,
+      "actual": 0.25,
+      "relative_error": 0.0,
+      "message": "S = (k_B/4) \u00d7 (A/\u2113_P\u00b2) is the standard Bekenstein-Hawking result"
+    },
+    {
+      "name": "Entropy scaling S \u221d M\u00b2",
+      "passed": true,
+      "expected": 100.0,
+      "actual": 100.0,
+      "relative_error": 0.0,
+      "message": "S(10M_\u2609)/S(M_\u2609) = 100.000000 (expected: 100.000000)"
+    },
+    {
+      "name": "S/k_B = 4\u03c0 at M = M_Planck",
+      "passed": true,
+      "expected": 12.566370614359172,
+      "actual": 12.56637061435917,
+      "relative_error": 1.4135798584282297e-16,
+      "message": "S/k_B = 12.566371 (expected: 12.566371)"
+    },
+    {
+      "name": "A = 16\u03c0\u2113_P\u00b2 at M = M_Planck",
+      "passed": true,
+      "expected": 1.3130752979335632e-68,
+      "actual": 1.3130752979335632e-68,
+      "relative_error": 0.0,
+      "message": "A = 1.313075e-68 m\u00b2 (expected: 1.313075e-68 m\u00b2)"
+    }
+  ]
+}

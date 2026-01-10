@@ -1,0 +1,54 @@
+{
+  "analysis": "Torsion-Axion Mixing",
+  "theorem": "5.3.1",
+  "date": "2025-12-15T08:52:13.284597",
+  "sections": {
+    "mixing_lagrangian": {
+      "loop_induced_mixing": 0.006332573977646111,
+      "anomaly_induced_mixing": "O(1)",
+      "naturalness_expectation": "\u03bb_mix ~ 1"
+    },
+    "mass_matrix": {
+      "cosmological_m_T_eV": 1e-33,
+      "QCD_m_T_eV": 200000000.0,
+      "typical_mixing_angle_degrees": -2.8647889756541165e-13
+    },
+    "phenomenology": {
+      "g_axion_photon_GeV": "~10^{-15}",
+      "g_torsion_photon_suppression": "~10^{-48}",
+      "observable_effect": "NONE - completely negligible"
+    },
+    "axion_constraints": {
+      "axion_experiments_sensitivity_GeV": "10^{-10} to 10^{-15}",
+      "torsion_photon_coupling_GeV": "~10^{-63}",
+      "gap_orders_of_magnitude": 48,
+      "conclusion": "Axion experiments cannot constrain torsion"
+    },
+    "cosmological": {
+      "axion_mass_eV": 1e-05,
+      "axion_field_amplitude_GeV": 7.745966692414834e+16,
+      "torsion_from_axion_DM_m_inv": 2.6299934835114035e-21,
+      "vacuum_torsion_m_inv": 1e-60,
+      "enhancement_factor": 2.6299934835114034e+39
+    },
+    "conclusions": {
+      "mixing_exists": true,
+      "mixing_observable": false,
+      "suppression_reason": "Gravitational weakness (\u03ba_T ~ G/c\u2074)",
+      "axion_searches_affected": false,
+      "framework_consistency": "VERIFIED",
+      "implications": [
+        "Torsion-axion mixing exists but is phenomenologically irrelevant",
+        "Axion experiments cannot constrain torsion",
+        "Framework is consistent with axion physics",
+        "No modifications to standard axion phenomenology needed"
+      ]
+    }
+  },
+  "final_verdict": {
+    "mixing_exists": true,
+    "phenomenological_impact": "NONE",
+    "suppression_orders": 48,
+    "framework_status": "VERIFIED - compatible with axion physics"
+  }
+}

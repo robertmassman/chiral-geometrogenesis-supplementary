@@ -1,0 +1,41 @@
+{
+  "theorem": "5.3.1",
+  "analysis": "Torsion-Induced Baryogenesis",
+  "observed_asymmetry": 6.1e-10,
+  "key_findings": {
+    "standard_torsion_mechanism": {
+      "predicted_eta": 2.2991672589478184e+141,
+      "shortfall_factor": 2.6531345104451334e-151,
+      "verdict": "INSUFFICIENT by ~87 orders of magnitude"
+    },
+    "enhanced_scenarios": {
+      "large_vchi": {
+        "enhancement": 1.6524555489457332e+27,
+        "predicted_eta": 3.799271695002674e+168,
+        "verdict": "Still insufficient"
+      },
+      "rapid_phase": {
+        "enhancement": 10000000000.0,
+        "predicted_eta": 2.2991672589478183e+151,
+        "verdict": "Still insufficient"
+      }
+    },
+    "torsion_CP_violation": {
+      "epsilon_CP": 2.2991672589478185e+145,
+      "required": "10\u207b\u2076 to 10\u207b\u00b2",
+      "verdict": "Insufficient for EWBG"
+    },
+    "new_physics_scale": {
+      "M_T_GeV": 0.02643247793743729,
+      "condition": "M_T << M_P needed for successful baryogenesis"
+    }
+  },
+  "physical_conclusions": [
+    "Standard torsion (\u03ba_T = \u03c0G/c\u2074) is too weak for baryogenesis",
+    "Enhancement by ~60-90 orders of magnitude needed",
+    "Torsion cannot be the SOLE source of baryon asymmetry",
+    "Could ASSIST other mechanisms if new physics enhances torsion",
+    "Interesting connection to gravitational baryogenesis",
+    "Framework is CONSISTENT with observed \u03b7_B (predicts negligible contribution)"
+  ]
+}

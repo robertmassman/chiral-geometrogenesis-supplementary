@@ -1,0 +1,172 @@
+{
+  "lemma": "Lemma 0.0.2a",
+  "title": "Confinement and Physical Dimension Constraint",
+  "verification_date": "2026-01-02T06:52:29.612414",
+  "tests": {
+    "affine_independence": [
+      {
+        "N": 2,
+        "expected_dimension": 1,
+        "computed_dimension": "1",
+        "status": "PASS"
+      },
+      {
+        "N": 3,
+        "expected_dimension": 2,
+        "computed_dimension": "2",
+        "status": "PASS"
+      },
+      {
+        "N": 4,
+        "expected_dimension": 3,
+        "computed_dimension": "3",
+        "status": "PASS"
+      },
+      {
+        "N": 5,
+        "expected_dimension": 4,
+        "computed_dimension": "4",
+        "status": "PASS"
+      },
+      {
+        "N": 6,
+        "expected_dimension": 5,
+        "computed_dimension": "5",
+        "status": "PASS"
+      }
+    ],
+    "su_n_compatibility": [
+      {
+        "gauge_group": "SU(2)",
+        "N": 2,
+        "rank": 1,
+        "constraint_D_min": 1,
+        "D_space": 3,
+        "compatible": true,
+        "margin": 2,
+        "status": "PASS"
+      },
+      {
+        "gauge_group": "SU(3)",
+        "N": 3,
+        "rank": 2,
+        "constraint_D_min": 2,
+        "D_space": 3,
+        "compatible": true,
+        "margin": 1,
+        "status": "PASS"
+      },
+      {
+        "gauge_group": "SU(4)",
+        "N": 4,
+        "rank": 3,
+        "constraint_D_min": 3,
+        "D_space": 3,
+        "compatible": true,
+        "margin": 0,
+        "status": "PASS"
+      },
+      {
+        "gauge_group": "SU(5)",
+        "N": 5,
+        "rank": 4,
+        "constraint_D_min": 4,
+        "D_space": 3,
+        "compatible": false,
+        "margin": -1,
+        "status": "EXCLUDED"
+      },
+      {
+        "gauge_group": "SU(6)",
+        "N": 6,
+        "rank": 5,
+        "constraint_D_min": 5,
+        "D_space": 3,
+        "compatible": false,
+        "margin": -2,
+        "status": "EXCLUDED"
+      },
+      {
+        "gauge_group": "SU(10)",
+        "N": 10,
+        "rank": 9,
+        "constraint_D_min": 9,
+        "D_space": 3,
+        "compatible": false,
+        "margin": -6,
+        "status": "EXCLUDED"
+      }
+    ],
+    "su3_weight_space": {
+      "weights": {
+        "R": [
+          0.5,
+          0.2886751345948129
+        ],
+        "G": [
+          -0.5,
+          0.2886751345948129
+        ],
+        "B": [
+          0.0,
+          -0.5773502691896258
+        ]
+      },
+      "weight_sum": [
+        0.0,
+        0.0
+      ],
+      "sum_is_zero": true,
+      "distances": {
+        "d_RG": 1.0,
+        "d_GB": 1.0000000000000002,
+        "d_BR": 1.0000000000000002
+      },
+      "is_equilateral": true,
+      "affine_dimension": "2",
+      "expected_dimension": 2,
+      "dimension_check": "True",
+      "all_checks_pass": "True"
+    },
+    "d_equals_n_plus_1": [
+      {
+        "test": "SU(3) in D=4",
+        "N": 3,
+        "D_predicted": 4,
+        "D_observed": 4,
+        "formula_matches": true,
+        "status": "PASS"
+      },
+      {
+        "test": "Lemma 0.0.2a constraint",
+        "D_space": 3,
+        "constraint_D_min": 2,
+        "satisfies": true,
+        "status": "PASS"
+      }
+    ],
+    "visualization": {
+      "plot_path": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/lemma_0_0_2a_verification.png"
+    },
+    "su5_counterexample": {
+      "gauge_group": "SU(5)",
+      "N": 5,
+      "constraint_D_min": 4,
+      "D_space": 3,
+      "compatible_per_lemma": false,
+      "su5_gut_is_consistent": true,
+      "resolution": "Lemma constraint applies to geometric realization, not general QFT",
+      "notes": [
+        "SU(5) GUT is excluded experimentally by proton decay bounds, not dimensional incompatibility",
+        "The lemma constraint is specific to the Chiral Geometrogenesis geometric framework",
+        "Standard QFT allows any SU(N) in any D >= 4"
+      ]
+    }
+  },
+  "summary": {
+    "total_tests": 14,
+    "passed_tests": 11,
+    "pass_rate": "11/14",
+    "overall_status": "PARTIAL - See verification report for details"
+  }
+}

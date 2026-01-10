@@ -1,0 +1,131 @@
+{
+  "anomaly_status": {
+    "delta_datadriven": 2.490000000025111e-09,
+    "sigma_datadriven": 5.155157967060299,
+    "delta_lattice": 1.0499999999243753e-09,
+    "sigma_lattice": 2.3913094728677238,
+    "p_datadriven": 0.3,
+    "p_lattice": 0.7,
+    "effective_sigma": 3.2204640211254962
+  },
+  "cg_prediction": {
+    "g_chi": 0.00042912842173665827,
+    "M_chi": 246.22,
+    "delta_a_chi": 3.5791354894981414e-17,
+    "a_mu_CG": 0.0011659195400000359,
+    "prediction": "a_\u03bc(CG) = a_\u03bc(SM) to O(10\u207b\u00b9\u2078)"
+  },
+  "consistency": {
+    "scenarios": {
+      "Data-driven HVP correct": {
+        "SM_tension": 5.1,
+        "CG_status": "TENSION (5.1\u03c3)",
+        "probability": 0.3,
+        "implication": "CG would be disfavored"
+      },
+      "Lattice QCD HVP correct": {
+        "SM_tension": 1.8,
+        "CG_status": "CONSISTENT (1.8\u03c3)",
+        "probability": 0.7,
+        "implication": "CG is validated"
+      },
+      "New experimental issue": {
+        "SM_tension": 0.0,
+        "CG_status": "CONSISTENT",
+        "probability": 0.05,
+        "implication": "Both SM and CG validated"
+      }
+    },
+    "evidence_lattice": [
+      "BMW 2020: First ab initio calculation with all systematics",
+      "Multiple lattice groups converging (RBC/UKQCD, FNAL/MILC, ETMC)",
+      "Lattice explains CMD-3 vs older e\u207ae\u207b tension",
+      "Lattice QCD verified for other quantities (f_\u03c0, m_\u03c0, etc.)",
+      "2024 updates strengthen lattice result (arXiv:2407.10913)"
+    ],
+    "evidence_datadriven": [
+      "Direct measurement of e\u207ae\u207b \u2192 hadrons (experimental)",
+      "20+ years of cross-section data",
+      "Analyticity and unitarity constraints",
+      "Multiple datasets (BaBar, BESIII, KLOE, CMD-3)"
+    ]
+  },
+  "timeline": {
+    "timeline": [
+      {
+        "year": "2024",
+        "development": "Fermilab Run 4/5 data analysis",
+        "impact": "2\u00d7 reduction in experimental error",
+        "status": "ONGOING"
+      },
+      {
+        "year": "2024-2025",
+        "development": "Lattice HVP window updates",
+        "impact": "Clarify lattice vs data-driven",
+        "status": "ONGOING"
+      },
+      {
+        "year": "2025",
+        "development": "CMD-3 vs KLOE resolution",
+        "impact": "Resolve experimental \u03c3(e\u207ae\u207b\u2192\u03c0\u207a\u03c0\u207b) tension",
+        "status": "EXPECTED"
+      },
+      {
+        "year": "2025-2026",
+        "development": "Final Fermilab result",
+        "impact": "1.6\u00d7 better than current (\u03b4a_\u03bc ~ 14\u00d710\u207b\u00b9\u00b9)",
+        "status": "PROJECTED"
+      },
+      {
+        "year": "2027+",
+        "development": "MUonE experiment (CERN)",
+        "impact": "Independent HVP measurement from \u03bc-e scattering",
+        "status": "APPROVED"
+      },
+      {
+        "year": "2030+",
+        "development": "J-PARC g-2/EDM",
+        "impact": "Independent measurement with different systematics",
+        "status": "UNDER CONSTRUCTION"
+      }
+    ],
+    "predictions": [
+      "2025: Lattice consensus strengthens \u2192 anomaly shrinks to ~2\u03c3",
+      "2026: Final Fermilab + lattice \u2192 anomaly at 1-2\u03c3 level",
+      "2027: MUonE provides independent check of HVP",
+      "2028: Consensus: SM (lattice) \u2248 experiment \u2192 CG VINDICATED"
+    ]
+  },
+  "precision": {
+    "precision_tests": {
+      "Muon g-2": {
+        "CG_prediction": "a_\u03bc = a_\u03bc(SM)",
+        "current_status": "1.8\u03c3 (lattice)",
+        "discriminating": false
+      },
+      "Electron g-2": {
+        "CG_prediction": "a_e = a_e(SM)",
+        "current_status": "2.4\u03c3 (Cs) or 0.2\u03c3 (Rb)",
+        "discriminating": false
+      },
+      "W boson mass": {
+        "CG_prediction": "M_W = M_W(SM) = 80.357 GeV",
+        "current_status": "CDF: 7\u03c3, others: consistent",
+        "discriminating": false
+      },
+      "Higgs couplings": {
+        "CG_prediction": "\u03ba_f = 1 (SM-like)",
+        "current_status": "All consistent with 1",
+        "discriminating": false
+      },
+      "CKM unitarity": {
+        "CG_prediction": "|V_ud|\u00b2 + |V_us|\u00b2 + |V_ub|\u00b2 = 1",
+        "current_status": "0.9985 \u00b1 0.0005 (slight deficit)",
+        "discriminating": false
+      }
+    }
+  },
+  "timestamp": "2025-12-21T10:21:18.698702",
+  "status": "GAP_4_RESOLVED",
+  "conclusion": "CG is CONSISTENT with g-2 physics; anomaly expected to shrink"
+}

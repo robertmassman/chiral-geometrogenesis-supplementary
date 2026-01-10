@@ -1,0 +1,14 @@
+{
+  "theorem": "3.1.2",
+  "title": "Mass Hierarchy Pattern from Geometry",
+  "date": "2025-12-14T08:08:08.508354",
+  "tests": [
+    {
+      "name": "Breakthrough formula \u03bb",
+      "expected": 0.22497,
+      "computed": 0.2245139882897927,
+      "difference": 0.0004560117102073158,
+      "relative_diff": 0.20269889772294788,
+      "tolerance": 2.0,
+      "unit": "",
+      "passed": 

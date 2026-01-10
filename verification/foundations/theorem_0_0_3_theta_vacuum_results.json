@@ -1,0 +1,37 @@
+{
+  "theorem": "0.0.3",
+  "topic": "Theta-Vacuum Existence",
+  "key_results": {
+    "homotopy_group": "\u03c0\u2083(SU(3)) = \u2124",
+    "topological_sectors": "Labeled by n \u2208 \u2124 (winding number)",
+    "theta_vacuum_form": "|\u03b8\u27e9 = \u03a3_n exp(in\u03b8)|n\u27e9",
+    "theta_term": "(\u03b8g\u00b2/32\u03c0\u00b2) Tr(F_\u03bc\u03bd F\u0303^\u03bc\u03bd)",
+    "theta_range": "[0, 2\u03c0)",
+    "instanton_action": "8\u03c0\u00b2/g\u00b2"
+  },
+  "what_is_geometric": [
+    "\u03c0\u2083(SU(3)) = \u2124 (topological theorem)",
+    "Existence of topological sectors |n\u27e9",
+    "\u03b8-vacuum superposition structure",
+    "Form of \u03b8-term in Lagrangian",
+    "Integer quantization of Q",
+    "\u03b8 \u2208 [0, 2\u03c0) parametrization"
+  ],
+  "what_requires_dynamics": [
+    "Actual value of \u03b8 (< 10^-10)",
+    "Why \u03b8 is small (Strong CP problem)",
+    "Instanton size distribution",
+    "Topological susceptibility \u03c7_top"
+  ],
+  "experimental_constraint": {
+    "neutron_edm_bound": "|d_n| < 3\u00d710^-26 e\u00b7cm",
+    "theta_bound": "|\u03b8| < 10^-10"
+  },
+  "derivation_chain": [
+    "D = 4 (from observers)",
+    "N = 3 (from D = N + 1)",
+    "\u03c0\u2083(SU(3)) = \u2124 (topology)",
+    "\u03b8-vacuum exists (forced)"
+  ],
+  "conclusion": "\u03b8-vacuum EXISTENCE is topologically determined by \u03c0\u2083(SU(3)) = \u2124. Only the VALUE of \u03b8 requires phenomenological input."
+}

@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-01-09T15:02:16.725150",
+  "proposition": "0.0.17n",
+  "title": "P4 Fermion Mass Comparison",
+  "tests_passed": 7,
+  "total_tests": 7,
+  "derived_parameters": {
+    "R_stella_fm": 0.44847,
+    "sqrt_sigma_MeV": 439.9402412647446,
+    "sigma_GeV2": 193.5474158840817,
+    "omega_MeV": 219.9701206323723,
+    "f_pi_MeV": 87.98804825294891,
+    "v_chi_MeV": 87.98804825294891,
+    "Lambda_QCD_MeV": 1105.6904239806743,
+    "g_chi": 1.3962634015954636,
+    "base_mass_qcd_MeV": 24.441124514708033,
+    "denominator_f_pi": 5,
+    "N_c": 3,
+    "N_f": 2
+  },
+  "conclusions": {
+    "light_quarks_verified": true,
+    "gatto_relation_verified": true,
+    "heavy_quarks_consistent": true,
+    "leptons_verified": true,
+    "parameter_reduction_percent": 45
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "timestamp": "2025-12-15T12:46:31.908771",
+  "definition": "Definition 0.0.0 (Minimal Geometric Realization)",
+  "verification_type": "strengthening",
+  "confinement_dimension": {
+    "SU(2)": {
+      "rank": 1,
+      "d_weight": 1,
+      "d_embed": 2,
+      "D_spacetime": 3,
+      "flux_tube_possible": true,
+      "minimal_extension": true,
+      "formula_satisfied": true
+    },
+    "SU(3)": {
+      "rank": 2,
+      "d_weight": 2,
+      "d_embed": 3,
+      "D_spacetime": 4,
+      "flux_tube_possible": true,
+      "minimal_extension": true,
+      "formula_satisfied": true
+    },
+    "SU(4)": {
+      "rank": 3,
+      "d_weight": 3,
+      "d_embed": 4,
+      "D_spacetime": 5,
+      "flux_tube_possible": true,
+      "minimal_extension": true,
+      "formula_satisfied": true
+    },
+    "SU(5)": {
+      "rank": 4,
+      "d_weight": 4,
+      "d_embed": 5,
+      "D_spacetime": 6,
+      "flux_tube_possible": true,
+      "minimal_extension": true,
+      "formula_satisfied": true
+    }
+  },
+  "edge_gluon_correspondence": {
+    "roots": {
+      "positive_roots": [
+        [
+          1,
+          0
+        ],
+        [
+          -0.5,
+          0.8660254037844386
+        ],
+        [
+          0.5,
+          0.8660254037844386
+        ]
+      ],
+      "negative_roots": [
+        [
+          -1,
+          0
+        ],
+        [
+          0.5,
+          -0.8660254037844386
+        ],
+        [
+          -0.5,
+          -0.8660254037844386
+        ]
+      ],
+      "total_roots": 6
+    },
+    "edges": {
+      "within_fund_triangle": 3,
+      "within_antifund_triangle": 3,
+      "apex_to_fund": 3,
+      "apex_to_antifund": 3,
+      "total_edges": 12
+    },
+    "gluons": {
+      "adjoint_dimension": 8,
+      "charged_gluons": 6,
+      "neutral_gluons": 2
+    },
+    "correspondence": {
+      "within_triangle_edges_to_charged_gluons": true,
+      "explanation": "6 within-triangle edges correspond to 6 charged gluons (6 roots). 2 neutral gluons correspond to weight coordinates (diagonal generators)."
+    }
+  },
+  "face_interpretation": {
+    "faces": {
+      "T_plus": [
+        {
+          "vertices": [
+            "R",
+            "G",
+            "B"
+          ],
+          "type": "baryon",
+          "color_neutral": true
+        },
+        {
+          "vertices": [
+            "R",
+            "G",
+            "apex_up"
+          ],
+          "type": "intermediate",
+          "color_neutral": false
+        },
+        {
+          "vertices": [
+            "G",
+            "B",
+            "apex_up"
+          ],
+          "type": "intermediate",
+          "color_neutral": false
+        },
+        {
+          "vertices": [
+            "B",
+            "R",
+            "apex_up"
+          ],
+          "type": "intermediate",
+          "color_neutral": false
+        }
+      ],
+      "T_minus": [
+        {
+          "vertices": [
+            "Rbar",
+            "Gbar",
+            "Bbar"
+          ],
+          "type": "antibaryon",
+          "color_neutral": true
+        },
+        {
+          "vertices": [
+            "Rbar",
+            "Gbar",
+            "apex_down"
+          ],
+          "type": "intermediate",
+          "color_neutral": false
+        },
+        {
+          "vertices": [
+            "Gbar",
+            "Bbar",
+            "apex_down"
+          ],
+          "type": "intermediate",
+          "color_neutral": false
+        },
+        {
+          "vertices": [
+            "Bbar",
+            "Rbar",
+            "apex_down"
+          ],
+          "type": "intermediate",
+          "color_neutral": false
+        }
+      ],
+      "total_faces": 8
+    },
+    "correspondence": {
+      "faces_equal_gluons": true,
+      "baryon_faces": 2,
+      "intermediate_faces": 6
+    },
+    "physical_interpretation": {
+      "baryon_face_RGB": "Color singlet epsilon_RGB - proton/neutron",
+      "antibaryon_face": "Color singlet - antiproton/antineutron",
+      "meson_path": "R -> apex -> Rbar (through singlet state)"
+    }
+  },
+  "apex_position": {
+    "standard_stella": {
+      "T_plus_vertices": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "T_minus_vertices": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "T_plus_regularity": {
+        "edge_lengths": [
+          2.8284271247461903,
+          2.8284271247461903,
+          2.8284271247461903,
+          2.8284271247461903,
+          2.8284271247461903,
+          2.8284271247461903
+        ],
+        "all_equal": true,
+        "edge_length": 2.8284271247461903
+      },
+      "T_minus_regularity": {
+        "edge_lengths": [
+          2.8284271247461903,
+          2.8284271247461903,
+          2.8284271247461903,
+          2.8284271247461903,
+          2.8284271247461903,
+          2.8284271247461903
+        ],
+        "all_equal": true,
+        "edge_length": 2.8284271247461903
+      },
+      "T_plus_centroid": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "T_minus_centroid": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shared_centroid": true
+    },
+    "weight_space_embedding": {
+      "base_side_length": 1.0,
+      "tetrahedron_height": 0.816496580927726,
+      "apex_height_from_centroid": 0.6123724356957945,
+      "height_ratio": 0.75
+    },
+    "uniqueness": {
+      "statement": "Given a regular tetrahedron base with centroid at origin, the apex position is uniquely determined by the regularity constraint.",
+      "verified": true
+    }
+  },
+  "summary": {
+    "all_checks_passed": true,
+    "checks": {
+      "Confinement dimension formula": true,
+      "Edge-gluon correspondence": true,
+      "Face-gluon correspondence": true,
+      "Apex position uniqueness": true,
+      "Tetrahedra regularity": true
+    }
+  }
+}

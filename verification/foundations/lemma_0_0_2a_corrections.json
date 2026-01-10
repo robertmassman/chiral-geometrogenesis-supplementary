@@ -1,0 +1,75 @@
+{
+  "date": "2026-01-02T07:08:23.237216",
+  "corrections": {
+    "issue_1": {
+      "title": "Color Superposition States",
+      "original": "A quark is definitively red, green, OR blue\u2014not a continuous superposition",
+      "corrected": "Color quantum numbers are discrete {R, G, B}, but quarks in hadrons exist in quantum superpositions. Only color-singlet combinations are observable asymptotically.",
+      "physics": "Meson = (|RR\u0304\u27e9+|G\u1e20\u27e9+|BB\u0304\u27e9)/\u221a3; Baryon = antisymmetric \u03b5^{ijk} contraction",
+      "status": "CORRECTED"
+    },
+    "issue_2": {
+      "title": "Affine Independence Theorem",
+      "original": "N distinguishable points require D >= N-1",
+      "corrected": "N affinely independent points (forming an (N-1)-simplex) require exactly N-1 dimensions. This is stronger than mere distinguishability.",
+      "mathematics": "Affine independence \u2260 distinguishability. Counter-example: 100 points on a line are distinguishable in D=1.",
+      "status": "CORRECTED"
+    },
+    "issue_3": {
+      "title": "Framework Scope",
+      "original": "Universal physical constraint D_space >= N-1",
+      "corrected": "Framework-specific geometric realization constraint. Standard QFT allows any SU(N) in any D >= 4.",
+      "example": "SU(5) GUT is mathematically consistent in D=4, excluded by experiment not dimension.",
+      "status": "CORRECTED"
+    },
+    "issue_4": {
+      "title": "t Hooft Citation Date",
+      "original": "'t Hooft (1980)",
+      "corrected": "'t Hooft (1978). Nucl. Phys. B 138, 1-25",
+      "status": "CORRECTED"
+    },
+    "issue_5": {
+      "title": "Missing References",
+      "additions": [
+        "FLAG Review 2024 (arXiv:2411.04268) \u2014 Lattice QCD averages",
+        "PDG 2024 \u2014 QCD and lattice reviews",
+        "Gr\u00fcnbaum, B. \"Convex Polytopes\" 2nd ed. (2003) \u2014 Simplex geometry",
+        "Coxeter, H.S.M. \"Regular Polytopes\" 3rd ed. (1973) \u2014 Classical reference"
+      ],
+      "status": "TO BE ADDED"
+    }
+  },
+  "affine_results": [
+    {
+      "N": 2,
+      "affine_dim": 1,
+      "expected": 1,
+      "correct": true
+    },
+    {
+      "N": 3,
+      "affine_dim": 2,
+      "expected": 2,
+      "correct": true
+    },
+    {
+      "N": 4,
+      "affine_dim": 3,
+      "expected": 3,
+      "correct": true
+    },
+    {
+      "N": 5,
+      "affine_dim": 4,
+      "expected": 4,
+      "correct": true
+    },
+    {
+      "N": 6,
+      "affine_dim": 5,
+      "expected": 5,
+      "correct": true
+    }
+  ],
+  "weyl_faithful": true
+}

@@ -1,0 +1,22 @@
+{
+  "theorem": "5.3.2",
+  "analysis": "Tulczyjew-Dixon Condition Preservation",
+  "date": "2025-12-15",
+  "spin_supplementary_condition": "S^{\u03bc\u03bd} p_\u03bd = 0",
+  "verification": {
+    "analytic_proof": {
+      "term_A": "\u03c4^{\u03bc\u03bd}_{torsion} p_\u03bd vanishes due to SSC",
+      "term_B": "S^{\u03bc\u03bd} F_{\u03bd,torsion} vanishes due to SSC",
+      "conclusion": "A + B = 0 to leading order"
+    },
+    "numerical_check": {
+      "relative_deviation": 5.817118084500249e-47,
+      "preservation_verified": true
+    },
+    "theoretical_bound": {
+      "violation_rate_bound": 3.6781949114327743e-75,
+      "violation_time_scale_years": 2.723693017251184e+41
+    }
+  },
+  "conclusion": "The Tulczyjew-Dixon spin supplementary condition is preserved under torsion-modified MPD equations. The framework is self-consistent."
+}

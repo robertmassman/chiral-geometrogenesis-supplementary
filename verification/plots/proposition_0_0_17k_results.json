@@ -1,0 +1,140 @@
+[
+  {
+    "test": "Main formula f_\u03c0 = \u221a\u03c3/(N_c + N_f)",
+    "sqrt_sigma_derived_MeV": 440.00044596071086,
+    "sqrt_sigma_observed_MeV": 440.0,
+    "N_c": 3,
+    "N_f": 2,
+    "denominator": 5,
+    "f_pi_predicted_MeV": 88.00008919214217,
+    "f_pi_from_observed_sigma_MeV": 88.0,
+    "f_pi_observed_MeV": 92.1,
+    "ratio_to_observed": 0.9554841388940518,
+    "agreement_percent": 95.54841388940518
+  },
+  {
+    "test": "EFT cutoff \u039b = 4\u03c0f_\u03c0",
+    "f_pi_predicted_MeV": 88.00008919214217,
+    "f_pi_observed_MeV": 92.1,
+    "Lambda_predicted_GeV": 1.1058417348851215,
+    "Lambda_from_observed_GeV": 1.1573627335824797,
+    "Lambda_ratio": 0.9554841388940518,
+    "Lambda_above_m_rho": true
+  },
+  {
+    "test": "Dimensionless ratio f_\u03c0/\u221a\u03c3",
+    "ratio_observed": 0.2093181818181818,
+    "ratio_predicted": 0.2,
+    "agreement": 0.955483170466884,
+    "agreement_percent": 95.5483170466884,
+    "alternative_ratios": {
+      "1/(N_c+N_f)": 0.2,
+      "1/sqrt(2*N_c)": 0.4082482904638631,
+      "1/(2*sqrt(N_c))": 0.2886751345948129,
+      "pi/(4*sqrt(3))": 0.45344984105855446,
+      "1/sqrt(4*pi*N_c)": 0.16286750396763996,
+      "sqrt(N_c)/(4*pi)": 0.13783222385544802
+    },
+    "best_match": [
+      "1/(N_c+N_f)",
+      0.2
+    ]
+  },
+  {
+    "test": "Scale hierarchy",
+    "scales_MeV": {
+      "f_\u03c0": 88.00008919214217,
+      "\u039b_QCD": 210.0,
+      "\u221a\u03c3": 440.00044596071086,
+      "\u039b_\u03c7": 1105.8417348851215
+    },
+    "hierarchy_ordered": true,
+    "ratios": {
+      "\u039b_QCD/f_\u03c0": 2.386361217674216,
+      "\u221a\u03c3/\u039b_QCD": 2.095240218860528,
+      "\u039b_\u03c7/\u221a\u03c3": 2.513274122871834
+    }
+  },
+  {
+    "test": "Sensitivity to N_c, N_f",
+    "combinations": [
+      {
+        "N_c": 3,
+        "N_f": 2,
+        "label": "Physical (u,d)",
+        "f_pi_MeV": 88.0,
+        "ratio_to_observed": 0.9554831704668839,
+        "agreement_percent": 95.5483170466884
+      },
+      {
+        "N_c": 3,
+        "N_f": 3,
+        "label": "Three light (u,d,s)",
+        "f_pi_MeV": 73.33333333333333,
+        "ratio_to_observed": 0.7962359753890699,
+        "agreement_percent": 79.62359753890699
+      },
+      {
+        "N_c": 3,
+        "N_f": 2.1,
+        "label": "Effective (partial s)",
+        "f_pi_MeV": 86.27450980392157,
+        "ratio_to_observed": 0.9367482063400823,
+        "agreement_percent": 93.67482063400823
+      },
+      {
+        "N_c": 2,
+        "N_f": 2,
+        "label": "Large-N alternative",
+        "f_pi_MeV": 110.0,
+        "ratio_to_observed": 1.1943539630836049,
+        "agreement_percent": 83.72727272727272
+      },
+      {
+        "N_c": 4,
+        "N_f": 2,
+        "label": "N_c = 4",
+        "f_pi_MeV": 73.33333333333333,
+        "ratio_to_observed": 0.7962359753890699,
+        "agreement_percent": 79.62359753890699
+      }
+    ],
+    "best_match": {
+      "N_c": 3,
+      "N_f": 2,
+      "label": "Physical (u,d)",
+      "f_pi_MeV": 88.0,
+      "ratio_to_observed": 0.9554831704668839,
+      "agreement_percent": 95.5483170466884
+    }
+  },
+  {
+    "test": "Dimensional analysis",
+    "sqrt_sigma_dimension": "[MeV]",
+    "f_pi_dimension": "[MeV]",
+    "Lambda_dimension": "[MeV]",
+    "f_pi_R_dimensionless": 0.19999999999999998,
+    "expected_f_pi_R": 0.2,
+    "match": true
+  },
+  {
+    "test": "Internal frequency \u03c9 consistency",
+    "omega_MeV": 220.00022298035543,
+    "Lambda_QCD_MeV": 210.0,
+    "ratio_omega_to_Lambda_QCD": 1.047620109430264,
+    "2omega_MeV": 440.00044596071086,
+    "sqrt_sigma_MeV": 440.00044596071086,
+    "2omega_to_sqrt_sigma": 1.0
+  },
+  {
+    "test": "Self-consistency cycle",
+    "R_input_fm": 0.44847,
+    "sqrt_sigma_MeV": 440.00044596071086,
+    "f_pi_MeV": 88.00008919214217,
+    "Lambda_MeV": 1105.8417348851215,
+    "R_recovered_fm": 0.44847000000000004,
+    "R_from_sigma_fm": 0.44847,
+    "recovery_ratio": 1.0000000000000002,
+    "sigma_recovery_ratio": 1.0
+  }
+]

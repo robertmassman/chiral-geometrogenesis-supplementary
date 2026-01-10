@@ -1,0 +1,84 @@
+{
+  "sterile_neutrino": {
+    "dirac_mass_eV": 1726143957.149613,
+    "eta_suppression": 0.05613476283413375,
+    "m_s_range_keV": [
+      1.0,
+      50.0
+    ],
+    "m_s_3p5keV": 7.0,
+    "sin2_2theta_naive": 60807611444.98214,
+    "sin2_2theta_xray_bound": 1e-10,
+    "sin2_2theta_CG": 191611569.69798633,
+    "xray_status": "TENSION",
+    "Omega_s_h2": 1916115696979863.2,
+    "sin2_required": 1.2e-08,
+    "f_DM_sterile": 1.0,
+    "viability": "EXCLUDED by X-ray bounds"
+  },
+  "T2_solitons": {
+    "M_soliton_Q1_GeV": 1.1256243035953153,
+    "M_DM_T2_GeV": 1.1256243035953153,
+    "sigma_grav_GeV2": 5.7006485496607315e-77,
+    "sigma_grav_cm2": 2.219479074196582e-104,
+    "epsilon_T2_assumed": 1e-10,
+    "Omega_DM_T2": 0.010000215916802732,
+    "epsilon_needed": 2.699941703721977e-09,
+    "viability": "POSSIBLE - requires \u2124\u2082 asymmetry mechanism"
+  },
+  "W_condensate": {
+    "vertices": {
+      "R": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "G": [
+        0.5773502691896258,
+        -0.5773502691896258,
+        -0.5773502691896258
+      ],
+      "B": [
+        -0.5773502691896258,
+        0.5773502691896258,
+        -0.5773502691896258
+      ],
+      "W": [
+        -0.5773502691896258,
+        -0.5773502691896258,
+        0.5773502691896258
+      ]
+    },
+    "Omega_W": 3.141592653589793,
+    "v_W_scenarios": {
+      "QCD-like": 0.092,
+      "EW-like": 246.0,
+      "Geometric suppression": 0.00092,
+      "GUT-suppressed": 2.46e-10
+    },
+    "W_soliton_masses": {
+      "QCD-like": 1.089604325880265,
+      "EW-like": 2913.5072192015787,
+      "Geometric suppression": 0.01089604325880265,
+      "GUT-suppressed": 2.9135072192015782e-09
+    },
+    "lambda_HW": 0.0001,
+    "delta_m_sq": 3288.913043478261,
+    "viability": "PROMISING - natural hidden sector"
+  },
+  "summary": {
+    "recommended_candidate": "W_condensate",
+    "priority_order": [
+      "W_condensate",
+      "T2_solitons",
+      "sterile_neutrino"
+    ],
+    "next_steps": [
+      "Develop W field Lagrangian extension",
+      "Calculate W phase relationship to RGB",
+      "Derive v_W from CG consistency conditions",
+      "Compute relic abundance for W solitons",
+      "Determine detection signatures"
+    ]
+  }
+}

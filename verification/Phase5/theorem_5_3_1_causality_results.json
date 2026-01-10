@@ -1,0 +1,29 @@
+{
+  "theorem": "5.3.1",
+  "analysis": "Torsion Propagation Causality",
+  "conclusions": {
+    "standard_EC_torsion": {
+      "propagating": false,
+      "description": "Algebraic (contact) interaction only"
+    },
+    "chiral_field_torsion": {
+      "propagating": true,
+      "equation": "(\u25a1 + m_\u03c7\u00b2)T^\u03bb_{\u03bc\u03bd}(\u03c7) = 0",
+      "massless_velocity": "c",
+      "massive_group_velocity": "< c",
+      "massive_phase_velocity": "> c (no information)",
+      "signal_velocity": "c",
+      "front_velocity": "c"
+    },
+    "causality_proof": {
+      "method": "Hyperbolicity of Klein-Gordon equation",
+      "key_result": "Retarded Green's function vanishes for s\u00b2 < 0",
+      "conclusion": "Torsion propagation respects causality"
+    }
+  },
+  "verification": {
+    "group_velocity_limit": 0.9999999999999998,
+    "phase_velocity_massless": 1.0,
+    "causality_satisfied": true
+  }
+}

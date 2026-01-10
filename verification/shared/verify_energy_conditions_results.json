@@ -1,0 +1,217 @@
+{
+  "theorem": "Theorem-5.1.1-Energy-Conditions",
+  "date": "2025-12-14T15:11:11.535866",
+  "tests": [
+    {
+      "name": "WEC at center",
+      "passed": true,
+      "expected": "\u03c1 \u2265 0, \u03c1 + p_i \u2265 0",
+      "actual": "\u03c1 = 7.5536, p = [7.5536, 14.1072, 14.1072]",
+      "details": "\u03c1 + p_min = 15.1072"
+    },
+    {
+      "name": "WEC at near_R",
+      "passed": true,
+      "expected": "\u03c1 \u2265 0, \u03c1 + p_i \u2265 0",
+      "actual": "\u03c1 = 24.3602, p = [20.1287, 21.5450, 60.7118]",
+      "details": "\u03c1 + p_min = 44.4889"
+    },
+    {
+      "name": "WEC at between_RG",
+      "passed": true,
+      "expected": "\u03c1 \u2265 0, \u03c1 + p_i \u2265 0",
+      "actual": "\u03c1 = 12.3993, p = [11.5634, 12.1877, 34.2242]",
+      "details": "\u03c1 + p_min = 23.9627"
+    },
+    {
+      "name": "WEC at far_field",
+      "passed": true,
+      "expected": "\u03c1 \u2265 0, \u03c1 + p_i \u2265 0",
+      "actual": "\u03c1 = 0.9996, p = [0.9925, 0.9928, 0.9984]",
+      "details": "\u03c1 + p_min = 1.9921"
+    },
+    {
+      "name": "WEC at random1",
+      "passed": true,
+      "expected": "\u03c1 \u2265 0, \u03c1 + p_i \u2265 0",
+      "actual": "\u03c1 = 3.3430, p = [3.0046, 3.6619, 7.3144]",
+      "details": "\u03c1 + p_min = 6.3476"
+    },
+    {
+      "name": "WEC at random2",
+      "passed": true,
+      "expected": "\u03c1 \u2265 0, \u03c1 + p_i \u2265 0",
+      "actual": "\u03c1 = 28.4991, p = [23.2969, 23.8575, 69.4057]",
+      "details": "\u03c1 + p_min = 51.7960"
+    },
+    {
+      "name": "NEC at center",
+      "passed": true,
+      "expected": "T_\u03bc\u03bd k^\u03bc k^\u03bd \u2265 0 \u2200 null k",
+      "actual": "Satisfied",
+      "details": "Tested 100 random null directions"
+    },
+    {
+      "name": "NEC at near_R",
+      "passed": true,
+      "expected": "T_\u03bc\u03bd k^\u03bc k^\u03bd \u2265 0 \u2200 null k",
+      "actual": "Satisfied",
+      "details": "Tested 100 random null directions"
+    },
+    {
+      "name": "NEC at between_RG",
+      "passed": true,
+      "expected": "T_\u03bc\u03bd k^\u03bc k^\u03bd \u2265 0 \u2200 null k",
+      "actual": "Satisfied",
+      "details": "Tested 100 random null directions"
+    },
+    {
+      "name": "NEC at far_field",
+      "passed": true,
+      "expected": "T_\u03bc\u03bd k^\u03bc k^\u03bd \u2265 0 \u2200 null k",
+      "actual": "Satisfied",
+      "details": "Tested 100 random null directions"
+    },
+    {
+      "name": "NEC at random1",
+      "passed": true,
+      "expected": "T_\u03bc\u03bd k^\u03bc k^\u03bd \u2265 0 \u2200 null k",
+      "actual": "Satisfied",
+      "details": "Tested 100 random null directions"
+    },
+    {
+      "name": "NEC at random2",
+      "passed": true,
+      "expected": "T_\u03bc\u03bd k^\u03bc k^\u03bd \u2265 0 \u2200 null k",
+      "actual": "Satisfied",
+      "details": "Tested 100 random null directions"
+    },
+    {
+      "name": "DEC at center",
+      "passed": false,
+      "expected": "\u03c1 \u2265 |p_i| for all i",
+      "actual": "\u03c1 = 7.5536 < |p| = 14.1072",
+      "details": "\u03c1 = 7.5536, max|p| = 14.1072"
+    },
+    {
+      "name": "DEC at near_R",
+      "passed": false,
+      "expected": "\u03c1 \u2265 |p_i| for all i",
+      "actual": "\u03c1 = 24.3602 < |p| = 60.7118",
+      "details": "\u03c1 = 24.3602, max|p| = 60.7118"
+    },
+    {
+      "name": "DEC at between_RG",
+      "passed": false,
+      "expected": "\u03c1 \u2265 |p_i| for all i",
+      "actual": "\u03c1 = 12.3993 < |p| = 34.2242",
+      "details": "\u03c1 = 12.3993, max|p| = 34.2242"
+    },
+    {
+      "name": "DEC at far_field",
+      "passed": true,
+      "expected": "\u03c1 \u2265 |p_i| for all i",
+      "actual": "All conditions satisfied",
+      "details": "\u03c1 = 0.9996, max|p| = 0.9984"
+    },
+    {
+      "name": "DEC at random1",
+      "passed": false,
+      "expected": "\u03c1 \u2265 |p_i| for all i",
+      "actual": "\u03c1 = 3.3430 < |p| = 3.6619",
+      "details": "\u03c1 = 3.3430, max|p| = 7.3144"
+    },
+    {
+      "name": "DEC at random2",
+      "passed": false,
+      "expected": "\u03c1 \u2265 |p_i| for all i",
+      "actual": "\u03c1 = 28.4991 < |p| = 69.4057",
+      "details": "\u03c1 = 28.4991, max|p| = 69.4057"
+    },
+    {
+      "name": "SEC at center",
+      "passed": true,
+      "expected": "\u03c1 + \u03a3p \u2265 0",
+      "actual": "\u03c1 + \u03a3p = 43.3216",
+      "details": "\u03c1 = 7.5536, \u03a3p = 35.7680"
+    },
+    {
+      "name": "SEC at near_R",
+      "passed": true,
+      "expected": "\u03c1 + \u03a3p \u2265 0",
+      "actual": "\u03c1 + \u03a3p = 126.7457",
+      "details": "\u03c1 = 24.3602, \u03a3p = 102.3856"
+    },
+    {
+      "name": "SEC at between_RG",
+      "passed": true,
+      "expected": "\u03c1 + \u03a3p \u2265 0",
+      "actual": "\u03c1 + \u03a3p = 70.3746",
+      "details": "\u03c1 = 12.3993, \u03a3p = 57.9753"
+    },
+    {
+      "name": "SEC at far_field",
+      "passed": true,
+      "expected": "\u03c1 + \u03a3p \u2265 0",
+      "actual": "\u03c1 + \u03a3p = 3.9833",
+      "details": "\u03c1 = 0.9996, \u03a3p = 2.9837"
+    },
+    {
+      "name": "SEC at random1",
+      "passed": true,
+      "expected": "\u03c1 + \u03a3p \u2265 0",
+      "actual": "\u03c1 + \u03a3p = 17.3238",
+      "details": "\u03c1 = 3.3430, \u03a3p = 13.9809"
+    },
+    {
+      "name": "SEC at random2",
+      "passed": true,
+      "expected": "\u03c1 + \u03a3p \u2265 0",
+      "actual": "\u03c1 + \u03a3p = 145.0591",
+      "details": "\u03c1 = 28.4991, \u03a3p = 116.5601"
+    }
+  ],
+  "summary": {
+    "total_tests": 24,
+    "passed": 19,
+    "failed": 5,
+    "WEC": "6/6 positions",
+    "NEC": "6/6 positions",
+    "DEC": "1/6 positions",
+    "SEC": "6/6 positions",
+    "DEC_flux": "6/6 positions",
+    "DEC_eigenvalue": "1/6 positions (not physically meaningful for anisotropic fields)"
+  },
+  "dec_correct_results": {
+    "center": {
+      "rho": 7.553600000350924,
+      "flux": 1.136868377260831e-15,
+      "passed": "True"
+    },
+    "near_R": {
+      "rho": 24.360152992755662,
+      "flux": 2.448045114440444,
+      "passed": "True"
+    },
+    "between_RG": {
+      "rho": 12.399258842519282,
+      "flux": 4.352080204201228,
+      "passed": "True"
+    },
+    "far_field": {
+      "rho": 0.9995685385921714,
+      "flux": 0.0013838840177906476,
+      "passed": "True"
+    },
+    "random1": {
+      "rho": 3.342955259685502,
+      "flux": 1.1375483450890118,
+      "passed": "True"
+    },
+    "random2": {
+      "rho": 28.499077967879177,
+      "flux": 3.8425477397484356,
+      "passed": "True"
+    }
+  }
+}

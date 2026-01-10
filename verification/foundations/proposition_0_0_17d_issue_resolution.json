@@ -1,0 +1,50 @@
+{
+  "proposition": "0.0.17d",
+  "date": "2026-01-03",
+  "values": {
+    "f_pi_MeV": 92.1,
+    "Lambda_QCD_MeV": 210,
+    "m_rho_MeV": 775.26,
+    "Lambda_chi_MeV": 1157.3,
+    "condensate_MeV": 272,
+    "hierarchy": "f_\u03c0 < \u039b_QCD < m_\u03c1 < \u039b_\u03c7"
+  },
+  "resolutions": {
+    "Issue 1 (CRITICAL)": {
+      "problem": "Banks-Casher relation incorrectly stated in \u00a73.3",
+      "location": "Lines 173-176",
+      "resolution": "Remove incorrect formula. Explain f_\u03c0 defined via axial current. Keep GMOR only.",
+      "status": "READY TO FIX"
+    },
+    "Issue 2 (HIGH)": {
+      "problem": "Scale hierarchy claim wrong (\u039b_QCD < f_\u03c0)",
+      "location": "Line 313",
+      "resolution": "Change to correct ordering: f_\u03c0 < \u039b_QCD < m_\u03c1 < \u039b_\u03c7",
+      "status": "READY TO FIX"
+    },
+    "Issue 3 (MEDIUM)": {
+      "problem": "Missing Manohar-Georgi (1984) NDA reference",
+      "location": "\u00a72.3 and \u00a79",
+      "resolution": "Add: Manohar & Georgi, Nucl. Phys. B 234 (1984) 189-212",
+      "status": "READY TO FIX"
+    },
+    "Issue 4 (MEDIUM)": {
+      "problem": "Condensate scale outdated (250 \u2192 272 MeV)",
+      "location": "Lines 137, 419",
+      "resolution": "Update to -(272 \u00b1 15 MeV)\u00b3 (FLAG 2024)",
+      "status": "READY TO FIX"
+    },
+    "Issue 5 (MINOR)": {
+      "problem": "f_\u03c0 inconsistency (92.2 vs 92.1 MeV)",
+      "location": "Lines 72, 112, 182, 293, 326, 413",
+      "resolution": "Change all to 92.1 MeV (PDG 2024)",
+      "status": "READY TO FIX"
+    },
+    "Issue 6 (FRAMING)": {
+      "problem": "'Derivation from geometry' overstated",
+      "location": "Title, Status, \u00a70, \u00a77",
+      "resolution": "Change 'DERIVED' to 'IDENTIFIED' with geometric connection",
+      "status": "READY TO FIX"
+    }
+  }
+}

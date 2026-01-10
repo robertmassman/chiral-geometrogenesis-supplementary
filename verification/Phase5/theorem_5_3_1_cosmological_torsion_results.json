@@ -1,0 +1,35 @@
+{
+  "theorem": "5.3.1",
+  "analysis": "Cosmological Torsion Evolution",
+  "key_findings": {
+    "inflation_torsion": {
+      "value_m-1": 6.697799067180213e-05,
+      "ratio_to_Hubble": 1.32165646484e-33,
+      "significance": "Negligible compared to Hubble scale"
+    },
+    "torsion_perturbations": {
+      "spectrum": "Blue (n_T ~ 1)",
+      "amplitude": "Suppressed by (\u03ba_T v_\u03c7\u00b2 H)\u00b2"
+    },
+    "GW_chirality": {
+      "Delta_chi": 1.32165646484e-33,
+      "observability": "~34 orders below current sensitivity"
+    },
+    "cosmic_birefringence": {
+      "beta_degrees": 7.479849423873872e-32,
+      "observability": "~28 orders below current sensitivity"
+    },
+    "evolution": {
+      "inflation": "T ~ 10\u207b\u00b9\u2078 m\u207b\u00b9",
+      "today": "T ~ 10\u207b\u2075\u2079 m\u207b\u00b9"
+    }
+  },
+  "physical_conclusions": [
+    "Torsion tracks the Hubble rate: T \u221d H",
+    "Maximum during inflation: T ~ \u03ba_T v_\u03c7\u00b2 H_inf",
+    "Torsion perturbations have blue spectrum",
+    "GW chirality from torsion is unobservably small",
+    "Cosmic birefringence prediction: \u03b2 ~ 10\u207b\u00b2\u2078 degrees",
+    "All cosmological torsion effects are far below current observational reach"
+  ]
+}

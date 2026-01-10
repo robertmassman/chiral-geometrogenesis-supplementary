@@ -1,0 +1,90 @@
+{
+  "results": {
+    "test_1_main_formula": {
+      "test_name": "Main formula \u03c9 = \u221a\u03c3/(N_c - 1)",
+      "sqrt_sigma_MeV": 440.00044596071086,
+      "N_c_minus_1": 2,
+      "omega_predicted_MeV": 220.00022298035543,
+      "omega_expected_MeV": 220.0,
+      "agreement": 1.00000101354707,
+      "passed": true
+    },
+    "test_2_ratio_omega_sqrt_sigma": {
+      "test_name": "Ratio \u03c9/\u221a\u03c3 = 1/(N_c - 1)",
+      "omega_MeV": 220.00022298035543,
+      "sqrt_sigma_MeV": 440.00044596071086,
+      "ratio_computed": 0.5,
+      "ratio_expected": 0.5,
+      "agreement": 1.0,
+      "passed": true
+    },
+    "test_3_scale_hierarchy": {
+      "test_name": "Scale hierarchy f_\u03c0 < \u03c9 < \u221a\u03c3 < \u039b",
+      "f_pi_MeV": 88.00008919214217,
+      "omega_MeV": 220.00022298035543,
+      "sqrt_sigma_MeV": 440.00044596071086,
+      "Lambda_MeV": 1105.8417348851215,
+      "hierarchy_correct": true,
+      "passed": true
+    },
+    "test_4_omega_f_pi_ratio": {
+      "test_name": "Ratio \u03c9/f_\u03c0 from mode counting",
+      "omega_MeV": 220.00022298035543,
+      "f_pi_MeV": 88.00008919214217,
+      "ratio_computed": 2.5,
+      "ratio_expected": 2.5,
+      "agreement": 1.0,
+      "passed": true
+    },
+    "test_5_comparison_Lambda_QCD": {
+      "test_name": "Comparison with \u039b_QCD",
+      "omega_MeV": 220.00022298035543,
+      "Lambda_QCD_MeV": 200.0,
+      "Lambda_QCD_range": [
+        200.0,
+        220.0
+      ],
+      "ratio_omega_Lambda_QCD": 1.1000011149017772,
+      "within_range": false,
+      "agreement_percent": 90.90899876854155,
+      "passed": true
+    },
+    "test_6_dimensional_analysis": {
+      "test_name": "Dimensional analysis",
+      "omega_MeV": 220.00022298035543,
+      "omega_R_dimensionless": 0.5,
+      "expected_omega_R": 0.5,
+      "dimension_correct": true,
+      "passed": true
+    },
+    "test_7_large_Nc_limit": {
+      "test_name": "Large N_c limiting behavior",
+      "N_c_values": [
+        3,
+        6,
+        10,
+        100
+      ],
+      "omega_values": [
+        220.00022298035543,
+        88.00008919214217,
+        48.88893844007899,
+        4.444448949098089
+      ],
+      "decreasing": true,
+      "approaches_zero": true,
+      "passed": true
+    },
+    "test_8_cross_consistency": {
+      "test_name": "Cross-consistency with Theorem 0.2.2",
+      "omega_naive_MeV": 622.2545981278474,
+      "omega_equipartition_MeV": 220.00022298035543,
+      "correction_factor": 2.8284271247461903,
+      "expected_correction": 2.8284271247461903,
+      "passed": true
+    }
+  },
+  "passed_count": 8,
+  "total_count": 8,
+  "all_passed": true
+}

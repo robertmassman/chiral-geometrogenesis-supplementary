@@ -1,0 +1,194 @@
+{
+  "theorem": "Theorem 0.0.2: Euclidean Metric from SU(3)",
+  "date": "2025-12-15",
+  "tests": {
+    "killing_form": {
+      "B_is_diagonal": true,
+      "B_off_diagonal_max": 0.0,
+      "B_diagonal": [
+        12.0,
+        12.0,
+        12.0,
+        12.000000000000004,
+        12.000000000000002,
+        12.000000000000004,
+        12.000000000000004,
+        12.000000000000005
+      ],
+      "expected_diagonal_magnitude": 12.0,
+      "diagonal_magnitude_correct": true,
+      "sign_note": "Raw Tr(ad ad) gives +12; document uses -12 (compact group convention)",
+      "trace_lambda_a_squared": [
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0000000000000004
+      ]
+    },
+    "cartan_metric": {
+      "B_33_raw": 12.0,
+      "B_38_raw": 0.0,
+      "B_88_raw": 12.000000000000005,
+      "sign_convention_note": "Raw Tr(ad_X ad_Y) gives +12. Document uses -12 (standard for compact groups). The physics is unchanged: induced weight space metric is positive-definite.",
+      "B_cartan": [
+        [
+          -12.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          -12.000000000000005
+        ]
+      ],
+      "B_cartan_expected": [
+        [
+          -12.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          -12.0
+        ]
+      ],
+      "B_cartan_matches": true,
+      "B_inverse": [
+        [
+          -0.08333333333333333,
+          -0.0
+        ],
+        [
+          -0.0,
+          -0.0833333333333333
+        ]
+      ],
+      "g_weight_space": [
+        [
+          0.08333333333333333,
+          0.0
+        ],
+        [
+          0.0,
+          0.0833333333333333
+        ]
+      ],
+      "g_weight_eigenvalues": [
+        0.0833333333333333,
+        0.08333333333333333
+      ],
+      "g_weight_positive_definite": true,
+      "g_weight_expected": [
+        [
+          0.08333333333333333,
+          0.0
+        ],
+        [
+          0.0,
+          0.08333333333333333
+        ]
+      ],
+      "g_weight_matches_expected": true
+    },
+    "weight_distances": {
+      "w_R": [
+        0.5,
+        0.2886751345948129
+      ],
+      "w_G": [
+        -0.5,
+        0.2886751345948129
+      ],
+      "w_B": [
+        0.0,
+        -0.5773502691896258
+      ],
+      "weight_sum": [
+        0.0,
+        0.0
+      ],
+      "weights_sum_to_zero": true,
+      "d_RG_euclidean": 1.0,
+      "d_GB_euclidean": 1.0000000000000002,
+      "d_BR_euclidean": 1.0000000000000002,
+      "d_RG_killing": 0.28867513459481287,
+      "d_GB_killing": 0.2886751345948129,
+      "d_BR_killing": 0.2886751345948129,
+      "expected_distance": 0.2886751345948129,
+      "is_equilateral": true,
+      "w_R_minus_w_G": [
+        1.0,
+        0.0
+      ],
+      "|w_R - w_G|": 1.0
+    },
+    "3d_extension": {
+      "2D_metric_signature": [
+        "+",
+        "+"
+      ],
+      "2D_metric_is_flat": true,
+      "3D_extension_is_euclidean": true,
+      "uniqueness_constraints": {
+        "weyl_symmetry_S3": true,
+        "isotropy_radial": true,
+        "positive_definite": true,
+        "result": "Euclidean is unique"
+      }
+    },
+    "root_system": {
+      "alpha_1": [
+        1.0,
+        0.0
+      ],
+      "alpha_2": [
+        -0.5,
+        0.8660254037844388
+      ],
+      "alpha_1_expected": [
+        1,
+        0
+      ],
+      "alpha_2_expected": [
+        -0.5,
+        0.8660254037844386
+      ],
+      "alpha_1_correct": true,
+      "alpha_2_correct": true,
+      "|alpha_1|": 1.0,
+      "|alpha_2|": 1.0000000000000002,
+      "roots_equal_length": true,
+      "|alpha_1|_killing": 0.28867513459481287,
+      "|alpha_1|\u00b2_killing": 0.08333333333333333,
+      "alpha_3": [
+        0.5,
+        0.8660254037844388
+      ],
+      "alpha_3_equals_sum": true,
+      "num_roots": 6,
+      "num_roots_expected": 6
+    },
+    "dimensional_analysis": {
+      "dimension_table": {
+        "Killing_form_B": "[length]^{-2}",
+        "Inverse_B_inv": "[length]^2",
+        "Weight_space_metric": "dimensionless (angles)",
+        "3D_metric": "[length]^2"
+      },
+      "interpretation": {
+        "Killing_form": "Related to gauge coupling, [energy]\u00b2 dimension",
+        "Weight_space": "Quantum numbers, dimensionless",
+        "Physical_metric": "Requires scale (\u03b5, R_stella) from QCD"
+      },
+      "scale_derived": false,
+      "scale_note": "Absolute scale (\u03b5, R_stella) matched to QCD, not derived"
+    }
+  },
+  "summary": {
+    "passed": 10,
+    "total": 10,
+    "all_passed": true
+  }
+}

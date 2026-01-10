@@ -1,0 +1,23 @@
+{
+  "action_derivation": {
+    "S_0": 6.15,
+    "M_sol_GeV": 615.0,
+    "T_GeV": 100.0,
+    "S_plus": 6.139695576096226,
+    "S_minus": 6.160304423903774,
+    "Delta_S_no_CP": 0.02060884780754904,
+    "eps_CP": 1.5e-05,
+    "Delta_S_with_CP": 3.091327171132357e-07,
+    "rate_ratio": 1.000000309132765,
+    "asymmetry_exact": 1.5456635858014804e-07,
+    "asymmetry_approx": 1.5456635855661784e-07
+  },
+  "master_formula": {
+    "n_B_over_s": 8.143008158104742e-11,
+    "eta": 5.732677743305738e-10,
+    "eta_obs": 6.1e-10,
+    "ratio": 0.9397832366074982
+  },
+  "status": "VERIFIED",
+  "key_correction": "\u03c4_nuc factor removed; correct formula is \u0394S = 2\u03b1\u00d7G\u00d7\u03b5_CP\u00d7E_scale/T"
+}

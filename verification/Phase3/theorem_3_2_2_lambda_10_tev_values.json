@@ -1,0 +1,34 @@
+{
+  "Lambda_TeV": 10,
+  "Wilson_coefficients": {
+    "c_H": 0.1293,
+    "c_box": 1.0,
+    "c_HW": 0.4251,
+    "c_HB": 0.1274,
+    "c_T": 0.2312,
+    "c_HZ": 0.3563
+  },
+  "W_mass": {
+    "delta_mW_MeV": 10.3,
+    "mW_CG_GeV": 80.3673
+  },
+  "Z_mass": {
+    "delta_mZ_MeV": 9.8
+  },
+  "rho_parameter": {
+    "delta_rho": 0.00014
+  },
+  "oblique_parameters": {
+    "S": 0.0228,
+    "T": 0.0192,
+    "U": 0.0
+  },
+  "kappa_lambda": {
+    "value": 1.00182,
+    "deviation_percent": 0.182
+  },
+  "form_factors_10TeV": {
+    "E_500GeV": 0.9975,
+    "E_1000GeV": 0.9901
+  }
+}

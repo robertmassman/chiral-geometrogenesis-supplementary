@@ -1,0 +1,55 @@
+{
+  "lambda_3c": {
+    "lambda_self": 0.04303269658712847,
+    "lambda_cross": 0.021516348293564237,
+    "delta_phi": 0.5040650406504065,
+    "phase_correction": 0.12704078260294796,
+    "lambda_3c_derived": 0.008200361177916013,
+    "lambda_3c_range": [
+      0.004100180588958007,
+      0.016400722355832027
+    ],
+    "phenomenological_range": [
+      0.02,
+      0.1
+    ],
+    "status": "DERIVED"
+  },
+  "beta_H": {
+    "T_c": 124.0,
+    "T_star": 122.0,
+    "v_Tc": 148.79999999999998,
+    "S3_over_T": 241.91999999999996,
+    "dS3T_dT": -5.85290322580645,
+    "beta_H_simple": 714.0541935483869,
+    "beta_H_refined": 983.5436065573768,
+    "beta_H_central": 848.7989000528819,
+    "beta_H_range": [
+      357.02709677419347,
+      1967.0872131147537
+    ],
+    "assumed_value": 100,
+    "status": "DERIVED"
+  },
+  "efficiency_factors": {
+    "alpha": 0.44,
+    "v_w": 0.2,
+    "c_s": 0.5773502691896258,
+    "kappa_phi": 0.0028733381019585705,
+    "kappa_sw": 0.10477084700405477,
+    "kappa_turb": 0.010477084700405478,
+    "kappa_heat": 0.8818787301935812,
+    "energy_budget_check": 1.0,
+    "Omega_phi_h2": 2.5190937946205095e-16,
+    "Omega_sw_h2": 5.314729763491558e-12,
+    "Omega_turb_h2": 1.1874485470333512e-10,
+    "Omega_total_h2": 1.2405983637620615e-10,
+    "status": "DERIVED"
+  },
+  "SNR_updated": {
+    "Omega_total": 1.2405983637620615e-10,
+    "SNR_simple": 124668.91411865788,
+    "SNR_refined": 12466.891411865789,
+    "detectable": true
+  }
+}

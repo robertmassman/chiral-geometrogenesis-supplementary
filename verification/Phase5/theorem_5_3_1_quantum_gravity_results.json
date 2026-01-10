@@ -1,0 +1,56 @@
+{
+  "analysis": "Torsion in Quantum Gravity Frameworks",
+  "theorem": "5.3.1",
+  "date": "2025-12-15T09:13:08.852743",
+  "sections": {
+    "LQG": {
+      "Planck_length_m": 1.6164857787771846e-35,
+      "Barbero_Immirzi": 0.2375,
+      "area_gap_m2": 1.3507590369122436e-69,
+      "torsion_quantum": 4.037464188192987e+35,
+      "natural_inclusion": true,
+      "standard_models_exclude": true,
+      "status": "COMPATIBLE with extensions"
+    },
+    "string_theory": {
+      "string_length_m": 1e-34,
+      "H_flux_minimum_per_m": 3.1415926535897794e+35,
+      "captures_antisymmetric_only": true,
+      "misses_trace_torsion": true,
+      "status": "PARTIAL OVERLAP"
+    },
+    "asymptotic_safety": {
+      "critical_exponent": 2.0,
+      "fixed_point_G_star": 0.7,
+      "kappa_T_stable_IR": true,
+      "status": "COMPATIBLE"
+    },
+    "CDT": {
+      "lattice_spacing_l_P": 10.0,
+      "torsion_included": false,
+      "requires_dislocations": true,
+      "status": "REQUIRES EXTENSION"
+    },
+    "quantum_corrections": {
+      "at_1TeV": 4.254618367136596e-17,
+      "at_14TeV": 8.339051999587731e-15,
+      "at_GUT": 4.254618367136597e-09,
+      "negligible_below_Planck": true
+    },
+    "conclusions": {
+      "CG_valid_effective_theory": true,
+      "quantum_corrections_negligible": true,
+      "kappa_T_protected": true,
+      "full_QG_needed_at_Planck": true,
+      "framework_status": "CONSISTENT as low-energy effective theory"
+    }
+  },
+  "final_verdict": {
+    "LQG": "Compatible with extensions",
+    "String": "Partial overlap (H-flux only)",
+    "AS": "Compatible",
+    "CDT": "Requires extension",
+    "quantum_corrections": "Negligible until Planck scale",
+    "framework_status": "CONSISTENT as effective theory"
+  }
+}

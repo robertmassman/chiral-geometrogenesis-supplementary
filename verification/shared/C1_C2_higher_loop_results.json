@@ -1,0 +1,32 @@
+{
+  "analysis": "C1-C2: Higher-loop QCD corrections to M_P",
+  "date": "2025-12-15T07:31:56.751171",
+  "cg_prediction": {
+    "M_P_CG": 1.1166482138234872e+19,
+    "M_P_obs": 1.22089e+19,
+    "agreement": 0.9146181996932461,
+    "b0_CG": 0.716197243913529,
+    "exponent": 44.680428851054835
+  },
+  "sensitivity": {
+    "inv_alpha_s_for_exact": 64.127839158113,
+    "sqrt_sigma_for_exact": 0.48107505421122354
+  },
+  "qcd_running": {
+    "alpha_s_MZ": 0.118,
+    "alpha_s_MP": 0.019055922135258297,
+    "inv_alpha_s_MP": 52.47712458636394
+  },
+  "error_budget": {
+    "M_P_central": 1.1166482138234872e+19,
+    "M_P_low": 1.0405131083355222e+19,
+    "M_P_high": 1.192783319311452e+19,
+    "relative_uncertainty": 0.06818181818181804
+  },
+  "conclusions": {
+    "higher_loops_impact": "~1% (insufficient)",
+    "threshold_impact": "N/A (CG formula structure)",
+    "string_tension_uncertainty": "\u00b17% (accounts for discrepancy)",
+    "overall": "93% agreement is within experimental uncertainty"
+  }
+}

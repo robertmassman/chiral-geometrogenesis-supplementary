@@ -1,0 +1,24 @@
+{
+  "issue": "P1_P2",
+  "title": "Discreteness and Confinement Claims",
+  "date": "2025-12-30",
+  "problems_identified": {
+    "P1": "Conflates discrete color labels with discrete field configurations",
+    "P2": "Incorrectly claims confinement requires discrete geometry"
+  },
+  "corrections": {
+    "discrete_aspects": [
+      "color labels",
+      "representation structure",
+      "bound state spectrum"
+    ],
+    "continuous_aspects": [
+      "gauge fields",
+      "field configurations",
+      "fiber bundle structure"
+    ],
+    "fiber_bundles_describe_confinement": true,
+    "polyhedral_is_complementary": true
+  },
+  "key_change": "Reframe as complementary perspective, not replacement for fiber bundles"
+}

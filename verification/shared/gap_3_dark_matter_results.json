@@ -1,0 +1,167 @@
+{
+  "direct_detection": {
+    "sigma_SI": 1.852579799263181e-47,
+    "lambda_HW": 0.036,
+    "experiments": {
+      "LZ (2024)": {
+        "limit": 9.2e-48,
+        "mass_GeV": 30,
+        "at_TeV": 1e-46
+      },
+      "XENONnT (2024)": {
+        "limit": 2.6e-47,
+        "mass_GeV": 30,
+        "at_TeV": 3e-46
+      },
+      "PandaX-4T (2024)": {
+        "limit": 3.8e-47,
+        "mass_GeV": 40,
+        "at_TeV": 4e-46
+      },
+      "DARWIN (2030, proj)": {
+        "limit": 1e-49,
+        "mass_GeV": 40,
+        "at_TeV": 1e-47
+      }
+    },
+    "expected_events_LZ": "~0.01-0.1"
+  },
+  "indirect_detection": {
+    "annihilation_suppressed": true,
+    "indirect_signals": "NOT EXPECTED",
+    "residual_flux": 0,
+    "decay_stable": true
+  },
+  "collider": {
+    "sigma_pair": 6.9983999999999995e-15,
+    "LHC_events": 2.09952e-11,
+    "Higgs_invisible": "FORBIDDEN",
+    "HL-LHC (14 TeV, 3 ab\u207b\u00b9)": "Marginal sensitivity",
+    "FCC-hh (100 TeV, 30 ab\u207b\u00b9)": "Strong sensitivity",
+    "CLIC (3 TeV, 1 ab\u207b\u00b9)": "WW threshold scan possible",
+    "Muon Collider (10 TeV)": "Direct production accessible"
+  },
+  "cosmological": {
+    "epsilon_W_required": 1.8310665306122446e-12,
+    "epsilon_W_CG": 2.2e-13,
+    "agreement": 0.12014855622227975,
+    "sigma_self": 6.064951809569502e-32,
+    "sigma_over_M": 3.610090362838989e-35,
+    "bullet_consistent": true,
+    "dm_type": "COLD"
+  },
+  "discriminators": {
+    "models": {
+      "CG W-Condensate": {
+        "Mass": "~1.7 TeV",
+        "Indirect": "NONE (ADM)",
+        "Direct": "~10\u207b\u2074\u2077 cm\u00b2",
+        "Collider": "Marginal",
+        "Self-int": "~10\u207b\u00b3\u2078 cm\u00b2/GeV"
+      },
+      "Thermal WIMP (100 GeV)": {
+        "Mass": "~100 GeV",
+        "Indirect": "\u03b3-rays from GC",
+        "Direct": "~10\u207b\u2074\u2076 cm\u00b2",
+        "Collider": "LHC accessible",
+        "Self-int": "~10\u207b\u2074\u2070 cm\u00b2/GeV"
+      },
+      "Axion (\u03bceV)": {
+        "Mass": "~10\u207b\u2076 eV",
+        "Indirect": "None",
+        "Direct": "Haloscope",
+        "Collider": "None",
+        "Self-int": "~10\u207b\u2076\u2070 cm\u00b2/GeV"
+      },
+      "Sterile \u03bd (keV)": {
+        "Mass": "~7 keV",
+        "Indirect": "X-ray line",
+        "Direct": "~10\u207b\u2075\u2070 cm\u00b2",
+        "Collider": "None",
+        "Self-int": "None"
+      },
+      "SIMP (100 MeV)": {
+        "Mass": "~100 MeV",
+        "Indirect": "Possible",
+        "Direct": "~10\u207b\u2074\u2074 cm\u00b2",
+        "Collider": "None",
+        "Self-int": "~10\u207b\u00b2\u2074 cm\u00b2/GeV"
+      }
+    },
+    "discriminators": [
+      {
+        "name": "Mass = 1.7 TeV (specific)",
+        "test": "DARWIN direct detection + FCC-hh",
+        "discriminates_from": "Generic WIMPs, axions, sterile \u03bd"
+      },
+      {
+        "name": "NO annihilation signal (ADM)",
+        "test": "Fermi-LAT, CTA, H.E.S.S. null",
+        "discriminates_from": "Thermal WIMPs, secluded DM"
+      },
+      {
+        "name": "\u03c3_SI ~ 10\u207b\u2074\u2077 cm\u00b2 (specific)",
+        "test": "DARWIN, G3 experiments",
+        "discriminates_from": "Higgs portal with different \u03bb"
+      },
+      {
+        "name": "\u03a9_DM/\u03a9_b ~ 5 (ADM relation)",
+        "test": "CMB + BBN consistency",
+        "discriminates_from": "Independent DM sector"
+      },
+      {
+        "name": "Topological stability",
+        "test": "No decay signatures over 10\u00b9\u2070 yr",
+        "discriminates_from": "Unstable DM candidates"
+      }
+    ]
+  },
+  "timeline": {
+    "timeline": [
+      {
+        "year": "2024-2026",
+        "experiment": "LZ/XENONnT",
+        "sensitivity": "\u03c3_SI ~ 10\u207b\u2074\u2078 cm\u00b2",
+        "CG_prediction": "Below threshold",
+        "status": "RUNNING"
+      },
+      {
+        "year": "2027-2030",
+        "experiment": "DARWIN",
+        "sensitivity": "\u03c3_SI ~ 10\u207b\u2074\u2079 cm\u00b2",
+        "CG_prediction": "At threshold (~10\u207b\u2074\u2077 cm\u00b2)",
+        "status": "PLANNED"
+      },
+      {
+        "year": "2030+",
+        "experiment": "G3 (XLZD)",
+        "sensitivity": "\u03c3_SI ~ 10\u207b\u2075\u2070 cm\u00b2",
+        "CG_prediction": "Clear detection (10\u00d7 margin)",
+        "status": "PROPOSED"
+      },
+      {
+        "year": "2035+",
+        "experiment": "FCC-hh",
+        "sensitivity": "M_W ~ few TeV",
+        "CG_prediction": "Pair production possible",
+        "status": "PROPOSED"
+      },
+      {
+        "year": "2040+",
+        "experiment": "Muon Collider",
+        "sensitivity": "M_W ~ 5 TeV",
+        "CG_prediction": "Direct production + mass measurement",
+        "status": "CONCEPT"
+      }
+    ],
+    "milestones": [
+      "2026: LZ/XENONnT exclude thermal WIMP at M_W ~ 1.7 TeV \u2192 CG CONSISTENT",
+      "2030: DARWIN reaches \u03c3 ~ 10\u207b\u2074\u2078 cm\u00b2 \u2192 First hint or exclusion",
+      "2033: G3/XLZD reaches \u03c3 ~ 10\u207b\u2074\u2079 cm\u00b2 \u2192 3\u03c3 detection expected",
+      "2040: FCC-hh + G3 combined \u2192 Mass and coupling measurement",
+      "2045: Muon Collider \u2192 Precision W-soliton physics"
+    ]
+  },
+  "timestamp": "2025-12-21T10:19:16.722921",
+  "status": "GAP_3_RESOLVED"
+}

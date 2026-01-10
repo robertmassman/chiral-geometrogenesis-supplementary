@@ -1,0 +1,33 @@
+{
+  "warning_2": {
+    "M_P_obs": 1.22089e+19,
+    "M_P_CG": 1.14e+19,
+    "agreement_pct": 93.37450548370451,
+    "discrepancy_pct": 6.62549451629549,
+    "status": "Phenomenologically validated",
+    "impact_on_gamma": "None \u2014 \u03b3 = 1/4 is independent"
+  },
+  "warning_3": {
+    "gamma_LQG_micro": 0.12738402314094804,
+    "gamma_LQG_canonical": 0.12363732107732497,
+    "gamma_LQG_grand": 0.238,
+    "gamma_CG": 0.15142417490204899,
+    "ratio": 1.1887218755408673,
+    "cg_ensemble_dependence": "None",
+    "recommendation": "Add note about LQG ensemble dependence"
+  },
+  "warning_4": {
+    "coefficient": -1.5,
+    "derivation": "Saddle-point approximation on SU(3) partition function",
+    "comparison": {
+      "CG": -1.5,
+      "CFT_generic": -1.5,
+      "LQG_micro": -0.5,
+      "LQG_some": -1.5,
+      "string_BPS": -0.5
+    },
+    "testability": "Currently impossible",
+    "status": "Prediction (not rigorous derivation)",
+    "impact_on_gamma": "None \u2014 independent of leading term"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "tension_analysis": {
+    "sigma_v_geom": 1.2902532569987217e-28,
+    "Omega_h2_geom": 23.25124919256819,
+    "overabundance_factor": 193.76040993806825,
+    "lambda_needed": 0.501112254170397,
+    "sigma_SI_geom": 1.6238010095930806e-47,
+    "sigma_SI_needed": 3.146283492766046e-45,
+    "excluded_by_LZ": true,
+    "lambda_max_LZ": 0.028251147800111398,
+    "Omega_at_lambda_max": 37.75540191319254
+  },
+  "asymmetric_dm": {
+    "epsilon_W_required": 2.6507404604907577e-13,
+    "ratio_to_eta_B": 0.00043454761647389474,
+    "geometric_factor": 0.1666666666666667,
+    "epsilon_W_geometric": 1.0166666666666669e-10,
+    "ratio_check": 0.0026072856988433677,
+    "epsilon_W_branching": 7.905599999999998e-13,
+    "epsilon_W_boundary": 8.504458977407847e-16,
+    "efficiency_required": 3.116883116883117,
+    "Omega_ADM_predicted": 0.1206857142857143,
+    "status": "VIABLE"
+  },
+  "freeze_in": {
+    "T_max_needed": 3.848005713725814e-18,
+    "lambda_freeze_in_typical": 7.061880348029592e-16,
+    "sigma_SI_freeze_in": 6.248395562867922e-75,
+    "status": "NOT_VIABLE_FOR_CG"
+  },
+  "cannibalization": {
+    "sigma_v2": 1.842509126659993e-14,
+    "T_cann": 67.28,
+    "T_fo": 84.1,
+    "reduction_factor": 0.5120000000000001,
+    "status": "PARTIALLY_VIABLE"
+  },
+  "phase_transition": {
+    "Y_EW": 7.458471866095978e-12,
+    "Omega_EW": 3.462461311341468,
+    "efficiency_needed": 3.465742696010318e-05,
+    "Y_QCD": 57.12489580854951,
+    "Y_W": 0.22797266319526,
+    "status": "VIABLE"
+  },
+  "resolution": {
+    "epsilon_W": 2.63567943514706e-13,
+    "M_W": 1682.0,
+    "lambda_geom": 0.036,
+    "sigma_SI": 1.6238010095930806e-47,
+    "resolution": "ASYMMETRIC_DM",
+    "status": "RESOLVED"
+  }
+}

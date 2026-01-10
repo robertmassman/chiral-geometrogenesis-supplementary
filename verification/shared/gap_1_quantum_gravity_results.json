@@ -1,0 +1,81 @@
+{
+  "propagator": {
+    "F_Infrared (k ~ m_\u03c0)": 0.9999999979526613,
+    "F_QCD scale (k ~ 1 GeV)": 0.9999998955439564,
+    "F_Electroweak (k ~ 100 GeV)": 0.9989565294224516,
+    "F_TeV scale (k ~ 1 TeV)": 0.9054230775939066,
+    "F_CG cutoff (k ~ 4\u03c0v_\u03c7)": 0.5,
+    "F_10\u00d7 cutoff": 0.009900990099009901,
+    "Lambda_CG_GeV": 3094.091772667515,
+    "propagator_form": "D^CG = D^GR \u00d7 (1 + k\u00b2/\u039b\u00b2)^{-1}",
+    "UV_behavior": "D^CG ~ 1/k\u2074 (vs 1/k\u00b2 in GR)"
+  },
+  "one_loop": {
+    "delta_G_at_1e+00GeV": 2.1454304324559794e-39,
+    "delta_G_at_1e+02GeV": 9.161452115103049e-36,
+    "delta_G_at_1e+03GeV": 3.0150260103746764e-34,
+    "delta_G_at_3e+03GeV": 2.555485128732005e-34,
+    "delta_G_at_1e+09GeV": 3.978873577297384e-23,
+    "loop_suppression": 6.422634645425946e-32,
+    "is_perturbative": true,
+    "divergence_status": "FINITE (regulated by CG form factor)"
+  },
+  "running_G": {
+    "G_ratio_at_1e-10GeV": 1.0,
+    "G_ratio_at_1e-03GeV": 1.0,
+    "G_ratio_at_1e+00GeV": 1.0,
+    "G_ratio_at_1e+02GeV": 0.9999999890889327,
+    "G_ratio_at_1e+03GeV": 0.9998909012304675,
+    "G_ratio_at_3e+03GeV": 1.0,
+    "G_ratio_at_1e+10GeV": 1.0,
+    "G_ratio_at_1e+15GeV": 0.9999999865823387,
+    "G_ratio_at_1e+18GeV": 0.9867599884919954,
+    "G_ratio_at_1e+19GeV": 0.3333333333333333,
+    "G_52um_ratio": 1.0,
+    "experimental_constraint": "SATISFIED",
+    "UV_fixed_point": 0.5,
+    "asymptotic_safety": "COMPATIBLE"
+  },
+  "uv_finiteness": {
+    "conditions": {
+      "improved_propagator": true,
+      "power_counting_finite": true,
+      "ward_identities": true,
+      "unitarity": true,
+      "lorentz_invariance": true
+    },
+    "all_satisfied": true
+  },
+  "predictions": {
+    "c_log_CG": -1.5,
+    "c_log_LQG": -0.5,
+    "fluct_Planck scale": 1.0,
+    "fluct_LHC (10^-19 m)": 2.612280302374278e-32,
+    "fluct_Atomic (10^-10 m)": 2.6122803023742773e-50,
+    "fluct_Human (1 m)": 2.6122803023742777e-70,
+    "fluct_Cosmic (10^26 m)": 2.6122803023742775e-122,
+    "m_graviton_CG": 0.0,
+    "m_graviton_bound": 1.2e-22,
+    "Lambda_CG": 3094.091772667515,
+    "entropy_ratio": 1.7777777777777777
+  },
+  "two_loop": {
+    "two_loop_at_1e+00GeV": 4.602871740508251e-78,
+    "two_loop_at_1e+02GeV": 8.393220485732615e-71,
+    "two_loop_at_1e+03GeV": 9.090381843235838e-68,
+    "two_loop_at_3e+03GeV": 6.530504243170433e-68,
+    "one_loop_max": 2.555485128732005e-33,
+    "two_loop_max": 6.530504243170433e-68,
+    "perturbative_expansion_valid": true
+  },
+  "effective_action": {
+    "a_coefficient": 0.004166666666666667,
+    "c_coefficient": 0.025,
+    "c1": 6.614756930055892e-10,
+    "c2": 1.3229513860111784e-09,
+    "c3": 3.307378465027946e-10
+  },
+  "timestamp": "2025-12-21T10:12:46.272269",
+  "status": "GAP_1_RESOLVED",
+  "upgrade": "PRELIMINARY \u2192 COMPLETE_EFT"
+}

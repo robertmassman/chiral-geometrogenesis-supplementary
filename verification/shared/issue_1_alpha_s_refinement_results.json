@@ -1,0 +1,107 @@
+{
+  "counting_schemes": {
+    "adj_otimes_adj": {
+      "formula": "(N_c\u00b2 - 1)\u00b2 = 8\u00b2",
+      "value": 64,
+      "description": "Equipartition over adj\u2297adj = 64 gluon channels"
+    },
+    "N_c_squared_times_adj": {
+      "formula": "N_c\u00b2 \u00d7 (N_c\u00b2 - 1) = 9 \u00d7 8",
+      "value": 72,
+      "description": "Color singlet channels \u00d7 adjoint"
+    },
+    "fund_times_adj": {
+      "formula": "N_c \u00d7 (N_c\u00b2 - 1) = 3 \u00d7 8",
+      "value": 24,
+      "description": "Fundamental \u00d7 adjoint coupling"
+    },
+    "casimir_weighted": {
+      "formula": "(N_c\u00b2 - 1) \u00d7 C\u2082(adj)/C\u2082(fund)",
+      "value": 18.0,
+      "description": "Casimir-weighted channel counting"
+    },
+    "quantum_corrected_adj": {
+      "formula": "(N_c\u00b2 - 1)\u00b2 \u00d7 (1 - \u03b1_s/\u03c0)",
+      "value": 63.6821994096341,
+      "description": "One-loop quantum correction to equipartition"
+    },
+    "required_for_experiment": {
+      "formula": "From experimental \u03b1_s(M_Z) = 0.1179",
+      "value": 51.60022183907296,
+      "description": "Value required to match experiment"
+    },
+    "euler_weighted": {
+      "formula": "(N_c\u00b2 - 1)\u00b2 / \u03c7_E \u00d7 N_c",
+      "value": 48.0,
+      "description": "Euler characteristic weighted"
+    },
+    "flavor_divided": {
+      "formula": "(N_c\u00b2 - 1) \u00d7 N_c\u00b2/ N_c = 8 \u00d7 3",
+      "value": 24.0,
+      "description": "Flavor-divided counting"
+    },
+    "rep_decomposition_adjusted": {
+      "formula": "Modified adj\u2297adj decomposition",
+      "value": 52,
+      "description": "Adjusted representation counting"
+    },
+    "euler_subtracted": {
+      "formula": "(N_c\u00b2 - 1)\u00b2 - \u03c7_E \u00d7 N_c = 64 - 12",
+      "value": 52,
+      "description": "Euler characteristic subtraction"
+    }
+  },
+  "higher_loop": {
+    "alpha_mt_1loop": 0.04813098193748163,
+    "alpha_mt_2loop": 0.04892544269417515,
+    "two_loop_effect": 1.6506223740156794,
+    "alpha_MZ_2loop": 0.04879767984470914,
+    "alpha_MZ_3loop_est": 0.050261610240050415,
+    "required_2loop": 51.60022183907296,
+    "required_3loop_est": 53.148228494245146,
+    "gap_2loop_pct": 24.03047451927353,
+    "gap_3loop_est_pct": 20.41793642647916
+  },
+  "threshold_matching": {
+    "standard": 0.04879767984470914,
+    "with_O_alpha_corrections": 0.04994001893175846,
+    "threshold_effect_pct": 2.340970084406945
+  },
+  "modified_equipartition": {
+    "current_CG": 64,
+    "target": 52,
+    "mod_factor": 0.8125,
+    "best_formula": 52,
+    "best_formula_description": "\u03c7_E \u00d7 (N_c\u00b2 + \u03c7_E) = 4 \u00d7 13",
+    "options": {
+      "A": 42.666666666666664,
+      "B": 52.0,
+      "C": 28.444444444444443,
+      "D": 52,
+      "E": 52.0,
+      "F": 52.0,
+      "G": 51.80952380952381,
+      "EXACT": 52
+    }
+  },
+  "gravitational_corrections": {
+    "g_star": 0.5,
+    "required_c_grav": 24.0,
+    "interpretation": "Gravitational threshold correction at M_P"
+  },
+  "synthesis": {
+    "old_formula": {
+      "value": 64,
+      "expression": "(N_c\u00b2 - 1)\u00b2",
+      "M_P_agreement": 91.52854211667928,
+      "alpha_s_MZ_agreement": 42
+    },
+    "new_formula": {
+      "value": 52,
+      "expression": "\u03c7_E \u00d7 (N_c\u00b2 + \u03c7_E)",
+      "M_P_agreement": 0.02104842485842947,
+      "alpha_s_MZ_agreement": 99.87026227290934
+    },
+    "recommendation": "Document both formulas with trade-offs"
+  }
+}

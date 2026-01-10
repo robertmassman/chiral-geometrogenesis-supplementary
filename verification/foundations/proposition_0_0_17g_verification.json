@@ -1,0 +1,24 @@
+{
+  "proposition": "0.0.17g",
+  "title": "Objective Collapse from Z3 Discretization",
+  "status": "SPECULATIVE (corrections applied)",
+  "tests_passed": 8,
+  "tests_total": 8,
+  "results": {
+    "Z3 sector assignment (corrected)": "PASS",
+    "Superselection rule": "PASS",
+    "Critical threshold (corrected)": "PASS",
+    "Born rule from Fisher measure": "PASS",
+    "Geodesic selection statistics": "PASS",
+    "Information horizon condition": "PASS",
+    "Classical limit (new)": "PASS",
+    "Dimensional analysis (new)": "PASS"
+  },
+  "corrections_applied": [
+    "Gamma_crit dimensional fix: now uses omega_P = sqrt(c^5/(G*hbar))",
+    "Z3 sector formula: uses independent phases on Cartan torus",
+    "Added classical limit test",
+    "Added dimensional analysis test"
+  ],
+  "conclusion": "Mathematically consistent after corrections; conjectures unverified"
+}

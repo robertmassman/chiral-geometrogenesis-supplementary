@@ -1,0 +1,22 @@
+{
+  "theorem": "5.3.1",
+  "analysis": "Non-Relativistic Limit",
+  "key_results": {
+    "axial_torsion_vector": "T^\u03bc = -\u03ba_T J_5^\u03bc = -2\u03ba_T s^\u03bc",
+    "spin_spin_potential": "U = 6\u03ba_T\u00b2 (s\u2081\u00b7s\u2082) \u03b4\u00b3(r)",
+    "modified_Pauli": "H_torsion = -(3/4) \u03ba_T \u210f \u03c3\u00b7(\u2207\u00d7T)",
+    "precession_rate": "\u03a9 = (3/4) \u03ba_T |T|"
+  },
+  "numerical_estimates": {
+    "contact_energy_scale_eV": 4.734513479275402e-106,
+    "hyperfine_ratio": 8.024599117415935e-101,
+    "nuclear_torsion_m-1": 4.37994773413885e-34,
+    "lab_coupling_GeV": 8.542963602591094e-47,
+    "Heckel_bound_GeV": 9.999999999999999e-23
+  },
+  "experimental_status": {
+    "Heckel_comparison": "Theory ~30 orders below bound",
+    "observable": false,
+    "reason": "\u03ba_T ~ G/c\u2074 is extremely small"
+  }
+}

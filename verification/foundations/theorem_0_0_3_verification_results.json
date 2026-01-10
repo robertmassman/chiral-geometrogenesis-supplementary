@@ -1,0 +1,269 @@
+{
+  "theorem": "Theorem 0.0.3: Uniqueness of Stella Octangula",
+  "date": "2025-12-15",
+  "sections": {
+    "su3_weights": {
+      "fundamental": {
+        "distances": [
+          1.0,
+          1.0000000000000002,
+          1.0000000000000002
+        ],
+        "is_equilateral": "True",
+        "weight_sum": [
+          0.0,
+          0.0
+        ],
+        "is_centered": "True",
+        "side_length": 1.0
+      },
+      "antifundamental": {
+        "distances": [
+          1.0,
+          1.0000000000000002,
+          1.0000000000000002
+        ],
+        "is_equilateral": "True",
+        "weight_sum": [
+          0.0,
+          0.0
+        ],
+        "is_centered": "True",
+        "side_length": 1.0
+      },
+      "killing_form": {
+        "killing_distances": [
+          0.5773502691896258,
+          0.5773502691896258,
+          0.5773502691896258
+        ],
+        "all_equal": "True",
+        "killing_side_length": 0.5773502691896258
+      },
+      "all_pass": "True"
+    },
+    "stella_geometry": {
+      "vertex_count": {
+        "total_vertices": 8,
+        "unique_vertices": 8,
+        "all_distinct": true
+      },
+      "tetrahedra": {
+        "T_plus": {
+          "edge_lengths": [
+            2.8284271247461903,
+            2.8284271247461903,
+            2.8284271247461903,
+            2.8284271247461903,
+            2.8284271247461903,
+            2.8284271247461903
+          ],
+          "is_regular": true,
+          "edge_length": 2.8284271247461903,
+          "centroid": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "T_minus": {
+          "edge_lengths": [
+            2.8284271247461903,
+            2.8284271247461903,
+            2.8284271247461903,
+            2.8284271247461903,
+            2.8284271247461903,
+            2.8284271247461903
+          ],
+          "is_regular": true,
+          "edge_length": 2.8284271247461903,
+          "centroid": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "antipodal": {
+        "is_antipodal": true,
+        "T_plus_negated": [
+          [
+            -1,
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1,
+            1
+          ],
+          [
+            1,
+            -1,
+            1
+          ],
+          [
+            1,
+            1,
+            -1
+          ]
+        ],
+        "T_minus": [
+          [
+            -1,
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1,
+            1
+          ],
+          [
+            1,
+            -1,
+            1
+          ],
+          [
+            1,
+            1,
+            -1
+          ]
+        ]
+      },
+      "all_pass": true
+    },
+    "symmetry": {
+      "group_structure": {
+        "S3_order": 6,
+        "Z2_order": 2,
+        "total_group_order": 12,
+        "matches_S3_x_Z2": true
+      },
+      "weyl_action": {
+        "s1_swaps_R_G": "True",
+        "s1_fixes_B": "True",
+        "s2_swaps_G_B": "True",
+        "s2_fixes_R": "True",
+        "weyl_action_correct": true
+      },
+      "all_pass": true
+    },
+    "root_system": {
+      "alpha_RG": [
+        1.0,
+        0.0
+      ],
+      "alpha_GB": [
+        -0.5,
+        0.8660254037844388
+      ],
+      "alpha_RB": [
+        0.5,
+        0.8660254037844388
+      ],
+      "direction_match_RG": "True",
+      "direction_match_GB": "True",
+      "direction_match_RB": "True",
+      "root_lengths": [
+        1.0,
+        1.0000000000000002,
+        1.0000000000000002,
+        1.0,
+        1.0000000000000002,
+        1.0000000000000002
+      ],
+      "all_roots_same_length": "True",
+      "num_roots": 6
+    },
+    "alternatives": {
+      "two_triangles": {
+        "vertices": 6,
+        "embedding_dim": 2,
+        "fails_criterion": "MIN2 (embedding dimension)",
+        "reason": "Only 2D; cannot separate fund/anti-fund in 3D"
+      },
+      "octahedron": {
+        "vertices": 6,
+        "symmetry_group": "S_4 x Z_2 (octahedral)",
+        "fails_criterion": "GR1 (weight correspondence)",
+        "reason": "Vertices don't form two equilateral triangles"
+      },
+      "cube": {
+        "vertices": 8,
+        "symmetry_group": "S_4 (wrong)",
+        "required_symmetry": "S_3 x Z_2",
+        "fails_criterion": "GR2 (symmetry preservation)",
+        "reason": "Symmetry group incompatible with Weyl(SU(3))"
+      },
+      "triangular_prism": {
+        "vertices": 6,
+        "fails_criterion": "GR3 (conjugation compatibility)",
+        "reason": "No point inversion symmetry"
+      },
+      "two_separate_tetrahedra": {
+        "vertices": 8,
+        "fails_criterion": "Connectedness",
+        "reason": "Not a single geometric complex"
+      },
+      "stella_octangula": {
+        "vertices": 8,
+        "symmetry_group": "S_3 x Z_2 (correct)",
+        "embedding_dim": 3,
+        "satisfies_GR1": true,
+        "satisfies_GR2": true,
+        "satisfies_GR3": true,
+        "satisfies_MIN1_3": true,
+        "is_unique_solution": true
+      }
+    },
+    "euler": {
+      "tetrahedron": {
+        "V": 4,
+        "E": 6,
+        "F": 4,
+        "chi": 2
+      },
+      "compound": {
+        "V": 8,
+        "E": 12,
+        "F": 8,
+        "chi": 4
+      },
+      "chi_per_tetrahedron": 2,
+      "chi_two_spheres": 4,
+      "chi_matches_two_S2": true
+    },
+    "projection": {
+      "projection_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "origin_projections": [
+        [
+          "T+",
+          0,
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        [
+          "T-",
+          0,
+          [
+            -1,
+            -1,
+            -1
+          ]
+        ]
+      ],
+      "vertices_to_origin": 2,
+      "vertices_to_weights": 6,
+      "matches_6_weights_2_singlets": true
+    }
+  },
+  "overall_verified": true
+}
