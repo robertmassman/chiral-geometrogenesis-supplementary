@@ -17,7 +17,7 @@
 
 What if the fundamental constants of nature - the fine structure constant, particle masses, mixing angles - are not arbitrary parameters but inevitable consequences of geometry? Chiral Geometrogenesis proposes that spacetime and matter emerge from pressure-driven oscillations on the stella octangula, two interpenetrating tetrahedra whose symmetry encodes SU(3) color structure. Three complex scalar fields, phase-locked at 120° intervals, generate mass through their gradients and produce the observed particle spectrum through purely geometric constraints.
 
-This repository contains the complete mathematical framework: 171,000+ lines of machine-verified Lean 4 proofs, extensive Python verification scripts, and the full paper with derivations.
+This repository contains the complete mathematical framework: Lean 4 proofs, Python verification scripts, and the full paper with derivations.
 
 ## Overview
 
