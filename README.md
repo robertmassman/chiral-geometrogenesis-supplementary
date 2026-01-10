@@ -3,7 +3,21 @@
 [![Lean 4](https://img.shields.io/badge/Lean-4-blue)](https://lean-lang.org/)
 [![Python](https://img.shields.io/badge/Python-3.9+-green)](https://python.org/)
 
-Supplementary materials for the paper **"Chiral Geometrogenesis: Deriving Standard Model Parameters from Pre-Geometric Pressure Dynamics"**.
+<p align="center">
+  <img src="images/frame-0deg-red-peak.png" width="45%" />
+  <img src="images/frame-120deg-green-peak.png" width="45%" />
+</p>
+<p align="center">
+  <img src="images/frame-240deg-blue-peak.png" width="45%" />
+  <img src="images/frame-combined-resonance.png" width="45%" />
+</p>
+<p align="center"><em>Three-phase color field dynamics: individual peaks at 0°, 120°, 240° and combined resonance</em></p>
+
+## Introduction
+
+What if the fundamental constants of nature - the fine structure constant, particle masses, mixing angles - are not arbitrary parameters but inevitable consequences of geometry? Chiral Geometrogenesis proposes that spacetime and matter emerge from pressure-driven oscillations on the stella octangula, two interpenetrating tetrahedra whose symmetry encodes SU(3) color structure. Three complex scalar fields, phase-locked at 120° intervals, generate mass through their gradients and produce the observed particle spectrum through purely geometric constraints.
+
+This repository contains the complete mathematical framework: 171,000+ lines of machine-verified Lean 4 proofs, extensive Python verification scripts, and the full paper with derivations.
 
 ## Overview
 
