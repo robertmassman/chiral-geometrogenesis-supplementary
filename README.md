@@ -122,11 +122,11 @@ See [INSTALLATION.md](INSTALLATION.md) for detailed setup instructions.
 If you use this work, please cite:
 
 ```bibtex
-@article{chiral-geometrogenesis-2025,
+@article{chiral-geometrogenesis-2026,
   title={Chiral Geometrogenesis: Deriving Standard Model Parameters from Pre-Geometric Pressure Dynamics},
   author={Massman, Robert},
-  journal={arXiv preprint arXiv:2501.XXXXX},
-  year={2025}
+  journal={arXiv preprint arXiv:2601.XXXXX},
+  year={2026}
 }
 ```
 

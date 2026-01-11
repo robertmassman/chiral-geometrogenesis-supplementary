@@ -3493,6 +3493,28 @@ Independent agents verified all critical path theorems:
 \end{tabular}
 \end{center}
 
+\subsection{Figure Generation Scripts}
+
+All figures in this paper have corresponding generation scripts in
+\texttt{papers/paper-unified-arxiv/figures/scripts/}:
+
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Figure} & \textbf{Script} \\
+\hline
+Fig.~1 (D4 stability) & \texttt{fig\_thm\_0\_0\_1\_d4\_stability.py} \\
+Fig.~2 (Stella 3D) & \texttt{fig\_thm\_0\_0\_2\_stella\_3d.py} \\
+Fig.~3 (SU(3) weights) & \texttt{fig\_su3\_weight\_diagram.py} \\
+Fig.~4 (Honeycomb) & \texttt{fig\_thm\_0\_0\_6\_honeycomb.py} \\
+Fig.~5 (Time emergence) & \texttt{fig\_def\_0\_1\_1\_time\_emergence.py} \\
+Fig.~6 (Mass hierarchy) & \texttt{fig\_thm\_3\_1\_1\_mass\_hierarchy.py} \\
+Fig.~7 (Wolfenstein) & \texttt{fig\_thm\_3\_1\_2\_wolfenstein.py} \\
+Fig.~8 (CKM triangle) & \texttt{fig\_thm\_3\_1\_2\_ckm\_triangle.py} \\
+Fig.~9 (Time flow) & \texttt{fig\_thm\_4\_1\_1\_time\_flow.py} \\
+Fig.~10 (Baryon asymmetry) & \texttt{fig\_thm\_4\_2\_1\_baryon\_asymmetry.py} \\
+\end{tabular}
+\end{center}
+
 \subsection{Running Verification}
 
 To reproduce all verifications:
@@ -3501,11 +3523,18 @@ To reproduce all verifications:
 git clone https://github.com/robertmassman/chiral-geometrogenesis-supplementary
 cd chiral-geometrogenesis-supplementary
 
+# Install Python dependencies
+pip install -r verification/requirements.txt
+
 # Run Lean verification
 cd lean && lake build
 
 # Run numerical verification
 python -m pytest verification/ -v
+
+# Regenerate figures
+cd papers/paper-unified-arxiv/figures/scripts
+for f in *.py; do python "$f"; done
 \end{lstlisting}
 
 %=============================================================================
