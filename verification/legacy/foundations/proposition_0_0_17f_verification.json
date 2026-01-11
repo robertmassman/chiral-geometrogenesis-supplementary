@@ -1,0 +1,18 @@
+{
+  "proposition": "0.0.17f",
+  "title": "Decoherence from Geodesic Mixing",
+  "date": "2026-01-04",
+  "results": {
+    "S\u2083 Symmetry of Pointer Basis": "PASSED",
+    "Decoherence Rate Formula": "PASSED",
+    "KL Divergence Asymmetry": "PASSED",
+    "Lindblad Evolution Structure": "PASSED",
+    "Fisher Metric Information Loss": "PASSED",
+    "Pointer Basis Decoherence Rate": "PASSED"
+  },
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6
+  }
+}

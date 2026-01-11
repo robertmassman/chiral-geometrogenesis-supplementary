@@ -1,0 +1,9 @@
+{
+  "kappa": 18,
+  "alpha_W": 0.03333333333333333,
+  "gamma_sph_coefficient": 7.407407407407406e-07,
+  "C_calculated": 7.118584330843403e-09,
+  "C_used": 0.03,
+  "eta_predicted": 5.732677743305738e-10,
+  "eta_observed": 6.1e-10
+}

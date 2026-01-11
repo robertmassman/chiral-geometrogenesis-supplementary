@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-12-15T09:55:28.190169",
+  "theorem": "3.1.1",
+  "title": "Instanton Density Gradient Derivation",
+  "qcd_parameters": {
+    "N_c": 3,
+    "N_f": 3,
+    "Lambda_QCD_GeV": 0.217,
+    "b_0": 0.716197243913529,
+    "b_1": 0.3546241427481822
+  },
+  "gradient_derivation": {
+    "scales": {
+      "r_inner_fm": 0.15,
+      "r_outer_fm": 0.45,
+      "Q_inner_GeV": 1.315443304393581,
+      "Q_outer_GeV": 0.43848110146452696
+    },
+    "coupling": {
+      "alpha_inner_1loop": 0.38741367368516505,
+      "alpha_outer_1loop": 0.9924829216971873,
+      "alpha_inner_2loop": 0.2921352554936334,
+      "alpha_outer_2loop": 0.8259977851944399
+    },
+    "density_ratio": {
+      "naive_exponential": 1089264.3741559885,
+      "with_prefactor": 196837506.69153944,
+      "improved_screened": 32.099861028644746,
+      "best_estimate": 32.099861028644746
+    },
+    "uncertainty": {
+      "Lambda_variation": "\u00b110%",
+      "ratio_high": 45.98985982834694,
+      "ratio_low": 23.61768068575411,
+      "uncertainty_factor": 1.4327121163330665
+    }
+  },
+  "literature_comparison": {
+    "literature_comparison": {
+      "shuryak_instanton_size_fm": 0.3,
+      "vacuum_density_fm4": 1.0,
+      "instanton_liquid_suppression": "10-100",
+      "our_prediction": 32.099861028644746,
+      "within_range": "True"
+    },
+    "coupling_comparison": {
+      "alpha_s_Mz_pdg": 0.118,
+      "alpha_s_Mz_calc": 0.09908937100841679,
+      "mz_agreement_percent": 16.02595677252814,
+      "alpha_s_2GeV_pdg": 0.3,
+      "alpha_s_2GeV_calc": 0.24138230266921545,
+      "2gev_agreement_percent": 19.539232443594848
+    }
+  },
+  "profile_derivation": {
+    "key_ratios": {
+      "rho_edge_over_center": 1.0,
+      "log10_ratio": 0.0
+    },
+    "overlap_integrals": {
+      "gen1_edge": 1.0,
+      "gen2_middle": 1.0,
+      "gen3_center": 1.0
+    }
+  },
+  "status": "DERIVED",
+  "overall_result": {
+    "density_ratio": 32.099861028644746,
+    "uncertainty_factor": 1.4327121163330665,
+    "consistent_with_literature": "True"
+  }
+}

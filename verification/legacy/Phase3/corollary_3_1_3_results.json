@@ -1,0 +1,89 @@
+{
+  "issue_1_scale": {
+    "qcd_prefactor_GeV": 0.0644,
+    "ew_prefactor_GeV": 30.839055,
+    "document_value_GeV": 231.0,
+    "ew_scale_confirmed": true,
+    "justification": "Theorem 3.1.1 \u00a74.4.3 explicitly lists leptons under EW parameters"
+  },
+  "issue_4_eta": [
+    {
+      "description": "Computational agent (d=2, \u03c3=1/1.2)",
+      "d": 2.0,
+      "sigma": 0.8333333333333334,
+      "eta": 0.05613476283413375
+    },
+    {
+      "description": "Document estimate (larger d, tighter \u03c3)",
+      "d": 3.0,
+      "sigma": 0.5,
+      "eta": 1.522997974471263e-08
+    },
+    {
+      "description": "Intermediate case",
+      "d": 2.5,
+      "sigma": 0.6,
+      "eta": 0.00016985667656141068
+    },
+    {
+      "description": "Extended inter-tetrahedron distance",
+      "d": 3.5,
+      "sigma": 0.6,
+      "eta": 4.0828360411425034e-08
+    },
+    {
+      "description": "Maximum separation case",
+      "d": 4.0,
+      "sigma": 0.7,
+      "eta": 8.118538349144025e-08
+    }
+  ],
+  "seesaw": [
+    {
+      "M_R_GeV": 10000000000.0,
+      "description": "Intermediate scale (10^10 GeV)",
+      "m_nu_eV": 0.04802490000000001,
+      "sum_m_nu_eV": 0.14407470000000003
+    },
+    {
+      "M_R_GeV": 100000000000.0,
+      "description": "High intermediate (10^11 GeV)",
+      "m_nu_eV": 0.004802490000000001,
+      "sum_m_nu_eV": 0.014407470000000004
+    },
+    {
+      "M_R_GeV": 100000000000000.0,
+      "description": "Typical B-L breaking (10^14 GeV)",
+      "m_nu_eV": 4.802490000000001e-06,
+      "sum_m_nu_eV": 1.4407470000000004e-05
+    },
+    {
+      "M_R_GeV": 1000000000000000.0,
+      "description": "Near GUT scale (10^15 GeV)",
+      "m_nu_eV": 4.802490000000001e-07,
+      "sum_m_nu_eV": 1.4407470000000003e-06
+    },
+    {
+      "M_R_GeV": 2e+16,
+      "description": "GUT scale (2\u00d710^16 GeV)",
+      "m_nu_eV": 2.4012450000000005e-08,
+      "sum_m_nu_eV": 7.203735000000001e-08
+    }
+  ],
+  "experimental": {
+    "sum_m_nu_min_NH": 0.05876371785942254,
+    "sum_m_nu_min_IH": 0.1085739341837416,
+    "m_bb_prediction": 0.003669746469593632,
+    "DESI_bound": 0.072,
+    "all_bounds_satisfied": true
+  },
+  "clifford_verified": true,
+  "pmns_A4": {
+    "theta_12_TBM": 35.264389682754654,
+    "theta_23_TBM": 45.0,
+    "theta_13_TBM": 0.0,
+    "theta_12_exp": 33.41,
+    "theta_23_exp": 42.2,
+    "theta_13_exp": 8.58
+  }
+}

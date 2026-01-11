@@ -1,0 +1,246 @@
+{
+  "higgs_sector": [
+    {
+      "observable": "Higgs mass (GeV)",
+      "cg_prediction": "125 (input from SM matching)",
+      "susy_prediction": "\u2264 135 (requires MSSM tuning)",
+      "composite_prediction": "~125 (pseudo-Goldstone)",
+      "extra_dim_prediction": "~125 (KK tower)",
+      "current_bound": "125.11 \u00b1 0.11",
+      "discriminating": false
+    },
+    {
+      "observable": "h\u2192\u03b3\u03b3 rate",
+      "cg_prediction": "\u03bc_\u03b3\u03b3 = 1.00 \u00b1 0.02",
+      "susy_prediction": "\u03bc_\u03b3\u03b3 = 0.9-1.3 (stop loops)",
+      "composite_prediction": "\u03bc_\u03b3\u03b3 = 0.8-1.2 (top partner)",
+      "extra_dim_prediction": "\u03bc_\u03b3\u03b3 = 0.9-1.1 (KK)",
+      "current_bound": "\u03bc_\u03b3\u03b3 = 1.10 \u00b1 0.08",
+      "discriminating": false
+    },
+    {
+      "observable": "Higgs self-coupling \u03ba_\u03bb",
+      "cg_prediction": "\u03ba_\u03bb = 1.00-1.02",
+      "susy_prediction": "\u03ba_\u03bb = 1.0-1.5",
+      "composite_prediction": "\u03ba_\u03bb = 0.5-2.0",
+      "extra_dim_prediction": "\u03ba_\u03bb = 1.0-1.2",
+      "current_bound": "\u03ba_\u03bb < 6.6 (95% CL)",
+      "discriminating": true
+    },
+    {
+      "observable": "Invisible Higgs BR",
+      "cg_prediction": "BR_inv < 10\u207b\u2074",
+      "susy_prediction": "BR_inv ~ 10\u207b\u00b2-10\u207b\u00b9",
+      "composite_prediction": "BR_inv ~ 10\u207b\u00b3-10\u207b\u00b2",
+      "extra_dim_prediction": "BR_inv ~ 10\u207b\u00b2",
+      "current_bound": "BR_inv < 0.11",
+      "discriminating": true
+    },
+    {
+      "observable": "New scalar states",
+      "cg_prediction": "\u03c7* at 8-15 TeV (broad)",
+      "susy_prediction": "H, A, H\u00b1 at TeV scale",
+      "composite_prediction": "\u03c3, \u03b7 at 1-3 TeV",
+      "extra_dim_prediction": "KK Higgs tower",
+      "current_bound": "None observed",
+      "discriminating": true
+    },
+    {
+      "observable": "Higgs pT distribution",
+      "cg_prediction": "SM-like with form factor softening",
+      "susy_prediction": "SM-like (gluon fusion)",
+      "composite_prediction": "Harder (top partners)",
+      "extra_dim_prediction": "Softer (KK sum)",
+      "current_bound": "Consistent with SM",
+      "discriminating": true
+    }
+  ],
+  "new_particles": [
+    {
+      "observable": "Superpartners",
+      "cg_prediction": "NONE predicted",
+      "susy_prediction": "Gluino, squarks, charginos...",
+      "composite_prediction": "NONE",
+      "extra_dim_prediction": "NONE (but KK modes)",
+      "current_bound": "m_gluino > 2.3 TeV",
+      "discriminating": true
+    },
+    {
+      "observable": "Vector resonances",
+      "cg_prediction": "NONE (except \u03c7* scalar)",
+      "susy_prediction": "NONE",
+      "composite_prediction": "\u03c1_T, \u03c9_T at 1-5 TeV",
+      "extra_dim_prediction": "KK gauge bosons",
+      "current_bound": "m_W' > 5.6 TeV",
+      "discriminating": true
+    },
+    {
+      "observable": "Fermionic partners",
+      "cg_prediction": "NONE",
+      "susy_prediction": "stops, sbottoms...",
+      "composite_prediction": "Top partners T, B",
+      "extra_dim_prediction": "KK fermions",
+      "current_bound": "m_T > 1.3 TeV",
+      "discriminating": true
+    },
+    {
+      "observable": "Dark matter candidate",
+      "cg_prediction": "Geometric soliton (speculative)",
+      "susy_prediction": "Neutralino (LSP)",
+      "composite_prediction": "Techni-baryons",
+      "extra_dim_prediction": "Lightest KK particle",
+      "current_bound": "WIMP \u03c3 < 10\u207b\u2074\u2077 cm\u00b2",
+      "discriminating": true
+    },
+    {
+      "observable": "Resonance spin/parity",
+      "cg_prediction": "\u03c7*: 0\u207a (scalar)",
+      "susy_prediction": "Various",
+      "composite_prediction": "\u03c1_T: 1\u207b (vector)",
+      "extra_dim_prediction": "KK tower all spins",
+      "current_bound": "No new resonances",
+      "discriminating": true
+    },
+    {
+      "observable": "Resonance width",
+      "cg_prediction": "\u0393_\u03c7*/m_\u03c7* ~ 0.1-0.3 (broad)",
+      "susy_prediction": "Narrow (< 10\u207b\u00b2)",
+      "composite_prediction": "Narrow to moderate",
+      "extra_dim_prediction": "Narrow KK states",
+      "current_bound": "N/A",
+      "discriminating": true
+    }
+  ],
+  "precision_tests": [
+    {
+      "observable": "W mass (MeV)",
+      "cg_prediction": "80357-80397 (10-40 MeV shift)",
+      "susy_prediction": "SM \u00b1 5 MeV",
+      "composite_prediction": "SM + 20-100 MeV",
+      "extra_dim_prediction": "SM \u00b1 10 MeV",
+      "current_bound": "80377 \u00b1 12 (PDG)",
+      "discriminating": true
+    },
+    {
+      "observable": "sin\u00b2\u03b8_W (at M_Z)",
+      "cg_prediction": "0.23122 (GUT: 3/8 \u2192 run)",
+      "susy_prediction": "0.2315-0.2320",
+      "composite_prediction": "0.231-0.233",
+      "extra_dim_prediction": "0.2312 \u00b1 0.0002",
+      "current_bound": "0.23122 \u00b1 0.00003",
+      "discriminating": false
+    },
+    {
+      "observable": "S parameter",
+      "cg_prediction": "S < 0.02",
+      "susy_prediction": "S ~ 0",
+      "composite_prediction": "S ~ 0.1-0.5",
+      "extra_dim_prediction": "S ~ 0.05",
+      "current_bound": "S = 0.00 \u00b1 0.08",
+      "discriminating": true
+    },
+    {
+      "observable": "T parameter",
+      "cg_prediction": "T ~ 0 (S\u2084\u00d7Z\u2082 custodial)",
+      "susy_prediction": "T ~ 0",
+      "composite_prediction": "T ~ 0-0.3",
+      "extra_dim_prediction": "T ~ 0.05",
+      "current_bound": "T = 0.05 \u00b1 0.07",
+      "discriminating": true
+    },
+    {
+      "observable": "g-2 of muon",
+      "cg_prediction": "SM value (no new contribution)",
+      "susy_prediction": "\u0394a_\u03bc ~ 10\u207b\u2079 (positive)",
+      "composite_prediction": "\u0394a_\u03bc ~ 10\u207b\u00b9\u2070",
+      "extra_dim_prediction": "\u0394a_\u03bc ~ 10\u207b\u00b9\u2070",
+      "current_bound": "\u0394a_\u03bc = (2.5\u00b10.6)\u00d710\u207b\u2079",
+      "discriminating": true
+    },
+    {
+      "observable": "Flavor violation (BR B\u2192s\u03b3)",
+      "cg_prediction": "SM (3.3\u00d710\u207b\u2074)",
+      "susy_prediction": "(2-5)\u00d710\u207b\u2074",
+      "composite_prediction": "SM \u00b1 10%",
+      "extra_dim_prediction": "SM \u00b1 5%",
+      "current_bound": "(3.49\u00b10.19)\u00d710\u207b\u2074",
+      "discriminating": false
+    }
+  ],
+  "unique_signatures": [
+    {
+      "signature": "Golden ratio in CKM matrix",
+      "prediction": "\u03bb = (1/\u03c6\u00b3)sin(72\u00b0) = 0.2245",
+      "test": "Precision CKM measurements",
+      "status": "99.8% agreement with PDG",
+      "unique_to_cg": true
+    },
+    {
+      "signature": "All 4 Wolfenstein params from geometry",
+      "prediction": "\u03bb, A, \u03c1\u0304, \u03b7\u0304 all derived",
+      "test": "Independent verification of each",
+      "status": "All within 1% of PDG",
+      "unique_to_cg": true
+    },
+    {
+      "signature": "\u03c6-dependent mass hierarchy",
+      "prediction": "m_3:m_2:m_1 = 1:\u03bb\u00b2:\u03bb\u2074",
+      "test": "Quark/lepton mass ratios",
+      "status": "Pattern matches observation",
+      "unique_to_cg": true
+    },
+    {
+      "signature": "Stella octangula topology",
+      "prediction": "8 vertices, S\u2083\u00d7Z\u2082 symmetry",
+      "test": "Flavor structure, 3 generations",
+      "status": "Framework-specific",
+      "unique_to_cg": true
+    },
+    {
+      "signature": "Internal time \u03bb",
+      "prediction": "\u2202_\u03bb\u03c7 = i\u03c7 eigenvalue relation",
+      "test": "QGP coherence patterns",
+      "status": "Not yet tested",
+      "unique_to_cg": true
+    },
+    {
+      "signature": "CP angles from geometry",
+      "prediction": "\u03b2 = 36\u00b0/\u03c6, \u03b3 = arccos(1/3)-5\u00b0",
+      "test": "B meson CP measurements",
+      "status": "\u03b2: 99.8%, \u03b3: 99.6% agreement",
+      "unique_to_cg": true
+    }
+  ],
+  "roadmap": {
+    "HL-LHC (2026-2035)": [
+      "Higgs self-coupling: \u03ba_\u03bb to 50% precision",
+      "W mass: \u00b1 5 MeV precision",
+      "Search for \u03c7* resonance at 8-15 TeV",
+      "Test: CG predicts \u03ba_\u03bb ~ 1.01, SUSY/Composite allow larger deviations"
+    ],
+    "FCC-ee (2040s)": [
+      "sin\u00b2\u03b8_W to 10\u207b\u2075 precision",
+      "S, T parameters to 0.01",
+      "Invisible Higgs BR to 10\u207b\u2074",
+      "Test: CG predicts SM-like precision observables"
+    ],
+    "FCC-hh (2050s)": [
+      "Direct \u03c7* search up to 15 TeV",
+      "Higgs pT distribution to high precision",
+      "\u03ba_\u03bb to 5% precision",
+      "Test: CG predicts broad scalar, Composite predicts narrow vector"
+    ],
+    "Flavor factories (ongoing)": [
+      "CKM precision to 0.1%",
+      "CP angles \u03b2, \u03b3 to 0.1\u00b0",
+      "Test: CG predicts specific geometric values"
+    ]
+  },
+  "summary": {
+    "susy": "CG distinguishable by absence of superpartners and g-2",
+    "composite": "CG distinguishable by absence of vector resonances and S parameter",
+    "extra_dim": "CG distinguishable by single scalar (not KK tower)",
+    "unique_tests": "Golden ratio in CKM matrix is a smoking gun"
+  },
+  "status": "COMPLETE"
+}

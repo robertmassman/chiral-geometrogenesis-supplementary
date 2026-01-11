@@ -1,0 +1,113 @@
+{
+  "theorem": "5.3.2",
+  "title": "Spin-Orbit Coupling from Torsion",
+  "verification_date": "2025-12-15",
+  "status": "VERIFIED",
+  "constants": {
+    "G": 6.6743e-11,
+    "c": 299792458.0,
+    "hbar": 1.054571817e-34,
+    "kappa_T": 2.5958093035562147e-44,
+    "pi_G_over_c2": 2.33299705458436e-27
+  },
+  "gravity_probe_b": {
+    "orbital_parameters": {
+      "altitude_km": 642.0,
+      "orbital_radius_km": 7013.0,
+      "orbital_period_min": 97.41405345533994
+    },
+    "geodetic_precession": {
+      "predicted_mas_yr": 6637.547473358211,
+      "measured_mas_yr": 6601.8,
+      "uncertainty_mas_yr": 18.3,
+      "deviation_sigma": 1.953413844710995,
+      "percent_diff": 0.5414807076586872,
+      "agreement": "MARGINAL"
+    },
+    "frame_dragging": {
+      "predicted_mas_yr": 40.96138369545112,
+      "measured_mas_yr": 37.2,
+      "uncertainty_mas_yr": 7.2,
+      "deviation_sigma": 0.5224144021459883,
+      "percent_diff": 10.11124649314816,
+      "agreement": "PASS"
+    },
+    "torsion_precession": {
+      "predicted_rad_s": 0.0,
+      "predicted_mas_yr": 0.0,
+      "note": "Zero as predicted for unpolarized Earth",
+      "gpb_consistency": "CONSISTENT - no anomalous precession observed"
+    }
+  },
+  "spin_polarized_iron": {
+    "iron_parameters": {
+      "atom_density_m3": 8.5e+28,
+      "polarization_fraction": 0.5,
+      "spin_density_m3": 4.25e+28
+    },
+    "axial_current": {
+      "J5_Js_m3": 4.48193022225e-06,
+      "note": "J_5 = n_spin \u00d7 \u210f"
+    },
+    "torsion_precession": {
+      "Omega_rad_s": 1.0456330007361875e-32,
+      "Omega_mas_yr": 6.80625759333244e-17,
+      "order_of_magnitude": "~10^-31"
+    },
+    "detectability": {
+      "gpb_precision_mas_yr": 7.2,
+      "ratio_to_precision": 9.453135546295054e-18,
+      "improvement_needed": 1.0578500594883861e+17,
+      "detectable_with_current_tech": false
+    }
+  },
+  "contortion_derivation": {
+    "torsion_form": "T^\u03bb_\u03bc\u03bd = \u03ba_T \u03b5^\u03bb_\u03bc\u03bd\u03c1 J_5^\u03c1",
+    "contortion_general": "K_\u03bb\u03bc\u03bd = \u00bd(T_\u03bb\u03bc\u03bd + T_\u03bc\u03bb\u03bd + T_\u03bd\u03bb\u03bc)",
+    "antisymmetry_check": {
+      "T_\u03bc\u03bb\u03bd": "-T_\u03bb\u03bc\u03bd (one transposition of \u03b5\u1d62\u2c7c\u2096\u2097)",
+      "T_\u03bd\u03bb\u03bc": "+T_\u03bb\u03bc\u03bd (two transpositions)",
+      "sum": "T_\u03bb\u03bc\u03bd - T_\u03bb\u03bc\u03bd + T_\u03bb\u03bc\u03bd = T_\u03bb\u03bc\u03bd"
+    },
+    "result": "K_\u03bb\u03bc\u03bd = (\u03ba_T/2) \u03b5_\u03bb\u03bc\u03bd\u03c1 J_5^\u03c1",
+    "verification": "CORRECT - factor of 1/2 appears in contortion"
+  },
+  "weak_field_derivation": {
+    "precession_formula": "\u03a9_torsion = -\u03ba_T c\u00b2 J_5",
+    "coefficient_derivation": {
+      "kappa_T": 2.5958093035562147e-44,
+      "kappa_T_times_c2": 2.3329970545843598e-27,
+      "pi_G_over_c2": 2.33299705458436e-27,
+      "ratio": 0.9999999999999999,
+      "match": true
+    },
+    "sign_check": {
+      "formula": "-\u03ba_T c\u00b2 J_5",
+      "direction": "Precession axis opposite to J_5 direction",
+      "physical_meaning": "Spin precesses clockwise when viewed along J_5"
+    },
+    "verification": "CORRECT - \u03ba_T c\u00b2 = \u03c0G/c\u00b2"
+  },
+  "limiting_cases": {
+    "GR_limit": {
+      "condition": "J_5 \u2192 0",
+      "result": "K_\u03bb\u03bc\u03bd \u2192 0, equations reduce to standard MPD",
+      "verification": "PASS"
+    },
+    "weak_field": {
+      "condition": "|h_\u03bc\u03bd| << 1",
+      "result": "Spin vector evolution: dS/dt = \u03a9 \u00d7 S",
+      "verification": "PASS - standard precession form"
+    },
+    "non_relativistic": {
+      "condition": "v << c",
+      "result": "u^\u03bc \u2248 (c, v) reduces to 3D precession",
+      "verification": "PASS"
+    },
+    "unpolarized_matter": {
+      "condition": "\u27e8J_5\u27e9 = 0",
+      "result": "\u03a9_torsion = 0",
+      "verification": "PASS - explains GP-B null result"
+    }
+  }
+}

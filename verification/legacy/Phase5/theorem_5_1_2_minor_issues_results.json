@@ -1,0 +1,44 @@
+{
+  "timestamp": "2025-12-15T10:25:17.888878",
+  "theorem": "5.1.2",
+  "title": "Minor Issues Resolution",
+  "issue_7_pdg_citation": {
+    "status": "DOCUMENTATION UPDATE",
+    "problem": "PDG 2020 reference should be PDG 2024",
+    "location": "Applications file, Section 11, line ~50",
+    "action": "Change 'PDG 2020' to 'PDG 2024'",
+    "impact": "None (values unchanged)",
+    "pdg_2024_citation": "S. Navas et al., Phys. Rev. D 110, 030001 (2024)"
+  },
+  "issue_8_hubble_tension": {
+    "status": "FOOTNOTE RECOMMENDED",
+    "problem": "Hubble tension not acknowledged",
+    "current_value": "H\u2080 = 67.4 km/s/Mpc (Planck 2018)",
+    "alternative_value": "H\u2080 = 73.04 km/s/Mpc (SH0ES 2022)",
+    "tension_sigma": 4.887561225309663,
+    "impact_on_rho": "17.4%",
+    "action": "Add footnote acknowledging tension",
+    "conclusion": "Does not affect main result (122-order suppression)"
+  },
+  "issue_9_consistency": {
+    "status": "ALREADY CLARIFIED",
+    "problem": "Section 3.3 gives 10\u207b\u2074 GeV\u2074, Section 9.4 gives 10\u207b\u2077 GeV\u2074",
+    "explanation": {
+      "section_3_3": "Characteristic scale estimate (omits log factor)",
+      "section_9_4": "Full calculation with logarithm (can be small/negative)",
+      "both_valid": true,
+      "difference_relevant": false
+    },
+    "action": "Clarification already exists in document (lines 222-223)"
+  },
+  "overall_status": "ALL MINOR ISSUES ADDRESSED",
+  "files_requiring_update": [
+    {
+      "file": "Theorem-5.1.2-Vacuum-Energy-Density-Applications.md",
+      "updates": [
+        "Line ~50: Change 'PDG 2020' to 'PDG 2024'",
+        "Section 13.7: Add Hubble tension footnote"
+      ]
+    }
+  ]
+}

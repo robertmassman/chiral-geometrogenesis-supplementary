@@ -1,0 +1,45 @@
+{
+  "input": {
+    "alpha_s_MP": 0.015625,
+    "one_over_alpha_s_MP": 64,
+    "M_P_GeV": 1.22e+19,
+    "M_Z_GeV": 91.1876,
+    "m_t_GeV": 172.69,
+    "m_b_GeV": 4.18,
+    "m_c_GeV": 1.27
+  },
+  "cg_method": {
+    "description": "M_P \u2192 m_t (N_f=6) \u2192 m_b (N_f=5) \u2192 m_c (N_f=4) \u2192 M_Z (N_f=3)",
+    "intermediate_values": {
+      "alpha_mt": 0.04892346950792021,
+      "alpha_mb": 0.06330676892007203,
+      "alpha_mc": 0.07060857195370651
+    },
+    "alpha_s_MZ": 0.048795723160514524,
+    "error_percent": 58.61261818446605
+  },
+  "standard_method": {
+    "description": "M_P \u2192 m_t (N_f=6) \u2192 M_Z (N_f=5)",
+    "alpha_s_MZ": 0.05090359741547362,
+    "error_percent": 56.82476894361864
+  },
+  "reverse_running": {
+    "alpha_s_MZ_input": 0.1179,
+    "alpha_s_MP_required": 0.019226667633008697,
+    "one_over_alpha_s_MP_required": 52.01109308631214,
+    "discrepancy_from_64": 11.988906913687863,
+    "discrepancy_percent": 18.732667052637286
+  },
+  "experimental": {
+    "alpha_s_MZ": 0.1179,
+    "uncertainty": 0.001,
+    "source": "PDG 2024"
+  },
+  "claimed_values_from_doc": {
+    "alpha_mt": 0.01076,
+    "alpha_mb": 0.0163,
+    "alpha_mc": 0.0216,
+    "alpha_mz": 0.1187,
+    "error_percent": 0.7
+  }
+}

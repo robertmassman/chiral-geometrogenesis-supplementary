@@ -1,0 +1,117 @@
+{
+  "theorem": "2.2.6",
+  "title": "Entropy Production Propagation",
+  "timestamp": "2025-12-13T21:28:35.638670",
+  "all_passed": true,
+  "passed_count": 11,
+  "total_count": 11,
+  "results": [
+    {
+      "test": "microscopic_entropy_production_physical",
+      "passed": true,
+      "S_dot_computed": 6.289881494986327,
+      "S_dot_expected": 6.3,
+      "K_rate_s": 3.0385900941962926e+23,
+      "note": "\u1e60_hadron = k_B \u00d7 \u03c3_micro \u2248 6.3 J/(K\u00b7s)"
+    },
+    {
+      "test": "macroscopic_entropy_rate",
+      "passed": true,
+      "N_values": [
+        1,
+        100,
+        6.022e+23
+      ],
+      "S_dot_values": [
+        6.289881494986327,
+        628.9881494986327,
+        3.787766636280766e+24
+      ],
+      "ratio_100": 100.0,
+      "ratio_NA": 1.0,
+      "note": "dS/dt = N \u00d7 k_B \u00d7 \u03c3_eff (linear in N)"
+    },
+    {
+      "test": "thermalization_timescale",
+      "passed": true,
+      "tau_seconds": 3.291e-24,
+      "tau_fm_c": 0.9882882882882884,
+      "expected_range": "0.2-1.0 fm/c",
+      "note": "\u03c4 ~ 1/K ~ 1 fm/c (consistent with RHIC/LHC)"
+    },
+    {
+      "test": "hadron_independence_dilute",
+      "passed": 1,
+      "distances_fm": [
+        1.0,
+        2.0,
+        5.0,
+        10.0
+      ],
+      "correlations": [
+        0.006737946999085467,
+        4.5399929762484854e-05,
+        1.3887943864964021e-11,
+        1.9287498479639178e-22
+      ],
+      "decay_length_fm": 0.2,
+      "note": "Correlations ~ exp(-d/0.2fm) (confinement)"
+    },
+    {
+      "test": "coupling_efficiency",
+      "passed": true,
+      "epsilon_nuclear": 0.05,
+      "epsilon_EM": 0.005,
+      "epsilon_thermal": 0.000125,
+      "note": "\u03b5 = E_inter/E_QCD << 1 for ordinary matter"
+    },
+    {
+      "test": "clausius_inequality",
+      "passed": true,
+      "sigma_micro": 1.5,
+      "sigma_positive": true,
+      "clausius_satisfied": true,
+      "note": "\u03c3 > 0 \u2192 \u222e \u03b4Q/T < 0 (Clausius inequality)"
+    },
+    {
+      "test": "second_law_derivation",
+      "passed": true,
+      "dS_dt": 6289.881494986326,
+      "N": 1000,
+      "sigma_eff": 4.557885141294439e+23,
+      "note": "dS/dt = N \u00d7 k_B \u00d7 \u03c3 > 0 (Second Law)"
+    },
+    {
+      "test": "basin_of_attraction_measure",
+      "passed": true,
+      "basin_measure": 1.0,
+      "n_samples": 500,
+      "expected": 1.0,
+      "note": "Almost all trajectories converge to one of the two stable FPs"
+    },
+    {
+      "test": "no_past_hypothesis_needed",
+      "passed": true,
+      "sigma_forward_fp": 0.4999999999999998,
+      "sigma_backward_fp": 1.2499999999999996,
+      "stable_fp_positive": true,
+      "note": "\u03c3 > 0 at stable FPs \u2192 no special initial conditions needed"
+    },
+    {
+      "test": "viscosity_entropy_ratio",
+      "passed": true,
+      "eta_s_our_estimate": 7.644927536231884e-12,
+      "kss_bound": 6.083640034853245e-13,
+      "ratio": 12.566370614359174,
+      "note": "\u03b7/s ~ \u210f/k_B ~ O(10) \u00d7 KSS bound"
+    },
+    {
+      "test": "entropy_per_cycle",
+      "passed": true,
+      "tau_cycle_s": 2.067796284592802e-23,
+      "delta_S_per_cycle_mole": 78.32329777405943,
+      "expected_range": "1-100 J/(K\u00b7mol)",
+      "note": "\u0394S_cycle ~ 10 J/(K\u00b7mol) per color cycle"
+    }
+  ]
+}

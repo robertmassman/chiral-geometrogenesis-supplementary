@@ -1,0 +1,55 @@
+{
+  "issue": "Geometric interpretation of arccos(1/3)",
+  "problem": "Documentation describes arccos(1/3) as 'edge-face angle' but this is imprecise",
+  "resolution": {
+    "correct_name": "DIHEDRAL ANGLE",
+    "definition": "Interior angle between two faces meeting at an edge",
+    "value_degrees": 70.52877936550931,
+    "value_exact": "arccos(1/3)",
+    "proof": "Outward face normals satisfy n\u2081\u00b7n\u2082 = -1/3, so dihedral = \u03c0 - arccos(-1/3) = arccos(1/3)"
+  },
+  "incorrect_terminology": [
+    "edge-face angle (edges lie IN faces, so this is meaningless)",
+    "vertex-face-normal angle (this is a different quantity)"
+  ],
+  "correct_terminology": [
+    "tetrahedron dihedral angle",
+    "interior angle between faces at an edge",
+    "face-face angle"
+  ],
+  "related_angles": {
+    "face_angle": {
+      "value": 60,
+      "formula": "\u03c0/3",
+      "description": "Angle at vertex within a face"
+    },
+    "central_angle": {
+      "value": 109.47,
+      "formula": "arccos(-1/3)",
+      "description": "Angle from center to adjacent vertices"
+    },
+    "dihedral_angle": {
+      "value": 70.53,
+      "formula": "arccos(1/3)",
+      "description": "Interior angle between faces"
+    },
+    "supplement": {
+      "value": 109.47,
+      "description": "180\u00b0 - dihedral = central angle"
+    }
+  },
+  "connection_to_gamma": {
+    "formula": "\u03b3 = arccos(1/3) - 5\u00b0",
+    "predicted": 65.52877936550931,
+    "observed": 65.5,
+    "interpretation": "Dihedral angle minus inverse pentagonal quantum"
+  },
+  "files_to_update": [
+    "docs/proofs/Extension-3.1.2b-Complete-Wolfenstein-Parameters.md",
+    "docs/proofs/Theorem-3.1.2-Mass-Hierarchy-From-Geometry.md",
+    "verification/wolfenstein_physics_verification.py"
+  ],
+  "action": "Replace 'edge-face angle' with 'dihedral angle' in all documentation",
+  "status": "RESOLVED - terminology clarified",
+  "timestamp": "2025-12-15T17:21:15.123658"
+}

@@ -1,0 +1,116 @@
+{
+  "metadata": {
+    "theorem": "5.2.6",
+    "analysis": "Entanglement Entropy Predictions",
+    "date": "2025-12-15T07:28:24.900999",
+    "framework": "Chiral Geometrogenesis"
+  },
+  "group_theory": {
+    "SU2_adjoint_dim": 3,
+    "SU3_adjoint_dim": 8,
+    "SU2_casimir": 2,
+    "SU3_casimir": 3
+  },
+  "main_predictions": {
+    "ratio_simple": 2.6666666666666665,
+    "ratio_full_channels": 7.111111111111111,
+    "chi_enhancement": 4,
+    "sqrt_chi_enhancement": 2
+  },
+  "topological_EE": {
+    "D_CG": 5.656854249492381,
+    "D_standard": 2.8284271247461903,
+    "S_topo_CG": 1.7328679513998633,
+    "S_topo_standard": 1.039720770839918,
+    "ratio": 1.6666666666666665
+  },
+  "lattice_predictions": {
+    "S_2_ratio": 2.6666666666666665,
+    "S_3_ratio": 2.6666666666666665,
+    "S_4_ratio": 2.6666666666666665,
+    "S_5_ratio": 2.6666666666666665
+  },
+  "string_tension_connection": {
+    "coefficient": 1.3333333333333333,
+    "correlation_length_GeV_inv": 2.272727272727273,
+    "coefficient_SU3": 1.3333333333333333,
+    "coefficient_SU2": 0.5,
+    "ratio": 2.6666666666666665
+  },
+  "phase_structure": {
+    "confined_phase": {
+      "ratio": 2.6666666666666665,
+      "mechanism": "Flux tube entanglement"
+    },
+    "deconfined_phase": {
+      "ratio": 2.6666666666666665,
+      "mechanism": "Free gluon entanglement"
+    },
+    "prediction": "Ratio 8/3 is UNIVERSAL across phases",
+    "test": "Measure SU(3)/SU(2) ratio above and below T_c"
+  },
+  "novel_predictions": {
+    "coefficient_enhancement": {
+      "factor": 4,
+      "description": "CG predicts entanglement coefficient is \u03c7=4 times larger"
+    },
+    "topological_enhancement": {
+      "factor": 2.0,
+      "description": "Topological EE enhanced by \u221a\u03c7 = 2"
+    },
+    "channel_prediction": {
+      "SU3_channels": 64,
+      "SU2_channels": 9,
+      "ratio": 7.111111111111111,
+      "description": "Full channel counting from adj\u2297adj"
+    },
+    "stella_octangula_signature": {
+      "chi": 4,
+      "boundary_topology": "\u2202\ud835\udcae = S\u00b2 \u222a S\u00b2 (two spheres)",
+      "description": "Entanglement should probe both tetrahedral boundaries"
+    }
+  },
+  "numerical_estimates": {
+    "parameters": {
+      "sqrt_sigma_GeV": 0.44,
+      "lattice_spacing_fm": 0.1,
+      "region_size_fm": 1.0,
+      "area_GeV_inv_sq": 25.684623999999996
+    },
+    "coefficients": {
+      "k_SU3_standard": 0.6366197723675814,
+      "k_SU2_standard": 0.238732414637843,
+      "k_SU3_CG": 2.5464790894703255,
+      "k_SU2_CG": 0.954929658551372
+    },
+    "entanglement_entropy": {
+      "S_EE_SU3_standard": 63.66197723675813,
+      "S_EE_SU2_standard": 23.873241463784296,
+      "S_EE_SU3_CG": 254.64790894703253,
+      "S_EE_SU2_CG": 95.49296585513719,
+      "ratio_standard": 2.666666666666667,
+      "ratio_CG": 2.666666666666667
+    },
+    "key_ratio": 2.6666666666666665,
+    "enhancement_factor": 4
+  },
+  "literature": {
+    "CG_prediction_ratio": 2.6666666666666665,
+    "CG_prediction_numeric": 2.6666666666666665,
+    "testable": true,
+    "method": "Compare SU(3) and SU(2) lattice EE calculations",
+    "key_references": [
+      "Buividovich & Polikarpov, Phys. Rev. D 78, 074504 (2008)",
+      "Itou et al., PTEP 2016, 061B01 (2016)",
+      "Rabenstein et al., Phys. Rev. D 100, 034504 (2019)"
+    ],
+    "expected_lattice_result": "Ratio should be 8/3 if CG is correct",
+    "distinguishing_feature": "Standard QFT predicts same ratio, but CG also predicts \u03c7 enhancement"
+  },
+  "conclusions": {
+    "primary_testable_prediction": "S_EE^{SU(3)} / S_EE^{SU(2)} = 8/3 \u2248 2.67",
+    "novel_CG_signature": "\u03c7-enhancement of coefficient by factor 4",
+    "method": "Compare lattice QCD calculations for SU(2) and SU(3)",
+    "status": "Awaiting lattice QCD verification"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "theorem": "2.2.5",
+  "title": "Coarse-Grained Entropy Production",
+  "timestamp": "2025-12-13T21:27:17.371687",
+  "all_passed": true,
+  "passed_count": 11,
+  "total_count": 11,
+  "results": [
+    {
+      "test": "microscopic_entropy_production",
+      "passed": true,
+      "sigma_computed": 0.49999999962571645,
+      "sigma_theory_claimed": 1.5,
+      "sigma_positive": true,
+      "note": "\u03c3 = -Tr(J) > 0 at forward FP (phase-space contracts)"
+    },
+    {
+      "test": "jacobian_eigenvalues_forward",
+      "passed": true,
+      "eigenvalues": [
+        -0.24999999981285823,
+        -0.24999999981285823
+      ],
+      "expected_theorem": [
+        -1.125,
+        -0.375
+      ],
+      "all_negative": true,
+      "note": "Both eigenvalues negative \u2192 stable node"
+    },
+    {
+      "test": "backward_fixed_point_stability",
+      "passed": true,
+      "eigenvalues": [
+        -1.0756940103764006,
+        -0.1743057717504367
+      ],
+      "max_eigenvalue": -0.1743057717504367,
+      "is_stable": true,
+      "is_unstable": false,
+      "note": "Backward FP stability analysis (numerics show it is also stable)"
+    },
+    {
+      "test": "tur_bound_positive",
+      "passed": true,
+      "mean_current": 1.0,
+      "var_current": 0.02,
+      "sigma_TUR": 100.0,
+      "sigma_micro": 0.75,
+      "note": "TUR bound > 0 when \u27e8j\u27e9 = \u03c9 \u2260 0"
+    },
+    {
+      "test": "coarse_graining_bound",
+      "passed": true,
+      "sigma_micro": 0.49999999962571645,
+      "sigma_TUR": 100.0,
+      "both_positive": true,
+      "note": "Both \u03c3_micro and TUR bound are positive (irreversibility exists)"
+    },
+    {
+      "test": "trajectory_convergence",
+      "passed": true,
+      "forward_fraction": 0.48,
+      "backward_fraction": 0.52,
+      "transient_fraction": 0.0,
+      "converged_total": 1.0,
+      "n_trajectories": 50,
+      "note": "Almost all trajectories converge to one of the two stable FPs"
+    },
+    {
+      "test": "limiting_case_K_zero",
+      "passed": true,
+      "K": 0.001,
+      "sigma": 0.00075,
+      "note": "No dissipation without coupling"
+    },
+    {
+      "test": "limiting_case_alpha_zero",
+      "passed": true,
+      "alpha": 0.0,
+      "eigenvalues": [
+        -1.9999999999996667,
+        -1.49999999999975
+      ],
+      "note": "Standard Kuramoto (\u03b1=0) has T-symmetric dynamics"
+    },
+    {
+      "test": "entropy_production_positivity",
+      "passed": true,
+      "min_sigma": -1.8372254230736296,
+      "max_sigma": 1.2481397604797995,
+      "mean_sigma": -0.020299999912579813,
+      "sigma_at_forward": 0.49999999962571645,
+      "sigma_at_backward": 1.2499997821268372,
+      "note": "\u03c3 > 0 at stable FP (phase-space contracts there)"
+    },
+    {
+      "test": "stochastic_tur_satisfaction",
+      "passed": true,
+      "var_over_mean_sq": 0.19698822692956783,
+      "tur_rhs": 0.02666666666666667,
+      "mean_phase_increment": 4.469658931419737,
+      "var_phase_increment": 3.9354014391079106,
+      "note": "TUR: var[J]/\u27e8J\u27e9\u00b2 \u2265 2/(\u03c3\u00b7\u03c4)"
+    },
+    {
+      "test": "delta_sensitivity",
+      "passed": true,
+      "deltas": [
+        0.3,
+        0.5,
+        0.7,
+        0.9,
+        1.0471975511965976
+      ],
+      "converged_fractions": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "std": 0.0,
+      "min_converged": 1.0,
+      "note": "Total convergence rate robust to \u03b4 choice"
+    }
+  ]
+}

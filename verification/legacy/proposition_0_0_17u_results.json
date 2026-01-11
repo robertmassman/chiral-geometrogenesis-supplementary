@@ -1,0 +1,81 @@
+{
+  "primordial_perturbations": {
+    "N_eff": 56.98005698005695,
+    "n_s_predicted": 0.9649,
+    "n_s_observed": 0.9649,
+    "n_s_match": true,
+    "r_predicted": 0.0012320100000000013,
+    "r_bound": 0.036,
+    "r_within_bound": true,
+    "running_predicted": -0.0003080025000000003,
+    "running_observed": -0.0045,
+    "running_compatible": true,
+    "beta_iso_predicted": 0.001,
+    "beta_iso_bound": 0.01,
+    "isocurvature_suppressed": true
+  },
+  "inflation": {
+    "H_inf_GeV": 10000000000000.0,
+    "V_inf_GeV4": 1.7787675e+63,
+    "v_chi_inf_GeV": 5.844e+19,
+    "N_total": 144.0,
+    "N_eff": 56.98005698005695,
+    "N_sufficient": true,
+    "epsilon": 0.003472222222222222,
+    "eta": -0.006944444444444444,
+    "slow_roll_valid": true
+  },
+  "emergence_temperature": {
+    "omega_MeV": 220.0,
+    "T_c_MeV": 155.0,
+    "T_star_estimate_MeV": 53.35783750799326,
+    "T_star_range_MeV": [
+      155.0,
+      200.0
+    ],
+    "consistent_with_QCD": true
+  },
+  "nanograv": {
+    "f_peak_nHz": 24.56153057446871,
+    "f_in_NANOGrav_band": true,
+    "Omega_GW_h2": 3.5953631029612496e-10,
+    "Omega_nano": 1e-09,
+    "amplitude_compatible": true,
+    "spectral_distinguisher": "CG predicts f\u00b3 turnover at ~30 nHz"
+  },
+  "reheating": {
+    "T_reh_gravitational_GeV": 20265182408.994377,
+    "T_reh_higgs_GeV": 69600851865.18599,
+    "T_reh_yukawa_GeV": 69600851865186.0,
+    "T_reh_range": [
+      20265182408.994377,
+      69600851865186.0
+    ],
+    "above_BBN": true
+  },
+  "dimensional_analysis": {
+    "n_s_dimensionless": true,
+    "r_dimensionless": true,
+    "H_has_mass_dimension": true,
+    "f_peak_has_frequency_dimension": true,
+    "T_reh_has_mass_dimension": true,
+    "Omega_GW_dimensionless": true,
+    "tests_passed": 6,
+    "total_tests": 6,
+    "all_pass": true
+  },
+  "limiting_cases": {
+    "N_infinity_scale_invariant": true,
+    "r_vanishes_large_N": true,
+    "GW_vanishes_small_T": true,
+    "flat_space_predicted": true,
+    "BBN_compatible": true,
+    "tests_passed": 5,
+    "total_tests": 5,
+    "all_pass": true
+  },
+  "overall": {
+    "all_tests_pass": true,
+    "status": "VERIFIED"
+  }
+}

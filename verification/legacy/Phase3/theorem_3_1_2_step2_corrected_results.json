@@ -1,0 +1,37 @@
+{
+  "timestamp": "2025-12-14T07:31:43.908318",
+  "lambda_pdg": 0.2265,
+  "lambda_geometric": 0.2245139882897927,
+  "eps_sigma_required": 1.7233747903802286,
+  "agreement_percent": 0.8768263621224367,
+  "pdg_comparison": {
+    "Up quarks": {
+      "masses": [
+        0.00216,
+        1.27,
+        172.69
+      ],
+      "lambda_12": 0.041240603797408244,
+      "lambda_23": 0.08575674050414861
+    },
+    "Down quarks": {
+      "masses": [
+        0.0047,
+        0.0934,
+        4.18
+      ],
+      "lambda_12": 0.22432387109594235,
+      "lambda_23": 0.14948075999156382
+    },
+    "Charged leptons": {
+      "masses": [
+        0.000511,
+        0.1057,
+        1.777
+      ],
+      "lambda_12": 0.06953011639636968,
+      "lambda_23": 0.24388987985288343
+    }
+  },
+  "status": "STEP 2 COMPLETE - Pattern Verified"
+}

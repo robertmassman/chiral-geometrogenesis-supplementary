@@ -1,0 +1,17 @@
+{
+  "issue": "Bag constant normalization inconsistency",
+  "diagnosis": "Document mixes Convention A (\u03bb/4) and Convention B (\u03bb)",
+  "fix": "Change V_eff = \u03bb(...) to V_eff = (\u03bb/4)(...)",
+  "lines_to_change": [
+    116,
+    119,
+    123,
+    126,
+    136
+  ],
+  "B_max_quarter_MeV": 139.0674366535735,
+  "B_eff_quarter_MeV": 91.984463213146,
+  "suppression_factor": 0.19140625,
+  "ratio": 0.6614378277661477,
+  "numerical_verification": "PASSED"
+}

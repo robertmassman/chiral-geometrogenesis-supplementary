@@ -1,0 +1,217 @@
+{
+  "theorem": "0.0.1",
+  "title": "Four-Dimensional Spacetime from Observer Existence",
+  "verification_date": "2025-12-15",
+  "checks": {
+    "P1_orbital_stability": {
+      "2": {
+        "D": 3,
+        "n": 2,
+        "potential_type": "logarithmic",
+        "stable_orbits": "marginal",
+        "note": "2D gravity: log potential, no inverse-square law"
+      },
+      "3": {
+        "D": 4,
+        "n": 3,
+        "potential_type": "1/r^1",
+        "circular_orbit_radius": 1.0,
+        "d2V_at_r0": 1.0,
+        "stable_orbits": true,
+        "analytical_stability": true,
+        "agreement": true
+      },
+      "4": {
+        "D": 5,
+        "n": 4,
+        "potential_type": "1/r^2",
+        "circular_orbit_radius": "undefined",
+        "stable_orbits": false,
+        "note": "n=4 special case: no unique circular orbit"
+      },
+      "5": {
+        "D": 6,
+        "n": 5,
+        "potential_type": "1/r^3",
+        "circular_orbit_radius": 0.3333333333333333,
+        "d2V_at_r0": -2673.000000000001,
+        "stable_orbits": false,
+        "analytical_stability": false,
+        "agreement": true
+      },
+      "6": {
+        "D": 7,
+        "n": 6,
+        "potential_type": "1/r^4",
+        "circular_orbit_radius": 0.5,
+        "d2V_at_r0": -1232.0,
+        "stable_orbits": false,
+        "analytical_stability": false,
+        "agreement": true
+      }
+    },
+    "P2_atomic_stability": {
+      "2": {
+        "D": 3,
+        "n": 2,
+        "potential": "log(r)",
+        "bound_states": "quasi-bound only",
+        "stable": false,
+        "reason": "Logarithmic potential too weak for discrete spectrum"
+      },
+      "3": {
+        "D": 4,
+        "n": 3,
+        "potential": "1/r",
+        "bound_states": "discrete (E_n = -13.6/n^2 eV)",
+        "stable": true,
+        "reason": "Coulomb potential gives stable discrete spectrum"
+      },
+      "4": {
+        "D": 5,
+        "n": 4,
+        "potential": "1/r^2",
+        "bound_states": "collapse to r=0",
+        "stable": false,
+        "reason": "1/r^2 potential is critical - falls into nucleus"
+      },
+      "5": {
+        "D": 6,
+        "n": 5,
+        "potential": "1/r^3",
+        "bound_states": "collapse",
+        "stable": false,
+        "reason": "Potential too singular, electron falls into nucleus"
+      },
+      "6": {
+        "D": 7,
+        "n": 6,
+        "potential": "1/r^4",
+        "bound_states": "collapse",
+        "stable": false,
+        "reason": "Potential too singular, electron falls into nucleus"
+      }
+    },
+    "P3_huygens_principle": {
+      "1": {
+        "D": 2,
+        "n": 1,
+        "odd_spatial": true,
+        "holds": true,
+        "wave_behavior": "sharp propagation"
+      },
+      "2": {
+        "D": 3,
+        "n": 2,
+        "odd_spatial": false,
+        "holds": false,
+        "wave_behavior": "has tails/afterglow"
+      },
+      "3": {
+        "D": 4,
+        "n": 3,
+        "odd_spatial": true,
+        "holds": true,
+        "wave_behavior": "sharp propagation"
+      },
+      "4": {
+        "D": 5,
+        "n": 4,
+        "odd_spatial": false,
+        "holds": false,
+        "wave_behavior": "has tails/afterglow"
+      },
+      "5": {
+        "D": 6,
+        "n": 5,
+        "odd_spatial": true,
+        "holds": true,
+        "wave_behavior": "sharp propagation"
+      },
+      "6": {
+        "D": 7,
+        "n": 6,
+        "odd_spatial": false,
+        "holds": false,
+        "wave_behavior": "has tails/afterglow"
+      }
+    },
+    "combined_analysis": {
+      "1": {
+        "D": 2,
+        "n": 1,
+        "P1_orbital": false,
+        "P2_atomic": false,
+        "P3_huygens": true,
+        "all_requirements": false
+      },
+      "2": {
+        "D": 3,
+        "n": 2,
+        "P1_orbital": false,
+        "P2_atomic": false,
+        "P3_huygens": false,
+        "all_requirements": false
+      },
+      "3": {
+        "D": 4,
+        "n": 3,
+        "P1_orbital": true,
+        "P2_atomic": true,
+        "P3_huygens": true,
+        "all_requirements": true
+      },
+      "4": {
+        "D": 5,
+        "n": 4,
+        "P1_orbital": false,
+        "P2_atomic": false,
+        "P3_huygens": false,
+        "all_requirements": false
+      },
+      "5": {
+        "D": 6,
+        "n": 5,
+        "P1_orbital": false,
+        "P2_atomic": false,
+        "P3_huygens": true,
+        "all_requirements": false
+      },
+      "6": {
+        "D": 7,
+        "n": 6,
+        "P1_orbital": false,
+        "P2_atomic": false,
+        "P3_huygens": false,
+        "all_requirements": false
+      }
+    }
+  },
+  "unique_D": 4,
+  "theorem_verified": true,
+  "corollary": {
+    "D": 4,
+    "N_spatial": 3,
+    "gauge_rank": 2,
+    "gauge_group": "SU(3)",
+    "check": "SU(3) has rank 2, weight space dim = 2"
+  },
+  "time_analysis": {
+    "0": {
+      "description": "No time",
+      "physics": "Static universe, no dynamics",
+      "viable": false
+    },
+    "1": {
+      "description": "One time dimension",
+      "physics": "Hyperbolic wave equation, causality, well-posed IVP",
+      "viable": true
+    },
+    "2": {
+      "description": "Two time dimensions",
+      "physics": "Ultrahyperbolic equation, closed timelike curves, causality violation",
+      "viable": false
+    }
+  },
+  "final_status": "VERIFIED"
+}

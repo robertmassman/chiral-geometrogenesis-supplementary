@@ -1,0 +1,39 @@
+{
+  "thermo": {
+    "method": "Thermodynamic",
+    "result": "\u03b3 = 1/4",
+    "key_equation": "\u03b7 = c\u00b3/(4G\u210f) = 1/(4\u2113_P\u00b2)",
+    "inputs": [
+      "G from Thm 5.2.4",
+      "T from Thm 0.2.2",
+      "Clausius relation"
+    ],
+    "approximations": "None"
+  },
+  "su3": {
+    "method": "SU(3) Microstate",
+    "result": "\u03b3 = 1/4",
+    "gamma_SU3": 0.15142417490204899,
+    "C_2_fund": 1.3333333333333333,
+    "dim_fund": 3,
+    "key_equation": "\u03b3_SU(3) = \u221a3\u00b7ln(3)/(4\u03c0) \u2248 0.1514"
+  },
+  "equivalence": {
+    "theorem": "Equivalence of Derivations",
+    "eta_thermo": "1/(4\u2113_P\u00b2)",
+    "eta_SU3": "\u221a3\u00b7ln(3)/(16\u03c0\u00b7\u03b3_SU(3))",
+    "gamma_SU3_required": 0.15142417490204899,
+    "numerical_check": "True"
+  },
+  "non_circular": {
+    "circularity": false,
+    "reason": "Derivation 1 is independent; Derivation 2 is consistency check",
+    "what_would_break": "Different gauge group would give different \u03b3"
+  },
+  "lqg_comparison": {
+    "gamma_LQG": 0.12738402314094804,
+    "gamma_SU3": 0.15142417490204899,
+    "ratio": 1.1887218755408673,
+    "structure": "Both use S = (A/a) \u00d7 ln(dim)"
+  }
+}

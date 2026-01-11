@@ -1,0 +1,36 @@
+{
+  "input": {
+    "alpha_s_MP": 0.015625,
+    "one_over_alpha_s_MP": 64
+  },
+  "cg_method": {
+    "description": "M_P \u2192 m_t (N_f=6) \u2192 m_b (N_f=5) \u2192 m_c (N_f=4) \u2192 M_Z (N_f=3)",
+    "intermediate": {
+      "alpha_mt": 0.04892346950792021,
+      "alpha_mb": 0.06330676892007203,
+      "alpha_mc": 0.07060857195370651
+    },
+    "alpha_s_MZ": 0.048795723160514524,
+    "error_percent": -58.61261818446605
+  },
+  "standard_method": {
+    "description": "M_P \u2192 m_t (N_f=6) \u2192 M_Z (N_f=5)",
+    "alpha_s_MZ": 0.05090359741547362,
+    "error_percent": -56.82476894361864
+  },
+  "reverse_running": {
+    "alpha_s_MP_required": 0.019226667633008697,
+    "one_over_alpha_s_MP_required": 52.01109308631214,
+    "discrepancy_from_64_percent": 18.732667052637286
+  },
+  "experimental": {
+    "alpha_s_MZ": 0.1179,
+    "uncertainty": 0.001
+  },
+  "document_claims": {
+    "intermediate_values_wrong": true,
+    "reason": "Violate asymptotic freedom - alpha_s decreases when running to lower energy",
+    "claimed_error": 0.7,
+    "actual_error_cg_method": 58.61261818446605
+  }
+}

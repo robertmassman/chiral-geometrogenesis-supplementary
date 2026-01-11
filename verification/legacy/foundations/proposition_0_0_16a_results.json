@@ -1,0 +1,262 @@
+{
+  "proposition": "0.0.16a",
+  "title": "A\u2083 Extension is Uniquely Forced by Physical Requirements",
+  "tests": {
+    "a3_coordination": {
+      "description": "A\u2083 (FCC) coordination number",
+      "expected": 12,
+      "actual": 12,
+      "neighbors": [
+        [
+          -1,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          1
+        ],
+        [
+          -1,
+          1,
+          0
+        ],
+        [
+          0,
+          -1,
+          -1
+        ],
+        [
+          0,
+          -1,
+          1
+        ],
+        [
+          0,
+          1,
+          -1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          0
+        ],
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "passed": true
+    },
+    "b3_coordination": {
+      "description": "B\u2083 (BCC-like) coordination number",
+      "expected": 8,
+      "actual": 8,
+      "neighbors": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ],
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "note": "B\u2083 root lattice has 8 nearest neighbors forming a cube vertex figure",
+      "passed": true
+    },
+    "c3_coordination": {
+      "description": "C\u2083 (SC-like) coordination number",
+      "expected": 6,
+      "actual": 6,
+      "neighbors": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "note": "C\u2083 root lattice has 6 nearest neighbors forming an octahedron vertex figure",
+      "passed": true
+    },
+    "a2_in_a3": {
+      "description": "A\u2082 is sublattice of A\u2083",
+      "a2_roots": [
+        [
+          1,
+          -1,
+          0
+        ],
+        [
+          -1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          -1
+        ],
+        [
+          0,
+          -1,
+          1
+        ],
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          1
+        ]
+      ],
+      "in_plane_x+y+z=0": true,
+      "simply_laced": true,
+      "root_length": 1.414214,
+      "valid_fcc_vectors": true,
+      "passed": true
+    },
+    "a2_not_in_b3": {
+      "description": "A\u2082 is NOT sublattice of B\u2083",
+      "b3_short_root_length": 1.0,
+      "b3_long_root_length": 1.414214,
+      "root_length_ratio": 1.414214,
+      "b3_simply_laced": false,
+      "reason": "B\u2083 is not simply-laced; A\u2082 requires all roots equal length",
+      "passed": true
+    },
+    "a2_not_in_c3": {
+      "description": "A\u2082 is NOT sublattice of C\u2083",
+      "c3_short_root_length": 1.414214,
+      "c3_long_root_length": 2.0,
+      "root_length_ratio": 1.414214,
+      "c3_simply_laced": false,
+      "reason": "C\u2083 is not simply-laced; A\u2082 requires all roots equal length",
+      "passed": true
+    },
+    "vertex_figures": {
+      "description": "Vertex figure comparison",
+      "a3_fcc": {
+        "neighbor_count": 12,
+        "vertex_figure": "cuboctahedron",
+        "stella_compatible": true,
+        "note": "8 triangular faces correspond to 8 tetrahedra of stella"
+      },
+      "b3_bcc": {
+        "neighbor_count": 8,
+        "vertex_figure": "cube",
+        "stella_compatible": false,
+        "note": "Cube has 6 square faces, not 8 triangular faces needed for stella"
+      },
+      "c3_sc": {
+        "neighbor_count": 6,
+        "vertex_figure": "octahedron",
+        "stella_compatible": false,
+        "note": "Octahedron has only 6 vertices, not 8 needed for stella"
+      },
+      "passed": true
+    }
+  },
+  "summary": {
+    "all_tests_passed": true,
+    "conclusion": "A\u2083 is uniquely forced by physical requirements",
+    "a3_unique_properties": [
+      "Coordination 12 (required by Theorem 0.0.16)",
+      "Contains A\u2082 as sublattice (required for SU(3) weight structure)",
+      "Simply-laced (required for A\u2082 embedding)",
+      "Cuboctahedron vertex figure (compatible with stella octangula)"
+    ],
+    "b3_failures": [
+      "Coordination 8 \u2260 12",
+      "Not simply-laced",
+      "Cube vertex figure (not stella compatible)"
+    ],
+    "c3_failures": [
+      "Coordination 6 \u2260 12",
+      "Not simply-laced",
+      "Octahedron vertex figure (not stella compatible)"
+    ]
+  }
+}

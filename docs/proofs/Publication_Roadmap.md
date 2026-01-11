@@ -1,6 +1,6 @@
 # Publication Roadmap: Chiral Geometrogenesis
 
-**Last Updated:** 2026-01-10 (Comprehensive Audit Complete)
+**Last Updated:** 2026-01-11 (Added supplementary repository sync documentation)
 **Status:** Phase 0 COMPLETE — unified paper ready for arXiv submission
 
 ---
@@ -577,8 +577,8 @@ The unified paper explicitly presents this axiom reduction as a key result.
 ### Short-term (Week 2) — Phase 1 ← **CURRENT**
 
 1. [ ] Finalize unified arXiv preprint
-2. [ ] Prepare GitHub repository for public release
-3. [ ] Write README with build instructions and verification guide
+2. [x] Prepare GitHub repository for public release
+3. [x] Write README with build instructions and verification guide
 4. [ ] Submit to arXiv
 5. [ ] Share with 3-5 trusted colleagues for feedback
 
@@ -630,6 +630,96 @@ The unified paper explicitly presents this axiom reduction as a key result.
 - `proposition_0_0_17g-i_verification.py` — Outcome selection
 - `proposition_0_0_17n_verification.py` — Fermion masses
 - `proposition_0_0_17u_verification.py` — Cosmology
+
+---
+
+## Supplementary Materials Repository
+
+A separate repository `chiral-geometrogenesis-supplementary` contains publication-ready copies of all supporting materials for arXiv submission and peer review. This repository is maintained alongside the main `eqalateralCube` development repository.
+
+### Repository Location
+
+```
+../chiral-geometrogenesis-supplementary/
+├── paper/                 # Copy of papers/paper-unified-arxiv/
+│   ├── main.tex          # Unified paper LaTeX source
+│   ├── main.pdf          # Compiled PDF
+│   ├── figures/          # All paper figures with reproducibility scripts
+│   └── references.bib    # Bibliography
+├── docs/
+│   ├── proofs/           # Copy of docs/proofs/ (all theorem derivations)
+│   ├── Mathematical-Proof-Plan.md
+│   └── notation-glossary.md
+├── lean/
+│   └── ChiralGeometrogenesis/  # Lean 4 formalization (180 files, 170K lines)
+├── verification/          # Python verification scripts (1500+ files)
+├── images/               # Additional images for documentation
+├── README.md             # Repository overview
+├── INSTALLATION.md       # Build instructions
+└── LICENSE               # License file
+```
+
+### Syncing the Supplementary Repository
+
+To update the supplementary repository with latest files from `eqalateralCube`:
+
+```bash
+# From the eqalateralCube directory, sync all components:
+
+# 1. Paper (excluding LaTeX build artifacts)
+rsync -av --delete \
+  --exclude='*.aux' --exclude='*.log' --exclude='*.out' \
+  --exclude='*.fdb_latexmk' --exclude='*.fls' --exclude='*.synctex.gz' --exclude='*.blg' \
+  papers/paper-unified-arxiv/ \
+  ../chiral-geometrogenesis-supplementary/paper/
+
+# 2. Proof documents
+rsync -av --delete \
+  docs/proofs/ \
+  ../chiral-geometrogenesis-supplementary/docs/proofs/
+
+# 3. Supporting docs
+cp docs/Mathematical-Proof-Plan.md ../chiral-geometrogenesis-supplementary/docs/
+cp papers/notation-glossary.md ../chiral-geometrogenesis-supplementary/docs/
+
+# 4. Lean formalization (excluding build artifacts)
+rsync -av --delete \
+  --exclude='.lake' --exclude='lake-packages' --exclude='build' \
+  lean/ChiralGeometrogenesis/ \
+  ../chiral-geometrogenesis-supplementary/lean/ChiralGeometrogenesis/
+
+# Copy Lean config files
+cp lean/ChiralGeometrogenesis.lean ../chiral-geometrogenesis-supplementary/lean/
+cp lean/README.md ../chiral-geometrogenesis-supplementary/lean/
+cp lean/lake-manifest.json ../chiral-geometrogenesis-supplementary/lean/
+cp lean/lakefile.toml ../chiral-geometrogenesis-supplementary/lean/
+cp lean/lean-toolchain ../chiral-geometrogenesis-supplementary/lean/
+
+# 5. Verification scripts (excluding Python cache)
+rsync -av --delete \
+  --exclude='__pycache__' --exclude='*.pyc' --exclude='.pytest_cache' \
+  verification/ \
+  ../chiral-geometrogenesis-supplementary/verification/
+```
+
+### What Gets Synced
+
+| Source (eqalateralCube) | Destination (supplementary) | Contents |
+|-------------------------|----------------------------|----------|
+| `papers/paper-unified-arxiv/` | `paper/` | Unified arXiv paper + figures |
+| `docs/proofs/` | `docs/proofs/` | All theorem derivations |
+| `docs/Mathematical-Proof-Plan.md` | `docs/` | Master proof plan |
+| `papers/notation-glossary.md` | `docs/` | Notation reference |
+| `lean/ChiralGeometrogenesis/` | `lean/ChiralGeometrogenesis/` | Lean 4 proofs |
+| `verification/` | `verification/` | Python verification scripts |
+
+### When to Sync
+
+- **Before arXiv submission:** Ensure supplementary repo has latest paper version
+- **After major proof updates:** Keep Lean and markdown proofs in sync
+- **Before sharing with reviewers:** Ensure all materials are current
+
+**Last synced:** 2026-01-11
 
 ---
 

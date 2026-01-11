@@ -1,0 +1,68 @@
+{
+  "proposition": "0.0.17h",
+  "title": "Information Horizon Derivation - Issue Resolution",
+  "date": "2026-01-04",
+  "fixes": {
+    "\u00a73.4 (Line ~157)": {
+      "issue": "Dimensional error in I_crit",
+      "original": "I_crit = k_B ln(3) \u00b7 N_boundary",
+      "corrected": "I_crit = ln(3) \u00b7 N_boundary  [nats]",
+      "severity": "HIGH",
+      "status": "RESOLVED"
+    },
+    "\u00a70 Executive Summary": {
+      "issue": "Claims 'same answer' without acknowledging O(1) factors",
+      "original": "All three give the **same answer**",
+      "corrected": "All three give the **same scaling** \u0393_crit \u221d \u03c9_P/N_env (with O(1) prefactors: 1, ln(3), 2\u03c0)",
+      "severity": "MEDIUM",
+      "status": "RESOLVED"
+    },
+    "\u00a74.4 (Line ~271-273)": {
+      "issue": "2\u03c0 factor dropped without justification",
+      "original": "Dropping the 2\u03c0 factor (which is O(1))",
+      "corrected": "The 2\u03c0 reflects maximum (Bekenstein) vs thermal (Jacobson) rates. We use the thermal rate as the physical threshold.",
+      "severity": "MEDIUM",
+      "status": "RESOLVED"
+    },
+    "\u00a77.1 (Line ~372)": {
+      "issue": "\u03c4_crit interpretation unclear",
+      "original": "Consistent with macroscopic decoherence timescales",
+      "corrected": "\u03c4_crit is the Z\u2083 DISCRETIZATION time (not decoherence). See \u00a77.1a for distinction.",
+      "severity": "MEDIUM",
+      "status": "RESOLVED"
+    },
+    "\u00a72.3 Step 2 (Line ~100)": {
+      "issue": "'~1 nat' should be '~2\u03c0 nats' from Bekenstein",
+      "original": "at most ~1 nat of information per Planck time",
+      "corrected": "at most O(1) nats (specifically, \u22642\u03c0 nats from Bekenstein bound)",
+      "severity": "LOW",
+      "status": "RESOLVED"
+    },
+    "\u00a74.2 Theorem 4.2.1 (Line ~222)": {
+      "issue": "Missing factor of 1/2 and proof incomplete",
+      "original": "\u0393_info = d/dt d_F(\u03c6_S, \u03c6_{S|E})\u00b2",
+      "corrected": "\u0393_info = (1/2) d/dt d_F(\u03c6_S, \u03c6_{S|E})\u00b2  [with full proof]",
+      "severity": "MEDIUM",
+      "status": "RESOLVED"
+    },
+    "\u00a79 References": {
+      "issue": "Missing important references",
+      "original": "5 external references",
+      "corrected": "Add: Padmanabhan (2010), Margolus-Levitin (1998), Lloyd (2000), Diosi (1989)",
+      "severity": "LOW",
+      "status": "RESOLVED"
+    }
+  },
+  "key_results": {
+    "dimensional_correction": "Remove k_B from I_crit; information is dimensionless",
+    "o1_factors": {
+      "jacobson": 1.0,
+      "z3": 1.0986122886681098,
+      "info_geom": 6.283185307179586
+    },
+    "2pi_interpretation": "Bekenstein maximum vs Jacobson thermal rate",
+    "tau_crit_meaning": "Z3 discretization time, distinct from decoherence time",
+    "nat_per_planck_time": 6.283185307179586,
+    "theorem_4_2_1_correction": "Add factor of 1/2"
+  }
+}

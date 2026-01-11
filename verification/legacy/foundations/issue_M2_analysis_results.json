@@ -1,0 +1,15 @@
+{
+  "issue": "M2",
+  "title": "Theorem 3.2 Sufficiency Proof Expansion",
+  "date": "2025-12-30",
+  "verification": {
+    "F1_informational_completeness": true,
+    "F2_symmetry_preservation": true,
+    "F3_discrete_symmetry_encoding": true
+  },
+  "stella_verification": {
+    "weight_diagram_determined": true,
+    "weyl_group_geometric": true,
+    "charge_conjugation_involution": true
+  }
+}

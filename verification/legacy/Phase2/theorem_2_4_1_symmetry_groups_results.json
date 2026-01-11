@@ -1,0 +1,83 @@
+{
+  "theorem": "2.4.1",
+  "script": "symmetry_groups",
+  "tests": [
+    {
+      "name": "|S\u2084|",
+      "expected": 24,
+      "computed": 24,
+      "passed": true
+    },
+    {
+      "name": "|S\u2084| by enumeration",
+      "expected": 24,
+      "computed": 24,
+      "passed": true
+    },
+    {
+      "name": "|S\u2084 \u00d7 Z\u2082|",
+      "expected": 48,
+      "computed": 48,
+      "passed": true
+    },
+    {
+      "name": "|W(B\u2084)|",
+      "expected": 384,
+      "computed": 384,
+      "passed": true
+    },
+    {
+      "name": "|W(D\u2084)|",
+      "expected": 192,
+      "computed": 192,
+      "passed": true
+    },
+    {
+      "name": "|W(F\u2084)|",
+      "expected": 1152,
+      "computed": 1152,
+      "passed": true
+    },
+    {
+      "name": "[W(B\u2084) : S\u2084 \u00d7 Z\u2082]",
+      "expected": 8,
+      "computed": 8,
+      "passed": true
+    },
+    {
+      "name": "[W(F\u2084) : W(B\u2084)]",
+      "expected": 3,
+      "computed": 3,
+      "passed": true
+    },
+    {
+      "name": "(Z\u2082)\u2074 \u00d7 S\u2084 order",
+      "expected": 384,
+      "computed": 384,
+      "passed": true
+    },
+    {
+      "name": "[W(B\u2084) : W(D\u2084)]",
+      "expected": 2,
+      "computed": 2,
+      "passed": true
+    },
+    {
+      "name": "Triality order",
+      "expected": 3,
+      "computed": 3,
+      "passed": true
+    },
+    {
+      "name": "Total index chain [W(F\u2084):S\u2084\u00d7Z\u2082]",
+      "expected": 24,
+      "computed": 24,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

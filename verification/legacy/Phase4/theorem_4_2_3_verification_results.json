@@ -1,0 +1,111 @@
+{
+  "theorem": "4.2.3",
+  "title": "First-Order Electroweak Phase Transition from CG Geometry",
+  "date": "2025-12-14T15:02:28.156258",
+  "verifications": {
+    "1_sm_coefficients": {
+      "c_T": {
+        "computed": 0.39806561800006224,
+        "claimed": 0.37,
+        "verified": "False"
+      },
+      "E": {
+        "computed": 0.009577309040016307,
+        "claimed": 0.007,
+        "verified": false
+      },
+      "ratio_SM": {
+        "computed": 0.14837683347655758,
+        "claimed": 0.15,
+        "verified": true
+      }
+    },
+    "2_geometric_coupling": {
+      "kappa_formula": 0.000252137497215658,
+      "kappa_simplified": 0.00025213749721565807,
+      "kappa_ratio": 0.0019531249999999996,
+      "claimed_ratio": 0.1,
+      "enhancement_needed": 51.20000000000002
+    },
+    "3_phase_transition": [
+      {
+        "kappa": 0.5,
+        "lambda_3c": 0.05,
+        "T_c_claimed": 124.5,
+        "T_c_computed": 124.49686941357629,
+        "ratio_claimed": 1.17,
+        "ratio_computed": 1.1731709461042514,
+        "verified": "True"
+      },
+      {
+        "kappa": 0.75,
+        "lambda_3c": 0.05,
+        "T_c_claimed": 124.0,
+        "T_c_computed": 123.99195916309155,
+        "ratio_claimed": 1.22,
+        "ratio_computed": 1.2159941749495415,
+        "verified": "True"
+      },
+      {
+        "kappa": 1.0,
+        "lambda_3c": 0.05,
+        "T_c_claimed": 123.7,
+        "T_c_computed": 123.70787070243908,
+        "ratio_claimed": 1.24,
+        "ratio_computed": 1.2406420809962329,
+        "verified": "True"
+      },
+      {
+        "kappa": 1.25,
+        "lambda_3c": 0.05,
+        "T_c_claimed": 123.5,
+        "T_c_computed": 123.52434789036847,
+        "ratio_claimed": 1.26,
+        "ratio_computed": 1.2568270542819944,
+        "verified": "True"
+      },
+      {
+        "kappa": 1.5,
+        "lambda_3c": 0.05,
+        "T_c_claimed": 123.4,
+        "T_c_computed": 123.39556939346576,
+        "ratio_claimed": 1.27,
+        "ratio_computed": 1.268325249239917,
+        "verified": "True"
+      },
+      {
+        "kappa": 2.0,
+        "lambda_3c": 0.05,
+        "T_c_claimed": 123.2,
+        "T_c_computed": 123.2262730584528,
+        "ratio_claimed": 1.29,
+        "ratio_computed": 1.2836404669146897,
+        "verified": "True"
+      }
+    ],
+    "4_limiting_cases": {
+      "sm_limit": {
+        "T_c": 140.4676352949621,
+        "ratio": 0.1483767996188661,
+        "verified": "True"
+      },
+      "high_T": {
+        "phi_min": 0.0,
+        "verified": "True"
+      },
+      "low_T": {
+        "phi_min": 246.3250431889903,
+        "verified": "True"
+      }
+    }
+  },
+  "overall_status": "PARTIAL",
+  "issues": [
+    "SM coefficient discrepancies",
+    "Geometric coupling requires O(50) enhancement factor"
+  ],
+  "verified_claims": [
+    "6/6 points satisfy baryogenesis condition",
+    "All limiting cases verified"
+  ]
+}

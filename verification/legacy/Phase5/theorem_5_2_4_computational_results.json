@@ -1,0 +1,42 @@
+{
+  "tests_passed": 20,
+  "tests_failed": 0,
+  "numerical_issues": [],
+  "warnings": [],
+  "calculations": {
+    "f_chi": 2.435323479393347e+18,
+    "G": 6.674299999999998e-11,
+    "hierarchies": {
+      "f_chi_over_MP": 0.19947114020071635,
+      "f_chi_over_fpi": 2.644216590003634e+19,
+      "f_chi_over_vH": 9899688940623362.0,
+      "f_chi_over_MGUT": 243.5323479393347
+    },
+    "ppn_parameters": {
+      "gamma": 1.0,
+      "beta": 1.0,
+      "gamma_bound": 2.3e-05,
+      "beta_bound": 8e-05,
+      "quantum_correction": 2.84297719777258e-110
+    },
+    "gravitational_couplings": {
+      "alpha_G": 5.906149404616627e-39,
+      "alpha_EM_over_alpha_G": 1.2355516376845666e+36,
+      "planck_length": 1.61625502392855e-35
+    },
+    "scalar_tensor": {
+      "Einstein_Hilbert_coefficient_SI": 298074223.311612,
+      "f_chi_squared_over_2hbarc_SI": 298074223.31161207,
+      "Einstein_Hilbert_coefficient_Planck": 1.4119377866015686e-07,
+      "f_chi_squared_over_2_Planck": 1.411937786601569e-07,
+      "conformal_perturbation": 8.212461370832803e-09
+    },
+    "observational": {
+      "G_relative_error": 1.9364872827324302e-16,
+      "f_chi_relative_error": 0.0
+    }
+  },
+  "verified": "Yes",
+  "confidence": "High",
+  "confidence_justification": "All numerical calculations match expected values to within specified tolerances. Dimensional analysis consistent. PPN parameters match GR exactly. Self-consistency verified."
+}

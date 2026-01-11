@@ -1,0 +1,28 @@
+{
+  "theorem": "0.0.3 Extension - Gluon Exchange",
+  "date": "2025-12-18",
+  "conclusion": "PARTIAL CAPTURE",
+  "summary": {
+    "structure": "CAPTURED (8 gluons, vertices)",
+    "dynamics": "NOT CAPTURED (propagator, coupling)"
+  },
+  "gluon_count": 8,
+  "charged_gluons": 6,
+  "neutral_gluons": 2,
+  "edge_correspondence": "6 root edges \u2192 6 charged gluons",
+  "face_correspondence": "8 faces \u2192 8 gluons",
+  "captured_features": [
+    "8 gluons",
+    "6 charged + 2 neutral",
+    "Self-interaction",
+    "Triple vertex",
+    "Quadruple vertex",
+    "Massless (gauge)"
+  ],
+  "not_captured_features": [
+    "Propagator",
+    "Coupling strength",
+    "Dynamical mass",
+    "Vertex running"
+  ]
+}

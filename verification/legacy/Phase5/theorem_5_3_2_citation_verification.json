@@ -1,0 +1,31 @@
+{
+  "theorem": "5.3.2",
+  "analysis": "Citation Verification",
+  "date": "2025-12-15",
+  "citations_verified": {
+    "hammond_2002": {
+      "claimed": "Hammond, R.T. 'Torsion gravity' Rep. Prog. Phys. 65, 599 (2002)",
+      "status": "VERIFIED",
+      "full_reference": "Hammond, R.T. 'Torsion gravity' Reports on Progress in Physics 65, 599-649 (2002)",
+      "doi": "10.1088/0034-4885/65/5/201",
+      "ads_link": "https://ui.adsabs.harvard.edu/abs/2002RPPh...65..599H/abstract",
+      "content_summary": "Review of theoretical and experimental research on GR with torsion, covering gauge theories, teleparallel theories, string theory connections, and experimental bounds",
+      "relevance_to_theorem": "Provides foundational review of torsion gravity theory used in Theorem 5.3.2"
+    },
+    "shapiro_2002": {
+      "claimed": "Shapiro, I.L. 'Physical aspects of the space-time torsion' Phys. Rep. 357, 113 (2002)",
+      "status": "VERIFIED",
+      "full_reference": "Shapiro, I.L. 'Physical aspects of the space-time torsion' Physics Reports 357, 113-213 (2002)",
+      "doi": "10.1016/S0370-1573(01)00030-8",
+      "arxiv": "hep-th/0103093",
+      "sciencedirect_link": "https://www.sciencedirect.com/science/article/abs/pii/S0370157301000308",
+      "content_summary": "Comprehensive review of quantum aspects of torsion theory, including classical theory, renormalization, particle dynamics in torsion backgrounds, propagating torsion, and experimental bounds",
+      "relevance_to_theorem": "Key reference for spin-torsion coupling and experimental constraints used in Theorem 5.3.2"
+    }
+  },
+  "verification_notes": {
+    "hammond_2002": "50-page review article, highly cited, covers both theoretical foundations and experimental tests",
+    "shapiro_2002": "100-page review article, emphasizes quantum field theory aspects and experimental bounds on torsion"
+  },
+  "conclusion": "Both citations are verified as authoritative review articles on torsion gravity. They provide essential theoretical background and experimental context for Theorem 5.3.2."
+}

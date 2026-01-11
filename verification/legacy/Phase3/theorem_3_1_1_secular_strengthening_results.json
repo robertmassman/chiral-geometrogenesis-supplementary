@@ -1,0 +1,117 @@
+{
+  "timestamp": "2025-12-15T09:42:08.028549",
+  "theorem": "3.1.1",
+  "title": "Secular Approximation Strengthening",
+  "existence_uniqueness": {
+    "continuity": {
+      "max_jump": 0.0010009999604772002,
+      "satisfied": "True"
+    },
+    "f_zero": {
+      "value": -8.734052074298061e-05,
+      "negative": true
+    },
+    "f_infinity": {
+      "value": 9.999998052546687,
+      "positive": true
+    },
+    "existence": {
+      "verified": true,
+      "solution_MeV": 0.08734613312986604
+    },
+    "uniqueness": {
+      "min_derivative": 0.9999368897109214,
+      "max_derivative": 0.9999999212029209,
+      "monotonic": true
+    }
+  },
+  "bcs_comparison": {
+    "bcs_solution_meV": 2.143167067687361,
+    "chiral_drag_solution_MeV": 0.0873461331298625,
+    "structural_match": true
+  },
+  "quark_masses": {
+    "u": {
+      "eta_f": 0.0007620555600187501,
+      "omega_GeV": 0.14,
+      "predicted_MeV": 0.007026152263372876,
+      "pdg_MeV": 2.16,
+      "ratio": 0.003252848270080035
+    },
+    "d": {
+      "eta_f": 0.0010160740800250001,
+      "omega_GeV": 0.14,
+      "predicted_MeV": 0.009368203017830501,
+      "pdg_MeV": 4.67,
+      "ratio": 0.002006039190113598
+    },
+    "s": {
+      "eta_f": 0.0327601625,
+      "omega_GeV": 0.14,
+      "predicted_MeV": 0.30204869825,
+      "pdg_MeV": 93.39999999999999,
+      "ratio": 0.003233926105460386
+    },
+    "c": {
+      "eta_f": 0.035280175,
+      "omega_GeV": 100.0,
+      "predicted_MeV": 867.8923050000001,
+      "pdg_MeV": 1270.0,
+      "ratio": 0.6833797677165354
+    },
+    "b": {
+      "eta_f": 0.67,
+      "omega_GeV": 100.0,
+      "predicted_MeV": 16482.000000000004,
+      "pdg_MeV": 4180.0,
+      "ratio": 3.943062200956939
+    },
+    "t": {
+      "eta_f": 0.75,
+      "omega_GeV": 100.0,
+      "predicted_MeV": 18450.000000000004,
+      "pdg_MeV": 172690.0,
+      "ratio": 0.10683884417163705
+    }
+  },
+  "iterative_convergence": {
+    "m0_1e-06": {
+      "initial": 1e-06,
+      "iterations": 3,
+      "final_MeV": 0.08734613312984481,
+      "converged": true
+    },
+    "m0_0.001": {
+      "initial": 0.001,
+      "iterations": 3,
+      "final_MeV": 0.0873461331300959,
+      "converged": true
+    },
+    "m0_0.01": {
+      "initial": 0.01,
+      "iterations": 3,
+      "final_MeV": 0.08734613313235548,
+      "converged": true
+    },
+    "m0_0.1": {
+      "initial": 0.1,
+      "iterations": 4,
+      "final_MeV": 0.08734613312986808,
+      "converged": true
+    },
+    "m0_1.0": {
+      "initial": 1.0,
+      "iterations": 4,
+      "final_MeV": 0.08734613312987571,
+      "converged": true
+    },
+    "uniqueness_verified": true,
+    "fixed_point_MeV": 0.087346133130408,
+    "spread_MeV": 9.779685724499626e-13
+  },
+  "contraction_mapping": {
+    "lipschitz_constant": 6.3110294429694e-05,
+    "is_contraction": "True"
+  },
+  "overall_status": "VERIFIED"
+}

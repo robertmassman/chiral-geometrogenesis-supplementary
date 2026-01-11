@@ -1,0 +1,92 @@
+{
+  "HIGH_1_bertrand": {
+    "bertrand_theorem": {
+      "closed_orbit_potentials": [
+        "1/r (Kepler)",
+        "r\u00b2 (harmonic)"
+      ],
+      "D3_potential": "ln(r)",
+      "D3_satisfies_bertrand": false,
+      "D3_orbits_exist": true,
+      "D3_orbits_closed": false,
+      "conclusion": "D=3 has precessing orbits, marginal stability"
+    }
+  },
+  "HIGH_2_fall_to_center": {
+    "fall_to_center": {
+      "dimension": "n=4 (D=5)",
+      "potential": "-e\u00b2/r\u00b2",
+      "critical_coupling": "\u210f\u00b2/2m",
+      "phenomenon": "Hamiltonian unbounded from below",
+      "consequence": "No stable ground state, atoms cannot exist",
+      "reference": "Landau-Lifshitz QM \u00a735"
+    }
+  },
+  "HIGH_3_D1_atoms": {
+    "D1_analysis": {
+      "potential": "-e\u00b2|x| (linear)",
+      "bound_states_exist": true,
+      "spectrum_type": "Airy function zeros",
+      "angular_momentum": "None (1D)",
+      "chemistry_possible": false,
+      "reasons": [
+        "No angular momentum states",
+        "Only linear bonding",
+        "No branched structures",
+        "Topological constraints"
+      ],
+      "reference": "Loudon (1959) Am. J. Phys. 27, 649"
+    }
+  },
+  "HIGH_4_chemistry": {
+    "chemistry_requirements": {
+      "rydberg_formula": "E_n = -13.6/n\u00b2",
+      "degeneracy": "n\u00b2 per level",
+      "key_features": [
+        "Orbital hybridization (sp, sp\u00b2, sp\u00b3)",
+        "Directional bonding",
+        "Selection rules (\u0394\u2113 = \u00b11)",
+        "Energy scale matching"
+      ],
+      "why_2D_fails": "Reduced degeneracy, non-Rydberg spectrum",
+      "why_1D_fails": "No degeneracy, no angular momentum"
+    }
+  },
+  "MEDIUM_7_thermodynamic": {
+    "thermodynamic_stability": {
+      "hawking_temp": "T_H ~ M^{-1/(n-2)}",
+      "lifetime": "\u03c4 ~ M^{(n+1)/(n-2)}",
+      "D4_exponent": 4,
+      "D5_exponent": 2.5,
+      "D6_exponent": 2,
+      "conclusion": "Higher D has faster evaporation, less stable BHs"
+    }
+  },
+  "MEDIUM_8_information": {
+    "information_theory": {
+      "holographic_bound": "I ~ (R/\u2113_P)^{n-1}",
+      "signal_decay": "r^{-(n-1)}",
+      "optimal_n": 3,
+      "reasons": [
+        "Information-volume tradeoff",
+        "Communication efficiency",
+        "Neural wiring optimization",
+        "Structural complexity"
+      ]
+    }
+  },
+  "LOW_11_knots": {
+    "knot_theory": {
+      "theorem": "Knots exist only in n=3",
+      "n<3": "No embedding possible",
+      "n=3": "Non-trivial knots",
+      "n>3": "All knots trivial",
+      "biological_relevance": [
+        "DNA topology",
+        "Protein folding",
+        "Molecular machines"
+      ],
+      "reference": "Whitney-Graustein theorem"
+    }
+  }
+}

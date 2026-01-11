@@ -1,0 +1,31 @@
+{
+  "equilateral_proof": {
+    "edge_RG": 1.0,
+    "edge_GB": 1.0000000000000002,
+    "edge_BR": 1.0000000000000002,
+    "equilateral": true
+  },
+  "apex_position_proof": {
+    "base_edge": 1.0,
+    "centroid_to_vertex": 0.5773502691896258,
+    "apex_height": 0.816496580927726,
+    "apex_to_vertex": 1.0,
+    "regular": true
+  },
+  "irregularity_proof": {
+    "regular_distances_equal": true,
+    "irregular_distances_equal": false,
+    "irregular_violates_GR2": true
+  },
+  "isomorphism_proof": {
+    "isomorphism_exists": true,
+    "isomorphism_unique_up_to": "S_3 \u00d7 Z_2",
+    "example_verified": true
+  },
+  "sun_generalization": {
+    "conjecture": "Two dual (N-1)-simplices for SU(N)",
+    "vertex_formula": "2N + 2",
+    "physical_constraint": "D \u2264 4 requires N \u2264 3",
+    "unique_physical": "SU(3) with stella octangula"
+  }
+}

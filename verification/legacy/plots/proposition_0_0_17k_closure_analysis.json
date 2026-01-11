@@ -1,0 +1,37 @@
+{
+  "item_1_nc_nf": {
+    "status": "PARTIALLY CLOSABLE",
+    "arguments_found": 3,
+    "rigorous_derivation": false,
+    "symmetry_match": true,
+    "assessment": "Cannot close - three arguments support but don't derive"
+  },
+  "item_2_discrepancy": {
+    "discrepancy_percent": 4.451586110594815,
+    "radiative_correction": 5.220153254455275,
+    "scheme_dependence": "1-3%",
+    "N_f_eff": 1.7774206944702593,
+    "N_f_eff_derived": 2.6602202541441535,
+    "status": "CLOSABLE",
+    "mechanism": "Radiative corrections (~5%) or N_f^eff \u2248 2.1-2.2"
+  },
+  "item_3_large_nc": {
+    "status": "NOT CLOSABLE - KNOWN LIMITATION",
+    "resolution": "Formula valid only for N_c=3 (stella constrains to Z\u2083)"
+  },
+  "item_4_nf_zero": {
+    "status": "CLOSABLE with modified formula",
+    "resolution": "Add g(N_f) factor where g(0)=0"
+  },
+  "item_5_nf3": {
+    "status": "CLOSABLE with effective N_f",
+    "N_f_eff_best": 2.0,
+    "best_model": "Step (N_f=2)"
+  },
+  "improved_formula": {
+    "improved_formula": "f_\u03c0 = \u221a\u03c3 \u00d7 g(N_f^eff)/(N_c + N_f^eff)",
+    "g_function": "g(N_f) = 1 - exp(-N_f)",
+    "N_f_eff_formula": "N_f^eff = \u03a3_f 1/(1 + m_f/\u039b_QCD)",
+    "domain": "Valid for finite N_c (stella constrains to N_c = 3)"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "issue": "M1",
+  "title": "Hexagon Involution Analysis",
+  "date": "2025-12-30",
+  "finding": "Original \u00a75.2 claim is INCORRECT",
+  "analysis": {
+    "point_inversion_valid": true,
+    "point_inversion_exchanges_fund_antifund": true,
+    "point_inversion_is_involution": true,
+    "point_inversion_commutes_with_S3": true,
+    "2D_hexagon_satisfies_GR1_GR2_GR3": true
+  },
+  "correct_statement": {
+    "2D_hexagon_is_valid_realization": true,
+    "3D_requirement_from": "Physical Hypothesis 0.0.0f (d_embed = rank + 1)",
+    "apex_vertices_needed_for": "3D polyhedral structure (volume requires non-coplanar points)"
+  },
+  "recommended_correction": "Replace claim about hexagon involution with correct statement about physical embedding dimension"
+}

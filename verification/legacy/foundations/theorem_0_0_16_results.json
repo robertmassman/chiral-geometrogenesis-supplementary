@@ -1,0 +1,215 @@
+{
+  "theorem": "0.0.16",
+  "title": "Adjacency Structure from SU(3) Representation Theory",
+  "timestamp": "2026-01-08T09:05:35.538708",
+  "sections": [
+    {
+      "title": "A2 Root System Verification",
+      "tests": [
+        {
+          "name": "Root count",
+          "passed": true,
+          "expected": "6",
+          "computed": "6",
+          "details": "A2 root system should have exactly 6 roots"
+        },
+        {
+          "name": "Simple root alpha_1",
+          "passed": true,
+          "expected": "(1, 0)",
+          "computed": "(1.0000, 0.0000)",
+          "details": "alpha_1 in (T3, T8) basis"
+        },
+        {
+          "name": "Simple root alpha_2",
+          "passed": true,
+          "expected": "(-0.5, 0.8660)",
+          "computed": "(-0.5000, 0.8660)",
+          "details": "alpha_2 in (T3, T8) basis"
+        },
+        {
+          "name": "Equal root lengths",
+          "passed": true,
+          "expected": "All equal",
+          "computed": "Lengths: ['1.0000', '1.0000', '1.0000', '1.0000', '1.0000', '1.0000']",
+          "details": "All roots in A2 should have the same length"
+        },
+        {
+          "name": "Root length value",
+          "passed": true,
+          "expected": "1.0",
+          "computed": "1.000000",
+          "details": "Standard normalization for A2 roots"
+        },
+        {
+          "name": "Angle between simple roots",
+          "passed": "True",
+          "expected": "120.0 degrees",
+          "computed": "120.0000 degrees",
+          "details": "Simple roots in A2 are at 120 degrees"
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "title": "Weight Vector Verification",
+      "tests": [
+        {
+          "name": "Equilateral triangle",
+          "passed": true,
+          "expected": "Equal side lengths",
+          "computed": "d_RG=1.000000, d_GB=1.000000, d_BR=1.000000",
+          "details": "Fundamental weights should form equilateral triangle"
+        },
+        {
+          "name": "Centroid at origin",
+          "passed": true,
+          "expected": "(0, 0)",
+          "computed": "(0.000000, 0.000000)",
+          "details": "Weight centroid should be at origin for traceless generators"
+        },
+        {
+          "name": "Anti-fundamental weights",
+          "passed": "True",
+          "expected": "w_c_bar = -w_c",
+          "computed": "w_R_bar = [-0.5        -0.28867513], verified equilateral",
+          "details": "Anti-fundamental is negation of fundamental"
+        },
+        {
+          "name": "Weight differences are roots",
+          "passed": true,
+          "expected": "w_R - w_G proportional to alpha_1",
+          "computed": "diff = [1. 0.], ratio = 1.0000",
+          "details": "Edge of weight triangle corresponds to root"
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "title": "FCC Lattice Properties",
+      "tests": [
+        {
+          "name": "12-regularity",
+          "passed": true,
+          "expected": "12 nearest neighbors",
+          "computed": "12 neighbors",
+          "details": "FCC coordination number should be 12"
+        },
+        {
+          "name": "No intra-representation root triangles",
+          "passed": true,
+          "expected": "0 triangles within same representation",
+          "computed": "0 intra-rep (geometric: 8)",
+          "details": "Cannot form closed triangle staying entirely in 3 or 3bar"
+        },
+        {
+          "name": "4-cycles per edge",
+          "passed": true,
+          "expected": "4 squares per edge",
+          "computed": "4 squares through edge (0,0,0)->(np.int64(-1), np.int64(-1), np.int64(0))",
+          "details": "Each edge in FCC should be part of exactly 4 4-cycles"
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "title": "Tensor Product Decompositions",
+      "tests": [
+        {
+          "name": "3 x 3 = 6 + 3bar",
+          "passed": true,
+          "expected": "9 = 6 + 3 = 9",
+          "computed": "3 x 3 = 9, 6 + 3bar = 9",
+          "details": "Tensor product of two fundamental representations"
+        },
+        {
+          "name": "3 x 3bar = 8 + 1",
+          "passed": true,
+          "expected": "9 = 8 + 1 = 9",
+          "computed": "3 x 3 = 9, 8 + 1 = 9",
+          "details": "Tensor product with conjugate gives adjoint + singlet"
+        },
+        {
+          "name": "No singlet in 3 x 3",
+          "passed": true,
+          "expected": "3 x 3 = 6 + 3bar (no singlet)",
+          "computed": "Singlet absent - explains no root triangles",
+          "details": "Absence of singlet in 3x3 means no closed triangle of roots"
+        },
+        {
+          "name": "3 x 3 x 3 decomposition",
+          "passed": true,
+          "expected": "27 = 10 + 8 + 8 + 1",
+          "computed": "3^3 = 27, sum = 27",
+          "details": "Triple fundamental contains singlet (epsilon_RGB)"
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "title": "Symmetry Group Verification",
+      "tests": [
+        {
+          "name": "S_3 order",
+          "passed": true,
+          "expected": "6",
+          "computed": "6",
+          "details": "|S_3| = 3! = 6"
+        },
+        {
+          "name": "O_h order",
+          "passed": true,
+          "expected": "48",
+          "computed": "48",
+          "details": "|O_h| = |O| x |Z_2| = 24 x 2 = 48"
+        },
+        {
+          "name": "O_h contains S_3 x Z_2",
+          "passed": true,
+          "expected": "|S_3 x Z_2| = 12 divides |O_h| = 48",
+          "computed": "48 / 12 = 4 (integer)",
+          "details": "S_3 from Weyl group, Z_2 from charge conjugation"
+        },
+        {
+          "name": "Cyclic permutation in O_h",
+          "passed": true,
+          "expected": "P^3 = I",
+          "computed": "P^3 = I verified: True",
+          "details": "Coordinate permutation (x,y,z)->(y,z,x) is in O_h"
+        }
+      ],
+      "all_passed": true
+    },
+    {
+      "title": "Edge-Root Correspondence",
+      "tests": [
+        {
+          "name": "NN vector lengths equal",
+          "passed": true,
+          "expected": "All sqrt(2)",
+          "computed": "Lengths: {'1.4142'}",
+          "details": "All FCC nearest neighbor distances should be sqrt(2)"
+        },
+        {
+          "name": "6+6 edge decomposition",
+          "passed": true,
+          "expected": "6 intra + 6 inter",
+          "computed": "6 intra + 6 inter",
+          "details": "12 = 6 (same rep) + 6 (3 to 3bar)"
+        },
+        {
+          "name": "Root angles at 60-degree intervals",
+          "passed": true,
+          "expected": "60-degree gaps",
+          "computed": "Gaps: ['60.0', '60.0', '60.0', '60.0', '60.0', '60.0']",
+          "details": "A2 roots evenly distributed on circle"
+        }
+      ],
+      "all_passed": true
+    }
+  ],
+  "plots": [
+    "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/theorem_0_0_16_verification.png"
+  ],
+  "overall_status": "PASSED"
+}

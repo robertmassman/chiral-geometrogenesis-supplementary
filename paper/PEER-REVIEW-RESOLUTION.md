@@ -494,14 +494,37 @@ However, several locations in the paper used `λ` instead of `τ` for internal t
 
 **Location:** Supplementary materials
 
-**Problem:** Python verification scripts should be explicitly referenced for reproducibility.
+**Original Problem:** Python verification scripts should be explicitly referenced for reproducibility.
+
+**Investigation Result (2026-01-11):**
+
+The paper already had substantial reproducibility infrastructure (GitHub repository link in §9, Verification Resources subsection §9.1, Running Verification instructions in Appendix C). The following additions complete the reproducibility story:
+
+**Changes Made:**
+
+1. **Created `verification/requirements.txt`:**
+   ```
+   numpy>=1.24.0
+   scipy>=1.11.0
+   matplotlib>=3.7.0
+   pytest>=7.4.0
+   pytest-xdist>=3.3.0
+   ```
+
+2. **Updated `verification/README.md`** with Installation section referencing requirements.txt
+
+3. **Added Figure Generation Scripts subsection to Appendix C** (lines 3496-3516) with table mapping all 10 paper figures to their generation scripts in `papers/paper-unified-arxiv/figures/scripts/`
+
+4. **Updated Running Verification instructions** (lines 3518-3538) to include:
+   - `pip install -r verification/requirements.txt`
+   - Instructions for regenerating figures
 
 **Resolution:**
-- [ ] Add explicit reference to GitHub repository in §8
-- [ ] Ensure all figures have corresponding generation scripts
-- [ ] Add requirements.txt or similar for Python environment
+- [x] Add explicit reference to GitHub repository in §8 — Already present (line 2970)
+- [x] Ensure all figures have corresponding generation scripts — Added table in Appendix C
+- [x] Add requirements.txt or similar for Python environment — Created `verification/requirements.txt`
 
-**Status:** ⬜ Not Started
+**Status:** ✅ Resolved
 
 ---
 
@@ -530,7 +553,7 @@ These should be preserved/emphasized in revision:
 | 7. Baryogenesis uncertainty | Minor | ✅ | | Uncertainty analysis exists in proof docs; updated Table 1 and line 1961 to reflect factor ~4 |
 | 8. PMNS θ₂₃ claim | Minor | ✅ | | Claims verified; 1.4° uncertainty properly derived; hyperlinks added |
 | 9. Notation consistency | Minor | ✅ | | λ→τ for internal time; λ reserved for Wolfenstein |
-| 10. Reproducibility | Minor | ✅ | | Added Verification Resources section with hyperlinks |
+| 10. Reproducibility | Minor | ✅ | | Added requirements.txt, figure scripts table in Appendix C, updated running instructions |
 
 **Legend:**
 - ⬜ Not Started
@@ -554,6 +577,7 @@ These should be preserved/emphasized in revision:
 | 2026-01-11 | Issue 7 | Investigated baryogenesis uncertainty; found comprehensive analysis in proof docs (Theorem-4.2.1-Applications.md §14, Theorem-4.2.2-Applications.md §15) showing ±2.0 in log space (factor ~4-7); Monte Carlo verification (N=50,000) confirms 68% CI encompasses observation; updated Table 1 "factor 1" → "within 1σ" with footnote; updated line 1961 "factor ~2" → "factor ~4" with Table 2 reference; downgraded from Major to Minor |
 | 2026-01-11 | Issue 8 | Investigated θ₂₃ improvement claim; found 20× factor is correct (4σ → 0.2σ); 1.4° uncertainty properly derived as quadrature sum of 4 sources (±0.5°, ±1.0°, ±0.3°, ±0.8°); multi-agent verification completed 2026-01-10; Lean formalization has only 2 numerical-fact sorries; added hyperlinks to Proposition 8.4.4 in paper (lines 2562, 2572) |
 | 2026-01-11 | Issue 9 | Fixed notation inconsistency: changed λ→τ for internal time parameter in 6 locations (lines 1014, 1228, 1234, 1490, 1501, 1524-1529); λ now reserved exclusively for Wolfenstein parameter; notation table in Appendix C already correct |
+| 2026-01-11 | Issue 10 | Created `verification/requirements.txt` with Python dependencies; updated `verification/README.md` with Installation section; added Figure Generation Scripts subsection to Appendix C (lines 3496-3516) mapping all 10 figures to scripts; updated Running Verification instructions to include pip install and figure regeneration commands |
 
 ---
 
@@ -562,7 +586,7 @@ These should be preserved/emphasized in revision:
 ### Priority Order
 1. ~~Issues 1-4 (Critical) must be addressed before resubmission~~ → ✅ **ALL RESOLVED** (downgraded to Minor after investigation)
 2. ~~Issues 5-7 (Major) should be addressed for acceptance~~ → ✅ **ALL RESOLVED** (Issues 5-7 downgraded to Minor after investigation)
-3. Issues 8-10 (Minor) can be addressed in final revision
+3. ~~Issues 8-10 (Minor) can be addressed in final revision~~ → ✅ **ALL RESOLVED**
 
 ### Key Language Changes Needed
 

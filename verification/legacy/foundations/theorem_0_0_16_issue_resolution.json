@@ -1,0 +1,34 @@
+{
+  "C1_girth": {
+    "geometric_triangles": 24,
+    "intra_only_triangles": 0,
+    "resolution": "Girth > 3 claim is FALSE geometrically; correct statement is about representation structure"
+  },
+  "C2_tensor": {
+    "6x3_correct": "10 \u2295 8",
+    "6x3_wrong": "15 \u2295 3",
+    "(6+3bar)x3": "10 \u2295 8 \u2295 8 \u2295 1",
+    "dimension_check": true,
+    "affects_main_argument": false
+  },
+  "C3_Oh": {
+    "O_order": 24,
+    "Oh_order": 48,
+    "S3_in_O": false,
+    "correct_structure": "S\u2084 \u00d7 \u2124\u2082",
+    "document_claim": "S\u2083 \u00d7 \u2124\u2082 \u00d7 \u2124\u2082 \u00d7 \u2124\u2082",
+    "is_isomorphic": false
+  },
+  "M4_uniqueness": {
+    "original_claim_valid": false,
+    "reason": "FCC has triangles, so girth > 3 is false",
+    "corrected_characterization": "A\u2083 root lattice with O_h symmetry",
+    "reference": "Conway & Sloane 1999, Coxeter 1973"
+  },
+  "M5_bridging": {
+    "A2_dimension": 2,
+    "A3_dimension": 3,
+    "physical_interpretation": "Radial direction from stella center",
+    "embedding": "A\u2082 \u2282 A\u2083 as root subsystem"
+  }
+}

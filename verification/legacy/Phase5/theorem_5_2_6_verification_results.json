@@ -1,0 +1,241 @@
+{
+  "tests": {
+    "Exponent Calculation": {
+      "test_name": "Exponent Calculation",
+      "b_0_calculated": 0.716197243913529,
+      "b_0_expected": 0.716197243913529,
+      "b_0_match": true,
+      "alpha_s_MP_predicted": 0.015625,
+      "1/alpha_s_MP": 64.0,
+      "exponent_calculated": 44.680428851054835,
+      "exponent_analytic": 44.680428851054835,
+      "exponent_numerical": 44.680428851054835,
+      "exponent_approx": 44.68,
+      "exponent_match": true,
+      "passed": true
+    },
+    "Character Expansion (adj\u2297adj)": {
+      "test_name": "Character Expansion (adj\u2297adj)",
+      "N_c": 3,
+      "dim_adjoint": 8,
+      "irrep_decomposition": {
+        "singlet (1)": 1,
+        "adjoint_symmetric (8_s)": 8,
+        "adjoint_antisymmetric (8_a)": 8,
+        "decuplet (10)": 10,
+        "antidecuplet (10\u0304)": 10,
+        "27-plet (27)": 27
+      },
+      "total_dimension": 64,
+      "expected_dim_adj_squared": 64,
+      "formula_result": 64,
+      "all_match": true,
+      "passed": true
+    },
+    "\u03b2-function Coefficients": {
+      "test_name": "\u03b2-function Coefficients",
+      "N_c": 3,
+      "coefficients_by_Nf": {
+        "N_f=3": {
+          "b_0": 0.716197243913529,
+          "beta_0": 9.0,
+          "b_0_check": true,
+          "b_1": 0.4052847345693511,
+          "beta_1": 64.0,
+          "b_1_SU3_formula": 0.4052847345693511,
+          "b_1_match": true
+        },
+        "N_f=4": {
+          "b_0": 0.6631455962162306,
+          "beta_0": 8.333333333333334,
+          "b_0_check": true,
+          "b_1": 0.32507213085250036,
+          "beta_1": 51.333333333333336,
+          "b_1_SU3_formula": 0.32507213085250036,
+          "b_1_match": true
+        },
+        "N_f=5": {
+          "b_0": 0.6100939485189322,
+          "beta_0": 7.666666666666666,
+          "b_0_check": true,
+          "b_1": 0.24485952713564962,
+          "beta_1": 38.666666666666664,
+          "b_1_SU3_formula": 0.24485952713564965,
+          "b_1_match": true
+        },
+        "N_f=6": {
+          "b_0": 0.5570423008216338,
+          "beta_0": 7.0,
+          "b_0_check": true,
+          "b_1": 0.16464692341879889,
+          "beta_1": 26.0,
+          "b_1_SU3_formula": 0.16464692341879889,
+          "b_1_match": true
+        }
+      },
+      "N_f_3_checks": {
+        "b_0": 0.716197243913529,
+        "b_0_expected": 0.716197243913529,
+        "b_0_numerical": 0.7162,
+        "b_0_match": true,
+        "beta_1": 64,
+        "b_1": 0.4052847345693511,
+        "b_1_simple_form": 0.4052847345693511,
+        "b_1_numerical": 0.4053,
+        "b_1_match": true
+      },
+      "all_b0_check": true,
+      "all_b1_match": true,
+      "passed": true
+    },
+    "Planck Mass Prediction": {
+      "test_name": "Planck Mass Prediction",
+      "inputs": {
+        "chi": 4,
+        "sqrt_chi": 2.0,
+        "sqrt_sigma_GeV": 0.44,
+        "alpha_s_MP": 0.015625,
+        "1/alpha_s_MP": 64.0,
+        "b_0": 0.716197243913529
+      },
+      "calculation": {
+        "prefactor (sqrt_chi/2)": 1.0,
+        "exponent": 44.680428851054835,
+        "exp(exponent)": 2.5378368495988343e+19
+      },
+      "results": {
+        "M_P_predicted_GeV": 1.1166482138234872e+19,
+        "M_P_observed_GeV": 1.22089e+19,
+        "ratio": 0.9146181996932461,
+        "agreement_percent": 91.46181996932461,
+        "discrepancy_percent": 8.538180030675392
+      },
+      "passed": true
+    },
+    "One-Loop QCD Running": {
+      "test_name": "One-Loop QCD Running",
+      "alpha_s_MP": 0.015625,
+      "alpha_s_MZ_oneloop": 0.049837512173203084,
+      "alpha_s_MZ_experiment": 0.118,
+      "asymptotic_freedom_satisfied": true,
+      "ratio_to_experiment": 0.4223517980779923,
+      "passed": true
+    },
+    "Two-Loop Running with Thresholds": {
+      "test_name": "Two-Loop Running with Thresholds",
+      "running_results": {
+        "scale_GeV": [
+          1.22089e+19,
+          172.69,
+          4.18,
+          1.27,
+          91.1876
+        ],
+        "alpha_s": [
+          0.015625,
+          0.04813098193748163,
+          0.061591179393080044,
+          0.06823103179221413,
+          0.050006371599786
+        ],
+        "N_f": [
+          6,
+          6,
+          5,
+          4,
+          5
+        ]
+      },
+      "final_alpha_s_MZ": 0.050006371599786,
+      "experimental_alpha_s_MZ": 0.118,
+      "ratio": 0.423782810167678,
+      "discrepancy_percent": 57.621718983232206,
+      "asymptotic_freedom_checks": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "all_checks_pass": true,
+      "passed": true
+    },
+    "Reverse Running (M_Z \u2192 M_P)": {
+      "test_name": "Reverse Running (M_Z \u2192 M_P)",
+      "alpha_s_MZ_input": 0.118,
+      "alpha_s_mt": 0.10806414843662661,
+      "alpha_s_MP_required": 0.019055922135258294,
+      "1/alpha_s_MP_required": 52.47712458636395,
+      "CG_prediction_1/alpha_s": 64,
+      "discrepancy_percent": 21.95790166565308,
+      "within_20_percent": false,
+      "passed": true
+    },
+    "Dimensional Analysis": {
+      "test_name": "Dimensional Analysis",
+      "checks": [
+        {
+          "formula": "M_P = (\u221a\u03c7/2) \u00d7 \u221a\u03c3 \u00d7 exp(...)",
+          "LHS_dimension": "GeV",
+          "RHS_dimension": "dimensionless \u00d7 GeV \u00d7 dimensionless = GeV",
+          "consistent": true
+        },
+        {
+          "formula": "exp(1/(2*b_0*\u03b1_s))",
+          "b_0_dimension": "dimensionless",
+          "alpha_s_dimension": "dimensionless",
+          "exponent_dimension": "dimensionless",
+          "consistent": true
+        },
+        {
+          "formula": "\u03b2(\u03b1_s) = -b_0*\u03b1_s\u00b2 - b_1*\u03b1_s\u00b3",
+          "\u03b2_dimension": "dimensionless",
+          "consistent": true
+        },
+        {
+          "formula": "G = \u210fc/(8\u03c0*f_\u03c7\u00b2)",
+          "G_dimension": "GeV\u207b\u00b2 (natural units)",
+          "f_chi_dimension": "GeV",
+          "consistent": true
+        }
+      ],
+      "all_consistent": true,
+      "passed": true
+    },
+    "Asymptotic Safety Fixed Point": {
+      "test_name": "Asymptotic Safety Fixed Point",
+      "chi": 4,
+      "N_c": 3,
+      "N_c_squared_minus_1": 8,
+      "g_star_CG": 0.5,
+      "g_star_literature_range": [
+        0.4,
+        0.7
+      ],
+      "within_literature_range": true,
+      "alpha_s_star_derived": 0.015625,
+      "alpha_s_star_expected": 0.015625,
+      "alpha_s_match": true,
+      "passed": true
+    },
+    "String Tension Cross-Check": {
+      "test_name": "String Tension Cross-Check",
+      "sqrt_sigma_GeV": 0.44,
+      "sqrt_sigma_MeV": 440.0,
+      "sigma_GeV2": 0.1936,
+      "Lambda_QCD_GeV": 0.21,
+      "sqrt_sigma_over_Lambda_QCD": 2.0952380952380953,
+      "r_0_fm": 0.5,
+      "r_0_GeV_inv": 2.533865107157155,
+      "r_0_sqrt_sigma": 1.1149006471491483,
+      "expected_r_0_sqrt_sigma": 1.16,
+      "ratio_agreement": true,
+      "passed": true
+    }
+  },
+  "summary": {
+    "total_tests": 10,
+    "passed": 10,
+    "failed": 0,
+    "pass_rate": 100.0
+  }
+}

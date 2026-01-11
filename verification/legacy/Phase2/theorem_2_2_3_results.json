@@ -1,0 +1,109 @@
+{
+  "theorem": "2.2.3",
+  "title": "Time Irreversibility in the Chiral Phase System",
+  "parameters": {
+    "K": 1.0,
+    "omega": 1.0,
+    "alpha": 2.0943951023931953
+  },
+  "all_passed": true,
+  "passed_count": 9,
+  "total_count": 9,
+  "results": [
+    {
+      "test": "jacobian_eigenvalues",
+      "passed": true,
+      "forward_eigenvalues_real": [
+        -0.37499999869239353,
+        -0.37499999869239353
+      ],
+      "forward_eigenvalues_imag": [
+        0.6495190534579321,
+        -0.6495190534579321
+      ],
+      "reversed_eigenvalues_real": [
+        -0.3749999975821705,
+        -0.3749999975821705
+      ],
+      "reversed_eigenvalues_imag": [
+        0.6495190528169446,
+        -0.6495190528169446
+      ],
+      "forward_stable": true,
+      "trace_forward": -0.7499999973847871,
+      "trace_expected": -0.75,
+      "real_part_error": 1.3076064675487942e-09
+    },
+    {
+      "test": "phase_space_contraction",
+      "passed": true,
+      "sigma_forward": 0.7499999973847871,
+      "sigma_reversed": 0.749999995164341,
+      "expected_sigma_numerical": 0.75,
+      "expected_sigma_theorem": 1.5,
+      "sigma_positive": true,
+      "forward_error": 2.6152129350975883e-09
+    },
+    {
+      "test": "t_symmetry_breaking",
+      "passed": true,
+      "t_breaking_observed": true,
+      "converges_to_120_deg": true,
+      "converged_count": 10,
+      "n_trials": 10
+    },
+    {
+      "test": "lyapunov_decreases",
+      "passed": true,
+      "V_forward": -1.5,
+      "V_reversed": 0.75,
+      "V_initial": -0.4330127018922196,
+      "V_final": -1.4999999823717947,
+      "V_decreased": true,
+      "V_converged": true
+    },
+    {
+      "test": "entropy_production",
+      "passed": true,
+      "min_S_dot": 1.8204959802533705e-10,
+      "max_V_dot": -1.8204959802533705e-10,
+      "S_positive": true,
+      "V_negative": true
+    },
+    {
+      "test": "cpt_transformations",
+      "passed": true,
+      "P_maps_forward_to_reversed": true,
+      "C_maps_forward_to_reversed": true
+    },
+    {
+      "test": "convergence_to_120_deg",
+      "passed": true,
+      "forward_count": 25,
+      "reversed_count": 25,
+      "other_count": 0,
+      "P_120_deg": 1.0
+    },
+    {
+      "test": "relaxation_time",
+      "passed": true,
+      "expected_tau": 2.6666666666666665,
+      "fitted_tau": 2.699797744254577,
+      "tau_error": 0.012424154095466378
+    },
+    {
+      "test": "hessian_lyapunov",
+      "passed": true,
+      "eigenvalues_numerical": [
+        0.5000000413701855,
+        1.5000001241105563
+      ],
+      "eigenvalues_expected": [
+        0.5,
+        1.5
+      ],
+      "all_positive": true,
+      "eig_error": 1.2411055627659096e-07
+    }
+  ]
+}

@@ -104,6 +104,77 @@ The framework derives Standard Model parameters from geometric first principles:
 
 See [paper/main.pdf](paper/main.pdf) for complete results and derivations.
 
+## Origin & AI Collaboration
+
+### The Initial Insight
+
+This framework began with a philosophical question posed by Robert Massman:
+
+> Could our perception of time be an emergent phenomenon rather than fundamental?
+> What if time arises from the dynamic oscillations of quark fields—fundamental
+> quantum fields whose rhythmic fluctuations create a directional flow we experience
+> as temporal progression?
+>
+> These quark fields might function as nested containment structures, where their
+> interactions create localized depressions or concentrations in the field itself.
+> What we perceive as an "atom" may actually be the interference pattern of these
+> overlapping field depressions—not discrete objects, but stable configurations
+> of field dynamics.
+>
+> Could the interaction of these depressed field regions create a kind of directional
+> vacuum—similar to how a four-dimensional hypercube's rotation appears to pull new
+> cross-sections into existence? Perhaps atoms aren't material objects at all, but
+> boundary surfaces where field dynamics project the patterns we observe as matter.
+>
+> In this view, the "void" within these structures would be regions where field energy
+> flows with minimal resistance, and the arrow of time emerges naturally from the
+> asymmetric way these field oscillations can propagate—giving change a singular,
+> irreversible direction.
+>
+> The central question: Are quarks—or rather, quark fields—not objects existing in
+> spacetime, but the very processes that generate spacetime through their confined,
+> oscillating dynamics?
+
+### Visual Foundation
+
+This intuition led to envisioning the stella octangula (two interpenetrating tetrahedra) as
+the geometric realization of these ideas. I created an initial diagram showing three
+interpenetrating color fields whose conformal depressions are dictated by the tetrahedra
+geometry, helping me to visualize how the energy fields might fluctuate given the stella
+octangula boundary. Without the formal education to push the idea further, it went dormant
+and sat for several years.
+
+Given the progression of AI and my self-education in coding—and subsequent use of AI to
+advance my own code writing—I revisited the idea in November 2025 using my initial written
+sketch as input to flesh it out and probe whether or not to push the idea and investigate
+further. I wanted something more concrete to work from than an abstract idea, so I used my
+coding knowledge and AI to create a more tangible visualization, developing it into an
+interactive prototype demonstrating the three-color field oscillations the way I imagined
+them, pressure-depression dynamics, and resonance behavior. This prototype served as the
+foundation guiding the subsequent mathematical formalization.
+
+<p align="center">
+  <img src="images/twoInterpenetratingTetrahedra.png" width="50%" alt="Initial stella octangula diagram with RGB field depressions" />
+</p>
+<p align="center"><em>Initial diagram: stella octangula with three interpenetrating color field depressions</em></p>
+
+### AI Collaboration
+
+The visualization and intuition were then developed into a rigorous mathematical framework
+through extensive collaboration with Claude (Anthropic). The AI assisted with:
+
+- Formalizing the "pressure depression" concept as SU(3) color field dynamics
+- Deriving mathematical proofs connecting the framework to established physics
+- Checking consistency with Standard Model parameters (PDG data)
+- Creating numerical verification scripts
+- Structuring the work for academic presentation
+
+The core physical insight and geometric vision remain human; the mathematical scaffolding
+was built collaboratively.
+
+This transparent disclosure reflects our commitment to academic integrity in an era
+of AI-assisted research.
+
 ## Dependencies
 
 ### Lean 4

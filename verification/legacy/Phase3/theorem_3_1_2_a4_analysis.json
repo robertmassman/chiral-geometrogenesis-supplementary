@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-12-14T06:24:32.850012",
+  "results": {
+    "group_analysis": {
+      "order": 12,
+      "conjugacy_classes": 4,
+      "irreps": [
+        "1",
+        "1'",
+        "1''",
+        "3"
+      ],
+      "note": "A\u2084 is the tetrahedral rotation group"
+    },
+    "sector_differences": {
+      "explanations": [
+        "Different localization (vertex vs center)",
+        "Color charge breaks A\u2084 for quarks",
+        "Seesaw mechanism preserves A\u2084 for neutrinos",
+        "Electroweak isospin effects"
+      ]
+    },
+    "geometric_breaking": {
+      "quark_localization": 0.3,
+      "lepton_localization": 1.0,
+      "quark_overlap": 0.0006067416911921462,
+      "lepton_overlap": 0.5134171190325919,
+      "vertex_separation": 1.6329931618554523
+    },
+    "breaking_mechanism": {
+      "eps_quark": 0.003125,
+      "eps_lepton": 0.0225,
+      "eps_neutrino": 1e-14,
+      "mechanism": "Color confinement localizes quarks, breaking A\u2084; leptons preserve A\u2084"
+    },
+    "mixing_predictions": {
+      "quark_predicted": {
+        "theta_12": 12.709032994395438,
+        "theta_23": 2.27455228606124,
+        "theta_13": 0.2440349219367399
+      },
+      "quark_observed": {
+        "theta_12": 13.02,
+        "theta_23": 2.36,
+        "theta_13": 0.2
+      },
+      "lepton_predicted": {
+        "theta_12": 35.264389682754654,
+        "theta_23": 45.00000000000001,
+        "theta_13": 8.130102354155978
+      },
+      "lepton_observed": {
+        "theta_12": 33.44,
+        "theta_23": 49.2,
+        "theta_13": 8.57
+      }
+    },
+    "resolution": {
+      "resolution": "A\u2084 breaking is dynamical, not geometric",
+      "quark_breaking": "Color confinement \u2192 localization \u2192 A\u2084 broken",
+      "lepton_preservation": "Color neutral + seesaw \u2192 A\u2084 preserved",
+      "prediction": "Same geometry, different flavor structures based on gauge charges"
+    }
+  },
+  "conclusion": {
+    "status": "RESOLVED",
+    "explanation": "A\u2084 breaking is dynamical (color confinement), not an inconsistency",
+    "quarks": "Color charge localizes at vertices \u2192 A\u2084 broken \u2192 small mixing",
+    "leptons": "Color neutral, seesaw protected \u2192 A\u2084 preserved \u2192 large mixing",
+    "recommendation": "Add explicit statement in theorem about dynamical A\u2084 breaking"
+  }
+}

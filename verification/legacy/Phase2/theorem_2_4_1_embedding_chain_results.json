@@ -1,0 +1,125 @@
+{
+  "theorem": "2.4.1",
+  "script": "embedding_chain",
+  "tests": [
+    {
+      "name": "Stella octangula vertex count",
+      "expected": "8",
+      "computed": "8",
+      "passed": true
+    },
+    {
+      "name": "T+ all positive parity",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "T- all negative parity",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "T+ lift: 4th coord = +1/2",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "T- lift: 4th coord = -1/2",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "All lifted vertices same norm",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "Standard 16-cell vertex count",
+      "expected": "8",
+      "computed": "8",
+      "passed": true
+    },
+    {
+      "name": "16-cell edge count",
+      "expected": "24",
+      "computed": "24",
+      "passed": true
+    },
+    {
+      "name": "Midpoint count (24-cell vertices)",
+      "expected": "24",
+      "computed": "24",
+      "passed": true
+    },
+    {
+      "name": "All 24-cell vertices same norm",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "24-cell vertex norm = 1/sqrt(2)",
+      "expected": "0.7071067811865475",
+      "computed": "0.7071067811865476",
+      "passed": true
+    },
+    {
+      "name": "D\u2084 root count",
+      "expected": "24",
+      "computed": "24",
+      "passed": true
+    },
+    {
+      "name": "24-cell vertices \u2194 D\u2084 roots",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "All D\u2084 roots have squared length 2",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "D\u2084 inner products in {-2,-1,0,1,2}",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "Stella in R\u00b3",
+      "expected": "3",
+      "computed": "3",
+      "passed": true
+    },
+    {
+      "name": "16-cell in R\u2074",
+      "expected": "4",
+      "computed": "4",
+      "passed": true
+    },
+    {
+      "name": "24-cell in R\u2074",
+      "expected": "4",
+      "computed": "4",
+      "passed": true
+    },
+    {
+      "name": "D\u2084 roots in R\u2074",
+      "expected": "4",
+      "computed": "4",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 19,
+    "passed": 19,
+    "failed": 0
+  }
+}

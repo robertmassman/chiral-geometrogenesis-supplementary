@@ -1,0 +1,11 @@
+{
+  "test1_newtonian_potential": "VERIFIED",
+  "test2_non_degeneracy": "ERROR - factor of 4",
+  "test3_banach_contraction": "VERIFIED",
+  "test4_metric_components": "VERIFIED",
+  "test5_time_dilation": "VERIFIED",
+  "plots": [
+    "plots/theorem_5_2_1_newtonian_potential.png",
+    "plots/theorem_5_2_1_verification_summary.png"
+  ]
+}

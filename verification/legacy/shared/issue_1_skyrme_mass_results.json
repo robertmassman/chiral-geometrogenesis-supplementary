@@ -1,0 +1,39 @@
+{
+  "standard_skyrme": {
+    "f_pi": 93,
+    "six_pi_squared": 59.21762640653615,
+    "C_numerical": 72.92,
+    "C_numerical_massive": 74.78,
+    "ratio_C_to_6pi2": 1.231390118533212,
+    "e_values": {
+      "ANW": 4.84,
+      "nuclear": 6.11,
+      "typical": 5.0
+    }
+  },
+  "reconciliation": {
+    "C_standard": 72.92,
+    "six_pi_squared": 59.21762640653615,
+    "factor_difference": 1.231390118533212,
+    "e_doc_implied": 4.060451618659911,
+    "percent_difference": 23.13901185332119
+  },
+  "w_soliton_mass": {
+    "v_W_GeV": 142.02816622064793,
+    "e_standard": 5.0,
+    "M_W_document_formula_GeV": 1682.1141772919493,
+    "M_W_standard_formula_GeV": 2071.338776161929,
+    "M_W_claimed_GeV": 1680,
+    "e_implied_from_claimed": 5.0062921943212775,
+    "difference_percent": 23.13901185332116
+  },
+  "resolution": {
+    "status": "RESOLVED",
+    "corrected_mass": {
+      "standard_formula": "2.07 TeV (using 72.92/e)",
+      "document_formula": "1.68 TeV (using 6\u03c0\u00b2/e)",
+      "difference": "~23%",
+      "recommendation": "Update to standard coefficient OR justify 6\u03c0\u00b2"
+    }
+  }
+}

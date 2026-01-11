@@ -1,0 +1,86 @@
+{
+  "forward": {
+    "1-loop": {
+      "alpha_s_MP": 0.010366194269190759,
+      "inv_alpha_s_MP": 96.46741842105814,
+      "CG_prediction": 64,
+      "discrepancy_percent": -33.65635667717914,
+      "intermediate": [
+        {
+          "scale": 163.0,
+          "alpha_s": 0.10109155770594848,
+          "N_f_below": 5,
+          "N_f_above": 6,
+          "transition": "N_f: 5 \u2192 6"
+        }
+      ]
+    },
+    "2-loop": {
+      "alpha_s_MP": 0.010340207139921682,
+      "inv_alpha_s_MP": 96.70986146294688,
+      "CG_prediction": 64,
+      "discrepancy_percent": -33.82267430450124,
+      "intermediate": [
+        {
+          "scale": 163.0,
+          "alpha_s": 0.10054801271876831,
+          "N_f_below": 5,
+          "N_f_above": 6,
+          "transition": "N_f: 5 \u2192 6"
+        }
+      ]
+    },
+    "3-loop": {
+      "alpha_s_MP": 0.010071323481432026,
+      "inv_alpha_s_MP": 99.29181619909716,
+      "CG_prediction": 64,
+      "discrepancy_percent": -35.54352971883503,
+      "intermediate": [
+        {
+          "scale": 163.0,
+          "alpha_s": 0.09827187847489022,
+          "N_f_below": 5,
+          "N_f_above": 6,
+          "transition": "N_f: 5 \u2192 6"
+        }
+      ]
+    },
+    "4-loop": {
+      "alpha_s_MP": 0.010063295707643274,
+      "inv_alpha_s_MP": 99.37102407121755,
+      "CG_prediction": 64,
+      "discrepancy_percent": -35.59490747108305,
+      "intermediate": [
+        {
+          "scale": 163.0,
+          "alpha_s": 0.09793313878095837,
+          "N_f_below": 5,
+          "N_f_above": 6,
+          "transition": "N_f: 5 \u2192 6"
+        }
+      ]
+    }
+  },
+  "reverse": {
+    "1-loop": {
+      "alpha_s_MP_required": 0.010366194269190759,
+      "inv_alpha_s_MP_required": 96.46741842105814,
+      "discrepancy_from_64": -33.65635667717914
+    },
+    "2-loop": {
+      "alpha_s_MP_required": 0.010340207139921682,
+      "inv_alpha_s_MP_required": 96.70986146294688,
+      "discrepancy_from_64": -33.82267430450124
+    },
+    "3-loop": {
+      "alpha_s_MP_required": 0.010071323481432026,
+      "inv_alpha_s_MP_required": 99.29181619909716,
+      "discrepancy_from_64": -35.54352971883503
+    },
+    "4-loop": {
+      "alpha_s_MP_required": 0.010063295707643274,
+      "inv_alpha_s_MP_required": 99.37102407121755,
+      "discrepancy_from_64": -35.59490747108305
+    }
+  }
+}

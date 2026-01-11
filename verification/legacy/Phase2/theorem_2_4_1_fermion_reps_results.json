@@ -1,0 +1,107 @@
+{
+  "theorem": "2.4.1",
+  "script": "fermion_reps",
+  "tests": [
+    {
+      "name": "5-bar dimension",
+      "expected": "5",
+      "computed": "5",
+      "passed": true
+    },
+    {
+      "name": "5-bar decomposition: 3 + 2",
+      "expected": "5",
+      "computed": "5",
+      "passed": true
+    },
+    {
+      "name": "Tr(Y) for 5-bar = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "10 dimension",
+      "expected": "10",
+      "computed": "10",
+      "passed": true
+    },
+    {
+      "name": "10 decomposition: 6 + 3 + 1",
+      "expected": "10",
+      "computed": "10",
+      "passed": true
+    },
+    {
+      "name": "C(5,2) = 10",
+      "expected": "10",
+      "computed": "10",
+      "passed": true
+    },
+    {
+      "name": "Weyl fermions per generation",
+      "expected": "15",
+      "computed": "15",
+      "passed": true
+    },
+    {
+      "name": "SM Weyl fermion count",
+      "expected": "15",
+      "computed": "15",
+      "passed": true
+    },
+    {
+      "name": "U(1)_Y\u00b3 anomaly cancellation",
+      "expected": "0",
+      "computed": "2.498001805406602e-16",
+      "passed": true
+    },
+    {
+      "name": "SU(3)\u00b2 \u00d7 U(1)_Y anomaly cancellation",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "SU(2)\u00b2 \u00d7 U(1)_Y anomaly cancellation",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "Gravitational anomaly (Tr Y) = 0",
+      "expected": "0",
+      "computed": "0.0",
+      "passed": true
+    },
+    {
+      "name": "All charges quantized in e/3",
+      "expected": "True",
+      "computed": "True",
+      "passed": true
+    },
+    {
+      "name": "dim(SU(5)) = 24",
+      "expected": "24",
+      "computed": "24",
+      "passed": true
+    },
+    {
+      "name": "Adjoint rep dimension",
+      "expected": "24",
+      "computed": "24",
+      "passed": true
+    },
+    {
+      "name": "Generator count: 8+3+1+12",
+      "expected": "24",
+      "computed": "24",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "dihedral_angles": {
+    "theta_tetrahedron_deg": 70.52877936550931,
+    "theta_octahedron_deg": 109.47122063449069,
+    "sum_deg": 360.0,
+    "verified": true
+  },
+  "fcc_properties": {
+    "parity_verified": true,
+    "coordination_number": 12,
+    "nearest_distance": 1.4142135623730951,
+    "verified": true
+  },
+  "stella_structure": {
+    "n_tetrahedra": 8,
+    "group_a_size": 4,
+    "group_b_size": 4,
+    "verified": true
+  },
+  "phase_matching": {
+    "phase_sum_zero": true,
+    "omega_cubed_one": true,
+    "verified": true
+  },
+  "cell_counts": {
+    "n_tetrahedra": 64,
+    "n_octahedra_estimated": 32.0,
+    "ratio": 2.0,
+    "verified": true
+  }
+}

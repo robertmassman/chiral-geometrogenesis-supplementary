@@ -1,0 +1,40 @@
+{
+  "SU2_phases_deg": [
+    0,
+    180
+  ],
+  "SU2_amplitudes_SM": [
+    0,
+    1
+  ],
+  "SU2_cancellation": "FAILS",
+  "SU3_phases_deg": [
+    0,
+    120,
+    240
+  ],
+  "SU3_amplitudes_center": [
+    1,
+    1,
+    1
+  ],
+  "SU3_cancellation": "SUCCEEDS",
+  "SU5_phases_deg": [
+    0,
+    72,
+    144,
+    216,
+    288
+  ],
+  "SU5_amplitudes_DT": [
+    0.01,
+    0.01,
+    0.01,
+    1,
+    1
+  ],
+  "SU5_cancellation": "FAILS",
+  "option_A_status": "PARTIAL",
+  "option_B_status": "DERIVED",
+  "holographic_agreement": "0.9%"
+}

@@ -1,0 +1,47 @@
+{
+  "theorem": "5.2.3",
+  "verification": "Polarization Identity",
+  "date": "2025-12-15T11:11:56.439403",
+  "all_passed": true,
+  "tests": [
+    {
+      "name": "f*g tensors satisfy null contraction = 0",
+      "passed": true,
+      "n_tests": 100,
+      "max_residual": 5.116532831672411e-15
+    },
+    {
+      "name": "Generic tensors violate null contraction",
+      "passed": true,
+      "violations_found": 100,
+      "n_tests": 100
+    },
+    {
+      "name": "Reconstruct f from null constraint",
+      "passed": true,
+      "max_error": 0.0
+    },
+    {
+      "name": "Verify Wald's proof steps",
+      "passed": true,
+      "null_space_dim": 1,
+      "alignment": 1.0
+    },
+    {
+      "name": "Verify Einstein equation coefficients",
+      "passed": true,
+      "T_unruh_1ms2": 4.05501352274523e-21,
+      "eta": 9.570182792894672e+68,
+      "einstein_coeff": 2.0766474428449717e-43,
+      "planck_length_m": 1.61625502392855e-35
+    },
+    {
+      "name": "Null vector completeness",
+      "passed": true,
+      "n_null_vectors": 1600,
+      "rank": 9,
+      "null_space_dim": 1
+    }
+  ],
+  "conclusion": "The polarization identity (Wald 1984, Appendix D.2) is verified. If S_\u03bc\u03bd k^\u03bc k^\u03bd = 0 for all null vectors k^\u03bc, then S_\u03bc\u03bd = f g_\u03bc\u03bd. This justifies the step from the null contraction equality to the full tensor Einstein equations in Theorem 5.2.3 Derivation \u00a75.5."
+}

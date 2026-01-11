@@ -1,0 +1,30 @@
+{
+  "cross_sections": {
+    "Document (6\u03c0\u00b2)": {
+      "M_W_GeV": 1682,
+      "sigma_SI_cm2": 1.6124489003412806e-47,
+      "lz_limit_cm2": 9.898048880002722e-47,
+      "ratio": 0.16290573221950358,
+      "status": "allowed"
+    },
+    "Standard Skyrme (72.92)": {
+      "M_W_GeV": 2071,
+      "sigma_SI_cm2": 1.0638215400741017e-47,
+      "lz_limit_cm2": 1.2539150610574847e-46,
+      "ratio": 0.08484000018126679,
+      "status": "allowed"
+    }
+  },
+  "resolution": {
+    "status": "RESOLVED",
+    "finding": "Prediction at experimental frontier, borderline allowed after mass correction",
+    "recommendation": "Update language to emphasize testability at DARWIN",
+    "corrected_values": {
+      "M_W_TeV": 2.07,
+      "sigma_SI_cm2": 1.3e-47,
+      "sigma_uncertainty": 6e-48,
+      "LZ_status": "marginally_allowed",
+      "DARWIN_test": "decisive"
+    }
+  }
+}

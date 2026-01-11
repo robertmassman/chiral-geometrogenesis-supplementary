@@ -1,0 +1,20 @@
+{
+  "warning": "Clausius relation as postulate",
+  "status": "ADDRESSED",
+  "justifications": [
+    "Thermodynamic universality",
+    "Hawking radiation confirmation",
+    "Unruh effect independence",
+    "First Law proven (BCH 1973)",
+    "Euclidean path integral consistency",
+    "Analog experiment confirmation",
+    "No violations ever observed"
+  ],
+  "cg_contribution": "Derives G and T independently; Clausius then fixes \u03b3 = 1/4",
+  "epistemological_level": "Physical principle (Level 4 of 5)",
+  "same_status_as": [
+    "Jacobson 1995",
+    "LQG",
+    "String theory"
+  ]
+}

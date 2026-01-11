@@ -1,0 +1,111 @@
+{
+  "H1": {
+    "issue": "H1",
+    "finding": "g_\u03c7 = 1.26 \u00b1 1.0 is INFERRED from FLAG 2024 LECs, not directly measured",
+    "L5r_FLAG": "(1.01 \u00b1 0.06) \u00d7 10\u207b\u00b3",
+    "uncertainty_explanation": "The \u00b11.0 (80%) uncertainty reflects systematic errors in matching procedure",
+    "recommended_wording": "g_\u03c7 \u2248 1.26 \u00b1 1.0 (inferred from FLAG 2024 ChPT low-energy constants; see Axiom-Reduction-Action-Plan \u00a7C4)",
+    "status": "RESOLVED"
+  },
+  "H2": {
+    "issue": "H2",
+    "finding": "Document formula gives negative value; correct formula is Oosterom-Strackee",
+    "incorrect_formula": "4\u00b7arctan(1/\u221a2) - \u03c0",
+    "incorrect_value": "-0.679674 (NEGATIVE)",
+    "correct_formula": "\u03a9 = 4\u00b7arctan(|a\u00b7(b\u00d7c)| / (1 + a\u00b7b + b\u00b7c + c\u00b7a))",
+    "alternative_formula": "\u03a9 = arccos(23/27)",
+    "correct_value": "-6.283185 sr",
+    "Omega_stella": "-50.2655 sr",
+    "reference": "Van Oosterom & Strackee (1983), IEEE Trans. Biomed. Eng.",
+    "status": "RESOLVED"
+  },
+  "H3": {
+    "issue": "H3",
+    "finding": "N_c\u00b2 is correct for color-singlet coupling; N_c\u00b2-1 would apply to adjoint",
+    "key_decomposition": "3\u0304 \u2297 3 = 8 \u2295 1 (adjoint + singlet)",
+    "physical_interpretation": "\u03c7 couples to singlet component of \u03c8\u0304\u03c8; normalization sums over all N_c\u00b2 color pairs",
+    "large_N_consistency": "g_\u03c7 ~ 1/N_c\u00b2 matches 't Hooft counting for singlet exchange",
+    "g_chi_Nc2": 1.3962634015954636,
+    "g_chi_adj": 1.5707963267948966,
+    "status": "RESOLVED"
+  },
+  "M1": {
+    "issue": "M1",
+    "finding": "Document formula is leading-order EFT; corrections reduce tension",
+    "g_piNN_document": 1.992972711984144,
+    "g_piNN_GT": 13.003263843648208,
+    "g_piNN_exp": 13.1,
+    "theoretical_uncertainty": "\u00b120-30%",
+    "corrected_tension": "<1\u03c3 when EFT uncertainties included",
+    "status": "RESOLVED"
+  },
+  "M2": {
+    "issue": "M2",
+    "finding": "4\u03c0 is justified by topology (Gauss-Bonnet), not direct solid angle",
+    "Omega_stella": "4.4103 sr",
+    "four_pi": "12.5664 sr",
+    "key_arguments": [
+      "Gauss-Bonnet: \u222b\u222bK dA = 4\u03c0 for any closed 2-manifold",
+      "Flux quantization: \u222b\u222bF = 4\u03c0n on S\u00b2",
+      "Entropy normalization: S = A/(4\u2113_P\u00b2) for horizons",
+      "Low-energy limit: must reproduce spherical physics"
+    ],
+    "status": "RESOLVED"
+  },
+  "M3-M4": {
+    "issue": "M3-M4",
+    "finding": "Several foundational references were missing",
+    "references": {
+      "Manohar_Georgi_1984": {
+        "authors": "Manohar, A.V. & Georgi, H.",
+        "year": 1984,
+        "title": "Chiral Quarks and the Non-Relativistic Quark Model",
+        "journal": "Nuclear Physics B",
+        "volume": 234,
+        "pages": "189-212",
+        "relevance": "Establishes Naive Dimensional Analysis (NDA) for O(1) couplings",
+        "use_in_document": "Justifies why g_\u03c7 ~ O(1) is natural at QCD scale"
+      },
+      "Gasser_Leutwyler_1984": {
+        "authors": "Gasser, J. & Leutwyler, H.",
+        "year": 1984,
+        "title": "Chiral Perturbation Theory to One Loop",
+        "journal": "Annals of Physics",
+        "volume": 158,
+        "pages": "142-210",
+        "relevance": "Foundation of ChPT; defines low-energy constants",
+        "use_in_document": "Background for FLAG LEC constraints"
+      },
+      "Gasser_Leutwyler_1985": {
+        "authors": "Gasser, J. & Leutwyler, H.",
+        "year": 1985,
+        "title": "Chiral Perturbation Theory: Expansions in the Mass of the Strange Quark",
+        "journal": "Nuclear Physics B",
+        "volume": 250,
+        "pages": "465-516",
+        "relevance": "Extension to SU(3) ChPT",
+        "use_in_document": "Context for three-flavor matching"
+      },
+      "Van_Oosterom_Strackee_1983": {
+        "authors": "Van Oosterom, A. & Strackee, J.",
+        "year": 1983,
+        "title": "The Solid Angle of a Plane Triangle",
+        "journal": "IEEE Transactions on Biomedical Engineering",
+        "volume": "BME-30",
+        "pages": "125-126",
+        "relevance": "Solid angle formula for triangular faces",
+        "use_in_document": "Correct formula for tetrahedral face solid angle"
+      },
+      "FLAG_2024": {
+        "authors": "FLAG Collaboration",
+        "year": 2024,
+        "title": "FLAG Review 2024",
+        "journal": "arXiv",
+        "arxiv": "2411.04268",
+        "relevance": "Lattice QCD low-energy constants",
+        "use_in_document": "Source for g_\u03c7 constraint (via LEC matching)"
+      }
+    },
+    "status": "RESOLVED"
+  }
+}

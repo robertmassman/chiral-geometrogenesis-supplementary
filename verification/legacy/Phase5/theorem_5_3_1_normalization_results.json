@@ -1,0 +1,10 @@
+{
+  "kappa": 2.0766474428449717e-43,
+  "kappa_T": 2.5958093035562147e-44,
+  "kappa_T_alt": 2.5958093035562147e-44,
+  "ratio_kappa_to_kappa_T": 8.0,
+  "gamma_algebra_verified": true,
+  "identity_verified": true,
+  "factor_1_8_justified": true,
+  "recommendation": "Add clarification citing Hehl et al. (1976) Eq. 5.6"
+}
