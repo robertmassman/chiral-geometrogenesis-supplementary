@@ -2,7 +2,7 @@
 % Unified arXiv Preprint combining Papers 1 and 2
 % Using REVTeX 4.2 format
 
-\documentclass[aps,prd,twocolumn,superscriptaddress,showpacs,preprintnumbers,amsmath,amssymb,nofootinbib,floatfix]{revtex4-2}
+\documentclass[aps,prd,twocolumn,superscriptaddress,preprintnumbers,amsmath,amssymb,nofootinbib,floatfix]{revtex4-2}
 
 % Essential packages
 \usepackage{graphicx}
@@ -82,10 +82,17 @@
 \newcommand{\novel}[1]{\textcolor{blue}{#1}}
 \newcommand{\established}[1]{#1}
 
+% URL shortcuts for supplementary repository
+\newcommand{\repobase}{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main}
+\newcommand{\prooflink}[2]{\href{\repobase/#1}{#2}}
+\newcommand{\docsproof}[2]{\prooflink{docs/proofs/#1}{#2}}
+\newcommand{\leanproof}[2]{\prooflink{lean/ChiralGeometrogenesis/#1}{#2}}
+\newcommand{\verifyproof}[2]{\prooflink{verification/#1}{#2}}
+
 \begin{document}
 \raggedbottom  % Allow uneven column heights to avoid large gaps
 
-\preprint{arXiv:2501.XXXXX [hep-th]}  % Update with actual arXiv number after submission
+\preprint{arXiv:2601.XXXXX [hep-th]}  % Update with actual arXiv number after submission
 
 \title{Chiral Geometrogenesis: Deriving Gauge Structure, Mass, and Gravity\\
 from Geometric Foundations}
@@ -135,8 +142,8 @@ constraints is consistent with Planck (a self-consistency check, not an independ
 \textbf{Self-consistency:}
 The framework is self-consistent: full quantum mechanics emerges from chiral field 
 dynamics---the phase evolution of the three color fields $\chi_R, \chi_G, \chi_B$ 
-on the stella boundary (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.10-Quantum-Mechanics-Emergence.md}{Theorem~0.0.10}), and Lorentz invariance $\SO{3,1}$ emerges
-from discrete symmetry coarse-graining (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md}{Theorem~0.0.9}). The physics required for 
+on the stella boundary (\docsproof{foundations/Theorem-0.0.10-Quantum-Mechanics-Emergence.md}{Theorem~0.0.10}), and Lorentz invariance $\SO{3,1}$ emerges
+from discrete symmetry coarse-graining (\docsproof{foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md}{Theorem~0.0.9}). The physics required for 
 the $D=4$ argument is \emph{derivable} from the geometric structure.
 
 We emphasize a crucial distinction: while the \emph{framework} derives GR and QM, 
@@ -149,8 +156,7 @@ The framework reduces 13 Standard Model Yukawa couplings to 2 geometric paramete
 in machine-verified Lean~4 code with Python verification scripts.
 \end{abstract}
 
-\pacs{02.20.Qs, 11.15.-q, 12.38.-t, 04.20.Cv, 12.15.Ff, 98.80.Cq}
-\keywords{SU(3), stella octangula, geometric realization, mass generation, 
+\keywords{SU(3), stella octangula, geometric realization, mass generation,
 emergent gravity, Strong CP problem, Born rule}
 
 \maketitle
@@ -274,7 +280,7 @@ and their comparison with observation.
 \caption{Summary of quantitative predictions vs.\ observation. *Wolfenstein $\lambda$:
 the geometric formula gives the bare (high-scale) value; agreement shown is after
 $\sim$1\% QCD radiative corrections. $\dagger$Fermion masses: $R_{\rm stella} = 0.44847$~fm
-is now semi-derived from dimensional transmutation (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md}{Prop.~0.0.17q}: predicted 0.41~fm vs.\ observed 0.44847~fm, 91\% agreement);
+is now semi-derived from dimensional transmutation (\docsproof{foundations/Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md}{Prop.~0.0.17q}: predicted 0.41~fm vs.\ observed 0.44847~fm, 91\% agreement);
 helicity couplings $\eta_f = \lambda^{2n_f} c_f$ have geometric pattern $\lambda^{2n}$ derived,
 with order-one $c_f$ coefficients fitted. Absolute masses are \emph{consistency checks};
 the genuine predictions are mass \emph{ratios} (e.g., $m_s/m_d = \lambda^{-2}$, verified to 99.7\%). $\ddagger$Spectral index: the formula
@@ -350,8 +356,8 @@ embedding, stella octangula from uniqueness conditions.
 
 \textbf{Stage B (Verification):} We then show that the geometric structure
 \emph{implies} the physics used in Stage A: quantum mechanics emerges from
-chiral field dynamics (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.10-Quantum-Mechanics-Emergence.md}{Theorem~0.0.10}), Lorentz invariance from discrete symmetry
-coarse-graining (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md}{Theorem~0.0.9}), GR from fixed-point structure (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase5/Theorem-5.2.1-Emergent-Metric.md}{Prop.~5.2.1b}).
+chiral field dynamics (\docsproof{foundations/Theorem-0.0.10-Quantum-Mechanics-Emergence.md}{Theorem~0.0.10}), Lorentz invariance from discrete symmetry
+coarse-graining (\docsproof{foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md}{Theorem~0.0.9}), GR from fixed-point structure (\docsproof{Phase5/Theorem-5.2.1-Emergent-Metric.md}{Prop.~5.2.1b}).
 
 \textbf{What this establishes:} The framework is \emph{self-consistent}---the
 physics used to select the geometry is derivable from that geometry.
@@ -1579,7 +1585,7 @@ where $\varphi = (1 + \sqrt{5})/2$ is the golden ratio, arising from the
 24-cell connection between tetrahedral and icosahedral symmetries.
 \end{theorem}
 
-\paragraph{Why the 24-cell? (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md}{Lemma~3.1.2a})}
+\paragraph{Why the 24-cell? (\docsproof{Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md}{Lemma~3.1.2a})}
 The 24-cell is the unique self-dual 4D regular polytope with $F_4$ symmetry (order 1152).
 It serves as the geometric bridge between tetrahedral ($A_3$) and icosahedral ($H_3$)
 symmetry via the embedding chain: Stella $\subset$ 16-cell $\subset$ 24-cell $\subset$ 600-cell.
@@ -1619,7 +1625,7 @@ Fermion generations are localized at radii $r_3 = 0$, $r_2 = \epsilon$,
 $r_1 = \sqrt{3}\epsilon$ on the stella. The overlap integral between
 adjacent generations is $\langle\psi_n|\psi_{n+1}\rangle = e^{-(\Delta r)^2/(2\sigma^2)}$.
 With $\Delta r/\sigma$ fixed by the hexagonal lattice geometry (120$^\circ$ angles),
-the overlap equals $1/\varphi$ (see \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Extension-3.1.2b-Complete-Wolfenstein-Parameters.md}{Extension~3.1.2b} for the explicit calculation).
+the overlap equals $1/\varphi$ (see \docsproof{Phase3/Extension-3.1.2b-Complete-Wolfenstein-Parameters.md}{Extension~3.1.2b} for the explicit calculation).
 
 \paragraph{The pentagonal angle.}
 The angle $72^\circ = 2\pi/5$ is the central angle of a regular pentagon, encoding
@@ -1861,7 +1867,7 @@ The CG Strong CP resolution is sharply falsifiable:
 Recent works have proposed alternative geometric/topological resolutions of Strong CP:
 \begin{itemize}
 \item Dvali (2022)~\cite{Dvali2022}: Argues that in gravity, the axion is a consistency requirement imposed by the S-matrix, favoring a formulation fixed by QCD gauge redundancy. CG is consistent: the stella encodes full $\SU{3}$, not ${\rm PSU}(3)$.
-\item Tanizaki \emph{et al.}\ (2025)~\cite{TanizakiEtAl2025}: Fractional instantons and 't~Hooft twists provide mechanisms for $\theta$-dependence. The CG $\Z_3$ structure is consistent with these topological approaches.
+\item Hayashi \emph{et al.}\ (2025)~\cite{HayashiEtAl2025}: Fractional instantons and 't~Hooft twists provide mechanisms for $\theta$-dependence. The CG $\Z_3$ structure is consistent with these topological approaches.
 \end{itemize}
 The CG framework offers a unified geometric origin for the $\Z_3$ structure 
 that these approaches invoke.
@@ -1990,7 +1996,7 @@ $dS/dt = 3k_B K/4 > 0$, establishing time's arrow from the phase dynamics.}
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/fig_thm_4_2_1_baryon_asymmetry.pdf}
-\caption{Baryon asymmetry analysis using the master formula from \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase4/Theorem-4.2.1-Chiral-Bias-Soliton-Formation.md}{Theorem~4.2.1}.
+\caption{Baryon asymmetry analysis using the master formula from \docsproof{Phase4/Theorem-4.2.1-Chiral-Bias-Soliton-Formation.md}{Theorem~4.2.1}.
 Top left: Monte Carlo distribution (N=50,000) showing CG median $\eta = 4.7 \times 10^{-10}$
 with 68\% CI encompassing the observed value $\eta_{obs} = 6.1 \times 10^{-10}$ (red dashed).
 Top right: Sensitivity to geometric factor $G$, showing the $\eta(G)$ curve passes through
@@ -2084,7 +2090,7 @@ and $g_{\mu\nu}[\eta] = \eta_{\mu\nu} \neq 0$, we require $b = 0$.
 vacuum. The observed $\Lambda_{\rm obs} \sim 10^{-122} M_P^4$ is addressed separately
 via holographic considerations: applying the holographic principle to the cosmological
 horizon yields $\rho_{\rm vac} = (3\Omega_\Lambda/8\pi) M_P^2 H_0^2$, achieving
-\textbf{0.9\% agreement} with observation (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase5/Theorem-5.1.2-Vacuum-Energy-Density-Applications.md\#1311-first-principles-derivation-of-ρ--m_p²-h₀²-from-holography-new}{Theorem~5.1.2, \S13.11}).
+\textbf{0.9\% agreement} with observation (\docsproof{Phase5/Theorem-5.1.2-Vacuum-Energy-Density-Applications.md\#1311-first-principles-derivation-of-ρ--m_p²-h₀²-from-holography-new}{Theorem~5.1.2, \S13.11}).
 The 122-order suppression factor $(H_0/M_P)^2$ emerges as the natural holographic
 ratio $(\ell_P/L_{\rm Hubble})^2$, not fine-tuning. The dark energy fraction
 $\Omega_\Lambda = 0.685$ remains an observational input; deriving it from first
@@ -2157,7 +2163,6 @@ Step & Result & Source \\
 \label{subsec:newton-G}
 
 \begin{theorem}[Newton's Constant (Theorem 5.2.4)]
-\label{thm:newton-G}
 \label{prop:newton-G}
 Newton's gravitational constant is determined by chiral field parameters:
 \begin{equation}
@@ -2395,7 +2400,7 @@ where $\lambda \approx 0.22$ is the Wolfenstein parameter.
 
 \begin{table}[htbp]
 \caption{Fermion mass consistency check vs.\ PDG 2024. The overall scale is set by
-$R_{\rm stella} = 0.44847$ fm (semi-derived from Planck scale via \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md}{Prop.~0.0.17q}); mass \emph{ratios} follow from
+$R_{\rm stella} = 0.44847$ fm (semi-derived from Planck scale via \docsproof{foundations/Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md}{Prop.~0.0.17q}); mass \emph{ratios} follow from
 geometric localization. This is a \emph{consistency check}, not 9 independent predictions.}
 \label{tab:fermion-masses}
 \begin{ruledtabular}
@@ -2465,7 +2470,7 @@ The remaining quantities ($g_\chi$, $\lambda$, $A$, mass ratios) are geometric o
 
 \paragraph{How $\eta_f$ factors are computed.}
 The localization factors come from overlap integrals of generation wave
-functions with the chiral energy density profile (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Theorem-3.1.2-Mass-Hierarchy-From-Geometry.md}{Theorem~3.1.2}):
+functions with the chiral energy density profile (\docsproof{Phase3/Theorem-3.1.2-Mass-Hierarchy-From-Geometry.md}{Theorem~3.1.2}):
 \begin{equation}
 c_f^{\rm (loc)} = \frac{\int |\psi_n|^2 \rho_\chi \, d^2x}{\int |\psi_3|^2 \rho_\chi \, d^2x}
 \end{equation}
@@ -2516,7 +2521,7 @@ $\bar{\eta}$ & from $\beta, \gamma$ & 0.348 & $0.355 \pm 0.007$ \\
 
 \paragraph{Geometric origin of $A$.}
 The Wolfenstein $A$ parameter emerges from the 24-cell connection between
-tetrahedral and icosahedral symmetries (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md}{Lemma~3.1.2a}). This formula was
+tetrahedral and icosahedral symmetries (\docsproof{Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md}{Lemma~3.1.2a}). This formula was
 identified through systematic search over geometric angle ratios, then
 given the following interpretation. The ratio $\sin 36^\circ/\sin 45^\circ$ connects:
 \begin{itemize}
@@ -2563,7 +2568,7 @@ emerges at zeroth order, with corrections proportional to $\lambda/\varphi$.
 Parameter & Geometric Origin & Prediction & Experiment \\
 \hline
 $\theta_{12}$ & $A_4$ solar angle & $34.3^\circ$ & $33.41^\circ \pm 0.75^\circ$ \\
-$\theta_{23}$ & $45^\circ + \delta\theta_{23}$ (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase8/Proposition-8.4.4-Atmospheric-Angle-Correction.md}{Prop.~8.4.4}) & $48.9^\circ \pm 1.4^\circ$ & $49.1^\circ \pm 1.0^\circ$ \\
+$\theta_{23}$ & $45^\circ + \delta\theta_{23}$ (\docsproof{Phase8/Proposition-8.4.4-Atmospheric-Angle-Correction.md}{Prop.~8.4.4}) & $48.9^\circ \pm 1.4^\circ$ & $49.1^\circ \pm 1.0^\circ$ \\
 $\theta_{13}$ & $(\lambda/\varphi)(1+\lambda/5+\lambda^2/2)$ & $8.54^\circ$ & $8.54^\circ \pm 0.11^\circ$ \\
 $\delta_{CP}$ & From CKM connection & $\sim 200^\circ$ & $197^\circ \pm 25^\circ$ \\
 \end{tabular}
@@ -2573,7 +2578,7 @@ $\delta_{CP}$ & From CKM connection & $\sim 200^\circ$ & $197^\circ \pm 25^\circ
 \paragraph{Atmospheric angle correction.}
 The zeroth-order prediction $\theta_{23} = 45^\circ$ (maximal mixing from $A_4$ symmetry)
 requires correction for symmetry breaking effects. Following the same methodology
-as the $\theta_{13}$ derivation, we find (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase8/Proposition-8.4.4-Atmospheric-Angle-Correction.md}{Proposition~8.4.4}):
+as the $\theta_{13}$ derivation, we find (\docsproof{Phase8/Proposition-8.4.4-Atmospheric-Angle-Correction.md}{Proposition~8.4.4}):
 \begin{equation}
 \theta_{23} = 45^\circ + \delta\theta_{23}^{(A_4)} + \delta\theta_{23}^{(\text{geo})} + \delta\theta_{23}^{(RG)} + \delta\theta_{23}^{(\mu\tau)}
 \end{equation}
@@ -2818,7 +2823,7 @@ the sense of ``unexplained numerical constants'' or ``postulated dynamical rules
 \item \textbf{Uniqueness of stella $\to$ SU(3):} We show stella is sufficient
 but have not proven no other geometry gives $\SU{3}$.
 \item \textbf{Dark energy fraction $\Omega_\Lambda$:} The holographic derivation
-of vacuum energy density (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase5/Theorem-5.1.2-Vacuum-Energy-Density-Applications.md\#1311-first-principles-derivation-of-ρ--m_p²-h₀²-from-holography-new}{Theorem~5.1.2, \S13.11})
+of vacuum energy density (\docsproof{Phase5/Theorem-5.1.2-Vacuum-Energy-Density-Applications.md\#1311-first-principles-derivation-of-ρ--m_p²-h₀²-from-holography-new}{Theorem~5.1.2, \S13.11})
 achieves 0.9\% agreement with observation using the formula
 $\rho_{\rm vac} = (3\Omega_\Lambda/8\pi) M_P^2 H_0^2$. While the functional form
 $M_P^2 H_0^2$ is derived from holographic principles, the coefficient
@@ -2979,40 +2984,27 @@ For readers wishing to verify claims in depth, the repository provides:
 \paragraph{Mathematical Proofs (Markdown).}
 Complete derivations with step-by-step justification:
 \begin{itemize}
-\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.10-Quantum-Mechanics-Emergence.md}{Theorem 0.0.10}: Quantum mechanics from chiral field dynamics
-\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md}{Theorem 0.0.9}: Lorentz invariance from $O_h$ coarse-graining
-\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md}{Lemma 3.1.2a}: 24-cell derivation of $\lambda = (1/\varphi^3)\sin 72^\circ$
-\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Theorem-3.1.2-Mass-Hierarchy-From-Geometry.md}{Theorem 3.1.2}: Mass hierarchy from geometric localization
-\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase4/Theorem-4.2.1-Chiral-Bias-Soliton-Formation.md}{Theorem 4.2.1}: Baryogenesis master formula
-\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase5/Theorem-5.2.1-Emergent-Metric.md}{Theorem 5.2.1}: Emergent metric and Einstein equations
+\item \docsproof{foundations/Theorem-0.0.10-Quantum-Mechanics-Emergence.md}{Theorem 0.0.10}: Quantum mechanics from chiral field dynamics
+\item \docsproof{foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md}{Theorem 0.0.9}: Lorentz invariance from $O_h$ coarse-graining
+\item \docsproof{Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md}{Lemma 3.1.2a}: 24-cell derivation of $\lambda = (1/\varphi^3)\sin 72^\circ$
+\item \docsproof{Phase3/Theorem-3.1.2-Mass-Hierarchy-From-Geometry.md}{Theorem 3.1.2}: Mass hierarchy from geometric localization
+\item \docsproof{Phase4/Theorem-4.2.1-Chiral-Bias-Soliton-Formation.md}{Theorem 4.2.1}: Baryogenesis master formula
+\item \docsproof{Phase5/Theorem-5.2.1-Emergent-Metric.md}{Theorem 5.2.1}: Emergent metric and Einstein equations
 \end{itemize}
 
 \paragraph{Lean 4 Formalization.}
 Machine-verified proofs in \texttt{lean/ChiralGeometrogenesis/}. Key files:
 \begin{itemize}
-\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/lean/ChiralGeometrogenesis/Phase3/Lemma_3_1_2a.lean}{Lemma\_3\_1\_2a.lean}: Hexagonal lattice projection ($r_1/r_2 = \sqrt{3}$)
-\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_15.lean}{Theorem\_0\_0\_15.lean}: Topological derivation of SU(3) (704 lines, sorry-free)
+\item \leanproof{Phase3/Lemma_3_1_2a.lean}{Lemma\_3\_1\_2a.lean}: Hexagonal lattice projection ($r_1/r_2 = \sqrt{3}$)
+\item \leanproof{Foundations/Theorem_0_0_15.lean}{Theorem\_0\_0\_15.lean}: Topological derivation of SU(3) (704 lines, sorry-free)
 \end{itemize}
 
 \paragraph{Numerical Verification (Python).}
 Computational scripts in \texttt{verification/}:
 \begin{itemize}
-\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/verification/Phase3/wolfenstein_complete_derivation.py}{wolfenstein\_complete\_derivation.py}: Wolfenstein parameter verification
-\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/verification/Phase4/theorem_4_2_1_comprehensive_verification.py}{theorem\_4\_2\_1\_comprehensive\_verification.py}: Monte Carlo baryon asymmetry analysis
+\item \verifyproof{Phase3/wolfenstein_complete_derivation.py}{wolfenstein\_complete\_derivation.py}: Wolfenstein parameter verification
+\item \verifyproof{Phase4/theorem_4_2_1_comprehensive_verification.py}{theorem\_4\_2\_1\_comprehensive\_verification.py}: Monte Carlo baryon asymmetry analysis
 \end{itemize}
-
-%=============================================================================
-\begin{acknowledgments}
-This work benefited from AI-assisted development and verification. Claude (Anthropic)
-provided support in proof development, adversarial review, and manuscript preparation.
-The multi-agent verification methodology---using independent AI instances to challenge
-derivations---proved valuable for identifying logical gaps.
-
-The formal verification infrastructure relies on Lean~4 and the Mathlib library;
-we thank the Lean community for creating tools that enable machine-verified
-mathematics at this scale. The author thanks Rochester Institute of Technology
-for institutional support.
-\end{acknowledgments}
 
 %=============================================================================
 % BIBLIOGRAPHY
@@ -3107,7 +3099,7 @@ G.~Dvali,
 \emph{Phys.\ Rev.\ D} \textbf{106}, 065034 (2022);
 arXiv:2209.14219 [hep-th].
 
-\bibitem{TanizakiEtAl2025}
+\bibitem{HayashiEtAl2025}
 Y.~Hayashi, T.~Misumi, M.~Nitta, K.~Ohashi, and Y.~Tanizaki,
 arXiv:2507.12802 [hep-th] (2025).
 
