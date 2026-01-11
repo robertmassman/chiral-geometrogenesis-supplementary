@@ -1,17 +1,28 @@
 #!/usr/bin/env python3
 """
-Interactive 3D Stella Octangula Visualization
+Interactive 3D Stella Octangula Visualization for Theorem 0.0.2
 
-Run this script to view an interactive 3D plot that you can rotate with the mouse.
-Shows the stella octangula with right-handed chirality arrows and the intersection center.
+Run this script to generate the stella octangula figure with right-handed
+chirality arrows, intersection center, and time axis along [1,1,1].
 
-Usage: python stella_octangula_3d_interactive.py
+Output: fig_thm_0_0_2_stella_3d.pdf and fig_thm_0_0_2_stella_3d.png
+
+Usage:
+    python fig_thm_0_0_2_stella_3d.py
+
+Source: verification/shared/stella_octangula_3d_interactive.py
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+from pathlib import Path
+
+# Output directory
+output_dir = Path(__file__).parent.parent
+output_dir.mkdir(exist_ok=True)
+
 
 def create_interactive_stella_octangula():
     """Create an interactive 3D stella octangula visualization."""
@@ -65,8 +76,8 @@ def create_interactive_stella_octangula():
 
     # Plot the INTERSECTION CENTER (origin) - this is where everything meets
     ax.scatter(0, 0, 0, c='gold', s=400, marker='o', edgecolor='black',
-               linewidth=3, zorder=10, label='Center (singlet)')
-    ax.text(0.15, 0.15, 0.15, 'O\n(singlet)', fontsize=12, fontweight='bold',
+               linewidth=3, zorder=10, label='Geometric center')
+    ax.text(0.15, 0.15, 0.15, 'O', fontsize=12, fontweight='bold',
             ha='left', va='bottom')
 
     # Plot vertices
@@ -99,6 +110,12 @@ def create_interactive_stella_octangula():
               (axis_end - axis_start)[0], (axis_end - axis_start)[1], (axis_end - axis_start)[2],
               color='green', arrow_length_ratio=0.08, linewidth=4, alpha=0.9,
               label='[1,1,1] axis')
+
+    # Add labels for past/future along the time axis
+    ax.text(axis_start[0]-0.1, axis_start[1]-0.1, axis_start[2]-0.1,
+            r'$\bar{W}$' + '\n(past)', fontsize=10, ha='center', va='top', color='olive')
+    ax.text(axis_end[0]+0.1, axis_end[1]+0.1, axis_end[2]+0.1,
+            '(future)', fontsize=10, ha='center', va='bottom', color='olive')
 
     # Draw chirality arrows on the base triangle (R-G-B) - right-handed: R->G->B->R
     def draw_3d_arrow(start, end, color='purple', offset_scale=0.2):
@@ -147,7 +164,7 @@ def create_interactive_stella_octangula():
     ax.set_xlabel('X', fontsize=12)
     ax.set_ylabel('Y', fontsize=12)
     ax.set_zlabel('Z', fontsize=12)
-    ax.set_title('Stella Octangula - Interactive View\n(Right-handed chirality: R→G→B→R)\nDrag to rotate!',
+    ax.set_title('Stella Octangula\n(Right-handed chirality: R→G→B→R)',
                  fontsize=14, fontweight='bold')
 
     # Set equal aspect ratio and limits
@@ -163,8 +180,8 @@ def create_interactive_stella_octangula():
     # Add info text
     fig.text(0.02, 0.02,
              'Blue solid: T+ (fundamental)\nRed dashed: T- (anti-fundamental)\n'
-             'Gold center: Intersection point (singlet)\nPurple arrows: Right-handed chirality\n'
-             r'Green arrow: Time axis $\tau$ along [1,1,1]',
+             'Gold center: Geometric center\nPurple arrows: Right-handed chirality\n'
+             r'Green arrow: Internal time $\tau$ along [1,1,1]',
              fontsize=10, verticalalignment='bottom',
              bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
 
@@ -173,9 +190,15 @@ def create_interactive_stella_octangula():
 
 
 if __name__ == "__main__":
-    print("Creating interactive 3D Stella Octangula visualization...")
-    print("Drag with mouse to rotate the view!")
-    print("Close the window when done.\n")
+    print("Creating 3D Stella Octangula visualization...")
 
     fig, ax = create_interactive_stella_octangula()
-    plt.show()
+
+    # Save to output directory
+    for ext in ['pdf', 'png']:
+        filepath = output_dir / f'fig_thm_0_0_2_stella_3d.{ext}'
+        fig.savefig(filepath, dpi=300, bbox_inches='tight', facecolor='white')
+        print(f"Saved: {filepath}")
+
+    plt.close()
+    print("Done!")

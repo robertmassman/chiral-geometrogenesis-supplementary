@@ -83,6 +83,7 @@
 \newcommand{\established}[1]{#1}
 
 \begin{document}
+\raggedbottom  % Allow uneven column heights to avoid large gaps
 
 \preprint{arXiv:2501.XXXXX [hep-th]}  % Update with actual arXiv number after submission
 
@@ -134,8 +135,8 @@ constraints is consistent with Planck (a self-consistency check, not an independ
 \textbf{Self-consistency:}
 The framework is self-consistent: full quantum mechanics emerges from chiral field 
 dynamics---the phase evolution of the three color fields $\chi_R, \chi_G, \chi_B$ 
-on the stella boundary (Theorem~0.0.10), and Lorentz invariance $\SO{3,1}$ emerges 
-from discrete symmetry coarse-graining (Theorem~0.0.9). The physics required for 
+on the stella boundary (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.10-Quantum-Mechanics-Emergence.md}{Theorem~0.0.10}), and Lorentz invariance $\SO{3,1}$ emerges
+from discrete symmetry coarse-graining (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md}{Theorem~0.0.9}). The physics required for 
 the $D=4$ argument is \emph{derivable} from the geometric structure.
 
 We emphasize a crucial distinction: while the \emph{framework} derives GR and QM, 
@@ -145,8 +146,7 @@ freedom, which require the field equations of QCD).
 
 The framework reduces 13 Standard Model Yukawa couplings to 2 geometric parameters
 ($R_{\rm stella}$ for mass scale, $\sigma$ for localization width), and is formalized
-in 171,000 lines of machine-verified Lean~4 code (181 files, 13 non-critical
-\texttt{sorry} statements, 60/60 verification tests passing).
+in machine-verified Lean~4 code with Python verification scripts.
 \end{abstract}
 
 \pacs{02.20.Qs, 11.15.-q, 12.38.-t, 04.20.Cv, 12.15.Ff, 98.80.Cq}
@@ -164,7 +164,7 @@ emergent gravity, Strong CP problem, Born rule}
 \label{subsec:motivation}
 
 The Standard Model of particle physics, combined with general relativity, provides 
-an extraordinarily successful description of nature. Yet this success comes at a 
+a successful description of nature. Yet this success comes at a 
 price: the framework requires approximately 30 free parameters (20 in the SM, plus 
 cosmological parameters), multiple postulated symmetries, and leaves fundamental 
 questions unanswered---the flavor puzzle, the Strong CP problem, the arrow of time, 
@@ -270,16 +270,17 @@ $G = 1/(8\pi f_\chi^2)$ is derived from chiral field parameters.
 Table~\ref{tab:predictions-summary} summarizes the quantitative predictions
 and their comparison with observation.
 
-\begin{table}[htbp]
+\begin{table*}[t]
 \caption{Summary of quantitative predictions vs.\ observation. *Wolfenstein $\lambda$:
 the geometric formula gives the bare (high-scale) value; agreement shown is after
-$\sim$1\% QCD radiative corrections. $\dagger$Fermion masses: $R_{\rm stella} = 0.45$~fm
-is the single input setting the overall scale; helicity couplings $\eta_f$ contain
-fitted coefficients $c_f$, making absolute masses \emph{consistency checks}, not
-independent predictions. The genuine predictions are mass \emph{ratios} (e.g.,
-$m_s/m_d = \lambda^{-2}$, verified to 99.7\%). $\ddagger$Spectral index: the formula
+$\sim$1\% QCD radiative corrections. $\dagger$Fermion masses: $R_{\rm stella} = 0.44847$~fm
+is now semi-derived from dimensional transmutation (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md}{Prop.~0.0.17q}: predicted 0.41~fm vs.\ observed 0.44847~fm, 91\% agreement);
+helicity couplings $\eta_f = \lambda^{2n_f} c_f$ have geometric pattern $\lambda^{2n}$ derived,
+with order-one $c_f$ coefficients fitted. Absolute masses are \emph{consistency checks};
+the genuine predictions are mass \emph{ratios} (e.g., $m_s/m_d = \lambda^{-2}$, verified to 99.7\%). $\ddagger$Spectral index: the formula
 $n_s = 1 - 2/N$ is standard slow-roll; $N \approx 57$ is constrained by CMB observations,
-not predicted independently---this is a self-consistency check.}
+not predicted independently---this is a self-consistency check.
+$^\S$Baryon asymmetry: theoretical uncertainty is factor $\sim$4 (dominated by geometric factor $\mathcal{G}$ and sphaleron efficiency); observed value lies within 68\% confidence interval of Monte Carlo prediction.}
 \label{tab:predictions-summary}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
@@ -287,7 +288,7 @@ Quantity & Prediction & Observation & Agreement \\
 \hline
 Wolfenstein $\lambda$ & 0.2245 (bare) & $0.22650 \pm 0.00048$ & 0.2$\sigma$* \\
 Wolfenstein $A$ & 0.831 & $0.826 \pm 0.015$ & 0.3$\sigma$ \\
-Baryon asymmetry $\eta$ & $6 \times 10^{-10}$ & $6.1 \times 10^{-10}$ & factor 1 \\
+Baryon asymmetry $\eta$ & $6 \times 10^{-10}$ & $6.1 \times 10^{-10}$ & within 1$\sigma$$^\S$ \\
 Spectral index $n_s$ & $1-2/N$ ($N$ from CMB) & $0.9649 \pm 0.0042$ & consistent$^\ddagger$ \\
 Tensor ratio $r$ & $\sim 0.001$ & $< 0.036$ & consistent \\
 \hline
@@ -304,14 +305,14 @@ Bottom $m_b$ & 4.18 GeV & 4.18 GeV & 99\% \\
 Top $m_t$ & 173 GeV & 173 GeV & 99.9\% \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 \paragraph{Theoretical uncertainties.}
 Table~\ref{tab:uncertainty-budget} summarizes the theoretical uncertainty budget for
 key predictions. The dominant uncertainties arise from nonperturbative QCD effects
 that cannot yet be computed from first principles.
 
-\begin{table}[htbp]
+\begin{table*}[t]
 \caption{Uncertainty budget for key predictions. Uncertainties are quoted as
 multiplicative factors (e.g., ``factor of 4'' means the prediction could be
 $4\times$ higher or lower). Sources: detailed analysis in proof documentation.}
@@ -336,7 +337,7 @@ Newton's $G$ & $f_\chi$ determination & $<1\%$ \\
 \multicolumn{2}{l}{Transport equations: sphaleron efficiency} & $\times 3$ reduction \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 \subsection{Derivation Strategy and Honest Assessment}
 \label{subsec:derivation-strategy}
@@ -349,8 +350,8 @@ embedding, stella octangula from uniqueness conditions.
 
 \textbf{Stage B (Verification):} We then show that the geometric structure
 \emph{implies} the physics used in Stage A: quantum mechanics emerges from
-chiral field dynamics (Theorem~0.0.10), Lorentz invariance from discrete symmetry
-coarse-graining (Theorem~0.0.9), GR from fixed-point structure (Prop.~5.2.1b).
+chiral field dynamics (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.10-Quantum-Mechanics-Emergence.md}{Theorem~0.0.10}), Lorentz invariance from discrete symmetry
+coarse-graining (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md}{Theorem~0.0.9}), GR from fixed-point structure (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase5/Theorem-5.2.1-Emergent-Metric.md}{Prop.~5.2.1b}).
 
 \textbf{What this establishes:} The framework is \emph{self-consistent}---the
 physics used to select the geometry is derivable from that geometry.
@@ -395,20 +396,25 @@ The bootstrap (Stage A) uses GR+QM as \emph{selection criteria} to identify
 which geometric structures are physically relevant. But the actual derivation
 (Stage B) constructs physics from Layers 1--4 \emph{without invoking} the
 selection criteria. The DAG structure is:
-\begin{equation}
-\text{Killing form} \to \text{Config.\ space} \to \text{Arc length } \tau
-\to \text{Energy} \to \text{Time } t \to T_{\mu\nu} \to g_{\mu\nu}
-\end{equation}
+\begin{align}
+\text{Killing form} &\to \text{Config.\ space} \to \text{Arc length } \tau \notag\\
+&\to \text{Energy} \to \text{Time } t \to T_{\mu\nu} \to g_{\mu\nu}
+\end{align}
 Each arrow represents a construction that depends \emph{only} on its inputs,
 verified in the Lean~4 formalization with explicit dependency tracking.
 The bootstrap criteria appear nowhere in this chain.
 
 \paragraph{Honest limitations:}
 \begin{itemize}
-\item The stella-$\SU{3}$ correspondence is \emph{kinematic} (symmetry structure), 
+\item The stella-$\SU{3}$ correspondence is \emph{kinematic} (symmetry structure),
 not \emph{dynamical} (does not derive confinement or asymptotic freedom directly).
 \item Alternative theories (modified gravity, extra dimensions) may evade some constraints.
 \item Experimental falsification criteria are discussed in Section~\ref{sec:predictions}.
+\item The thermodynamic derivation of Einstein equations (via Clausius relation $\delta Q = T\delta S$
+on local Rindler horizons) operates in the \emph{weak-field (semiclassical) regime}.
+The Clausius relation itself is derived from the KMS condition via the Bisognano-Wichmann
+theorem, which requires Lorentz invariance and locality of the emergent QFT---both
+established in Layers~1--4. Strong-field extensions are treated in the supplementary materials.
 \end{itemize}
 
 \subsection{Organization}
@@ -624,18 +630,18 @@ The simple roots are:
 \begin{equation}
 \rootvec_1 = (1, -1/\sqrt{3}), \quad \rootvec_2 = (0, 2/\sqrt{3})
 \end{equation}
-and the Weyl group is generated by reflections through hyperplanes orthogonal to 
+and the Weyl group is generated by reflections through hyperplanes orthogonal to
 these roots.
-
-\clearpage  % Help float placement
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.95\linewidth]{figures/theorem_0_0_3_weight_diagram.pdf}
-\caption{The $\SU{3}$ weight diagram showing the hexagonal arrangement of 
-fundamental and antifundamental weights. Red vertices represent $\fund$ weights 
-(quarks), blue vertices $\afund$ weights (antiquarks). The Weyl group $S_3$ 
-acts by color permutation and charge conjugation.}
+\includegraphics[width=0.95\linewidth]{figures/fig_su3_weight_diagram.pdf}
+\caption{The $\SU{3}$ weight diagram showing the hexagonal arrangement of
+fundamental and antifundamental weights. Blue vertices (circles) represent $\fund$ weights
+(quarks R, G, B), red vertices (squares) represent $\afund$ weights (antiquarks
+$\bar{\text{R}}$, $\bar{\text{G}}$, $\bar{\text{B}}$). The central gold point shows
+where the stella octangula apex vertices (singlets) project onto the weight plane.
+The Weyl group $S_3$ acts by color permutation and charge conjugation.}
 \label{fig:weight-diagram}
 \end{figure}
 
@@ -695,6 +701,18 @@ The intersection of these constraints uniquely selects $n = 3$, giving $D = 4$:
 \end{equation}
 \end{proof}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_thm_0_0_1_d4_stability.pdf}
+\caption{Dimensional selection via observer stability constraints.
+(a)~Effective potential $V_{\text{eff}}(r)$ for orbital motion: only $D=4$ (blue)
+has a stable minimum; $D=3,5,6+$ lack stable bound states.
+(b)~Constraint intersection table showing that $D=4$ uniquely satisfies all four
+requirements: (P1)~gravitational stability, (P2)~atomic stability,
+(P3)~Huygens' principle, and (P4)~topological complexity for knots.}
+\label{fig:D4-stability}
+\end{figure}
+
 \begin{remark}[Experimental Confirmation]
 Three classes of experiments independently confirm $D = 4$:
 \begin{enumerate}
@@ -720,18 +738,6 @@ the geometric structure \emph{implies} the physics used:
 \end{enumerate}
 The physics used to select the geometry is derivable from that geometry.
 \end{remark}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\linewidth]{figures/figure_1_D4_stability.pdf}
-\caption{Dimensional selection via observer stability constraints. The four 
-constraints (P1)--(P4) each eliminate different dimensions, with their 
-intersection uniquely selecting $D = 4$. No observer-compatible physics exists 
-for $D \neq 4$.}
-\label{fig:D4-stability}
-\end{figure}
-
-\clearpage  % Help float placement
 
 %=============================================================================
 \section{Euclidean Metric from SU(3) Killing Form}
@@ -912,12 +918,17 @@ or reflection through the weight plane. The stella octangula realizes this as th
 exchange of its two constituent tetrahedra $T_+ \leftrightarrow T_-$.
 
 \emph{Step 4: Elimination of all alternatives.}
-We systematically eliminate every candidate 8-vertex or fewer polyhedron:
+We systematically eliminate every candidate 8-vertex or fewer polyhedron
+(Table~\ref{tab:polyhedra-elimination}).
 
-\begin{center}
-\small
+\begin{table*}[t]
+\caption{Systematic elimination of candidate polyhedra. Each alternative fails
+at least one geometric realization constraint (GR1--GR3) or manifold requirement (M2).
+Only the stella octangula satisfies all requirements.}
+\label{tab:polyhedra-elimination}
+\begin{ruledtabular}
 \begin{tabular}{llll}
-\textbf{Candidate} & \textbf{Vertices} & \textbf{Failure} & \textbf{Constraint} \\
+Candidate & Vertices & Failure & Constraint \\
 \hline
 Two 2D triangles & 6 & No radial direction & (M2) \\
 Octahedron & 6 & Can't separate $\fund/\afund$ & (GR1) \\
@@ -926,7 +937,8 @@ Cube & 8 & Wrong symmetry ($S_4 \neq S_3$) & (GR2) \\
 Separate tetrahedra & 8 & Not connected & Polyhedral \\
 \textbf{Stella octangula} & \textbf{8} & \textbf{None} & \ding{51} \\
 \end{tabular}
-\end{center}
+\end{ruledtabular}
+\end{table*}
 
 The cube fails (GR3) specifically: its natural involution 
 (point reflection through center) maps each vertex to the diametrally opposite 
@@ -995,11 +1007,12 @@ and $\mathrm{Aut}^\otimes$ denotes tensor-preserving natural automorphisms.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.9\linewidth]{figures/theorem_0_0_3_stella_3d.pdf}
-\caption{The stella octangula: two interpenetrating tetrahedra encoding 
-$\SU{3}$ symmetry. The matter tetrahedron $T_+$ (red) represents the 
-fundamental representation $\fund$; the antimatter tetrahedron $T_-$ (blue) 
-represents $\afund$. Charge conjugation $C$ exchanges $T_+ \leftrightarrow T_-$.}
+\includegraphics[width=0.9\linewidth]{figures/fig_thm_0_0_2_stella_3d.pdf}
+\caption{The stella octangula: two interpenetrating tetrahedra encoding
+$\SU{3}$ symmetry. The matter tetrahedron $T_+$ (blue solid) represents the
+fundamental representation $\fund$; the antimatter tetrahedron $T_-$ (red dashed)
+represents $\afund$. Charge conjugation $C$ exchanges $T_+ \leftrightarrow T_-$.
+Purple arrows indicate right-handed chirality; the green arrow shows internal time $\tau$.}
 \label{fig:stella}
 \end{figure}
 
@@ -1031,6 +1044,29 @@ has its two tetrahedra embedded in adjacent tetrahedral cells. The phase
 structure $(\theta_R, \theta_G, \theta_B) = (0, 2\pi/3, 4\pi/3)$ can be 
 consistently assigned across the entire tiling, with phase matching on shared faces.
 \end{proof}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_thm_0_0_6_honeycomb.pdf}
+\caption{The tetrahedral-octahedral honeycomb (``octet truss''). (a)~Local structure
+showing tetrahedra (red) and octahedra (green) meeting at FCC lattice vertices.
+(b)~Key properties: the honeycomb uniquely tiles 3D space with these polyhedra
+while preserving vertex-transitivity. Each stella octangula embeds at a vertex
+with its two tetrahedra in adjacent cells, enabling phase-coherent spatial extension.}
+\label{fig:honeycomb}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/fig_thm_0_0_6_stella_vertex.pdf}
+\caption{Stella octangula emergence at honeycomb vertices. (a)~Eight tetrahedra
+share each FCC lattice vertex, pointing toward the eight corners of a cube.
+(b)~Parity partition: the eight corners split into two groups of four (even/odd),
+each group forming the vertices of a tetrahedron.
+(c)~Connecting corners within each parity class yields the stella octangula---two
+interpenetrating tetrahedra emerging naturally from the honeycomb geometry.}
+\label{fig:stella-vertex}
+\end{figure}
 
 \begin{remark}[Emergent 3D Space]
 This construction provides the geometric foundation for extended space:
@@ -1085,7 +1121,7 @@ treatment of emergent relativistic physics in condensed matter systems.
 This section demonstrates that the interpretational principles of quantum
 mechanics---the Born rule, normalization conditions, and the measurement
 process---emerge from the geometric structure of Chiral Geometrogenesis.
-This achieves significant axiom reduction: the 8 quantum-mechanical postulates
+This achieves axiom reduction: the 8 quantum-mechanical postulates
 traditionally required reduce to geometric consequences, with only residual
 philosophical assumptions remaining (see \S\ref{subsec:established}).
 
@@ -1190,13 +1226,13 @@ this geometric fact via ergodicity, rather than being presupposed.
 
 \emph{Step 2: Ergodicity of geodesic flow.}
 For a flat torus with irrational slope, geodesic flow is ergodic (Weyl's theorem). 
-The trajectory $(\theta_R(\lambda), \theta_G(\lambda))$ eventually passes 
+The trajectory $(\theta_R(\tau), \theta_G(\tau))$ eventually passes 
 arbitrarily close to every point on the torus.
 
 \emph{Step 3: Time average equals space average.}
 By Weyl's equidistribution theorem:
 \begin{equation}
-\lim_{T \to \infty} \frac{1}{T} \int_0^T |\chi(\lambda)|^2 d\lambda = 
+\lim_{T \to \infty} \frac{1}{T} \int_0^T |\chi(\tau)|^2 d\tau = 
 \int_{T^2} |\chi|^2 d\mu = |\psi|^2
 \end{equation}
 where $\psi$ is the time-averaged effective wavefunction.
@@ -1445,23 +1481,53 @@ The parameter $\tau$ counts cumulative phase windings and converts to physical
 time via $t = \tau/\omega_0$, where $\omega_0$ is the characteristic frequency.
 \end{definition}
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/fig_def_0_1_1_time_emergence.pdf}
+\caption{Emergence of local time from color field configuration. The background
+shows the total color field intensity $|\chi|$ on a cross-section through the stella
+(diagonal slice $x = y$), with vertices R (red), G (green), B (blue), and W (white/singlet)
+marked according to Definition~0.1.1. The dashed curve indicates the color-neutral
+surface where $|\chi| \approx 0$. The arrow shows the internal time direction $\tau$,
+which points from the center toward the W (singlet) vertex at $(-1,-1,1)/\sqrt{3}$.}
+\label{fig:time-emergence}
+\end{figure}
+
 \paragraph{Why This Resolves the Circularity.}
 The key insight is that $\tau$ is defined from \emph{relative} phase differences, 
 which are topological invariants requiring no metric:
 \begin{itemize}
 \item No temporal ordering presupposed---phase differences are instantaneous
 \item $\omega_0 = E_{\rm total}/I_{\rm total}$ is defined from conserved charges
-\item The vierbein $e^0_\lambda = \omega_0^{-1}$ is \emph{derived}, not assumed
+\item The vierbein $e^0_\tau = \omega_0^{-1}$ is \emph{derived}, not assumed
 \end{itemize}
+
+\paragraph{Coherent vs.\ Incoherent Energy.}
+A crucial distinction arises between the \emph{coherent} field amplitude $|\chi_{\rm total}|^2$
+and the \emph{incoherent} energy density $\rho = \sum_c |\chi_c|^2$. The coherent sum
+vanishes at the stella center due to destructive interference of the three $120°$-separated
+phases, while the incoherent sum remains non-zero because energy adds without interference.
+This distinction underlies color neutrality: zero net color charge does not imply zero energy.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_def_0_1_1_field_vs_energy.pdf}
+\caption{Coherent field amplitude vs.\ incoherent energy density on the $z=0$ slice.
+\textbf{Left:} $|\chi_{\rm total}|^2$ vanishes at the center (star) due to destructive
+interference of the three color fields with phases separated by $120°$.
+\textbf{Right:} The incoherent energy density $\rho = |\chi_R|^2 + |\chi_G|^2 + |\chi_B|^2$
+remains non-zero at the center, demonstrating that color neutrality does not imply zero energy.}
+\label{fig:field-vs-energy}
+\end{figure}
 
 The three color fields evolve as:
 \begin{equation}
-\chi_c(\lambda) = a_c e^{i(\lambda + \phi_c)}, \quad \phi_c \in \{0, \tfrac{2\pi}{3}, 
+\chi_c(\tau) = a_c e^{i(\tau + \phi_c)}, \quad \phi_c \in \{0, \tfrac{2\pi}{3},
 \tfrac{4\pi}{3}\}
 \end{equation}
-Taking the $\lambda$-derivative:
+Taking the $\tau$-derivative:
 \begin{equation}
-\partial_\lambda \chi = i \chi \quad \Rightarrow \quad |\partial_\lambda\chi| = v_\chi
+\partial_\tau \chi = i \chi \quad \Rightarrow \quad |\partial_\tau\chi| = v_\chi
 \label{eq:phase-derivative}
 \end{equation}
 This non-zero phase gradient is the source of fermion mass.
@@ -1482,11 +1548,12 @@ localization factors determined by each fermion's position on the stella octangu
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\linewidth]{figures/figure_3_mass_hierarchy.pdf}
-\caption{Fermion mass hierarchy arising from geometric localization factors 
-$\eta_f$. Each fermion's position on the stella octangula determines its 
-coupling to the phase-gradient field, generating the observed mass pattern 
-without arbitrary Yukawa parameters.}
+\includegraphics[width=\linewidth]{figures/fig_thm_3_1_1_mass_hierarchy.pdf}
+\caption{Fermion mass hierarchy from geometric localization.
+(a)~Absolute masses vs.\ generation for up-type quarks (red), down-type quarks (blue),
+and charged leptons (green), with dashed lines showing the $\lambda^{2(3-n)}$ scaling.
+(b)~Masses normalized to third generation, demonstrating the universal hierarchy
+pattern $m_n/m_3 \propto \lambda^{2(3-n)}$ with $\lambda = 0.225$.}
 \label{fig:mass-hierarchy}
 \end{figure}
 
@@ -1511,10 +1578,22 @@ where $\varphi = (1 + \sqrt{5})/2$ is the golden ratio, arising from the
 24-cell connection between tetrahedral and icosahedral symmetries.
 \end{theorem}
 
-\paragraph{Why the 24-cell? (Lemma~3.1.2a)}
+\paragraph{Why the 24-cell? (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md}{Lemma~3.1.2a})}
 The 24-cell is the unique self-dual 4D regular polytope with $F_4$ symmetry (order 1152).
 It serves as the geometric bridge between tetrahedral ($A_3$) and icosahedral ($H_3$)
 symmetry via the embedding chain: Stella $\subset$ 16-cell $\subset$ 24-cell $\subset$ 600-cell.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_thm_3_1_2_polytope_chain.pdf}
+\caption{Polytope embedding chain from stella octangula to GUT structure.
+(a)~Stella octangula: two interpenetrating tetrahedra $T_+$ (blue) and $T_-$ (red).
+(b)~16-cell ($B_4$): the stella embeds via $\phi: T_\pm \to \pm e_i$.
+(c)~24-cell ($D_4$): the 16-cell vertices form a subset of the $D_4$ root system (24 vertices, orange).
+(d)~$\mathfrak{so}(10)$ ($D_5$): the $D_4$ roots (orange) embed in the larger $D_5$ system (40 roots, green).
+(e)~The complete GUT embedding chain, with $\sin^2\theta_W = 3/8$ at unification.}
+\label{fig:polytope-chain}
+\end{figure}
 
 \paragraph{Derivation of the $1/\varphi^3$ factor.}
 The factor $1/\varphi^3$ arises from three geometrically-computed projections.
@@ -1539,7 +1618,7 @@ Fermion generations are localized at radii $r_3 = 0$, $r_2 = \epsilon$,
 $r_1 = \sqrt{3}\epsilon$ on the stella. The overlap integral between
 adjacent generations is $\langle\psi_n|\psi_{n+1}\rangle = e^{-(\Delta r)^2/(2\sigma^2)}$.
 With $\Delta r/\sigma$ fixed by the hexagonal lattice geometry (120$^\circ$ angles),
-the overlap equals $1/\varphi$ (see Extension~3.1.2b for the explicit calculation).
+the overlap equals $1/\varphi$ (see \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Extension-3.1.2b-Complete-Wolfenstein-Parameters.md}{Extension~3.1.2b} for the explicit calculation).
 
 \paragraph{The pentagonal angle.}
 The angle $72^\circ = 2\pi/5$ is the central angle of a regular pentagon, encoding
@@ -1651,13 +1730,12 @@ symmetry spontaneously broken at scale $f_a$, producing a light pseudoscalar
 (the axion) that dynamically relaxes $\theta \to 0$. Table~\ref{tab:strong-cp-comparison} 
 compares the two approaches.
 
-\begin{table}[h!]
-\centering
+\begin{table*}[t]
 \caption{Comparison of Strong CP solutions}
 \label{tab:strong-cp-comparison}
+\begin{ruledtabular}
 \begin{tabular}{lcc}
-\hline\hline
-\textbf{Feature} & \textbf{Peccei-Quinn} & \textbf{CG ($\Z_3$ superselection)} \\
+Feature & Peccei-Quinn & CG ($\Z_3$ superselection) \\
 \hline
 Mechanism & Dynamical relaxation & Geometric constraint \\
 New symmetry & $U(1)_{\rm PQ}$ (global) & None (uses existing $\Z_3$) \\
@@ -1667,9 +1745,9 @@ Time scale & Cosmological relaxation & Instantaneous (constraint) \\
 Dark matter & Axion is DM candidate & No axion DM \\
 Quality problem & $U(1)_{\rm PQ}$ must be exact & No quality problem \\
 Falsifiability & Axion detection confirms & Axion detection falsifies \\
-\hline\hline
 \end{tabular}
-\end{table}
+\end{ruledtabular}
+\end{table*}
 
 \paragraph{Why the mechanisms differ fundamentally.}
 The PQ mechanism treats $\theta$ as a dynamical variable: the axion field 
@@ -1801,10 +1879,10 @@ encoded in the CKM phase drives entropy production $dS/dt > 0$.
 
 \begin{proof}[Derivation]
 The causal chain connecting CP violation to time's arrow is:
-\begin{equation}
-\text{CKM phase} \to \langle Q_{\rm inst}\rangle > 0 \to \alpha = +\frac{2\pi}{3}
-\to \mathcal{A}_+ < \mathcal{A}_- \to \Gamma_+ > \Gamma_- \to dS/dt > 0
-\end{equation}
+\begin{align}
+\text{CKM phase} &\to \langle Q_{\rm inst}\rangle > 0 \to \alpha = +\frac{2\pi}{3} \notag\\
+&\to \mathcal{A}_+ < \mathcal{A}_- \to \Gamma_+ > \Gamma_- \to dS/dt > 0
+\end{align}
 where $\mathcal{A}_\pm$ denote soliton actions and $S$ denotes entropy.
 
 \emph{Step 1: CKM phase $\to$ instanton bias.}
@@ -1838,6 +1916,18 @@ The framework provides an explicit Lyapunov function:
 \end{equation}
 with $d\mathcal{F}/dt \leq 0$, ensuring monotonic approach to equilibrium.
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/fig_thm_4_1_1_time_flow.pdf}
+\caption{Time arrows in the tetrahedral-octahedral honeycomb. At each stella
+octangula site (yellow nodes), the local time direction emerges from chiral
+phase evolution along the $[1,1,1]$ body diagonal. The phase coherence
+condition (Section~\ref{sec:honeycomb}) ensures all local time arrows align,
+producing a global time axis (thick arrow). This geometric mechanism yields
+a universal arrow of time without invoking initial conditions.}
+\label{fig:time-arrows}
+\end{figure}
+
 %=============================================================================
 \section{Baryogenesis via Chiral Bias}
 \label{sec:baryogenesis}
@@ -1870,11 +1960,11 @@ structure creates a slight excess in baryonic soliton nucleation. The master for
 where $\mathcal{G} \sim 2 \times 10^{-3}$ is the geometric overlap factor (soliton/hadron
 scale ratio), $C = 0.03$ is the sphaleron rate from lattice QCD, and $f_{\rm transport} \approx 0.03$.
 Numerical evaluation gives $\eta \approx 6 \times 10^{-10}$, matching the observed value
-$(6.10 \pm 0.04) \times 10^{-10}$ within theoretical uncertainties (factor $\sim$2).
+$(6.10 \pm 0.04) \times 10^{-10}$ within theoretical uncertainties (factor $\sim$4; see Table~\ref{tab:uncertainty-budget}).
 \end{proof}
 
 \paragraph{Unified mechanism.}
-Remarkably, the same phase structure $\alpha = 2\pi/3$ simultaneously explains:
+The same phase structure $\alpha = 2\pi/3$ simultaneously explains:
 \begin{itemize}
 \item Chirality selection (why left-handed weak interactions)
 \item Time's arrow (entropy production direction)
@@ -1882,16 +1972,33 @@ Remarkably, the same phase structure $\alpha = 2\pi/3$ simultaneously explains:
 \end{itemize}
 This unification is a distinctive prediction of Chiral Geometrogenesis.
 
-\begin{figure}[!htbp]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=\linewidth]{figures/figure_baryon_asymmetry.pdf}
-\caption{Baryon asymmetry generation from chiral bias. The phase structure 
-$\alpha = +2\pi/3$ creates a preferential nucleation rate for matter over 
-antimatter during the QCD phase transition, producing $\eta \sim 6 \times 10^{-10}$.}
-\label{fig:baryogenesis}
+\includegraphics[width=\linewidth]{figures/fig_thm_4_2_1_phase_attractors.pdf}
+\caption{Phase space dynamics and entropy production.
+\textbf{(a)}~Phase portrait on the torus $\mathbb{T}^2$ showing two stable fixed points:
+FP$_1$ (blue, fundamental representation R$\to$G$\to$B) and FP$_2$ (red, anti-fundamental
+R$\to$B$\to$G). Flow lines show trajectories converging to these attractors, with saddle
+points (orange diamonds) separating the basins of attraction. The blue-shaded region
+evolves to matter; the red-shaded region to antimatter.
+\textbf{(b)}~Entropy $S/S_{eq}$ increases monotonically toward equilibrium with rate
+$dS/dt = 3k_B K/4 > 0$, establishing time's arrow from the phase dynamics.}
+\label{fig:phase-attractors}
 \end{figure}
 
-\clearpage  % Ensure all floats are placed before new part
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_thm_4_2_1_baryon_asymmetry.pdf}
+\caption{Baryon asymmetry analysis using the master formula from \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase4/Theorem-4.2.1-Chiral-Bias-Soliton-Formation.md}{Theorem~4.2.1}.
+Top left: Monte Carlo distribution (N=50,000) showing CG median $\eta = 4.7 \times 10^{-10}$
+with 68\% CI encompassing the observed value $\eta_{obs} = 6.1 \times 10^{-10}$ (red dashed).
+Top right: Sensitivity to geometric factor $G$, showing the η(G) curve passes through
+the observed value at $G \approx 2 \times 10^{-3}$. Bottom left: Phase transition
+washout criterion showing CG satisfies $v/T_c > 1$. Bottom right: Parameter sensitivity
+analysis identifying $G$ (geometric overlap) as the dominant uncertainty, followed by
+the sphaleron coefficient $C$ and transport factor $f_{tr}$.}
+\label{fig:baryogenesis}
+\end{figure}
 
 %=============================================================================
 % PART IV: EMERGENT GRAVITY
@@ -1972,10 +2079,15 @@ constrained by requiring the vacuum ($T_{\mu\nu} = 0$) to be Minkowski space:
 $\mathcal{G}_{\mu\nu} = 0$ when $g_{\mu\nu} = \eta_{\mu\nu}$. Since $G_{\mu\nu}[\eta] = 0$
 and $g_{\mu\nu}[\eta] = \eta_{\mu\nu} \neq 0$, we require $b = 0$.
 
-\textbf{Limitation:} This argument assumes the ground state is flat spacetime.
-The observed cosmological constant $\Lambda_{\rm obs} \sim 10^{-122} M_P^4$ is not
-explained by this derivation---it would require a separate mechanism (e.g., vacuum
-energy from chiral field fluctuations). We note this as an open problem.
+\textbf{Cosmological constant:} This derivation sets $b = 0$ for the \emph{classical}
+vacuum. The observed $\Lambda_{\rm obs} \sim 10^{-122} M_P^4$ is addressed separately
+via holographic considerations: applying the holographic principle to the cosmological
+horizon yields $\rho_{\rm vac} = (3\Omega_\Lambda/8\pi) M_P^2 H_0^2$, achieving
+\textbf{0.9\% agreement} with observation (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase5/Theorem-5.1.2-Vacuum-Energy-Density-Applications.md\#1311-first-principles-derivation-of-ρ--m_p²-h₀²-from-holography-new}{Theorem~5.1.2, \S13.11}).
+The 122-order suppression factor $(H_0/M_P)^2$ emerges as the natural holographic
+ratio $(\ell_P/L_{\rm Hubble})^2$, not fine-tuning. The dark energy fraction
+$\Omega_\Lambda = 0.685$ remains an observational input; deriving it from first
+principles is an open problem.
 
 Matching the Newtonian limit to Proposition~\ref{prop:newton-G} gives $a = 1$ and
 $\kappa = 8\pi G/c^4$, yielding Einstein's equations.
@@ -2086,7 +2198,7 @@ $\delta Q = T\delta S$ applied to local Rindler horizons. Verlinde~\cite{Verlind
 proposed gravity as an entropic force, while Padmanabhan developed comprehensive 
 thermodynamic approaches.
 
-\begin{table}[htbp]
+\begin{table*}[t]
 \caption{Comparison: CG fixed-point vs.\ thermodynamic derivations. Each approach
 has different strengths and assumptions; this table aims for factual comparison.}
 \label{tab:gravity-comparison}
@@ -2103,7 +2215,7 @@ Einstein tensor form & Uniqueness used & Assumed & Lovelock \\
 Cosmological constant & Not addressed & Not addressed & Open problem \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 \paragraph{Differences and similarities.}
 \begin{enumerate}
@@ -2168,7 +2280,7 @@ The SU(3) gauge structure of Chiral Geometrogenesis can be compared with the SU(
 structure of standard Loop Quantum Gravity. Table~\ref{tab:lqg-comparison} summarizes
 the key differences.
 
-\begin{table}[htbp]
+\begin{table*}[t]
 \caption{Comparison: Chiral Geometrogenesis vs.\ Loop Quantum Gravity. Both approaches
 use gauge group structure to count horizon microstates; CG uses SU(3) (color) while
 LQG uses SU(2) (spin).}
@@ -2192,7 +2304,7 @@ Time emergence & Problem of time* & Phase oscillation \\
 remains an active research area with various proposals (deparameterization, relational
 time, evolving constants).
 \end{flushleft}
-\end{table}
+\end{table*}
 
 The appearance of $\ln(3)$ in both the CG Immirzi-like parameter
 $\gamma_{\rm CG} = \sqrt{3}\ln(3)/(4\pi) \approx 0.151$ and in Dreyer's quasinormal
@@ -2280,7 +2392,7 @@ where $\lambda \approx 0.22$ is the Wolfenstein parameter.
 
 \begin{table}[htbp]
 \caption{Fermion mass consistency check vs.\ PDG 2024. The overall scale is set by
-$R_{\rm stella} = 0.45$ fm (1 free parameter); mass \emph{ratios} follow from
+$R_{\rm stella} = 0.44847$ fm (semi-derived from Planck scale via \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md}{Prop.~0.0.17q}); mass \emph{ratios} follow from
 geometric localization. This is a \emph{consistency check}, not 9 independent predictions.}
 \label{tab:fermion-masses}
 \begin{ruledtabular}
@@ -2329,7 +2441,7 @@ We distinguish three categories of quantities:
 
 \textbf{Category B: Derived with one overall scale (1 free parameter).}
 \begin{itemize}
-\item All 9 absolute fermion masses, given $R_{\rm stella} \approx 0.45$ fm
+\item All 9 absolute fermion masses, given $R_{\rm stella} \approx 0.44847$ fm (semi-derived via Prop.~0.0.17q)
 \item The scale $R_{\rm stella}$ is the \emph{single} free parameter that sets
 the overall mass scale; once fixed (e.g., by electron mass), all other masses follow
 \end{itemize}
@@ -2350,7 +2462,7 @@ The remaining quantities ($g_\chi$, $\lambda$, $A$, mass ratios) are geometric o
 
 \paragraph{How $\eta_f$ factors are computed.}
 The localization factors come from overlap integrals of generation wave
-functions with the chiral energy density profile (Theorem~3.1.2):
+functions with the chiral energy density profile (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Theorem-3.1.2-Mass-Hierarchy-From-Geometry.md}{Theorem~3.1.2}):
 \begin{equation}
 c_f^{\rm (loc)} = \frac{\int |\psi_n|^2 \rho_\chi \, d^2x}{\int |\psi_3|^2 \rho_\chi \, d^2x}
 \end{equation}
@@ -2370,7 +2482,7 @@ predictions.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\linewidth]{figures/figure_4_wolfenstein_derivation.pdf}
+\includegraphics[width=\linewidth]{figures/fig_thm_3_1_2_wolfenstein.pdf}
 \caption{Geometric derivation of the Wolfenstein parameter $\lambda$ via 
 24-cell projections. The factor $1/\varphi^3$ arises from three successive 
 projections, while $\sin 72^\circ$ is the pentagonal angle encoding 
@@ -2401,8 +2513,9 @@ $\bar{\eta}$ & from $\beta, \gamma$ & 0.348 & $0.355 \pm 0.007$ \\
 
 \paragraph{Geometric origin of $A$.}
 The Wolfenstein $A$ parameter emerges from the 24-cell connection between
-tetrahedral and icosahedral symmetries (Lemma~3.1.2a). The ratio
-$\sin 36^\circ/\sin 45^\circ$ connects:
+tetrahedral and icosahedral symmetries (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md}{Lemma~3.1.2a}). This formula was
+identified through systematic search over geometric angle ratios, then
+given the following interpretation. The ratio $\sin 36^\circ/\sin 45^\circ$ connects:
 \begin{itemize}
 \item $36^\circ = \pi/5$: half-pentagonal angle (icosahedral/5-fold sector)
 \item $45^\circ = \pi/4$: octahedral angle (tetrahedral/4-fold sector)
@@ -2420,6 +2533,18 @@ V_{\rm CKM} = \begin{pmatrix}
 \end{pmatrix}
 \end{equation}
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/fig_thm_3_1_2_ckm_triangle.pdf}
+\caption{The CKM unitarity triangle in the $(\bar{\rho}, \bar{\eta})$ plane.
+The geometric prediction $(\bar{\rho}, \bar{\eta}) = (0.159, 0.348)$ (green star)
+is derived from the stella-24-cell connection via $\bar{\rho} = \tan\beta/(\tan\beta + \tan\gamma)$.
+The PDG 2024 measurement $(0.1581 \pm 0.0092, 0.3548 \pm 0.0072)$ (red ellipse)
+shows excellent agreement ($<2\%$ deviation). The angles $\alpha$, $\beta$, $\gamma$
+follow from Wolfenstein parameters derived in Theorem~\ref{thm:wolfenstein}.}
+\label{fig:ckm-triangle}
+\end{figure}
+
 \subsection{PMNS Matrix Predictions}
 \label{subsec:pmns-predictions}
 
@@ -2435,7 +2560,7 @@ emerges at zeroth order, with corrections proportional to $\lambda/\varphi$.
 Parameter & Geometric Origin & Prediction & Experiment \\
 \hline
 $\theta_{12}$ & $A_4$ solar angle & $34.3^\circ$ & $33.41^\circ \pm 0.75^\circ$ \\
-$\theta_{23}$ & $45^\circ + \delta\theta_{23}$ (Prop.~8.4.4) & $48.9^\circ \pm 1.4^\circ$ & $49.1^\circ \pm 1.0^\circ$ \\
+$\theta_{23}$ & $45^\circ + \delta\theta_{23}$ (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase8/Proposition-8.4.4-Atmospheric-Angle-Correction.md}{Prop.~8.4.4}) & $48.9^\circ \pm 1.4^\circ$ & $49.1^\circ \pm 1.0^\circ$ \\
 $\theta_{13}$ & $(\lambda/\varphi)(1+\lambda/5+\lambda^2/2)$ & $8.54^\circ$ & $8.54^\circ \pm 0.11^\circ$ \\
 $\delta_{CP}$ & From CKM connection & $\sim 200^\circ$ & $197^\circ \pm 25^\circ$ \\
 \end{tabular}
@@ -2445,7 +2570,7 @@ $\delta_{CP}$ & From CKM connection & $\sim 200^\circ$ & $197^\circ \pm 25^\circ
 \paragraph{Atmospheric angle correction.}
 The zeroth-order prediction $\theta_{23} = 45^\circ$ (maximal mixing from $A_4$ symmetry)
 requires correction for symmetry breaking effects. Following the same methodology
-as the $\theta_{13}$ derivation, we find (Proposition 8.4.4):
+as the $\theta_{13}$ derivation, we find (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase8/Proposition-8.4.4-Atmospheric-Angle-Correction.md}{Proposition~8.4.4}):
 \begin{equation}
 \theta_{23} = 45^\circ + \delta\theta_{23}^{(A_4)} + \delta\theta_{23}^{(\text{geo})} + \delta\theta_{23}^{(RG)} + \delta\theta_{23}^{(\mu\tau)}
 \end{equation}
@@ -2484,7 +2609,7 @@ $\Delta m^2_{21} \sim 10^{-5}$ eV$^2$, $\Delta m^2_{32} \sim 10^{-3}$ eV$^2$.
 
 Proposition 0.0.17u derives cosmological initial conditions from first principles:
 
-\begin{table}[htbp]
+\begin{table*}[t]
 \caption{Cosmological predictions vs.\ observation (Planck 2018). Note: $n_s = 1-2/N$
 is the standard slow-roll formula; $N \approx 57$ is constrained by CMB observations,
 making $n_s$ a consistency check rather than an independent prediction.}
@@ -2499,7 +2624,7 @@ Inflation $e$-folds $N$ & $57 \pm 3$ (from CMB) & 50--60 & consistent \\
 GW peak frequency & $12^{+28}_{-6}$ nHz & NANOGrav range & compatible \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 \subsection{Spectral Index Derivation}
 \label{subsec:spectral-index}
@@ -2600,7 +2725,7 @@ Metric & Value \\
 \hline
 Total Lean files & 181 \\
 Total lines of code & 171,000 \\
-Remaining \texttt{sorry} statements & 13 \\
+Remaining \texttt{sorry} statements & 27 \\
 Critical path \texttt{sorry} & 0 \\
 Phase -1/0.0.x theorems & 15/15 complete \\
 Phase 1 (SU(3) geometry) & 100\% complete \\
@@ -2609,12 +2734,12 @@ Phase 5 gravity theorems & 100\% complete \\
 \end{ruledtabular}
 \end{table}
 
-The 13 remaining \texttt{sorry} statements are in auxiliary pure-math lemmas
-(SU(3) representation theory scaffolding, measure-theoretic details) not on
-the critical derivation path. Specifically:
+The 27 remaining \texttt{sorry} statements are in auxiliary pure-math lemmas
+and numerical bounds, not on the critical derivation path. Specifically:
 \begin{itemize}
 \item 7 in \texttt{PureMath/LieAlgebra/SU3.lean} (standard Lie algebra facts)
-\item 6 in \texttt{Foundations/Proposition\_0\_0\_17[r,s,t].lean} (auxiliary bounds)
+\item 5 in \texttt{Phase3/Theorem\_3\_1\_2.lean} (trigonometric interval bounds)
+\item 15 in \texttt{Foundations/Proposition\_0\_0\_17[a,g,q,r,s,t].lean} (numerical constants)
 \end{itemize}
 The critical path from stella octangula to Einstein equations has
 \textbf{zero} \texttt{sorry} statements.
@@ -2663,7 +2788,7 @@ with only two philosophical starting points: (1)~observers can exist,
 (2)~physics is encoded in polyhedral geometry. These are not physics
 axioms but meta-level assumptions that select the framework.
 \item Stella octangula uniqueness as $\SU{3}$ realization
-\item Quantitative predictions matching observation at high precision
+\item Quantitative predictions matching observation within experimental uncertainties
 \item Machine-verified derivation chain
 \end{itemize}
 
@@ -2689,12 +2814,13 @@ the sense of ``unexplained numerical constants'' or ``postulated dynamical rules
 \begin{itemize}
 \item \textbf{Uniqueness of stella $\to$ SU(3):} We show stella is sufficient
 but have not proven no other geometry gives $\SU{3}$.
-\item \textbf{Cosmological constant:} The derivation of Einstein's equations
-(Prop.~\ref{prop:einstein}) assumes flat vacuum ($b = 0$), but the observed
-$\Lambda_{\rm obs} \sim 10^{-122} M_P^4$ is nonzero. A complete theory must
-explain this small but finite value---perhaps via vacuum energy from chiral
-field fluctuations or holographic considerations (Theorem~5.1.2 in the proofs
-repository offers a candidate mechanism).
+\item \textbf{Dark energy fraction $\Omega_\Lambda$:} The holographic derivation
+of vacuum energy density (\href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase5/Theorem-5.1.2-Vacuum-Energy-Density-Applications.md\#1311-first-principles-derivation-of-ρ--m_p²-h₀²-from-holography-new}{Theorem~5.1.2, \S13.11})
+achieves 0.9\% agreement with observation using the formula
+$\rho_{\rm vac} = (3\Omega_\Lambda/8\pi) M_P^2 H_0^2$. While the functional form
+$M_P^2 H_0^2$ is derived from holographic principles, the coefficient
+$\Omega_\Lambda = 0.685$ is currently an observational input. Deriving
+$\Omega_\Lambda$ from first principles remains open.
 \item \textbf{Experimental falsification:} Direct tests distinguishing CG from SM.
 \item \textbf{Neutrino sector:} Seesaw parameters not fully constrained.
 \end{itemize}
@@ -2760,8 +2886,44 @@ This is testable via:
 \end{itemize}
 Detection of $\ell=2$ anisotropy or a non-$O_h$ pattern would falsify the framework.
 Current isotropic Lorentz violation bounds are satisfied with $>8$ orders of magnitude
-margin; this prediction awaits dedicated directional analysis.
+margin; this prediction awaits dedicated directional analysis (Figure~\ref{fig:angular-lv}).
 \end{enumerate}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_pred_angular_lv.pdf}
+\caption{Angular Lorentz violation signature from $O_h$ symmetry. (a)~The $\ell=4$
+hexadecapole pattern predicted by CG, with maxima along face normals and minima
+along body diagonals. (b)~The $\ell=2$ quadrupole pattern is \emph{forbidden}
+by $O_h$ symmetry---this is the key distinguishing signature. (c)~Angular power
+spectrum: CG predicts no $\ell=2$ contribution, unlike generic anisotropy models.
+(d)~Theory vs.\ experimental bounds: CG predictions (blue) lie well below current
+LHAASO and GW170817 constraints, with $>8$ orders of magnitude margin.}
+\label{fig:angular-lv}
+\end{figure}
+
+\paragraph{Scale Suppression of Lattice Effects.}
+The discrete structure at the Planck scale ($a = \ell_P$) becomes unobservable at
+macroscopic scales through coarse-graining suppression. The anisotropic suppression
+factor follows $\propto (a/L)^2$ with oscillations from the spherical Bessel function
+$j_1$. At LHC energies ($L \sim 10^{-19}$ m), the suppression is $\sim 10^{-32}$;
+at human scales ($L \sim 1$ m), it exceeds $10^{-69}$. This explains why we observe
+an effectively continuous, isotropic spacetime despite the underlying discrete structure.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_pred_suppression_curve.pdf}
+\caption{Scale suppression of lattice anisotropy.
+\textbf{(a)}~The anisotropic suppression factor $|3j_1(GL)/(GL)|$ as a function of
+the coarse-graining parameter $GL = 2\pi L/a$. The envelope follows $(a/L)^2$
+(red dashed). The orange region ($L \sim a$) shows where lattice structure is visible;
+the green region ($L \gg a$) is the effective continuum.
+\textbf{(b)}~Suppression at physical scales assuming $a = \ell_P$ (Planck length).
+Even at LHC energies, the suppression ($10^{-32}$) matches current experimental
+sensitivity ($10^{-32}$, red dashed), rendering discrete structure undetectable.
+At larger scales, suppression grows to $10^{-96}$ at Solar System scales.}
+\label{fig:suppression-curve}
+\end{figure}
 
 \subsection{Experimental Signatures}
 \label{subsec:experimental}
@@ -2793,8 +2955,8 @@ The framework makes quantitative predictions matching observation:
 \item Baryon asymmetry: correct order of magnitude ($\eta \sim 10^{-10}$)
 \end{itemize}
 
-The derivation chain is formalized in 171,000 lines of machine-verified Lean~4 code
-(181 files, critical path fully complete with zero \texttt{sorry} statements),
+The derivation chain is formalized in machine-verified Lean~4 code
+(critical path complete with zero \texttt{sorry} statements),
 ensuring logical consistency and enabling independent verification.
 
 Future work will focus on:
@@ -2806,6 +2968,35 @@ Future work will focus on:
 \end{itemize}
 
 The public repository is available at \url{https://github.com/robertmassman/chiral-geometrogenesis-supplementary}
+
+\subsection{Verification Resources}
+
+For readers wishing to verify claims in depth, the repository provides:
+
+\paragraph{Mathematical Proofs (Markdown).}
+Complete derivations with step-by-step justification:
+\begin{itemize}
+\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.10-Quantum-Mechanics-Emergence.md}{Theorem 0.0.10}: Quantum mechanics from chiral field dynamics
+\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md}{Theorem 0.0.9}: Lorentz invariance from $O_h$ coarse-graining
+\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md}{Lemma 3.1.2a}: 24-cell derivation of $\lambda = (1/\varphi^3)\sin 72^\circ$
+\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase3/Theorem-3.1.2-Mass-Hierarchy-From-Geometry.md}{Theorem 3.1.2}: Mass hierarchy from geometric localization
+\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase4/Theorem-4.2.1-Chiral-Bias-Soliton-Formation.md}{Theorem 4.2.1}: Baryogenesis master formula
+\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/docs/proofs/Phase5/Theorem-5.2.1-Emergent-Metric.md}{Theorem 5.2.1}: Emergent metric and Einstein equations
+\end{itemize}
+
+\paragraph{Lean 4 Formalization.}
+Machine-verified proofs in \texttt{lean/ChiralGeometrogenesis/}. Key files:
+\begin{itemize}
+\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/lean/ChiralGeometrogenesis/Phase3/Lemma_3_1_2a.lean}{Lemma\_3\_1\_2a.lean}: Hexagonal lattice projection ($r_1/r_2 = \sqrt{3}$)
+\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_15.lean}{Theorem\_0\_0\_15.lean}: Topological derivation of SU(3) (704 lines, sorry-free)
+\end{itemize}
+
+\paragraph{Numerical Verification (Python).}
+Computational scripts in \texttt{verification/}:
+\begin{itemize}
+\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/verification/Phase3/wolfenstein_complete_derivation.py}{wolfenstein\_complete\_derivation.py}: Wolfenstein parameter verification
+\item \href{https://github.com/robertmassman/chiral-geometrogenesis-supplementary/blob/main/verification/Phase4/theorem_4_2_1_comprehensive_verification.py}{theorem\_4\_2\_1\_comprehensive\_verification.py}: Monte Carlo baryon asymmetry analysis
+\end{itemize}
 
 %=============================================================================
 \begin{acknowledgments}
@@ -2933,27 +3124,27 @@ interconnected phases. Figure~\ref{fig:dependency} shows the logical structure.
 
 \subsection{Phase Structure}
 
-\begin{enumerate}
-\item[\textbf{Phase -1:}] Pre-geometric foundations establishing polyhedral uniqueness, 
+\begin{description}
+\item[Phase -1:] Pre-geometric foundations establishing polyhedral uniqueness,
 $D=4$ necessity, and the stella-$\SU{3}$ correspondence.
 
-\item[\textbf{Phase 0:}] Foundational definitions (0.1.x) and theorems (0.2.x) establishing 
+\item[Phase 0:] Foundational definitions (0.1.x) and theorems (0.2.x) establishing
 color charge fields, internal time, stress-energy tensor, and the Minkowski extension.
 
-\item[\textbf{Phase 1:}] SU(3) geometry theorems connecting stella symmetries to 
+\item[Phase 1:] SU(3) geometry theorems connecting stella symmetries to
 gauge group structure.
 
-\item[\textbf{Phase 2:}] Pressure-depression mechanism and localization theorems.
+\item[Phase 2:] Pressure-depression mechanism and localization theorems.
 
-\item[\textbf{Phase 3:}] Mass generation via phase-gradient coupling (Theorems 3.0.x--3.2.x).
+\item[Phase 3:] Mass generation via phase-gradient coupling (Theorems 3.0.x--3.2.x).
 
-\item[\textbf{Phase 4:}] Soliton matter and topological charges.
+\item[Phase 4:] Soliton matter and topological charges.
 
-\item[\textbf{Phase 5:}] Emergent gravity---the flagship derivation of Einstein's equations 
+\item[Phase 5:] Emergent gravity---the flagship derivation of Einstein's equations
 from fixed-point structure (Theorems 5.2.1--5.2.6).
 
-\item[\textbf{Phase 8:}] Predictions and phenomenological verification.
-\end{enumerate}
+\item[Phase 8:] Predictions and phenomenological verification.
+\end{description}
 
 \subsection{Critical Path}
 
@@ -2976,7 +3167,7 @@ The minimal derivation chain connecting stella to Einstein equations:
 \end{tikzpicture}
 \end{center}
 
-\begin{figure*}[htbp]
+\begin{figure*}[t]
 \centering
 \begin{tikzpicture}[
   node distance=0.6cm and 0.8cm,
@@ -3097,7 +3288,7 @@ stella octangula geometric structure.}
 \label{app:lean-code}
 
 The following excerpts illustrate key machine-verified proofs from the Lean~4
-formalization. The complete codebase comprises 171,000 lines across 181 files.
+formalization.
 
 \paragraph{Note on code presentation.}
 These excerpts are \emph{pedagogical summaries} of the actual Lean~4 code,
@@ -3108,8 +3299,7 @@ To verify: clone the repository and run \texttt{lake build}.
 \textbf{What is shown here:} Theorem statements, proof strategies, and key logical steps.
 
 \textbf{What is in supplementary/repository:} Full type signatures, universe levels,
-Mathlib imports, auxiliary lemmas, extensive docstrings documenting adversarial
-review history, and all 181 source files (171k lines total).
+Mathlib imports, auxiliary lemmas, docstrings, and source files.
 
 \subsection{Internal Time Emergence (Theorem 0.2.2)}
 
@@ -3218,8 +3408,6 @@ theorem born_rule_derivation :
   exact chentsov_uniqueness
 \end{lstlisting}
 
-%=============================================================================
-
 \section{Verification Script Summary}
 \label{app:verification}
 
@@ -3255,7 +3443,7 @@ localization factors:
 \begin{lstlisting}[language=Python]
 # proposition_0_0_17n_verification.py
 def compute_fermion_masses():
-    R_stella = 0.45e-15  # meters
+    R_stella = 0.448e-15  # meters (semi-derived from Planck scale)
     g_chi = 4 * np.pi / 9
     omega_0 = 140e-3  # GeV
     Lambda = 1.0  # GeV
@@ -3335,7 +3523,7 @@ $\omega_0$ & Characteristic rotation frequency ($\sim m_\pi$) \\
 $f_\chi, v_\chi$ & Chiral symmetry breaking scale / VEV \\
 $\tau$ & Internal evolution parameter (counts phase radians) \\
 $\lambda$ & Wolfenstein/Cabibbo mixing parameter ($\approx 0.225$) \\
-$R_{\rm stella}$ & Stella octangula radius ($\approx 0.45$ fm) \\
+$R_{\rm stella}$ & Stella octangula radius ($\approx 0.44847$ fm; semi-derived from $M_P$) \\
 $\eta_f$ & Generation localization factor for fermion $f$ \\
 $g_\chi$ & Phase-gradient coupling ($= 4\pi/9$) \\
 $\Z_3$ & Center of $\SU{3}$ \\
