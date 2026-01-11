@@ -149,9 +149,10 @@ advance my own code writing—I revisited the idea in November 2025 using my ini
 sketch as input to flesh it out and probe whether or not to push the idea and investigate
 further. I wanted something more concrete to work from than an abstract idea, so I used my
 coding knowledge and AI to create a more tangible visualization, developing it into an
-interactive prototype demonstrating the three-color field oscillations the way I imagined
-them, pressure-depression dynamics, and resonance behavior. This prototype served as the
-foundation guiding the subsequent mathematical formalization.
+interactive prototype ([chiral-geometrogenesis visualization](explainer.html))
+demonstrating the three-color field oscillations the way I imagined them, pressure-depression
+dynamics, and resonance behavior. This prototype served as the foundation guiding the
+subsequent mathematical formalization.
 
 <p align="center">
   <img src="images/twoInterpenetratingTetrahedra.png" width="50%" alt="Initial stella octangula diagram with RGB field depressions" />
