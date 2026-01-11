@@ -24,6 +24,15 @@ This directory contains computational verification scripts for the Chiral Geomet
 - **JSON results:** `theorem_X_X_X_results.json`
 - **Reports:** `Theorem-X.X.X-Verification-Summary.md`
 
+## Installation
+
+```bash
+# Install Python dependencies
+pip install -r verification/requirements.txt
+
+# For Lean verification, see lean/README.md
+```
+
 ## Running Verification
 
 ```bash
@@ -32,6 +41,9 @@ python verification/Phase3/theorem_3_1_1_verification.py
 
 # Run all verifications for a phase
 for f in verification/Phase3/*.py; do python "$f"; done
+
+# Run all tests via pytest
+python -m pytest verification/ -v
 ```
 
 ## Related Resources
