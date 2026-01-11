@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiral Geometrogenesis - Interactive Explainer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #0a0a0a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+        }
+
+        #theory-panel {
+            width: 350px;
+            height: 100vh;
+            background: rgba(25, 25, 28, 0.95);
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            overflow-y: auto;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+            line-height: 1.5;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        #theory-panel h3 {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 16px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 8px;
+        }
+
+        #theory-panel h4 {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 13px;
+            margin: 15px 0 8px 0;
+            font-weight: 600;
+        }
+
+        #theory-panel p {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        #theory-panel .highlight {
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 600;
+        }
+
+        #theory-panel .concept {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 12px;
+            margin: 12px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        #theory-panel .concept-title {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        #theory-panel ul {
+            margin: 8px 0 8px 18px;
+            padding: 0;
+        }
+
+        #theory-panel li {
+            margin-bottom: 5px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #theory-panel .color-red { color: #ff6b6b; }
+        #theory-panel .color-green { color: #69f0ae; }
+        #theory-panel .color-blue { color: #64b5f6; }
+
+        #main-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            height: 100vh;
+        }
+
+        #canvas-container {
+            flex: 1;
+            position: relative;
+            min-height: 0;
+        }
+
+        .canvas-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .canvas-wrapper canvas {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        #canvas-normal {
+            opacity: 0.7;
+        }
+
+        #canvas-mirrored {
+            opacity: 0.5;
+            mix-blend-mode: screen;
+        }
+
+        .canvas-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            font-weight: 600;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .resonance-indicator {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .resonance-indicator.visible {
+            opacity: 1;
+        }
+
+        .resonance-indicator > div {
+            padding: 2px 0px;
+        }
+
+        #control-bar {
+            display: flex;
+            justify-content: center;
+            padding: 10px 20px;
+            background: transparent;
+        }
+
+        #control-bar-inner {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(20, 20, 20, 0.85);
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #control-bar .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #control-bar label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        #control-bar input[type="range"] {
+            width: 120px;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        #control-bar input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 1);
+            cursor: pointer;
+        }
+
+        #control-bar .value-display {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+            min-width: 32px;
+            text-align: right;
+        }
+
+        #control-bar button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+
+        #toggle-animation {
+            background: #f44336;
+        }
+
+        #resonance-btn {
+            background: #1976d2;
+        }
+
+        #resonance-btn:hover {
+            background: #2196f3;
+        }
+
+        /* Mobile responsive layout */
+        @media (max-width: 900px) {
+            body {
+                flex-direction: column;
+                height: auto;
+            }
+
+            #theory-panel {
+                width: 100%;
+                height: auto;
+                max-height: none;
+                order: 2;
+                border-right: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            #main-area {
+                order: 1;
+                height: 60vh;
+                min-height: 400px;
+            }
+
+            #control-bar {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            #control-bar .slider-group {
+                width: 100%;
+                order: 1;
+            }
+
+            #control-bar button {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="theory-panel">
+        <h3>Chiral Geometrogenesis</h3>
+
+        <p>This visualization illustrates a theoretical framework where <span class="highlight">spacetime and matter
+                emerge</span> from quantum field oscillations within a fundamental geometric structure.</p>
+
+        <div class="concept">
+            <div class="concept-title">The Stella Octangula</div>
+            <p>The geometry shown represents the <span class="highlight">SU(3) weight diagram</span> — two interpenetrating
+                tetrahedra forming a stella octangula. This structure encodes the color symmetry of quantum chromodynamics
+                (QCD).</p>
+        </div>
+
+        <h4>Color Field Oscillation</h4>
+        <p>Three color charges oscillate with <span class="highlight">chiral circulation</span> (right-handed by cosmological selection):</p>
+        <ul>
+            <li><span class="color-red">Red (R)</span> → <span class="color-green">Green (G)</span> → <span
+                    class="color-blue">Blue (B)</span> → R...</li>
+        </ul>
+        <p>This irreversible cycle provides a <span class="highlight">microscopic origin for time-asymmetry</span>. The magnitude |α| = 2π/3
+            (120° separation) is topologically fixed by SU(3) symmetry. The sign (R→G→B vs R→B→G) was
+            <span class="highlight">cosmologically selected</span> during the early universe, analogous to spontaneous
+            symmetry breaking.</p>
+
+        <div class="concept">
+            <div class="concept-title">Pressure-Depression Mechanism</div>
+            <p>As one color field intensifies, it creates <span class="highlight">vacuum pressure</span> that depresses
+                opposing fields toward the opposite apex. The pressure follows an <span class="highlight">inverse-square law</span>:
+                P<sub>c</sub>(x) = 1/(|x - x<sub>c</sub>|² + ε²), peaking at each color vertex and falling off with distance squared.</p>
+        </div>
+
+        <h4>Topological Soliton Formation</h4>
+        <p>When oscillations reach a <span class="highlight">stable convergence configuration</span>, the overlapping field pressures
+            form an interference node — a <span class="highlight">topological soliton</span>
+            (Skyrmion-like structure) representing baryonic matter.</p>
+
+        <div class="concept">
+            <div class="concept-title">The Bag Model Boundary</div>
+            <p>The soliton's boundary satisfies the <span class="highlight">MIT bag model</span> constraint: internal
+                kinetic energy balances external vacuum pressure (E<sub>kinetic</sub> = BV), confining quarks within the
+                "bag."</p>
+        </div>
+
+        <h4>Chiral Oscillator Points</h4>
+        <p>The animated color points show the <span class="highlight">chiral oscillators</span> — field intensity maxima
+            that spiral inward as vacuum energy density increases, converging toward the configuration where
+            solitonic matter structures form.</p>
+
+        <div class="concept">
+            <div class="concept-title">Torsion & Gravity</div>
+            <p>The chiral current generates <span class="highlight">torsion</span> in spacetime (Einstein-Cartan gravity),
+                linking quantum spin to macroscopic gravitational effects through the geometry itself.</p>
+        </div>
+
+        <div class="concept" style="margin-top: 20px;">
+            <div class="concept-title">Key References</div>
+            <p style="font-size: 11px; color: rgba(255,255,255,0.6);">
+                <strong>MIT Bag Model:</strong> Chodos et al., Phys. Rev. D 9, 3471 (1974)<br>
+                <strong>Chiral Condensate:</strong> Iritani et al., Phys. Rev. D 91, 094501 (2015)<br>
+                <strong>String Tension:</strong> FLAG 2024, √σ = 440 MeV<br>
+                <strong>Einstein-Cartan:</strong> Hehl et al., Rev. Mod. Phys. 48, 393 (1976)<br>
+                <strong>SU(3) Theory:</strong> Georgi, "Lie Algebras in Particle Physics" (1999)<br>
+                <strong>Phase Dynamics:</strong> Sakaguchi & Kuramoto, Prog. Theor. Phys. 76, 576 (1986)
+            </p>
+        </div>
+
+        <p style="margin-top: 15px; font-size: 11px; color: rgba(255,255,255,0.5); font-style: italic;">
+            <a href="chiral-geometrogenesis.html" style="color: rgba(255,255,255,0.6);">Full visualization with all controls →</a>
+        </p>
+    </div>
+
+    <div id="main-area">
+        <div id="canvas-container">
+            <div class="canvas-wrapper">
+                <canvas id="canvas-normal"></canvas>
+                <div class="canvas-label">Color Tetrahedron (RGB)</div>
+            </div>
+            <div class="canvas-wrapper">
+                <canvas id="canvas-mirrored"></canvas>
+                <div class="canvas-label" style="left: auto; right: 10px;">Anti-Color Tetrahedron (C-Conjugate)</div>
+            </div>
+            <div id="resonance-indicator" class="resonance-indicator">
+                <div class="subtitle">Dynamic equilibrium</div>
+                <div class="subtitle">Cycle continues, interference pattern stable</div>
+            </div>
+        </div>
+
+        <div id="control-bar">
+            <div id="control-bar-inner">
+                <div class="slider-group">
+                    <label>Angle</label>
+                    <input type="range" id="animation-angle" min="0" max="360" step="1" value="0">
+                    <span class="value-display" id="animation-angle-value">0°</span>
+                </div>
+                <button id="toggle-animation">Pause</button>
+                <button id="resonance-btn">Resonance</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/visualization-module.js"></script>
+    <script>
+        const canvasNormal = document.getElementById('canvas-normal');
+        const canvasMirrored = document.getElementById('canvas-mirrored');
+
+        const vizNormal = new TetrahedronVisualization(canvasNormal, false);
+        const vizMirrored = new TetrahedronVisualization(canvasMirrored, true);
+
+        const animationAngleSlider = document.getElementById('animation-angle');
+        const animationAngleDisplay = document.getElementById('animation-angle-value');
+        const toggleAnimationButton = document.getElementById('toggle-animation');
+        const resonanceButton = document.getElementById('resonance-btn');
+        const resonanceIndicator = document.getElementById('resonance-indicator');
+
+        // Animation state
+        let isAnimating = true;
+        let animationAngle = 0;
+        let lastFrameTime = performance.now();
+        let hasReachedResonance = false;
+        let resonanceTransitionProgress = 0;
+
+        // Animation speed (fixed for simplicity, resonance at 3.0)
+        let animationSpeed = 0.25;
+
+        const RESONANCE_DEFORMATION = 0.5;
+        const RESONANT_FREQUENCY = 3.0;
+
+        // Fixed parameters (hardcoded defaults from the full version)
+        const defaults = {
+            radius: 1.0,
+            tetSize: 1.7,
+            deformWidth: 120,
+            redEdgeCurve: 0.35,
+            redIntermediateBlend: 0.70,
+            greenEdgeCurve: 0.35,
+            greenIntermediateBlend: 0.70,
+            blueEdgeCurve: 0.35,
+            blueIntermediateBlend: 0.70,
+            intermediateDepth: 0.0
+        };
+
+        function resizeCanvas() {
+            vizNormal.resizeCanvas();
+            vizMirrored.resizeCanvas();
+            draw();
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Calculate deformation from color field position using INVERSE-SQUARE pressure function
+        // Matches Definition 0.1.3: P_c(x) = 1 / (|x - x_c|² + ε²)
+        // Color field path: vertex1 (0-0.333) → center (0.333) → vertex2 (0.333-0.666) → vertex1 (0.666-1.0)
+        // Peak deformation should occur when color field is at center (position 0.333)
+        function getDeformationFromPosition(pos) {
+            // Normalize position to 0-1 range
+            const normalizedPos = pos % 1.0;
+
+            // Calculate distance from center position (0.333)
+            const centerPos = 0.333;
+            let distFromCenter = Math.abs(normalizedPos - centerPos);
+
+            // Check if going the other way around is shorter
+            // But max distance we care about is 0.5 (halfway around)
+            if (distFromCenter > 0.5) {
+                distFromCenter = 1.0 - distFromCenter;
+            }
+
+            // INVERSE-SQUARE PRESSURE FUNCTION (Definition 0.1.3):
+            // P_c(x) = 1 / (|x - x_c|² + ε²)
+            // ε is a regularization parameter to prevent singularity at center
+            const epsilon = 0.05;  // Regularization parameter
+            const maxDist = 0.5;
+
+            // Normalize distance to [0, 1] range for calculation
+            const normalizedDist = distFromCenter / maxDist;
+
+            // Inverse-square pressure: peaks at center, falls off with distance²
+            // P(d) = 1 / (d² + ε²), normalized so P(0) maps to max deformation
+            const pressure = 1.0 / (normalizedDist * normalizedDist + epsilon * epsilon);
+            const maxPressure = 1.0 / (epsilon * epsilon);  // Pressure at d=0
+
+            // Map pressure to deformation [0, 0.5]
+            // Higher pressure = more deformation
+            return 0.5 * (pressure / maxPressure);
+        }
+
+        // Apply linked deformation controls (edge curve and intermediate blend based on deformation)
+        function getLinkedControls(deformation) {
+            if (deformation <= 0.5) {
+                const t = deformation / 0.5;
+                return {
+                    edgeCurve: 0.35 + (0.2 - 0.35) * t,
+                    intermediateBlend: 0.7 + (0.6 - 0.7) * t
+                };
+            }
+            return { edgeCurve: 0.2, intermediateBlend: 0.6 };
+        }
+
+        function draw() {
+            const currentAngleDegrees = parseFloat(animationAngleSlider.value);
+
+            // Calculate color field positions based on animation angle
+            const angleToUse = isAnimating ? animationAngle : (currentAngleDegrees === 0 ? 0 : (currentAngleDegrees * Math.PI) / 180);
+            const normalizedAngle = (angleToUse % (2 * Math.PI)) / (2 * Math.PI);
+            const oneThird = 1.0 / 3.0;
+            const twoThirds = 2.0 / 3.0;
+
+            let redPos = 1.0 - normalizedAngle;
+            if (redPos >= 1.0) redPos = 0.0;
+
+            const redColorFieldPos = redPos;
+            const greenColorFieldPos = (1.0 - normalizedAngle + oneThird) % 1.0;
+            const blueColorFieldPos = (1.0 - normalizedAngle + twoThirds) % 1.0;
+
+            // Calculate deformations
+            let redDeformation, greenDeformation, blueDeformation;
+
+            if (resonanceTransitionProgress > 0 && resonanceTransitionProgress < 1) {
+                const t = resonanceTransitionProgress;
+                const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
+                const baseRed = getDeformationFromPosition(redColorFieldPos);
+                const baseGreen = getDeformationFromPosition(greenColorFieldPos);
+                const baseBlue = getDeformationFromPosition(blueColorFieldPos);
+
+                redDeformation = baseRed + (RESONANCE_DEFORMATION - baseRed) * eased;
+                greenDeformation = baseGreen + (RESONANCE_DEFORMATION - baseGreen) * eased;
+                blueDeformation = baseBlue + (RESONANCE_DEFORMATION - baseBlue) * eased;
+            } else if (hasReachedResonance) {
+                redDeformation = RESONANCE_DEFORMATION;
+                greenDeformation = RESONANCE_DEFORMATION;
+                blueDeformation = RESONANCE_DEFORMATION;
+            } else {
+                redDeformation = getDeformationFromPosition(redColorFieldPos);
+                greenDeformation = getDeformationFromPosition(greenColorFieldPos);
+                blueDeformation = getDeformationFromPosition(blueColorFieldPos);
+            }
+
+            // Get linked control values
+            const redControls = getLinkedControls(redDeformation);
+            const greenControls = getLinkedControls(greenDeformation);
+            const blueControls = getLinkedControls(blueDeformation);
+
+            const params = {
+                radius: defaults.radius,
+                redDeformation,
+                greenDeformation,
+                blueDeformation,
+                tetSize: defaults.tetSize,
+                deformWidth: defaults.deformWidth,
+                redEdgeCurve: redControls.edgeCurve,
+                redIntermediateBlend: redControls.intermediateBlend,
+                greenEdgeCurve: greenControls.edgeCurve,
+                greenIntermediateBlend: greenControls.intermediateBlend,
+                blueEdgeCurve: blueControls.edgeCurve,
+                blueIntermediateBlend: blueControls.intermediateBlend,
+                intermediateDepth: defaults.intermediateDepth,
+                showTetrahedron: true,
+                showColoredSides: true,
+                showFields: true,
+                showRedField: true,
+                showGreenField: true,
+                showBlueField: true,
+                showGrid: false,
+                showControlPoints: false,
+                circleDebugMode: false,
+                showReferencePoints: false,
+                showInscribedCircle: true,
+                showVacuumPressurePoints: true,
+                showTopologicalSoliton: true,
+                showTorsionField: true,
+                showRedColorField: true,
+                showGreenColorField: true,
+                showBlueColorField: true,
+                redColorFieldPosition: redColorFieldPos,
+                greenColorFieldPosition: greenColorFieldPos,
+                blueColorFieldPosition: blueColorFieldPos,
+                showDepressionStates: true,
+                hideRedNonDeformable: true,
+                hideGreenNonDeformable: true,
+                hideBlueNonDeformable: true
+            };
+
+            vizNormal.draw(params);
+            vizMirrored.draw(params);
+        }
+
+        function animate() {
+            if (!isAnimating) return;
+
+            const currentTime = performance.now();
+            const deltaTime = (currentTime - lastFrameTime) / 1000;
+            lastFrameTime = currentTime;
+
+            const currentDegrees = parseFloat(animationAngleSlider.value);
+
+            // Handle resonance transition
+            if (resonanceTransitionProgress > 0 && resonanceTransitionProgress < 1) {
+                resonanceTransitionProgress += deltaTime * 8;
+
+                if (resonanceTransitionProgress >= 1) {
+                    resonanceTransitionProgress = 1;
+                    hasReachedResonance = true;
+                    toggleAnimationButton.textContent = 'Resonance';
+                    toggleAnimationButton.style.background = '#9c27b0';
+                    resonanceIndicator.classList.add('visible');
+                    resonanceButton.textContent = 'Exit Resonance';
+                    resonanceButton.style.background = '#f44336';
+                }
+
+                // Continue cycling during transition
+                let newDegrees = currentDegrees + 360 * animationSpeed * deltaTime;
+                newDegrees = newDegrees % 360;
+                const roundedDegrees = Math.round(newDegrees);
+
+                animationAngleSlider.value = roundedDegrees;
+                animationAngleDisplay.textContent = roundedDegrees + '°';
+                animationAngle = roundedDegrees === 0 ? 0 : (roundedDegrees * Math.PI) / 180;
+
+                draw();
+                requestAnimationFrame(animate);
+                return;
+            }
+
+            // At resonance, continue cycling
+            if (hasReachedResonance) {
+                let newDegrees = currentDegrees + 360 * RESONANT_FREQUENCY * deltaTime;
+                newDegrees = newDegrees % 360;
+                const roundedDegrees = Math.round(newDegrees);
+
+                animationAngleSlider.value = roundedDegrees;
+                animationAngleDisplay.textContent = roundedDegrees + '°';
+                animationAngle = roundedDegrees === 0 ? 0 : (roundedDegrees * Math.PI) / 180;
+
+                draw();
+                requestAnimationFrame(animate);
+                return;
+            }
+
+            // Normal animation
+            let newDegrees = currentDegrees + 360 * animationSpeed * deltaTime;
+            newDegrees = newDegrees % 360;
+            const roundedDegrees = Math.round(newDegrees);
+
+            animationAngleSlider.value = roundedDegrees;
+            animationAngleDisplay.textContent = roundedDegrees + '°';
+            animationAngle = roundedDegrees === 0 ? 0 : (roundedDegrees * Math.PI) / 180;
+
+            draw();
+            requestAnimationFrame(animate);
+        }
+
+        // Event listeners
+        animationAngleSlider.addEventListener('input', (e) => {
+            if (isAnimating) return;
+
+            const degrees = parseFloat(e.target.value);
+            animationAngleDisplay.textContent = degrees.toFixed(0) + '°';
+            animationAngle = degrees === 0 ? 0 : (degrees * Math.PI) / 180;
+            draw();
+        });
+
+        toggleAnimationButton.addEventListener('click', () => {
+            isAnimating = !isAnimating;
+
+            if (isAnimating) {
+                lastFrameTime = performance.now();
+
+                if (hasReachedResonance) {
+                    toggleAnimationButton.textContent = 'Resonance';
+                    toggleAnimationButton.style.background = '#9c27b0';
+                } else {
+                    toggleAnimationButton.textContent = 'Pause';
+                    toggleAnimationButton.style.background = '#f44336';
+                }
+
+                animate();
+            } else {
+                if (hasReachedResonance) {
+                    toggleAnimationButton.textContent = 'Resume';
+                    toggleAnimationButton.style.background = '#7b1fa2';
+                } else {
+                    toggleAnimationButton.textContent = 'Play';
+                    toggleAnimationButton.style.background = '#4CAF50';
+                }
+            }
+        });
+
+        resonanceButton.addEventListener('click', () => {
+            if (hasReachedResonance) {
+                // Exit resonance
+                hasReachedResonance = false;
+                resonanceTransitionProgress = 0;
+                resonanceIndicator.classList.remove('visible');
+                resonanceButton.textContent = 'Resonance';
+                resonanceButton.style.background = '#7b1fa2';
+
+                if (isAnimating) {
+                    toggleAnimationButton.textContent = 'Pause';
+                    toggleAnimationButton.style.background = '#f44336';
+                } else {
+                    toggleAnimationButton.textContent = 'Play';
+                    toggleAnimationButton.style.background = '#4CAF50';
+                }
+
+                draw();
+            } else {
+                // Enter resonance
+                resonanceTransitionProgress = 0.01;
+
+                if (!isAnimating) {
+                    isAnimating = true;
+                    lastFrameTime = performance.now();
+                    animate();
+                }
+            }
+        });
+
+        // Start animation automatically
+        draw();
+        animate();
+    </script>
+</body>
+
+</html>
