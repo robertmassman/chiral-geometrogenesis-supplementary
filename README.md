@@ -110,30 +110,17 @@ See [paper/main.pdf](paper/main.pdf) for complete results and derivations.
 
 This framework began with a philosophical question posed by Robert Massman:
 
-> Could our perception of time be an emergent phenomenon rather than fundamental?
-> What if time arises from the dynamic oscillations of quark fields—fundamental
-> quantum fields whose rhythmic fluctuations create a directional flow we experience
-> as temporal progression?
->
-> These quark fields might function as nested containment structures, where their
-> interactions create localized depressions or concentrations in the field itself.
-> What we perceive as an "atom" may actually be the interference pattern of these
-> overlapping field depressions—not discrete objects, but stable configurations
-> of field dynamics.
->
-> Could the interaction of these depressed field regions create a kind of directional
-> vacuum—similar to how a four-dimensional hypercube's rotation appears to pull new
-> cross-sections into existence? Perhaps atoms aren't material objects at all, but
-> boundary surfaces where field dynamics project the patterns we observe as matter.
->
-> In this view, the "void" within these structures would be regions where field energy
-> flows with minimal resistance, and the arrow of time emerges naturally from the
-> asymmetric way these field oscillations can propagate—giving change a singular,
-> irreversible direction.
->
-> The central question: Are quarks—or rather, quark fields—not objects existing in
-> spacetime, but the very processes that generate spacetime through their confined,
-> oscillating dynamics?
+> This framework originated from a philosophical inquiry in 2019: Is our perception of time
+> an abstraction---an artifact of something deeper? What if time flows like a pressure wave,
+> perpetuated by fluctuations from knotted energy fields? These knotted fields sit like
+> nested spheres whose combined influence creates depressions in opposing fields. What we
+> call "atoms" may not be discrete objects at all, but the mixing of these depressions---stable
+> interference patterns where overlapping field dynamics converge. Does this mixing create
+> what we experience as vacuum, a surface upon which the universe is projected or suspended?
+> A shape that exists only where it is realized through interaction, and whose absence permits
+> energy to flow unimpeded. Is spacetime a place in which field interaction compresses and
+> space emerges from their confinement, time from the singular direction their pressure waves
+> impose upon observation?
 
 ### Visual Foundation
 
