@@ -46,74 +46,79 @@ def plot_su3_weight_diagram(ax):
     # Origin (singlet/apex vertices project here)
     origin = np.array([0, 0])
 
+    # Plot filled triangles first (underneath everything else)
+    # This creates the "Star of David" / hexagram pattern
+    # Anti-fundamental first (more transparent, background)
+    antifund_triangle_filled = plt.Polygon([w_Rbar, w_Gbar, w_Bbar], fill=True,
+                                            facecolor='red', alpha=0.10,
+                                            edgecolor='red', linewidth=2.0,
+                                            linestyle='--', label=r'$\bar{\mathbf{3}}$ (anti-fundamental)', zorder=0)
+    ax.add_patch(antifund_triangle_filled)
+
+    # Fundamental on top (more visible)
+    fund_triangle_filled = plt.Polygon([w_R, w_G, w_B], fill=True,
+                                        facecolor='blue', alpha=0.20,
+                                        edgecolor='blue', linewidth=2.5,
+                                        linestyle='-', label=r'$\mathbf{3}$ (fundamental)', zorder=1)
+    ax.add_patch(fund_triangle_filled)
+
     # Draw lines from all vertices to center (W/W̄)
     # These represent the edges connecting to apex vertices in 3D
     for w in [w_R, w_G, w_B]:
-        ax.plot([w[0], 0], [w[1], 0], 'b-', linewidth=1.5, alpha=0.6, zorder=1)
+        ax.plot([w[0], 0], [w[1], 0], 'b:', linewidth=1.5, alpha=0.4, zorder=2)
     for w in [w_Rbar, w_Gbar, w_Bbar]:
-        ax.plot([w[0], 0], [w[1], 0], 'r--', linewidth=1.5, alpha=0.6, zorder=1)
+        ax.plot([w[0], 0], [w[1], 0], 'r:', linewidth=1.5, alpha=0.4, zorder=2)
 
-    # Plot fundamental triangle (quarks)
-    fund_triangle = plt.Polygon([w_R, w_G, w_B], fill=False,
-                                 edgecolor='blue', linewidth=2,
-                                 linestyle='-', label='Fundamental (3)')
-    ax.add_patch(fund_triangle)
-
-    # Plot anti-fundamental triangle (antiquarks)
-    antifund_triangle = plt.Polygon([w_Rbar, w_Gbar, w_Bbar], fill=False,
-                                     edgecolor='red', linewidth=2,
-                                     linestyle='--', label='Anti-fundamental (3̄)')
-    ax.add_patch(antifund_triangle)
-
-    # Plot vertices with colors
-    colors_fund = ['red', 'green', 'blue']
-    labels_fund = ['R', 'G', 'B']
+    # Plot vertices with colors - fundamental (circles)
+    colors_fund = ['#e74c3c', '#27ae60', '#3498db']  # R, G, B (vibrant colors)
+    labels_fund = [r'$\vec{w}_R$', r'$\vec{w}_G$', r'$\vec{w}_B$']
     for w, c, l in zip([w_R, w_G, w_B], colors_fund, labels_fund):
-        ax.scatter(*w, c=c, s=150, zorder=5, edgecolor='black', linewidth=1)
-        ax.annotate(l, w, xytext=(5, 5), textcoords='offset points', fontsize=12, fontweight='bold')
+        ax.scatter(*w, c=c, s=180, zorder=5, edgecolor='black', linewidth=1.5)
+        ax.annotate(l, w, xytext=(8, 8), textcoords='offset points', fontsize=11, fontweight='bold')
 
-    colors_anti = ['#FF6666', '#66FF66', '#6666FF']  # Lighter versions
-    labels_anti = [r'$\bar{R}$', r'$\bar{G}$', r'$\bar{B}$']
+    # Anti-fundamental vertices (squares)
+    colors_anti = ['#c0392b', '#1e8449', '#2874a6']  # Darker versions
+    labels_anti = [r'$-\vec{w}_R$', r'$-\vec{w}_G$', r'$-\vec{w}_B$']
     for w, c, l in zip([w_Rbar, w_Gbar, w_Bbar], colors_anti, labels_anti):
-        ax.scatter(*w, c=c, s=150, zorder=5, edgecolor='black', linewidth=1, marker='s')
-        ax.annotate(l, w, xytext=(5, 5), textcoords='offset points', fontsize=12)
+        ax.scatter(*w, c=c, s=180, zorder=5, edgecolor='black', linewidth=1.5, marker='s')
+        ax.annotate(l, w, xytext=(8, -15), textcoords='offset points', fontsize=11, fontweight='bold')
 
-    # Plot root vector arrows on all three edges of fundamental triangle
-    # Helper function to draw arrow indicator near edge midpoint
-    def draw_edge_arrow(start, end, label, label_offset):
-        midpoint = (start + end) / 2
-        direction = (end - start) / np.linalg.norm(end - start)
-        # Perpendicular offset (rotate 90 degrees clockwise to push outward from triangle)
-        perp = np.array([direction[1], -direction[0]])
-        offset_dist = 0.08  # Distance from edge
-        arrow_start = midpoint + perp * offset_dist - direction * 0.08
-        arrow_end = midpoint + perp * offset_dist + direction * 0.08
-        ax.annotate('', xy=arrow_end, xytext=arrow_start,
-                    arrowprops=dict(arrowstyle='->', color='purple', lw=2, shrinkA=0, shrinkB=0))
-        ax.annotate(label, midpoint + perp * offset_dist + label_offset, fontsize=10, color='purple', ha='center')
-
-    # Right-handed chirality: R → G → B → R (clockwise)
-    # R → G (α₁)
-    draw_edge_arrow(w_R, w_G, r'$\alpha_1$', np.array([0, 0.06]))
-    # G → B (α₂)
-    draw_edge_arrow(w_G, w_B, r'$\alpha_2$', np.array([-0.08, 0]))
-    # B → R (α₃)
-    draw_edge_arrow(w_B, w_R, r'$\alpha_3$', np.array([0.08, 0]))
+    # Draw charge conjugation arrows (curved) - shows GR3 condition
+    # These connect each weight to its conjugate: w → -w
+    weights_3 = [w_R, w_G, w_B]
+    weights_3bar = [w_Rbar, w_Gbar, w_Bbar]
+    for i, (w3, w3bar) in enumerate(zip(weights_3, weights_3bar)):
+        # Only add label to first arrow for legend
+        ax.annotate('', xy=w3bar, xytext=w3,
+                   arrowprops=dict(arrowstyle='->', color='purple', alpha=0.6,
+                                  connectionstyle='arc3,rad=0.25', lw=1.5,
+                                  shrinkA=12, shrinkB=12),
+                   zorder=15)
+    # Add a dummy line for the legend entry
+    ax.plot([], [], color='purple', linestyle='-', linewidth=1.5, alpha=0.6,
+            label=r'Charge conjugation ($\vec{w} \to -\vec{w}$)')
 
     # Origin marker - the apex vertices W and W̄ both project here
-    ax.scatter(0, 0, c='gold', s=200, marker='o', zorder=6, edgecolor='black', linewidth=2)
-    ax.annotate(r'$W, \bar{W}$' + '\n(singlet)', (0.04, -0.08), fontsize=10, fontweight='bold', ha='left', va='top')
+    ax.scatter(0, 0, c='gold', s=200, marker='*', zorder=10, edgecolor='black', linewidth=2,
+               label=r'Singlet (apex $W, \bar{W}$)')
+    ax.annotate(r'$\vec{0}$', (0, 0), xytext=(-25, -20), textcoords='offset points', fontsize=11,
+                bbox=dict(boxstyle='round', facecolor='gold', alpha=0.5), zorder=10)
 
     ax.set_xlim(-0.8, 0.8)
     ax.set_ylim(-0.8, 0.8)
-    ax.set_xlabel('$T_3$ (Isospin)', fontsize=11)
-    ax.set_ylabel('$Y$ (Hypercharge)', fontsize=11)
-    ax.set_title('SU(3) Weight Diagram\n(Fundamental + Anti-fundamental)', fontsize=12, fontweight='bold')
+    ax.set_xlabel(r'$h_1^*$ (Cartan coordinate)', fontsize=11)
+    ax.set_ylabel(r'$h_2^*$ (Cartan coordinate)', fontsize=11)
+    ax.set_title(r'SU(3) Weight Diagram: $\mathbf{3} \oplus \bar{\mathbf{3}}$', fontsize=12, fontweight='bold')
     ax.set_aspect('equal')
     ax.grid(True, alpha=0.3)
     ax.legend(loc='upper right', fontsize=9)
-    ax.axhline(y=0, color='k', linewidth=0.5)
-    ax.axvline(x=0, color='k', linewidth=0.5)
+    ax.axhline(y=0, color='gray', linestyle='--', linewidth=0.5, alpha=0.5)
+    ax.axvline(x=0, color='gray', linestyle='--', linewidth=0.5, alpha=0.5)
+    
+    # Add multiplicity annotation (key for Theorem 0.0.3b)
+    ax.text(0.02, 0.98, 'Each weight has\nmultiplicity 1', transform=ax.transAxes,
+           fontsize=9, verticalalignment='top', 
+           bbox=dict(boxstyle='round', facecolor='#d4edda', alpha=0.8))
 
 
 def plot_stella_octangula_3d(ax):
@@ -360,7 +365,7 @@ def main():
 
     print("Generating Theorem 0.0.3 visualization...")
 
-    # Figure 1: SU(3) Weight Diagram (referenced at main.tex line 638)
+    # Figure 1: SU(3) Weight Diagram (referenced at main.tex line 656)
     fig1, ax1 = plt.subplots(figsize=(8, 8))
     plot_su3_weight_diagram(ax1)
     for ext in ['pdf', 'png']:
@@ -369,15 +374,8 @@ def main():
         print(f"  Saved: {output_path}")
     plt.close(fig1)
 
-    # Figure 2: 3D Stella Octangula (referenced at main.tex line 1009)
-    fig2 = plt.figure(figsize=(10, 8))
-    ax2 = fig2.add_subplot(111, projection='3d')
-    plot_stella_octangula_3d(ax2)
-    for ext in ['pdf', 'png']:
-        output_path = output_dir / f"fig_thm_0_0_2_stella_3d.{ext}"
-        fig2.savefig(output_path, dpi=150, bbox_inches='tight', facecolor='white')
-        print(f"  Saved: {output_path}")
-    plt.close(fig2)
+    # Note: 3D Stella Octangula figure (fig_thm_0_0_2_stella_3d) is generated
+    # by a separate script: fig_thm_0_0_2_stella_3d.py
 
     print("  All plots generated successfully!")
 

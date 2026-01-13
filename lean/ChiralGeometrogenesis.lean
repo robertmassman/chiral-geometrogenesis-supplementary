@@ -47,6 +47,7 @@ import ChiralGeometrogenesis.Phase4.Theorem_4_2_3  -- First-Order Electroweak Ph
 
 -- Phase 5: Emergent Spacetime and Gravity
 import ChiralGeometrogenesis.Phase5.Theorem_5_1_1  -- Stress-Energy Tensor from L_CG
+import ChiralGeometrogenesis.Phase5.Proposition_5_2_4c  -- Tensor Rank from Derivative Structure
 
 -- Phase 8: Predictions and Tests
 import ChiralGeometrogenesis.Phase8.Proposition_8_4_4  -- Atmospheric Angle θ₂₃ Correction

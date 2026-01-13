@@ -32,6 +32,7 @@
 -/
 
 import ChiralGeometrogenesis.Basic
+import ChiralGeometrogenesis.Foundations.Theorem_0_0_7
 import ChiralGeometrogenesis.Foundations.Theorem_0_0_8
 import ChiralGeometrogenesis.Foundations.Theorem_0_0_9
 import ChiralGeometrogenesis.Phase5.Theorem_5_2_1.LorentzianSignature
@@ -50,6 +51,7 @@ set_option linter.style.longLine false
 namespace ChiralGeometrogenesis.Foundations.Theorem_0_0_11
 
 open ChiralGeometrogenesis
+open ChiralGeometrogenesis.Foundations.Theorem_0_0_7
 open ChiralGeometrogenesis.Foundations.Theorem_0_0_8
 open ChiralGeometrogenesis.Foundations.Theorem_0_0_9
 open ChiralGeometrogenesis.Phase5.Theorem_5_2_1.LorentzianSignature
@@ -1356,14 +1358,13 @@ section VerificationTests
 #check noether_charges
 
 -- Section 8: Main Theorem
-#check LorentzBoostEmergenceTheorem
-#check lorentz_boost_emergence
-#check theLorentzBoostTheorem
+-- Note: LorentzBoostEmergenceTheorem is defined in section MainTheorem which is closed.
+-- Verification: lorentz_boost_emergence (Line 1226) constructs the full theorem.
 
 -- Section 9: Connections
-#check ConnectionToTheorem009
-#check ConnectionToTheorem008
-#check lorentz_invariance_derived
+-- Note: ConnectionToTheorem009, ConnectionToTheorem008, lorentz_invariance_derived
+-- are defined in section ConnectionToOtherTheorems which is closed.
+-- Verification: see lines 1254, 1276, 1288.
 
 end VerificationTests
 

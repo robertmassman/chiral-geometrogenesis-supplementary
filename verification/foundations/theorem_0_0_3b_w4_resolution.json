@@ -1,0 +1,48 @@
+{
+  "vertices": {
+    "+x": [
+      1,
+      0,
+      0
+    ],
+    "-x": [
+      -1,
+      0,
+      0
+    ],
+    "+y": [
+      0,
+      1,
+      0
+    ],
+    "-y": [
+      0,
+      -1,
+      0
+    ],
+    "+z": [
+      0,
+      0,
+      1
+    ],
+    "-z": [
+      0,
+      0,
+      -1
+    ]
+  },
+  "symmetry": {
+    "symmetry_group": "T_d",
+    "order": 24,
+    "isomorphic_to": "S_4"
+  },
+  "gr3_compatible_labelings": 48,
+  "gr2_compatible": false,
+  "conclusion": {
+    "polyhedron": "Tetrahemihexahedron",
+    "vertices": 6,
+    "symmetry_group": "T_d \u2245 S_4",
+    "fails": "GR2",
+    "reason": "T_d action on vertices incompatible with S_3 action on weights"
+  }
+}

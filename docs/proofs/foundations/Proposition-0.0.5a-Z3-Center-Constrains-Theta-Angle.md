@@ -107,6 +107,11 @@ $$|d_n| < 1.8 \times 10^{-26} \text{ e·cm} \implies |\bar{\theta}| < 10^{-10}$$
 
 **The puzzle:** Why is θ̄ so small when it could naturally be O(1)?
 
+**CG Resolution (Two Parts):**
+- **This proposition (0.0.5a):** θ = 0 from Z₃ superselection
+- **[Proposition 0.0.5b](./Proposition-0.0.5b-Quark-Mass-Phase-Constraint.md):** arg det(M_q) = 0 from real overlap integrals
+- **Combined:** θ̄ = 0 (complete resolution)
+
 ### 2.2 Standard Solutions
 
 | Solution | Mechanism | Status |
@@ -176,6 +181,14 @@ The center is important for:
 3. **θ-vacuum application:** Z₃ acts on instanton sectors via $z_k|n\rangle = \omega^{kn}|n\rangle$, which shifts the θ-vacuum: $z_k|\theta\rangle = |\theta + 2\pi k/3\rangle$
 
 The key point is that the CG framework's Z₃ superselection is a **derived consequence** of gauge structure plus measurement theory, not an independent assumption.
+
+**Important Clarification:** Fundamental quarks break gauge Z₃ (center symmetry), but **not** operational Z₃. This is proven in [Proposition 0.0.17i §10](./Proposition-0.0.17i-Z3-Measurement-Extension.md#10-z₃-protection-against-fundamental-quarks):
+- Quarks transform: ψ → ω^k ψ under Z₃
+- But color singlet observables (ψ̄ψ, baryons, mesons) are Z₃-invariant
+- The observable algebra $\mathcal{A}_{meas}$ consists of color singlets
+- Therefore operational Z₃ survives quark coupling
+
+This distinction is critical: the θ-constraint uses operational Z₃ (measurement theory), not gauge Z₃ (thermodynamics).
 
 ### 3.5 N_f Dependence (or Lack Thereof)
 
@@ -335,6 +348,12 @@ where χ_top > 0 is the topological susceptibility.
 1. **Z₃ structure** (from CG framework) → θ quantized to {0, 2π/3, 4π/3}
 2. **Energy minimization** (standard physics) → θ = 0 selected
 3. **Result:** θ_physical = 0 is not fine-tuned but **required**
+
+**Note on θ̄ = θ + arg det(M_q):**
+
+This proposition establishes θ = 0. For the complete Strong CP resolution, we also need arg det(M_q) = 0. This is proven in **[Proposition 0.0.5b](./Proposition-0.0.5b-Quark-Mass-Phase-Constraint.md)**, which shows that the phase-gradient mass generation mechanism (Theorem 3.1.1) generates real quark masses from real overlap integrals, forcing arg det(M_q) = 0.
+
+**Combined result:** θ̄ = θ + arg det(M_q) = 0 + 0 = 0.
 
 The Strong CP problem is resolved within the framework. □
 

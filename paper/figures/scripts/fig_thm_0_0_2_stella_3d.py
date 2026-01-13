@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """
-Interactive 3D Stella Octangula Visualization for Theorem 0.0.2
+3D Stella Octangula Visualization for Theorems 0.0.2 and 0.0.3
 
-Run this script to generate the stella octangula figure with right-handed
-chirality arrows, intersection center, and time axis along [1,1,1].
+Run this script to generate the stella octangula figure showing:
+- Two interpenetrating tetrahedra (T+ fundamental, T- anti-fundamental)
+- 8-vertex structure (6 color vertices + 2 singlet apex vertices)
+- Geometric center at origin
+- Singlet axis along [1,1,1] direction
+
+Note: Chirality arrows are NOT included here; they are introduced later
+in Theorem 0.0.5 (Chirality Selection from Geometry).
 
 Output: fig_thm_0_0_2_stella_3d.pdf and fig_thm_0_0_2_stella_3d.png
 
 Usage:
     python fig_thm_0_0_2_stella_3d.py
-
-Source: verification/shared/stella_octangula_3d_interactive.py
 """
 
 import numpy as np
@@ -76,22 +80,36 @@ def create_interactive_stella_octangula():
 
     # Plot the INTERSECTION CENTER (origin) - this is where everything meets
     ax.scatter(0, 0, 0, c='gold', s=400, marker='o', edgecolor='black',
-               linewidth=3, zorder=10, label='Geometric center')
-    ax.text(0.15, 0.15, 0.15, 'O', fontsize=12, fontweight='bold',
-            ha='left', va='bottom')
+               linewidth=3, zorder=10)
 
     # Plot vertices
-    # T+ vertices
-    ax.scatter(*T_plus[0], c='gold', s=250, marker='*', edgecolor='black', linewidth=2, zorder=5)
-    ax.scatter(*T_plus[1], c='red', s=200, edgecolor='black', linewidth=1, zorder=5)
-    ax.scatter(*T_plus[2], c='green', s=200, edgecolor='black', linewidth=1, zorder=5)
-    ax.scatter(*T_plus[3], c='blue', s=200, edgecolor='black', linewidth=1, zorder=5)
+    # Color scheme matches fig_su3_weight_diagram.py for consistency
+    # Fundamental: vibrant colors, Anti-fundamental: darker versions
+    colors_fund = ['#e74c3c', '#27ae60', '#3498db']  # R, G, B (vibrant)
+    colors_anti = ['#c0392b', '#1e8449', '#2874a6']  # R̄, Ḡ, B̄ (darker)
 
-    # T- vertices
+    # T+ vertices (fundamental) - circles
+    ax.scatter(*T_plus[0], c='gold', s=250, marker='*', edgecolor='black', linewidth=2, zorder=5)
+    ax.scatter(*T_plus[1], c=colors_fund[0], s=200, edgecolor='black', linewidth=1.5, zorder=5)  # R
+    ax.scatter(*T_plus[2], c=colors_fund[1], s=200, edgecolor='black', linewidth=1.5, zorder=5)  # G
+    ax.scatter(*T_plus[3], c=colors_fund[2], s=200, edgecolor='black', linewidth=1.5, zorder=5)  # B
+
+    # T- vertices (anti-fundamental) - squares
     ax.scatter(*T_minus[0], c='gold', s=250, marker='*', edgecolor='black', linewidth=2, zorder=5)
-    ax.scatter(*T_minus[1], c='#FF6666', s=200, marker='s', edgecolor='black', linewidth=1, zorder=5)
-    ax.scatter(*T_minus[2], c='#66FF66', s=200, marker='s', edgecolor='black', linewidth=1, zorder=5)
-    ax.scatter(*T_minus[3], c='#6666FF', s=200, marker='s', edgecolor='black', linewidth=1, zorder=5)
+    ax.scatter(*T_minus[1], c=colors_anti[0], s=200, marker='s', edgecolor='black', linewidth=1.5, zorder=5)  # R̄
+    ax.scatter(*T_minus[2], c=colors_anti[1], s=200, marker='s', edgecolor='black', linewidth=1.5, zorder=5)  # Ḡ
+    ax.scatter(*T_minus[3], c=colors_anti[2], s=200, marker='s', edgecolor='black', linewidth=1.5, zorder=5)  # B̄
+
+    # Create legend entries (dummy plots for legend, matching weight diagram style)
+    # Fundamental triangle
+    ax.plot([], [], 'b-', linewidth=2.5, label=r'$\mathbf{3}$ (fundamental)')
+    # Anti-fundamental triangle
+    ax.plot([], [], 'r--', linewidth=2.0, label=r'$\bar{\mathbf{3}}$ (anti-fundamental)')
+    # Singlet
+    ax.scatter([], [], c='gold', s=100, marker='*', edgecolor='black', linewidth=1,
+               label=r'Singlet ($W, \bar{W}$)')
+    # Singlet axis
+    ax.plot([], [], color='green', linewidth=3, label='Singlet axis [1,1,1]')
 
     # Draw lines from each vertex to the center (showing the intersection structure)
     for v in T_plus:
@@ -99,72 +117,43 @@ def create_interactive_stella_octangula():
     for v in T_minus:
         ax.plot3D([v[0], 0], [v[1], 0], [v[2], 0], 'r:', linewidth=1, alpha=0.4)
 
-    # Draw the [1,1,1] axis through the singlet (connects W and W̄ apexes)
-    axis_length = 1.8
-    axis_dir = np.array([1, 1, 1]) / np.sqrt(3)  # Normalized [1,1,1] direction
-    axis_start = -axis_dir * axis_length
-    axis_end = axis_dir * axis_length
+    # Draw the [1,1,1] singlet axis connecting W̄ to W through the center
+    # The singlet axis connects the two apex vertices (both project to origin in weight space)
+    W_apex = T_plus[0]      # (1, 1, 1)
+    W_bar_apex = T_minus[0]  # (-1, -1, -1)
 
-    # Draw the axis as a thick green line
-    ax.quiver(axis_start[0], axis_start[1], axis_start[2],
-              (axis_end - axis_start)[0], (axis_end - axis_start)[1], (axis_end - axis_start)[2],
-              color='green', arrow_length_ratio=0.08, linewidth=4, alpha=0.9,
-              label='[1,1,1] axis')
+    # Draw the axis as a thick green arrow from W̄ to W
+    ax.quiver(W_bar_apex[0], W_bar_apex[1], W_bar_apex[2],
+              (W_apex - W_bar_apex)[0], (W_apex - W_bar_apex)[1], (W_apex - W_bar_apex)[2],
+              color='green', arrow_length_ratio=0.06, linewidth=4, alpha=0.9)
 
-    # Add labels for past/future along the time axis
-    ax.text(axis_start[0]-0.1, axis_start[1]-0.1, axis_start[2]-0.1,
-            r'$\bar{W}$' + '\n(past)', fontsize=10, ha='center', va='top', color='olive')
-    ax.text(axis_end[0]+0.1, axis_end[1]+0.1, axis_end[2]+0.1,
-            '(future)', fontsize=10, ha='center', va='bottom', color='olive')
+    # Note: W and W̄ labels are added with the vertex labels below
 
-    # Draw chirality arrows on the base triangle (R-G-B) - right-handed: R->G->B->R
-    def draw_3d_arrow(start, end, color='purple', offset_scale=0.2):
-        """Draw an arrow slightly offset from the edge to show direction."""
-        midpoint = (start + end) / 2
-        direction = end - start
-        direction = direction / np.linalg.norm(direction)
-        # Offset perpendicular to edge and toward center of triangle
-        center = (T_plus[1] + T_plus[2] + T_plus[3]) / 3
-        to_center = center - midpoint
-        to_center = to_center / np.linalg.norm(to_center)
-        # Move outward (away from center)
-        offset = -to_center * offset_scale
-        arrow_start = midpoint + offset - direction * 0.2
-        arrow_end = midpoint + offset + direction * 0.2
-        ax.quiver(arrow_start[0], arrow_start[1], arrow_start[2],
-                  (arrow_end - arrow_start)[0], (arrow_end - arrow_start)[1], (arrow_end - arrow_start)[2],
-                  color=color, arrow_length_ratio=0.35, linewidth=3)
-
-    # R->G, G->B, B->R (right-handed chirality on fundamental triangle)
-    draw_3d_arrow(T_plus[1], T_plus[2])  # R -> G
-    draw_3d_arrow(T_plus[2], T_plus[3])  # G -> B
-    draw_3d_arrow(T_plus[3], T_plus[1])  # B -> R
-
-    # Add vertex labels
+    # Add vertex labels (colors match the vertex markers)
     label_offset = 0.25
     ax.text(T_plus[0][0]+label_offset, T_plus[0][1]+label_offset, T_plus[0][2]+label_offset,
             'W', fontsize=14, fontweight='bold', color='darkgoldenrod')
     ax.text(T_plus[1][0]+label_offset, T_plus[1][1]-label_offset, T_plus[1][2]-label_offset,
-            'R', fontsize=14, fontweight='bold', color='red')
+            'R', fontsize=14, fontweight='bold', color='#e74c3c')
     ax.text(T_plus[2][0]-label_offset*1.5, T_plus[2][1]+label_offset, T_plus[2][2]-label_offset,
-            'G', fontsize=14, fontweight='bold', color='green')
+            'G', fontsize=14, fontweight='bold', color='#27ae60')
     ax.text(T_plus[3][0]-label_offset, T_plus[3][1]-label_offset, T_plus[3][2]+label_offset,
-            'B', fontsize=14, fontweight='bold', color='blue')
+            'B', fontsize=14, fontweight='bold', color='#3498db')
 
     ax.text(T_minus[0][0]-label_offset*1.5, T_minus[0][1]-label_offset, T_minus[0][2]-label_offset,
             r'$\bar{W}$', fontsize=14, fontweight='bold', color='darkgoldenrod')
     ax.text(T_minus[1][0]-label_offset*1.5, T_minus[1][1]+label_offset, T_minus[1][2]+label_offset,
-            r'$\bar{R}$', fontsize=12, color='#CC0000')
+            r'$\bar{R}$', fontsize=12, color='#c0392b')
     ax.text(T_minus[2][0]+label_offset, T_minus[2][1]-label_offset*1.5, T_minus[2][2]+label_offset,
-            r'$\bar{G}$', fontsize=12, color='#008800')
+            r'$\bar{G}$', fontsize=12, color='#1e8449')
     ax.text(T_minus[3][0]+label_offset, T_minus[3][1]+label_offset, T_minus[3][2]-label_offset*1.5,
-            r'$\bar{B}$', fontsize=12, color='#0000CC')
+            r'$\bar{B}$', fontsize=12, color='#2874a6')
 
     # Set labels and title
     ax.set_xlabel('X', fontsize=12)
     ax.set_ylabel('Y', fontsize=12)
     ax.set_zlabel('Z', fontsize=12)
-    ax.set_title('Stella Octangula\n(Right-handed chirality: R→G→B→R)',
+    ax.set_title('Stella Octangula: Geometric Realization of SU(3)',
                  fontsize=14, fontweight='bold')
 
     # Set equal aspect ratio and limits
@@ -177,13 +166,8 @@ def create_interactive_stella_octangula():
     # Set a better initial viewing angle (looking down the [1,1,1] axis)
     ax.view_init(elev=28, azim=39)
 
-    # Add info text
-    fig.text(0.02, 0.02,
-             'Blue solid: T+ (fundamental)\nRed dashed: T- (anti-fundamental)\n'
-             'Gold center: Geometric center\nPurple arrows: Right-handed chirality\n'
-             r'Green arrow: Internal time $\tau$ along [1,1,1]',
-             fontsize=10, verticalalignment='bottom',
-             bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
+    # Add legend (matching style of fig_su3_weight_diagram)
+    ax.legend(loc='upper left', fontsize=9)
 
     plt.tight_layout()
     return fig, ax

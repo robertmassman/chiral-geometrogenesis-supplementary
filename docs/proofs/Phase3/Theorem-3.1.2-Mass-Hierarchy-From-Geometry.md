@@ -28,6 +28,37 @@
 
 > **Honest Framing:** This framework reduces 13 arbitrary Yukawa couplings to ~4 geometric parameters (~1 truly free). The **pattern** is geometric (derived); the **scale** is geometrically constrained and matches observation after QCD corrections.
 
+### Honest Assessment of Predictivity
+
+**What is genuinely derived vs. searched:**
+
+| Aspect | Classification | Explanation |
+|--------|---------------|-------------|
+| **λ^{2n} generation pattern** | ✅ DERIVED | Follows from Gaussian overlap integrals with generation localization |
+| **λ ∈ [0.20, 0.26] range** | ✅ CONSTRAINED | Geometric bounds from ε/σ ratios |
+| **λ = (1/φ³)sin(72°) formula** | **SEARCHED** | Discovered via systematic search over geometric formulas (see wolfenstein_complete_derivation.py) |
+| **A = sin(36°)/sin(45°)** | **SEARCHED** | Formula matching, not first-principles derivation |
+| **β = 36°/φ, γ = arccos(1/3) - 5°** | **SEARCHED** | Elegant patterns found post-hoc |
+| **Real η_f (for Strong CP)** | ✅ DERIVED | Overlap integrals are real by construction |
+
+**The critical distinction:**
+
+1. **Structural predictions (genuinely geometric):**
+   - Mass ratios follow m₃ : m₂ : m₁ = 1 : λ² : λ⁴
+   - CKM hierarchy follows |V_us| : |V_cb| : |V_ub| = λ : λ² : λ³
+   - These patterns emerge from generation localization geometry
+
+2. **Formula matching (post-hoc):**
+   - The specific value λ = 0.2245 was **found** by searching geometric combinations
+   - The formulas were then **justified** with physical interpretations (golden ratio, pentagonal angles)
+   - This is **fitting with geometric vocabulary**, not first-principles prediction
+
+**Honest value statement:**
+- The framework **does** reduce parameter count: 13 Yukawas → 4 geometric parameters
+- The framework **does** explain the pattern: why λ^{2n}, not arbitrary
+- The framework **does not** uniquely predict λ = 0.2245 from first principles
+- The specific formulas were searched, then rationalized—not derived, then verified
+
 **Dependencies:**
 - ✅ Theorem 1.1.1 (Weight Diagram Isomorphism) — SU(3) geometry
 - ✅ Theorem 3.0.1 (Pressure-Modulated Superposition) — Position-dependent VEV

@@ -37,7 +37,35 @@ The critique identifies that the framework may blur the distinction between **ki
 | **Helicity coupling $\eta_f$** | DELEGATED | Derived geometrically in Theorem 3.1.2 (but that derivation has its own assumptions) |
 | **QCD scale $v_\chi = f_\pi$** | ✅ DERIVED | v_χ = f_π = √σ/5 = 88.0 MeV (95.5% of PDG 92.1 MeV) via [Prop 0.0.17k](../foundations/Proposition-0.0.17k-Pion-Decay-Constant-From-Phase-Lock.md), [Prop 0.0.17m](../foundations/Proposition-0.0.17m-Chiral-VEV-From-Phase-Lock-Stiffness.md) |
 
-### 0.4 Relationship to Standard Approaches
+**Note on η_f Reality (for Strong CP):** The η_f couplings are **real-valued** because they arise from overlap integrals of real functions (Gaussian fermion localization × chiral field intensity). This is not an assumption but a consequence of the geometric structure. See [Proposition 0.0.5b](../foundations/Proposition-0.0.5b-Quark-Mass-Phase-Constraint.md) for the proof that this forces arg det(M_q) = 0, contributing to the Strong CP resolution.
+
+### 0.4 Parameter Classification
+
+**Explicit classification of all parameters in the mass formula:**
+
+| Parameter | Classification | How Determined | Could Be Predicted A Priori? |
+|-----------|---------------|----------------|------------------------------|
+| $\omega_0 = \sqrt{\sigma}/(N_c-1)$ | ✅ **DERIVED** | From gluon condensate σ | Yes, from QCD |
+| $\Lambda = 4\pi f_\pi$ | ✅ **DERIVED** | From chiral perturbation theory | Yes, standard physics |
+| $v_\chi = \sqrt{\sigma}/5$ | ✅ **DERIVED** | From phase-lock stiffness (Prop 0.0.17m) | Yes, within framework |
+| $g_\chi \sim 1$–$3$ | **BOUNDED** | Constrained by lattice LECs | Range only, not exact value |
+| $\lambda = (1/\varphi^3)\sin(72°)$ | **SEARCHED** | Formula matching to PDG | **No** — post-hoc discovery |
+| $\eta_f = \lambda^{2n_f} \cdot c_f$ | **CONSTRAINED** | Overlap integrals | Pattern yes, exact values from search |
+| $c_f$ (order-one coefficients) | **CONSTRAINED** | Geometric overlaps | Range [0.4, 1.2], not exact |
+
+**Classification Legend:**
+- ✅ **DERIVED**: Follows from framework + standard physics, could be predicted before data
+- **BOUNDED**: Framework constrains to range, but not unique value
+- **CONSTRAINED**: Framework determines pattern/structure, but specific values fit to data
+- **SEARCHED**: Formula found by systematic search over geometric combinations, then justified post-hoc
+
+**Honest Assessment:**
+- The **pattern** m_n ∝ λ^{2n} is genuinely geometric (from generation localization)
+- The **scale** λ ≈ 0.22 is constrained to [0.20, 0.26] by geometry
+- The **specific formula** λ = (1/φ³)sin(72°) was discovered via search, not derived
+- The framework reduces 13 Yukawa couplings to ~4 geometric parameters, but these are **constrained**, not predicted
+
+### 0.5 Relationship to Standard Approaches
 
 **Comparison with Nambu–Jona-Lasinio (NJL) model:**
 

@@ -1,0 +1,9 @@
+{
+  "issue": "W4",
+  "description": "Tetrahemihexahedron exclusion completeness",
+  "total_gr3_labelings": 48,
+  "gr2_passes": 0,
+  "gr2_failures": 48,
+  "theorem_verified": true,
+  "conclusion": "No weight labeling satisfies both GR2 and GR3"
+}

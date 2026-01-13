@@ -1,0 +1,23 @@
+{
+  "issue": "W3",
+  "description": "Quasi-crystals not properly excluded",
+  "verifications": [
+    {
+      "claim": "A_5 is simple",
+      "verified": true
+    },
+    {
+      "claim": "No surjective homomorphism A_5 \u2192 S_3 exists",
+      "verified": true
+    },
+    {
+      "claim": "No surjective homomorphism D_5 \u2192 S_3 exists",
+      "verified": true
+    },
+    {
+      "claim": "No surjective homomorphism I_h \u2192 S_3 exists",
+      "verified": true
+    }
+  ],
+  "conclusion": "W3 resolution verified: Quasi-crystal exclusion is mathematically correct"
+}

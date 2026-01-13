@@ -36,7 +36,8 @@
 -/
 
 import ChiralGeometrogenesis.Definition_0_0_0
-import ChiralGeometrogenesis.Foundations.Theorem_0_0_9
+-- NOTE: Removed self-import `import ChiralGeometrogenesis.Foundations.Theorem_0_0_9`
+-- This was causing a build cycle error.
 import Mathlib.Data.Real.Basic
 import Mathlib.Data.Nat.Basic
 import Mathlib.GroupTheory.Perm.Basic

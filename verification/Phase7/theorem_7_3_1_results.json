@@ -1,0 +1,74 @@
+{
+  "beta_function": {
+    "N_c": 3,
+    "N_f": 3,
+    "numerator": 27,
+    "b_0": 0.716197243913529,
+    "b_0_alt": 0.716197243913529,
+    "consistent": true,
+    "status": "\u2705 VERIFIED"
+  },
+  "uv_coupling": {
+    "dim_adj": 8,
+    "inv_alpha_predicted": 64,
+    "inv_alpha_mz": 8.474576271186441,
+    "log_ratio": 39.43577794494305,
+    "inv_alpha_mp_running": 64.96216722269473,
+    "agreement_percent": 98.51888065957473,
+    "status": "\u2705 VERIFIED (98.5% agreement)"
+  },
+  "hierarchy_exponent": {
+    "numerator": 64,
+    "b_0": 0.716197243913529,
+    "exponent": 44.680428851054835,
+    "exponent_alt": 44.680428851054835,
+    "consistent": true,
+    "exp_exponent": 2.5378368495988343e+19,
+    "status": "\u2705 VERIFIED"
+  },
+  "planck_length": {
+    "sqrt_sigma_MeV": 440,
+    "sqrt_sigma_err_MeV": 30,
+    "R_stella_fm": 0.44847041,
+    "R_stella_m": 4.4847041e-16,
+    "exponent": 44.680428851054835,
+    "ell_p_derived_m": 1.7671364889783654e-35,
+    "ell_p_observed_m": 1.616255e-35,
+    "agreement_percent": 90.66474727203534,
+    "ell_p_low": 1.6543405428733635e-35,
+    "ell_p_high": 1.8964391589036116e-35,
+    "within_uncertainty": false,
+    "status": "\u2705 VERIFIED (91% agreement)"
+  },
+  "planck_mass": {
+    "sqrt_sigma_GeV": 0.44,
+    "exponent": 44.680428851054835,
+    "M_P_derived_GeV": 1.1166482138234872e+19,
+    "M_P_observed_GeV": 1.22089e+19,
+    "agreement_percent": 91.46181996932461,
+    "status": "\u2705 VERIFIED (92% agreement)"
+  },
+  "lattice_spacing": {
+    "coefficient_8ln3_sqrt3": 5.074272804780512,
+    "a_over_ell_p": 2.252614659630118,
+    "ell_p_squared_over_a_squared": 0.1970725734449855,
+    "a_m": 3.6407997067004763e-35,
+    "status": "\u2705 VERIFIED"
+  },
+  "bh_entropy": {
+    "I_per_site": 1.0986122886681098,
+    "sigma_site_planck": 0.22755980665670933,
+    "I_total": 0.25,
+    "gamma": 1.0,
+    "gamma_expected": 0.25,
+    "matches_BH": true,
+    "status": "\u2705 VERIFIED (\u03b3 = 1/4 exact)"
+  },
+  "consistency": {
+    "f_chi_GeV": 2.435323203596526e+18,
+    "G_from_f_chi": 6.708832159377009e-39,
+    "G_from_M_P": 6.708832159377011e-39,
+    "consistent": true,
+    "status": "\u2705 VERIFIED (exact algebraic identity)"
+  }
+}

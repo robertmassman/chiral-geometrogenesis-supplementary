@@ -1,0 +1,25 @@
+{
+  "representation": {
+    "representation": "3\u22953\u0304",
+    "dimension": 6,
+    "distinct_nonzero_weights": 6,
+    "zero_weight_multiplicity": 1,
+    "total_weight_labels": 7
+  },
+  "multiplicities": {
+    "3\u22953\u0304_has_degeneracy": false,
+    "adjoint_has_degeneracy": true,
+    "max_multiplicity_3\u22953\u0304": 1
+  },
+  "resolution": {
+    "issue": "E1",
+    "original_claim": "Transitivity of Aut(X) on fibers",
+    "status": "UNNECESSARY - remove from proof",
+    "correct_argument": "Direct finite-dimensionality of 3\u22953\u0304",
+    "key_facts": [
+      "3\u22953\u0304 is 6-dimensional",
+      "All weights in 3\u22953\u0304 have multiplicity 1",
+      "Definition 0.0.0 requires faithful encoding"
+    ]
+  }
+}
