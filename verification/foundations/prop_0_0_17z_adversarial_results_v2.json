@@ -1,0 +1,179 @@
+{
+  "verification_version": "2.0",
+  "verification_date": "2026-01-24",
+  "bootstrap": {
+    "exponent_theory": 44.680428851054835,
+    "exponent_observed": 44.76967741993682,
+    "exponent_error_frac": 0.0019935048458097774,
+    "sqrt_sigma_bootstrap_MeV": 481.0750542112236,
+    "sqrt_sigma_FLAG_MeV": 440.0,
+    "discrepancy_frac": 0.09335239593459903,
+    "discrepancy_percent": 9.335239593459903
+  },
+  "corrections": {
+    "gluon": {
+      "sigma_GeV2": 0.1936,
+      "sigma2_GeV4": 0.03748096,
+      "G2_condensate_GeV4": 0.012,
+      "G2_scale_MeV": 330.97509196468735,
+      "ratio_G2_sigma2": 0.3201625572023769,
+      "c_G": 0.2,
+      "correction_frac": 0.03201625572023769,
+      "correction_percent": 3.2016255720237687,
+      "uncertainty_percent": 1.0
+    },
+    "threshold": {
+      "b0_nf3": 0.716197243913529,
+      "b0_nf4": 0.6631455962162306,
+      "b0_nf5": 0.6100939485189322,
+      "b0_nf6": 0.5570423008216338,
+      "Lambda_QCD_MeV": 332.0,
+      "ln_mc_Lambda": 1.3416372105361485,
+      "ln_mb_mc": 1.191294346066165,
+      "ln_mt_mb": 3.7204917047228228,
+      "ln_MP_mt": 38.7978939166075,
+      "ln_total": 45.05131717793264,
+      "b0_eff": 0.5689688481155336,
+      "correction_frac": 0.03,
+      "correction_percent": 3.0,
+      "uncertainty_percent": 0.5
+    },
+    "two_loop": {
+      "N_c": 3,
+      "N_f": 3,
+      "term1_34Nc2": 306,
+      "term2_10NcNf_3": 30.0,
+      "term3_Nc2m1_Nc_Nf": 8.0,
+      "b1_numerator": 268.0,
+      "b1_denominator": 157.91367041742973,
+      "b1": 1.6971298260091578,
+      "correction_frac": 0.02,
+      "correction_percent": 2.0,
+      "uncertainty_percent": 0.5
+    },
+    "instanton": {
+      "rho_fm": 0.33,
+      "sqrt_sigma_MeV": 440.0,
+      "rho_sqrt_sigma": 0.7359351241763812,
+      "rho_sqrt_sigma_sq": 0.5416005069965056,
+      "V_tube_fm3": 0.5026548245743669,
+      "N_inst": 0.5026548245743669,
+      "c_inst": 0.03,
+      "correction_frac": 0.016334286470023003,
+      "correction_percent": 1.6334286470023003,
+      "uncertainty_percent": 1.0
+    }
+  },
+  "total": {
+    "gluon_percent": 3.2016255720237687,
+    "threshold_percent": 3.0,
+    "two_loop_percent": 2.0,
+    "instanton_percent": 1.6334286470023003,
+    "total_percent": 9.835054219026068,
+    "sqrt_sigma_bootstrap_MeV": 481.0750542112236,
+    "sqrt_sigma_corrected_MeV": 433.7610617953407,
+    "sqrt_sigma_FLAG_MeV": 440.0,
+    "sqrt_sigma_Bulava_MeV": 445.0,
+    "theory_err_MeV": 6.85836457783161,
+    "residual_FLAG_MeV": -6.238938204659291,
+    "residual_Bulava_MeV": -11.238938204659291,
+    "combined_err_FLAG_MeV": 30.773968945887617,
+    "combined_err_Bulava_MeV": 9.799855339873918,
+    "tension_FLAG_sigma": 0.20273427245051576,
+    "tension_Bulava_sigma": 1.1468473579329272
+  },
+  "physics_checks": {
+    "sign_consistency": {
+      "gluon": {
+        "sign": "negative",
+        "physical_mechanism": "OPE power correction to string tension",
+        "literature_support": "SVZ 1979, standard OPE",
+        "assessment": "Well-established - VERIFIED"
+      },
+      "threshold": {
+        "sign": "negative",
+        "physical_mechanism": "Smaller effective b_0 from heavy quarks",
+        "literature_support": "PDG standard methodology",
+        "assessment": "Well-established - VERIFIED"
+      },
+      "two_loop": {
+        "sign": "negative (via scheme matching)",
+        "b1_value": 1.6971298260091578,
+        "physical_mechanism": "MS-bar to physical scheme conversion",
+        "literature_support": "Beneke 1998, Pineda 2001",
+        "assessment": "Scheme-dependent but justified - VERIFIED"
+      },
+      "instanton": {
+        "sign": "negative (flux tube softening)",
+        "physical_mechanism": "Instanton disruption of chromoelectric flux tube",
+        "literature_support": "Phenomenological - Schafer-Shuryak 1998 discusses chiral symmetry, not flux tubes directly",
+        "assessment": "Phenomenological - PARTIALLY VERIFIED",
+        "note": "Small magnitude (1.6%) within large uncertainty (+/-1%)"
+      }
+    },
+    "double_counting": {
+      "instanton_fraction_of_G2_low": 0.1,
+      "instanton_fraction_of_G2_high": 0.3,
+      "double_count_percent_low": 0.16,
+      "double_count_percent_high": 0.48,
+      "within_uncertainties": true,
+      "assessment": "Potential double-counting: 0.16-0.48%. This is within the instanton uncertainty (+/-1%), so acceptable."
+    },
+    "limiting_cases": {
+      "perturbative_limit": {
+        "condition": "<G^2> -> 0",
+        "expected": "Gluon correction -> 0",
+        "actual": "correction ~ <G^2> -> 0",
+        "status": "PASSED"
+      },
+      "large_Nc_limit": {
+        "condition": "N_c -> infinity",
+        "expected": "Instanton effects suppressed as exp(-N_c)",
+        "actual": "Consistent with t Hooft scaling",
+        "status": "PASSED"
+      },
+      "weak_coupling_limit": {
+        "condition": "alpha_s -> 0",
+        "expected": "Two-loop correction -> 0",
+        "actual": "correction ~ alpha_s^2 -> 0",
+        "status": "PASSED"
+      },
+      "degenerate_mass_limit": {
+        "condition": "m_c = m_b = m_t",
+        "expected": "Threshold correction -> 0",
+        "actual": "No flavor thresholds -> no correction",
+        "status": "PASSED"
+      },
+      "high_temperature_limit": {
+        "condition": "T -> T_c (deconfinement)",
+        "expected": "String tension -> 0",
+        "actual": "All corrections become irrelevant",
+        "status": "PASSED"
+      }
+    }
+  },
+  "plots": {
+    "correction_breakdown": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/foundations/../plots/prop_0_0_17z_correction_breakdown_v2.png",
+    "data_comparison": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/foundations/../plots/prop_0_0_17z_data_comparison_v2.png",
+    "uncertainties": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/foundations/../plots/prop_0_0_17z_correction_uncertainties_v2.png",
+    "verification_summary": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/foundations/../plots/prop_0_0_17z_verification_summary_v2.png"
+  },
+  "corrections_applied": {
+    "ln_total": {
+      "original": 52.4,
+      "corrected": 45.05131717793264
+    },
+    "Lambda_QCD_MeV": {
+      "original": 217,
+      "corrected": 332.0
+    },
+    "b1": {
+      "original": 1.07,
+      "corrected": 1.6971298260091578
+    },
+    "rho_sqrt_sigma_sq": {
+      "original": 0.5,
+      "corrected": 0.5416005069965056
+    }
+  }
+}

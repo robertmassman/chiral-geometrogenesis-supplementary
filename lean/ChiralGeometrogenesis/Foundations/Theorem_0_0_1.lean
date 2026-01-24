@@ -14,7 +14,7 @@
 
   The theorem proves: These facts are MUTUALLY CONSISTENT only for D = 4.
 
-  Reference: docs/proofs/Phase-Minus-1/Theorem-0.0.1-D4-From-Observer-Existence.md
+  Reference: docs/proofs/foundations/Theorem-0.0.1-D4-From-Observer-Existence.md
 -/
 
 import ChiralGeometrogenesis.Foundations.StabilityTheorems
@@ -734,7 +734,7 @@ The following theorems verify the numerical facts from the markdown specificatio
 using `norm_num` and `decide`. These provide machine-checked confirmation of
 the computational claims in Theorem-0.0.1-D4-From-Observer-Existence.md.
 
-**Reference:** docs/proofs/Phase-Minus-1/Theorem-0.0.1-D4-From-Observer-Existence.md
+**Reference:** docs/proofs/foundations/Theorem-0.0.1-D4-From-Observer-Existence.md
 -/
 
 /-! ### 6.6 Gravitational Wave Polarizations (§6.6 in markdown)

@@ -15,7 +15,7 @@
   is AXIOM-FREE. This supplementary file imports topological axioms
   (π₃(SU(3)) = ℤ) for physical applications.
 
-  Reference: docs/proofs/Phase-Minus-1/Theorem-0.0.3-Stella-Uniqueness.md §5.3
+  Reference: docs/proofs/foundations/Theorem-0.0.3-Stella-Uniqueness.md §5.3
 -/
 
 import ChiralGeometrogenesis.PureMath.AlgebraicTopology.HomotopyGroups

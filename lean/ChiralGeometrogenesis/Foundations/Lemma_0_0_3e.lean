@@ -14,7 +14,7 @@
 
   These are the kinematic (symmetry) properties, not dynamics.
 
-  Reference: docs/proofs/Phase-Minus-1/Theorem-0.0.3-Stella-Uniqueness.md §5.3
+  Reference: docs/proofs/foundations/Theorem-0.0.3-Stella-Uniqueness.md §5.3
 -/
 
 import ChiralGeometrogenesis.Foundations.Lemma_0_0_3a

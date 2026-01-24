@@ -172,15 +172,15 @@
     },
     "dimensional_analysis": {
       "dimension_table": {
-        "Killing_form_B": "[length]^{-2}",
-        "Inverse_B_inv": "[length]^2",
-        "Weight_space_metric": "dimensionless (angles)",
+        "Killing_form_B": "dimensionless (abstract); [length]^{-2} when interpreted as metric",
+        "Inverse_B_inv": "dimensionless (abstract); [length]^2 when interpreted as inverse metric",
+        "Weight_space_metric": "dimensionless (angles/ratios)",
         "3D_metric": "[length]^2"
       },
       "interpretation": {
-        "Killing_form": "Related to gauge coupling, [energy]\u00b2 dimension",
-        "Weight_space": "Quantum numbers, dimensionless",
-        "Physical_metric": "Requires scale (\u03b5, R_stella) from QCD"
+        "Killing_form": "Intrinsically dimensionless; B(X,Y) = Tr(ad_X \u2218 ad_Y) is a pure number",
+        "Weight_space": "Dimensionless ratios; g_K = (1/12)\u00b7I\u2082",
+        "Physical_metric": "Length scales enter via \u039b_QCD connection"
       },
       "scale_derived": false,
       "scale_note": "Absolute scale (\u03b5, R_stella) matched to QCD, not derived"

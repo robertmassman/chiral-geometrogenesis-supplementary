@@ -1,0 +1,123 @@
+{
+  "proposition": "0.0.17o",
+  "title": "Regularization Parameter from Self-Consistency",
+  "key_claim": "\u03b5 = 1/2 = \u221a\u03c3/(2\u03c0m_\u03c0) = 0.5017",
+  "tests_passed": 7,
+  "tests_total": 7,
+  "pass_rate": "100.0%",
+  "framework_values": {
+    "epsilon_dimensionless": 0.5,
+    "epsilon_from_pion_formula": 0.5017423154004009,
+    "epsilon_dimensional_fm": 0.22423522727272727,
+    "R_stella_fm": 0.44847045454545453,
+    "R_obs_fm": 0.22423522727272727
+  },
+  "independent_values": {
+    "m_pi_MeV": 139.57,
+    "sqrt_sigma_MeV": 440,
+    "lambda_bar_pi_fm": 1.4138210217095364,
+    "lattice_penetration_depth_fm": 0.22,
+    "lattice_flux_tube_width_fm": 0.4,
+    "T_c_MeV": 155
+  },
+  "results": [
+    {
+      "test_name": "\u03b5 = \u221a\u03c3/(2\u03c0m_\u03c0) derivation",
+      "category": "derivation",
+      "passed": true,
+      "framework_value": 0.5017423154004009,
+      "independent_value": 0.5,
+      "agreement_pct": 99.65153691991982,
+      "tolerance_pct": 2.0,
+      "notes": "\u03b5 = 440/(2\u03c0 \u00d7 139.57) = 0.5017 \u2248 0.5",
+      "sources": [
+        "PDG 2024 (m_\u03c0)",
+        "FLAG 2024 (\u221a\u03c3)"
+      ]
+    },
+    {
+      "test_name": "\u03b5 \u00d7 R_stella matches flux tube penetration depth",
+      "category": "prediction",
+      "passed": true,
+      "framework_value": 0.22423522727272727,
+      "independent_value": 0.22,
+      "agreement_pct": 98.11125694912506,
+      "tolerance_pct": 10.0,
+      "notes": "\u03b5_dim = 0.224 fm vs lattice \u03bb = 0.22 \u00b1 0.02 fm",
+      "sources": [
+        "Cea et al. 2012, 2014",
+        "Cardoso et al. 2013"
+      ]
+    },
+    {
+      "test_name": "\u221a\u03c3/m_\u03c0 \u2248 \u03c0 numerical relationship",
+      "category": "consistency",
+      "passed": true,
+      "framework_value": 3.1525399441140647,
+      "independent_value": 3.141592653589793,
+      "agreement_pct": 99.65153691991982,
+      "tolerance_pct": 1.0,
+      "notes": "\u221a\u03c3/m_\u03c0 = 3.1525 vs \u03c0 = 3.1416 (deviation: 0.35%)",
+      "sources": [
+        "FLAG 2024",
+        "PDG 2024",
+        "QCD phenomenology"
+      ]
+    },
+    {
+      "test_name": "Stability bound: \u03b5 < 1/\u221a3",
+      "category": "consistency",
+      "passed": true,
+      "framework_value": 0.5017423154004009,
+      "independent_value": 0.5773502691896258,
+      "agreement_pct": 86.90431825807427,
+      "tolerance_pct": 0.0,
+      "notes": "\u03b5 = 0.5017 < 1/\u221a3 = 0.5774 (margin: 13.1%)",
+      "sources": [
+        "Theorem 0.2.3 (energy curvature)"
+      ]
+    },
+    {
+      "test_name": "Flux tube width w \u2248 2\u03bb relationship",
+      "category": "consistency",
+      "passed": true,
+      "framework_value": 1.8181818181818183,
+      "independent_value": 2.0,
+      "agreement_pct": 90.90909090909092,
+      "tolerance_pct": 10.0,
+      "notes": "w/\u03bb = 0.4/0.22 = 1.82 vs expected \u2248 2",
+      "sources": [
+        "Cea et al. 2012, 2014",
+        "Dual superconductor model"
+      ]
+    },
+    {
+      "test_name": "Resolution limit = \u03bb\u0304_\u03c0/(2\u03c0) matches \u03b5_dim",
+      "category": "derivation",
+      "passed": true,
+      "framework_value": 0.2250166042523066,
+      "independent_value": 0.22423522727272727,
+      "agreement_pct": 99.65274696852896,
+      "tolerance_pct": 1.0,
+      "notes": "\u03bb\u0304_\u03c0/(2\u03c0) = 0.2250 fm vs \u03b5_dim = 0.2242 fm",
+      "sources": [
+        "PDG 2024",
+        "Wave resolution theory"
+      ]
+    },
+    {
+      "test_name": "Temperature stability: \u03b5(T=100 MeV) correction < 30%",
+      "category": "limit",
+      "passed": true,
+      "framework_value": 0.3742347581571227,
+      "independent_value": 0.5,
+      "agreement_pct": 74.84695163142455,
+      "tolerance_pct": 30.0,
+      "notes": "\u03b5(T=100 MeV) = 0.374 vs \u03b5\u2080 = 0.5 (25.2% change)",
+      "sources": [
+        "Lattice QCD finite-T",
+        "Chiral perturbation theory"
+      ]
+    }
+  ]
+}

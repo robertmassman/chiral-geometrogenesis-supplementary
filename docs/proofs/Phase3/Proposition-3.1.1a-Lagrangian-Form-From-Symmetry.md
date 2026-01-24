@@ -15,6 +15,10 @@
 - Strengthens the foundation of Theorem 3.1.1 (Phase-Gradient Mass Formula)
 - Establishes uniqueness of the mass generation mechanism
 
+**Downstream Usage:**
+- **Theorem 2.5.1** (Complete CG Lagrangian) — uses uniqueness result for $\mathcal{L}_{drag}$ derivation
+- **Theorem 3.1.1** (Phase-Gradient Mass Formula) — uses derived Lagrangian form
+
 ---
 
 ## 0. Executive Summary

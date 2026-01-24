@@ -4,6 +4,7 @@
 
 **Created:** 2026-01-05
 **Verified:** 2026-01-05
+**Updated:** 2026-01-21 (Adversarial physics verification added)
 **Purpose:** Derive the regularization parameter ε ≈ 0.50 (in units of R_stella) from first principles using energy minimization and self-consistency arguments.
 
 ---
@@ -681,8 +682,27 @@ The following Python script verifies the numerical results in Sections 11 and 12
 
 ---
 
+## 15. Adversarial Physics Verification
+
+See `verification/foundations/prop_0_0_17o_physics_verification.py` — Tests against independent physics data:
+
+| Test | Category | Result | Sources |
+|------|----------|--------|---------|
+| ε = √σ/(2πm_π) = 0.5017 | derivation | ✅ CORRECTLY DERIVED | PDG 2024, FLAG 2024 |
+| ε_dim = 0.224 fm matches lattice λ | prediction | ✅ MATCHES (98.1%) | Cea et al. 2012, 2014 |
+| √σ/m_π ≈ π relationship | consistency | ✅ VERIFIED (0.35% deviation) | QCD phenomenology |
+| Stability bound ε < 1/√3 | consistency | ✅ SATISFIED (13% margin) | Theorem 0.2.3 |
+| Flux tube w/λ ≈ 2 ratio | consistency | ✅ CONSISTENT (91%) | Dual superconductor model |
+| Resolution limit λ̄_π/(2π) | derivation | ✅ MATCHES ε_dim (99.7%) | Wave physics |
+| Temperature stability T < T_c | limit | ✅ CORRECTIONS < 30% at T=100 MeV | Lattice QCD finite-T |
+
+**Overall: 7/7 adversarial tests pass** — Results saved to `verification/foundations/prop_0_0_17o_physics_verification_results.json`
+
+---
+
 *Status: ✅ VERIFIED — All open questions resolved*
 
 *Created: 2026-01-05*
-*Last Updated: 2026-01-05*
+*Last Updated: 2026-01-21 (Adversarial physics verification added)*
 *Extensions Added: 2026-01-05 — Sections 11-12 addressing alternative regularization schemes and temperature dependence*
+*Adversarial Verification: 7/7 tests pass (2026-01-21)*

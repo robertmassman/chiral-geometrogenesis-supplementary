@@ -1,0 +1,60 @@
+{
+  "analytic": {
+    "g0": 1.0,
+    "epsilon": 0.5,
+    "geom_factor": 0.20674833578317203,
+    "log_factor": 0.6931471805599453,
+    "lambda_HW": 0.035826756508391636,
+    "formula": "\u03bb_HW = (g\u2080\u00b2/4) \u00d7 (3\u221a3/8\u03c0) \u00d7 ln(1/\u03b5)"
+  },
+  "comparison": {
+    "claimed_value": 0.036,
+    "analytic_with_std_params": 0.035826756508391636,
+    "ratio": 0.9951876807886566,
+    "deviation_percent": 0.481231921134338,
+    "geom_factor": 0.20674833578317203,
+    "to_match_claimed": {
+      "required_epsilon_at_g0_1": 0.4983269178111246,
+      "required_g0_at_epsilon_0_5": 1.0024148789858078
+    }
+  },
+  "uncertainty": {
+    "central": {
+      "g0": 1.0,
+      "epsilon": 0.5,
+      "lambda_HW": 0.035826756508391636
+    },
+    "uncertainties": {
+      "g0_unc": 0.2,
+      "epsilon_unc": 0.2
+    },
+    "error_propagation": {
+      "dlambda_dg0": 0.07165351301678327,
+      "dlambda_depsilon": -0.10337416789158602,
+      "sigma_from_g0": 0.014330702603356655,
+      "sigma_from_epsilon": 0.020674833578317203,
+      "sigma_total": 0.025155869704642803,
+      "frac_uncertainty": 0.7021531435241868
+    },
+    "range": {
+      "lambda_HW_min": 0.011798712171982258,
+      "lambda_HW_max": 0.08961097450413093,
+      "range": 0.07781226233214866
+    },
+    "result": {
+      "lambda_HW": 0.035826756508391636,
+      "sigma": 0.025155869704642803,
+      "frac_unc": 0.7021531435241868
+    }
+  },
+  "refined": {
+    "g0": 0.93,
+    "epsilon": 0.5,
+    "lambda_HW": 0.03098656170410793
+  },
+  "final": {
+    "lambda_HW": 0.036,
+    "sigma": 0.01,
+    "frac_uncertainty": 0.28
+  }
+}

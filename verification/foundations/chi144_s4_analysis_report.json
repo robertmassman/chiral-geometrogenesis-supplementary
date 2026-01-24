@@ -1,0 +1,235 @@
+{
+  "title": "\u03c7 = -144 Toric CY with S\u2084 Symmetry: Theoretical Analysis",
+  "date": "2026-01-23",
+  "research_item": "9.1.14",
+  "executive_summary": "\n    RESEARCH QUESTION: Does there exist a toric CY3 X with \u03c7(X) = -144\n    admitting a freely-acting S\u2084 symmetry?\n\n    SIGNIFICANCE: If yes, then X/S\u2084 would have \u03c7 = -6, giving exactly\n    3 generations. The stella octangula has S\u2084 \u00d7 Z\u2082 symmetry, making\n    this a natural connection to the CG framework.\n\n    CURRENT STATUS: OPEN QUESTION\n    - No freely-acting S\u2084 has been found on any toric CY3 hypersurface\n    - Maximum freely-acting symmetry order found: 4 (Z\u2082\u00d7Z\u2082) for h\u00b9\u00b9 \u2264 3\n    - The K-S database (473M polytopes) has not been systematically\n      searched for h\u00b9\u00b9 \u2265 4 with automorphism analysis\n\n    CONSTRAINTS:\n    - S\u2084 can embed in Aut(16-cell), but 16-cell CY has \u03c7 = -128 \u2260 -144\n    - S\u2084 can embed in Aut(24-cell), but 24-cell CY has \u03c7 = 0\n    - CICYs have max freely-acting order 18 < 24 = |S\u2084|\n\n    RECOMMENDATION:\n    1. Use CYTools Docker to search h\u00b9\u00b9 = 4, h\u00b2\u00b9 = 76 polytopes\n    2. Compute automorphisms for each\n    3. Check for S\u2084 subgroup using GAP\n    4. If S\u2084 found, verify free action (no fixed points)\n\n    EXPECTED OUTCOME: Likely negative (no S\u2084 freely-acting on toric CY3),\n    but a definitive search would close this avenue and redirect\n    research toward the T'/SL(2,3) modular symmetry interpretation\n    (Appendix G of the main document).\n    ",
+  "sections": {
+    "target_properties": {
+      "euler_characteristic": -144,
+      "hodge_constraint": "h\u00b9\u00b9 - h\u00b2\u00b9 = -72",
+      "valid_combinations": 419,
+      "example_pairs": [
+        [
+          1,
+          73
+        ],
+        [
+          2,
+          74
+        ],
+        [
+          3,
+          75
+        ],
+        [
+          4,
+          76
+        ],
+        [
+          5,
+          77
+        ],
+        [
+          6,
+          78
+        ],
+        [
+          7,
+          79
+        ],
+        [
+          8,
+          80
+        ],
+        [
+          9,
+          81
+        ],
+        [
+          10,
+          82
+        ],
+        [
+          "...",
+          "..."
+        ],
+        [
+          417,
+          489
+        ],
+        [
+          418,
+          490
+        ],
+        [
+          419,
+          491
+        ]
+      ]
+    },
+    "symmetry_analysis": {
+      "theoretical_bounds": {
+        "max_Sk_on_CY3": 6,
+        "max_Sk_on_4D_toric": 6
+      },
+      "literature_results": [
+        {
+          "paper": "Braun et al. 2017 [1704.07812]",
+          "result": "Max freely-acting order = 4 (Z\u2082\u00d7Z\u2082) on h\u00b9\u00b9\u22643 toric CY3",
+          "scope": "~350 manifolds with h\u00b9\u00b9 \u2264 3",
+          "s4_found": false
+        },
+        {
+          "paper": "Braun et al. 2020 [1708.08943]",
+          "result": "Max freely-acting order = 18 on CICYs",
+          "scope": "All 7890 CICY manifolds",
+          "s4_found": false,
+          "note": "18 < 24 = |S\u2084|, so no S\u2084 on CICYs"
+        },
+        {
+          "paper": "Braun et al. 2010 (BCDD manifold)",
+          "result": "Dic\u2083 (order 12) on \u03c7 = -72 CICY, quotient gives \u03c7 = -6",
+          "scope": "Single example",
+          "s4_found": false,
+          "note": "Dic\u2083 is related to S\u2084 but not a subgroup"
+        }
+      ],
+      "s4_constraints": [
+        "S\u2084 has order 24, so parent manifold needs \u03c7 = -144 for quotient \u03c7 = -6",
+        "S\u2084 smallest faithful representation is 3D (acts on \u211d\u00b3 by permutation)",
+        "For freely-acting: S\u2084 must have no fixed points on the CY",
+        "Non-trivial S\u2084 elements have fixed point sets that must not intersect CY",
+        "S\u2084 can embed in Aut(16-cell) = B\u2084, but 16-cell CY has \u03c7 = -128 \u2260 -144",
+        "S\u2084 can embed in Aut(24-cell) = F\u2084, but 24-cell CY has \u03c7 = 0"
+      ]
+    },
+    "polytope_groups": {
+      "B\u2084 (hyperoctahedral)": {
+        "order": 384,
+        "contains_S4": true,
+        "examples": [
+          "16-cell",
+          "tesseract"
+        ],
+        "chi_values": [
+          -128,
+          128
+        ]
+      },
+      "F\u2084 (exceptional)": {
+        "order": 1152,
+        "contains_S4": true,
+        "examples": [
+          "24-cell"
+        ],
+        "chi_values": [
+          0
+        ]
+      },
+      "S\u2085 (symmetric)": {
+        "order": 120,
+        "contains_S4": true,
+        "examples": [
+          "4-simplex"
+        ],
+        "chi_values": [
+          -200
+        ]
+      },
+      "D_n (dihedral)": {
+        "order": "2n",
+        "contains_S4": false,
+        "note": "Would need n \u2265 12 for order \u2265 24"
+      },
+      "Z_n (cyclic)": {
+        "order": "n",
+        "contains_S4": false,
+        "note": "Abelian, cannot contain S\u2084"
+      }
+    },
+    "search_strategy": {
+      "priority_order": [
+        {
+          "priority": 1,
+          "description": "Search h\u00b9\u00b9 \u2264 10 polytopes with h\u00b2\u00b9 = h\u00b9\u00b9 + 72",
+          "rationale": "Small polytopes tend to have larger automorphism groups",
+          "hodge_pairs": [
+            [
+              1,
+              73
+            ],
+            [
+              2,
+              74
+            ],
+            [
+              3,
+              75
+            ],
+            [
+              4,
+              76
+            ],
+            [
+              5,
+              77
+            ],
+            [
+              6,
+              78
+            ],
+            [
+              7,
+              79
+            ],
+            [
+              8,
+              80
+            ],
+            [
+              9,
+              81
+            ],
+            [
+              10,
+              82
+            ]
+          ]
+        },
+        {
+          "priority": 2,
+          "description": "Check reflexive polytopes related to 16-cell and 24-cell",
+          "rationale": "These have known S\u2084 \u2282 Aut, need \u03c7 = -144",
+          "approach": "Look for deformations or related polytopes in K-S database"
+        },
+        {
+          "priority": 3,
+          "description": "Systematic CYTools search with automorphism computation",
+          "rationale": "Complete coverage but computationally expensive",
+          "approach": "\n        for h11 in range(1, 420):\n            polys = fetch_polytopes(h11=h11, lattice='N')\n            for poly in polys:\n                # Compute CY Hodge numbers\n                # Filter for \u03c7 = -144\n                # Compute automorphism group\n                # Check for S\u2084 subgroup\n        "
+        }
+      ],
+      "tools": [
+        "CYTools (Docker): fetch_polytopes, automorphisms",
+        "Macaulay2: ReflexivePolytopesDB package",
+        "SageMath: lattice polytope and group theory",
+        "GAP: Subgroup analysis for S\u2084"
+      ],
+      "expected_difficulty": "\n    HIGH - The search requires:\n    1. Computing Hodge numbers for many polytopes (requires triangulation)\n    2. Computing full automorphism group (expensive for large polytopes)\n    3. Checking if Aut contains S\u2084 as subgroup (group theory)\n    4. Verifying S\u2084 acts freely (most difficult - geometric condition)\n\n    Literature suggests freely-acting S\u2084 on toric CY3 may not exist,\n    given that max order found so far is 4 (Z\u2082\u00d7Z\u2082) on h\u00b9\u00b9 \u2264 3.\n    "
+    },
+    "near_misses": {
+      "16_cell": {
+        "chi": -128,
+        "has_s4": true,
+        "problem": "\u03c7 = -128 not divisible by 6 (128 = 2\u2077)",
+        "quotient_chi": "-128/24 = -5.33 (not integer)"
+      },
+      "BCDD_manifold": {
+        "chi": -72,
+        "symmetry": "Dic\u2083 (order 12)",
+        "quotient_chi": -6,
+        "problem": "Dic\u2083 \u2260 S\u2084, order 12 < 24"
+      }
+    }
+  }
+}

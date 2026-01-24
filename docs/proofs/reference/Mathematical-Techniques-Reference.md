@@ -15,9 +15,12 @@ This document provides detailed reference material for mathematical techniques c
 - Casimir operator calculations
 
 **Standard Results to Reference:**
-- Weight vectors for quarks: (1,0), (−1/2, √3/2), (−1/2, −√3/2)
+- Weight vectors for quarks (Dynkin normalization): μ_R = (1/2, 1/(2√3)), μ_G = (−1/2, 1/(2√3)), μ_B = (0, −1/√3)
+- These form an equilateral triangle with unit side length in (I₃, Y) plane
+- Hypercharge scaled by 2/√3 relative to Gell-Mann–Nishijima convention
+- Simple roots have squared length 2 (standard Dynkin convention)
 - π₃(SU(N)) = ℤ (crucial for topological charges)
-- Tr[TᵃTᵇ] = ½δᵃᵇ (normalization convention)
+- Tr[TᵃTᵇ] = ½δᵃᵇ (generator normalization)
 
 **Common Errors:**
 - Incorrect normalization of generators
@@ -244,3 +247,98 @@ $$\frac{d\sin^2\theta_W}{d\ln\mu} = \frac{\sin^2\theta_W \cos^2\theta_W}{2\pi}(b
 - Anomaly coefficients are integers (count zero modes)
 - Must match between UV and IR: A_UV = A_IR
 - Chirality selected at GUT scale persists to low energy
+
+---
+
+## 12. Schwinger-Dyson Equations
+
+**Where Used:** Theorem 3.1.1 (Phase-Gradient Mass Formula), mass generation derivations
+
+**Core Equation:**
+$$S^{-1}(p) = S_0^{-1}(p) - \Sigma(p)$$
+where $\Sigma(p)$ is the self-energy from loop corrections.
+
+**Mass Pole Extraction:**
+- Physical mass defined by pole: $S^{-1}(p)|_{p^2 = m^2} = 0$
+- For derivative coupling $\mathcal{L}_{drag} = -(g_\chi/\Lambda)\bar{\psi}_L\gamma^\mu(\partial_\mu\chi)\psi_R$:
+$$m_f = \frac{g_\chi \omega_0 v_\chi}{\Lambda} \cdot \eta_f$$
+
+**Key CG Application:**
+- Pole mass emerges from phase-gradient coupling
+- Internal time $\lambda$ gives $\gamma^\lambda \to \gamma^0$ via Theorem 0.2.2
+- Justifies mass formula without static Higgs VEV
+
+**Verification:** Self-energy must be UV-finite or regularizable; check Ward identities preserved
+
+---
+
+## 13. 24-Cell and FCC Lattice Geometry
+
+**Where Used:** Theorem 2.3.1 (Universal Chirality), Theorem 0.0.4 (GUT Structure), Phase 5 entropy calculations, Lemma 3.1.2a
+
+**24-Cell Properties:**
+- Regular 4-polytope with 24 vertices, 96 edges, 96 faces, 24 octahedral cells
+- Symmetry group: W(F₄), order 1152
+- Self-dual (dual is another 24-cell)
+- Contains three mutually orthogonal 16-cells (hyperoctahedra, 8 vertices each)
+- Vertices decompose into: 8 of 16-cell type (±1,0,0,0) + 16 of tesseract type (±½,±½,±½,±½)
+- Vertices form the **D₄ root system** (24 roots); the F₄ root system (48 roots) = 24-cell + dual
+
+**Embedding Chain:**
+$$\text{Stella octangula} \to \text{16-cell} \to \text{24-cell} \to D_4 \to SO(10) \to SU(5) \supset SU(3)\times SU(2)\times U(1)$$
+
+**FCC Lattice for Entropy:**
+- Stella octangula tiles space as FCC lattice
+- Lattice spacing: $a^2 = (8/\sqrt{3})\ln(3)\ell_P^2 \approx 5.07\ell_P^2$
+- Used in Theorem 5.2.3 for Bekenstein-Hawking entropy derivation
+
+**Key Result:** The 24-cell structure explains why exactly 3 generations exist (Derivation 8.1.3)
+
+---
+
+## 14. Holographic Methods
+
+**Where Used:** Proposition 0.0.17r (Lattice Spacing), Theorem 5.2.1 (Emergent Metric), Theorem 5.2.5 (Bekenstein-Hawking)
+
+**Core Principle:**
+- Information content bounded by boundary area, not bulk volume
+- $S \leq A/(4\ell_P^2)$ (Bekenstein bound)
+
+**Holographic Self-Consistency:**
+Two independent derivations of FCC lattice spacing converge:
+1. **From entropy counting:** $a^2 = (8/\sqrt{3})\ln(3)\ell_P^2$
+2. **From phase coherence:** Same formula from Theorem 3.0.4
+
+**CG Implementation:**
+- Stella octangula boundary IS the holographic screen
+- Phase information stored on 2D boundary, not 3D bulk
+- Entropy per Planck cell = 1/4 (from 't Hooft brick wall model)
+
+**Logarithmic Correction:**
+$$S = \frac{A}{4\ell_P^2} - \frac{3}{2}\ln\left(\frac{A}{\ell_P^2}\right)$$
+The coefficient 3/2 is a testable prediction from the Z₃ phase structure.
+
+---
+
+## 15. Phase-Lock Stiffness (Extended Kuramoto)
+
+**Where Used:** Proposition 0.0.17k (Pion Decay Constant), Proposition 0.0.17m (Chiral VEV), Theorem 2.2.1-2.2.3
+
+**Extension Beyond Basic Kuramoto:**
+The basic Kuramoto model (Section 4) gives phase-locking. The stiffness extension derives physical scales:
+
+**Phase-Lock Stiffness:**
+$$K_{eff} = \frac{\sqrt{\sigma}}{N_c - 1}$$
+where $\sigma \approx (440 \text{ MeV})^2$ is the string tension.
+
+**Derived Scales:**
+- Pion decay constant: $f_\pi = \sqrt{\sigma}/5 = 88.0$ MeV (95.5% of PDG 92.1 MeV)
+- Chiral VEV: $v_\chi = f_\pi$ (from Proposition 0.0.17m)
+- Cutoff scale: $\Lambda = 4\pi f_\pi \approx 1.16$ GeV
+
+**Physical Interpretation:**
+- Stiffness measures resistance to phase deformation
+- Higher stiffness → stronger confinement
+- Links QCD string tension to chiral symmetry breaking scale
+
+**Verification:** Cross-check $f_\pi$ against lattice QCD and experiment

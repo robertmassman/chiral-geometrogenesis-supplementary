@@ -2,7 +2,9 @@
 
 **Paper:** Chiral Geometrogenesis: Deriving Gauge Structure, Mass, and Gravity from Geometric Foundations
 
-**Status:** Ready for submission (pending repository public release)
+**Status:** Ready for submission to gen-ph (no endorsement required)
+
+**Note:** Unable to obtain hep-th endorsement. Submitting to gen-ph as primary category. Can request cross-listing to hep-th later if paper gains traction or endorsement is obtained.
 
 ---
 
@@ -28,36 +30,40 @@ claiming any isomorphism between the discrete polyhedron and the continuous
 8-dimensional Lie group SU(3).
 
 Geometric foundations: (1) Under standard physics (GR + QM), spacetime dimension
-D=4 is uniquely compatible with stable bound-state observers. (2) SU(3) is the
-unique simple compact gauge group of low rank admitting such a polyhedral
-realization, derived from D=4 via D = N + 1 where N is the number of colors.
-(3) The Killing form induces a Euclidean metric on 2D weight space, extending
-consistently to the 3D stella embedding. (4) Among all polyhedral complexes
-satisfying the geometric realization conditions, the stella octangula is unique.
+D=4 is uniquely compatible with stable bound-state observers. (2) SU(3) is
+topologically derived as the unique gauge group: the stella's intrinsic Z_3
+rotational symmetry determines Z_3 ⊆ Z(G), and the rank constraint rank(G) ≤ 2
+from D=4 uniquely forces G = SU(3). (3) The Killing form induces a Euclidean
+metric on 2D weight space, extending consistently to the 3D stella embedding.
+(4) Among all topological spaces satisfying the geometric realization
+conditions---including non-convex polyhedra, infinite structures, and
+fractals---the stella octangula is unique.
 
-Dynamical consequences: (5) Fermion masses arise from phase-gradient coupling;
-the Wolfenstein parameter λ = (1/φ³)sin 72° = 0.2245 is derived geometrically
-(0.2σ from PDG after radiative corrections). (6) The Strong CP problem is
-resolved: θ = 0 is geometrically required by Z₃ center structure, not fine-tuned.
-(7) Time's arrow and baryon asymmetry (η ≈ 6×10⁻¹⁰) emerge from chiral phase
-structure. (8) Einstein's equations emerge as fixed-point conditions for metric
-iteration, with G = 1/(8πf_χ²). (9) Cosmological spectral index n_s = 1 - 2/N
-with N ≈ 57 is consistent with Planck.
+Dynamical consequences: (5) Fermion masses follow m ∝ ω·η from phase-gradient
+coupling. (6) The mass hierarchy pattern m_n ∝ λ^{2n} is derived from generation
+localization geometry; the Wolfenstein parameter λ = (1/φ³)sin 72° = 0.2245
+(0.2σ from PDG). (7) The Strong CP problem is completely resolved: θ_bare = 0
+from Z_3 superselection and arg det(M_q) = 0 from real overlap integrals.
+(8) Three fundamental asymmetries (weak chirality, time's arrow, matter
+dominance η ≈ 6×10⁻¹⁰) share unified topological origin from stella orientation.
+(9) Einstein's equations emerge as fixed-point conditions for metric iteration,
+with G = 1/(8πf_χ²). (10) Neutrino reactor angle θ_13 = 8.54° derived via
+A_4 → Z_3 breaking formula. (11) Three fermion generations derived through
+four independent proofs.
 
-The framework is self-consistent: quantum mechanics and Lorentz invariance
-emerge from chiral field dynamics. Machine-verified Lean 4 code (180 files,
-170K lines) and Python verification scripts are provided.
+The framework reduces the Standard Model's 20 fermion-sector parameters to
+approximately 11. Machine-verified Lean 4 code and Python verification scripts
+are provided.
 ```
 
 ### Primary Category
 ```
-hep-th (High Energy Physics - Theory)
+physics.gen-ph (General Physics)
 ```
 
 ### Cross-list Categories
 ```
-math-ph (Mathematical Physics)
-gr-qc (General Relativity and Quantum Cosmology)
+(none initially - can request cross-listing to hep-th, math-ph, gr-qc later once published)
 ```
 
 ---
@@ -116,12 +122,20 @@ Note: PACS codes removed from paper (deprecated in REVTeX 4.2; replaced by PhySH
 ## Submission Process
 
 1. Go to https://arxiv.org/submit
-2. Select **hep-th** as primary category
-3. Add **math-ph** and **gr-qc** as cross-lists
+2. Select **physics.gen-ph** as primary category (no endorsement required)
+3. Do NOT add cross-lists initially (gen-ph submissions cannot cross-list to hep-th without endorsement)
 4. Upload `main.tex`, `references.bib`, and all figure files
 5. Fill in metadata from this document
 6. Preview and verify formatting
 7. Submit
+
+### Future Cross-listing Strategy
+
+After the paper is published on arXiv:
+1. Build citations and visibility in the community
+2. Continue seeking endorsers (see draft emails below)
+3. Once endorsed, request cross-listing to hep-th via arXiv moderation
+4. Note: You cannot change the primary category (gen-ph), but cross-listing makes the paper visible in other categories
 
 ---
 

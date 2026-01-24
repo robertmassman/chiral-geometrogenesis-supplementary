@@ -454,25 +454,28 @@ def verify_dimensions():
     """
     results = {}
 
-    # Table from §8.1 of the theorem
+    # Table from §8.1 of the theorem (updated 2026-01-19)
+    # Note: The Killing form is INTRINSICALLY DIMENSIONLESS as a bilinear form
+    # on the abstract Lie algebra. Physical dimensions arise only when
+    # interpreted geometrically.
     dimension_table = {
-        'Killing_form_B': '[length]^{-2}',
-        'Inverse_B_inv': '[length]^2',
-        'Weight_space_metric': 'dimensionless (angles)',
+        'Killing_form_B': 'dimensionless (abstract); [length]^{-2} when interpreted as metric',
+        'Inverse_B_inv': 'dimensionless (abstract); [length]^2 when interpreted as inverse metric',
+        'Weight_space_metric': 'dimensionless (angles/ratios)',
         '3D_metric': '[length]^2'
     }
 
     results['dimension_table'] = dimension_table
 
     # Physical interpretation:
-    # - Killing form has dimensions of [energy]² in natural units
-    # - Weight space is dimensionless (quantum numbers)
-    # - Adding radial direction introduces length dimension
+    # - Killing form is intrinsically dimensionless (Tr(ad_X ∘ ad_Y) gives pure number)
+    # - Weight space metric is dimensionless (measures ratios)
+    # - Physical length scales enter when connecting to QCD parameters
 
     results['interpretation'] = {
-        'Killing_form': 'Related to gauge coupling, [energy]² dimension',
-        'Weight_space': 'Quantum numbers, dimensionless',
-        'Physical_metric': 'Requires scale (ε, R_stella) from QCD'
+        'Killing_form': 'Intrinsically dimensionless; B(X,Y) = Tr(ad_X ∘ ad_Y) is a pure number',
+        'Weight_space': 'Dimensionless ratios; g_K = (1/12)·I₂',
+        'Physical_metric': 'Length scales enter via Λ_QCD connection'
     }
 
     # The document correctly notes (§9.2) that absolute scale is NOT derived
@@ -592,7 +595,7 @@ if __name__ == '__main__':
     results = run_all_verifications()
 
     # Save results to JSON
-    output_file = '/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/theorem_0_0_2_verification_results.json'
+    output_file = '/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/foundations/theorem_0_0_2_verification_results.json'
     with open(output_file, 'w') as f:
         json.dump(results, f, indent=2)
 

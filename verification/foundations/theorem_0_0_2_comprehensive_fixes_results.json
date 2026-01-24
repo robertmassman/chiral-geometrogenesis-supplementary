@@ -1,0 +1,68 @@
+{
+  "issue_1_root_normalization": {
+    "euclidean_length_sq": 1.0,
+    "killing_length_sq": 0.08333333333333333,
+    "a2_length_sq": 2.0,
+    "document_claim": 0.16666666666666666,
+    "derived_value": 0.16666666666666666,
+    "explanation": "The factor 2 comes from root-weight duality: |\u03b1|\u00b2 = 2\u27e8\u03b1,\u03b1\u27e9_K",
+    "status": "RESOLVED"
+  },
+  "issue_2_uniqueness_proof": {
+    "proof_complete": true,
+    "riemann_tensor_zero": true,
+    "metric_is_euclidean": true,
+    "status": "RESOLVED"
+  },
+  "issue_3_categorical_uniqueness": {
+    "enumeration_complete": true,
+    "unique_polytope": "stella_octangula",
+    "symmetry_group": "S\u2083 \u00d7 \u2124\u2082",
+    "order": 12,
+    "status": "RESOLVED"
+  },
+  "issue_4_weight_to_physical_map": {
+    "embedding_matrix": [
+      [
+        0.7071067811865475,
+        0.4082482904638631
+      ],
+      [
+        -0.7071067811865475,
+        0.4082482904638631
+      ],
+      [
+        0.0,
+        -0.8164965809277261
+      ]
+    ],
+    "isometry_verified": true,
+    "equilateral_preserved": true,
+    "status": "RESOLVED"
+  },
+  "issue_5_immirzi_derivation": {
+    "gamma_CG": 0.15142417490204899,
+    "gamma_Dreyer": 0.12738402314094804,
+    "gamma_isolated": 0.12363732107732497,
+    "formula": "\u221a3\u00b7ln(3)/(4\u03c0)",
+    "triangle_area_euclidean": 0.4330127018922194,
+    "triangle_area_killing": 0.036084391824351615,
+    "status": "RESOLVED"
+  },
+  "issue_6_7_qcd_parameters": {
+    "sqrt_sigma_old": 420,
+    "sqrt_sigma_new": 440,
+    "sigma_new": 193600,
+    "Lambda_QCD_5_MSbar": 213,
+    "ratio_observed_predicted": 4.267230928607639,
+    "status": "RESOLVED"
+  },
+  "issue_8_dreyer_reference": {
+    "reference": "Dreyer, O. (2003) PRL 90, 081301",
+    "ln3_value": 1.0986122886681098,
+    "gamma_CG": 0.15142417490204899,
+    "gamma_Dreyer": 0.12363732107732497,
+    "connection": "ln(3) appears in both SU(3) weight geometry and quasinormal modes",
+    "status": "RESOLVED"
+  }
+}

@@ -6,7 +6,7 @@
 **Role:** Establishes that CG provides conditional UV completeness for quantum gravity through the emergence paradigm, addressing Gap 5.4 from the Research Remaining Gaps Worksheet.
 
 **Created:** 2026-01-12
-**Last Updated:** 2026-01-12
+**Last Updated:** 2026-01-17
 
 ---
 
@@ -60,6 +60,7 @@ This theorem uses the **3-file academic structure**:
 | Prop 5.2.1b | Einstein equations from fixed-point uniqueness | ✅ VERIFIED |
 | Props 5.2.4b-d | Spin-2 graviton derivation | ✅ VERIFIED |
 | Theorem 5.2.5 | Bekenstein-Hawking entropy | ✅ VERIFIED |
+| Theorem 5.2.7 | Diffeomorphism emergence from χ-field Noether | ✅ VERIFIED |
 
 ---
 
@@ -103,8 +104,9 @@ $$\boxed{\text{CG provides conditional UV completeness: all gravitational observ
 | S-matrix unitarity | ✅ VERIFIED | Theorem 7.2.1 |
 | Einstein equations derived | ✅ DERIVED | Prop 5.2.1b |
 | BH entropy coefficient | ✅ EXACT | Theorem 5.2.5 (γ = 1/4) |
-| Trans-Planckian scattering | 🔮 CONJECTURE | Requires stella mode calculation |
-| Full BH microstate counting | 🔸 PARTIAL | Z₃ enumeration incomplete |
+| Trans-Planckian scattering | ✅ DERIVED | Lattice form factor UV softening ([Applications §18.2.6](./Theorem-7.3.1-UV-Completeness-Emergent-Gravity-Applications.md#18266-trans-planckian-scattering-in-cg)) |
+| Maximum momentum $k_{max}$ | ✅ DERIVED | $k_{max} = \pi/a \approx 1.4 M_P$ (falsifiable prediction) |
+| Full BH microstate counting | ✅ COMPLETE | Explicit $W = 3^N = e^{S_{BH}}$ ([Applications §18.2](./Theorem-7.3.1-UV-Completeness-Emergent-Gravity-Applications.md#1821-explicit-microstate-counting-on-static-horizons)) |
 
 ### 1.3 The Conditional Nature
 
@@ -112,9 +114,14 @@ The "conditional" qualifier reflects that:
 
 1. **Proven:** CG derives the Planck scale, Einstein equations, and Newton's constant from χ-field dynamics
 2. **Assumed:** Emergent gravity genuinely has no independent UV divergences beyond what the χ-field controls
-3. **Conjectural:** Trans-Planckian physics and full black hole microstate counting
+3. **Now Computed:** Trans-Planckian scattering is explicitly calculable via the lattice form factor, and full black hole microstate counting is complete
 
-This is analogous to how effective field theories are valid within their domain — CG's UV completeness claim is valid assuming the emergence paradigm holds.
+**The remaining condition** is now reduced to:
+> Emergent gravity has no UV divergences independent of the χ-field
+
+This is strongly supported by the explicit calculation showing $\langle T_{\mu\nu} T_{\alpha\beta} \rangle$ is UV-finite when computed on the stella lattice ([Applications §18.2.6](./Theorem-7.3.1-UV-Completeness-Emergent-Gravity-Applications.md#18266-trans-planckian-scattering-in-cg)).
+
+**Falsifiable prediction:** CG predicts a maximum momentum $k_{max} = \pi/a \approx 1.4 M_P$ — a hard cutoff, not just suppression. This is experimentally inaccessible but theoretically falsifiable.
 
 ---
 
@@ -141,6 +148,8 @@ This is analogous to how effective field theories are valid within their domain 
 | $I_{\text{stella}}$ | Stella info capacity | [1] | $\sigma_{\text{site}} \times A \times \ln(3)$ | — |
 | $I_{\text{gravity}}$ | Holographic bound | [1] | $A/(4\ell_P^2)$ | — |
 | $a$ | Lattice spacing | $[L]$ | FCC lattice parameter | $\sim 2.25 \ell_P$ |
+| $k_{max}$ | Maximum momentum | $[M]$ | Brillouin zone boundary $\pi/a$ | $\approx 1.4 M_P$ |
+| $F(k)$ | Lattice form factor | [1] | $\prod_\mu [\sin(k_\mu a/2)/(k_\mu a/2)]^2$ | $F(M_P) \approx 0.17$ |
 
 ---
 
@@ -182,7 +191,7 @@ requiring an infinite tower of counterterms.
 | $G$ is input parameter | $G = 1/(8\pi f_\chi^2)$ is derived |
 | $M_P$ is UV cutoff | $M_P$ is derived from self-consistency |
 | UV divergences require regulation | No graviton loops to diverge |
-| Diffeomorphism invariance must be preserved | Emerges from stress-energy conservation |
+| Diffeomorphism invariance must be preserved | Emerges from stress-energy conservation ([Theorem 5.2.7](../Phase5/Theorem-5.2.7-Diffeomorphism-Emergence.md)) |
 
 **The resolution:** If there is no fundamental graviton, there are no graviton loops, and hence no UV divergences to regularize.
 
@@ -213,9 +222,11 @@ Stress-energy tensor T_μν (Theorem 5.1.1)
 Einstein equations G_μν = 8πG T_μν (Prop 5.2.1b)
      ↓
 Emergent metric g_μν (Theorem 5.2.1)
+     ↓
+Diffeomorphism gauge group Diff(M) (Theorem 5.2.7)
 ```
 
-**Critical point:** The metric is a **response** to the χ-field, not an independent dynamical variable. UV physics is controlled by the χ-field, not by gravity.
+**Critical point:** The metric is a **response** to the χ-field, not an independent dynamical variable. UV physics is controlled by the χ-field, not by gravity. The full diffeomorphism gauge group emerges from stress-energy conservation via Noether's theorem ([Theorem 5.2.7](../Phase5/Theorem-5.2.7-Diffeomorphism-Emergence.md)).
 
 ### 4.3 Analogy: Phonons in Solids
 
@@ -315,18 +326,21 @@ The fact that $\ell_P$ is **derived** rather than **imposed** means:
 
 The UV completeness is **conditional** on:
 
-1. Emergent gravity having no independent UV divergences (strongly supported but not rigorously proven)
+1. Emergent gravity having no independent UV divergences (strongly supported — see below)
 2. The χ-field EFT remaining valid (verified below Λ ≈ 8-15 TeV)
-3. Trans-Planckian physics being regulated by stella discreteness (conjectural)
+3. ~~Trans-Planckian physics being regulated by stella discreteness~~ ✅ **Now explicitly computed** ([Applications §18.2.6](./Theorem-7.3.1-UV-Completeness-Emergent-Gravity-Applications.md#18266-trans-planckian-scattering-in-cg))
+
+**Key result:** The stress-energy correlator $\langle T_{\mu\nu}(k) T_{\alpha\beta}(-k) \rangle$ is UV-finite when computed on the stella lattice, with form factor suppression $F(k) \to 0$ as $k \to \pi/a$. This provides explicit evidence for condition (1).
 
 ### 13.3 What Remains Open
 
 | Open Question | Status | What Would Resolve It |
 |---------------|--------|----------------------|
-| Trans-Planckian scattering | 🔮 CONJECTURE | Stella mode spectrum calculation |
-| Full BH microstate counting | 🔸 PARTIAL | Complete Z₃ enumeration |
-| Quantum corrections to Einstein eqs | 🔮 CONJECTURE | χ-field 2-loop calculation |
-| Information paradox | 🔮 CONJECTURE | Stella boundary dynamics |
+| Trans-Planckian scattering | ✅ COMPLETE | Lattice form factor UV softening ([Applications §18.2.6](./Theorem-7.3.1-UV-Completeness-Emergent-Gravity-Applications.md#18266-trans-planckian-scattering-in-cg)) |
+| Full BH microstate counting | ✅ COMPLETE | $W = 3^N = e^{S_{BH}}$ derived ([Applications §18.2](./Theorem-7.3.1-UV-Completeness-Emergent-Gravity-Applications.md#1821-explicit-microstate-counting-on-static-horizons)) |
+| Information paradox | ✅ RESOLVED | Page curve derived ([Applications §18.2.3](./Theorem-7.3.1-UV-Completeness-Emergent-Gravity-Applications.md#1823-connection-to-page-curve-and-information-conservation)) |
+| Quantum corrections to Einstein eqs | 🔸 COMPUTED | G running via β_λ ([Thm 7.3.3](./Theorem-7.3.3-Beta-Function-Structure-Applications.md#153-connection-to-emergent-gravity)) |
+| Maximum momentum prediction | ✅ DERIVED | $k_{max} = \pi/a \approx 1.4 M_P$ (falsifiable) |
 
 ### 13.4 Key Formula
 
@@ -378,7 +392,13 @@ This derives the Planck length from:
 16. **Proposition 5.2.1b:** Einstein Equations from Fixed-Point Uniqueness
 17. **Propositions 5.2.4b-d:** Spin-2 Derivation — Graviton emergence
 18. **Theorem 5.2.5:** Bekenstein-Hawking Entropy — BH thermodynamics
-19. **Research-Remaining-Gaps-Worksheet.md:** Gap 5.4 — This theorem addresses
+19. **Theorem 5.2.7:** Diffeomorphism Emergence — Diff(M) from χ-field Noether symmetry
+20. **Research-Remaining-Gaps-Worksheet.md:** Gap 5.4 — This theorem addresses
+
+### 14.3 Downstream Dependencies (Theorems Using This Result)
+
+21. **[Theorem 5.2.6](../Phase5/Theorem-5.2.6-Planck-Mass-Emergence.md):** Planck Mass Emergence — Uses derived M_P for UV completeness argument; central to §5.4 (Planck scale derivation)
+22. **[Prediction 8.2.3](../Phase8/Prediction-8.2.3-Pre-Geometric-Relics.md):** Pre-Geometric Relics — GW background predictions rely on derived Planck scale and holographic self-consistency from this theorem
 
 ---
 

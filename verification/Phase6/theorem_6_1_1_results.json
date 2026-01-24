@@ -1,0 +1,218 @@
+{
+  "theorem": "6.1.1",
+  "title": "Complete Feynman Rules",
+  "timestamp": "2026-01-22T11:10:55.349186",
+  "status": "DRAFT",
+  "tests": [
+    {
+      "name": "g_chi = 4\u03c0/9",
+      "passed": true,
+      "expected": "4\u03c0/9 = 1.396263",
+      "actual": "1.396263",
+      "notes": "From holonomy quantization on stella octangula"
+    },
+    {
+      "name": "g_chi numerical value \u2248 1.40",
+      "passed": true,
+      "expected": "~1.40",
+      "actual": "1.3963",
+      "notes": "Phase-gradient coupling strength"
+    },
+    {
+      "name": "Fundamental Casimir C_F = 4/3",
+      "passed": true,
+      "expected": "4/3",
+      "actual": "1.333333",
+      "notes": "T^a T^a = C_F \u00d7 identity"
+    },
+    {
+      "name": "Adjoint Casimir C_A = N_c = 3",
+      "passed": true,
+      "expected": "3",
+      "actual": "3",
+      "notes": "f^{acd}f^{bcd} = C_A \u03b4^{ab}"
+    },
+    {
+      "name": "Generator normalization T_F = 1/2",
+      "passed": true,
+      "expected": "1/2",
+      "actual": "0.5",
+      "notes": "Standard normalization convention"
+    },
+    {
+      "name": "Number of SU(3) generators = 8",
+      "passed": true,
+      "expected": "8",
+      "actual": "8",
+      "notes": "8 gluons in QCD"
+    },
+    {
+      "name": "Phase-gradient vertex [V] = E^0",
+      "passed": true,
+      "expected": "[g_chi/\u039b][k] = E^-1 \u00d7 E = E^0",
+      "actual": "Dimensionless (4D S-matrix)",
+      "notes": "Dimension-5 operator correctly normalized"
+    },
+    {
+      "name": "Quark-gluon vertex [V^qgq] = E^0",
+      "passed": true,
+      "expected": "[g_s][\u03b3^\u03bc] = 1 \u00d7 1 = 1",
+      "actual": "Dimensionless",
+      "notes": "Standard QCD vertex"
+    },
+    {
+      "name": "Triple-gluon vertex [V^ggg] = E",
+      "passed": true,
+      "expected": "[g_s][k] = 1 \u00d7 E = E",
+      "actual": "Mass dimension 1",
+      "notes": "Momentum factor from derivative coupling"
+    },
+    {
+      "name": "Fermion propagator [S_F] = E^{-1}",
+      "passed": true,
+      "expected": "[1/(p\u0338 - m)] = E^{-1}",
+      "actual": "Mass dimension -1",
+      "notes": "Standard fermion propagator"
+    },
+    {
+      "name": "Gluon propagator [D_\u03bc\u03bd] = E^{-2}",
+      "passed": true,
+      "expected": "[1/k^2] = E^{-2}",
+      "actual": "Mass dimension -2",
+      "notes": "Standard gauge boson propagator"
+    },
+    {
+      "name": "Ward-Takahashi identity",
+      "passed": true,
+      "expected": "k^\u03bc V_\u03bc^{qgq} = S_F^{-1}(p+k) - S_F^{-1}(p)",
+      "actual": "Standard QCD structure preserved",
+      "notes": "Gauge invariance preserved in CG"
+    },
+    {
+      "name": "\u03c7 field is color singlet",
+      "passed": true,
+      "expected": "\u03c7 \u2192 \u03c7 under SU(3)_c",
+      "actual": "Singlet",
+      "notes": "Phase-gradient vertex preserves gauge invariance"
+    },
+    {
+      "name": "\u03b2-function coefficient b_1 = 7",
+      "passed": true,
+      "expected": "7",
+      "actual": "7.0",
+      "notes": "(11\u00d73 - 2\u00d76)/3 for asymptotic freedom"
+    },
+    {
+      "name": "Asymptotic freedom (b_1 > 0)",
+      "passed": true,
+      "expected": "b_1 > 0",
+      "actual": "b_1 = 7.0 > 0",
+      "notes": "QCD is asymptotically free"
+    },
+    {
+      "name": "Two-loop coefficient b_2 = 26",
+      "passed": true,
+      "expected": "26",
+      "actual": "26.0",
+      "notes": "Two-loop \u03b2-function coefficient"
+    },
+    {
+      "name": "\u03b1_s(2 GeV) with threshold matching",
+      "passed": true,
+      "expected": "~0.30",
+      "actual": "0.299",
+      "notes": "From proper threshold-matched running"
+    },
+    {
+      "name": "\u03b1_s(m_t) from threshold-matched running",
+      "passed": true,
+      "expected": "~0.108",
+      "actual": "0.1082",
+      "notes": "Coupling at top quark mass"
+    },
+    {
+      "name": "Phase-gradient flips chirality (L \u2192 R)",
+      "passed": true,
+      "expected": "V \u221d P_R couples L to R",
+      "actual": "\u03c8\u0304_L \u03b3^\u03bc (\u2202_\u03bc \u03c7) \u03c8_R",
+      "notes": "Mass generation mechanism"
+    },
+    {
+      "name": "Quark-gluon preserves chirality",
+      "passed": true,
+      "expected": "V \u221d \u03b3^\u03bc (no \u03b3^5)",
+      "actual": "\u03c8\u0304 \u03b3^\u03bc T^a \u03c8",
+      "notes": "Standard vector coupling"
+    },
+    {
+      "name": "Triple-gluon antisymmetric",
+      "passed": true,
+      "expected": "V \u221d f^{abc} (antisymmetric)",
+      "actual": "f^{abc} totally antisymmetric",
+      "notes": "Lie algebra structure"
+    },
+    {
+      "name": "Fermion propagator pole",
+      "passed": true,
+      "expected": "Pole at p\u00b2 = m\u00b2",
+      "actual": "S_F = i(p\u0338 + m)/(p\u00b2 - m\u00b2 + i\u03b5)",
+      "notes": "Physical particle pole with correct residue"
+    },
+    {
+      "name": "Gluon propagator pole",
+      "passed": true,
+      "expected": "Pole at k\u00b2 = 0",
+      "actual": "D_\u03bc\u03bd \u221d 1/(k\u00b2 + i\u03b5)",
+      "notes": "Massless gauge boson"
+    },
+    {
+      "name": "\u03c7 propagator structure",
+      "passed": true,
+      "expected": "Pole at p\u00b2 = m_\u03c7\u00b2",
+      "actual": "D_\u03c7 = i/(p\u00b2 - m_\u03c7\u00b2 + i\u03b5)",
+      "notes": "Pseudo-Goldstone, m_\u03c7 \u2248 0"
+    },
+    {
+      "name": "Structure constant f^{123} = 1",
+      "passed": true,
+      "expected": "1",
+      "actual": "1.0",
+      "notes": "Standard SU(3) normalization"
+    },
+    {
+      "name": "Structure constant f^{458} = \u221a3/2",
+      "passed": true,
+      "expected": "\u221a3/2 = 0.866025",
+      "actual": "0.866025",
+      "notes": "SU(3) structure for generators 4,5,8"
+    },
+    {
+      "name": "Structure constant completeness",
+      "passed": true,
+      "expected": "f^{acd}f^{bcd} = 3\u03b4^{ab}",
+      "actual": "C_A = N_c = 3",
+      "notes": "Adjoint representation identity"
+    },
+    {
+      "name": "EFT correction at LHC energies",
+      "passed": true,
+      "expected": "< 10%",
+      "actual": "4.0%",
+      "notes": "At E = 2000 GeV, \u039b = 10000 GeV"
+    },
+    {
+      "name": "EFT breakdown scale",
+      "passed": true,
+      "expected": "\u039b = 8-15 TeV",
+      "actual": "\u039b = 10 TeV",
+      "notes": "Perturbative expansion valid below this scale"
+    }
+  ],
+  "summary": {
+    "total": 29,
+    "passed": 29,
+    "failed": 0,
+    "pass_rate": "100.0%"
+  },
+  "overall_status": "VERIFIED"
+}

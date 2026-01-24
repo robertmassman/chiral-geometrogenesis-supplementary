@@ -1,0 +1,37 @@
+{
+  "core_formula": {
+    "dim_adj_EW": 4,
+    "Delta_a_EW": 0.008333333333333333,
+    "term1_gauge": 0.25,
+    "term2_flow": 6.079271018540267,
+    "exponent": 6.329271018540267,
+    "ratio_predicted": 560.7476701670669,
+    "v_H_predicted_GeV": 246.72897487350943,
+    "v_H_observed_GeV": 246.22,
+    "agreement_percent": 0.20671548757592006
+  },
+  "identity_analysis": {
+    "LHS": 6.329271018540267,
+    "ln_triality_sq": 2.1972245773362196,
+    "ln_sqrt_H4_F4": 1.2628643221541278,
+    "exact_index": 5.5765020609072105,
+    "mismatch_with_phi6_percent": 0.2857964409284106
+  },
+  "correction_factor": {
+    "K_observed": 1.28137661277496,
+    "exp_1_4": 1.2840254166877414,
+    "sqrt_phi": 1.272019649514069,
+    "best_match": "exp(1/4)",
+    "match_error_percent": 0.20671548757591002
+  },
+  "interaction_corrections": {
+    "alpha_2": 0.0337975779191722,
+    "alpha_1": 0.010170498222769274,
+    "alpha_top": 0.06985164109333113,
+    "total_relative_correction": 0.1138197172352726
+  },
+  "falsification": {
+    "sqrt_sigma_for_exact_GeV": 0.4390923281529502,
+    "sigma_deviation": -0.03025572823499374
+  }
+}

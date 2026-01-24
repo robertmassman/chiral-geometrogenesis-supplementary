@@ -1,11 +1,18 @@
 # Definition 0.1.2: Three Color Fields with Relative Phases
 
-## Status: ✅ COMPLETE — FOUNDATIONAL (All Questions Resolved)
+## Status: ✅ COMPLETE — DERIVED (All Questions Resolved)
 
 **Role in Framework:** This definition specifies the mathematical structure of the three color fields that exist on the stella octangula boundary (Definition 0.1.1). The relative phases between these fields are not arbitrary—they are uniquely determined by SU(3) representation theory and encode the fundamental color charge structure of QCD. These phases are the mathematical origin of the $\mathbb{Z}_3$ cyclic symmetry that defines the color neutrality condition (which confinement dynamically enforces) and the emergence of chirality.
 
+**Derivation Status (January 2026):** The content of this definition is now **DERIVED** from more fundamental principles via two independent approaches:
+- **[Theorem 0.1.0](Theorem-0.1.0-Field-Existence-From-Distinguishability.md)** — Derives field existence from information geometry (Fisher metric non-triviality implies fields must exist)
+- **[Theorem 0.1.0'](Theorem-0.1.0-Prime-Fields-From-Gauge-Bundle-Structure.md)** — Derives field existence from gauge bundle structure (principal SU(3)-bundle representation theory)
+
+Both theorems independently derive that exactly 3 color fields with phases $\{0, 2\pi/3, 4\pi/3\}$ must exist. This definition is retained for clarity and as the canonical reference for the field structure.
+
 **Dependencies:**
 - ✅ Definition 0.1.1 (Stella Octangula as Boundary Topology) — Establishes the geometric arena
+- ✅ Theorem 0.0.3 (Stella Uniqueness) — SU(3) uniquely determines stella octangula
 - Standard SU(3) representation theory (Gell-Mann matrices, weight diagrams)
 - Complex analysis (roots of unity, phase arithmetic)
 
@@ -829,7 +836,7 @@ $$\boxed{\text{The phases } 0, \frac{2\pi}{3}, \frac{4\pi}{3} \text{ are the mat
 
 ---
 
-*Status: ✅ COMPLETE — Foundational definition with all questions resolved*
+*Status: ✅ COMPLETE — DERIVED definition with all questions resolved (see [Theorem 0.1.0](Theorem-0.1.0-Field-Existence-From-Distinguishability.md) and [Theorem 0.1.0'](Theorem-0.1.0-Prime-Fields-From-Gauge-Bundle-Structure.md))*
 
 *Created: December 2025*
 *Last Updated: December 13, 2025 — Added symbol glossary with dimensional conventions (§1.1); standardized notation to $(T_3, T_8)$ for color SU(3); clarified distinction from flavor hypercharge Y*

@@ -1,0 +1,663 @@
+{
+  "theorem": "Theorem 1.1.3: Color Confinement Geometry",
+  "all_passed": true,
+  "test_count": 12,
+  "passed_count": 12,
+  "tests": [
+    {
+      "test_name": "Tracelessness of SU(3) Generators",
+      "passed": true,
+      "details": {
+        "trace_T3": {
+          "value": 0.0,
+          "is_zero": true,
+          "expected": 0
+        },
+        "trace_Y": {
+          "value": 0.0,
+          "is_zero": true,
+          "expected": 0
+        },
+        "sum_T3_weights": {
+          "value": 0.0,
+          "is_zero": true,
+          "calculation": "0.5 + -0.5 + 0.0 = 0.0"
+        },
+        "sum_Y_weights": {
+          "value": 0.0,
+          "is_zero": true,
+          "calculation": "0.3333333333333333 + 0.3333333333333333 + -0.6666666666666666 = 0.0"
+        }
+      }
+    },
+    {
+      "test_name": "Baryon (RGB) Color Neutrality",
+      "passed": true,
+      "details": {
+        "baryon_weight": {
+          "R": "(+0.500000, +0.333333)",
+          "G": "(-0.500000, +0.333333)",
+          "B": "(+0.000000, -0.666667)",
+          "sum": "(+0.000000, +0.000000)",
+          "numerical_sum": [
+            0.0,
+            0.0
+          ],
+          "is_neutral": true
+        },
+        "T3_component": {
+          "value": 0.0,
+          "calculation": "0.5 + (-0.5) + 0 = 0.0"
+        },
+        "Y_component": {
+          "value": 0.0,
+          "calculation": "1/3 + 1/3 + (-2/3) = 0.0"
+        }
+      }
+    },
+    {
+      "test_name": "Antibaryon (R\u0304\u1e20 B\u0304) Color Neutrality",
+      "passed": true,
+      "details": {
+        "antibaryon_weight": {
+          "Rbar": "(-0.500000, -0.333333)",
+          "Gbar": "(+0.500000, -0.333333)",
+          "Bbar": "(+0.000000, +0.666667)",
+          "sum": "(+0.000000, +0.000000)",
+          "numerical_sum": [
+            0.0,
+            0.0
+          ],
+          "is_neutral": true
+        },
+        "relation_to_baryon": {
+          "antibaryon_equals_negative_baryon": true,
+          "note": "w_R\u0304\u1e20 B\u0304 = -(w_R + w_G + w_B)"
+        }
+      }
+    },
+    {
+      "test_name": "Same-Color Meson (cc\u0304) Color Neutrality",
+      "passed": true,
+      "details": {
+        "RRbar": {
+          "w_R": "(+0.500000, +0.333333)",
+          "w_Rbar": "(-0.500000, -0.333333)",
+          "sum": "(+0.000000, +0.000000)",
+          "numerical_sum": [
+            0.0,
+            0.0
+          ],
+          "is_neutral": true,
+          "antipodal_relation": {
+            "w_cbar_equals_neg_wc": true,
+            "note": "w_Rbar = -w_R"
+          }
+        },
+        "GGbar": {
+          "w_G": "(-0.500000, +0.333333)",
+          "w_Gbar": "(+0.500000, -0.333333)",
+          "sum": "(+0.000000, +0.000000)",
+          "numerical_sum": [
+            0.0,
+            0.0
+          ],
+          "is_neutral": true,
+          "antipodal_relation": {
+            "w_cbar_equals_neg_wc": true,
+            "note": "w_Gbar = -w_G"
+          }
+        },
+        "BBbar": {
+          "w_B": "(+0.000000, -0.666667)",
+          "w_Bbar": "(+0.000000, +0.666667)",
+          "sum": "(+0.000000, +0.000000)",
+          "numerical_sum": [
+            0.0,
+            0.0
+          ],
+          "is_neutral": true,
+          "antipodal_relation": {
+            "w_cbar_equals_neg_wc": true,
+            "note": "w_Bbar = -w_B"
+          }
+        }
+      }
+    },
+    {
+      "test_name": "Mixed-Color States (cc\u0304') Are NOT Neutral",
+      "passed": true,
+      "details": {
+        "RGbar": {
+          "w_R": "(+0.500000, +0.333333)",
+          "w_Gbar": "(+0.500000, -0.333333)",
+          "sum": "(+1.000000, +0.000000)",
+          "numerical_sum": [
+            1.0,
+            0.0
+          ],
+          "is_neutral": false,
+          "is_octet_member": true
+        },
+        "RBbar": {
+          "w_R": "(+0.500000, +0.333333)",
+          "w_Bbar": "(+0.000000, +0.666667)",
+          "sum": "(+0.500000, +1.000000)",
+          "numerical_sum": [
+            0.5,
+            1.0
+          ],
+          "is_neutral": false,
+          "is_octet_member": true
+        },
+        "GRbar": {
+          "w_G": "(-0.500000, +0.333333)",
+          "w_Rbar": "(-0.500000, -0.333333)",
+          "sum": "(-1.000000, +0.000000)",
+          "numerical_sum": [
+            -1.0,
+            0.0
+          ],
+          "is_neutral": false,
+          "is_octet_member": true
+        },
+        "GBbar": {
+          "w_G": "(-0.500000, +0.333333)",
+          "w_Bbar": "(+0.000000, +0.666667)",
+          "sum": "(-0.500000, +1.000000)",
+          "numerical_sum": [
+            -0.5,
+            1.0
+          ],
+          "is_neutral": false,
+          "is_octet_member": true
+        },
+        "BRbar": {
+          "w_B": "(+0.000000, -0.666667)",
+          "w_Rbar": "(-0.500000, -0.333333)",
+          "sum": "(-0.500000, -1.000000)",
+          "numerical_sum": [
+            -0.5,
+            -1.0
+          ],
+          "is_neutral": false,
+          "is_octet_member": true
+        },
+        "BGbar": {
+          "w_B": "(+0.000000, -0.666667)",
+          "w_Gbar": "(+0.500000, -0.333333)",
+          "sum": "(+0.500000, -1.000000)",
+          "numerical_sum": [
+            0.5,
+            -1.0
+          ],
+          "is_neutral": false,
+          "is_octet_member": true
+        },
+        "interpretation": {
+          "note": "Mixed cc\u0304' states correspond to gluon color-anticolor combinations",
+          "representation": "3 \u2297 3\u0304 = 8 \u2295 1 (octet + singlet)",
+          "off_diagonal_gluons": [
+            "R\u1e20",
+            "RB\u0304",
+            "GR\u0304",
+            "GB\u0304",
+            "BR\u0304",
+            "B\u1e20"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "3 \u2297 3\u0304 = 8 \u2295 1 Representation Decomposition",
+      "passed": true,
+      "details": {
+        "total_states": 9,
+        "singlet_count": 3,
+        "octet_count": 6,
+        "all_pairs": [
+          {
+            "pair": "RRbar",
+            "weight": [
+              0.0,
+              0.0
+            ],
+            "is_neutral": true
+          },
+          {
+            "pair": "RGbar",
+            "weight": [
+              1.0,
+              0.0
+            ],
+            "is_neutral": false
+          },
+          {
+            "pair": "RBbar",
+            "weight": [
+              0.5,
+              1.0
+            ],
+            "is_neutral": false
+          },
+          {
+            "pair": "GRbar",
+            "weight": [
+              -1.0,
+              0.0
+            ],
+            "is_neutral": false
+          },
+          {
+            "pair": "GGbar",
+            "weight": [
+              0.0,
+              0.0
+            ],
+            "is_neutral": true
+          },
+          {
+            "pair": "GBbar",
+            "weight": [
+              -0.5,
+              1.0
+            ],
+            "is_neutral": false
+          },
+          {
+            "pair": "BRbar",
+            "weight": [
+              -0.5,
+              -1.0
+            ],
+            "is_neutral": false
+          },
+          {
+            "pair": "BGbar",
+            "weight": [
+              0.5,
+              -1.0
+            ],
+            "is_neutral": false
+          },
+          {
+            "pair": "BBbar",
+            "weight": [
+              0.0,
+              0.0
+            ],
+            "is_neutral": true
+          }
+        ],
+        "singlet_state": {
+          "wavefunction": "|singlet\u27e9 = (1/\u221a3)(|RR\u0304\u27e9 + |G\u1e20\u27e9 + |BB\u0304\u27e9)",
+          "normalization": 0.5773502691896258,
+          "note": "Each component has zero weight individually"
+        },
+        "octet_structure": {
+          "off_diagonal": 6,
+          "diagonal": 2,
+          "note": "6 off-diagonal (e.g., R\u1e20) + 2 diagonal orthogonal to singlet"
+        },
+        "dimension_check": {
+          "expected": "3 \u00d7 3 = 9 = 8 + 1",
+          "actual": "3 neutral pairs + 6 colored pairs",
+          "note": "The 3 neutral pairs combine into 1 singlet; 6 octet + 2 diagonal orthogonal"
+        }
+      }
+    },
+    {
+      "test_name": "Uniqueness of Color-Neutral Point",
+      "passed": true,
+      "details": {
+        "linear_system": {
+          "equation_1": "T_3: (a - b)/2 = 0 \u2192 a = b",
+          "equation_2": "Y: (a + b - 2c)/3 = 0 \u2192 a + b = 2c",
+          "solution": "a = b = c"
+        },
+        "matrix_analysis": {
+          "weight_matrix": [
+            [
+              0.5,
+              -0.5,
+              0.0
+            ],
+            [
+              0.3333333333333333,
+              0.3333333333333333,
+              -0.6666666666666666
+            ]
+          ],
+          "singular_values": [
+            0.8164965809277259,
+            0.7071067811865476
+          ],
+          "rank": 2,
+          "null_space_dimension": 1.0,
+          "note": "Rank 2 matrix with 1D null space \u2192 unique (1:1:1) solution"
+        },
+        "null_vector": {
+          "raw": [
+            0.5773502691896256,
+            0.5773502691896257,
+            0.5773502691896258
+          ],
+          "normalized": [
+            1.0,
+            1.0000000000000002,
+            1.0000000000000004
+          ],
+          "is_equal_coefficients": true
+        },
+        "linear_independence": {
+          "determinant": 0.3333333333333333,
+          "w_R_and_w_G_independent": true,
+          "note": "w_B = -w_R - w_G (by tracelessness)"
+        },
+        "tracelessness_closure": {
+          "w_B_expected": [
+            0.0,
+            -0.6666666666666666
+          ],
+          "w_B_from_closure": [
+            -0.0,
+            -0.6666666666666666
+          ],
+          "match": true
+        }
+      }
+    },
+    {
+      "test_name": "Centroid Calculation",
+      "passed": true,
+      "details": {
+        "quark_centroid": {
+          "value": "(+0.000000, +0.000000)",
+          "numerical": [
+            0.0,
+            0.0
+          ],
+          "is_origin": true
+        },
+        "antiquark_centroid": {
+          "value": "(+0.000000, +0.000000)",
+          "numerical": [
+            0.0,
+            0.0
+          ],
+          "is_origin": true
+        },
+        "centroids_coincide": {
+          "match": true,
+          "both_at_origin": true,
+          "note": "Both triangles share the origin as their centroid"
+        },
+        "stella_3d_centroids": {
+          "T_plus_centroid": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "T_minus_centroid": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "both_at_origin": true
+        }
+      }
+    },
+    {
+      "test_name": "Closed Paths Color Neutrality",
+      "passed": true,
+      "details": {
+        "triangle_path": {
+          "path": "R \u2192 G \u2192 B \u2192 R",
+          "colors_visited": [
+            "R",
+            "G",
+            "B"
+          ],
+          "total_weight": "(+0.000000, +0.000000)",
+          "numerical": [
+            0.0,
+            0.0
+          ],
+          "is_neutral": true
+        },
+        "gluon_cycle": {
+          "transitions": [
+            {
+              "transition": "R \u2192 G",
+              "delta_w": "(-1.000000, +0.000000)"
+            },
+            {
+              "transition": "G \u2192 B",
+              "delta_w": "(+0.500000, -1.000000)"
+            },
+            {
+              "transition": "B \u2192 R",
+              "delta_w": "(+0.500000, +1.000000)"
+            }
+          ],
+          "net_color": "(+0.000000, +0.000000)",
+          "numerical": [
+            0.0,
+            0.0
+          ],
+          "is_neutral": true
+        },
+        "antibaryon_path": {
+          "path": "R\u0304 \u2192 \u1e20 \u2192 B\u0304 \u2192 R\u0304",
+          "colors_visited": [
+            "Rbar",
+            "Gbar",
+            "Bbar"
+          ],
+          "total_weight": "(+0.000000, +0.000000)",
+          "numerical": [
+            0.0,
+            0.0
+          ],
+          "is_neutral": true
+        }
+      }
+    },
+    {
+      "test_name": "Single Quarks Are Colored (Not Observable Alone)",
+      "passed": true,
+      "details": {
+        "R": {
+          "weight": "(+0.500000, +0.333333)",
+          "numerical": [
+            0.5,
+            0.3333333333333333
+          ],
+          "is_neutral": false,
+          "is_colored": true
+        },
+        "G": {
+          "weight": "(-0.500000, +0.333333)",
+          "numerical": [
+            -0.5,
+            0.3333333333333333
+          ],
+          "is_neutral": false,
+          "is_colored": true
+        },
+        "B": {
+          "weight": "(+0.000000, -0.666667)",
+          "numerical": [
+            0.0,
+            -0.6666666666666666
+          ],
+          "is_neutral": false,
+          "is_colored": true
+        },
+        "Rbar": {
+          "weight": "(-0.500000, -0.333333)",
+          "numerical": [
+            -0.5,
+            -0.3333333333333333
+          ],
+          "is_neutral": false,
+          "is_colored": true
+        },
+        "Gbar": {
+          "weight": "(+0.500000, -0.333333)",
+          "numerical": [
+            0.5,
+            -0.3333333333333333
+          ],
+          "is_neutral": false,
+          "is_colored": true
+        },
+        "Bbar": {
+          "weight": "(+0.000000, +0.666667)",
+          "numerical": [
+            0.0,
+            0.6666666666666666
+          ],
+          "is_neutral": false,
+          "is_colored": true
+        },
+        "confinement_interpretation": {
+          "note": "Single quarks carry color charge \u2192 cannot be isolated",
+          "all_single_quarks_colored": true
+        }
+      }
+    },
+    {
+      "test_name": "Exotic Hadron States Color Neutrality",
+      "passed": true,
+      "details": {
+        "tetraquark_RG_RbarGbar": {
+          "diquark_RG": "(+0.000000, +0.666667)",
+          "antidiquark_RbarGbar": "(+0.000000, -0.666667)",
+          "total": "(+0.000000, +0.000000)",
+          "is_neutral": true,
+          "note": "Diquark (antitriplet) + antidiquark (triplet) = singlet"
+        },
+        "tetraquark_two_mesons": {
+          "meson_1": "(+0.000000, +0.000000)",
+          "meson_2": "(+0.000000, +0.000000)",
+          "total": "(+0.000000, +0.000000)",
+          "is_neutral": true
+        },
+        "pentaquark": {
+          "baryon_RGB": "(+0.000000, +0.000000)",
+          "meson_RRbar": "(+0.000000, +0.000000)",
+          "total": "(+0.000000, +0.000000)",
+          "is_neutral": true,
+          "note": "Any baryon + meson combination is color-neutral"
+        }
+      }
+    },
+    {
+      "test_name": "Stella Octangula Geometry (Two Interlocked Tetrahedra)",
+      "passed": true,
+      "details": {
+        "R_Rbar_pair": {
+          "v_R": [
+            0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "v_Rbar": [
+            -0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "is_antipodal": true,
+          "sum": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "G_Gbar_pair": {
+          "v_G": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "v_Gbar": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "is_antipodal": true,
+          "sum": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "B_Bbar_pair": {
+          "v_B": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "v_Bbar": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            0.5773502691896258
+          ],
+          "is_antipodal": true,
+          "sum": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "W_Wbar_pair": {
+          "v_W": [
+            -0.5773502691896258,
+            -0.5773502691896258,
+            0.5773502691896258
+          ],
+          "v_Wbar": [
+            0.5773502691896258,
+            0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "is_antipodal": true,
+          "sum": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "point_inversion": {
+          "T_minus_equals_neg_T_plus": true
+        },
+        "centroids": {
+          "T_plus_centroid": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "T_minus_centroid": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "both_at_origin": true
+        },
+        "regularity": {
+          "edge_lengths": [
+            1.6329931618554523,
+            1.6329931618554523,
+            1.6329931618554523,
+            1.6329931618554523,
+            1.6329931618554523,
+            1.6329931618554523
+          ],
+          "all_equal": true,
+          "edge_length_value": 1.6329931618554523
+        }
+      }
+    }
+  ]
+}

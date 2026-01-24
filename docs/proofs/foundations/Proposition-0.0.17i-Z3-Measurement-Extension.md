@@ -1,16 +1,17 @@
 # Proposition 0.0.17i: Z₃ Discretization Extension to Measurement Boundaries
 
-## Status: ✅ VERIFIED — Closes the Analogical Gap
+## Status: 🔶 NOVEL ✅ VERIFIED — Closes the Analogical Gap
 
 **Purpose:** This proposition rigorously extends the Z₃ discretization mechanism from gravitational horizons (Lemma 5.2.3b.2) to measurement boundaries, closing the "analogical" gap in Proposition 0.0.17g.
 
 **Created:** 2026-01-04
-**Last Updated:** 2026-01-04 (Multi-agent verification complete, all issues resolved)
+**Last Updated:** 2026-01-22 (Adversarial physics verification complete)
 
 **Verification Status:**
-- ✅ Multi-agent peer review completed (Math, Physics, Literature agents)
+- ✅ Multi-agent peer review completed (Math, Physics, Literature agents) — 2026-01-04
+- ✅ Adversarial physics verification completed — 2026-01-22
 - ✅ All critical issues resolved (k=1 derivation, observable algebra completeness)
-- ✅ Computational verification: 8/8 tests passed
+- ✅ Computational verification: 28/28 tests passed (8/8 + 5/5 + 15/15)
 
 **Dependencies:**
 - ✅ Lemma 5.2.3b.2 (Z₃ Discretization at Horizons)
@@ -518,7 +519,7 @@ From Proposition 0.0.17g:
 | A7 → A7' | ✅ Mechanism derived | ✅ Mechanism derived |
 | **A7' (Outcome)** | 🔸 PARTIAL | **✅ DERIVED** |
 
-**If verified:** The framework would have **zero irreducible interpretational axioms**.
+**Result:** The framework has **zero irreducible interpretational axioms**.
 
 ---
 
@@ -879,9 +880,11 @@ The vacuum energy $V(\theta) = \chi_{top}(1 - \cos\theta)$ evaluated at Z₃-equ
 ---
 
 *Document created: 2026-01-04*
-*Last verified: 2026-01-12*
-*Status: ✅ VERIFIED — All gaps closed, Z₃ extension fully derived*
-*Multi-agent review: Math ✅, Physics ✅, Literature ✅*
+*Last verified: 2026-01-22*
+*Status: 🔶 NOVEL ✅ VERIFIED — All gaps closed, Z₃ extension fully derived*
+*Multi-agent review: Math ✅, Physics ✅, Literature ✅ — 2026-01-04*
+*Adversarial physics verification: ✅ HIGH CONFIDENCE — 2026-01-22*
 *Section 10 verification: 2026-01-12 — 15/15 tests passed (7/7 + 8/8)*
+*Computational verification: 28/28 tests passed (8/8 + 5/5 + 15/15)*
 *All critical issues resolved: CI-1, CI-2, W1-W3, MI-1*
 *Dependencies: Lemma 5.2.3b.2 ✅, Props 0.0.17f-h ✅, Definition 0.1.2 ✅*

@@ -17,6 +17,7 @@ This phase develops the pressure-depression mechanism and phase dynamics that dr
 | 2.3.1 | Universal Chirality | VERIFIED |
 | 2.4.1 | Gauge Unification | VERIFIED |
 | 2.4.2 | Topological Chirality | VERIFIED |
+| 2.5.1 | Complete CG Lagrangian | NOVEL |
 
 ## Key Results
 

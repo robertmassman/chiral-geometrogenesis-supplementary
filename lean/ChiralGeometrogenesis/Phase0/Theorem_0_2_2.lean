@@ -1910,6 +1910,115 @@ theorem exp_phase_derivative (hpe : HamiltonianPhaseEvolution) (tau : ℝ) :
   convert hchain using 1
   ring
 
+/-- The τ-derivative of e^{i(Φ(τ) + c)} for any constant offset c.
+
+    This is a generalization of `exp_phase_derivative` needed for the color phases.
+-/
+theorem exp_phase_offset_derivative (hpe : HamiltonianPhaseEvolution) (tau : ℝ) (c : ℝ) :
+    HasDerivAt (fun t => Complex.exp (Complex.I * (hpe.phaseAt t + c)))
+               (Complex.I * angularFrequency hpe.baseConfig *
+                Complex.exp (Complex.I * (hpe.phaseAt tau + c))) tau := by
+  -- d/dτ[e^{i(Φ(τ) + c)}] = i · dΦ/dτ · e^{i(Φ(τ) + c)} = iω · e^{i(Φ(τ) + c)}
+  have hderiv := phase_derivative_is_omega hpe tau
+  have h := Complex.hasDerivAt_exp (Complex.I * (hpe.phaseAt tau + c))
+  -- Derivative of I * (Φ(t) + c)
+  have h_iphi : HasDerivAt (fun t => Complex.I * (hpe.phaseAt t + c))
+                           (Complex.I * angularFrequency hpe.baseConfig) tau := by
+    have hreal : HasDerivAt (fun t => (hpe.phaseAt t : ℂ))
+                            (angularFrequency hpe.baseConfig) tau :=
+      HasDerivAt.ofReal_comp hderiv
+    have hconst : HasDerivAt (fun _ : ℝ => (c : ℂ)) 0 tau := by
+      convert hasDerivAt_const tau (c : ℂ)
+    have hsum := hreal.add hconst
+    simp only [add_zero] at hsum
+    have hmul := hsum.const_mul Complex.I
+    convert hmul using 1
+  have hchain := HasDerivAt.comp tau h h_iphi
+  convert hchain using 1
+  ring
+
+/-- **KEY THEOREM:** The τ-derivative of the evolving chiral field satisfies ∂χ/∂τ = iωχ.
+
+    **Mathematical Statement:**
+    ∂/∂τ [χ(x, τ)] = i · ω · χ(x, τ)
+
+    **Proof:**
+    χ(x, τ) = Σ_c a_c(x) · e^{i(φ_c + Φ(τ))}
+
+    Taking the τ-derivative (with a_c(x) independent of τ):
+    ∂χ/∂τ = Σ_c a_c(x) · ∂/∂τ[e^{i(φ_c + Φ(τ))}]
+          = Σ_c a_c(x) · iω · e^{i(φ_c + Φ(τ))}   (by exp_phase_offset_derivative)
+          = iω · Σ_c a_c(x) · e^{i(φ_c + Φ(τ))}
+          = iω · χ(x, τ)
+
+    **Physical Significance:**
+    This is the foundation for the phase-gradient mass generation mechanism (Theorem 3.1.1).
+    The relation ∂χ/∂τ = iωχ (or equivalently ∂χ/∂t = iω₀χ in physical time) provides
+    the derivative needed for the Yukawa-like coupling ψ̄_L (∂χ) ψ_R.
+
+    **Cross-Reference:** Markdown §8.2, Theorem 3.1.1 (Phase-Gradient Mass Generation)
+-/
+theorem evolvingChiralField_derivative (hpe : HamiltonianPhaseEvolution)
+    (cfg : ColorAmplitudes) (x : Point3D) (tau : ℝ) :
+    HasDerivAt (fun t => evolvingChiralField hpe cfg x t)
+               (Complex.I * angularFrequency hpe.baseConfig * evolvingChiralField hpe cfg x tau)
+               tau := by
+  unfold evolvingChiralField
+  -- Each term a_c · e^{i(φ_c + Φ(τ))} has derivative a_c · iω · e^{i(φ_c + Φ(τ))}
+  -- The sum of derivatives equals the derivative of the sum
+
+  -- Derivative of R term: a_R · e^{iΦ(τ)} has derivative a_R · iω · e^{iΦ(τ)}
+  have hR : HasDerivAt (fun t => (cfg.aR.amplitude x : ℂ) * Complex.exp (Complex.I * hpe.phaseAt t))
+                       ((cfg.aR.amplitude x : ℂ) * (Complex.I * angularFrequency hpe.baseConfig *
+                        Complex.exp (Complex.I * hpe.phaseAt tau))) tau := by
+    have hexp := exp_phase_derivative hpe tau
+    have hconst : HasDerivAt (fun _ : ℝ => (cfg.aR.amplitude x : ℂ)) 0 tau :=
+      hasDerivAt_const tau (cfg.aR.amplitude x : ℂ)
+    have hmul := hconst.mul hexp
+    simp only [zero_mul, zero_add] at hmul
+    exact hmul
+  -- Derivative of G term: a_G · e^{i(Φ(τ) + 2π/3)}
+  have hG : HasDerivAt (fun t => (cfg.aG.amplitude x : ℂ) *
+                                  Complex.exp (Complex.I * (hpe.phaseAt t + 2 * Real.pi / 3)))
+                       ((cfg.aG.amplitude x : ℂ) * (Complex.I * angularFrequency hpe.baseConfig *
+                        Complex.exp (Complex.I * (hpe.phaseAt tau + 2 * Real.pi / 3)))) tau := by
+    have hexp := exp_phase_offset_derivative hpe tau (2 * Real.pi / 3)
+    have hconst : HasDerivAt (fun _ : ℝ => (cfg.aG.amplitude x : ℂ)) 0 tau :=
+      hasDerivAt_const tau (cfg.aG.amplitude x : ℂ)
+    have hmul := hconst.mul hexp
+    simp only [zero_mul, zero_add] at hmul
+    convert hmul using 2 <;>
+      simp only [Pi.mul_apply, Complex.ofReal_div, Complex.ofReal_mul, Complex.ofReal_ofNat]
+  -- Derivative of B term: a_B · e^{i(Φ(τ) + 4π/3)}
+  have hB : HasDerivAt (fun t => (cfg.aB.amplitude x : ℂ) *
+                                  Complex.exp (Complex.I * (hpe.phaseAt t + 4 * Real.pi / 3)))
+                       ((cfg.aB.amplitude x : ℂ) * (Complex.I * angularFrequency hpe.baseConfig *
+                        Complex.exp (Complex.I * (hpe.phaseAt tau + 4 * Real.pi / 3)))) tau := by
+    have hexp := exp_phase_offset_derivative hpe tau (4 * Real.pi / 3)
+    have hconst : HasDerivAt (fun _ : ℝ => (cfg.aB.amplitude x : ℂ)) 0 tau :=
+      hasDerivAt_const tau (cfg.aB.amplitude x : ℂ)
+    have hmul := hconst.mul hexp
+    simp only [zero_mul, zero_add] at hmul
+    convert hmul using 2 <;>
+      simp only [Pi.mul_apply, Complex.ofReal_div, Complex.ofReal_mul, Complex.ofReal_ofNat]
+  -- Sum the three derivatives
+  have hRG := hR.add hG
+  have hRGB := hRG.add hB
+  -- Convert the derivative to the expected form: iω · χ
+  convert hRGB using 1
+  ring
+
+/-- Corollary: The derivative relation in the form commonly written as ∂χ/∂τ = iωχ.
+
+    This is an alternative statement emphasizing that the derivative equals
+    i times the frequency times the field itself.
+-/
+theorem chiral_field_harmonic_evolution (hpe : HamiltonianPhaseEvolution)
+    (cfg : ColorAmplitudes) (x : Point3D) (tau : ℝ) :
+    deriv (fun t => evolvingChiralField hpe cfg x t) tau =
+    Complex.I * angularFrequency hpe.baseConfig * evolvingChiralField hpe cfg x tau := by
+  exact (evolvingChiralField_derivative hpe cfg x tau).deriv
+
 /-! ## Connection to Theorem 0.2.1: totalChiralField
 
 The evolvingChiralField from Theorem 0.2.2 generalizes the totalChiralField

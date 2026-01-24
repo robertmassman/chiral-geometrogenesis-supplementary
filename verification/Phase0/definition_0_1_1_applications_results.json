@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-01-14T12:10:52.971158",
+  "document": "Definition-0.1.1-Stella-Octangula-Boundary-Topology-Applications.md",
+  "tests": [
+    {
+      "name": "12.2.1 Phase cancellation",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.2.2 Field cancellation at center",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.2.3 Superselection rules",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.3.1 Dimension formula D = N + 1",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.3.2 Weight space dimension",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.3.3 Radial direction independence",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.4.1 Bekenstein-Hawking coefficient",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.4.2 Area scaling of entropy",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.5.1 Smooth field maxima",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.5.2 Field smoothness",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.5.3 Geometric vs field singularities",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.6.1 Stella radius",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.6.2 Regularization parameter",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.6.3 Lattice QCD consistency",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.9.1 Chiral limit",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.9.2 Large-N limit",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.9.3 Finite temperature",
+      "status": "PASSED"
+    },
+    {
+      "name": "12.9.4 Weak coupling",
+      "status": "PASSED"
+    },
+    {
+      "name": "Geom.1 Euler characteristic",
+      "status": "PASSED"
+    },
+    {
+      "name": "Geom.2 Stella geometry",
+      "status": "PASSED"
+    }
+  ],
+  "passed": 20,
+  "failed": 0,
+  "total": 20
+}

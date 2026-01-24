@@ -523,7 +523,7 @@ where $\mathcal{G}$ is a geometric factor from the stella octangula.
 **The matching condition** $v_\chi = 246$ GeV **fixes the overall scale $a_0$**:
 $$a_0 = \frac{246 \text{ GeV}}{\mathcal{G}}$$
 
-This is analogous to how the SM simply inputs $v = 246$ GeV—neither framework derives it from first principles, but CG reduces it to a single geometric scale.
+This is analogous to how the SM simply inputs $v = 246$ GeV—but CG **now derives this value**: [Prop 0.0.21](../foundations/Proposition-0.0.21-Unified-Electroweak-Scale-Derivation.md) gives $v_H = \sqrt{\sigma} \times \exp(1/4 + 120/(2\pi^2)) = 246.7$ GeV (**0.21% accuracy**) from the unified a-theorem formula, building on the central charge flow foundation in [Prop 0.0.20](../foundations/Proposition-0.0.20-Electroweak-Scale-From-Central-Charge-Flow.md).
 
 **Explicit calculation:** See §21.2 for detailed derivation of $\mathcal{G}$.
 

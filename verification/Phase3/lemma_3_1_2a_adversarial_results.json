@@ -1,0 +1,456 @@
+{
+  "golden_ratio": {
+    "phi_squared_equals_phi_plus_1": {
+      "phi_squared": 2.618033988749895,
+      "phi_plus_1": 2.618033988749895,
+      "error": 0.0,
+      "verified": true
+    },
+    "phi_cubed_equals_2phi_plus_1": {
+      "phi_cubed": 4.23606797749979,
+      "two_phi_plus_1": 4.23606797749979,
+      "error": 0.0,
+      "verified": true
+    },
+    "one_over_phi_equals_phi_minus_1": {
+      "one_over_phi": 0.6180339887498948,
+      "phi_minus_1": 0.6180339887498949,
+      "error": 1.1102230246251565e-16,
+      "verified": true
+    },
+    "numerical_values": {
+      "phi": 1.618033988749895,
+      "phi_cubed": 4.23606797749979,
+      "one_over_phi_cubed": 0.2360679774997897,
+      "sin_72": 0.9510565162951535
+    }
+  },
+  "sin_72": {
+    "exact_form": 0.9510565162951535,
+    "numerical": 0.9510565162951535,
+    "golden_form": 0.9510565162951536,
+    "error_exact": 0.0,
+    "error_golden": 1.1102230246251565e-16,
+    "verified": true
+  },
+  "lambda": {
+    "lambda_geometric": 0.2245139882897927,
+    "lambda_exact": 0.22451398828979266,
+    "lambda_pdg_ckm": 0.22497,
+    "lambda_pdg_wolfenstein": 0.2265,
+    "tension_ckm_sigma": 0.6514453002961654,
+    "tension_wolf_sigma": 4.137524396265248,
+    "agreement_ckm_percent": 99.79730110227705
+  },
+  "16cell_projection": {
+    "16_cell_vertices": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        -1
+      ]
+    ],
+    "projected_3d": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "unique_3d_count": 7,
+    "stella_vertex_count": 8,
+    "projected_unique": [
+      [
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    "stella_vertices": [
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        -1,
+        -1
+      ],
+      [
+        -1,
+        1,
+        -1
+      ],
+      [
+        -1,
+        -1,
+        1
+      ],
+      [
+        -1,
+        -1,
+        -1
+      ],
+      [
+        -1,
+        1,
+        1
+      ],
+      [
+        1,
+        -1,
+        1
+      ],
+      [
+        1,
+        1,
+        -1
+      ]
+    ],
+    "claim_verified": false,
+    "note": "The projection gives an octahedron (6 vertices + origin), NOT a stella octangula (8 vertices)"
+  },
+  "hexagonal": {
+    "projection_results": [
+      {
+        "vertex": [
+          1,
+          1,
+          1
+        ],
+        "parallel_component": 1.7320508075688776,
+        "perp_magnitude": 3.8459253727671276e-16,
+        "perp_vector": [
+          -2.220446049250313e-16,
+          -2.220446049250313e-16,
+          -2.220446049250313e-16
+        ]
+      },
+      {
+        "vertex": [
+          1,
+          -1,
+          -1
+        ],
+        "parallel_component": -0.5773502691896258,
+        "perp_magnitude": 1.632993161855452,
+        "perp_vector": [
+          1.3333333333333335,
+          -0.6666666666666665,
+          -0.6666666666666665
+        ]
+      },
+      {
+        "vertex": [
+          -1,
+          1,
+          -1
+        ],
+        "parallel_component": -0.5773502691896258,
+        "perp_magnitude": 1.632993161855452,
+        "perp_vector": [
+          -0.6666666666666665,
+          1.3333333333333335,
+          -0.6666666666666665
+        ]
+      },
+      {
+        "vertex": [
+          -1,
+          -1,
+          1
+        ],
+        "parallel_component": -0.5773502691896258,
+        "perp_magnitude": 1.632993161855452,
+        "perp_vector": [
+          -0.6666666666666665,
+          -0.6666666666666665,
+          1.3333333333333335
+        ]
+      },
+      {
+        "vertex": [
+          -1,
+          -1,
+          -1
+        ],
+        "parallel_component": -1.7320508075688776,
+        "perp_magnitude": 3.8459253727671276e-16,
+        "perp_vector": [
+          2.220446049250313e-16,
+          2.220446049250313e-16,
+          2.220446049250313e-16
+        ]
+      },
+      {
+        "vertex": [
+          -1,
+          1,
+          1
+        ],
+        "parallel_component": 0.5773502691896258,
+        "perp_magnitude": 1.632993161855452,
+        "perp_vector": [
+          -1.3333333333333335,
+          0.6666666666666665,
+          0.6666666666666665
+        ]
+      },
+      {
+        "vertex": [
+          1,
+          -1,
+          1
+        ],
+        "parallel_component": 0.5773502691896258,
+        "perp_magnitude": 1.632993161855452,
+        "perp_vector": [
+          0.6666666666666665,
+          -1.3333333333333335,
+          0.6666666666666665
+        ]
+      },
+      {
+        "vertex": [
+          1,
+          1,
+          -1
+        ],
+        "parallel_component": 0.5773502691896258,
+        "perp_magnitude": 1.632993161855452,
+        "perp_vector": [
+          0.6666666666666665,
+          0.6666666666666665,
+          -1.3333333333333335
+        ]
+      }
+    ],
+    "unique_magnitudes": [
+      0.0,
+      1.632993
+    ],
+    "sqrt3_verification": {
+      "inner_radius": 1.632993,
+      "expected_outer": 2.8284268444043232,
+      "ratio": "N/A"
+    },
+    "expected_2sqrt6_over_3": 1.6329931618554518
+  },
+  "mass_hierarchy": {
+    "lambda_geometric": 0.2245139882897927,
+    "lambda_squared": 0.05040653093778917,
+    "lambda_fourth": 0.0025408183611822966,
+    "down_type_ratios": {
+      "d/s_observed": 0.05053763440860215,
+      "d/s_predicted_lambda2": 0.05040653093778917,
+      "s/b_observed": 0.022248803827751195,
+      "s/b_predicted_lambda2": 0.05040653093778917,
+      "d/b_observed": 0.0011244019138755982,
+      "d/b_predicted_lambda4": 0.0025408183611822966
+    },
+    "up_type_ratios": {
+      "u/c_observed": 0.0017322834645669292,
+      "u/c_predicted_lambda2": 0.05040653093778917,
+      "c/t_observed": 0.0073410404624277455,
+      "c/t_predicted_lambda2": 0.05040653093778917,
+      "u/t_observed": 1.2716763005780348e-05,
+      "u/t_predicted_lambda4": 0.0025408183611822966
+    },
+    "gatto_relation": {
+      "sqrt_md_ms": 0.22480577040770583,
+      "lambda_geometric": 0.2245139882897927,
+      "agreement_percent": 99.87003833474442
+    }
+  },
+  "numerology": {
+    "alternatives": [
+      {
+        "formula": "sin(13\u00b0)",
+        "value": 0.224951054343865,
+        "deviation_percent": 0.008421414470818277,
+        "tension_sigma": 0.027065223049999827
+      },
+      {
+        "formula": "cos(77\u00b0)",
+        "value": 0.22495105434386492,
+        "deviation_percent": 0.008421414470855289,
+        "tension_sigma": 0.027065223050118777
+      },
+      {
+        "formula": "(1/\u03c6\u00b3)\u00d7sin(72\u00b0)",
+        "value": 0.2245139882897927,
+        "deviation_percent": 0.20269889772294786,
+        "tension_sigma": 0.6514453002961654
+      },
+      {
+        "formula": "\u03c0/14",
+        "value": 0.2243994752564138,
+        "deviation_percent": 0.2536003660871269,
+        "tension_sigma": 0.815035347980299
+      },
+      {
+        "formula": "e\u207b\u00b9\u00b7\u2075",
+        "value": 0.22313016014842982,
+        "deviation_percent": 0.8178156427835646,
+        "tension_sigma": 2.6283426451002647
+      },
+      {
+        "formula": "2/9",
+        "value": 0.2222222222222222,
+        "deviation_percent": 1.2213974208906937,
+        "tension_sigma": 3.925396825396848
+      },
+      {
+        "formula": "arctan(1/4)/rad",
+        "value": 0.24497866312686414,
+        "deviation_percent": 8.893925024165062,
+        "tension_sigma": 28.583804466948774
+      },
+      {
+        "formula": "1/(2\u03c6\u00b2)",
+        "value": 0.19098300562505258,
+        "deviation_percent": 15.107345145996101,
+        "tension_sigma": 48.55284910706775
+      },
+      {
+        "formula": "1/\u03c6\u00b2 - 1/\u03c6\u00b3",
+        "value": 0.14589803375031546,
+        "deviation_percent": 35.147782481968505,
+        "tension_sigma": 112.95995178526364
+      },
+      {
+        "formula": "(\u221a5-1)/4",
+        "value": 0.30901699437494745,
+        "deviation_percent": 37.35920094899207,
+        "tension_sigma": 120.06713482135349
+      }
+    ],
+    "pdg_ckm_fit": 0.22497,
+    "note": "Multiple simple formulas achieve <1% agreement with PDG \u03bb"
+  },
+  "ckm_unitarity": {
+    "lambda_geometric": 0.2245139882897927,
+    "ckm_elements": {
+      "V_ud": 0.9747967345311054,
+      "V_us": 0.2245139882897927,
+      "V_cb": 0.04163579455461385,
+      "V_ub": 0.0035765026422944573
+    },
+    "unitarity_checks": {
+      "first_row_sum": 1.0006479959614458,
+      "first_col_sum": 1.0007075902854854,
+      "row1_deviation": 0.0006479959614458242,
+      "col1_deviation": 0.0007075902854853933
+    },
+    "unitarity_preserved": true
+  }
+}

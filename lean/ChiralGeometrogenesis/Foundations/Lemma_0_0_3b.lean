@@ -17,7 +17,7 @@
 
   The stella octangula is defined and proven to satisfy ALL criteria.
 
-  Reference: docs/proofs/Phase-Minus-1/Theorem-0.0.3-Stella-Uniqueness.md §2.5
+  Reference: docs/proofs/foundations/Theorem-0.0.3-Stella-Uniqueness.md §2.5
 -/
 
 import ChiralGeometrogenesis.Foundations.Lemma_0_0_3a
@@ -78,7 +78,19 @@ def cube : Polyhedron3D where
   weightVertices := 0
   apexVertices := 0
 
-/-- The octahedron: only 6 vertices -/
+/-- The octahedron: only 6 vertices
+
+    **Elimination reasons:**
+    1. MIN1 fails: V = 6 < 8 (needs 2 apex vertices)
+    2. No proper 6+2 decomposition (hasWeightApexSplit = false)
+
+    **Additional structural problem (see Lemma_0_0_3c):**
+    Even if we COULD add 2 apex vertices to the octahedron, its edges
+    would NOT correspond to the A₂ root system. The octahedron edges
+    include vectors like R→Ḡ = (2,0) which are NOT roots (roots have
+    equal magnitudes in the fundamental representation). See:
+    - `octahedron_edge_root_failure` in Lemma_0_0_3c.lean
+    - The stella base edges ARE roots (proved in `stella_edge_root_correspondence`) -/
 def octahedron : Polyhedron3D where
   vertices := 6
   edges := 12
@@ -225,7 +237,20 @@ theorem cube_not_minimal_realization : ¬is_minimal_realization cube := by
   intro ⟨_, _, hdecomp⟩
   exact cube_fails_decomposition hdecomp
 
--- OCTAHEDRON ELIMINATION
+/-! ### OCTAHEDRON ELIMINATION
+
+    The octahedron fails on multiple grounds:
+    1. **MIN1:** Only 6 vertices (needs 8 = 6 weight + 2 apex)
+    2. **Decomposition:** No natural 6+2 split
+
+    **Deeper structural reason (Lemma_0_0_3c):**
+    The octahedron edges do NOT encode the A₂ root system. Edges like R→Ḡ
+    have difference vectors (2,0) which are NOT roots. The stella octangula
+    edges ARE roots (see `stella_edge_root_correspondence`).
+
+    This provides a REPRESENTATION-THEORETIC reason for elimination,
+    beyond the combinatorial MIN1 failure.
+-/
 
 theorem octahedron_fails_MIN1 : ¬satisfies_MIN1 octahedron := by
   unfold satisfies_MIN1 octahedron
@@ -236,6 +261,10 @@ theorem octahedron_fails_decomposition : ¬has_proper_decomposition octahedron :
   unfold has_proper_decomposition octahedron
   simp
 
+/-- Octahedron elimination: fails MIN1 (vertex count).
+
+    **Note:** Even stronger elimination via root correspondence exists
+    in Lemma_0_0_3c (`octahedron_edge_root_failure`). -/
 theorem octahedron_not_minimal_realization : ¬is_minimal_realization octahedron := by
   unfold is_minimal_realization
   intro ⟨_, ⟨hmin1, _, _⟩, _⟩

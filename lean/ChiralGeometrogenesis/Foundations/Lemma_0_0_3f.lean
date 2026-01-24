@@ -12,7 +12,7 @@
   - Isomorphism construction from any valid realization to canonical form
   - Proof that isomorphism is unique modulo S₃ × Z₂ symmetry
 
-  Reference: docs/proofs/Phase-Minus-1/Theorem-0.0.3-Stella-Uniqueness.md §2.6
+  Reference: docs/proofs/foundations/Theorem-0.0.3-Stella-Uniqueness.md §2.6
 -/
 
 import ChiralGeometrogenesis.Foundations.Lemma_0_0_3a

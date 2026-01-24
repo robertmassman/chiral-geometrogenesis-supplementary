@@ -366,10 +366,11 @@ theorem jarlskogInvariant_pos_Sakharov : jarlskogInvariant_Sakharov > 0 := by
 
     Reference: §5.3, §5.5
 -/
-noncomputable def effectiveCPViolation : ℝ := epsilon_CP
+noncomputable def effectiveCPViolation : ℝ := ChiralBias.epsilon_CP
 
 /-- CP violation parameter is positive -/
-theorem effectiveCPViolation_pos : effectiveCPViolation > 0 := epsilon_CP_pos
+theorem effectiveCPViolation_pos : effectiveCPViolation > 0 :=
+  ChiralBias.epsilon_CP_pos
 
 /-- **Chiral Phase Enhancement**
 
@@ -801,7 +802,7 @@ theorem no_cp_implies_symmetric_universe :
     Reference: §5.7
 -/
 theorem no_chirality_implies_symmetric_universe :
-    actionDifference 0 geometricOverlapFactor epsilon_CP
+    actionDifference 0 geometricOverlapFactor ChiralBias.epsilon_CP
       electroweakVEV electroweakTemperature = 0 :=
   no_chirality_no_asymmetry
 

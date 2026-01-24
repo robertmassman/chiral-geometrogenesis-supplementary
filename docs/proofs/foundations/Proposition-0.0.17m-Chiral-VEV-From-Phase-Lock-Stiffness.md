@@ -1,6 +1,7 @@
 # Proposition 0.0.17m: Chiral VEV from Phase-Lock Stiffness
 
 ## Status: ✅ VERIFIED (DERIVED) — 2026-01-05
+**Updated:** 2026-01-21 (Adversarial physics verification added)
 
 **Verification:** [Multi-Agent Verification Report](../verification-records/Proposition-0.0.17m-Multi-Agent-Verification-2026-01-05.md)
 - Mathematical Agent: ✅ VERIFIED (all calculations correct; proof upgraded to necessity)
@@ -487,3 +488,19 @@ With this result, the phenomenological inputs for the mass formula reduce from 3
 - ✅ The 4.5% discrepancy with PDG (88.0 vs 92.1 MeV) is attributed to one-loop corrections (~5%, consistent with Theorem 3.1.1 verification)
 
 **Derivation Script:** [proposition_0_0_17m_derivation_v_chi_equals_f_pi.py](../../../verification/foundations/proposition_0_0_17m_derivation_v_chi_equals_f_pi.py)
+
+### 10.1 Adversarial Physics Verification
+
+See `verification/foundations/prop_0_0_17m_physics_verification.py` — Tests against independent physics data:
+
+| Test | Category | Result | Sources |
+|------|----------|--------|---------|
+| v_χ = f_π identification | derivation | ✅ MATHEMATICALLY NECESSARY | Gasser & Leutwyler 1984, Weinberg 1967 |
+| Energy matching (condensate ↔ ChPT) | derivation | ✅ T_stella = T_sigma | Nonlinear sigma model |
+| f_π = 88.0 MeV prediction | prediction | ✅ AGREES (95.5% with PDG) | PDG 2024 |
+| GMOR relation consistency | consistency | ✅ CONSISTENT (91.3%) | Gell-Mann, Oakes, Renner 1968 |
+| Base mass scale η_f values | consistency | ✅ NATURAL VALUES (0.1-10 range) | PDG 2024 quark masses |
+| v_χ/ω ratio = 2/5 | derivation | ✅ FROM GENERATOR COUNTING | Lie algebra theory |
+| √2 convention (f_π = F_π/√2) | consistency | ✅ CORRECTLY APPLIED | ChPT conventions |
+
+**Overall: 7/7 adversarial tests pass** — Results saved to `verification/foundations/prop_0_0_17m_physics_verification_results.json`

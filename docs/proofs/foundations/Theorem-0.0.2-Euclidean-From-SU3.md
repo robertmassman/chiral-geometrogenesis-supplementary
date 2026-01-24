@@ -16,6 +16,13 @@
 > - §4.1: Λ_QCD scheme clarified (5-flavor MS-bar, 213 MeV)
 > - References: Dreyer (2003), Meissner (2004) added for ln(3) connection
 >
+> **Re-Verification Fixes (2026-01-19):** 5 minor documentation issues from re-verification addressed:
+> - §1(a): Sign convention for B^{-1} clarified (added note on negative-definite → positive-definite)
+> - §8.1: Killing form dimensionality clarified (intrinsically dimensionless, physical interpretation table)
+> - §4.3: Hopf-Rinow reference replaced with proper smoothness argument (conical singularity analysis)
+> - §9.6: "Initial object" terminology refined to "minimal realization" (categorical precision)
+> - §4.1: β₀ normalization convention table added (standard vs alternative conventions)
+>
 > **Computational verification:** 29/29 tests pass + 8/8 comprehensive fixes verified.
 >
 > **Lean formalization:** All 8 adversarial fixes formalized in `Theorem_0_0_2.lean`. Key additions:
@@ -106,7 +113,9 @@ This document proceeds using SU(3) as the gauge group, with D = 4 established in
 Let SU(3) be the gauge group of the strong interaction (selected to be compatible with D = 4 via Theorem 0.0.1). Then:
 
 **(a)** The weight space $\mathfrak{h}^*$ of SU(3) has a natural positive-definite inner product induced by the Killing form:
-$$\langle \lambda, \mu \rangle_K = B^{-1}(\lambda, \mu)$$
+$$\langle \lambda, \mu \rangle_K = -B^{-1}(\lambda, \mu)$$
+
+**Sign Convention Note:** The Killing form $B$ is negative-definite for compact Lie algebras like $\mathfrak{su}(3)$. The positive-definite metric on weight space requires the negative of the inverse: $\langle \cdot, \cdot \rangle_K = -B^{-1}$. See §3.2 for the derivation.
 
 **(b)** This inner product is **Euclidean** (signature $(+,+)$ on the 2D weight space).
 
@@ -262,14 +271,28 @@ The radial direction is NOT arbitrary but is **derived** from QCD:
 
 2. **Running Coupling:** The coupling $\alpha_s(\mu)$ runs with energy scale $\mu$ via:
    $$\mu \frac{d\alpha_s}{d\mu} = -\frac{\beta_0}{2\pi} \alpha_s^2 + O(\alpha_s^3)$$
-   where $\beta_0 = (11 - 2N_f/3)/(2\pi) \approx 0.716$ for $N_f = 3$.
+
+   **Normalization Convention (important):** Multiple conventions exist in the literature:
+
+   | Convention | Definition | Value ($N_f = 3$) | Used By |
+   |------------|------------|-------------------|---------|
+   | **Standard** | $\beta_0 = 11 - \frac{2N_f}{3}$ | **9** | PDG, most textbooks |
+   | Alternative | $b_0 = \frac{\beta_0}{4\pi}$ | 0.716 | Some lattice papers |
+   | General | $\beta_0 = \frac{11N_c - 2N_f}{3}$ | 9 (for $N_c = 3$) | Full SU($N_c$) |
+
+   This document uses the **standard convention** $\beta_0 = 9$ for $N_f = 3$ active flavors.
+
+   The running coupling equation is then:
+   $$\mu \frac{d\alpha_s}{d\mu} = -\frac{9}{2\pi} \alpha_s^2 + O(\alpha_s^3) \approx -1.43 \, \alpha_s^2$$
 
 3. **UV/IR Correspondence:** The radial coordinate $r$ is dual to energy $\mu$:
    - $r \to 0$: High energy (UV), asymptotic freedom
    - $r \to \infty$: Low energy (IR), confinement
 
 4. **Dimensional Transmutation:** $\Lambda_{QCD}$ emerges from dimensionless $\alpha_s$:
-   $$\Lambda_{QCD} = \mu \exp\left(-\frac{2\pi}{\beta_0 \alpha_s(\mu)}\right)$$
+   $$\Lambda_{QCD} = \mu \exp\left(-\frac{2\pi}{\beta_0 \alpha_s(\mu)}\right) = \mu \exp\left(-\frac{2\pi}{9 \alpha_s(\mu)}\right)$$
+
+   (Using $\beta_0 = 9$ for $N_f = 3$. For $\alpha_s(M_Z) \approx 0.118$, this gives $\Lambda_{QCD} \sim 200$ MeV.)
 
 **Uniqueness:** Given SU(3) gauge theory, the ONLY natural third direction is the RG scale. This is a CONSEQUENCE of non-abelian gauge dynamics, not an assumption.
 
@@ -338,7 +361,12 @@ For the metric to be S₃-invariant:
 - (a) $f(0)$ must be finite and positive
 - (b) $h(r)$ must vanish as $r^2$ near $r = 0$ (standard polar coordinate behavior)
 
-By the Hopf-Rinow theorem for complete Riemannian manifolds, avoiding conical singularities requires $h(r) = r^2$ globally.
+**Smoothness argument (key step):** In polar/spherical coordinates, the angular part of the metric must scale as $r^2$ to avoid a conical singularity at $r = 0$. Specifically:
+- If $h(r) \sim r^\alpha$ for $\alpha \neq 2$, the total angle around any small circle at radius $r$ would be $2\pi r^{\alpha/2 - 1} \cdot \text{const}$, which diverges ($\alpha < 2$) or vanishes ($\alpha > 2$) as $r \to 0$
+- Only $\alpha = 2$ gives the correct $2\pi$ periodicity for a smooth manifold at the origin
+- This is a **local smoothness condition**, not a completeness condition
+
+Therefore, $h(r) = r^2$ globally is required by the $C^\infty$ requirement at $r = 0$.
 
 **Step 5 (Normalization):** We can always choose coordinates so $f(r) = 1$ (this defines the radial unit).
 
@@ -544,12 +572,16 @@ This suggests a deep connection between SU(3) color structure and black hole hor
 
 ### 8.1 Dimensional Check
 
-| Quantity | Dimension | Check |
-|----------|-----------|-------|
-| Killing form $B$ | $[\text{length}]^{-2}$ | ✅ |
-| Inverse $B^{-1}$ | $[\text{length}]^2$ | ✅ |
-| Weight space metric | dimensionless (angles) | ✅ |
-| 3D metric | $[\text{length}]^2$ | ✅ |
+**Note on Killing Form Dimension:** The Killing form $B$ is **intrinsically dimensionless** as a bilinear form on the abstract Lie algebra (it maps two algebra elements to a pure number via $B(X,Y) = \text{Tr}(\text{ad}_X \circ \text{ad}_Y)$). When we interpret it geometrically as a metric, dimensional factors arise from physical scale assignments. The table below shows dimensions **after** physical interpretation:
+
+| Quantity | Abstract Dimension | Physical Interpretation |
+|----------|-------------------|------------------------|
+| Killing form $B$ | dimensionless (pure number) | $[\text{length}]^{-2}$ when interpreted as metric |
+| Inverse $B^{-1}$ | dimensionless | $[\text{length}]^2$ when interpreted as inverse metric |
+| Weight space metric $g_K$ | dimensionless | dimensionless (angles/ratios) |
+| 3D metric $ds^2$ | — | $[\text{length}]^2$ |
+
+The weight space metric $g_K = \frac{1}{12}\mathbb{I}_2$ is dimensionless because it measures ratios of weight vectors. Physical length scales enter only when connecting to QCD parameters like $\Lambda_{QCD}$.
 
 ### 8.2 Symmetry Check
 
@@ -729,7 +761,14 @@ This is the A₂ root system, which is classified by the ADE classification. The
 - Objects: Polyhedral complexes with SU(3)-compatible structure
 - Morphisms: Structure-preserving maps
 
-**Theorem:** The stella octangula is the **initial object** in $\mathcal{C}_{SU(3)}$.
+**Theorem:** The stella octangula is the **minimal realization** in $\mathcal{C}_{SU(3)}$.
+
+**Terminology Note:** We use "minimal realization" rather than the formal categorical term "initial object" because:
+1. "Minimal" captures the essence: fewest vertices (8), lowest dimension (3) satisfying constraints
+2. "Initial object" technically requires proving a **unique** morphism exists from stella to every other object — our proof shows existence and structure-preservation, but uniqueness of morphisms is not rigorously established
+3. The practical meaning is clear: any SU(3)-compatible polyhedron must contain the stella octangula structure
+
+The formal "initial object" claim is addressed in Theorem 0.0.12 via categorical equivalence.
 
 **Rigorous Proof by Exhaustive Enumeration:**
 
@@ -780,14 +819,14 @@ The vertex partition is:
 
 This is **exactly** the structure required by SU(3) representation theory.
 
-**Step 5 — Universal Property:**
+**Step 5 — Universal Property (Minimality):**
 For any geometric realization $X$ of SU(3):
 1. $X$ must contain ≥ 8 vertices (by representation counting)
 2. Vertex positions are constrained by Killing metric distances
 3. Edge/face structure is determined by Weyl reflections
-4. There exists a unique structure-preserving morphism $\text{Stella} \to X$
+4. There exists a structure-preserving embedding $\text{Stella} \hookrightarrow X$
 
-This is the defining property of an **initial object** in $\mathcal{C}_{SU(3)}$.
+This establishes the stella octangula as the **minimal realization**: it achieves the lower bound on vertex count and dimension while satisfying all constraints.
 
 **Conclusion:** The stella octangula is **uniquely forced** by SU(3) representation theory. It is not postulated but **derived** as the minimal geometric realization.
 
@@ -1100,5 +1139,5 @@ $$\pm\alpha_1 = \pm(1, 0), \quad \pm\alpha_2 = \pm\left(-\frac{1}{2}, \frac{\sqr
 ---
 
 *Document created: December 15, 2025*
-*Last updated: January 1, 2026*
-*Status: ✅ VERIFIED ✅ LEAN FORMALIZED — All critical + medium + long-term + optional enhancements resolved; 8 additional fixes from adversarial review (2026-01-01); computational verification 29/29 + 8/8 pass; Lean formalization strengthened with all adversarial fixes*
+*Last updated: January 19, 2026*
+*Status: ✅ VERIFIED ✅ LEAN FORMALIZED — All critical + medium + long-term + optional enhancements resolved; 8 additional fixes from adversarial review (2026-01-01); 5 minor documentation fixes from re-verification (2026-01-19); computational verification 29/29 + 8/8 pass; Lean formalization strengthened with all adversarial fixes*

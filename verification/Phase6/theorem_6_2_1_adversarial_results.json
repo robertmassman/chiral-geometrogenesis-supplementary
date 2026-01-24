@@ -1,0 +1,56 @@
+{
+  "theorem": "6.2.1",
+  "title": "Tree-Level Scattering Amplitudes",
+  "date": "2026-01-22",
+  "overall_status": "PARTIAL",
+  "tests_passed": 4,
+  "tests_total": 6,
+  "critical_issues": [
+    "gg->gg cross-section factor error (9/2 -> 9/8)",
+    "High-energy limit claim incorrect for gg->gg"
+  ],
+  "results": [
+    {
+      "name": "Fundamental Casimir C_F",
+      "claimed": 1.3333333333333333,
+      "calculated": 1.3333333333333333,
+      "passed": true,
+      "notes": "C_F = (N_c\u00b2 - 1)/(2N_c)"
+    },
+    {
+      "name": "Adjoint Casimir C_A",
+      "claimed": 3.0,
+      "calculated": 3.0,
+      "passed": true,
+      "notes": "C_A = N_c"
+    },
+    {
+      "name": "Generator normalization T_F",
+      "claimed": 0.5,
+      "calculated": 0.5,
+      "passed": true,
+      "notes": "Tr(T^a T^b) = T_F \u03b4^{ab}"
+    },
+    {
+      "name": "High-energy limit qq\u2192qq",
+      "claimed": 1.0,
+      "calculated": 2.600410259000398,
+      "passed": false,
+      "notes": "gg\u2192gg ratio: 2.53 (grows ~ s\u00b2 as expected for Regge)"
+    },
+    {
+      "name": "gg\u2192gg factor error detection",
+      "claimed": 1.0,
+      "calculated": 4.0,
+      "passed": false,
+      "notes": "Document/Correct ratio = 4.00 (should be 1, is 4 due to error)"
+    },
+    {
+      "name": "tt\u0304 partonic cross-section",
+      "claimed": 10.0,
+      "calculated": 6.77838014294751,
+      "passed": true,
+      "notes": "Peak \u03c3(gg\u2192tt\u0304) = 6.8 pb, Peak \u03c3(qq\u0304\u2192tt\u0304) = 11.3 pb. Hadronic \u03c3 requires PDF convolution (~500 pb tree-level)."
+    }
+  ]
+}

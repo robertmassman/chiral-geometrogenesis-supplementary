@@ -16,7 +16,7 @@ The critique identifies that the framework may blur the distinction between **ki
 
 1. **The Lagrangian form is assumed:** The derivative coupling $\mathcal{L}_{drag} = -(g_\chi/\Lambda)\bar{\psi}_L\gamma^\mu(\partial_\mu\chi)\psi_R$ is postulated, not derived from first principles
 2. **Multiple parameters are fitted:** $g_\chi$, $\Lambda$, and especially $\eta_f$ contain the actual mass hierarchy information
-3. **QCD/EW scale separation:** $v_\chi = f_\pi = 88.0$ MeV (QCD) now derived via [Prop 0.0.17m](../foundations/Proposition-0.0.17m-Chiral-VEV-From-Phase-Lock-Stiffness.md); $v_H = 246$ GeV (EW) remains from Higgs sector
+3. **QCD/EW scale separation:** $v_\chi = f_\pi = 88.0$ MeV (QCD) derived via [Prop 0.0.17m](../foundations/Proposition-0.0.17m-Chiral-VEV-From-Phase-Lock-Stiffness.md); $v_H = 246$ GeV (EW) now derived via [Prop 0.0.21](../foundations/Proposition-0.0.21-Unified-Electroweak-Scale-Derivation.md) (unified formula with **0.21% accuracy**), building on [Props 0.0.18](../foundations/Proposition-0.0.18-Electroweak-Scale-From-Chi-Field.md), [0.0.19](../foundations/Proposition-0.0.19-Electroweak-Topological-Index.md), and [0.0.20](../foundations/Proposition-0.0.20-Electroweak-Scale-From-Central-Charge-Flow.md) (a-theorem foundation)
 
 ### 0.2 What IS Genuinely New
 
@@ -33,7 +33,7 @@ The critique identifies that the framework may blur the distinction between **ki
 | Assumption | Type | Could It Be Derived? |
 |------------|------|---------------------|
 | **A6: Lagrangian form** | ✅ DERIVED | Proposition 3.1.1a: unique form from EFT symmetry analysis |
-| **A7: Parameter values** ($g_\chi \sim 1$–$3$, $\Lambda \approx 1.16$ GeV) | BOUNDED | $g_\chi$ constrained by lattice LEC matching (§C4); $\Lambda = 4\pi f_\pi$ (Prop. 0.0.17d) |
+| **A7: Parameter values** ($g_\chi = 4\pi/9 \approx 1.40$, $\Lambda \approx 1.11$ GeV) | ✅ DERIVED | $g_\chi = 4\pi/N_c^2$ from geometry ([Prop 3.1.1c](./Proposition-3.1.1c-Geometric-Coupling-Formula.md)); $\Lambda = 4\pi f_\pi$ ([Prop 0.0.17d](../foundations/Proposition-0.0.17d-Chiral-Symmetry-Breaking-Scale.md)) |
 | **Helicity coupling $\eta_f$** | DELEGATED | Derived geometrically in Theorem 3.1.2 (but that derivation has its own assumptions) |
 | **QCD scale $v_\chi = f_\pi$** | ✅ DERIVED | v_χ = f_π = √σ/5 = 88.0 MeV (95.5% of PDG 92.1 MeV) via [Prop 0.0.17k](../foundations/Proposition-0.0.17k-Pion-Decay-Constant-From-Phase-Lock.md), [Prop 0.0.17m](../foundations/Proposition-0.0.17m-Chiral-VEV-From-Phase-Lock-Stiffness.md) |
 
@@ -48,7 +48,7 @@ The critique identifies that the framework may blur the distinction between **ki
 | $\omega_0 = \sqrt{\sigma}/(N_c-1)$ | ✅ **DERIVED** | From gluon condensate σ | Yes, from QCD |
 | $\Lambda = 4\pi f_\pi$ | ✅ **DERIVED** | From chiral perturbation theory | Yes, standard physics |
 | $v_\chi = \sqrt{\sigma}/5$ | ✅ **DERIVED** | From phase-lock stiffness (Prop 0.0.17m) | Yes, within framework |
-| $g_\chi \sim 1$–$3$ | **BOUNDED** | Constrained by lattice LECs | Range only, not exact value |
+| $g_\chi = 4\pi/9 \approx 1.40$ | ✅ **DERIVED** | Gauss-Bonnet + SU(3) singlet ([Prop 3.1.1c](./Proposition-3.1.1c-Geometric-Coupling-Formula.md)) | Yes, from geometry |
 | $\lambda = (1/\varphi^3)\sin(72°)$ | **SEARCHED** | Formula matching to PDG | **No** — post-hoc discovery |
 | $\eta_f = \lambda^{2n_f} \cdot c_f$ | **CONSTRAINED** | Overlap integrals | Pattern yes, exact values from search |
 | $c_f$ (order-one coefficients) | **CONSTRAINED** | Geometric overlaps | Range [0.4, 1.2], not exact |
@@ -63,7 +63,7 @@ The critique identifies that the framework may blur the distinction between **ki
 - The **pattern** m_n ∝ λ^{2n} is genuinely geometric (from generation localization)
 - The **scale** λ ≈ 0.22 is constrained to [0.20, 0.26] by geometry
 - The **specific formula** λ = (1/φ³)sin(72°) was discovered via search, not derived
-- The framework reduces 13 Yukawa couplings to ~4 geometric parameters, but these are **constrained**, not predicted
+- The framework reduces 13 Yukawa couplings to ~4 geometric parameters; $g_\chi = 4\pi/9$ is **derived** ([Prop 3.1.1c](./Proposition-3.1.1c-Geometric-Coupling-Formula.md)), while λ remains **constrained**
 
 ### 0.5 Relationship to Standard Approaches
 
@@ -76,7 +76,7 @@ The critique identifies that the framework may blur the distinction between **ki
 | Mass generation | Self-consistent gap equation | Direct coupling to $\partial_\lambda\chi$ |
 | What's explained | Dynamical chiral symmetry breaking | Same, with explicit geometric structure |
 
-**Key difference:** The NJL model generates mass from strong coupling dynamics. Phase-gradient mass provides a **geometric interpretation** of similar physics but does not fundamentally explain *why* the coupling takes the assumed form.
+**Key difference:** The NJL model generates mass from strong coupling dynamics. Phase-gradient mass provides a **geometric interpretation** of similar physics. The coupling **form** is derived from EFT symmetry ([Prop 3.1.1a](./Proposition-3.1.1a-Lagrangian-Form-From-Symmetry.md)) and the **value** $g_\chi = 4\pi/9$ is derived from Gauss-Bonnet + SU(3) ([Prop 3.1.1c](./Proposition-3.1.1c-Geometric-Coupling-Formula.md)).
 
 ### 0.5 Falsification Criteria (Expanded)
 
@@ -90,11 +90,11 @@ This mechanism would be **falsified** if:
 
 > **Genuinely novel:** The derivative coupling form $\partial_\lambda\chi$ and internal time mechanism provide a new perspective on mass generation distinct from Higgs-Yukawa.
 
-> **Not derived from first principles:** The Lagrangian form (A6) and parameter values (A7) are phenomenological inputs, not consequences of stella geometry alone.
+> **Derivation status (updated 2026-01-22):** The Lagrangian **form** is derived from EFT symmetry ([Prop 3.1.1a](./Proposition-3.1.1a-Lagrangian-Form-From-Symmetry.md)). The coupling **value** $g_\chi = 4\pi/9$ is derived from Gauss-Bonnet + SU(3) singlet normalization ([Prop 3.1.1c](./Proposition-3.1.1c-Geometric-Coupling-Formula.md)). The cutoff $\Lambda = 4\pi f_\pi$ is standard ChPT. Only the Wolfenstein parameter λ and $\eta_f$ coefficients remain constrained rather than predicted.
 
-> **Framework value:** If Theorem 3.1.2 successfully derives $\eta_f$ ratios from geometry, the combined result becomes significant. Without that, this theorem is "QCD phenomenology repackaged with geometric language."
+> **Framework value:** Theorem 3.1.2 derives $\eta_f$ ratios from geometry (pattern λ^{2n} is geometric; specific formula found via search). Combined with the derived $g_\chi$, this reduces 13 SM Yukawa couplings to ~3 truly free parameters.
 
-> **Status:** The mechanism is internally consistent and numerically successful, but shares the common feature of chiral mass models: the heavy lifting is done by fitted parameters.
+> **Status:** The mechanism is internally consistent and numerically successful. Key progress: the coupling $g_\chi$ is now **derived** rather than fitted, upgrading the theoretical status.
 
 ---
 
@@ -182,6 +182,11 @@ These theorems MUST be established before this one:
    - Provides: $v_\chi = f_\pi = \sqrt{\sigma}/5 = 88.0$ MeV (95.5% of PDG 92.1 MeV)
    - Status: VERIFIED — completes the P2 parameter derivation
    - See: [Proposition-0.0.17m](../foundations/Proposition-0.0.17m-Chiral-VEV-From-Phase-Lock-Stiffness.md)
+
+6. ✅ **Theorem 2.5.1** (Complete CG Lagrangian)
+   - Provides: Unified Lagrangian $\mathcal{L}_{CG} = \mathcal{L}_\chi + \mathcal{L}_{kinetic} + \mathcal{L}_{drag} + \mathcal{L}_{int}$
+   - Status: VERIFIED — provides full dynamical context for $\mathcal{L}_{drag}$
+   - See: [Theorem-2.5.1-CG-Lagrangian-Derivation.md](../Phase2/Theorem-2.5.1-CG-Lagrangian-Derivation.md)
 
 ### Dependent Theorems (These Build On This)
 
@@ -358,8 +363,8 @@ $$m_f^{(Higgs)} = g_Y v$$
 **Limitations of the Yukawa Mechanism:**
 1. Requires 13 arbitrary coupling constants for the SM fermions
 2. Does not explain the mass hierarchy ($m_t/m_e \sim 10^6$)
-3. The VEV $v = 246$ GeV is an input, not derived
-4. Creates fine-tuning problems (hierarchy problem)
+3. The VEV $v = 246$ GeV is an input, not derived — **NOW RESOLVED in CG:** [Prop 0.0.21](../foundations/Proposition-0.0.21-Unified-Electroweak-Scale-Derivation.md) derives $v_H = 246.7$ GeV (**0.21% accuracy**) via the unified formula $v_H = \sqrt{\sigma} \times \exp(1/4 + 120/(2\pi^2))$, building on the a-theorem foundation from [Prop 0.0.20](../foundations/Proposition-0.0.20-Electroweak-Scale-From-Central-Charge-Flow.md)
+4. Creates fine-tuning problems (hierarchy problem) — **NOW RESOLVED:** The hierarchy $v_H/M_P = (v_H/\sqrt{\sigma}) \times (\sqrt{\sigma}/M_P)$ has both factors geometric
 
 ### 2.2 Chiral Symmetry Breaking in QCD
 
@@ -386,7 +391,7 @@ We propose a **third mechanism** that shares features with both:
 | VEV | Constant $v$ | Constant $\langle\bar{q}q\rangle$ | Position-dependent $v_\chi(x)$ |
 | Dynamics | None | Confined | Internal rotation |
 | Coupling | $g_Y\bar\psi\phi\psi$ | Implicit | $g_\chi\bar\psi\partial\chi\psi$ |
-| Mass formula | $m = g_Y v$ | $M \sim \Lambda_{QCD}$ | $m = (g_\chi\omega/\Lambda)v_\chi\eta_f$ |
+| Mass formula | $m = g_Y v$ | $M \sim \Lambda_{QCD}$ | $m = (g_\chi\omega_0/\Lambda)v_\chi\eta_f$ |
 
 **Key Innovation:** The mass depends on the **derivative** $\partial\chi$, not the field $\chi$ itself. This requires the "rotating" chiral vacuum.
 
@@ -512,7 +517,7 @@ See [§4 in Derivation file](./Theorem-3.1.1-Chiral-Drag-Mass-Formula-Derivation
 
 ### 10.1 Proven Claims
 
-1. ✅ **Mass formula:** $m_f = (g_\chi\omega/\Lambda)v_\chi\eta_f$
+1. ✅ **Mass formula:** $m_f = (g_\chi\omega_0/\Lambda)v_\chi\eta_f$
 
 2. ✅ **Mechanism:** Mass from phase-gradient mass generation, not static VEV
 
@@ -615,7 +620,7 @@ The following issues that were previously marked as requiring derivation have no
 
 **Theorem 3.1.1** establishes that:
 
-$$m_f = \frac{g_\chi \omega}{\Lambda} v_\chi \cdot \eta_f$$
+$$m_f = \frac{g_\chi \omega_0}{\Lambda} v_\chi \cdot \eta_f$$
 
 This is **the central formula of Chiral Geometrogenesis**, replacing the Higgs-Yukawa mechanism with a dynamical mass generation from the rotating chiral vacuum.
 
@@ -630,6 +635,21 @@ This is **the central formula of Chiral Geometrogenesis**, replacing the Higgs-Y
 **For complete details:**
 - **Derivation:** [Theorem-3.1.1-Chiral-Drag-Mass-Formula-Derivation.md](./Theorem-3.1.1-Chiral-Drag-Mass-Formula-Derivation.md)
 - **Applications:** [Theorem-3.1.1-Chiral-Drag-Mass-Formula-Applications.md](./Theorem-3.1.1-Chiral-Drag-Mass-Formula-Applications.md)
+
+---
+
+## 13. Signature Equation Status
+
+This mass formula is one of the **three signature equations** of Chiral Geometrogenesis, captured in ultra-minimal form as:
+
+$$m \propto \omega \cdot \eta$$
+
+> *"Mass is proportional to rotation times geometry."*
+
+Just as Einstein's $E = mc^2$ encapsulates special relativity, this relation encapsulates how mass emerges from the rotating chiral vacuum on the stella octangula. See **[Theorem 0.0.18: Signature Equations](../foundations/Theorem-0.0.18-Signature-Equations.md)** for the complete presentation of all three pillars:
+1. **Mass:** $m \propto \omega \cdot \eta$ (this theorem)
+2. **Gravity:** $G = 1/(8\pi f_\chi^2)$ (Theorem 5.2.4)
+3. **Cosmology:** $\Omega_m = 0.349$, $\Omega_\Lambda = 0.651$ (Proposition 5.1.2a)
 
 ---
 
@@ -798,7 +818,7 @@ $$P_c(x) = \frac{1}{|x - x_c|^2 + \epsilon^2}$$
 | Loop parameter `ε < 1/30` | ✅ PROVEN | `loopParameter_small` |
 | Golden ratio properties | ✅ PROVEN | `goldenRatio_pos`, `goldenRatio_gt_one` |
 | Wolfenstein parameter definition | ✅ FORMALIZED | `geometricWolfenstein`, §11.4 |
-| Wolfenstein bounds [0.20, 0.26] | ⚠️ SORRY | `wolfenstein_in_range` (needs interval arith) |
+| Wolfenstein bounds [0.20, 0.26] | ✅ PROVEN | `wolfenstein_in_range` |
 | Generation hierarchy `η_f = λⁿ·c_f` | ✅ FORMALIZED | `GenerationCoupling`, §11.4 |
 | Mass ratio pattern `m₂/m₃ = λ²` | ✅ PROVEN | `mass_ratio_pattern`, `mass_ratio_23` |
 | Overlap integrals | ✅ FORMALIZED | `OverlapIntegral`, §11.4 |
@@ -847,7 +867,7 @@ noncomputable def geometricWolfenstein : ℝ :=
 ```bash
 lake build ChiralGeometrogenesis.Phase3.Theorem_3_1_1
 # ✅ Build completed successfully
-# ⚠️ 1 sorry: wolfenstein_in_range (numerical verification)
+# ✅ All proofs complete (0 sorry statements)
 ```
 
 ### 19.5 Dependencies (Lean imports)

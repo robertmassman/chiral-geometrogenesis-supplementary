@@ -1,0 +1,432 @@
+{
+  "theorem": "0.2.2",
+  "title": "Internal Time Parameter Emergence",
+  "timestamp": "2026-01-14T13:07:45.070538",
+  "verifications": {
+    "energy_positivity": {
+      "section": "4.4, 6.4",
+      "claim": "Energy positivity ensures \u03c9 > 0",
+      "test_points": [
+        {
+          "x": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rho": 2.985056063084184,
+          "positive": true
+        },
+        {
+          "x": [
+            0.5,
+            0.0,
+            0.0
+          ],
+          "rho": 4.6862823688635125,
+          "positive": true
+        },
+        {
+          "x": [
+            0.0,
+            0.3,
+            0.2
+          ],
+          "rho": 4.553575018390165,
+          "positive": true
+        },
+        {
+          "x": [
+            0.2,
+            0.2,
+            0.2
+          ],
+          "rho": 6.508217747353234,
+          "positive": true
+        },
+        {
+          "x": [
+            0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "rho": 160000.28072339686,
+          "positive": true
+        }
+      ],
+      "all_local_positive": 1,
+      "E_total": 541.7573174640567,
+      "E_positive": true,
+      "omega": 1.4142135623730951,
+      "omega_positive": true,
+      "verified": true
+    },
+    "moment_of_inertia": {
+      "section": "4.2",
+      "claim": "I = E_total (moment of inertia equals total energy)",
+      "E_total": 541.7573174640567,
+      "I_total": 541.7573174640567,
+      "relative_difference": 0.0,
+      "verified": true,
+      "explanation": "Both I and E_total are computed from the incoherent sum \u03a3_c P_c\u00b2"
+    },
+    "canonical_frequency": {
+      "section": "4.4",
+      "claim": "\u03c9 = \u221a2 for canonical system (H = I = E_total)",
+      "omega_theoretical": 1.4142135623730951,
+      "omega_numerical": 1.4142135623730951,
+      "relative_difference": 0.0,
+      "verified": true,
+      "formula": "\u03c9 = \u221a(2H/I)"
+    },
+    "phase_evolution": {
+      "section": "3.3, 9.3",
+      "claim": "Phase evolution follows \u03a6(\u03bb) = \u03c9\u03bb + \u03a6\u2080",
+      "omega": 1.4142135623730951,
+      "max_derivative_error": 2.2870594307278225e-14,
+      "derivative_verified": true,
+      "period": 4.442882938158366,
+      "phase_per_period": 6.283185307179587,
+      "periodicity_verified": true,
+      "verified": true
+    },
+    "time_emergence": {
+      "section": "5.1",
+      "claim": "Physical time emerges as t = \u03bb/\u03c9",
+      "omega_canonical": 1.4142135623730951,
+      "omega_physical_MeV": 200.0,
+      "period_dimensionless": 4.442882938158366,
+      "period_physical_fm": 6.198362305532663,
+      "period_physical_s": 2.0661207685108876e-23,
+      "verified": 1,
+      "lambda_to_t_mapping": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          3.141592653589793,
+          2.221441469079183
+        ],
+        [
+          6.283185307179586,
+          4.442882938158366
+        ],
+        [
+          12.566370614359172,
+          8.885765876316732
+        ]
+      ]
+    },
+    "time_derivative": {
+      "section": "8.2",
+      "claim": "\u2202_\u03bb\u03c7 = i\u03c7 (rescaled \u03bb convention)",
+      "test_points": [
+        {
+          "x": [
+            0.2,
+            0.1,
+            0.3
+          ],
+          "chi": {
+            "real": 1.5481090005849873,
+            "imag": 0.09076386312854734
+          },
+          "d_chi_expected": {
+            "real": -0.09076386312854734,
+            "imag": 1.5481090005849873
+          },
+          "d_chi_numerical": {
+            "real": -0.09076463713952876,
+            "imag": 1.5481089551405702
+          },
+          "relative_error": 4.999743453623183e-07
+        },
+        {
+          "x": [
+            0.5,
+            0.0,
+            0.0
+          ],
+          "chi": {
+            "real": 0.4673300627670017,
+            "imag": 0.8094394126167996
+          },
+          "d_chi_expected": {
+            "real": -0.8094394126167996,
+            "imag": 0.4673300627670017
+          },
+          "d_chi_numerical": {
+            "real": -0.8094396464763953,
+            "imag": 0.46732965786056013
+          },
+          "relative_error": 5.00277112115512e-07
+        },
+        {
+          "x": [
+            0.0,
+            0.3,
+            0.2
+          ],
+          "chi": {
+            "real": 1.0172649591225638,
+            "imag": -0.34503204203854665
+          },
+          "d_chi_expected": {
+            "real": 0.34503204203854665,
+            "imag": 1.0172649591225638
+          },
+          "d_chi_numerical": {
+            "real": 0.3450315335662424,
+            "imag": 1.0172651314643844
+          },
+          "relative_error": 4.998067099675097e-07
+        }
+      ],
+      "max_relative_error": 5.00277112115512e-07,
+      "verified": 1
+    },
+    "diffeomorphism": {
+      "section": "6.4",
+      "claim": "t: \u211d \u2192 \u211d is a diffeomorphism",
+      "omega": 1.4142135623730951,
+      "properties": {
+        "smoothness": {
+          "verified": true,
+          "condition": "\u03c9 > 0",
+          "omega_value": 1.4142135623730951
+        },
+        "injectivity": {
+          "verified": true,
+          "condition": "dt/d\u03bb > 0",
+          "dt_dlambda": 0.7071067811865475
+        },
+        "surjectivity": {
+          "verified": 1,
+          "condition": "t spans \u211d as \u03bb spans \u211d"
+        },
+        "continuous_inverse": {
+          "verified": true,
+          "condition": "\u03bb(t) = \u03c9t is continuous",
+          "round_trip_error": 0.0
+        }
+      },
+      "verified": 1
+    },
+    "oscillation_period": {
+      "section": "7.3",
+      "claim": "Oscillation period T = 2\u03c0/\u03c9",
+      "omega_canonical": 1.4142135623730951,
+      "T_dimensionless": 4.442882938158366,
+      "omega_physical_MeV": 200.0,
+      "T_physical_fm_c": 6.198362305532662,
+      "T_physical_seconds": 2.0661207685108873e-23,
+      "phase_advance_per_period": 6.283185307179587,
+      "expected_phase_advance": 6.283185307179586,
+      "verified": true
+    },
+    "hamilton_equations": {
+      "section": "9.3",
+      "claim": "Hamilton's equations give \u03a6(\u03bb) = \u03c9\u03bb + \u03a6\u2080",
+      "I": 1.0,
+      "omega": 1.4142135623730951,
+      "Pi_Phi": 1.4142135623730951,
+      "equations": {
+        "dPhi_dlambda": {
+          "computed": 1.4142135623730951,
+          "expected": 1.4142135623730951,
+          "verified": true
+        },
+        "dPi_dlambda": {
+          "computed": 0,
+          "expected": 0,
+          "verified": 1
+        }
+      },
+      "hamiltonian": {
+        "H": 1.0000000000000002,
+        "H_expected": 1.0000000000000002,
+        "verified": true
+      },
+      "energy_conserved": true,
+      "verified": 1
+    },
+    "quantum_uncertainty": {
+      "section": "10.2-10.3",
+      "claim": "Quantum uncertainty: \u0394t ~ t_Planck at Planck scale",
+      "hbar": 1.0,
+      "I": 1.0,
+      "omega": 1.4142135623730951,
+      "Delta_Phi": 0.8408964152537145,
+      "Delta_t": 0.5946035575013605,
+      "Delta_t_alternative": 0.5946035575013605,
+      "scaling_check": 1.0000000000000002,
+      "planck_scale_interpretation": "At I ~ M_Pl, \u03c9 ~ M_Pl: \u0394t ~ t_Pl",
+      "verified": 1
+    },
+    "phase_rotation": {
+      "section": "7.1",
+      "claim": "Relative phases remain fixed: \u0394\u03c6_GR = 2\u03c0/3, \u0394\u03c6_BR = 4\u03c0/3",
+      "test_point": [
+        0.3,
+        0.2,
+        0.1
+      ],
+      "results": [
+        {
+          "lambda": 0,
+          "phases": {
+            "R": 0.0,
+            "G": 2.0943951023931953,
+            "B": -2.094395102393196
+          },
+          "relative_phases": {
+            "delta_GR": 2.0943951023931953,
+            "delta_BR": 4.18879020478639
+          },
+          "errors": {
+            "GR": 0.0,
+            "BR": 8.881784197001252e-16
+          },
+          "verified": true
+        },
+        {
+          "lambda": 1.0471975511965976,
+          "phases": {
+            "R": 1.0471975511965976,
+            "G": 3.141592653589793,
+            "B": -1.0471975511965985
+          },
+          "relative_phases": {
+            "delta_GR": 2.0943951023931957,
+            "delta_BR": 4.18879020478639
+          },
+          "errors": {
+            "GR": 4.440892098500626e-16,
+            "BR": 8.881784197001252e-16
+          },
+          "verified": true
+        },
+        {
+          "lambda": 2.0943951023931953,
+          "phases": {
+            "R": 2.0943951023931953,
+            "G": -2.094395102393196,
+            "B": -2.4492935982947064e-16
+          },
+          "relative_phases": {
+            "delta_GR": 2.094395102393195,
+            "delta_BR": 4.1887902047863905
+          },
+          "errors": {
+            "GR": 4.440892098500626e-16,
+            "BR": 0.0
+          },
+          "verified": true
+        },
+        {
+          "lambda": 3.141592653589793,
+          "phases": {
+            "R": 3.141592653589793,
+            "G": -1.0471975511965985,
+            "B": 1.0471975511965972
+          },
+          "relative_phases": {
+            "delta_GR": 2.094395102393195,
+            "delta_BR": 4.1887902047863905
+          },
+          "errors": {
+            "GR": 4.440892098500626e-16,
+            "BR": 0.0
+          },
+          "verified": true
+        }
+      ],
+      "expected_delta_GR": 2.0943951023931953,
+      "expected_delta_BR": 4.1887902047863905,
+      "verified": true
+    },
+    "bootstrap_resolution": {
+      "section": "8.3",
+      "claim": "Bootstrap circularity is broken",
+      "test_point": [
+        0.2,
+        0.1,
+        0.3
+      ],
+      "chi_at_Phi_0": {
+        "real": 1.5481090005849873,
+        "imag": 0.09076386312854734
+      },
+      "phase_evolution_tests": [
+        {
+          "Phi": 0.7853981633974483,
+          "chi_Phi": {
+            "real": 1.0304986292246903,
+            "imag": 1.158858115434457
+          },
+          "chi_expected": {
+            "real": 1.03049862922469,
+            "imag": 1.1588581154344568
+          },
+          "relative_error": 2.024923208549735e-16,
+          "verified": true
+        },
+        {
+          "Phi": 1.5707963267948966,
+          "chi_Phi": {
+            "real": -0.09076386312854734,
+            "imag": 1.5481090005849873
+          },
+          "chi_expected": {
+            "real": -0.09076386312854724,
+            "imag": 1.5481090005849873
+          },
+          "relative_error": 6.264286578145484e-17,
+          "verified": true
+        },
+        {
+          "Phi": 3.141592653589793,
+          "chi_Phi": {
+            "real": -1.5481090005849878,
+            "imag": -0.09076386312854734
+          },
+          "chi_expected": {
+            "real": -1.5481090005849873,
+            "imag": -0.09076386312854715
+          },
+          "relative_error": 3.1257446239851472e-16,
+          "verified": true
+        },
+        {
+          "Phi": 4.71238898038469,
+          "chi_Phi": {
+            "real": 0.09076386312854678,
+            "imag": -1.5481090005849882
+          },
+          "chi_expected": {
+            "real": 0.09076386312854706,
+            "imag": -1.5481090005849873
+          },
+          "relative_error": 6.000490173068838e-16,
+          "verified": true
+        }
+      ],
+      "phase_relation_verified": true,
+      "metric_independent_ingredients": {
+        "vertex_positions": "Defined by stella octangula geometry",
+        "pressure_functions": "P_c(x) = 1/(|x-x_c|\u00b2 + \u03b5\u00b2)",
+        "phase_constraints": "\u03c6_G - \u03c6_R = 2\u03c0/3 (SU(3) structure)",
+        "energy_functional": "E = \u222b \u03c1(x) d\u00b3x (uses Euclidean \u211d\u00b3, not Lorentzian metric)",
+        "lambda_parameter": "Internal to system, not external time"
+      },
+      "verified": true,
+      "explanation": "\u03c7(\u03a6) = e^{i\u03a6}\u03c7(0) holds without external time coordinate"
+    }
+  },
+  "summary": {
+    "total_tests": 12,
+    "passed": 12,
+    "failed": 0,
+    "all_passed": 1
+  }
+}

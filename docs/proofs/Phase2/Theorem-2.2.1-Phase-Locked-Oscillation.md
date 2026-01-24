@@ -77,6 +77,7 @@ The Sakaguchi-Kuramoto model itself is a **choice of dynamics**, not derived fro
 - Theorem 2.2.2 (Limit Cycle Existence) — uses stability result
 - Theorem 2.2.3 (Time Irreversibility) — uses chirality from phase ordering
 - Theorem 2.2.4 (Anomaly-Driven Chirality Selection) — derives sign of α
+- **Theorem 2.5.1** (Complete CG Lagrangian) — uses phase-locked configuration for Kuramoto coupling term
 
 ---
 

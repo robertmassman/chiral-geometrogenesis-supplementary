@@ -120,7 +120,7 @@ See: [Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md](Propositi
 |-------|----------------|--------|-----------|
 | **A5** | Born rule probability | ✅ DERIVED | Proposition 0.0.17a (geodesic ergodicity) |
 | **A6** | L² integrability | ✅ DERIVED | Proposition 0.0.17e (pre-geometric energy) |
-| **A7** | Measurement = decoherence | 🔸 PARTIAL | Props 0.0.17f, 0.0.17g, 0.0.17h |
+| **A7** | Measurement = decoherence | ✅ DERIVED | Props 0.0.17f, 0.0.17g, 0.0.17h, **0.0.17i** |
 
 **A7 Reduction Details:**
 
@@ -130,10 +130,10 @@ See: [Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md](Propositi
 | Pointer basis selection | ✅ DERIVED | Prop 0.0.17f (S₃ symmetry) |
 | Decoherence rate | ✅ DERIVED | Prop 0.0.17f (Lindblad evolution) |
 | Information horizon threshold (Γ_crit) | ✅ DERIVED | Prop 0.0.17h (3 independent approaches) |
-| Z₃ collapse mechanism | 🔸 PARTIAL | Prop 0.0.17g (superselection at horizon) |
-| Outcome selection (A7') | 🔸 PARTIAL | Props 0.0.17g+h (measurement-horizon equivalence conjectural) |
+| Z₃ collapse mechanism | ✅ DERIVED | Prop 0.0.17g + **0.0.17i** (superselection at horizon) |
+| Outcome selection (A7') | ✅ DERIVED | Props 0.0.17g+h+**i** (Z₃ measurement extension fully derived) |
 
-**Net Result:** Framework now has **~0.5 irreducible axiom** — only the measurement-horizon equivalence in A7' remains conjectural.
+**Net Result:** Framework now has **zero irreducible axioms** — A7' is fully derived via Proposition 0.0.17i (Z₃ measurement extension).
 
 ---
 
@@ -387,7 +387,7 @@ This is philosophically irreducible — it is equivalent to asking "why does any
 ### What This Achieves
 - **Before:** 3 separate axioms (ℝ³, stella octangula, SU(3)) + QM axioms (A5, A6, A7)
 - **After Phase -1:** 1 geometric axiom (observer existence / D = 4)
-- **After QM Reduction (January 2026):** ~0.5 remaining axiom (A7' outcome selection, partially derived)
+- **After QM Reduction (January 2026):** **Zero irreducible axioms** (A7' now fully derived via Prop 0.0.17i)
 - **Significance:** Demonstrates that field dynamics necessarily produce geometry AND quantum mechanics, given observers can exist
 
 ### Current Irreducible Content (January 2026)
@@ -398,7 +398,7 @@ This is philosophically irreducible — it is equivalent to asking "why does any
 | A5 (Born rule) | ✅ DERIVED | Prop 0.0.17a |
 | A6 (L² integrability) | ✅ DERIVED | Prop 0.0.17e |
 | A7 (Measurement mechanism) | ✅ DERIVED | Prop 0.0.17f |
-| A7' (Outcome selection) | 🔸 PARTIAL | Props 0.0.17g+h (Γ_crit derived, horizon equivalence conjectural) |
+| A7' (Outcome selection) | ✅ DERIVED | Props 0.0.17g+h+**i** (Z₃ measurement extension fully derived) |
 
 **References for QM Reduction:**
 - [Proposition-0.0.17a](Proposition-0.0.17a-Born-Rule-From-Geodesic-Flow.md) — Born rule
@@ -406,6 +406,7 @@ This is philosophically irreducible — it is equivalent to asking "why does any
 - [Proposition-0.0.17f](Proposition-0.0.17f-Decoherence-From-Geodesic-Mixing.md) — Decoherence mechanism
 - [Proposition-0.0.17g](Proposition-0.0.17g-Objective-Collapse-From-Z3-Discretization.md) — Z₃ collapse mechanism
 - [Proposition-0.0.17h](Proposition-0.0.17h-Information-Horizon-Derivation.md) — Information horizon derivation ✅ VERIFIED
+- [Proposition-0.0.17i](Proposition-0.0.17i-Z3-Measurement-Extension.md) — Z₃ measurement extension ✅ VERIFIED (closes the gap)
 
 ---
 

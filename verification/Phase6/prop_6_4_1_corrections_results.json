@@ -1,0 +1,41 @@
+{
+  "lund_b_parameter": {
+    "b_table_wrong": 5.165278785686682,
+    "b_derivation_correct": 16.227201886856488,
+    "b_lund_fitted": 0.58,
+    "correction_needed": "Change '~1/\u03c3 \u2248 5.3' to '\u03c0/\u03c3 \u2248 16.5'"
+  },
+  "flux_tube_width": {
+    "r_stella": 0.44847,
+    "diameter": 0.89694,
+    "lattice_gaussian_width": 0.35,
+    "lattice_fwhm": 0.8242499999999999,
+    "correction_needed": "Clarify: flux tube width ~ R_stella (radius), not diameter"
+  },
+  "flag_uncertainty": {
+    "sqrt_sigma_central": 440,
+    "recommended_uncertainty": 10,
+    "correction_needed": "Use \u221a\u03c3 = 440 \u00b1 10 MeV (\u00b12.3%)"
+  },
+  "peterson_parameter": {
+    "epsilon_c_naive": 2.892677785355571e-06,
+    "epsilon_c_exp": 0.05,
+    "epsilon_c_constituent": 0.04000000000000001,
+    "explanation": "Peterson \u03b5 requires constituent masses, not current masses",
+    "correction_needed": "Add explicit statement that Peterson formula uses constituent masses, which CG does not derive"
+  },
+  "strangeness_suppression": {
+    "gamma_s_schwinger": 0.8637684903830624,
+    "gamma_s_exp": 0.3,
+    "discrepancy_percent": 187.9228301276875,
+    "m_s_effective_needed": 272.3870892787221,
+    "correction_needed": "Classify as 'qualitative consistency only' - Schwinger oversimplifies"
+  },
+  "test_counts": {
+    "genuine_predictions_pass": 5,
+    "genuine_predictions_qualitative": 1,
+    "consistency_checks_pass": 6,
+    "total_pass": 12,
+    "total_tests": 13
+  }
+}

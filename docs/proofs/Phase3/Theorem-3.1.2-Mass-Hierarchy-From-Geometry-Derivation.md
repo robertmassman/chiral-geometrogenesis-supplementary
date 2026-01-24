@@ -938,17 +938,19 @@ The angle 72° = 2π/5 is:
 **How does the golden ratio enter?**
 
 The 24-cell can be constructed from 24 vertices arranged as:
-1. The 8 vertices of a hypercube (±1, ±1, ±1, ±1)
-2. The 16 vertices of a 16-cell (permutations of (±2, 0, 0, 0))
+1. **8 vertices of 16-cell type:** (±1, 0, 0, 0), (0, ±1, 0, 0), (0, 0, ±1, 0), (0, 0, 0, ±1)
+2. **16 vertices of tesseract type:** (±½, ±½, ±½, ±½) — all 16 sign combinations
 
-A 3D slice through the 24-cell can produce the stella octangula. The scaling between adjacent "layers" of the 24-cell is governed by φ.
+The stella octangula appears as a **3D cross-section of the tesseract-type vertices**: at w = +½ or w = −½, the 8 vertices project to (±1, ±1, ±1) when scaled by 2. See [Lemma 3.1.2a §3.1](Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md#31-stella-octangula-as-3d-cross-section) for details.
+
+The golden ratio φ enters through the 24-cell's embedding in the 600-cell (H₄ symmetry), which has 5 copies of the 24-cell related by rotations involving φ.
 
 **The generation structure:**
 - 3rd generation: r₃ = 0 (center of stella octangula)
 - 2nd generation: r₂ = ε (first layer)
 - 1st generation: r₁ = √3·ε (outer layer)
 
-The ratio r₁/r₂ = √3 comes from the tetrahedral geometry: the distance from center to edge midpoint vs. center to face center.
+The ratio r₁/r₂ = √3 comes from the **hexagonal lattice structure**: when the stella octangula is projected onto the SU(3) weight plane (perpendicular to [1,1,1]), the vertices form a hexagonal pattern where next-nearest-neighbor / nearest-neighbor distance = √3. See [Lemma 3.1.2a §3.4](Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md#34-generation-radii-from-hexagonal-lattice-projection-✅-verified).
 
 ### 10.7 Geometric Constraints on λ
 

@@ -77,6 +77,7 @@ While this theorem is kinematic, other theorems in the framework address dynamic
 | **Bag equilibrium** | Thm 2.1.1 | Pressure balance E(R) = (4πR³/3)B + Ω/R | ✅ DERIVED (given B) |
 | **Effective string tension** | Thm 4.1.4 | σ_eff ≈ 0.236 GeV² from soliton dynamics | ✅ DERIVED (30% above Cornell) |
 | **String tension from Casimir** | **Prop 0.0.17j** | **σ = (ℏc/R_stella)² = 0.19 GeV²** | ✅ **DERIVED (99.7% match)** |
+| **Wilson loop area law** | **Thm 2.5.2** | **⟨W(C)⟩ ∼ exp(−σ·Area) from pressure mechanism** | ✅ **DERIVED (7/7 tests pass)** |
 | **Phase locking** | Thm 2.2.1, 2.2.2 | 120° phase separation is stable limit cycle | ✅ DERIVED (Kuramoto dynamics) |
 | **Chirality selection** | Thm 2.2.4 | R→G→B direction from QCD instantons | ✅ DERIVED (CP violation) |
 
@@ -84,12 +85,12 @@ While this theorem is kinematic, other theorems in the framework address dynamic
 
 | Gap | Status | What Would Be Needed |
 |-----|--------|---------------------|
-| **Wilson loop area law** | ❌ NOT DERIVED | Derive ⟨W(C)⟩ ∼ exp(−σ·Area) from stella geometry |
+| ~~**Wilson loop area law**~~ | ✅ **NOW DERIVED** | ~~Derive ⟨W(C)⟩ ∼ exp(−σ·Area) from stella geometry~~ See **Theorem 2.5.2** |
 | ~~**String tension from first principles**~~ | ✅ **NOW DERIVED** | ~~Derive σ ≈ 0.19 GeV² without lattice QCD input~~ See **Prop 0.0.17j** |
 | **Bag constant B from first principles** | ❌ NOT DERIVED | Derive B ≈ (145 MeV)⁴ from stella structure |
 | **Flux tube cross-section** | ⚠️ CONSISTENT | R_⊥ ≈ 0.44 fm matches R_stella ≈ 0.44847 fm (Prop 0.0.17j) |
 
-**Note:** The framework previously used lattice QCD values (σ, B) as **phenomenological input**. As of 2026-01-05, **σ is now DERIVED** from Casimir vacuum energy (Prop 0.0.17j), leaving only B as phenomenological input.
+**Note:** The framework previously used lattice QCD values (σ, B) as **phenomenological input**. As of 2026-01-05, **σ is now DERIVED** from Casimir vacuum energy (Prop 0.0.17j), leaving only B as phenomenological input. As of 2026-01-17, the **Wilson loop area law** is now derived from the CG pressure mechanism (Theorem 2.5.2), completing the dynamical upgrade of this kinematic theorem.
 
 ---
 
@@ -714,6 +715,11 @@ This completes the foundational Phase 1.1 proofs, establishing that the Stella O
 **Verification Log:** [Theorem-1.1.3-Multi-Agent-Verification-2025-12-13.md](./Theorem-1.1.3-Multi-Agent-Verification-2025-12-13.md)
 
 ---
+
+*Revised: January 17, 2026 — Cross-reference update for dynamical completion*
+- **UPDATE:** Added Theorem 2.5.2 (Dynamical Confinement) to §0.7 cross-reference table
+- **UPDATE:** Marked Wilson loop area law as ✅ NOW DERIVED in gaps table (was ❌ NOT DERIVED)
+- **UPDATE:** Added note about dynamical completion via Theorem 2.5.2
 
 *Revised: December 13, 2025 — Multi-agent peer review corrections*
 - **MODERATE FIX:** Added mixed-color meson clarification in §4.1 with **3** ⊗ **3̄** = **8** ⊕ **1** decomposition

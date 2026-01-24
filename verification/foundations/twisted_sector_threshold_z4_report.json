@@ -1,0 +1,23 @@
+{
+  "task": "Twisted sector threshold for T\u00b2/\u2124\u2084 at \u03c4 = i",
+  "date": "2026-01-23",
+  "tau": "i (S\u2084 symmetric point)",
+  "key_values": {
+    "delta_dkl": 2.1093765619913443,
+    "delta_target": 1.5,
+    "delta_s4_formula": 1.5890269151739729,
+    "delta_twisted_implied": -0.5203496468173714,
+    "gap_from_target": 0.08902691517397288
+  },
+  "theta_values_at_i": {
+    "theta2": 0.9135791381561168,
+    "theta3": 1.0864348112133082,
+    "theta4": 0.9135791381561169
+  },
+  "conclusions": [
+    "T\u00b2/\u2124\u2084 orbifold has \u0393\u2084 \u2245 S\u2084 modular symmetry",
+    "At \u03c4 = i, twisted sectors contribute negatively",
+    "Group order formula \u03b4 = ln(24)/2 \u2248 1.59 is 6% from target",
+    "This supports stella S\u2084 symmetry connection to threshold"
+  ]
+}

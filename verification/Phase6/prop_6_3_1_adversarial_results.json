@@ -1,0 +1,100 @@
+{
+  "beta_coefficients": {
+    "b1": {
+      "calculated": 7.0,
+      "expected": 7.0,
+      "match": true,
+      "formula": "(11*N_c - 2*N_f)/3"
+    },
+    "b2_standard": {
+      "calculated": 26.0,
+      "expected": 26.0,
+      "match": true,
+      "formula": "(34/3)*C_A\u00b2 - (20/3)*C_A*T_F*N_f - 4*C_F*T_F*N_f"
+    },
+    "b2_document": {
+      "calculated": 26.0,
+      "expected": 26.0,
+      "match": true,
+      "formula": "(34*N_c\u00b3 - 13*N_c\u00b2*N_f + 3*N_f)/(3*N_c)"
+    },
+    "b2_simple": {
+      "calculated": 26.0,
+      "expected": 26.0,
+      "match": true,
+      "formula": "102 - (38/3)*N_f"
+    },
+    "N_c": 3,
+    "N_f": 6
+  },
+  "running_coupling": {
+    "alpha_s_MP": 0.015625,
+    "alpha_s_MZ_1loop_direct": 0.049837512173203084,
+    "alpha_s_MZ_2loop_direct": 0.05068903660819261,
+    "alpha_s_MZ_CG_claimed": 0.122,
+    "alpha_s_MZ_pdg": 0.118,
+    "pdg_error": 0.0009,
+    "tension_sigma": 4.444444444444448,
+    "percent_deviation": 3.3898305084745797,
+    "note": "Direct running gives very different result; cascade running via E6->E8 thresholds (Prop 0.0.17s) is required"
+  },
+  "mass_anomalous_dim": {
+    "alpha_s": 0.118,
+    "gamma_m_standard": 0.1502422662787492,
+    "gamma_m_standard_formula": "3*C_F*\u03b1_s/\u03c0 = (4/\u03c0)*\u03b1_s \u2248 1.273*\u03b1_s",
+    "gamma_m_document": 0.1502422662787492,
+    "gamma_m_document_formula": "4*\u03b1_s/\u03c0 \u2248 1.273*\u03b1_s",
+    "gamma_m_standard_alt": 0.10016151085249947,
+    "gamma_m_standard_alt_formula": "(8/3)*\u03b1_s/\u03c0",
+    "coefficient_standard": 4.0,
+    "coefficient_document": 4,
+    "note": "Document formula 4*\u03b1_s/\u03c0 equals standard 3*C_F*\u03b1_s/\u03c0 when C_F=4/3",
+    "formulas_equivalent": true
+  },
+  "chi_loop": {
+    "Lambda_chi": 2000.0,
+    "corrections": {
+      "g_chi=0.5": {
+        "E=100 GeV": 3.95785873602882e-06,
+        "E=500 GeV": 9.894646840072048e-05,
+        "E=1000 GeV": 0.00039578587360288194,
+        "E=2000 GeV": 0.0015831434944115277,
+        "E=5000 GeV": 0.009894646840072048
+      },
+      "g_chi=1.0": {
+        "E=100 GeV": 1.583143494411528e-05,
+        "E=500 GeV": 0.00039578587360288194,
+        "E=1000 GeV": 0.0015831434944115277,
+        "E=2000 GeV": 0.006332573977646111,
+        "E=5000 GeV": 0.039578587360288194
+      },
+      "g_chi=1.5": {
+        "E=100 GeV": 3.562072862425938e-05,
+        "E=500 GeV": 0.0008905182156064844,
+        "E=1000 GeV": 0.0035620728624259374,
+        "E=2000 GeV": 0.01424829144970375,
+        "E=5000 GeV": 0.08905182156064843
+      }
+    },
+    "document_claim": "10^-4 at E = 1 TeV",
+    "E_1TeV_g_chi_1": 0.0015831434944115277,
+    "document_value": 0.0001,
+    "ratio_to_document": 15.831434944115276
+  },
+  "ttbar": {
+    "alpha_s_mtop": 0.10886122208707957,
+    "sigma_nlo_approx": 528.5875726502026,
+    "sigma_CG_claimed": 830.0,
+    "sigma_exp": 829.0,
+    "sigma_exp_err": 15.0,
+    "CG_vs_exp_sigma": 0.06666666666666667,
+    "note": "Full NNLO+NNLL prediction: 832 \u00b1 35 (PDF) +20/-29 (scale) pb"
+  },
+  "ward_identity": {
+    "Z1_coefficient": -0.10610329539459688,
+    "Z2_coefficient": -0.10610329539459688,
+    "Z1_equals_Z2": true,
+    "gauge_invariance": "Ward identity Z\u2081 = Z\u2082 holds in covariant gauges",
+    "slavnov_taylor": "Full non-Abelian gauge invariance requires Slavnov-Taylor identities"
+  }
+}

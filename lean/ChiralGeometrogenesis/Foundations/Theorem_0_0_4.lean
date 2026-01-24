@@ -654,6 +654,29 @@ structure Cell16Edge where
     Total: 8 vertices × 6 neighbors / 2 = 24 edges. -/
 theorem cell16_edge_count : 8 * 6 / 2 = 24 := by norm_num
 
+/-- The underlying data type for Cell16Edge without the constraint -/
+abbrev Cell16EdgeData := Fin 4 × Fin 4 × Bool × Bool
+
+/-- Predicate: this tuple represents a valid 16-cell edge (i ≠ j) -/
+def isValidCell16EdgeData (d : Cell16EdgeData) : Prop := d.1 ≠ d.2.1
+
+instance : DecidablePred isValidCell16EdgeData := fun d => inferInstanceAs (Decidable (d.1 ≠ d.2.1))
+
+/-- Cell16Edge is equivalent to the subtype of valid Cell16EdgeData -/
+def Cell16Edge.equivSubtype : Cell16Edge ≃ { d : Cell16EdgeData // isValidCell16EdgeData d } where
+  toFun e := ⟨(e.i, e.j, e.sign_i, e.sign_j), e.h_ne⟩
+  invFun d := ⟨d.val.1, d.val.2.1, d.val.2.2.1, d.val.2.2.2, d.property⟩
+  left_inv e := rfl
+  right_inv d := rfl
+
+/-- Cell16Edge is finite -/
+instance : Fintype Cell16Edge := Fintype.ofEquiv _ Cell16Edge.equivSubtype.symm
+
+/-- The 16-cell has exactly 48 oriented edges (each undirected edge counted twice).
+    For the bijection with D₄ roots, we need (4 × 3) × 4 = 48 oriented edges.
+    But we're mapping to 24 roots, so the map is 2-to-1 (edge (i,j) and (j,i) give same root). -/
+theorem Cell16Edge_card : Fintype.card Cell16Edge = 48 := by native_decide
+
 /-- The midpoint of a 16-cell edge, scaled by 2 to get integer coordinates.
     The midpoint of (±eᵢ, ±eⱼ) is ½(±eᵢ ± eⱼ), so scaled midpoint is (±eᵢ ± eⱼ). -/
 def Cell16Edge.toD4Root (e : Cell16Edge) : D4Root :=
@@ -669,24 +692,55 @@ def Cell16Edge.toD4Root (e : Cell16Edge) : D4Root :=
         | inr hgt => exact Fin.mk_lt_mk.mpr hgt
     ⟨e.j, e.i, e.sign_j, e.sign_i, h'⟩
 
+/-- The inverse map: given a D₄ root ±eᵢ ± eⱼ (i < j), construct the corresponding
+    16-cell edge. We choose the canonical orientation with i < j. -/
+def D4Root.toCell16Edge (r : D4Root) : Cell16Edge :=
+  ⟨r.i, r.j, r.sign_i, r.sign_j, Fin.ne_of_lt r.h_lt⟩
+
+/-- The map D4Root.toCell16Edge is a right inverse of Cell16Edge.toD4Root
+    when restricted to edges with i < j. -/
+theorem D4Root_toCell16Edge_toD4Root (r : D4Root) :
+    (D4Root.toCell16Edge r).toD4Root = r := by
+  simp only [D4Root.toCell16Edge, Cell16Edge.toD4Root]
+  split_ifs with h
+  · -- i < j case: direct match
+    rfl
+  · -- i ≥ j case: but we have r.h_lt : r.i < r.j, contradiction
+    exact absurd r.h_lt h
+
+/-- Cell16Edge.toD4Root is surjective: every D₄ root is the midpoint of some 16-cell edge.
+
+    **Proof:** Given any D₄ root ±eᵢ ± eⱼ with i < j, the edge connecting
+    vertices ±eᵢ and ±eⱼ has this root as its midpoint (after scaling by 2).
+
+    This completes the geometric correspondence: the 24-cell vertices (D₄ roots)
+    are EXACTLY the midpoints of the 16-cell edges. -/
+theorem Cell16Edge_toD4Root_surjective : Function.Surjective Cell16Edge.toD4Root := by
+  intro r
+  use D4Root.toCell16Edge r
+  exact D4Root_toCell16Edge_toD4Root r
+
 /-- Rectification theorem: 16-cell edge midpoints = 24-cell vertices = D₄ roots.
 
     This establishes the geometric correspondence:
-    - 16-cell has 24 edges
+    - 16-cell has 24 edges (undirected) = 48 oriented edges
     - Each edge midpoint becomes a 24-cell vertex
     - 24-cell has 24 vertices
     - These vertices are exactly the D₄ roots
+    - The map Cell16Edge.toD4Root is surjective (proven above)
 
     Reference: Coxeter, "Regular Polytopes" §8.4
 -/
 theorem rectification_16cell_to_24cell :
-    -- 16-cell edge count
+    -- 16-cell edge count (undirected)
     8 * 6 / 2 = 24 ∧
     -- D₄ root count (= 24-cell vertex count)
     Fintype.card D4Root = 24 ∧
     -- The counts match (rectification preserves count)
-    8 * 6 / 2 = Fintype.card D4Root := by
-  refine ⟨cell16_edge_count, D4Root_card, ?_⟩
+    8 * 6 / 2 = Fintype.card D4Root ∧
+    -- Surjectivity: every D₄ root comes from an edge
+    Function.Surjective Cell16Edge.toD4Root := by
+  refine ⟨cell16_edge_count, D4Root_card, ?_, Cell16Edge_toD4Root_surjective⟩
   simp only [D4Root_card]
 
 end Rectification
@@ -696,24 +750,65 @@ end Rectification
 
 W(F₄) has order 1152 = 3 × 384 = 3 × |W(B₄)|.
 The factor of 3 corresponds to D₄ triality.
+
+**CITED RESULT:** The order |W(F₄)| = 1152 is a well-established result in the
+theory of reflection groups and does not require constructive proof here.
+
+**Primary References:**
+- Coxeter, H.S.M. "Regular Polytopes" 3rd ed. Dover (1973), §11.5, Theorem 11.5A
+  Establishes |Aut(24-cell)| = 1152 as the symmetry group of the 24-cell.
+
+- Humphreys, J.E. "Reflection Groups and Coxeter Groups" Cambridge (1990), §2.11
+  General formula: |W(F₄)| = 2⁷ × 3² = 1152
+
+- Conway, J.H. and Sloane, N.J.A. "Sphere Packings, Lattices and Groups"
+  3rd ed. Springer (1999), Chapter 4, Table 4.1
+  Lists W(F₄) order as 1152 in the classification of crystallographic groups.
+
+**Why W(F₄) is not constructively defined here:**
+Constructing W(F₄) explicitly would require:
+1. Defining the F₄ root system (48 roots)
+2. Defining the 4 Coxeter generators satisfying the F₄ Coxeter relations
+3. Proving they generate exactly 1152 elements
+This is substantial (~400 lines) and tangential to the main theorem chain.
+
+The mathematical content used from W(F₄) is ONLY the order |W(F₄)| = 1152,
+which establishes the embedding index [W(F₄) : W(B₄)] = 3 (triality).
+This order is cited from peer-reviewed sources above.
 -/
 
 section WeylGroupF4
 
-/-- The 24-cell automorphism group has order 1152.
-    This is W(F₄), the Weyl group of the exceptional Lie algebra F₄.
+/-- The Weyl group W(F₄) has order 1152.
 
-    Reference: Coxeter, "Regular Polytopes" §11.5, Theorem 11.5A -/
+    This is the automorphism group of the 24-cell, equivalently the symmetry
+    group of the F₄ root system (48 roots).
+
+    **CITED** (not constructively proven):
+    - Coxeter, H.S.M. "Regular Polytopes" 3rd ed. (1973), §11.5, Theorem 11.5A
+    - Humphreys, J.E. "Reflection Groups and Coxeter Groups" (1990), §2.11
+    - Conway & Sloane, "Sphere Packings, Lattices and Groups" (1999), Table 4.1
+
+    The order can be computed as |W(F₄)| = 2⁷ × 3² = 128 × 9 = 1152,
+    or equivalently as 3 × |W(B₄)| = 3 × 384 = 1152 (triality factor). -/
 def W_F4_order : ℕ := 1152
 
 /-- W(B₄) is a subgroup of W(F₄) with index 3.
-    This is the triality factor from the D₄ outer automorphism. -/
+
+    This index-3 embedding corresponds to D₄ triality: the outer automorphism
+    group Out(D₄) ≅ S₃ permutes the three 8-dimensional representations of so(8).
+    W(B₄) fixes one of these representations.
+
+    Reference: Humphreys (1990), §2.12 discusses the D₄ triality. -/
 theorem W_B4_subgroup_of_W_F4 :
     W_F4_order / Fintype.card SignedPerm4 = 3 := by
   simp only [W_F4_order, SignedPerm4_card]
 
-/-- The full embedding chain: S₄ × Z₂ ⊂ W(B₄) ⊂ W(F₄)
-    Indices: 48 × 8 = 384, 384 × 3 = 1152 -/
+/-- The full embedding chain with indices:
+    S₄ × Z₂ ⊂ W(B₄) ⊂ W(F₄)
+    |S₄ × Z₂| = 48, [W(B₄) : S₄ × Z₂] = 8, [W(F₄) : W(B₄)] = 3
+
+    Cumulative: 48 × 8 = 384, 384 × 3 = 1152 -/
 theorem full_embedding_chain :
     48 * 8 = 384 ∧ 384 * 3 = 1152 := by
   constructor <;> norm_num
@@ -774,6 +869,22 @@ theorem D4_to_D5_injective : Function.Injective D4_to_D5 := by
     Number of roots = C(5,2) × 4 = 40. -/
 theorem so10_is_D5 : Nat.choose 5 2 * 4 = 40 ∧ 10 * 9 / 2 = 45 := by
   constructor <;> native_decide
+
+/-! ## A₄ Root System (su(5) roots)
+
+The A₄ root system consists of roots eᵢ - eⱼ for i ≠ j (1 ≤ i, j ≤ 5).
+These are a SUBSET of the D₅ roots {±eᵢ ± eⱼ : i < j}.
+
+Specifically, the A₄ roots correspond to the D₅ roots with opposite signs:
+- eᵢ - eⱼ = (+eᵢ) + (-eⱼ) when i < j → D₅ root with (sign_i=true, sign_j=false)
+- eᵢ - eⱼ = (-eⱼ) + (+eᵢ) when i > j → D₅ root with (sign_i=false, sign_j=true)
+
+The A₄ roots are exactly half of the D₅ roots (20 out of 40):
+- D₅ roots: {±eᵢ ± eⱼ : i < j} = 10 pairs × 4 sign combos = 40 roots
+- A₄ roots: {eᵢ - eⱼ : i ≠ j} = 5 × 4 = 20 roots (opposite signs only)
+
+Reference: Slansky (1981), Tables 6 and 7; Humphreys (1990), §2.10
+-/
 
 /-- An A₄ root: eᵢ - eⱼ for i ≠ j, 1 ≤ i, j ≤ 5.
     These are the roots of su(5). -/
@@ -842,20 +953,221 @@ instance : Fintype A4Root := Fintype.ofEquiv _ A4Root.equivSubtype.symm
 /-- A₄ root system has exactly 20 roots: 5 × 4 = 20 -/
 theorem A4Root_card : Fintype.card A4Root = 20 := by native_decide
 
-/-- su(5) ⊕ u(1) ⊂ so(10) as a maximal subalgebra.
-    The embedding is via the branching rule: so(10) → su(5) ⊕ u(1).
+/-- **A₄ roots embed into D₅ roots.**
 
-    Reference: Slansky (1981), Table 44 -/
+    The A₄ root eᵢ - eⱼ corresponds to a D₅ root with opposite signs:
+    - If i < j: eᵢ - eⱼ = (+eᵢ) + (-eⱼ), so (i, j, true, false)
+    - If i > j: eᵢ - eⱼ = (-eⱼ) + (+eᵢ), so (j, i, false, true)
+
+    This shows that A₄ (su(5)) is a sub-root-system of D₅ (so(10)).
+
+    Reference: Slansky (1981), Tables 6-7; Humphreys (1990), §2.10 -/
+def A4_to_D5 (r : A4Root) : D5Root :=
+  if h : r.i < r.j then
+    -- eᵢ - eⱼ with i < j: sign_i = +1, sign_j = -1
+    ⟨r.i, r.j, true, false, h⟩
+  else
+    -- eᵢ - eⱼ with i > j (since i ≠ j): swap and use sign_i = -1, sign_j = +1
+    have h' : r.j < r.i := by
+      cases Nat.lt_trichotomy r.i.val r.j.val with
+      | inl hlt => exact absurd (Fin.mk_lt_mk.mpr hlt) h
+      | inr hor => cases hor with
+        | inl heq => exact absurd (Fin.ext heq) r.h_ne
+        | inr hgt => exact Fin.mk_lt_mk.mpr hgt
+    ⟨r.j, r.i, false, true, h'⟩
+
+/-- The A₄ → D₅ embedding preserves coordinates:
+    The D₅ root has the same coordinates as the A₄ root (eᵢ - eⱼ) -/
+theorem A4_to_D5_coord (r : A4Root) (k : Fin 5) :
+    (A4_to_D5 r).toCoord k = r.toCoord k := by
+  obtain ⟨i, j, h_ne⟩ := r
+  simp only [A4_to_D5, D5Root.toCoord, A4Root.toCoord]
+  split_ifs <;> simp_all
+
+/-- The A₄ → D₅ embedding is injective -/
+theorem A4_to_D5_injective : Function.Injective A4_to_D5 := by
+  intro r₁ r₂ h
+  simp only [A4_to_D5] at h
+  obtain ⟨i₁, j₁, h_ne₁⟩ := r₁
+  obtain ⟨i₂, j₂, h_ne₂⟩ := r₂
+  simp only at h
+  split_ifs at h with h₁ h₂ h₃
+  · -- Both i < j case
+    simp only [D5Root.mk.injEq] at h
+    obtain ⟨hi, hj, _, _⟩ := h
+    simp_all
+  · -- r₁: i < j, r₂: i > j → contradiction (signs mismatch)
+    simp only [D5Root.mk.injEq] at h
+    obtain ⟨_, _, hs1, hs2⟩ := h
+    simp at hs1
+  · -- r₁: i > j, r₂: i < j → contradiction (signs mismatch)
+    simp only [D5Root.mk.injEq] at h
+    obtain ⟨_, _, hs1, hs2⟩ := h
+    simp at hs1
+  · -- Both i > j case (meaning j < i for both)
+    simp only [D5Root.mk.injEq] at h
+    obtain ⟨hj, hi, _, _⟩ := h
+    simp_all
+
+/-- A₄ has exactly half as many roots as D₅: 20 vs 40 -/
+theorem A4_D5_root_ratio : Fintype.card A4Root * 2 = Fintype.card D5Root := by
+  rw [A4Root_card, D5Root_card]
+
+/-- **su(5) ⊕ u(1) ⊂ so(10) as a maximal subalgebra.**
+
+    The embedding so(10) ⊃ su(5) ⊕ u(1) is a standard result in GUT physics.
+    This is the "flipped SU(5)" or "standard" embedding depending on convention.
+
+    **CITED** (not constructively proven - would require Lie algebra formalization):
+
+    **Primary References:**
+    - Slansky, R. "Group Theory for Unified Model Building"
+      Physics Reports 79 (1981), pp. 1-128
+      Table 44 (p. 95): Lists maximal subalgebras of so(10)
+      Table 51 (p. 102): Branching rules for so(10) → su(5) × u(1)
+
+    - Georgi, H. "Lie Algebras in Particle Physics" 2nd ed.
+      Westview Press (1999), Chapter 24
+      Derives the embedding explicitly using spinor representations
+
+    - Langacker, P. "Grand Unified Theories and Proton Decay"
+      Physics Reports 72 (1981), pp. 185-385
+      Section 2.3: Standard GUT embeddings
+
+    **Mathematical content:**
+    - so(10) has dimension 45 = 10×9/2
+    - su(5) has dimension 24 = 5²-1
+    - The branching so(10) → su(5) ⊕ u(1) preserves rank (both rank 5)
+    - The u(1) generator is B-L (baryon minus lepton number)
+
+    **Why not constructively proven:**
+    Full Lie algebra formalization would require:
+    1. Defining so(10) as 10×10 antisymmetric matrices
+    2. Defining su(5) as 5×5 traceless antihermitian matrices
+    3. Constructing the explicit embedding via the spinor decomposition 16 = 10 + 5̄ + 1
+    This is standard textbook material cited above. -/
 theorem su5_in_so10 :
-    -- so(10) dimension
+    -- so(10) dimension: dim(so(n)) = n(n-1)/2
     10 * 9 / 2 = 45 ∧
-    -- su(5) dimension
+    -- su(5) dimension: dim(su(n)) = n²-1
     5^2 - 1 = 24 ∧
     -- u(1) dimension
     (1 : ℕ) = 1 ∧
-    -- su(5) ⊕ u(1) fits as a subalgebra: 24 + 1 = 25 < 45
+    -- Dimension check: su(5) ⊕ u(1) fits as a subalgebra (24 + 1 = 25 < 45)
     24 + 1 < 45 := by
   refine ⟨?_, ?_, rfl, ?_⟩ <;> norm_num
+
+/-! ## Root System Morphisms
+
+A root system homomorphism φ: Φ → Φ' must preserve the Cartan inner product:
+⟨φ(α), φ(β)⟩ = ⟨α, β⟩ for all roots α, β.
+
+For the D-type root systems, the standard inner product is:
+⟨α, β⟩ = Σᵢ αᵢ · βᵢ (Euclidean dot product)
+
+We prove that our embeddings D₄ → D₅ and A₄ → D₅ are genuine root system morphisms.
+
+**Reference:**
+- Humphreys, J.E. "Introduction to Lie Algebras and Representation Theory"
+  Springer GTM 9 (1972), §9.4: Root system homomorphisms
+- Bourbaki, N. "Lie Groups and Lie Algebras" Chapters 4-6
+  Springer (2002), Chapter VI, §1.1: Morphisms of root systems
+-/
+
+/-- Inner product on D₄ roots (Euclidean dot product in 4D) -/
+def D4Root.inner (r₁ r₂ : D4Root) : ℤ :=
+  let p₁ := r₁.toCoord
+  let p₂ := r₂.toCoord
+  p₁ 0 * p₂ 0 + p₁ 1 * p₂ 1 + p₁ 2 * p₂ 2 + p₁ 3 * p₂ 3
+
+/-- Inner product on D₅ roots (Euclidean dot product in 5D) -/
+def D5Root.inner (r₁ r₂ : D5Root) : ℤ :=
+  let p₁ := r₁.toCoord
+  let p₂ := r₂.toCoord
+  p₁ 0 * p₂ 0 + p₁ 1 * p₂ 1 + p₁ 2 * p₂ 2 + p₁ 3 * p₂ 3 + p₁ 4 * p₂ 4
+
+/-- Inner product on A₄ roots (Euclidean dot product in 5D) -/
+def A4Root.inner (r₁ r₂ : A4Root) : ℤ :=
+  let p₁ := r₁.toCoord
+  let p₂ := r₂.toCoord
+  p₁ 0 * p₂ 0 + p₁ 1 * p₂ 1 + p₁ 2 * p₂ 2 + p₁ 3 * p₂ 3 + p₁ 4 * p₂ 4
+
+/-- The D₄ → D₅ embedding preserves coordinates for indices 0-3. -/
+theorem D4_to_D5_coord' (r : D4Root) (k : Fin 5) (hk : k.val < 4) :
+    (D4_to_D5 r).toCoord k = r.toCoord ⟨k.val, hk⟩ := by
+  obtain ⟨i, j, si, sj, h_lt⟩ := r
+  simp only [D4_to_D5, D5Root.toCoord, D4Root.toCoord, Fin.ext_iff]
+
+/-- The 5th coordinate of a D₄ root embedded in D₅ is always 0. -/
+theorem D4_to_D5_coord4 (r : D4Root) : (D4_to_D5 r).toCoord 4 = 0 := by
+  obtain ⟨i, j, si, sj, h_lt⟩ := r
+  simp only [D4_to_D5, D5Root.toCoord]
+  -- i and j are in Fin 4, so their values are < 4, hence the Fin 5 versions ≠ 4
+  have hi : ¬(4 : Fin 5) = ⟨i.val, by omega⟩ := by
+    intro h; simp only [Fin.ext_iff] at h; exact absurd h (by omega)
+  have hj : ¬(4 : Fin 5) = ⟨j.val, by omega⟩ := by
+    intro h; simp only [Fin.ext_iff] at h; exact absurd h (by omega)
+  simp only [hi, hj, ↓reduceIte]
+
+/-- **D₄ → D₅ is a root system morphism: it preserves inner products.**
+
+    The embedding sends a D₄ root ±eᵢ ± eⱼ (i,j < 4) to the same vector
+    viewed in 5D (with 5th coordinate 0). Since the inner product only
+    involves the first 4 coordinates, it is preserved.
+
+    This proves the embedding is a genuine root system homomorphism,
+    not just a set-theoretic injection. -/
+theorem D4_to_D5_preserves_inner (r₁ r₂ : D4Root) :
+    D5Root.inner (D4_to_D5 r₁) (D4_to_D5 r₂) = D4Root.inner r₁ r₂ := by
+  simp only [D5Root.inner, D4Root.inner]
+  -- The first 4 coordinates match, the 5th is 0
+  have h0 : (D4_to_D5 r₁).toCoord 0 = r₁.toCoord 0 := D4_to_D5_coord' r₁ 0 (by omega)
+  have h1 : (D4_to_D5 r₁).toCoord 1 = r₁.toCoord 1 := D4_to_D5_coord' r₁ 1 (by omega)
+  have h2 : (D4_to_D5 r₁).toCoord 2 = r₁.toCoord 2 := D4_to_D5_coord' r₁ 2 (by omega)
+  have h3 : (D4_to_D5 r₁).toCoord 3 = r₁.toCoord 3 := D4_to_D5_coord' r₁ 3 (by omega)
+  have h0' : (D4_to_D5 r₂).toCoord 0 = r₂.toCoord 0 := D4_to_D5_coord' r₂ 0 (by omega)
+  have h1' : (D4_to_D5 r₂).toCoord 1 = r₂.toCoord 1 := D4_to_D5_coord' r₂ 1 (by omega)
+  have h2' : (D4_to_D5 r₂).toCoord 2 = r₂.toCoord 2 := D4_to_D5_coord' r₂ 2 (by omega)
+  have h3' : (D4_to_D5 r₂).toCoord 3 = r₂.toCoord 3 := D4_to_D5_coord' r₂ 3 (by omega)
+  have h4 := D4_to_D5_coord4 r₁
+  have h4' := D4_to_D5_coord4 r₂
+  rw [h0, h1, h2, h3, h0', h1', h2', h3', h4, h4']
+  ring
+
+/-- **A₄ → D₅ is a root system morphism: it preserves inner products.**
+
+    The A₄ root eᵢ - eⱼ maps to the D₅ root with the same coordinates.
+    Since A4_to_D5_coord proves coordinate preservation, the inner product
+    is automatically preserved.
+
+    This proves A₄ (su(5)) embeds as a sub-root-system of D₅ (so(10)). -/
+theorem A4_to_D5_preserves_inner (r₁ r₂ : A4Root) :
+    D5Root.inner (A4_to_D5 r₁) (A4_to_D5 r₂) = A4Root.inner r₁ r₂ := by
+  simp only [D5Root.inner, A4Root.inner]
+  -- Use the coordinate preservation theorem
+  simp only [A4_to_D5_coord]
+
+/-- **The embedding chain D₄ → D₅ ← A₄ preserves root system structure.**
+
+    This summarizes the root system morphism properties:
+    1. D₄ → D₅ is an injective root system morphism
+    2. A₄ → D₅ is an injective root system morphism
+    3. Both preserve inner products (hence angles and lengths)
+
+    This establishes that the GUT chain so(8) → so(10) ← su(5)
+    corresponds to genuine root system embeddings, not just dimension counting. -/
+theorem root_system_embedding_chain :
+    -- D₄ → D₅ is injective
+    Function.Injective D4_to_D5 ∧
+    -- A₄ → D₅ is injective
+    Function.Injective A4_to_D5 ∧
+    -- D₄ → D₅ preserves inner products (is a root system morphism)
+    (∀ r₁ r₂ : D4Root, D5Root.inner (D4_to_D5 r₁) (D4_to_D5 r₂) = D4Root.inner r₁ r₂) ∧
+    -- A₄ → D₅ preserves inner products (is a root system morphism)
+    (∀ r₁ r₂ : A4Root, D5Root.inner (A4_to_D5 r₁) (A4_to_D5 r₂) = A4Root.inner r₁ r₂) := by
+  refine ⟨D4_to_D5_injective, A4_to_D5_injective, ?_, ?_⟩
+  · exact D4_to_D5_preserves_inner
+  · exact A4_to_D5_preserves_inner
 
 end RootSystemChain
 
@@ -865,40 +1177,94 @@ end RootSystemChain
 The Standard Model gauge group SU(3) × SU(2) × U(1) is the unique
 SM-compatible maximal subgroup of SU(5).
 
-Reference: Georgi-Glashow, Phys. Rev. Lett. 32, 438 (1974)
+**CITED** (not constructively proven - would require full representation theory):
+
+**Primary References:**
+- Georgi, H. and Glashow, S.L. "Unity of All Elementary-Particle Forces"
+  Phys. Rev. Lett. 32, 438 (1974)
+  Original SU(5) GUT paper establishing the embedding
+
+- Slansky, R. "Group Theory for Unified Model Building"
+  Physics Reports 79 (1981), pp. 1-128
+  Tables 45-50: Complete branching rules for SU(5) → SU(3) × SU(2) × U(1)
+
+- Langacker, P. "Grand Unified Theories and Proton Decay"
+  Physics Reports 72 (1981), pp. 185-385
+  Section 2: Comprehensive review of SU(5) structure
+
+- Ross, G.G. "Grand Unified Theories"
+  Westview Press (1985), Chapter 5
+  Detailed derivation of the SU(5) → SM embedding
 -/
 
 section StandardModelDecomposition
 
-/-- The SU(5) fundamental representation 5 decomposes as:
-    (3,1)_{-1/3} ⊕ (1,2)_{1/2}
-    Dimension check: 3 + 2 = 5 -/
+/-- **The SU(5) fundamental representation 5 decomposes as:**
+    5 = (3,1)_{-1/3} ⊕ (1,2)_{1/2}
+
+    Under SU(3)_C × SU(2)_L × U(1)_Y:
+    - (3,1)_{-1/3}: Color triplet, SU(2) singlet, Y = -1/3 (d_R-type)
+    - (1,2)_{1/2}: Color singlet, SU(2) doublet, Y = +1/2 (lepton doublet)
+
+    Dimension check: 3 + 2 = 5
+
+    Reference: Slansky (1981), Table 45 -/
 theorem SU5_fundamental_decomposition : 3 + 2 = 5 := by norm_num
 
-/-- The SU(5) antisymmetric representation 10 decomposes as:
-    (3,2)_{1/6} ⊕ (3̄,1)_{-2/3} ⊕ (1,1)₁
-    Dimension check: 6 + 3 + 1 = 10 -/
+/-- **The SU(5) antisymmetric representation 10 decomposes as:**
+    10 = (3,2)_{1/6} ⊕ (3̄,1)_{-2/3} ⊕ (1,1)₁
+
+    Under SU(3)_C × SU(2)_L × U(1)_Y:
+    - (3,2)_{1/6}: Quark doublet Q_L (6 components: 3 colors × 2 isospin)
+    - (3̄,1)_{-2/3}: Anti-up quark u_R^c (3 anti-colors)
+    - (1,1)₁: Positron e_R^c (1 component)
+
+    Dimension check: 6 + 3 + 1 = 10
+
+    Reference: Slansky (1981), Table 45 -/
 theorem SU5_antisym_decomposition : 6 + 3 + 1 = 10 := by norm_num
 
-/-- The SU(5) adjoint representation 24 decomposes as:
-    (8,1)₀ ⊕ (1,3)₀ ⊕ (1,1)₀ ⊕ (3,2)_{-5/6} ⊕ (3̄,2)_{5/6}
-    Dimension check: 8 + 3 + 1 + 6 + 6 = 24 -/
+/-- **The SU(5) adjoint representation 24 decomposes as:**
+    24 = (8,1)₀ ⊕ (1,3)₀ ⊕ (1,1)₀ ⊕ (3,2)_{-5/6} ⊕ (3̄,2)_{5/6}
+
+    Under SU(3)_C × SU(2)_L × U(1)_Y:
+    - (8,1)₀: Gluons (8 generators of SU(3)_C)
+    - (1,3)₀: W bosons (3 generators of SU(2)_L)
+    - (1,1)₀: B boson (1 generator of U(1)_Y)
+    - (3,2)_{-5/6} ⊕ (3̄,2)_{5/6}: X and Y leptoquark bosons (12 total)
+
+    Dimension check: 8 + 3 + 1 + 6 + 6 = 24
+
+    Reference: Slansky (1981), Table 45; Georgi-Glashow (1974), Section III -/
 theorem SU5_adjoint_decomposition : 8 + 3 + 1 + 6 + 6 = 24 := by norm_num
 
 /-- The Standard Model gauge dimensions sum correctly:
     dim(SU(3)) + dim(SU(2)) + dim(U(1)) = 8 + 3 + 1 = 12 -/
 theorem SM_gauge_dimensions : (3^2 - 1) + (2^2 - 1) + 1 = 12 := by norm_num
 
-/-- SU(3) × SU(2) × U(1) is the unique SM-compatible subgroup of SU(5).
+/-- **SU(3) × SU(2) × U(1) is the unique SM-compatible maximal subgroup of SU(5).**
 
-    This is established by Georgi-Glashow (1974):
-    1. SU(3) color symmetry must be exact (8 generators)
-    2. SU(2) weak isospin must be exact (3 generators)
-    3. U(1) hypercharge is uniquely determined (1 generator)
-    4. Anomaly cancellation is satisfied
+    **CITED** - This is a foundational result of GUT theory:
 
-    CITATION: Georgi, H. and Glashow, S.L. "Unity of All Elementary-Particle Forces"
-    Phys. Rev. Lett. 32, 438 (1974), Theorem 1 and Section III.
+    **Primary References:**
+    - Georgi, H. and Glashow, S.L. "Unity of All Elementary-Particle Forces"
+      Phys. Rev. Lett. 32, 438 (1974), Section III
+      Proves uniqueness via the requirement of exact color and anomaly cancellation
+
+    - Slansky, R. "Group Theory for Unified Model Building"
+      Physics Reports 79 (1981), Table 9 (p. 37)
+      Lists all maximal subgroups of SU(5): SU(4)×U(1), SU(3)×SU(2)×U(1), SU(2)×SU(2)×U(1)×U(1)
+      Only SU(3)×SU(2)×U(1) contains exact SU(3) color symmetry
+
+    **Uniqueness argument (from Georgi-Glashow):**
+    1. SU(3) color must be EXACT (confinement requires unbroken SU(3))
+    2. SU(2) weak isospin must be EXACT (before electroweak breaking)
+    3. Given SU(3) × SU(2) ⊂ SU(5), the remaining U(1) is uniquely determined
+       by requiring tracelessness and orthogonality
+    4. Anomaly cancellation (5̄ + 10) is automatically satisfied
+
+    The hypercharge generator Y is explicitly constructed below, demonstrating
+    that it is indeed uniquely determined by these requirements.
 -/
 theorem SM_unique_in_SU5 :
     -- SU(3) dimension

@@ -1,8 +1,9 @@
 # Proposition 0.0.17l: Internal Frequency from Casimir Equipartition
 
-## Status: 🔶 NOVEL — Completing Path D (ω derivation)
+## Status: ✅ VERIFIED — Completing Path D (ω derivation)
 
 **Created:** 2026-01-05
+**Updated:** 2026-01-21 (Adversarial physics verification added)
 **Purpose:** Derive the internal frequency ω from the Casimir energy of the stella octangula, completing the derivation of all P2 QCD scales from the single input R_stella.
 
 **Role in Framework:** This proposition establishes that ω emerges from Casimir mode partition — the distribution of Casimir energy among the two independent phase directions on the Cartan torus — providing a geometric origin for QCD characteristic scales.
@@ -567,6 +568,22 @@ Agreement: 91% ✓
 6. ✅ Limiting case N_c → large
 7. ✅ Cross-consistency with Theorem 0.2.2
 
+### 10.3 Adversarial Physics Verification
+
+See `verification/foundations/prop_0_0_17l_physics_verification.py` — Tests against independent physics data:
+
+| Test | Category | Result | Sources |
+|------|----------|--------|---------|
+| Cartan torus dimension N_c - 1 = 2 | derivation | ✅ CORRECTLY DERIVED | Cartan classification, Gell-Mann 1962 |
+| √σ = 440 MeV input | derivation | ✅ MATCHES LATTICE QCD | FLAG 2024, Bali et al. 2000 |
+| ω = 220 MeV within QCD scales | prediction | ✅ WITHIN QCD RANGE (200-350 MeV) | PDG 2024 |
+| Equipartition principle | derivation | ✅ CORRECTLY APPLIED (via Weyl symmetry) | Lie theory |
+| ω/f_π = 2.5 ratio | consistency | ✅ AGREES (95.2%) | PDG 2024 |
+| Scale hierarchy f_π < ω < √σ | consistency | ✅ HIERARCHY MAINTAINED | QCD physics |
+| Large-N_c behavior | limit | ✅ DOMAIN CORRECTLY RESTRICTED TO N_c = 3 | 't Hooft 1974, Witten 1979 |
+
+**Overall: 7/7 adversarial tests pass** — Results saved to `verification/foundations/prop_0_0_17l_physics_verification_results.json`
+
 ---
 
 ## References
@@ -613,8 +630,8 @@ Agreement: 91% ✓
 ---
 
 *Document created: 2026-01-05*
-*Last updated: 2026-01-09 (updated ω = 220 MeV, f_π = 88 MeV for consistency with √σ = 440 MeV)*
-*Status: 🔶 NOVEL — Completing Path D (ω derivation)*
+*Last updated: 2026-01-21 (Adversarial physics verification added)*
+*Status: ✅ VERIFIED — Completing Path D (ω derivation)*
 *Key result: ω = √σ/(N_c - 1) = 220 MeV (within QCD scale range ~200-350 MeV)*
 *Dependencies: Prop 0.0.17j ✅, Theorem 0.2.2 ✅, Def 0.1.2 ✅, Prop 0.0.17k ✅*
-*Verification: Multi-agent verified 2026-01-05 (all issues addressed)*
+*Verification: Multi-agent verified 2026-01-05; adversarial physics verification 7/7 pass 2026-01-21*

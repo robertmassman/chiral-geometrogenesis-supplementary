@@ -409,8 +409,8 @@ After examining proof documentation and Python verification scripts, the uncerta
 **Resolution:**
 - [x] ~~Add proper uncertainty propagation in Table 2~~ — Already exists (Table 2 lists ~4, ~5, ~3 for individual sources)
 - [x] ~~Show full error budget combining all sources~~ — Already in proof documentation §14-15
-- [x] Revised Table 1: "factor 1" → "within 1σ" with footnote explaining factor ~4 uncertainty
-- [x] Revised line 1961: "factor ~2" → "factor ~4" with reference to Table 2
+- [x] Revised Table 1: "factor 1" → "within 1σ" with footnote explaining factor ~5 uncertainty
+- [x] Revised line 1961: "factor ~2" → "factor ~5" with reference to Table 2
 
 **Status:** ✅ Resolved
 
@@ -784,7 +784,7 @@ These should be preserved/emphasized in revision:
 | 4. Cosmological constant | Minor | ✅ | | Holographic derivation achieves 0.9% agreement; Ω_Λ is only input |
 | 5. Mass fitting parameters | Minor | ✅ | | R_stella semi-derived (91%); η_f pattern geometric; caveats already in main text |
 | 6. Strong CP novelty | Minor | ✅ | | Paper already contains appropriate caveats and literature comparisons |
-| 7. Baryogenesis uncertainty | Minor | ✅ | | Uncertainty analysis exists in proof docs; updated Table 1 and line 1961 to reflect factor ~4 |
+| 7. Baryogenesis uncertainty | Minor | ✅ | | Uncertainty analysis exists in proof docs; updated Table 1 and line 1961 to reflect factor ~5 |
 | 8. PMNS θ₂₃ claim | Minor | ✅ | | Claims verified; 1.4° uncertainty properly derived; hyperlinks added |
 | 9. Notation consistency | Minor | ✅ | | λ→τ for internal time; λ reserved for Wolfenstein |
 | 10. Reproducibility | Minor | ✅ | | Added requirements.txt, figure scripts table in Appendix C, updated running instructions |
@@ -819,7 +819,7 @@ These should be preserved/emphasized in revision:
 | 2026-01-11 | Issue 4 | Investigated cosmological constant claims; found holographic derivation in Theorem 5.1.2 §13.11 achieving 0.9% agreement with observation; downgraded from Critical to Minor; updated §5.2.4 limitation text and §7.5 open problems to reflect derived formula ρ = (3Ω_Λ/8π)M_P²H₀²; only Ω_Λ remains as observational input |
 | 2026-01-11 | Issue 5 | Investigated mass fitting claims; found R_stella now semi-derived from Planck scale (Prop 0.0.17q, 91% agreement); η_f = λ^{2n}c_f has geometric pattern derived (only c_f order-one coefficients fitted); caveats already prominent in §7.4 Category A/B/C system; downgraded from Major to Minor; updated R_stella from 0.45 to 0.44847 fm throughout paper |
 | 2026-01-11 | Issue 6 | Investigated Strong CP novelty claims; found paper already contains: (1) explicit caveat "What Z₃ alone does NOT do" (lines 1680-1686), (2) three-step proof distinguishing quantization (novel) from selection (standard), (3) literature comparison with Dvali 2022 and Tanizaki 2025 (lines 1857-1866); verified by Lean (0 sorry), Python (9/9 tests), and markdown proof doc; downgraded from Major to Minor; no paper changes needed |
-| 2026-01-11 | Issue 7 | Investigated baryogenesis uncertainty; found comprehensive analysis in proof docs (Theorem-4.2.1-Applications.md §14, Theorem-4.2.2-Applications.md §15) showing ±2.0 in log space (factor ~4-7); Monte Carlo verification (N=50,000) confirms 68% CI encompasses observation; updated Table 1 "factor 1" → "within 1σ" with footnote; updated line 1961 "factor ~2" → "factor ~4" with Table 2 reference; downgraded from Major to Minor |
+| 2026-01-11 | Issue 7 | Investigated baryogenesis uncertainty; found comprehensive analysis in proof docs (Theorem-4.2.1-Applications.md §14, Theorem-4.2.2-Applications.md §15) showing ±1.6 in log space (factor ~5); Monte Carlo verification (N=50,000) confirms 68% CI encompasses observation; updated Table 1 "factor 1" → "within 1σ" with footnote; updated line 1961 "factor ~2" → "factor ~5" with Table 2 reference; downgraded from Major to Minor |
 | 2026-01-11 | Issue 8 | Investigated θ₂₃ improvement claim; found 20× factor is correct (4σ → 0.2σ); 1.4° uncertainty properly derived as quadrature sum of 4 sources (±0.5°, ±1.0°, ±0.3°, ±0.8°); multi-agent verification completed 2026-01-10; Lean formalization has only 2 numerical-fact sorries; added hyperlinks to Proposition 8.4.4 in paper (lines 2562, 2572) |
 | 2026-01-11 | Issue 9 | Fixed notation inconsistency: changed λ→τ for internal time parameter in 6 locations (lines 1014, 1228, 1234, 1490, 1501, 1524-1529); λ now reserved exclusively for Wolfenstein parameter; notation table in Appendix C already correct |
 | 2026-01-11 | Issue 10 | Created `verification/requirements.txt` with Python dependencies; updated `verification/README.md` with Installation section; added Figure Generation Scripts subsection to Appendix C (lines 3496-3516) mapping all 10 figures to scripts; updated Running Verification instructions to include pip install and figure regeneration commands |

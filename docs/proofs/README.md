@@ -27,8 +27,8 @@ Files follow the pattern: `[Type]-[Phase.Section.Subsection]-[Name].md`
 - **Theorems:** `Theorem-3.1.1-Name.md`
 - **Lemmas:** `Lemma-3.1.2a-Name.md`
 - **Corollaries:** `Corollary-3.1.3-Name.md`
-- **Derivations:** `Derivation-2.1.2a-Name.md`
-- **Predictions:** `Prediction-8.4.3-Name.md`
+- **Derivations:** `Derivation-8.1.3-Name.md` (retrodictions of known physics)
+- **Predictions:** `Prediction-8.2.1-Name.md` (testable future observations)
 
 ## 3-File Academic Structure
 

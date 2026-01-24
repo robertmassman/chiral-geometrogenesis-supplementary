@@ -1,0 +1,134 @@
+{
+  "exp_calculation": {
+    "name": "exp_calculation",
+    "passed": true,
+    "calculated": 17.41170806332765,
+    "expected": 17.4,
+    "error_pct": 0.06728772027386755
+  },
+  "icosahedral_factor": {
+    "name": "icosahedral_factor",
+    "passed": true,
+    "calculated": 3.5355339059327378,
+    "expected": 3.54,
+    "error_pct": 0.12616084935769162
+  },
+  "triality_factor": {
+    "name": "triality_factor",
+    "passed": true,
+    "calculated": 3.0,
+    "expected": 3,
+    "error_pct": 0.0
+  },
+  "combined_formula": {
+    "name": "combined_formula",
+    "passed": true,
+    "predicted": 554.0371579628762,
+    "observed": 559.5909090909091,
+    "agreement_pct": 99.00753371117924,
+    "factors": {
+      "N_gen": 3,
+      "icosahedral": 3.5355339059327378,
+      "triality": 3.0,
+      "exp_factor": 17.41170806332765
+    }
+  },
+  "v_h_absolute": {
+    "name": "v_h_absolute",
+    "passed": true,
+    "predicted_gev": 243.77634950366553,
+    "observed_gev": 246.22,
+    "error_pct": 0.9924662888207579
+  },
+  "central_charges": {
+    "name": "central_charges",
+    "passed": true,
+    "a_uv": 0.7,
+    "a_ir": 0.6916666666666667,
+    "delta_a": 0.008333333333333304
+  },
+  "higgs_pion_ratio": {
+    "name": "higgs_pion_ratio",
+    "passed": true,
+    "ratio_direct": 1359.9348534201954,
+    "ratio_formula": 1357.918014299716,
+    "expected": 1360
+  },
+  "weyl_group_orders": {
+    "name": "weyl_group_orders",
+    "passed": true,
+    "w_b4_calculated": 384,
+    "w_b4_document": 384,
+    "w_f4_calculated": 1152,
+    "w_f4_document": 1152
+  },
+  "comparison_with_0018": {
+    "name": "comparison_with_0018",
+    "passed": true,
+    "ratio_0018": 570.983235795706,
+    "ratio_0019": 554.0371579628762,
+    "ratio_observed": 559.5909090909091,
+    "discrepancy_pct": 3.0282975576497106
+  },
+  "dimensional_analysis": {
+    "name": "dimensional_analysis",
+    "passed": true,
+    "checks": {
+      "N_gen": [
+        "pure number",
+        true
+      ],
+      "\u221a(H\u2084/F\u2084)": [
+        "\u221a(group order/group order) = pure number",
+        true
+      ],
+      "W(F\u2084)/W(B\u2084)": [
+        "group order/group order = pure number",
+        true
+      ],
+      "exp(dim\u00b2/index)": [
+        "exp(pure number) = pure number",
+        true
+      ],
+      "v_H/\u221a\u03c3": [
+        "energy/energy = pure number",
+        true
+      ]
+    }
+  },
+  "vacuum_manifold_homotopy": {
+    "name": "vacuum_manifold_homotopy",
+    "passed": true,
+    "homotopy_groups": {
+      "\u03c0\u2080(S\u00b3)": [
+        "trivial",
+        0
+      ],
+      "\u03c0\u2081(S\u00b3)": [
+        "trivial",
+        0
+      ],
+      "\u03c0\u2082(S\u00b3)": [
+        "trivial",
+        0
+      ],
+      "\u03c0\u2083(S\u00b3)": [
+        "\u2124",
+        "Z"
+      ]
+    },
+    "physics_meaning": {
+      "\u03c0\u2080 = 0": "No disconnected vacua",
+      "\u03c0\u2081 = 0": "No cosmic strings",
+      "\u03c0\u2082 = 0": "No magnetic monopoles",
+      "\u03c0\u2083 = \u2124": "Electroweak sphalerons exist"
+    }
+  },
+  "summary": {
+    "tests_passed": 11,
+    "tests_total": 11,
+    "pass_rate": 1.0,
+    "v_h_agreement_pct": 99.00753371117924,
+    "plot_path": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/proposition_0_0_19_adversarial_verification.png"
+  }
+}

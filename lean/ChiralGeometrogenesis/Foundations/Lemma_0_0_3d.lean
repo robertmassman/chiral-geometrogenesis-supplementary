@@ -11,7 +11,7 @@
   This is a key geometric result showing that the stella octangula's
   structure is DERIVED, not assumed.
 
-  Reference: docs/proofs/Phase-Minus-1/Theorem-0.0.3-Stella-Uniqueness.md §2.4
+  Reference: docs/proofs/foundations/Theorem-0.0.3-Stella-Uniqueness.md §2.4
 -/
 
 import ChiralGeometrogenesis.Foundations.Lemma_0_0_3a
@@ -549,7 +549,7 @@ theorem complete_regularity_from_gr2 :
     6. Apex vertices connect to weight vertices via tetrahedra
     7. ⟹ All 8 vertices in single connected component
 
-    Reference: docs/proofs/Phase-Minus-1/Definition-0.0.0-Minimal-Geometric-Realization.md
+    Reference: docs/proofs/foundations/Definition-0.0.0-Minimal-Geometric-Realization.md
                Lemma 0.0.0g
 -/
 

@@ -910,11 +910,11 @@ theorem trefoil_simple_aux : ∀ s t : ℝ,
   -- hx: sin(2πs) + 2sin(4πs) = sin(2πt) + 2sin(4πt)
   have hx : sin (2 * π * s) + 2 * sin (4 * π * s) =
             sin (2 * π * t) + 2 * sin (4 * π * t) := by
-    convert hx_raw using 2 <;> ring
+    convert hx_raw using 2 <;> ring_nf
   -- hy: cos(2πs) - 2cos(4πs) = cos(2πt) - 2cos(4πt)
   have hy : cos (2 * π * s) - 2 * cos (4 * π * s) =
             cos (2 * π * t) - 2 * cos (4 * π * t) := by
-    convert hy_raw using 2 <;> ring
+    convert hy_raw using 2 <;> ring_nf
   -- hz: -sin(6πs) = -sin(6πt), i.e., sin(6πs) = sin(6πt)
   have hz : sin (6 * π * s) = sin (6 * π * t) := by
     have h : -sin (3 * (2 * π * s)) = -sin (3 * (2 * π * t)) := by

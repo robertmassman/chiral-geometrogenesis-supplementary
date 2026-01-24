@@ -1,0 +1,106 @@
+{
+  "timestamp": "2026-01-23",
+  "proposition": "0.0.25",
+  "title": "The \u03b1_GUT Threshold Formula",
+  "tests": {
+    "threshold_correction": {
+      "delta_s4": 1.5890269151739729,
+      "delta_wilson": -0.09954219273489193,
+      "f_embed": 0.3333333333333333,
+      "I_inst": 0.18034059901609625,
+      "delta_inst": -0.0075141916256706775,
+      "delta_total": 1.4819705308134103,
+      "target": 1.5,
+      "agreement_pct": 98.79803538756069,
+      "deviation_pct": 1.2019646124393102,
+      "status": "PASS"
+    },
+    "group_theory": {
+      "oh_order_48": true,
+      "s4_order_24": true,
+      "oh_quotient_s4": true,
+      "s4_gamma4_isomorphism": true,
+      "binary_tetrahedral_order_24": true
+    },
+    "k3_index": {
+      "k3_euler_24": true,
+      "k3_index": 12,
+      "z4_factor": 4,
+      "n_generations": 3,
+      "n_gen_correct": true
+    },
+    "heterotic_predictions": {
+      "alpha_gut_inv": {
+        "predicted": 24.4,
+        "observed": 24.5,
+        "uncertainty": 1.5,
+        "deviation_pct": 0.40816326530612823,
+        "within_uncertainty": true,
+        "status": "PASS"
+      },
+      "sin2_theta_w": {
+        "predicted": 0.231,
+        "observed": 0.23122,
+        "deviation_pct": 0.09514747859181644,
+        "status": "PASS"
+      },
+      "m_gut": {
+        "predicted": 2e+16,
+        "observed": 2e+16,
+        "ratio": 1.0,
+        "status": "PASS"
+      },
+      "m_e8": {
+        "predicted": 2.3e+18,
+        "cg_fit": 2.36e+18,
+        "deviation_pct": 2.5423728813559325,
+        "status": "PASS"
+      },
+      "string_coupling": {
+        "predicted": 0.6605693322219909,
+        "phenomenological": 0.7,
+        "deviation_pct": 5.632952539715583,
+        "perturbative": true,
+        "status": "PASS"
+      }
+    },
+    "scale_hierarchy": {
+      "M_Z_lt_M_GUT": true,
+      "M_GUT_lt_M_s": true,
+      "M_s_lt_M_E8": true,
+      "M_E8_lt_M_P": true,
+      "full_hierarchy_valid": true
+    },
+    "adversarial": {
+      "dimensional": {
+        "delta_dimensionless": true,
+        "alpha_gut_inv_dimensionless": true
+      },
+      "convergence": {
+        "I_inst_n5": 0.18034059901609625,
+        "I_inst_n10": 0.18034059901609625,
+        "I_inst_n20": 0.18034059901609625,
+        "I_inst_n50": 0.18034059901609625,
+        "I_inst_final": 0.18034059901609625,
+        "converged": true
+      },
+      "stability": {
+        "all_equal": true,
+        "delta_value": 1.4819705308134103
+      },
+      "limits": {
+        "s4_trivial_limit": true,
+        "wilson_large_order_limit": true
+      }
+    }
+  },
+  "summary": {
+    "total_tests": 16,
+    "passed_tests": 16,
+    "pass_rate": 100.0,
+    "delta_stella": 1.4819705308134103,
+    "target_delta": 1.5,
+    "agreement_pct": 98.79803538756069,
+    "overall_status": "PASS"
+  }
+}

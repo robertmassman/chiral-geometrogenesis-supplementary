@@ -336,7 +336,7 @@ Always verify: Numerical prefactors (2π, 4π), powers of coupling constants, lo
 
 **Detailed guides for in-depth reference:**
 
-- **Mathematical Techniques:** [reference/Mathematical-Techniques-Reference.md](reference/Mathematical-Techniques-Reference.md) — 11 techniques (Lie algebra, SSB, chiral anomaly, Kuramoto, solitons, Atiyah-Singer, entropic gravity, Wick rotation, EFT matching, instantons, GUT)
+- **Mathematical Techniques:** [reference/Mathematical-Techniques-Reference.md](reference/Mathematical-Techniques-Reference.md) — 15 techniques (Lie algebra, SSB, chiral anomaly, Kuramoto, solitons, Atiyah-Singer, entropic gravity, Wick rotation, EFT matching, instantons, GUT, Schwinger-Dyson, 24-cell geometry, holographic methods, phase-lock stiffness)
 
 - **Challenge Resolutions:** [reference/Challenge-Resolutions.md](reference/Challenge-Resolutions.md) — 8 major challenges and how CG resolves them (Bootstrap, Noether circularity, cosmic coherence, chirality selection, cosmological constant, renormalizability, unitarity, strong-field gravity)
 

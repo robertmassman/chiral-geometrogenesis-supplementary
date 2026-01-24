@@ -1,0 +1,26 @@
+{
+  "M1_gravity": {
+    "f_chi_gev": 2.4355426218507464e+18,
+    "G_computed": 6.6743e-11,
+    "is_self_consistency": true
+  },
+  "M2_masses": {},
+  "M3_cosmology": {},
+  "N1_top_mass": {
+    "m_t_2024": 172.57,
+    "m_t_2024_err": 0.29,
+    "m_t_old": 172.69
+  },
+  "N2_wolfenstein": {
+    "lambda_geometric": 0.2245139882897927,
+    "lambda_pdg_global": 0.22497,
+    "lambda_pdg_wolf": 0.2265,
+    "lambda_dressed": 0.2265346141844008
+  },
+  "N3_f_pi": {
+    "f_pi_peskin": 92.1,
+    "f_pi_pdg": 130.2,
+    "v_chi": 88.0,
+    "ratio": 1.4136807817589576
+  }
+}

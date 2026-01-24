@@ -8,7 +8,7 @@
 
 ## Verification Status
 
-**Last Verified:** 2026-01-01
+**Last Verified:** 2026-01-20
 **Verified By:** Multi-agent peer review (Mathematical, Physics, Literature agents) + computational verification
 **Verification Report:** [Theorem-0.0.0a-Verification-Report.md](../../verification/shared/Theorem-0.0.0a-Verification-Report.md)
 **Verification Script:** [theorem_0_0_0a_verification.py](../../verification/foundations/theorem_0_0_0a_verification.py)
@@ -20,7 +20,8 @@
 - [x] Limiting cases recover known physics (continuum, classical)
 - [x] No contradictions with other theorems
 - [x] Computational verification successful (Python script run 2026-01-01)
-- [x] Lorentz violation bounds properly cited with experimental references
+- [x] Lorentz violation bounds properly cited with experimental references and E_P units (2026-01-20)
+- [x] "Deterministic" claim clarified with quantum corrections note (2026-01-20)
 - [x] Plots generated: stella octangula, weight diagram, FCC lattice
 
 ---
@@ -63,8 +64,10 @@ This is analogous to how a fluid emerges from discrete molecules.
 
 Unlike some quantum gravity proposals, this framework does not predict random fluctuations of spacetime topology at small scales. The polyhedral structure is:
 - **Regular:** The octet truss has perfect crystalline order
-- **Deterministic:** The structure follows from SU(3) requirements
+- **Kinematically constrained:** The structure follows from SU(3) symmetry requirements
 - **Stable:** Phase coherence enforces global consistency
+
+**Note on quantum corrections:** At the classical level, the polyhedral structure is fixed by symmetry requirements. At the quantum level, the structure may acquire fluctuations—but these would be constrained by the same SU(3) symmetry, not random. This is analogous to how lattice QCD treats the lattice: the lattice structure itself does not fluctuate (it provides the computational scaffold), but the fields on the lattice are fully quantum. In this framework, the polyhedral topology is kinematic (fixed), while the field dynamics on that topology is quantum.
 
 ### 10.2 Connection to QCD Phenomenology
 
@@ -398,11 +401,13 @@ $$E^2 = p^2 c^2 + m^2 c^4 \left[1 + \xi_n \left(\frac{E}{E_{\text{QG},n}}\right)
 
 | Source | Observable | Bound | Reference |
 |--------|-----------|-------|-----------|
-| Fermi-LAT GRBs | $E_{\text{QG},1}$ (linear) | $> 7.6 \times 10^{19}$ GeV | Fermi-LAT (2013) |
-| LHAASO GRB 221009A | $E_{\text{QG},1}$ (linear) | $> 10^{20}$ GeV | Cao et al. (2024) |
+| Fermi-LAT GRBs | $E_{\text{QG},1}$ (linear) | $> 7.6 \, E_P$ ($\approx 9.3 \times 10^{19}$ GeV) | Vasileiou et al. (2013) |
+| LHAASO GRB 221009A | $E_{\text{QG},1}$ (linear) | $> 10 \, E_P$ ($\approx 1.2 \times 10^{20}$ GeV) | Cao et al. (2024) |
 | Multiple analyses | $E_{\text{QG},2}$ (quadratic) | $> 10^{10}$ GeV | Various |
 | GW170817 + GRB | $|c_{\text{GW}} - c_{\text{EM}}|/c$ | $< 10^{-15}$ | Abbott et al. (2017) |
 | Atomic clocks | Matter sector LV coefficients | $< 10^{-29} m_e$ | Kostelecký & Russell (2024) |
+
+**Note:** $E_P = \sqrt{\hbar c^5 / G} \approx 1.22 \times 10^{19}$ GeV is the Planck energy. Bounds expressed in $E_P$ units allow direct comparison to the quantum gravity scale.
 
 **Framework prediction:** Quadratic Lorentz violation at scale $E_{\text{QG},2} \sim E_P \sim 10^{19}$ GeV (9 orders of magnitude above current bounds). Linear violation forbidden by CPT preservation in the stella octangula geometry.
 

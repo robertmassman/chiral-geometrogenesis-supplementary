@@ -5,6 +5,7 @@
 **Role in Framework:** This theorem establishes that the phase-gradient mass generation mechanism reproduces the Standard Model Higgs physics at low energies $E \ll \Lambda$. This is essential for experimental viability—any deviation from SM predictions at accessible energies would falsify the theory. The theorem provides the **matching conditions** between the fundamental chiral geometrogenesis framework and the phenomenologically successful Standard Model.
 
 **Dependencies:**
+- ✅ Theorem 2.5.1 (Complete CG Lagrangian) — provides full $\mathcal{L}_{CG}$ for equivalence comparison
 - ✅ Theorem 3.0.1 (Pressure-Modulated Superposition)
 - ✅ Theorem 3.0.2 (Non-Zero Phase Gradient)
 - ✅ Theorem 3.1.1 (Phase-Gradient Mass Generation Mass Formula)

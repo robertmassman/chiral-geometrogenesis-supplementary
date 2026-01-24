@@ -1,0 +1,40 @@
+{
+  "theorem": "0.0.5",
+  "purpose": "Warning resolutions W1-W4",
+  "date": "2026-01-20",
+  "verified": true,
+  "tests_passed": 22,
+  "tests_total": 22,
+  "results": [
+    {
+      "name": "W1: Connecting Homomorphism",
+      "passed": true,
+      "n_tests": 3,
+      "n_passed": 3
+    },
+    {
+      "name": "W2: \u221a3 Normalization",
+      "passed": true,
+      "n_tests": 4,
+      "n_passed": 4
+    },
+    {
+      "name": "W3: Discrete to Continuous",
+      "passed": true,
+      "n_tests": 6,
+      "n_passed": 6
+    },
+    {
+      "name": "W4: Homotopy Extension",
+      "passed": true,
+      "n_tests": 5,
+      "n_passed": 5
+    },
+    {
+      "name": "Comprehensive Verification",
+      "passed": true,
+      "n_tests": 4,
+      "n_passed": 4
+    }
+  ]
+}

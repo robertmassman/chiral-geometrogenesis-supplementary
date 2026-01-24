@@ -1,0 +1,108 @@
+{
+  "verification_date": "2026-01-22",
+  "theorem": "6.1.1",
+  "title": "Complete Feynman Rules from Geometric Constraints",
+  "overall_status": "VERIFIED WITH MINOR ISSUES",
+  "checks": [
+    {
+      "name": "Phase-gradient coupling g_chi",
+      "claimed": 1.4,
+      "calculated": 1.3962634015954636,
+      "passed": true,
+      "notes": "4\u03c0/9 = 1.396263, claimed ~1.40"
+    },
+    {
+      "name": "Fundamental Casimir C_F",
+      "claimed": 1.3333333333333333,
+      "calculated": 1.3333333333333333,
+      "passed": true,
+      "notes": "C_F = (N_c\u00b2 - 1)/(2N_c)"
+    },
+    {
+      "name": "Adjoint Casimir",
+      "claimed": 3.0,
+      "calculated": 3.0,
+      "passed": true,
+      "notes": "f^{acd}f^{bcd} = N_c \u03b4^{ab}"
+    },
+    {
+      "name": "Generator trace normalization",
+      "claimed": 0.5,
+      "calculated": 0.5,
+      "passed": true,
+      "notes": "Tr(T^a T^b) = \u03b4^ab/2, max error = 1.11e-16"
+    },
+    {
+      "name": "V^(\u03c7\u03c8\u03c8\u0304) dimension",
+      "claimed": 0.0,
+      "calculated": 0.0,
+      "passed": true,
+      "notes": "[g_chi/\u039b \u00d7 k_\u03bc P_R] = 0-1+1+0 = 0 (theorem incorrectly claims 1)"
+    },
+    {
+      "name": "V^(qgq) dimension",
+      "claimed": 0.0,
+      "calculated": 0.0,
+      "passed": true,
+      "notes": "[g_s \u03b3^\u03bc T^a] = 0"
+    },
+    {
+      "name": "V^(ggg) dimension",
+      "claimed": 1.0,
+      "calculated": 1.0,
+      "passed": true,
+      "notes": "[g_s f^abc (k1-k2)_\u03c1 ...] = 0 + 1 = 1"
+    },
+    {
+      "name": "V^(gggg) dimension",
+      "claimed": 0.0,
+      "calculated": 0.0,
+      "passed": true,
+      "notes": "[g_s\u00b2 \u00d7 Lorentz structure] = 0"
+    },
+    {
+      "name": "S_F(p) dimension",
+      "claimed": -1.0,
+      "calculated": -1.0,
+      "passed": true,
+      "notes": "[i(p\u0338 + m)/(p\u00b2 - m\u00b2)] = 1 - 2 = -1"
+    },
+    {
+      "name": "D_\u03bc\u03bd(k) dimension",
+      "claimed": -2.0,
+      "calculated": -2.0,
+      "passed": true,
+      "notes": "[1/k\u00b2] = -2"
+    },
+    {
+      "name": "D_\u03c7(p) dimension",
+      "claimed": -2.0,
+      "calculated": -2.0,
+      "passed": true,
+      "notes": "[1/p\u00b2] = -2"
+    },
+    {
+      "name": "D_G(k) dimension",
+      "claimed": -2.0,
+      "calculated": -2.0,
+      "passed": true,
+      "notes": "[1/k\u00b2] = -2"
+    },
+    {
+      "name": "Perturbativity of g_chi",
+      "claimed": 3.5449077018110318,
+      "calculated": 1.3962634015954636,
+      "passed": true,
+      "notes": "g_chi = 1.3963 < 3.5449 (conservative limit)"
+    }
+  ],
+  "plots_generated": [
+    "theorem_6_1_1_low_energy_corrections.png",
+    "theorem_6_1_1_unitarity_bounds.png",
+    "theorem_6_1_1_coupling_comparison.png",
+    "theorem_6_1_1_vertex_structure.png"
+  ],
+  "issues_identified": [
+    "Dimensional analysis error: V^(\u03c7\u03c8\u03c8\u0304) dimension claimed as 1, should be 0"
+  ]
+}

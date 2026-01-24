@@ -1,0 +1,43 @@
+{
+  "G_calculation": {
+    "grad_phi_RGB": 0.41887902047863906,
+    "I_profile": 1.5707963267948966,
+    "angular_factor": 0.6366197723675814,
+    "cos_theta": 0.5,
+    "scale_ratio": 0.0008130081300813009,
+    "G_simplified": 0.0008513801229240632,
+    "G_full": 0.0008513801229240632
+  },
+  "uncertainty": {
+    "sigma_profile": 0.2,
+    "sigma_orientation": 0.5,
+    "sigma_scales": 0.4,
+    "sigma_total": 0.6708203932499369,
+    "G_central": 0.0008513801229240632,
+    "G_low": 0.0002802569740589635,
+    "G_high": 0.0014225032717891629,
+    "G_doc_low": 0.001,
+    "G_doc_high": 0.005
+  },
+  "profile_verification": {
+    "Exponential": {
+      "I": 1.5707973637899972,
+      "deviation_pct": 6.601715849401417e-05
+    },
+    "Arctan": {
+      "I": 1.5707945071743776,
+      "deviation_pct": 0.0001158406400555345
+    },
+    "Rational": {
+      "I": 1.5707953452705248,
+      "deviation_pct": 6.248578221353267e-05
+    }
+  },
+  "parameters": {
+    "alpha": 2.0943951023931953,
+    "v_higgs": 246.0,
+    "Lambda_QCD": 0.2,
+    "R_sol": 0.0040650406504065045,
+    "R_hadron": 5.0
+  }
+}

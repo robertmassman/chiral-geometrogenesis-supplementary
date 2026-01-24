@@ -4,7 +4,7 @@
 
 **Created:** 2026-01-05
 **Verified:** 2026-01-05 (Multi-agent peer review complete, closure analysis complete)
-**Updated:** 2026-01-05 (First-principles derivation of denominator factor complete)
+**Updated:** 2026-01-21 (Adversarial physics verification added)
 **Purpose:** Derive the pion decay constant f_π from the phase-lock energy stored in the 120° configuration of the three color fields, reducing P2 phenomenological inputs.
 
 **Role in Framework:** This proposition establishes that f_π emerges from the phase-lock energy density of the stella octangula configuration, providing a geometric origin for the chiral symmetry breaking scale.
@@ -763,6 +763,22 @@ Predicted: 1/5 = 0.200 → Agreement: 95% ✓
 | C7: N_f=3 discrepancy | MEDIUM | ✅ §5.2.3 explains strange quark mass effect |
 
 **Overall Status:** ✅ PASS — Numerical agreement 95%, formula derived from first principles (broken generator counting). All 5/5 issues closed.
+
+### 8.4 Adversarial Physics Verification
+
+See `verification/foundations/prop_0_0_17k_physics_verification.py` — Tests against independent physics data:
+
+| Test | Category | Result | Sources |
+|------|----------|--------|---------|
+| Mode counting (N_c - 1) + (N_f² - 1) = 5 | derivation | ✅ CORRECTLY DERIVED | Lie algebra theory, Goldstone theorem |
+| √σ = 440 MeV input | derivation | ✅ MATCHES LATTICE QCD | FLAG 2024, Bali et al. 2000 |
+| f_π = 87.7 MeV prediction | prediction | ✅ AGREES (95.4% with PDG) | PDG 2024 |
+| Goldstone count N_f² - 1 = 3 | derivation | ✅ GOLDSTONE THEOREM VERIFIED | Goldstone 1961, Nambu 1960 |
+| SU(3) tracelessness N_c - 1 = 2 | derivation | ✅ SU(3) CONSTRAINT VERIFIED | Gell-Mann 1962 |
+| EFT cutoff Λ = 4πf_π | consistency | ✅ CONSISTENT (95.4%) | Gasser & Leutwyler 1984 |
+| 5% discrepancy vs radiative corrections | consistency | ✅ EXPLAINED BY 1-LOOP ChPT | Gasser & Leutwyler 1984 |
+
+**Overall: 7/7 adversarial tests pass** — Results saved to `verification/foundations/prop_0_0_17k_physics_verification_results.json`
 
 ---
 

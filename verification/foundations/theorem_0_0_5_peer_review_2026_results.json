@@ -1,0 +1,45 @@
+{
+  "theorem": "0.0.5",
+  "title": "Chirality Selection from Geometry",
+  "timestamp": "2026-01-20T04:40:29.774248",
+  "verified": true,
+  "tests_passed": 25,
+  "tests_total": 25,
+  "results": [
+    {
+      "name": "Phase Winding",
+      "passed": true,
+      "summary": "Phase winding calculation: PASS (4/4 tests)",
+      "num_tests": 4,
+      "num_passed": 4
+    },
+    {
+      "name": "SU(3) Topology",
+      "passed": true,
+      "summary": "SU(3) topology: PASS (6/6 tests)",
+      "num_tests": 6,
+      "num_passed": 6
+    },
+    {
+      "name": "Anomaly Coefficients",
+      "passed": true,
+      "summary": "Anomaly coefficients: PASS (5/5 tests)",
+      "num_tests": 5,
+      "num_passed": 5
+    },
+    {
+      "name": "Atiyah-Singer Index",
+      "passed": true,
+      "summary": "Atiyah-Singer index: PASS (5/5 tests)",
+      "num_tests": 5,
+      "num_passed": 5
+    },
+    {
+      "name": "Numerical Precision",
+      "passed": true,
+      "summary": "Numerical precision: PASS (5/5 tests)",
+      "num_tests": 5,
+      "num_passed": 5
+    }
+  ]
+}

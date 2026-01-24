@@ -1,0 +1,13 @@
+{
+  "theorem": "Vertex-transitivity is NECESSARY for SU(3) phase coherence",
+  "proof_method": "Contrapositive: not vertex-transitive \u2192 not phase coherent",
+  "key_constraint": "Every edge requires (t,o) = (2,2) tetrahedra and octahedra",
+  "unique_solution": true,
+  "physical_justification": [
+    "Gauge invariance",
+    "Vacuum uniformity",
+    "Strong force universality"
+  ],
+  "counterexample": "Conway-Jiao-Torquato tilings fail at vertices with n\u22608 tetrahedra",
+  "verification_status": "COMPLETE"
+}

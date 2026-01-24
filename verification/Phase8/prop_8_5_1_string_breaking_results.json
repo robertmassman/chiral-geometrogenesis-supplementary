@@ -1,0 +1,134 @@
+{
+  "input": {
+    "sqrt_sigma_MeV": 440,
+    "sigma_GeV2": 0.1936,
+    "hbar_c_MeV_fm": 197.3
+  },
+  "calculations": {
+    "method_1_naive": [
+      {
+        "quark_type": "Current u/d mass",
+        "m_q_MeV": 5,
+        "r_break_fm": 0.01019111570247934
+      },
+      {
+        "quark_type": "Current s mass",
+        "m_q_MeV": 100,
+        "r_break_fm": 0.20382231404958678
+      },
+      {
+        "quark_type": "Constituent u/d mass",
+        "m_q_MeV": 300,
+        "r_break_fm": 0.6114669421487604
+      },
+      {
+        "quark_type": "Constituent s mass",
+        "m_q_MeV": 450,
+        "r_break_fm": 0.9172004132231406
+      },
+      {
+        "quark_type": "Heavy constituent",
+        "m_q_MeV": 500,
+        "r_break_fm": 1.0191115702479339
+      }
+    ],
+    "method_2_luscher": [
+      {
+        "quark_type": "Current u/d mass",
+        "m_q_MeV": 5,
+        "r_break_fm": 0.2345866344267577
+      },
+      {
+        "quark_type": "Current s mass",
+        "m_q_MeV": 100,
+        "r_break_fm": 0.3529610991560495
+      },
+      {
+        "quark_type": "Constituent u/d mass",
+        "m_q_MeV": 300,
+        "r_break_fm": 0.6879809626988038
+      },
+      {
+        "quark_type": "Constituent s mass",
+        "m_q_MeV": 450,
+        "r_break_fm": 0.9713909427039067
+      },
+      {
+        "quark_type": "Heavy constituent",
+        "m_q_MeV": 500,
+        "r_break_fm": 1.0683824914218134
+      }
+    ],
+    "method_3_screened": [
+      {
+        "quark_type": "Current u/d mass",
+        "m_q_MeV": 5,
+        "r_break_fm": 1.3897335993095659
+      },
+      {
+        "quark_type": "Current s mass",
+        "m_q_MeV": 100,
+        "r_break_fm": 1.4
+      },
+      {
+        "quark_type": "Constituent u/d mass",
+        "m_q_MeV": 300,
+        "r_break_fm": 1.4
+      },
+      {
+        "quark_type": "Constituent s mass",
+        "m_q_MeV": 450,
+        "r_break_fm": 1.4
+      },
+      {
+        "quark_type": "Heavy constituent",
+        "m_q_MeV": 500,
+        "r_break_fm": 1.4
+      }
+    ],
+    "method_4_phenomenological": [
+      {
+        "K": 1.0,
+        "r_break_fm": 0.6114669421487604,
+        "matches_lattice": false
+      },
+      {
+        "K": 1.5,
+        "r_break_fm": 0.9172004132231406,
+        "matches_lattice": false
+      },
+      {
+        "K": 2.0,
+        "r_break_fm": 1.2229338842975208,
+        "matches_lattice": true
+      },
+      {
+        "K": 2.3,
+        "r_break_fm": 1.406373966942149,
+        "matches_lattice": true
+      },
+      {
+        "K": 2.5,
+        "r_break_fm": 1.528667355371901,
+        "matches_lattice": false
+      }
+    ],
+    "method_5_physical_K": {
+      "formula": "K = 1 + transition_width + tunneling_delay",
+      "components": {
+        "base": 1.0,
+        "transition_width": 0.5,
+        "tunneling_delay": 0.5
+      },
+      "total_K": 2.0
+    }
+  },
+  "final_result": {
+    "m_q_constituent_MeV": 300,
+    "correction_factor_K": 2.0,
+    "r_naive_fm": 0.6114669421487604,
+    "r_break_fm": 1.2229338842975208,
+    "lattice_result_fm": "1.2-1.4",
+    "agreement": "within 5%"
+  }
+}

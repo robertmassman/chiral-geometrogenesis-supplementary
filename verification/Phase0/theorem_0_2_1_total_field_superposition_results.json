@@ -1,0 +1,392 @@
+{
+  "theorem": "Theorem 0.2.1: Total Field from Superposition",
+  "file": "Theorem-0.2.1-Total-Field-Superposition.md",
+  "timestamp": "2026-01-14T12:57:01.866051",
+  "epsilon_vis": 0.05,
+  "epsilon_phys": 0.5,
+  "a0": 1.0,
+  "overall_status": 1,
+  "tests": [
+    {
+      "test": "Cube Roots of Unity Sum",
+      "status": 1,
+      "checks": [
+        {
+          "name": "1 + \u03c9 + \u03c9\u00b2 = 0",
+          "expected": 0.0,
+          "computed_real": 0.0,
+          "computed_imag": 3.3306690738754696e-16,
+          "magnitude": 3.3306690738754696e-16,
+          "passed": 1
+        },
+        {
+          "name": "e^(i\u00b70) + e^(i\u00b72\u03c0/3) + e^(i\u00b74\u03c0/3) = 0",
+          "expected": 0.0,
+          "computed_real": -2.220446049250313e-16,
+          "computed_imag": 3.3306690738754696e-16,
+          "magnitude": 4.0029660424867215e-16,
+          "passed": 1
+        },
+        {
+          "name": "e^(i\u00b72\u03c0/3) = -1/2 + i\u221a3/2",
+          "expected_real": -0.5,
+          "expected_imag": 0.8660254037844386,
+          "computed_real": -0.49999999999999983,
+          "computed_imag": 0.8660254037844387,
+          "passed": 1
+        },
+        {
+          "name": "e^(i\u00b74\u03c0/3) = -1/2 - i\u221a3/2",
+          "expected_real": -0.5,
+          "expected_imag": -0.8660254037844386,
+          "computed_real": -0.5000000000000004,
+          "computed_imag": -0.8660254037844384,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test": "Total Field Expression (Section 2.2-2.3)",
+      "status": 1,
+      "checks": [
+        {
+          "name": "\u03c7_total at origin",
+          "direct_real": -2.7755575615628914e-16,
+          "direct_imag": 3.3306690738754696e-16,
+          "formula_real": 0.0,
+          "formula_imag": 0.0,
+          "difference": 4.335559509131367e-16,
+          "passed": 1
+        },
+        {
+          "name": "\u03c7_total at x_axis",
+          "direct_real": 0.32267537123813983,
+          "direct_imag": 0.5588901373356078,
+          "formula_real": 0.32267537123813983,
+          "formula_imag": 0.5588901373356076,
+          "difference": 2.220446049250313e-16,
+          "passed": 1
+        },
+        {
+          "name": "\u03c7_total at y_axis",
+          "direct_real": 0.3226753712381395,
+          "direct_imag": -0.5588901373356071,
+          "formula_real": 0.32267537123813983,
+          "formula_imag": -0.5588901373356076,
+          "difference": 5.551115123125783e-16,
+          "passed": 1
+        },
+        {
+          "name": "\u03c7_total at diagonal",
+          "direct_real": 1.5884571368518214,
+          "direct_imag": 2.220446049250313e-16,
+          "formula_real": 1.5884571368518217,
+          "formula_imag": 0.0,
+          "difference": 3.1401849173675503e-16,
+          "passed": 1
+        },
+        {
+          "name": "\u03c7_total at near_R",
+          "direct_real": 48.472474493496115,
+          "direct_imag": 1.1102230246251565e-16,
+          "formula_real": 48.472474493496115,
+          "formula_imag": 0.0,
+          "difference": 1.1102230246251565e-16,
+          "passed": 1
+        },
+        {
+          "name": "\u03c7_total at random",
+          "direct_real": -0.0530717449074366,
+          "direct_imag": 0.6359487428820335,
+          "formula_real": -0.0530717449074366,
+          "formula_imag": 0.6359487428820332,
+          "difference": 3.3306690738754696e-16,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test": "Vanishing at Center (Section 4.3)",
+      "status": 1,
+      "checks": [
+        {
+          "name": "P_R(0) = P_G(0) = P_B(0) = 1/(1+\u03b5\u00b2)",
+          "P_R": 0.9975062344139649,
+          "P_G": 0.9975062344139649,
+          "P_B": 0.9975062344139649,
+          "expected": 0.9975062344139651,
+          "all_equal": 1,
+          "passed": 1
+        },
+        {
+          "name": "\u03c7_total(0) = 0",
+          "computed_real": -2.7755575615628914e-16,
+          "computed_imag": 3.3306690738754696e-16,
+          "magnitude": 4.335559509131367e-16,
+          "expected": 0.0,
+          "passed": 1
+        },
+        {
+          "name": "|\u03c7_total(0)|\u00b2 via alternative formula = 0",
+          "computed": 0.0,
+          "expected": 0.0,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test": "Energy Density (Section 3.2-3.4)",
+      "status": 1,
+      "checks": [
+        {
+          "name": "\u03c1(0) = 3a_0\u00b2P_0\u00b2 > 0",
+          "computed": 2.985056063084184,
+          "expected": 2.985056063084185,
+          "passed": 1
+        },
+        {
+          "name": "|\u03c7_total(0)|\u00b2 = 0 (but \u03c1(0) \u2260 0)",
+          "rho_center": 2.985056063084184,
+          "chi_sq_center": 1.879707625721942e-31,
+          "rho_nonzero": 1,
+          "chi_sq_zero": 1,
+          "passed": 1
+        },
+        {
+          "name": "\u03c1(x_R) >> \u03c1(0)",
+          "rho_vertex": 160000.28072339686,
+          "rho_center": 2.985056063084184,
+          "ratio": 53600.42737625614,
+          "passed": 1
+        },
+        {
+          "name": "\u03c1(x) > 0 at random points",
+          "rho_values": [
+            5.863932264545293,
+            3.9675142394643603,
+            3.256404045673834
+          ],
+          "all_positive": 1,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test": "Alternative Form (Section 4.2)",
+      "status": 1,
+      "checks": [
+        {
+          "name": "|\u03c7_total|\u00b2 at origin",
+          "direct": 1.879707625721942e-31,
+          "alternative": 0.0,
+          "difference": 1.879707625721942e-31,
+          "passed": 1
+        },
+        {
+          "name": "|\u03c7_total|\u00b2 at x_axis",
+          "direct": 0.41647758081468583,
+          "alternative": 0.4164775808146857,
+          "difference": 1.1102230246251565e-16,
+          "passed": 1
+        },
+        {
+          "name": "|\u03c7_total|\u00b2 at diagonal",
+          "direct": 2.5231960756154863,
+          "alternative": 2.5231960756154868,
+          "difference": 4.440892098500626e-16,
+          "passed": 1
+        },
+        {
+          "name": "|\u03c7_total|\u00b2 at near_R",
+          "direct": 2349.5807835226315,
+          "alternative": 2349.5807835226315,
+          "difference": 0.0,
+          "passed": 1
+        },
+        {
+          "name": "|\u03c7_total|\u00b2 at random",
+          "direct": 0.40724741368075884,
+          "alternative": 0.40724741368075845,
+          "difference": 3.885780586188048e-16,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test": "Gradient at Center (Section 5.2)",
+      "status": 1,
+      "checks": [
+        {
+          "name": "|\u2207\u03c7_total|\u2080|\u00b2 > 0",
+          "gradient_x_real": 1.1489486143785195,
+          "gradient_x_imag": 1.9900373753894558,
+          "gradient_y_real": 1.148948614378518,
+          "gradient_y_imag": -1.9900373753894558,
+          "gradient_z_real": 2.297897228757038,
+          "gradient_z_imag": -4.440892098500626e-16,
+          "gradient_magnitude_sq": 15.840995021787819,
+          "is_nonzero": 1,
+          "passed": 1
+        },
+        {
+          "name": "\u2207\u03c7_total|\u2080 = 2a_0 P_0\u00b2 \u03a3_c x_c e^(i\u03c6_c)",
+          "computed_x": [
+            1.1489486143785195,
+            1.9900373753894558
+          ],
+          "expected_x": [
+            1.14894861437852,
+            1.9900373753894567
+          ],
+          "difference": 1.6616311449500737e-15,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test": "Energy Integral Convergence (Section 8.2)",
+      "status": 1,
+      "checks": [
+        {
+          "name": "\u222b\u2080^R 4\u03c0r\u00b2/(r\u00b2+\u03b5\u00b2)\u00b2 dr \u2248 \u03c0\u00b2/\u03b5 (\u03b5=0.05)",
+          "computed": 197.26642433658753,
+          "expected_limit": 197.39208802178715,
+          "relative_difference": 0.0006366196662641407,
+          "passed": 1
+        },
+        {
+          "name": "\u222b\u2080^R 4\u03c0r\u00b2/(r\u00b2+\u03b5\u00b2)\u00b2 dr \u2248 \u03c0\u00b2/\u03b5 (\u03b5=0.5)",
+          "computed": 19.61354719038311,
+          "expected_limit": 19.739208802178716,
+          "relative_difference": 0.006366091622767432,
+          "passed": 1
+        },
+        {
+          "name": "Energy scaling: E \u221d 1/\u03b5",
+          "E1": 197.14076077705147,
+          "E2": 98.44471726881044,
+          "computed_ratio": 2.002552968268925,
+          "expected_ratio": 2.0,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test": "Coherent vs Incoherent Sums (Section 3.0)",
+      "status": 1,
+      "checks": [
+        {
+          "name": "at center",
+          "coherent_chi_sq": 1.879707625721942e-31,
+          "incoherent_rho": 2.985056063084184,
+          "interference_terms": 2.985056063084184,
+          "rho_geq_zero": 1
+        },
+        {
+          "name": "at off_center",
+          "coherent_chi_sq": 0.1997379183564114,
+          "incoherent_rho": 3.6532647701635885,
+          "interference_terms": 3.4535268518071773,
+          "rho_geq_zero": 1
+        },
+        {
+          "name": "at diagonal",
+          "coherent_chi_sq": 0.34390273264842713,
+          "incoherent_rho": 3.642048871257722,
+          "interference_terms": 3.2981461386092947,
+          "rho_geq_zero": 1
+        },
+        {
+          "name": "Critical: |\u03c7_total(0)|\u00b2 = 0 but \u03c1(0) > 0",
+          "chi_sq_center": 1.879707625721942e-31,
+          "rho_center": 2.985056063084184,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test": "Time Independence (Section 6)",
+      "status": 1,
+      "checks": [
+        {
+          "name": "Vertex positions are constant vectors",
+          "passed": true
+        },
+        {
+          "name": "Phases are constants (no time dependence)",
+          "phases": {
+            "R": 0.0,
+            "G": 2.0943951023931953,
+            "B": 4.1887902047863905
+          },
+          "passed": true
+        },
+        {
+          "name": "Field at same point gives same value",
+          "chi1": [
+            1.5481090005849873,
+            0.09076386312854734
+          ],
+          "chi2": [
+            1.5481090005849873,
+            0.09076386312854734
+          ],
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test": "Special Point Values (Section 3.4)",
+      "status": 1,
+      "checks": [
+        {
+          "name": "\u03c1(0) = 3a_0\u00b2 / (1 + \u03b5\u00b2)\u00b2",
+          "computed": 2.985056063084184,
+          "expected": 2.985056063084185,
+          "passed": 1
+        },
+        {
+          "name": "\u03c1(x_R) at vertex",
+          "computed": 160000.28072339686,
+          "expected": 160000.28072339686,
+          "passed": 1
+        },
+        {
+          "name": "\u03c1(x_R) >> \u03c1(0) for small \u03b5",
+          "ratio": 53600.42737625614,
+          "epsilon": 0.05,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test": "Downstream Compatibility (Section 9, 13)",
+      "status": 1,
+      "checks": [
+        {
+          "name": "\u03c7_total is complex (for Theorem 0.2.2)",
+          "type": "<class 'numpy.complex128'>",
+          "passed": true
+        },
+        {
+          "name": "\u03c7_total(0) = 0 (for Theorem 0.2.3)",
+          "chi_at_center": [
+            -2.7755575615628914e-16,
+            3.3306690738754696e-16
+          ],
+          "passed": 1
+        },
+        {
+          "name": "\u03c1(0) > 0 (for Theorem 0.2.4)",
+          "rho_at_center": 2.985056063084184,
+          "passed": 1
+        },
+        {
+          "name": "|\u2207\u03c7_total|\u2080 \u2260 0 (for Theorem 3.1.1)",
+          "gradient_magnitude_sq": 15.840995021787819,
+          "passed": 1
+        }
+      ]
+    }
+  ]
+}

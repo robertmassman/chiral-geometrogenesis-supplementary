@@ -1,0 +1,34 @@
+{
+  "task": "9.1.19",
+  "description": "Threshold correction computation at \u03c4 = i (S\u2084-symmetric point)",
+  "status": "COMPLETED",
+  "date": "2026-01-23",
+  "key_results": {
+    "eta_at_i": 0.7682254223260566,
+    "delta_single": 1.0546882809956721,
+    "delta_two_moduli": 2.1093765619913443,
+    "target": 1.5,
+    "A_s4_required": -0.6093765619913443,
+    "ln_24_over_2": 1.5890269151739729,
+    "ln_24_over_2_ratio": 1.0593512767826485
+  },
+  "fixed_points_comparison": {
+    "tau_i": {
+      "delta": 2.1093765619913443,
+      "gap": 0.6093765619913443
+    },
+    "tau_omega": {
+      "delta": 2.067038551925231,
+      "gap": 0.567038551925231
+    },
+    "tau_rho": {
+      "delta": 2.0670385519252314,
+      "gap": 0.5670385519252314
+    }
+  },
+  "high_precision": {
+    "Gamma_1_4": 3.625609908221908,
+    "eta_i": 0.7682254223260566,
+    "delta_exact": 1.0546882809956721
+  }
+}

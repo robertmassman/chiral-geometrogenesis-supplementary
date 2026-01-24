@@ -1,0 +1,73 @@
+{
+  "input": {
+    "g_chi_UV": 0.4444444444444444,
+    "M_P_GeV": 1.22e+19,
+    "Lambda_QCD_GeV": 0.2,
+    "beta_function": "-7 * g_chi^3 / (16 * pi^2)"
+  },
+  "results": {
+    "numerical": {
+      "g_chi_Lambda_QCD": 0.9884252498261193,
+      "perturbative": true
+    },
+    "analytical": {
+      "g_chi_Lambda_QCD": 0.988423651624281,
+      "perturbative": true
+    },
+    "intermediate_scales": [
+      {
+        "scale": "M_P",
+        "mu_GeV": 1.22e+19,
+        "g_chi": 0.4444444444444444,
+        "alpha_chi": 0.015719006725125464
+      },
+      {
+        "scale": "M_GUT (1e16 GeV)",
+        "mu_GeV": 1e+16,
+        "g_chi": 0.4749826654346024,
+        "alpha_chi": 0.017953356572625995
+      },
+      {
+        "scale": "M_EW (100 GeV)",
+        "mu_GeV": 100.0,
+        "g_chi": 0.7969396232585151,
+        "alpha_chi": 0.05054066783560417
+      },
+      {
+        "scale": "1 GeV",
+        "mu_GeV": 1.0,
+        "g_chi": 0.9259864957877519,
+        "alpha_chi": 0.06823378178911099
+      },
+      {
+        "scale": "Lambda_QCD (200 MeV)",
+        "mu_GeV": 0.2,
+        "g_chi": 0.988423651624281,
+        "alpha_chi": 0.07774570280251913
+      }
+    ],
+    "comparison": {
+      "claimed_value": 1.3,
+      "computed_value": 0.988423651624281,
+      "deviation_percent": 23.967411413516846
+    },
+    "reverse_engineering": {
+      "target_g_chi_Lambda_QCD": 1.3,
+      "required_g_chi_M_P": 0.4647065454245853,
+      "assumed_g_chi_M_P": 0.4444444444444444
+    },
+    "gut_scale_alternative": {
+      "g_chi_M_GUT": 0.4444444444444444,
+      "g_chi_Lambda_QCD": 0.7776499884515323
+    },
+    "correct_uv_scale": {
+      "required_mu_UV_GeV": 2.513300272798057e-23,
+      "required_mu_UV_TeV": 2.513300272798057e-26
+    }
+  },
+  "summary": {
+    "issue": "Claimed RG running from M_P is inconsistent with beta function",
+    "resolution": "Geometric formula likely applies at stella scale (~440 MeV), not M_P",
+    "recommendation": "Clarify scale at which g_chi = 4/9 applies"
+  }
+}

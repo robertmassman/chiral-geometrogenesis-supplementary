@@ -14,7 +14,7 @@
   octangula from alternatives like the octahedron: its edges encode the
   complete A₂ root system.
 
-  Reference: docs/proofs/Phase-Minus-1/Theorem-0.0.3-Stella-Uniqueness.md §2.4
+  Reference: docs/proofs/foundations/Theorem-0.0.3-Stella-Uniqueness.md §2.4
 -/
 
 import ChiralGeometrogenesis.Foundations.Lemma_0_0_3a

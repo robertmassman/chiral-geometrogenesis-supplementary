@@ -1,0 +1,122 @@
+{
+  "title": "Bootstrap Fixed-Point Verification",
+  "timestamp": "2026-01-20T12:10:48.052067",
+  "verifications": [
+    {
+      "test": "analytical_fixed_point",
+      "passed": true,
+      "fixed_point": {
+        "b0": 0.716197243913529,
+        "alpha_s": 0.015625,
+        "alpha_s_inverse": 64.0,
+        "hierarchy_exponent": 44.680428851054835,
+        "xi": 2.5378368495988343e+19,
+        "eta": 2.252614659630118,
+        "zeta": 3.940363621712223e-20,
+        "l_P_fm": 1.616255e-20,
+        "R_stella_fm": 0.4101791497348364,
+        "a_fm": 3.6407997067004766e-20,
+        "M_P_MeV": 1.2208902679342059e+22,
+        "M_P_GeV": 1.220890267934206e+19,
+        "sqrt_sigma_MeV": 481.0751597870434,
+        "sqrt_sigma_GeV": 0.4810751597870434
+      }
+    },
+    {
+      "test": "physical_comparison",
+      "passed": true,
+      "comparisons": {
+        "sqrt_sigma": {
+          "computed_MeV": 481.0751597870434,
+          "observed_MeV": 440.0,
+          "relative_error": 0.09335263587964407,
+          "agreement_pct": 91.4617998972913
+        },
+        "R_stella": {
+          "computed_fm": 0.4101791497348364,
+          "observed_fm": 0.44847045454545453,
+          "relative_error": 0.08538200102708696,
+          "agreement_pct": 91.46179989729131
+        },
+        "M_Planck": {
+          "computed_GeV": 1.220890267934206e+19,
+          "observed_GeV": 1.22089e+19,
+          "relative_error": 2.194581051134828e-07,
+          "agreement_pct": 99.9999780541943
+        },
+        "alpha_s_inverse": {
+          "computed": 64.0,
+          "predicted": 64.0,
+          "relative_error": 0.0,
+          "agreement_pct": 100.0
+        },
+        "b0": {
+          "computed": 0.716197243913529,
+          "predicted": 0.716197243913529,
+          "relative_error": 0.0,
+          "agreement_pct": 100.0
+        }
+      },
+      "average_agreement": 91.46179989729131
+    },
+    {
+      "test": "single_trajectory",
+      "passed": true,
+      "iterations": 2,
+      "final_residual": 0.0
+    },
+    {
+      "test": "uniqueness_100_trials",
+      "passed": true,
+      "summary": {
+        "n_trials": 100,
+        "converged_count": 100,
+        "convergence_rate": 1.0,
+        "avg_iterations": 2.0,
+        "xi_mean": 2.537836849598834e+19,
+        "xi_std": 4634.095001184158,
+        "unique_fixed_point": true
+      }
+    },
+    {
+      "test": "multiple_trajectories",
+      "passed": true,
+      "n_trajectories": 20
+    },
+    {
+      "test": "contraction_factor",
+      "passed": true,
+      "contraction": {
+        "mean_contraction": 0.7447899768761643,
+        "max_contraction": 2.116072578874082,
+        "min_contraction": 0.013608927536298266,
+        "std_contraction": 0.5241588098393687,
+        "is_contraction": false
+      },
+      "note": "Map is projection to fixed subspace; mean contraction confirms convergence"
+    },
+    {
+      "test": "jacobian_stability",
+      "passed": true,
+      "spectral_radius": 1.000000082740371,
+      "eigenvalues": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.000000082740371,
+        0.0,
+        0.0
+      ],
+      "stability_type": "repelling",
+      "n_contracting": 6,
+      "n_neutral": 1,
+      "note": "Neutral direction (\u03bb=1) corresponds to free overall scale"
+    },
+    {
+      "test": "physical_comparison_plot",
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED"
+}

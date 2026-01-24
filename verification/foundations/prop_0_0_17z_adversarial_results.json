@@ -1,0 +1,151 @@
+{
+  "bootstrap": {
+    "exponent_theory": 44.680428851054835,
+    "exponent_observed": 44.76967741993682,
+    "exponent_error_frac": 0.0019935048458097774,
+    "sqrt_sigma_bootstrap_MeV": 481.0750542112236,
+    "sqrt_sigma_FLAG_MeV": 440.0,
+    "discrepancy_frac": 0.09335239593459903,
+    "discrepancy_percent": 9.335239593459903
+  },
+  "corrections": {
+    "gluon": {
+      "sigma_GeV2": 0.1936,
+      "sigma2_GeV4": 0.03748096,
+      "G2_condensate_GeV4": 0.012,
+      "G2_scale_MeV": 330.97509196468735,
+      "ratio_G2_sigma2": 0.3201625572023769,
+      "c_G": 0.2,
+      "correction_frac": 0.03201625572023769,
+      "correction_percent": 3.2016255720237687,
+      "markdown_claim_percent": 3.0,
+      "markdown_claim_ratio": 0.32
+    },
+    "threshold": {
+      "b0_nf3": 0.716197243913529,
+      "b0_nf4": 0.6631455962162306,
+      "b0_nf5": 0.6100939485189322,
+      "b0_nf6": 0.5570423008216338,
+      "ln_mc_Lambda": 1.769234245016947,
+      "ln_mb_mc": 1.1896523728847919,
+      "ln_mt_mb": 3.719774258799426,
+      "ln_MP_mt": 38.7978939166075,
+      "ln_total_correct": 45.476554793308665,
+      "ln_total_markdown": 52.4,
+      "ln_total_ERROR": 6.9234452066913335,
+      "b0_eff_correct": 0.5703491260409297,
+      "b0_eff_markdown": 0.5692748091603054,
+      "correction_frac": 0.03,
+      "correction_percent": 3.0,
+      "markdown_claim_percent": 3.0
+    },
+    "two_loop": {
+      "N_c": 3,
+      "N_f": 3,
+      "term1_34Nc2": 306,
+      "term2_10Nc_Nf_3": 30.0,
+      "term3_8_Nf_3": 8.0,
+      "b1_numerator": 268.0,
+      "b1_denominator": 157.91367041742973,
+      "b1_correct": 1.6971298260091578,
+      "b1_markdown": 1.07,
+      "b1_ERROR": -0.6271298260091578,
+      "b1_standard_form": 0.4052847345693511,
+      "correction_frac": 0.02,
+      "correction_percent": 2.0,
+      "markdown_claim_percent": 2.0,
+      "markdown_claim_b1": 1.07
+    },
+    "instanton": {
+      "rho_fm": 0.33,
+      "sqrt_sigma_MeV": 440.0,
+      "rho_sqrt_sigma": 0.7359351241763812,
+      "rho_sqrt_sigma_sq_correct": 0.5416005069965056,
+      "rho_sqrt_sigma_sq_markdown": 0.5,
+      "rho_sqrt_sigma_sq_ERROR": -0.04160050699650564,
+      "V_tube_fm3": 0.5026548245743669,
+      "N_inst": 0.5026548245743669,
+      "c_inst": 0.03,
+      "correction_frac_markdown": 0.015,
+      "correction_frac_correct": 0.016334286470023003,
+      "correction_percent_markdown": 1.5,
+      "correction_percent_correct": 1.6334286470023003,
+      "markdown_claim_percent": 1.5
+    }
+  },
+  "total": {
+    "gluon_percent": 3.2016255720237687,
+    "threshold_percent": 3.0,
+    "two_loop_percent": 2.0,
+    "instanton_percent": 1.5,
+    "total_percent": 9.5,
+    "sqrt_sigma_bootstrap_MeV": 481.0750542112236,
+    "sqrt_sigma_corrected_MeV": 435.37292406115733,
+    "sqrt_sigma_FLAG_MeV": 440.0,
+    "sqrt_sigma_Bulava_MeV": 445.0,
+    "residual_FLAG_MeV": -4.627075938842665,
+    "residual_Bulava_MeV": -9.627075938842665,
+    "combined_err_FLAG_MeV": 31.622776601683793,
+    "combined_err_Bulava_MeV": 12.206555615733702,
+    "tension_FLAG_sigma": 0.1463209887330479,
+    "tension_Bulava_sigma": 0.7886807910360722
+  },
+  "physics_checks": {
+    "sign_consistency": {
+      "gluon_sign": "reduces \u221a\u03c3 (likely correct - OPE gives negative power correction)",
+      "threshold_sign": "reduces \u221a\u03c3 (correct - smaller effective b\u2080)",
+      "two_loop_sign": "positive",
+      "two_loop_issue": "b\u2081 = 1.6971 > 0. The proposition claims this reduces \u221a\u03c3 by 2%, but standard 2-loop analysis suggests \u039b_QCD increases. This may be a SCHEME-DEPENDENT effect (MS-bar vs physical scheme).",
+      "instanton_issue": "Standard instanton physics suggests vacuum energy contributions increase confinement. The proposition's claim that instantons reduce \u221a\u03c3 by 1.5% may rely on flux tube modifications that require careful justification.",
+      "signs_questionable": [
+        "two_loop",
+        "instanton"
+      ]
+    },
+    "limiting_cases": {
+      "perturbative_limit": {
+        "condition": "\u27e8G\u00b2\u27e9 \u2192 0",
+        "gluon_correction_behavior": "correction ~ \u27e8G\u00b2\u27e9 \u2192 0",
+        "status": "PASSED"
+      },
+      "large_Nc_limit": {
+        "condition": "N_c \u2192 \u221e",
+        "instanton_behavior": "suppressed as exp(-N_c)",
+        "status": "PASSED (consistent with 't Hooft scaling)"
+      },
+      "weak_coupling_limit": {
+        "condition": "\u03b1s \u2192 0",
+        "two_loop_behavior": "correction ~ \u03b1s\u00b2 \u2192 0",
+        "status": "PASSED"
+      },
+      "degenerate_mass_limit": {
+        "condition": "m_c = m_b = m_t",
+        "threshold_behavior": "correction \u2192 0",
+        "status": "PASSED"
+      }
+    }
+  },
+  "plots": {
+    "correction_breakdown": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/foundations/../plots/prop_0_0_17z_correction_breakdown.png",
+    "data_comparison": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/foundations/../plots/prop_0_0_17z_data_comparison.png",
+    "numerical_errors": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/foundations/../plots/prop_0_0_17z_numerical_errors.png",
+    "uncertainties": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/foundations/../plots/prop_0_0_17z_correction_uncertainties.png"
+  },
+  "errors_identified": {
+    "ln_total": {
+      "markdown": 52.4,
+      "correct": 45.476554793308665,
+      "error": 6.9234452066913335
+    },
+    "b1_coefficient": {
+      "markdown": 1.07,
+      "correct": 1.6971298260091578,
+      "error": -0.6271298260091578
+    },
+    "rho_sqrt_sigma_sq": {
+      "markdown": 0.5,
+      "correct": 0.5416005069965056,
+      "error": -0.04160050699650564
+    }
+  }
+}

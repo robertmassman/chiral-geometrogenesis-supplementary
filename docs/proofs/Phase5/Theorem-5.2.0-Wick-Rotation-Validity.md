@@ -14,6 +14,10 @@
 - ✅ Theorem 0.2.2 (Internal Time Parameter Emergence)
 - ✅ Theorem 3.0.1 (Pressure-Modulated Superposition)
 
+**Downstream Uses:**
+- ✅ [Theorem 5.2.1](./Theorem-5.2.1-Emergent-Metric.md) (Emergent Metric) — Uses Wick rotation validity for correlation function computation
+- ✅ [Theorem 5.2.7](./Theorem-5.2.7-Diffeomorphism-Emergence.md) (Diffeomorphism Emergence) — Relies on well-defined metric emergence enabled by valid Wick rotation
+
 ---
 
 ## 0. Dimensional Conventions (Clarification)

@@ -1,0 +1,63 @@
+{
+  "recommended": {
+    "lambda_W": 0.01425675449748649,
+    "lambda_W_uncertainty": 0.9694298739596012,
+    "lambda_W_over_lambda_H": 0.11018991590358515,
+    "v_W_predicted": 123.1052381254404,
+    "method": "Self-consistent (Method 4)"
+  },
+  "lambda_H": 0.12938347743146458,
+  "all_estimates": [
+    [
+      "Skyrme 4\u03c0\u00b2/e\u00b2",
+      1.9495514866349348
+    ],
+    [
+      "Skyrme QCD ratio",
+      0.17288778088928353
+    ],
+    [
+      "Skyrme universal",
+      0.23209876543209879
+    ],
+    [
+      "Gradient integral",
+      0.12597504469146484
+    ],
+    [
+      "Symmetry identical",
+      0.12938347743146458
+    ],
+    [
+      "Symmetry vertex count",
+      0.04312782581048819
+    ],
+    [
+      "Symmetry to match v_W=142",
+      0.010691738715732294
+    ],
+    [
+      "Self-consistent",
+      0.01425675449748649
+    ]
+  ],
+  "v_W_analysis": {
+    "lambda_W": 0.01425675449748649,
+    "lambda_W_over_lambda_H": 0.11018991590358515,
+    "v_W": 123.1052381254404,
+    "v_W_over_v_H": 0.4999806600822045,
+    "v_W_if_lambda_equal": 40.864619396158204,
+    "v_W_geometric": 142.15518327986968
+  },
+  "v_W_comparison": {
+    "with_derived_lambda": 123.1052381254404,
+    "with_equal_lambda": 40.864619396158204,
+    "geometric": 142.15518327986968
+  },
+  "method_4_details": {
+    "e_W": 4.5,
+    "M_W_target": 1620.0,
+    "v_W_from_soliton": 123.1052381254404,
+    "lambda_W": 0.01425675449748649
+  }
+}

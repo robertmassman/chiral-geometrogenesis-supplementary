@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-01-22T10:14:12.234587",
+  "results": {
+    "dof_counting": true,
+    "chi_to_U": true,
+    "lagrangian": true,
+    "energy_min": true,
+    "topo_analytic": true,
+    "topo_numeric": false,
+    "scales": true
+  },
+  "all_passed": false,
+  "parameters": {
+    "v_chi_MeV": 88.0,
+    "f_pi_pdg_MeV": 92.1,
+    "e_skyrme": 4.0,
+    "sqrt_sigma_MeV": 440.0
+  }
+}

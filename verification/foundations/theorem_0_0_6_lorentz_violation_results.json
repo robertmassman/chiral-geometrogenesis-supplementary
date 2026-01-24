@@ -1,0 +1,10 @@
+{
+  "lattice_spacing_fm": 0.44847,
+  "E_lattice_MeV": 440.00044596071086,
+  "M_Planck_GeV": 1.22e+19,
+  "a_over_lP": 2.7747477546738467e+19,
+  "delta_v_TeV": 1.269269896163257e-58,
+  "derivation_status": "COMPLETE",
+  "suppression_mechanism": "Planck mass (from metric emergence, not lattice scale)",
+  "experimental_consistency": "YES - no conflict with gamma-ray burst bounds"
+}

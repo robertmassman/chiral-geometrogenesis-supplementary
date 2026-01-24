@@ -1,0 +1,67 @@
+{
+  "test1_central_charge": {
+    "a_UV_computed": 0.7,
+    "a_UV_expected": 0.7,
+    "a_UV_match": true,
+    "a_IR_computed": 0.6916666666666667,
+    "a_IR_expected": 0.6916666666666667,
+    "a_IR_match": true,
+    "delta_a_exact": 0.008333333333333304,
+    "delta_a_fraction": "3/360 = 1/120",
+    "delta_a_decimal": 0.008333333333333304,
+    "delta_a_rounded": 0.008,
+    "rounding_error_percent": 3.9999999999996567
+  },
+  "test2_exact_vs_rounded": {
+    "delta_a_exact": 0.008333333333333333,
+    "delta_a_rounded": 0.008,
+    "exponent_exact": 6.079271018540267,
+    "exponent_rounded": 6.332573977646111,
+    "ratio_exact": 436.71072463157753,
+    "ratio_rounded": 562.6028589099972,
+    "ratio_observed": 559.5909090909091,
+    "v_H_exact_GeV": 192.15271883789413,
+    "v_H_rounded_GeV": 247.54525792039877,
+    "v_H_observed_GeV": 246.22,
+    "error_exact_percent": 21.958931509262406,
+    "error_rounded_percent": 0.5382413777917064
+  },
+  "test3_qcd_application": {
+    "delta_a_QCD": 1.6,
+    "exponent": 0.031662869888230555,
+    "ratio_predicted": 1.0321694712328302,
+    "ratio_observed": 3.60655737704918e-20,
+    "ratio_observed_log10": -19.44290715418856,
+    "formula_works_for_QCD": false
+  },
+  "test4_limiting_cases": {
+    "limit_small_delta_a": "Diverges to infinity (UNPHYSICAL)",
+    "limit_large_delta_a": "Approaches 1",
+    "physical_interpretation": "Formula inverts expected behavior"
+  },
+  "test5_comparison": {
+    "prop_018": 570.983235795706,
+    "prop_019": 554.0371579628762,
+    "prop_020_exact": 436.71072463157753,
+    "prop_020_rounded": 562.6028589099972,
+    "observed": 559.5909090909091,
+    "error_018": 2.0358312688289506,
+    "error_019": 0.9924662888207602,
+    "error_020_exact": 21.958931509262406,
+    "error_020_rounded": 0.5382413777917064
+  },
+  "test6_monte_carlo": {
+    "v_H_mean_GeV": 204.21349173013806,
+    "v_H_std_GeV": 68.1933618385464,
+    "v_H_68_CI": [
+      143.05301589550297,
+      262.6461038648341
+    ],
+    "v_H_95_CI": [
+      109.67735699704042,
+      373.39349535167463
+    ],
+    "n_samples": 10000,
+    "within_95_CI": true
+  }
+}

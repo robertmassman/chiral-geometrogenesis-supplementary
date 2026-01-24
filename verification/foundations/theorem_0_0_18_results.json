@@ -1,0 +1,73 @@
+{
+  "pillar1": {
+    "omega_0": {
+      "derived": 220.0,
+      "claimed": 220,
+      "agreement": 0.0
+    },
+    "Lambda": {
+      "derived": 1105.840614063607,
+      "claimed": 1106,
+      "f_pi": 88.0,
+      "agreement": 0.014411024990319788
+    },
+    "v_chi": {
+      "derived": 88.0,
+      "claimed": 88.0,
+      "agreement": 0.0
+    },
+    "wolfenstein": {
+      "geometric": 0.2245139882897927,
+      "pdg": 0.22497,
+      "deviation_percent": 0.20269889772294788
+    }
+  },
+  "pillar2": {
+    "M_P": 1.2208875632570053e+19,
+    "f_chi": 2.4353183429974907e+18,
+    "G_computed": 6.674299999999996e-11,
+    "G_CODATA": 6.6743e-11,
+    "agreement": 5.809461848197291e-14
+  },
+  "pillar3": {
+    "omega_b_predicted": 0.049,
+    "omega_b_planck": 0.0493,
+    "omega_dm_predicted": 0.27,
+    "omega_dm_planck": 0.266,
+    "omega_m_predicted": 0.319,
+    "omega_m_planck": 0.315,
+    "omega_lambda_predicted": 0.681,
+    "omega_lambda_planck": 0.685,
+    "omega_b_tension_sigma": -0.0176470588235291,
+    "omega_dm_tension_sigma": 0.0363636363636364,
+    "omega_m_tension_sigma": 0.035937003742007,
+    "omega_lambda_tension_sigma": -0.035937003742007,
+    "omega_m_percent_deviation": 1.2698412698412709
+  },
+  "masses": {
+    "u": {
+      "predicted": 2,
+      "pdg": 2.16,
+      "deviation_percent": -7.407407407407414,
+      "within_2sigma": true
+    },
+    "d": {
+      "predicted": 5,
+      "pdg": 4.7,
+      "deviation_percent": 6.382978723404251,
+      "within_2sigma": false
+    },
+    "s": {
+      "predicted": 95,
+      "pdg": 93.5,
+      "deviation_percent": 1.6042780748663104,
+      "within_2sigma": true
+    },
+    "t": {
+      "predicted": 173000,
+      "pdg": 172560,
+      "deviation_percent": 0.25498377375985165,
+      "within_2sigma": true
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 ## Status: ✅ VERIFIED — TOPOLOGICAL UNIQUENESS RESULT
 
-> **Multi-Agent Peer Review (2026-01-02):** All issues from verification addressed:
+> **Multi-Agent Peer Review (2026-01-20):** All issues from verification addressed:
 > - §3.2: Physics justification added for Z₃ → center identification
 > - §3.4: Rank constraint derivation corrected (explicit reference to Lemma 0.0.2a)
 > - §3.5: SO(4) removed from simple groups list (so(4) = su(2) ⊕ su(2) is not simple)
@@ -29,6 +29,16 @@
 - Provides topological foundation for Tannaka reconstruction (Theorem 0.0.13)
 - Strengthens the framework's claim to derive physics from geometry
 - **Enables Proposition 0.0.17t:** The Z₃ → SU(3) uniqueness proven here establishes dim(adj) = N_c² - 1 = 8 as a topologically-derived quantity, which enters the hierarchy formula R_stella/ℓ_P = exp(64/(2b₀)). See [Proposition 0.0.17t](Proposition-0.0.17t-Topological-Origin-Of-Scale-Hierarchy.md) §6A-bis for three independent derivations of this index.
+
+---
+
+> **📐 Lean 4 Formalization:** [`lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_15.lean`](../../../lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_15.lean)
+>
+> | Status | Key Theorems |
+> |--------|--------------|
+> | ✅ **SORRY-FREE** | `SU3_unique_theorem`, `SU3_unique_among_physical_groups` |
+>
+> The Lean formalization proves SU(3) uniqueness among physically valid groups, using only 3 well-documented axioms for standard Lie theory results. See [§7.1](#71-lean-4-formalization) for details.
 
 ---
 
@@ -213,38 +223,98 @@ The compact simple Lie groups and their centers are:
 - For $E_7$: center is $\mathbb{Z}_2$
 - For $E_6$: center is exactly $\mathbb{Z}_3$ $\square$
 
-### 3.4 Step 4: Dimensional Constraint from D = 4
+### 3.4 Step 4: Why N = 3 and rank(G) = 2 (Detailed Derivation)
+
+This section provides the complete derivation of why $N = 3$ (and hence rank = 2) from first principles. This addresses the verification report's request for a more prominent derivation.
 
 From Theorem 0.0.1, the spacetime dimension is $D = 4$, giving:
 
 $$D_{space} = D - 1 = 3$$
 
-**Claim 3.4.1:** The gauge group must satisfy $\text{rank}(G) = 2$.
+**Claim 3.4.1:** The gauge group must be SU(3) with $\text{rank}(G) = 2$.
 
-**Derivation from Two Independent Constraints:**
+---
 
-**Constraint A (Lemma 0.0.2a — Affine Independence):**
+#### 3.4.1 Four Independent Constraints on N
 
-Lemma 0.0.2a establishes that for SU(N) geometrically realized with N fundamental weights as polyhedral vertices, the Weyl group S_N must act faithfully. This requires N affinely independent points, which requires:
+We derive N = 3 from the intersection of four independent constraints:
 
-$$D_{space} \geq N - 1$$
+**Constraint A (Color Count):** The stella octangula has exactly 3 face colors meeting at each vertex.
 
-With $D_{space} = 3$: $N \leq 4$, so $\text{rank}(G) = N - 1 \leq 3$.
+*Geometric fact:* In a tetrahedron, exactly 3 faces meet at each vertex. The stella octangula inherits this structure—at each vertex of either tetrahedron, 3 distinct faces (labeled R, G, B) meet.
 
-**Constraint B (Z₃ Matching Weyl Group):**
+For SU(N), we need N fundamental color charges. The stella provides exactly 3 colors:
 
-From §3.0, the stella octangula has Z₃ rotational symmetry. For SU(N), the Weyl group is S_N (symmetric group on N elements). The Z₃ rotation symmetry of the stella must be realized within the Weyl group:
+$$N \geq 3$$
 
-1. **Z₃ ⊂ S_N requires N ≥ 3** (Z₃ is the cyclic group of order 3)
-2. **Z₃ as the maximal rotation symmetry implies N = 3** (S₂ has no 3-cycles; S₃ has Z₃ as its only normal cyclic subgroup of order 3; S₄ and higher have additional symmetries)
+**Constraint B (Affine Independence — Lemma 0.0.2a):**
 
-The stella's Z₃ is the **complete** rotational symmetry of the color structure, not a subgroup of a larger rotation. This forces N = 3.
+Lemma 0.0.2a establishes that for SU(N) geometrically realized with N fundamental weights as polyhedral vertices, the Weyl group S_N must act faithfully. This requires N affinely independent points.
 
-**Combined Result:**
+In $D_{space} = 3$ dimensions, at most 4 points can be affinely independent (a simplex in $\mathbb{R}^3$ has 4 vertices). Therefore:
 
-$$\text{rank}(G) = N - 1 = 2$$
+$$N \leq 4$$
 
-This derivation avoids circularity: we don't assume "the stella weight diagram is 2D because SU(3) is 2D." Instead, we derive N = 3 from the Z₃ symmetry structure.
+**Constraint C (Center Containment):**
+
+From §3.2, the stella's Z₃ phase structure must be contained in the center of SU(N):
+
+$$\mathbb{Z}_3 \subseteq Z(SU(N)) = \mathbb{Z}_N$$
+
+This requires $3 | N$ (3 divides N), so:
+
+$$N \in \{3, 6, 9, 12, ...\}$$
+
+**Constraint D (Z₄ Exclusion):**
+
+SU(4) has center $Z(SU(4)) = \mathbb{Z}_4$. The group $\mathbb{Z}_4 = \{1, i, -1, -i\}$ does **not** contain $\mathbb{Z}_3 = \{1, \omega, \omega^2\}$ as a subgroup, since $3 \nmid 4$.
+
+*Verification:* The element $\omega = e^{2\pi i/3}$ is not in $\mathbb{Z}_4 = \{e^{2\pi i k/4} : k = 0,1,2,3\}$.
+
+Therefore N = 4 is excluded by Constraint C.
+
+---
+
+#### 3.4.2 Intersection of Constraints
+
+| N | Constraint A: N ≥ 3 | Constraint B: N ≤ 4 | Constraint C: 3\|N | **Valid?** |
+|---|---------------------|---------------------|-------------------|------------|
+| 1 | ✗ | ✓ | ✗ | ✗ |
+| 2 | ✗ | ✓ | ✗ | ✗ |
+| **3** | **✓** | **✓** | **✓** | **✓** |
+| 4 | ✓ | ✓ | ✗ | ✗ |
+| 5 | ✓ | ✗ | ✗ | ✗ |
+| 6 | ✓ | ✗ | ✓ | ✗ |
+
+**Unique Solution:** $N = 3$
+
+---
+
+#### 3.4.3 Alternative Argument: Z₃ as Maximal Color Symmetry
+
+The stella's Z₃ rotational symmetry (120° about body diagonals) is the **complete** color rotation symmetry—not a subgroup of something larger. For SU(N), the Weyl group is $S_N$. The relationship between Z₃ and $S_N$ depends on N:
+
+| N | Weyl Group | Z₃ Status in $S_N$ |
+|---|------------|-------------------|
+| 2 | $S_2$ | Cannot embed (order 2 < 3) |
+| 3 | $S_3$ | $\mathbb{Z}_3 = A_3 \triangleleft S_3$ (unique normal cyclic-3) |
+| 4 | $S_4$ | $\mathbb{Z}_3 \subset S_4$ but not normal (8 distinct 3-cycles) |
+| ≥5 | $S_N$ | Z₃ embeds many ways, not distinguished |
+
+Only for N = 3 is Z₃ a **distinguished** subgroup of the Weyl group (it equals the alternating group $A_3$, the unique normal subgroup of index 2). This matches the stella's Z₃ being the maximal (not embedded) color symmetry.
+
+---
+
+#### 3.4.4 Combined Result
+
+$$\boxed{N = 3 \implies \text{rank}(SU(3)) = N - 1 = 2}$$
+
+**Computational Verification:** See `verification/foundations/theorem_0_0_15_constraint_b_derivation.py`
+
+This derivation is:
+- **Non-circular:** Z₃ comes from stella geometry (§3.0), not from assuming SU(3)
+- **Complete:** All four constraints are derived from first principles
+- **Unique:** N = 3 is the only integer satisfying all constraints
 
 > ⚠️ **Important Note on Framework Specificity:**
 > 
@@ -402,7 +472,9 @@ $$Q = \frac{1}{32\pi^2} \int \text{Tr}(F_{\mu\nu} \tilde{F}^{\mu\nu}) \, d^4x \i
 
 ---
 
-## 6. Summary Table
+## 6. Summary Tables
+
+### 6.1 Inputs and Derived Quantities
 
 | Input | Source | Mathematical Form |
 |-------|--------|------------------|
@@ -415,6 +487,41 @@ $$Q = \frac{1}{32\pi^2} \int \text{Tr}(F_{\mu\nu} \tilde{F}^{\mu\nu}) \, d^4x \i
 | Z₃ ⊆ Z(G) | Center encodes phases | Constraint on G |
 | rank(G) ≤ 2 | D = 4 → weight space 2D | Constraint on G |
 | G = SU(3) | Intersection of constraints | **UNIQUE** |
+
+### 6.2 Complete Filtering Table (All Compact Simple Lie Groups)
+
+This table shows how each constraint progressively filters the candidate groups:
+
+| Group | Series | Rank | Center | Z₃ ⊆ Z(G)? | rank ≤ 2? | Valid? | **Survives?** |
+|-------|--------|------|--------|------------|-----------|--------|---------------|
+| SU(2) | $A_1$ | 1 | $\mathbb{Z}_2$ | ✗ | ✓ | ✓ | ✗ |
+| **SU(3)** | $A_2$ | **2** | $\mathbb{Z}_3$ | **✓** | **✓** | **✓** | **✓** |
+| SU(4) | $A_3$ | 3 | $\mathbb{Z}_4$ | ✗ | ✗ | ✓ | ✗ |
+| SU(5) | $A_4$ | 4 | $\mathbb{Z}_5$ | ✗ | ✗ | ✓ | ✗ |
+| SU(6) | $A_5$ | 5 | $\mathbb{Z}_6$ | ✓ | ✗ | ✓ | ✗ |
+| SU(9) | $A_8$ | 8 | $\mathbb{Z}_9$ | ✓ | ✗ | ✓ | ✗ |
+| SO(5) | $B_2$ | 2 | $\mathbb{Z}_2$ | ✗ | ✓ | ✓ | ✗ |
+| SO(7) | $B_3$ | 3 | $\mathbb{Z}_2$ | ✗ | ✗ | ✓ | ✗ |
+| Sp(6) | $C_3$ | 3 | $\mathbb{Z}_2$ | ✗ | ✗ | ✓ | ✗ |
+| SO(8) | $D_4$ | 4 | $\mathbb{Z}_2 \times \mathbb{Z}_2$ | ✗ | ✗ | ✓ | ✗ |
+| $G_2$ | — | 2 | trivial | ✗ | ✓ | ✓ | ✗ |
+| $F_4$ | — | 4 | trivial | ✗ | ✗ | ✓ | ✗ |
+| $E_6$ | — | 6 | $\mathbb{Z}_3$ | ✓ | ✗ | ✓ | ✗ |
+| $E_7$ | — | 7 | $\mathbb{Z}_2$ | ✗ | ✗ | ✓ | ✗ |
+| $E_8$ | — | 8 | trivial | ✗ | ✗ | ✓ | ✗ |
+
+**Legend:**
+- **Z₃ ⊆ Z(G)?** — Does the center contain Z₃? (requires 3 | |Z(G)|)
+- **rank ≤ 2?** — From D = 4 spacetime (Lemma 0.0.2a)
+- **Valid?** — Cartan validity constraints ($A_n$: $n≥1$, $B_n$: $n≥2$, $C_n$: $n≥3$, $D_n$: $n≥4$)
+
+### 6.3 Constraint Summary
+
+| Constraint | Source | Effect |
+|------------|--------|--------|
+| Z₃ ⊆ Z(G) | Stella phases | Allows: SU(3), SU(6), SU(9), ..., E₆ |
+| rank(G) ≤ 2 | D = 4 spacetime | Allows: SU(2), SU(3), SO(5), G₂ |
+| **Intersection** | | **Only SU(3)** |
 
 ---
 
@@ -445,17 +552,21 @@ $$Q = \frac{1}{32\pi^2} \int \text{Tr}(F_{\mu\nu} \tilde{F}^{\mu\nu}) \, d^4x \i
 
 Each axiom includes complete proof sketches, multiple literature citations, and clear documentation of what full formalization would require.
 
-**Last Reviewed:** 2026-01-02 (adversarial review completed)
+**Last Reviewed:** 2026-01-20 (multi-agent peer review completed)
 
 ### 7.2 Computational Verification
 
-See: `verification/foundations/topological_classification_su3.py`
-
-This script verifies:
+**Primary:** `verification/foundations/topological_classification_su3.py`
 - Z₃ group structure from phases
 - Lie group classification by center
 - Exclusion of E₆ by rank constraint
 - Uniqueness of SU(3)
+
+**Constraint B Derivation:** `verification/foundations/theorem_0_0_15_constraint_b_derivation.py`
+- Stella octangula Z₃ rotational symmetry verification
+- Z₃ embedding analysis in symmetric groups S_N
+- Four independent constraints (A-D) forcing N = 3
+- Complete proof chain summary
 
 ### 7.3 Cross-References
 
@@ -488,12 +599,14 @@ This script verifies:
 
 ### Center Symmetry and Confinement
 13. **'t Hooft, G.** (1978) — "On the phase transition towards permanent quark confinement." Nucl. Phys. B 138, 1-25. (Center symmetry, Polyakov loop)
-14. **Greensite, J.** (2011) — *An Introduction to the Confinement Problem*. Springer. (Center vortices, N-ality)
+14. **Greensite, J.** (2020) — *An Introduction to the Confinement Problem*, 2nd ed. Springer LNP 972. (Center vortices, N-ality, updated review)
 
 ### Strong CP Problem and Instantons
-15. **Particle Data Group** (2024) — Review of Particle Physics. (θ < 10⁻¹⁰ bound from nEDM)
-16. **Rajaraman, R.** (1982) — *Solitons and Instantons*. North-Holland. Ch. 3.
-17. **Weinberg, S.** (1996) — *The Quantum Theory of Fields*, Vol. II. Cambridge. Ch. 23. (Instantons, θ-vacuum)
+15. **Particle Data Group** (2024) — Review of Particle Physics. Prog. Theor. Exp. Phys. 2024, 083C01. (θ < 10⁻¹⁰ bound from nEDM)
+16. **Abel, C. et al. (PSI nEDM Collaboration)** (2020) — "Measurement of the permanent electric dipole moment of the neutron." Phys. Rev. Lett. 124, 081803. (|d_n| < 1.8 × 10⁻²⁶ e·cm → |θ| < 10⁻¹⁰)
+17. **n2EDM Collaboration** (2021) — "The n2EDM experiment at the Paul Scherrer Institute." Eur. Phys. J. C 81, 512. (Next-generation nEDM search, expected sensitivity ~10⁻²⁷ e·cm)
+18. **Rajaraman, R.** (1982) — *Solitons and Instantons*. North-Holland. Ch. 3.
+19. **Weinberg, S.** (1996) — *The Quantum Theory of Fields*, Vol. II. Cambridge. Ch. 23. (Instantons, θ-vacuum)
 
 ---
 
@@ -517,6 +630,6 @@ This closes a critical gap in the framework: the gauge group is now determined b
 ---
 
 *Document created: January 1, 2026*
-*Last updated: January 2, 2026*
+*Last updated: January 20, 2026*
 *Status: ✅ VERIFIED — Topological derivation of SU(3)*
-*Verification: See `verification/foundations/theorem_0_0_15_comprehensive_verification.py`*
+*Verification: See `verification/foundations/theorem_0_0_15_comprehensive_verification.py` and `verification/foundations/theorem_0_0_15_constraint_b_derivation.py`*

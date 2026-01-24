@@ -1149,6 +1149,8 @@ At $\lambda = 0$:
 | What exists at $t = 0$? | Unclear (physics breaks down) | Algebraic structure (Phase 0) |
 | Need for quantum gravity? | Yes | Replaced by pre-geometric framework |
 
+**Cross-reference:** This singularity resolution is summarized in [Theorem 7.3.1 Applications §18.2.7](../Phase7/Theorem-7.3.1-UV-Completeness-Emergent-Gravity-Applications.md#1827-cosmological-singularity-resolution) as part of the UV completeness scope assessment.
+
 ---
 
 ## 9. Temperature History and Thermal Evolution

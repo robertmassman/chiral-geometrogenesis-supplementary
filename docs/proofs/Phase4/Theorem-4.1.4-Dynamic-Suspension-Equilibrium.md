@@ -95,6 +95,7 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 ### Direct Prerequisites (verify these first)
 - ✅ **Definition 0.1.3** §1-2: Pressure functions $P_c(x) = \frac{1}{|x - x_c|^2 + \epsilon^2}$
 - ✅ **Theorem 0.2.3** §2-3: Stable convergence at center, phase-lock stability
+- ✅ **Theorem 2.5.2** — Dynamical confinement (string tension σ for soliton dynamics)
 - ✅ **Theorem 4.1.1** §2: Topological soliton existence, winding number $Q \in \mathbb{Z}$
 - ✅ **Theorem 4.1.2** §3: Soliton mass spectrum, energy functional
 

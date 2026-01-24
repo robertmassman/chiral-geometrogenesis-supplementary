@@ -95,9 +95,11 @@ See [Proposition-3.1.1c-Geometric-Coupling-Formula-Derivation.md](../Phase3/Prop
 | γ (deg) | 66.0 ± 3.4 | PDG 2024 | CP angle |
 | β (deg) | 22.9 ± 0.7 | PDG 2024 | CP angle |
 
-**Note on λ confusion:** PDG lists TWO values:
-- Wolfenstein (Table 12.1): λ = 0.22500 ± 0.00067 (older parameterization)
-- CKM global fit: λ = 0.22650 ± 0.00048 (current standard — USE THIS ONE)
+**Note on λ values:** PDG 2024 lists two values:
+- Wolfenstein parameterization (Table 12.1): λ = 0.22650 ± 0.00048
+- CKM global fit: λ = 0.22497 ± 0.00069
+
+The CG geometric derivation gives $\lambda_{bare} = (1/\varphi^3)\sin(72°) = 0.2245$, which matches the CKM global fit to 0.7σ. With QCD radiative corrections (~0.9%), $\lambda_{dressed} = 0.2265$ matches the Wolfenstein value to 0.1σ.
 
 ### Predictions for Future Tests
 

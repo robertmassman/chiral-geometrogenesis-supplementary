@@ -1,0 +1,45 @@
+{
+  "recommended": {
+    "lambda_W": 0.10051907921447875,
+    "uncertainty": 0.020248730837709852,
+    "lambda_W_over_lambda_H": 0.7769081586767869
+  },
+  "derived_v_W": 123.1052381254404,
+  "inputs": {
+    "M_W": 1620,
+    "e_W": 4.5,
+    "lambda_H": 0.12938347743146458,
+    "lambda_HW": 0.036,
+    "mu_ratio": 0.3333333333333333
+  },
+  "formula": "lambda_W = (mu_W_sq - lambda_HW * v_H_sq) / (2 * v_W_sq)",
+  "derivation": "Self-consistent solution of soliton mass formula + potential minimum",
+  "uncertainty_analysis": {
+    "lambda_W_values": [
+      [
+        "central",
+        0.10051907921447875
+      ],
+      [
+        "e_W = 4.2",
+        0.11539180011866183
+      ],
+      [
+        "e_W = 4.8",
+        0.08834684696585048
+      ],
+      [
+        "M_W = 1460",
+        0.12375786802893506
+      ],
+      [
+        "M_W = 1780",
+        0.08326040635351535
+      ]
+    ],
+    "range": [
+      0.08326040635351535,
+      0.12375786802893506
+    ]
+  }
+}

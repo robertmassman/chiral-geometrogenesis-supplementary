@@ -71,6 +71,8 @@ Unlike Jacobson's approach (which is agnostic about microscopic degrees of freed
 - ✅ Theorem 0.2.1 (Total Field from Superposition) — Field structure
 - ✅ Theorem 0.2.2 (Internal Time Parameter Emergence) — Time from phases
 - ✅ Theorem 0.2.3 (Stable Convergence Point) — Observation region
+- ✅ **Theorem 2.5.1** (Complete CG Lagrangian) — Unified Lagrangian dynamics for metric emergence
+- ✅ **Theorem 2.5.2** (Dynamical Confinement) — Confinement mechanism connecting to spacetime emergence
 - ✅ Theorem 3.1.1 (Phase-Gradient Mass Generation Mass) — Matter coupling
 - ✅ Theorem 5.1.1 (Stress-Energy from $\mathcal{L}_{CG}$) — Source tensor
 - ✅ Theorem 5.1.2 (Vacuum Energy Density) — Vacuum contribution

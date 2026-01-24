@@ -1,0 +1,258 @@
+{
+  "theorem": "0.2.3",
+  "title": "Stable Convergence Point",
+  "parameters": {
+    "epsilon": 0.5,
+    "R_stella_fm": 0.448,
+    "R_obs_fm": 0.224,
+    "K": 1.0,
+    "a0": 1.0,
+    "epsilon_critical": 0.5773502691896258
+  },
+  "results": {
+    "test_01": {
+      "test_name": "Equal Pressure at Center",
+      "P_R": 0.7999999999999998,
+      "P_G": 0.7999999999999998,
+      "P_B": 0.7999999999999998,
+      "P_0_theoretical": 0.8,
+      "max_deviation": 2.220446049250313e-16,
+      "variance": 0.0,
+      "epsilon": 0.5,
+      "passed": true
+    },
+    "test_02": {
+      "test_name": "Field Vanishes but Energy Persists",
+      "chi_squared_at_center": 0.0,
+      "rho_at_center": 1.919999999999999,
+      "rho_theoretical": 1.9200000000000004,
+      "field_vanishes": true,
+      "energy_matches": true,
+      "passed": true
+    },
+    "test_03": {
+      "test_name": "Reduced Hessian Eigenvalues",
+      "eigenvalues_computed": [
+        0.75,
+        2.25
+      ],
+      "eigenvalues_expected": [
+        0.75,
+        2.25
+      ],
+      "all_positive": true,
+      "eigenvalues_match": true,
+      "trace_computed": 3.0,
+      "trace_expected": 3.0,
+      "det_computed": 1.6875,
+      "det_expected": 1.6875,
+      "K": 1.0,
+      "passed": true
+    },
+    "test_04": {
+      "test_name": "Dynamical Jacobian Stability",
+      "reduced_eigenvalues": [
+        -1.5,
+        -1.5
+      ],
+      "reduced_expected": [
+        -1.5,
+        -1.5
+      ],
+      "all_negative": true,
+      "reduced_match": true,
+      "full_eigenvalues": [
+        -1.5,
+        -1.5,
+        5.551115123125783e-17
+      ],
+      "full_expected": [
+        -1.5,
+        -1.5,
+        0.0
+      ],
+      "full_match": true,
+      "K": 1.0,
+      "passed": true
+    },
+    "test_05": {
+      "test_name": "Energy Coefficient Alpha",
+      "alpha_formula": 0.2048,
+      "alpha_numerical": 1.8805352837636402,
+      "epsilon": 0.5,
+      "epsilon_critical": 0.5773502691896258,
+      "is_stable_regime": true,
+      "alpha_positive": true,
+      "alpha_small_eps": 1.9986004399000195,
+      "alpha_near_critical": 0.02249400018476294,
+      "expected_alpha_small_eps": 2.0,
+      "passed": true
+    },
+    "test_06": {
+      "test_name": "Matrix M Eigenvalues (Anisotropy)",
+      "M_matrix": [
+        [
+          1.0000000000000002,
+          -0.3333333333333334,
+          0.3333333333333334
+        ],
+        [
+          -0.3333333333333334,
+          1.0000000000000002,
+          0.3333333333333334
+        ],
+        [
+          0.3333333333333334,
+          0.3333333333333334,
+          1.0000000000000002
+        ]
+      ],
+      "eigenvalues": [
+        0.33333333333333337,
+        1.3333333333333335,
+        1.3333333333333337
+      ],
+      "expected": [
+        0.3333333333333333,
+        1.3333333333333333,
+        1.3333333333333333
+      ],
+      "eigenvalues_match": true,
+      "trace": 3.000000000000001,
+      "trace_expected": 3.0,
+      "eigenvector_alignment": 1.0000000000000002,
+      "sum_vertices_direction": [
+        0.5773502691896258,
+        0.5773502691896258,
+        -0.5773502691896258
+      ],
+      "passed": true
+    },
+    "test_07": {
+      "test_name": "SO(3) Ensemble Averaging",
+      "n_samples": 5000,
+      "M_averaged": [
+        [
+          1.0053266625632535,
+          -0.017438228970419335,
+          -0.018919297853995175
+        ],
+        [
+          -0.017438228970419335,
+          0.9946418135903489,
+          0.002890140084316544
+        ],
+        [
+          -0.01891929785399518,
+          0.002890140084316538,
+          1.0000315238464008
+        ]
+      ],
+      "expected": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "frobenius_deviation": 0.0373878807992121,
+      "error_estimate": 0.027080128015453207,
+      "avg_eigenvalues": [
+        0.9768460444671418,
+        0.9943477127584612,
+        1.0288062427744
+      ],
+      "trace_preserved": true,
+      "passed": true
+    },
+    "test_08": {
+      "test_name": "Uniqueness of Center",
+      "all_equidistant": true,
+      "vertex_distances": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "variance_at_center": 0.0,
+      "variance_zero": true,
+      "variance_increases_all_directions": true,
+      "chi_at_center": 0.0,
+      "chi_zero_only_at_center": true,
+      "passed": true
+    },
+    "test_09": {
+      "test_name": "Lyapunov Stability",
+      "initial_perturbation": [
+        0.3,
+        -0.2
+      ],
+      "initial_deviation": 0.36055512754639896,
+      "final_deviation": 1.671957037066515e-07,
+      "fitted_decay_rate": 0.6745089770370849,
+      "expected_decay_rate": 1.5,
+      "relative_rate_error": 0.5503273486419434,
+      "converged": true,
+      "rate_reasonable": false,
+      "is_decaying": true,
+      "K": 1.0,
+      "passed": true
+    },
+    "test_10": {
+      "test_name": "Observation Radius",
+      "epsilon": 0.5,
+      "R_stella_fm": 0.448,
+      "R_obs_computed_fm": 0.224,
+      "R_obs_expected_fm": 0.224,
+      "lambda_penetration_fm": 0.22,
+      "matches_expected": true,
+      "matches_penetration_depth": true,
+      "passed": true
+    },
+    "test_11": {
+      "test_name": "Gradient Non-Zero at Center",
+      "complex_gradient_real": [
+        0.7390083445627217,
+        0.7390083445627207,
+        1.4780166891254427
+      ],
+      "complex_gradient_imag": [
+        1.2800000000000002,
+        -1.2800000000000002,
+        -2.8421709430404013e-16
+      ],
+      "gradient_magnitude": 2.560000000000001,
+      "gradient_nonzero": true,
+      "chi_squared_gradient": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "passed": true
+    },
+    "test_12": {
+      "test_name": "Quantum Stability",
+      "delta_x_rms_fm": 0.0077,
+      "R_obs_fm": 0.224,
+      "position_fluctuation_ratio": 0.034375,
+      "position_stable": true,
+      "delta_psi_rms_rad": 0.52,
+      "phase_lock_angle_rad": 2.0943951023931953,
+      "phase_fluctuation_ratio": 0.24828171122335677,
+      "phase_stable": true,
+      "passed": true
+    }
+  },
+  "n_passed": 12,
+  "n_total": 12,
+  "all_passed": true
+}

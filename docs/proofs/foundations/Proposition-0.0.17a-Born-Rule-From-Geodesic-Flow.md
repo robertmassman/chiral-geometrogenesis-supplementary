@@ -13,7 +13,7 @@
 **Impact:**
 - Axiom A5 (Probability Interpretation) → DERIVED
 - Framework's irreducible axiom count reduced from 4 to 3 (A0', A6, A7)
-- **Note (2026-01-04):** With subsequent derivations (A0' via Prop 0.0.17b, A6 via Prop 0.0.17e), the count is now **~0.5 irreducible axiom** (A7' outcome selection has partial derivation via Props 0.0.17f+g+h)
+- **Note (2026-01-20):** With subsequent derivations (A0' via Prop 0.0.17b, A6 via Prop 0.0.17e, A7' via Props 0.0.17f+g+h+i), the count is now **zero irreducible axioms** (A7' outcome selection fully derived via Z₃ superselection)
 
 **Verification Status (2026-01-03):**
 - ✅ Multi-agent peer review completed

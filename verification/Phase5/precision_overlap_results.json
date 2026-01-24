@@ -1,0 +1,78 @@
+{
+  "physical_parameters": {
+    "M_soliton_GeV": 1620,
+    "v_H_GeV": 246.22,
+    "r0": 0.15198765432098765,
+    "d_W_RGB": 1.3333333333333335,
+    "d_over_r0": 8.772642352367802
+  },
+  "falloff_comparison": {
+    "d_over_r0": 8.772642352367802,
+    "f_exponential": 0.00015491370277715067,
+    "f_power_law": 0.051314854324522936,
+    "ratio_pow_to_exp": 331.24800069068993,
+    "sensitivity_exponential": 8.772642352367802,
+    "sensitivity_power_law": 1.5,
+    "sensitivity_reduction": 5.848428234911868,
+    "uncertainty_10pct_exp": 0.9941969260179107,
+    "uncertainty_10pct_pow": 0.1522148880845317
+  },
+  "numerical_integral": {
+    "single_N32": {
+      "value": 5.047636852487977,
+      "error": 0.00985866572751558
+    },
+    "extrapolation": {
+      "I_infinity": 5.632133408649289,
+      "uncertainty": 0.12953976643889728,
+      "coefficients": [
+        5.632133408649289,
+        -404.13781038831974,
+        18339.17218816979
+      ],
+      "N_values": [
+        16,
+        24,
+        32,
+        48
+      ],
+      "I_values": [
+        4.321965816646478,
+        5.102398712357245,
+        5.047636852487977,
+        5.562221579778645
+      ],
+      "method": "spherical"
+    }
+  },
+  "physical_results": {
+    "I_overlap_raw": 5.632133408649289,
+    "d_W_RGB": 1.3333333333333335,
+    "r0": 0.15198765432098765,
+    "d_over_r0": 8.772642352367802,
+    "I_RGB_normalization": 11.696856469823734,
+    "I_normalized": 0.4815082944019542,
+    "f_overlap": 0.6939079869852732,
+    "analytic_comparison": {
+      "r0": 0.15198765432098765,
+      "d": 1.3333333333333335,
+      "d_over_r0": 8.772642352367802,
+      "I_analytic": 0.0019749107057602574,
+      "f_power_law_naive": 0.051314854324522936,
+      "f_exponential": 0.00015491370277715067,
+      "f_document_claim": null
+    }
+  },
+  "kappa_W_geom": {
+    "components": {
+      "f_singlet": 0.3333333333333333,
+      "f_VEV_original": 0.3333333333333333,
+      "f_VEV_updated": 0.3364,
+      "f_solid": 0.5,
+      "f_overlap": 0.6939079869852732,
+      "f_chiral": 1.7320508075688772
+    },
+    "kappa_W_geom_original": 0.06677132717979646,
+    "kappa_W_geom_updated": 0.06738562338985059
+  }
+}

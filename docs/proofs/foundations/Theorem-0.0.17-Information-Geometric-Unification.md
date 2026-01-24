@@ -16,6 +16,7 @@
 - Gap-Analysis-Pre-Geometric-Structure.md §5.3 is resolved
 - **Follow-on:** Proposition 0.0.17a uses the geodesic flow structure from this theorem to derive Axiom A5 (Born rule)
 - **Further developments (2026-01-04):** A0' derived (Prop 0.0.17b), A6 derived (Prop 0.0.17e) → **1 irreducible axiom (A7 only)**
+- **[Theorem 0.1.0](../Phase0/Theorem-0.1.0-Field-Existence-From-Distinguishability.md):** Uses Fisher-Killing equivalence from this theorem to derive field existence from information geometry
 
 **Verification Status (2026-01-03):**
 - ✅ Multi-agent peer review completed

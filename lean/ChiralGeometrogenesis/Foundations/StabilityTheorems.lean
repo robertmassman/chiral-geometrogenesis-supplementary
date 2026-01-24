@@ -90,7 +90,7 @@
 
   ## Reference
 
-  docs/proofs/Phase-Minus-1/Theorem-0.0.1-D4-From-Observer-Existence.md
+  docs/proofs/foundations/Theorem-0.0.1-D4-From-Observer-Existence.md
 
   ## Connection to Chiral Geometrogenesis
 
@@ -1133,7 +1133,7 @@ private theorem anomaly_triangle_iff_4 (D : ℕ) :
     | n + 11 =>
       -- For D ≥ 11, anomaly_type returns None (falls through match)
       simp only [anomaly_type] at h
-      split_ifs at h <;> simp at h
+      split_ifs at h
   · intro h
     rw [h]
     rfl

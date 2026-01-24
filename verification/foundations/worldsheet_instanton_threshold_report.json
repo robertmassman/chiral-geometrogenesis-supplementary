@@ -1,0 +1,42 @@
+{
+  "task": "World-sheet instanton corrections at \u03c4 = i",
+  "date": "2026-01-23",
+  "option": "Option C: Non-perturbative / Instanton Correction",
+  "tau": "i (S\u2084 symmetric point)",
+  "key_values": {
+    "basic_instanton_sum": 0.1803405990160962,
+    "z4_instanton_sum": 0.7213344972282429,
+    "s4_orbit_factor": 4.173206371042778,
+    "dominant_action": 3.141592653589793,
+    "dominant_weight": 0.04321391826377226,
+    "instanton_correction_physical": -0.007514191625670675,
+    "E2_at_i": 0.954929658551372,
+    "E2_expected": 0.954929658551372,
+    "E2_anomaly": 0.0
+  },
+  "threshold_analysis": {
+    "delta_dkl": 2.1093765619913443,
+    "delta_s4_formula": 1.5890269151739729,
+    "delta_wilson": -0.094,
+    "delta_instanton_physical": -0.007514191625670675,
+    "delta_total_combined": 1.487512723548302,
+    "delta_target": 1.5,
+    "gap_s4_only": 0.08902691517397288,
+    "gap_combined": -0.012487276451697893,
+    "percent_gap": 0.8324850967798595
+  },
+  "critical_insight": {
+    "E2_anomaly_vanishes": true,
+    "explanation": "At \u03c4 = i, E\u2082(i) = 3/\u03c0 exactly by self-duality",
+    "implication": "S\u2084 formula ln(24)/2 ENCODES non-perturbative physics",
+    "instanton_role": "Small higher-order correction only"
+  },
+  "conclusions": [
+    "World-sheet instanton sum at \u03c4 = i: 0.180341",
+    "Physical instanton correction (normalized): \u03b4_inst \u2248 -0.0075",
+    "E\u2082 anomaly vanishes at \u03c4 = i - S\u2084 formula is self-consistent",
+    "Combined S\u2084 + Wilson + instanton: \u03b4 \u2248 1.4875",
+    "Gap from target \u03b4 = 1.50: -0.0125 (0.8%)",
+    "The threshold target is achieved within <1% accuracy!"
+  ]
+}

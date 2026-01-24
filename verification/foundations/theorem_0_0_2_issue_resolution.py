@@ -195,10 +195,16 @@ def derive_radial_extension():
     # 2. The beta function gives:
     # μ dα_s/dμ = β(α_s) = -β_0 α_s² - β_1 α_s³ + ...
 
-    # β_0 = (11 - 2N_f/3)/(4π) for SU(3)
+    # β_0 normalization conventions (updated 2026-01-19):
+    # - Standard convention: β_0 = 11 - 2N_f/3 = 9 (for N_f = 3)
+    # - Alternative: b_0 = β_0/(4π) ≈ 0.716 (some lattice papers)
+    # This code uses the STANDARD convention.
     N_f = 3  # Light quarks
-    beta_0 = (11 - 2*N_f/3) / (4*np.pi)
-    results['beta_0'] = float(beta_0)
+    beta_0_standard = 11 - 2*N_f/3  # = 9 (standard PDG convention)
+    beta_0_alternative = beta_0_standard / (4*np.pi)  # ≈ 0.716 (alternative)
+    results['beta_0'] = float(beta_0_standard)
+    results['beta_0_alternative'] = float(beta_0_alternative)
+    results['beta_0_convention'] = 'standard (β_0 = 9 for N_f = 3)'
 
     # 3. This gives Λ_QCD as dynamical scale:
     # Λ_QCD ≈ μ exp(-1/(β_0 α_s(μ)))
@@ -227,7 +233,10 @@ def derive_radial_extension():
        α_s(μ) runs with energy scale μ via the beta function:
        μ dα_s/dμ = β(α_s) = -(β_0/2π) α_s² + O(α_s³)
 
-       with β_0 = (11 - 2N_f/3)/(2π) ≈ 0.716 for N_f = 3
+       Normalization conventions (updated 2026-01-19):
+       - Standard: β_0 = 11 - 2N_f/3 = 9 (for N_f = 3) [PDG, most textbooks]
+       - Alternative: b_0 = β_0/(4π) ≈ 0.716 [some lattice papers]
+       This document uses the standard convention: β_0 = 9
 
     3. UV/IR CORRESPONDENCE:
        The radial coordinate r is conjugate to energy μ:
@@ -274,14 +283,15 @@ def derive_radial_extension():
 
     # Calculate Λ_QCD from running
     # At μ = Λ_QCD, α_s → ∞ (Landau pole)
-    # Λ_QCD = M_Z exp(-π/(β_0 α_s(M_Z)))
-    Lambda_calc = M_Z * np.exp(-np.pi / (beta_0 * alpha_s_MZ))
+    # Λ_QCD = M_Z exp(-2π/(β_0 α_s(M_Z))) using standard convention
+    # Note: The formula uses 2π/β_0 with standard β_0 = 9
+    Lambda_calc = M_Z * np.exp(-2*np.pi / (beta_0_standard * alpha_s_MZ))
     results['Lambda_QCD_calculated'] = float(Lambda_calc)
     results['Lambda_QCD_ratio'] = float(Lambda_calc / Lambda_QCD)
 
     print(f"\n3. Dimensional transmutation verification:")
     print(f"   α_s(M_Z) = {alpha_s_MZ}")
-    print(f"   β_0 = {beta_0:.4f}")
+    print(f"   β_0 = {beta_0_standard} (standard convention)")
     print(f"   Λ_QCD calculated = {Lambda_calc:.3f} GeV")
     print(f"   Λ_QCD (PDG) = {Lambda_QCD} GeV")
     print(f"   Ratio: {Lambda_calc/Lambda_QCD:.2f}")
@@ -688,7 +698,7 @@ if __name__ == '__main__':
     results = generate_comprehensive_resolution()
 
     # Save results
-    output_file = '/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/theorem_0_0_2_issue_resolution_results.json'
+    output_file = '/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/foundations/theorem_0_0_2_issue_resolution_results.json'
     with open(output_file, 'w') as f:
         # Convert numpy types
         def convert(obj):

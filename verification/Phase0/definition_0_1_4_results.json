@@ -1,0 +1,452 @@
+{
+  "definition": "0.1.4",
+  "title": "Color Field Domains",
+  "timestamp": "2026-01-14T12:49:16.316051",
+  "epsilon": 0.05,
+  "tests": [
+    {
+      "test_name": "face_center_positions",
+      "passed": true,
+      "details": [
+        {
+          "color": "R",
+          "formula": [
+            -0.1924500897298753,
+            -0.1924500897298753,
+            -0.1924500897298753
+          ],
+          "computed": [
+            -0.1924500897298753,
+            -0.1924500897298753,
+            -0.1924500897298753
+          ],
+          "error": 0.0,
+          "passed": 1
+        },
+        {
+          "color": "G",
+          "formula": [
+            -0.1924500897298753,
+            0.1924500897298753,
+            0.1924500897298753
+          ],
+          "computed": [
+            -0.1924500897298753,
+            0.1924500897298753,
+            0.1924500897298753
+          ],
+          "error": 0.0,
+          "passed": 1
+        },
+        {
+          "color": "B",
+          "formula": [
+            0.1924500897298753,
+            -0.1924500897298753,
+            0.1924500897298753
+          ],
+          "computed": [
+            0.1924500897298753,
+            -0.1924500897298753,
+            0.1924500897298753
+          ],
+          "error": 0.0,
+          "passed": 1
+        },
+        {
+          "color": "W",
+          "formula": [
+            0.1924500897298753,
+            0.1924500897298753,
+            -0.1924500897298753
+          ],
+          "computed": [
+            0.1924500897298753,
+            0.1924500897298753,
+            -0.1924500897298753
+          ],
+          "error": 0.0,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test_name": "voronoi_equivalence",
+      "passed": true,
+      "epsilon_independence": true,
+      "details": [],
+      "all_match_voronoi": true,
+      "epsilon_discrepancies": 0
+    },
+    {
+      "test_name": "boundary_planes",
+      "passed": true,
+      "details": [
+        {
+          "boundary": "R-G",
+          "equation": "y + z = 0",
+          "expected_normal": [
+            0.0,
+            -0.7071067811865475,
+            -0.7071067811865475
+          ],
+          "computed_normal": [
+            0.0,
+            -0.7071067811865476,
+            -0.7071067811865476
+          ],
+          "normals_parallel": 1,
+          "max_pressure_error": 3.653324495789765e-15,
+          "mean_pressure_error": 3.1217920873879267e-16,
+          "passed": 1
+        },
+        {
+          "boundary": "G-B",
+          "equation": "x - y = 0",
+          "expected_normal": [
+            -0.7071067811865475,
+            0.7071067811865475,
+            0.0
+          ],
+          "computed_normal": [
+            -0.7071067811865476,
+            0.7071067811865476,
+            0.0
+          ],
+          "normals_parallel": 1,
+          "max_pressure_error": 8.872197599467686e-16,
+          "mean_pressure_error": 2.2202598443869743e-16,
+          "passed": 1
+        },
+        {
+          "boundary": "B-R",
+          "equation": "x + z = 0",
+          "expected_normal": [
+            0.7071067811865475,
+            0.0,
+            0.7071067811865475
+          ],
+          "computed_normal": [
+            0.7071067811865476,
+            0.0,
+            0.7071067811865476
+          ],
+          "normals_parallel": 1,
+          "max_pressure_error": 2.211123262366087e-15,
+          "mean_pressure_error": 2.624636881014896e-16,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test_name": "solid_angles",
+      "passed": true,
+      "details": [
+        {
+          "color": "R",
+          "count": 12315,
+          "fraction": 0.2463,
+          "solid_angle": 3.095097082316664,
+          "expected": 3.141592653589793,
+          "relative_error": 0.014800000000000035,
+          "passed": true
+        },
+        {
+          "color": "G",
+          "count": 12746,
+          "fraction": 0.25492,
+          "solid_angle": 3.20341919701244,
+          "expected": 3.141592653589793,
+          "relative_error": 0.01967999999999992,
+          "passed": true
+        },
+        {
+          "color": "B",
+          "count": 12340,
+          "fraction": 0.2468,
+          "solid_angle": 3.101380267623844,
+          "expected": 3.141592653589793,
+          "relative_error": 0.012800000000000034,
+          "passed": true
+        },
+        {
+          "color": "W",
+          "count": 12599,
+          "fraction": 0.25198,
+          "solid_angle": 3.166474067406224,
+          "expected": 3.141592653589793,
+          "relative_error": 0.007919999999999927,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "partition_property",
+      "passed": true,
+      "coverage_verified": true,
+      "disjointness_verified": true,
+      "boundary_sample_fraction": 0.0001
+    },
+    {
+      "test_name": "vertex_containment",
+      "passed": true,
+      "details": [
+        {
+          "vertex": "R",
+          "position": [
+            0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "dominant_color": "R",
+          "pressure_margin": 0.9990633780830471,
+          "in_interior": 1,
+          "passed": 1
+        },
+        {
+          "vertex": "G",
+          "position": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "dominant_color": "G",
+          "pressure_margin": 0.9990633780830471,
+          "in_interior": 1,
+          "passed": 1
+        },
+        {
+          "vertex": "B",
+          "position": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "dominant_color": "B",
+          "pressure_margin": 0.9990633780830471,
+          "in_interior": 1,
+          "passed": 1
+        },
+        {
+          "vertex": "W",
+          "position": [
+            -0.5773502691896258,
+            -0.5773502691896258,
+            0.5773502691896258
+          ],
+          "dominant_color": "W",
+          "pressure_margin": 0.9990633780830471,
+          "in_interior": 1,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test_name": "center_property",
+      "passed": 1,
+      "details": {},
+      "pressures": {
+        "R": 0.9975062344139649,
+        "G": 0.9975062344139649,
+        "B": 0.9975062344139649,
+        "W": 0.9975062344139649
+      },
+      "max_rgb_difference": 0.0,
+      "rgb_pressures_equal": 1,
+      "w_pressure_equal": 1
+    },
+    {
+      "test_name": "depression_domain_location",
+      "passed": true,
+      "details": [
+        {
+          "color": "R",
+          "face_center": [
+            -0.1924500897298753,
+            -0.1924500897298753,
+            -0.1924500897298753
+          ],
+          "D_at_face": 3.994390775942662,
+          "D_at_vertex": 0.001873243833905713,
+          "D_at_center": 2.0,
+          "expected_face_ratio": 3.99,
+          "passed": 1
+        },
+        {
+          "color": "G",
+          "face_center": [
+            -0.1924500897298753,
+            0.1924500897298753,
+            0.1924500897298753
+          ],
+          "D_at_face": 3.994390775942662,
+          "D_at_vertex": 0.001873243833905713,
+          "D_at_center": 2.0,
+          "expected_face_ratio": 3.99,
+          "passed": 1
+        },
+        {
+          "color": "B",
+          "face_center": [
+            0.1924500897298753,
+            -0.1924500897298753,
+            0.1924500897298753
+          ],
+          "D_at_face": 3.994390775942662,
+          "D_at_vertex": 0.001873243833905713,
+          "D_at_center": 2.0,
+          "expected_face_ratio": 3.99,
+          "passed": 1
+        }
+      ]
+    },
+    {
+      "test_name": "vertex_face_duality",
+      "passed": true,
+      "details": [
+        {
+          "color": "R",
+          "vertex": [
+            0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "face_center": [
+            -0.1924500897298753,
+            -0.1924500897298753,
+            -0.1924500897298753
+          ],
+          "expected_face": [
+            -0.1924500897298753,
+            -0.1924500897298753,
+            -0.1924500897298753
+          ],
+          "duality_error": 0.0,
+          "monotonic_pressure_decrease": true,
+          "passed": true
+        },
+        {
+          "color": "G",
+          "vertex": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "face_center": [
+            -0.1924500897298753,
+            0.1924500897298753,
+            0.1924500897298753
+          ],
+          "expected_face": [
+            -0.1924500897298753,
+            0.1924500897298753,
+            0.1924500897298753
+          ],
+          "duality_error": 0.0,
+          "monotonic_pressure_decrease": true,
+          "passed": true
+        },
+        {
+          "color": "B",
+          "vertex": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "face_center": [
+            0.1924500897298753,
+            -0.1924500897298753,
+            0.1924500897298753
+          ],
+          "expected_face": [
+            0.1924500897298753,
+            -0.1924500897298753,
+            0.1924500897298753
+          ],
+          "duality_error": 0.0,
+          "monotonic_pressure_decrease": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "su3_perpendicularity",
+      "passed": 1,
+      "projection_matrix": [
+        [
+          0.0,
+          0.43301270189221924,
+          0.43301270189221924
+        ],
+        [
+          0.5,
+          -0.25,
+          0.25
+        ]
+      ],
+      "details": [
+        {
+          "boundary": "R-G",
+          "root": "RG",
+          "projected_normal": [
+            -1.0,
+            0.0
+          ],
+          "line_direction": [
+            -0.0,
+            -1.0
+          ],
+          "root_vector": [
+            1.0,
+            0.0
+          ],
+          "dot_product": 0.0,
+          "is_perpendicular": 1
+        },
+        {
+          "boundary": "G-B",
+          "root": "GB",
+          "projected_normal": [
+            0.5,
+            -0.8660254037844388
+          ],
+          "line_direction": [
+            0.8660254037844386,
+            0.4999999999999999
+          ],
+          "root_vector": [
+            -0.5,
+            0.8660254037844388
+          ],
+          "dot_product": 0.0,
+          "is_perpendicular": 1
+        },
+        {
+          "boundary": "B-R",
+          "root": "BR",
+          "projected_normal": [
+            0.5,
+            0.8660254037844388
+          ],
+          "line_direction": [
+            -0.8660254037844386,
+            0.4999999999999999
+          ],
+          "root_vector": [
+            -0.5,
+            -0.8660254037844388
+          ],
+          "dot_product": 0.0,
+          "is_perpendicular": 1
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_tests": 10,
+    "passed": 10,
+    "failed": 0,
+    "success_rate": 1.0
+  },
+  "overall_passed": true
+}

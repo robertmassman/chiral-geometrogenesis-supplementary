@@ -822,6 +822,13 @@ THEOREM 2.1.1 VERIFIED:
 | 2.2.1-3 (Dynamics) | Color phases rotate freely inside bag |
 | 3.1.1 (Mass) | Phase-gradient mass generation at bag boundary |
 
+### 10.4 Downstream Usage
+
+| Theorem | How This Enables It |
+|---------|---------------------|
+| **Theorem 2.5.1** | Uses bag model equilibrium for confinement in unified Lagrangian |
+| **Theorem 2.5.2** | Uses bag pressure balance for dynamical confinement mechanism |
+
 ---
 
 ## Conclusion

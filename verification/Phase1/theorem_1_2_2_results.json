@@ -1,0 +1,430 @@
+{
+  "theorem": "Theorem 1.2.2: The Chiral Anomaly",
+  "statement": "\u2202_\u03bc J_5^\u03bc = (g\u00b2/16\u03c0\u00b2) F_\u03bc\u03bd F\u0303^\u03bc\u03bd",
+  "timestamp": "2026-01-14T11:52:08.509585",
+  "tests": {
+    "ff_dual_identity": {
+      "passed": true,
+      "results": [
+        {
+          "name": "Parallel E||B (z-axis)",
+          "E": [
+            0,
+            0,
+            1
+          ],
+          "B": [
+            0,
+            0,
+            1
+          ],
+          "E_dot_B": 1.0,
+          "F_F_dual": -4.0,
+          "expected": -4.0,
+          "verified": true
+        },
+        {
+          "name": "Perpendicular E\u22a5B",
+          "E": [
+            1,
+            0,
+            0
+          ],
+          "B": [
+            0,
+            1,
+            0
+          ],
+          "E_dot_B": 0.0,
+          "F_F_dual": -0.0,
+          "expected": -0.0,
+          "verified": true
+        },
+        {
+          "name": "Antiparallel E\u2191\u2193B",
+          "E": [
+            1,
+            0,
+            0
+          ],
+          "B": [
+            -1,
+            0,
+            0
+          ],
+          "E_dot_B": -1.0,
+          "F_F_dual": 4.0,
+          "expected": 4.0,
+          "verified": true
+        },
+        {
+          "name": "Diagonal parallel",
+          "E": [
+            1,
+            1,
+            1
+          ],
+          "B": [
+            1,
+            1,
+            1
+          ],
+          "E_dot_B": 3.0,
+          "F_F_dual": -12.0,
+          "expected": -12.0,
+          "verified": true
+        },
+        {
+          "name": "Generic configuration",
+          "E": [
+            1,
+            2,
+            3
+          ],
+          "B": [
+            4,
+            5,
+            6
+          ],
+          "E_dot_B": 32.0,
+          "F_F_dual": -128.0,
+          "expected": -128.0,
+          "verified": true
+        }
+      ]
+    },
+    "pi0_decay": {
+      "test": "pi0_gamma_gamma_decay",
+      "passed": true,
+      "parameters": {
+        "alpha": 0.0072973525692838015,
+        "m_pi_MeV": 134.9768,
+        "f_pi_MeV": 92.1,
+        "N_c": 3,
+        "charge_factor": 0.1111111111111111,
+        "note": "(Q_u\u00b2 - Q_d\u00b2)\u00b2 = (4/9 - 1/9)\u00b2 = 1/9"
+      },
+      "prediction": {
+        "Gamma_MeV": 7.779634434976591e-06,
+        "Gamma_eV": 7.779634434976591,
+        "lifetime_s": 8.460705479176934e-17
+      },
+      "experimental": {
+        "Gamma_eV": 7.72,
+        "uncertainty_eV": 0.12,
+        "source": "PDG 2024"
+      },
+      "comparison": {
+        "deviation_eV": 0.0596344349765916,
+        "deviation_sigma": 0.49695362480493,
+        "within_1sigma": true,
+        "within_2sigma": true,
+        "percent_agreement": 99.22753322569181
+      },
+      "physics_note": "This precision agreement confirms N_c = 3 colors and validates the anomaly"
+    },
+    "color_counting": {
+      "test": "color_counting",
+      "description": "\u0393(\u03c0\u2070 \u2192 \u03b3\u03b3) \u221d N_c\u00b2 validates N_c = 3",
+      "experimental_Gamma_eV": 7.72,
+      "results": [
+        {
+          "N_c": 1,
+          "Gamma_eV": 0.8644038261085103,
+          "ratio_to_experiment": 0.11196940752700911,
+          "matches_experiment": false
+        },
+        {
+          "N_c": 2,
+          "Gamma_eV": 3.457615304434041,
+          "ratio_to_experiment": 0.44787763010803644,
+          "matches_experiment": false
+        },
+        {
+          "N_c": 3,
+          "Gamma_eV": 7.779634434976593,
+          "ratio_to_experiment": 1.007724667743082,
+          "matches_experiment": true
+        },
+        {
+          "N_c": 4,
+          "Gamma_eV": 13.830461217736165,
+          "ratio_to_experiment": 1.7915105204321458,
+          "matches_experiment": false
+        },
+        {
+          "N_c": 5,
+          "Gamma_eV": 21.610095652712754,
+          "ratio_to_experiment": 2.7992351881752273,
+          "matches_experiment": false
+        }
+      ],
+      "conclusion": "Only N_c = 3 matches experiment"
+    },
+    "axial_quantization": {
+      "test": "axial_charge_quantization",
+      "passed": true,
+      "formula": "\u0394Q_5 = 2\u03bd where \u03bd \u2208 \u2124 is the Pontryagin index",
+      "physical_meaning": "Each instanton converts 2 left-handed fermions to right-handed (or vice versa)",
+      "results": [
+        {
+          "instanton_number_nu": -2,
+          "Delta_Q5": -4,
+          "Delta_N_L": 2,
+          "Delta_N_R": -2,
+          "note": "\u03bd = -2: axial charge changes by -4"
+        },
+        {
+          "instanton_number_nu": -1,
+          "Delta_Q5": -2,
+          "Delta_N_L": 1,
+          "Delta_N_R": -1,
+          "note": "\u03bd = -1: axial charge changes by -2"
+        },
+        {
+          "instanton_number_nu": 0,
+          "Delta_Q5": 0,
+          "Delta_N_L": 0,
+          "Delta_N_R": 0,
+          "note": "\u03bd = 0: axial charge changes by 0"
+        },
+        {
+          "instanton_number_nu": 1,
+          "Delta_Q5": 2,
+          "Delta_N_L": -1,
+          "Delta_N_R": 1,
+          "note": "\u03bd = 1: axial charge changes by 2"
+        },
+        {
+          "instanton_number_nu": 2,
+          "Delta_Q5": 4,
+          "Delta_N_L": -2,
+          "Delta_N_R": 2,
+          "note": "\u03bd = 2: axial charge changes by 4"
+        },
+        {
+          "instanton_number_nu": 3,
+          "Delta_Q5": 6,
+          "Delta_N_L": -3,
+          "Delta_N_R": 3,
+          "note": "\u03bd = 3: axial charge changes by 6"
+        }
+      ],
+      "index_theorem": "Atiyah-Singer: n_+ - n_- = \u03bd (number of zero modes)"
+    },
+    "topological_pump": {
+      "test": "rotating_vacuum_topological_pump",
+      "passed": true,
+      "stella_octangula_note": "Two interlocked tetrahedra provide rotating vacuum structure",
+      "rotating_vacuum": {
+        "form": "\u03c7 = v_\u03c7 exp(i\u03c9t)",
+        "v_chi_MeV": 92.1,
+        "omega_MeV": 200.0,
+        "period_fm": 6.199209921180562e-06
+      },
+      "effective_coupling": {
+        "C_chi": 1.5,
+        "formula": "C_\u03c7 = N_f \u00d7 T_F = 3 \u00d7 (1/2) = 3/2",
+        "f_chi_MeV": 92.1,
+        "coupling_strength_per_MeV": 0.016286644951140065,
+        "dimensionless_coeff": 0.004749430483234583
+      },
+      "mechanism": "Rotating \u03c7 biases sphaleron transitions for baryogenesis",
+      "physical_interpretation": "The rotating vacuum acts as a topological pump"
+    },
+    "chi_coupling": {
+      "test": "chi_ff_dual_coupling",
+      "passed": true,
+      "one_loop_coefficient": {
+        "C_chi": 1.5,
+        "formula": "C_\u03c7 = N_f/2 = 3/2",
+        "is_exact": true,
+        "non_renormalization": "Protected by Adler-Bardeen theorem"
+      },
+      "effective_lagrangian": {
+        "form": "L_eff = (C_\u03c7 \u03b8\u0307)/(f_\u03c7) \u00d7 (g\u00b2/16\u03c0\u00b2) F_\u03bc\u03bd F\u0303^\u03bc\u03bd",
+        "anomaly_coefficient": 0.006332573977646111,
+        "full_coefficient": 0.009498860966469166
+      },
+      "comparison_to_axion": {
+        "similarity": "Both couple pseudoscalar to F\u00b7F\u0303",
+        "difference": "\u03c7 is rotating background, not propagating field"
+      }
+    },
+    "neutron_edm": {
+      "test": "neutron_edm_compatibility",
+      "passed": true,
+      "rotation": {
+        "omega_MeV": 200.0,
+        "omega_Hz": 3.038534895992255e+23,
+        "period_s": 2.0678338483020016e-23
+      },
+      "measurement": {
+        "T_exp_s": 1.0,
+        "N_periods": 4.835978484543854e+22,
+        "averaging_factor": 4.5473441131082236e-12
+      },
+      "edm_calculation": {
+        "d_n_per_theta": 3e-16,
+        "theta_max": 1.0,
+        "d_n_oscillating": 3e-16,
+        "d_n_effective": 1.364203233932467e-27,
+        "experimental_limit": 1.8e-26
+      },
+      "result": {
+        "within_limit": true,
+        "safety_margin": 13.194514975685115,
+        "conclusion": "Rotating \u03b8 compatible with neutron EDM bounds"
+      },
+      "physics_explanation": [
+        "1. Time-averaging: oscillating \u03b8 averages to constant over T >> 2\u03c0/\u03c9",
+        "2. Frequency separation: \u03c9 ~ 10\u00b2\u00b3 Hz >> experimental timescales",
+        "3. Suppression: factor of ~4.55e-12 from \u221aN averaging"
+      ]
+    },
+    "limiting_cases": {
+      "test": "limiting_cases",
+      "passed": true,
+      "results": [
+        {
+          "limit": "v_\u03c7 \u2192 0",
+          "physical_meaning": "Chiral restoration (T > T_c)",
+          "result": "Effective coupling vanishes",
+          "data": [
+            {
+              "v_chi": 1.0,
+              "coupling": 1.0
+            },
+            {
+              "v_chi": 0.1,
+              "coupling": 0.1
+            },
+            {
+              "v_chi": 0.01,
+              "coupling": 0.01
+            },
+            {
+              "v_chi": 0.001,
+              "coupling": 0.001
+            },
+            {
+              "v_chi": 0.0,
+              "coupling": 0.0
+            }
+          ],
+          "verified": true
+        },
+        {
+          "limit": "\u03c9 \u2192 0",
+          "physical_meaning": "Static condensate",
+          "result": "No topological pump",
+          "data": [
+            {
+              "omega": 1.0,
+              "pump_rate": 1.0
+            },
+            {
+              "omega": 0.1,
+              "pump_rate": 0.1
+            },
+            {
+              "omega": 0.01,
+              "pump_rate": 0.01
+            },
+            {
+              "omega": 0.001,
+              "pump_rate": 0.001
+            },
+            {
+              "omega": 0.0,
+              "pump_rate": 0.0
+            }
+          ],
+          "verified": true
+        },
+        {
+          "limit": "g \u2192 0",
+          "physical_meaning": "Free fermions",
+          "result": "Axial current conserved (anomaly vanishes)",
+          "data": [
+            {
+              "g": 1.0,
+              "anomaly_coeff": 0.006332573977646111
+            },
+            {
+              "g": 0.5,
+              "anomaly_coeff": 0.0015831434944115277
+            },
+            {
+              "g": 0.1,
+              "anomaly_coeff": 6.332573977646113e-05
+            },
+            {
+              "g": 0.01,
+              "anomaly_coeff": 6.332573977646111e-07
+            },
+            {
+              "g": 0.0,
+              "anomaly_coeff": 0.0
+            }
+          ],
+          "verified": true
+        },
+        {
+          "limit": "N_f \u2192 0",
+          "physical_meaning": "No light quarks coupling to \u03c7",
+          "result": "\u03c7 decouples from gauge topology",
+          "data": [
+            {
+              "N_f": 3,
+              "C_chi": 1.5
+            },
+            {
+              "N_f": 2,
+              "C_chi": 1.0
+            },
+            {
+              "N_f": 1,
+              "C_chi": 0.5
+            },
+            {
+              "N_f": 0,
+              "C_chi": 0.0
+            }
+          ],
+          "verified": true
+        },
+        {
+          "limit": "\u210f \u2192 0",
+          "physical_meaning": "Classical limit",
+          "result": "Anomaly is quantum effect (one-loop), vanishes classically",
+          "note": "Anomaly coefficient contains implicit \u210f from loop integral",
+          "verified": true
+        }
+      ],
+      "summary": "All 5 limiting cases verified correctly"
+    },
+    "sphaleron": {
+      "test": "sphaleron_baryogenesis",
+      "passed": true,
+      "sphaleron_rate": {
+        "formula": "\u0393_sph \u2248 \u03ba \u00d7 \u03b1_W^5 \u00d7 T^4",
+        "kappa": 10.0,
+        "alpha_W": 0.03333333333333333,
+        "Gamma_over_T4": 4.1152263374485594e-07
+      },
+      "charge_violation": {
+        "Delta_Q5_per_sphaleron": 6,
+        "Delta_B_per_sphaleron": 3,
+        "note": "Each sphaleron violates B and L by 3 (for 3 generations)"
+      },
+      "baryogenesis": {
+        "eta_B_observed": 6.1e-10,
+        "source": "CMB/BBN measurements",
+        "mechanism": "Rotating \u03c7 biases sphaleron transitions via anomaly"
+      },
+      "connection_to_theorem": "Anomaly enables B violation via \u2202_\u03bcJ_B^\u03bc \u221d F\u00b7F\u0303"
+    }
+  },
+  "overall_passed": true
+}

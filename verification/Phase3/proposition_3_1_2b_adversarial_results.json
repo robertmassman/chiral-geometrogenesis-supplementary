@@ -1,0 +1,111 @@
+{
+  "formula": {
+    "phi": 1.618033988749895,
+    "phi_cubed": 4.23606797749979,
+    "sin_72": 0.9510565162951535,
+    "lambda_geometric": 0.2245139882897927,
+    "lambda_PDG": 0.22497,
+    "lambda_PDG_error": 0.0007,
+    "deviation_sigma": 0.6514453002961654,
+    "deviation_percent": 0.20269889772294786,
+    "status": "VERIFIED"
+  },
+  "24cell_vertices": {
+    "num_vertices_16cell": 8,
+    "num_vertices_tesseract": 16,
+    "total_vertices": 24,
+    "radius_16cell": 1.0,
+    "radius_tesseract": 1.0,
+    "all_equal_radius": true,
+    "status": "VERIFIED"
+  },
+  "symmetry_groups": {
+    "A4 (5-cell)": {
+      "order": 120,
+      "factors": {
+        "2": 3,
+        "3": 1,
+        "5": 1
+      }
+    },
+    "B4 (8-cell/16-cell)": {
+      "order": 384,
+      "factors": {
+        "2": 7,
+        "3": 1
+      }
+    },
+    "F4 (24-cell)": {
+      "order": 1152,
+      "factors": {
+        "2": 7,
+        "3": 2
+      }
+    },
+    "H4 (600-cell/120-cell)": {
+      "order": 14400,
+      "factors": {
+        "2": 6,
+        "3": 2,
+        "5": 2
+      }
+    },
+    "index_F4_D4": 6,
+    "index_D4_A3\u00d7A1": 4,
+    "index_A3\u00d7A1_S3\u00d7Z2": 4
+  },
+  "stella": {
+    "num_vertices": 8,
+    "vertices_per_tetra": [
+      4,
+      4
+    ],
+    "vertex_radius_3D": 1.7320508075688772,
+    "projected_radii": [
+      0.0,
+      1.632993
+    ],
+    "status": "VERIFIED"
+  },
+  "16cell_projection": {
+    "16cell_vertices_4D": 8,
+    "projected_vertices_3D": 7,
+    "stella_vertices": 8,
+    "match": false,
+    "projects_to": "octahedron + origin",
+    "critical_error_confirmed": true,
+    "status": "ERROR CONFIRMED"
+  },
+  "mass_hierarchy": {
+    "m_u/m_c": {
+      "predicted": 0.0025408183611822966,
+      "PDG": 0.0017,
+      "ratio": 1.4945990359895862
+    },
+    "m_d/m_s": {
+      "predicted": 0.05040653093778917,
+      "PDG": 0.05,
+      "ratio": 1.0081306187557832
+    },
+    "m_s/m_b": {
+      "predicted": 0.05040653093778917,
+      "PDG": 0.022,
+      "ratio": 2.2912059517176897
+    },
+    "|V_us|": {
+      "predicted": 0.2245139882897927,
+      "PDG": 0.2253,
+      "sigma": 1.1228738717247324
+    },
+    "|V_cb|": {
+      "predicted": 0.05040653093778917,
+      "PDG": 0.041,
+      "sigma": 6.718950669849407
+    },
+    "|V_ub|": {
+      "predicted": 0.01131697129669587,
+      "PDG": 0.00382,
+      "sigma": 31.237380402899454
+    }
+  }
+}

@@ -13,7 +13,7 @@
   These are the foundational definitions used by Theorem 0.0.3 (Stella Uniqueness)
   and the elimination lemmas.
 
-  Reference: docs/proofs/Phase-Minus-1/Theorem-0.0.3-Stella-Uniqueness.md §2.2-2.3
+  Reference: docs/proofs/foundations/Theorem-0.0.3-Stella-Uniqueness.md §2.2-2.3
 -/
 
 import ChiralGeometrogenesis.PureMath.LieAlgebra.SU3

@@ -33,11 +33,17 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 - [→ See the complete derivation](./Theorem-4.2.1-Chiral-Bias-Soliton-Formation-Derivation.md)
 - [→ See applications and verification](./Theorem-4.2.1-Chiral-Bias-Soliton-Formation-Applications.md)
 
+**Computational Verification:**
+- [theorem_4_2_1_chiral_bias_verification.py](../../../verification/Phase4/theorem_4_2_1_chiral_bias_verification.py) — Main verification (master formula, uncertainties, Sakharov conditions)
+- [theorem_4_2_1_geometric_factor.py](../../../verification/Phase4/theorem_4_2_1_geometric_factor.py) — Geometric factor G derivation
+- [theorem_4_2_1_high_temp_limit.py](../../../verification/Phase4/theorem_4_2_1_high_temp_limit.py) — High temperature limit η → 0
+- [theorem_4_2_1_eta_to_omega_b.py](../../../verification/Phase4/theorem_4_2_1_eta_to_omega_b.py) — Conversion from η to Ω_b
+
 ---
 
 ## Verification Status
 
-**Last Verified:** 2025-12-13 (corrections applied)
+**Last Verified:** 2026-01-15 (citations corrected)
 **Verified By:** Multi-agent verification (Mathematical, Physics, Literature)
 
 ### Verification Checklist
@@ -51,6 +57,8 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 - [x] Citation Flambaum (2025) arXiv:2509.14701 verified (2025-12-13)
 - [x] First-order phase transition strength derived ✅ (2025-12-14, see Theorem 4.2.3)
 - [x] Theorem 2.2.4 independently verified (2025-12-14)
+- [x] Moore (2023) arXiv corrected to 2210.05507 (2026-01-15)
+- [x] Battye & Sutcliffe citation corrected to (2005) B 705:384 (2026-01-15)
 
 **Note on Phase Transition:** The first-order electroweak phase transition with v(T_c)/T_c ~ 1.0-1.5 is now **derived** in Theorem 4.2.3, which shows how the S₄ × ℤ₂ symmetry of the stella octangula creates potential barriers that strengthen the phase transition beyond the SM crossover.
 
@@ -69,6 +77,7 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 - **Theorem 4.2.2** (Sakharov Conditions) — Uses this as mechanism for CP violation
 - **Corollary 4.2.3** (Baryon Asymmetry Prediction) — Uses numerical result η ≈ 6×10⁻¹⁰
 - **Section 6.2** (Gravitational Wave Signatures) — Uses first-order phase transition
+- **[Proposition 5.1.2b](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md)** (Precision Cosmological Densities) — Refines η_B to ±15% using 2024-25 lattice sphaleron rates
 
 ---
 
@@ -87,7 +96,7 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 3. **Baryon Asymmetry Prediction:**
    $$\eta = (0.1-2) \times 10^{-9} \text{ (central value: } 6 \times 10^{-10}\text{)}$$
    - Verify against: PDG 2024 η_obs = (6.10 ± 0.04) × 10⁻¹⁰ ✓
-   - Uncertainty: Factor of ~4 (see §14 for detailed analysis)
+   - Uncertainty: Factor of ~5 (see §14 for detailed analysis)
 
 4. **Non-Circularity:**
    $$\text{CKM phase} \to \langle Q_{inst} \rangle > 0 \to \alpha = +\frac{2\pi}{3} \to S_+ < S_- \to \Gamma_+ > \Gamma_- \to \eta > 0$$
@@ -291,7 +300,7 @@ The universe has more matter than antimatter because:
 
 8. D'Onofrio, M., Rummukainen, K., & Tranberg, A. (2014). "Sphaleron Rate in the Minimal Standard Model." *Phys. Rev. Lett.* 113:141602.
 
-9. Moore, G.D. (2023). "The Sphaleron Rate from 4D Euclidean Lattices." *JHEP* 01:155. [arXiv:2301.08626]
+9. Barroso Mancha, M. & Moore, G.D. (2023). "The Sphaleron Rate from 4D Euclidean Lattices." *JHEP* 01:155. [arXiv:2210.05507]
 
 ### 16.4 Phase Transition Lattice Studies
 
@@ -309,7 +318,7 @@ The universe has more matter than antimatter because:
 
 ### 16.6 Soliton Physics
 
-15. Battye, R.A. & Sutcliffe, P.M. (2002). "Skyrmions and the Pion Mass." *Nucl. Phys. B* 624:169.
+15. Battye, R.A. & Sutcliffe, P.M. (2005). "Skyrmions and the Pion Mass." *Nucl. Phys. B* 705:384-400. [arXiv:hep-ph/0410157]
 
 16. Nitta, M., Eto, M., Gudnason, S.B. (2022). "Quantum Nucleation of Topological Solitons." *JHEP* 09:077. [arXiv:2207.00211]
 

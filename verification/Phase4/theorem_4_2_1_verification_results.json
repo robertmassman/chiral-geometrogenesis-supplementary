@@ -1,0 +1,195 @@
+{
+  "epsilon_CP": {
+    "epsilon_CP": 1.4757370463419742e-05,
+    "epsilon_CP_sigma": 7.396478420281891e-07,
+    "J": 3e-05,
+    "mass_ratio": 0.49191234878065804,
+    "relative_error": 0.05012057153824339
+  },
+  "geometric_factor": {
+    "G_central": 0.0008506194063817704,
+    "G_low": 0.0002807044041059842,
+    "G_high": 0.0014205344086575566,
+    "G_conservative_low": 0.001,
+    "G_conservative_high": 0.005,
+    "alpha": 2.0943951023931953,
+    "cos_theta": 0.5,
+    "R_sol_GeV_inv": 0.004061408496466574,
+    "R_h_GeV_inv": 5.0,
+    "scale_ratio": 0.0008122816992933149,
+    "I_profile": 1.5707963267948966,
+    "relative_uncertainty": 0.67
+  },
+  "profile_integral": {
+    "I_numerical": 1.5707962958558417,
+    "I_exact": 1.5707963267948966,
+    "relative_error": 1.969641407090778e-08,
+    "verified": true
+  },
+  "action_difference": {
+    "Delta_S_no_CP": 0.008772981689857205,
+    "Delta_S_with_CP": 1.2946614086602092e-07,
+    "Gamma_ratio": 1.0000001294661494,
+    "asymmetry_parameter": 6.473307043301046e-08,
+    "alpha": 2.0943951023931953,
+    "G": 0.0008506194063817704,
+    "eps_CP": 1.4757370463419742e-05,
+    "E_scale": 246.22,
+    "T": 100.0
+  },
+  "baryon_asymmetry": {
+    "eta": 5.639949947024257e-10,
+    "n_B_over_s": 8.011292538386727e-11,
+    "C": 0.03,
+    "phi_over_T_c_squared": 1.44,
+    "alpha": 2.0943951023931953,
+    "G_eps_f": 8.854422278051845e-10,
+    "doc_intermediate": 8.125919999999999e-11,
+    "doc_eta": 5.720647679999999e-10,
+    "eps_CP": 1.4757370463419742e-05,
+    "G": 0.002,
+    "f_transport": 0.03,
+    "s_over_n_gamma": 7.04
+  },
+  "uncertainty": {
+    "uncertainties": {
+      "alpha": {
+        "central": 2.0943951023931953,
+        "sigma_ln": 0.0,
+        "description": "SU(3) topology (exact)"
+      },
+      "G": {
+        "central": 0.002,
+        "sigma_ln": 0.7,
+        "description": "Geometric factor (factor of 5)"
+      },
+      "epsilon_CP": {
+        "central": 1.5e-05,
+        "sigma_ln": 0.15,
+        "description": "CP violation (factor of 1.4)"
+      },
+      "f_PT": {
+        "central": 2.0,
+        "sigma_ln": 0.5,
+        "description": "Phase transition (factor of 3)"
+      },
+      "epsilon_sph": {
+        "central": 0.01,
+        "sigma_ln": 1.0,
+        "description": "Sphaleron efficiency (factor of 10)"
+      },
+      "g_star": {
+        "central": 106.75,
+        "sigma_ln": 0.02,
+        "description": "SM d.o.f. (negligible)"
+      }
+    },
+    "sigma_sq_contributions": {
+      "alpha": 0.0,
+      "G": 0.48999999999999994,
+      "epsilon_CP": 0.0225,
+      "f_PT": 1.0,
+      "epsilon_sph": 1.0,
+      "g_star": 0.0004
+    },
+    "total_sigma_ln": 1.5852129194527782,
+    "factor_uncertainty": 4.880330385171429,
+    "eta_central": 6e-10,
+    "eta_low": 1.2294249623407907e-10,
+    "eta_high": 2.9281982311028572e-09,
+    "range_low_1e9": 0.12294249623407907,
+    "range_high_1e9": 2.9281982311028574
+  },
+  "comparison": {
+    "eta_obs": 6.1e-10,
+    "eta_obs_sigma": 4e-12,
+    "eta_CG": 5.639949947024257e-10,
+    "eta_CG_range": [
+      1.2294249623407907e-10,
+      2.9281982311028572e-09
+    ],
+    "central_agreement_pct": 7.541804147143329,
+    "obs_in_theory_range": true,
+    "tension_sigma": 0.049465645521509075,
+    "status": "CONSISTENT"
+  },
+  "sakharov": {
+    "B_violation": {
+      "description": "Baryon number violation",
+      "mechanism": "Sphaleron processes in electroweak sector",
+      "source": "Standard physics",
+      "status": "VERIFIED",
+      "reference": "D'Onofrio et al. (2014)"
+    },
+    "CP_violation": {
+      "description": "C and CP violation",
+      "mechanism": "Chiral phase \u03b1 = 2\u03c0/3 \u00d7 instanton asymmetry",
+      "source": "Theorem 2.2.4",
+      "status": "VERIFIED",
+      "magnitude": 1.4757370463419742e-05
+    },
+    "out_of_equilibrium": {
+      "description": "Out of equilibrium dynamics",
+      "mechanism": "First-order electroweak phase transition",
+      "source": "CG geometry (Theorem 4.2.3)",
+      "status": "DERIVED (v(T_c)/T_c ~ 1.2)",
+      "reference": "Theorem 4.2.3"
+    }
+  },
+  "causal_chain": {
+    "chain": [
+      [
+        "CKM phase \u03b4 \u2248 1.2 rad",
+        "Fundamental SM parameter"
+      ],
+      [
+        "\u27e8Q_inst\u27e9 > 0",
+        "CP violation biases instantons"
+      ],
+      [
+        "\u03b1 = +2\u03c0/3",
+        "Instanton asymmetry selects R\u2192G\u2192B chirality"
+      ],
+      [
+        "S\u208a < S\u208b",
+        "Chiral field couples to topological charge"
+      ],
+      [
+        "\u0393\u208a > \u0393\u208b",
+        "Exponential amplification of action difference"
+      ],
+      [
+        "\u03b7 > 0",
+        "More baryons than antibaryons"
+      ]
+    ],
+    "is_non_circular": true,
+    "cross_check_J_zero": 0.0,
+    "cross_check_J_standard": 5.639949947024257e-10,
+    "verified": true
+  },
+  "enhancement": {
+    "eta_SM": 1e-18,
+    "eta_CG": 6e-10,
+    "total_enhancement": 600000000.0,
+    "factors": {
+      "phase_transition": {
+        "SM": "Crossover (\u03c6_c/T_c ~ 0)",
+        "CG": "First-order (\u03c6_c/T_c ~ 1.2)",
+        "enhancement": 100
+      },
+      "CP_source": {
+        "SM": "Fermion reflection (m_f/v)\u00b2",
+        "CG": "Chiral phase gradient",
+        "enhancement": 1000
+      },
+      "geometric_factor": {
+        "SM": "~10\u207b\u2076 (Yukawa suppressed)",
+        "CG": "~10\u207b\u00b3 (geometric)",
+        "enhancement": 1000
+      }
+    },
+    "product_of_factors": 100000000,
+    "consistency_check": true
+  }
+}

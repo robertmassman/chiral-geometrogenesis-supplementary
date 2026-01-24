@@ -1,0 +1,228 @@
+{
+  "proposition": "8.5.1",
+  "title": "Systematic Lattice QCD and Heavy-Ion Predictions",
+  "timestamp": "2026-01-20T13:07:35.971364",
+  "summary": {
+    "total_checks": 23,
+    "passed": 20,
+    "failed": 0,
+    "warnings": 1,
+    "novel_predictions": 2,
+    "critical_issues": 0,
+    "major_issues": 1
+  },
+  "overall_status": "WARNING",
+  "checks": [
+    {
+      "name": "Positive String Tension",
+      "description": "\u03c3 must be positive (confinement energy)",
+      "expected": "> 0",
+      "computed": "\u03c3 = 194006.78 (MeV)\u00b2 = 0.1940 GeV\u00b2",
+      "status": "PASS",
+      "details": "String tension is positive",
+      "severity": "CRITICAL"
+    },
+    {
+      "name": "Positive T_c",
+      "description": "Deconfinement temperature must be positive",
+      "expected": "> 0",
+      "computed": "T_c = 154.2 MeV",
+      "status": "PASS",
+      "details": "T_c is positive",
+      "severity": "CRITICAL"
+    },
+    {
+      "name": "Real Constituent Masses",
+      "description": "Constituent quark masses must be real and positive",
+      "expected": "> 0",
+      "computed": "m_q ~ 308 MeV",
+      "status": "PASS",
+      "details": "Constituent masses are real and positive",
+      "severity": "CRITICAL"
+    },
+    {
+      "name": "Finite Correlation Length",
+      "description": "Correlation length must be finite (causality)",
+      "expected": "\u03be < \u221e (finite)",
+      "computed": "\u03be_eff ~ 0.3065 fm (with Debye screening)",
+      "status": "PASS",
+      "details": "Correlation length is finite, causality preserved",
+      "severity": "CRITICAL"
+    },
+    {
+      "name": "Perturbative Unitarity",
+      "description": "Coupling g_\u03c7 should satisfy perturbative bounds",
+      "expected": "g < 4\u03c0 \u2248 12.6",
+      "computed": "g_\u03c7(\u039b_QCD) \u2248 4.05",
+      "status": "PASS",
+      "details": "Coupling within perturbative regime",
+      "severity": "MAJOR"
+    },
+    {
+      "name": "High-T Deconfinement",
+      "description": "At T >> T_c, deconfinement must emerge",
+      "expected": "\u03c3(T >> T_c) \u2192 0, Debye screening dominates",
+      "computed": "At T = 782 MeV: m_D ~ 1565 MeV >> \u221a\u03c3",
+      "status": "PASS",
+      "details": "CG consistent: Debye screening (m_D ~ gT) dominates at high T",
+      "severity": "CRITICAL"
+    },
+    {
+      "name": "Low-T Confinement",
+      "description": "At T << T_c, confinement must be recovered",
+      "expected": "\u03c3(T << T_c) \u2192 \u03c3(0), Wilson loop area law",
+      "computed": "At T = 16 MeV: \u221a\u03c3 ~ 440 MeV (unchanged)",
+      "status": "PASS",
+      "details": "CG consistent: String tension saturates at T << T_c",
+      "severity": "CRITICAL"
+    },
+    {
+      "name": "Large-r Area Law",
+      "description": "Wilson loop should show area law at large r",
+      "expected": "V(r) ~ \u03c3r for r >> R_stella",
+      "computed": "V(2.0 fm) ~ 1966 MeV (linear regime)",
+      "status": "PASS",
+      "details": "Area law correctly predicted from flux tube picture",
+      "severity": "CRITICAL"
+    },
+    {
+      "name": "Small-r Coulomb Behavior",
+      "description": "Should recover Coulomb-like V(r) ~ -\u03b1/r at small r",
+      "expected": "V(r) ~ -4\u03b1_s/(3r) for r << R_stella",
+      "computed": "V(0.1 fm) ~ -789 MeV (Coulomb regime)",
+      "status": "PASS",
+      "details": "CG flux tube model recovers Coulomb at short distances via asymptotic freedom",
+      "severity": "MAJOR"
+    },
+    {
+      "name": "SU(3) Casimir Scaling",
+      "description": "String tension ratios must follow Casimir scaling",
+      "expected": "\u03c3_8/\u03c3_3 = 2.25, \u03c3_6/\u03c3_3 = 2.50",
+      "computed": "Lattice: \u03c3_8/\u03c3_3 = 2.25\u00b10.15, \u03c3_6/\u03c3_3 = 2.5\u00b10.2",
+      "status": "PASS",
+      "details": "SU(3) gauge symmetry preserved",
+      "severity": "MAJOR"
+    },
+    {
+      "name": "Z_3 Center Symmetry",
+      "description": "Z_3 center symmetry should break at T_c",
+      "expected": "<L> \u2192 0 for T < T_c, <L> \u2192 1 for T > T_c",
+      "computed": "CG: Thermal fluctuations overcome stella geometry at T_c ~ \u221a\u03c3/\u03c0",
+      "status": "PASS",
+      "details": "Z_3 center symmetry behavior consistent with crossover",
+      "severity": "MAJOR"
+    },
+    {
+      "name": "Chiral Symmetry Restoration",
+      "description": "Chiral symmetry should be restored near T_c",
+      "expected": "<\u03c8\u0304\u03c8> \u2192 0 for T > T_c",
+      "computed": "CG: Chiral crossover coincides with deconfinement at T_c ~ 156 MeV",
+      "status": "PASS",
+      "details": "Chiral restoration consistent with lattice QCD crossover picture",
+      "severity": "MAJOR"
+    },
+    {
+      "name": "String Tension \u221a\u03c3",
+      "description": "Compare \u221a\u03c3 with lattice QCD",
+      "expected": "\u221a\u03c3 = 440 \u00b1 10 MeV (FLAG 2024)",
+      "computed": "\u221a\u03c3_CG = 440.5 MeV",
+      "status": "PASS",
+      "details": "Deviation: 0.05\u03c3 - Excellent agreement",
+      "severity": "CRITICAL"
+    },
+    {
+      "name": "Deconfinement Temperature T_c",
+      "description": "Compare T_c with lattice QCD",
+      "expected": "T_c = 156.5 \u00b1 1.5 MeV (Budapest-Wuppertal)",
+      "computed": "T_c_CG = 154.2 MeV",
+      "status": "PASS",
+      "details": "Deviation: 1.52\u03c3 - Good agreement",
+      "severity": "CRITICAL"
+    },
+    {
+      "name": "Critical Ratio T_c/\u221a\u03c3",
+      "description": "Universal dimensionless ratio",
+      "expected": "T_c/\u221a\u03c3 = 0.356 \u00b1 0.009 (lattice)",
+      "computed": "T_c/\u221a\u03c3_CG = 0.350",
+      "status": "PASS",
+      "details": "Deviation: 0.63\u03c3 - This ratio tests the underlying physics",
+      "severity": "MAJOR"
+    },
+    {
+      "name": "Flux Tube Width",
+      "description": "Transverse size of QCD flux tube",
+      "expected": "R_\u22a5 = 0.35 \u00b1 0.05 fm (lattice)",
+      "computed": "R_\u22a5_CG = 0.448 fm",
+      "status": "PASS",
+      "details": "CG predicts ~28% larger than lattice central value",
+      "severity": "MAJOR"
+    },
+    {
+      "name": "R_stella Framework Origin",
+      "description": "R_stella should derive from Definition 0.1.1",
+      "expected": "R_stella from stella octangula geometry",
+      "computed": "R_stella = 0.448 fm (ratio to r_0 = 0.949)",
+      "status": "PASS",
+      "details": "R_stella is the characteristic scale from stella octangula boundary",
+      "severity": "MAJOR"
+    },
+    {
+      "name": "Definition 0.1.1 Consistency",
+      "description": "Euler characteristic from stella octangula",
+      "expected": "\u03c7 = 4 (two tetrahedral boundaries)",
+      "computed": "\u03c7_used = 4",
+      "status": "PASS",
+      "details": "Euler characteristic correctly derived from Definition 0.1.1",
+      "severity": "CRITICAL"
+    },
+    {
+      "name": "Proposition 3.1.1c Consistency",
+      "description": "g_\u03c7 should match geometric coupling formula",
+      "expected": "g_\u03c7(UV) = 4\u03c0/N_c\u00b2 = 1.3963",
+      "computed": "With RG to \u039b_QCD: g_\u03c7 ~ 1.3 (claimed in 8.5.1)",
+      "status": "WARNING",
+      "details": "RG running factor ~2.9 from UV to \u039b_QCD needs verification",
+      "severity": "MAJOR"
+    },
+    {
+      "name": "PDG 2024 Consistency",
+      "description": "Framework should not contradict PDG values",
+      "expected": "No contradictions with established QCD parameters",
+      "computed": "All CG predictions consistent with PDG/FLAG bounds",
+      "status": "PASS",
+      "details": "CG uses \u221a\u03c3 = 440 MeV as input, consistent with FLAG 2024",
+      "severity": "CRITICAL"
+    },
+    {
+      "name": "Heavy-Ion HBT Compatibility",
+      "description": "CG coherence length vs HBT radii",
+      "expected": "Macroscopic: R ~ 5-7 fm; CG predicts \u03be ~ 0.45 fm",
+      "computed": "\u03be_CG = 0.448 fm << R_HBT, consistent with two-component picture",
+      "status": "PASS",
+      "details": "CG predicts short-range component not captured by standard Gaussian HBT",
+      "severity": "MAJOR"
+    },
+    {
+      "name": "Novel: QGP Coherence Length",
+      "description": "NOVEL prediction: \u03be_eff = R_stella = 0.448 fm",
+      "expected": "Energy-independent \u03be (CG) vs energy-dependent \u03be (hydro)",
+      "computed": "\u03be_CG = 0.448 fm at all \u221as",
+      "status": "NOVEL",
+      "details": "Testable at ALICE/STAR: compare HBT at different beam energies",
+      "severity": "INFO"
+    },
+    {
+      "name": "Novel: HBT Two-Component",
+      "description": "NOVEL prediction: Two-component HBT correlation",
+      "expected": "Additional Gaussian at \u03be ~ 0.45 fm, ~7% amplitude",
+      "computed": "q_peak ~ 440 MeV, signal ~ 7%",
+      "status": "NOVEL",
+      "details": "Challenging but potentially measurable with high statistics",
+      "severity": "INFO"
+    }
+  ],
+  "issues": [],
+  "warnings": [
+    "Proposition 3.1.1c Consistency: RG running factor ~2.9 from UV to \u039b_QCD needs verification"
+  ]
+}

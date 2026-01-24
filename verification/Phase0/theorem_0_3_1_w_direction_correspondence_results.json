@@ -1,0 +1,376 @@
+{
+  "theorem": "Theorem 0.3.1: W-Direction Correspondence",
+  "description": "Geometric correspondence between 4D w-coordinate and 3D W-axis",
+  "status": "VERIFIED",
+  "tests": [
+    {
+      "test_name": "Cross Product (R-G-B Plane Normal)",
+      "passed": true,
+      "v1": [
+        -2,
+        2,
+        0
+      ],
+      "v1_expected": [
+        -2,
+        2,
+        0
+      ],
+      "v1_correct": true,
+      "v2": [
+        -2,
+        0,
+        2
+      ],
+      "v2_expected": [
+        -2,
+        0,
+        2
+      ],
+      "v2_correct": true,
+      "normal": [
+        4,
+        4,
+        4
+      ],
+      "normal_expected": [
+        4,
+        4,
+        4
+      ],
+      "normal_correct": true,
+      "proportional_to_111": true,
+      "details": "n = v1 \u00d7 v2 = [4 4 4] \u221d (1,1,1) \u2713"
+    },
+    {
+      "test_name": "Perpendicularity (W \u22a5 R-G-B plane)",
+      "passed": true,
+      "W_dot_v1": 0.0,
+      "W_dot_v2": 0.0,
+      "W_hat_dot_v1": 0.0,
+      "W_hat_dot_v2": 0.0,
+      "perpendicular_to_v1": true,
+      "perpendicular_to_v2": true,
+      "details": "W\u00b7v1 = 0, W\u00b7v2 = 0 (both = 0 required)"
+    },
+    {
+      "test_name": "Equidistance (W equidistant from R, G, B)",
+      "passed": true,
+      "dist_WR_squared": 2.6666666666666674,
+      "dist_WG_squared": 2.6666666666666674,
+      "dist_WB_squared": 2.6666666666666674,
+      "expected": 2.6666666666666665,
+      "all_equal": true,
+      "dist_WR": 1.6329931618554523,
+      "dist_WG": 1.6329931618554523,
+      "dist_WB": 1.6329931618554523,
+      "details": "|W-R|\u00b2 = |W-G|\u00b2 = |W-B|\u00b2 = 2.666667"
+    },
+    {
+      "test_name": "W(F\u2084) Rotation Orthogonality",
+      "passed": true,
+      "R_matrix": [
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          -0.5,
+          0.5,
+          0.5
+        ],
+        [
+          -0.5,
+          0.5,
+          -0.5,
+          0.5
+        ],
+        [
+          0.5,
+          -0.5,
+          -0.5,
+          0.5
+        ]
+      ],
+      "RTR_product": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "is_orthogonal": true,
+      "determinant": -1.0,
+      "det_is_pm1": true,
+      "is_proper_rotation": false,
+      "row_norms": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "all_unit_rows": true,
+      "details": "R^T R = I \u2713, det(R) = -1.000000"
+    },
+    {
+      "test_name": "W(F\u2084) Rotation Correspondence",
+      "passed": true,
+      "e_w": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "R_e_w": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "expected_R_e_w": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "rotation_correct": true,
+      "projected_3d": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "projected_normalized": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "W_hat": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "projection_to_W_direction": true,
+      "on_unit_sphere": true,
+      "norm_of_rotated": 1.0,
+      "details": "R\u00b7\u00ea_w = [0.5 0.5 0.5 0.5] \u2192 \u03c0(R\u00b7\u00ea_w) \u221d W_hat \u2713"
+    },
+    {
+      "test_name": "W(F\u2084) Maps 24-Cell Vertices to Vertices",
+      "passed": true,
+      "all_vertices_mapped_to_vertices": true,
+      "num_vertices_checked": 24,
+      "type_a_to_type_b": 8,
+      "type_b_to_type_a": 8,
+      "sample_mappings": {
+        "e_x \u2192 R\u00b7e_x": [
+          [
+            0.5,
+            -0.5,
+            -0.5,
+            0.5
+          ]
+        ],
+        "e_w \u2192 R\u00b7e_w": [
+          [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ]
+        ],
+        "tesseract_vertex \u2192 R\u00b7v": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "details": "R permutes all 24 vertices \u2713"
+    },
+    {
+      "test_name": "24-Cell Vertices on Unit 3-Sphere",
+      "passed": true,
+      "total_vertices": 24,
+      "type_a_vertices": 8,
+      "type_b_vertices": 16,
+      "norms_type_a": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "norms_type_b_sample": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "all_unit_norm": true,
+      "min_norm": 1.0,
+      "max_norm": 1.0,
+      "details": "All 24 vertices have |v| = 1"
+    },
+    {
+      "test_name": "Tetrahedral Angles",
+      "passed": true,
+      "expected_dot_product": -0.3333333333333333,
+      "dot_products": {
+        "W\u00b7R": -0.3333333333333334,
+        "W\u00b7G": -0.3333333333333334,
+        "W\u00b7B": -0.3333333333333334,
+        "R\u00b7G": -0.3333333333333334,
+        "R\u00b7B": -0.3333333333333334,
+        "G\u00b7B": -0.3333333333333334
+      },
+      "all_equal_to_minus_1_3": true,
+      "tetrahedral_angle_degrees": 109.47122063449069,
+      "details": "All dot products = -1/3, angle = 109.47\u00b0"
+    },
+    {
+      "test_name": "Symmetry Group Factorization",
+      "passed": true,
+      "stella_octangula": {
+        "order": 48,
+        "factorization": "|S\u2084| \u00d7 |Z\u2082| = 24 \u00d7 2 = 48",
+        "correct": true
+      },
+      "16_cell": {
+        "order": 384,
+        "factorization": "|B\u2084| = 2\u2074 \u00d7 4! = 16 \u00d7 24 = 384",
+        "correct": true
+      },
+      "24_cell": {
+        "order": 1152,
+        "factorization": "|W(F\u2084)| = 24 \u00d7 48 = 1152",
+        "correct": true,
+        "interpretation": {
+          "24": "Number of 24-cell vertices (temporal enhancement)",
+          "48": "Stella octangula symmetry (preserved)"
+        }
+      },
+      "details": "1152 = 24 \u00d7 48: temporal factor \u00d7 spatial symmetry"
+    },
+    {
+      "test_name": "Projection Preserves Structure",
+      "passed": true,
+      "tesseract_to_cube": true,
+      "16cell_to_octahedron": true,
+      "w_vertices_to_origin": true,
+      "origin_count_from_w": 2,
+      "num_cube_vertices": 8,
+      "num_octahedron_vertices": 6,
+      "details": "\u03c0(tesseract) = cube, \u03c0(16-cell) = octahedron + origin"
+    },
+    {
+      "test_name": "Stella Octangula = Cube Parity Partition",
+      "passed": true,
+      "t_plus_vertices": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          -1
+        ],
+        [
+          -1,
+          -1,
+          1
+        ]
+      ],
+      "t_plus_minus_counts": [
+        0,
+        2,
+        2,
+        2
+      ],
+      "t_plus_all_even": true,
+      "t_minus_vertices": [
+        [
+          -1,
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1,
+          1
+        ],
+        [
+          1,
+          -1,
+          1
+        ],
+        [
+          1,
+          1,
+          -1
+        ]
+      ],
+      "t_minus_minus_counts": [
+        3,
+        1,
+        1,
+        1
+      ],
+      "t_minus_all_odd": true,
+      "all_cube_vertices": true,
+      "total_stella_vertices": 8,
+      "details": "Stella = two tetrahedra = cube partitioned by coordinate parity"
+    },
+    {
+      "test_name": "Embedding Chain: Stella \u2282 16-cell \u2282 24-cell",
+      "passed": true,
+      "cube_forms_stella_pattern": true,
+      "16cell_in_24cell": true,
+      "vertex_counts_correct": true,
+      "hierarchy": {
+        "stella": "8 vertices (3D)",
+        "16_cell": "8 vertices (4D)",
+        "24_cell": "24 vertices (4D) = 8 + 16"
+      },
+      "details": "Embedding chain verified through projection and containment"
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

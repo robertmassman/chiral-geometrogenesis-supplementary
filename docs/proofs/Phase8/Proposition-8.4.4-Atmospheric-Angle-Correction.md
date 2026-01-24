@@ -3,7 +3,7 @@
 ## Status: ✅ VERIFIED — Excellent Agreement (0.2σ)
 
 **Date:** January 10, 2026
-**Related:** [Prediction-8.4.2-Theta13-First-Principles-Derivation.md](./Prediction-8.4.2-Theta13-First-Principles-Derivation.md)
+**Related:** [Derivation-8.4.2-Theta13-First-Principles.md](./Derivation-8.4.2-Theta13-First-Principles.md)
 **Motivation:** Resolve the 4σ tension between tribimaximal prediction (45°) and observation (49.1°)
 
 ---
@@ -484,7 +484,7 @@ Tension with experiment: -0.2σ
 
 ### Internal Framework
 1. [Theorem-3.1.2-Mass-Hierarchy-From-Geometry-Applications.md](../Phase3/Theorem-3.1.2-Mass-Hierarchy-From-Geometry-Applications.md) — §14.4.7 on A₄ symmetry
-2. [Prediction-8.4.2-Theta13-First-Principles-Derivation.md](./Prediction-8.4.2-Theta13-First-Principles-Derivation.md) — θ₁₃ correction formula
+2. [Derivation-8.4.2-Theta13-First-Principles.md](./Derivation-8.4.2-Theta13-First-Principles.md) — θ₁₃ correction formula
 3. [Extension-3.1.2b-Complete-Wolfenstein-Parameters.md](../Phase3/Extension-3.1.2b-Complete-Wolfenstein-Parameters.md) — λ derivation
 
 ### External Literature

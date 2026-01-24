@@ -21,6 +21,7 @@ The critique states that "predictions are either post-hoc or unfalsifiable":
 | **N_gen = 3** | No (1975) | N/A (already confirmed) | POST-HOC explanation |
 | **θ₁₃ = 8.54°** | No (2012) | N/A (already confirmed) | POST-HOC fit |
 | **QGP coherence ξ ~ 0.44847 fm** | Marginal | Yes (ALICE/STAR) | NOVEL but low confidence |
+| **W Condensate DM (M~1.7 TeV)** | Yes | Yes (DARWIN 2030s) | GENUINELY NOVEL |
 | **O_h anisotropy in cosmic rays** | Yes | Yes (Fermi-LAT) | GENUINELY NOVEL |
 | **CMB S₄ patterns** | Yes | Difficult | NOVEL but hard to test |
 | **Pre-geometric relics** | Yes | Difficult | SPECULATIVE |
@@ -46,12 +47,20 @@ The critique states that "predictions are either post-hoc or unfalsifiable":
 - **Confidence:** ~40% (framework-internal estimate)
 - **Honest claim:** This is the best candidate for genuine falsification
 
+**Prediction 8.3.1 (W Condensate Dark Matter):**
+- **Status:** Genuinely novel prediction addressing dark matter
+- **Prediction:** M_W ~ 1.7 TeV, σ_SI ~ 10⁻⁴⁷ cm² via Higgs portal
+- **Testability:** DARWIN experiment (2030s), next-generation direct detection
+- **Confidence:** ~60% (multi-agent verified, all issues resolved)
+- **Honest claim:** Natural geometric extension using the 4th stella octangula vertex
+
 ### 0.4 What Would Falsify the Framework
 
 | Observation | Framework Prediction | If Observed Otherwise |
 |-------------|---------------------|----------------------|
 | 4th fermion generation | N_gen = 3 exactly | Framework falsified |
 | QGP coherence ξ >> 0.5 fm or ξ << 0.3 fm | ξ ~ 0.44847 fm | Framework in trouble |
+| DM direct detection σ >> 10⁻⁴⁵ cm² at ~2 TeV | σ ~ 10⁻⁴⁷ cm² | W condensate model falsified |
 | Right-handed W boson | Chirality fundamental | Framework falsified |
 | QCD deconfinement at low energy | Confinement from topology | Framework falsified |
 | Lorentz violation at accessible energies | Exact Lorentz invariance | Framework falsified |
@@ -60,7 +69,9 @@ The critique states that "predictions are either post-hoc or unfalsifiable":
 
 > **Most predictions are post-hoc explanations** of known physics, providing consistency checks rather than novel tests.
 
-> **One genuinely novel prediction exists:** QGP phase coherence at ξ ~ 0.44847 fm, testable at RHIC/LHC.
+> **Two genuinely novel predictions exist:** 
+> 1. QGP phase coherence at ξ ~ 0.44847 fm, testable at RHIC/LHC
+> 2. W Condensate dark matter with M ~ 1.7 TeV, testable at DARWIN (2030s)
 
 > **The framework's value is primarily organizational:** It connects QCD, gravity, and quantum mechanics through a common geometric structure, even if individual predictions are not strongly constrained.
 
@@ -72,15 +83,21 @@ The critique states that "predictions are either post-hoc or unfalsifiable":
 |----|------|--------|-----------|
 | 8.1.3 | Three Generation Necessity | VERIFIED | No (Post-hoc) |
 | 8.2.1 | QGP Phase Coherence | VERIFIED | Yes (Novel) |
-| 8.2.3 | Pre-Geometric Relics | IN PROGRESS | Yes (Novel) |
+| 8.2.3 | Pre-Geometric Relics | COMPLETE | Yes (Novel) |
+| 8.3.1 | W Condensate Dark Matter | VERIFIED | Yes (Novel) |
 | 8.4.2 | Theta13 First Principles Derivation | VERIFIED | No (Post-hoc) |
 | 8.4.3 | Euler Characteristic Signature | VERIFIED | Yes (Novel) |
+| 8.4.4 | Atmospheric Angle θ₂₃ Correction | VERIFIED | No (Post-hoc) |
+| **8.5.1** | **Lattice QCD & Heavy-Ion Predictions** | **VERIFIED + NOVEL** | **Mixed** |
 
 ## Key Results
 
 - Three generations are a geometric necessity (post-hoc explanation)
 - QGP should show phase coherence effects at specific temperatures (novel, testable)
+- W condensate provides dark matter with M ~ 1.7 TeV, σ_SI ~ 10⁻⁴⁷ cm² (novel, testable at DARWIN)
 - Theta_13 mixing angle derived from first principles (post-hoc fit)
+- **Lattice QCD predictions: 5/5 established tests pass (√σ, T_c, T_c/√σ, R_⊥, g_χ)**
+- **3 novel heavy-ion predictions: QGP coherence ξ = 0.45 fm, energy-independence, HBT two-component**
 
 ## Related Resources
 

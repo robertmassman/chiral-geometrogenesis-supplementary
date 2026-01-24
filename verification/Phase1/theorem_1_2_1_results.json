@@ -1,0 +1,385 @@
+{
+  "theorem": "1.2.1",
+  "title": "Vacuum Expectation Value",
+  "parameters": {
+    "lambda_chi": 1.0,
+    "v_chi": 1.0
+  },
+  "tests": [
+    {
+      "test": "potential_properties",
+      "passed": true,
+      "all_non_negative": true,
+      "min_value": 0.0,
+      "V_at_origin": 1.0,
+      "expected_V0": 1.0,
+      "V0_correct": true,
+      "V_at_vev": 0.0,
+      "minimum_at_vev": true,
+      "numerical_minimum_rho": 1.0,
+      "note": "Mexican hat potential V(\u03c1) = \u03bb_\u03c7(\u03c1\u00b2 - v_\u03c7\u00b2)\u00b2"
+    },
+    {
+      "test": "critical_points",
+      "passed": true,
+      "at_origin": {
+        "dV/d\u03c1": -0.0,
+        "is_critical": true,
+        "d\u00b2V/d\u03c1\u00b2": -4.0,
+        "expected_d\u00b2V": -4.0,
+        "d\u00b2V_correct": true,
+        "is_maximum": true,
+        "type": "MAXIMUM \u2713"
+      },
+      "at_vev": {
+        "dV/d\u03c1": 0.0,
+        "is_critical": true,
+        "d\u00b2V/d\u03c1\u00b2": 8.0,
+        "expected_d\u00b2V": 8.0,
+        "d\u00b2V_correct": true,
+        "is_minimum": true,
+        "type": "MINIMUM \u2713"
+      },
+      "note": "Verified via first and second derivative tests"
+    },
+    {
+      "test": "vacuum_manifold",
+      "passed": true,
+      "num_sampled_points": 100,
+      "all_zero_on_circle": true,
+      "max_deviation_on_circle": 0.0,
+      "V_inside_circle": 0.5625,
+      "V_outside_circle": 1.5625,
+      "topology": "S\u00b9 (circle)",
+      "note": "Vacuum manifold M_vac = {\u03c7 \u2208 \u2102 : |\u03c7| = v_\u03c7} \u2245 U(1) \u2245 S\u00b9"
+    },
+    {
+      "test": "u1_symmetry",
+      "passed": true,
+      "max_error": 0.0,
+      "note": "V(e^{i\u03b1}\u03c7) = V(\u03c7) verified: potential depends only on |\u03c7|"
+    },
+    {
+      "test": "spontaneous_symmetry_breaking",
+      "passed": true,
+      "num_equivalent_vacua": "infinite (continuous S\u00b9)",
+      "sampled_vacua": [
+        {
+          "theta_deg": 0.0,
+          "chi": [
+            1.0,
+            0.0
+          ],
+          "|chi|": 1.0,
+          "V": 0.0
+        },
+        {
+          "theta_deg": 45.0,
+          "chi": [
+            0.7071067811865476,
+            0.7071067811865475
+          ],
+          "|chi|": 1.0,
+          "V": 0.0
+        },
+        {
+          "theta_deg": 90.0,
+          "chi": [
+            6.123233995736766e-17,
+            1.0
+          ],
+          "|chi|": 1.0,
+          "V": 0.0
+        },
+        {
+          "theta_deg": 135.0,
+          "chi": [
+            -0.7071067811865475,
+            0.7071067811865476
+          ],
+          "|chi|": 1.0,
+          "V": 0.0
+        },
+        {
+          "theta_deg": 180.0,
+          "chi": [
+            -1.0,
+            1.2246467991473532e-16
+          ],
+          "|chi|": 1.0,
+          "V": 0.0
+        },
+        {
+          "theta_deg": 225.0,
+          "chi": [
+            -0.7071067811865477,
+            -0.7071067811865475
+          ],
+          "|chi|": 1.0,
+          "V": 0.0
+        },
+        {
+          "theta_deg": 270.0,
+          "chi": [
+            -1.8369701987210297e-16,
+            -1.0
+          ],
+          "|chi|": 1.0,
+          "V": 0.0
+        },
+        {
+          "theta_deg": 315.0,
+          "chi": [
+            0.7071067811865474,
+            -0.7071067811865477
+          ],
+          "|chi|": 1.0,
+          "V": 0.0
+        }
+      ],
+      "all_degenerate": true,
+      "all_on_circle": true,
+      "broken_symmetry": "U(1)",
+      "residual_symmetry": "None (full breaking)",
+      "note": "Vacuum \u27e8\u03c7\u27e9 = v_\u03c7 e^{i\u03b8\u2080} breaks U(1): e^{i\u03b1}\u27e8\u03c7\u27e9 \u2260 \u27e8\u03c7\u27e9 for \u03b1 \u2260 0"
+    },
+    {
+      "test": "mass_spectrum",
+      "passed": true,
+      "radial_mode": {
+        "m_h_squared": 8.0,
+        "m_h": 2.8284271247461903,
+        "m_h_alt": 2.8284271247461903,
+        "formulas_match": true,
+        "d\u00b2V/d\u03c1\u00b2_at_vev": 8.0,
+        "m_h_from_derivative": 2.8284271247461903,
+        "derivative_matches": true,
+        "physical_role": "Higgs-like excitation"
+      },
+      "goldstone_mode": {
+        "m_pi": 0.0,
+        "is_massless": true,
+        "physical_role": "R\u2192G\u2192B phase rotation"
+      },
+      "note": "m_h = 2\u221a(2\u03bb_\u03c7)v_\u03c7, m_\u03c0 = 0 (Goldstone theorem)"
+    },
+    {
+      "test": "centrifugal_shift",
+      "passed": true,
+      "static_vacuum_radius": 1.0,
+      "formula": "\u03c1_rot = \u221a(v_\u03c7\u00b2 + \u03c9\u00b2/(4\u03bb_\u03c7))",
+      "results": [
+        {
+          "omega": 0.0,
+          "rho_rot_analytical": 1.0,
+          "rho_rot_numerical": 1.0002200220022002,
+          "agreement": true,
+          "shift_percent": 0.0,
+          "is_extremum": true,
+          "V_at_equilibrium": 0.0
+        },
+        {
+          "omega": 0.5,
+          "rho_rot_analytical": 1.0307764064044151,
+          "rho_rot_numerical": 1.0306030603060305,
+          "agreement": true,
+          "shift_percent": 3.0776406404415146,
+          "is_extremum": true,
+          "V_at_equilibrium": 0.00390625
+        },
+        {
+          "omega": 1.0,
+          "rho_rot_analytical": 1.118033988749895,
+          "rho_rot_numerical": 1.117831783178318,
+          "agreement": true,
+          "shift_percent": 11.80339887498949,
+          "is_extremum": true,
+          "V_at_equilibrium": 0.06250000000000011
+        },
+        {
+          "omega": 1.5,
+          "rho_rot_analytical": 1.25,
+          "rho_rot_numerical": 1.2501450145014503,
+          "agreement": true,
+          "shift_percent": 25.0,
+          "is_extremum": true,
+          "V_at_equilibrium": 0.31640625
+        },
+        {
+          "omega": 2.0,
+          "rho_rot_analytical": 1.4142135623730951,
+          "rho_rot_numerical": 1.4143114311431144,
+          "agreement": true,
+          "shift_percent": 41.42135623730952,
+          "is_extremum": true,
+          "V_at_equilibrium": 1.0000000000000009
+        },
+        {
+          "omega": 3.0,
+          "rho_rot_analytical": 1.8027756377319946,
+          "rho_rot_numerical": 1.8029202920292031,
+          "agreement": true,
+          "shift_percent": 80.27756377319946,
+          "is_extremum": true,
+          "V_at_equilibrium": 5.062499999999998
+        }
+      ],
+      "note": "Field rides up outer wall of Mexican hat due to centrifugal force"
+    },
+    {
+      "test": "rotating_condensate_energy",
+      "passed": true,
+      "energy_formula": "\u03b5 = \u03c9\u00b2v_\u03c7\u00b2 (on vacuum circle)",
+      "results": [
+        {
+          "omega": 0.5,
+          "on_vacuum_circle": {
+            "kinetic_energy": 0.25,
+            "potential_energy": 0.0,
+            "total_energy": 0.25
+          },
+          "at_rotating_equilibrium": {
+            "rho_rot": 1.0307764064044151,
+            "kinetic_energy": 0.265625,
+            "potential_energy": 0.00390625,
+            "total_energy": 0.26953125
+          }
+        },
+        {
+          "omega": 1.0,
+          "on_vacuum_circle": {
+            "kinetic_energy": 1.0,
+            "potential_energy": 0.0,
+            "total_energy": 1.0
+          },
+          "at_rotating_equilibrium": {
+            "rho_rot": 1.118033988749895,
+            "kinetic_energy": 1.2500000000000002,
+            "potential_energy": 0.06250000000000011,
+            "total_energy": 1.3125000000000004
+          }
+        },
+        {
+          "omega": 2.0,
+          "on_vacuum_circle": {
+            "kinetic_energy": 4.0,
+            "potential_energy": 0.0,
+            "total_energy": 4.0
+          },
+          "at_rotating_equilibrium": {
+            "rho_rot": 1.4142135623730951,
+            "kinetic_energy": 8.000000000000002,
+            "potential_energy": 1.0000000000000009,
+            "total_energy": 9.000000000000004
+          }
+        }
+      ],
+      "note": "This is the motor energy that drives Chiral Geometrogenesis dynamics"
+    },
+    {
+      "test": "goldstone_theorem",
+      "passed": true,
+      "original_symmetry": "U(1)",
+      "original_generators": 1,
+      "residual_symmetry": "None",
+      "residual_generators": 0,
+      "broken_generators": 1,
+      "num_goldstone_bosons": 1,
+      "valley_variance": 0.0,
+      "is_flat_direction": true,
+      "angular_mass_squared": 0,
+      "note": "\u03b8 is exactly massless: movement along valley costs no potential energy"
+    },
+    {
+      "test": "standard_model_comparison",
+      "passed": true,
+      "standard_model": {
+        "v_H_GeV": 246.22,
+        "m_H_GeV": 125.11,
+        "\u03bb_SM_known": 0.129,
+        "\u03bb_SM_derived_from_m_H": 0.12909439857441693,
+        "\u03bb_MexicanHat": 0.03227359964360423,
+        "relationship_\u03bb_MH_=_\u03bb_SM/4": true,
+        "m_H_reconstructed_GeV": 125.11,
+        "mass_formula_consistent": true
+      },
+      "chiral_geometrogenesis": {
+        "v_\u03c7": "To be determined from framework",
+        "\u03bb_\u03c7": "Uses Mexican hat convention",
+        "m_h_formula": "m_h = 2\u221a(2\u03bb_\u03c7)v_\u03c7"
+      },
+      "structural_identity": "V(\u03c7) = \u03bb_\u03c7(|\u03c7|\u00b2 - v_\u03c7\u00b2)\u00b2 \u2194 V_H = \u03bb_MH(H\u2020H - v_H\u00b2)\u00b2",
+      "note": "Same mathematical structure; \u03bb conventions differ by factor of 4"
+    },
+    {
+      "test": "color_phase_connection",
+      "passed": true,
+      "color_phases_rad": {
+        "\u03c6_R": 0.0,
+        "\u03c6_G": 2.0943951023931953,
+        "\u03c6_B": 4.1887902047863905
+      },
+      "separations_rad": {
+        "R\u2192G": 2.0943951023931953,
+        "G\u2192B": 2.0943951023931953,
+        "B\u2192R": 2.0943951023931957
+      },
+      "is_120_degree_separation": true,
+      "is_uniform_spacing": true,
+      "phase_cancellation": true,
+      "sum_magnitude": 4.002966042486721e-16,
+      "note": "Phase mode \u03b8 drives R\u2192G\u2192B color rotation"
+    },
+    {
+      "test": "equations_of_motion",
+      "passed": true,
+      "static_vacuum": {
+        "solution": "\u03c7 = v_\u03c7 e^{i\u03b8\u2080}",
+        "satisfies_EOM": true,
+        "energy": 0.0,
+        "note": "True vacuum (E = 0)"
+      },
+      "rotating_condensate": {
+        "solution": "\u03c7 = v_\u03c7 e^{i\u03c9t}",
+        "is_static_solution": false,
+        "energy": "\u03c9\u00b2v_\u03c7\u00b2 > 0",
+        "type": "Limit cycle attractor",
+        "note": "Driven by Kuramoto phase dynamics (Theorem 2.2.1)"
+      },
+      "note": "Static vacuum has E=0; rotating condensate has E=\u03c9\u00b2v_\u03c7\u00b2>0"
+    },
+    {
+      "test": "second_derivative_matrix",
+      "passed": true,
+      "hessian_at_vacuum": [
+        [
+          8.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "eigenvalues": [
+        8.0,
+        0.0
+      ],
+      "mass_squared": {
+        "radial": 8.0,
+        "angular": 0.0
+      },
+      "masses": {
+        "radial": 2.8284271247461903,
+        "angular": 0.0
+      },
+      "expected_m_h\u00b2": 8.0,
+      "note": "Hessian eigenvalues give mass spectrum directly"
+    }
+  ],
+  "summary": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0
+  }
+}

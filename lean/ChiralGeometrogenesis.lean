@@ -51,6 +51,8 @@ import ChiralGeometrogenesis.Phase5.Proposition_5_2_4c  -- Tensor Rank from Deri
 
 -- Phase 8: Predictions and Tests
 import ChiralGeometrogenesis.Phase8.Proposition_8_4_4  -- Atmospheric Angle θ₂₃ Correction
+import ChiralGeometrogenesis.Phase8.Proposition_8_5_1  -- Lattice QCD and Heavy-Ion Predictions
+import ChiralGeometrogenesis.Phase8.Prediction_8_3_1  -- W Condensate Dark Matter
 
 /-!
 # Chiral Geometrogenesis - Lean Formalization

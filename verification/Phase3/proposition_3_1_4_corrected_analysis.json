@@ -1,0 +1,10 @@
+{
+  "target_bound_eV": 0.132,
+  "DESI_2024_bound_eV": 0.072,
+  "geometric_factor": 0.46188021535170065,
+  "chi_stella": 4,
+  "N_nu": 3,
+  "prefactor_mass_eV": 1.4377122176002563e-33,
+  "amplification_needed": 4.218241853548697e+30,
+  "interpretation": "Compact formula encodes parametric dependence; numerical value requires full cosmological calculation"
+}

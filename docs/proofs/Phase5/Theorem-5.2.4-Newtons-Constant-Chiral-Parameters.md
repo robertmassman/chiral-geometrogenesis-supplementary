@@ -378,6 +378,16 @@ $$\boxed{G = \frac{\hbar c}{8\pi f_\chi^2} = 6.674 \times 10^{-11} \frac{\text{m
 
 ---
 
+## 18.1 Signature Equation Status
+
+This theorem's central result $G = 1/(8\pi f_\chi^2)$ is one of the **three signature equations** of Chiral Geometrogenesis. See **[Theorem 0.0.18: Signature Equations](../foundations/Theorem-0.0.18-Signature-Equations.md)** for the complete presentation:
+
+1. **Mass:** $m \propto \omega \cdot \eta$ (Theorem 3.1.1)
+2. **Gravity:** $G = 1/(8\pi f_\chi^2)$ (this theorem)
+3. **Cosmology:** $\Omega_m = 0.349$, $\Omega_\Lambda = 0.651$ (Proposition 5.1.2a)
+
+---
+
 ## 19. References
 
 1. Jacobson, T. (1995). "Thermodynamics of Spacetime: The Einstein Equation of State." *Physical Review Letters*, 75(7), 1260-1263.

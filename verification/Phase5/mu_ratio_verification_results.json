@@ -1,0 +1,82 @@
+{
+  "geometric": {
+    "arguments": {
+      "solid_angle": {
+        "description": "W sees 3 RGB sources at equal distance",
+        "W_vertices": 1,
+        "RGB_vertices": 3,
+        "ratio": 0.3333333333333333
+      },
+      "potential_well": {
+        "description": "W contributes 1/4 of total potential, RGB contributes 3/4",
+        "W_fraction": 0.25,
+        "RGB_fraction": 0.75,
+        "ratio": 0.3333333333333333
+      },
+      "symmetry_decomposition": {
+        "description": "S\u2084 rep: W = singlet (dim 1), RGB = 3-dim rep",
+        "W_dim": 1,
+        "RGB_dim": 3,
+        "ratio": 0.3333333333333333
+      }
+    },
+    "unanimous_ratio": 0.3333333333333333,
+    "distances": {
+      "d_W_to_R": 1.6329931618554523,
+      "d_R_to_G": 1.6329931618554523
+    },
+    "note": "All geometric arguments give \u03bc_W\u00b2/\u03bc_H\u00b2 = 1/3 exactly"
+  },
+  "field_energy": {
+    "E_W": 0.884367513536026,
+    "E_R": 0.884367513536026,
+    "E_G": 0.884367513536026,
+    "E_B": 0.884367513536026,
+    "E_RGB_total": 2.653102540608078,
+    "E_RGB_average": 0.8843675135360259,
+    "ratio_W_to_RGB_total": 0.33333333333333337,
+    "ratio_W_to_RGB_average": 1.0000000000000002,
+    "expected_ratio": 0.3333333333333333,
+    "epsilon": 0.5
+  },
+  "domain_integrals": {
+    "W": {
+      "vertex": "W",
+      "integral_weighted": 1.5327650905001806,
+      "integral_unweighted": 3.2415553641710013,
+      "R_max": 1.0,
+      "n_samples": 50000,
+      "epsilon": 0.5
+    },
+    "RGB": {
+      "total": 2.9397572795764204,
+      "average": 0.9799190931921401
+    },
+    "ratio": 0.521391715278287
+  },
+  "physical": {
+    "higgs_sector": {
+      "v_H": 246.22,
+      "m_H": 125.25,
+      "lambda_H": 0.12938347743146458,
+      "mu_H_sq": 15687.5625,
+      "mu_H": 125.25,
+      "check_mu_H_equals_m_H": true
+    },
+    "w_sector": {
+      "mu_ratio": 0.3333333333333333,
+      "mu_W_sq": 5229.1875,
+      "mu_W": 72.31312121600062
+    },
+    "ratio_verification": {
+      "mu_W_sq_over_mu_H_sq": 0.3333333333333333,
+      "expected": 0.3333333333333333,
+      "matches": true
+    }
+  },
+  "summary": {
+    "verified_ratio": 0.3333333333333333,
+    "geometric_exact": true,
+    "numerical_consistency": false
+  }
+}

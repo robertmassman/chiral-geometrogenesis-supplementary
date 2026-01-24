@@ -1,0 +1,44 @@
+{
+  "proposition": "0.0.17z",
+  "title": "Non-Perturbative Corrections to Bootstrap Fixed Point",
+  "verification_date": "2026-01-21T05:21:34.775255",
+  "verified": "partial",
+  "confidence": "medium",
+  "errors": [
+    "Line ~143-149: ln(M_P/Lambda_QCD) calculation - computed 45.48, document 52.4",
+    "Line ~143-149: ln(M_P/m_t) calculation - computed 38.79, document 45.7",
+    "Line 194: b1 coefficient - computed 1.6971, document 1.07"
+  ],
+  "warnings": [
+    "Line 98: c_G \u2248 0.2 coefficient stated without derivation",
+    "Section 4: Dilute gas approximation at edge of validity (packing = 15%)",
+    "Section 1: OPE expansion truncated at leading order; higher-order terms may be significant",
+    "Section 2: ~3% threshold correction claimed but detailed derivation is hand-waving"
+  ],
+  "suggestions": [
+    "Recompute log intervals with correct M_P value or verify M_P definition",
+    "Correct b\u2081 coefficient or clarify different convention being used",
+    "Add derivation for c_G \u2248 0.2 from SVZ sum rules",
+    "Provide rigorous derivation of ~3% threshold correction",
+    "Discuss validity of dilute gas approximation for instantons"
+  ],
+  "section_results": {
+    "basic_discrepancy": true,
+    "gluon_condensate": true,
+    "threshold_running": false,
+    "two_loop": false,
+    "instanton": true,
+    "final_calculation": true,
+    "dimensional_analysis": true
+  },
+  "key_values": {
+    "sqrt_sigma_bootstrap_mev": 481,
+    "sqrt_sigma_corrected_mev": 435.305,
+    "sqrt_sigma_observed_mev": 440,
+    "total_correction_pct": 9.5,
+    "tension_sigma": 0.14902551279558152,
+    "b0_eff_computed": 0.5703486532130934,
+    "total_log_computed": 45.47582555107371,
+    "b1_computed": 1.6971298260091578
+  }
+}

@@ -223,19 +223,19 @@ ax2.axis('off')
 # Create a table showing which dimensions satisfy which constraints
 dimensions = [2, 3, 4, 5, 6, 7]
 constraints = ['P1: Gravity\n$n \\leq 3$', 'P2: Atoms\n$n = 3$',
-               'P3: Huygens\n$n$ odd', 'P4: Knots\n$n = 3$']
+               'P3: Huygens\n$n$ odd $\\geq 3$', 'P4: Knots\n$n = 3$']
 
 # Build constraint satisfaction matrix
 # P1: Gravitational stability requires n <= 3 (D <= 4)
 # P2: Atomic stability requires n = 3 (D = 4)
-# P3: Huygens principle requires n odd (D = 2, 4, 6, ...)
+# P3: Huygens principle requires odd n >= 3 (D = 4, 6, 8, ...) -- n=1 is degenerate!
 # P4: Topological complexity (knots) requires n = 3 (D = 4)
 satisfaction = {
-    2: [True, False, True, False],   # D=2: n=1
+    2: [True, False, False, False],  # D=2: n=1 (Huygens FAILS: 1D degenerate)
     3: [True, False, False, False],  # D=3: n=2
     4: [True, True, True, True],     # D=4: n=3 - ALL SATISFIED
     5: [False, False, False, False], # D=5: n=4
-    6: [False, False, True, False],  # D=6: n=5
+    6: [False, False, True, False],  # D=6: n=5 (Huygens holds but P1,P2 fail)
     7: [False, False, False, False], # D=7: n=6
 }
 
@@ -324,7 +324,7 @@ ax2.text(0.5, 0.22, conclusion_text, fontsize=11, ha='center', va='top',
 descriptions = [
     '(P1) Gravitational stability: stable orbits require $D \\leq 4$',
     '(P2) Atomic stability: discrete spectrum requires $D = 4$',
-    '(P3) Huygens principle: sharp wave propagation for $D = 2, 4, 6, ...$',
+    '(P3) Huygens principle: sharp wave propagation for $D = 4, 6, 8, ...$ (n odd $\\geq$ 3)',
     '(P4) Topological complexity: non-trivial knots require $D = 4$'
 ]
 
@@ -424,17 +424,29 @@ def huygens_principle_check(n):
     Check if Huygens' principle holds in n spatial dimensions.
 
     Huygens' principle (sharp propagation without tails) holds exactly
-    only for odd spatial dimensions n = 1, 3, 5, 7, ...
+    only for odd spatial dimensions n >= 3: n = 3, 5, 7, ...
+
+    CRITICAL EXCEPTION: n = 1 is odd but does NOT satisfy Huygens' principle.
+    The 1D Green's function G_1(x,t) = (1/2c)θ(ct - |x|) has support INSIDE
+    the light cone (not just on it), because there is no spherical wavefront
+    mechanism in 1D—waves cannot "spread" and sharpen.
 
     For even n, waves have "tails" - afterglow persists.
 
     This is a mathematical result from the theory of hyperbolic PDEs
     (Hadamard, 1923).
     """
-    is_odd = (n % 2 == 1)
+    # Huygens requires: odd AND n >= 3
+    is_odd_and_ge_3 = (n % 2 == 1) and (n >= 3)
+    if n == 1:
+        behavior = "NO Huygens (1D degenerate: no spherical wavefront)"
+    elif n % 2 == 0:
+        behavior = "has tails/afterglow (even dimension)"
+    else:
+        behavior = "sharp propagation"
     return {
-        "holds": is_odd,
-        "wave_behavior": "sharp propagation" if is_odd else "has tails/afterglow"
+        "holds": is_odd_and_ge_3,
+        "wave_behavior": behavior
     }
 
 print("\nAnalyzing Huygens' principle in n spatial dimensions...")
@@ -492,8 +504,8 @@ for n in [1, 2, 3, 4, 5, 6]:
         p2 = "UNSTABLE"
         p2_pass = False
 
-    # P3: Huygens (odd n)
-    if n % 2 == 1:
+    # P3: Huygens (odd n >= 3; n=1 is degenerate and does NOT satisfy Huygens)
+    if n % 2 == 1 and n >= 3:
         p3 = "HOLDS"
         p3_pass = True
     else:
@@ -616,10 +628,10 @@ Theorem 0.0.1 Claims:
   4. D = 4 provides sufficient complexity for observers (P4)
 
 Verification Results:
-  - P1 (Orbits): Stable for n < 4, i.e., D <= 4      ✓
-  - P2 (Atoms):  Stable for n = 3, i.e., D = 4 ONLY ✓
-  - P3 (Huygens): Holds for odd n, i.e., D = 2,4,6  ✓
-  - Combined: D = 4 is UNIQUE intersection          ✓
+  - P1 (Orbits): Stable for n < 4, i.e., D <= 4         ✓
+  - P2 (Atoms):  Stable for n = 3, i.e., D = 4 ONLY    ✓
+  - P3 (Huygens): Holds for odd n >= 3, i.e., D = 4,6,8 ✓ (n=1 degenerate)
+  - Combined: D = 4 is UNIQUE intersection             ✓
 
 Corollary:
   - D = N + 1 => N = 3 spatial dimensions
@@ -669,13 +681,14 @@ ax2.set_yticks([0, 1])
 ax2.set_yticklabels(['Unstable', 'Stable'])
 
 # Plot 3: Huygens principle
+# Huygens holds for odd n >= 3, i.e., D = 4, 6, 8, ... (NOT D=2 since n=1 is degenerate)
 ax3 = axes[1, 0]
-huygens = [1 if (d-1) % 2 == 1 else 0 for d in D_vals]  # odd spatial dims
+huygens = [1 if ((d-1) % 2 == 1 and (d-1) >= 3) else 0 for d in D_vals]  # odd n >= 3
 colors = ['green' if h else 'red' for h in huygens]
 ax3.bar(D_vals, huygens, color=colors, edgecolor='black', linewidth=2)
 ax3.set_xlabel('Spacetime Dimension D', fontsize=12)
 ax3.set_ylabel("Huygens' Principle", fontsize=12)
-ax3.set_title("P3: Huygens' Principle\n(Holds for D = 2,4,6,...)", fontsize=14)
+ax3.set_title("P3: Huygens' Principle\n(Holds for odd n ≥ 3: D = 4,6,8,...)", fontsize=14)
 ax3.set_yticks([0, 1])
 ax3.set_yticklabels(['Fails', 'Holds'])
 
@@ -700,3 +713,82 @@ plt.tight_layout()
 plt.savefig('plots/theorem_0_0_1_summary.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("\nSummary plot saved: plots/theorem_0_0_1_summary.png")
+
+# =============================================================================
+# Section 7: Black Hole Lifetime Scaling (§6.3 Supplementary Check)
+# =============================================================================
+print("\n" + "=" * 70)
+print("SECTION 7: Black Hole Lifetime Scaling in n Dimensions")
+print("=" * 70)
+
+def black_hole_lifetime_scaling(n):
+    """
+    Derive black hole lifetime scaling in n spatial dimensions.
+
+    Key formulas:
+    - Schwarzschild radius: r_s ∝ M^(1/(n-2))
+    - Horizon area: A ∝ r_s^(n-1) ∝ M^((n-1)/(n-2))
+    - Hawking temperature: T_H ∝ 1/r_s ∝ M^(-1/(n-2))
+    - Stefan-Boltzmann power: P ∝ A × T_H^(n+1)
+    - Lifetime: τ ∝ M^(n/(n-2))
+
+    Returns the exponent in τ ∝ M^exponent
+    """
+    if n <= 2:
+        return None  # No black holes in n ≤ 2
+
+    # Power: P ∝ M^((n-1)/(n-2)) × M^(-(n+1)/(n-2)) = M^(-2/(n-2))
+    # dM/dt ∝ -M^(-2/(n-2))
+    # Integrate: τ ∝ M^(2/(n-2) + 1) = M^((2 + n - 2)/(n-2)) = M^(n/(n-2))
+
+    return n / (n - 2)
+
+print("\nDeriving black hole lifetime scaling τ ∝ M^α:")
+print("  r_s ∝ M^(1/(n-2))")
+print("  A ∝ r_s^(n-1) ∝ M^((n-1)/(n-2))")
+print("  T_H ∝ 1/r_s ∝ M^(-1/(n-2))")
+print("  P ∝ A × T_H^(n+1) ∝ M^(-2/(n-2))")
+print("  dM/dt ∝ -M^(-2/(n-2)) → τ ∝ M^(n/(n-2))")
+print()
+
+bh_results = {}
+print(f"{'D':^5}|{'n':^5}|{'τ exponent':^15}|{'τ ∝':^15}|{'Note':^25}")
+print("-" * 70)
+
+for n in [3, 4, 5, 6]:
+    D = n + 1
+    exponent = black_hole_lifetime_scaling(n)
+
+    # Express as fraction for cleaner display
+    from fractions import Fraction
+    frac = Fraction(n, n-2).limit_denominator(100)
+
+    bh_results[n] = {
+        "D": D,
+        "n": n,
+        "exponent": exponent,
+        "fraction": str(frac)
+    }
+
+    note = "Standard Hawking result" if n == 3 else "Faster evaporation"
+    print(f"{D:^5}|{n:^5}|{str(frac):^15}|{'M^' + str(float(exponent))[:4]:^15}|{note:^25}")
+
+print("-" * 70)
+print()
+
+# Verify the D=4 result matches literature
+d4_exponent = black_hole_lifetime_scaling(3)
+literature_value = 3.0  # τ ∝ M³ is the standard Hawking result
+
+print(f"Verification for D=4 (n=3):")
+print(f"  Computed: τ ∝ M^{d4_exponent}")
+print(f"  Literature (Hawking 1975): τ ∝ M³")
+print(f"  Match: {'✓ VERIFIED' if abs(d4_exponent - literature_value) < 1e-10 else '✗ MISMATCH'}")
+
+results["checks"]["black_hole_lifetime"] = bh_results
+results["checks"]["black_hole_lifetime_d4_verified"] = abs(d4_exponent - literature_value) < 1e-10
+
+# Note: This verifies the CORRECTED formula τ ∝ M^(n/(n-2))
+# The original document had the incorrect formula τ ∝ M^((n+1)/(n-2))
+print("\nNote: This verifies the corrected formula τ ∝ M^(n/(n-2))")
+print("      [Original document error: τ ∝ M^((n+1)/(n-2)) was incorrect]")

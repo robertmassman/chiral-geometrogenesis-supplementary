@@ -8,7 +8,7 @@
 
 ## Verification Status
 
-**Last Verified:** 2026-01-01
+**Last Verified:** 2026-01-20
 **Verified By:** Multi-agent peer review (Mathematical, Physics, Literature agents)
 **Verification Report:** [Theorem-0.0.0a-Verification-Report.md](../../verification/shared/Theorem-0.0.0a-Verification-Report.md)
 
@@ -19,6 +19,7 @@
 - [x] No mathematical errors or unjustified leaps
 - [x] Alternative approaches considered (§7.3, §9)
 - [x] Lemma 0.0.0a.3 corrected: now properly distinguishes topology vs metric, focuses on emergence requiring pre-continuum structure
+- [x] Lemma 0.0.0a.4 corrected: now properly distinguishes gravitational (metric-dependent) vs gauge (manifold-dependent) parallel transport (2026-01-20)
 - [x] Section 9.3 strengthened with correct mathematical response
 - [x] Causal sets and spin foams properly addressed in §7.3
 
@@ -301,29 +302,36 @@ From a foundational mathematics perspective, the claim is that **finite combinat
 
 #### Statement
 
-Parallel transport on smooth manifolds requires a connection (which presupposes metric structure). Face-sharing polyhedral tilings enforce phase matching purely combinatorially: fields on a shared face $F$ must agree by definition of "shared."
+Parallel transport on smooth manifolds requires either a metric (for gravitational/tangent vector transport) or manifold structure (for gauge transport). Face-sharing polyhedral tilings enforce phase matching purely combinatorially: fields on a shared face $F$ must agree by definition of "shared," without presupposing any differential structure.
 
 #### Proof
 
-**Step 1: Parallel Transport Requires Connection**
+**Step 1: Gravitational Parallel Transport Requires Metric**
 
-On a smooth manifold $M$ with gauge group $G$, parallel transporting a vector $v \in T_pM$ along a curve $\gamma: [0,1] \to M$ requires solving:
+For spacetime geometry, parallel transporting a tangent vector $v \in T_pM$ along a curve $\gamma: [0,1] \to M$ requires solving:
 
 $$\frac{D v^\mu}{dt} = \frac{dv^\mu}{dt} + \Gamma^\mu_{\nu\rho} \frac{dx^\nu}{dt} v^\rho = 0$$
 
-The Christoffel symbols $\Gamma^\mu_{\nu\rho}$ are constructed from the metric:
+The Levi-Civita connection (Christoffel symbols $\Gamma^\mu_{\nu\rho}$) is constructed from the spacetime metric:
 
 $$\Gamma^\mu_{\nu\rho} = \frac{1}{2}g^{\mu\sigma}\left(\partial_\nu g_{\sigma\rho} + \partial_\rho g_{\nu\sigma} - \partial_\sigma g_{\nu\rho}\right)$$
 
-**No metric → No Christoffel symbols → No parallel transport**
+**No metric → No Christoffel symbols → No gravitational parallel transport**
 
-**Step 2: Gauge Fields Have Analogous Structure**
+**Step 2: Gauge Parallel Transport Requires Manifold Structure**
 
-For gauge parallel transport (Wilson lines), one needs the gauge connection $A_\mu$:
+For gauge parallel transport (Wilson lines), one needs a gauge connection 1-form $A = A_\mu dx^\mu$:
 
 $$U(\gamma) = \mathcal{P}\exp\left(-ig\int_\gamma A_\mu dx^\mu\right)$$
 
-The path ordering $\mathcal{P}$ and integration $\int dx^\mu$ both presuppose manifold structure with continuous paths.
+**Important distinction:** The gauge connection $A_\mu$ does **not** depend on the spacetime metric $g_{\mu\nu}$—gauge fields can be defined on any smooth manifold, with or without a Riemannian/Lorentzian metric.
+
+However, gauge parallel transport still presupposes:
+1. **Manifold structure:** The base space $M$ must be a smooth manifold with continuous paths $\gamma$
+2. **Differential structure:** The integration $\int_\gamma A_\mu dx^\mu$ requires smooth 1-forms
+3. **Local trivialization:** The gauge bundle must have local sections
+
+**Both gravitational and gauge parallel transport presuppose the manifold M**—the former via metric, the latter via differential structure. Neither can define phase coherence in a pre-geometric setting where $M$ does not yet exist.
 
 **Step 3: The Pre-Geometric Alternative: Shared Faces**
 

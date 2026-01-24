@@ -1,0 +1,151 @@
+{
+  "theorem": "0.2.1",
+  "title": "Total Field from Superposition - Integration Verification",
+  "timestamp": "2026-01-20T12:12:11.881848",
+  "verifications": [
+    {
+      "integral_name": "Gradshteyn-Ryzhik 3.241.2",
+      "computed": 0.7853981633974483,
+      "expected": 0.7853981633974483,
+      "relative_error": 0.0,
+      "integration_error_estimate": 1.944860922930094e-09,
+      "passed": true
+    },
+    {
+      "test": "Single Source Energy Integral",
+      "formula": "\u222b d\u00b3x / (|x|\u00b2 + \u03b5\u00b2)\u00b2 = \u03c0\u00b2/\u03b5",
+      "reference": "Gradshteyn-Ryzhik (derived from 3.241.2)",
+      "results": [
+        {
+          "epsilon": 0.01,
+          "numerical": 986.9478737383222,
+          "analytical": 986.9604401089358,
+          "relative_error": 1.2732395446609307e-05,
+          "integration_error": 5.4149598337606755e-08,
+          "passed": false
+        },
+        {
+          "epsilon": 0.05,
+          "numerical": 197.37952165119376,
+          "analytical": 197.39208802178715,
+          "relative_error": 6.366197713052847e-05,
+          "integration_error": 8.56908350565155e-12,
+          "passed": false
+        },
+        {
+          "epsilon": 0.1,
+          "numerical": 98.683477640363,
+          "analytical": 98.69604401089357,
+          "relative_error": 0.00012732395362463853,
+          "integration_error": 4.284541752825775e-12,
+          "passed": false
+        },
+        {
+          "epsilon": 0.2,
+          "numerical": 49.33545563516754,
+          "analytical": 49.348022005446786,
+          "relative_error": 0.00025464790215620205,
+          "integration_error": 2.1422708764128875e-12,
+          "passed": false
+        },
+        {
+          "epsilon": 0.5,
+          "numerical": 19.726642433658753,
+          "analytical": 19.739208802178716,
+          "relative_error": 0.0006366196662642127,
+          "integration_error": 1.5135086506128104e-08,
+          "passed": false
+        },
+        {
+          "epsilon": 1.0,
+          "numerical": 9.857038038852572,
+          "analytical": 9.869604401089358,
+          "relative_error": 0.0012732386959095306,
+          "integration_error": 7.567543253064052e-09,
+          "passed": false
+        }
+      ],
+      "all_passed": false
+    },
+    {
+      "test": "Three-Source Total Energy",
+      "formula": "E_total = a\u2080\u00b2 \u222b d\u00b3x \u03a3_c P_c(x)\u00b2",
+      "approximation": "E \u2248 3 \u00d7 \u03c0\u00b2/\u03b5 (exact for point sources at origin)",
+      "results": [
+        {
+          "epsilon": 0.05,
+          "numerical": 162.98481053392408,
+          "analytical_approx": 592.1762640653615,
+          "ratio": 0.2752302319836558,
+          "tail_correction": 0.7539822368615503
+        },
+        {
+          "epsilon": 0.1,
+          "numerical": 155.2527947149559,
+          "analytical_approx": 296.08813203268073,
+          "ratio": 0.5243465641433406,
+          "tail_correction": 0.7539822368615503
+        },
+        {
+          "epsilon": 0.2,
+          "numerical": 131.66581930488027,
+          "analytical_approx": 148.04406601634037,
+          "ratio": 0.8893691104805758,
+          "tail_correction": 0.7539822368615503
+        },
+        {
+          "epsilon": 0.5,
+          "numerical": 71.58431865440566,
+          "analytical_approx": 59.21762640653615,
+          "ratio": 1.2088346493824438,
+          "tail_correction": 0.7539822368615503
+        }
+      ],
+      "all_reasonable": false
+    },
+    {
+      "test": "Scaling Law",
+      "formula": "E_total \u00d7 \u03b5 = 3\u03c0\u00b2",
+      "expected_constant": 29.608813203268074,
+      "results": [
+        {
+          "epsilon": 0.05,
+          "E_analytical": 592.1762640653615,
+          "E_times_epsilon": 29.608813203268074,
+          "expected": 29.608813203268074,
+          "relative_error": 0.0
+        },
+        {
+          "epsilon": 0.1,
+          "E_analytical": 296.08813203268073,
+          "E_times_epsilon": 29.608813203268074,
+          "expected": 29.608813203268074,
+          "relative_error": 0.0
+        },
+        {
+          "epsilon": 0.2,
+          "E_analytical": 148.04406601634037,
+          "E_times_epsilon": 29.608813203268074,
+          "expected": 29.608813203268074,
+          "relative_error": 0.0
+        },
+        {
+          "epsilon": 0.5,
+          "E_analytical": 59.21762640653615,
+          "E_times_epsilon": 29.608813203268074,
+          "expected": 29.608813203268074,
+          "relative_error": 0.0
+        },
+        {
+          "epsilon": 1.0,
+          "E_analytical": 29.608813203268074,
+          "E_times_epsilon": 29.608813203268074,
+          "expected": 29.608813203268074,
+          "relative_error": 0.0
+        }
+      ],
+      "exact_match": true
+    }
+  ],
+  "overall_status": "PARTIAL"
+}

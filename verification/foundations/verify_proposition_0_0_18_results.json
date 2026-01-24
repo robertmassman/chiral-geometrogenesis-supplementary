@@ -1,0 +1,210 @@
+{
+  "verification_date": "2026-01-22",
+  "proposition": "0.0.18",
+  "title": "Electroweak Scale from Chi-Field Structure",
+  "overall_verdict": "PARTIAL - Numerically correct but lacks physical derivation",
+  "tests_passed": 12,
+  "tests_failed": 7,
+  "critical_issues": [
+    "N_gen\u00b2 dependence is unphysical (Higgs VEV is generation-independent)",
+    "\u03c6\u2076 exponent appears to be fitting parameter, not derived",
+    "Different factor decompositions (vs Prop 0.0.19) give similar answers"
+  ],
+  "verified_claims": [
+    "All numerical calculations correct",
+    "2.0% agreement with PDG within \u221a\u03c3 uncertainty",
+    "Dimensional analysis consistent"
+  ],
+  "results": [
+    {
+      "test_name": "Golden ratio \u03c6\u2076 calculation",
+      "category": "calculation",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 17.94,
+      "independent_value": 17.944271909999163,
+      "deviation_percent": 0.02380653849087652,
+      "verdict": "PASS"
+    },
+    {
+      "test_name": "H\u2084/F\u2084 ratio",
+      "category": "calculation",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 12.5,
+      "independent_value": 12.5,
+      "deviation_percent": null,
+      "verdict": "PASS"
+    },
+    {
+      "test_name": "\u221a(H\u2084/F\u2084) calculation",
+      "category": "calculation",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 3.536,
+      "independent_value": 3.5355339059327378,
+      "deviation_percent": 0.013183131025279059,
+      "verdict": "PASS"
+    },
+    {
+      "test_name": "Final v_H calculation",
+      "category": "calculation",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 251.0,
+      "independent_value": 251.2326237501107,
+      "deviation_percent": 0.09259297086435327,
+      "verdict": "PASS"
+    },
+    {
+      "test_name": "v_H agreement with PDG",
+      "category": "calculation",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 251.2326237501107,
+      "independent_value": 246.22,
+      "deviation_percent": 2.0358312688289706,
+      "verdict": "2.0% discrepancy"
+    },
+    {
+      "test_name": "N_gen = 1 limiting case",
+      "category": "limit",
+      "passed": false,
+      "confidence": "high",
+      "framework_value": 27.914735972234517,
+      "independent_value": 246.22,
+      "deviation_percent": 88.66268541457455,
+      "verdict": "CRITICAL: Unphysical N_gen dependence"
+    },
+    {
+      "test_name": "N_gen = 2 limiting case",
+      "category": "limit",
+      "passed": false,
+      "confidence": "high",
+      "framework_value": 111.65894388893807,
+      "independent_value": 246.22,
+      "deviation_percent": 54.650741658298244,
+      "verdict": "CRITICAL: Unphysical N_gen dependence"
+    },
+    {
+      "test_name": "N_gen = 3 limiting case",
+      "category": "limit",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 251.2326237501107,
+      "independent_value": 246.22,
+      "deviation_percent": 2.0358312688289706,
+      "verdict": "N_gen = 3 case"
+    },
+    {
+      "test_name": "N_gen = 4 limiting case",
+      "category": "limit",
+      "passed": false,
+      "confidence": "high",
+      "framework_value": 446.6357755557523,
+      "independent_value": 246.22,
+      "deviation_percent": 81.39703336680704,
+      "verdict": "CRITICAL: Unphysical N_gen dependence"
+    },
+    {
+      "test_name": "N_gen = 5 limiting case",
+      "category": "limit",
+      "passed": false,
+      "confidence": "high",
+      "framework_value": 697.8683993058629,
+      "independent_value": 246.22,
+      "deviation_percent": 183.43286463563598,
+      "verdict": "CRITICAL: Unphysical N_gen dependence"
+    },
+    {
+      "test_name": "Limiting case overall assessment",
+      "category": "limit",
+      "passed": false,
+      "confidence": "high",
+      "framework_value": null,
+      "independent_value": null,
+      "deviation_percent": null,
+      "verdict": "FAILS - Formula has no physical basis for N_gen dependence"
+    },
+    {
+      "test_name": "Uncertainty from \u221a\u03c3 (FLAG \u00b130 MeV)",
+      "category": "uncertainty",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 251.2326237501107,
+      "independent_value": 17.129497073871164,
+      "deviation_percent": 6.81818181818181,
+      "verdict": "\u00b16.8% theory uncertainty"
+    },
+    {
+      "test_name": "Tension with PDG value",
+      "category": "uncertainty",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 251.2326237501107,
+      "independent_value": 246.22,
+      "deviation_percent": 0.2926311104461322,
+      "verdict": "0.29\u03c3 tension (acceptable)"
+    },
+    {
+      "test_name": "Tension with modern \u221a\u03c3 = 445\u00b17 MeV",
+      "category": "uncertainty",
+      "passed": true,
+      "confidence": "medium",
+      "framework_value": 254.0875399290892,
+      "independent_value": 246.22,
+      "deviation_percent": 1.9684190447691288,
+      "verdict": "2.0\u03c3 tension (acceptable)"
+    },
+    {
+      "test_name": "Structural consistency with Prop 0.0.17t",
+      "category": "consistency",
+      "passed": false,
+      "confidence": "high",
+      "framework_value": null,
+      "independent_value": null,
+      "deviation_percent": null,
+      "verdict": "WARNING: Different structural forms"
+    },
+    {
+      "test_name": "Consistency with Prop 0.0.19 factor count",
+      "category": "consistency",
+      "passed": false,
+      "confidence": "high",
+      "framework_value": 570.983235795706,
+      "independent_value": 153.0,
+      "deviation_percent": 73.20411696732505,
+      "verdict": "WARNING: Different factor decompositions give similar answers - suggests fitting"
+    },
+    {
+      "test_name": "v_H/f_\u03c0 ratio consistency",
+      "category": "consistency",
+      "passed": true,
+      "confidence": "medium",
+      "framework_value": 2854.9161789785303,
+      "independent_value": 2670.4989154013015,
+      "deviation_percent": 6.905723215750344,
+      "verdict": "Ratio test"
+    },
+    {
+      "test_name": "Alternative parameter combinations within 10%",
+      "category": "consistency",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 1.0,
+      "independent_value": 1.0,
+      "deviation_percent": null,
+      "verdict": "1 fitting solutions found"
+    },
+    {
+      "test_name": "Best fitting combination",
+      "category": "consistency",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 251.2326237501107,
+      "independent_value": 246.22,
+      "deviation_percent": 2.0358312688289706,
+      "verdict": "Chosen combination (k=2, p=0.5, n=6)"
+    }
+  ]
+}

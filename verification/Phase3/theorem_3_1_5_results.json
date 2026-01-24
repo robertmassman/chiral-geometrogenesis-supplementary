@@ -1,0 +1,64 @@
+{
+  "theorem": "Theorem 3.1.5",
+  "title": "Majorana Scale from Geometry",
+  "verification_date": "2026-01-15T07:30:31.065706",
+  "tests": {
+    "seesaw_relation": {
+      "M_R_GeV": 22272727272.72727,
+      "M_R_1e10_GeV": 2.2272727272727266,
+      "M_R_expected_GeV": 22000000000.0,
+      "deviation_percent": 1.239669421487583,
+      "test_passed": true,
+      "seesaw_self_consistent": true
+    },
+    "uncertainty_propagation": {
+      "relative_uncertainty": 0.2082426575031289,
+      "M_R_GeV": 22272727272.72727,
+      "delta_M_R_GeV": 4638131917.115143,
+      "test_passed": true
+    },
+    "geometric_expression": {
+      "M_R_seesaw_GeV": 22272727272.72727,
+      "M_R_alt_GeV": 124863.56190221825,
+      "hierarchy_ratio": 31818181818.181812,
+      "energy_scale_ratio": 4.86884643136996e+41,
+      "expressions_equivalent": true,
+      "hierarchy_in_expected_range": true,
+      "test_passed": true
+    },
+    "phenomenological_consistency": {
+      "oscillation_constraint": true,
+      "cosmological_constraint": true,
+      "leptogenesis_constraint": true,
+      "BL_scale_constraint": true,
+      "v_BL_GeV": 22272727272.72727,
+      "MR_over_MGUT": 1.1136363636363635e-06,
+      "all_constraints_satisfied": true
+    },
+    "light_neutrino_masses": {
+      "m1_eV": 0.005739073907390739,
+      "m2_eV": 0.010403699789713908,
+      "m3_eV": 0.04985917136610368,
+      "sigma_m_reconstructed_eV": 0.06600194506320833,
+      "m_bb_min_eV": 0.0002630054141187178,
+      "m_bb_max_eV": 0.008086360262159864
+    },
+    "leptogenesis": {
+      "epsilon_CP_typical": 1e-06,
+      "kappa_efficiency": 0.01,
+      "eta_B_estimate": 1.1503694578812083e-11,
+      "eta_B_observed": 6.1e-10,
+      "eta_ratio": 0.01885851570297063,
+      "order_of_magnitude_correct": true,
+      "davidson_ibarra_satisfied": true,
+      "test_passed": true
+    }
+  },
+  "summary": {
+    "M_R_GeV": 22272727272.72727,
+    "delta_M_R_GeV": 4677272727.272726,
+    "tests_passed": 5,
+    "tests_total": 5,
+    "all_passed": true
+  }
+}

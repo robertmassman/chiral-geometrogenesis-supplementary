@@ -1,0 +1,41 @@
+{
+  "proposition": "0.0.17z",
+  "date": "2026-01-20",
+  "bootstrap_mev": 481.0750542112236,
+  "corrected_mev": 436.8622422783876,
+  "corrected_err_mev": 9.024476119431235,
+  "observed_flag_mev": 440,
+  "observed_flag_err_mev": 30,
+  "observed_bulava_mev": 445,
+  "observed_bulava_err_mev": 7,
+  "tension_flag_sigma": 0.10015837531060573,
+  "tension_bulava_sigma": 0.7125205825847035,
+  "total_correction_frac": 0.09190418739406013,
+  "corrections": [
+    {
+      "name": "Gluon condensate",
+      "delta_frac": 0.031640625000000006,
+      "delta_frac_err": 0.015820312500000003,
+      "delta_mev": 13.921875000000002
+    },
+    {
+      "name": "Threshold matching",
+      "delta_frac": 0.03,
+      "delta_frac_err": 0.005,
+      "delta_mev": 14.432251626336706
+    },
+    {
+      "name": "Higher-order pert.",
+      "delta_frac": 0.02,
+      "delta_frac_err": 0.005,
+      "delta_mev": 9.621501084224471
+    },
+    {
+      "name": "Instanton effects",
+      "delta_frac": 0.010263562394060125,
+      "delta_frac_err": 0.007184493675842087,
+      "delta_mev": 4.515967453386455
+    }
+  ],
+  "verified": true
+}

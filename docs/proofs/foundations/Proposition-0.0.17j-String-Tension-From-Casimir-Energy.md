@@ -4,6 +4,7 @@
 
 **Created:** 2026-01-05
 **Verified:** 2026-01-05 (Multi-agent peer review complete)
+**Updated:** 2026-01-21 (Adversarial physics verification added)
 **Purpose:** Derive the QCD string tension σ from Casimir vacuum energy of the stella octangula boundary, reducing phenomenological inputs from 3 (P2-P4) to 1 (R_stella).
 
 **Role in Framework:** This proposition establishes that the QCD confinement scale emerges from vacuum fluctuations confined to the pre-geometric stella structure, providing a geometric origin for one of the last remaining phenomenological inputs.
@@ -530,6 +531,7 @@ The hierarchy R_stella/ℓ_P ~ 10¹⁹ is **explained** by Theorem 5.2.6 via sta
 - `verification/foundations/proposition_0_0_17j_verification.py` — Basic numerical tests (9/9 pass)
 - `verification/foundations/proposition_0_0_17j_complete_derivation.py` — Full derivations for all issues
 - `verification/foundations/proposition_0_0_17j_complete_casimir_and_uv_coupling.py` — **NEW:** Explicit Casimir mode sum + UV coupling derivation
+- `verification/foundations/prop_0_0_17j_physics_verification.py` — **ADVERSARIAL:** Tests against independent physics data (7/7 pass)
 
 **Tests (All Passed — 9/9 + NEW):**
 1. ✅ √σ = ℏc/R numerical check (99.7% agreement)
@@ -552,6 +554,20 @@ The hierarchy R_stella/ℓ_P ~ 10¹⁹ is **explained** by Theorem 5.2.6 via sta
 **Plots:**
 - `verification/plots/proposition_0_0_17j_temperature.png` — Temperature dependence
 - `verification/plots/proposition_0_0_17j_complete_results.json` — Full numerical results
+
+**Adversarial Physics Tests (from `prop_0_0_17j_physics_verification.py`):**
+
+| Test | Category | Result | Sources |
+|------|----------|--------|---------|
+| R_stella extraction from 5 sources | consistency | ✅ CONSISTENT | FLAG 2024, BMW 2020, Cornell, QCDSF/UKQCD, Bali |
+| Shape factor bounds analysis | derivation | ✅ PLAUSIBLE | Casimir 1948, Boyer 1968, Lukosz 1971 |
+| Dimensional transmutation hierarchy | derivation | ✅ WITHIN BOUNDS | Standard Model RGE |
+| √σ prediction vs lattice | prediction | ✅ AGREES (91%) | FLAG 2024, Necco-Sommer 2002 |
+| Temperature ratio T_c/√σ | prediction | ✅ MATCHES (0.8%) | HotQCD 2019, FLAG 2024 |
+| UV coupling consistency | consistency | ✅ CONSISTENT | PDG 2024 (α_s) |
+| Self-consistency chain | consistency | ✅ EXACT | Internal verification |
+
+**Overall: 7/7 adversarial tests pass** — Results saved to `verification/foundations/prop_0_0_17j_physics_verification_results.json`
 
 ### 9.2 Multi-Agent Verification
 
@@ -626,6 +642,7 @@ $$\sigma = \frac{(\hbar c)^2}{R_{\text{stella}}^2}$$
 - [Theorem-5.2.6-Planck-Mass-Emergence.md](../Phase5/Theorem-5.2.6-Planck-Mass-Emergence.md) — Dimensional transmutation (forward: R_stella → M_P)
 - **[Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md](Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md)** — **INVERSE DERIVATION** (M_P → R_stella = 0.41 fm, 91%)
 - **[Proposition-0.0.17t-Topological-Origin-Of-Scale-Hierarchy.md](Proposition-0.0.17t-Topological-Origin-Of-Scale-Hierarchy.md)** — **Topological foundation:** UV coupling 1/α_s = 64 enters hierarchy formula; b₀ as index theorem
+- **[Proposition-0.0.17y-Bootstrap-Fixed-Point-Uniqueness.md](Proposition-0.0.17y-Bootstrap-Fixed-Point-Uniqueness.md)** — **SYNTHESIZES:** This equation is Eq. 1 of the 7-equation bootstrap system with unique fixed point
 
 ### Literature
 

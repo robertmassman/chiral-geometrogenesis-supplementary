@@ -4,6 +4,39 @@ This directory contains independent verification reports for theorems in the Chi
 
 ---
 
+## Proposition 0.0.22 (SU(2) Substructure from Stella Octangula) — Partial Verification
+
+**Status:** ⚠️ PARTIAL — Requires revisions
+**Verification Date:** 2026-01-23
+**Verification Type:** Multi-Agent (Mathematical, Physics, Literature)
+
+### Documents in This Verification
+
+1. **[Proposition-0.0.22-Multi-Agent-Verification-2026-01-23.md](./Proposition-0.0.22-Multi-Agent-Verification-2026-01-23.md)**
+   - **Purpose:** Multi-agent verification of SU(2) derivation from stella octangula
+   - **Scope:** D₄ root decomposition, quaternion-su(2) isomorphism, doublet structure
+   - **Key Findings:**
+     - ✅ Literature: All citations verified; Jansson (2024) provides contemporary support
+     - ⚠️ Mathematical: Formula errors in §3.2; doublet structure claims heuristic only
+     - ⚠️ Physics: Chirality gap (C2) is critical; local gauge invariance not derived
+   - **Key Issues:**
+     - ERROR 1: Quaternion-su(2) rescaling formula incorrect (lines 176-178)
+     - ERROR 2: Root system vs Cartan decomposition confusion (lines 88-96)
+     - CRITICAL GAP: No chirality selection mechanism (needs Theorem 0.0.5 reference)
+
+### Verification Scripts
+
+- `verification/foundations/verify_su2_from_stella.py` — Adversarial physics verification
+
+### Required Revisions
+
+1. Fix quaternion-su(2) formula (§3.2)
+2. Add explicit reference to Theorem 0.0.5 for chirality selection
+3. Clarify root decomposition table (§3.1)
+4. Soften or rigorize doublet encoding claims (§3.3)
+
+---
+
 ## Proposition 5.2.3a (Local Thermodynamic Equilibrium) — Full Verification
 
 **Status:** ✅ FULLY VERIFIED

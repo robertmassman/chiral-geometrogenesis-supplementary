@@ -1,0 +1,90 @@
+{
+  "title": "16-cell Calabi-Yau Hodge Number Computation",
+  "date": "2026-01-23",
+  "research_item": "9.1.13",
+  "tests": [
+    {
+      "name": "16-cell dimension",
+      "value": 4,
+      "passed": true,
+      "notes": "Expected 4D polytope"
+    },
+    {
+      "name": "16-cell vertex count",
+      "value": 8,
+      "passed": true,
+      "notes": "8 vertices = stella octangula vertices"
+    },
+    {
+      "name": "16-cell is reflexive",
+      "value": true,
+      "passed": true,
+      "notes": "Required for Calabi-Yau construction"
+    },
+    {
+      "name": "16-cell has interior point",
+      "value": true,
+      "passed": true,
+      "notes": "Origin must be unique interior point"
+    },
+    {
+      "name": "16-cell lattice point count",
+      "value": 9,
+      "passed": true,
+      "notes": "8 vertices + 1 origin = 9 points"
+    },
+    {
+      "name": "Tesseract dimension",
+      "value": 4,
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "Tesseract vertex count",
+      "value": 16,
+      "passed": true,
+      "notes": "2^4 = 16 vertices for hypercube"
+    },
+    {
+      "name": "Tesseract is reflexive",
+      "value": true,
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "Tesseract lattice point count",
+      "value": 81,
+      "passed": true,
+      "notes": "81 lattice points"
+    },
+    {
+      "name": "16-cell CY3 (h^{1,1}, h^{2,1})",
+      "value": "(4, 68)",
+      "passed": true,
+      "notes": "Hypersurface Hodge numbers"
+    },
+    {
+      "name": "16-cell CY3 Euler characteristic \u03c7",
+      "value": -128,
+      "passed": true,
+      "notes": "\u03c7 = 2(h^{1,1} - h^{2,1}) = 2(4 - 68)"
+    },
+    {
+      "name": "|\u03c7| divisible by 6",
+      "value": false,
+      "passed": false,
+      "notes": "|-128| mod 6 = 2"
+    },
+    {
+      "name": "Tesseract CY3 (by mirror symmetry)",
+      "value": "(68, 4), \u03c7 = +128",
+      "passed": true,
+      "notes": "Mirror of 16-cell CY3"
+    }
+  ],
+  "analysis": [
+    "UNFAVORABLE: |\u03c7| = 128 is NOT divisible by 6",
+    "  128 = 2^7 (pure power of 2, no factor of 3)",
+    "  \u2192 NO quotient can yield |\u03c7| = 6"
+  ]
+}

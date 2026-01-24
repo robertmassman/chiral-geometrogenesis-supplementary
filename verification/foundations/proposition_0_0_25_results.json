@@ -1,0 +1,103 @@
+{
+  "results": {
+    "test_1_threshold_components": {
+      "test_name": "Threshold correction components",
+      "computed": {
+        "delta_s4": 1.5890269151739729,
+        "delta_wilson": -0.09954219273489193,
+        "delta_instanton": -0.0075,
+        "delta_total": 1.481984722439081
+      },
+      "expected": {
+        "delta_s4": 1.589,
+        "delta_wilson": -0.1,
+        "delta_instanton": -0.008,
+        "delta_total": 1.481
+      },
+      "all_match": 1,
+      "passed": 1
+    },
+    "test_2_target_agreement": {
+      "test_name": "Agreement with phenomenological target",
+      "delta_predicted": 1.481984722439081,
+      "delta_target": 1.5,
+      "agreement_percent": 98.79898149593873,
+      "passed": true
+    },
+    "test_3_M_E8_prediction": {
+      "test_name": "M_E8 scale prediction",
+      "M_E8_predicted_GeV": 2.319681732495248e+18,
+      "M_E8_target_GeV": 2.36e+18,
+      "agreement_percent": 98.2915988345444,
+      "passed": true
+    },
+    "test_4_alpha_GUT_prediction": {
+      "test_name": "\u03b1_GUT\u207b\u00b9 prediction",
+      "alpha_GUT_inv_predicted": 24.382067402918576,
+      "alpha_GUT_inv_observed": 24.5,
+      "alpha_GUT_inv_error": 1.5,
+      "deviation_percent": 0.4813575391078531,
+      "within_1sigma": true,
+      "passed": true
+    },
+    "test_5_generation_count": {
+      "test_name": "Generation count from K3 index theorem",
+      "chi_K3": 24,
+      "I_rep": 0.25,
+      "N_gen_computed": 3.0,
+      "N_gen_observed": 3,
+      "passed": 1
+    },
+    "test_6_dilaton_from_S4": {
+      "test_name": "String coupling from S\u2084 symmetry",
+      "g_s_predicted": 0.6605700584636667,
+      "g_s_observed": 0.71,
+      "agreement_percent": 6.961963596666661,
+      "passed": true
+    },
+    "test_7_group_theory": {
+      "test_name": "Group theory consistency",
+      "S4_order": 24,
+      "Gamma4_order": 24,
+      "Oh_order": 48,
+      "f_embed": 0.3333333333333333,
+      "all_consistent": 1,
+      "passed": 1
+    },
+    "test_8_scale_hierarchy": {
+      "test_name": "Scale hierarchy verification",
+      "scales": {
+        "M_Z": 91.1876,
+        "M_GUT": 2e+16,
+        "M_s": 5.27e+17,
+        "M_E8": 2.319681732495248e+18,
+        "M_P": 1.22e+19
+      },
+      "hierarchy_correct": true,
+      "passed": true
+    },
+    "test_9_instanton_suppression": {
+      "test_name": "Instanton suppression",
+      "leading_instanton": 0.04321391826377226,
+      "I_inst_total": 0.18,
+      "delta_instanton": -0.0075,
+      "relative_contribution_percent": 0.5060780915242058,
+      "properly_suppressed": true,
+      "passed": true
+    },
+    "test_10_wilson_line": {
+      "test_name": "Wilson line phenomenology",
+      "wilson_order": 6,
+      "sm_preserving_orders": [
+        6
+      ],
+      "order_correct": 1,
+      "delta_wilson": -0.09954219273489193,
+      "sign_correct": true,
+      "passed": true
+    }
+  },
+  "passed_count": 10,
+  "total_count": 10,
+  "all_passed": 1
+}

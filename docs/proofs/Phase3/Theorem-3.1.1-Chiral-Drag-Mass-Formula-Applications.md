@@ -171,7 +171,7 @@ All parameters derived from R_stella = 0.44847 fm:
 ### 6.2 Predicted Light Quark Mass
 
 Substituting derived parameters:
-$$m_q = \frac{g_\chi \omega}{\Lambda}v_\chi \cdot \eta_q$$
+$$m_q = \frac{g_\chi \omega_0}{\Lambda}v_\chi \cdot \eta_q$$
 
 $$m_q = \frac{1 \times 220 \text{ MeV}}{1106 \text{ MeV}} \times 88.0 \text{ MeV} \times \eta_q$$
 
@@ -218,9 +218,9 @@ For leptons, the scale may differ:
 
 Taking $\Lambda_{ew} \sim 100$ GeV (electroweak scale) and $v_\chi \sim v_{Higgs} \sim 246$ GeV:
 
-$$m_e = \frac{g_\chi \omega}{\Lambda_{ew}}v_\chi \cdot \eta_e$$
+$$m_e = \frac{g_\chi \omega_0}{\Lambda_{ew}}v_\chi \cdot \eta_e$$
 
-With $\omega \sim 100$ GeV and $\eta_e \sim 10^{-6}$:
+With $\omega_0 \sim 100$ GeV and $\eta_e \sim 10^{-6}$:
 $$m_e \sim 0.5 \text{ MeV}$$
 
 The small $\eta_e$ reflects the electron's weak coupling to the chiral vacuum.
@@ -571,7 +571,7 @@ This is **not a violation of Lorentz invariance** of the laws of physics, but ra
 
 **Question:** Is there a hierarchy problem?
 
-**Answer:** The mass formula $m_f \sim (g\omega/\Lambda)v_\chi\eta_f$ involves only one potentially large scale ($\Lambda$). The smallness of fermion masses comes from the hierarchy of $\eta_f$, which may have a geometric origin, avoiding the usual fine-tuning.
+**Answer:** The mass formula $m_f \sim (g\omega_0/\Lambda)v_\chi\eta_f$ involves only one potentially large scale ($\Lambda$). The smallness of fermion masses comes from the hierarchy of $\eta_f$, which may have a geometric origin, avoiding the usual fine-tuning.
 
 ---
 
@@ -1013,10 +1013,10 @@ The large ratio $v_H/v_\chi \sim 2800$ reflects the hierarchy between QCD and el
 For the mechanism to reproduce Standard Model fermion masses:
 
 $$m_f^{SM} = y_f v_H$$
-$$m_f^{CG} = \frac{g_\chi \omega}{\Lambda} v_\chi \cdot \eta_f$$
+$$m_f^{CG} = \frac{g_\chi \omega_0}{\Lambda} v_\chi \cdot \eta_f$$
 
 **Matching condition:**
-$$y_f = \frac{g_\chi \omega v_\chi}{\Lambda v_H} \cdot \eta_f$$
+$$y_f = \frac{g_\chi \omega_0 v_\chi}{\Lambda v_H} \cdot \eta_f$$
 
 For the electron ($m_e = 0.511$ MeV):
 $$y_e = \frac{m_e}{v_H} = 2.08 \times 10^{-6}$$

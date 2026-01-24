@@ -37,7 +37,7 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 
 ## Verification Status
 
-**Last Verified:** 2026-01-01
+**Last Verified:** 2026-01-20
 **Verified By:** Multi-agent peer review (Mathematical, Physics, Literature agents)
 **Verification Report:** [Theorem-0.0.0a-Verification-Report.md](../../verification/shared/Theorem-0.0.0a-Verification-Report.md)
 
@@ -76,9 +76,12 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 - [x] No circular references (bootstrap with 0.0.10/0.0.1 is intentional, not circular)
 - [x] Cross-references accurate
 - [x] Lemma 0.0.0a.3 correctly reframed (topology ≠ metric, emergence requires pre-continuum structure)
+- [x] Lemma 0.0.0a.4 correctly distinguishes gravitational vs gauge parallel transport (2026-01-20)
 - [x] Necessity claim qualified ("among known frameworks")
-- [x] Causal set references added
-- [x] Lorentz violation bounds properly cited
+- [x] Causal set references added (including Sorkin 2003)
+- [x] Spin foam references added (Perez 2013)
+- [x] Lorentz violation bounds properly cited with E_P units
+- [x] "Deterministic" claim clarified with quantum corrections note
 - [x] **Lean 4 formalization complete** (2026-01-01)
 
 ## Direct Prerequisites (verify these first)
@@ -281,9 +284,9 @@ Integer coordinates (order 1) are 2 steps more primitive than real coordinates (
 
 ### Lemma 0.0.0a.4 (Phase Coherence Without Metric)
 
-**Statement:** Parallel transport on smooth manifolds requires a connection (which presupposes metric structure). Face-sharing polyhedral tilings enforce phase matching purely combinatorially: fields on a shared face $F$ must agree by definition of "shared."
+**Statement:** Parallel transport on smooth manifolds requires either a metric (for gravitational transport via Christoffel symbols) or manifold structure (for gauge transport via connection 1-forms). Face-sharing polyhedral tilings enforce phase matching purely combinatorially: fields on a shared face $F$ must agree by definition of "shared," without presupposing any differential structure.
 
-**Key argument:** The Levi-Civita connection is constructed from the metric via Christoffel symbols. No metric → no connection → no parallel transport. But shared faces provide direct identification without transport.
+**Key argument:** Gravitational parallel transport uses the Levi-Civita connection (requires metric). Gauge parallel transport uses connection 1-forms (requires manifold structure with smooth paths). Both presuppose spacetime. Shared faces provide direct identification without transport equations or manifold structure.
 
 [→ Full proof in Derivation file §6.4](./Theorem-0.0.0a-Polyhedral-Necessity-Derivation.md#64-lemma-00a4-phase-coherence-without-metric)
 
@@ -359,7 +362,7 @@ The Lean formalization includes strengthened uniqueness theorems:
 
 4. **Rovelli, C.** (2004). *Quantum Gravity*. Cambridge University Press. — Loop quantum gravity approach to pre-geometric structure.
 
-5. **Greensite, J.** (2011). "An Introduction to the Confinement Problem." *Lecture Notes in Physics* 821. Springer. — Confinement physics and N-ality.
+5. **Greensite, J.** (2011). "An Introduction to the Confinement Problem." *Lecture Notes in Physics* 821. Springer. 2nd ed. (2020) available. — Confinement physics and N-ality.
 
 6. **'t Hooft, G.** (1978). "On the Phase Transition Towards Permanent Quark Confinement." *Nucl. Phys. B* 138, 1-25. — Center symmetry in gauge theories.
 
@@ -369,19 +372,23 @@ The Lean formalization includes strengthened uniqueness theorems:
 
 8. **Sorkin, R.D.** (1991). "Spacetime and causal sets." In *Relativity and Gravitation: Classical and Quantum* (Proc. SILARG VII). — Causal set program overview.
 
-9. **Dowker, F.** (2006). "Causal sets as discrete spacetime." *Contemporary Physics* 47, 1-9. — Modern review of causal sets.
+9. **Sorkin, R.D.** (2003). "Causal Sets: Discrete Gravity." *arXiv:gr-qc/0309009*. — Comprehensive causal set review with philosophical motivation.
 
-10. **Smolin, L.** (2003). "How far are we from the quantum theory of gravity?" *arXiv:hep-th/0303185*. — Discrete approaches to quantum gravity.
+10. **Dowker, F.** (2006). "Causal sets as discrete spacetime." *Contemporary Physics* 47, 1-9. — Modern review of causal sets.
+
+11. **Smolin, L.** (2003). "How far are we from the quantum theory of gravity?" *arXiv:hep-th/0303185*. — Discrete approaches to quantum gravity.
+
+12. **Perez, A.** (2013). "The Spin Foam Approach to Quantum Gravity." *Living Rev. Relativity* 16, 3. — Comprehensive review of spin foam models.
 
 ### Framework Documents
 
-11. **Definition 0.0.0** (Minimal Geometric Realization) — Formal criteria GR1-GR3
+13. **Definition 0.0.0** (Minimal Geometric Realization) — Formal criteria GR1-GR3
 
-12. **Theorem 0.0.3** (Stella Uniqueness) — Proves stella octangula is the unique realization
+14. **Theorem 0.0.3** (Stella Uniqueness) — Proves stella octangula is the unique realization
 
-13. **Theorem 0.0.6** (Spatial Extension from Honeycomb) — FCC lattice provides pre-geometric coordinates
+15. **Theorem 0.0.6** (Spatial Extension from Honeycomb) — FCC lattice provides pre-geometric coordinates
 
-14. **Theorem 0.0.10** (Framework Derives GR+QM) — Closes the logical loop with Theorem 0.0.1
+16. **Theorem 0.0.10** (Framework Derives GR+QM) — Closes the logical loop with Theorem 0.0.1
 
 ### Notation Conventions
 

@@ -1,0 +1,58 @@
+{
+  "verification_date": "2026-01-22",
+  "proposition": "0.0.20",
+  "title": "Electroweak Scale from Central Charge Flow",
+  "exact_calculations": {
+    "delta_a_exact": 0.008333333333333333,
+    "delta_a_exact_fraction": "3/360 = 1/120",
+    "a_UV_bosonic": 0.7,
+    "a_IR_bosonic": 0.6916666666666667,
+    "ratio_predicted_exact": 436.71072463157714,
+    "ratio_predicted_rounded": 562.6028589099972,
+    "ratio_observed": 559.5909090909091,
+    "error_with_exact": -21.958931509262477,
+    "error_with_rounded": 0.5382413777917064
+  },
+  "fermion_analysis": {
+    "n_weyl_per_generation": 15,
+    "n_generations": 3,
+    "n_weyl_total": 45,
+    "delta_a_fermion": 0.0,
+    "conclusion": "Fermion contributions cancel in UV - IR"
+  },
+  "corrections_needed": {
+    "C1_phenomenological_acknowledgment": {
+      "issue": "Formula is reverse-engineered, not derived",
+      "correction": "Acknowledge as empirical ansatz motivated by a-theorem structure"
+    },
+    "C2_exact_values": {
+      "issue": "Rounded \u0394a = 0.008 gives fake 0.2% agreement",
+      "exact_delta_a": 0.008333333333333333,
+      "exact_delta_a_fraction": "3/360 = 1/120",
+      "rounded_delta_a": 0.008,
+      "ratio_with_exact": 436.71072463157714,
+      "ratio_with_rounded": 562.6028589099972,
+      "ratio_observed": 559.5909090909091,
+      "true_error_percent": -21.958931509262477,
+      "fake_error_percent": 0.5382413777917064
+    },
+    "C3_qcd_failure": {
+      "issue": "Formula fails for QCD",
+      "explanation": "Formula is EW-specific due to perturbative transition; QCD is non-perturbative"
+    },
+    "M1_coefficient_explanation": {
+      "issue": "2\u03c0\u00b2 coefficient unexplained",
+      "status": "Remains unexplained - should acknowledge as fitted"
+    },
+    "M2_fermion_contributions": {
+      "issue": "Fermion sector ignored",
+      "resolution": "Fermion \u0394a = 0 (cancels in UV - IR)",
+      "calculation": "45 Weyl fermions in both UV and IR, contribution cancels exactly"
+    },
+    "M3_domain_validity": {
+      "issue": "\u0394a \u2192 0 gives infinity",
+      "resolution": "Formula valid only for small finite \u0394a in perturbative transitions"
+    }
+  },
+  "status": "PARTIAL - 22% discrepancy with exact values"
+}

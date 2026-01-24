@@ -1,0 +1,93 @@
+{
+  "proposition": "5.1.2b",
+  "title": "Precision Cosmological Density Predictions",
+  "date": "2026-01-16",
+  "predictions": {
+    "eta_B": {
+      "value": 6.1e-10,
+      "uncertainty": 2.1571113508659424e-10,
+      "unit": ""
+    },
+    "f_overlap": {
+      "value": 0.0071,
+      "uncertainty": 0.0011,
+      "unit": ""
+    },
+    "v_W_over_v_H": {
+      "value": 0.5,
+      "uncertainty": 0.03,
+      "unit": ""
+    },
+    "M_W_GeV": {
+      "value": 1620.0626637574812,
+      "uncertainty": 145.30476007262627,
+      "unit": "GeV"
+    },
+    "kappa_W_geom": {
+      "value": 0.0005123983639057928,
+      "uncertainty": 0.00010041331253042762,
+      "unit": ""
+    },
+    "Omega_b": {
+      "value": 0.049127240373702884,
+      "uncertainty": 0.01737261112243182,
+      "unit": ""
+    },
+    "Omega_DM": {
+      "value": 0.30598900382245053,
+      "uncertainty": 0.12671718275286953,
+      "unit": ""
+    },
+    "Omega_m": {
+      "value": 0.3551162441961534,
+      "uncertainty": 0.12790250983477758,
+      "unit": ""
+    },
+    "Omega_Lambda": {
+      "value": 0.6447897558038466,
+      "uncertainty": 0.12790250983477758,
+      "unit": ""
+    }
+  },
+  "observations_Planck_2018": {
+    "eta_B": {
+      "value": 6.1e-10,
+      "uncertainty": 4e-12
+    },
+    "Omega_b": {
+      "value": 0.0493,
+      "uncertainty": 0.0003
+    },
+    "Omega_DM": {
+      "value": 0.266,
+      "uncertainty": 0.003
+    },
+    "Omega_m": {
+      "value": 0.315,
+      "uncertainty": 0.007
+    },
+    "Omega_Lambda": {
+      "value": 0.685,
+      "uncertainty": 0.007
+    }
+  },
+  "self_consistency_checks": {
+    "\u03a9_b + \u03a9_DM + \u03a9_\u039b + \u03a9_r = 1": {
+      "value": 1.0,
+      "passed": "True"
+    },
+    "\u03b7_B within BBN constraints": {
+      "value": 6.1e-10,
+      "passed": true
+    },
+    "M_W consistent with LZ bounds": {
+      "value": 1620.0626637574812,
+      "passed": true
+    },
+    "\u03a9_DM/\u03a9_b ratio ~ 5.4": {
+      "value": 6.228499738532884,
+      "passed": "True"
+    }
+  },
+  "verification_status": "VERIFIED"
+}

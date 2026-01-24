@@ -33,6 +33,9 @@ This conjecture breaks the circularity by deriving cosmic coherence from the **p
 - Quantum stability of boundary (§6.5 here ↔ §12.2 in Def 0.1.1)
 - Holographic interpretation (§3.3-3.4 here ↔ §12.4 in Def 0.1.1)
 
+**Downstream Uses:**
+- ✅ [Theorem 5.2.7](./Theorem-5.2.7-Diffeomorphism-Emergence.md) (Diffeomorphism Emergence) — The cosmic coherence established here provides the global phase relations that ensure diffeomorphism invariance emerges consistently across all spacetime
+
 ---
 
 ## 1. The Circularity Problem

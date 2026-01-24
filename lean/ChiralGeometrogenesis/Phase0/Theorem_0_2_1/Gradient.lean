@@ -193,6 +193,148 @@ theorem center_has_nonzero_gradient :
     gradientWeightedVertexSum ≠ ComplexVector3D.zero :=
   gradient_weighted_sum_nonzero
 
+/-! ### Gradient Magnitude Equals 2
+
+From §5.2 of the markdown, the gradient weighted vertex sum has exact magnitude 2:
+|Σ x_c e^{iφ_c}|² = (1/3)[(1)² + (√3)² + (1)² + (√3)² + 4] = 4
+
+This section proves this exact value, strengthening the non-zero proof above.
+-/
+
+/-- The y-component of the weighted vertex sum (from §5.2)
+    y_R·1 + y_G·ω + y_B·ω² where y_R = 1/√3, y_G = -1/√3, y_B = 1/√3
+    = (1/√3)[1 - ω + ω²] = (1/√3)[1 - i√3] -/
+theorem gradient_y_component_explicit :
+    gradientWeightedVertexSum.y =
+    (1/Real.sqrt 3 : ℂ) * (1 - Complex.I * Real.sqrt 3) := by
+  unfold gradientWeightedVertexSum
+  rw [phaseR_eq_one, phaseG_explicit, phaseB_explicit]
+  simp only [ComplexVector3D.add_y, ComplexVector3D.smul_y, toComplexVec_y]
+  unfold vertexR vertexG vertexB
+  apply Complex.ext
+  · simp only [Complex.mul_re, Complex.one_re, Complex.one_im,
+               Complex.ofReal_re, Complex.ofReal_im, Complex.add_re,
+               Complex.I_re, Complex.I_im, Complex.sub_re,
+               Complex.ofReal_div, Complex.div_re, Complex.div_im]
+    ring
+  · simp only [Complex.mul_im, Complex.one_re, Complex.one_im,
+               Complex.ofReal_re, Complex.ofReal_im, Complex.add_im,
+               Complex.I_re, Complex.I_im, Complex.sub_im,
+               Complex.ofReal_div, Complex.div_re, Complex.div_im]
+    ring
+
+/-- The z-component of the weighted vertex sum (from §5.2)
+    z_R·1 + z_G·ω + z_B·ω² where z_R = 1/√3, z_G = -1/√3, z_B = -1/√3
+    = (1/√3)[1 - ω - ω²] = (1/√3)[1 - (-1)] = 2/√3
+    (using ω + ω² = -1) -/
+theorem gradient_z_component_explicit :
+    gradientWeightedVertexSum.z = (2/Real.sqrt 3 : ℂ) := by
+  unfold gradientWeightedVertexSum
+  rw [phaseR_eq_one, phaseG_explicit, phaseB_explicit]
+  simp only [ComplexVector3D.add_z, ComplexVector3D.smul_z, toComplexVec_z]
+  unfold vertexR vertexG vertexB
+  -- The z-components are: R: 1/√3, G: -1/√3, B: -1/√3
+  -- With phases: 1·(1/√3) + (-1/2 + i√3/2)·(-1/√3) + (-1/2 - i√3/2)·(-1/√3)
+  -- = 1/√3 + (1/2 - i√3/2)/√3 + (1/2 + i√3/2)/√3 = 1/√3 + 1/√3 = 2/√3
+  have h_sqrt3_pos : (0 : ℝ) < Real.sqrt 3 := Real.sqrt_pos.mpr (by norm_num)
+  have h_sqrt3_ne : Real.sqrt 3 ≠ 0 := ne_of_gt h_sqrt3_pos
+  -- Simplify 2/√3 as a complex number
+  have h_div : (2 / Real.sqrt 3 : ℂ) = ⟨2 / Real.sqrt 3, 0⟩ := by
+    apply Complex.ext <;> simp
+  rw [h_div]
+  apply Complex.ext
+  · simp only [Complex.mul_re, Complex.one_re, Complex.one_im,
+               Complex.ofReal_re, Complex.ofReal_im, Complex.add_re]
+    field_simp [h_sqrt3_ne]
+    ring
+  · simp only [Complex.mul_im, Complex.one_re, Complex.one_im,
+               Complex.ofReal_re, Complex.ofReal_im, Complex.add_im]
+    ring
+
+/-- Helper: Complex norm squared of (1 + i√3) equals 4 -/
+theorem normSq_one_plus_i_sqrt3 :
+    Complex.normSq (1 + Complex.I * Real.sqrt 3) = 4 := by
+  have hsq3 : Real.sqrt 3 * Real.sqrt 3 = 3 := Real.mul_self_sqrt (by norm_num : (3:ℝ) ≥ 0)
+  -- normSq z = z.re^2 + z.im^2
+  -- For z = 1 + i√3: re = 1, im = √3
+  have hre : (1 + Complex.I * Real.sqrt 3).re = 1 := by simp
+  have him : (1 + Complex.I * Real.sqrt 3).im = Real.sqrt 3 := by simp
+  rw [Complex.normSq_apply, hre, him, hsq3]
+  ring
+
+/-- Helper: Complex norm squared of (1 - i√3) equals 4 -/
+theorem normSq_one_minus_i_sqrt3 :
+    Complex.normSq (1 - Complex.I * Real.sqrt 3) = 4 := by
+  have hsq3 : Real.sqrt 3 * Real.sqrt 3 = 3 := Real.mul_self_sqrt (by norm_num : (3:ℝ) ≥ 0)
+  -- For z = 1 - i√3: re = 1, im = -√3, so |z|² = 1 + (-√3)² = 1 + 3 = 4
+  have hre : (1 - Complex.I * Real.sqrt 3).re = 1 := by simp
+  have him : (1 - Complex.I * Real.sqrt 3).im = -Real.sqrt 3 := by simp
+  have hneg : (-Real.sqrt 3) * (-Real.sqrt 3) = 3 := by rw [neg_mul_neg, hsq3]
+  rw [Complex.normSq_apply, hre, him, hneg]
+  ring
+
+/-- Helper: Complex norm squared of 2 equals 4 -/
+theorem normSq_two : Complex.normSq (2 : ℂ) = 4 := by
+  simp only [Complex.normSq_ofNat]
+  norm_num
+
+/-- The squared magnitude of the gradient weighted vertex sum equals 4.
+
+    From §5.2 of the markdown:
+    |Σ x_c e^{iφ_c}|² = |x|² + |y|² + |z|²
+    where:
+      x = (1/√3)(1 + i√3), so |x|² = (1/3) · 4 = 4/3
+      y = (1/√3)(1 - i√3), so |y|² = (1/3) · 4 = 4/3
+      z = 2/√3,            so |z|² = 4/3
+
+    Total: |Σ x_c e^{iφ_c}|² = 4/3 + 4/3 + 4/3 = 4 -/
+theorem gradient_weighted_sum_normSq :
+    Complex.normSq gradientWeightedVertexSum.x +
+    Complex.normSq gradientWeightedVertexSum.y +
+    Complex.normSq gradientWeightedVertexSum.z = 4 := by
+  rw [gradient_x_component_explicit, gradient_y_component_explicit, gradient_z_component_explicit]
+  -- Each component is (1/√3) × (some complex number with |·|² = 4)
+  -- and |1/√3|² = 1/3, so each |component|² = 4/3
+  have h_sqrt3_pos : (0 : ℝ) < Real.sqrt 3 := Real.sqrt_pos.mpr (by norm_num)
+  have h_sqrt3_ne : Real.sqrt 3 ≠ 0 := ne_of_gt h_sqrt3_pos
+  have hsq3_mul : Real.sqrt 3 * Real.sqrt 3 = 3 := Real.mul_self_sqrt (by norm_num : (3:ℝ) ≥ 0)
+  -- Calculate each term
+  have hx : Complex.normSq ((1/Real.sqrt 3 : ℂ) * (1 + Complex.I * Real.sqrt 3)) = 4/3 := by
+    rw [Complex.normSq_mul]
+    simp only [Complex.normSq_div, Complex.normSq_one, Complex.normSq_ofReal]
+    rw [normSq_one_plus_i_sqrt3, hsq3_mul]
+    ring
+  have hy : Complex.normSq ((1/Real.sqrt 3 : ℂ) * (1 - Complex.I * Real.sqrt 3)) = 4/3 := by
+    rw [Complex.normSq_mul]
+    simp only [Complex.normSq_div, Complex.normSq_one, Complex.normSq_ofReal]
+    rw [normSq_one_minus_i_sqrt3, hsq3_mul]
+    ring
+  have hz : Complex.normSq (2/Real.sqrt 3 : ℂ) = 4/3 := by
+    simp only [Complex.normSq_div, Complex.normSq_ofReal]
+    rw [normSq_two, hsq3_mul]
+  rw [hx, hy, hz]
+  ring
+
+/-- **KEY THEOREM:** The magnitude of the gradient weighted vertex sum equals 2.
+
+    From Theorem 0.2.1 §5.2:
+    |Σ_c x_c e^{iφ_c}| = 2
+
+    This is stronger than the non-zero proof `gradient_weighted_sum_nonzero`
+    and is used to compute the exact gradient magnitude at the center:
+    |∇χ|₀ = 2a₀P₀² · 2 = 4a₀P₀²
+
+    **Mathematical Citation:**
+    This calculation appears explicitly in the markdown §5.2 with the component-wise
+    breakdown showing the magnitude squared equals 4. -/
+theorem gradient_weighted_sum_magnitude_eq_two :
+    Real.sqrt (Complex.normSq gradientWeightedVertexSum.x +
+               Complex.normSq gradientWeightedVertexSum.y +
+               Complex.normSq gradientWeightedVertexSum.z) = 2 := by
+  rw [gradient_weighted_sum_normSq]
+  have h : (4 : ℝ) = 2^2 := by norm_num
+  rw [h, Real.sqrt_sq (by norm_num : (2:ℝ) ≥ 0)]
+
 /-! ### Intermediate Lemmas for Gradient Proportionality
 
 The following lemmas establish the key facts needed for

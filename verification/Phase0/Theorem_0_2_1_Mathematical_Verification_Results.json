@@ -1,0 +1,515 @@
+{
+  "theorem": "0.2.1",
+  "title": "Total Field from Superposition",
+  "timestamp": "2026-01-20T12:02:27.655874",
+  "verifications": {
+    "cube_roots_of_unity": {
+      "claim": "Cube roots of unity sum to zero: 1 + \u03c9 + \u03c9\u00b2 = 0",
+      "section": "\u00a74.3",
+      "method_1_direct": {
+        "omega": "-0.500000000000000 + 0.866025403784439i",
+        "omega_sq": "-0.500000000000000 + -0.866025403784438i",
+        "sum_real": -2.220446049250313e-16,
+        "sum_imag": 3.3306690738754696e-16,
+        "magnitude": 4.0029660424867215e-16,
+        "passed": true
+      },
+      "method_2_explicit": {
+        "omega": "-0.500000000000000 + 0.866025403784439i",
+        "omega_sq": "-0.500000000000000 + -0.866025403784439i",
+        "sum_real": 0.0,
+        "sum_imag": 0.0,
+        "magnitude": 0.0,
+        "passed": true
+      },
+      "method_3_geometric": {
+        "r_cubed": "1.000000000000000 + -0.000000000000000i",
+        "formula_value_real": -2.6759195280105938e-17,
+        "formula_value_imag": 3.0274331064594264e-16,
+        "magnitude": 3.039236198009371e-16,
+        "passed": true
+      },
+      "verified": true
+    },
+    "chi_at_center": {
+      "claim": "At center: \u03c7_total(0) = 0 due to phase cancellation",
+      "section": "\u00a74.3",
+      "epsilon_tests": [
+        {
+          "epsilon": 0.05,
+          "chi_real": -2.7755575615628914e-16,
+          "chi_imag": 3.3306690738754696e-16,
+          "chi_magnitude": 4.335559509131367e-16,
+          "P_R": 0.9975062344139649,
+          "P_G": 0.9975062344139649,
+          "P_B": 0.9975062344139649,
+          "pressures_equal": true,
+          "chi_zero": true
+        },
+        {
+          "epsilon": 0.1,
+          "chi_real": -2.7755575615628914e-16,
+          "chi_imag": 3.3306690738754696e-16,
+          "chi_magnitude": 4.335559509131367e-16,
+          "P_R": 0.9900990099009899,
+          "P_G": 0.9900990099009899,
+          "P_B": 0.9900990099009899,
+          "pressures_equal": true,
+          "chi_zero": true
+        },
+        {
+          "epsilon": 0.2,
+          "chi_real": -2.7755575615628914e-16,
+          "chi_imag": 3.3306690738754696e-16,
+          "chi_magnitude": 4.335559509131367e-16,
+          "P_R": 0.9615384615384613,
+          "P_G": 0.9615384615384613,
+          "P_B": 0.9615384615384613,
+          "pressures_equal": true,
+          "chi_zero": true
+        },
+        {
+          "epsilon": 0.3,
+          "chi_real": -2.220446049250313e-16,
+          "chi_imag": 3.3306690738754696e-16,
+          "chi_magnitude": 4.0029660424867215e-16,
+          "P_R": 0.9174311926605502,
+          "P_G": 0.9174311926605502,
+          "P_B": 0.9174311926605502,
+          "pressures_equal": true,
+          "chi_zero": true
+        },
+        {
+          "epsilon": 0.5,
+          "chi_real": -2.220446049250313e-16,
+          "chi_imag": 2.220446049250313e-16,
+          "chi_magnitude": 3.1401849173675503e-16,
+          "P_R": 0.7999999999999998,
+          "P_G": 0.7999999999999998,
+          "P_B": 0.7999999999999998,
+          "pressures_equal": true,
+          "chi_zero": true
+        }
+      ],
+      "verified": true
+    },
+    "energy_at_center": {
+      "claim": "At center: \u03c1(0) \u2260 0 (energy present despite field cancellation)",
+      "section": "\u00a73.4",
+      "epsilon_tests": [
+        {
+          "epsilon": 0.05,
+          "rho_numerical": 2.985056063084184,
+          "rho_analytical": 2.985056063084185,
+          "relative_error": 4.463124314568744e-16,
+          "chi_magnitude_squared": 1.879707625721942e-31,
+          "rho_nonzero": true,
+          "chi_zero": true,
+          "energy_vs_field_ratio": "infinite"
+        },
+        {
+          "epsilon": 0.1,
+          "rho_numerical": 2.940888148220761,
+          "rho_analytical": 2.9408881482207625,
+          "relative_error": 4.530154029680489e-16,
+          "chi_magnitude_squared": 1.879707625721942e-31,
+          "rho_nonzero": true,
+          "chi_zero": true,
+          "energy_vs_field_ratio": "infinite"
+        },
+        {
+          "epsilon": 0.2,
+          "rho_numerical": 2.7736686390532537,
+          "rho_analytical": 2.7736686390532537,
+          "relative_error": 0.0,
+          "chi_magnitude_squared": 1.879707625721942e-31,
+          "rho_nonzero": true,
+          "chi_zero": true,
+          "energy_vs_field_ratio": "infinite"
+        },
+        {
+          "epsilon": 0.3,
+          "rho_numerical": 2.5250399797996783,
+          "rho_analytical": 2.52503997979968,
+          "relative_error": 7.034965202971459e-16,
+          "chi_magnitude_squared": 1.6023737137301804e-31,
+          "rho_nonzero": true,
+          "chi_zero": true,
+          "energy_vs_field_ratio": "infinite"
+        },
+        {
+          "epsilon": 0.5,
+          "rho_numerical": 1.919999999999999,
+          "rho_analytical": 1.9200000000000004,
+          "relative_error": 6.938893903907227e-16,
+          "chi_magnitude_squared": 9.86076131526265e-32,
+          "rho_nonzero": true,
+          "chi_zero": true,
+          "energy_vs_field_ratio": "infinite"
+        }
+      ],
+      "verified": true
+    },
+    "alternative_form": {
+      "claim": "|\u03c7_total|\u00b2 = (a_0\u00b2/2)[(P_R-P_G)\u00b2 + (P_G-P_B)\u00b2 + (P_B-P_R)\u00b2]",
+      "section": "\u00a74.2",
+      "algebraic_verification": {
+        "step_1": "Expand (P_R-P_G)\u00b2 + (P_G-P_B)\u00b2 + (P_B-P_R)\u00b2",
+        "step_2": "= 2P_R\u00b2 + 2P_G\u00b2 + 2P_B\u00b2 - 2P_R*P_G - 2P_G*P_B - 2P_B*P_R",
+        "step_3": "= 2[P_R\u00b2 + P_G\u00b2 + P_B\u00b2 - P_R*P_G - P_G*P_B - P_B*P_R]",
+        "step_4": "Matches 2 \u00d7 |\u03c7_total|\u00b2/a_0\u00b2 from \u00a74.1",
+        "correct": true
+      },
+      "numerical_verification": {
+        "num_tests": 100,
+        "max_relative_error": 3.579425581285884e-15,
+        "avg_relative_error": 5.379458261183168e-16,
+        "all_passed": true
+      },
+      "verified": true
+    },
+    "section_4_1_expansion": {
+      "claim": "Expansion from Re/Im decomposition to symmetric form",
+      "section": "\u00a74.1",
+      "algebraic_steps": {
+        "step_1": "(P_R - (P_G+P_B)/2)\u00b2 = P_R\u00b2 - P_R(P_G+P_B) + (P_G+P_B)\u00b2/4",
+        "step_2": "= P_R\u00b2 - P_R*P_G - P_R*P_B + (P_G\u00b2 + 2P_G*P_B + P_B\u00b2)/4",
+        "step_3": "(3/4)(P_G-P_B)\u00b2 = (3/4)P_G\u00b2 - (3/2)P_G*P_B + (3/4)P_B\u00b2",
+        "step_4": "Sum = P_R\u00b2 + (1/4 + 3/4)P_G\u00b2 + (1/4 + 3/4)P_B\u00b2 - P_R*P_G - P_R*P_B + (1/2 - 3/2)P_G*P_B",
+        "step_5": "= P_R\u00b2 + P_G\u00b2 + P_B\u00b2 - P_R*P_G - P_R*P_B - P_G*P_B",
+        "verified": true
+      },
+      "numerical_verification": {
+        "num_tests": 50,
+        "all_match": true,
+        "max_difference": 7.105427357601002e-15
+      },
+      "verified": true
+    },
+    "gradient_at_center": {
+      "claim": "Gradient at center: \u2207\u03c7_total|_0 \u2260 0",
+      "section": "\u00a75.2",
+      "epsilon_tests": [
+        {
+          "epsilon": 0.05,
+          "gradient_numerical": [
+            {
+              "real": 1.1489486143785195,
+              "imag": 1.9900373753894558,
+              "_type": "complex"
+            },
+            {
+              "real": 1.148948614378518,
+              "imag": -1.9900373753894558,
+              "_type": "complex"
+            },
+            {
+              "real": 2.297897228757038,
+              "imag": -4.440892098500626e-16,
+              "_type": "complex"
+            }
+          ],
+          "gradient_analytical": [
+            {
+              "real": 1.14894861437852,
+              "imag": 1.9900373753894567,
+              "_type": "complex"
+            },
+            {
+              "real": 1.1489486143785184,
+              "imag": -1.9900373753894567,
+              "_type": "complex"
+            },
+            {
+              "real": 2.297897228757039,
+              "imag": -4.4187706280439813e-16,
+              "_type": "complex"
+            }
+          ],
+          "magnitude_numerical": 3.980074750778912,
+          "magnitude_analytical": 3.9800747507789134,
+          "is_nonzero": true
+        },
+        {
+          "epsilon": 0.1,
+          "gradient_numerical": [
+            {
+              "real": 1.1319483760212252,
+              "imag": 1.9605920988138408,
+              "_type": "complex"
+            },
+            {
+              "real": 1.1319483760212237,
+              "imag": -1.9605920988138408,
+              "_type": "complex"
+            },
+            {
+              "real": 2.2638967520424496,
+              "imag": -3.3306690738754696e-16,
+              "_type": "complex"
+            }
+          ],
+          "gradient_analytical": [
+            {
+              "real": 1.1319483760212257,
+              "imag": 1.9605920988138417,
+              "_type": "complex"
+            },
+            {
+              "real": 1.1319483760212241,
+              "imag": -1.9605920988138417,
+              "_type": "complex"
+            },
+            {
+              "real": 2.2638967520424504,
+              "imag": -4.353388980002574e-16,
+              "_type": "complex"
+            }
+          ],
+          "magnitude_numerical": 3.921184197627682,
+          "magnitude_analytical": 3.9211841976276838,
+          "is_nonzero": true
+        },
+        {
+          "epsilon": 0.2,
+          "gradient_numerical": [
+            {
+              "real": 1.0675855569334798,
+              "imag": 1.8491124260355019,
+              "_type": "complex"
+            },
+            {
+              "real": 1.0675855569334785,
+              "imag": -1.8491124260355019,
+              "_type": "complex"
+            },
+            {
+              "real": 2.1351711138669582,
+              "imag": -3.3306690738754696e-16,
+              "_type": "complex"
+            }
+          ],
+          "gradient_analytical": [
+            {
+              "real": 1.06758555693348,
+              "imag": 1.8491124260355025,
+              "_type": "complex"
+            },
+            {
+              "real": 1.0675855569334787,
+              "imag": -1.8491124260355025,
+              "_type": "complex"
+            },
+            {
+              "real": 2.1351711138669596,
+              "imag": -4.1058543810101933e-16,
+              "_type": "complex"
+            }
+          ],
+          "magnitude_numerical": 3.698224852071004,
+          "magnitude_analytical": 3.6982248520710055,
+          "is_nonzero": true
+        },
+        {
+          "epsilon": 0.3,
+          "gradient_numerical": [
+            {
+              "real": 0.971888341367942,
+              "imag": 1.6833599865331195,
+              "_type": "complex"
+            },
+            {
+              "real": 0.9718883413679407,
+              "imag": -1.6833599865331195,
+              "_type": "complex"
+            },
+            {
+              "real": 1.9437766827358829,
+              "imag": -3.3306690738754696e-16,
+              "_type": "complex"
+            }
+          ],
+          "gradient_analytical": [
+            {
+              "real": 0.9718883413679422,
+              "imag": 1.68335998653312,
+              "_type": "complex"
+            },
+            {
+              "real": 0.971888341367941,
+              "imag": -1.68335998653312,
+              "_type": "complex"
+            },
+            {
+              "real": 1.9437766827358838,
+              "imag": -3.7378100315635263e-16,
+              "_type": "complex"
+            }
+          ],
+          "magnitude_numerical": 3.366719973066239,
+          "magnitude_analytical": 3.3667199730662403,
+          "is_nonzero": true
+        },
+        {
+          "epsilon": 0.5,
+          "gradient_numerical": [
+            {
+              "real": 0.7390083445627212,
+              "imag": 1.2799999999999996,
+              "_type": "complex"
+            },
+            {
+              "real": 0.7390083445627202,
+              "imag": -1.2799999999999996,
+              "_type": "complex"
+            },
+            {
+              "real": 1.4780166891254418,
+              "imag": -2.220446049250313e-16,
+              "_type": "complex"
+            }
+          ],
+          "gradient_analytical": [
+            {
+              "real": 0.7390083445627217,
+              "imag": 1.2800000000000002,
+              "_type": "complex"
+            },
+            {
+              "real": 0.7390083445627207,
+              "imag": -1.2800000000000002,
+              "_type": "complex"
+            },
+            {
+              "real": 1.4780166891254427,
+              "imag": -2.8421709430404013e-16,
+              "_type": "complex"
+            }
+          ],
+          "magnitude_numerical": 2.559999999999999,
+          "magnitude_analytical": 2.5600000000000005,
+          "is_nonzero": true
+        }
+      ],
+      "verified": true,
+      "explicit_x_component": {
+        "calculated": {
+          "real": 0.5773502691896262,
+          "imag": 1.0,
+          "_type": "complex"
+        },
+        "expected_from_proof": {
+          "real": 0.5773502691896258,
+          "imag": 1.0,
+          "_type": "complex"
+        },
+        "match": true
+      }
+    },
+    "integral_convergence": {
+      "claim": "Total energy integral converges: E_total < \u221e",
+      "section": "\u00a78.2",
+      "unit_integral": {
+        "computed": 0.7853981633974483,
+        "expected": 0.7853981633974483,
+        "relative_error": 0.0,
+        "verified": true
+      },
+      "scaling_tests": [
+        {
+          "epsilon": 0.1,
+          "E_numerical": 97.43949071772265,
+          "E_analytical": 98.69604401089357,
+          "relative_error": 0.012731546697375553,
+          "ratio_to_1_over_eps": 9.743949071772265
+        },
+        {
+          "epsilon": 0.2,
+          "E_numerical": 48.09171992663604,
+          "E_analytical": 49.348022005446786,
+          "relative_error": 0.0254580027274869,
+          "ratio_to_1_over_eps": 9.618343985327208
+        },
+        {
+          "epsilon": 0.3,
+          "E_numerical": 31.642797647562894,
+          "E_analytical": 32.89868133696453,
+          "relative_error": 0.03817428657818393,
+          "ratio_to_1_over_eps": 9.492839294268867
+        },
+        {
+          "epsilon": 0.5,
+          "E_numerical": 18.48466143464898,
+          "E_analytical": 19.739208802178716,
+          "relative_error": 0.06355611210674586,
+          "ratio_to_1_over_eps": 9.24233071732449
+        }
+      ],
+      "scaling_verification": {
+        "E_times_epsilon_values": [
+          9.743949071772265,
+          9.618343985327208,
+          9.492839294268867,
+          9.24233071732449
+        ],
+        "mean": 9.524365767173208,
+        "std_relative": 0.01947250059203025,
+        "constant_within_tolerance": true,
+        "theoretical_constant": 9.869604401089358
+      },
+      "verified": true
+    },
+    "dimensional_analysis": {
+      "claim": "Dimensional consistency throughout",
+      "section": "\u00a73.2",
+      "dimensional_chain": {
+        "[P_c(x)]": "[length]\u207b\u00b2",
+        "[a_0]": "[length]\u00b2",
+        "[a_c(x)] = [a_0][P_c]": "[length]\u00b2 \u00d7 [length]\u207b\u00b2 = dimensionless",
+        "[e^{i\u03c6}]": "dimensionless",
+        "[\u03c7_c] = [a_c][e^{i\u03c6}]": "dimensionless",
+        "[\u03c1] = [a_0]\u00b2[P_c]\u00b2": "[length]\u2074 \u00d7 [length]\u207b\u2074 = dimensionless",
+        "[E_total] = [\u03c1] \u00d7 [volume]": "dimensionless \u00d7 [length]\u00b3 = [length]\u00b3"
+      },
+      "physical_convention": {
+        "[f_\u03c0]": "[energy] = [length]\u207b\u00b9 (natural units)",
+        "[\u03b5]": "[length]",
+        "[a_0] = [f_\u03c0][\u03b5\u00b2]": "[length]\u207b\u00b9 \u00d7 [length]\u00b2 = [length]",
+        "[\u03c1_physical]": "[energy]\u00b2"
+      },
+      "verified": true
+    },
+    "phase_values": {
+      "claim": "Phase values match Definition 0.1.2",
+      "section": "\u00a71 statement",
+      "phase_differences": {
+        "\u03c6_G - \u03c6_R": 2.0943951023931953,
+        "expected": 2.0943951023931953,
+        "match_GR": true,
+        "\u03c6_B - \u03c6_G": 2.0943951023931953,
+        "match_BG": true,
+        "\u03c6_R - \u03c6_B (mod 2\u03c0)": 2.0943951023931957,
+        "match_RB": true
+      },
+      "verified": true
+    },
+    "real_imaginary_decomposition": {
+      "claim": "Real and imaginary parts match stated formulas",
+      "section": "\u00a72.3",
+      "test_results": {
+        "num_tests": 100,
+        "all_Re_match": true,
+        "all_Im_match": true,
+        "max_Re_error": 8.881784197001252e-15,
+        "max_Im_error": 7.105427357601002e-15
+      },
+      "verified": true
+    }
+  },
+  "summary": {
+    "total_checks": 10,
+    "passed": 10,
+    "failed": 0,
+    "overall_verified": true
+  }
+}

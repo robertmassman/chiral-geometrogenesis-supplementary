@@ -1754,7 +1754,10 @@ $$a^2 = \frac{8\ln(3)}{\sqrt{3}} \cdot \ell_P^2 \approx 5.07\ell_P^2$$
 - [Proposition-0.0.17a-Born-Rule-From-Geodesic-Flow.md](Proposition-0.0.17a-Born-Rule-From-Geodesic-Flow.md) — A5 derivation (Born rule)
 - [Proposition-0.0.17b-Fisher-Metric-Uniqueness.md](Proposition-0.0.17b-Fisher-Metric-Uniqueness.md) — A0' derivation (Fisher metric)
 - [Proposition-0.0.17e-Square-Integrability-From-Finite-Energy.md](Proposition-0.0.17e-Square-Integrability-From-Finite-Energy.md) — A6 derivation
-- **[Proposition-0.0.17f-Decoherence-From-Geodesic-Mixing.md](Proposition-0.0.17f-Decoherence-From-Geodesic-Mixing.md) — A7 partial derivation (NEW)**
+- **[Proposition-0.0.17f-Decoherence-From-Geodesic-Mixing.md](Proposition-0.0.17f-Decoherence-From-Geodesic-Mixing.md) — A7 mechanism derivation**
+- **[Proposition-0.0.17g-Objective-Collapse-From-Z3-Discretization.md](Proposition-0.0.17g-Objective-Collapse-From-Z3-Discretization.md) — A7' collapse framework**
+- **[Proposition-0.0.17h-Information-Horizon-Derivation.md](Proposition-0.0.17h-Information-Horizon-Derivation.md) — A7' information horizon derivation**
+- **[Proposition-0.0.17i-Z3-Measurement-Extension.md](Proposition-0.0.17i-Z3-Measurement-Extension.md) — A7' Z₃ measurement extension (completes A7' derivation) ✅ VERIFIED**
 - [Research-D1-Strong-CP-Problem-Analysis.md](Research-D1-Strong-CP-Problem-Analysis.md) — Strong CP analysis
 - **[Proposition-0.0.5a-Z3-Center-Constrains-Theta-Angle.md](Proposition-0.0.5a-Z3-Center-Constrains-Theta-Angle.md) — Z₃ constraint on θ (NEW 2026-01-06)**
 - [Research-P2-P4-Physical-Inputs-Unification.md](Research-P2-P4-Physical-Inputs-Unification.md) — P2-P4 unification research

@@ -182,18 +182,24 @@ $$\pi(R \cdot \hat{e}_w) = \pi(\tfrac{1}{2}(1, 1, 1, 1)) = \tfrac{1}{2}(1, 1, 1)
 
 **Proof:**
 
-We explicitly construct the rotation matrix. The W(F₄) group contains rotations that map axis-aligned vertices to body-diagonal vertices. Define:
+We explicitly construct an orthogonal matrix in W(F₄). The W(F₄) group contains transformations that map axis-aligned vertices to body-diagonal vertices. We require a matrix R whose **fourth column** is $(1,1,1,1)/2$ so that $R \cdot \hat{e}_w = (1,1,1,1)/2$.
 
-$$R = \frac{1}{2}\begin{pmatrix} 1 & 1 & 1 & 1 \\ 1 & 1 & -1 & -1 \\ 1 & -1 & 1 & -1 \\ 1 & -1 & -1 & 1 \end{pmatrix}$$
+Starting from a Hadamard matrix H (whose first column is $(1,1,1,1)/2$) and applying a column permutation P that swaps columns 1 and 4, we obtain:
+
+$$R = \frac{1}{2}\begin{pmatrix} 1 & 1 & 1 & 1 \\ -1 & -1 & 1 & 1 \\ -1 & 1 & -1 & 1 \\ 1 & -1 & -1 & 1 \end{pmatrix}$$
 
 **Verification that R is orthogonal:**
 - Each row has norm 1: $\frac{1}{4}(1+1+1+1) = 1$ ✓
-- Rows are mutually orthogonal (e.g., row 1 · row 2 = $\frac{1}{4}(1+1-1-1) = 0$) ✓
-- Therefore $R^T R = I$ and $\det(R) = +1$ (proper rotation)
+- Rows are mutually orthogonal (e.g., row 1 · row 2 = $\frac{1}{4}(-1-1+1+1) = 0$) ✓
+- Therefore $R^T R = I$
+- $\det(R) = -1$ (improper rotation/reflection)
+
+**Note:** W(F₄) is the *full* symmetry group of the 24-cell, which includes both proper rotations (det = +1) and improper rotations (det = -1). The existence claim in Theorem 5.4.1 is satisfied by any element of W(F₄) achieving the mapping, regardless of determinant sign.
 
 **Verification that R ∈ W(F₄):**
 R maps 24-cell vertices to 24-cell vertices. For example:
-- $(1,0,0,0) \mapsto \frac{1}{2}(1,1,1,1)$ (Type A → Type B vertex) ✓
+- $(0,0,0,1) \mapsto \frac{1}{2}(1,1,1,1)$ (Type A → Type B vertex) ✓
+- $(1,0,0,0) \mapsto \frac{1}{2}(1,-1,-1,1)$ (Type A → Type B vertex) ✓
 - $(\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2}) \mapsto (1,0,0,0)$ (Type B → Type A vertex) ✓
 
 Since R permutes the 24-cell vertices and is orthogonal, $R \in W(F_4)$.

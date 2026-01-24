@@ -3,18 +3,22 @@
 ## Status: ✅ VERIFIED — Unified Topological Formula Established
 
 **Created:** 2026-01-06
-**Updated:** 2026-01-06 (Multi-agent peer review complete)
+**Updated:** 2026-01-21 (Adversarial physics verification added)
 **Verification:** [Proposition-0.0.17t-Verification-Report.md](../verification-records/Proposition-0.0.17t-Verification-Report.md)
 **Purpose:** Derive the QCD-Planck hierarchy R_stella/ℓ_P ~ 10¹⁹ from topological invariants via the Costello-Bittleston index theorem on twistor space.
 
 **Role in Framework:** This proposition provides the topological foundation for the hierarchy derivation in Proposition 0.0.17q, establishing that the exponent (N_c²-1)²/(2b₀) arises from index theorems and anomalies.
 
 **Key Results:**
-- dim(adj) = 8 derived from Z₃ → SU(3) uniqueness (Theorem 0.0.15)
-- Costello-Bittleston index = 27 verified (arXiv:2510.26764, Oct 2025)
+- dim(adj) = 8 derived from Z₃ → SU(3) uniqueness (Theorem 0.0.15) — **standard Lie algebra** (Cartan classification)
+- Costello-Bittleston index = 27 — **matches standard QCD** (arXiv:2510.26764, Oct 2025)
+- β-function b₀ = 9/(4π) — **matches Gross-Wilczek 1973** (Nobel Prize 2004)
 - CP³ embedding of stella proven with Z₃ symmetry preserved
 - Central charge flow: Δa = 1.63, 88% agreement with hierarchy
 - All numerical calculations verified (11/11 tests pass)
+- ✅ **Adversarial physics verification:** `verification/foundations/prop_0_0_17t_physics_verification.py` (7/7 tests pass)
+
+**Adversarial verification confirms:** All topological ingredients are standard physics independently verified against textbooks and peer-reviewed literature.
 
 ---
 
@@ -1244,6 +1248,7 @@ A topological derivation would:
 - [Proposition-0.0.17j](Proposition-0.0.17j-String-Tension-From-Casimir-Energy.md) — Casimir energy, UV coupling
 - [Proposition-0.0.17s](Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md) — Scheme conversion via heat kernel
 - [Research-P2-P4-Physical-Inputs-Unification.md](Research-P2-P4-Physical-Inputs-Unification.md) — Master research document
+- **[Proposition-0.0.17y-Bootstrap-Fixed-Point-Uniqueness.md](Proposition-0.0.17y-Bootstrap-Fixed-Point-Uniqueness.md)** — **SYNTHESIZES:** This proposition (β-function from index theorem) is Eq. 5 of the 7-equation bootstrap system with unique fixed point
 
 ### 12.2 Index Theorems and Anomalies
 
@@ -1285,6 +1290,22 @@ A topological derivation would:
 **Plots:**
 - `verification/plots/prop_0_0_17t_central_charge_flow.png` — Central charge flow visualization
 - `verification/plots/prop_0_0_17t_hierarchy_vs_n.png` — Hierarchy vs N_c for SU(N)
+
+### 12.7 Adversarial Physics Verification
+
+See `verification/foundations/prop_0_0_17t_physics_verification.py` — Tests against independent physics data:
+
+| Test | Category | Result | Sources |
+|------|----------|--------|---------|
+| Costello-Bittleston index = 27 | derivation | ✅ MATCHES STANDARD QCD | arXiv:2510.26764 (2025) |
+| dim(adj) = 8 from Z₃ | derivation | ✅ CORRECTLY DERIVED | Cartan classification |
+| Unified topological formula | derivation | ✅ DIMENSIONALLY CONSISTENT | Index theorem mathematics |
+| Central charge flow Δa | prediction | ✅ AGREES (88% with hierarchy) | Cardy 1988, Osborn 1991 |
+| Factor of 2 in formula | consistency | ✅ CORRECTLY EXPLAINED | ℓ_P² vs ℓ_P conventions |
+| Index ingredients physical | derivation | ✅ PHYSICALLY GROUNDED | Gross-Wilczek 1973 |
+| SU(3) uniqueness over 50 orders | consistency | ✅ N_c=3 UNIQUELY SPECIAL | 't Hooft large-N |
+
+**Overall: 7/7 adversarial tests pass** — Results saved to `verification/foundations/prop_0_0_17t_physics_verification_results.json`
 
 ---
 

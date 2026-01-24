@@ -1,0 +1,873 @@
+{
+  "definition": "Definition 0.1.3 - Pressure Functions from Geometric Opposition",
+  "document": "docs/proofs/Phase0/Definition-0.1.3-Pressure-Functions.md",
+  "verification_date": "2026-01-14T12:40:32.377053",
+  "epsilon_visualization": 0.05,
+  "epsilon_physical": 0.5,
+  "tests": [
+    {
+      "test": "Vertex Positions (Section 2.1)",
+      "status": "True",
+      "checks": [
+        {
+          "name": "|x_R| = 1",
+          "expected": 1.0,
+          "computed": 1.0,
+          "passed": "True"
+        },
+        {
+          "name": "|x_G| = 1",
+          "expected": 1.0,
+          "computed": 1.0,
+          "passed": "True"
+        },
+        {
+          "name": "|x_B| = 1",
+          "expected": 1.0,
+          "computed": 1.0,
+          "passed": "True"
+        },
+        {
+          "name": "|x_W| = 1",
+          "expected": 1.0,
+          "computed": 1.0,
+          "passed": "True"
+        },
+        {
+          "name": "|x_R_bar| = 1",
+          "expected": 1.0,
+          "computed": 1.0,
+          "passed": "True"
+        },
+        {
+          "name": "|x_G_bar| = 1",
+          "expected": 1.0,
+          "computed": 1.0,
+          "passed": "True"
+        },
+        {
+          "name": "|x_B_bar| = 1",
+          "expected": 1.0,
+          "computed": 1.0,
+          "passed": "True"
+        },
+        {
+          "name": "|x_W_bar| = 1",
+          "expected": 1.0,
+          "computed": 1.0,
+          "passed": "True"
+        },
+        {
+          "name": "x_R_bar = -x_R",
+          "expected": 0.0,
+          "computed": 0.0,
+          "passed": "True"
+        },
+        {
+          "name": "x_G_bar = -x_G",
+          "expected": 0.0,
+          "computed": 0.0,
+          "passed": "True"
+        },
+        {
+          "name": "x_B_bar = -x_B",
+          "expected": 0.0,
+          "computed": 0.0,
+          "passed": "True"
+        },
+        {
+          "name": "x_W_bar = -x_W",
+          "expected": 0.0,
+          "computed": 0.0,
+          "passed": "True"
+        },
+        {
+          "name": "\u03a3 x_c (T+) = 0 (centroid at origin)",
+          "expected": 0.0,
+          "computed": 0.0,
+          "passed": "True"
+        },
+        {
+          "name": "\u03a3 x_c (T-) = 0 (centroid at origin)",
+          "expected": 0.0,
+          "computed": 0.0,
+          "passed": "True"
+        }
+      ]
+    },
+    {
+      "test": "Geometric Properties (Section 2.2)",
+      "status": "True",
+      "checks": [
+        {
+          "name": "cos(\u03b8_RG) = -1/3",
+          "expected": -0.3333333333333333,
+          "computed": -0.3333333333333334,
+          "angle_deg": 109.47122063449069,
+          "passed": "True"
+        },
+        {
+          "name": "cos(\u03b8_RB) = -1/3",
+          "expected": -0.3333333333333333,
+          "computed": -0.3333333333333334,
+          "angle_deg": 109.47122063449069,
+          "passed": "True"
+        },
+        {
+          "name": "cos(\u03b8_RW) = -1/3",
+          "expected": -0.3333333333333333,
+          "computed": -0.3333333333333334,
+          "angle_deg": 109.47122063449069,
+          "passed": "True"
+        },
+        {
+          "name": "cos(\u03b8_GB) = -1/3",
+          "expected": -0.3333333333333333,
+          "computed": -0.3333333333333334,
+          "angle_deg": 109.47122063449069,
+          "passed": "True"
+        },
+        {
+          "name": "cos(\u03b8_GW) = -1/3",
+          "expected": -0.3333333333333333,
+          "computed": -0.3333333333333334,
+          "angle_deg": 109.47122063449069,
+          "passed": "True"
+        },
+        {
+          "name": "cos(\u03b8_BW) = -1/3",
+          "expected": -0.3333333333333333,
+          "computed": -0.3333333333333334,
+          "angle_deg": 109.47122063449069,
+          "passed": "True"
+        },
+        {
+          "name": "|x_R_bar - x_R| = 2",
+          "expected": 2.0,
+          "computed": 2.0,
+          "passed": "True"
+        },
+        {
+          "name": "|x_G_bar - x_G| = 2",
+          "expected": 2.0,
+          "computed": 2.0,
+          "passed": "True"
+        },
+        {
+          "name": "|x_B_bar - x_B| = 2",
+          "expected": 2.0,
+          "computed": 2.0,
+          "passed": "True"
+        },
+        {
+          "name": "|x_G - x_R|\u00b2 = 8/3",
+          "expected": 2.6666666666666665,
+          "computed": 2.6666666666666674,
+          "distance": 1.6329931618554523,
+          "passed": "True"
+        },
+        {
+          "name": "|x_B - x_G|\u00b2 = 8/3",
+          "expected": 2.6666666666666665,
+          "computed": 2.6666666666666674,
+          "distance": 1.6329931618554523,
+          "passed": "True"
+        },
+        {
+          "name": "|x_R - x_B|\u00b2 = 8/3",
+          "expected": 2.6666666666666665,
+          "computed": 2.6666666666666674,
+          "distance": 1.6329931618554523,
+          "passed": "True"
+        }
+      ]
+    },
+    {
+      "test": "Equal Pressure at Center (Section 4.1)",
+      "status": "True",
+      "checks": [
+        {
+          "name": "P_R(0) = 1/(1+\u03b5\u00b2) (\u03b5=0.05)",
+          "expected": 0.9975062344139651,
+          "computed": 0.9975062344139649,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(0) = 1/(1+\u03b5\u00b2) (\u03b5=0.05)",
+          "expected": 0.9975062344139651,
+          "computed": 0.9975062344139649,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(0) = 1/(1+\u03b5\u00b2) (\u03b5=0.05)",
+          "expected": 0.9975062344139651,
+          "computed": 0.9975062344139649,
+          "passed": "True"
+        },
+        {
+          "name": "P_R(0) = P_G(0) = P_B(0)",
+          "values": {
+            "R": 0.9975062344139649,
+            "G": 0.9975062344139649,
+            "B": 0.9975062344139649
+          },
+          "passed": true
+        },
+        {
+          "name": "P_total(0) = 3/(1+\u03b5\u00b2) (\u03b5=0.05)",
+          "expected": 2.9925187032418954,
+          "computed": 2.9925187032418945,
+          "passed": "True"
+        },
+        {
+          "name": "P_c(0) with physical \u03b5=0.5",
+          "expected": 0.8,
+          "computed": {
+            "R": 0.7999999999999998,
+            "G": 0.7999999999999998,
+            "B": 0.7999999999999998
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "Antipodal Asymmetry (Section 4.2)",
+      "status": "True",
+      "checks": [
+        {
+          "name": "P_R(x_R_bar) = 1/(4+\u03b5\u00b2)",
+          "expected": 0.24984384759525294,
+          "computed": 0.24984384759525288,
+          "passed": "True"
+        },
+        {
+          "name": "P_R(x_G) = 1/(8/3+\u03b5\u00b2)",
+          "expected": 0.37464876678114273,
+          "computed": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_R(x_B) = 1/(8/3+\u03b5\u00b2)",
+          "expected": 0.37464876678114273,
+          "computed": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_R(x_W) = 1/(8/3+\u03b5\u00b2)",
+          "expected": 0.37464876678114273,
+          "computed": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_R(x_R_bar) < P_R(x_G)",
+          "P_anticolor": 0.24984384759525288,
+          "P_other": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_R(x_R_bar) < P_R(x_B)",
+          "P_anticolor": 0.24984384759525288,
+          "P_other": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_R(x_R_bar) < P_R(x_W)",
+          "P_anticolor": 0.24984384759525288,
+          "P_other": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(x_G_bar) = 1/(4+\u03b5\u00b2)",
+          "expected": 0.24984384759525294,
+          "computed": 0.24984384759525288,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(x_R) = 1/(8/3+\u03b5\u00b2)",
+          "expected": 0.37464876678114273,
+          "computed": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(x_B) = 1/(8/3+\u03b5\u00b2)",
+          "expected": 0.37464876678114273,
+          "computed": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(x_W) = 1/(8/3+\u03b5\u00b2)",
+          "expected": 0.37464876678114273,
+          "computed": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(x_G_bar) < P_G(x_R)",
+          "P_anticolor": 0.24984384759525288,
+          "P_other": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(x_G_bar) < P_G(x_B)",
+          "P_anticolor": 0.24984384759525288,
+          "P_other": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(x_G_bar) < P_G(x_W)",
+          "P_anticolor": 0.24984384759525288,
+          "P_other": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(x_B_bar) = 1/(4+\u03b5\u00b2)",
+          "expected": 0.24984384759525294,
+          "computed": 0.24984384759525288,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(x_R) = 1/(8/3+\u03b5\u00b2)",
+          "expected": 0.37464876678114273,
+          "computed": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(x_G) = 1/(8/3+\u03b5\u00b2)",
+          "expected": 0.37464876678114273,
+          "computed": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(x_W) = 1/(8/3+\u03b5\u00b2)",
+          "expected": 0.37464876678114273,
+          "computed": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(x_B_bar) < P_B(x_R)",
+          "P_anticolor": 0.24984384759525288,
+          "P_other": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(x_B_bar) < P_B(x_G)",
+          "P_anticolor": 0.24984384759525288,
+          "P_other": 0.37464876678114256,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(x_B_bar) < P_B(x_W)",
+          "P_anticolor": 0.24984384759525288,
+          "P_other": 0.37464876678114256,
+          "passed": "True"
+        }
+      ]
+    },
+    {
+      "test": "Phase-Lock at Center (Section 6.3)",
+      "status": "True",
+      "checks": [
+        {
+          "name": "|\u03c7_total(0)| = 0 (machine precision)",
+          "expected": 0.0,
+          "computed": 4.335559509131367e-16,
+          "passed": "True"
+        },
+        {
+          "name": "1 + \u03c9 + \u03c9\u00b2 = 0",
+          "expected": 0.0,
+          "computed": 3.3306690738754696e-16,
+          "passed": "True"
+        },
+        {
+          "name": "P(0) \u00d7 (e^{i\u03c6_R} + e^{i\u03c6_G} + e^{i\u03c6_B}) = 0",
+          "expected": 0.0,
+          "computed": 4.335559509131367e-16,
+          "passed": "True"
+        }
+      ]
+    },
+    {
+      "test": "Off-Center Behavior (Section 6.4)",
+      "status": "True",
+      "checks": [
+        {
+          "name": "|\u03c7_total| > 0 at Along x-axis",
+          "point": [
+            0.3,
+            0.0,
+            0.0
+          ],
+          "magnitude": 0.64535074247628,
+          "passed": "True"
+        },
+        {
+          "name": "|\u03c7_total| > 0 at Along y-axis",
+          "point": [
+            0.0,
+            0.3,
+            0.0
+          ],
+          "magnitude": 0.6453507424762792,
+          "passed": "True"
+        },
+        {
+          "name": "|\u03c7_total| > 0 at Along z-axis",
+          "point": [
+            0.0,
+            0.0,
+            0.3
+          ],
+          "magnitude": 0.6453507424762797,
+          "passed": "True"
+        },
+        {
+          "name": "|\u03c7_total| > 0 at Diagonal",
+          "point": [
+            0.2,
+            0.2,
+            0.2
+          ],
+          "magnitude": 1.5884571368518214,
+          "passed": "True"
+        },
+        {
+          "name": "|\u03c7_total| > 0 at Near R vertex",
+          "point": [
+            0.2886751345948129,
+            0.2886751345948129,
+            0.2886751345948129
+          ],
+          "magnitude": 3.3298127500611323,
+          "passed": "True"
+        },
+        {
+          "name": "|\u03c7_total| > 0 at Near G vertex",
+          "point": [
+            0.2886751345948129,
+            -0.2886751345948129,
+            -0.2886751345948129
+          ],
+          "magnitude": 3.3298127500611328,
+          "passed": "True"
+        },
+        {
+          "name": "|\u03c7_total| > 0 at Near B vertex",
+          "point": [
+            -0.2886751345948129,
+            0.2886751345948129,
+            -0.2886751345948129
+          ],
+          "magnitude": 3.3298127500611323,
+          "passed": "True"
+        },
+        {
+          "name": "|\u03c7_total| increases toward vertex R",
+          "magnitudes": [
+            0.3041283041283038,
+            1.2567624620762103,
+            3.3298127500611323,
+            10.300389713405446
+          ],
+          "passed": true
+        },
+        {
+          "name": "|\u03c7_total| increases toward vertex G",
+          "magnitudes": [
+            0.30412830412830427,
+            1.2567624620762108,
+            3.3298127500611328,
+            10.300389713405446
+          ],
+          "passed": true
+        },
+        {
+          "name": "|\u03c7_total| increases toward vertex B",
+          "magnitudes": [
+            0.3041283041283037,
+            1.2567624620762103,
+            3.3298127500611323,
+            10.300389713405446
+          ],
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "Vertex-Face Pressure Duality (Section 7)",
+      "status": "True",
+      "checks": [
+        {
+          "name": "x_face^R = -x_R/3 = centroid of opposite face",
+          "expected": [
+            -0.1924500897298753,
+            -0.1924500897298753,
+            -0.1924500897298753
+          ],
+          "computed": [
+            -0.1924500897298753,
+            -0.1924500897298753,
+            -0.1924500897298753
+          ],
+          "passed": "True"
+        },
+        {
+          "name": "x_face^G = -x_G/3 = centroid of opposite face",
+          "expected": [
+            -0.1924500897298753,
+            0.1924500897298753,
+            0.1924500897298753
+          ],
+          "computed": [
+            -0.1924500897298753,
+            0.1924500897298753,
+            0.1924500897298753
+          ],
+          "passed": "True"
+        },
+        {
+          "name": "x_face^B = -x_B/3 = centroid of opposite face",
+          "expected": [
+            0.1924500897298753,
+            -0.1924500897298753,
+            0.1924500897298753
+          ],
+          "computed": [
+            0.1924500897298753,
+            -0.1924500897298753,
+            0.1924500897298753
+          ],
+          "passed": "True"
+        },
+        {
+          "name": "x_face^W = -x_W/3 = centroid of opposite face",
+          "expected": [
+            0.1924500897298753,
+            0.1924500897298753,
+            -0.1924500897298753
+          ],
+          "computed": [
+            0.1924500897298753,
+            0.1924500897298753,
+            -0.1924500897298753
+          ],
+          "passed": "True"
+        },
+        {
+          "name": "|x_face^R| = 1/3",
+          "expected": 0.3333333333333333,
+          "computed": 0.33333333333333337,
+          "passed": "True"
+        },
+        {
+          "name": "|x_face^G| = 1/3",
+          "expected": 0.3333333333333333,
+          "computed": 0.33333333333333337,
+          "passed": "True"
+        },
+        {
+          "name": "|x_face^B| = 1/3",
+          "expected": 0.3333333333333333,
+          "computed": 0.33333333333333337,
+          "passed": "True"
+        },
+        {
+          "name": "D_R(0) = 2 (balanced)",
+          "expected": 2.0,
+          "computed": 2.0,
+          "passed": "True"
+        },
+        {
+          "name": "D_R(x_face^R) > 1 (color R suppressed)",
+          "computed": 3.994390775942662,
+          "passed": "True"
+        },
+        {
+          "name": "D_G(0) = 2 (balanced)",
+          "expected": 2.0,
+          "computed": 2.0,
+          "passed": "True"
+        },
+        {
+          "name": "D_G(x_face^G) > 1 (color G suppressed)",
+          "computed": 3.994390775942662,
+          "passed": "True"
+        },
+        {
+          "name": "D_B(0) = 2 (balanced)",
+          "expected": 2.0,
+          "computed": 2.0,
+          "passed": "True"
+        },
+        {
+          "name": "D_B(x_face^B) > 1 (color B suppressed)",
+          "computed": 3.994390775942662,
+          "passed": "True"
+        },
+        {
+          "name": "At face opposite R: P_R < P_{others}",
+          "P_c": 0.5617100951786549,
+          "P_others": [
+            1.1218448114677468,
+            1.1218448114677468
+          ],
+          "passed": true
+        },
+        {
+          "name": "At face opposite R: P_{c'} = P_{c''}",
+          "P_values": [
+            1.1218448114677468,
+            1.1218448114677468
+          ],
+          "passed": "True"
+        },
+        {
+          "name": "At face opposite G: P_G < P_{others}",
+          "P_c": 0.5617100951786549,
+          "P_others": [
+            1.1218448114677468,
+            1.1218448114677468
+          ],
+          "passed": true
+        },
+        {
+          "name": "At face opposite G: P_{c'} = P_{c''}",
+          "P_values": [
+            1.1218448114677468,
+            1.1218448114677468
+          ],
+          "passed": "True"
+        },
+        {
+          "name": "At face opposite B: P_B < P_{others}",
+          "P_c": 0.5617100951786549,
+          "P_others": [
+            1.1218448114677468,
+            1.1218448114677468
+          ],
+          "passed": true
+        },
+        {
+          "name": "At face opposite B: P_{c'} = P_{c''}",
+          "P_values": [
+            1.1218448114677468,
+            1.1218448114677468
+          ],
+          "passed": "True"
+        }
+      ]
+    },
+    {
+      "test": "Energy Convergence (Section 5.3)",
+      "status": "True",
+      "checks": [
+        {
+          "name": "Radial integral convergence (R=10.0, \u03b5=0.05)",
+          "analytic": 15.607964934578135,
+          "numerical": 15.607964934578131,
+          "error": 1.3573383311480986e-09,
+          "passed": "True"
+        },
+        {
+          "name": "Asymptotic limit \u03c0/(4\u03b5) as R \u2192 \u221e",
+          "computed": 15.706963267950632,
+          "expected_limit": 15.707963267948966,
+          "passed": "True"
+        }
+      ]
+    },
+    {
+      "test": "Pressure Function Properties",
+      "status": "True",
+      "checks": [
+        {
+          "name": "P_R(x_R) = 1/\u03b5\u00b2 = 400.00",
+          "expected": 399.99999999999994,
+          "computed": 399.99999999999994,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(x_G) = 1/\u03b5\u00b2 = 400.00",
+          "expected": 399.99999999999994,
+          "computed": 399.99999999999994,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(x_B) = 1/\u03b5\u00b2 = 400.00",
+          "expected": 399.99999999999994,
+          "computed": 399.99999999999994,
+          "passed": "True"
+        },
+        {
+          "name": "P_R(point_0) > 0",
+          "computed": 0.9975062344139649,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(point_0) > 0",
+          "computed": 0.9975062344139649,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(point_0) > 0",
+          "computed": 0.9975062344139649,
+          "passed": "True"
+        },
+        {
+          "name": "P_R(point_1) > 0",
+          "computed": 48.90168662494687,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(point_1) > 0",
+          "computed": 0.42921213145075743,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(point_1) > 0",
+          "computed": 0.42921213145075743,
+          "passed": "True"
+        },
+        {
+          "name": "P_R(point_2) > 0",
+          "computed": 0.7280987313616538,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(point_2) > 0",
+          "computed": 0.6232936497417397,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(point_2) > 0",
+          "computed": 2.2238051911366843,
+          "passed": "True"
+        },
+        {
+          "name": "P_R(point_3) > 0",
+          "computed": 0.1646281105302921,
+          "passed": "True"
+        },
+        {
+          "name": "P_G(point_3) > 0",
+          "computed": 0.0653086768904138,
+          "passed": "True"
+        },
+        {
+          "name": "P_B(point_3) > 0",
+          "computed": 0.0653086768904138,
+          "passed": "True"
+        },
+        {
+          "name": "P_R decreases with distance from x_R",
+          "pressures_at_distances": [
+            [
+              0.0,
+              399.99999999999994
+            ],
+            [
+              0.5,
+              3.9603960396039595
+            ],
+            [
+              1.0,
+              0.9975062344139649
+            ],
+            [
+              1.5,
+              0.44395116537180895
+            ],
+            [
+              2.0,
+              0.24984384759525288
+            ]
+          ],
+          "passed": true
+        },
+        {
+          "name": "P_G decreases with distance from x_G",
+          "pressures_at_distances": [
+            [
+              0.0,
+              399.99999999999994
+            ],
+            [
+              0.5,
+              3.9603960396039595
+            ],
+            [
+              1.0,
+              0.9975062344139649
+            ],
+            [
+              1.5,
+              0.44395116537180895
+            ],
+            [
+              2.0,
+              0.24984384759525288
+            ]
+          ],
+          "passed": true
+        },
+        {
+          "name": "P_B decreases with distance from x_B",
+          "pressures_at_distances": [
+            [
+              0.0,
+              399.99999999999994
+            ],
+            [
+              0.5,
+              3.9603960396039595
+            ],
+            [
+              1.0,
+              0.9975062344139649
+            ],
+            [
+              1.5,
+              0.44395116537180895
+            ],
+            [
+              2.0,
+              0.24984384759525288
+            ]
+          ],
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "Dimensional Analysis (Section 12)",
+      "status": true,
+      "checks": [
+        {
+          "name": "P_c(x) = 1/(r\u00b2 + \u03b5\u00b2) \u2192 [length]\u207b\u00b2",
+          "structure": "1/[length\u00b2] = [length]\u207b\u00b2",
+          "passed": true,
+          "note": "Dimensional consistency verified by form"
+        },
+        {
+          "name": "a_0 has dimensions [length]\u00b2",
+          "structure": "a_c = a_0 \u00d7 P_c \u2192 a_0 = a_c / P_c",
+          "passed": true,
+          "note": "Required for dimensionless amplitude a_c"
+        },
+        {
+          "name": "Energy density \u03c1 = a_0\u00b2 \u03a3 P_c\u00b2 \u2192 [length]\u207b\u2074",
+          "structure": "[length]\u2074 \u00d7 [length]\u207b\u2074 = dimensionless",
+          "passed": true,
+          "note": "Physical energy density is \u039b\u2074 \u00d7 \u03c1 where \u039b is UV scale"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_tests": 10,
+    "passed_tests": 10,
+    "failed_tests": 0,
+    "pass_rate": 1.0
+  },
+  "overall_status": "PASS"
+}

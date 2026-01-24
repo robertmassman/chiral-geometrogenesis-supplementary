@@ -1,0 +1,57 @@
+{
+  "date": "2026-01-15",
+  "theorem": "Proposition 5.1.2a",
+  "title": "Matter Density from Stella Geometry",
+  "inputs": {
+    "eta_B_CG": 6.1e-10,
+    "v_H_GeV": 246.0,
+    "v_W_GeV": 142.02816622064793,
+    "M_W_soliton_GeV": 1700.0,
+    "h_hubble": 0.674
+  },
+  "geometric_factors": {
+    "f_singlet": 0.3333333333333333,
+    "f_VEV": 0.3333333333333333,
+    "f_solid": 0.5,
+    "f_overlap": 0.004893935086721196,
+    "f_chiral": 1.7320508075688772
+  },
+  "kappa_W_geom": 0.0004709191232858394,
+  "epsilon_W_CG": 2.87260665204362e-13,
+  "results": {
+    "Omega_b_CG": 0.04913840151690457,
+    "Omega_DM_CG": 0.2952474080269881,
+    "Omega_m_CG": 0.3443858095438927,
+    "Omega_Lambda_CG": 0.6555201904561072
+  },
+  "uncertainties": {
+    "sigma_Omega_b": 0.019655360606761832,
+    "sigma_Omega_DM": 0.14762370401349406,
+    "sigma_Omega_m": 0.1489264623471784,
+    "sigma_Omega_Lambda": 0.1489264623471784
+  },
+  "comparison": {
+    "Omega_b": {
+      "CG": 0.04913840151690457,
+      "obs": 0.0493,
+      "agreement_pct": 0.3277859697675937
+    },
+    "Omega_DM": {
+      "CG": 0.2952474080269881,
+      "obs": 0.266,
+      "agreement_pct": 10.995266175559438
+    },
+    "Omega_m": {
+      "CG": 0.3443858095438927,
+      "obs": 0.315,
+      "agreement_pct": 9.328828426632601
+    },
+    "Omega_Lambda": {
+      "CG": 0.6555201904561072,
+      "obs": 0.685,
+      "agreement_pct": 4.303621831225232
+    }
+  },
+  "status": "DERIVED",
+  "conclusion": "\u03a9_\u039b derived from stella octangula geometry via baryogenesis and W-condensate dark matter"
+}

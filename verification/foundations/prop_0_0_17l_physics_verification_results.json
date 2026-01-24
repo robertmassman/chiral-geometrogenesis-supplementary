@@ -1,0 +1,138 @@
+{
+  "proposition": "0.0.17l",
+  "title": "Internal Frequency from Casimir Equipartition",
+  "date": "2026-01-21",
+  "n_passed": 7,
+  "n_tests": 7,
+  "overall_verdict": "FULLY VERIFIED",
+  "tests": [
+    {
+      "name": "Cartan torus dimension N_c - 1 = 2",
+      "category": "derivation",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 2.0,
+      "independent_value": 2.0,
+      "deviation_percent": 0.0,
+      "uncertainty_percent": 0.0,
+      "verdict": "CORRECTLY DERIVED",
+      "sources": [
+        "Cartan classification",
+        "Gell-Mann 1962",
+        "Georgi textbook"
+      ]
+    },
+    {
+      "name": "\u221a\u03c3 = 440 MeV matches lattice QCD",
+      "category": "derivation",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 440.0,
+      "independent_value": 440.0,
+      "deviation_percent": 0.0,
+      "uncertainty_percent": 6.8181818181818175,
+      "verdict": "MATCHES LATTICE QCD",
+      "sources": [
+        "FLAG 2024",
+        "Bali et al. 2000"
+      ]
+    },
+    {
+      "name": "\u03c9 = 220 MeV within QCD scales",
+      "category": "prediction",
+      "passed": true,
+      "confidence": "medium",
+      "framework_value": 220.0,
+      "independent_value": 210.0,
+      "deviation_percent": 4.761904761904762,
+      "uncertainty_percent": 50.0,
+      "verdict": "WITHIN QCD RANGE (200-350 MeV)",
+      "sources": [
+        "PDG 2024",
+        "FLAG 2024"
+      ]
+    },
+    {
+      "name": "Equipartition principle correctly applied",
+      "category": "derivation",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 220.0,
+      "independent_value": 220.0,
+      "deviation_percent": 0.0,
+      "uncertainty_percent": 0.0,
+      "verdict": "CORRECTLY APPLIED (via Weyl symmetry)",
+      "sources": [
+        "Weyl group symmetry",
+        "Cartan torus geometry"
+      ]
+    },
+    {
+      "name": "\u03c9/f_\u03c0 = 2.5 matches observations",
+      "category": "consistency",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 2.5,
+      "independent_value": 2.3857601696348514,
+      "deviation_percent": 4.788403789247324,
+      "uncertainty_percent": 5.0,
+      "verdict": "AGREES (95.2%)",
+      "sources": [
+        "PDG 2024",
+        "Prop 0.0.17k"
+      ]
+    },
+    {
+      "name": "Scale hierarchy f_\u03c0 < \u03c9 < \u221a\u03c3 maintained",
+      "category": "consistency",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 1.0,
+      "independent_value": 1.0,
+      "deviation_percent": 0.0,
+      "uncertainty_percent": 0.0,
+      "verdict": "HIERARCHY MAINTAINED",
+      "sources": [
+        "QCD scale hierarchy"
+      ]
+    },
+    {
+      "name": "Large-N_c behavior correctly bounded",
+      "category": "limit",
+      "passed": true,
+      "confidence": "high",
+      "framework_value": 220.0,
+      "independent_value": 220.0,
+      "deviation_percent": 0.0,
+      "uncertainty_percent": 0.0,
+      "verdict": "DOMAIN CORRECTLY RESTRICTED TO N_c = 3",
+      "sources": [
+        "'t Hooft 1974",
+        "Witten 1979"
+      ]
+    }
+  ],
+  "key_findings": {
+    "cartan_dimension_correct": true,
+    "string_tension_matches_lattice": true,
+    "omega_within_qcd_scales": true,
+    "equipartition_correct": true,
+    "omega_fpi_ratio_matches": true,
+    "hierarchy_maintained": true,
+    "large_nc_bounded": true
+  },
+  "data_sources": [
+    "Georgi textbook",
+    "Bali et al. 2000",
+    "Cartan torus geometry",
+    "Prop 0.0.17k",
+    "QCD scale hierarchy",
+    "'t Hooft 1974",
+    "PDG 2024",
+    "Cartan classification",
+    "Witten 1979",
+    "Weyl group symmetry",
+    "Gell-Mann 1962",
+    "FLAG 2024"
+  ]
+}

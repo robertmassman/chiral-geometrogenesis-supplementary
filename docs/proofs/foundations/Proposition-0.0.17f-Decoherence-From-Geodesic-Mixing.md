@@ -639,7 +639,8 @@ See [Proposition-0.0.17g](Proposition-0.0.17g-Objective-Collapse-From-Z3-Discret
 ---
 
 *Document created: 2026-01-04*
-*Last updated: 2026-01-08 (quantifier precision added to limiting behavior statements)*
-*Status: ✅ VERIFIED — Partially derives A7*
+*Last updated: 2026-01-20 (status update: A7 now fully derived with Props 0.0.17g+h+i)*
+*Status: ✅ VERIFIED — Derives decoherence mechanism (A7 fully derived with subsequent propositions)*
 *Dependencies: Theorem 0.0.17 ✅, Proposition 0.0.17a ✅, Proposition 0.0.17c ✅*
 *Verification: Multi-agent peer review + 13/13 computational tests passed*
+*Note: A7' (outcome selection) fully derived via Props 0.0.17g, 0.0.17h, and 0.0.17i*

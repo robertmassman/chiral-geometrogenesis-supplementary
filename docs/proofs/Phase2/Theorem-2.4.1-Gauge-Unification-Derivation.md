@@ -566,7 +566,13 @@ $$\sin^2\theta_W(M_Z) \approx 0.231$$
 
 This matches the experimental value $\sin^2\theta_W^{exp}(M_Z) = 0.23121 \pm 0.00004$.
 
-The running is computed using the Standard Model beta functions, which is standard RG analysis.
+**Detailed Derivation:** For the complete step-by-step RG running calculation including:
+- One-loop beta function coefficients ($b_1 = 41/10$, $b_2 = -19/6$, $b_3 = -7$)
+- GUT boundary condition derivation
+- Numerical results for various $\alpha_{GUT}^{-1}$ values
+- Computational verification
+
+See [Theorem 0.0.4 §3.8](../foundations/Theorem-0.0.4-GUT-Structure-From-Stella-Octangula.md#38-renormalization-group-running-gut-scale-to-m_z) and the verification script `verification/foundations/theorem_0_0_4_rg_running.py` (10/10 tests pass).
 
 ### 8.3 Coupling Unification and Threshold Corrections
 

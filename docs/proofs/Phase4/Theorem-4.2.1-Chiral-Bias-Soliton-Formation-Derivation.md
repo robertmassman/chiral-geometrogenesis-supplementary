@@ -8,7 +8,7 @@
 
 ## Verification Status
 
-**Last Verified:** 2025-12-12
+**Last Verified:** 2026-01-15
 **Verified By:** Multi-agent verification (Mathematical, Physics, Literature)
 
 ### Verification Checklist (Derivation Focus)
@@ -18,6 +18,8 @@
 - [x] High-temperature limit demonstration ✅ (2025-12-14, see `verification/Phase4/theorem_4_2_1_high_temp_limit.py`)
 - [x] No mathematical errors in verified sections
 - [x] Coefficient C in §8.5 corrected (2025-12-13)
+- [x] Battye & Sutcliffe citation updated: (2002) B 624 → (2005) B 705:384 (2026-01-15)
+- [x] Uncertainty factor updated: ~4 → ~5 (σ_ln = 1.6) (2026-01-15)
 
 ### Known Issues (All Resolved)
 1. ~~**[MATH-E4] Coefficient Error in §8.5:** Line 535 has C = 0.3, should be C = 0.03~~ ✅ FIXED (2025-12-13)
@@ -456,7 +458,7 @@ The above calculation assumed $\mathcal{G} \sim 1$. But the geometric factor is 
 ### 7.2 The Geometric Factor — Rigorous Derivation
 
 **Status:** ✅ VERIFIED (2025-12-14)
-**Cross-refs:** Battye & Sutcliffe 2002 (Skyrmion profiles)
+**Cross-refs:** Battye & Sutcliffe 2005 (Skyrmion profiles)
 
 The coupling between the soliton topological current and the chiral phase gradient is:
 
@@ -816,7 +818,7 @@ $$\eta \approx 8.1 \times 10^{-11} \times 7.04 \approx 5.7 \times 10^{-10}$$
 
 $$\boxed{\eta \approx 6 \times 10^{-10}}$$
 
-(rounded to one significant figure given the ~factor of 4 uncertainty in the calculation)
+(rounded to one significant figure given the ~factor of 5 uncertainty in the calculation)
 
 **This matches the observed value** $\eta_{obs} = (6.10 \pm 0.04) \times 10^{-10}$ from Planck CMB measurements.
 

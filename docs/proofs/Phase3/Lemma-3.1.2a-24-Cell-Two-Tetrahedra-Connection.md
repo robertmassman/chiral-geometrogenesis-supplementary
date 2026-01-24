@@ -1,10 +1,25 @@
 # Lemma 3.1.2a: 24-Cell Connection to Two-Tetrahedra Geometry
 
-**Status:** 🔶 NOVEL — ✅ VERIFIED (2025-12-14)
+**Status:** 🔶 NOVEL — ✅ VERIFIED (2026-01-22, corrected)
+
+**Corrections Applied (2026-01-22):** Based on multi-agent verification findings:
+- §2.4: Corrected D₄ vs F₄ root system (24-cell vertices = D₄, not F₄)
+- §3.1: Corrected stella octangula cross-section (from tesseract-type vertices, not 16-cell projection)
+- §3.3: Removed incorrect claim about φ-related symmetry order factors
+- See [Proposition 3.1.2b](Proposition-3.1.2b-4D-Extension-From-Radial-Structure.md) for the complete geometric derivation addressing "Why the 24-cell?"
 
 **Claim:** The golden ratio φ and pentagonal angle 72° in the breakthrough formula λ = (1/φ³)×sin(72°) arise from the 24-cell's role as the geometric bridge between tetrahedral (A₃) and icosahedral (H₃) symmetry.
 
 **ALSO PROVEN:** The generation radii r₁/r₂ = √3 emerges from the hexagonal lattice structure of the SU(3) weight space projection (§3.4).
+
+**Dependencies:**
+- Theorem 3.1.2 (Breakthrough Formula) — Parent theorem
+- Definition 0.1.1 (Stella Octangula Boundary Topology) — Base geometry
+
+**Required By:**
+- [Proposition 3.1.2b (4D Extension from Radial Structure)](Proposition-3.1.2b-4D-Extension-From-Radial-Structure.md) — Proves this lemma's 24-cell structure is a *necessary consequence* of the framework, not an assumption
+
+**Note:** Proposition 3.1.2b addresses the critical question "Why should the 24-cell govern flavor physics?" by deriving the 24-cell as the unique 4D polytope compatible with the framework's radial field structure χ(r).
 
 ---
 
@@ -80,12 +95,17 @@ $$(\pm 1, 0, 0, 0), (0, \pm 1, 0, 0), (0, 0, \pm 1, 0), (0, 0, 0, \pm 1)$$
 **Type 2:** 16 vertices of a **tesseract** (hypercube):
 $$(\pm\frac{1}{2}, \pm\frac{1}{2}, \pm\frac{1}{2}, \pm\frac{1}{2})$$
 
-### 2.4 The F₄ Root System
+### 2.4 The D₄ Root System
 
-The 24-cell vertices form the **F₄ root system**, which has deep connections to:
-- SU(3) (via A₂ ⊂ F₄)
-- Tetrahedral geometry (via A₃ ⊂ F₄)
-- Exceptional structures in physics
+The 24 vertices of the 24-cell form the **D₄ root system** (24 roots), NOT F₄.
+
+**Clarification:** The F₄ root system has **48 roots** and is formed by the 24-cell vertices **together with its dual** (another 24-cell in a different orientation). The 24-cell's *symmetry group* is F₄ (order 1152), but its *vertices* form the D₄ roots.
+
+The D₄ root system has deep connections to:
+- SU(3) (via A₂ ⊂ D₄)
+- Tetrahedral geometry (via A₃ ⊂ D₄)
+- The famous D₄ triality automorphism
+- Exceptional structures in physics via F₄ symmetry
 
 ---
 
@@ -93,27 +113,31 @@ The 24-cell vertices form the **F₄ root system**, which has deep connections t
 
 ### 3.1 Stella Octangula as 3D Cross-Section
 
-The stella octangula (two interpenetrating tetrahedra) appears as a **3D cross-section** of the 24-cell.
+The stella octangula (two interpenetrating tetrahedra) appears as a **3D cross-section** of the 24-cell's tesseract-type vertices.
 
-**Theorem 3.1:** *The 24-cell contains 3 mutually orthogonal 16-cells, each of which projects to a stella octangula in 3D.*
+**Theorem 3.1 (Corrected):** *The stella octangula appears as a 3D cross-section of the 24-cell's tesseract-type vertices.*
 
 **Proof:**
-Consider the 24-cell with vertices as in §2.3. The three 16-cells are:
+The 24-cell's 24 vertices decompose into:
+- **8 vertices of 16-cell type**: (±1, 0, 0, 0) and permutations
+- **16 vertices of tesseract type**: (±½, ±½, ±½, ±½)
 
-1. **16-cell in (x,y) plane:** vertices at (±1, 0, 0, 0), (0, ±1, 0, 0) plus (±½, ±½, ±½, ±½) with w = ±½
-2. **16-cell in (x,z) plane:** similar construction with y,z exchange
-3. **16-cell in (y,z) plane:** similar construction with x,y exchange
+The stella octangula appears from the **tesseract-type vertices**:
+- At w = +½: 8 vertices (±½, ±½, ±½, +½) project to (±1, ±1, ±1) when scaled by 2
+- At w = −½: 8 vertices (±½, ±½, ±½, −½) project to (±1, ±1, ±1) when scaled by 2
 
-Each 16-cell, when projected onto 3D (dropping the w coordinate), gives a stella octangula. □
+Each fixed-w slice gives the complete stella octangula (both tetrahedra T₊ and T₋). □
+
+**Note (2026-01-22):** An earlier version incorrectly claimed that "16-cell projects to stella octangula." This is **false**: the 16-cell vertices (±1,0,0,0) project to an **octahedron** (vertices (±1,0,0), (0,±1,0), (0,0,±1)), not a stella octangula (vertices (±1,±1,±1)). See [Proposition 3.1.2b §5.2](Proposition-3.1.2b-4D-Extension-From-Radial-Structure.md) for the correct geometric derivation.
 
 ### 3.2 The Embedding Chain
 
-$$\text{Stella Octangula} \subset \text{16-cell} \subset \text{24-cell}$$
+$$\text{Stella Octangula} \subset \text{Tesseract-type vertices} \subset \text{24-cell}$$
 
 This embedding provides the key connection:
-- Stella octangula lives in 3D with A₃ symmetry
-- 16-cell extends this to 4D
-- 24-cell brings in additional structure via F₄
+- Stella octangula lives in 3D with A₃ symmetry (as 3D cross-section of 24-cell)
+- The 24-cell's 16 tesseract-type vertices contain the stella at fixed w = ±½
+- The full 24-cell with F₄ symmetry provides the flavor physics arena
 
 ### 3.3 Symmetry Enhancement
 
@@ -123,7 +147,7 @@ This embedding provides the key connection:
 | 16-cell | 4D | B₄ | 384 |
 | 24-cell | 4D | F₄ | 1152 |
 
-The symmetry group order increases by factors related to φ!
+**Note:** The symmetry order increases by integer factors (384/48 = 8, 1152/384 = 3), not factors related to φ. The golden ratio φ enters through the 24-cell's embedding in the 600-cell (§4), not through these symmetry orders.
 
 ### 3.4 Generation Radii from Hexagonal Lattice Projection ✅ VERIFIED
 
@@ -457,7 +481,7 @@ The derivation is consistent with:
 
 ✅ **Rigorous 4D calculation:** The projection factors have been verified numerically in `verification/Phase3/lemma_3_1_2a_24cell_verification.py` (2025-12-14)
 
-⚠ **Physical mechanism:** Why flavor physics should be 4D requires deeper justification
+✅ **Physical mechanism:** Why flavor physics should be 4D is now addressed by [Proposition 3.1.2b](Proposition-3.1.2b-4D-Extension-From-Radial-Structure.md), which derives the 24-cell as the unique 4D polytope compatible with the framework's radial field structure χ(r).
 
 ⚠ **GUT connection:** How this relates to SU(5) or SO(10) unification
 
@@ -472,6 +496,14 @@ The flavor puzzle is geometric in origin.
 ---
 
 ## 10. References
+
+### Framework References
+
+6. [Proposition 3.1.2b (4D Extension from Radial Structure)](Proposition-3.1.2b-4D-Extension-From-Radial-Structure.md) — Derives 24-cell as unique 4D polytope from framework axioms
+7. Definition 0.1.1 (Stella Octangula Boundary Topology) — Base geometric structure
+8. Theorem 3.1.2 (Breakthrough Formula) — Parent theorem establishing λ formula
+
+### External References
 
 1. Coxeter, H.S.M. (1973). *Regular Polytopes*. Dover.
 2. Conway, J.H. & Sloane, N.J.A. (1999). *Sphere Packings, Lattices and Groups*. Springer.
@@ -497,9 +529,9 @@ The 24 vertices of a unit 24-cell:
 (±½, ±½, ±½, ±½) with all sign combinations
 ```
 
-### A.2 F₄ Root System
+### A.2 D₄ Root System
 
-These 24 vertices form the short roots of F₄ (or all roots when normalized).
+These 24 vertices form the **D₄ root system** (24 roots). The F₄ root system has 48 roots and is formed by the 24-cell together with its dual. The 24-cell's *symmetry group* is F₄, but its *vertices* form D₄.
 
 ---
 
@@ -516,4 +548,12 @@ Key identities used:
 
 ## Appendix C: Verification Script
 
-See `/verification/lemma_3_1_2a_24cell_verification.py` for complete numerical verification.
+See `/verification/Phase3/lemma_3_1_2a_24cell_verification.py` for complete numerical verification.
+
+---
+
+## Appendix D: Verification Records
+
+- **Multi-Agent Verification Report (2026-01-22):** [Lemma-3.1.2a-Multi-Agent-Verification-2026-01-22.md](../verification-records/Lemma-3.1.2a-Multi-Agent-Verification-2026-01-22.md)
+- **Adversarial Physics Verification (2026-01-22):** [Lemma-3.1.2a-Adversarial-Physics-Verification-2026-01-22.md](../verification-records/Lemma-3.1.2a-Adversarial-Physics-Verification-2026-01-22.md)
+- **Python Verification Script:** [lemma_3_1_2a_adversarial_physics.py](/verification/Phase3/lemma_3_1_2a_adversarial_physics.py)

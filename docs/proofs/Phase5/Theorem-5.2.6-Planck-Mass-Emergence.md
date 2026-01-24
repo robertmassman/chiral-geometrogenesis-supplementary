@@ -69,6 +69,7 @@
 | Lattice QCD string tension | ✅ ESTABLISHED | Direct | √σ = 440 ± 30 MeV |
 | Gauss-Bonnet theorem | ✅ ESTABLISHED | Direct | ∫R dA = 4πχ |
 | Conformal anomaly | ✅ ESTABLISHED | Direct | ⟨T^μ_μ⟩ = -(c/24π)R |
+| Theorem 7.3.1 (UV Completeness) | ✅ VERIFIED | Downstream | Uses derived M_P for UV completeness |
 
 ---
 
@@ -219,6 +220,7 @@ This theorem represents a major step toward deriving gravity from QCD:
 - **Theorem 5.2.4:** Derives G = ℏc/(8πf_χ²) from Goldstone exchange
 - **Theorem 5.2.5:** Derives Bekenstein-Hawking entropy using same f_χ
 - **This Theorem:** Determines f_χ from QCD, closing the loop
+- **[Theorem 7.3.1](../Phase7/Theorem-7.3.1-UV-Completeness-Emergent-Gravity.md):** Uses this derived M_P for conditional UV completeness — the Planck scale emergence is central to avoiding arbitrary UV cutoffs
 
 **Self-consistency:** All three theorems use the same chiral field decay constant f_χ, predicted from QCD dynamics.
 
@@ -407,11 +409,12 @@ See: [Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md](../founda
 - [Proposition-0.0.17s](../foundations/Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md) — Rigorous heat kernel derivation of scheme conversion factor + alternative α_s derivation via gauge unification (2026-01-06)
 - [Proposition-0.0.17q](../foundations/Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md) — Inverse derivation: R_stella from M_P (Path A)
 - [Proposition-0.0.17j](../foundations/Proposition-0.0.17j-String-Tension-From-Casimir-Energy.md) — String tension and equipartition derivation of α_s
+- **[Proposition-0.0.17y](../foundations/Proposition-0.0.17y-Bootstrap-Fixed-Point-Uniqueness.md)** — **BOOTSTRAP SYNTHESIS:** This theorem's formula is part of the 7-equation bootstrap system proven to have unique projective fixed point (91% agreement, DAG structure guarantees uniqueness, 0.2% exponent accuracy)
 
 ---
 
 *Document created: Phase 5 — Emergent Spacetime and Gravity*
-*Status: 🔶 PREDICTED — Phenomenologically Successful (91.5% M_P Agreement, 0.04% UV Coupling Agreement)*
+*Status: 🔶 PREDICTED — Phenomenologically Successful (91.5% M_P Agreement, 0.038% UV Coupling Agreement)*
 *Method: Multi-framework convergence on UV coupling + geometric scheme derivation from Theorem 0.0.6 + Prop 0.0.17s*
 *Dependencies satisfied: All prerequisites established*
 *Last updated: 2026-01-06 — Rigorous heat kernel derivation of scheme factor via Prop 0.0.17s*

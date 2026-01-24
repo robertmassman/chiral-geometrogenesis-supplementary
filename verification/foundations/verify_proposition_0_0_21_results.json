@@ -1,0 +1,226 @@
+{
+  "test1_core_formula": {
+    "gauge_term": 0.25,
+    "gauge_term_expected": 0.25,
+    "flow_term": 6.079271018540267,
+    "flow_term_expected": 6.079,
+    "total_exponent": 6.329271018540267,
+    "total_exponent_expected": 6.329,
+    "ratio_predicted": 560.7476701670669,
+    "ratio_expected": 560.5,
+    "ratio_observed": 559.5909090909091,
+    "v_H_predicted_GeV": 246.72897487350943,
+    "v_H_observed_GeV": 246.22,
+    "error_percent": 0.20671548757591174
+  },
+  "test2_correction_factor": {
+    "ratio_uncorrected": 436.71072463157753,
+    "ratio_observed": 559.5909090909091,
+    "observed_correction": 1.28137661277496,
+    "exp_1_4": 1.2840254166877414,
+    "sqrt_phi": 1.272019649514069,
+    "3_power_1_3": 1.4422495703074083,
+    "3_power_1_4": 1.3160740129524924,
+    "exp_1_4_error_percent": 0.20671548757591002,
+    "sqrt_phi_error_percent": 0.7302274107085077
+  },
+  "test3_geometric_equivalence": {
+    "lhs_unified": 6.329271018540267,
+    "ln_triality_sq": 2.1972245773362196,
+    "ln_polytope": 1.2628643221541278,
+    "ln_phi_6": 2.887270950357621,
+    "topological_16_5p63": 2.841918294849023,
+    "rhs_018": 6.347359849847969,
+    "rhs_019": 6.302007194339371,
+    "agreement_018_percent": 0.2857964409284106,
+    "agreement_019_percent": 0.43075773056696137
+  },
+  "test4_two_term_structure": {
+    "gauge_term": 0.25,
+    "gauge_contribution_percent": 3.9499019597624687,
+    "gauge_exp_factor": 1.2840254166877414,
+    "flow_term": 6.079271018540267,
+    "flow_contribution_percent": 96.05009804023753,
+    "flow_exp_factor": 436.71072463157753,
+    "total_exp_factor": 560.7476701670669,
+    "product_check": 560.7476701670669
+  },
+  "test5_qcd_application": {
+    "dim_adj_QCD": 8,
+    "delta_a_QCD": 1.6,
+    "gauge_term_QCD": 0.125,
+    "flow_term_QCD": 0.031662869888230555,
+    "total_exponent_QCD": 0.15666286988823055,
+    "ratio_predicted": 1.1696012396302857,
+    "ratio_observed": 3.60655737704918e-20,
+    "ratio_observed_log10": -19.44290715418856,
+    "formula_works": false
+  },
+  "test6_sensitivity": {
+    "dim_sensitivity": {
+      "3": 609.4789134641792,
+      "4": 560.7476701670669,
+      "5": 533.3996835831354,
+      "6": 515.912761953616,
+      "8": 494.85808205396484
+    },
+    "delta_a_sensitivity": {
+      "0.9": 1101.8496825130817,
+      "0.95": 772.1915577880904,
+      "1.0": 560.7476701670669,
+      "1.05": 419.8014756133498,
+      "1.1": 322.66351043624945
+    }
+  },
+  "test7_monte_carlo": {
+    "v_H_mean_GeV": 246.39421270215115,
+    "v_H_std_GeV": 16.853809240850882,
+    "v_H_68_CI": [
+      229.7436739068342,
+      263.1543596427251
+    ],
+    "v_H_95_CI": [
+      212.9952461683323,
+      279.42971451874564
+    ],
+    "n_samples": 10000,
+    "within_68_CI": true,
+    "within_95_CI": true
+  },
+  "test8_comparison": {
+    "prop_018": {
+      "ratio": 570.983235795706,
+      "v_H": 251.23262375011066,
+      "error_percent": 2.0358312688289506
+    },
+    "prop_019": {
+      "ratio": 554.0371579628762,
+      "v_H": 243.77634950366553,
+      "error_percent": -0.9924662888207602
+    },
+    "prop_020": {
+      "ratio": 436.71072463157753,
+      "v_H": 192.15271883789413,
+      "error_percent": -21.958931509262406
+    },
+    "prop_021": {
+      "ratio": 560.7476701670669,
+      "v_H": 246.72897487350943,
+      "error_percent": 0.20671548757591174
+    },
+    "observed": {
+      "ratio": 559.5909090909091,
+      "v_H": 246.22
+    }
+  },
+  "test9_derived_predictions": {
+    "v_H_predicted_GeV": 246.72897487350943,
+    "M_W_predicted_GeV": 80.4213093600204,
+    "M_W_observed_GeV": 80.369,
+    "M_W_error_percent": 0.06508648859684965,
+    "M_Z_predicted_GeV": 91.23234187183256,
+    "M_Z_observed_GeV": 91.1876,
+    "M_Z_error_percent": 0.04906574121103802
+  },
+  "test10_kappa_lambda": {
+    "lambda_3_sm_normalized": 0.3881504322943938,
+    "lambda_3_sm_physical_GeV": 191.14079887905126,
+    "ln_v_h_over_sqrt_sigma": 6.327205997289299,
+    "correction_factor_1_over_ln": 0.15804764384602302,
+    "kappa_lambda_central": 1.0,
+    "kappa_lambda_uncertainty": 0.2,
+    "kappa_lambda_min": 0.8,
+    "kappa_lambda_max": 1.2,
+    "lambda_3_predicted_central": 0.3881504322943938,
+    "lambda_3_predicted_min": 0.310520345835515,
+    "lambda_3_predicted_max": 0.46578051875327253,
+    "current_exp_bound_min": -0.4,
+    "current_exp_bound_max": 6.3,
+    "within_current_bounds": true,
+    "narrowing_factor": 16.75,
+    "hl_lhc_precision_percent": 50.0,
+    "fcc_hh_precision_percent": 10.0,
+    "falsification_criterion": "\u03ba_\u03bb outside [0.8, 1.2] at >3\u03c3"
+  },
+  "test11_falsification": {
+    "main_formula_agreement": {
+      "predicted_ratio": 560.7476701670669,
+      "observed_ratio": 559.5909090909091,
+      "agreement_percent": 100.20671548757592
+    },
+    "criteria": {
+      "sqrt_sigma_test": {
+        "criterion": "\u221a\u03c3 must yield v_H within 5% of observed",
+        "required_range_MeV": "[422, 457]",
+        "current_value_MeV": "440 \u00b1 30",
+        "status": "CONSISTENT"
+      },
+      "kappa_lambda_test": {
+        "criterion": "\u03ba_\u03bb \u2208 [0.8, 1.2] at >3\u03c3",
+        "prediction": "1.0 \u00b1 0.2",
+        "current_bound": "[-0.4, 6.3] at 95% CL",
+        "status": "AWAITING TEST (HL-LHC ~2040)"
+      },
+      "ewpt_test": {
+        "criterion": "Electroweak phase transition NOT strongly first-order",
+        "rationale": "\u0394a = 1/120 << 1 implies gentle transition",
+        "current_evidence": "SM predicts crossover (consistent)",
+        "status": "CONSISTENT (LISA will test ~2035)"
+      },
+      "w_mass_test": {
+        "criterion": "M_W anomaly \u2264 2 GeV (from v_H modifications)",
+        "current_anomaly": "CDF: ~70 MeV (if real)",
+        "status": "CONSISTENT"
+      },
+      "bsm_gauge_test": {
+        "criterion": "If BSM gauge structure discovered, v_H must scale as 1/dim(adj)",
+        "status": "NOT YET TESTABLE"
+      }
+    },
+    "strongest_near_term_test": "\u03ba_\u03bb at HL-LHC (2040)",
+    "theoretical_status": "CONJECTURE \u2014 All requirements met, pending \u03ba_\u03bb test"
+  },
+  "test12_w_mass": {
+    "ln_v_h_over_sqrt_sigma": 6.327205997289299,
+    "delta_v_h_bound_percent": 2.497905772527933,
+    "delta_g2_bound_percent": 0.5,
+    "delta_m_w_bound_GeV": 2.409386890322975,
+    "cdf_m_w_GeV": 80.4335,
+    "cdf_anomaly_GeV": 0.0764999999999958,
+    "cdf_within_bound": true,
+    "atlas_m_w_GeV": 80.366,
+    "atlas_anomaly_GeV": 0.009000000000000341,
+    "atlas_within_bound": true,
+    "cdf_implied_delta_kappa_lambda": 0.0016050964924285568,
+    "m_w_observed_GeV": 80.369,
+    "m_w_sm_prediction_GeV": 80.357
+  },
+  "test13_ewpt": {
+    "delta_a_EW": 0.008333333333333333,
+    "xi_bound": 2.4656177762459994,
+    "xi_sm": 0.5,
+    "xi_first_order_threshold": 1.0,
+    "sm_within_bound": true,
+    "alpha_transition_bound": 0.32898681336964525,
+    "h2_omega_gw_max": 2.337818184816058e-16,
+    "lisa_sensitivity": 1e-13,
+    "detectable_by_lisa": false,
+    "prediction": "Crossover or weak first-order (\u03be < 2.5)"
+  },
+  "test14_oblique": {
+    "T_bound": 0.1,
+    "T_exp": 0.05,
+    "T_exp_err": 0.06,
+    "T_consistent": true,
+    "S_bound": 0.2,
+    "S_exp": -0.01,
+    "S_exp_err": 0.07,
+    "S_consistent": true,
+    "U_exp": 0.02,
+    "U_exp_err": 0.09,
+    "delta_T_contribution": 0.002986786493202213,
+    "delta_kappa_V_from_ST": -2.7590729185638793e-05,
+    "kappa_V_exp": 1.0,
+    "kappa_V_exp_err": 0.05
+  }
+}

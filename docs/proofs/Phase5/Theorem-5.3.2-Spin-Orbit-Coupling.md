@@ -57,6 +57,9 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 - Theorem 5.3.3 (if it exists): May use spin-orbit coupling for gravitational phenomenology
 - Phase 6 predictions: Uses torsion precession for experimental tests
 
+### Related Theorems
+- ✅ [Theorem 5.2.7](./Theorem-5.2.7-Diffeomorphism-Emergence.md) (Diffeomorphism Emergence) — Establishes the full Diff(M) gauge group that governs spin-orbit dynamics; torsion effects here extend the diffeomorphism structure through Einstein-Cartan formulation
+
 ## Critical Claims (for verification focus)
 
 1. **Dimensional Correctness:** $\vec{\Omega}_{torsion} = -\frac{\pi G}{c^2}\vec{J}_5$ has units [rad/s] ✓

@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-01-23T11:02:17.011849",
+  "verification": "wilson_line_threshold_c6",
+  "basic_values": {
+    "eta_i": 0.7682254223260566,
+    "eta_i_4": 0.34830098242141916
+  },
+  "thresholds": {
+    "delta_dkl": 2.1093765619913443,
+    "delta_s4": 1.5890269151739729,
+    "delta_wilson_m1": -0.09954219273489193,
+    "delta_wilson_m2": -0.09398148148148147,
+    "delta_wilson_m3": -0.09398148148148147,
+    "delta_total": 1.489484722439081,
+    "target": 1.5,
+    "discrepancy_pct": 0.7010185040612645
+  },
+  "gap_analysis": {
+    "before_wilson_gap_pct": 5.935127678264858,
+    "after_wilson_gap_pct": -0.7010185040612645,
+    "gap_closed_pct": 111.81134664766314
+  },
+  "phenomenology": {
+    "gauge_group": "SU(3) x SU(2)^2 x U(1)^2",
+    "dim_gauge": 16,
+    "rank_gauge": 6,
+    "broken_generators": 62,
+    "sm_contained": true,
+    "matter_decomposition": {
+      "(3,2,1)": 6,
+      "(3,1,2)": 6,
+      "(1,2,2)": 4,
+      "(1,1,1)": 11
+    },
+    "matter_dim_check": true
+  },
+  "status": "VERIFIED"
+}

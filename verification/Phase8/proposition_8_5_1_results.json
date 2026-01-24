@@ -1,0 +1,111 @@
+{
+  "tests": [
+    {
+      "name": "String Tension \u221a\u03c3",
+      "cg_prediction": "439.9 MeV",
+      "lattice_value": "440 \u00b1 10 MeV",
+      "source": "FLAG 2024",
+      "deviation_sigma": 0.0059758735255400095,
+      "agreement_percent": 99.98641846926014,
+      "passed": 1
+    },
+    {
+      "name": "Deconfinement Temperature T_c",
+      "cg_prediction": "154.0 MeV",
+      "lattice_value": "156.5 \u00b1 1.5 MeV",
+      "source": "Budapest-Wuppertal 2014",
+      "deviation_sigma": 1.639292708589797,
+      "agreement_percent": 98.4287929310641,
+      "passed": 1
+    },
+    {
+      "name": "Critical Ratio T_c/\u221a\u03c3",
+      "cg_prediction": "0.350",
+      "lattice_value": "0.356 \u00b1 0.009",
+      "source": "Derived from FLAG 2024",
+      "deviation_sigma": 0.631581395919794,
+      "agreement_percent": 98.44216288367713,
+      "passed": "True"
+    },
+    {
+      "name": "Flux Tube Width R_\u22a5",
+      "cg_prediction": "0.448 fm",
+      "lattice_value": "0.35 \u00b1 0.05 fm",
+      "source": "Bali et al. 1995",
+      "deviation_sigma": 1.9694,
+      "agreement_percent": 71.86571428571429,
+      "passed": 1
+    },
+    {
+      "name": "Chiral Coupling g_\u03c7(\u039b_QCD)",
+      "cg_prediction": "1.29",
+      "lattice_value": "1.26 \u00b1 1.0",
+      "source": "FLAG 2024 (indirect)",
+      "deviation_sigma": 0.028888888888888742,
+      "agreement_percent": 97.7072310405644,
+      "passed": 1
+    },
+    {
+      "name": "QGP Coherence Length \u03be_eff (NOVEL)",
+      "cg_prediction": "0.448 fm",
+      "lattice_value": "No data - NOVEL PREDICTION",
+      "source": "To be tested at ALICE/STAR",
+      "deviation_sigma": null,
+      "agreement_percent": null,
+      "passed": null,
+      "note": "Energy-independent: \u03be(\u221as) = constant"
+    },
+    {
+      "name": "Energy Independence of \u03be (NOVEL)",
+      "cg_prediction": "\u03be(200 GeV) = \u03be(2760 GeV) = \u03be(5020 GeV) = 0.448 fm",
+      "lattice_value": "No data - NOVEL PREDICTION",
+      "source": "To be tested: RHIC vs LHC comparison",
+      "deviation_sigma": null,
+      "agreement_percent": null,
+      "passed": null,
+      "note": "Standard hydro predicts \u03be \u221d \u221as^\u03b1 with \u03b1 > 0"
+    },
+    {
+      "name": "HBT Two-Component Structure (NOVEL)",
+      "cg_prediction": "Additional component at \u03be = 0.448 fm, q_peak \u2248 440 MeV, signal ~7%",
+      "lattice_value": "No data - NOVEL PREDICTION",
+      "source": "To be tested: ALICE/STAR two-component fit",
+      "deviation_sigma": null,
+      "agreement_percent": null,
+      "passed": null,
+      "note": "Standard HBT: single Gaussian; CG: two-component"
+    }
+  ],
+  "casimir_scaling": {
+    "name": "Casimir Scaling",
+    "results": [
+      {
+        "representation": "3 (fundamental)",
+        "cg_prediction": 1.0,
+        "lattice": "1.0 \u00b1 0.0",
+        "agreement": 1
+      },
+      {
+        "representation": "6 (sextet)",
+        "cg_prediction": 2.5000000000000004,
+        "lattice": "2.5 \u00b1 0.2",
+        "agreement": 1
+      },
+      {
+        "representation": "8 (adjoint)",
+        "cg_prediction": 2.25,
+        "lattice": "2.25 \u00b1 0.15",
+        "agreement": 1
+      }
+    ],
+    "passed": 1
+  },
+  "summary": {
+    "total_tests": 8,
+    "established_tests": 5,
+    "novel_predictions": 3,
+    "passed": 5,
+    "failed": 0,
+    "pass_rate": "100.0%"
+  }
+}

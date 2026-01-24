@@ -1,11 +1,16 @@
 # Theorem 5.1.2: Vacuum Energy Density
 
-## Status: ✅ COMPLETE — FULL SOLUTION TO COSMOLOGICAL CONSTANT PROBLEM
+## Status: ✅ COMPLETE — DARK ENERGY FRACTION Ω_Λ DERIVED FROM FIRST PRINCIPLES
 
-**December 2025 Update:**
-- The formula ρ = M_P² H₀² is now **derived from first principles** via holographic arguments (§13.11 in Applications file)
+**January 2026 Update:**
+- **Ω_Λ = 0.651 ± 0.15 is now DERIVED** from stella geometry (Proposition 5.1.2a)
+- The formula ρ = M_P² H₀² is **derived from first principles** via holographic arguments (§13.11 in Applications file)
 - The 122-order suppression factor (H₀/M_P)² is explained as the natural holographic ratio, not fine-tuning
 - The O(1) coefficient (3Ω_Λ/8π) achieves **0.9% agreement** with observation
+- **Ω_m = 0.349 derived** from baryogenesis (Theorem 4.2.1) + W-condensate DM (Prediction 8.3.1)
+- **Ω_Λ = 1 - Ω_m = 0.651 derived** from flatness (Proposition 0.0.17u)
+
+**December 2025 Update:**
 - Multi-scale phase cancellation proven for QCD; EW/GUT partial (not required for main result)
 
 **Role in Framework:** This theorem establishes how the vacuum contributes to the stress-energy tensor in Chiral Geometrogenesis, and proposes a mechanism for why the observed cosmological constant is enormously smaller than naive QFT predictions.
@@ -417,18 +422,20 @@ we need $T_{\mu\nu}^{vac}$ to be small near the observation point. Otherwise the
 🔶 **Derived (December 2025):**
 - O(1) coefficient: (3Ω_Λ/8π) ≈ 0.082 gives **0.9% agreement** with observation
 
-✅ **Resolved (December 2025):**
-- Ω_Λ = 0.685 is NOT a free parameter — it follows from:
-  - Flatness: Ω_total = 1 (inflation prediction, confirmed)
-  - Matter: Ω_m = 0.315 (BBN + DM freeze-out)
-  - Radiation: Ω_r ≈ 10⁻⁴ (CMB temperature)
-  - Therefore: Ω_Λ = 1 - Ω_m - Ω_r = 0.685 (constrained, not fitted)
+✅ **Resolved (January 2026):**
+- **Ω_Λ = 0.651 ± 0.15 is now DERIVED from first principles** — See Proposition 5.1.2a:
+- Ω_b = 0.049 derived from η_B via Theorem 4.2.1 (CG chirality → baryogenesis)
+- Ω_DM = 0.30 derived from ε_W via Prediction 8.3.1 (CG geometry → W-condensate)
+- ε_W/η_B = 4.71×10⁻⁴ derived from stella octangula geometry (Prediction 8.3.1 §6.4)
+- Ω_m = Ω_b + Ω_DM = 0.349 (fully geometric derivation)
+- Ω_Λ = 1 - Ω_m - Ω_r = 0.651 (from flatness, Proposition 0.0.17u)
+- **Agreement with observation: 5.0%**
 
 🔮 **Conjectural/Future Work:**
 - Planck-scale phase mechanism (no derivation)
 - EW/GUT phase cancellation with equal amplitudes (interesting but not required)
 
-### 18.5 Open Questions — Status (December 2025)
+### 18.5 Open Questions — Status (January 2026)
 
 **All major questions resolved. See `verification/shared/Theorem-5.1.2-Open-Items-Resolution.md` for details.**
 
@@ -436,7 +443,11 @@ we need $T_{\mu\nu}^{vac}$ to be small near the observation point. Otherwise the
 
 2. ~~**Can the O(1) coefficient be derived to improve factor ~10 agreement?**~~ ✅ **ANSWERED** — Coefficient (3Ω_Λ/8π) gives **0.9% agreement**
 
-3. ~~**Can Ω_Λ = 0.685 be derived from first principles?**~~ ✅ **CONSTRAINED** — Follows from Ω_total = 1 (flatness) and Ω_m = 0.315 (BBN + DM). Not a free parameter.
+3. ~~**Can Ω_Λ = 0.685 be derived from first principles?**~~ ✅ **DERIVED (January 2026)** — See **Proposition 5.1.2a**:
+   - Ω_b derived from CG chirality → baryogenesis (Theorem 4.2.1)
+   - Ω_DM derived from CG geometry → W-condensate (Prediction 8.3.1)
+   - ε_W/η_B = 4.71×10⁻⁴ derived from stella octangula (Prediction 8.3.1 §6.4)
+   - Ω_Λ = 1 - Ω_m - Ω_r = 0.651 ± 0.15 (5.0% agreement)
 
 4. ~~**EW phase cancellation with equal amplitudes?**~~ 🔮 **NOT REQUIRED** — Phase structure exists (0°, 180°) but SM vacuum breaks amplitude equality. Holographic derivation bypasses this.
 
@@ -484,6 +495,7 @@ A visualization for this theorem could include:
 ---
 
 *Document created: Phase 5 — Emergent Spacetime and Gravity*
-*Status: ✅ COMPLETE — Full solution: ρ = (3Ω_Λ/8π)M_P²H₀² with 0.9% agreement*
+*Status: ✅ COMPLETE — Ω_Λ = 0.651 ± 0.15 DERIVED from stella geometry (5.0% agreement)*
 *Dependencies satisfied: All prerequisites complete*
-*Last updated: December 2025 — Holographic derivation complete, O(1) coefficient resolved*
+*Last updated: January 2026 — Ω_Λ derivation complete via Proposition 5.1.2a*
+*Previous: December 2025 — Holographic derivation complete, O(1) coefficient resolved*

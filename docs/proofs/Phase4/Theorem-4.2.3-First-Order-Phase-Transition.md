@@ -65,7 +65,7 @@ $$c_T = \frac{3(0.65)^2 + (0.35)^2}{16} + \frac{0.129}{2} + \frac{(0.99)^2}{4} =
 **Detailed derivation of E:**
 $$E = \frac{2m_W^3 + m_Z^3}{4\pi v^3}$$
 
-With m_W = 80.37 GeV, m_Z = 91.19 GeV, v = 246.22 GeV (PDG 2024):
+With m_W = 80.37 GeV, m_Z = 91.19 GeV, v = 246.22 GeV (PDG 2024; CG derivation: [Prop 0.0.18](../foundations/Proposition-0.0.18-Electroweak-Scale-From-Chi-Field.md)/[0.0.19](../foundations/Proposition-0.0.19-Electroweak-Topological-Index.md) give 244-251 GeV):
 $$E = \frac{2(80.37)^3 + (91.19)^3}{4\pi (246.22)^3} = \frac{1.04 \times 10^6 + 7.58 \times 10^5}{1.87 \times 10^8} = 0.0096$$
 
 The cubic term -ETφ³ creates a barrier, but it is too weak in the SM:

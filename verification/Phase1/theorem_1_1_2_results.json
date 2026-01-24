@@ -1,0 +1,648 @@
+{
+  "theorem": "1.1.2",
+  "title": "Geometric Opposition as Charge Conjugation",
+  "all_passed": true,
+  "passed_count": 13,
+  "total_count": 13,
+  "results": [
+    {
+      "test": "charge_conjugation_negation",
+      "passed": true,
+      "results": {
+        "R": {
+          "w_quark": [
+            0.5,
+            0.3333333333333333
+          ],
+          "w_antiquark": [
+            -0.5,
+            -0.3333333333333333
+          ],
+          "C(w_quark)": [
+            -0.5,
+            -0.3333333333333333
+          ],
+          "error": 0.0,
+          "matches": true
+        },
+        "G": {
+          "w_quark": [
+            -0.5,
+            0.3333333333333333
+          ],
+          "w_antiquark": [
+            0.5,
+            -0.3333333333333333
+          ],
+          "C(w_quark)": [
+            0.5,
+            -0.3333333333333333
+          ],
+          "error": 0.0,
+          "matches": true
+        },
+        "B": {
+          "w_quark": [
+            0.0,
+            -0.6666666666666666
+          ],
+          "w_antiquark": [
+            0.0,
+            0.6666666666666666
+          ],
+          "C(w_quark)": [
+            -0.0,
+            0.6666666666666666
+          ],
+          "error": 0.0,
+          "matches": true
+        }
+      },
+      "note": "Charge conjugation acts as negation: C(w) = -w"
+    },
+    {
+      "test": "involution_property",
+      "passed": true,
+      "results": [
+        {
+          "color": "R",
+          "original": [
+            0.5,
+            0.3333333333333333
+          ],
+          "C(w)": [
+            -0.5,
+            -0.3333333333333333
+          ],
+          "C\u00b2(w)": [
+            0.5,
+            0.3333333333333333
+          ],
+          "error": 0.0,
+          "C\u00b2_equals_I": true
+        },
+        {
+          "color": "G",
+          "original": [
+            -0.5,
+            0.3333333333333333
+          ],
+          "C(w)": [
+            0.5,
+            -0.3333333333333333
+          ],
+          "C\u00b2(w)": [
+            -0.5,
+            0.3333333333333333
+          ],
+          "error": 0.0,
+          "C\u00b2_equals_I": true
+        },
+        {
+          "color": "B",
+          "original": [
+            0.0,
+            -0.6666666666666666
+          ],
+          "C(w)": [
+            -0.0,
+            0.6666666666666666
+          ],
+          "C\u00b2(w)": [
+            0.0,
+            -0.6666666666666666
+          ],
+          "error": 0.0,
+          "C\u00b2_equals_I": true
+        }
+      ],
+      "note": "C\u00b2 = Identity (charge conjugation is involutory)"
+    },
+    {
+      "test": "point_reflection_involution",
+      "passed": true,
+      "results": [
+        {
+          "vertex": "R",
+          "original": [
+            0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "I(v)": [
+            -0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "I\u00b2(v)": [
+            0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "error": 0.0,
+          "I\u00b2_equals_I": true
+        },
+        {
+          "vertex": "G",
+          "original": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "I(v)": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "I\u00b2(v)": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "error": 0.0,
+          "I\u00b2_equals_I": true
+        },
+        {
+          "vertex": "B",
+          "original": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "I(v)": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            0.5773502691896258
+          ],
+          "I\u00b2(v)": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "error": 0.0,
+          "I\u00b2_equals_I": true
+        },
+        {
+          "vertex": "apex",
+          "original": [
+            -0.5773502691896258,
+            -0.5773502691896258,
+            0.5773502691896258
+          ],
+          "I(v)": [
+            0.5773502691896258,
+            0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "I\u00b2(v)": [
+            -0.5773502691896258,
+            -0.5773502691896258,
+            0.5773502691896258
+          ],
+          "error": 0.0,
+          "I\u00b2_equals_I": true
+        }
+      ],
+      "note": "I\u00b2 = Identity (point reflection is involutory)"
+    },
+    {
+      "test": "inversion_matrix_properties",
+      "passed": true,
+      "determinant": -1.0,
+      "det_equals_minus_one": true,
+      "I_squared_is_identity": true,
+      "commutes_with_R_z": true,
+      "commutes_with_R_x": true,
+      "note": "I = -I_3: det=-1, I\u00b2=I, [I,R]=0 for all rotations"
+    },
+    {
+      "test": "geometric_correspondence",
+      "passed": true,
+      "results": [
+        {
+          "quark": "R",
+          "v_quark": [
+            0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "I(v_quark)": [
+            -0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "v_antiquark": [
+            -0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "vertex_match_error": 0.0,
+          "w_quark": [
+            0.5,
+            0.3333333333333333
+          ],
+          "C(w_quark)": [
+            -0.5,
+            -0.3333333333333333
+          ],
+          "w_antiquark": [
+            -0.5,
+            -0.3333333333333333
+          ],
+          "weight_match_error": 0.0,
+          "correspondence": true
+        },
+        {
+          "quark": "G",
+          "v_quark": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "I(v_quark)": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "v_antiquark": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "vertex_match_error": 0.0,
+          "w_quark": [
+            -0.5,
+            0.3333333333333333
+          ],
+          "C(w_quark)": [
+            0.5,
+            -0.3333333333333333
+          ],
+          "w_antiquark": [
+            0.5,
+            -0.3333333333333333
+          ],
+          "weight_match_error": 0.0,
+          "correspondence": true
+        },
+        {
+          "quark": "B",
+          "v_quark": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "I(v_quark)": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            0.5773502691896258
+          ],
+          "v_antiquark": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            0.5773502691896258
+          ],
+          "vertex_match_error": 0.0,
+          "w_quark": [
+            0.0,
+            -0.6666666666666666
+          ],
+          "C(w_quark)": [
+            -0.0,
+            0.6666666666666666
+          ],
+          "w_antiquark": [
+            0.0,
+            0.6666666666666666
+          ],
+          "weight_match_error": 0.0,
+          "correspondence": true
+        }
+      ],
+      "note": "3D point reflection \u2194 2D weight negation (commutative diagram)"
+    },
+    {
+      "test": "commutative_diagram",
+      "passed": true,
+      "projection_matrix_phi": [
+        [
+          5.551115123125783e-17,
+          0.4330127018922193,
+          0.43301270189221913
+        ],
+        [
+          0.5773502691896258,
+          -0.28867513459481275,
+          0.28867513459481275
+        ]
+      ],
+      "results": [
+        {
+          "color": "R",
+          "phi_I_v": [
+            -0.5,
+            -0.3333333333333334
+          ],
+          "C_phi_v": [
+            -0.5,
+            -0.3333333333333334
+          ],
+          "error": 0.0,
+          "diagram_commutes": true
+        },
+        {
+          "color": "G",
+          "phi_I_v": [
+            0.4999999999999999,
+            -0.33333333333333337
+          ],
+          "C_phi_v": [
+            0.4999999999999999,
+            -0.33333333333333337
+          ],
+          "error": 0.0,
+          "diagram_commutes": true
+        },
+        {
+          "color": "B",
+          "phi_I_v": [
+            -5.551115123125783e-17,
+            0.6666666666666666
+          ],
+          "C_phi_v": [
+            -5.551115123125783e-17,
+            0.6666666666666666
+          ],
+          "error": 0.0,
+          "diagram_commutes": true
+        }
+      ],
+      "note": "Verified \u03c6 \u2218 I = C \u2218 \u03c6 (diagram commutes)"
+    },
+    {
+      "test": "weyl_group_commutation",
+      "passed": true,
+      "results": [
+        {
+          "color": "R",
+          "reflect_C_w": [
+            0.5,
+            -0.3333333333333333
+          ],
+          "C_reflect_w": [
+            0.5,
+            -0.3333333333333333
+          ],
+          "error": 0.0,
+          "commutes": true
+        },
+        {
+          "color": "G",
+          "reflect_C_w": [
+            -0.5,
+            -0.3333333333333333
+          ],
+          "C_reflect_w": [
+            -0.5,
+            -0.3333333333333333
+          ],
+          "error": 0.0,
+          "commutes": true
+        },
+        {
+          "color": "B",
+          "reflect_C_w": [
+            0.0,
+            0.6666666666666666
+          ],
+          "C_reflect_w": [
+            0.0,
+            0.6666666666666666
+          ],
+          "error": 0.0,
+          "commutes": true
+        }
+      ],
+      "note": "C commutes with Weyl reflections (S_3 symmetry preserved)"
+    },
+    {
+      "test": "symmetry_group_structure",
+      "passed": true,
+      "S4_order": 24,
+      "Z2_order": 2,
+      "expected_total_order": 48,
+      "I_not_in_SO3": true,
+      "I_commutes_with_cycle": true,
+      "note": "Sym(\u03a3) = S_4 \u00d7 Z_2 \u2245 O_h (order 48)"
+    },
+    {
+      "test": "meson_color_singlet",
+      "passed": true,
+      "pair_weight_sums": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "all_pairs_neutral": true,
+      "meson_weight": [
+        0.0,
+        0.0
+      ],
+      "meson_neutral": true,
+      "all_pairs_antipodal": true,
+      "note": "Meson qq\u0304: antipodal pairs, each sums to zero weight"
+    },
+    {
+      "test": "baryon_color_singlet",
+      "passed": true,
+      "weight_sum": [
+        0.0,
+        0.0
+      ],
+      "is_neutral": true,
+      "vertex_distances_from_centroid": [
+        0.9428090415820635,
+        0.9428090415820635,
+        0.9428090415820635
+      ],
+      "equal_distances": true,
+      "triangle_area": 1.154700538379252,
+      "note": "Baryon qqq: three colors sum to zero, form equilateral face"
+    },
+    {
+      "test": "cpt_symmetry",
+      "passed": true,
+      "C_squared_is_identity": true,
+      "C_maps_delta_plus_to_minus": true,
+      "C_mapping_details": [
+        {
+          "vertex": "R",
+          "C(v)": [
+            -0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "expected_in_minus": [
+            -0.5773502691896258,
+            -0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "maps_correctly": true
+        },
+        {
+          "vertex": "G",
+          "C(v)": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "expected_in_minus": [
+            -0.5773502691896258,
+            0.5773502691896258,
+            0.5773502691896258
+          ],
+          "maps_correctly": true
+        },
+        {
+          "vertex": "B",
+          "C(v)": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            0.5773502691896258
+          ],
+          "expected_in_minus": [
+            0.5773502691896258,
+            -0.5773502691896258,
+            0.5773502691896258
+          ],
+          "maps_correctly": true
+        },
+        {
+          "vertex": "apex",
+          "C(v)": [
+            0.5773502691896258,
+            0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "expected_in_minus": [
+            0.5773502691896258,
+            0.5773502691896258,
+            -0.5773502691896258
+          ],
+          "maps_correctly": true
+        }
+      ],
+      "CPT_matrix": [
+        [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "determinant": 1.0,
+      "CPT_squared_is_identity": true,
+      "all_CPT_images_are_vertices": true,
+      "note": "C maps \u0394+ \u2194 \u0394- exactly; CPT\u00b2 = I (CPT theorem consistency)"
+    },
+    {
+      "test": "outer_automorphism",
+      "passed": true,
+      "C_weight_action": [
+        [
+          -1.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          -1.0
+        ]
+      ],
+      "C_in_weyl_group": false,
+      "is_outer_automorphism": true,
+      "note": "C is outer: negation of weights not achievable by any SU(3) element"
+    },
+    {
+      "test": "pair_creation_annihilation",
+      "passed": true,
+      "results": [
+        {
+          "color": "R",
+          "w_quark": [
+            0.5,
+            0.3333333333333333
+          ],
+          "w_antiquark": [
+            -0.5,
+            -0.3333333333333333
+          ],
+          "midpoint": [
+            0.0,
+            0.0
+          ],
+          "midpoint_at_origin": true,
+          "distance_q": 0.6009252125773316,
+          "distance_qbar": 0.6009252125773316,
+          "equal_distance": true
+        },
+        {
+          "color": "G",
+          "w_quark": [
+            -0.5,
+            0.3333333333333333
+          ],
+          "w_antiquark": [
+            0.5,
+            -0.3333333333333333
+          ],
+          "midpoint": [
+            0.0,
+            0.0
+          ],
+          "midpoint_at_origin": true,
+          "distance_q": 0.6009252125773316,
+          "distance_qbar": 0.6009252125773316,
+          "equal_distance": true
+        },
+        {
+          "color": "B",
+          "w_quark": [
+            0.0,
+            -0.6666666666666666
+          ],
+          "w_antiquark": [
+            0.0,
+            0.6666666666666666
+          ],
+          "midpoint": [
+            0.0,
+            0.0
+          ],
+          "midpoint_at_origin": true,
+          "distance_q": 0.6666666666666666,
+          "distance_qbar": 0.6666666666666666,
+          "equal_distance": true
+        }
+      ],
+      "note": "qq\u0304 pairs are antipodal, equidistant from origin (annihilation point)"
+    }
+  ]
+}

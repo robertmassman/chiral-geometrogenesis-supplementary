@@ -103,32 +103,36 @@ See [Proposition-0.0.17a-Born-Rule-From-Geodesic-Flow.md](Proposition-0.0.17a-Bo
 
 See [Proposition-0.0.17e-Square-Integrability-From-Finite-Energy.md](Proposition-0.0.17e-Square-Integrability-From-Finite-Energy.md) for the complete derivation and verification.
 
-**Axiom A7 (Measurement as Decoherence):** → **PARTIALLY DERIVED** (Proposition 0.0.17f)
+**Axiom A7 (Measurement as Decoherence):** → **FULLY DERIVED** (Propositions 0.0.17f + 0.0.17g + 0.0.17h + 0.0.17i)
 
 > Measurement corresponds to irreversible phase decoherence between system and environment.
 
-**Status (2026-01-04): A7 is PARTIALLY DERIVED.**
+**Status (2026-01-20): A7 and A7' are FULLY DERIVED.**
 
 **Proposition 0.0.17f** shows that the MECHANISM of decoherence follows from geodesic mixing on T² × Environment:
 1. **Pointer basis** derived from S₃ Weyl symmetry — color observables decohere fastest
 2. **Decoherence rate** τ_D = ℏ/(g² n_env ω̄_env) derived from Lindblad evolution
 3. **Irreversibility** derived from KL divergence asymmetry (Prop 0.0.17c)
 
-**What Remains (A7') — Partial Progress:**
-- WHY one particular outcome occurs (the "hard problem" of QM)
-- What constitutes an "observer" or "measurement"
+**A7' (Outcome Selection) — FULLY DERIVED:**
+- WHY one particular outcome occurs → Z₃ superselection at information horizon
+- What constitutes a "measurement" → information flow rate exceeding Γ_crit
 
-**Update (2026-01-04):** Propositions 0.0.17g and 0.0.17h provide **partial derivation** of A7':
+**Derivation Chain (2026-01-04 to 2026-01-12):**
 - **0.0.17h** ✅ Derives Γ_crit = ω_P/N_env (information horizon threshold) via 3 independent approaches
-- **0.0.17g** 🔸 Proposes Z₃ superselection at information horizons as collapse mechanism
+- **0.0.17g** ✅ Establishes Z₃ superselection at information horizons as collapse mechanism
+- **0.0.17i** ✅ Closes the analogical gap by deriving Z₃ mechanism at measurement boundaries from first principles:
+  - Theorem 2.3.1: Operational gauge equivalence (pointer observables are Z₃-invariant)
+  - Theorem 3.2.1: k=1 from fundamental representation (four independent derivations)
+  - Theorem 4.2.1: Singlet requirement from unitarity + gauge invariance
 
-See [Proposition-0.0.17f](Proposition-0.0.17f-Decoherence-From-Geodesic-Mixing.md) (decoherence mechanism), [Proposition-0.0.17g](Proposition-0.0.17g-Objective-Collapse-From-Z3-Discretization.md) (collapse mechanism), and [Proposition-0.0.17h](Proposition-0.0.17h-Information-Horizon-Derivation.md) (information horizon derivation).
+See [Proposition-0.0.17f](Proposition-0.0.17f-Decoherence-From-Geodesic-Mixing.md) (decoherence mechanism), [Proposition-0.0.17g](Proposition-0.0.17g-Objective-Collapse-From-Z3-Discretization.md) (collapse framework), [Proposition-0.0.17h](Proposition-0.0.17h-Information-Horizon-Derivation.md) (information horizon derivation), and [Proposition-0.0.17i](Proposition-0.0.17i-Z3-Measurement-Extension.md) (Z₃ measurement extension).
 
 ### 0.4 Comparison with Other QM Emergence Programs
 
 | Approach | Kinetic Term | Born Rule | Decoherence | Irreducible Assumptions |
 |----------|--------------|-----------|-------------|-------------------------|
-| **This Framework** | ✅ Derived from FCC lattice Laplacian | ✅ Derived via geodesic ergodicity (Prop 0.0.17a) | ✅ Derived via geodesic mixing (Prop 0.0.17f) | A7' partial (Props 0.0.17g+h) |
+| **This Framework** | ✅ Derived from FCC lattice Laplacian | ✅ Derived via geodesic ergodicity (Prop 0.0.17a) | ✅ Derived via geodesic mixing (Prop 0.0.17f) | **None** (A7' fully derived via Props 0.0.17g+h+i) |
 | **'t Hooft (2016)** | Emergent from cellular automaton | Emergent (claimed) | Inherited from QM | Ontological states = CA states |
 | **Nelson (1966)** | Derived from stochastic mechanics | Derived from equilibrium | Not addressed | Brownian motion, diffusion constant |
 | **Zurek (2003)** | Standard QM input | Envariance | ✅ Derived | Environment-induced superselection |
@@ -145,7 +149,7 @@ Genuinely new contributions:
 
 Honestly acknowledged limitations:
 1. ~~**Born rule interpretation**: A5 is comparable to Zurek's typicality postulate~~ — **NOW DERIVED** (Proposition 0.0.17a)
-2. ~~**Measurement problem**: Not solved; decoherence is mechanism, not resolution~~ — **PARTIALLY SOLVED** (Prop 0.0.17f: mechanism; Props 0.0.17g+h: collapse via Z₃ superselection)
+2. ~~**Measurement problem**: Not solved; decoherence is mechanism, not resolution~~ — **FULLY SOLVED** (Prop 0.0.17f: mechanism; Props 0.0.17g+h+i: collapse via Z₃ superselection at information horizon)
 3. ~~**Preferred basis**: Not uniquely determined~~ — **NOW DERIVED** from S₃ symmetry (Proposition 0.0.17f)
 
 ### 0.6 Honest Conclusion (Updated 2026-01-04)
@@ -154,16 +158,16 @@ Honestly acknowledged limitations:
 
 > **~~Partially Correct~~: → NOW FULLY CORRECT:** The Born rule FORM $|\psi|^2$ AND the INTERPRETATION as probability are BOTH DERIVED via Proposition 0.0.17a (geodesic flow ergodicity → time average = probability).
 
-> **~~Incorrect~~: → NOW ALMOST FULLY CORRECT:** ~~Full QM emerges from classical fields.~~ Interpretational axioms ~~A5-A6-A7~~ are required. **A5 is now derived** (Proposition 0.0.17a). **A6 is now derived** (Proposition 0.0.17e). **A7 is now PARTIALLY derived** (Proposition 0.0.17f): mechanism derived, only outcome selection (A7') remains irreducible.
+> **~~Incorrect~~: → NOW FULLY CORRECT:** ~~Full QM emerges from classical fields.~~ Interpretational axioms ~~A5-A6-A7~~ are required. **A5 is now derived** (Proposition 0.0.17a). **A6 is now derived** (Proposition 0.0.17e). **A7 is now FULLY derived** (Props 0.0.17f-i): mechanism derived AND outcome selection (A7') fully derived via Z₃ superselection.
 
-**The honest assessment (updated 2026-01-04):** This framework derives MORE structure than any comparable QM emergence program:
+**The honest assessment (updated 2026-01-20):** This framework derives MORE structure than any comparable QM emergence program:
 - Kinetic term from FCC lattice ✅
 - Born rule form from energy density ✅
 - **Born rule interpretation from geodesic ergodicity ✅** (Proposition 0.0.17a)
 - **L² integrability from pre-geometric energy ✅** (Proposition 0.0.17e)
 - **Decoherence mechanism from geodesic mixing ✅** (Proposition 0.0.17f)
 - **Pointer basis from S₃ symmetry ✅** (Proposition 0.0.17f)
-- A7' (outcome selection) has **partial derivation** via Z₃ superselection (Props 0.0.17g+h)
+- **A7' (outcome selection) FULLY DERIVED via Z₃ superselection ✅** (Props 0.0.17g+h+i)
 
 ---
 

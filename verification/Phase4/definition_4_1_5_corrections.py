@@ -52,7 +52,9 @@ epsilon_physical = 0.50   # From flux tube penetration depth
 epsilon_visual = 0.05     # Used in visualizations
 
 # Stella octangula scale
-R_stella_fm = 0.448       # From string tension sigma^(-1/2)
+# R_stella = 0.44847 fm (observed/FLAG 2024: √σ = 440 MeV)
+# See CLAUDE.md "R_stella Usage Conventions" for details
+R_stella_fm = 0.44847     # fm (observed stella octangula radius)
 
 print("\n1. PARAMETER SUMMARY")
 print("-" * 50)

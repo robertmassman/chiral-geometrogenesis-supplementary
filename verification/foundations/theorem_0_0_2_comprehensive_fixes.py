@@ -150,15 +150,22 @@ Part 3: Radial Isotropy Constraint
 (a) No preferred radial direction: g(r, θ) = 0 (cross terms vanish)
 (b) f depends only on r: f(r, θ) = f(r)
 
-Part 4: Smoothness at r = 0
----------------------------
+Part 4: Smoothness at r = 0 (updated 2026-01-19)
+------------------------------------------------
 For the metric to be smooth (C^∞) at the origin r = 0:
 (a) f(0) must be finite and positive
 (b) h(r) must vanish as r² near r = 0 (standard polar coordinate behavior)
     This gives h(r) = r² near origin
 
-By the Hopf-Rinow theorem for complete Riemannian manifolds:
-    h(r) = r² globally (to avoid conical singularities)
+Smoothness argument (replaces earlier Hopf-Rinow reference):
+In polar/spherical coordinates, the angular part of the metric must scale as r²
+to avoid a conical singularity at r = 0. Specifically:
+- If h(r) ~ r^α for α ≠ 2, the total angle around any small circle at radius r
+  would be 2π r^(α/2 - 1) × const, which diverges (α < 2) or vanishes (α > 2) as r → 0
+- Only α = 2 gives the correct 2π periodicity for a smooth manifold at the origin
+- This is a LOCAL SMOOTHNESS condition, not a completeness condition
+
+Therefore, h(r) = r² globally is required by the C^∞ requirement at r = 0.
 
 Part 5: Normalization
 ---------------------

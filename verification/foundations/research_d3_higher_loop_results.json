@@ -1,0 +1,35 @@
+{
+  "analysis": "Research D3: Higher-Loop Analysis",
+  "timestamp": "2026-01-20T12:09:45.819449",
+  "one_loop": {
+    "b0": 0.716197243913529,
+    "exponent": 44.680428851054835,
+    "R_stella_fm": 0.4101791497348364,
+    "agreement_percent": 91.46189259813063
+  },
+  "two_loop": {
+    "b1": 0.4052847345693511,
+    "correction_to_exponent": 1.7748870135279975,
+    "R_stella_fm": 2.4198988684093568,
+    "agreement_percent": 539.5899097842346
+  },
+  "threshold": {
+    "estimated_factor": 1.02,
+    "R_stella_fm": 0.41838273272953314,
+    "agreement_percent": 93.29113045009325
+  },
+  "net_perturbative": {
+    "net_factor": 0.9996,
+    "R_stella_fm": 0.4100150780749425,
+    "agreement_percent": 91.42530784109138
+  },
+  "non_perturbative": {
+    "required_factor": 1.0933515277164065,
+    "required_percent": 9.335152771640654
+  },
+  "conclusion": {
+    "can_reach_99_percent": false,
+    "perturbative_limit_percent": 93,
+    "remaining_discrepancy_origin": "Non-perturbative QCD vacuum effects"
+  }
+}

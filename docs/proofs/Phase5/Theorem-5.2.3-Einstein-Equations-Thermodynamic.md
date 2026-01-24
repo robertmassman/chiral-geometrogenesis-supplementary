@@ -91,8 +91,31 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 
 ## Verification Status
 
-**Last Verified:** 2025-12-15
-**Verified By:** Multi-Agent Peer Review + Full Strengthening
+**Last Verified:** 2026-01-22
+**Verified By:** Adversarial Physics Verification (supersedes 2025-12-15 Multi-Agent report)
+**Confidence:** HIGH (9/10) — upgraded from 8/10
+
+### Verification Summary
+
+| Criterion | Verdict | Notes |
+|-----------|---------|-------|
+| Physical Consistency | ✅ PASS | No pathologies, all energy conditions satisfied |
+| Limiting Cases | ✅ PASS | All 6 limits correct |
+| Symmetry Verification | ✅ PASS | Lorentz, diffeomorphism invariant |
+| Known Physics Recovery | ✅ PASS | Einstein eqs, BH entropy, Unruh effect |
+| Framework Consistency | ✅ PASS | No fragmentation with 5.2.1, 5.2.4 |
+| Experimental Bounds | ✅ PASS | No conflicts |
+| Mathematical Rigor | ✅ PASS | All issues resolved |
+| Honest Documentation | ✅ PASS | Clear about derivation vs matching |
+
+**Upgrade justification (8/10 → 9/10):**
+1. All critical issues from 2025-12-14/15 resolved
+2. Three independent derivation routes now exist (thermodynamic, FCC combinatorial, fixed-point)
+3. Proposition 5.2.3a grounds equilibrium assumption (7/7 tests)
+4. Proposition 5.2.1b provides non-thermodynamic alternative (7/7 tests)
+5. Polarization identity computationally verified (6/6 tests)
+
+**Full Report:** [Theorem-5.2.3-Adversarial-Physics-Verification-2026-01-22.md](../verification-records/Theorem-5.2.3-Adversarial-Physics-Verification-2026-01-22.md)
 
 ### Verification Checklist
 - [x] All symbols defined in symbol table
@@ -108,6 +131,8 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 - [x] Terminology footnote added for pre-geometric horizon (2025-12-15)
 - [x] Weak-field scope caveat box added in §1 (2025-12-15)
 - [x] Solodukhin (2011) reference added (2025-12-15)
+- [x] Three independent derivation routes documented (2026-01-22)
+- [x] γ = 1/4 coefficient derivation clarified vs Immirzi matching (2026-01-22)
 
 ---
 
