@@ -47,3 +47,7 @@ build/
 
 # OS
 Thumbs.db
+verification/plots/stella_topology_vs_geometry.html
+verification/plots/stella_pregeometric_emergence.html
+verification/plots/stella_emergence_animated.html
+verification/plots/stella_emergence_3d.html
