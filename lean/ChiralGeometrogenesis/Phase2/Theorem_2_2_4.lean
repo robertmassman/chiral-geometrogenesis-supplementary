@@ -125,6 +125,15 @@ From §2: This is the fundamental scale of chiral symmetry breaking.
 Note: Uses 92.4 MeV for this derivation's numerical checks. -/
 noncomputable def f_pi : ℝ := 92.4
 
+/-- Consistency: local f_π = 92.4 MeV is within 0.4% of
+    Constants.f_pi_observed_MeV = 92.1 MeV. The difference reflects
+    the historical vs current PDG value (both within uncertainty). -/
+theorem f_pi_consistent_with_constants :
+    Constants.f_pi_observed_MeV < f_pi ∧
+    f_pi < Constants.f_pi_observed_MeV + 0.5 := by
+  unfold Constants.f_pi_observed_MeV f_pi
+  constructor <;> norm_num
+
 /-- Topological susceptibility (1/4 power): χ_top^(1/4) = 75.5 MeV
 
 From §2: This is the full QCD value with dynamical quarks.

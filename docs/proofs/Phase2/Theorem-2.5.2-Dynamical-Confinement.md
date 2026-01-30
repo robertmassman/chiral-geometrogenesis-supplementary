@@ -30,6 +30,7 @@
 |---------|---------------------|
 | **Theorem 4.1.4** | Soliton dynamics with derived σ |
 | **Theorem 5.2.1** | Spacetime emergence with confinement |
+| **Proposition 7.3.2a** | Unified origin of confinement and asymptotic freedom |
 | **Phase 8 predictions** | Wilson loop testable predictions |
 
 ---

@@ -12,6 +12,11 @@
 - ✅ Theorem 0.2.2 (Internal Time Parameter Emergence)
 - ✅ Theorem 0.2.3 (Stable Convergence Point)
 
+**Downstream Usage:**
+- Theorem 3.1.1 (Chiral Drag Mass Formula)
+- Theorem 3.1.2 (Mass Hierarchy From Geometry)
+- Proposition 7.3.2a (Pressure Balance Origin of Asymptotic Freedom)
+
 **Dimensional Conventions:** This theorem uses the rescaled $\lambda$ parameter where $\Phi = \Phi_{spatial} + \lambda$ (see §5.1). For framework-wide consistency, see [Unified-Dimension-Table.md](../verification-records/Unified-Dimension-Table.md).
 
 ---

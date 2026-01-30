@@ -1,0 +1,107 @@
+{
+  "theorem": "0.0.19",
+  "title": "Quantitative Self-Reference Yields Unique Fixed Points",
+  "date": "2026-01-26",
+  "tests": {
+    "dag_structure": {
+      "passed": true,
+      "details": {
+        "is_acyclic": true,
+        "topological_sort": [
+          "N_c",
+          "N_f",
+          "|Z_3|",
+          "alpha_s",
+          "b_0",
+          "eta",
+          "xi",
+          "zeta"
+        ],
+        "node_levels": {
+          "N_c": 0,
+          "N_f": 0,
+          "|Z_3|": 0,
+          "alpha_s": 1,
+          "b_0": 1,
+          "eta": 1,
+          "xi": 2,
+          "zeta": 3
+        },
+        "num_nodes": 8,
+        "num_edges": 6
+      }
+    },
+    "projection_property": {
+      "passed": true,
+      "details": {
+        "is_constant_map": true,
+        "xi_values": [
+          2.5378368495988343e+19,
+          2.5378368495988343e+19,
+          2.5378368495988343e+19
+        ],
+        "eta_values": [
+          2.252614659630118,
+          2.252614659630118,
+          2.252614659630118
+        ],
+        "note": "Discrete domain \u2192 projection property (constant map) trivially satisfied"
+      }
+    },
+    "numerical_precision": {
+      "passed": true,
+      "details": {
+        "xi": {
+          "expected": 2.5378e+19,
+          "computed": 2.5378368495988343e+19,
+          "rel_diff": 1.45202927079669e-05,
+          "match": true
+        },
+        "eta": {
+          "expected": 2.2526,
+          "computed": 2.252614659630118,
+          "rel_diff": 6.507870957035973e-06,
+          "match": true
+        },
+        "zeta": {
+          "expected": 3.9404e-20,
+          "computed": 3.940363621712223e-20,
+          "rel_diff": 9.232130691571605e-06,
+          "match": true
+        },
+        "alpha_s": {
+          "expected": 0.015625,
+          "computed": 0.015625,
+          "rel_diff": 0.0,
+          "match": true
+        },
+        "b0": {
+          "expected": 0.7162,
+          "computed": 0.716197243913529,
+          "rel_diff": 3.848207862237045e-06,
+          "match": true
+        }
+      }
+    },
+    "experimental_agreement": {
+      "passed": true,
+      "details": {
+        "sqrt_sigma_observed": 440.0,
+        "sqrt_sigma_error": 30.0,
+        "sqrt_sigma_lo": 481.0750542112236,
+        "sqrt_sigma_nlo": 434.89184900694613,
+        "tension_lo": 1.3691684737074525,
+        "tension_nlo": 0.1702716997684623,
+        "nlo_corrections": {
+          "gluon_condensate": -0.03,
+          "threshold_matching": -0.03,
+          "two_loop_beta": -0.02,
+          "instantons": -0.016,
+          "total": -0.096
+        },
+        "agreement_ok": true
+      }
+    }
+  },
+  "all_passed": true
+}

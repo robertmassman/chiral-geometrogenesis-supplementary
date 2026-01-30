@@ -383,7 +383,7 @@ theorem tendsto_antideriv_atTop :
     h_arctan.add tendsto_div_one_add_sq_atTop
   simp only [add_zero] at h_sum
   have h_scaled := h_sum.const_mul (1/2 : ℝ)
-  convert h_scaled using 1 <;> ring
+  convert h_scaled using 1; ring_nf
 
 /-- The antiderivative tends to -π/4 as x → -∞ -/
 theorem tendsto_antideriv_atBot :
@@ -397,7 +397,7 @@ theorem tendsto_antideriv_atBot :
     h_arctan.add tendsto_div_one_add_sq_atBot
   simp only [add_zero] at h_sum
   have h_scaled := h_sum.const_mul (1/2 : ℝ)
-  convert h_scaled using 1 <;> ring
+  convert h_scaled using 1; ring_nf
 
 /-- The integral ∫_{-∞}^∞ 1/(1+x²)² dx = π/2
 

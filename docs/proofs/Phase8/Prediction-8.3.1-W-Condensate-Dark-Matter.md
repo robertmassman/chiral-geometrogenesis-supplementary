@@ -14,6 +14,7 @@
 - ✅ Theorem 4.1.1-4.1.3 (Soliton Physics) — Topological stability
 - ✅ Corollary 3.1.3 (Sterile Right-Handed Neutrinos) — Gauge singlet decoupling
 - ✅ Theorem 4.2.1 (Baryogenesis) — CP violation and asymmetry generation
+- ✅ [Proposition 5.1.2b](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md) — Self-consistent $v_W$, power-law overlap integral
 
 **Key Cross-References:**
 - Verification: [W-Condensate-Verification-Executive-Summary.md](../../verification/Phase8/W-Condensate-Verification-Executive-Summary.md)
@@ -27,8 +28,9 @@
 - `verification/Phase8/issue_3_portal_uv_completion.py` (UV completion)
 - `verification/Phase8/issue_4_baryogenesis_efficiency.py` (ξ_eff derivation)
 - `verification/Phase8/section_6_4_geometric_w_asymmetry.py` (§6.4 first-principles derivation)
+- `verification/Phase5/precision_overlap_integral.py` (power-law overlap from [Prop 5.1.2b](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md))
 
-**Analysis Date:** 2025-12-17 (original), 2025-12-21 (multi-agent verification)
+**Analysis Date:** 2025-12-17 (original), 2025-12-21 (multi-agent verification), 2026-01-24 (aligned with Prop 5.1.2b)
 
 ---
 
@@ -59,17 +61,18 @@ $$\boxed{\text{Dark Matter} = \text{W-vertex solitons with mass } M_{W} \approx 
 
 | Parameter | Value | Source | Status |
 |-----------|-------|--------|--------|
-| $v_W$ | 142 GeV | Geometric ratio $v_H/\sqrt{3}$ (§12); $v_H$ = 246.7 GeV derived in [Prop 0.0.21](../foundations/Proposition-0.0.21-Unified-Electroweak-Scale-Derivation.md) (0.21% accuracy, a-theorem basis from [Prop 0.0.20](../foundations/Proposition-0.0.20-Electroweak-Scale-From-Central-Charge-Flow.md)) | ✅ Verified |
+| $v_W$ | $123 \pm 15$ GeV | Self-consistent derivation ([Prop 5.1.2b §4.5](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md)) | ✅ Verified |
 | $\phi_W$ | $\pi$ (180°) | Antipodal symmetry (§14) | ✅ Verified |
 | $\lambda_{H\Phi}$ | 0.036 | Domain boundary overlap (§13) | ✅ Verified (geometric) |
 | $\epsilon_W$ | $2.2 \times 10^{-13}$ | Derived from CG chirality (§6) | ✅ First-principles |
-| $M_W$ | 1.7–2.1 TeV | Skyrme formula (6π² or 72.92) | ✅ Both valid |
+| $M_W$ | $1620 \pm 160$ GeV | Skyrme formula with $e_W = 4.5$ ([Prop 5.1.2b §5](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md)) | ✅ Verified |
+| $\kappa_W^{\rm geom}$ | $5.1 \times 10^{-4}$ | Five geometric factors (§6.4) | ✅ First-principles |
 | $\Omega_W h^2$ | 0.12 | Asymmetric production | ✅ Matches observation |
 | $\sigma_{SI}$ | $\sim 10^{-47}$ cm² | Higgs portal | ✅ Within LZ bounds |
 
 **Note on Soliton Mass:** The document uses $M = (6\pi^2/e) v_W$ while standard Skyrme uses $M = (72.92/e) f_\pi$. The 23% difference is within model uncertainties. See [issue_1_skyrme_mass_resolution.py](../../verification/Phase8/issue_1_skyrme_mass_resolution.py).
 
-**Precision Refinement:** [Proposition 5.1.2b](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md) derives refined values using self-consistency conditions: $v_W = 123$ GeV and $M_W = 1620$ GeV. The shift from $v_W = 142$ GeV (geometric) to 123 GeV arises from portal coupling corrections ($\lambda_{HW} = 0.036$). Both values are consistent within the ~15% theoretical uncertainty.
+**Self-Consistent Derivation:** [Proposition 5.1.2b](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md) derives $v_W$ and $M_W$ from three self-consistency conditions: (i) soliton mass formula $M_W = 6\pi^2 v_W/e_W$, (ii) potential minimization, and (iii) the geometric constraint $\mu_W^2/\mu_H^2 = 1/3$. The geometric estimate $v_W = v_H/\sqrt{3} = 142$ GeV (§12) is superseded by the self-consistent value $v_W = 123$ GeV.
 
 ### 1.4 Resolution of Thermal Freeze-out Tension
 
@@ -353,32 +356,38 @@ where $N_c = 3$ accounts for the W being "one vertex vs three color vertices."
 
 **Factor 2: VEV Ratio**
 
-From §12, the W condensate VEV is:
-$$v_W = \frac{v_H}{\sqrt{3}} = 142 \text{ GeV}$$
+From [Proposition 5.1.2b §4.5](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md), the self-consistent W condensate VEV is:
+$$v_W = 123 \pm 15 \text{ GeV}$$
 
-The asymmetry production scales with the VEV squared:
-$$f_{VEV} = \left(\frac{v_W}{v_H}\right)^2 = \frac{1}{3}$$
+derived from the soliton mass formula, potential minimization, and the geometric constraint $\mu_W^2/\mu_H^2 = 1/3$. The asymmetry production scales with the VEV squared:
+$$f_{VEV} = \left(\frac{v_W}{v_H}\right)^2 = \left(\frac{123}{246}\right)^2 \approx 0.25$$
 
 **Factor 3: Domain Solid Angle**
 
 The W domain covers solid angle $\Omega_W = \pi$ steradians (1/4 of the sphere). The chirality gradient ∇φ_{RGB} has reduced projection onto the W domain:
 $$f_{solid} = \sqrt{\frac{\Omega_W}{4\pi}} = \sqrt{\frac{1}{4}} = \frac{1}{2}$$
 
-**Factor 4: Vertex Separation Suppression**
+**Factor 4: Vertex Separation Suppression (Power-Law)**
 
-The W vertex is at distance $d_{W-RGB}$ from the RGB centroid. The wavefunction overlap decays exponentially:
-$$f_{overlap} = \exp\left(-\frac{d_{W-RGB}}{R_{soliton}}\right)$$
+The W vertex is at distance $d_{W-RGB}$ from the RGB centroid. [Proposition 5.1.2b §3](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md) shows that the wavefunction overlap has **power-law** rather than exponential falloff:
+
+$$f_{overlap} \propto \left(\frac{r_0}{d}\right)^{3/2}$$
+
+where $r_0 \sim 1/M_W$ is the soliton core radius and $d = d_{W-RGB}$.
 
 For the stella octangula with edge length $a$:
 - RGB centroid: $\mathbf{r}_{RGB} = (1, 1, -1)/(3\sqrt{3}) \cdot a$
 - W vertex: $\mathbf{r}_W = (-1, -1, 1)/\sqrt{3} \cdot a$
 - Distance: $d_{W-RGB} = ||\mathbf{r}_W - \mathbf{r}_{RGB}|| = \frac{4a}{3\sqrt{3}}$
 
-At the electroweak scale, $a \sim 1/v_H$ and $R_{soliton} \sim 1/M_W$:
-$$\frac{d_{W-RGB}}{R_{soliton}} = \frac{4M_W}{3\sqrt{3} v_H} = \frac{4 \times 1700}{3\sqrt{3} \times 246} \approx 5.3$$
+The full overlap integral evaluation ([Prop 5.1.2b §3.3-3.4](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md)) gives:
+$$\boxed{f_{overlap} = (7.1 \pm 1.1) \times 10^{-3}}$$
 
-Therefore:
-$$f_{overlap} = e^{-5.3} \approx 5.0 \times 10^{-3}$$
+**Key advantage of power-law:** The sensitivity is dramatically reduced compared to exponential:
+- Power-law: 10% change in $d/r_0$ → 15% change in $f_{overlap}$
+- Exponential: 10% change in $d/r_0$ → 50% change in $f_{overlap}$
+
+This reduced sensitivity improves the robustness of the prediction.
 
 **Factor 5: Chirality Transfer Efficiency**
 
@@ -393,9 +402,9 @@ $$|f_{chiral}| = \sqrt{3}$$
 The total geometric suppression is:
 $$\kappa_W^{geom} = f_{singlet}^{eff} \times f_{VEV} \times f_{solid} \times f_{overlap} \times |f_{chiral}|$$
 
-$$\kappa_W^{geom} = \frac{1}{3} \times \frac{1}{3} \times \frac{1}{2} \times (5.0 \times 10^{-3}) \times \sqrt{3}$$
+$$\kappa_W^{geom} = \frac{1}{3} \times 0.25 \times \frac{1}{2} \times (7.1 \times 10^{-3}) \times \sqrt{3}$$
 
-$$\kappa_W^{geom} = \frac{\sqrt{3}}{18} \times 5.0 \times 10^{-3} = 4.8 \times 10^{-4}$$
+$$\kappa_W^{geom} = 0.0417 \times 7.1 \times 10^{-3} \times 1.73 = 5.1 \times 10^{-4}$$
 
 #### 6.4.5 The W-Asymmetry
 
@@ -403,37 +412,34 @@ The W-sector asymmetry is:
 $$\epsilon_W = \eta_B \times \kappa_W^{geom}$$
 
 With $\eta_B = 6.1 \times 10^{-10}$:
-$$\epsilon_W = 6.1 \times 10^{-10} \times 4.8 \times 10^{-4} = 2.9 \times 10^{-13}$$
+$$\epsilon_W = 6.1 \times 10^{-10} \times 5.1 \times 10^{-4} = 3.1 \times 10^{-13}$$
 
 **Comparison with Required Value:**
 
 For correct relic abundance (§6.3):
 $$\epsilon_W^{required} = 2.2 \times 10^{-13}$$
 
-**Agreement:** The geometric derivation gives $\epsilon_W = 2.9 \times 10^{-13}$, within **32% of the required value**. Given the theoretical uncertainties (factor ~2 in each geometric factor), this is excellent agreement.
+**Agreement:** The geometric derivation gives $\epsilon_W = 3.1 \times 10^{-13}$, within **41% of the required value**. Given the theoretical uncertainties (±15-20% in each geometric factor), this is excellent agreement.
 
 #### 6.4.6 Summary: ε_W/η_B Ratio from Pure Geometry
 
-$$\boxed{\frac{\epsilon_W}{\eta_B} = \kappa_W^{geom} = 4.8 \times 10^{-4}}$$
+$$\boxed{\frac{\epsilon_W}{\eta_B} = \kappa_W^{geom} = 5.1 \times 10^{-4}}$$
 
 **Breakdown:**
-| Factor | Physical Origin | Value |
-|--------|-----------------|-------|
-| $f_{singlet}^{eff}$ | Singlet vs triplet vertices | 1/3 |
-| $f_{VEV}$ | $(v_W/v_H)^2$ | 1/3 |
-| $f_{solid}$ | Domain solid angle | 1/2 |
-| $f_{overlap}$ | Vertex separation | $5 \times 10^{-3}$ |
-| $|f_{chiral}|$ | Chirality transfer | $\sqrt{3}$ |
-| **Total** $\kappa_W^{geom}$ | | **$4.8 \times 10^{-4}$** |
+| Factor | Physical Origin | Value | Source |
+|--------|-----------------|-------|--------|
+| $f_{singlet}^{eff}$ | Singlet vs triplet vertices | 1/3 | Stella geometry |
+| $f_{VEV}$ | $(v_W/v_H)^2$ | 0.25 | [Prop 5.1.2b §4.5](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md) |
+| $f_{solid}$ | Domain solid angle | 1/2 | Stella geometry |
+| $f_{overlap}$ | Vertex separation (power-law) | $7 \times 10^{-3}$ | [Prop 5.1.2b §3.4](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md) |
+| $|f_{chiral}|$ | Chirality transfer | $\sqrt{3}$ | Stella geometry |
+| **Total** $\kappa_W^{geom}$ | | **$5.1 \times 10^{-4}$** | |
 
 **Status:** ✅ **DERIVED FROM FIRST PRINCIPLES** — No fitted parameters. The ε_W/η_B ratio emerges purely from stella octangula geometry.
 
-**Computational Verification:** `verification/Phase8/section_6_4_geometric_w_asymmetry.py`
-- Verified all five suppression factors from stella geometry
-- Computed κ_W^geom = 4.98×10⁻⁴ (within 4% of document value 4.8×10⁻⁴)
-- Derived ε_W = 3.0×10⁻¹³ (within 17% of required 2.6×10⁻¹³)
-- Sensitivity analysis shows f_overlap exponentially sensitive to M_W
-- Visualization: `verification/plots/section_6_4_geometric_w_asymmetry.png`
+**Computational Verification:**
+- `verification/Phase8/section_6_4_geometric_w_asymmetry.py` — Original exponential model
+- `verification/Phase5/precision_overlap_integral.py` — Power-law overlap integral ([Prop 5.1.2b](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md))
 
 ### 6.5 Why ADM Works in CG
 
@@ -606,66 +612,42 @@ The W condensate hidden sector provides a **natural, compelling** dark matter ca
 
 ## 12. Derivation of $v_W$ from CG Consistency
 
-### 12.1 Geometric Constraint on the W Condensate Scale
+### 12.1 Geometric Estimate (Superseded)
 
-The key insight is that the W vertex participates in the **same geometric structure** as the R, G, B vertices. The stella octangula geometry imposes constraints on the VEV ratios.
+The geometric estimate for the W condensate VEV follows from stella octangula symmetry:
 
-**Pressure Normalization Constraint:**
+$$v_W^{geom} = \frac{v_H}{\sqrt{3}} \approx 142 \text{ GeV}$$
 
-From Definition 0.1.4, each domain (R, G, B, W) has equal solid angle $\Omega = \pi$ steradians. The pressure functions must satisfy:
+This arises from the W vertex participating in the **same geometric structure** as the R, G, B vertices, with the $1/\sqrt{3}$ factor reflecting the singlet-vs-triplet projection.
 
-$$\int_{S^2} P_c(\hat{n}) \, d\Omega = \text{const} \quad \forall c \in \{R, G, B, W\}$$
+### 12.2 Self-Consistent Derivation (Preferred)
 
-**VEV Scale Determination:**
+[Proposition 5.1.2b §4.5](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md) derives $v_W$ from three self-consistency conditions:
 
-For the RGB sector, Theorem 3.0.1 gives:
-$$v_\chi^2(\mathbf{x}) = \frac{a_0^2}{2}\left[(P_R - P_G)^2 + (P_G - P_B)^2 + (P_B - P_R)^2\right]$$
+1. **Soliton mass formula:** $M_W = 6\pi^2 v_W/e_W$ (from Theorem 4.1.2)
+2. **Potential minimization:** $v_W^2 = (\mu_W^2 - \lambda_{HW} v_H^2)/(2\lambda_W)$
+3. **Geometric constraint:** $\mu_W^2/\mu_H^2 = 1/3$ (stella vertex counting)
 
-For the W sector, the analogous formula requires the **orthogonal direction** in color space:
+Given the Skyrme parameter $e_W = 4.5 \pm 0.3$ from stella geometry and $M_W = 1620 \pm 160$ GeV, solving these conditions yields:
 
-$$v_W^2(\mathbf{x}) = a_W^2 \cdot P_W^2(\mathbf{x})$$
+$$\boxed{v_W = 123 \pm 15 \text{ GeV}}$$
 
-### 12.2 Geometric Ratio from Tetrahedron Structure
+with quartic coupling:
+$$\lambda_W = 0.101 \pm 0.020 \quad \Rightarrow \quad \frac{\lambda_W}{\lambda_H} = 0.78$$
 
-**Theorem (VEV Ratio):** The W condensate VEV is related to the RGB VEV by:
+### 12.3 Comparison of Approaches
 
-$$\boxed{v_W = \frac{v_\chi}{\sqrt{3}} \cdot \kappa_W}$$
+| Approach | $v_W$ (GeV) | $M_W$ (GeV) | Status |
+|----------|-------------|-------------|--------|
+| Geometric estimate ($v_H/\sqrt{3}$) | 142 | 1680 | Superseded |
+| Potential minimum ($\lambda_W = \lambda_H$) | 108 | 1280 | Limiting case |
+| **Self-consistent** ([Prop 5.1.2b](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md)) | **123 ± 15** | **1620 ± 160** | **Preferred** |
 
-where $\kappa_W$ is a dimensionless geometric factor.
+The self-consistent approach resolves the tension between limiting cases by deriving $\lambda_W$ from soliton physics rather than assuming $\lambda_W = \lambda_H$.
 
-**Derivation:**
+### 12.4 Physical Interpretation
 
-The RGB field lives in the $\mathbf{8}$ of SU(3), while W lives in the $\mathbf{1}$. The projection from the 3D stella octangula to the 2D weight space gives:
-
-1. **RGB projection:** The three color vertices span a 2D plane (the weight diagram)
-2. **W projection:** The W vertex projects to the origin (singlet point)
-
-The relative VEV scales are determined by the **geodesic distances** on the SU(3) group manifold:
-
-$$\frac{v_W}{v_\chi} = \frac{d(W, \text{center})}{d(\text{RGB}, \text{center})} = \frac{1}{\sqrt{3}}$$
-
-### 12.3 Numerical Prediction
-
-Using $v_\chi \approx f_\pi = 92$ MeV at the QCD scale:
-
-$$v_W^{QCD} = \frac{92 \text{ MeV}}{\sqrt{3}} \approx 53 \text{ MeV}$$
-
-At the electroweak scale, with $v_H = 246$ GeV:
-
-$$v_W^{EW} = \frac{246 \text{ GeV}}{\sqrt{3}} \approx 142 \text{ GeV}$$
-
-**Key Result:**
-$$\boxed{v_W \approx 140 \text{ GeV} \quad \Rightarrow \quad M_W^{soliton} \approx 1.7 \text{ TeV}}$$
-
-### 12.4 Alternative: Domain Suppression Factor
-
-If the W domain couples **weakly** to the visible sector, an additional suppression factor arises:
-
-$$v_W^{eff} = v_W \times \left(\frac{\Omega_W}{4\pi}\right)^{1/2} = \frac{v_W}{2}$$
-
-This gives:
-- $v_W^{eff} \approx 70$ GeV
-- $M_W^{soliton} \approx 830$ GeV
+The shift from $v_W = 142$ GeV (geometric) to 123 GeV (self-consistent) reflects the portal coupling correction: the Higgs-W mixing ($\lambda_{HW} = 0.036$) shifts the W-sector potential minimum. The 15% difference is within combined theoretical uncertainties.
 
 ---
 
@@ -930,9 +912,10 @@ Our prediction $\lambda_{H\Phi} \sim 0.03$ is well within bounds ✓
 
 | Check | Result | Status |
 |-------|--------|--------|
-| $v_W = v_H/\sqrt{3}$ | 142.0 GeV | ✅ PASSED |
+| $v_W$ (self-consistent) | $123 \pm 15$ GeV | ✅ PASSED ([Prop 5.1.2b](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md)) |
 | $\phi_W = \pi$ (antipodal) | Exact | ✅ PASSED |
-| $M_W = (6\pi^2/e) v_W$ | 1682 GeV | ✅ PASSED |
+| $M_W = (6\pi^2/e_W) v_W$ | $1620 \pm 160$ GeV | ✅ PASSED |
+| $\kappa_W^{geom}$ (power-law) | $5.1 \times 10^{-4}$ | ✅ PASSED |
 | BBN constraint | $T_f \gg T_{BBN}$ | ✅ PASSED |
 | Unitarity | $\lambda \ll 4\pi/3$ | ✅ PASSED |
 
@@ -954,6 +937,7 @@ Our prediction $\lambda_{H\Phi} \sim 0.03$ is well within bounds ✓
 - Theorem 3.0.1: Pressure-Modulated Superposition
 - Theorem 4.1.1-4.1.3: Soliton Physics
 - Corollary 3.1.3: Sterile Right-Handed Neutrinos
+- [Proposition 5.1.2b](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md): Self-consistent $v_W$, power-law overlap integral
 
 **Computational Verification:**
 - `verification/Phase8/w_condensate_quantitative_predictions.py` (primary verification)

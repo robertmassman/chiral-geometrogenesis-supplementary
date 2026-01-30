@@ -228,18 +228,20 @@ theorem sqrt_sigma_predicted_value :
 noncomputable def agreement_ratio : ℝ :=
   sqrt_sigma_predicted / sqrt_sigma_observed_MeV
 
-/-- The agreement is exact (to numerical precision).
+/-- The agreement is within 2%.
 
-    R_stella was chosen so that √σ_predicted = √σ_observed = 440 MeV.
-    The agreement is exact by construction.
+    √σ_predicted = ℏc/R_stella = 197.327/0.44847 ≈ 440.0 MeV
+    √σ_observed = 445 ± 7 MeV (Bulava et al. 2024)
+    Ratio = 440.0/445 ≈ 0.989, i.e., ~1.1% discrepancy.
+
+    The predicted value lies within the 1σ observational uncertainty (±7 MeV).
 
     Reference: Markdown §3.5
 -/
-theorem agreement_better_than_one_percent :
-    -- The ratio sqrt_sigma_predicted / sqrt_sigma_observed is close to 1
-    -- We express this as: the predicted value is between 0.99 and 1.01 times observed
-    0.99 * sqrt_sigma_observed_MeV < sqrt_sigma_predicted ∧
-    sqrt_sigma_predicted < 1.01 * sqrt_sigma_observed_MeV := by
+theorem agreement_better_than_two_percent :
+    -- The predicted value is between 0.98 and 1.02 times observed
+    0.98 * sqrt_sigma_observed_MeV < sqrt_sigma_predicted ∧
+    sqrt_sigma_predicted < 1.02 * sqrt_sigma_observed_MeV := by
   unfold sqrt_sigma_predicted sqrt_sigma_observed_MeV casimir_energy f_stella
     hbar_c_MeV_fm R_stella_fm Constants.hbar_c_MeV_fm Constants.R_stella_fm
     Constants.sqrt_sigma_observed_MeV

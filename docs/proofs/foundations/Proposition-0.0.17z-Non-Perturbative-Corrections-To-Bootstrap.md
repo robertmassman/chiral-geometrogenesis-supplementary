@@ -565,6 +565,9 @@ Results saved to `verification/foundations/prop_0_0_17z_adversarial_results_v2.j
 
 ### 8.2 Enables (Other Results That Use This)
 
+- Proposition 0.0.17z1: Geometric derivation of non-perturbative coefficients ($c_G$ from heat kernel)
+- Proposition 0.0.17z2: Scale-dependent effective Euler characteristic (revises correction to $-8.7\%$, $\sqrt{\sigma} = 439$ MeV)
+- [Proposition 0.0.17ab](Proposition-0.0.17ab-Newtons-Constant-From-Topology.md): Newton's constant from $R_{\text{stella}}$ + topology (uses $\mathcal{C}_{\text{NP}}$ correction factor)
 - Proposition 8.5.1: Lattice QCD predictions (corrected values)
 - Paper unified-arxiv §5.3: Error budget for hierarchy
 - Paper unified-arxiv §7.3: UV completeness with corrections
@@ -576,7 +579,9 @@ Results saved to `verification/foundations/prop_0_0_17z_adversarial_results_v2.j
 ### Framework Internal
 
 1. [Proposition-0.0.17y](Proposition-0.0.17y-Bootstrap-Fixed-Point-Uniqueness.md) — Bootstrap uniqueness theorem
-2. [Proposition-8.5.1](../Phase8/Proposition-8.5.1-Lattice-QCD-Heavy-Ion-Predictions.md) — Lattice QCD predictions
+2. [Proposition-0.0.17z1](Proposition-0.0.17z1-Geometric-Derivation-Non-Perturbative-Coefficients.md) — Geometric derivation of $c_G$ from heat kernel
+3. [Proposition-0.0.17z2](Proposition-0.0.17z2-Scale-Dependent-Effective-Euler-Characteristic.md) — Scale-dependent $\chi_{\text{eff}}(\mu)$; revised correction $-8.7\%$
+4. [Proposition-8.5.1](../Phase8/Proposition-8.5.1-Lattice-QCD-Heavy-Ion-Predictions.md) — Lattice QCD predictions
 
 ### Literature — Gluon Condensate
 

@@ -1,0 +1,54 @@
+{
+  "R_stella": 0.44847,
+  "sqrt_sigma": 440.0,
+  "hbar_c": 197.327,
+  "R": 0.44847,
+  "V_overlap": 0.02379802016216232,
+  "V_tetrahedron": 0.046289984996983204,
+  "overlap_fraction": 0.5141073207025942,
+  "K_method1": 1.1463571691108743,
+  "K_method1_name": "Volume overlap",
+  "K_method2": 8.40615283815905,
+  "K_method2_name": "Confinement scale",
+  "K_method3": 35.67685686890985,
+  "K_method3_name": "Casimir dimension",
+  "K_method4": 4.459607108613731,
+  "K_method4_name": "Average separation",
+  "d_eff": 0.224235,
+  "K_method5": 9.41787,
+  "K_method5_name": "Self-consistent",
+  "K_best": 3.5027134562100217,
+  "K_uncertainty": 3.6298978345240878,
+  "K_physical_methods": [
+    1.1463571691108743,
+    8.40615283815905,
+    4.459607108613731
+  ],
+  "K_qcd": 3.5027134562100217,
+  "K_approach_A": 8.40615283815905,
+  "K_approach_B": 35.67685686890985,
+  "beta": 0.4551567445580117,
+  "kappa_range": [
+    0.02,
+    0.1
+  ],
+  "alpha_range": [
+    0.044596071086137314,
+    1.59043220075682
+  ],
+  "cV_range": [
+    2.993173998235122,
+    3.952604656646214
+  ],
+  "cV_N": 4.077,
+  "cV_D": 2.683,
+  "M_V_central": 819.9703493374094,
+  "M_V_error": 56.63185736486761,
+  "cV_central": 3.472889327440668,
+  "cV_error": 0.4797153292055458,
+  "M_rho": 775.26,
+  "deviation_percent": 5.7671425505519975,
+  "cV_target": 3.1044838202479332,
+  "alpha_target": 1.05021184003116,
+  "kappa_target": 0.13446389771442782
+}

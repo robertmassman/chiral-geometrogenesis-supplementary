@@ -82,6 +82,12 @@ def N_f : ℕ := 2  -- Matches Constants.N_f_chiral (chiral limit)
 -/
 noncomputable def sqrt_sigma_MeV : ℝ := 440
 
+/-- Consistency: local √σ = 440 agrees with Constants.sqrt_sigma_predicted_MeV (≈ ℏc/R_stella).
+    See Prop 0.0.17k for the detailed bound proof. -/
+theorem sqrt_sigma_consistent_with_constants :
+    sqrt_sigma_MeV = Proposition_0_0_17k.sqrt_sigma_MeV := by
+  unfold sqrt_sigma_MeV Proposition_0_0_17k.sqrt_sigma_MeV; rfl
+
 /-- QCD scale Λ_QCD ≈ 200 MeV (typical value, scheme-dependent)
 
     Λ_QCD ranges from ~200-350 MeV depending on scheme and N_f.
@@ -92,6 +98,13 @@ noncomputable def sqrt_sigma_MeV : ℝ := 440
 -/
 noncomputable def Lambda_QCD_MeV : ℝ := 200
 
+/-- Consistency: Λ_QCD = 200 MeV is within the range of Constants.lambdaQCD = 213 MeV.
+    The difference reflects scheme dependence (this file uses a round value for estimates). -/
+theorem Lambda_QCD_within_range_of_constants :
+    Lambda_QCD_MeV < Constants.lambdaQCD ∧ Constants.lambdaQCD < Lambda_QCD_MeV + 20 := by
+  unfold Lambda_QCD_MeV Constants.lambdaQCD
+  constructor <;> norm_num
+
 /-- Pion decay constant f_π = 88 MeV (derived value from Prop 0.0.17k)
 
     This is the DERIVED value from the framework: f_π = √σ/5 = 440/5 = 88 MeV.
@@ -100,6 +113,12 @@ noncomputable def Lambda_QCD_MeV : ℝ := 200
     Source: Proposition 0.0.17k (f_pi_predicted_qcd)
 -/
 noncomputable def f_pi_derived_MeV : ℝ := 88
+
+/-- Consistency: f_π = √σ/5, matching Prop 0.0.17k derivation chain. -/
+theorem f_pi_derived_consistent_with_constants :
+    f_pi_derived_MeV = sqrt_sigma_MeV / 5 := by
+  unfold f_pi_derived_MeV sqrt_sigma_MeV
+  norm_num
 
 /-! ═══════════════════════════════════════════════════════════════════════════
     PART 2: CARTAN TORUS MODE COUNTING

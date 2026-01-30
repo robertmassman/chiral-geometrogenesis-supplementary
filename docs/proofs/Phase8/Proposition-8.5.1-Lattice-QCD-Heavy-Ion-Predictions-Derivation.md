@@ -129,7 +129,7 @@ From Proposition 3.1.1c (Geometric Coupling Formula), the chiral-phase-gradient 
 $$g_\chi = \frac{\text{Topological Invariant}}{\text{Color Normalization}} = \frac{4\pi}{N_c^2}$$
 
 where:
-- **4π** arises from the Gauss-Bonnet theorem for the effective interaction surface (octahedral core of the stella, with Euler characteristic χ = 2)
+- **4π** arises from the Gauss-Bonnet theorem for the octahedral interaction surface (the intersection region of the two tetrahedra, V=6, E=12, F=8, χ = 2). Note: this is the effective interaction surface, not the full stella boundary ∂S = ∂T₊ ⊔ ∂T₋ which has χ = 4 (see Definition 0.1.1)
 - **N_c² = 9** counts the color amplitude pairs for singlet coupling (from 3̄ ⊗ 3 = 8 ⊕ **1**)
 
 ### 5.2 Evaluation

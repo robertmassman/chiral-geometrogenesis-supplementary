@@ -1,0 +1,151 @@
+{
+  "proposition": "0.0.17z2",
+  "title": "Scale-Dependent Effective Euler Characteristic \u2014 Adversarial Verification",
+  "date": "2026-01-27",
+  "verdict": "PASS",
+  "summary": {
+    "pass": 20,
+    "fail": 0,
+    "warn": 2
+  },
+  "key_findings": {
+    "d_inter_fm": 0.14949,
+    "chi_eff_at_confinement": 2.21,
+    "c_G_eff": 0.1275,
+    "sqrt_sigma_pred_MeV": 439.0,
+    "interpolation_spread_MeV": 7.5,
+    "heat_kernel_validity_ratio": 1.0
+  },
+  "tests": [
+    {
+      "test": "A1: d_inter = R/3 = 0.14949 fm",
+      "status": "PASS",
+      "detail": "Computed: 0.14949 fm",
+      "adversarial": false
+    },
+    {
+      "test": "A2: mu_trans = 1319 MeV",
+      "status": "PASS",
+      "detail": "Computed: 1320.0 MeV",
+      "adversarial": false
+    },
+    {
+      "test": "A3: xi_conf = 0.3334",
+      "status": "PASS",
+      "detail": "Computed: 0.3333",
+      "adversarial": false
+    },
+    {
+      "test": "A4: f(xi_conf) = 0.1052",
+      "status": "PASS",
+      "detail": "Computed: 0.1052",
+      "adversarial": false
+    },
+    {
+      "test": "A5: chi_eff = 2.210",
+      "status": "PASS",
+      "detail": "Computed: 2.210",
+      "adversarial": false
+    },
+    {
+      "test": "A6: c_G_eff ~ 0.127",
+      "status": "PASS",
+      "detail": "Computed: 0.1275",
+      "adversarial": false
+    },
+    {
+      "test": "A7: sqrt(sigma) ~ 439 MeV",
+      "status": "PASS",
+      "detail": "Computed: 439.0 MeV",
+      "adversarial": false
+    },
+    {
+      "test": "B1: Claimed d_inter=R/3 gives prediction within 5 MeV of obs",
+      "status": "PASS",
+      "detail": "Prediction: 439.0 MeV",
+      "adversarial": true
+    },
+    {
+      "test": "B2: Multiple scales give < 1\u03c3 agreement",
+      "status": "WARN",
+      "detail": "5 scales within 1\u03c3: ['R/3 (inradius, claimed)', 'R/4', 'R/2', 'a_edge/4', 'a_edge/6']"
+    },
+    {
+      "test": "C1: Spread across ALL functions < 15 MeV",
+      "status": "PASS",
+      "detail": "Spread = 7.5 MeV",
+      "adversarial": true
+    },
+    {
+      "test": "C2: All reasonable functions within 1\u03c3 of obs",
+      "status": "PASS",
+      "detail": "",
+      "adversarial": true
+    },
+    {
+      "test": "D1: >80% of interp functions give <1\u03c3 agreement",
+      "status": "PASS",
+      "detail": "100% within 1\u03c3 (if high, result is robust, not overfitted)",
+      "adversarial": true
+    },
+    {
+      "test": "D2: Correction range for <0.5\u03c3 is wide (not fine-tuned)",
+      "status": "PASS",
+      "detail": "Corrections 5.2%\u201311.9% all give <0.5\u03c3",
+      "adversarial": true
+    },
+    {
+      "test": "E1: Sign flip at \u03c7 = 3*z_{1/2} = 1.26",
+      "status": "PASS",
+      "detail": "Sign flip at \u03c7 = 1.26",
+      "adversarial": false
+    },
+    {
+      "test": "E2: z_{1/2} + z_1 < 0 for all \u03c7 \u2208 [2,4]",
+      "status": "PASS",
+      "detail": "Ensures NP correction consistently reduces \u221a\u03c3",
+      "adversarial": false
+    },
+    {
+      "test": "F1: c_G(\u03c7=2) ~ 0.099",
+      "status": "PASS",
+      "detail": "c_G(\u03c7=2) = 0.0993",
+      "adversarial": false
+    },
+    {
+      "test": "F2: c_G(\u03c7=4) ~ 0.368",
+      "status": "PASS",
+      "detail": "c_G(\u03c7=4) = 0.3677",
+      "adversarial": false
+    },
+    {
+      "test": "F3: \u221a\u03c3(\u03c7=4) ~ 420 MeV",
+      "status": "PASS",
+      "detail": "\u221a\u03c3(\u03c7=4) = 420.6 MeV",
+      "adversarial": false
+    },
+    {
+      "test": "G1: Diffusion time at confinement scale",
+      "status": "PASS",
+      "detail": "t_conf = 0.201 fm\u00b2",
+      "adversarial": false
+    },
+    {
+      "test": "G2: t_conf/R\u00b2 < 1 for expansion validity",
+      "status": "PASS",
+      "detail": "t_conf/R\u00b2 = 1.00 (should be < 1 for strict validity)",
+      "adversarial": true
+    },
+    {
+      "test": "G3: t_conf/R\u00b2 > 1 \u2014 short-time expansion may have corrections",
+      "status": "WARN",
+      "detail": "Ratio = 1.00; higher-order terms in heat kernel may matter"
+    },
+    {
+      "test": "H1: Plot generated successfully",
+      "status": "PASS",
+      "detail": "",
+      "adversarial": false
+    }
+  ]
+}

@@ -66,6 +66,40 @@ def total_chiral_field_grid(X, Y, Z, a0=A0, epsilon=EPSILON):
     return total
 
 
+def individual_field_magnitudes(X, Y, Z, a0=A0, epsilon=EPSILON):
+    """Compute magnitude of each color field separately."""
+    mags = {}
+    for c in ['R', 'G', 'B']:
+        P_c = pressure_function_grid(X, Y, Z, VERTICES_PLUS[c], epsilon)
+        mags[c] = a0 * P_c  # Magnitude (pressure function is real and positive)
+    return mags
+
+
+def compute_rgb_colors(X, Y, Z, a0=A0, epsilon=EPSILON):
+    """
+    Compute RGB colors based on field strengths at each point.
+    Uses local normalization so colors are vivid everywhere.
+
+    Returns arrays of R, G, B values in [0, 1].
+    """
+    mags = individual_field_magnitudes(X, Y, Z, a0, epsilon)
+
+    r_mag = mags['R']
+    g_mag = mags['G']
+    b_mag = mags['B']
+
+    # Local normalization: at each point, normalize by the LOCAL max of the three channels
+    # This ensures vivid colors everywhere - the dominant field is always bright
+    local_max = np.maximum(np.maximum(r_mag, g_mag), b_mag)
+    local_max = np.maximum(local_max, 1e-10)  # Avoid division by zero
+
+    r_frac = r_mag / local_max
+    g_frac = g_mag / local_max
+    b_frac = b_mag / local_max
+
+    return r_frac, g_frac, b_frac
+
+
 def create_stella_traces():
     """Create Plotly traces for stella octangula wireframe."""
     traces = []
@@ -130,7 +164,7 @@ def create_stella_traces():
 
 
 def create_isosurface_trace(mag_3d, x_iso, y_iso, z_iso, level, color, opacity, name):
-    """Create a Plotly mesh trace for an isosurface."""
+    """Create a Plotly mesh trace for an isosurface with single color."""
     try:
         verts, faces, _, _ = measure.marching_cubes(mag_3d, level=level)
 
@@ -157,8 +191,62 @@ def create_isosurface_trace(mag_3d, x_iso, y_iso, z_iso, level, color, opacity, 
         return None
 
 
+def create_rgb_isosurface_trace(mag_3d, r_frac, g_frac, b_frac, x_iso, y_iso, z_iso, level, opacity, name):
+    """
+    Create a Plotly mesh trace for an isosurface with RGB vertex colors
+    based on field mixing at each vertex position.
+    """
+    try:
+        verts, faces, _, _ = measure.marching_cubes(mag_3d, level=level)
+
+        # Scale vertices to real coordinates
+        verts_scaled = np.zeros_like(verts)
+        n_iso = len(x_iso)
+        verts_scaled[:, 0] = x_iso[0] + verts[:, 0] * (x_iso[-1] - x_iso[0]) / (n_iso - 1)
+        verts_scaled[:, 1] = y_iso[0] + verts[:, 1] * (y_iso[-1] - y_iso[0]) / (n_iso - 1)
+        verts_scaled[:, 2] = z_iso[0] + verts[:, 2] * (z_iso[-1] - z_iso[0]) / (n_iso - 1)
+
+        # Interpolate RGB fractions at vertex positions
+        # verts contains indices into the grid, use them to interpolate
+        from scipy.interpolate import RegularGridInterpolator
+
+        # Create interpolators for each color channel
+        r_interp = RegularGridInterpolator((x_iso, y_iso, z_iso), r_frac, method='linear', bounds_error=False, fill_value=0.33)
+        g_interp = RegularGridInterpolator((x_iso, y_iso, z_iso), g_frac, method='linear', bounds_error=False, fill_value=0.33)
+        b_interp = RegularGridInterpolator((x_iso, y_iso, z_iso), b_frac, method='linear', bounds_error=False, fill_value=0.33)
+
+        # Get RGB values at each vertex
+        r_vals = r_interp(verts_scaled)
+        g_vals = g_interp(verts_scaled)
+        b_vals = b_interp(verts_scaled)
+
+        # Convert to RGB color strings for each vertex
+        # Scale to 0-255 range
+        r_255 = np.clip(r_vals * 255, 0, 255).astype(int)
+        g_255 = np.clip(g_vals * 255, 0, 255).astype(int)
+        b_255 = np.clip(b_vals * 255, 0, 255).astype(int)
+
+        # Create color array for vertices
+        vertex_colors = [f'rgb({r},{g},{b})' for r, g, b in zip(r_255, g_255, b_255)]
+
+        return go.Mesh3d(
+            x=verts_scaled[:, 0],
+            y=verts_scaled[:, 1],
+            z=verts_scaled[:, 2],
+            i=faces[:, 0],
+            j=faces[:, 1],
+            k=faces[:, 2],
+            vertexcolor=vertex_colors,
+            opacity=opacity,
+            name=name,
+            showlegend=True
+        )
+    except ValueError:
+        return None
+
+
 def create_interactive_visualization():
-    """Create the full interactive 3D visualization."""
+    """Create the full interactive 3D visualization with RGB color mixing."""
 
     extent = 0.7
 
@@ -189,17 +277,22 @@ def create_interactive_visualization():
 
     mag_3d = np.abs(total_chiral_field_grid(X3d, Y3d, Z3d))
 
+    # Compute RGB color fractions based on field mixing
+    r_frac, g_frac, b_frac = compute_rgb_colors(X3d, Y3d, Z3d)
+
     # Create figure
     fig = go.Figure()
 
-    # Add isosurfaces (including 10% outermost shell)
+    # Add isosurfaces with RGB coloring based on field mixing
     iso_levels = [0.1 * vmax, 0.3 * vmax, 0.5 * vmax, 0.7 * vmax]
-    colors = ['#053061', '#2166ac', '#92c5de', '#f4a582']  # Dark blue for 10%
-    opacities = [0.2, 0.3, 0.4, 0.5]
+    opacities = [0.25, 0.35, 0.45, 0.55]
     names = ['10% level', '30% level', '50% level', '70% level']
 
-    for level, color, opacity, name in zip(iso_levels, colors, opacities, names):
-        trace = create_isosurface_trace(mag_3d, x_iso, y_iso, z_iso, level, color, opacity, name)
+    for level, opacity, name in zip(iso_levels, opacities, names):
+        trace = create_rgb_isosurface_trace(
+            mag_3d, r_frac, g_frac, b_frac,
+            x_iso, y_iso, z_iso, level, opacity, name
+        )
         if trace:
             fig.add_trace(trace)
 

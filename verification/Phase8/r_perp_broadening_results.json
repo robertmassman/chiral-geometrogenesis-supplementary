@@ -1,0 +1,120 @@
+{
+  "analysis": "R_perp logarithmic broadening",
+  "lattice_data": [
+    {
+      "collaboration": "Bali et al.",
+      "year": 1995,
+      "action": "Wilson",
+      "d_fm": 0.5,
+      "R_perp_fm": 0.35,
+      "R_perp_err": 0.05,
+      "ref": "Phys. Rev. D 51, 5165"
+    },
+    {
+      "collaboration": "Cardoso et al.",
+      "year": 2013,
+      "action": "Wilson",
+      "d_fm": 0.8,
+      "R_perp_fm": 0.32,
+      "R_perp_err": 0.04,
+      "ref": "Phys. Rev. D 88, 054504"
+    },
+    {
+      "collaboration": "Cea et al.",
+      "year": 2012,
+      "action": "Staggered",
+      "d_fm": 1.0,
+      "R_perp_fm": 0.38,
+      "R_perp_err": 0.03,
+      "ref": "Phys. Rev. D 86, 054501"
+    },
+    {
+      "collaboration": "Gliozzi et al.",
+      "year": 2010,
+      "action": "Multilevel",
+      "d_fm": 0.7,
+      "R_perp_fm": 0.34,
+      "R_perp_err": 0.02,
+      "ref": "PRL 104, 232001"
+    }
+  ],
+  "baker_2019_data": [
+    {
+      "d_fm": 0.4,
+      "R_perp_fm": 0.3,
+      "R_perp_err": 0.04
+    },
+    {
+      "d_fm": 0.6,
+      "R_perp_fm": 0.33,
+      "R_perp_err": 0.03
+    },
+    {
+      "d_fm": 0.8,
+      "R_perp_fm": 0.36,
+      "R_perp_err": 0.03
+    },
+    {
+      "d_fm": 1.0,
+      "R_perp_fm": 0.38,
+      "R_perp_err": 0.03
+    },
+    {
+      "d_fm": 1.2,
+      "R_perp_fm": 0.4,
+      "R_perp_err": 0.04
+    }
+  ],
+  "fit": {
+    "pure_luscher": {
+      "A_fit": 0.05681926628891798,
+      "A_err": 0.02577032235469477,
+      "B_fit": 0.13931602905438362,
+      "B_err": 0.010930031359957505,
+      "sigma_fit_fm2": 2.8010735352092517,
+      "sqrt_sigma_fit_MeV": 330.2544857971542,
+      "d0_fit_fm": 0.0861284655008332,
+      "chi2": 1.616878765502007,
+      "dof": 7.0,
+      "chi2_dof": 0.23098268078600098
+    },
+    "extended_fixed_sigma": {
+      "A_known": 0.03201015071380251,
+      "C_fit": 0.1314452764993884,
+      "C_err": 0.007254209243265447,
+      "chi2": 2.5436720163120645,
+      "dof": 8.0,
+      "chi2_dof": 0.31795900203900807,
+      "R_perp_at_string_breaking_fm": 0.3722742741686153
+    },
+    "extrapolation": {
+      "d_fm": [
+        1.5,
+        2.0,
+        3.0,
+        5.0
+      ],
+      "R_perp_fm": [
+        0.3800319403933292,
+        0.39196048552878326,
+        0.40818135851076065,
+        0.4277424770126433
+      ]
+    },
+    "n_data_points": 9
+  },
+  "asymptotic": {
+    "d_star_fm": 8.818144789459188,
+    "d_star_accessible": 0.0,
+    "R_at_string_breaking_fm": 0.3739566768315666,
+    "residual_fm": 0.0745133231684334,
+    "pull_at_break_sigma": 7.682368615879834,
+    "interpretation": "R_\u22a5 reaches R_stella = 0.44847 fm at d = 8.82 fm. This exceeds the string breaking distance (1.2\u20131.4 fm). At d = 1.3 fm, R_\u22a5 = 0.374 fm (residual = 0.075 fm, 7.7\u03c3 from R_stella)."
+  },
+  "tension_reassessment": {
+    "original_pull_sigma": 2.2823333333333324,
+    "corrected_pull_sigma": 2.3633290750869396,
+    "reduction_factor": 1.035488129875978,
+    "conclusion": "Original tension: 2.28\u03c3 (comparing R_stella to Cea at d=1.0 fm). After logarithmic broadening correction: 2.36\u03c3 (comparing to extrapolated R_\u22a5 at string breaking d=1.3 fm). Tension reduced by factor 1.0x. R_\u22a5 reaches R_stella at d = 8.82 fm."
+  }
+}

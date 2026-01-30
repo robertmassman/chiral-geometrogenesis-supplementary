@@ -827,6 +827,8 @@ $$\boxed{\theta_{physical} = 0 \text{ (Z₃ superselection + energy minimization
 - **From:** "OPEN PROBLEM — does not currently solve Strong CP"
 - **To:** "CANDIDATE SOLUTION — Z₃ superselection provides θ = 0"
 
+**Connection to measurement theory:** The same Z₃ superselection that constrains θ also governs measurement outcomes. This unified origin is formalized in [Corollary 9.4.1 (CP-Measurement Unity)](./Proposition-0.0.17i-Z3-Measurement-Extension.md#94-corollary-unified-origin-of-measurement-discretization-and-cp-conservation) of Proposition 0.0.17i, which shows that both phenomena are consequences of gauge-invariance constraints on the post-measurement observable algebra.
+
 ---
 
 ## 10. References

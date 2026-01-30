@@ -85,17 +85,33 @@ def N_f : ℕ := 2  -- Matches Constants.N_f_chiral (chiral limit)
 -/
 noncomputable def sqrt_sigma_MeV : ℝ := 440
 
+/-- Consistency: local √σ = 440 agrees with Prop 0.0.17k (which links to Constants). -/
+theorem sqrt_sigma_consistent_with_constants :
+    sqrt_sigma_MeV = Proposition_0_0_17k.sqrt_sigma_MeV := by
+  unfold sqrt_sigma_MeV Proposition_0_0_17k.sqrt_sigma_MeV; rfl
+
 /-- Pion decay constant f_π = 92.1 MeV (observed value)
 
     Source: PDG 2024, f_π = 92.1 ± 0.8 MeV
 -/
 noncomputable def f_pi_observed_MeV : ℝ := 92.1
 
+/-- Consistency: local f_π(observed) = 92.1 matches Constants.f_pi_observed_MeV. -/
+theorem f_pi_observed_consistent_with_constants :
+    f_pi_observed_MeV = Constants.f_pi_observed_MeV := by
+  unfold f_pi_observed_MeV Constants.f_pi_observed_MeV; rfl
+
 /-- Internal frequency ω = 220 MeV (from Prop 0.0.17l)
 
     Source: Proposition 0.0.17l (ω = √σ/(N_c-1))
 -/
 noncomputable def omega_MeV : ℝ := 220
+
+/-- Consistency: ω = √σ / 2 = 440 / 2 = 220, matching Prop 0.0.17l derivation. -/
+theorem omega_consistent_with_sqrt_sigma :
+    omega_MeV = sqrt_sigma_MeV / 2 := by
+  unfold omega_MeV sqrt_sigma_MeV
+  norm_num
 
 /-- EFT cutoff Λ = 4πf_π ≈ 1102 MeV
 

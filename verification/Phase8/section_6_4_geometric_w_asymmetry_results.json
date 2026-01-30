@@ -37,11 +37,13 @@
       "description": "Singlet vs triplet vertices"
     },
     "f_VEV": {
-      "value": 0.3333333333333334,
+      "value": 0.24955344465536028,
       "formula": "(v_W/v_H)^2",
-      "v_W": 142.15518327986968,
+      "v_W": 123.0,
+      "v_W_geometric": 142.15518327986968,
       "v_H": 246.22,
-      "ratio": 0.5773502691896258,
+      "ratio": 0.4995532450653887,
+      "source": "Proposition 5.1.2b \u00a74.5 (self-consistent)",
       "description": "VEV ratio squared"
     },
     "f_solid": {
@@ -52,12 +54,16 @@
       "description": "Domain solid angle factor"
     },
     "f_overlap": {
-      "value": 0.00517565688330414,
-      "formula": "exp(-d_W_RGB / R_soliton)",
-      "d_over_R": 5.263789013914325,
-      "M_W": 1683.6185070439992,
+      "value": 0.0071,
+      "uncertainty": 0.0011,
+      "formula": "(r_0/d)^(3/2) power-law",
+      "source": "Proposition 5.1.2b \u00a73.3-3.4",
+      "d_over_R": 5.060557638281781,
+      "f_overlap_exponential": 0.006342021972431059,
+      "M_W": 1618.6151217786548,
       "v_H": 246.22,
-      "description": "Vertex separation exponential suppression"
+      "description": "Vertex separation power-law suppression (NOT exponential)",
+      "advantage": "Reduced sensitivity: 10% change in d/r_0 \u2192 15% change in f_overlap"
     },
     "f_chiral": {
       "value": 1.7320508075688772,
@@ -71,49 +77,64 @@
     }
   },
   "combined": {
-    "kappa_W_geom": 0.0004980278158014641,
-    "document_value": 0.00048,
-    "ratio_to_doc": 1.0375579495863836,
+    "kappa_W_geom": 0.0005114831069938457,
+    "document_value": 0.00051,
+    "ratio_to_doc": 1.0029080529291092,
+    "source": "Prediction-8.3.1 \u00a76.4 (aligned with Proposition 5.1.2b)",
     "breakdown": {
       "f_singlet": 0.3333333333333333,
-      "f_VEV": 0.3333333333333334,
+      "f_VEV": 0.24955344465536028,
       "f_solid": 0.5,
-      "f_overlap": 0.00517565688330414,
+      "f_overlap": 0.0071,
       "f_chiral": 1.7320508075688772
     }
   },
   "asymmetry": {
-    "epsilon_W_computed": 3.0379696763889307e-13,
-    "epsilon_W_required": 2.5956205013040633e-13,
-    "document_epsilon_W": 2.9e-13,
+    "epsilon_W_computed": 3.1200469526624586e-13,
+    "epsilon_W_required": 2.6998603030819487e-13,
+    "document_epsilon_W": 3.1e-13,
     "document_required": 2.2e-13,
-    "ratio": 1.1704213596951585,
-    "percent_difference": 17.042135969515847,
-    "kappa_W": 0.0004980278158014641,
+    "ratio": 1.1556327374052864,
+    "percent_difference": 15.563273740528642,
+    "kappa_W": 0.0005114831069938457,
     "eta_B": 6.1e-10
   },
   "relic": {
-    "Omega_W_over_Omega_b": 6.291311568341116,
-    "Omega_W_h2": 0.140925379130841,
+    "Omega_W_over_Omega_b": 6.211818973882372,
+    "Omega_W_h2": 0.13914474501496513,
     "Omega_DM_h2_observed": 0.12,
-    "ratio": 1.174378159423675,
+    "ratio": 1.159539541791376,
     "agreement_within_factor_2": true
   },
   "sensitivity": {
-    "M_W_sensitivity": {
-      "M_W_values": [
-        1000,
-        1500,
-        1700,
-        2000,
-        2500
+    "f_overlap_sensitivity": {
+      "values": [
+        0.006,
+        0.0071,
+        0.0082
       ],
-      "description": "f_overlap varies exponentially with M_W"
+      "baseline": 0.0071,
+      "uncertainty": 0.0011,
+      "model": "power-law (r_0/d)^(3/2)",
+      "source": "Proposition 5.1.2b \u00a73.3-3.4"
     },
-    "vev_scaling": {
-      "quadratic": 0.3333333333333333,
-      "linear": 0.5773502691896258,
-      "ratio": 1.7320508075688776
+    "model_comparison": {
+      "exponential_M_W_range": [
+        1460,
+        1620,
+        1780
+      ],
+      "power_law_value": 0.0071,
+      "note": "Power-law is less sensitive to geometric uncertainties"
+    },
+    "vev_sensitivity": {
+      "v_W_values": [
+        108,
+        123,
+        142
+      ],
+      "preferred": 123,
+      "source": "Proposition 5.1.2b \u00a74.5"
     },
     "boundary_efficiency": {
       "values": [
@@ -126,18 +147,26 @@
     }
   },
   "reconciliation": {
-    "document_kappa": 0.0004811252243246881,
-    "document_factors": {
+    "document_kappa_new": 0.0005123983639057928,
+    "document_kappa_old": 0.0004811252243246881,
+    "document_factors_new": {
+      "f_singlet": 0.3333333333333333,
+      "f_VEV": 0.25,
+      "f_solid": 0.5,
+      "f_overlap": 0.0071,
+      "f_chiral": 1.7320508075688772
+    },
+    "document_factors_old": {
       "f_singlet": 0.3333333333333333,
       "f_VEV": 0.3333333333333333,
       "f_solid": 0.5,
       "f_overlap": 0.005,
       "f_chiral": 1.7320508075688772
     },
-    "d_R_document": 5.3,
-    "d_R_computed": 5.263789013914325,
-    "f_overlap_document": 0.005,
-    "f_overlap_computed": 0.00517565688330414
+    "d_R_computed": 5.060557638281781,
+    "f_overlap_power_law": 0.0071,
+    "f_overlap_exponential": 0.006342021972431059,
+    "source": "Proposition 5.1.2b (power-law model)"
   },
   "plot_path": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/section_6_4_geometric_w_asymmetry.png"
 }

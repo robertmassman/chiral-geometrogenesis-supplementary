@@ -6,9 +6,15 @@
   STATUS: 🔶 NOVEL — Unique Fixed Point of Self-Consistency Equations
 
   **Purpose:**
-  Prove that the seven bootstrap equations of Chiral Geometrogenesis have a unique
+  Prove that the seven core bootstrap equations of Chiral Geometrogenesis have a unique
   projective fixed point, establishing that all dimensionless ratios are determined
   by topology alone.
+
+  **Note on Eight-Equation Extension:**
+  The markdown proof (updated 2026-01-24) extends this system to eight equations by
+  including the α_GUT threshold formula from Proposition 0.0.25. That extension is
+  formalized separately in Proposition_0_0_25.lean. This file covers the foundational
+  seven-equation system determining QCD/gravity scales.
 
   **Key Results:**
   (a) Main Result: The bootstrap map F: ℝ⁵ → ℝ⁵ is a projection (constant) map
@@ -34,6 +40,9 @@
   - ✅ Proposition 0.0.17t (b₀ = 9/(4π) from index theorem)
   - ✅ Proposition 0.0.17v (I_stella = I_gravity holographic self-encoding)
   - ✅ Proposition 0.0.17w (1/αₛ(M_P) = 64 from maximum entropy)
+
+  **Extensions:**
+  - ➡️ Proposition 0.0.25 (α_GUT threshold formula - eighth bootstrap equation)
 
   ## Proof Status
 
@@ -649,8 +658,8 @@ theorem all_points_map_to_fixed (x : BootstrapVariables) :
        (Eq. E₁)                (Eq. E₂)              (Eq. E₄)
                                      │
                                      ▼
-                              ξ = exp(64/2β)
-                              (Eq. E₃)
+                              ξ = exp(64/(2β))
+                              (Eq. E₃)          [= exp(128π/9)]
                                      │
                                      ▼
                                ζ = 1/ξ
@@ -848,20 +857,27 @@ theorem convergence_immediate (x : BootstrapVariables) :
     | η = a/ℓ_P| 2.253           | √(8ln3/√3) |
     | ζ = √σ/M_P| 3.97 × 10⁻²⁰   | 1/ξ     |
 
+    **Note:** These are numerical approximations for documentation purposes, matching
+    the markdown table. The formal definitions (alpha_s_planck, beta_0, xi_fixed, etc.)
+    are proven elsewhere. For rigorous bounds, see:
+    - beta_0_approx: 0.71 < b₀ < 0.72 (line 234)
+    - eta_fixed_approx: 2.2 < η < 2.3 (line 471)
+    - hierarchy_exponent_approx: 44.5 < exponent < 44.9 (line 301)
+
     Reference: Markdown §4.1
 -/
 structure ComputedValues where
-  alpha_s : ℝ := 0.015625      -- 1/64
-  beta : ℝ := 0.7162           -- 9/(4π)
-  xi : ℝ := 2.52e19            -- exp(128π/9)
-  eta : ℝ := 2.253             -- √(8ln3/√3)
-  zeta : ℝ := 3.97e-20         -- 1/ξ
+  alpha_s : ℝ := 0.015625      -- 1/64 (exact)
+  beta : ℝ := 0.7162           -- 9/(4π) ≈ 0.7162
+  xi : ℝ := 2.52e19            -- exp(128π/9) ≈ 2.52×10¹⁹
+  eta : ℝ := 2.253             -- √(8ln3/√3) ≈ 2.253
+  zeta : ℝ := 3.97e-20         -- 1/ξ ≈ 3.97×10⁻²⁰
 
 /-- Physical value comparison (Table from Markdown §4.2)
 
     | Quantity | Computed | Observed | Agreement |
     |----------|----------|----------|-----------|
-    | R_stella | 0.41 fm  | 0.40-0.50 fm | 98%   |
+    | R_stella | 0.41 fm  | 0.44847 fm | 91%   |
     | √σ       | 481 MeV  | 440±30   | 91% (1.4σ)|
     | a        | 3.6×10⁻³⁵| —        | Prediction|
 
@@ -871,11 +887,16 @@ structure ComputedValues where
     - MILC/Bazavov 2019: 430 ± 25 MeV → 89% agreement
     - Bali 2005 (flux tube width): 0.40 ± 0.05 fm → 98% agreement
 
-    Reference: Markdown §4.2
+    **R_stella interpretation (per CLAUDE.md):**
+    - Observed: 0.44847 fm (from √σ = 440 MeV, used for verification)
+    - Bootstrap-predicted: 0.454 fm (from Prop 0.0.17z, theoretical output)
+    - The observed value is derived from √σ = ℏc/R_stella with √σ = 440 MeV
+
+    Reference: Markdown §4.2, CLAUDE.md
 -/
 structure PhysicalComparison where
   R_stella_computed_fm : ℝ := 0.41
-  R_stella_observed_fm : ℝ := 0.45
+  R_stella_observed_fm : ℝ := 0.44847  -- From √σ = 440 MeV (FLAG 2024)
   sqrt_sigma_computed_MeV : ℝ := 481
   sqrt_sigma_observed_MeV : ℝ := 440
   sqrt_sigma_uncertainty_MeV : ℝ := 30
@@ -1041,6 +1062,19 @@ theorem encoding_map_constant (c₁ c₂ c₃ : StellaConfiguration) :
     Our encoding_map has this property: for any f: PhysicalObservable → PhysicalObservable,
     f ∘ (encoding_map a) is constant, ensuring fixed points exist.
 
+    **Note on formalization level:**
+    This structure provides a categorical *sketch* of the Lawvere fixed-point connection.
+    A fully rigorous formalization would require:
+    - Weak point-surjectivity: ∀ g, ∃ a, ∀ c, g c = eval (encode a) c
+    - Cartesian closed category structure
+    - Diagonal argument construction
+
+    The current formalization establishes that the bootstrap *has* Lawvere structure
+    (constant map property), which is sufficient for the physics interpretation.
+
+    For the actual uniqueness proof, we use the DAG structure (Part 6), which is
+    completely rigorous.
+
     Reference: Lawvere (1969), "Diagonal Arguments and Cartesian Closed Categories"
 -/
 structure LawvereFixedPointData where
@@ -1052,7 +1086,7 @@ structure LawvereFixedPointData where
   encode : ConfigSpace → (ConfigSpace → ObsSpace)
   /-- The fixed point guaranteed by the theorem -/
   fixedPoint : ObsSpace
-  /-- Every endomorphism has this as a fixed point -/
+  /-- Every endomorphism has this as a fixed point (tautological placeholder) -/
   is_fixed : ∀ (f : ObsSpace → ObsSpace), f fixedPoint = fixedPoint → True
 
 /-- The Lawvere data for the bootstrap equations.

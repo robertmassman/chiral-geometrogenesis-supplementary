@@ -334,7 +334,7 @@ $$g_\chi = \frac{4\pi}{N_c^2} = \frac{4\pi}{9} \approx 1.40$$
 
 **Derivation:**
 
-1. **Gauss-Bonnet on octahedron:** The octahedral interaction surface (dual to stella) has $\int K\,dA = 4\pi$ (Euler characteristic χ = 2)
+1. **Gauss-Bonnet on octahedral interaction surface:** The octahedral intersection region of the two tetrahedra (V=6, E=12, F=8) has $\int K\,dA = 4\pi$ (Euler characteristic χ = 2). Note: this is the effective interaction surface, not the full stella boundary ∂S = ∂T₊ ⊔ ∂T₋ which has χ = 4 (see Definition 0.1.1)
 
 2. **Color singlet normalization:** For a color-singlet coupling, the amplitude averages over $N_c^2 = 9$ color configurations
 

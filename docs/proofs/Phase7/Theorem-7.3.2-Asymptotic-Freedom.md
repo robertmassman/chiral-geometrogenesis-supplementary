@@ -81,6 +81,8 @@ This theorem uses the **3-file academic structure** plus a supplementary two-loo
 | Proposition 0.0.17s | Strong coupling from gauge unification | ✅ VERIFIED |
 | Theorem 2.1.1 | Bag model equilibrium | ✅ ESTABLISHED |
 | Theorem 2.5.2 | Dynamical confinement | ✅ VERIFIED |
+| Theorem 3.0.1 | Pressure-modulated VEV | ✅ COMPLETE |
+| **Proposition 7.3.2a** | **Pressure balance origin of asymptotic freedom** | 🔶 NOVEL |
 | Standard QCD | One-loop β-function | ✅ ESTABLISHED |
 
 ---
@@ -293,6 +295,25 @@ Theorem 2.5.2 derives the Wilson loop area law from the chiral pressure mechanis
 | Role | Why confinement occurs | Why UV is well-defined |
 
 **Together:** Asymptotic freedom (UV) and confinement (IR) form a **complete dynamical picture**.
+
+### 4.2.1 Unified Geometric Origin (NEW)
+
+**Proposition 7.3.2a** establishes that confinement and asymptotic freedom are **two manifestations of the same geometric effect**: pressure balance in stella octangula geometry.
+
+The key equation from Theorem 3.0.1:
+
+$$v_\chi^2(x) = \frac{a_0^2}{2}\left[(P_R - P_G)^2 + (P_G - P_B)^2 + (P_B - P_R)^2\right]$$
+
+gives rise to **both phenomena**:
+
+| Phenomenon | Domain | Pressure State | Consequence |
+|------------|--------|----------------|-------------|
+| **Confinement** | Spatial (large r) | Balanced: $P_R \approx P_G \approx P_B$ | $v_\chi \to 0$ → flux tubes |
+| **Asymptotic freedom** | Momentum (high k) | Form factor $\mathcal{F}(k) \to 0$ | Coupling suppressed |
+
+**Physical interpretation:** High-momentum probes sample regions where single-color pressure dominates (near vertices), experiencing screening. Low-momentum probes average over pressure-balanced regions (far field), experiencing the full coupling strength.
+
+**See:** [Proposition 7.3.2a](./Proposition-7.3.2a-Pressure-Balance-Asymptotic-Freedom.md) for the complete derivation.
 
 ### 4.3 The Chiral Transition
 

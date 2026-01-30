@@ -93,8 +93,22 @@ open ChiralGeometrogenesis.Constants
     **Citation:** PDG 2024, lattice QCD -/
 noncomputable def sqrt_sigma_MeV : ℝ := 440
 
+/-- Consistency: local √σ = 440 agrees with
+    Constants.sqrt_sigma_predicted_MeV (≈ ℏc/R_stella). -/
+theorem sqrt_sigma_consistent_with_constants :
+    439.5 < Constants.sqrt_sigma_predicted_MeV ∧
+    Constants.sqrt_sigma_predicted_MeV < 440.5 := by
+  unfold Constants.sqrt_sigma_predicted_MeV
+  unfold Constants.hbar_c_MeV_fm Constants.R_stella_fm
+  constructor
+  · rw [lt_div_iff₀ (by norm_num : (0.44847 : ℝ) > 0)]
+    norm_num
+  · rw [div_lt_iff₀ (by norm_num : (0.44847 : ℝ) > 0)]
+    norm_num
+
 /-- √σ > 0 -/
-theorem sqrt_sigma_pos : sqrt_sigma_MeV > 0 := by unfold sqrt_sigma_MeV; norm_num
+theorem sqrt_sigma_pos : sqrt_sigma_MeV > 0 := by
+  unfold sqrt_sigma_MeV; norm_num
 
 /-- Characteristic energy unit E_unit ≈ 8.8 MeV for eigenvalue conversion.
 
@@ -407,6 +421,11 @@ theorem robustness_window (E_cut : ℝ) (h_lower : E_cut > 42) (h_upper : E_cut 
 
     **Citation:** FLAG Working Group (2024), Nf=2+1+1 -/
 noncomputable def sqrt_sigma_FLAG2024 : ℝ := 440
+
+/-- Consistency: sqrt_sigma_FLAG2024 matches local sqrt_sigma_MeV. -/
+theorem sqrt_sigma_FLAG_eq_local :
+    sqrt_sigma_FLAG2024 = sqrt_sigma_MeV := by
+  unfold sqrt_sigma_FLAG2024 sqrt_sigma_MeV; rfl
 
 /-- FLAG 2024 uncertainty on √σ: ± 5 MeV (1.1%) -/
 noncomputable def sqrt_sigma_uncertainty : ℝ := 5

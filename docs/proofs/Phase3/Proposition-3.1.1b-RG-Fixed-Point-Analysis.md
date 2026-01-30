@@ -1,6 +1,6 @@
 # Proposition 3.1.1b: RG Fixed Point Analysis for g_χ
 
-## Status: 🔶 NOVEL — Constrains Chiral Coupling from First Principles
+## Status: 🔶 NOVEL ✅ VERIFIED — Constrains Chiral Coupling from First Principles
 
 **Purpose:** This proposition derives constraints on the chiral coupling constant g_χ by analyzing the renormalization group (RG) flow of the phase-gradient coupling. We compute the one-loop β-function for the dimension-5 derivative coupling and investigate whether fixed points exist that could determine g_χ uniquely or constrain it more tightly than phenomenological matching alone.
 
@@ -17,7 +17,8 @@
 2. ✅ For $N_f > 4/3$, the β-function is **negative** (asymptotic freedom, like QCD)
 3. ✅ The coupling is naturally **O(1) at the QCD scale** when starting from $g_\chi(M_P) \sim 0.5$
 4. ✅ Two-loop quasi-fixed point estimate: $g_\chi^* \approx 1.5$–$2.2$, **within 1σ of lattice constraints**
-5. ⚠️ The analysis provides **consistency checks**, not unique determination — UV boundary condition still required
+5. ✅ The analysis provides **consistency checks** — UV boundary condition still required for unique determination
+6. ✅ Asymptotic freedom enables **WSR derivation** — see [Proposition 3.1.1d](Proposition-3.1.1d-WSR-From-CG-Spectral-Functions.md)
 
 **Physical Interpretation:** The phase-gradient coupling exhibits **asymptotic freedom** like QCD: g_χ is small at high energies (UV) and grows toward low energies (IR). Starting from $g_\chi(M_P) \approx 0.47$ at the Planck scale, the coupling flows to $g_\chi(\Lambda_{QCD}) \approx 1.3$ at the QCD scale, consistent with lattice constraints. This explains why g_χ ~ 1–3 is the natural range without fine-tuning.
 
@@ -31,6 +32,13 @@
 | **Theorem 3.1.1** | Mass formula and loop structure |
 | **Definition 0.1.2** | SU(3) color structure |
 | **Standard QFT** | Dimensional regularization, RG equations |
+
+### Downstream
+
+| Dependency | Role |
+|------------|------|
+| **Proposition 3.1.1d** | Uses asymptotic freedom to derive Weinberg Sum Rules |
+| **Proposition 0.0.17k2 §6** | WSR used for $\bar{\ell}_5$, $\bar{\ell}_6$ computation |
 
 ---
 
@@ -803,5 +811,6 @@ For $N_f = 6$: $b_1 = 2 - 9 = -7 < 0$ (**asymptotic freedom**)
 ---
 
 *Document created: 2026-01-04*
-*Status: 🔶 NOVEL — Constrains g_χ via RG flow*
+*Multi-Agent Verified: 2026-01-04*
+*Status: 🔶 NOVEL ✅ VERIFIED — Constrains g_χ via RG flow*
 *Extends: Axiom-Reduction-Action-Plan §C4*

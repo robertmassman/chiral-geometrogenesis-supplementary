@@ -178,7 +178,8 @@ theorem radialIntegrand_bounded (u : ℝ) : u^2 / (u^2 + 1)^2 ≤ 1 := by
     - Gradshteyn & Ryzhik, "Table of Integrals", 8th ed., Formula 2.172.1
     - The result also follows from the substitution u = tan(θ), giving
       ∫₀^{π/2} sin²θ dθ = π/4 (see Apostol, "Calculus" Vol. 1, §8.4)
-    - Fundamental Theorem of Calculus: Mathlib `intervalIntegral.integral_eq_sub_of_hasDerivAt_of_le`
+    - Fundamental Theorem of Calculus: Mathlib
+      `intervalIntegral.integral_eq_sub_of_hasDerivAt_of_le`
 -/
 theorem dimensionless_radial_integral_value :
     ∃ (J : ℝ), J = Real.pi / 4 ∧

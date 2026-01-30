@@ -664,6 +664,29 @@ These are **long-term research directions**, not gaps blocking the current paper
 
 ---
 
+## Gap 7: Prop 0.0.17z "What Remains to Be Done" — Resolution Status
+
+The original Prop 0.0.17z identified three categories of open work. Status as of 2026-01-27:
+
+### Category 1: Strengthen existing corrections — ✅ RESOLVED
+
+- ✅ Gluon condensate coefficient $c_G$ derived from stella geometry — [Proposition 0.0.17z1](foundations/Proposition-0.0.17z1-Geometric-Derivation-Non-Perturbative-Coefficients.md)
+- ✅ Scale-dependent effective Euler characteristic $\chi_{\text{eff}}(\mu)$ — [Proposition 0.0.17z2](foundations/Proposition-0.0.17z2-Scale-Dependent-Effective-Euler-Characteristic.md)
+
+### Category 2: Incorporate corrected value into bootstrap — ✅ RESOLVED
+
+- ✅ Non-perturbative corrections fed back; corrected prediction $\sqrt{\sigma} = 435$ MeV (0.16σ agreement) — [Proposition 0.0.17z](foundations/Proposition-0.0.17z-Non-Perturbative-Corrections-To-Bootstrap.md) §6
+
+### Category 3: Genuinely open questions
+
+| Item | Original Status | Current Status | Resolution |
+|------|----------------|----------------|------------|
+| 3.1 Derive G from pre-geometric principles | Open | ✅ **RESOLVED** | $G$ derived from $R_{\text{stella}}$ via dimensional transmutation + Sakharov mechanism — [Proposition 0.0.17ab](foundations/Proposition-0.0.17ab-Newtons-Constant-From-Topology.md) (🔶 NOVEL ✅ ESTABLISHED, Lean verified) |
+| 3.2 Temperature dependence near $T_c$ | Open | ✅ **RESOLVED** | $T_c/\sqrt{\sigma} = 0.35$ derived (lattice: $0.354 \pm 0.01$); three temperature regimes with quantitative formulas — [Proposition 0.0.17j](foundations/Proposition-0.0.17j-String-Tension-From-Casimir-Energy.md) §5.4 |
+| 3.3 Lattice comparison at multiple scales | Partially done | 🔸 **OPEN** | Individual scales checked (σ, flux tube width, $T_c$, $f_\pi$, fermion masses) but no systematic multi-lattice study across different volumes/spacings/discretizations — see [Proposition 8.5.1](Phase8/Proposition-8.5.1-Lattice-QCD-Heavy-Ion-Predictions.md) for existing comparisons |
+
+---
+
 ## Appendix: Cross-Reference to Existing Documents
 
 ### Foundations (Props 0.0.x)
@@ -713,6 +736,6 @@ These are **long-term research directions**, not gaps blocking the current paper
 ---
 
 *Worksheet created: 2026-01-06*
-*Last updated: 2026-01-23 — Major progress: Gap 1 (EW sector ✅), Gap 2 (v_H ✅), Gap 4 (DM ✅), Gap 5 (gravity ✅), Phase 6 created*
+*Last updated: 2026-01-27 — Added Gap 7 (Prop 0.0.17z open questions): G derivation ✅ (Prop 0.0.17ab), T_c dependence ✅ (Prop 0.0.17j §5.4), systematic lattice comparison 🔸 OPEN*
 *Status: Active research agenda — substantial completion achieved*
 *Next review: After completing Gap 3 (PMNS matrix derivation)*

@@ -247,14 +247,31 @@ $$\boxed{\frac{\Gamma_+}{\Gamma_-} = \exp\left(\frac{2\alpha \cdot \mathcal{G} \
 
 The universe has more matter than antimatter because:
 
-1. CP violation exists (CKM matrix)
-2. This selects instantons over anti-instantons in the early universe
-3. The instanton asymmetry selects R→G→B chirality for the χ field
+1. The stella orientation selects a winding number w = +1 (cosmological initial condition)
+2. This determines the phase cycle R→G→B with α = +2π/3
+3. The winding maps to instanton number Q = w = +1, selecting instantons over anti-instantons
 4. This chirality makes Q = +1 soliton nucleation more likely than Q = -1
 5. Q = +1 solitons carry baryon number +1 (Theorem 4.1.3)
 6. Therefore: more baryons than antibaryons
 
-**The arrow of time, the chirality of the color phases, and the matter-antimatter asymmetry all have a common origin: CP violation.**
+**The Trinity of Asymmetry:** The arrow of time, weak chirality, and matter-antimatter asymmetry share a single geometric origin: the winding number w ∈ {+1, -1} of the color phase cycle on the stella boundary. This discrete topological invariant propagates through three independent channels—entropy production (time), fermion zero modes (chirality), and soliton nucleation bias (matter)—unifying what appear to be independent cosmic asymmetries into geometric consequences of one topological choice. CP violation is not the root cause but itself a manifestation of this underlying w = +1 selection.
+
+### 13.4 The Precise Causal Hierarchy
+
+```
+Stella orientation (cosmological selection)
+    ↓
+Winding number w ∈ {+1, -1}  ← ROOT CAUSE
+    ↓
+┌───────────────┬───────────────┬───────────────┐
+│   Q = w       │  α = w·2π/3   │  ΔS ∝ w       │
+│   (topology)  │  (phase)      │  (action)     │
+↓               ↓               ↓
+Weak chirality  Time's arrow    Matter dominance
+(n_L - n_R > 0) (dS/dt > 0)     (η ~ 10⁻¹⁰)
+```
+
+CP violation emerges from this same structure (the CKM phase arises from the geometric breaking pattern O_h → T_d → A_4), making it a *sibling consequence* of w = +1, not the parent cause.
 
 ---
 

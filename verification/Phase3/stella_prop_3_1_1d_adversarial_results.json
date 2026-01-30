@@ -1,0 +1,142 @@
+{
+  "tests": [
+    {
+      "name": "WSR I: F_V\u00b2 - F_A\u00b2 = f_\u03c0\u00b2",
+      "category": "wsr_consistency",
+      "passed": true,
+      "value": 8476.884899999997,
+      "expected": 8476.8849,
+      "tolerance": null
+    },
+    {
+      "name": "WSR II: F_V\u00b2 M_V\u00b2 = F_A\u00b2 M_A\u00b2",
+      "category": "wsr_consistency",
+      "passed": true,
+      "value": -2.86102294921875e-06,
+      "expected": 0.0,
+      "tolerance": null
+    },
+    {
+      "name": "F_V changes by <10% with M_A uncertainty",
+      "category": "sensitivity",
+      "passed": true,
+      "value": 1.1752036279871079,
+      "expected": 10.0,
+      "tolerance": null
+    },
+    {
+      "name": "WSR I finite-width error < 15%",
+      "category": "finite_width",
+      "passed": true,
+      "value": 3.317488801556102,
+      "expected": 15.0,
+      "tolerance": null
+    },
+    {
+      "name": "WSR II finite-width normalized deviation < 15%",
+      "category": "finite_width",
+      "passed": true,
+      "value": 2.938281792978891,
+      "expected": 15.0,
+      "tolerance": null
+    },
+    {
+      "name": "Asymptotic freedom (b\u2081 < 0)",
+      "category": "asymptotic",
+      "passed": true,
+      "value": -7.0,
+      "expected": 0.0,
+      "tolerance": null
+    },
+    {
+      "name": "Integral converges for \u03b3 ~ \u03b1_s/\u03c0 > 0",
+      "category": "asymptotic",
+      "passed": true,
+      "value": 0.0375605665696873,
+      "expected": 0.0,
+      "tolerance": null
+    },
+    {
+      "name": "Higher resonance correction < 20%",
+      "category": "higher_resonances",
+      "passed": true,
+      "value": 8.850264825025492,
+      "expected": 20.0,
+      "tolerance": null
+    },
+    {
+      "name": "WSR I dimensional consistency ([mass\u00b2])",
+      "category": "dimensional",
+      "passed": true,
+      "value": null,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "name": "WSR II dimensional consistency ([mass\u2074])",
+      "category": "dimensional",
+      "passed": true,
+      "value": null,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "name": "\u2113\u2085\u02b3 > 0 (correct sign)",
+      "category": "lec",
+      "passed": true,
+      "value": 0.00492676132414801,
+      "expected": 0.0,
+      "tolerance": null
+    },
+    {
+      "name": "\u2113\u2086\u02b3 < 0 (correct sign)",
+      "category": "lec",
+      "passed": true,
+      "value": -0.005850027611074132,
+      "expected": 0.0,
+      "tolerance": null
+    },
+    {
+      "name": "\u2113\u2085\u02b3 order O(10\u207b\u00b3 to 10\u207b\u00b2)",
+      "category": "lec",
+      "passed": true,
+      "value": 0.00492676132414801,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "name": "\u2113\u2086\u02b3 order O(10\u207b\u00b3 to 10\u207b\u00b2)",
+      "category": "lec",
+      "passed": true,
+      "value": 0.005850027611074132,
+      "expected": null,
+      "tolerance": null
+    },
+    {
+      "name": "OPE 1/q\u00b2 coefficient = -f_\u03c0\u00b2",
+      "category": "ope",
+      "passed": true,
+      "value": -8476.884899999997,
+      "expected": -8476.8849,
+      "tolerance": null
+    },
+    {
+      "name": "WSR II ratio relation",
+      "category": "mass_ratio",
+      "passed": true,
+      "value": 2.5171869361130645,
+      "expected": 2.517186936113065,
+      "tolerance": null
+    },
+    {
+      "name": "M_A/M_V deviates >10% from Weinberg \u221a2 prediction",
+      "category": "warning",
+      "passed": null,
+      "warning": true,
+      "detail": "This is known and due to higher-order effects"
+    }
+  ],
+  "pass_count": 16,
+  "fail_count": 0,
+  "warn_count": 1
+}

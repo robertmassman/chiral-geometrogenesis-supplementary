@@ -52,7 +52,7 @@ The coupling g_χ has been **derived from first principles**:
 $$g_\chi = \frac{4\pi}{N_c^2} = \frac{4\pi}{9} \approx 1.396$$
 
 **Three converging perspectives:**
-1. **Holonomy:** Gauss-Bonnet gives 4π for effective χ=2 interaction surface
+1. **Holonomy:** Gauss-Bonnet gives 4π for the octahedral interaction surface (intersection of two tetrahedra, V=6, χ=2; distinct from full stella boundary ∂S which has χ=4)
 2. **Anomaly Matching:** Color singlet requires N_c² amplitude averaging (3̄ ⊗ 3 = 8 ⊕ **1**)
 3. **Topological Invariants:** (111) boundary structure combines both constraints
 

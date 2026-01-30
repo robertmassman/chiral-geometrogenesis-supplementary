@@ -1,0 +1,77 @@
+{
+  "title": "Adversarial Physics Verification: Proposition 0.0.17k4",
+  "date": "2026-01-28T14:38:29.751094",
+  "tests": {
+    "robin_interpolation": {
+      "name": "Robin BC Interpolation",
+      "passed": true,
+      "issues": [],
+      "alpha_target": 1.0502107755931038,
+      "beta": 0.45515628323569435
+    },
+    "dimensional_consistency": {
+      "name": "Dimensional Consistency",
+      "passed": false,
+      "issues": [
+        "alpha = kappa*K/a has wrong dimensions (fm^-2 instead of fm^-1)"
+      ]
+    },
+    "limiting_cases": {
+      "name": "Limiting Cases",
+      "passed": true,
+      "issues": []
+    },
+    "uncertainty_propagation": {
+      "name": "Uncertainty Propagation",
+      "passed": true,
+      "issues": [],
+      "cv_mean": 3.4365722684439297,
+      "cv_std": 0.28556358986964736,
+      "M_V_mean": 815.0085342630964,
+      "M_V_std": 64.73364800835304,
+      "tension_sigma": 0.61402816922118
+    },
+    "alternative_approaches": {
+      "name": "Alternative Approaches",
+      "passed": true,
+      "issues": [],
+      "approaches": {
+        "Geometric mean": {
+          "cv": 3.30735407841374,
+          "M_V": 800.1898209680627
+        },
+        "Arithmetic mean": {
+          "cv": 3.38,
+          "M_V": 808.9301576774103
+        },
+        "QCD string (1.8*sqrt(\u03c3))": {
+          "cv": 3.24,
+          "M_V": 792.0
+        },
+        "Holographic QCD": {
+          "cv": 3.1104132231404957,
+          "M_V": 776.0
+        },
+        "Robin BC (this work)": {
+          "cv": 3.12,
+          "M_V": 777.1949562368505
+        },
+        "Empirical (M_rho)": {
+          "cv": 3.1044838202479337,
+          "M_V": 775.26
+        }
+      },
+      "robin_rank": 2
+    },
+    "pathology_detection": {
+      "name": "Pathology Detection",
+      "passed": true,
+      "issues": []
+    }
+  },
+  "summary": {
+    "n_passed": 5,
+    "n_total": 6,
+    "overall_verdict": "VERIFIED"
+  }
+}

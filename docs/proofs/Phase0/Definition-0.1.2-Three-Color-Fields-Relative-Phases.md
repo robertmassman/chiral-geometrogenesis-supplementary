@@ -99,6 +99,38 @@ $$\psi_c \to z_k \psi_c = \omega^k \psi_c$$
 
 This $\mathbb{Z}_3$ symmetry is the **triality** of SU(3)—it distinguishes quarks from antiquarks from gluons.
 
+### 2.1.1 Remark: The $\mathbb{Z}_3$ Visibility Criterion (SU(3) vs. PSU(3))
+
+The stella octangula encodes the **full** gauge group SU(3), not the quotient PSU(3) = SU(3)/$\mathbb{Z}_3$. This distinction is subtle but crucial for the framework's treatment of the Strong CP problem and superselection rules.
+
+**The Visibility Criterion:**
+
+The stella's six weight vertices correspond to the weights of the fundamental representation **3** and anti-fundamental **$\bar{3}$** (see §2.2 below and Theorem 1.1.1). This is the key: the stella encodes the fundamental representation *directly*, not merely the adjoint representation **8**.
+
+The $\mathbb{Z}_3$ center acts on the fundamental representation as:
+$$z_k : |\psi\rangle \mapsto \omega^k |\psi\rangle$$
+
+This action is **geometrically visible** in the stella structure:
+- The center element $z_1 = \omega I$ permutes the color phases: $(0, 2\pi/3, 4\pi/3) \mapsto (2\pi/3, 4\pi/3, 2\pi) \equiv (2\pi/3, 4\pi/3, 0)$
+- The geometric vertices remain fixed—only the phase labels rotate
+- The stella "sees" this $\mathbb{Z}_3$ action because it carries the fundamental representation
+
+**Contrast with PSU(3):**
+
+In the quotient group PSU(3) = SU(3)/$\mathbb{Z}_3$, the center elements $\{1, \omega I, \omega^2 I\}$ are identified with the identity. The adjoint representation **8** (carried by gluons) is insensitive to the center—under $z_k$, gluon fields transform as:
+$$A_\mu \to z_k A_\mu z_k^\dagger = A_\mu$$
+
+A geometry encoding *only* the adjoint representation would not distinguish SU(3) from PSU(3). But the stella's vertex structure encodes the fundamental **3**, where center elements act non-trivially. This is why the stella "sees" the full SU(3), not the quotient PSU(3).
+
+**Physical Consequences:**
+
+This visibility criterion has direct physical implications:
+1. **$\mathbb{Z}_3$ superselection rules** (Proposition 0.0.5a): Physical observables must be $\mathbb{Z}_3$-invariant, which constrains the Strong CP $\theta$-parameter
+2. **Confinement structure**: The $\mathbb{Z}_3$ center symmetry governs the confinement/deconfinement transition; a PSU(3) formulation would lose this structure
+3. **Triality**: Quarks, antiquarks, and gluons are distinguished by their $\mathbb{Z}_3$ charge (triality); this distinction is visible in the stella but would be invisible in a PSU(3) geometry
+
+$$\boxed{\text{The stella encodes } \mathbf{3} \text{ (fundamental), not just } \mathbf{8} \text{ (adjoint)} \Rightarrow \text{SU(3), not PSU(3)}}$$
+
 ### 2.2 The Fundamental Representation and Weight Vectors
 
 The fundamental representation **3** of SU(3) is the defining 3-dimensional representation. The three basis states are the **color eigenstates**:
@@ -561,6 +593,7 @@ function getColorField(color, position) {
 |----------|--------|-----------|
 | Three color fields $\chi_R, \chi_G, \chi_B$ | ✅ DEFINED | Section 1 |
 | Phase values $0, 2\pi/3, 4\pi/3$ | ✅ DERIVED | Section 2 |
+| $\mathbb{Z}_3$ visibility criterion (SU(3) vs PSU(3)) | ✅ ESTABLISHED | Section 2.1.1 |
 | Connection to cube roots of unity | ✅ PROVEN | Section 3 |
 | Anti-color phases | ✅ SPECIFIED | Section 4 |
 | Pre-geometric nature | ✅ ESTABLISHED | Section 6 |
@@ -583,7 +616,8 @@ function getColorField(color, position) {
 4. ✅ Basis for phase dynamics (Theorem 0.2.2)
 5. ✅ Origin of chirality in the theory
 6. ✅ Connection to QCD color structure
-7. ✅ Full CLAUDE.md compliance (Sections 14-15)
+7. ✅ $\mathbb{Z}_3$ visibility criterion distinguishing SU(3) from PSU(3)
+8. ✅ Full CLAUDE.md compliance (Sections 14-15)
 
 ---
 
@@ -839,5 +873,6 @@ $$\boxed{\text{The phases } 0, \frac{2\pi}{3}, \frac{4\pi}{3} \text{ are the mat
 *Status: ✅ COMPLETE — DERIVED definition with all questions resolved (see [Theorem 0.1.0](Theorem-0.1.0-Field-Existence-From-Distinguishability.md) and [Theorem 0.1.0'](Theorem-0.1.0-Prime-Fields-From-Gauge-Bundle-Structure.md))*
 
 *Created: December 2025*
-*Last Updated: December 13, 2025 — Added symbol glossary with dimensional conventions (§1.1); standardized notation to $(T_3, T_8)$ for color SU(3); clarified distinction from flavor hypercharge Y*
+*Last Updated: January 25, 2026 — Added §2.1.1 Z₃ Visibility Criterion (SU(3) vs PSU(3)) formalizing how the stella distinguishes the full gauge group from its center quotient*
+*Previous Update: December 13, 2025 — Added symbol glossary with dimensional conventions (§1.1); standardized notation to $(T_3, T_8)$ for color SU(3); clarified distinction from flavor hypercharge Y*
 *Verified: December 11, 2025 — Independent Mathematical + Physics agents; all errors and warnings resolved*

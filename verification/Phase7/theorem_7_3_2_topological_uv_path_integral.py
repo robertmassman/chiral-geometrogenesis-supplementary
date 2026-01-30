@@ -352,7 +352,10 @@ def physical_interpretation():
     - Topological obstruction to parallel transport
     - Net curvature of the manifold
 
-    For the stella octangula, the chiral sector boundary ∂T_± ≅ S² has χ = 2.
+    For each tetrahedron of the stella octangula, the chiral sector boundary
+    ∂T_± ≅ S² has χ = 2 (single component). The full stella boundary
+    ∂S = ∂T₊ ⊔ ∂T₋ has χ = 4 (two S² components). Here we use the
+    single-sector value χ = 2 for the Gauss-Bonnet interaction surface.
 
     FACTOR N_c = 3 (COLOR):
     -----------------------

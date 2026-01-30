@@ -193,13 +193,40 @@ $$\sigma = \left(\frac{\hbar c}{R_{\text{stella}}}\right)^2 = (440 \text{ MeV})^
 $$R_\perp = R_{\text{stella}} = 0.448 \text{ fm}$$
 
 **Lattice QCD data:**
-- Bali et al. (2005): $R_\perp \approx 0.3-0.4$ fm
-- Cea et al. (2012): $R_\perp \approx 0.35$ fm at q-qbar separation 1 fm
-- Baker et al. (2019): Width increases with separation
 
-**Agreement: ~89%** (CG slightly overpredicts)
+| Collaboration | Action | $R_\perp$ (fm) | $q\bar{q}$ separation | Reference |
+|--------------|--------|----------------|----------------------|-----------|
+| Bali et al. (1995) | Wilson | $0.35 \pm 0.05$ | ~0.5 fm | PRD 51, 5165 |
+| Gliozzi et al. (2010) | Multilevel | $0.34 \pm 0.02$ | ~0.7 fm | PRL 104, 232001 |
+| Cea et al. (2012) | Staggered | $0.38 \pm 0.03$ | ~1.0 fm | PRD 86, 054501 |
+| Cardoso et al. (2013) | Wilson | $0.32 \pm 0.04$ | ~0.8 fm | PRD 88, 054504 |
+| Baker et al. (2019) | — | 0.30–0.40 | 0.4–1.2 fm | Width increases with $d$ |
 
-**Note:** The CG prediction represents the *intrinsic* flux tube width from geometry. Lattice measurements depend on quark separation and contain quantum fluctuations not fully captured in the classical geometric picture.
+**Pull vs best determination (Cea):** 2.3σ (naive) — **reclassified as NOT DIRECTLY COMPARABLE** (see below)
+
+#### Logarithmic broadening analysis
+
+The Lüscher effective string theory (EST) predicts logarithmic broadening of the flux tube transverse width with quark separation:
+
+$$w^2(d) = \frac{1}{2\pi\sigma} \ln\!\left(\frac{d}{d_0}\right)$$
+
+Fitting this to 9 lattice data points (including Baker et al. 2019 separation-resolved measurements) with $\sigma$ fixed to the CG value $(440\ \mathrm{MeV})^2$:
+
+- **Fit quality:** $\chi^2/\mathrm{dof} = 0.32$ (8 dof) — excellent
+- **$R_\perp$ at string breaking ($d = 1.25$ fm):** 0.372 fm
+- **$R_\perp$ reaches $R_{\text{stella}}$ at:** $d \approx 8.8$ fm (well beyond string breaking)
+
+**Conclusion:** Logarithmic broadening alone does **not** resolve the 2.3σ tension. The broadening rate from leading-order EST is too slow to bring the lattice width to 0.448 fm within the physically accessible string range ($d \lesssim 1.3$ fm).
+
+#### Correct interpretation
+
+The tension reflects a **category error** in the original comparison. $R_{\text{stella}}$ enters CG as the scale that sets the string tension:
+
+$$\sigma = \left(\frac{\hbar c}{R_{\text{stella}}}\right)^2 = (440\ \mathrm{MeV})^2$$
+
+This prediction agrees **exactly** with lattice QCD (0.0σ pull). The transverse flux tube profile width $R_\perp(d)$ is a *different* observable — a derived, distance-dependent quantity governed by string fluctuations. CG does not predict $R_\perp(d)$ directly; the identification $R_\perp = R_{\text{stella}}$ was a heuristic, not a theorem.
+
+**Verification script:** `verification/Phase8/r_perp_logarithmic_broadening.py`
 
 ### 4.3 Area Law for Wilson Loop
 

@@ -58,11 +58,38 @@ What was missing: **Explicit electroweak gauge field structure** connecting geom
 
 ### 2.2 Strategy: D₄ Root Decomposition
 
-The 24-cell (vertices of the dual to the stella's dual structure) encodes the D₄ root system. Under the SM subgroup decomposition:
+The 24-cell (vertices of the dual to the stella's dual structure) encodes the D₄ root system, consisting of 24 vectors in ℝ⁴. The dimensional coincidence with the 24 generators of SU(5) arises via the embedding chain:
 
-$$\mathbf{24}_{\text{D}_4} \to \mathbf{8}_{\text{SU(3)}} \oplus \mathbf{3}_{\text{SU(2)}} \oplus \mathbf{1}_{\text{U(1)}} \oplus \mathbf{12}_{\text{leptoquark}}$$
+$$\text{D}_4 \subset \text{D}_5 \cong \mathfrak{so}(10) \supset \mathfrak{su}(5)$$
 
-This decomposition directly yields the gauge boson content.
+where D₄ roots embed naturally into the D₅ = so(10) root system, which contains SU(5) as a maximal subgroup. The SU(5) adjoint representation then decomposes under the Standard Model subgroup as:
+
+$$\mathbf{24}_{\mathfrak{su}(5)} \to \mathbf{8}_{\text{SU(3)}} \oplus \mathbf{3}_{\text{SU(2)}} \oplus \mathbf{1}_{\text{U(1)}} \oplus \mathbf{12}_{\text{leptoquark}}$$
+
+This decomposition directly yields the gauge boson content. Note that the D₄ roots provide the geometric template that determines the algebraic structure, while the SU(5) generators provide the physical representation.
+
+### 2.3 Stella Octangula to 24-Cell Construction
+
+For standalone readability, we briefly summarize how the 24-cell arises from the stella octangula (see [Lemma 3.1.2a](../Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md) for full derivation).
+
+**The 24-Cell:**
+The 24-cell (icositetrachoron) is a 4D polytope with 24 vertices decomposing into two types:
+
+| Type | Count | Coordinates | 3D Cross-Section |
+|------|-------|-------------|------------------|
+| 16-cell vertices | 8 | (±1, 0, 0, 0) and permutations | Octahedron |
+| Tesseract vertices | 16 | (±½, ±½, ±½, ±½) | **Stella octangula** at w = ±½ |
+
+**Key Geometric Relationship:**
+The stella octangula (8 vertices at (±1, ±1, ±1) scaled) appears as the 3D cross-section of the 24-cell's tesseract-type vertices at fixed fourth coordinate w = ±½:
+
+$$\text{Stella Octangula} \subset \text{Tesseract vertices} \subset \text{24-cell}$$
+
+The embedding chain is:
+- **3D:** Stella octangula with S₄ × ℤ₂ symmetry (order 48)
+- **4D:** 24-cell with F₄ Weyl group symmetry (order 1152)
+
+The 24 vertices form the **D₄ root system**, whose decomposition under the Standard Model subgroup yields the electroweak gauge structure.
 
 ---
 
@@ -108,10 +135,18 @@ $$\text{Im}(\mathbb{H}) = \text{span}_\mathbb{R}\{i, j, k\}$$
 The quaternion multiplication rules give the su(2) Lie algebra:
 $$[i, j] = 2k, \quad [j, k] = 2i, \quad [k, i] = 2j$$
 
-Identifying $\sigma_1/2 \leftrightarrow i$, $\sigma_2/2 \leftrightarrow j$, $\sigma_3/2 \leftrightarrow k$:
+**Explicit Quaternion-su(2) Isomorphism:**
+
+The isomorphism $\text{Im}(\mathbb{H}) \cong \mathfrak{su}(2)$ is given by:
+$$T_a = \frac{i}{2}\mathbf{i}_a \quad \text{where } \mathbf{i}_1 = i, \, \mathbf{i}_2 = j, \, \mathbf{i}_3 = k$$
+
+In matrix form, identifying quaternions with 2×2 complex matrices via $i \leftrightarrow i\sigma_1$, $j \leftrightarrow i\sigma_2$, $k \leftrightarrow i\sigma_3$:
+$$T_a = \frac{\sigma_a}{2}$$
+
+The commutator structure follows:
 $$[\sigma_a/2, \sigma_b/2] = i\epsilon_{abc}\sigma_c/2$$
 
-This is precisely the su(2) algebra.
+This is precisely the su(2) Lie algebra, with $\epsilon_{abc}$ serving as both the quaternion structure constants and the SU(2) structure constants.
 
 **Step 3: U(1) generator**
 
@@ -216,10 +251,14 @@ $$D^{ab}_{\mu\nu}(k) = \frac{-i\delta^{ab}}{k^2 - M_W^2 + i\epsilon}\left(g_{\mu
 $$V^{abc}_{\mu\nu\rho}(k_1, k_2, k_3) = -ig_2\epsilon^{abc}\left[g_{\mu\nu}(k_1-k_2)_\rho + g_{\nu\rho}(k_2-k_3)_\mu + g_{\rho\mu}(k_3-k_1)_\nu\right]$$
 
 **WWZ vertex:**
-$$V^{WW Z}_{\mu\nu\rho} = -ig_2\cos\theta_W[\text{same Lorentz structure}]$$
+$$V^{W^+W^-Z}_{\mu\nu\rho}(k_1, k_2, k_3) = -ig_2\cos\theta_W\left[g_{\mu\nu}(k_1-k_2)_\rho + g_{\nu\rho}(k_2-k_3)_\mu + g_{\rho\mu}(k_3-k_1)_\nu\right]$$
+
+where $g_2\cos\theta_W = g_2 \cdot M_W/M_Z \approx 0.6528 \times 0.8814 = 0.575$ at $M_Z$.
 
 **WWγ vertex:**
-$$V^{WW\gamma}_{\mu\nu\rho} = -ie[\text{same Lorentz structure}]$$
+$$V^{W^+W^-\gamma}_{\mu\nu\rho}(k_1, k_2, k_3) = -ie\left[g_{\mu\nu}(k_1-k_2)_\rho + g_{\nu\rho}(k_2-k_3)_\mu + g_{\rho\mu}(k_3-k_1)_\nu\right]$$
+
+where $e = g_2\sin\theta_W \approx 0.6528 \times 0.4725 = 0.308$ (corresponding to $\alpha_{\rm em} = e^2/4\pi \approx 1/132$ at $M_Z$).
 
 ### 5.3 Quartic Gauge Boson Vertex
 
@@ -259,16 +298,34 @@ at tree level. This follows from the SU(2)_L × SU(2)_R custodial symmetry prese
 
 ### 7.1 Gauge Anomaly Cancellation
 
-The SU(2)²U(1) and U(1)³ anomalies cancel generation-by-generation:
+The SU(2)²U(1) and U(1)³ anomalies cancel generation-by-generation.
 
-**Per generation:**
-$$\sum_{\rm fermions} Y^3 = 3 \times 2 \times \left(\frac{1}{6}\right)^3 + 3 \times \left(-\frac{2}{3}\right)^3 + 3 \times \left(\frac{1}{3}\right)^3 + 2 \times \left(-\frac{1}{2}\right)^3 + 1^3 = 0$$
+**Convention:** The sum is over left-handed Weyl spinors. Right-handed fields enter via their charge conjugates: $u_R \to u_R^c$ with $Y(u_R^c) = -Y(u_R) = -2/3$, etc.
 
-This is guaranteed by the SU(5) embedding.
+**Per generation (left-handed Weyl fermions):**
+
+| Field | Multiplicity | Hypercharge Y |
+|-------|-------------|---------------|
+| $Q_L$ (quark doublet) | 3 colors × 2 weak | 1/6 |
+| $u_R^c$ (up-type singlet) | 3 colors | −2/3 |
+| $d_R^c$ (down-type singlet) | 3 colors | 1/3 |
+| $L_L$ (lepton doublet) | 2 weak | −1/2 |
+| $e_R^c$ (charged lepton singlet) | 1 | 1 |
+
+$$\sum_{\rm LH\,Weyl} Y^3 = 6 \times \left(\frac{1}{6}\right)^3 + 3 \times \left(-\frac{2}{3}\right)^3 + 3 \times \left(\frac{1}{3}\right)^3 + 2 \times \left(-\frac{1}{2}\right)^3 + 1^3$$
+$$= \frac{6}{216} - \frac{24}{27} + \frac{3}{27} - \frac{2}{8} + 1 = \frac{1}{36} - \frac{8}{9} + \frac{1}{9} - \frac{1}{4} + 1 = 0$$
+
+This is guaranteed by the SU(5) embedding, which assigns each generation to a $\bar{\mathbf{5}} \oplus \mathbf{10}$ representation with automatic anomaly cancellation.
 
 ### 7.2 Unitarity of WW Scattering
 
-Without the Higgs, $W_L W_L \to W_L W_L$ violates unitarity at $E \sim 1.2$ TeV. The Higgs contribution (Theorem 6.7.2) restores unitarity.
+Without the Higgs, $W_L W_L \to W_L W_L$ violates unitarity at $E \sim 1.2$ TeV. This is the Lee-Quigg-Thacker bound:
+
+$$E_{\rm unitarity} \approx \sqrt{8\pi}\, v_H \approx 1.2\,\text{TeV}$$
+
+The Higgs contribution restores unitarity by providing the necessary cancellation in the amplitude growth. The complete treatment including Higgs exchange diagrams and the unitarity proof is given in:
+
+→ **[Theorem 6.7.2: Electroweak Symmetry Breaking Dynamics](Theorem-6.7.2-Electroweak-Symmetry-Breaking-Dynamics.md)** — See §5 for unitarity restoration via Higgs mechanism
 
 ### 7.3 Dimensional Analysis
 
@@ -287,21 +344,30 @@ Without the Higgs, $W_L W_L \to W_L W_L$ violates unitarity at $E \sim 1.2$ TeV.
 ```
 Theorem 0.0.4 (GUT Structure) ← Stella geometry
          │
-         ▼
-Proposition 0.0.22 (SU(2) from D₄/quaternions)
-         │
-         ▼
-Proposition 0.0.23 (U(1)_Y hypercharge)
-         │
-         ▼
-Proposition 0.0.24 (g₂, M_W, M_Z predictions)
-         │
-         ▼
-THIS THEOREM (Complete EW gauge Lagrangian)
-         │
-         ▼
+         ├──────────────────────────────┐
+         ▼                              ▼
+Proposition 0.0.22             Theorem 0.0.5
+(SU(2) from D₄/quaternions)    (Chirality Selection)
+         │                              │
+         ▼                              │
+Proposition 0.0.23                      │
+(U(1)_Y hypercharge)                    │
+         │                              │
+         ▼                              │
+Proposition 0.0.24                      │
+(g₂, M_W, M_Z predictions)              │
+         │                              │
+         └──────────────┬───────────────┘
+                        ▼
+        THIS THEOREM (Complete EW gauge Lagrangian)
+        - SU(2)_L × U(1)_Y structure from Props 0.0.22-24
+        - Left-handed coupling from Thm 0.0.5 chirality
+                        │
+                        ▼
 Theorem 6.7.2 (EWSB dynamics) ──→ Theorem 6.6.1 (EW scattering)
 ```
+
+**Note on Chirality:** Theorem 0.0.5 explains *why* only left-handed fermions couple to SU(2)_L. The stella octangula's oriented structure (topological winding number on $\partial\mathcal{S}$) propagates through the GUT embedding chain to select electroweak chirality via 't Hooft anomaly matching.
 
 ### 8.2 Enables
 
@@ -322,12 +388,16 @@ Theorem 6.7.2 (EWSB dynamics) ──→ Theorem 6.6.1 (EW scattering)
 
 **Key Results:**
 
-| Quantity | CG Prediction | PDG 2024 | Agreement |
-|----------|---------------|----------|-----------|
-| $g_2(M_Z)$ | 0.6528 | 0.6528 | Exact |
-| $M_W$ | 80.37 GeV | 80.369 GeV | 0.001% |
-| $M_Z$ | 91.19 GeV | 91.188 GeV | 0.002% |
-| $\sin^2\theta_W$ | 0.2312 | 0.23122 | 0.01% |
+| Quantity | CG Value | PDG 2024 | Type | Agreement |
+|----------|----------|----------|------|-----------|
+| $g_2(M_Z)$ | 0.6528 | 0.6528 | **Prediction**† | Exact |
+| $M_W$ | 80.37 GeV | 80.369 GeV | Consistency‡ | 0.001% |
+| $M_Z$ | 91.19 GeV | 91.188 GeV | Consistency‡ | 0.002% |
+| $\sin^2\theta_W$ | 0.2312 | 0.23122 | Consistency‡ | 0.01% |
+
+†**Prediction:** $g_2(M_Z)$ is derived from GUT unification via RG running (Prop 0.0.24), with the single geometric input $R_{\rm stella} = 0.44847$ fm determining the GUT scale.
+
+‡**Consistency checks:** $M_W$, $M_Z$, and $\sin^2\theta_W$ are computed using $v_H = 246.22$ GeV as an on-shell input and the standard electroweak relations. They verify internal consistency in the on-shell scheme rather than providing independent predictions.
 
 ---
 
@@ -336,6 +406,7 @@ Theorem 6.7.2 (EWSB dynamics) ──→ Theorem 6.6.1 (EW scattering)
 ### Internal
 
 - [Theorem-0.0.4-GUT-Structure-From-Stella-Octangula.md](../foundations/Theorem-0.0.4-GUT-Structure-From-Stella-Octangula.md)
+- [Theorem-0.0.5-Chirality-Selection-From-Geometry.md](../foundations/Theorem-0.0.5-Chirality-Selection-From-Geometry.md) — Explains left-handed SU(2) coupling
 - [Proposition-0.0.22-SU2-Substructure-From-Stella-Octangula.md](../foundations/Proposition-0.0.22-SU2-Substructure-From-Stella-Octangula.md)
 - [Proposition-0.0.23-Hypercharge-From-Geometric-Embedding.md](../foundations/Proposition-0.0.23-Hypercharge-From-Geometric-Embedding.md)
 - [Proposition-0.0.24-SU2-Gauge-Coupling-From-Unification.md](../foundations/Proposition-0.0.24-SU2-Gauge-Coupling-From-Unification.md)
@@ -346,10 +417,22 @@ Theorem 6.7.2 (EWSB dynamics) ──→ Theorem 6.6.1 (EW scattering)
 - Weinberg, *Quantum Theory of Fields*, Vol. II, Ch. 21
 - Georgi & Glashow, *Phys. Rev. Lett.* **32**, 438 (1974) — SU(5) unification
 - PDG 2024 — Electroweak Model review
+- Jansson, H., *Eur. Phys. J. C* **85**, 76 (2025) — "[Electroweak quantum numbers in the D₄ root system](https://link.springer.com/article/10.1140/epjc/s10052-025-13804-y)" (24-cell acts on itself via quaternion multiplication)
+- Ali, A.F., *Eur. Phys. J. C* **85**, 1282 (2025) — "[Quantum Spacetime Imprints: The 24-Cell, Standard Model Symmetry and Its Flavor Mixing](https://arxiv.org/abs/2511.10685)" (24-cell as geometric origin of SM)
+
+---
+
+## 11. Verification Records
+
+- **Multi-Agent Verification:** [Theorem-6.7.1-Multi-Agent-Verification-2026-01-24.md](../verification-records/Theorem-6.7.1-Multi-Agent-Verification-2026-01-24.md)
+- **Adversarial Physics Verification:** [theorem_6_7_1_verification.py](../../../verification/Phase6/theorem_6_7_1_verification.py)
+- **Verification Plots:** [verification/plots/thm_6_7_1_*.png](../../../verification/plots/)
 
 ---
 
 *Document created: 2026-01-23*
 *Status: ✅ VERIFIED 🔶 NOVEL*
-*Dependencies: Theorem 0.0.4, Props 0.0.22-24*
+*Dependencies: Theorems 0.0.4, 0.0.5, Props 0.0.22-24*
 *Enables: Theorem 6.7.2, Theorem 6.6.1*
+*Verified: 2026-01-24 (Multi-Agent: Literature ✅, Math ✅, Physics ✅)*
+*Revisions: 2026-01-24 (All verification findings M1, M2, P1-P3 addressed)*

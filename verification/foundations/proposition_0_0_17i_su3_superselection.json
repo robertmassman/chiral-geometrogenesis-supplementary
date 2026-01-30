@@ -1,0 +1,52 @@
+{
+  "proposition": "0.0.17i",
+  "title": "SU(3) Superselection via Explicit Matrix Representations",
+  "verification_date": "2026-01-25",
+  "tests": [
+    {
+      "name": "Z\u2083 center structure",
+      "passed": true,
+      "details": "SU(3) membership: verified, Commutes with generators: True, \u03c9\u00b3 = 1: True, Closure: True"
+    },
+    {
+      "name": "Fundamental representation Z\u2083 action",
+      "passed": true,
+      "details": "All color states transform as z_k|c\u27e9 = \u03c9^k|c\u27e9: True"
+    },
+    {
+      "name": "Anti-fundamental representation Z\u2083 action",
+      "passed": true,
+      "details": "\u03c9^{-k} = \u03c9^{2k}: verified, N-ality meson (1+2=0 mod 3): True, N-ality baryon (1+1+1=0 mod 3): True"
+    },
+    {
+      "name": "Color singlet Z\u2083 invariance",
+      "passed": true,
+      "details": "Meson (3\u22973\u0304) singlet invariant: True, Baryon (3\u22973\u22973) singlet invariant: True"
+    },
+    {
+      "name": "Adjoint representation Z\u2083 invariance",
+      "passed": true,
+      "details": "All 8 Gell-Mann matrices invariant under Z\u2083: True"
+    },
+    {
+      "name": "Superselection rule (explicit)",
+      "passed": true,
+      "details": "Z\u2083-invariant O constructed: True, \u27e8singlet|O|fund\u27e9 = 0: True, Non-invariant O detected: True"
+    },
+    {
+      "name": "Observable algebra completeness",
+      "passed": true,
+      "details": "Casimir C\u2082 = (4/3)I: True, Invariant observables \u221d I: True"
+    },
+    {
+      "name": "Pointer observable Z\u2083 invariance",
+      "passed": true,
+      "details": "Tested 100 configurations, max deviation: 1.78e-15"
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "total": 8,
+    "all_passed": true
+  }
+}

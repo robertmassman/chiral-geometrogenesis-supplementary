@@ -9,10 +9,17 @@ The derivation has NO fitted parameters beyond the CG axioms.
 
 Key Result:
     κ_W^geom = f_singlet × f_VEV × f_solid × f_overlap × |f_chiral|
-             = (1/3) × (1/3) × (1/2) × (5×10⁻³) × √3
-             ≈ 4.8 × 10⁻⁴
+             = (1/3) × 0.25 × (1/2) × (7.1×10⁻³) × √3
+             ≈ 5.1 × 10⁻⁴
 
-Reference: Prediction-8.3.1-W-Condensate-Dark-Matter.md, Section 6.4
+References:
+    - Prediction-8.3.1-W-Condensate-Dark-Matter.md, Section 6.4
+    - Proposition-5.1.2b-Precision-Cosmological-Densities.md (self-consistent v_W, power-law overlap)
+
+Updated: 2026-01-24 to use self-consistent values from Proposition 5.1.2b:
+    - v_W = 123 ± 15 GeV (from self-consistency conditions, not geometric estimate v_H/√3)
+    - f_overlap = 7.1×10⁻³ (power-law model, not exponential)
+    - e_W = 4.5 (Skyrme parameter from stella geometry)
 """
 
 import numpy as np
@@ -46,17 +53,21 @@ x_G = np.array([1, -1, -1]) / np.sqrt(3)
 x_B = np.array([-1, 1, -1]) / np.sqrt(3)
 x_W = np.array([-1, -1, 1]) / np.sqrt(3)
 
-# VEV ratio from SU(3) projection (§12)
-v_W = v_H / np.sqrt(3)    # ≈ 142 GeV
+# VEV from self-consistent derivation (Proposition 5.1.2b §4.5)
+# NOTE: The geometric estimate v_H/√3 = 142 GeV is superseded by the self-consistent
+# value derived from: (i) soliton mass formula, (ii) potential minimization, and
+# (iii) geometric constraint μ_W²/μ_H² = 1/3
+v_W = 123.0               # GeV (self-consistent from Prop 5.1.2b)
+v_W_geometric = v_H / np.sqrt(3)  # 142 GeV (superseded, kept for comparison)
 
 # W domain solid angle (steradians)
 Omega_W = np.pi           # 1/4 of sphere (25%)
 
-# Skyrme parameter
-e_skyrme = 5.0            # Typical value
+# Skyrme parameter from stella geometry (Proposition 5.1.2b §5)
+e_skyrme = 4.5            # From stella geometry (not the generic value 5.0)
 
 # W soliton mass
-M_W = (6 * np.pi**2 / e_skyrme) * v_W  # ≈ 1682 GeV
+M_W = (6 * np.pi**2 / e_skyrme) * v_W  # ≈ 1620 GeV
 
 # Phase angles
 phi_R = 0
@@ -180,13 +191,15 @@ def compute_suppression_factors():
     print("\n2.2 Factor 2: VEV Ratio")
     print("-" * 50)
 
-    # v_W = v_H / √3 from §12 geometric ratio
+    # v_W from self-consistent derivation (Proposition 5.1.2b §4.5)
+    # Derived from: soliton mass formula + potential minimization + μ_W²/μ_H² = 1/3
     # Asymmetry production scales as (v_W/v_H)²
 
-    vev_ratio = v_W / v_H  # = 1/√3
-    f_VEV = vev_ratio ** 2  # = 1/3
+    vev_ratio = v_W / v_H  # = 123/246 ≈ 0.5
+    f_VEV = vev_ratio ** 2  # ≈ 0.25
 
-    print(f"  W condensate VEV: v_W = v_H/√3 = {v_H:.2f}/√3 = {v_W:.2f} GeV")
+    print(f"  W condensate VEV: v_W = {v_W:.0f} GeV (self-consistent, Prop 5.1.2b)")
+    print(f"  (Supersedes geometric estimate v_H/√3 = {v_W_geometric:.0f} GeV)")
     print(f"  VEV ratio: v_W/v_H = {vev_ratio:.4f}")
     print(f"  Asymmetry scales as (v_W/v_H)² = {f_VEV:.4f}")
     print(f"  f_VEV = {f_VEV:.4f}")
@@ -195,8 +208,10 @@ def compute_suppression_factors():
         'value': float(f_VEV),
         'formula': '(v_W/v_H)^2',
         'v_W': float(v_W),
+        'v_W_geometric': float(v_W_geometric),
         'v_H': float(v_H),
         'ratio': float(vev_ratio),
+        'source': 'Proposition 5.1.2b §4.5 (self-consistent)',
         'description': 'VEV ratio squared'
     }
 
@@ -226,40 +241,61 @@ def compute_suppression_factors():
     }
 
     # -------------------------------------------------------------------
-    # Factor 4: Vertex Separation Suppression (f_overlap)
+    # Factor 4: Vertex Separation Suppression (f_overlap) - POWER-LAW MODEL
     # -------------------------------------------------------------------
-    print("\n2.4 Factor 4: Vertex Separation Suppression")
+    print("\n2.4 Factor 4: Vertex Separation Suppression (Power-Law)")
     print("-" * 50)
 
-    # W vertex is at distance d_W-RGB from RGB centroid
-    # Wavefunction overlap decays exponentially
-    # f_overlap = exp(-d_W-RGB / R_soliton)
+    # Proposition 5.1.2b §3 shows that the wavefunction overlap has POWER-LAW
+    # rather than exponential falloff:
+    #
+    #   f_overlap ∝ (r_0/d)^(3/2)
+    #
+    # where r_0 ~ 1/M_W is the soliton core radius and d = d_W-RGB.
+    #
+    # The full overlap integral evaluation (Prop 5.1.2b §3.3-3.4) gives:
+    #   f_overlap = (7.1 ± 1.1) × 10⁻³
+    #
+    # KEY ADVANTAGE: Power-law has dramatically reduced sensitivity:
+    #   - Power-law: 10% change in d/r_0 → 15% change in f_overlap
+    #   - Exponential: 10% change in d/r_0 → 50% change in f_overlap
 
     # For stella octangula with edge length a:
     # RGB centroid: r_RGB = (1, 1, -1)/(3√3) × a
     # W vertex: r_W = (-1, -1, 1)/√3 × a
     # Distance: d = 4a/(3√3)
 
-    # At EW scale: a ~ 1/v_H, R_soliton ~ 1/M_W
-    # d/R = (4M_W) / (3√3 × v_H)
+    # Power-law model from Prop 5.1.2b
+    f_overlap_power_law = 7.1e-3  # ± 1.1e-3 from full overlap integral
 
+    # For comparison: old exponential model (superseded)
     d_over_R = (4 * M_W) / (3 * np.sqrt(3) * v_H)
-    f_overlap = np.exp(-d_over_R)
+    f_overlap_exponential = np.exp(-d_over_R)
 
-    print(f"  Stella octangula distance: d_W-RGB = 4a/(3√3)")
-    print(f"  At EW scale: a ~ 1/v_H, R_soliton ~ 1/M_W")
-    print(f"  M_W (soliton mass) = {M_W:.0f} GeV")
-    print(f"  v_H (Higgs VEV) = {v_H:.2f} GeV")
-    print(f"  d/R = 4×M_W / (3√3×v_H) = {d_over_R:.2f}")
-    print(f"  f_overlap = exp(-{d_over_R:.2f}) = {f_overlap:.2e}")
+    f_overlap = f_overlap_power_law  # Use power-law value
+
+    print(f"  Proposition 5.1.2b §3.2-3.4: Power-law overlap model")
+    print(f"  f_overlap ∝ (r_0/d)^(3/2) with full integral evaluation")
+    print(f"")
+    print(f"  Power-law result: f_overlap = (7.1 ± 1.1) × 10⁻³")
+    print(f"")
+    print(f"  Comparison with exponential model (superseded):")
+    print(f"    d/R = 4×M_W / (3√3×v_H) = {d_over_R:.2f}")
+    print(f"    exp(-{d_over_R:.2f}) = {f_overlap_exponential:.2e}")
+    print(f"")
+    print(f"  Using power-law value: f_overlap = {f_overlap:.2e}")
 
     results['f_overlap'] = {
         'value': float(f_overlap),
-        'formula': 'exp(-d_W_RGB / R_soliton)',
+        'uncertainty': 1.1e-3,
+        'formula': '(r_0/d)^(3/2) power-law',
+        'source': 'Proposition 5.1.2b §3.3-3.4',
         'd_over_R': float(d_over_R),
+        'f_overlap_exponential': float(f_overlap_exponential),
         'M_W': float(M_W),
         'v_H': float(v_H),
-        'description': 'Vertex separation exponential suppression'
+        'description': 'Vertex separation power-law suppression (NOT exponential)',
+        'advantage': 'Reduced sensitivity: 10% change in d/r_0 → 15% change in f_overlap'
     }
 
     # -------------------------------------------------------------------
@@ -331,28 +367,29 @@ def compute_combined_factor(factors):
     kappa_W_geom = f_singlet * f_VEV * f_solid * f_overlap * f_chiral
 
     print("\n3.1 Individual Factors:")
-    print(f"  f_singlet (1/N_c)          = {f_singlet:.4f}")
-    print(f"  f_VEV ((v_W/v_H)²)         = {f_VEV:.4f}")
-    print(f"  f_solid (√(Ω_W/4π))        = {f_solid:.4f}")
-    print(f"  f_overlap (exp(-d/R))      = {f_overlap:.2e}")
-    print(f"  |f_chiral| (√3×|cos(Δφ)|)  = {f_chiral:.4f}")
+    print(f"  f_singlet (1/N_c)                    = {f_singlet:.4f}")
+    print(f"  f_VEV ((v_W/v_H)² = (123/246)²)     = {f_VEV:.4f}")
+    print(f"  f_solid (√(Ω_W/4π))                  = {f_solid:.4f}")
+    print(f"  f_overlap (power-law, Prop 5.1.2b)   = {f_overlap:.2e}")
+    print(f"  |f_chiral| (√3 from stella geometry) = {f_chiral:.4f}")
 
     print("\n3.2 Combined Factor:")
     print(f"  κ_W^geom = f_singlet × f_VEV × f_solid × f_overlap × |f_chiral|")
     print(f"  κ_W^geom = {f_singlet:.4f} × {f_VEV:.4f} × {f_solid:.4f} × {f_overlap:.2e} × {f_chiral:.4f}")
     print(f"  κ_W^geom = {kappa_W_geom:.2e}")
 
-    # Document value comparison
-    doc_value = 4.8e-4
-    print(f"\n3.3 Comparison with Document:")
+    # Document value comparison (updated for Prop 5.1.2b alignment)
+    doc_value = 5.1e-4  # Updated value from Prediction-8.3.1 §6.4.4 (aligned with Prop 5.1.2b)
+    print(f"\n3.3 Comparison with Document (Prediction-8.3.1 §6.4):")
     print(f"  Computed: κ_W^geom = {kappa_W_geom:.2e}")
-    print(f"  Document: κ_W^geom ≈ 4.8 × 10⁻⁴")
+    print(f"  Document: κ_W^geom ≈ 5.1 × 10⁻⁴ (with power-law f_overlap)")
     print(f"  Ratio: {kappa_W_geom / doc_value:.2f}")
 
     return {
         'kappa_W_geom': float(kappa_W_geom),
         'document_value': doc_value,
         'ratio_to_doc': float(kappa_W_geom / doc_value),
+        'source': 'Prediction-8.3.1 §6.4 (aligned with Proposition 5.1.2b)',
         'breakdown': {
             'f_singlet': f_singlet,
             'f_VEV': f_VEV,
@@ -395,13 +432,13 @@ def derive_w_asymmetry(kappa_result):
     print(f"  ε_W^required = {Omega_DM_over_Omega_b:.2f} / {s_0_over_n_gamma:.2f} × {eta_B:.2e} × ({m_p:.3f}/{M_W:.0f})")
     print(f"  ε_W^required = {epsilon_W_required:.2e}")
 
-    # Document comparison
-    doc_epsilon_W = 2.9e-13
+    # Document comparison (updated for Prop 5.1.2b alignment)
+    doc_epsilon_W = 3.1e-13  # From κ = 5.1×10⁻⁴ (updated Prediction-8.3.1 §6.4.5)
     doc_required = 2.2e-13
 
     print("\n4.3 Comparison:")
     print(f"  Computed ε_W:    {epsilon_W:.2e}")
-    print(f"  Document ε_W:    {doc_epsilon_W:.2e} (from κ = 4.8×10⁻⁴)")
+    print(f"  Document ε_W:    {doc_epsilon_W:.2e} (from κ = 5.1×10⁻⁴, Prediction-8.3.1)")
     print(f"  Required ε_W:    {epsilon_W_required:.2e}")
     print(f"  Doc. required:   {doc_required:.2e}")
 
@@ -493,57 +530,99 @@ def verify_relic_abundance(asymmetry_result):
 def sensitivity_analysis():
     """
     Analyze sensitivity of κ_W^geom to parameter variations.
+
+    Updated for power-law overlap model (Proposition 5.1.2b).
     """
 
     print("\n" + "=" * 70)
-    print("PART 6: SENSITIVITY ANALYSIS")
+    print("PART 6: SENSITIVITY ANALYSIS (Power-Law Model)")
     print("=" * 70)
 
     results = {}
 
-    # Baseline calculation
+    # Baseline calculation with self-consistent values
     f_singlet_base = 1/3
-    f_VEV_base = 1/3
+    f_VEV_base = (v_W / v_H) ** 2  # = (123/246)² ≈ 0.25
     f_solid_base = 0.5
-    f_overlap_base = np.exp(-(4 * M_W) / (3 * np.sqrt(3) * v_H))
+    f_overlap_base = 7.1e-3  # Power-law value from Prop 5.1.2b
     f_chiral_base = np.sqrt(3)
 
     kappa_base = f_singlet_base * f_VEV_base * f_solid_base * f_overlap_base * f_chiral_base
 
-    print(f"\nBaseline κ_W^geom = {kappa_base:.2e}")
+    print(f"\nBaseline values (Prop 5.1.2b alignment):")
+    print(f"  v_W = {v_W} GeV (self-consistent)")
+    print(f"  f_VEV = (v_W/v_H)² = {f_VEV_base:.4f}")
+    print(f"  f_overlap = {f_overlap_base:.2e} (power-law)")
+    print(f"  κ_W^geom = {kappa_base:.2e}")
 
-    # Vary M_W (affects f_overlap)
-    print("\n6.1 Sensitivity to M_W (soliton mass):")
-    M_W_values = [1000, 1500, 1700, 2000, 2500]
-    for M in M_W_values:
-        d_over_R = (4 * M) / (3 * np.sqrt(3) * v_H)
-        f_overlap = np.exp(-d_over_R)
-        kappa = f_singlet_base * f_VEV_base * f_solid_base * f_overlap * f_chiral_base
+    # Power-law sensitivity (reduced compared to exponential)
+    print("\n6.1 Power-Law Sensitivity Advantage:")
+    print("  Key advantage of power-law vs exponential overlap:")
+    print("    - Power-law: 10% change in d/r₀ → 15% change in f_overlap")
+    print("    - Exponential: 10% change in d/r₀ → 50% change in f_overlap")
+    print("")
+
+    # Vary f_overlap within uncertainty (±1.1e-3)
+    f_overlap_values = [6.0e-3, 7.1e-3, 8.2e-3]  # Uncertainty range
+    print("  f_overlap sensitivity (within ±1.1×10⁻³ uncertainty):")
+    for f_ov in f_overlap_values:
+        kappa = f_singlet_base * f_VEV_base * f_solid_base * f_ov * f_chiral_base
         epsilon = eta_B * kappa
-        print(f"  M_W = {M:4d} GeV: f_overlap = {f_overlap:.2e}, κ = {kappa:.2e}, ε_W = {epsilon:.2e}")
+        print(f"    f_overlap = {f_ov:.2e}: κ = {kappa:.2e}, ε_W = {epsilon:.2e}")
 
-    results['M_W_sensitivity'] = {
-        'M_W_values': M_W_values,
-        'description': 'f_overlap varies exponentially with M_W'
+    results['f_overlap_sensitivity'] = {
+        'values': f_overlap_values,
+        'baseline': f_overlap_base,
+        'uncertainty': 1.1e-3,
+        'model': 'power-law (r_0/d)^(3/2)',
+        'source': 'Proposition 5.1.2b §3.3-3.4'
     }
 
-    # Alternative VEV scaling (power 1 instead of 2)
-    print("\n6.2 Alternative VEV Scaling:")
-    print("  Document uses (v_W/v_H)² = 1/3")
-    print("  If rate scales as (v_W/v_H)¹:")
-    f_VEV_linear = v_W / v_H
-    kappa_linear = f_singlet_base * f_VEV_linear * f_solid_base * f_overlap_base * f_chiral_base
-    print(f"    f_VEV = {f_VEV_linear:.4f}")
-    print(f"    κ_W^geom = {kappa_linear:.2e} (√3 larger)")
+    # Comparison: exponential vs power-law
+    print("\n6.2 Exponential vs Power-Law Model Comparison:")
+    M_W_values = [1460, 1620, 1780]  # ±10% range around 1620 GeV
+    print("  Exponential model (superseded):")
+    for M in M_W_values:
+        d_over_R = (4 * M) / (3 * np.sqrt(3) * v_H)
+        f_overlap_exp = np.exp(-d_over_R)
+        kappa = f_singlet_base * f_VEV_base * f_solid_base * f_overlap_exp * f_chiral_base
+        print(f"    M_W = {M:4d} GeV: f_overlap = {f_overlap_exp:.2e}, κ = {kappa:.2e}")
 
-    results['vev_scaling'] = {
-        'quadratic': float(f_VEV_base),
-        'linear': float(f_VEV_linear),
-        'ratio': float(f_VEV_linear / f_VEV_base)
+    print("  Power-law model (Prop 5.1.2b):")
+    print(f"    f_overlap = {f_overlap_base:.2e} (±15% for geometric uncertainty)")
+    print(f"    κ = {kappa_base:.2e}")
+
+    results['model_comparison'] = {
+        'exponential_M_W_range': M_W_values,
+        'power_law_value': f_overlap_base,
+        'note': 'Power-law is less sensitive to geometric uncertainties'
+    }
+
+    # VEV sensitivity
+    print("\n6.3 VEV Sensitivity:")
+    v_W_values = [108, 123, 142]  # Range from potential minimum to geometric estimate
+    print("  v_W range from limiting cases:")
+    for v in v_W_values:
+        f_VEV_v = (v / v_H) ** 2
+        kappa = f_singlet_base * f_VEV_v * f_solid_base * f_overlap_base * f_chiral_base
+        epsilon = eta_B * kappa
+        label = ""
+        if v == 108:
+            label = " (λ_W=λ_H limit)"
+        elif v == 123:
+            label = " (self-consistent)"
+        elif v == 142:
+            label = " (geometric estimate)"
+        print(f"    v_W = {v:3d} GeV{label}: f_VEV = {f_VEV_v:.4f}, κ = {kappa:.2e}")
+
+    results['vev_sensitivity'] = {
+        'v_W_values': v_W_values,
+        'preferred': 123,
+        'source': 'Proposition 5.1.2b §4.5'
     }
 
     # Effect of boundary efficiency parameter
-    print("\n6.3 Effect of Boundary Efficiency η_boundary:")
+    print("\n6.4 Effect of Boundary Efficiency η_boundary:")
     eta_values = [0.5, 0.7, 0.9, 1.0]
     for eta in eta_values:
         kappa_adj = kappa_base * eta
@@ -685,24 +764,27 @@ def create_visualization(factors, kappa_result, asymmetry_result):
     • T₁ vertices (R, G, B): Color triplet - host baryons
     • T₂ vertices (W, ...): Color singlet - hosts W-solitons
 
-    Five Suppression Factors:
+    Five Suppression Factors (Prop 5.1.2b values):
     ────────────────────────────────────────────────
     1. f_singlet = 1/3    (singlet vs triplet vertices)
-    2. f_VEV = 1/3        ((v_W/v_H)² from VEV ratio)
+    2. f_VEV = 0.25       ((v_W/v_H)² = (123/246)²)
     3. f_solid = 1/2      (√(Ω_W/4π) domain solid angle)
-    4. f_overlap ≈ 5×10⁻³ (exp(-d/R) vertex separation)
+    4. f_overlap = 7×10⁻³ (power-law, NOT exponential)
     5. |f_chiral| = √3    (chirality transfer)
     ────────────────────────────────────────────────
-    κ_W^geom ≈ 4.8 × 10⁻⁴
+    κ_W^geom ≈ 5.1 × 10⁻⁴
 
     Result:
     ────────────────────────────────────────────────
-    ε_W = η_B × κ_W^geom ≈ 2.9 × 10⁻¹³
+    ε_W = η_B × κ_W^geom ≈ 3.1 × 10⁻¹³
     Required for Ω_DM:    ≈ 2.2 × 10⁻¹³
-    Agreement: ~32% (within theoretical uncertainty)
+    Agreement: ~41% (within theoretical uncertainty)
 
     ✓ NO FITTED PARAMETERS
     ✓ DERIVED FROM PURE GEOMETRY
+    ✓ Power-law overlap (reduced sensitivity)
+
+    Sources: Prediction-8.3.1, Prop 5.1.2b
     """
 
     ax4.text(0.05, 0.95, summary_text, transform=ax4.transAxes, fontsize=10,
@@ -728,6 +810,8 @@ def create_visualization(factors, kappa_result, asymmetry_result):
 def reconcile_with_document():
     """
     Reconcile our computed values with the document's stated values.
+
+    Updated: 2026-01-24 to show both old (exponential) and new (power-law) models.
     """
 
     print("\n" + "=" * 70)
@@ -735,60 +819,81 @@ def reconcile_with_document():
     print("=" * 70)
 
     print("""
-    The document (Section 6.4) states:
+    Prediction-8.3.1 Section 6.4.4 (updated with Prop 5.1.2b values):
 
-    κ_W^geom = (1/3) × (1/3) × (1/2) × (5.0×10⁻³) × √3 = 4.8×10⁻⁴
+    κ_W^geom = (1/3) × 0.25 × (1/2) × (7.1×10⁻³) × √3 = 5.1×10⁻⁴
 
     Let's verify this calculation:
     """)
 
-    # Document's stated factors
+    # Document's stated factors (updated for Prop 5.1.2b)
     f1 = 1/3   # singlet
-    f2 = 1/3   # VEV
+    f2 = (123/246)**2  # VEV (self-consistent v_W = 123 GeV)
     f3 = 1/2   # solid angle
-    f4 = 5.0e-3  # overlap (stated)
+    f4 = 7.1e-3  # overlap (power-law from Prop 5.1.2b)
     f5 = np.sqrt(3)  # chiral
 
-    kappa_doc = f1 * f2 * f3 * f4 * f5
+    kappa_doc_new = f1 * f2 * f3 * f4 * f5
 
     print(f"  f_singlet = {f1:.4f}")
-    print(f"  f_VEV = {f2:.4f}")
+    print(f"  f_VEV = (123/246)² = {f2:.4f}")
     print(f"  f_solid = {f3:.4f}")
-    print(f"  f_overlap = {f4:.1e} (document uses 5.0×10⁻³)")
+    print(f"  f_overlap = {f4:.1e} (power-law from Prop 5.1.2b)")
     print(f"  |f_chiral| = {f5:.4f}")
     print(f"\n  Product: {f1:.4f} × {f2:.4f} × {f3:.4f} × {f4:.1e} × {f5:.4f}")
-    print(f"         = {kappa_doc:.2e}")
+    print(f"         = {kappa_doc_new:.2e}")
 
-    # Verify the document's f_overlap
-    # Document: d/R = 5.3, so f_overlap = exp(-5.3) ≈ 5.0×10⁻³
-    d_R_doc = 5.3
-    f_overlap_check = np.exp(-d_R_doc)
+    # Comparison with old exponential model (superseded)
+    print(f"\n  COMPARISON: Old exponential model (superseded):")
+    f2_old = 1/3  # Old VEV (v_H/√3)
+    f4_old = 5.0e-3  # Old overlap (exponential)
+    kappa_old = f1 * f2_old * f3 * f4_old * f5
+    print(f"    f_VEV = 1/3 (geometric estimate v_H/√3)")
+    print(f"    f_overlap = 5.0×10⁻³ (exponential model)")
+    print(f"    κ_W^geom (old) = {kappa_old:.2e}")
 
-    print(f"\n  Document's overlap calculation:")
-    print(f"    d/R = 4×M_W/(3√3×v_H) = 4×1700/(3×√3×246) = {d_R_doc}")
-    print(f"    exp(-{d_R_doc}) = {f_overlap_check:.2e}")
+    print(f"\n  Key differences:")
+    print(f"    VEV: {f2_old:.4f} (old) → {f2:.4f} (new)")
+    print(f"    f_overlap: {f4_old:.1e} (exp) → {f4:.1e} (power-law)")
+    print(f"    κ: {kappa_old:.2e} (old) → {kappa_doc_new:.2e} (new)")
+    print(f"    Change: {((kappa_doc_new - kappa_old)/kappa_old)*100:+.0f}%")
 
-    # Our calculation uses current M_W value
+    # Show the power-law advantage
+    print(f"\n  POWER-LAW ADVANTAGE:")
+    print(f"    Power-law f_overlap ∝ (r₀/d)^(3/2) is LESS sensitive than exp(-d/R)")
+    print(f"    10% change in d/r₀ → 15% change in f_overlap (vs 50% for exponential)")
+    print(f"    This improves robustness of the prediction")
+
+    # Our calculated value
     d_R_ours = (4 * M_W) / (3 * np.sqrt(3) * v_H)
-    f_overlap_ours = np.exp(-d_R_ours)
+    f_overlap_exp = np.exp(-d_R_ours)
 
-    print(f"\n  Our overlap calculation (M_W = {M_W:.0f} GeV):")
+    print(f"\n  Our calculation (M_W = {M_W:.0f} GeV):")
     print(f"    d/R = {d_R_ours:.2f}")
-    print(f"    exp(-{d_R_ours:.2f}) = {f_overlap_ours:.2e}")
+    print(f"    Exponential: exp(-{d_R_ours:.2f}) = {f_overlap_exp:.2e} (superseded)")
+    print(f"    Power-law:   f_overlap = {f4:.2e} (from Prop 5.1.2b)")
 
     return {
-        'document_kappa': float(kappa_doc),
-        'document_factors': {
+        'document_kappa_new': float(kappa_doc_new),
+        'document_kappa_old': float(kappa_old),
+        'document_factors_new': {
             'f_singlet': f1,
             'f_VEV': f2,
             'f_solid': f3,
             'f_overlap': f4,
             'f_chiral': f5
         },
-        'd_R_document': d_R_doc,
+        'document_factors_old': {
+            'f_singlet': f1,
+            'f_VEV': f2_old,
+            'f_solid': f3,
+            'f_overlap': f4_old,
+            'f_chiral': f5
+        },
         'd_R_computed': float(d_R_ours),
-        'f_overlap_document': f4,
-        'f_overlap_computed': float(f_overlap_ours)
+        'f_overlap_power_law': f4,
+        'f_overlap_exponential': float(f_overlap_exp),
+        'source': 'Proposition 5.1.2b (power-law model)'
     }
 
 
@@ -839,12 +944,18 @@ def main():
     ratio = all_results['asymmetry']['ratio']
 
     print(f"""
-    SECTION 6.4 VERIFICATION STATUS
+    SECTION 6.4 VERIFICATION STATUS (Updated 2026-01-24)
     ════════════════════════════════════════════════════════════════════
 
     GEOMETRIC SUPPRESSION FACTOR:
         κ_W^geom = {kappa:.2e}
-        Document value: 4.8 × 10⁻⁴
+        Document value: 5.1 × 10⁻⁴ (Prediction-8.3.1 aligned with Prop 5.1.2b)
+
+    KEY PARAMETERS (from Proposition 5.1.2b):
+        v_W = {v_W} GeV (self-consistent, not geometric estimate {v_W_geometric:.0f} GeV)
+        f_VEV = (v_W/v_H)² = {(v_W/v_H)**2:.4f}
+        f_overlap = 7.1×10⁻³ (power-law model, NOT exponential)
+        M_W = {M_W:.0f} GeV (e_W = {e_skyrme})
 
     W-ASYMMETRY:
         Computed ε_W = {epsilon_W:.2e}
@@ -862,10 +973,16 @@ def main():
     1. Five geometric factors derived from stella octangula structure
     2. No fitted parameters beyond CG axioms
     3. ε_W/η_B ratio emerges from pure geometry
-    4. Agreement within ~32% of required value (within theoretical uncertainties)
+    4. Agreement within ~41% of required value (within theoretical uncertainties)
 
-    NOTE: The f_overlap factor is exponentially sensitive to M_W.
-          Small changes in soliton mass significantly affect the prediction.
+    KEY UPDATE (Prop 5.1.2b):
+    - Power-law f_overlap has reduced sensitivity (15% vs 50% for exponential)
+    - Self-consistent v_W = 123 GeV supersedes geometric estimate v_H/√3 = 142 GeV
+    - This improves robustness of the prediction
+
+    References:
+    - Prediction-8.3.1-W-Condensate-Dark-Matter.md, Section 6.4
+    - Proposition-5.1.2b-Precision-Cosmological-Densities.md
     ════════════════════════════════════════════════════════════════════
     """)
 

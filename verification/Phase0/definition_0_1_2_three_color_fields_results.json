@@ -1,7 +1,7 @@
 {
   "title": "Definition 0.1.2: Three Color Fields with Relative Phases",
   "document": "Definition-0.1.2-Three-Color-Fields-Relative-Phases.md",
-  "date": "2026-01-14T12:29:09.380667",
+  "date": "2026-01-25T14:13:20.620914",
   "overall_status": true,
   "tests": [
     {
@@ -531,6 +531,95 @@
         },
         {
           "name": "Center forms group: z_i \u00b7 z_j = z_{(i+j) mod 3} for all i,j",
+          "expected": true,
+          "computed": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "Z\u2083 Visibility Criterion (Section 2.1.1)",
+      "status": true,
+      "checks": [
+        {
+          "name": "Fundamental |R\u27e9: z_1|R\u27e9 = \u03c9|R\u27e9 (non-trivial)",
+          "expected": "\u03c9 \u00d7 |R\u27e9",
+          "computed": {
+            "is_nontrivial": true,
+            "is_correct": true
+          },
+          "passed": true
+        },
+        {
+          "name": "Fundamental |G\u27e9: z_1|G\u27e9 = \u03c9|G\u27e9 (non-trivial)",
+          "expected": "\u03c9 \u00d7 |G\u27e9",
+          "computed": {
+            "is_nontrivial": true,
+            "is_correct": true
+          },
+          "passed": true
+        },
+        {
+          "name": "Fundamental |B\u27e9: z_1|B\u27e9 = \u03c9|B\u27e9 (non-trivial)",
+          "expected": "\u03c9 \u00d7 |B\u27e9",
+          "computed": {
+            "is_nontrivial": true,
+            "is_correct": true
+          },
+          "passed": true
+        },
+        {
+          "name": "Adjoint rep (all 8 Gell-Mann): z_k\u00b7A\u00b7z_k\u2020 = A (trivial)",
+          "expected": true,
+          "computed": true,
+          "passed": true
+        },
+        {
+          "name": "Phase permutation: (0, 2\u03c0/3, 4\u03c0/3) \u2192 (2\u03c0/3, 4\u03c0/3, 0) under z_1",
+          "expected": [
+            2.0943951023931953,
+            4.1887902047863905,
+            0.0
+          ],
+          "computed": [
+            2.0943951023931953,
+            4.1887902047863905,
+            0.0
+          ],
+          "passed": true
+        },
+        {
+          "name": "Geometric vertices fixed: x_c unchanged (only phase labels rotate)",
+          "expected": true,
+          "computed": true,
+          "passed": true
+        },
+        {
+          "name": "SU(3) distinguishes |R\u27e9 from \u03c9|R\u27e9: \u27e8R|\u03c9|R\u27e9 = \u03c9 \u2260 1",
+          "expected": "\u03c9 = -0.5000+0.8660j (not 1)",
+          "computed": "-0.5000+0.8660j",
+          "passed": true
+        },
+        {
+          "name": "Same projective ray: |\u27e8R|\u03c9|R\u27e9| = 1 (PSU(3) identifies these)",
+          "expected": 1.0,
+          "computed": 1.0,
+          "passed": true
+        },
+        {
+          "name": "Triality: quark(\u03c9), antiquark(\u03c9\u00b2), gluon(1) all distinct",
+          "expected": {
+            "quark": "-0.5000+0.8660j",
+            "antiquark": "-0.5000-0.8660j",
+            "gluon": "1.0"
+          },
+          "computed": {
+            "distinct": true
+          },
+          "passed": true
+        },
+        {
+          "name": "CONCLUSION: Stella encodes fundamental (3) \u2192 sees full SU(3), not PSU(3)",
           "expected": true,
           "computed": true,
           "passed": true

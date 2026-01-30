@@ -1,0 +1,72 @@
+{
+  "proposition": "0.0.17i",
+  "title": "Adversarial Physics Verification: Z\u2083 Measurement Extension",
+  "verification_date": "2026-01-25",
+  "multi_agent_review": true,
+  "timestamp": "2026-01-25T17:41:02.500322",
+  "tests": [
+    {
+      "name": "Eigenvalue degeneracy is measure-zero",
+      "category": "math",
+      "passed": true,
+      "details": "Distinct case: diagonal only=True, Degenerate: all commute=True, Measure-zero: 0/1000 samples degenerate"
+    },
+    {
+      "name": "Anomaly coefficient verification",
+      "category": "math",
+      "passed": true,
+      "details": "T(fundamental) = 0.5000 (expected 0.5), All 8 generators consistent: True. Note: k=1 primarily from uniqueness argument, not anomaly"
+    },
+    {
+      "name": "Limiting cases physical consistency",
+      "category": "physics",
+      "passed": true,
+      "details": "\u0393 << \u0393_crit: coherent (factor=0.951), \u0393 >> \u0393_crit: decohered (factor=3.72e-44), Classical: 3 sectors"
+    },
+    {
+      "name": "Strong CP mechanism verification",
+      "category": "physics",
+      "passed": true,
+      "details": "Z\u2083-instanton action: verified, \u03b8-periodicity 2\u03c0/3: True, V(\u03b8) min at \u03b8=0: True (energies: ['0.000', '1.500', '1.500'])"
+    },
+    {
+      "name": "Superselection structure rigorous test",
+      "category": "physics",
+      "passed": true,
+      "details": "Z\u2083 action correct: True, O invariant: True, Superselection: True, Non-invariant O identified: True"
+    },
+    {
+      "name": "k=1 uniqueness for dim H = |Z(G)|",
+      "category": "math",
+      "passed": true,
+      "details": "Tested SU(N) for N=2,3,4,5: k=1 unique in all cases: True"
+    },
+    {
+      "name": "Unitarity preservation in Z\u2083 sectors",
+      "category": "physics",
+      "passed": true,
+      "details": "Total probability: 1.000000 (expect 1), All positive: True, Norm after evolution: 1.000000"
+    },
+    {
+      "name": "Operational Z\u2083 survives quark coupling",
+      "category": "physics",
+      "passed": true,
+      "details": "Bilinear \u03c8\u0304\u03c8 invariant: True, Baryon \u03c9\u00b3=1: True, Single quark changes: True"
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "total": 8,
+    "all_passed": true,
+    "by_category": {
+      "math": {
+        "passed": 3,
+        "total": 3
+      },
+      "physics": {
+        "passed": 5,
+        "total": 5
+      }
+    }
+  }
+}

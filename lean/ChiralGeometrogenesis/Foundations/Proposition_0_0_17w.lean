@@ -670,6 +670,17 @@ theorem beta_0_approx : 0.71 < beta_0 ∧ beta_0 < 0.72 := by
 -/
 noncomputable def alpha_s_M_Z : ℝ := 0.1180
 
+/-- Consistency: the geometric 1/αₛ = 64 relates to
+    Constants.inverse_alpha_s_Planck = 99.34 (MS-bar) via
+    the scheme conversion factor θ_O/θ_T from Prop 0.0.17s.
+    We verify: 64 < Constants.inverse_alpha_s_Planck < 100. -/
+theorem geometric_vs_msbar_coupling :
+    (inverse_alpha_s_real : ℝ) < Constants.inverse_alpha_s_Planck ∧
+    Constants.inverse_alpha_s_Planck < 100 := by
+  rw [inverse_alpha_s_real_value]
+  unfold Constants.inverse_alpha_s_Planck
+  constructor <;> norm_num
+
 /-- αₛ(M_Z) > 0 -/
 theorem alpha_s_M_Z_pos : alpha_s_M_Z > 0 := by
   unfold alpha_s_M_Z; norm_num

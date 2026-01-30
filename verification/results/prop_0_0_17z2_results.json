@@ -1,0 +1,130 @@
+{
+  "proposition": "0.0.17z2",
+  "title": "Scale-Dependent Effective Euler Characteristic",
+  "date": "2026-01-27",
+  "key_results": {
+    "d_inter_fm": 0.14949,
+    "mu_trans_MeV": 1320.0,
+    "xi_conf": 0.3333,
+    "chi_eff_at_confinement": 2.21,
+    "c_G_eff": 0.1275,
+    "total_NP_correction_pct": 8.7,
+    "sqrt_sigma_pred_MeV": 439.0,
+    "agreement_sigma": 0.03,
+    "robustness_spread_MeV": 7.2
+  },
+  "tests": [
+    {
+      "test": "d_inter = R/3",
+      "status": "PASS",
+      "detail": "d_inter = 0.14949 fm"
+    },
+    {
+      "test": "mu_trans ~ 1.3 GeV",
+      "status": "PASS",
+      "detail": "mu_trans = 1320 MeV"
+    },
+    {
+      "test": "xi_conf ~ 0.33",
+      "status": "PASS",
+      "detail": "xi_conf = 0.3333"
+    },
+    {
+      "test": "xi_conf < 1 (partially resolved)",
+      "status": "PASS",
+      "detail": "Confinement scale is in the IR regime"
+    },
+    {
+      "test": "f(0.333) ~ 0.105",
+      "status": "PASS",
+      "detail": "f = 0.1052"
+    },
+    {
+      "test": "chi_eff ~ 2.21",
+      "status": "PASS",
+      "detail": "chi_eff = 2.210"
+    },
+    {
+      "test": "UV limit: chi_eff -> 4",
+      "status": "PASS",
+      "detail": "chi_eff(10^6 MeV) = 4.00000000"
+    },
+    {
+      "test": "IR limit: chi_eff -> 2",
+      "status": "PASS",
+      "detail": "chi_eff(10^-6 MeV) = 2.00000000"
+    },
+    {
+      "test": "chi_eff is monotonically increasing in mu",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Enhancement(chi=4) = 2.174",
+      "status": "PASS",
+      "detail": "E(4) = 2.175"
+    },
+    {
+      "test": "c_G(chi=4) = 0.368",
+      "status": "PASS",
+      "detail": "c_G(4) = 0.368"
+    },
+    {
+      "test": "Enhancement(chi=2) = 0.588",
+      "status": "PASS",
+      "detail": "E(2) = 0.587"
+    },
+    {
+      "test": "c_G_eff ~ 0.13",
+      "status": "PASS",
+      "detail": "c_G_eff = 0.1275"
+    },
+    {
+      "test": "Gluon correction ~ 2%",
+      "status": "PASS",
+      "detail": "gluon_corr = 2.0%"
+    },
+    {
+      "test": "Total correction ~ 8.7%",
+      "status": "PASS",
+      "detail": "total_corr = 8.7%"
+    },
+    {
+      "test": "Agreement < 0.5 sigma",
+      "status": "PASS",
+      "detail": "0.03 sigma"
+    },
+    {
+      "test": "sqrt(sigma) in [430, 450] MeV",
+      "status": "PASS",
+      "detail": "sqrt(sigma) = 439.0 MeV"
+    },
+    {
+      "test": "Spread across interpolations < 10 MeV",
+      "status": "PASS",
+      "detail": "Spread = 7.2 MeV"
+    },
+    {
+      "test": "All predictions within 1 sigma of observation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "chi_eff gives best agreement",
+      "status": "PASS",
+      "detail": "chi_eff closer to observation than chi=4"
+    },
+    {
+      "test": "d_inter determined by geometry (R/3)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Interpolation function from heat kernel (no fit)",
+      "status": "PASS",
+      "detail": "Gaussian f(xi) = 1 - exp(-xi^2) from spectral probe argument"
+    }
+  ],
+  "pass_count": 22,
+  "fail_count": 0
+}
