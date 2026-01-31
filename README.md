@@ -182,9 +182,9 @@ If you use this work, please cite:
 
 ```bibtex
 @article{chiral-geometrogenesis-2026,
-  title={Chiral Geometrogenesis: Deriving Standard Model Parameters from Pre-Geometric Pressure Dynamics},
+  title={Chiral Geometrogenesis: Deriving Gauge Structure, Quantum Mechanics, Mass, and Gravity from Geometric Foundations},
   author={Massman, Robert},
-  journal={arXiv preprint arXiv:2601.XXXXX},
+  journal={zenodo.org preprint DOI: 10.5281/zenodo.18430228},
   year={2026}
 }
 ```
