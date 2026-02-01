@@ -180,9 +180,12 @@ Each proof document uses status markers:
 | Marker | Meaning |
 |--------|---------|
 | ✅ ESTABLISHED | Standard physics/math from peer-reviewed literature |
-| 🔶 NOVEL | New physics claim requiring careful scrutiny |
+| 🔶 NOVEL ✅ VERIFIED | New physics that has passed multi-agent verification and Lean 4 formalization |
+| 🔶 NOVEL | New physics claim requiring careful scrutiny (not yet fully verified) |
 | 🔸 PARTIAL | Some aspects proven, others pending |
 | 🔮 CONJECTURE | Hypothesized, needs development |
+
+The combined marker **🔶 NOVEL ✅ VERIFIED** is the key indicator that a claim is both (a) genuinely new physics and (b) has survived the three-pillar verification process.
 
 The master dependency graph is in `docs/Mathematical-Proof-Plan.md`.
 
