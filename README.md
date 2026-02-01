@@ -3,7 +3,7 @@
 [![Lean 4](https://img.shields.io/badge/Lean-4-blue)](https://lean-lang.org/)
 [![Python](https://img.shields.io/badge/Python-3.9+-green)](https://python.org/)
 [![Tests](https://img.shields.io/badge/Tests-39%2F39%20passing-brightgreen)]()
-[![Lean Lines](https://img.shields.io/badge/Lean%204-170K%2B%20lines-blue)]()
+[![Lean Lines](https://img.shields.io/badge/Lean%204-250K%2B%20lines-blue)]()
 
 <p align="center">
   <img src="images/frame-0deg-red-peak.png" width="45%" />
@@ -27,7 +27,7 @@ This repository contains everything needed to independently verify the framework
 
 This repository contains:
 
-- **Lean 4 Formalization** (`lean/`) — Machine-verified proofs (170,000+ lines in 180 files)
+- **Lean 4 Formalization** (`lean/`) — Machine-verified proofs (250,000+ lines in 247 files)
 - **Verification Scripts** (`verification/`) — Python computational validation (1,500+ files, 39/39 tests passing)
 - **Proof Documentation** (`docs/`) — Complete mathematical derivations with multi-agent verification records
 - **Paper** (`paper/`) — LaTeX source and compiled PDF
@@ -46,9 +46,9 @@ The framework employs a **three-pillar verification strategy** designed to elimi
 
 | Metric | Value |
 |--------|-------|
-| Total Lean files | 180 |
-| Total lines of code | 170,355 |
-| Proof completion rate | 83% |
+| Total Lean files | 247 |
+| Total lines of code | 250,000 |
+| Proof completion rate | 93% |
 | Critical path `sorry` statements | 0 |
 
 The remaining `sorry` statements are in files formalizing academically accepted mathematics (e.g., Weyl equidistribution, PMNS matrix constraints) that is complex to formalize but not controversial. All novel physics claims are fully proven.
