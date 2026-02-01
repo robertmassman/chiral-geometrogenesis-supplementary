@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-01-31T15:10:40.873174",
+  "verifications": [
+    {
+      "claim": "Kinetic energy decomposition",
+      "max_error": 4.547473508864641e-13,
+      "passed": "True"
+    },
+    {
+      "claim": "Quadratic form positive definite",
+      "eigenvalues": [
+        0.5,
+        1.5
+      ],
+      "min_Q_found": 0.00043999962048082346,
+      "passed": "True"
+    },
+    {
+      "claim": "Lower bound Q >= (1/2)(\u0394\u2081\u00b2 + \u0394\u2082\u00b2)",
+      "n_samples": 10000,
+      "violations": 0,
+      "min_ratio": 0.500000001104883,
+      "passed": "True"
+    },
+    {
+      "claim": "Full energy decomposition with E_asym >= 0",
+      "n_configs": 50,
+      "all_nonneg": true,
+      "min_E_asym": 6668.7707772419635,
+      "passed": true
+    },
+    {
+      "claim": "Hedgehog minimizes energy for fixed average",
+      "E_hedgehog": 18281.018940674458,
+      "n_configs": 100,
+      "all_higher": true,
+      "min_delta_E": 809679.3343088864,
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}

@@ -224,6 +224,8 @@ All actionable items from this verification report have been addressed. Key chan
 6. **Section 13.2/13.4:** Updated flux tube width data and Bali citations to 1996
 7. **Section 14:** Added complete ALICE citations (Phys. Rev. C 93, 024905; Phys. Rev. Lett. 118, 222301)
 8. **Header/Footer:** Updated status to reflect honest assessment
+9. **Section 13.3:** Fixed flux tube width table entry from "2R_stella = 0.90 fm" to "R_stella = 0.448 fm (RMS)" — consistent with Prop-8.5.1-Derivation §9.3 which derives √⟨r_⊥²⟩ = R_stella (2026-01-31)
+10. **Section 5.1:** Added explicit reference to Theorem 2.1.2 for complete confinement derivation (pressure gradient, χ-color coupling, lattice QCD verification) — addresses "schematic" label concern (2026-01-31)
 
 **Verification script:** [`prop_6_4_1_corrections_verification.py`](../../../verification/Phase6/prop_6_4_1_corrections_verification.py)
 
@@ -235,5 +237,5 @@ All actionable items from this verification report have been addressed. Key chan
 - Physics Agent: Claude Opus 4.5
 
 **Report Compiled:** 2026-01-22
-**Corrections Applied:** 2026-01-22
+**Corrections Applied:** 2026-01-22, 2026-01-31 (Section 13.3 flux tube width table)
 **Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>**

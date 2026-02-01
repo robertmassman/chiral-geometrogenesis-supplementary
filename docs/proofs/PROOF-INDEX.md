@@ -1,7 +1,7 @@
 # Proof Index: Chiral Geometrogenesis
 
 > **Auto-generated hierarchical index of all proof documents**
-> Last updated: 2026-01-29
+> Last updated: 2026-02-01
 
 This document provides an organized, hierarchical listing of all proof files in `docs/proofs/`. For theorem status, dependencies, and verification details, see [Mathematical-Proof-Plan.md](../Mathematical-Proof-Plan.md).
 
@@ -518,7 +518,7 @@ This document provides an organized, hierarchical listing of all proof files in 
 
 ## Supporting
 
-**21 files** — Research and analysis documents
+**43 files** — Research and analysis documents
 
 | Title | File |
 |-------|------|
@@ -527,19 +527,44 @@ This document provides an organized, hierarchical listing of all proof files in 
 | Analysis 1-dim-adj Path Integral Rigorous Derivation | [Analysis-1-dim-adj-Path-Integral-Rigorous-Derivation.md](supporting/Analysis-1-dim-adj-Path-Integral-Rigorous-Derivation.md) |
 | Analysis 1-dim-adj Rigorous Derivation | [Analysis-1-dim-adj-Rigorous-Derivation.md](supporting/Analysis-1-dim-adj-Rigorous-Derivation.md) |
 | Analysis 2pi2 Normalization Investigation | [Analysis-2pi2-Normalization-Investigation.md](supporting/Analysis-2pi2-Normalization-Investigation.md) |
+| Analysis 5 Equals 3 Plus 2 Decomposition | [Analysis-5-Equals-3-Plus-2-Decomposition.md](supporting/Analysis-5-Equals-3-Plus-2-Decomposition.md) |
 | Analysis A-Theorem Extension CFT To Massive Flows | [Analysis-A-Theorem-Extension-CFT-To-Massive-Flows.md](supporting/Analysis-A-Theorem-Extension-CFT-To-Massive-Flows.md) |
 | Analysis A-Theorem Extension To Massive IR | [Analysis-A-Theorem-Extension-To-Massive-IR.md](supporting/Analysis-A-Theorem-Extension-To-Massive-IR.md) |
 | Analysis Delta-a Beyond Free Field | [Analysis-Delta-a-Beyond-Free-Field.md](supporting/Analysis-Delta-a-Beyond-Free-Field.md) |
 | Analysis EW Specificity Why Formula Fails For QCD | [Analysis-EW-Specificity-Why-Formula-Fails-For-QCD.md](supporting/Analysis-EW-Specificity-Why-Formula-Fails-For-QCD.md) |
 | Analysis Exp Functional Form Derivation | [Analysis-Exp-Functional-Form-Derivation.md](supporting/Analysis-Exp-Functional-Form-Derivation.md) |
+| Analysis Experimental Discrimination 5 Equals 3 Plus 2 | [Analysis-Experimental-Discrimination-5-Equals-3-Plus-2.md](supporting/Analysis-Experimental-Discrimination-5-Equals-3-Plus-2.md) |
 | Analysis Independent Falsifiable Predictions | [Analysis-Independent-Falsifiable-Predictions.md](supporting/Analysis-Independent-Falsifiable-Predictions.md) |
+| Analysis Lambda QCD Correction Uncertainty | [Analysis-Lambda-QCD-Correction-Uncertainty.md](supporting/Analysis-Lambda-QCD-Correction-Uncertainty.md) |
+| Analysis PMNS 5 Copy Structure Connection | [Analysis-PMNS-5-Copy-Structure-Connection.md](supporting/Analysis-PMNS-5-Copy-Structure-Connection.md) |
+| Analysis Quaternionic Structure Icosian Group | [Analysis-Quaternionic-Structure-Icosian-Group.md](supporting/Analysis-Quaternionic-Structure-Icosian-Group.md) |
 | Analysis Unified Geometric Mismatch Resolution | [Analysis-Unified-Geometric-Mismatch-Resolution.md](supporting/Analysis-Unified-Geometric-Mismatch-Resolution.md) |
+| Color Constraints Necessity Conclusion | [Color-Constraints-Necessity-Conclusion.md](supporting/Color-Constraints-Necessity-Conclusion.md) |
+| Color Constraints Necessity Research Plan | [Color-Constraints-Necessity-Research-Plan.md](supporting/Color-Constraints-Necessity-Research-Plan.md) |
+| Configuration Space Topology Analysis | [Configuration-Space-Topology-Analysis.md](supporting/Configuration-Space-Topology-Analysis.md) |
 | Derivation Attempt 1-dim-adj From Goldstone Theorem | [Derivation-Attempt-1-dim-adj-From-Goldstone-Theorem.md](supporting/Derivation-Attempt-1-dim-adj-From-Goldstone-Theorem.md) |
+| Derivation D4 Triality A4 Irreps Connection | [Derivation-D4-Triality-A4-Irreps-Connection.md](supporting/Derivation-D4-Triality-A4-Irreps-Connection.md) |
+| Derivation Heavy Generation Predictions | [Derivation-Heavy-Generation-Predictions.md](supporting/Derivation-Heavy-Generation-Predictions.md) |
+| Derivation Sin72 Angular Factor Explicit | [Derivation-Sin72-Angular-Factor-Explicit.md](supporting/Derivation-Sin72-Angular-Factor-Explicit.md) |
+| Derivation Sqrt2 Factor From First Principles | [Derivation-Sqrt2-Factor-From-First-Principles.md](supporting/Derivation-Sqrt2-Factor-From-First-Principles.md) |
+| Derivation Three Phi Factors Explicit | [Derivation-Three-Phi-Factors-Explicit.md](supporting/Derivation-Three-Phi-Factors-Explicit.md) |
+| Derivation Triality Squared In EW Formula | [Derivation-Triality-Squared-In-EW-Formula.md](supporting/Derivation-Triality-Squared-In-EW-Formula.md) |
+| Derivation Unified Z3 Origin Of Three | [Derivation-Unified-Z3-Origin-Of-Three.md](supporting/Derivation-Unified-Z3-Origin-Of-Three.md) |
 | Gap Resolution Summary | [Gap-Resolution-Summary.md](supporting/Gap-Resolution-Summary.md) |
+| Global Minimality Decidability Analysis | [Global-Minimality-Decidability-Analysis.md](supporting/Global-Minimality-Decidability-Analysis.md) |
+| Hedgehog Ansatz Global Minimality Research | [Hedgehog-Ansatz-Global-Minimality-Research.md](supporting/Hedgehog-Ansatz-Global-Minimality-Research.md) |
+| Hedgehog Global Minimality Attack Plan | [Hedgehog-Global-Minimality-Attack-Plan.md](supporting/Hedgehog-Global-Minimality-Attack-Plan.md) |
 | Heterotic String Connection Development | [Heterotic-String-Connection-Development.md](supporting/Heterotic-String-Connection-Development.md) |
+| Lemma A CG Energy Decomposition Proof | [Lemma-A-CG-Energy-Decomposition-Proof.md](supporting/Lemma-A-CG-Energy-Decomposition-Proof.md) |
 | Open Question 1 Lattice Spacing Derivation Plan | [Open-Question-1-Lattice-Spacing-Derivation-Plan.md](supporting/Open-Question-1-Lattice-Spacing-Derivation-Plan.md) |
 | Open Question Quantitative Predictions | [Open-Question-Quantitative-Predictions.md](supporting/Open-Question-Quantitative-Predictions.md) |
+| Phase6 Scattering Theory Plan | [Phase6-Scattering-Theory-Plan.md](supporting/Phase6-Scattering-Theory-Plan.md) |
 | Plan 5.2.5 Bekenstein-Hawking Coefficient Derivation | [Plan-5.2.5-Bekenstein-Hawking-Coefficient-Derivation.md](supporting/Plan-5.2.5-Bekenstein-Hawking-Coefficient-Derivation.md) |
+| QCD Skyrme CG Connection Analysis | [QCD-Skyrme-CG-Connection-Analysis.md](supporting/QCD-Skyrme-CG-Connection-Analysis.md) |
+| Research Remaining Gaps Worksheet | [Research-Remaining-Gaps-Worksheet.md](supporting/Research-Remaining-Gaps-Worksheet.md) |
+| RESTRUCTURED FILES NOTE | [RESTRUCTURED-FILES-NOTE.md](supporting/RESTRUCTURED-FILES-NOTE.md) |
+| RESTRUCTURED FILES NOTE Theorem 0.2.3 | [RESTRUCTURED-FILES-NOTE-Theorem-0.2.3.md](supporting/RESTRUCTURED-FILES-NOTE-Theorem-0.2.3.md) |
+| RESTRUCTURED FILES NOTE Theorem 5.2.4 | [RESTRUCTURED-FILES-NOTE-Theorem-5.2.4.md](supporting/RESTRUCTURED-FILES-NOTE-Theorem-5.2.4.md) |
 
 ---
 
@@ -572,10 +597,10 @@ See [verification-records/](verification-records/) for the complete collection o
 | Phase7/ | 16 | Renormalization |
 | Phase8/ | 17 | Predictions |
 | reference/ | 6 | Reference docs |
-| supporting/ | 21 | Research docs |
+| supporting/ | 43 | Research docs |
 | verification-records/ | 352 | Verification reports |
-| **TOTAL** | **667** | All proof files |
+| **TOTAL** | **689** | All proof files |
 
 ---
 
-*Generated from filesystem scan on 2026-01-29*
+*Generated from filesystem scan on 2026-02-01*

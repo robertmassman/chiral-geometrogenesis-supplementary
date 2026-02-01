@@ -1,0 +1,108 @@
+{
+  "timestamp": "2026-01-31T15:46:11.203684",
+  "description": "Search for non-hedgehog Q=1 configurations with E < E_hedgehog",
+  "tests": [
+    {
+      "name": "Hedgehog reference",
+      "E": 105.89838618080303,
+      "Q": 0.9999178852131427,
+      "R_optimal": 0.9439804215666939
+    },
+    {
+      "name": "Deformed epsilon=0.1",
+      "E": 113.0254092327227,
+      "delta_E": 7.1270230519196645,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Deformed epsilon=0.2",
+      "E": 166.3490726928962,
+      "delta_E": 60.45068651209316,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Deformed epsilon=0.3",
+      "E": 352.4836710540091,
+      "delta_E": 246.5852848732061,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Deformed epsilon=0.5",
+      "E": 1598.702967642788,
+      "delta_E": 1492.804581461985,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Toroidal alpha=0.1",
+      "E": 105.89838618080303,
+      "delta_E": 0.0,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Toroidal alpha=0.2",
+      "E": 105.89838618080303,
+      "delta_E": 0.0,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Toroidal alpha=0.3",
+      "E": 105.89838618080303,
+      "delta_E": 0.0,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Toroidal alpha=0.5",
+      "E": 105.89838618080303,
+      "delta_E": 0.0,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Axial R_rho=0.8 R_z=1.2",
+      "E": 106.97268354957625,
+      "delta_E": 1.074297368773216,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Axial R_rho=1.2 R_z=0.8",
+      "E": 108.21711171792582,
+      "delta_E": 2.3187255371227877,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Axial R_rho=0.6 R_z=1.5",
+      "E": 113.73378802198442,
+      "delta_E": 7.835401841181394,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Axial R_rho=1.5 R_z=0.6",
+      "E": 114.62897951581118,
+      "delta_E": 8.730593335008152,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Multi-shell R1=0.5 R2=2.0 beta=0.3",
+      "E": 114.69257829008303,
+      "delta_E": 8.794192109280004,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Multi-shell R1=0.3 R2=1.5 beta=0.5",
+      "E": 119.60638482089396,
+      "delta_E": 13.707998640090935,
+      "lower_than_hedgehog": "False"
+    },
+    {
+      "name": "Multi-shell R1=0.7 R2=3.0 beta=0.4",
+      "E": 120.8131538268534,
+      "delta_E": 14.914767646050365,
+      "lower_than_hedgehog": "False"
+    }
+  ],
+  "summary": {
+    "E_hedgehog_optimal": 105.89838618080303,
+    "n_configs_tested": 16,
+    "n_lower_than_hedgehog": 0,
+    "conclusion": "Scenarios A or B"
+  }
+}

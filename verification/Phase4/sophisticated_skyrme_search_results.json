@@ -1,0 +1,123 @@
+{
+  "timestamp": "2026-01-31T16:35:08.279225",
+  "description": "Sophisticated search for non-hedgehog Q=1 configurations",
+  "reference_hedgehog_energy": 105.8984,
+  "tests": [
+    {
+      "name": "Hedgehog (rational map)",
+      "type": "identity",
+      "E": 195.75685565399348,
+      "params": {
+        "R_scale": 1.0732231922380016
+      }
+    },
+    {
+      "name": "M\u00f6bius a=0.1",
+      "type": "mobius",
+      "E": 194.17079860737073,
+      "delta_E": -1.5860570466227557
+    },
+    {
+      "name": "M\u00f6bius a=0.3",
+      "type": "mobius",
+      "E": 193.08188224740243,
+      "delta_E": -2.67497340659105
+    },
+    {
+      "name": "M\u00f6bius a=0.5",
+      "type": "mobius",
+      "E": 192.50623866644415,
+      "delta_E": -3.2506169875493356
+    },
+    {
+      "name": "Deformed \u03b5=0.05",
+      "type": "deformed",
+      "E": 199.16249029750006,
+      "delta_E": 3.4056346435065734,
+      "lower": "False"
+    },
+    {
+      "name": "Deformed \u03b5=0.1",
+      "type": "deformed",
+      "E": 206.82577067297592,
+      "delta_E": 11.068915018982437,
+      "lower": "False"
+    },
+    {
+      "name": "Deformed \u03b5=0.2",
+      "type": "deformed",
+      "E": 283.5491212386173,
+      "delta_E": 87.79226558462383,
+      "lower": "False"
+    },
+    {
+      "name": "Axial \u03b5=0.05",
+      "type": "axial",
+      "E": 196.86393712863344,
+      "delta_E": 1.1070814746399549,
+      "lower": "False"
+    },
+    {
+      "name": "Axial \u03b5=0.1",
+      "type": "axial",
+      "E": 198.07681391864966,
+      "delta_E": 2.3199582646561794,
+      "lower": "False"
+    },
+    {
+      "name": "Axial \u03b5=0.2",
+      "type": "axial",
+      "E": 199.86233525693015,
+      "delta_E": 4.1054796029366685,
+      "lower": "False"
+    },
+    {
+      "name": "Spline profile",
+      "type": "spline",
+      "E": 104.2653853477904,
+      "Q": 0.9999592476541704,
+      "delta_E": -91.49147030620308,
+      "lower": "True"
+    },
+    {
+      "name": "Fourier Y_20 amp=0.1",
+      "type": "fourier",
+      "E": 117.51498994310627,
+      "delta_E": -78.24186571088721,
+      "lower": "True"
+    },
+    {
+      "name": "Fourier Y_20 amp=0.2",
+      "type": "fourier",
+      "E": 120.2530489121245,
+      "delta_E": -75.50380674186898,
+      "lower": "True"
+    },
+    {
+      "name": "Fourier Y_22 amp=0.1",
+      "type": "fourier",
+      "E": 117.00193783364031,
+      "delta_E": -78.75491782035317,
+      "lower": "True"
+    },
+    {
+      "name": "Basin hopping global search",
+      "type": "global",
+      "E": 195.92728014116025,
+      "delta_E": 0.17042448716676972,
+      "params": [
+        0.9531244512923837,
+        -0.048688149820632735,
+        0.0674846065756437
+      ],
+      "lower": "False"
+    }
+  ],
+  "summary": {
+    "reference_energy": 195.75685565399348,
+    "min_energy_found": 104.2653853477904,
+    "min_config": "Spline profile",
+    "n_lower_than_hedgehog": 4,
+    "conclusion": "Counterexamples found"
+  }
+}

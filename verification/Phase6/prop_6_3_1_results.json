@@ -1,7 +1,7 @@
 {
   "proposition": "6.3.1",
   "title": "One-Loop QCD Corrections",
-  "timestamp": "2026-01-21T05:06:55.297918",
+  "timestamp": "2026-01-31T09:54:57.089462",
   "status": "DRAFT",
   "tests": [
     {
@@ -75,16 +75,16 @@
       "notes": "Within theoretical uncertainty"
     },
     {
-      "name": "Mass anomalous dimension coefficient",
+      "name": "Mass anomalous dimension coefficient \u03b3_m^(0)",
       "passed": true,
-      "expected": "3C_F = 4",
-      "actual": "4.0",
-      "notes": "\u03b3_m = (4/\u03c0)\u03b1_s at one loop"
+      "expected": "6C_F = 8",
+      "actual": "8.0",
+      "notes": "\u03b3_m = \u03b3_m^(0) \u03b1_s/(4\u03c0) = 8 \u03b1_s/(4\u03c0) = 2 \u03b1_s/\u03c0"
     },
     {
-      "name": "Mass running exponent 4/b_1",
+      "name": "Mass running exponent \u03b3_m^(0)/(2\u03b2_0)",
       "passed": true,
-      "expected": "4/7 \u2248 0.571",
+      "expected": "8/14 = 4/7 \u2248 0.571",
       "actual": "0.5714",
       "notes": "m(Q)/m(\u03bc) \u221d (\u03b1_s(Q)/\u03b1_s(\u03bc))^{4/7}"
     },

@@ -76,7 +76,7 @@ See [Proposition-3.1.1c-Geometric-Coupling-Formula-Derivation.md](../Phase3/Prop
 | Baryon asymmetry η | (6 ± 3) × 10⁻¹⁰ | (6.12 ± 0.04) × 10⁻¹⁰ | ✅ |
 | Higgs mass | 125 GeV (input via λ) | 125.25 ± 0.17 GeV | ✅ |
 | sin²θ_W(M_Z) | 0.231 (from GUT running) | 0.23122 ± 0.00003 | ✅ |
-| Wolfenstein λ | 0.2245 (bare) → 0.2265 (dressed) | 0.22650 ± 0.00048 | ✅ |
+| Wolfenstein λ | 0.224514 (geometric) | 0.22497 ± 0.00070 (CKM fit) | ✅ (0.66σ) |
 | Proton mass origin | ~99% from chiral dynamics | ~99% from QCD | ✅ |
 | Newton's constant | From f_χ = M_P/√(8π) | 6.674 × 10⁻¹¹ m³/kg·s² | ✅ |
 
@@ -87,8 +87,8 @@ See [Proposition-3.1.1c-Geometric-Coupling-Formula-Derivation.md](../Phase3/Prop
 | Parameter | Standard Value | Source | Notes |
 |-----------|---------------|--------|-------|
 | **λ (Wolfenstein)** | **0.22650 ± 0.00048** | PDG 2024 CKM fit | NOT 0.22500 |
-| λ_geometric (bare) | 0.224514 | (1/φ³)×sin(72°) | High-scale value |
-| QCD correction δ | 0.88% | Radiative corrections | λ_dressed = 1.009 × λ_bare |
+| λ_geometric | 0.224514 | (1/φ³)×sin(72°) | No correction needed |
+| ~~QCD correction δ~~ | ~~0.88%~~ | **REMOVED** | CKM is RG-invariant; see [Analysis](../supporting/Analysis-Lambda-QCD-Correction-Uncertainty.md) |
 | A | 0.826 ± 0.015 | PDG 2024 | Wolfenstein |
 | ρ̄ | 0.1581 ± 0.0092 | PDG 2024 | Wolfenstein |
 | η̄ | 0.3548 ± 0.0072 | PDG 2024 | Wolfenstein |
@@ -99,7 +99,7 @@ See [Proposition-3.1.1c-Geometric-Coupling-Formula-Derivation.md](../Phase3/Prop
 - Wolfenstein parameterization (Table 12.1): λ = 0.22650 ± 0.00048
 - CKM global fit: λ = 0.22497 ± 0.00069
 
-The CG geometric derivation gives $\lambda_{bare} = (1/\varphi^3)\sin(72°) = 0.2245$, which matches the CKM global fit to 0.7σ. With QCD radiative corrections (~0.9%), $\lambda_{dressed} = 0.2265$ matches the Wolfenstein value to 0.1σ.
+The CG geometric derivation gives $\lambda_{geometric} = (1/\varphi^3)\sin(72°) = 0.224514$, which matches the **CKM global fit** (0.22497 ± 0.00070) to **0.66σ**. Note: CKM matrix elements are **RG-invariant** in the Standard Model — there is no "running" or "QCD correction" to λ. The Wolfenstein direct value (0.22650) differs from the CKM fit due to different extraction methods, not physics corrections.
 
 ### Predictions for Future Tests
 

@@ -1,0 +1,63 @@
+{
+  "title": "tt\u0304 Cross Section Verification",
+  "date": "2026-01-22T12:27:38.321781",
+  "measurements": [
+    {
+      "sqrt_s_TeV": 7,
+      "theory_pb": 174.6,
+      "theory_unc_pb": 9.558765610684258,
+      "experiment_pb": 173,
+      "experiment_unc_pb": 11.045361017187261,
+      "deviation_sigma": -0.10953509873292297,
+      "source": "ATLAS+CMS 2012",
+      "agreement": "yes"
+    },
+    {
+      "sqrt_s_TeV": 8,
+      "theory_pb": 252.9,
+      "theory_unc_pb": 13.47525509962613,
+      "experiment_pb": 242,
+      "experiment_unc_pb": 12.206555615733702,
+      "deviation_sigma": -0.5994963842983361,
+      "source": "ATLAS+CMS 2014",
+      "agreement": "yes"
+    },
+    {
+      "sqrt_s_TeV": 13,
+      "theory_pb": 833.9,
+      "theory_unc_pb": 40.00856158374105,
+      "experiment_pb": 829,
+      "experiment_unc_pb": 19.131126469708992,
+      "deviation_sigma": -0.11049145111508915,
+      "source": "ATLAS 2024 (full Run 2)",
+      "agreement": "yes"
+    },
+    {
+      "sqrt_s_TeV": 13.6,
+      "theory_pb": 923.6,
+      "theory_unc_pb": 43.91856099646253,
+      "experiment_pb": 850,
+      "experiment_unc_pb": 27.073972741361768,
+      "deviation_sigma": -1.426549483405948,
+      "source": "ATLAS 2023 (arXiv:2308.09529)",
+      "agreement": "yes"
+    }
+  ],
+  "cg_predictions": {
+    "note": "CG predictions identical to SM NNLO+NNLL at current precision",
+    "form_factor_correction": "Negligible for m_tt\u0304 << \u039b_EW ~ 10 TeV"
+  },
+  "document_updates": {
+    "13_TeV": {
+      "theory": 834,
+      "experiment": 829,
+      "uncertainty": 20
+    },
+    "13.6_TeV": {
+      "theory": 924,
+      "experiment": 850,
+      "uncertainty": 27,
+      "tension_sigma": 1.426549483405948
+    }
+  }
+}

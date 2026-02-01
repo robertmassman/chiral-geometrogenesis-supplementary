@@ -345,7 +345,7 @@ Until this is addressed, the claim that "CG skyrmions = matter particles" remain
 **Supporting Documents:**
 - [Proposition-0.0.17m](../foundations/Proposition-0.0.17m-Chiral-VEV-From-Phase-Lock-Stiffness.md) — Scale derivation
 - [Theorem-3.2.1-Derivation](../Phase3/Theorem-3.2.1-Low-Energy-Equivalence-Derivation.md) — §21.2.6 two-field structure
-- [Research-Remaining-Gaps-Worksheet](../Research-Remaining-Gaps-Worksheet.md) — Gap 1 status
+- [Research-Remaining-Gaps-Worksheet](../supporting/Research-Remaining-Gaps-Worksheet.md) — Gap 1 status
 
 **Verification Date:** 2026-01-22
 **Review Type:** ADVERSARIAL PHYSICS (UPDATE)

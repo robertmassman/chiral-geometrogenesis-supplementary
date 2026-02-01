@@ -1,0 +1,23 @@
+{
+  "verification_date": "2026-01-16",
+  "proposition": "5.1.2b",
+  "all_passed": true,
+  "test_results": {
+    "radial_integral": true,
+    "overlap_coefficient": true,
+    "factor_7_04": true,
+    "epsilon_CP": true,
+    "eta_B": true,
+    "lambda_W": true,
+    "cosmological_densities": true
+  },
+  "key_values": {
+    "eta_B": 5.732677743305738e-10,
+    "lambda_W": 0.10000773641598025,
+    "v_W_GeV": 123.1052381254404,
+    "Omega_b": 0.049,
+    "Omega_DM": 0.3038442985074627,
+    "Omega_m": 0.3528442985074627,
+    "Omega_Lambda": 0.6470557014925373
+  }
+}

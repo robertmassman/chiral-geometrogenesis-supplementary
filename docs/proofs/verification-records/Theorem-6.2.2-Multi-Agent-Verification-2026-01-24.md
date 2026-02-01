@@ -2,9 +2,9 @@
 
 ## Helicity Amplitudes and Spinor-Helicity Formalism
 
-**Date:** 2026-01-24
+**Date:** 2026-01-24 (updated 2026-01-31)
 **Target Document:** [Theorem-6.2.2-Helicity-Amplitudes-Spinor-Helicity-Formalism.md](../Phase6/Theorem-6.2.2-Helicity-Amplitudes-Spinor-Helicity-Formalism.md)
-**Status:** ✅ **VERIFIED** — All issues resolved (2026-01-24)
+**Status:** ✅ **VERIFIED (COMPLETE)** — All issues resolved including outstanding items
 
 ---
 
@@ -23,6 +23,17 @@ All critical errors and warnings identified below have been addressed:
 | WARNING 3: Lorentz inv. | Referenced Theorem 0.0.14 | §6.3 |
 | Experimental comparison | Added §7.4 with LHC data | §7.4 |
 | Citations | Improved with specific refs | §12 |
+
+## Additional Resolutions (2026-01-31)
+
+The remaining 🔸 PARTIAL items from §9.1 and §9.3 have been completed:
+
+| Issue | Resolution | Section |
+|-------|------------|---------|
+| Crossing symmetry | Complete derivation: spinor crossing relations, CPT verification, explicit s↔u check | §4.3 (new) |
+| Same-helicity loop | Full loop calculation via χGG̃ coupling; σ(++++)/σ_tot ~ 10^{-9} | §4.2.2 (expanded) |
+
+**All verification checklist items now ✅ VERIFIED.**
 
 **Verification script:** [theorem_6_2_2_verification.py](../../../verification/Phase6/theorem_6_2_2_verification.py)
 

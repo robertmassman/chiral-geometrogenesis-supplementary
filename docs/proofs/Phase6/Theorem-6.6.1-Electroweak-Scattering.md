@@ -49,6 +49,20 @@ $$\sigma(e^+e^- \to f\bar{f})\big|_{\sqrt{s}=M_Z} = \frac{12\pi}{M_Z^2}\frac{\Ga
 | $s, t, u$ | Mandelstam variables | Mass² | — | Standard |
 | $g_V^f, g_A^f$ | Z-fermion couplings | Dimensionless | Table in §3.4 | Derived |
 
+### 1.2 Scheme Convention
+
+**This document uses the MS-bar scheme** where $\sin^2\theta_W = 0.2312$.
+
+**The Lean formalization** (`Theorem_6_6_1.lean`) uses the **on-shell scheme** where $\sin^2\theta_W = 1 - (M_W/M_Z)^2 = 0.2232$.
+
+| Quantity | MS-bar (this doc) | On-shell (Lean) | Difference |
+|----------|-------------------|-----------------|------------|
+| $\sin^2\theta_W$ | 0.2312 | 0.2232 | ~3.5% |
+| $e = g_2\sqrt{\sin^2\theta_W}$ | 0.314 | 0.308 | ~2% |
+| $g_V^\ell = -\frac{1}{2} + 2\sin^2\theta_W$ | -0.038 | -0.054 | ~40% |
+
+**Key point:** Both schemes give identical physical predictions when used consistently. The structural results (E² cancellation, Ward identities, unitarity bounds) are scheme-independent. Numerical observables like $A_{FB}$ depend on scheme choice but agree with experiment in either scheme.
+
 ---
 
 ## 2. Background and Motivation
@@ -387,7 +401,7 @@ At high energies $E \gg M_W$, the longitudinal W polarization can be replaced by
 
 $$\mathcal{M}(W_L^+ W_L^- \to W_L^+ W_L^-) \approx \mathcal{M}(\phi^+ \phi^- \to \phi^+ \phi^-)$$
 
-up to corrections of order $M_W/E$.
+up to corrections of order $M_W/E$. The approximation is accurate to ~10% for $E \gtrsim 250$ GeV and ~1% for $E \gtrsim 800$ GeV.
 
 ### 5.3 Amplitude Without Higgs
 
@@ -492,7 +506,7 @@ $$\Gamma_{\rm inv} = \Gamma_Z - \Gamma_{\rm had} - 3\Gamma_\ell = N_\nu \Gamma_\
 
 ### 7.1 Gluon Fusion: $gg \to h$
 
-The dominant Higgs production mechanism at hadron colliders proceeds through a top quark loop:
+The dominant Higgs production mechanism at hadron colliders proceeds through a top quark loop. This calculation uses standard SM loop techniques; CG contributes only the geometrically-derived values of $v_H$ and $m_t$:
 
 $$\mathcal{M}(gg \to h) = \frac{\alpha_s}{3\pi v_H}A_{1/2}(\tau_t)\,\delta^{ab}\epsilon_1^\mu\epsilon_2^\nu\left(k_1 \cdot k_2 g_{\mu\nu} - k_{1\nu}k_{2\mu}\right)$$
 
@@ -502,6 +516,8 @@ where:
 
 **Cross-section at LHC ($\sqrt{s} = 13$ TeV):**
 $$\sigma(gg \to h)_{\rm CG} \approx 48\,\text{pb}$$
+
+This uses the NNLO+NNLL QCD calculation with the heavy-top effective theory, which is the standard for Higgs cross-section predictions. The CG contribution is providing the geometrically-derived $v_H = 246.22$ GeV in the $hgg$ effective coupling.
 
 **ATLAS/CMS measurement:** $49.4 \pm 3.0$ pb — Agreement: 3%
 
@@ -566,7 +582,7 @@ Above $\sqrt{s} \sim 1$ TeV, CG predicts deviations from SM:
 
 $$\frac{\sigma_{\rm CG}}{\sigma_{\rm SM}} = 1 + c_{\rm EW}\frac{s}{\Lambda^2} + \mathcal{O}\left(\frac{s^2}{\Lambda^4}\right)$$
 
-with $\Lambda \approx 8$–15 TeV and $c_{\rm EW} \sim \mathcal{O}(1)$.
+with $\Lambda \approx 8$–15 TeV (derived in Theorem 3.2.2 from the geometric cutoff formula $\Lambda = 4\pi f_\chi v/M_P$) and $c_{\rm EW} \sim \mathcal{O}(1)$.
 
 **Observable at:** FCC-hh ($\sqrt{s} = 100$ TeV) or muon collider ($\sqrt{s} > 3$ TeV).
 
@@ -744,9 +760,9 @@ Specific PDG 2024 sections used for experimental values:
 | Mathematical | Partial | ✅ All 5 critical issues addressed |
 | Physics | Partial (75%) | ✅ All novel claims now demonstrated |
 
-**Summary:** All verification findings have been addressed. The theorem now includes explicit E² cancellation calculations (§4.3.1), triple gauge vertex derivation (§4.2.1), contact term discussion (§5.1), corrected unitarity statement (§5.4), updated Higgs width (§7.2), and explicit Ward identity verification (§10.3.1).
+**Summary:** All verification findings have been addressed (13 items total). Key additions: explicit E² cancellation calculations (§4.3.1), triple gauge vertex derivation (§4.2.1), contact term discussion (§5.1), corrected unitarity statement (§5.4), updated Higgs width (§7.2), explicit Ward identity verification (§10.3.1), χ-field connection (§2.4), gg→h loop order clarification (§7.1), Goldstone equivalence validity range (§5.2), and Λ scale derivation reference (§9.1).
 
-### Findings Addressed (2026-01-24)
+### Findings Addressed (2026-01-24, updated 2026-01-31)
 
 | Finding | Priority | Section | Status |
 |---------|----------|---------|--------|
@@ -760,6 +776,9 @@ Specific PDG 2024 sections used for experimental values:
 | χ-field connection | MEDIUM | §2.4 | ✅ New section added |
 | Symbol table uncertainties | LOW | §1.1 | ✅ PDG uncertainties added |
 | PDG references | LOW | §13 | ✅ Table references added |
+| gg→h SM loop clarification | LOW | §7.1 | ✅ NNLO+NNLL stated |
+| Goldstone equivalence range | LOW | §5.2 | ✅ Quantified (10% at 250 GeV) |
+| Λ scale derivation ref | LOW | §9.1 | ✅ Theorem 3.2.2 reference added |
 
 ### Computational Verification
 
@@ -774,6 +793,6 @@ Specific PDG 2024 sections used for experimental values:
 *Document created: 2026-01-24*
 *Status: ✅ VERIFIED 🔶 NOVEL*
 *Verification date: 2026-01-24*
-*Findings addressed: 2026-01-24*
+*Findings addressed: 2026-01-31*
 *Dependencies: Theorems 6.7.1, 6.7.2, Props 0.0.21, 0.0.24*
 *Enables: Proposition 6.7.3 (Sphalerons), EW loop corrections*

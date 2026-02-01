@@ -3,7 +3,7 @@
 ## Status: ✅ VERIFIED
 
 **Created:** 2026-01-20
-**Last Updated:** 2026-01-22 — Issues from adversarial verification addressed
+**Last Updated:** 2026-01-31 — Additional documentation improvements
 **Purpose:** Derive tree-level scattering amplitudes for fundamental QCD processes from the CG Feynman rules, demonstrating that particle scattering is geometrically determined.
 
 ---
@@ -27,6 +27,12 @@ $$\mathcal{M} = \mathcal{C} \times \mathcal{S} \times \mathcal{K}$$
 | $\mathcal{C}$ | Color factor | Trace/product of $T^a$, $f^{abc}$ |
 | $\mathcal{S}$ | Spinor structure | $\bar{u}\Gamma u$, $\bar{v}\Gamma v$ |
 | $\alpha_s$ | Strong coupling | $g_s^2/(4\pi)$ |
+
+### 1.2 Conventions
+
+- **Metric signature:** $\eta_{\mu\nu} = \text{diag}(-1, +1, +1, +1)$ (mostly-plus)
+- **Natural units:** $\hbar = c = 1$
+- **Mandelstam constraint:** $s + t + u = \sum_i m_i^2$ (sum of external masses squared)
 
 ---
 
@@ -67,11 +73,13 @@ $$\mathcal{M}(q_i q_j \to q_k q_l) = ig_s^2 \left[\frac{T^a_{ki}T^a_{lj}}{t}\bar
 
 **Color factor decomposition:**
 
-For $i = j$ (same flavor):
-$$\mathcal{C}_t = T^a_{ki}T^a_{li} = \frac{1}{2}\left(\delta_{kl}\delta_{ii} - \frac{1}{N_c}\delta_{ki}\delta_{li}\right)$$
+**Index convention:** In the amplitude above, subscripts $i, j, k, l$ label quark flavors. In the color factor expressions below, we use Greek indices $\alpha, \beta, \gamma, \delta$ for color indices (fundamental representation, running 1 to $N_c = 3$).
 
-Using Fierz identity:
-$$T^a_{ij}T^a_{kl} = \frac{1}{2}\left(\delta_{il}\delta_{kj} - \frac{1}{N_c}\delta_{ij}\delta_{kl}\right)$$
+For same-flavor scattering ($i = j$), the t-channel color factor is:
+$$\mathcal{C}_t = (T^a)_{\gamma\alpha}(T^a)_{\delta\beta} = \frac{1}{2}\left(\delta_{\gamma\beta}\delta_{\delta\alpha} - \frac{1}{N_c}\delta_{\gamma\alpha}\delta_{\delta\beta}\right)$$
+
+This follows from the **Fierz identity** for SU($N_c$) generators:
+$$T^a_{\alpha\beta}T^a_{\gamma\delta} = \frac{1}{2}\left(\delta_{\alpha\delta}\delta_{\gamma\beta} - \frac{1}{N_c}\delta_{\alpha\beta}\delta_{\gamma\delta}\right)$$
 
 **Geometric interpretation:** The color factors arise from the SU(3) weight structure of the stella octangula. The factor $1/N_c = 1/3$ reflects the three-vertex color structure.
 
@@ -391,7 +399,7 @@ All amplitudes derived here match Peskin & Schroeder Chapter 17 and Ellis, Stirl
 - Peskin & Schroeder, *An Introduction to Quantum Field Theory*, Ch. 17
 - Ellis, Stirling, Webber, *QCD and Collider Physics*, Ch. 7
 - Particle Data Group, *Review of Particle Physics* (2024)
-- ATLAS Collaboration, "Measurement of the $t\bar{t}$ production cross-section" (2023)
+- ATLAS Collaboration, "Measurement of the $t\bar{t}$ production cross-section using lepton+jets events," Eur. Phys. J. C **80** (2020) 528, [arXiv:2006.13076](https://arxiv.org/abs/2006.13076)
 
 ---
 
@@ -407,6 +415,13 @@ All amplitudes derived here match Peskin & Schroeder Chapter 17 and Ellis, Stirl
 | Spin/color averaging conventions | Minor | Added explicit averaging table in §2 |
 | Dimensional analysis clarification | Minor | Added clarification in §4.1 and §8.1 |
 
+### Documentation Improvements (2026-01-31)
+| Item | Section | Description |
+|------|---------|-------------|
+| Index notation clarity | §2.1 | Distinguished flavor indices ($i,j,k,l$) from color indices ($\alpha,\beta,\gamma,\delta$) |
+| ATLAS citation | §11 | Added specific arXiv reference (arXiv:2006.13076) |
+| Metric convention | §1.2 | Added explicit metric signature $\eta_{\mu\nu} = \text{diag}(-1,+1,+1,+1)$ |
+
 ### Computational Verification
 - [theorem_6_2_1_gg_coefficient_verify.py](../../../../verification/Phase6/theorem_6_2_1_gg_coefficient_verify.py) — Derivation verification for gg→gg coefficient (confirmed 9π/(2s²) is CORRECT)
 - [theorem_6_2_1_adversarial_physics.py](../../../../verification/Phase6/theorem_6_2_1_adversarial_physics.py) — Python adversarial physics verification script
@@ -421,4 +436,5 @@ All amplitudes derived here match Peskin & Schroeder Chapter 17 and Ellis, Stirl
 
 *Created: 2026-01-20*
 *Verified: 2026-01-22 — All issues from adversarial verification resolved*
+*Updated: 2026-01-31 — Documentation improvements (index notation, citations, conventions)*
 *Status: ✅ VERIFIED — Standard QCD amplitudes correctly reproduced with CG interpretation*

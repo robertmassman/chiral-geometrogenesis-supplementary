@@ -1,0 +1,70 @@
+{
+  "timestamp": "2026-01-26T12:58:49.506244",
+  "proposition": "0.0.17aa",
+  "title": "Spectral Index from First Principles",
+  "input_parameters": {
+    "N_c": 3,
+    "N_f": 3,
+    "Z3_order": 3
+  },
+  "derivation_steps": {
+    "b0": {
+      "formula": "b_0 = (11*N_c - 2*N_f) / (12\u03c0)",
+      "value": 0.716197243913529,
+      "value_exact": "9/(4\u03c0) \u2248 0.7162"
+    },
+    "ln_xi": {
+      "formula": "ln(\u03be) = (N_c\u00b2-1)\u00b2 / (2b_0)",
+      "value": 44.680428851054835,
+      "value_exact": "128\u03c0/9 \u2248 44.68"
+    },
+    "N_geo": {
+      "method1": {
+        "formula": "N_geo = (4/\u03c0) \u00d7 ln(\u03be)",
+        "value": 56.888888888888886
+      },
+      "method2": {
+        "formula": "N_geo = 512/9",
+        "value": 56.888888888888886
+      },
+      "consistency": true
+    },
+    "n_s": {
+      "from_N": {
+        "formula": "n_s = 1 - 2/N_geo",
+        "value": 0.96484375
+      },
+      "direct": {
+        "formula": "n_s = 1 - 9/(4(N_c\u00b2-1)\u00b2)",
+        "value": 0.96484375
+      },
+      "consistency": true
+    },
+    "r": {
+      "formula": "r = 12\u03b1/N\u00b2 with \u03b1 = 1/3",
+      "alpha": 0.3333333333333333,
+      "value": 0.0012359619140625
+    }
+  },
+  "predictions": {
+    "n_s": 0.96484375,
+    "N_geo": 56.888888888888886,
+    "r": 0.0012359619140625
+  },
+  "comparisons": {
+    "n_s": {
+      "predicted": 0.96484375,
+      "observed": 0.9649,
+      "observed_err": 0.0042,
+      "deviation": 5.624999999997993e-05,
+      "sigma": 0.013392857142852365,
+      "percent_agreement": 99.9941703803503
+    },
+    "r": {
+      "predicted": 0.0012359619140625,
+      "upper_bound": 0.036,
+      "satisfies_bound": true
+    }
+  },
+  "status": "PASS"
+}

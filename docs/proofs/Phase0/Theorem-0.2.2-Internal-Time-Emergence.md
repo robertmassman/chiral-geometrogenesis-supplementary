@@ -42,6 +42,8 @@ where $B$ is the Killing form on $\mathfrak{su}(3)$. This metric:
 - Is gauge-invariant
 - Requires no temporal concepts
 
+**Normalization convention:** The Killing form on $\mathfrak{su}(n)$ is defined as $B(X,Y) = \text{Tr}(\text{ad}(X) \circ \text{ad}(Y))$. For compact Lie algebras, we use the standard physics normalization $\langle X, Y \rangle = -\text{tr}(XY)$ which is positive-definite. For $\mathfrak{su}(3)$, this gives $B_{ab} = 6\delta_{ab}$ on the Cartan subalgebra (with generators normalized as $\text{Tr}(T^a T^b) = \frac{1}{2}\delta^{ab}$).
+
 **Step 3: λ as Arc Length**
 $$\lambda = \int_0^s \sqrt{B_{ab} \frac{d\phi^a}{ds'} \frac{d\phi^b}{ds'}} \, ds'$$
 
@@ -110,7 +112,44 @@ This unification is left for future work.
 
 ## Verification Record
 
-### Latest Verification (v4.0)
+### Latest Verification (v5.0)
+
+**Verified by:** Multi-Agent Adversarial Peer Review (3 independent agents per CLAUDE.md)
+**Date:** February 1, 2026
+**Scope:** Full logical, mathematical, physical, and literature consistency review
+**Result:** ✅ VERIFIED (High Confidence)
+**Full Report:** [Theorem-0.2.2-Multi-Agent-Verification-2026-02-01.md](../verification-records/Theorem-0.2.2-Multi-Agent-Verification-2026-02-01.md)
+**Adversarial Physics Verification:** [theorem_0_2_2_adversarial_verification.py](../../../verification/Phase0/theorem_0_2_2_adversarial_verification.py)
+
+**Verification Agents:**
+1. **Mathematical Verification Agent** — Re-derived Hamilton's equations, diffeomorphism proof, frequency formula, dimensional analysis, moment of inertia calculation
+2. **Physics Verification Agent** — Verified physical reasonableness, all limiting cases, bootstrap resolution, framework consistency with 6 downstream theorems
+3. **Literature Verification Agent** — Verified all 6 citations accurate, numerical values current (PDG 2024, CODATA 2022, Lattice QCD 2024)
+
+**Summary Results:**
+
+| Agent | Verdict | Confidence | Critical Issues |
+|-------|---------|------------|-----------------|
+| Mathematical | ✅ VERIFIED | High | 0 |
+| Physics | ✅ VERIFIED | High | 0 |
+| Literature | ✅ VERIFIED | High | 0 |
+
+**Adversarial Physics Tests (6/6 Passed):**
+- [x] Energy positivity: ρ(x) > 0 everywhere
+- [x] I = E_total verification: ratio = 1.0000000000
+- [x] Frequency formula: ω = √(2H/I) = √2 ✓
+- [x] Diffeomorphism properties: smoothness, injectivity, surjectivity, inverse ✓
+- [x] Hamilton's equations: Φ(λ=2π) = ω × 2π ✓
+- [x] Period range: T = 3.99 fm/c ∈ [3.9, 6.5] fm/c ✓
+
+**Generated Verification Plots:**
+- `verification/plots/internal_time_phase_evolution.png`
+- `verification/plots/internal_time_frequency_derivation.png`
+- `verification/plots/internal_time_limiting_cases.png`
+
+---
+
+### Previous Verification (v4.0)
 
 **Verified by:** Multi-Agent Adversarial Peer Review (3 independent agents per CLAUDE.md)
 **Date:** January 20, 2026
@@ -218,7 +257,7 @@ $$t = \int \frac{d\lambda}{\omega}$$
 
 5. **Phenomenological Parameters:**
    - Regularization scale: $\epsilon \sim 0.5$ fm (matched to QCD flux tube penetration depth)
-   - Stella octangula size: $R_{stella} = 0.44847$ fm (matched to QCD string tension $\sqrt{\sigma} = 440$ MeV)
+   - Stella octangula size: $R_{stella} = 0.44847$ fm (matched to QCD string tension $\sqrt{\sigma} = 440$–$445$ MeV; FLAG 2024: $440 \pm 30$ MeV; Lattice 2024: $445(3)(6)$ MeV)
    - Field normalization: $a_0$ with dimensions $[\text{energy}]^{1/2} \cdot [\text{length}]^{-3/2}$ (overall amplitude scale, set by QCD condensate $\langle\bar{q}q\rangle^{1/3} \sim 250$ MeV)
    - **Status:** MATCHED to QCD phenomenology
 
@@ -399,6 +438,18 @@ where $\omega$ is determined by the dynamics (see Section 4).
 
 ## 4. Dynamics from Energy Functional
 
+> **Cross-Reference:** This section derives the **mechanism** for frequency determination ($\omega = \sqrt{2H/I}$). For the **numerical value** of $\omega$, see **[Proposition 0.0.17l](../foundations/Proposition-0.0.17l-Internal-Frequency-From-Casimir-Equipartition.md)**, which derives $\omega = \sqrt{\sigma}/(N_c - 1) = 219$ MeV from Casimir mode equipartition on the stella octangula boundary.
+
+> **Two Frequency Notions (Summary):**
+>
+> | Symbol | Definition | Value | Status |
+> |--------|------------|-------|--------|
+> | $\omega_0$ | Characteristic frequency scale: $\omega_0 \equiv \sqrt{E_{total}/I_{total}}$ | ~155 MeV | DERIVED (§4.4) |
+> | $\omega$ | Physical frequency: $\omega = \sqrt{2H/I} = \sqrt{2} \cdot \omega_0$ | ~219 MeV | DERIVED (§4.4) |
+> | $\omega_{phys}$ | Phenomenological match: $\omega_{phys} \sim \Lambda_{QCD}$ | 200–280 MeV | INPUT (§4.4) |
+>
+> The √2 factor arises from Hamiltonian mechanics (H = Iω²/2) and is tracked in §4.5. For downstream theorems, only the ratio $\omega/\omega_0 = \sqrt{2}$ matters; absolute values are absorbed into phenomenological matching.
+
 ### 4.1 The Energy Functional
 
 From Theorem 0.2.1, the energy density is:
@@ -510,6 +561,8 @@ $$\omega_0 \sim \frac{1}{\epsilon} \sim \frac{1}{\lambda_\pi} \sim \Lambda_{QCD}
 where $\lambda_\pi = \hbar/(m_\pi c)$ is the pion Compton wavelength.
 
 **In QCD terms:** $\omega_0 \sim \Lambda_{QCD} \sim 200$ MeV, giving oscillation period $T = 2\pi/\omega \sim 2\pi/(\sqrt{2} \cdot 200 \text{ MeV}) \sim 4.4$ fm/c $\sim 1.5 \times 10^{-23}$ s.
+
+**Λ_QCD specification:** Throughout this theorem, $\Lambda_{QCD} \sim 200$ MeV refers to $\Lambda_{\overline{MS}}^{(5)}$ (the $\overline{\text{MS}}$ scheme value with 5 active quark flavors). PDG 2024 quotes $\alpha_s(M_Z) = 0.1180 \pm 0.0009$, which corresponds to $\Lambda_{\overline{MS}}^{(5)} \approx 210\text{--}215$ MeV. Some references use different conventions (e.g., $\Lambda_{QCD}^{(3)} \sim 340$ MeV with 3 flavors, or "hadronic scale" $\Lambda_{had} \sim 380$ MeV), so this specification avoids ambiguity.
 
 **Cross-theorem consistency:** What matters is that ALL theorems use the SAME $\omega_0$ derived from the energy-to-inertia ratio, regardless of the precise $\mathcal{O}(1)$ normalization factor. The numerical value $\omega_0 \sim 200$ MeV is INPUT (matched to QCD), while the functional form $\omega \propto \sqrt{H/I}$ is DERIVED. Theorems 2.2.2, 3.1.1, 5.2.0, and 5.2.1 all reference this $\omega_0$ consistently.
 
@@ -679,9 +732,15 @@ The parameter $\lambda$ emerges as the natural parameterization of curves in the
 | Causal Sets | Discrete partial order | Time from causal ordering of events | — |
 | Rovelli (relational) | Correlations between subsystems | Time from relational dynamics | [6] |
 | Höhn et al. (2021) | Constraint quantization | Trinity: unifies three relational approaches | [10] |
+| Shape Dynamics | Conformal 3-geometry | Time from shape degrees of freedom† | [11] |
+| Hartle-Hawking (1983) | Euclidean path integral | Time from boundary of 4-geometry‡ | [12] |
 | **Chiral Geometrogenesis** | **Stella octangula + SU(3) phases** | **Time from collective phase oscillation** | This work |
 
 *Note: In LQG, the "problem of time" (how to define dynamics when general covariance eliminates a preferred time) remains an active research area. Various proposals exist (deparameterization, relational time, evolving constants), but there is no universally accepted resolution.
+
+†Note: Shape Dynamics (Barbour, Gomes, Mercati) reformulates gravity using only conformal 3-geometry. Time emerges from the "best matching" procedure that relates successive shapes. This is closely related to Barbour's earlier timeless mechanics [7] but with a rigorous gauge-theoretic foundation.
+
+‡Note: The Hartle-Hawking no-boundary proposal uses imaginary (Euclidean) time, where the universe has no initial singularity but instead "rounds off" like the South Pole of a sphere. Real time emerges at the boundary of this Euclidean 4-geometry.
 
 **What distinguishes this approach:**
 1. **Concrete geometric structure:** The stella octangula provides a specific finite topology
@@ -990,6 +1049,8 @@ $$\boxed{\langle\delta(\phi_G - \phi_R)\rangle = 0 \quad \text{(exact, not appro
 
 | Date | Version | Changes |
 |------|---------|---------|
+| 2026-02-01 | 5.1 | Post-verification enhancements: (1) Added Shape Dynamics [11] and Hartle-Hawking [12] to §6.3 comparison table with footnotes; (2) Added Λ_QCD specification (Λ^(5)_MSbar ~ 210-215 MeV) in §4.4; (3) Added prominent cross-reference to Prop 0.0.17l at start of §4; (4) Added summary box for two frequency notions (ω vs ω₀) in §4; (5) Updated √σ to 440-445 MeV with Lattice 2024 reference; (6) Added Killing form normalization convention in §0.2 |
+| 2026-02-01 | 5.0 | Multi-agent re-verification with adversarial physics: (1) All 3 agents (Math, Physics, Literature) confirmed VERIFIED with High Confidence, 0 critical issues; (2) New Python adversarial verification script with 6/6 tests passing (energy positivity, I=E_total, frequency formula, diffeomorphism, Hamilton's equations, period range); (3) Generated 3 verification plots (phase evolution, frequency derivation, limiting cases); (4) All citations re-verified accurate against 2024-2026 sources; (5) Full report at verification-records/Theorem-0.2.2-Multi-Agent-Verification-2026-02-01.md |
 | 2026-01-20 | 4.2 | Adversarial Lean review: (1) Added `evolvingChiralField_derivative` proving ∂χ/∂τ = iωχ (was stated in comments but not formalized); (2) Added `exp_phase_offset_derivative` helper for color phase offsets; (3) Added `chiral_field_harmonic_evolution` corollary; (4) Fixed empty line style warnings; (5) Full review report at `verification/Phase0/Theorem_0_2_2_Adversarial_Review.md` |
 | 2026-01-20 | 4.1 | Post-verification corrections: (1) Fixed numerical estimate in §7.3 (was T ~ 20 fm/c, now T ~ 4–6 fm/c consistent with §4.4); (2) Added new §4.5 with complete √2 factor tracking table for downstream theorems; (3) Added physical justification for H = E_total in §4.4 (energy partition, virial theorem analogy, rigid rotor picture); (4) Added literature refs [8-10]: Page-Wootters (1983), Connes-Rovelli (1994), Höhn et al. (2021); (5) Expanded §6.3 comparison table with new references |
 | 2026-01-20 | 4.0 | Multi-agent re-verification: (1) All three agents (Mathematical, Physics, Literature) confirmed VERIFIED with High Confidence; (2) Literature verification added — all citations (Jacobson, Rovelli, Barbour, Page-Wootters, LQG, Causal Sets) verified accurate; (3) Numerical values verified against PDG 2024 and CODATA 2022; (4) Framework consistency re-verified against downstream theorems 2.2.2, 3.1.1, 5.2.0, 5.2.1; (5) Minor issues noted: T estimate discrepancy (presentation only), optional references suggested (Connes-Rovelli, Hoehn et al.) |
@@ -1121,7 +1182,8 @@ This theorem's internal time parameter λ is used throughout the framework. The 
 
 ### Downstream Dependents
 3. **[Proposition 0.0.17l](../foundations/Proposition-0.0.17l-Internal-Frequency-From-Casimir-Equipartition.md):** Derives the numerical value ω = √σ/(N_c-1) = 219 MeV from Casimir mode partition — provides the physical scale for the frequency in this theorem
-4. [Theorem 3.1.1](../Phase3/Theorem-3.1.1-Chiral-Drag-Mass-Formula.md): Uses ω in the mass formula
+4. **[Proposition 0.0.17p](../foundations/Proposition-0.0.17p-Resolution-of-Problem-of-Time.md):** Applies internal time emergence to resolve the "Problem of Time" in quantum gravity
+5. [Theorem 3.1.1](../Phase3/Theorem-3.1.1-Chiral-Drag-Mass-Formula.md): Uses ω in the mass formula
 
 ### Literature
 5. Jacobson, T. "Thermodynamics of Spacetime: The Einstein Equation of State," Phys. Rev. Lett. **75**, 1260–1263 (1995). [gr-qc/9504004](https://arxiv.org/abs/gr-qc/9504004) — Derives Einstein equations from thermodynamics of local Rindler horizons
@@ -1130,3 +1192,5 @@ This theorem's internal time parameter λ is used throughout the framework. The 
 8. Page, D. N. and Wootters, W. K. "Evolution without evolution: Dynamics described by stationary observables," Phys. Rev. D **27**, 2885–2892 (1983). [doi:10.1103/PhysRevD.27.2885](https://doi.org/10.1103/PhysRevD.27.2885) — Original Page-Wootters mechanism for time from entanglement
 9. Connes, A. and Rovelli, C. "Von Neumann algebra automorphisms and time-thermodynamics relation in generally covariant quantum theories," Class. Quantum Grav. **11**, 2899–2917 (1994). [gr-qc/9406019](https://arxiv.org/abs/gr-qc/9406019) — Thermal time hypothesis from modular flow
 10. Höhn, P. A., Smith, A. R. H., and Lock, M. P. E. "Trinity of relational quantum dynamics," Phys. Rev. D **104**, 066001 (2021). [arXiv:1912.00033](https://arxiv.org/abs/1912.00033) — Unifies Page-Wootters, evolving constants, and symmetry-reduced approaches
+11. Gomes, H., Gryb, S., and Koslowski, T. "Einstein gravity as a 3D conformally invariant theory," Class. Quantum Grav. **28**, 045005 (2011). [arXiv:1010.2481](https://arxiv.org/abs/1010.2481) — Shape Dynamics: reformulates gravity using conformal 3-geometry; time emerges from shape degrees of freedom
+12. Hartle, J. B. and Hawking, S. W. "Wave function of the Universe," Phys. Rev. D **28**, 2960–2975 (1983). [doi:10.1103/PhysRevD.28.2960](https://doi.org/10.1103/PhysRevD.28.2960) — No-boundary proposal: universe has no initial singularity; time emerges at the boundary of Euclidean 4-geometry

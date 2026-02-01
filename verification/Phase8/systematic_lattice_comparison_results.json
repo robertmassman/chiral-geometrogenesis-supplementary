@@ -1,0 +1,572 @@
+{
+  "title": "Systematic Multi-Lattice QCD Comparison",
+  "date": "2026-01-27T21:40:26.368226",
+  "n_observables": 13,
+  "global_chi2_naive": {
+    "chi2": 6.629,
+    "dof": 13,
+    "reduced_chi2": 0.51,
+    "p_value": 0.9202,
+    "observables_used": [
+      "sqrt_sigma",
+      "T_c",
+      "T_c_over_sqrt_sigma",
+      "f_pi",
+      "R_perp",
+      "g_chi",
+      "sqrt_md_ms",
+      "md_over_mu",
+      "ms_over_md",
+      "gluon_condensate",
+      "chi_top",
+      "xi_QGP",
+      "bootstrap_sqrt_sigma"
+    ]
+  },
+  "global_chi2_decorrelated": {
+    "chi2": 5.648,
+    "dof": 6,
+    "reduced_chi2": 0.941,
+    "p_value": 0.4637,
+    "observables_used": [
+      "T_c_over_sqrt_sigma",
+      "g_chi",
+      "gluon_condensate",
+      "chi_top",
+      "R_perp",
+      "sqrt_md_ms"
+    ]
+  },
+  "action_type_breakdown": {
+    "mixed": {
+      "n_comparisons": 8,
+      "observables": [
+        "sqrt_sigma",
+        "T_c",
+        "T_c_over_sqrt_sigma",
+        "g_chi",
+        "md_over_mu",
+        "ms_over_md",
+        "chi_top",
+        "bootstrap_sqrt_sigma"
+      ],
+      "mean_abs_pull": 0.143,
+      "max_abs_pull": 0.25
+    },
+    "Wilson": {
+      "n_comparisons": 4,
+      "observables": [
+        "sqrt_sigma",
+        "sqrt_sigma",
+        "R_perp",
+        "R_perp"
+      ],
+      "mean_abs_pull": 1.44,
+      "max_abs_pull": 3.2
+    },
+    "HISQ": {
+      "n_comparisons": 1,
+      "observables": [
+        "sqrt_sigma"
+      ],
+      "mean_abs_pull": 0.5,
+      "max_abs_pull": 0.5
+    },
+    "staggered": {
+      "n_comparisons": 3,
+      "observables": [
+        "T_c",
+        "T_c",
+        "R_perp"
+      ],
+      "mean_abs_pull": 0.909,
+      "max_abs_pull": 2.267
+    },
+    "experiment": {
+      "n_comparisons": 4,
+      "observables": [
+        "f_pi",
+        "sqrt_md_ms",
+        "sqrt_md_ms",
+        "xi_QGP"
+      ],
+      "mean_abs_pull": 0.405,
+      "max_abs_pull": 0.809
+    },
+    "SVZ": {
+      "n_comparisons": 1,
+      "observables": [
+        "gluon_condensate"
+      ],
+      "mean_abs_pull": 0.0,
+      "max_abs_pull": 0.0
+    }
+  },
+  "observables": [
+    {
+      "observable": "sqrt_sigma",
+      "label": "\u221a\u03c3 (MeV)",
+      "cg_value": 440.0,
+      "cg_error": 0.0,
+      "best_obs_value": 440,
+      "best_obs_error": 2,
+      "best_collaboration": "Bali et al.",
+      "best_action": "Wilson",
+      "pull": 0.0,
+      "abs_pull": 0.0,
+      "percent_diff": 0.0,
+      "status": "VERIFIED",
+      "is_prediction": false,
+      "correlation_group": "R_stella",
+      "all_determinations": [
+        {
+          "collaboration": "FLAG",
+          "action_type": "mixed",
+          "year": 2024,
+          "reference": "FLAG 2024 arXiv:2411.04268",
+          "obs_value": 440,
+          "obs_error": 10,
+          "pull": 0.0,
+          "percent_diff": 0.0,
+          "status": "VERIFIED"
+        },
+        {
+          "collaboration": "Bali et al.",
+          "action_type": "Wilson",
+          "year": 2001,
+          "reference": "Phys. Rep. 343, 1",
+          "obs_value": 440,
+          "obs_error": 2,
+          "pull": 0.0,
+          "percent_diff": 0.0,
+          "status": "VERIFIED"
+        },
+        {
+          "collaboration": "TUMQCD",
+          "action_type": "Wilson",
+          "year": 2018,
+          "reference": "arXiv:1811.03616",
+          "obs_value": 443,
+          "obs_error": 5,
+          "pull": -0.6,
+          "percent_diff": 0.68,
+          "status": "VERIFIED"
+        },
+        {
+          "collaboration": "Bazavov et al.",
+          "action_type": "HISQ",
+          "year": 2012,
+          "reference": "PRD 85, 054503",
+          "obs_value": 445,
+          "obs_error": 10,
+          "pull": -0.5,
+          "percent_diff": 1.12,
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "observable": "T_c",
+      "label": "T_c (MeV)",
+      "cg_value": 154.2,
+      "cg_error": 5.0,
+      "best_obs_value": 156.5,
+      "best_obs_error": 1.5,
+      "best_collaboration": "Budapest-Wuppertal",
+      "best_action": "staggered",
+      "pull": -0.441,
+      "abs_pull": 0.441,
+      "percent_diff": 1.47,
+      "status": "VERIFIED",
+      "is_prediction": false,
+      "correlation_group": "R_stella",
+      "all_determinations": [
+        {
+          "collaboration": "Budapest-Wuppertal",
+          "action_type": "staggered",
+          "year": 2014,
+          "reference": "PLB 730, 99",
+          "obs_value": 156.5,
+          "obs_error": 1.5,
+          "pull": -0.441,
+          "percent_diff": 1.47,
+          "status": "VERIFIED"
+        },
+        {
+          "collaboration": "HotQCD",
+          "action_type": "staggered",
+          "year": 2012,
+          "reference": "PRD 85, 054503",
+          "obs_value": 154,
+          "obs_error": 9,
+          "pull": 0.019,
+          "percent_diff": 0.13,
+          "status": "VERIFIED"
+        },
+        {
+          "collaboration": "FLAG",
+          "action_type": "mixed",
+          "year": 2024,
+          "reference": "FLAG 2024",
+          "obs_value": 155,
+          "obs_error": 5,
+          "pull": -0.113,
+          "percent_diff": 0.52,
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "observable": "T_c_over_sqrt_sigma",
+      "label": "T_c/\u221a\u03c3",
+      "cg_value": 0.35,
+      "cg_error": 0.0,
+      "best_obs_value": 0.356,
+      "best_obs_error": 0.025,
+      "best_collaboration": "BW/FLAG derived",
+      "best_action": "mixed",
+      "pull": -0.24,
+      "abs_pull": 0.24,
+      "percent_diff": 1.69,
+      "status": "VERIFIED",
+      "is_prediction": false,
+      "correlation_group": "independent",
+      "all_determinations": [
+        {
+          "collaboration": "BW/FLAG derived",
+          "action_type": "mixed",
+          "year": 2024,
+          "reference": "156.5/440",
+          "obs_value": 0.356,
+          "obs_error": 0.025,
+          "pull": -0.24,
+          "percent_diff": 1.69,
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "observable": "f_pi",
+      "label": "f_\u03c0 (MeV)",
+      "cg_value": 88.0,
+      "cg_error": 5.0,
+      "best_obs_value": 92.07,
+      "best_obs_error": 0.57,
+      "best_collaboration": "PDG",
+      "best_action": "experiment",
+      "pull": -0.809,
+      "abs_pull": 0.809,
+      "percent_diff": 4.42,
+      "status": "VERIFIED",
+      "is_prediction": true,
+      "correlation_group": "R_stella",
+      "all_determinations": [
+        {
+          "collaboration": "PDG",
+          "action_type": "experiment",
+          "year": 2024,
+          "reference": "PDG 2024",
+          "obs_value": 92.07,
+          "obs_error": 0.57,
+          "pull": -0.809,
+          "percent_diff": 4.42,
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "observable": "R_perp",
+      "label": "R_\u22a5 (flux tube) (fm)",
+      "cg_value": 0.448,
+      "cg_error": 0.0,
+      "best_obs_value": 0.38,
+      "best_obs_error": 0.03,
+      "best_collaboration": "Cea et al.",
+      "best_action": "staggered",
+      "pull": 2.267,
+      "abs_pull": 2.267,
+      "percent_diff": 17.89,
+      "status": "NOT DIRECTLY COMPARABLE",
+      "is_prediction": false,
+      "correlation_group": "R_stella",
+      "all_determinations": [
+        {
+          "collaboration": "Bali et al.",
+          "action_type": "Wilson",
+          "year": 1995,
+          "reference": "NPB 460, 570",
+          "obs_value": 0.35,
+          "obs_error": 0.05,
+          "pull": 1.96,
+          "percent_diff": 28.0,
+          "status": "CONSISTENT"
+        },
+        {
+          "collaboration": "Cea et al.",
+          "action_type": "staggered",
+          "year": 2012,
+          "reference": "PRD 86, 054501",
+          "obs_value": 0.38,
+          "obs_error": 0.03,
+          "pull": 2.267,
+          "percent_diff": 17.89,
+          "status": "TENSION"
+        },
+        {
+          "collaboration": "Cardoso et al.",
+          "action_type": "Wilson",
+          "year": 2013,
+          "reference": "PRD 88, 054504",
+          "obs_value": 0.32,
+          "obs_error": 0.04,
+          "pull": 3.2,
+          "percent_diff": 40.0,
+          "status": "DISCREPANCY"
+        }
+      ]
+    },
+    {
+      "observable": "g_chi",
+      "label": "g_\u03c7(\u039b_QCD)",
+      "cg_value": 1.396,
+      "cg_error": 0.0,
+      "best_obs_value": 1.26,
+      "best_obs_error": 1.0,
+      "best_collaboration": "FLAG indirect",
+      "best_action": "mixed",
+      "pull": 0.136,
+      "abs_pull": 0.136,
+      "percent_diff": 10.79,
+      "status": "VERIFIED",
+      "is_prediction": true,
+      "correlation_group": "independent",
+      "all_determinations": [
+        {
+          "collaboration": "FLAG indirect",
+          "action_type": "mixed",
+          "year": 2024,
+          "reference": "FLAG 2024 combined fit",
+          "obs_value": 1.26,
+          "obs_error": 1.0,
+          "pull": 0.136,
+          "percent_diff": 10.79,
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "observable": "sqrt_md_ms",
+      "label": "\u221a(m_d/m_s)",
+      "cg_value": 0.22451,
+      "cg_error": 0.0,
+      "best_obs_value": 0.22497,
+      "best_obs_error": 0.0007,
+      "best_collaboration": "\u03bb_CKM direct",
+      "best_action": "experiment",
+      "pull": -0.657,
+      "abs_pull": 0.657,
+      "percent_diff": 0.2,
+      "status": "VERIFIED",
+      "is_prediction": true,
+      "correlation_group": "mass_ratios",
+      "all_determinations": [
+        {
+          "collaboration": "PDG masses",
+          "action_type": "experiment",
+          "year": 2024,
+          "reference": "\u221a(4.70/93.5) MeV",
+          "obs_value": 0.2242,
+          "obs_error": 0.002,
+          "pull": 0.155,
+          "percent_diff": 0.14,
+          "status": "VERIFIED"
+        },
+        {
+          "collaboration": "\u03bb_CKM direct",
+          "action_type": "experiment",
+          "year": 2024,
+          "reference": "PDG Wolfenstein",
+          "obs_value": 0.22497,
+          "obs_error": 0.0007,
+          "pull": -0.657,
+          "percent_diff": 0.2,
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "observable": "md_over_mu",
+      "label": "m_d/m_u",
+      "cg_value": 2.17,
+      "cg_error": 0.0,
+      "best_obs_value": 2.18,
+      "best_obs_error": 0.04,
+      "best_collaboration": "FLAG",
+      "best_action": "mixed",
+      "pull": -0.25,
+      "abs_pull": 0.25,
+      "percent_diff": 0.46,
+      "status": "VERIFIED",
+      "is_prediction": true,
+      "correlation_group": "mass_ratios",
+      "all_determinations": [
+        {
+          "collaboration": "FLAG",
+          "action_type": "mixed",
+          "year": 2024,
+          "reference": "FLAG 2024",
+          "obs_value": 2.18,
+          "obs_error": 0.04,
+          "pull": -0.25,
+          "percent_diff": 0.46,
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "observable": "ms_over_md",
+      "label": "m_s/m_d",
+      "cg_value": 19.84,
+      "cg_error": 0.0,
+      "best_obs_value": 19.89,
+      "best_obs_error": 0.25,
+      "best_collaboration": "FLAG",
+      "best_action": "mixed",
+      "pull": -0.2,
+      "abs_pull": 0.2,
+      "percent_diff": 0.25,
+      "status": "VERIFIED",
+      "is_prediction": true,
+      "correlation_group": "mass_ratios",
+      "all_determinations": [
+        {
+          "collaboration": "FLAG",
+          "action_type": "mixed",
+          "year": 2024,
+          "reference": "FLAG 2024",
+          "obs_value": 19.89,
+          "obs_error": 0.25,
+          "pull": -0.2,
+          "percent_diff": 0.25,
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "observable": "gluon_condensate",
+      "label": "\u27e8\u03b1G\u00b2/\u03c0\u27e9 (GeV\u2074)",
+      "cg_value": 0.012,
+      "cg_error": 0.003,
+      "best_obs_value": 0.012,
+      "best_obs_error": 0.006,
+      "best_collaboration": "SVZ",
+      "best_action": "SVZ",
+      "pull": 0.0,
+      "abs_pull": 0.0,
+      "percent_diff": 0.0,
+      "status": "VERIFIED",
+      "is_prediction": false,
+      "correlation_group": "independent",
+      "all_determinations": [
+        {
+          "collaboration": "SVZ",
+          "action_type": "SVZ",
+          "year": 1979,
+          "reference": "Shifman-Vainshtein-Zakharov",
+          "obs_value": 0.012,
+          "obs_error": 0.006,
+          "pull": 0.0,
+          "percent_diff": 0.0,
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "observable": "chi_top",
+      "label": "\u03c7_top^(1/4) (MeV)",
+      "cg_value": 75.5,
+      "cg_error": 2.0,
+      "best_obs_value": 75.6,
+      "best_obs_error": 2.0,
+      "best_collaboration": "FLAG",
+      "best_action": "mixed",
+      "pull": -0.035,
+      "abs_pull": 0.035,
+      "percent_diff": 0.13,
+      "status": "VERIFIED",
+      "is_prediction": false,
+      "correlation_group": "independent",
+      "all_determinations": [
+        {
+          "collaboration": "FLAG",
+          "action_type": "mixed",
+          "year": 2024,
+          "reference": "FLAG 2024",
+          "obs_value": 75.6,
+          "obs_error": 2.0,
+          "pull": -0.035,
+          "percent_diff": 0.13,
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "observable": "xi_QGP",
+      "label": "\u03be_QGP (fm)",
+      "cg_value": 0.448,
+      "cg_error": 0.0,
+      "best_obs_value": 0.448,
+      "best_obs_error": 0.053,
+      "best_collaboration": "STAR/PHENIX",
+      "best_action": "experiment",
+      "pull": 0.0,
+      "abs_pull": 0.0,
+      "percent_diff": 0.0,
+      "status": "VERIFIED",
+      "is_prediction": true,
+      "correlation_group": "R_stella",
+      "all_determinations": [
+        {
+          "collaboration": "STAR/PHENIX",
+          "action_type": "experiment",
+          "year": 2015,
+          "reference": "HBT measurements",
+          "obs_value": 0.448,
+          "obs_error": 0.053,
+          "pull": 0.0,
+          "percent_diff": 0.0,
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "observable": "bootstrap_sqrt_sigma",
+      "label": "\u221a\u03c3 (bootstrap) (MeV)",
+      "cg_value": 434.6,
+      "cg_error": 10.0,
+      "best_obs_value": 440,
+      "best_obs_error": 30,
+      "best_collaboration": "FLAG broad",
+      "best_action": "mixed",
+      "pull": -0.171,
+      "abs_pull": 0.171,
+      "percent_diff": 1.23,
+      "status": "VERIFIED",
+      "is_prediction": true,
+      "correlation_group": "R_stella",
+      "all_determinations": [
+        {
+          "collaboration": "FLAG broad",
+          "action_type": "mixed",
+          "year": 2024,
+          "reference": "FLAG 2024",
+          "obs_value": 440,
+          "obs_error": 30,
+          "pull": -0.171,
+          "percent_diff": 1.23,
+          "status": "VERIFIED"
+        }
+      ]
+    }
+  ]
+}

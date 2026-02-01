@@ -5476,7 +5476,7 @@ This section provides the unified presentation connecting these pieces.
 
 **Status:** ✅ COMPLETE (2026-01-24) — All 10 theorems/propositions verified (QCD + Electroweak)
 
-*See:* [Phase6-Scattering-Theory-Plan.md](proofs/Phase6-Scattering-Theory-Plan.md) for comprehensive plan.
+*See:* [Phase6-Scattering-Theory-Plan.md](proofs/supporting/Phase6-Scattering-Theory-Plan.md) for comprehensive plan.
 
 **Purpose:** Address the gap between CG's kinematic structure (symmetries, unitarity) and dynamic predictions (scattering amplitudes, cross-sections), explaining WHY particles scatter the way they do from geometric first principles.
 

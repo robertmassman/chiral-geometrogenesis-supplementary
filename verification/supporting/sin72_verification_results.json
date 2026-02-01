@@ -1,0 +1,137 @@
+{
+  "trigonometric_identities": {
+    "sin_72_direct": 0.9510565162951535,
+    "sin_72_algebraic": 0.9510565162951535,
+    "sin_72_algebraic_error": 0.0,
+    "sin_72_golden_form": 0.9510565162951536,
+    "sin_72_golden_error": 1.1102230246251565e-16,
+    "cos_72_direct": 0.30901699437494745,
+    "cos_72_algebraic": 0.30901699437494745,
+    "cos_72_algebraic_error": 0.0,
+    "cos_72_golden_form": 0.3090169943749474,
+    "cos_72_golden_error": 5.551115123125783e-17,
+    "cos_36_direct": 0.8090169943749475,
+    "cos_36_golden_form": 0.8090169943749475,
+    "cos_36_golden_error": 0.0,
+    "pythagorean_check": 0.9999999999999999,
+    "pythagorean_error": 1.1102230246251565e-16,
+    "all_verified": true
+  },
+  "wolfenstein_formula": {
+    "phi": 1.618033988749895,
+    "phi_cubed": 4.23606797749979,
+    "phi_cubed_inv": 0.2360679774997897,
+    "sin_72": 0.9510565162951535,
+    "lambda_predicted": 0.2245139882897927,
+    "lambda_via_algebraic": 0.2245139882897927,
+    "lambda_via_golden": 0.2245139882897927,
+    "internal_consistency_error": 0.0
+  },
+  "pdg_comparison": {
+    "lambda_predicted": 0.2245139882897927,
+    "pdg_global_fit": 0.22497,
+    "pdg_global_err": 0.0007,
+    "pdg_wolfenstein": 0.2265,
+    "pdg_wolfenstein_err": 0.00048,
+    "deviation_global_sigma": -0.6514453002961654,
+    "deviation_wolfenstein_sigma": -4.137524396265248,
+    "p_value_global": 0.5147590762306171,
+    "p_value_wolfenstein": 3.510731312927895e-05,
+    "percent_diff_global": -0.20269889772294786,
+    "percent_diff_wolfenstein": -0.8768263621224368
+  },
+  "n_copy_exploration": {
+    "n_exploration": [
+      {
+        "n": 3,
+        "angle_deg": 120.0,
+        "sin_angle": 0.8660254037844387,
+        "lambda_n": 0.20444086553483115,
+        "deviation_sigma": -29.32733495024122
+      },
+      {
+        "n": 4,
+        "angle_deg": 90.0,
+        "sin_angle": 1.0,
+        "lambda_n": 0.2360679774997897,
+        "deviation_sigma": 15.85425357112813
+      },
+      {
+        "n": 5,
+        "angle_deg": 72.0,
+        "sin_angle": 0.9510565162951535,
+        "lambda_n": 0.2245139882897927,
+        "deviation_sigma": -0.6514453002961654
+      },
+      {
+        "n": 6,
+        "angle_deg": 60.0,
+        "sin_angle": 0.8660254037844386,
+        "lambda_n": 0.20444086553483112,
+        "deviation_sigma": -29.32733495024126
+      },
+      {
+        "n": 7,
+        "angle_deg": 51.42857142857143,
+        "sin_angle": 0.7818314824680298,
+        "lambda_n": 0.1845653768118901,
+        "deviation_sigma": -57.72089026872845
+      },
+      {
+        "n": 8,
+        "angle_deg": 45.0,
+        "sin_angle": 0.7071067811865475,
+        "lambda_n": 0.1669252677110946,
+        "deviation_sigma": -82.92104612700774
+      },
+      {
+        "n": 9,
+        "angle_deg": 40.0,
+        "sin_angle": 0.6427876096865393,
+        "lambda_n": 0.15174157098062555,
+        "deviation_sigma": -104.61204145624923
+      },
+      {
+        "n": 10,
+        "angle_deg": 36.0,
+        "sin_angle": 0.5877852522924731,
+        "lambda_n": 0.13875727571288776,
+        "deviation_sigma": -123.16103469587463
+      },
+      {
+        "n": 11,
+        "angle_deg": 32.72727272727273,
+        "sin_angle": 0.5406408174555976,
+        "lambda_n": 0.1276279843305759,
+        "deviation_sigma": -139.06002238489157
+      },
+      {
+        "n": 12,
+        "angle_deg": 30.0,
+        "sin_angle": 0.49999999999999994,
+        "lambda_n": 0.11803398874989483,
+        "deviation_sigma": -152.7657303572931
+      }
+    ],
+    "best_n": 5,
+    "best_deviation": -0.6514453002961654,
+    "n5_is_best": true
+  },
+  "sensitivity_analysis": {
+    "lambda_base": 0.2245139882897927,
+    "d_lambda_d_phi": -0.4162718271194521,
+    "d_lambda_d_angle": 0.07294901686882849,
+    "relative_sensitivity_phi": -2.9999999998615485,
+    "relative_sensitivity_angle": 0.4083061322413446,
+    "delta_angle_to_match_pdg": 0.35816173438502363
+  },
+  "group_theory": {
+    "order_2I": 120,
+    "order_2T": 24,
+    "index_2I_2T": 5,
+    "index_equals_5": true,
+    "600_cell_vertices": 120,
+    "24_cell_vertices": 24,
+    "copies_of_24_cell": 5
+  }
+}

@@ -6,18 +6,19 @@ This directory contains the mathematical proofs for the Chiral Geometrogenesis f
 
 | Phase | Description | Files |
 |-------|-------------|-------|
-| [foundations/](foundations/) | Pre-geometric foundations (D=4, Euclidean metric, stella uniqueness) | 11 |
-| [Phase0/](Phase0/) | Foundational definitions (stella topology, color fields, pressure) | 13 |
-| [Phase1/](Phase1/) | SU(3) geometry and gauge structure | 5 |
-| [Phase2/](Phase2/) | Pressure-depression mechanism and phase dynamics | 25 |
-| [Phase3/](Phase3/) | Mass generation via phase-gradient mass generation | 19 |
-| [Phase4/](Phase4/) | Topological solitons and matter | 14 |
-| [Phase5/](Phase5/) | Emergent spacetime and gravity | 28 |
-| [Phase7/](Phase7/) | Consistency checks | 4 |
-| [Phase8/](Phase8/) | Testable predictions | 10 |
+| [foundations/](foundations/) | Pre-geometric foundations (D=4, Euclidean metric, stella uniqueness) | 102 |
+| [Phase0/](Phase0/) | Foundational definitions (stella topology, color fields, pressure) | 16 |
+| [Phase1/](Phase1/) | SU(3) geometry and gauge structure | 6 |
+| [Phase2/](Phase2/) | Pressure-depression mechanism and phase dynamics | 31 |
+| [Phase3/](Phase3/) | Mass generation via phase-gradient mass generation | 29 |
+| [Phase4/](Phase4/) | Topological solitons and matter | 15 |
+| [Phase5/](Phase5/) | Emergent spacetime and gravity | 41 |
+| [Phase6/](Phase6/) | Scattering theory and collider phenomenology | 10 |
+| [Phase7/](Phase7/) | Renormalization, unitarity, consistency | 16 |
+| [Phase8/](Phase8/) | Testable predictions | 17 |
 | [reference/](reference/) | Reference documentation | 6 |
-| [supporting/](supporting/) | Supporting materials | 7 |
-| [verification-records/](verification-records/) | Verification session logs | 16 |
+| [supporting/](supporting/) | Supporting materials and research plans | 43 |
+| [verification-records/](verification-records/) | Verification session logs | 356 |
 
 ## File Naming Convention
 

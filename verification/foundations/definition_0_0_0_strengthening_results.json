@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-12-15T12:46:31.908771",
+  "timestamp": "2026-01-19T21:27:38.671977",
   "definition": "Definition 0.0.0 (Minimal Geometric Realization)",
   "verification_type": "strengthening",
   "confinement_dimension": {
@@ -273,14 +273,89 @@
       "verified": true
     }
   },
+  "centroid_locations": {
+    "edge_length": 1.0,
+    "tetrahedron_height": 0.816496580927726,
+    "centroid_formula": "Centroid at 1/4 height from base",
+    "T_plus": {
+      "base_plane_z": -0.2041241452319315,
+      "centroid_z": 0.0,
+      "apex_z": 0.6123724356957945,
+      "base_plane_z_numeric": -0.2041241452319315,
+      "apex_z_numeric": 0.6123724356957945
+    },
+    "T_minus": {
+      "base_plane_z": 0.2041241452319315,
+      "centroid_z": 0.0,
+      "apex_z": -0.6123724356957945,
+      "base_plane_z_numeric": 0.2041241452319315,
+      "apex_z_numeric": -0.6123724356957945
+    },
+    "combined": {
+      "T_plus_centroid_at_origin": true,
+      "T_minus_centroid_at_origin": true,
+      "stella_centroid_at_origin": true,
+      "apex_separation": 1.224744871391589,
+      "apex_up_z": 0.6123724356957945,
+      "apex_down_z": -0.6123724356957945
+    },
+    "verification": {
+      "H_tet_value": 0.816496580927726,
+      "H_tet/4_value": 0.2041241452319315,
+      "3H_tet/4_value": 0.6123724356957945,
+      "verified": true
+    }
+  },
+  "apex_weight_trivial": {
+    "weights": {
+      "w_R": [
+        0.5,
+        0.2886751345948129
+      ],
+      "w_G": [
+        -0.5,
+        0.2886751345948129
+      ],
+      "w_B": [
+        0.0,
+        -0.5773502691896258
+      ]
+    },
+    "tracelessness": {
+      "sum_of_weights": [
+        0.0,
+        0.0
+      ],
+      "is_zero": true
+    },
+    "centroid": {
+      "value": [
+        0.0,
+        0.0
+      ],
+      "is_origin": true
+    },
+    "fixed_point_analysis": {
+      "origin_fixed_by_all_S3": true,
+      "nonzero_point_fixed_by_all_S3": false,
+      "unique_fixed_point": "(0, 0)"
+    },
+    "conclusion": {
+      "apex_weight_must_be_zero": true,
+      "reason": "Apex is fixed under S_3 permutations of base triangle. By (GR2), its weight must be fixed by all of S_3. The only fixed point of S_3 on weight space is the origin (0,0).",
+      "physical_interpretation": "Color singlet (trivial representation)"
+    }
+  },
   "summary": {
     "all_checks_passed": true,
     "checks": {
-      "Confinement dimension formula": true,
+      "Physical Hypothesis 0.0.0f (confinement dimension)": true,
       "Edge-gluon correspondence": true,
       "Face-gluon correspondence": true,
-      "Apex position uniqueness": true,
-      "Tetrahedra regularity": true
+      "Apex position uniqueness (0.0.0e)": true,
+      "Tetrahedra regularity": true,
+      "Centroid locations (0.0.0e clarification)": true,
+      "Apex weight = 0 (0.0.0c strengthening)": true
     }
   }
 }

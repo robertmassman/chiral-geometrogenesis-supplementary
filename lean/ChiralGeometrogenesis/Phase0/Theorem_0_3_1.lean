@@ -60,6 +60,11 @@ open ChiralGeometrogenesis.PureMath.Polyhedra
 open ChiralGeometrogenesis.Phase3.Lemma_3_1_2a
 open Real
 
+-- Resolve ambiguity: use Point4D from Lemma_3_1_2a (not Cell600)
+-- Point3D is from StellaOctangula (used consistently across the project)
+abbrev Point4D := Phase3.Lemma_3_1_2a.Point4D
+abbrev Point3D := PureMath.Polyhedra.Point3D
+
 /-! ## Section 1: Symbol Table
 
 From markdown §2:
@@ -286,7 +291,7 @@ noncomputable def WF4_rotation_e_w_result : Point4D := ⟨1/2, -1/2, -1/2, 1/2�
 
 /-- The W(F₄) rotation applied to ê_w gives a tesseract vertex -/
 theorem WF4_rotation_e_w_correct : WF4_rotation e_w = WF4_rotation_e_w_result := by
-  simp only [WF4_rotation, e_w, WF4_rotation_e_w_result, Point4D.mk.injEq]
+  simp only [WF4_rotation, e_w, WF4_rotation_e_w_result, Phase3.Lemma_3_1_2a.Point4D.mk.injEq]
   norm_num
 
 /-- The target vertex R · ê_w used in the theorem: (1/2, 1/2, 1/2, 1/2)
@@ -314,12 +319,12 @@ noncomputable def R_e_w : Point4D := ⟨1/2, 1/2, 1/2, 1/2⟩
 
 /-- Both WF4_rotation_e_w_result and R_e_w are valid 24-cell vertices (on unit 3-sphere) -/
 theorem WF4_rotation_e_w_result_on_sphere : WF4_rotation_e_w_result.normSq = 1 := by
-  simp only [WF4_rotation_e_w_result, Point4D.normSq]
+  simp only [WF4_rotation_e_w_result, Phase3.Lemma_3_1_2a.Point4D.normSq]
   ring
 
 /-- R · ê_w is a 24-cell vertex (on unit 3-sphere) -/
 theorem R_e_w_on_unit_sphere : R_e_w.normSq = 1 := by
-  simp only [R_e_w, Point4D.normSq]
+  simp only [R_e_w, Phase3.Lemma_3_1_2a.Point4D.normSq]
   ring
 
 /-- R_e_w equals the explicit 24-cell tesseract vertex Cell24Vertex.pppp.
@@ -329,7 +334,7 @@ one of the 24 vertices of the 24-cell (a Type B / tesseract vertex).
 -/
 theorem R_e_w_is_cell24_vertex :
     R_e_w = Cell24Vertex.pppp.toPoint4D := by
-  simp only [R_e_w, Cell24Vertex.toPoint4D]
+  simp only [R_e_w, Phase3.Lemma_3_1_2a.Cell24Vertex.toPoint4D]
 
 /-- The coordinate swap permutation σ that swaps x ↔ w coordinates.
 
@@ -346,7 +351,7 @@ theorem coordSwap_e_w_is_e_x : coordSwap_x_w e_w = ⟨1, 0, 0, 0⟩ := by
 
 /-- Applying WF4_rotation to (1,0,0,0) gives the first column: (1/2, 1/2, 1/2, 1/2) -/
 theorem WF4_rotation_e_x_is_R_e_w : WF4_rotation ⟨1, 0, 0, 0⟩ = R_e_w := by
-  simp only [WF4_rotation, R_e_w, Point4D.mk.injEq]
+  simp only [WF4_rotation, R_e_w, Phase3.Lemma_3_1_2a.Point4D.mk.injEq]
   norm_num
 
 /-- **Theorem (W(F₄) Element Existence)**
@@ -369,7 +374,7 @@ theorem WF4_maps_e_w_to_R_e_w :
 theorem R_e_w_projection :
     let proj := projection R_e_w
     proj.x = 1/2 ∧ proj.y = 1/2 ∧ proj.z = 1/2 := by
-  simp only [projection, Point4D.projectTo3D, R_e_w]
+  simp only [projection, Phase3.Lemma_3_1_2a.Point4D.projectTo3D, R_e_w]
   norm_num
 
 /-- (1/2, 1/2, 1/2) is proportional to W_direction = (1, 1, 1) with factor 1/2 -/
@@ -378,7 +383,7 @@ theorem projection_proportional_to_W :
     proj.x = (1/2 : ℝ) * W_direction.x ∧
     proj.y = (1/2 : ℝ) * W_direction.y ∧
     proj.z = (1/2 : ℝ) * W_direction.z := by
-  simp only [projection, Point4D.projectTo3D, R_e_w, W_direction]
+  simp only [projection, Phase3.Lemma_3_1_2a.Point4D.projectTo3D, R_e_w, W_direction]
   norm_num
 
 /-! ## Section 8: Equidistance Property
@@ -524,7 +529,8 @@ theorem tesseract_projects_to_cube :
     let v := Cell24Vertex.pppp.toPoint4D  -- (1/2, 1/2, 1/2, 1/2)
     let proj := projection v
     proj.x = 1/2 ∧ proj.y = 1/2 ∧ proj.z = 1/2 := by
-  simp only [projection, Point4D.projectTo3D, Cell24Vertex.toPoint4D]
+  simp only [projection, Phase3.Lemma_3_1_2a.Point4D.projectTo3D,
+             Phase3.Lemma_3_1_2a.Cell24Vertex.toPoint4D]
   decide
 
 /-- The w-direction vertices collapse to origin under projection.
@@ -536,7 +542,8 @@ theorem w_vertices_collapse_to_origin :
     let proj_neg := projection Cell24Vertex.neg_w.toPoint4D
     proj_pos.x = 0 ∧ proj_pos.y = 0 ∧ proj_pos.z = 0 ∧
     proj_neg.x = 0 ∧ proj_neg.y = 0 ∧ proj_neg.z = 0 := by
-  simp only [projection, Point4D.projectTo3D, Cell24Vertex.toPoint4D]
+  simp only [projection, Phase3.Lemma_3_1_2a.Point4D.projectTo3D,
+             Phase3.Lemma_3_1_2a.Cell24Vertex.toPoint4D]
   decide
 
 /-! ## Section 12: Physical Interpretation Summary

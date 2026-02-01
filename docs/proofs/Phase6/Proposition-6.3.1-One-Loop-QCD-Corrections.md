@@ -229,15 +229,19 @@ where $C_F = 4/3$ for SU(3). This corresponds to $\gamma_m^{(0)} = 8$ in the con
 
 **Solution:**
 
-The running mass follows from integrating the RGE:
+The running mass follows from integrating the RGE. Using the β-function β(α_s) = -(β_0/2π)α_s² and γ_m = γ_m^(0) α_s/(4π), the exponent is:
 
-$$m(Q) = m(\mu)\left(\frac{\alpha_s(Q)}{\alpha_s(\mu)}\right)^{\gamma_m^{(0)}/\beta_0}$$
+$$d\ln m / d\ln\alpha_s = \gamma_m^{(0)}/(2\beta_0)$$
+
+giving the running mass formula:
+
+$$m(Q) = m(\mu)\left(\frac{\alpha_s(Q)}{\alpha_s(\mu)}\right)^{\gamma_m^{(0)}/(2\beta_0)}$$
 
 where $\beta_0 = 11 - \frac{2N_f}{3}$ and $\gamma_m^{(0)} = 6 C_F = 8$. For $N_f = 6$: $\beta_0 = 7$, giving:
 
 $$m(Q) = m(\mu)\left(\frac{\alpha_s(Q)}{\alpha_s(\mu)}\right)^{8/14} = m(\mu)\left(\frac{\alpha_s(Q)}{\alpha_s(\mu)}\right)^{4/7}$$
 
-> **Convention note:** Different references use different normalizations. The exponent $4/b_1 = 4/7$ is universal; the γ_m formula depends on whether factors of 4π are absorbed.
+> **Convention note:** The factor of 2 in the denominator arises from the β-function normalization β = -(β_0/2π)α_s². The exponent $d_m = 4/7$ for $N_f = 6$ is universal across consistent conventions.
 
 **CG interpretation:** The running mass is the effective mass in the phase-gradient mechanism evaluated at scale $Q$.
 

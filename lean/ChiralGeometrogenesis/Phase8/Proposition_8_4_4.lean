@@ -370,19 +370,46 @@ noncomputable def tension_sigma : ℝ :=
 
     **Proof strategy:**
     This requires showing 0.23 < √2.96, i.e., 0.23² < 2.96, i.e., 0.0529 < 2.96 ✓
-    The sorry is acceptable for peer review as it involves only numerical
-    computation on well-defined quantities with no theoretical uncertainty.
 
     **Verification:** Python script verification/Phase8/prop_8_4_4_self_consistency_checks.py -/
 theorem tension_excellent : tension_sigma < 1 := by
-  unfold tension_sigma combined_exp_uncertainty standardPrediction
-         theta23_observed_deg theta23_uncertainty_deg
-         combined_uncertainty standardUncertainty
-  -- We need: |48.87 - 49.1| / √(0.5² + 1.0² + 0.3² + 0.8² + 1.0²) < 1
-  -- Simplifying: 0.23 / √2.98 < 1
-  -- Equivalent to: 0.23 < √2.98, i.e., 0.0529 < 2.98 ✓
-  -- This is a straightforward numerical fact but requires Real.sqrt bounds
-  sorry  -- Numerical fact: 0.23/√2.98 ≈ 0.13 < 1; verified in Python
+  -- We prove this by showing tension_sigma < 0.5 < 1
+  -- Since tension_sigma ≈ 0.13, this is straightforward
+  --
+  -- Approach: Show numerator < 0.5 × denominator, where
+  -- numerator = |48.87 - 49.1| = 0.23
+  -- denominator = √2.98 > √1 = 1, so 0.5 × denom > 0.5 > 0.23
+  unfold tension_sigma
+  -- Goal: |standardPrediction.theta23_pred - theta23_observed_deg| / combined_exp_uncertainty < 1
+  have h_pred : standardPrediction.theta23_pred = 48.87 := predicted_theta23_standard
+  have h_obs : theta23_observed_deg = 49.1 := rfl
+  have h_num : |standardPrediction.theta23_pred - theta23_observed_deg| = 0.23 := by
+    rw [h_pred, h_obs]
+    norm_num
+  -- Show denominator > 0.23
+  have h_denom_lower : combined_exp_uncertainty > 0.23 := by
+    unfold combined_exp_uncertainty combined_uncertainty standardUncertainty
+           theta23_uncertainty_deg
+    -- The simp only unfolds the structure fields; unfold handles this already
+    -- Need: √(√(0.5² + 1² + 0.3² + 0.8²)² + 1²) > 0.23
+    -- Inner: 0.25 + 1 + 0.09 + 0.64 = 1.98
+    -- √1.98 ≈ 1.407, squared gives 1.98, plus 1 = 2.98
+    -- √2.98 ≈ 1.726 > 0.23
+    have h_inner : (0.5:ℝ)^2 + 1.0^2 + 0.3^2 + 0.8^2 = 1.98 := by norm_num
+    have h_inner_pos : (0:ℝ) < 1.98 := by norm_num
+    have h_sq_inner : Real.sqrt 1.98 ^ 2 = 1.98 := Real.sq_sqrt (le_of_lt h_inner_pos)
+    have h_total_eq : Real.sqrt 1.98 ^ 2 + 1.0^2 = 2.98 := by rw [h_sq_inner]; norm_num
+    calc Real.sqrt (Real.sqrt (0.5^2 + 1.0^2 + 0.3^2 + 0.8^2)^2 + 1.0^2)
+        = Real.sqrt (Real.sqrt 1.98 ^ 2 + 1.0^2) := by rw [h_inner]
+      _ = Real.sqrt 2.98 := by rw [h_total_eq]
+      _ > 0.23 := by
+          rw [← Real.sqrt_sq (by norm_num : (0:ℝ) ≤ 0.23)]
+          exact Real.sqrt_lt_sqrt (by norm_num) (by norm_num : (0.23:ℝ)^2 < 2.98)
+  -- Now conclude
+  have h_denom_pos : combined_exp_uncertainty > 0 :=
+    lt_trans (by norm_num : (0:ℝ) < 0.23) h_denom_lower
+  rw [div_lt_one h_denom_pos, h_num]
+  exact h_denom_lower
 
 /-- **Main Theorem: Correction Resolves TBM Tension**
 
@@ -399,9 +426,10 @@ theorem tension_excellent : tension_sigma < 1 := by
     **Verification:** Python script verification/Phase8/prop_8_4_4_self_consistency_checks.py -/
 theorem correction_resolves_tension :
     tension_sigma < TBM_tension_sigma := by
-  -- tension_sigma ≈ 0.13 < TBM_tension_sigma ≈ 3.65
-  -- This follows from tension_excellent and TBM_tension_significant
-  sorry  -- Numerical fact verified in Python; requires interval arithmetic in Lean
+  -- tension_sigma < 1 < 3 < TBM_tension_sigma
+  calc tension_sigma < 1 := tension_excellent
+    _ < 3 := by norm_num
+    _ < TBM_tension_sigma := TBM_tension_significant
 
 /-! ═══════════════════════════════════════════════════════════════════════════
     PART 6: SELF-CONSISTENCY CHECKS

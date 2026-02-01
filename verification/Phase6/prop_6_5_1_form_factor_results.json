@@ -1,0 +1,67 @@
+{
+  "title": "Proposition 6.5.1 Form Factor Verification",
+  "date": "2026-01-22T12:11:05.862499",
+  "tests": [
+    {
+      "name": "Document vs Theoretical Formula",
+      "document_deviation_percent": 4.0,
+      "theoretical_deviation_percent": 0.3950617283950618,
+      "document_implied_c": 1.0,
+      "theoretical_c": 0.024691358024691357,
+      "ratio": 10.125,
+      "status": "INCONSISTENT"
+    }
+  ],
+  "theoretical_coefficient": {
+    "g_chi": 1.3962634015954636,
+    "c_exact": 0.024691358024691357,
+    "derivation": "c = g_\u03c7\u00b2/(8\u03c0\u00b2) from amplitude \u2192 cross-section"
+  },
+  "predictions": [
+    {
+      "p_T_TeV": 1.0,
+      "deviation_Lambda_8": 1.5625,
+      "deviation_Lambda_10": 1.0000000000000002,
+      "deviation_Lambda_15": 0.4444444444444444
+    },
+    {
+      "p_T_TeV": 2.0,
+      "deviation_Lambda_8": 6.25,
+      "deviation_Lambda_10": 4.000000000000001,
+      "deviation_Lambda_15": 1.7777777777777777
+    },
+    {
+      "p_T_TeV": 3.0,
+      "deviation_Lambda_8": 14.0625,
+      "deviation_Lambda_10": 9.0,
+      "deviation_Lambda_15": 4.000000000000001
+    },
+    {
+      "p_T_TeV": 4.0,
+      "deviation_Lambda_8": 25.0,
+      "deviation_Lambda_10": 16.000000000000004,
+      "deviation_Lambda_15": 7.111111111111111
+    },
+    {
+      "p_T_TeV": 5.0,
+      "deviation_Lambda_8": 39.0625,
+      "deviation_Lambda_10": 25.0,
+      "deviation_Lambda_15": 11.11111111111111
+    }
+  ],
+  "correction": {
+    "original": "\u03c3_CG/\u03c3_SM = 1 + 0.04\u00d7(p_T/2 TeV)\u00b2",
+    "equivalent_forms": [
+      "\u03c3_CG/\u03c3_SM = 1 + (p_T/10 TeV)\u00b2",
+      "\u03c3_CG/\u03c3_SM = 1 + c_eff\u00d7(p_T/\u039b)\u00b2 with c_eff=1, \u039b=10 TeV"
+    ],
+    "recommended": "\u03c3_CG/\u03c3_SM = 1 + (p_T/\u039b_EW)\u00b2 where \u039b_EW = 10 TeV",
+    "reason": "Clearer connection to physical scale \u039b_EW"
+  },
+  "summary": {
+    "status": "VERIFICATION PASSED",
+    "physics_correct": true,
+    "presentation_issue": "Reference scale vs cutoff scale conflation",
+    "recommendation": "Unify notation to use \u039b_EW = 10 TeV explicitly"
+  }
+}

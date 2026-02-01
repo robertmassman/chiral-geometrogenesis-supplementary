@@ -579,6 +579,9 @@ The stella octangula geometry with parity and CP breaking uniquely determines N_
 3. [Definition 0.1.3: Pressure Functions](../Phase0/Definition-0.1.3-Pressure-Functions.md)
 4. [Lemma 3.1.2a: 24-Cell Connection](../Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md)
 5. [Proof 8.1.3b: Topological Generation Count](./Proof-8.1.3b-Topological-Generation-Count.md) — Independent T_d representation theory derivation
+6. [Analysis-5-Equals-3-Plus-2-Decomposition.md](../supporting/Analysis-5-Equals-3-Plus-2-Decomposition.md) — Connection to 600-cell/24-cell embedding and electroweak scale
+7. [Derivation-D4-Triality-A4-Irreps-Connection.md](../supporting/Derivation-D4-Triality-A4-Irreps-Connection.md) — Connection between D₄ triality (3 sixteen-cells) and A₄ irreps (3 generations)
+8. [Derivation-Unified-Z3-Origin-Of-Three.md](../supporting/Derivation-Unified-Z3-Origin-Of-Three.md) — **All appearances of "3" trace to single Z₃ from stella geometry** (N_colors = N_gen = 3 not coincidental)
 
 ### External
 

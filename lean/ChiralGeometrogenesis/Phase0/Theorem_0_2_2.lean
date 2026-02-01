@@ -454,74 +454,6 @@ The key insight: phases evolve RELATIVE to each other.
 We define tau as the parameter tracking this collective evolution.
 -/
 
-/-- Phase configuration: the three phases at a moment.
-
-**DEPRECATED (v0.2.2)**: Use `Foundations.PhaseConfig` directly for new code.
-
-**Reason for deprecation:** This local definition duplicates `Foundations.PhaseConfig`
-with slightly different field naming (`phiR` vs `phi_R`). The canonical version in
-`DynamicsFoundation.lean` should be used for all new theorems.
-
-**Migration guide:**
-- Replace `PhaseConfig` with `Foundations.PhaseConfig`
-- Replace `.phiR` with `.phi_R`, `.phiG` with `.phi_G`, `.phiB` with `.phi_B`
-- Replace `validPhaseConfig` with `Foundations.PhaseConfig.isValid`
-
-**Why preserved:** Existing proofs in this file use this structure. Changing them would
-require updating 10+ theorems. The conversion functions provide interoperability.
--/
-structure PhaseConfig where
-  phiR : ℝ
-  phiG : ℝ
-  phiB : ℝ
-
-/-- Convert to the canonical PhaseConfig in DynamicsFoundation.
-
-    Use this when you need to pass a local PhaseConfig to code expecting
-    the canonical `Foundations.PhaseConfig`.
--/
-def PhaseConfig.toCanonical (cfg : PhaseConfig) : Foundations.PhaseConfig where
-  phi_R := cfg.phiR
-  phi_G := cfg.phiG
-  phi_B := cfg.phiB
-
-/-- Convert from the canonical PhaseConfig.
-
-    Use this when you need to use canonical PhaseConfig with local functions.
--/
-def PhaseConfig.fromCanonical (cfg : Foundations.PhaseConfig) : PhaseConfig where
-  phiR := cfg.phi_R
-  phiG := cfg.phi_G
-  phiB := cfg.phi_B
-
-/-- Round-trip conversion is identity -/
-theorem PhaseConfig.fromCanonical_toCanonical (cfg : PhaseConfig) :
-    PhaseConfig.fromCanonical cfg.toCanonical = cfg := rfl
-
-/-- Round-trip conversion is identity (other direction) -/
-theorem PhaseConfig.toCanonical_fromCanonical (cfg : Foundations.PhaseConfig) :
-    (PhaseConfig.fromCanonical cfg).toCanonical = cfg := rfl
-
-/-- The fixed phase relationships (constraint from SU(3)).
-
-    **Equivalent to:** `Foundations.PhaseConfig.isValid`
--/
-def validPhaseConfig (cfg : PhaseConfig) : Prop :=
-  cfg.phiG - cfg.phiR = 2 * Real.pi / 3 ∧
-  cfg.phiB - cfg.phiG = 2 * Real.pi / 3
-
-/-- Validity is preserved by conversion to canonical -/
-theorem PhaseConfig.toCanonical_valid (cfg : PhaseConfig) (h : validPhaseConfig cfg) :
-    cfg.toCanonical.isValid := by
-  unfold toCanonical Foundations.PhaseConfig.isValid validPhaseConfig at *
-  exact h
-
-/-- Validity is preserved by conversion from canonical -/
-theorem PhaseConfig.fromCanonical_valid (cfg : Foundations.PhaseConfig) (h : cfg.isValid) :
-    validPhaseConfig (PhaseConfig.fromCanonical cfg) := by
-  unfold fromCanonical validPhaseConfig Foundations.PhaseConfig.isValid at *
-  exact h
-
 /-- A phase evolution is a path in phase space.
 
     This is the **general** structure for any phase evolution that preserves
@@ -538,43 +470,15 @@ theorem PhaseConfig.fromCanonical_valid (cfg : Foundations.PhaseConfig) (h : cfg
 
     In this file, we primarily use `HamiltonianPhaseEvolution` which provides
     the specific solution to Hamilton's equations with constant frequency.
+
+    **v0.2.3 Migration:** Now uses `Foundations.PhaseConfig` (canonical definition)
+    instead of a local duplicate. Field names are `phi_R`, `phi_G`, `phi_B`.
 -/
 structure PhaseEvolution where
   /-- Phase configuration as function of tau -/
-  config : ℝ → PhaseConfig
+  config : ℝ → Foundations.PhaseConfig
   /-- Phase relationships preserved throughout evolution -/
-  valid : ∀ tau, validPhaseConfig (config tau)
-
-/-- The collective phase (average of three phases) -/
-noncomputable def collectivePhase (cfg : PhaseConfig) : ℝ :=
-  (cfg.phiR + cfg.phiG + cfg.phiB) / 3
-
-/-- For valid config, collective phase determines all three.
-
-    Given the constraints:
-    - phiG - phiR = 2π/3
-    - phiB - phiG = 2π/3
-
-    The collective phase Φ = (phiR + phiG + phiB) / 3 satisfies:
-    - Φ = (phiR + (phiR + 2π/3) + (phiR + 4π/3)) / 3 = phiR + 2π/3
-
-    Therefore:
-    - phiR = Φ - 2π/3
-    - phiG = phiR + 2π/3 = Φ
-    - phiB = phiR + 4π/3 = Φ + 2π/3
--/
-theorem collective_determines_phases (cfg : PhaseConfig) (h : validPhaseConfig cfg) :
-    cfg.phiR = collectivePhase cfg - 2 * Real.pi / 3 ∧
-    cfg.phiG = collectivePhase cfg ∧
-    cfg.phiB = collectivePhase cfg + 2 * Real.pi / 3 := by
-  unfold validPhaseConfig at h
-  unfold collectivePhase
-  obtain ⟨hRG, hGB⟩ := h
-  constructor
-  · linarith
-  constructor
-  · linarith
-  · linarith
+  valid : ∀ tau, (config tau).isValid
 
 /-! ## Frequency from Hamiltonian Mechanics
 
@@ -589,11 +493,13 @@ From markdown §4.2-4.4:
 - Frequency: ω = √(2H/I) = E_total/I_total (since I = E_total for this system)
 -/
 
-/-- Configuration space: all possible amplitude and phase configurations -/
+/-- Configuration space: all possible amplitude and phase configurations.
+
+    **v0.2.3 Migration:** Now uses `Foundations.PhaseConfig` (canonical definition). -/
 structure FieldConfiguration where
   amplitudes : ColorAmplitudes
-  phases : PhaseConfig
-  valid_phases : validPhaseConfig phases
+  phases : Foundations.PhaseConfig
+  valid_phases : phases.isValid
 
 /-- Algebraic energy functional (incoherent sum, no spacetime integral!)
 
@@ -1698,79 +1604,55 @@ theorem time_map_orientation_preserving (cfg : FieldConfiguration)
     ∀ tau, 0 < deriv (emergentTime (canonicalEvolution cfg 0)) tau :=
   (arrow_of_time_sign_constraint cfg hE).2.1
 
-/-- Connection to Theorem 2.2.4 (Anomaly-Driven Chirality Selection).
+/-! ### Arrow of Time: Summary and Connection to Theorem 2.2.4
 
-    Theorem 2.2.4 IS formalized in Phase2/Theorem_2_2_4.lean. It provides:
+**What is PROVEN in this file (Theorem 0.2.2):**
+- |ω| = √2 (from Hamiltonian mechanics with H = I, see `frequency_sqrt_two`)
+- ω > 0 ↔ dt/dτ > 0 (time flows forward, see `arrow_of_time_sign_constraint`)
+- Time is a diffeomorphism (see `time_is_diffeomorphism`)
 
-    **What Theorem 2.2.4 proves:**
-    1. The phase shift MAGNITUDE |α| = 2π/3 is a topological invariant (from ℤ₃ center of SU(3))
-    2. The color vorticity formula: Ω_color = (2N_f/3) · χ_top^(1/2) / f_π ≈ 123 MeV
-    3. This matches the Sakaguchi-Kuramoto frustration parameter
-    4. The WZW coefficient equals N_c = 3 (verified by π⁰→γγ decay)
+**Connection to Theorem 2.2.4 (Anomaly-Driven Chirality Selection):**
 
-    **What Theorem 2.2.4 states about the SIGN:**
-    From Theorem_2_2_4.lean lines 650-657:
-    > "The sign is cosmologically determined (not derived from first principles).
-    > This is analogous to spontaneous magnetization in the Ising model."
+Theorem 2.2.4 IS formalized in `Phase2/Theorem_2_2_4.lean`. It provides:
 
-    **Implication for arrow of time:**
-    - The MAGNITUDE |ω| = √2 is mathematically derived (this file)
-    - The SIGN sgn(ω) = +1 is a cosmological initial condition (Theorem 2.2.4)
-    - The arrow of time is thus a cosmological fact, not derivable from local physics
+1. The phase shift MAGNITUDE |α| = 2π/3 is a topological invariant (from ℤ₃ center of SU(3))
+2. The color vorticity formula: Ω_color = (2N_f/3) · χ_top^(1/2) / f_π ≈ 123 MeV
+3. This matches the Sakaguchi-Kuramoto frustration parameter
+4. The WZW coefficient equals N_c = 3 (verified by π⁰→γγ decay)
 
-    This is consistent with thermodynamic/cosmological arrows of time: the direction
-    is set by initial conditions (low entropy Big Bang), not by local dynamics.
+**What Theorem 2.2.4 states about the SIGN:**
 
-    **See:** ChiralGeometrogenesis.Phase2.Theorem_2_2_4
+From `Theorem_2_2_4.lean` lines 650-657:
+> "The sign is cosmologically determined (not derived from first principles).
+> This is analogous to spontaneous magnetization in the Ising model."
+
+**Implication for arrow of time:**
+- The MAGNITUDE |ω| = √2 is mathematically derived (this file)
+- The SIGN sgn(ω) = +1 is a cosmological initial condition (Theorem 2.2.4)
+- The arrow of time is thus a cosmological fact, not derivable from local physics
+
+This is consistent with thermodynamic/cosmological arrows of time: the direction
+is set by initial conditions (low entropy Big Bang), not by local dynamics.
+
+**Forward Reference (Instanton Asymmetry):**
+
+When the full path integral is analyzed, it shows that ∫ D[χ] exp(-S[χ]) is
+asymmetric under ω → -ω, favoring ω > 0 configurations.
+
+Key mechanism: The Wess-Zumino-Witten term S_WZW[U] has a definite sign determined
+by the SU(3) structure constants. This sign cannot be changed without changing
+the gauge group itself.
+
+Physical prediction: The arrow of time is as fundamental as the gauge group SU(3).
+A universe with reversed time direction would require a different gauge group.
+
+**Analogy:** Like spontaneous symmetry breaking in ferromagnetism - the magnitude
+of magnetization is derived from Curie-Weiss theory, but the direction is a random
+initial condition that becomes frozen in.
+
+**See:** `ChiralGeometrogenesis.Phase2.Theorem_2_2_4`
+**Reference:** `docs/proofs/Phase-2/Theorem-2.2.4-Instanton-Asymmetry.md`
 -/
-def theorem_2_2_4_connection : String :=
-  "Theorem 2.2.4 derives |α| = 2π/3 from SU(3) topology. \
-   Sign is cosmological initial condition."
-
-/-- Summary of what is proven vs what is initial condition.
-
-    **Mathematically derived (in Lean):**
-    - |ω| = √2 (from Hamiltonian mechanics with H = I)
-    - ω > 0 ↔ dt/dτ > 0 (time flows forward if frequency positive)
-    - |α| = 2π/3 (from ℤ₃ center of SU(3), Theorem 2.2.4)
-
-    **Physical/cosmological initial condition:**
-    - sgn(ω) = +1 (right-handed R→G→B rotation selected)
-    - This selects the arrow of time
-
-    **Analogy:** Like spontaneous symmetry breaking in ferromagnetism - the
-    magnitude of magnetization is derived from Curie-Weiss theory, but the
-    direction is a random initial condition that becomes frozen in.
--/
-def arrowOfTimeStatus : String :=
-  "Magnitude |ω| = √2 proven. Sign sgn(ω) = +1 is cosmological initial condition \
-   (see Theorem 2.2.4, lines 650-657)."
-
-/-- Documentation: Forward reference to Theorem 2.2.4.
-
-    When Theorem 2.2.4 (Instanton Asymmetry) is formalized, it should
-    provide a proof that the path integral measure:
-
-    ∫ D[χ] exp(-S[χ])
-
-    is asymmetric under ω → -ω, favoring ω > 0 configurations.
-
-    **Key mechanism:** The Wess-Zumino-Witten term S_WZW[U] has a definite
-    sign determined by the SU(3) structure constants. This sign cannot be
-    changed without changing the gauge group itself.
-
-    **Physical prediction:** The arrow of time is as fundamental as the
-    gauge group SU(3). A universe with reversed time direction would
-    require a different gauge group.
-
-    This will physically justify the sign convention used throughout
-    the Chiral Geometrogenesis framework.
-
-    **Status:** Pending formalization in Phase 2.
-    **Reference:** docs/proofs/Phase-2/Theorem-2.2.4-Instanton-Asymmetry.md
--/
-def ForwardRef_Theorem_2_2_4 : String :=
-  "Theorem 2.2.4: Instanton Asymmetry - establishes physical arrow of time via WZW term"
 
 /-! ## Connection to Theorem 0.2.3 (Stable Convergence)
 
@@ -2272,16 +2154,15 @@ noncomputable def theorem_0_2_2_complete_nontrivial (cfg : FieldConfiguration)
       linarith
   theorem_0_2_2_complete cfg hE
 
-/-- Canonical phase configuration: phases at 0, 2π/3, 4π/3. -/
-noncomputable def canonicalPhases : PhaseConfig where
-  phiR := 0
-  phiG := 2 * Real.pi / 3
-  phiB := 4 * Real.pi / 3
+/-- Canonical phase configuration: phases at 0, 2π/3, 4π/3.
+
+    **v0.2.3 Migration:** Now an alias for `Foundations.PhaseConfig.equilibrium`. -/
+noncomputable abbrev canonicalPhases : Foundations.PhaseConfig :=
+  Foundations.PhaseConfig.equilibrium
 
 /-- Canonical phases satisfy the validity constraint. -/
-theorem canonicalPhases_valid : validPhaseConfig canonicalPhases := by
-  unfold validPhaseConfig canonicalPhases
-  constructor <;> ring
+theorem canonicalPhases_valid : canonicalPhases.isValid :=
+  Foundations.PhaseConfig.equilibrium_isValid
 
 /-- Unit amplitude field configuration: all amplitudes equal to 1. -/
 noncomputable def unitFieldConfig : FieldConfiguration where

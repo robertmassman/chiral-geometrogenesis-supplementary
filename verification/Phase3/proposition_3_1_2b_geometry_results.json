@@ -1,0 +1,159 @@
+{
+  "16cell_projection": {
+    "vertices_4d": 8,
+    "unique_vertices_3d": 7,
+    "is_octahedron": false,
+    "is_stella": false,
+    "projected_shape": "unknown"
+  },
+  "tesseract_projection": {
+    "tesseract_vertices": 16,
+    "w_plus_cross_section_is_stella": true,
+    "w_minus_cross_section_is_stella": true
+  },
+  "24cell_radii": {
+    "type1_vertices": 8,
+    "type2_vertices": 16,
+    "total_vertices": 24,
+    "type1_radii": [
+      1.0
+    ],
+    "type2_radii": [
+      1.0
+    ],
+    "all_same_radius": true
+  },
+  "hexagonal_projection": {
+    "projected_data": [
+      {
+        "original": [
+          1,
+          1,
+          1
+        ],
+        "parallel": 1.7320508075688776,
+        "perp_norm": 3.8459253727671276e-16
+      },
+      {
+        "original": [
+          1,
+          -1,
+          -1
+        ],
+        "parallel": -0.5773502691896258,
+        "perp_norm": 1.632993161855452
+      },
+      {
+        "original": [
+          -1,
+          1,
+          -1
+        ],
+        "parallel": -0.5773502691896258,
+        "perp_norm": 1.632993161855452
+      },
+      {
+        "original": [
+          -1,
+          -1,
+          1
+        ],
+        "parallel": -0.5773502691896258,
+        "perp_norm": 1.632993161855452
+      },
+      {
+        "original": [
+          -1,
+          -1,
+          -1
+        ],
+        "parallel": -1.7320508075688776,
+        "perp_norm": 3.8459253727671276e-16
+      },
+      {
+        "original": [
+          -1,
+          1,
+          1
+        ],
+        "parallel": 0.5773502691896258,
+        "perp_norm": 1.632993161855452
+      },
+      {
+        "original": [
+          1,
+          -1,
+          1
+        ],
+        "parallel": 0.5773502691896258,
+        "perp_norm": 1.632993161855452
+      },
+      {
+        "original": [
+          1,
+          1,
+          -1
+        ],
+        "parallel": 0.5773502691896258,
+        "perp_norm": 1.632993161855452
+      }
+    ],
+    "unique_perp_norms": [
+      0.0,
+      1.632993
+    ],
+    "expected_perp_norm": 1.6329931618554518
+  },
+  "stella_in_24cell": {
+    "stella_in_w_plus_cross_section": true,
+    "stella_in_w_minus_cross_section": true,
+    "correct_mechanism": "3D cross-section of tesseract-type vertices"
+  },
+  "uniqueness": {
+    "5-cell": {
+      "vertices": 5,
+      "symmetry": "A4",
+      "order": 120,
+      "self_dual": true
+    },
+    "8-cell (tesseract)": {
+      "vertices": 16,
+      "symmetry": "B4",
+      "order": 384,
+      "self_dual": false
+    },
+    "16-cell": {
+      "vertices": 8,
+      "symmetry": "B4",
+      "order": 384,
+      "self_dual": false
+    },
+    "24-cell": {
+      "vertices": 24,
+      "symmetry": "F4",
+      "order": 1152,
+      "self_dual": true
+    },
+    "120-cell": {
+      "vertices": 600,
+      "symmetry": "H4",
+      "order": 14400,
+      "self_dual": false
+    },
+    "600-cell": {
+      "vertices": 120,
+      "symmetry": "H4",
+      "order": 14400,
+      "self_dual": false
+    }
+  },
+  "wolfenstein": {
+    "phi": 1.618033988749895,
+    "phi_cubed": 4.23606797749979,
+    "sin_72": 0.9510565162951535,
+    "lambda_geometric": 0.2245139882897927,
+    "lambda_PDG": 0.22497,
+    "lambda_PDG_err": 0.0007,
+    "deviation_sigma": 0.6514453002961654
+  }
+}

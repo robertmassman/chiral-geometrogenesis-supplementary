@@ -1,0 +1,20 @@
+{
+  "lambda_geometric": 0.2245139882897927,
+  "lambda_CKM_fit": 0.22497,
+  "lambda_CKM_fit_err": 0.0007,
+  "deviation_sigma": -0.6514453002961654,
+  "phi": 1.618033988749895,
+  "inv_phi": 0.6180339887498948,
+  "inv_phi_cubed": 0.2360679774997897,
+  "sin72": 0.9510565162951535,
+  "factor2_error": {
+    "claimed": 0.46960427959776496,
+    "expected": 0.6180339887498948
+  },
+  "factor3_error": {
+    "claimed": 0.38196601125010515,
+    "expected": 0.6180339887498948
+  },
+  "verification_status": "PARTIAL",
+  "date": "2026-01-30T16:35:37.247521"
+}

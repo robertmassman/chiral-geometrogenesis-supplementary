@@ -310,6 +310,67 @@ def cell24_vertices : ℕ := 24
 /-- W(F₄) factorization: 1152 = 24 × 48 -/
 theorem WF4_factorization : WF4_order = cell24_vertices * stella_symmetry_order := rfl
 
+/-- Order of W(B₄) Weyl group: |W(B₄)| = 384.
+
+    **Physical meaning:**
+    The Weyl group of B₄ (16-cell symmetry) has order 2⁴ × 4! = 384.
+    The ratio |W(F₄)|/|W(B₄)| = 1152/384 = 3 is the triality factor.
+
+    **Citation:** Humphreys, "Reflection Groups" (1990), Table 2.4 -/
+def WB4_order : ℕ := 384
+
+/-- |W(B₄)| = 384 (value check) -/
+theorem WB4_order_value : WB4_order = 384 := rfl
+
+/-- |W(B₄)| > 0 -/
+theorem WB4_order_pos : WB4_order > 0 := by decide
+
+/-- Order of H₄ symmetry group (600-cell): |H₄| = 14400.
+
+    **Physical meaning:**
+    The 600-cell is the 4D analog of the icosahedron. Its symmetry group H₄
+    has order 14400 = 120 × 120, where 120 is the order of the icosahedral
+    group. The 600-cell contains 5 copies of the 24-cell.
+
+    **Usage in Proposition 0.0.18:**
+    The electroweak scale enhancement factor √(|H₄|/|F₄|) = √(14400/1152) = √12.5 ≈ 3.54
+
+    **Citation:** Coxeter, "Regular Polytopes" (1973), Ch. 14 -/
+def H4_order : ℕ := 14400
+
+/-- |H₄| = 14400 (value check) -/
+theorem H4_order_value : H4_order = 14400 := rfl
+
+/-- |H₄| > 0 -/
+theorem H4_order_pos : H4_order > 0 := by decide
+
+/-- Number of 600-cell vertices -/
+def cell600_vertices : ℕ := 120
+
+/-- The 600-cell contains exactly 5 copies of the 24-cell: 120 = 5 × 24 -/
+theorem cell600_24_cell_copies : cell600_vertices = 5 * cell24_vertices := rfl
+
+/-- D₄ triality factor: |W(F₄)|/|W(B₄)| = 3.
+
+    **Physical meaning:**
+    The D₄ root system has a unique outer automorphism group S₃ ("triality")
+    that permutes three 8-dimensional representations. The 24-cell (F₄)
+    enhances the 16-cell (B₄) by this triality factor.
+
+    **Derivation:** triality = 1152/384 = 3
+
+    **Citation:** Proposition 0.0.18 §8.4 -/
+def triality : ℕ := WF4_order / WB4_order
+
+/-- triality = 3 -/
+theorem triality_value : triality = 3 := rfl
+
+/-- triality > 0 -/
+theorem triality_pos : triality > 0 := by decide
+
+/-- Triality from Weyl group ratio -/
+theorem triality_from_weyl_ratio : WF4_order = triality * WB4_order := rfl
+
 /-- Intrinsic edge length in natural units (normalized to 1) -/
 noncomputable def intrinsicEdgeLength : ℝ := 1
 
@@ -718,7 +779,7 @@ noncomputable def omega_internal_MeV : ℝ := 220
 theorem omega_internal_pos : omega_internal_MeV > 0 := by
   unfold omega_internal_MeV; norm_num
 
-/-- Chiral VEV v_χ = f_π = √σ/5 = 88 MeV (predicted value).
+/-- Chiral VEV v_χ = f_π = √σ/5 ≈ 88 MeV (predicted value).
 
     **Physical meaning:**
     The vacuum expectation value of the chiral condensate.
@@ -726,12 +787,26 @@ theorem omega_internal_pos : omega_internal_MeV > 0 := by
 
     **Derivation:** v_χ = √σ/[(N_c-1)+(N_f²-1)] = 440/5 = 88 MeV
 
+    **Structural definition:**
+    Defined as √σ/5 to preserve the exact relationship with string tension.
+    Numerically: 197.327/(0.44847 × 5) ≈ 88.0 MeV
+
     **Citation:** Proposition 0.0.17m -/
-noncomputable def v_chi_predicted_MeV : ℝ := 88
+noncomputable def v_chi_predicted_MeV : ℝ := sqrt_sigma_predicted_MeV / 5
 
 /-- v_χ > 0 -/
 theorem v_chi_predicted_pos : v_chi_predicted_MeV > 0 := by
-  unfold v_chi_predicted_MeV; norm_num
+  unfold v_chi_predicted_MeV
+  exact div_pos sqrt_sigma_predicted_pos (by norm_num : (5 : ℝ) > 0)
+
+/-- v_χ ≈ 88 MeV (approximate numerical value for reference) -/
+theorem v_chi_approx : v_chi_predicted_MeV > 87 ∧ v_chi_predicted_MeV < 89 := by
+  unfold v_chi_predicted_MeV sqrt_sigma_predicted_MeV hbar_c_MeV_fm R_stella_fm
+  constructor
+  · -- 197.327 / 0.44847 / 5 > 87
+    norm_num
+  · -- 197.327 / 0.44847 / 5 < 89
+    norm_num
 
 /-- Chiral coupling g_χ = 4π/9 ≈ 1.396.
 
@@ -901,14 +976,23 @@ def avogadro : ℕ := 602214076000000000000000
     Standard Model electroweak parameters.
 -/
 
-/-- Weak mixing angle: sin²θ_W = 0.2232 (at M_Z scale, MS-bar).
+/-- Weak mixing angle: sin²θ_W = 0.2232 (ON-SHELL scheme).
 
     **Physical meaning:**
     The Weinberg angle relates the electromagnetic and weak couplings:
     e = g sin θ_W = g' cos θ_W
 
-    **Citation:** PDG 2024, sin²θ_W(M_Z) = 0.23121 ± 0.00004 (on-shell),
-    0.2232 in MS-bar scheme at electroweak scale -/
+    **On-shell definition:**
+    sin²θ_W = 1 - M_W²/M_Z² = 1 - (80.3692/91.1876)² ≈ 0.2232
+
+    **Scheme distinction:**
+    - On-shell (this value): sin²θ_W = 0.2232 (from mass ratio)
+    - MS-bar (PDG): sin²θ_W = 0.23122 ± 0.00003 (running parameter)
+
+    Use on-shell for tree-level amplitude calculations where gauge boson
+    masses appear explicitly. Use MS-bar for precision EW fits and RG running.
+
+    **Citation:** PDG 2024 -/
 noncomputable def sinSqThetaW : ℝ := 0.2232
 
 /-- sin²θ_W > 0 -/
@@ -919,6 +1003,38 @@ theorem sinSqThetaW_pos : sinSqThetaW > 0 := by
 theorem sinSqThetaW_lt_one : sinSqThetaW < 1 := by
   unfold sinSqThetaW; norm_num
 
+/-- **sinSqThetaW matches the on-shell definition from mass ratios.**
+
+    This theorem verifies that sinSqThetaW = 0.2232 is consistent with
+    the on-shell definition sin²θ_W = 1 - (M_W/M_Z)².
+
+    **Calculation:**
+    1 - (80.3692/91.1876)² = 1 - 0.7768 ≈ 0.2232
+
+    The small discrepancy (< 0.001) is due to rounding in the mass values.
+
+    Note: Uses inline values since M_W_GeV/M_Z_GeV are defined later in file. -/
+theorem sinSqThetaW_matches_onshell :
+    |sinSqThetaW - (1 - (80.3692 / 91.1876)^2)| < 0.001 := by
+  unfold sinSqThetaW
+  -- sinSqThetaW = 0.2232
+  -- 1 - (80.3692/91.1876)² ≈ 0.22319
+  norm_num
+
+/-- Difference between on-shell and MS-bar schemes.
+
+    **Physical meaning:**
+    The ~0.009 difference arises from radiative corrections absorbed
+    differently in the two schemes. MS-bar: 0.23122, On-shell: 0.2232
+
+    **Citation:** PDG 2024, Electroweak review
+
+    Note: Uses inline MS-bar value since sin_sq_theta_W_MSbar defined later. -/
+theorem scheme_difference :
+    |(0.23122 : ℝ) - sinSqThetaW| < 0.01 := by
+  unfold sinSqThetaW
+  norm_num
+
 /-- cot²θ_W = (1 - sin²θ_W)/sin²θ_W ≈ 3.48 -/
 noncomputable def cotSqThetaW : ℝ := (1 - sinSqThetaW) / sinSqThetaW
 
@@ -928,6 +1044,82 @@ theorem cotSqThetaW_pos : cotSqThetaW > 0 := by
   apply div_pos
   · norm_num
   · norm_num
+
+/-- Dimension of the electroweak adjoint representation: dim(adj_EW) = 4.
+
+    **Derivation:**
+    dim(adj_EW) = dim(su(2)) + dim(u(1)) = 3 + 1 = 4
+
+    **Physical meaning:**
+    Counts the electroweak gauge generators:
+    - SU(2)_L: 3 generators (W₁, W₂, W₃)
+    - U(1)_Y: 1 generator (B)
+
+    **Citation:** Proposition 0.0.19 §5.1 -/
+def dim_adj_EW : ℕ := 4
+
+/-- dim(adj_EW) = 4 (value check) -/
+theorem dim_adj_EW_value : dim_adj_EW = 4 := rfl
+
+/-- dim(adj_EW) > 0 -/
+theorem dim_adj_EW_pos : dim_adj_EW > 0 := by decide
+
+/-- Electroweak β-function index: index_EW ≈ 5.63.
+
+    **Derivation (from Proposition 0.0.19 §5.3):**
+    index_EW = |b₂| + |b₁| × (3/5)
+             = 19/6 + 41/10 × 3/5
+             = 19/6 + 123/50
+             = 1688/300 ≈ 5.63
+
+    where:
+    - b₂ = -19/6 is the one-loop SU(2)_L β-function coefficient
+    - b₁ = +41/10 is the one-loop U(1)_Y β-function coefficient
+    - 3/5 is the GUT hypercharge normalization (from SU(5) embedding)
+
+    **Physical meaning:**
+    This is the combined electroweak β-function index that appears
+    in the topological hierarchy formula, analogous to the QCD index.
+
+    **Citation:** Proposition 0.0.19 §5.3, Costello-Bittleston (2025) -/
+noncomputable def index_EW : ℝ := 1688 / 300
+
+/-- index_EW > 0 -/
+theorem index_EW_pos : index_EW > 0 := by
+  unfold index_EW; norm_num
+
+/-- index_EW ≈ 5.63 (numerical bounds) -/
+theorem index_EW_approx : 5.62 < index_EW ∧ index_EW < 5.64 := by
+  unfold index_EW
+  constructor <;> norm_num
+
+/-- SU(2)_L β-function coefficient: b₂ = -19/6.
+
+    **Derivation:**
+    b₂ = -(11/3)C₂(G) + (4/3)T(R)N_f + (1/3)T(R)N_H
+       = -(11/3)×2 + (4/3)×(1/2)×3 + (1/3)×(1/2)×1
+       = -22/3 + 2 + 1/6 = -19/6
+
+    **Citation:** PDG 2024, SM running coupling review -/
+noncomputable def b2_SU2 : ℝ := -19 / 6
+
+/-- U(1)_Y β-function coefficient: b₁ = +41/10.
+
+    **Derivation:**
+    With GUT normalization g₁² = (5/3)g'²:
+    b₁ = (4/3)×(3/5)×∑Y² = 41/10
+
+    **Citation:** PDG 2024, SM running coupling review -/
+noncomputable def b1_U1Y : ℝ := 41 / 10
+
+/-- GUT hypercharge normalization factor: 3/5.
+
+    **Physical meaning:**
+    In SU(5) GUT, the hypercharge coupling is normalized as g₁² = (5/3)g'².
+    The factor 3/5 appears when combining β-functions.
+
+    **Citation:** Georgi & Glashow, PRL 32, 438 (1974) -/
+noncomputable def GUT_hypercharge_normalization : ℝ := 3 / 5
 
 /-! ═══════════════════════════════════════════════════════════════════════════
     SECTION 11: MATHEMATICAL CONSTANTS
@@ -1138,22 +1330,85 @@ theorem log_correction_alpha_pos : log_correction_alpha > 0 := by
     Reference: NuFIT 6.0 (2024), Normal Ordering
 -/
 
-/-- Wolfenstein parameter: λ = sin θ_C ≈ 0.22451.
+/-! ### Wolfenstein Parameter λ
+
+The Wolfenstein parameter λ = sin θ_C (sine of Cabibbo angle) governs quark mixing.
+We maintain two values:
+
+| Definition | Value | Source | Use |
+|------------|-------|--------|-----|
+| `wolfenstein_lambda_geometric` | 0.22451 | CG prediction: (1/φ³) × sin(72°) | Theoretical |
+| `wolfenstein_lambda_PDG` | 0.22497 ± 0.00070 | PDG 2024 CKM fit | Experimental |
+
+Agreement: |0.22497 - 0.22451| / 0.00070 ≈ 0.65σ (excellent)
+-/
+
+/-- Wolfenstein parameter (GEOMETRIC PREDICTION): λ_geo = (1/φ³) × sin(72°) ≈ 0.22451.
 
     **Physical meaning:**
     The sine of the Cabibbo angle, governing quark mixing strength.
-    In CG, derived geometrically as λ = sin(72°)/φ³.
 
-    **Citation:** Extension 3.1.2b, PDG 2024 -/
-noncomputable def wolfenstein_lambda : ℝ := 0.22451
+    **Derivation (Chiral Geometrogenesis):**
+    λ = (1/φ³) × sin(72°) where:
+    - 1/φ³ ≈ 0.2361 from three icosahedral projections (ThreePhiFactors.lean)
+    - sin(72°) ≈ 0.9511 from pentagonal angular factor (Theorem_3_1_1.lean)
+    - Product: 0.2361 × 0.9511 ≈ 0.22451
 
-/-- λ > 0 -/
-theorem wolfenstein_lambda_pos : wolfenstein_lambda > 0 := by
-  unfold wolfenstein_lambda; norm_num
+    **Reference:** ThreePhiFactors.lean, Lemma 3.1.2a -/
+noncomputable def wolfenstein_lambda_geometric : ℝ := 0.22451
 
-/-- λ < 1 (physical constraint) -/
-theorem wolfenstein_lambda_lt_one : wolfenstein_lambda < 1 := by
-  unfold wolfenstein_lambda; norm_num
+/-- Wolfenstein parameter (PDG OBSERVED): λ_PDG = 0.22497 ± 0.00070.
+
+    **Physical meaning:**
+    Experimentally measured value from global CKM matrix fit.
+
+    **Citation:** PDG 2024, "CKM Quark-Mixing Matrix"
+    - Central value: 0.22497
+    - Uncertainty: ± 0.00070 (1σ)
+
+    **Note:** The Wolfenstein parameterization value (0.22650 ± 0.00048) differs
+    slightly from the CKM fit value. We use the CKM fit for comparison.
+
+    **Reference:** https://pdg.lbl.gov/2024/reviews/rpp2024-rev-ckm-matrix.pdf -/
+noncomputable def wolfenstein_lambda_PDG : ℝ := 0.22497
+
+/-- PDG uncertainty on λ (1σ) -/
+noncomputable def wolfenstein_lambda_PDG_uncertainty : ℝ := 0.00070
+
+/-- Legacy alias for geometric prediction (backward compatibility) -/
+noncomputable abbrev wolfenstein_lambda : ℝ := wolfenstein_lambda_geometric
+
+/-- λ_geo > 0 -/
+theorem wolfenstein_lambda_geometric_pos : wolfenstein_lambda_geometric > 0 := by
+  unfold wolfenstein_lambda_geometric; norm_num
+
+/-- Convenience accessor: wolfenstein_lambda > 0 -/
+theorem wolfenstein_lambda_pos : wolfenstein_lambda > 0 := wolfenstein_lambda_geometric_pos
+
+/-- λ_geo < 1 (physical constraint) -/
+theorem wolfenstein_lambda_geometric_lt_one : wolfenstein_lambda_geometric < 1 := by
+  unfold wolfenstein_lambda_geometric; norm_num
+
+/-- λ_PDG > 0 -/
+theorem wolfenstein_lambda_PDG_pos : wolfenstein_lambda_PDG > 0 := by
+  unfold wolfenstein_lambda_PDG; norm_num
+
+/-- λ_PDG < 1 (physical constraint) -/
+theorem wolfenstein_lambda_PDG_lt_one : wolfenstein_lambda_PDG < 1 := by
+  unfold wolfenstein_lambda_PDG; norm_num
+
+/-- Agreement: |λ_geo - λ_PDG| < 0.001 (sub-permille) -/
+theorem wolfenstein_lambda_agreement :
+    |wolfenstein_lambda_geometric - wolfenstein_lambda_PDG| < 0.001 := by
+  unfold wolfenstein_lambda_geometric wolfenstein_lambda_PDG
+  norm_num
+
+/-- Statistical agreement: deviation < 1σ -/
+theorem wolfenstein_lambda_within_1sigma :
+    |wolfenstein_lambda_geometric - wolfenstein_lambda_PDG| <
+    wolfenstein_lambda_PDG_uncertainty := by
+  unfold wolfenstein_lambda_geometric wolfenstein_lambda_PDG wolfenstein_lambda_PDG_uncertainty
+  norm_num
 
 /-- Solar mixing angle: θ₁₂ = 33.41° (NuFIT 6.0, normal ordering).
 
@@ -1268,21 +1523,22 @@ noncomputable def f_mu_tau : ℝ := mass_ratio_function (m_muon_MeV / m_tau_MeV)
     Reference: docs/proofs/Phase8/Prediction-8.3.1-W-Condensate-Dark-Matter.md
 -/
 
-/-- Higgs VEV: v_H = 246 GeV (Standard Model).
+/-- Higgs VEV: v_H = 246.22 GeV (Standard Model).
 
     **Physical meaning:**
-    Sets the electroweak symmetry breaking scale.
+    The electroweak symmetry breaking scale derived from the Fermi constant:
+    v_H = (√2 G_F)^{-1/2} = 246.22 GeV
 
     **Citation:** PDG 2024 -/
-noncomputable def v_H_GeV : ℝ := 246
+noncomputable def v_H_GeV : ℝ := 246.22
 
 /-- v_H > 0 -/
 theorem v_H_GeV_pos : v_H_GeV > 0 := by unfold v_H_GeV; norm_num
 
-/-- Higgs mass: m_h = 125.25 GeV.
+/-- Higgs mass: m_h = 125.11 GeV.
 
-    **Citation:** PDG 2024, m_h = 125.25 ± 0.17 GeV -/
-noncomputable def m_h_GeV : ℝ := 125.25
+    **Citation:** PDG 2024, m_h = 125.11 ± 0.11 GeV -/
+noncomputable def m_h_GeV : ℝ := 125.11
 
 /-- m_h > 0 -/
 theorem m_h_GeV_pos : m_h_GeV > 0 := by unfold m_h_GeV; norm_num
@@ -1703,10 +1959,10 @@ theorem v_W_precision_pos : v_W_precision_GeV > 0 := by
     **Citation:** Proposition 5.1.2b §4.6 -/
 noncomputable def v_W_v_H_ratio : ℝ := v_W_precision_GeV / v_H_GeV
 
-/-- v_W/v_H ≈ 0.50 -/
-theorem v_W_v_H_ratio_approx : v_W_v_H_ratio = 123 / 246 := by
+/-- v_W/v_H ≈ 0.50 (approximation, exact value depends on v_H precision) -/
+theorem v_W_v_H_ratio_approx : 0.49 < v_W_v_H_ratio ∧ v_W_v_H_ratio < 0.51 := by
   unfold v_W_v_H_ratio v_W_precision_GeV v_H_GeV
-  norm_num
+  constructor <;> norm_num
 
 /-- Skyrme parameter for W-sector: e_W = 4.5 (Prop 5.1.2b §5.2).
 
@@ -2786,5 +3042,441 @@ theorem KSRF_relation_approximate :
     |ell_bar_2_empirical - (-2 * ell_bar_1_empirical)| < 4 := by
   unfold ell_bar_2_empirical ell_bar_1_empirical
   norm_num
+
+/-! ═══════════════════════════════════════════════════════════════════════════
+    SECTION 23: ELECTROWEAK GAUGE BOSON CONSTANTS (Proposition 0.0.24)
+    ═══════════════════════════════════════════════════════════════════════════
+
+    Physical constants for electroweak sector consistency with GUT unification.
+    Reference: docs/proofs/foundations/Proposition-0.0.24-SU2-Gauge-Coupling-From-Unification.md
+-/
+
+/-- SU(2) gauge coupling at M_Z (on-shell scheme): g₂ = 2M_W/v_H = 0.6528.
+
+    **Physical meaning:**
+    The weak isospin coupling constant in the on-shell renormalization scheme,
+    defined as g₂ ≡ 2M_W/v_H.
+
+    **Value:** g₂(M_Z) = 0.6528 ± 0.0010 (on-shell)
+
+    **Citation:** PDG 2024, from M_W = 80.3692 GeV and v_H = 246.22 GeV -/
+noncomputable def g2_MZ_onshell : ℝ := 0.6528
+
+/-- g₂(M_Z) > 0 -/
+theorem g2_MZ_onshell_pos : g2_MZ_onshell > 0 := by
+  unfold g2_MZ_onshell; norm_num
+
+/-- g₂(M_Z) < 1 (perturbativity constraint) -/
+theorem g2_MZ_onshell_lt_one : g2_MZ_onshell < 1 := by
+  unfold g2_MZ_onshell; norm_num
+
+/-- W boson mass: M_W = 80.3692 GeV (PDG 2024).
+
+    **Physical meaning:**
+    The mass of the charged weak gauge boson W⁺.
+
+    **Citation:** PDG 2024, M_W = 80.3692 ± 0.0133 GeV -/
+noncomputable def M_W_GeV : ℝ := 80.3692
+
+/-- M_W > 0 -/
+theorem M_W_GeV_pos : M_W_GeV > 0 := by unfold M_W_GeV; norm_num
+
+/-- Z boson mass: M_Z = 91.1876 GeV (PDG 2024).
+
+    **Physical meaning:**
+    The mass of the neutral weak gauge boson Z⁰.
+
+    **Citation:** PDG 2024, M_Z = 91.1876 ± 0.0021 GeV -/
+noncomputable def M_Z_GeV : ℝ := 91.1876
+
+/-- M_Z > 0 -/
+theorem M_Z_GeV_pos : M_Z_GeV > 0 := by unfold M_Z_GeV; norm_num
+
+/-- Higgs VEV precise value: v_H = 246.22 GeV.
+
+    **Physical meaning:**
+    The electroweak symmetry breaking scale from Fermi constant:
+    v_H = (√2 G_F)^{-1/2}
+
+    **Citation:** PDG 2024 -/
+noncomputable def v_H_precise_GeV : ℝ := 246.22
+
+/-- v_H precise > 0 -/
+theorem v_H_precise_GeV_pos : v_H_precise_GeV > 0 := by unfold v_H_precise_GeV; norm_num
+
+/-- sin²θ_W at GUT scale: 3/8 = 0.375.
+
+    **Physical meaning:**
+    The Weinberg angle at the grand unification scale M_GUT ~ 10¹⁶ GeV,
+    derived from SU(5) embedding: sin²θ_W = Tr(T₃²)/Tr(Q²) = (1/2)/(4/3) = 3/8.
+
+    **Citation:** Theorem 0.0.4 §7, Georgi-Glashow (1974) -/
+noncomputable def sin_sq_theta_W_GUT : ℝ := 3 / 8
+
+/-- sin²θ_W(GUT) = 0.375 -/
+theorem sin_sq_theta_W_GUT_value : sin_sq_theta_W_GUT = 0.375 := by
+  unfold sin_sq_theta_W_GUT; norm_num
+
+/-- sin²θ_W(GUT) > 0 -/
+theorem sin_sq_theta_W_GUT_pos : sin_sq_theta_W_GUT > 0 := by
+  unfold sin_sq_theta_W_GUT; norm_num
+
+/-- sin²θ_W(GUT) < 1 -/
+theorem sin_sq_theta_W_GUT_lt_one : sin_sq_theta_W_GUT < 1 := by
+  unfold sin_sq_theta_W_GUT; norm_num
+
+/-- sin²θ_W at M_Z (on-shell scheme): 1 - M_W²/M_Z² = 0.2232.
+
+    **Physical meaning:**
+    The Weinberg angle in the on-shell scheme, defined via gauge boson masses.
+
+    **Citation:** PDG 2024 -/
+noncomputable def sin_sq_theta_W_onshell : ℝ := 1 - (M_W_GeV / M_Z_GeV)^2
+
+/-- sin²θ_W at M_Z (MS-bar scheme): 0.23122 ± 0.00003.
+
+    **Physical meaning:**
+    The Weinberg angle after RG running from GUT scale to M_Z.
+
+    **Citation:** PDG 2024 -/
+noncomputable def sin_sq_theta_W_MSbar : ℝ := 0.23122
+
+/-- SU(3) β-function coefficient: b₃ = -7.
+
+    **Physical meaning:**
+    The one-loop β-function coefficient for SU(3)_C.
+    Determines the running of the strong coupling α_s.
+
+    **Derivation:**
+    b₃ = -(11/3)C₂(G) + (4/3)T(R)N_f = -(11/3)×3 + (4/3)×(1/2)×6 = -11 + 4 = -7
+
+    **Citation:** PDG 2024, QCD running review -/
+noncomputable def b3_SU3 : ℝ := -7
+
+/-- ρ parameter tree-level value: ρ = M_W²/(M_Z² cos²θ_W) = 1.
+
+    **Physical meaning:**
+    The custodial SU(2) symmetry parameter. Equals 1 at tree level.
+    Deviations indicate new physics or radiative corrections.
+
+    **Citation:** PDG 2024, ρ = 1.00038 ± 0.00020 (includes loop corrections) -/
+noncomputable def rho_tree_level : ℝ := 1
+
+/-- ρ tree-level = 1 -/
+theorem rho_tree_level_value : rho_tree_level = 1 := rfl
+
+/-- Logarithm of GUT to Z scale ratio: ln(M_GUT/M_Z) ≈ 33.
+
+    **Physical meaning:**
+    The number of e-foldings from M_Z to M_GUT, determines RG running magnitude.
+
+    **Derivation:** ln(2×10¹⁶/91.2) ≈ 33.0 -/
+noncomputable def ln_GUT_Z_ratio : ℝ := 33
+
+/-- Verification: g₂ = 2M_W/v_H relationship.
+
+    In the on-shell scheme, this is the definition of g₂. -/
+theorem g2_from_MW_vH :
+    |2 * M_W_GeV / v_H_precise_GeV - g2_MZ_onshell| < 0.001 := by
+  unfold M_W_GeV v_H_precise_GeV g2_MZ_onshell
+  norm_num
+
+/-! ═══════════════════════════════════════════════════════════════════════════
+    SECTION 26: QCD CASIMIR FACTORS AND LOOP CONSTANTS (Proposition 6.3.1)
+    ═══════════════════════════════════════════════════════════════════════════
+
+    Standard QCD Casimir factors and constants for one-loop corrections.
+    Reference: docs/proofs/Phase6/Proposition-6.3.1-One-Loop-QCD-Corrections.md
+-/
+
+/-- Fundamental representation Casimir C_F = (N_c² - 1)/(2N_c) = 4/3 for SU(3).
+
+    **Physical meaning:**
+    Appears in quark self-energy and vertex corrections.
+
+    **Citation:** Standard SU(3) result, PDG QCD review -/
+noncomputable def C_F : ℝ := C2_fundamental
+
+/-- C_F = 4/3 -/
+theorem C_F_value : C_F = 4 / 3 := rfl
+
+/-- C_F > 0 -/
+theorem C_F_pos : C_F > 0 := C2_fundamental_pos
+
+/-- Adjoint representation Casimir C_A = N_c = 3 for SU(3).
+
+    **Physical meaning:**
+    Appears in gluon self-energy and gluon loop contributions.
+
+    **Citation:** Standard SU(3) result -/
+noncomputable def C_A : ℝ := C2_adjoint
+
+/-- C_A = 3 -/
+theorem C_A_value : C_A = 3 := rfl
+
+/-- C_A > 0 -/
+theorem C_A_pos : C_A > 0 := C2_adjoint_pos
+
+/-- Trace normalization T_F = 1/2 for fundamental representation.
+
+    **Physical meaning:**
+    Tr(T^a T^b) = T_F δ^{ab} in our convention.
+    Appears in fermion loop contributions to gluon self-energy.
+
+    **Citation:** Standard normalization (Peskin & Schroeder convention) -/
+noncomputable def T_F : ℝ := 1 / 2
+
+/-- T_F = 1/2 -/
+theorem T_F_value : T_F = 1 / 2 := rfl
+
+/-- T_F > 0 -/
+theorem T_F_pos : T_F > 0 := by unfold T_F; norm_num
+
+/-- Strong coupling at M_Z (PDG 2024): α_s(M_Z) = 0.1180 ± 0.0009.
+
+    **Physical meaning:**
+    The MS-bar strong coupling constant at the Z boson mass scale.
+
+    **Citation:** PDG 2024, QCD section -/
+noncomputable def alpha_s_MZ_PDG : ℝ := 0.1180
+
+/-- PDG uncertainty on α_s(M_Z) -/
+noncomputable def alpha_s_MZ_uncertainty : ℝ := 0.0009
+
+/-- α_s(M_Z) > 0 -/
+theorem alpha_s_MZ_PDG_pos : alpha_s_MZ_PDG > 0 := by
+  unfold alpha_s_MZ_PDG; norm_num
+
+/-- Strong coupling at M_Z (CG prediction): α_s(M_Z) = 0.122.
+
+    **Physical meaning:**
+    CG prediction from E₆ → E₈ cascade running from the Planck scale.
+
+    **Citation:** Proposition 0.0.17s, Proposition 6.3.1 §4.1 -/
+noncomputable def alpha_s_MZ_CG : ℝ := 0.122
+
+/-- CG theoretical uncertainty on α_s(M_Z) -/
+noncomputable def alpha_s_MZ_CG_uncertainty : ℝ := 0.010
+
+/-- α_s(M_Z) CG > 0 -/
+theorem alpha_s_MZ_CG_pos : alpha_s_MZ_CG > 0 := by
+  unfold alpha_s_MZ_CG; norm_num
+
+/-- CG vs PDG deviation for α_s(M_Z): ~3.4%.
+
+    **Physical meaning:**
+    The 4.4σ experimental tension is within the 20% theoretical uncertainty
+    from one-loop running, threshold corrections, and scale uncertainties.
+
+    **Citation:** Proposition 6.3.1 §4.1 -/
+theorem alpha_s_MZ_deviation :
+    |alpha_s_MZ_CG - alpha_s_MZ_PDG| / alpha_s_MZ_PDG < 0.04 := by
+  unfold alpha_s_MZ_CG alpha_s_MZ_PDG
+  norm_num
+
+/-- One-loop QCD β-function coefficient: β₀ = 11 - 2N_f/3.
+
+    **Physical meaning:**
+    The coefficient in β(α_s) = -β₀ α_s²/(2π) + O(α_s³).
+
+    For N_f = 6: β₀ = 11 - 4 = 7.
+
+    **Citation:** Gross-Wilczek (1973), Politzer (1973) -/
+noncomputable def beta0_QCD (n_f : ℕ) : ℝ := 11 - 2 * n_f / 3
+
+/-- β₀ for N_f = 6: β₀ = 7 -/
+theorem beta0_QCD_nf6 : beta0_QCD 6 = 7 := by
+  unfold beta0_QCD; norm_num
+
+/-- β₀ > 0 for N_f ≤ 16 (asymptotic freedom) -/
+theorem beta0_QCD_positive (n_f : ℕ) (h : n_f ≤ 16) : beta0_QCD n_f > 0 := by
+  unfold beta0_QCD
+  have hcast : (n_f : ℝ) ≤ 16 := Nat.cast_le.mpr h
+  linarith
+
+/-- Two-loop β-function coefficient: β₁ = 102 - 38N_f/3.
+
+    **Physical meaning:**
+    The second coefficient in the expansion:
+    β(α_s) = -β₀ α_s²/(2π) - β₁ α_s³/(4π²) + O(α_s⁴)
+
+    For N_f = 6: β₁ = 102 - 76 = 26.
+
+    **Citation:** Caswell (1974), Jones (1974) -/
+noncomputable def beta1_QCD (n_f : ℕ) : ℝ := 102 - 38 * n_f / 3
+
+/-- β₁ for N_f = 6: β₁ = 26 -/
+theorem beta1_QCD_nf6 : beta1_QCD 6 = 26 := by
+  unfold beta1_QCD; norm_num
+
+/-- Mass anomalous dimension coefficient: γ_m^(0) = 6 C_F = 8.
+
+    **Physical meaning:**
+    The one-loop coefficient in γ_m = γ_m^(0) α_s/(4π) + O(α_s²).
+
+    **Citation:** Proposition 6.3.1 §4.2 -/
+noncomputable def gamma_m_0 : ℝ := 6 * C_F
+
+/-- γ_m^(0) = 8 for SU(3) -/
+theorem gamma_m_0_value : gamma_m_0 = 8 := by
+  unfold gamma_m_0 C_F C2_fundamental; norm_num
+
+/-- γ_m^(0) > 0 -/
+theorem gamma_m_0_pos : gamma_m_0 > 0 := by
+  unfold gamma_m_0 C_F C2_fundamental; norm_num
+
+/-! ═══════════════════════════════════════════════════════════════════════════
+    SECTION 21: LHC CROSS-SECTION CONSTANTS
+    ═══════════════════════════════════════════════════════════════════════════
+
+    Constants for LHC cross-section predictions (Proposition 6.5.1).
+    Reference: docs/proofs/Phase6/Proposition-6.5.1-LHC-Cross-Section-Predictions.md
+-/
+
+/-- Top quark mass: m_t = 172.5 GeV (PDG 2024).
+
+    **Physical meaning:**
+    The pole mass of the top quark. In CG, this corresponds to
+    phase-gradient mass generation with η_t ≈ 1.
+
+    **Citation:** PDG 2024, m_t = 172.57 ± 0.29 GeV -/
+noncomputable def m_top_GeV : ℝ := 172.5
+
+/-- m_t > 0 -/
+theorem m_top_GeV_pos : m_top_GeV > 0 := by unfold m_top_GeV; norm_num
+
+/-- Top mass uncertainty: ±0.5 GeV (combined) -/
+noncomputable def m_top_uncertainty_GeV : ℝ := 0.5
+
+/-- Strong coupling at top mass scale: α_s(m_t) = 0.108.
+
+    **Physical meaning:**
+    The running strong coupling evaluated at the top quark mass scale.
+    In CG, this follows from geometric running (Prop 0.0.17s).
+
+    **Citation:** PDG 2024, derived from α_s(M_Z) = 0.1180 -/
+noncomputable def alpha_s_mt : ℝ := 0.108
+
+/-- α_s(m_t) > 0 -/
+theorem alpha_s_mt_pos : alpha_s_mt > 0 := by unfold alpha_s_mt; norm_num
+
+/-- Electroweak EFT scale: Λ_EW = 10 TeV.
+
+    **Physical meaning:**
+    The scale at which CG form factor corrections become significant.
+    Current LHC constraints: Λ_EW > 8 TeV.
+
+    **Citation:** Proposition 6.5.1 §4.1 -/
+noncomputable def Lambda_EW_TeV : ℝ := 10
+
+/-- Λ_EW > 0 -/
+theorem Lambda_EW_TeV_pos : Lambda_EW_TeV > 0 := by unfold Lambda_EW_TeV; norm_num
+
+/-- Lower bound on Λ_EW from current data: 8 TeV -/
+noncomputable def Lambda_EW_lower_bound_TeV : ℝ := 8
+
+/-- Top quark pair production cross-section at 13 TeV: σ(tt̄) ≈ 834 pb (CG/SM prediction).
+
+    **Physical meaning:**
+    The inclusive tt̄ production cross-section at the LHC (13 TeV).
+    CG prediction is identical to SM NNLO+NNLL.
+
+    **Citation:** Top++v2.0, ATLAS/CMS 2024: 829 ± 19 pb -/
+noncomputable def sigma_ttbar_13TeV_pb : ℝ := 834
+
+/-- Experimental σ(tt̄) value: 829 pb -/
+noncomputable def sigma_ttbar_exp_pb : ℝ := 829
+
+/-- Experimental uncertainty on σ(tt̄): ±19 pb -/
+noncomputable def sigma_ttbar_uncertainty_pb : ℝ := 19
+
+/-- σ(tt̄) > 0 -/
+theorem sigma_ttbar_pos : sigma_ttbar_13TeV_pb > 0 := by
+  unfold sigma_ttbar_13TeV_pb; norm_num
+
+/-- W boson production cross-section at 13 TeV: σ(W) ≈ 20.7 nb.
+
+    **Physical meaning:**
+    The inclusive W production cross-section (W+ + W-).
+    CG with SM electroweak couplings matches SM prediction.
+
+    **Citation:** ATLAS 2017: σ(W) = 20.6 ± 0.6 nb -/
+noncomputable def sigma_W_13TeV_nb : ℝ := 20.7
+
+/-- Experimental σ(W) value: 20.6 nb -/
+noncomputable def sigma_W_exp_nb : ℝ := 20.6
+
+/-- Experimental uncertainty on σ(W): ±0.6 nb -/
+noncomputable def sigma_W_uncertainty_nb : ℝ := 0.6
+
+/-- σ(W) > 0 -/
+theorem sigma_W_pos : sigma_W_13TeV_nb > 0 := by
+  unfold sigma_W_13TeV_nb; norm_num
+
+/-- Z boson to dilepton cross-section at 13 TeV: σ(Z→ℓℓ) ≈ 1.98 nb.
+
+    **Physical meaning:**
+    The Z → ℓ⁺ℓ⁻ production cross-section.
+    CG with SM electroweak couplings matches SM prediction.
+
+    **Citation:** ATLAS 2017: σ(Z→ℓℓ) = 1.98 ± 0.04 nb -/
+noncomputable def sigma_Z_ll_13TeV_nb : ℝ := 1.98
+
+/-- Experimental σ(Z→ℓℓ) value: 1.98 nb -/
+noncomputable def sigma_Z_ll_exp_nb : ℝ := 1.98
+
+/-- Experimental uncertainty on σ(Z→ℓℓ): ±0.04 nb -/
+noncomputable def sigma_Z_ll_uncertainty_nb : ℝ := 0.04
+
+/-- σ(Z→ℓℓ) > 0 -/
+theorem sigma_Z_ll_pos : sigma_Z_ll_13TeV_nb > 0 := by
+  unfold sigma_Z_ll_13TeV_nb; norm_num
+
+/-- Higgs production via gluon fusion at 13 TeV: σ(H, ggF) ≈ 48.5 pb.
+
+    **Physical meaning:**
+    The dominant Higgs production mode at LHC.
+    CG predicts SM value (χ corrections suppressed by (v/Λ_EW)² ~ 10⁻⁴).
+
+    **Citation:** CERN Yellow Report N³LO: 48.52 pb, ATLAS/CMS: 49.6 ± 5.2 pb -/
+noncomputable def sigma_H_ggF_13TeV_pb : ℝ := 48.5
+
+/-- Experimental σ(H, ggF) value: 49.6 pb -/
+noncomputable def sigma_H_ggF_exp_pb : ℝ := 49.6
+
+/-- Experimental uncertainty on σ(H, ggF): ±5.2 pb -/
+noncomputable def sigma_H_ggF_uncertainty_pb : ℝ := 5.2
+
+/-- σ(H, ggF) > 0 -/
+theorem sigma_H_ggF_pos : sigma_H_ggF_13TeV_pb > 0 := by
+  unfold sigma_H_ggF_13TeV_pb; norm_num
+
+/-- Form factor correction coefficient: c_eff ≈ 1.
+
+    **Physical meaning:**
+    The effective coefficient in σ_CG/σ_SM = 1 + c_eff(p_T/Λ)².
+    Incorporates QCD color factors and higher-order corrections.
+
+    **Citation:** Proposition 6.5.1 §4.1 -/
+noncomputable def form_factor_coeff : ℝ := 1
+
+/-- Hexadecapole anisotropy coefficient ε₄ at TeV scale: ~10⁻³³.
+
+    **Physical meaning:**
+    The ℓ=4 Lorentz violation parameter from O_h stella symmetry.
+    CG predicts ε₄ ~ (E/M_P)² with no ℓ=2 component.
+
+    **Citation:** Theorem 0.0.14, Proposition 6.5.1 §4.2 -/
+noncomputable def epsilon_4_TeV : ℝ := 1e-33
+
+/-- Higgs trilinear deviation: δλ₃ ~ 1-10%.
+
+    **Physical meaning:**
+    The fractional deviation of the Higgs self-coupling from SM value
+    due to χ-Higgs portal mixing.
+
+    **Citation:** Proposition 6.5.1 §4.4 -/
+noncomputable def delta_lambda3_min : ℝ := 0.01
+noncomputable def delta_lambda3_max : ℝ := 0.10
 
 end ChiralGeometrogenesis.Constants

@@ -3,7 +3,7 @@
 ## Status: ✅ VERIFIED — 12/13 Tests Pass (5/6 Genuine Quantitative, 6/6 Consistency, 1 Qualitative)
 
 **Created:** 2026-01-20
-**Last Updated:** 2026-01-22 (Multi-agent peer review corrections applied)
+**Last Updated:** 2026-01-31 (Section 13.3 flux tube width table corrected)
 **Purpose:** Establish how the transition from partons to hadrons is governed by the same χ field that generates quark masses, providing a unified description of confinement and fragmentation.
 
 **Verification:**
@@ -223,13 +223,16 @@ The confinement criterion is the area law for Wilson loops:
 
 $$\langle W(C)\rangle \sim \exp(-\sigma \cdot \text{Area}(C))$$
 
-**CG derivation (schematic):**
-
-The χ field creates a pressure boundary at $r \sim R_{\rm stella}$. For a $q\bar{q}$ pair at separation $R$:
+**CG derivation:** The χ field creates a pressure boundary at $r \sim R_{\rm stella}$. For a $q\bar{q}$ pair at separation $R$:
 
 $$E(R) = \sigma R + \text{const}$$
 
 with $\sigma = (\hbar c/R_{\rm stella})^2$.
+
+**Full derivation:** The complete derivation showing how χ-field pressure gradients produce linear confinement is in [Theorem-2.1.2-Pressure-Field-Gradient.md](../Phase2/Theorem-2.1.2-Pressure-Field-Gradient.md):
+- §3: Force from pressure gradient ($\mathbf{F} = -\nabla P$, pointing inward)
+- §4-5: χ-color coupling derived from σ-model Yukawa term ($g\sigma\bar{q}q$)
+- §5.9: Lattice QCD verification (Iritani et al. 2015 — condensate suppression in flux tubes)
 
 **Key insight:** The same χ-field dynamics that confine quarks also:
 1. Generate quark masses (phase-gradient coupling)
@@ -481,7 +484,7 @@ The genuine predictions in this proposition can be tested using:
 
 | Observable | CG Prediction | Standard Approach |
 |------------|---------------|-------------------|
-| Flux tube width | 2R_stella = 0.90 fm | Fitted from lattice |
+| Flux tube width (RMS) | R_stella = 0.448 fm | Fitted from lattice (~0.49 fm) |
 | T_c | 0.35√σ = 154 MeV | Lattice QCD (computed) |
 | T_c/√σ ratio | 0.35 (exact) | No prediction |
 | QGP ξ | R_stella = 0.448 fm (constant) | Energy-dependent |
@@ -659,7 +662,7 @@ The genuine predictions in this proposition can be tested using:
 ---
 
 *Created: 2026-01-20*
-*Last updated: 2026-01-22 — Multi-agent peer review corrections applied*
+*Last updated: 2026-01-31 — Section 13.3 flux tube width table corrected*
 *Status: ✅ VERIFIED — 12/13 tests pass (5/6 genuine quantitative, 6/6 consistency, 1 qualitative)*
 *Peterson parameters and quantitative strangeness suppression outside CG scope (see §10.1)*
 *Next step: Proposition 6.5.1 (LHC Cross-Section Predictions)*

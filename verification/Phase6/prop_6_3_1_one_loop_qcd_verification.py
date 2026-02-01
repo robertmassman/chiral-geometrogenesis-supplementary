@@ -245,24 +245,27 @@ add_test(
 print()
 print("--- Test 5: Mass Anomalous Dimension ---")
 
-# One-loop mass anomalous dimension: γ_m = 3C_F α_s / π = 4α_s / π
-gamma_m_coeff = 3 * C_F  # Coefficient in γ_m = (3C_F/π) α_s
+# One-loop mass anomalous dimension: γ_m = γ_m^(0) α_s/(4π) where γ_m^(0) = 6 C_F = 8
+# This follows from the mass counterterm δm = -3 α_s C_F m/(4π ε)
+# Convention: β(α_s) = -(β_0/2π)α_s², so exponent = γ_m^(0)/(2β_0)
+gamma_m_0 = 6 * C_F  # γ_m^(0) coefficient in γ_m = γ_m^(0) × (α_s/(4π))
 
 add_test(
-    "Mass anomalous dimension coefficient",
-    np.isclose(gamma_m_coeff, 4.0, rtol=1e-10),
-    "3C_F = 4",
-    f"{gamma_m_coeff:.1f}",
-    "γ_m = (4/π)α_s at one loop"
+    "Mass anomalous dimension coefficient γ_m^(0)",
+    np.isclose(gamma_m_0, 8.0, rtol=1e-10),
+    "6C_F = 8",
+    f"{gamma_m_0:.1f}",
+    "γ_m = γ_m^(0) α_s/(4π) = 8 α_s/(4π) = 2 α_s/π"
 )
 
-# Running mass formula: m(Q) = m(μ) × (α_s(Q)/α_s(μ))^{4/b_1}
-mass_exponent = gamma_m_coeff / b_1
+# Running mass formula: m(Q) = m(μ) × (α_s(Q)/α_s(μ))^{γ_m^(0)/(2β_0)}
+# The factor of 2 in denominator arises from β = -(β_0/2π)α_s² normalization
+mass_exponent = gamma_m_0 / (2 * b_1)
 
 add_test(
-    "Mass running exponent 4/b_1",
+    "Mass running exponent γ_m^(0)/(2β_0)",
     np.isclose(mass_exponent, 4/7, rtol=1e-10),
-    "4/7 ≈ 0.571",
+    "8/14 = 4/7 ≈ 0.571",
     f"{mass_exponent:.4f}",
     "m(Q)/m(μ) ∝ (α_s(Q)/α_s(μ))^{4/7}"
 )
@@ -513,7 +516,7 @@ print(f"  - β-function: b_1 = {b_1:.0f}, b_2 = {b_2:.0f}")
 print(f"  - Asymptotic freedom: VERIFIED (b_1 > 0)")
 print(f"  - α_s(M_Z) from CG geometric running: {alpha_mz_from_planck_documented:.4f}")
 print(f"  - Deviation from PDG: {deviation_percent:.1f}%")
-print(f"  - Mass anomalous dimension: γ_m = (4/π)α_s")
+print(f"  - Mass anomalous dimension: γ_m = 2α_s/π (γ_m^(0) = 8)")
 print(f"  - IR cancellation: KLN theorem applies")
 print()
 print("One-loop QCD structure is preserved in CG with geometric β-function.")

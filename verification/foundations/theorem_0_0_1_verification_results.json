@@ -97,15 +97,15 @@
         "D": 2,
         "n": 1,
         "odd_spatial": true,
-        "holds": true,
-        "wave_behavior": "sharp propagation"
+        "holds": false,
+        "wave_behavior": "NO Huygens (1D degenerate: no spherical wavefront)"
       },
       "2": {
         "D": 3,
         "n": 2,
         "odd_spatial": false,
         "holds": false,
-        "wave_behavior": "has tails/afterglow"
+        "wave_behavior": "has tails/afterglow (even dimension)"
       },
       "3": {
         "D": 4,
@@ -119,7 +119,7 @@
         "n": 4,
         "odd_spatial": false,
         "holds": false,
-        "wave_behavior": "has tails/afterglow"
+        "wave_behavior": "has tails/afterglow (even dimension)"
       },
       "5": {
         "D": 6,
@@ -133,7 +133,7 @@
         "n": 6,
         "odd_spatial": false,
         "holds": false,
-        "wave_behavior": "has tails/afterglow"
+        "wave_behavior": "has tails/afterglow (even dimension)"
       }
     },
     "combined_analysis": {
@@ -142,7 +142,7 @@
         "n": 1,
         "P1_orbital": false,
         "P2_atomic": false,
-        "P3_huygens": true,
+        "P3_huygens": false,
         "all_requirements": false
       },
       "2": {
