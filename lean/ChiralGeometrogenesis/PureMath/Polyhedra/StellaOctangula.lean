@@ -1286,6 +1286,87 @@ theorem all_vertices_on_sphere (v : StellaVertex) :
 theorem stella_circumradius_sq : ∀ v : StellaVertex, distSqFromOrigin v.toPoint3D = 3 :=
   all_vertices_on_sphere
 
+/-! ## Transitivity of Group Action
+
+The S₄ × Z₂ group acts transitively on the 8 stella vertices.
+This is the key property that forces any invariant probability distribution to be uniform.
+
+**Mathematical fact:** For any v, w ∈ StellaVertex, ∃ g ∈ S₄ × Z₂ such that g·v = w.
+
+**Proof strategy:**
+- For the permutation component: Use Equiv.swap v.idx w.idx
+- For the swap component: Use xor v.isUp w.isUp
+
+**Citation:** Standard result for compound polytopes; see Coxeter (1973) §3.6.
+-/
+
+/-- S₄ × Z₂ acts transitively on the 8 stella vertices.
+
+    **Theorem:** For any two vertices v, w of the stella octangula,
+    there exists a group element g ∈ S₄ × Z₂ such that g·v = w.
+
+    **Physical Consequence:** Any S₄ × Z₂-invariant probability distribution
+    on vertices must be uniform (all vertices equivalent under symmetry).
+-/
+theorem S4xZ2_transitive (v w : StellaVertex) : ∃ g : S4xZ2, g.act v = w := by
+  -- Construct the group element: permutation swaps indices, Bool swaps tetrahedra if needed
+  use ⟨Equiv.swap v.idx w.idx, xor v.isUp w.isUp⟩
+  apply StellaVertex.ext
+  · -- Show: xor v.isUp (xor v.isUp w.isUp) = w.isUp
+    simp only [S4xZ2.act]
+    -- Case split on both Boolean values
+    cases v.isUp <;> cases w.isUp <;> rfl
+  · -- Show: (Equiv.swap v.idx w.idx) v.idx = w.idx
+    simp only [S4xZ2.act]
+    exact Equiv.swap_apply_left v.idx w.idx
+
+/-- Given transitivity, any invariant function is constant on all vertices.
+
+    **Theorem (Standard Ergodic Theory):**
+    If G acts transitively on a finite set X and f : X → α is G-invariant
+    (meaning f(g·x) = f(x) for all g ∈ G, x ∈ X), then f is constant.
+
+    **Proof:** For any x, y ∈ X, by transitivity ∃ g: g·x = y.
+    By invariance: f(y) = f(g·x) = f(x). So f is constant.
+
+    **Citation:** Standard result; see e.g. Folland, "Real Analysis" (1999), §11.4.
+-/
+theorem S4xZ2_invariant_is_constant {α : Type*} (f : StellaVertex → α)
+    (h_invariant : ∀ g : S4xZ2, ∀ v : StellaVertex, f (g.act v) = f v) :
+    ∀ v w : StellaVertex, f v = f w := by
+  intro v w
+  -- By transitivity, there exists g such that g.act v = w
+  obtain ⟨g, hg⟩ := S4xZ2_transitive v w
+  -- By invariance: f w = f (g.act v) = f v
+  calc f v = f (g.act v) := (h_invariant g v).symm
+       _ = f w := by rw [hg]
+
+/-- For probability distributions: S₄ × Z₂ invariance implies uniform distribution.
+
+    **Corollary:** If p : StellaVertex → ℝ is an S₄ × Z₂-invariant probability
+    distribution (p(g·v) = p(v) for all g, v), then p(v) = 1/8 for all v.
+
+    **Note:** This follows from S4xZ2_invariant_is_constant plus normalization.
+    The full proof requires summing over Fintype, but the key insight is that
+    invariance forces p to be constant, and normalization fixes the value.
+-/
+theorem S4xZ2_invariant_probability_uniform (p : StellaVertex → ℝ)
+    (h_invariant : ∀ g : S4xZ2, ∀ v : StellaVertex, p (g.act v) = p v)
+    (h_nonneg : ∀ v, p v ≥ 0)
+    (h_sum : ∑ v : StellaVertex, p v = 1) :
+    ∀ v : StellaVertex, p v = 1 / 8 := by
+  intro v
+  -- By invariance, p is constant on all vertices
+  have h_const : ∀ w, p w = p v := fun w => (S4xZ2_invariant_is_constant p h_invariant v w).symm
+  -- The sum equals 8 × p(v)
+  have h_sum_eq : ∑ w : StellaVertex, p w = 8 * p v := by
+    conv_lhs => rw [Finset.sum_congr rfl (fun w _ => h_const w)]
+    simp only [Finset.sum_const, Finset.card_univ, StellaVertex_card]
+    -- Convert 8 • p v to 8 * p v (nsmul to ring multiplication)
+    simp only [nsmul_eq_mul, Nat.cast_ofNat]
+  -- From h_sum and h_sum_eq: 8 * p(v) = 1, so p(v) = 1/8
+  linarith
+
 /-! ## Summary Theorems -/
 
 /-- Complete characterization of the stella octangula -/

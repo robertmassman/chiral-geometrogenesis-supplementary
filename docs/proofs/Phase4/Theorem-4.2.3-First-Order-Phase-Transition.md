@@ -441,6 +441,14 @@ This theorem relies on:
 - **Theorem 1.1.1** (SU(3) Stella Octangula Isomorphism): Provides the S₄ × ℤ₂ symmetry ✅ VERIFIED
 - **Theorem 3.2.1** (Low-Energy Equivalence): Establishes matching to SM Higgs at low energies ✅ VERIFIED
 - **Definition 0.1.2** (Three-Color Fields): Defines the χ_R, χ_G, χ_B structure ✅ VERIFIED
+- **[Prop 0.0.27](../foundations/Proposition-0.0.27-Higgs-Mass-From-Geometry.md)** (Higgs Mass from Geometry): Provides λ = 1/8 from vertex counting on ∂S 🔶 NOVEL
+
+### Dependent Theorems (use this result)
+
+| Theorem | What It Uses | Purpose |
+|---------|--------------|---------|
+| **[Theorem 4.2.1](./Theorem-4.2.1-Chiral-Bias-Soliton-Formation.md)** | v(T_c)/T_c ≈ 1.2 | Baryogenesis out-of-equilibrium condition |
+| **[Theorem 4.2.2](./Theorem-4.2.2-Sakharov-Conditions.md)** | First-order EWPT | Sakharov 3rd condition verification |
 
 ---
 

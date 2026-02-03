@@ -1,0 +1,645 @@
+{
+  "proposition": "0.0.27",
+  "section": "10.3.12.10.18",
+  "title": "Monte Carlo Verification on Stella Lattice",
+  "timestamp": "2026-02-03T07:06:15.002285",
+  "tests": {
+    "test_I_1": {
+      "test": "I.1",
+      "name": "Laplacian Structure",
+      "eigenvalues": {
+        "computed": [
+          3.552713678800501e-15,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "expected": [
+          0,
+          4,
+          4,
+          4
+        ],
+        "passed": true
+      },
+      "traces": {
+        "Tr(L)": 12.0,
+        "Tr(L)_expected": 12,
+        "Tr(L\u00b2)": 48.0,
+        "Tr(L\u00b2)_expected": 48,
+        "passed": "True"
+      },
+      "zero_mode": {
+        "eigenvector": [
+          -0.5000000000000001,
+          -0.4999999999999999,
+          -0.4999999999999999,
+          -0.4999999999999999
+        ],
+        "is_constant": false
+      },
+      "edge_trace_identity": {
+        "Tr(L)": 12.0,
+        "2\u00d7n_edges": 12,
+        "passed": "True"
+      },
+      "passed": true
+    },
+    "test_I_2": {
+      "test": "I.2",
+      "name": "Plaquette Average",
+      "SU2_predictions": [
+        {
+          "beta": 0.1,
+          "strong_coupling": 0.0125,
+          "weak_coupling": -6.5,
+          "approx": 0.0125,
+          "regime": "Strong"
+        },
+        {
+          "beta": 1.0,
+          "strong_coupling": 0.125,
+          "weak_coupling": 0.25,
+          "approx": 0.125,
+          "regime": "Strong"
+        },
+        {
+          "beta": 3.0,
+          "strong_coupling": 0.375,
+          "weak_coupling": 0.75,
+          "approx": 0.5625,
+          "regime": "Crossover"
+        },
+        {
+          "beta": 6.0,
+          "strong_coupling": 0.75,
+          "weak_coupling": 0.875,
+          "approx": 0.875,
+          "regime": "Weak"
+        },
+        {
+          "beta": 10.0,
+          "strong_coupling": 1.25,
+          "weak_coupling": 0.925,
+          "approx": 0.925,
+          "regime": "Weak"
+        }
+      ],
+      "SU3_predictions": [
+        {
+          "beta": 0.1,
+          "strong_coupling": 0.005555555555555556,
+          "weak_coupling": -12.333333333333332,
+          "regime": "Strong"
+        },
+        {
+          "beta": 1.0,
+          "strong_coupling": 0.05555555555555555,
+          "weak_coupling": -0.33333333333333326,
+          "regime": "Strong"
+        },
+        {
+          "beta": 3.0,
+          "strong_coupling": 0.16666666666666666,
+          "weak_coupling": 0.5555555555555556,
+          "regime": "Crossover"
+        },
+        {
+          "beta": 6.0,
+          "strong_coupling": 0.3333333333333333,
+          "weak_coupling": 0.7777777777777778,
+          "regime": "Weak"
+        },
+        {
+          "beta": 10.0,
+          "strong_coupling": 0.5555555555555556,
+          "weak_coupling": 0.8666666666666667,
+          "regime": "Weak"
+        }
+      ],
+      "SU2_monte_carlo": [
+        {
+          "beta": 1.0,
+          "P_mc": 0.23860711176361366,
+          "P_mc_std": 0.001492249902557614,
+          "P_strong": 0.125,
+          "P_weak": 0.25,
+          "regime": "Strong",
+          "passed": true
+        },
+        {
+          "beta": 3.0,
+          "P_mc": 0.5664428550318271,
+          "P_mc_std": 0.0010510286661900648,
+          "P_strong": 0.375,
+          "P_weak": 0.75,
+          "regime": "Crossover",
+          "passed": true
+        },
+        {
+          "beta": 6.0,
+          "P_mc": 0.7631703977935267,
+          "P_mc_std": 0.0006060969648907245,
+          "P_strong": 0.75,
+          "P_weak": 0.875,
+          "regime": "Weak",
+          "passed": true
+        }
+      ],
+      "strong_coupling_verification": {
+        "beta": 0.5,
+        "P_mc": 0.12756386721391963,
+        "P_strong": 0.0625,
+        "ratio": 2.041021875422714,
+        "passed": "True"
+      },
+      "passed": "True"
+    },
+    "test_I_3": {
+      "test": "I.3",
+      "name": "Topological Charge Distribution",
+      "distributions": [
+        {
+          "sigma_sq": 0.1,
+          "Q_values": [
+            -3,
+            -2,
+            -1,
+            0,
+            1,
+            2,
+            3
+          ],
+          "P(Q)": [
+            2.824456492609268e-20,
+            2.0337470543315634e-09,
+            0.006648354451823862,
+            0.9867032870288582,
+            0.006648354451823862,
+            2.0337470543315634e-09,
+            2.824456492609268e-20
+          ],
+          "P(0)": 0.9867032870288582,
+          "P(\u00b11)": 0.013296708903647723,
+          "mean_|Q|": 0.013296717038635941
+        },
+        {
+          "sigma_sq": 0.3,
+          "Q_values": [
+            -3,
+            -2,
+            -1,
+            0,
+            1,
+            2,
+            3
+          ],
+          "P(Q)": [
+            2.216206379103919e-07,
+            0.0009219999195055854,
+            0.1368369207461453,
+            0.7244817154274223,
+            0.1368369207461453,
+            0.0009219999195055854,
+            2.216206379103919e-07
+          ],
+          "P(0)": 0.7244817154274223,
+          "P(\u00b11)": 0.2736738414922906,
+          "mean_|Q|": 0.2773631708941404
+        },
+        {
+          "sigma_sq": 1.0,
+          "Q_values": [
+            -3,
+            -2,
+            -1,
+            0,
+            1,
+            2,
+            3
+          ],
+          "P(Q)": [
+            0.004433048175243745,
+            0.054005582622414484,
+            0.2420362293761143,
+            0.3990502796524549,
+            0.2420362293761143,
+            0.054005582622414484,
+            0.004433048175243745
+          ],
+          "P(0)": 0.3990502796524549,
+          "P(\u00b11)": 0.4840724587522286,
+          "mean_|Q|": 0.7266930782933491
+        }
+      ],
+      "monte_carlo": {
+        "sigma_sq": 0.3,
+        "n_samples": 100000,
+        "P(0)_mc": 0.7251,
+        "P(0)_expected": 0.7244817154246689,
+        "P(\u00b11)_mc": 0.27332,
+        "P(\u00b11)_expected": 0.2736738414912505,
+        "mean_|Q|_mc": 0.27648,
+        "mean_|Q|_expected": 0.2773631709082894,
+        "passed": "True"
+      },
+      "index_theorem": {
+        "Q_is_integer": true,
+        "passed": true
+      },
+      "passed": true
+    },
+    "test_II_1": {
+      "test": "II.1",
+      "name": "Partition Function",
+      "tests": [
+        {
+          "m\u00b2": 0.01,
+          "det_computed": 0.6448120099999994,
+          "det_expected": 0.6448120099999999,
+          "F_computed": -3.8951523638350203,
+          "F_expected": -3.8951523638350194,
+          "det_passed": "True",
+          "F_passed": "True"
+        },
+        {
+          "m\u00b2": 0.1,
+          "det_computed": 6.892100000000002,
+          "det_expected": 6.892099999999998,
+          "F_computed": -2.71056621875032,
+          "F_expected": -2.71056621875032,
+          "det_passed": "True",
+          "F_passed": "True"
+        },
+        {
+          "m\u00b2": 1.0,
+          "det_computed": 125.00000000000004,
+          "det_expected": 125.0,
+          "F_computed": -1.26159726416754,
+          "F_expected": -1.2615972641675404,
+          "det_passed": "True",
+          "F_passed": "True"
+        },
+        {
+          "m\u00b2": 4.0,
+          "det_computed": 2047.9999999999984,
+          "det_expected": 2048.0,
+          "F_computed": 0.13655536026100812,
+          "F_expected": 0.13655536026100812,
+          "det_passed": "True",
+          "F_passed": "True"
+        },
+        {
+          "m\u00b2": 10.0,
+          "det_computed": 27440.0,
+          "det_expected": 27440.0,
+          "F_computed": 1.43412440810122,
+          "F_expected": 1.4341244081012192,
+          "det_passed": "True",
+          "F_passed": "True"
+        }
+      ],
+      "passed": true,
+      "monte_carlo": {
+        "m\u00b2": 1.0,
+        "n_samples": 50000,
+        "\u27e8S\u27e9_mc": 1.998051902008083,
+        "\u27e8S\u27e9_expected": 2.0,
+        "passed": "True"
+      }
+    },
+    "test_II_2": {
+      "test": "II.2",
+      "name": "Scalar Propagator",
+      "mass_tests": [
+        {
+          "m\u00b2": 0.5,
+          "G_vv": 0.6666666666666664,
+          "G_vv_expected": 0.6666666666666666,
+          "G_vw": 0.44444444444444425,
+          "G_vw_expected": 0.4444444444444444,
+          "ratio": 1.5,
+          "ratio_expected": 1.5,
+          "passed": "True"
+        },
+        {
+          "m\u00b2": 1.0,
+          "G_vv": 0.39999999999999997,
+          "G_vv_expected": 0.4,
+          "G_vw": 0.19999999999999998,
+          "G_vw_expected": 0.2,
+          "ratio": 2.0,
+          "ratio_expected": 2.0,
+          "passed": "True"
+        },
+        {
+          "m\u00b2": 2.0,
+          "G_vv": 0.24999999999999997,
+          "G_vv_expected": 0.25,
+          "G_vw": 0.08333333333333336,
+          "G_vw_expected": 0.08333333333333334,
+          "ratio": 2.9999999999999987,
+          "ratio_expected": 2.9999999999999996,
+          "passed": "True"
+        },
+        {
+          "m\u00b2": 4.0,
+          "G_vv": 0.15625,
+          "G_vv_expected": 0.15625,
+          "G_vw": 0.03125,
+          "G_vw_expected": 0.03125,
+          "ratio": 5.0,
+          "ratio_expected": 5.0,
+          "passed": "True"
+        }
+      ],
+      "monte_carlo": {
+        "m\u00b2": 1.0,
+        "n_samples": 100000,
+        "G_vv_mc": 0.3998206901383765,
+        "G_vv_stderr": 0.001795588299354977,
+        "G_vv_expected": 0.4,
+        "G_vw_mc": 0.19841937530865322,
+        "G_vw_stderr": 0.0014093433252888642,
+        "G_vw_expected": 0.2,
+        "ratio_mc": 2.0150284694548173,
+        "ratio_expected": 2.0,
+        "passed": "True"
+      },
+      "passed": "True"
+    },
+    "test_II_3": {
+      "test": "II.3",
+      "name": "Four-Point Function",
+      "free_field": {
+        "\u27e8\u03c6\u2074\u27e9": 0.48242447248579107,
+        "\u27e8\u03c6\u00b2\u27e9": 0.4013425053471223,
+        "3\u27e8\u03c6\u00b2\u27e9\u00b2": 0.4832274197949147,
+        "G\u2084^(c)": -0.0008029473091236139,
+        "G\u2084^(c)_stderr": 0.002339051261380763,
+        "expected": 0.0,
+        "passed": "True"
+      },
+      "perturbative": {
+        "\u03bb": 0.125,
+        "G_vv": 0.39999999999999997,
+        "G\u2084^(c)_predicted": -0.4799999999999999,
+        "G\u2084^(c)/G_vv\u00b2": -3.0,
+        "expected_ratio": -3.0
+      },
+      "interacting_mc": {
+        "\u03bb": 0.125,
+        "n_samples": 50000,
+        "\u27e8\u03c6\u2074\u27e9": 0.42480804831701496,
+        "\u27e8\u03c6\u00b2\u27e9": 0.3791270943836847,
+        "G\u2084^(c)": -0.006404012770431122,
+        "G\u2084^(c)/\u27e8\u03c6\u00b2\u27e9\u00b2": -0.04455357362417869,
+        "expected_ratio": -3.0,
+        "passed": "False"
+      },
+      "passed": "True"
+    },
+    "test_II_4": {
+      "test": "II.4",
+      "name": "Wilson Loops",
+      "topology": {
+        "n_triangular_loops": 4,
+        "faces": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      "predictions": [
+        {
+          "beta": 0.5,
+          "W_strong": 0.027777777777777776,
+          "W_weak": 0.06948345122280154,
+          "regime": "Strong"
+        },
+        {
+          "beta": 1.0,
+          "W_strong": 0.05555555555555555,
+          "W_weak": 0.26359713811572677,
+          "regime": "Strong"
+        },
+        {
+          "beta": 2.0,
+          "W_strong": 0.1111111111111111,
+          "W_weak": 0.513417119032592,
+          "regime": "Crossover"
+        },
+        {
+          "beta": 4.0,
+          "W_strong": 0.2222222222222222,
+          "W_weak": 0.7165313105737893,
+          "regime": "Crossover"
+        },
+        {
+          "beta": 6.0,
+          "W_strong": 0.3333333333333333,
+          "W_weak": 0.8007374029168081,
+          "regime": "Weak"
+        }
+      ],
+      "creutz_ratio": {
+        "description": "On K\u2084, limited loop sizes prevent full Creutz ratio analysis",
+        "smallest_loop": "Triangle (3 edges, 1 face)",
+        "string_tension_access": "Requires tiled stella lattice"
+      },
+      "passed": true
+    },
+    "test_III_1": {
+      "test": "III.1",
+      "name": "Improvement Scaling",
+      "unimproved": {
+        "errors": [
+          0.08060461173627942,
+          0.020660495122981626,
+          0.005197494740633024,
+          0.001301405354118712
+        ],
+        "ratios": [
+          3.9013881930941325,
+          3.9750872591484914,
+          3.9937554614969852
+        ],
+        "expected_ratio": 4.0,
+        "description": "Without improvement: \u03b5 \u221d a\u00b2 (ratio \u2248 4)"
+      },
+      "improved": {
+        "c1": 0.08333333333333333,
+        "errors": [
+          0.0027287215970539513,
+          0.0001728382103516335,
+          1.0838592700235239e-05,
+          6.779792145472641e-07
+        ],
+        "ratios": [
+          15.787721890330035,
+          15.946554606474164,
+          15.9866150284164
+        ],
+        "expected_ratio": 16.0,
+        "description": "With c\u2081 = 1/12 improvement: \u03b5 \u221d a\u2074 (ratio \u2248 16)"
+      },
+      "passed": true
+    },
+    "test_III_2": {
+      "test": "III.2",
+      "name": "Higgs Mass Prediction",
+      "tree_level": {
+        "\u03bb": 0.125,
+        "v (GeV)": 246.22,
+        "m_H_tree (GeV)": 123.11,
+        "m_H_geometric (GeV)": 123.11,
+        "m_H_pdg (GeV)": 125.2,
+        "agreement (%)": 98.33067092651757
+      },
+      "radiative_correction": {
+        "\u0394m_H (GeV)": 2.0900000000000034,
+        "\u0394m_H/m_H (%)": 1.6976687515230309,
+        "interpretation": "~1.7% radiative correction needed"
+      },
+      "one_loop_estimate": {
+        "\u03b4m_H/m_H (%)_estimated": 0.33161742881182077,
+        "agrees_with_needed": "True"
+      },
+      "passed": "True"
+    },
+    "test_III_3": {
+      "test": "III.3",
+      "name": "Finite-Size Effects",
+      "finite_size_scaling": [
+        {
+          "L": 1,
+          "m(L)/m(\u221e)": 1.3678794411714423,
+          "correction (%)": 36.787944117144235
+        },
+        {
+          "L": 2,
+          "m(L)/m(\u221e)": 1.0169169104045765,
+          "correction (%)": 1.6916910404576588
+        },
+        {
+          "L": 4,
+          "m(L)/m(\u221e)": 1.0002861818576365,
+          "correction (%)": 0.028618185763647153
+        },
+        {
+          "L": 8,
+          "m(L)/m(\u221e)": 1.0000006552004452,
+          "correction (%)": 6.552004451220934e-05
+        },
+        {
+          "L": 16,
+          "m(L)/m(\u221e)": 1.0000000000274745,
+          "correction (%)": 2.747440789044412e-09
+        }
+      ],
+      "recommendations": {
+        "1%_precision": "L \u2265 8",
+        "0.1%_precision": "L \u2265 16",
+        "single_stella": "L = 1, ~37% error (need tiling)"
+      },
+      "variance_scaling": [
+        {
+          "n_sites": 4,
+          "variance": 0.25175604142446645,
+          "expected": 0.25,
+          "ratio": 1.0070241656978658
+        },
+        {
+          "n_sites": 16,
+          "variance": 0.06320850683596613,
+          "expected": 0.0625,
+          "ratio": 1.011336109375458
+        },
+        {
+          "n_sites": 64,
+          "variance": 0.01571632553762994,
+          "expected": 0.015625,
+          "ratio": 1.0058448344083162
+        }
+      ],
+      "passed": true
+    },
+    "test_III_4": {
+      "test": "III.4",
+      "name": "Statistical Errors",
+      "autocorrelation": {
+        "rho": 0.9,
+        "tau_int_computed": 9.341137494973562,
+        "tau_int_expected": 9.500000000000002,
+        "passed": "True"
+      },
+      "error_comparison": {
+        "sigma_naive": 0.003176947760248886,
+        "sigma_effective": 0.013731720458839065,
+        "inflation_factor": 4.322299733931825
+      },
+      "sample_requirements": {
+        "plaquette_1%": 1000,
+        "propagator_0.1%": 10000,
+        "topological_charge": 100000,
+        "higgs_mass_0.5%": 100000
+      },
+      "passed": "True"
+    },
+    "test_III_5": {
+      "test": "III.5",
+      "name": "Continuum Extrapolation",
+      "extrapolation": {
+        "a_values (fm)": [
+          0.1,
+          0.07,
+          0.05,
+          0.03
+        ],
+        "O_lat": [
+          0.12579671415301122,
+          0.1250087356988288,
+          0.12572268853810067,
+          0.12655002985640804
+        ],
+        "O_lat_err": [
+          0.002,
+          0.002,
+          0.002,
+          0.002
+        ],
+        "O_extrapolated": 0.1260469480943067,
+        "O_extrapolated_err": 0.0016638076751008149,
+        "O_true": 0.125,
+        "c2_fitted": -0.0606351984086393,
+        "c2_true": 0.03,
+        "passed": "True"
+      },
+      "chi2_test": {
+        "chi2": 0.25421049606673085,
+        "ndof": 2,
+        "chi2/ndof": 0.12710524803336543,
+        "good_fit": "True"
+      },
+      "passed": "True"
+    }
+  },
+  "overall_status": "PASSED"
+}

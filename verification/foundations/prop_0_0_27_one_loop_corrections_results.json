@@ -1,0 +1,338 @@
+{
+  "proposition": "0.0.27",
+  "section": "10.3.12.10.9",
+  "title": "One-Loop Corrections: Geometric Structure",
+  "timestamp": "2026-02-03T06:37:18.760648",
+  "tests": {
+    "test_I": {
+      "test": "I",
+      "name": "Propagator on K\u2084",
+      "mass_tests": [
+        {
+          "m\u00b2": 0.1,
+          "G_vv_computed": 2.682926829268286,
+          "G_vw_computed": 2.4390243902438957,
+          "ratio_computed": 1.1000000000000003,
+          "ratio_analytical": 1.1,
+          "expected_ratio": 1.1,
+          "satisfies_defining_equation": true,
+          "ratio_matches": true,
+          "passed": true
+        },
+        {
+          "m\u00b2": 0.5,
+          "G_vv_computed": 0.6666666666666664,
+          "G_vw_computed": 0.44444444444444425,
+          "ratio_computed": 1.5,
+          "ratio_analytical": 1.5,
+          "expected_ratio": 1.5,
+          "satisfies_defining_equation": true,
+          "ratio_matches": true,
+          "passed": true
+        },
+        {
+          "m\u00b2": 1.0,
+          "G_vv_computed": 0.39999999999999997,
+          "G_vw_computed": 0.19999999999999998,
+          "ratio_computed": 2.0,
+          "ratio_analytical": 2.0,
+          "expected_ratio": 2.0,
+          "satisfies_defining_equation": true,
+          "ratio_matches": true,
+          "passed": true
+        },
+        {
+          "m\u00b2": 2.0,
+          "G_vv_computed": 0.24999999999999997,
+          "G_vw_computed": 0.08333333333333336,
+          "ratio_computed": 2.9999999999999987,
+          "ratio_analytical": 2.9999999999999996,
+          "expected_ratio": 2.9999999999999996,
+          "satisfies_defining_equation": true,
+          "ratio_matches": true,
+          "passed": true
+        },
+        {
+          "m\u00b2": 4.0,
+          "G_vv_computed": 0.15625,
+          "G_vw_computed": 0.03125,
+          "ratio_computed": 5.0,
+          "ratio_analytical": 5.0,
+          "expected_ratio": 5.0,
+          "satisfies_defining_equation": true,
+          "ratio_matches": true,
+          "passed": true
+        }
+      ],
+      "note": "Analytical formula has factor of n_v=4 vs matrix inverse; physics (ratios) identical",
+      "passed": true
+    },
+    "test_II": {
+      "test": "II",
+      "name": "Laplacian Eigenstructure",
+      "eigenvalues_L": {
+        "computed": [
+          1.1923723214485674e-16,
+          3.9999999999999964,
+          4.0,
+          4.0
+        ],
+        "expected": [
+          0,
+          4,
+          4,
+          4
+        ],
+        "passed": true
+      },
+      "eigenvalues_L\u00b2": {
+        "computed": [
+          4.76948928579427e-16,
+          15.999999999999986,
+          16.0,
+          16.0
+        ],
+        "expected": [
+          0,
+          16,
+          16,
+          16
+        ],
+        "passed": true
+      },
+      "Tr(L)": {
+        "computed": 12.0,
+        "expected": 12,
+        "passed": true
+      },
+      "Tr(L\u00b2)": {
+        "computed": 48.0,
+        "expected": 48,
+        "passed": true
+      },
+      "passed": true
+    },
+    "test_III": {
+      "test": "III",
+      "name": "One-Loop Self-Energy Structure",
+      "m\u00b2": 1.0,
+      "g\u2080": 0.39999999999999997,
+      "g\u2081": 0.19999999999999998,
+      "\u03a3_direct": {
+        "value": 0.11199999999999996,
+        "description": "Direct sum over vertices"
+      },
+      "\u03a3_formula": {
+        "value": 0.11199999999999997,
+        "formula": "\u03bb[g\u2080\u00b3 + 3\u00b7g\u2081\u00b2\u00b7g\u2080]",
+        "passed": true
+      },
+      "coefficient_3": {
+        "value": 3,
+        "interpretation": "n_vertices - 1 = degree of each vertex",
+        "verified": true
+      },
+      "passed": true
+    },
+    "test_IV": {
+      "test": "IV",
+      "name": "f\u2081 Correction Factor",
+      "f\u2081_formula": {
+        "value": 0.75,
+        "formula": "(n_v - 1) / \u03bb_Lap",
+        "expected": 0.75,
+        "passed": true
+      },
+      "finite_part_verification": {
+        "m\u00b2_values": [
+          0.01,
+          0.001,
+          0.0001
+        ],
+        "finite_parts": [
+          0.7481296758104747,
+          0.7498125468632679,
+          0.7499812504684087
+        ],
+        "converges_to": 0.75,
+        "passed": true
+      },
+      "passed": true
+    },
+    "test_V": {
+      "test": "V",
+      "name": "f\u2082 Correction Factor",
+      "f\u2082_formula": {
+        "value": 0.5625,
+        "formula": "(n_v - 1)\u00b2 / \u03bb_Lap\u00b2",
+        "expected": 0.5625,
+        "passed": true
+      },
+      "f\u2082_from_f\u2081": {
+        "value": 0.5625,
+        "formula": "f\u2081\u00b2",
+        "passed": true
+      },
+      "decimal_values": {
+        "f\u2082": 0.5625,
+        "as_decimal": 0.5625
+      },
+      "passed": true
+    },
+    "test_VI": {
+      "test": "VI",
+      "name": "Geometric Ratio r",
+      "expected": 0.75,
+      "interpretation_1": {
+        "formula": "(n_v - 1) / \u03bb_Lap",
+        "value": 0.75,
+        "description": "Vertex connectivity / Laplacian eigenvalue",
+        "passed": true
+      },
+      "interpretation_2": {
+        "formula": "(n_e/n_v) / 2",
+        "value": 0.75,
+        "description": "Edge-to-vertex ratio / 2",
+        "passed": true
+      },
+      "interpretation_3": {
+        "formula": "1 - \u03c7/(2n_v)",
+        "value": 0.75,
+        "description": "Euler characteristic connection",
+        "passed": true
+      },
+      "euler_characteristic": {
+        "\u03c7": 2,
+        "n_v": 4,
+        "n_e": 6,
+        "n_f": 4,
+        "formula": "V - E + F = 2"
+      },
+      "passed": true
+    },
+    "test_VII": {
+      "test": "VII",
+      "name": "Full One-Loop Coefficients",
+      "c\u2081": {
+        "tree": 0.08333333333333333,
+        "one_loop": 0.08338280656753369,
+        "correction_factor": 1.0005936788104044,
+        "relative_correction_percent": 0.059367881040432294,
+        "formula": "c\u2081^tree \u00d7 (1 + \u03bb\u00b7r/(16\u03c0\u00b2))"
+      },
+      "c\u2082": {
+        "tree": 0.125,
+        "one_loop": 0.1250556573884754,
+        "correction_factor": 1.0004452591078032,
+        "relative_correction_percent": 0.04452591078032422,
+        "formula": "c\u2082^tree \u00d7 (1 + \u03bb\u00b7r\u00b2/(16\u03c0\u00b2))"
+      },
+      "corrections_are_tiny": {
+        "c\u2081_correction_percent": 0.059367881040432294,
+        "c\u2082_correction_percent": 0.04452591078032422,
+        "both_below_0.1_percent": true,
+        "passed": true
+      },
+      "passed": true
+    },
+    "test_VIII": {
+      "test": "VIII",
+      "name": "Geometric Series Structure",
+      "r": 0.75,
+      "f_p_formula": "f_p = r^p",
+      "values": {
+        "f_0": {
+          "computed": 1.0,
+          "expected": 1.0,
+          "interpretation": "No correction to mass term"
+        },
+        "f_1": {
+          "computed": 0.75,
+          "expected": 0.75,
+          "interpretation": "Edge (p=1) correction"
+        },
+        "f_2": {
+          "computed": 0.5625,
+          "expected": 0.5625,
+          "interpretation": "Face (p=2) correction"
+        },
+        "f_3": {
+          "computed": 0.421875,
+          "expected": 0.421875,
+          "interpretation": "Volume (p=3) correction"
+        }
+      },
+      "passed": true
+    },
+    "test_IX": {
+      "test": "IX",
+      "name": "L\u00b2 Diagonal Elements",
+      "diagonal_elements": [
+        12.0,
+        12.0,
+        12.0,
+        12.0
+      ],
+      "all_equal": {
+        "value": true,
+        "expected_value": 12,
+        "passed": true
+      },
+      "sum_equals_trace": {
+        "sum": 48.0,
+        "trace": 48.0,
+        "passed": true
+      },
+      "f\u2081_calculation": {
+        "formula": "\u03a3_v \u0394\u00b2_{vv} G(v,v) / \u03a3_v \u0394\u00b2_{vv}",
+        "simplifies_to": "g\u2080 (since \u0394\u00b2_{vv} uniform)"
+      },
+      "passed": true
+    },
+    "test_X": {
+      "test": "X",
+      "name": "Propagator Ratio g\u2081/g\u2080",
+      "mass_tests": [
+        {
+          "m\u00b2": 0.01,
+          "g\u2080": 100.74812967581047,
+          "g\u2081": 99.75062344139651,
+          "ratio": 0.9900990099009901,
+          "simplified_formula": 0.9900990099009901,
+          "1/(1+m\u00b2)": 0.9900990099009901,
+          "passed": true
+        },
+        {
+          "m\u00b2": 0.1,
+          "g\u2080": 10.731707317073171,
+          "g\u2081": 9.75609756097561,
+          "ratio": 0.9090909090909091,
+          "simplified_formula": 0.9090909090909091,
+          "1/(1+m\u00b2)": 0.9090909090909091,
+          "passed": true
+        },
+        {
+          "m\u00b2": 0.5,
+          "g\u2080": 2.6666666666666665,
+          "g\u2081": 1.7777777777777777,
+          "ratio": 0.6666666666666666,
+          "simplified_formula": 0.6666666666666666,
+          "1/(1+m\u00b2)": 0.6666666666666666,
+          "passed": true
+        },
+        {
+          "m\u00b2": 1.0,
+          "g\u2080": 1.6,
+          "g\u2081": 0.8,
+          "ratio": 0.5,
+          "simplified_formula": 0.5,
+          "1/(1+m\u00b2)": 0.5,
+          "passed": true
+        }
+      ],
+      "formula": "g\u2081/g\u2080 = 1/(1+m\u00b2)",
+      "passed": true
+    }
+  },
+  "overall_status": "PASSED"
+}

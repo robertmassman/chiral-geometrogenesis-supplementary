@@ -1,0 +1,219 @@
+{
+  "timestamp": "2026-02-03T07:36:36.388952",
+  "common_parameters": {
+    "beta": 2.5,
+    "lambda_scalar": 0.125,
+    "m2_scalar": -0.1,
+    "n_trajectories": 200,
+    "n_thermalization": 50,
+    "measurement_interval": 5,
+    "gauge_group": "SU2",
+    "n_colors": 2
+  },
+  "stella": {
+    "config": {
+      "beta": 2.5,
+      "lambda": 0.125,
+      "m2": -0.1,
+      "n_trajectories": 200,
+      "gauge_group": "SU2"
+    },
+    "statistics": {
+      "n_measurements": 40,
+      "acceptance_rate": 0.235
+    },
+    "observables": {
+      "plaquette": {
+        "mean": 0.5514971196388997,
+        "error": 0.03897610431427296,
+        "n_samples": 40
+      },
+      "phi_squared_avg": {
+        "mean": 0.5671030794322791,
+        "error": 0.045483958589622786,
+        "n_samples": 40
+      },
+      "phi_fourth_avg": {
+        "mean": 0.6265995327203712,
+        "error": 0.10274709398194734,
+        "n_samples": 40
+      },
+      "gauge_action": {
+        "mean": 4.485028803611003,
+        "error": 0.3897610431427286,
+        "n_samples": 40
+      },
+      "scalar_action": {
+        "mean": 3.219999603549674,
+        "error": 0.23252631204745564,
+        "n_samples": 40
+      }
+    },
+    "higgs_prediction": {
+      "lambda": 0.125,
+      "v_GeV": 246.22,
+      "m_H_tree_GeV": 123.11,
+      "m_H_pdg_GeV": 125.2,
+      "ratio_to_pdg": 0.9833067092651757,
+      "deviation_percent": 1.6693290734824309
+    },
+    "scale_setting": {
+      "a_sqrt_sigma": 0.6697035764882104,
+      "a_fm": 0.3003422673583843,
+      "sqrt_sigma_lat": 1.4931979387713545
+    },
+    "timestamp": "2026-02-03T07:36:38.155308",
+    "geometric_coefficients": {
+      "lambda_higgs": 0.125,
+      "c1_symanzik": 0.08333333333333333,
+      "c_sw": 0.6666666666666666,
+      "r_wilson": 1.5
+    },
+    "total_simulation_time": 1.7666387557983398
+  },
+  "hypercubic": {
+    "config": {
+      "L": 4,
+      "volume": 256,
+      "n_links": 1024,
+      "n_plaquettes": 1536,
+      "beta": 2.5,
+      "lambda": 0.125,
+      "m2": -0.1,
+      "n_trajectories": 200,
+      "gauge_group": "SU2",
+      "c_sw": 1.0,
+      "r_wilson": 1.0
+    },
+    "statistics": {
+      "n_measurements": 40,
+      "acceptance_rate": 0.0,
+      "avg_trajectory_time": 1.663315348625183,
+      "total_time": 332.6630697250366
+    },
+    "observables": {
+      "plaquette": {
+        "mean": 0.4658475416489285,
+        "error": 0.0,
+        "n_samples": 40
+      },
+      "phi_squared_avg": {
+        "mean": 0.4905477109613184,
+        "error": 0.0,
+        "n_samples": 40
+      },
+      "phi_fourth_avg": {
+        "mean": 0.5037868071670353,
+        "error": 0.0,
+        "n_samples": 40
+      },
+      "gauge_action": {
+        "mean": 2051.145440068112,
+        "error": 0.0,
+        "n_samples": 40
+      },
+      "scalar_action": {
+        "mean": 897.9717186126447,
+        "error": 0.0,
+        "n_samples": 40
+      },
+      "trajectory_time": {
+        "mean": 1.6640943944454194,
+        "error": 0.005706567537467128,
+        "n_samples": 40
+      }
+    },
+    "timestamp": "2026-02-03T07:43:32.386758",
+    "lattice_type": "hypercubic",
+    "total_simulation_time": 414.23149585723877
+  },
+  "comparison": {
+    "lattice_structure": {
+      "stella": {
+        "sites": 4,
+        "links": 6,
+        "plaquettes": 4,
+        "topology": "Complete graph K_4 (tetrahedron)"
+      },
+      "hypercubic": {
+        "sites": 256,
+        "links": 1024,
+        "plaquettes": 1536,
+        "topology": "4D hypercubic 4^4"
+      },
+      "ratio_sites": 64.0,
+      "ratio_links": 170.66666666666666,
+      "ratio_plaquettes": 384.0
+    },
+    "improvement_coefficients": {
+      "stella": {
+        "c_sw": 0.6666666666666666,
+        "r_wilson": 1.5,
+        "c1": 0.08333333333333333,
+        "lambda": 0.125,
+        "source": "Geometric (from stella structure)"
+      },
+      "hypercubic": {
+        "c_sw": 1.0,
+        "r_wilson": 1.0,
+        "c1": 0.08333333333333333,
+        "lambda": 0.125,
+        "source": "Standard lattice QCD"
+      }
+    },
+    "observables": {
+      "plaquette": {
+        "stella": {
+          "mean": 0.5514971196388997,
+          "error": 0.03897610431427296
+        },
+        "hypercubic": {
+          "mean": 0.4658475416489285,
+          "error": 0.0
+        },
+        "ratio": 1.183857529196791,
+        "difference": 0.08564957798997119,
+        "sigma_difference": 2.1974894489033505
+      },
+      "phi_squared_avg": {
+        "stella": {
+          "mean": 0.5671030794322791,
+          "error": 0.045483958589622786
+        },
+        "hypercubic": {
+          "mean": 0.4905477109613184,
+          "error": 0.0
+        },
+        "ratio": 1.156061004384133,
+        "difference": 0.07655536847096073,
+        "sigma_difference": 1.6831289721652969
+      },
+      "phi_fourth_avg": {
+        "stella": {
+          "mean": 0.6265995327203712,
+          "error": 0.10274709398194734
+        },
+        "hypercubic": {
+          "mean": 0.5037868071670353,
+          "error": 0.0
+        },
+        "ratio": 1.2437791617528726,
+        "difference": 0.12281272555333589,
+        "sigma_difference": 1.195291475347362
+      }
+    },
+    "performance": {
+      "stella": {
+        "acceptance_rate": 0.235,
+        "total_time": 1.7666387557983398,
+        "time_per_trajectory": 0.008833193778991699
+      },
+      "hypercubic": {
+        "acceptance_rate": 0.0,
+        "total_time": 414.23149585723877,
+        "time_per_trajectory": 1.663315348625183
+      },
+      "time_ratio": 188.30282570966637
+    }
+  }
+}

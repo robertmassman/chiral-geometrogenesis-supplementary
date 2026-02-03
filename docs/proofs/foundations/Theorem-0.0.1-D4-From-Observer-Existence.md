@@ -701,6 +701,16 @@ $$\boxed{D = 4 \text{ is the unique spacetime dimension permitting complex obser
 
 ---
 
+## 10a. Dependent Theorems (use this result)
+
+| Theorem | What It Uses | Purpose |
+|---------|--------------|---------|
+| **[Theorem 0.0.2](Theorem-0.0.2-Euclidean-From-SU3.md)** | D = 4 | Derives Euclidean geometry |
+| **[Theorem 0.0.15](Theorem-0.0.15-Topological-Derivation-SU3.md)** | D = N + 1 | SU(3) from D = 4 |
+| **[Prop 0.0.27 §3.5a](Proposition-0.0.27-Higgs-Mass-From-Geometry.md)** | D = 4 | Power counting → V = μ²\|Φ\|² + λ\|Φ\|⁴ is unique renormalizable potential |
+
+---
+
 ## References
 
 ### Historical and Review

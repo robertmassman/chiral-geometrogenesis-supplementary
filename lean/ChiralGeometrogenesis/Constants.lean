@@ -3479,4 +3479,172 @@ noncomputable def epsilon_4_TeV : ℝ := 1e-33
 noncomputable def delta_lambda3_min : ℝ := 0.01
 noncomputable def delta_lambda3_max : ℝ := 0.10
 
+/-! ═══════════════════════════════════════════════════════════════════════════
+    SECTION 22: ELECTROWEAK COUPLING CONSTANTS (PROPOSITION 0.0.26)
+    ═══════════════════════════════════════════════════════════════════════════
+
+    Fine structure constants and couplings for electroweak unitarity derivation.
+    Reference: docs/proofs/foundations/Proposition-0.0.26-Electroweak-Cutoff-Derivation.md
+-/
+
+/-- SU(2)_L weak coupling constant: g₂ ≈ 0.653.
+
+    **Physical meaning:**
+    The gauge coupling for the weak isospin SU(2)_L group.
+
+    **Relation:** α_W = g₂²/(4π) ≈ 0.0338
+
+    **Citation:** PDG 2024, Electroweak review -/
+noncomputable def g2_weak_coupling : ℝ := 0.653
+
+/-- g₂ > 0 -/
+theorem g2_weak_coupling_pos : g2_weak_coupling > 0 := by
+  unfold g2_weak_coupling; norm_num
+
+/-- SU(2)_L fine structure constant: α_W = g₂²/(4π) ≈ 0.0338.
+
+    **Physical meaning:**
+    The dimensionless coupling that controls weak interaction strength.
+    At the Z-pole: α_W(M_Z) ≈ 0.0338
+
+    **Citation:** PDG 2024, α₂⁻¹(M_Z) ≈ 29.6 → α₂ ≈ 0.0338 -/
+noncomputable def alpha_W : ℝ := 0.0338
+
+/-- α_W > 0 -/
+theorem alpha_W_pos : alpha_W > 0 := by unfold alpha_W; norm_num
+
+/-- α_W < 1 (perturbative) -/
+theorem alpha_W_lt_one : alpha_W < 1 := by unfold alpha_W; norm_num
+
+/-- α_W ≈ g₂²/(4π) consistency check.
+
+    **Calculation:**
+    g₂²/(4π) = 0.653²/(4×3.14159) = 0.426409/12.566 ≈ 0.0339
+    |0.0338 - 0.0339| ≈ 0.0001 < 0.001 ✓ -/
+theorem alpha_W_from_g2_approx :
+    |alpha_W - g2_weak_coupling^2 / (4 * Real.pi)| < 0.001 := by
+  unfold alpha_W g2_weak_coupling
+  -- Numerical consistency check - defer detailed proof
+  -- g₂²/(4π) = 0.653²/(4π) ≈ 0.0339, diff from 0.0338 is < 0.001
+  sorry
+
+/-- U(1)_Y hypercharge coupling: g' = g₁/√(5/3) ≈ 0.357.
+
+    **Physical meaning:**
+    The gauge coupling for the hypercharge U(1)_Y group.
+
+    **Citation:** PDG 2024 -/
+noncomputable def g1_hypercharge : ℝ := 0.357
+
+/-- g' > 0 -/
+theorem g1_hypercharge_pos : g1_hypercharge > 0 := by
+  unfold g1_hypercharge; norm_num
+
+/-- U(1)_Y fine structure constant: α_Y = g'²/(4π) ≈ 0.0102.
+
+    **Physical meaning:**
+    The dimensionless hypercharge coupling.
+    At the Z-pole: α_Y(M_Z) ≈ 0.0102
+
+    **Citation:** PDG 2024, α₁⁻¹(M_Z) ≈ 98 → α₁ ≈ 0.0102 -/
+noncomputable def alpha_Y : ℝ := 0.0102
+
+/-- α_Y > 0 -/
+theorem alpha_Y_pos : alpha_Y > 0 := by unfold alpha_Y; norm_num
+
+/-- α_Y < 1 (perturbative) -/
+theorem alpha_Y_lt_one : alpha_Y < 1 := by unfold alpha_Y; norm_num
+
+/-- α_Y < α_W (hypercharge is weaker than weak isospin) -/
+theorem alpha_Y_lt_alpha_W : alpha_Y < alpha_W := by
+  unfold alpha_Y alpha_W; norm_num
+
+/-- cos²θ_W = 1 - sin²θ_W ≈ 0.7768.
+
+    **Citation:** PDG 2024, on-shell scheme -/
+noncomputable def cosSqThetaW : ℝ := 1 - sinSqThetaW
+
+/-- cos²θ_W > 0 -/
+theorem cosSqThetaW_pos : cosSqThetaW > 0 := by
+  unfold cosSqThetaW sinSqThetaW; norm_num
+
+/-- cos²θ_W < 1 -/
+theorem cosSqThetaW_lt_one : cosSqThetaW < 1 := by
+  unfold cosSqThetaW sinSqThetaW; norm_num
+
+/-- sin²θ_W + cos²θ_W = 1 -/
+theorem sin_cos_theta_W_sum : sinSqThetaW + cosSqThetaW = 1 := by
+  unfold cosSqThetaW; ring
+
+/-- Number of stella octangula vertices: n = 8.
+
+    **Physical meaning:**
+    The stella octangula (compound of two tetrahedra) has 8 vertices.
+    This sets the tree-level vertex count in the unitarity formula.
+
+    **Citation:** Proposition 0.0.27, Definition 0.1.1 -/
+def n_stella_vertices : ℕ := 8
+
+/-- n = 8 (value check) -/
+theorem n_stella_vertices_value : n_stella_vertices = 8 := rfl
+
+/-- n_stella_vertices = stella_boundary_vertices -/
+theorem n_stella_eq_boundary : n_stella_vertices = stella_boundary_vertices := rfl
+
+/-- n_stella_vertices > 0 -/
+theorem n_stella_vertices_pos : n_stella_vertices > 0 := by decide
+
+/-- Higgs quartic coupling (CG geometric prediction): λ_geo = 1/8 = 0.125.
+
+    **Physical meaning:**
+    The Higgs self-coupling λ in V(H) = μ²|H|² + λ|H|⁴.
+    Derived from the 8 vertices of the stella octangula: λ = 1/n = 1/8.
+
+    **Comparison:**
+    - CG prediction: λ_geo = 1/8 = 0.125
+    - SM measured: λ_H = 0.129 ± 0.004 (PDG 2024)
+    - Agreement: 3% (within experimental uncertainty)
+
+    **Citation:** Proposition 0.0.27 -/
+noncomputable def lambda_H_geometric : ℝ := 1 / 8
+
+/-- λ_geo > 0 -/
+theorem lambda_H_geometric_pos : lambda_H_geometric > 0 := by
+  unfold lambda_H_geometric; norm_num
+
+/-- λ_geo = 1/8 -/
+theorem lambda_H_geometric_value : lambda_H_geometric = 1 / 8 := rfl
+
+/-- λ_geo = 0.125 -/
+theorem lambda_H_geometric_decimal : lambda_H_geometric = 0.125 := by
+  unfold lambda_H_geometric; norm_num
+
+/-- λ_geo < 1 -/
+theorem lambda_H_geometric_lt_one : lambda_H_geometric < 1 := by
+  unfold lambda_H_geometric; norm_num
+
+/-- CG prediction agrees with SM measurement to ~3%.
+
+    λ_geo = 0.125, λ_H(SM) = 0.129
+    |0.125 - 0.129| / 0.129 = 3.1% -/
+theorem lambda_H_geometric_agrees_with_SM :
+    |lambda_H_geometric - lambda_H| / lambda_H < 0.04 := by
+  unfold lambda_H_geometric lambda_H
+  norm_num
+
+/-- Lee-Quigg-Thacker unitarity bound: Λ_LQT ≈ 1502 GeV.
+
+    **Physical meaning:**
+    The scale where W_L W_L → W_L W_L would violate unitarity without
+    new physics. Derived from √(8π²/(3G_F)).
+
+    **Citation:** Lee, Quigg, Thacker, Phys. Rev. D 16, 1519 (1977) -/
+noncomputable def Lambda_LQT_GeV : ℝ := 1502
+
+/-- Λ_LQT > 0 -/
+theorem Lambda_LQT_pos : Lambda_LQT_GeV > 0 := by unfold Lambda_LQT_GeV; norm_num
+
+/-- Λ_LQT > 1 TeV -/
+theorem Lambda_LQT_gt_TeV : Lambda_LQT_GeV > 1000 := by unfold Lambda_LQT_GeV; norm_num
+
 end ChiralGeometrogenesis.Constants

@@ -1,0 +1,123 @@
+{
+  "termination": {
+    "passed": true,
+    "data": {
+      "time": 0.0014569759368896484,
+      "values": {
+        "alpha_s": 0.015625,
+        "b0": 0.7161972439135424,
+        "xi": 2.53783684959671e+19,
+        "eta": 2.252614659630118,
+        "zeta": 3.940363621715521e-20
+      }
+    }
+  },
+  "dag_depth": {
+    "passed": true,
+    "data": {
+      "has_cycle": false,
+      "depth": 3,
+      "vertices": [
+        "N_c",
+        "N_f",
+        "Z3",
+        "alpha_s",
+        "b0",
+        "eta",
+        "xi",
+        "zeta"
+      ],
+      "edges": [
+        [
+          "N_c",
+          "alpha_s"
+        ],
+        [
+          "N_c",
+          "b0"
+        ],
+        [
+          "N_f",
+          "b0"
+        ],
+        [
+          "Z3",
+          "eta"
+        ],
+        [
+          "b0",
+          "xi"
+        ],
+        [
+          "xi",
+          "zeta"
+        ]
+      ],
+      "topological_order": [
+        "N_c",
+        "N_f",
+        "Z3",
+        "alpha_s",
+        "b0",
+        "eta",
+        "xi",
+        "zeta"
+      ]
+    }
+  },
+  "K_complexity": {
+    "passed": true,
+    "data": {
+      "bootstrap_K": {
+        "lower_bound": 170,
+        "upper_bound": 245,
+        "estimate": 205,
+        "components": {
+          "data": 15,
+          "arithmetic": 140,
+          "formulas": 50
+        }
+      },
+      "omega_comparisons": [
+        {
+          "n": 100,
+          "omega_K_lower": 93,
+          "ratio": 0.45365853658536587
+        },
+        {
+          "n": 500,
+          "omega_K_lower": 493,
+          "ratio": 2.4048780487804877
+        },
+        {
+          "n": 1000,
+          "omega_K_lower": 993,
+          "ratio": 4.84390243902439
+        },
+        {
+          "n": 5000,
+          "omega_K_lower": 4993,
+          "ratio": 24.35609756097561
+        },
+        {
+          "n": 10000,
+          "omega_K_lower": 9993,
+          "ratio": 48.74634146341464
+        }
+      ]
+    }
+  },
+  "precision": {
+    "passed": true,
+    "data": {
+      "values_by_precision": {
+        "100": 2.53783684959671e+19,
+        "500": 2.53783684959671e+19,
+        "1000": 2.53783684959671e+19
+      },
+      "expected": 2.53783684959884e+19,
+      "relative_error": 8.392659285157278e-13,
+      "consistent": true
+    }
+  }
+}

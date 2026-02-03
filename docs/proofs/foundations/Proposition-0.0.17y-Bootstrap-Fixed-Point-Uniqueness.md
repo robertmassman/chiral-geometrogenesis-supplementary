@@ -2,7 +2,7 @@
 
 ## Status: 🔶 NOVEL ✅ ESTABLISHED — Unique Fixed Point with 0.02σ Agreement
 
-**Purpose:** Prove that the seven core bootstrap equations of Chiral Geometrogenesis have a unique projective fixed point, establishing that all dimensionless ratios are determined by topology alone. (Extended to eight equations with the α_GUT threshold formula of [Prop 0.0.25](Proposition-0.0.25-Alpha-GUT-Threshold-Formula.md).)
+**Purpose:** Prove that the seven core bootstrap equations of Chiral Geometrogenesis have a unique projective fixed point, establishing that all dimensionless ratios are determined by topology alone. (Extended to nine equations with the α_GUT threshold formula of [Prop 0.0.25](Proposition-0.0.25-Alpha-GUT-Threshold-Formula.md) and scalar quartic normalization of [Prop 0.0.27a](Proposition-0.0.27a-Quartic-Normalization-From-Equipartition.md).)
 
 **Created:** 2026-01-20
 **Last Updated:** 2026-01-28
@@ -40,7 +40,7 @@
 
 ### The Bootstrap System
 
-The framework's self-consistency is encoded in seven core equations linking seven quantities (extended to eight with the α_GUT threshold formula):
+The framework's self-consistency is encoded in seven core equations linking seven quantities (extended to nine equations with the α_GUT threshold formula and scalar quartic normalization):
 
 | Quantity | Symbol | Meaning |
 |----------|--------|---------|
@@ -56,7 +56,7 @@ The framework's self-consistency is encoded in seven core equations linking seve
 
 **Proposition 0.0.17y (Bootstrap Fixed-Point Uniqueness)**
 
-> The seven core bootstrap equations of Chiral Geometrogenesis have a **unique projective fixed point**: all dimensionless ratios are uniquely determined by the topological constants (N_c, N_f, |Z₃|) = (3, 3, 3). The overall scale (ℓ_P) remains as the single free parameter corresponding to the choice of units. The system extends to eight equations with the α_GUT threshold formula ([Prop 0.0.25](Proposition-0.0.25-Alpha-GUT-Threshold-Formula.md)), which fixes the GUT coupling from stella S₄ symmetry.
+> The seven core bootstrap equations of Chiral Geometrogenesis have a **unique projective fixed point**: all dimensionless ratios are uniquely determined by the topological constants (N_c, N_f, |Z₃|) = (3, 3, 3). The overall scale (ℓ_P) remains as the single free parameter corresponding to the choice of units. The system extends to nine equations with the α_GUT threshold formula ([Prop 0.0.25](Proposition-0.0.25-Alpha-GUT-Threshold-Formula.md)) and scalar quartic normalization ([Prop 0.0.27a](Proposition-0.0.27a-Quartic-Normalization-From-Equipartition.md)), which fix the GUT coupling and Higgs quartic from stella geometry.
 
 ### Key Insight
 
@@ -74,7 +74,7 @@ The bootstrap equations form a **Directed Acyclic Graph (DAG)**, not a cycle. Th
 
 ## 1. The Seven Core Bootstrap Equations
 
-> **Note:** This section presents the seven core equations (Eqs 1-7) that determine QCD/gravity scales. The eighth equation—the α_GUT threshold formula from [Proposition 0.0.25](Proposition-0.0.25-Alpha-GUT-Threshold-Formula.md)—extends the system to the GUT scale. See §1.8 below.
+> **Note:** This section presents the seven core equations (Eqs 1-7) that determine QCD/gravity scales. The eighth equation—the α_GUT threshold formula from [Proposition 0.0.25](Proposition-0.0.25-Alpha-GUT-Threshold-Formula.md)—extends the system to the GUT scale. The ninth equation—the scalar quartic normalization from [Proposition 0.0.27a](Proposition-0.0.27a-Quartic-Normalization-From-Equipartition.md)—fixes the Higgs quartic coupling. See §1.8-1.9 below.
 
 ### Equation 1: Casimir Energy (Prop 0.0.17j)
 
@@ -130,11 +130,19 @@ $$\delta_{\text{stella}} = \frac{\ln|S_4|}{2} - \frac{\ln 6}{6} \cdot \frac{\dim
 
 **Origin:** The stella's symmetry group O_h ≅ S₄ × ℤ₂ determines the one-loop threshold correction at the S₄-symmetric point τ = i in moduli space. This extends the bootstrap from QCD/gravity scales to the GUT scale, predicting α_GUT⁻¹ = 24.4 ± 0.3 (observed: 24.5 ± 1.5, <1% agreement).
 
+### Equation 9: Scalar Quartic Normalization ([Prop 0.0.27a](Proposition-0.0.27a-Quartic-Normalization-From-Equipartition.md))
+
+$$\lambda_0 = 1$$
+
+**Origin:** Maximum entropy equipartition over 8 scalar self-interaction vertices on ∂S. The bare quartic coupling λ₀ = 1 is the unique value where the effective per-vertex couplings λ_eff = λ₀/8 equal the per-vertex probabilities p_v = 1/8 (forced by O_h transitivity). This follows the same logic as Equation 4 (gauge coupling from maximum entropy) but for scalar rather than gauge interactions.
+
+**Result:** Combined with n_modes = 8, gives λ = λ₀/8 = 1/8 = 0.125 (96.7% agreement with experimental λ = 0.129).
+
 ---
 
 ## 2. Topological Input Constants
 
-All eight equations depend only on these topological/group-theoretic constants:
+All nine equations depend only on these topological/group-theoretic constants:
 
 | Constant | Value | Origin |
 |----------|-------|--------|

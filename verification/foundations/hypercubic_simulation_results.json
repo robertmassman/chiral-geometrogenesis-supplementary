@@ -1,0 +1,55 @@
+{
+  "config": {
+    "L": 4,
+    "volume": 256,
+    "n_links": 1024,
+    "n_plaquettes": 1536,
+    "beta": 2.5,
+    "lambda": 0.125,
+    "m2": -0.1,
+    "n_trajectories": 200,
+    "gauge_group": "SU2",
+    "c_sw": 1.0,
+    "r_wilson": 1.0
+  },
+  "statistics": {
+    "n_measurements": 40,
+    "acceptance_rate": 0.0,
+    "avg_trajectory_time": 1.663315348625183,
+    "total_time": 332.6630697250366
+  },
+  "observables": {
+    "plaquette": {
+      "mean": 0.4658475416489285,
+      "error": 0.0,
+      "n_samples": 40
+    },
+    "phi_squared_avg": {
+      "mean": 0.4905477109613184,
+      "error": 0.0,
+      "n_samples": 40
+    },
+    "phi_fourth_avg": {
+      "mean": 0.5037868071670353,
+      "error": 0.0,
+      "n_samples": 40
+    },
+    "gauge_action": {
+      "mean": 2051.145440068112,
+      "error": 0.0,
+      "n_samples": 40
+    },
+    "scalar_action": {
+      "mean": 897.9717186126447,
+      "error": 0.0,
+      "n_samples": 40
+    },
+    "trajectory_time": {
+      "mean": 1.6640943944454194,
+      "error": 0.005706567537467128,
+      "n_samples": 40
+    }
+  },
+  "timestamp": "2026-02-03T07:43:32.386758",
+  "lattice_type": "hypercubic"
+}

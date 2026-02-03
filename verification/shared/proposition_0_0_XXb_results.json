@@ -1,0 +1,112 @@
+{
+  "proposition": "0.0.XXb",
+  "title": "Computability of Bootstrap Self-Consistency",
+  "timestamp": "2026-02-01 20:35:47",
+  "tests": {
+    "computability": {
+      "test_name": "Theorem A: Bootstrap Computability",
+      "passed": 1.0,
+      "details": {
+        "alpha_s_exact": 1.0,
+        "xi_zeta_consistency": 1.0
+      },
+      "computed_values": {
+        "alpha_s": "0.015625",
+        "b0": "0.7161972439135290109599769351763146291550684058320540193645030482650355893540194079055121124481388868023277922704108111660181033075156039379508533482926492765316",
+        "xi": "25378368495988406090.65428678530434124069388968776644965148849150151382570622646490519496685450836221121153536388779190414673139362293581803708257014707971285945",
+        "eta": "2.252614659630117877629875985071535724927205645655481682780802561661161763762544887992833979974930724258484429034232834462870988358341525005030892332303023044693",
+        "zeta": "0.0000000000000000000394036362171221285188084998459411190078320310929016270281496665960275060456291501028426464144680949434885300856651316075660309319355206061542767828063773819542"
+      },
+      "precisions_tested": [
+        10.0,
+        50.0,
+        100.0,
+        200.0,
+        500.0
+      ]
+    },
+    "complexity": {
+      "test_name": "Theorem B: Polynomial Complexity",
+      "passed": 1.0,
+      "details": {
+        "polynomial_confirmed": 1.0
+      },
+      "bits": [
+        50.0,
+        100.0,
+        150.0,
+        200.0,
+        250.0,
+        300.0
+      ],
+      "times_seconds": [
+        2.0574999999994903e-05,
+        2.0458199999989768e-05,
+        2.0858399999995612e-05,
+        2.1408800000000116e-05,
+        2.377499999999255e-05,
+        2.260859999999032e-05
+      ],
+      "estimated_exponent": 0.06991871118410087,
+      "polynomial_fit": "O(n^0.07)",
+      "dag_complexity": "O(1) - fixed 8-vertex graph"
+    },
+    "kolmogorov": {
+      "test_name": "Theorem C: Kolmogorov Minimality",
+      "passed": 1.0,
+      "details": {
+        "description_length": "234 bytes",
+        "self_extracting_reason": "Same equations used for computation and consistency check"
+      },
+      "description": {
+        "topological_input": {
+          "N_c": 3.0,
+          "N_f": 3.0,
+          "Z3_order": 3.0
+        },
+        "equations": [
+          "alpha_s = 1 / (N_c^2 - 1)^2",
+          "b0 = (11*N_c - 2*N_f) / (12*pi)",
+          "xi = exp((N_c^2 - 1)^2 / (2*b0))",
+          "eta = sqrt(8 * ln(Z3_order) / sqrt(3))",
+          "zeta = 1 / xi"
+        ]
+      },
+      "description_bytes": 234.0,
+      "complexity_class": "O(1)",
+      "landscape_comparison": {
+        "bootstrap_bits": 1872.0,
+        "landscape_minimum_bits": 1660.0,
+        "ratio": 0.8872671193609407
+      },
+      "self_extracting": 1.0,
+      "topological_information_bits": 6.0
+    },
+    "wheeler": {
+      "test_name": "Wheeler It from Bit Verification",
+      "passed": 1.0,
+      "details": {},
+      "bit_input": {
+        "N_c": 3.0,
+        "N_f": 3.0,
+        "Z3_order": 3.0,
+        "total_bits": 6.0
+      },
+      "it_output": {
+        "alpha_s": 0.015625,
+        "b0": 0.716197243913529,
+        "xi": 2.5378368495988404e+19,
+        "eta": 2.252614659630118,
+        "zeta": 3.9403636217122126e-20
+      },
+      "deterministic": 1.0,
+      "self_consistent": 1.0,
+      "physical_reconstruction": {
+        "sqrt_sigma_predicted_MeV": 481.0750542112224,
+        "sqrt_sigma_observed_MeV": 440.0,
+        "agreement_percent": 91.46181996932482
+      }
+    }
+  },
+  "all_passed": 1.0
+}

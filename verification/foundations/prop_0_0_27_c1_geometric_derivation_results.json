@@ -1,0 +1,616 @@
+{
+  "proposition": "0.0.27",
+  "section": "10.3.12.10.7",
+  "title": "c\u2081 = 1/n_edges Geometric Derivation",
+  "timestamp": "2026-02-03T07:11:22.016144",
+  "tests": {
+    "test_1": {
+      "test": "1",
+      "name": "Laplacian Trace Formula",
+      "tests": [
+        {
+          "n": 3,
+          "Tr(L)": 6.0,
+          "n(n-1)": 6,
+          "2\u00d7n_edges": 6,
+          "n_edges": 3,
+          "eigenvalues": [
+            -1.1102230246251565e-16,
+            3.0,
+            3.0
+          ],
+          "eigenvalues_expected": [
+            0,
+            3,
+            3
+          ],
+          "trace_matches": "True",
+          "edge_formula_matches": true,
+          "eigenvalues_match": true
+        },
+        {
+          "n": 4,
+          "Tr(L)": 12.0,
+          "n(n-1)": 12,
+          "2\u00d7n_edges": 12,
+          "n_edges": 6,
+          "eigenvalues": [
+            7.771561172376096e-16,
+            4.0,
+            4.0,
+            4.0
+          ],
+          "eigenvalues_expected": [
+            0,
+            4,
+            4,
+            4
+          ],
+          "trace_matches": "True",
+          "edge_formula_matches": true,
+          "eigenvalues_match": true
+        },
+        {
+          "n": 5,
+          "Tr(L)": 20.0,
+          "n(n-1)": 20,
+          "2\u00d7n_edges": 20,
+          "n_edges": 10,
+          "eigenvalues": [
+            -7.105427357601002e-16,
+            5.0,
+            5.0,
+            5.0,
+            5.0
+          ],
+          "eigenvalues_expected": [
+            0,
+            5,
+            5,
+            5,
+            5
+          ],
+          "trace_matches": "True",
+          "edge_formula_matches": true,
+          "eigenvalues_match": true
+        },
+        {
+          "n": 6,
+          "Tr(L)": 30.0,
+          "n(n-1)": 30,
+          "2\u00d7n_edges": 30,
+          "n_edges": 15,
+          "eigenvalues": [
+            1.8654289449161127e-15,
+            5.999999999999999,
+            6.0,
+            6.0,
+            6.000000000000001,
+            6.000000000000004
+          ],
+          "eigenvalues_expected": [
+            0,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "trace_matches": "True",
+          "edge_formula_matches": true,
+          "eigenvalues_match": true
+        },
+        {
+          "n": 8,
+          "Tr(L)": 56.0,
+          "n(n-1)": 56,
+          "2\u00d7n_edges": 56,
+          "n_edges": 28,
+          "eigenvalues": [
+            -8.881784197001252e-16,
+            7.999999999999999,
+            8.0,
+            8.0,
+            8.0,
+            8.0,
+            8.0,
+            8.000000000000002
+          ],
+          "eigenvalues_expected": [
+            0,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "trace_matches": "True",
+          "edge_formula_matches": true,
+          "eigenvalues_match": true
+        }
+      ],
+      "passed": true
+    },
+    "test_2": {
+      "test": "2",
+      "name": "Two Origins of 12",
+      "taylor_origin": {
+        "coefficient": 12,
+        "factors": [
+          4,
+          3
+        ],
+        "interpretation": "4 from dispersion prefactor, 3 from sin\u00b2(x)/x\u00b2 \u2248 1 - x\u00b2/3"
+      },
+      "combinatorial_origin": {
+        "coefficient": 12,
+        "factors": [
+          2,
+          6
+        ],
+        "interpretation": "2 tetrahedra \u00d7 6 edges each = 12 edges"
+      },
+      "connection": {
+        "Tr(L_K\u2084)": 12.0,
+        "4\u00d73": 12,
+        "2\u00d76": 12,
+        "all_equal": true
+      },
+      "algebraic_identity": {
+        "n_v \u00d7 (n_v - 1)": 12,
+        "2 \u00d7 C(n_v, 2)": 12,
+        "identity_verified": true
+      },
+      "passed": true
+    },
+    "test_3": {
+      "test": "3",
+      "name": "Dispersion Relation O(a\u00b2) Error",
+      "dispersion_tests": [
+        {
+          "p": 0.1,
+          "a": 0.5,
+          "\u03c9\u00b2_cont": 0.010000000000000002,
+          "\u03c9\u00b2_lat": 0.009997916840270028,
+          "\u03c9\u00b2_taylor": 0.009997916666666669,
+          "error_actual": -2.083159729973985e-06,
+          "error_expected": -2.083333333333334e-06,
+          "relative_error": 8.332961248738862e-05
+        },
+        {
+          "p": 0.1,
+          "a": 0.25,
+          "\u03c9\u00b2_cont": 0.010000000000000002,
+          "\u03c9\u00b2_lat": 0.00999947917751724,
+          "\u03c9\u00b2_taylor": 0.009999479166666669,
+          "error_actual": -5.208224827610991e-07,
+          "error_expected": -5.208333333333335e-07,
+          "relative_error": 2.0833098689972144e-05
+        },
+        {
+          "p": 0.1,
+          "a": 0.1,
+          "\u03c9\u00b2_cont": 0.010000000000000002,
+          "\u03c9\u00b2_lat": 0.009999916666944445,
+          "\u03c9\u00b2_taylor": 0.009999916666666669,
+          "error_actual": -8.33330555567724e-08,
+          "error_expected": -8.333333333333336e-08,
+          "relative_error": 3.333318731636125e-06
+        },
+        {
+          "p": 0.1,
+          "a": 0.05,
+          "\u03c9\u00b2_cont": 0.010000000000000002,
+          "\u03c9\u00b2_lat": 0.009999979166684029,
+          "\u03c9\u00b2_taylor": 0.00999997916666667,
+          "error_actual": -2.0833315973398103e-08,
+          "error_expected": -2.083333333333334e-08,
+          "relative_error": 8.332768914217749e-07
+        },
+        {
+          "p": 0.5,
+          "a": 0.5,
+          "\u03c9\u00b2_cont": 0.25,
+          "\u03c9\u00b2_lat": 0.24870062631484174,
+          "\u03c9\u00b2_taylor": 0.24869791666666666,
+          "error_actual": -0.001299373685158256,
+          "error_expected": -0.0013020833333333333,
+          "relative_error": 0.002081009798459321
+        },
+        {
+          "p": 0.5,
+          "a": 0.25,
+          "\u03c9\u00b2_cont": 0.25,
+          "\u03c9\u00b2_lat": 0.24967464866147032,
+          "\u03c9\u00b2_taylor": 0.24967447916666666,
+          "error_actual": -0.000325351338529678,
+          "error_expected": -0.0003255208333333333,
+          "relative_error": 0.0005206880368290867
+        },
+        {
+          "p": 0.5,
+          "a": 0.1,
+          "\u03c9\u00b2_cont": 0.25,
+          "\u03c9\u00b2_lat": 0.24994792100675067,
+          "\u03c9\u00b2_taylor": 0.24994791666666666,
+          "error_actual": -5.207899324932708e-05,
+          "error_expected": -5.2083333333333343e-05,
+          "relative_error": 8.33296129203187e-05
+        },
+        {
+          "p": 0.5,
+          "a": 0.05,
+          "\u03c9\u00b2_cont": 0.25,
+          "\u03c9\u00b2_lat": 0.249986979437931,
+          "\u03c9\u00b2_taylor": 0.24998697916666668,
+          "error_actual": -1.3020562069004926e-05,
+          "error_expected": -1.3020833333333336e-05,
+          "relative_error": 2.0833100421863145e-05
+        },
+        {
+          "p": 1.0,
+          "a": 0.5,
+          "\u03c9\u00b2_cont": 1.0,
+          "\u03c9\u00b2_lat": 0.9793395048770184,
+          "\u03c9\u00b2_taylor": 0.9791666666666666,
+          "error_actual": -0.020660495122981626,
+          "error_expected": -0.020833333333333332,
+          "relative_error": 0.008296234096881905
+        },
+        {
+          "p": 1.0,
+          "a": 0.25,
+          "\u03c9\u00b2_cont": 1.0,
+          "\u03c9\u00b2_lat": 0.994802505259367,
+          "\u03c9\u00b2_taylor": 0.9947916666666666,
+          "error_actual": -0.005197494740633024,
+          "error_expected": -0.005208333333333333,
+          "relative_error": 0.002081009798459321
+        },
+        {
+          "p": 1.0,
+          "a": 0.1,
+          "\u03c9\u00b2_cont": 1.0,
+          "\u03c9\u00b2_lat": 0.9991669443948467,
+          "\u03c9\u00b2_taylor": 0.9991666666666666,
+          "error_actual": -0.0008330556051533433,
+          "error_expected": -0.0008333333333333335,
+          "relative_error": 0.00033327381598821643
+        },
+        {
+          "p": 1.0,
+          "a": 0.05,
+          "\u03c9\u00b2_cont": 1.0,
+          "\u03c9\u00b2_lat": 0.9997916840270027,
+          "\u03c9\u00b2_taylor": 0.9997916666666666,
+          "error_actual": -0.0002083159729973083,
+          "error_expected": -0.00020833333333333337,
+          "relative_error": 8.33296129203187e-05
+        },
+        {
+          "p": 2.0,
+          "a": 0.5,
+          "\u03c9\u00b2_cont": 4.0,
+          "\u03c9\u00b2_lat": 3.6775815530548823,
+          "\u03c9\u00b2_taylor": 3.6666666666666665,
+          "error_actual": -0.3224184469451177,
+          "error_expected": -0.3333333333333333,
+          "relative_error": 0.032744659164646917
+        },
+        {
+          "p": 2.0,
+          "a": 0.25,
+          "\u03c9\u00b2_cont": 4.0,
+          "\u03c9\u00b2_lat": 3.9173580195080735,
+          "\u03c9\u00b2_taylor": 3.9166666666666665,
+          "error_actual": -0.0826419804919265,
+          "error_expected": -0.08333333333333333,
+          "relative_error": 0.008296234096881905
+        },
+        {
+          "p": 2.0,
+          "a": 0.1,
+          "\u03c9\u00b2_cont": 4.0,
+          "\u03c9\u00b2_lat": 3.9866844317516734,
+          "\u03c9\u00b2_taylor": 3.986666666666667,
+          "error_actual": -0.013315568248326581,
+          "error_expected": -0.013333333333333336,
+          "relative_error": 0.0013323813755065914
+        },
+        {
+          "p": 2.0,
+          "a": 0.05,
+          "\u03c9\u00b2_cont": 4.0,
+          "\u03c9\u00b2_lat": 3.9966677775793866,
+          "\u03c9\u00b2_taylor": 3.9966666666666666,
+          "error_actual": -0.0033322224206133733,
+          "error_expected": -0.003333333333333334,
+          "relative_error": 0.00033327381598821643
+        }
+      ],
+      "coefficient_extraction": {
+        "p": 0.5,
+        "a": 0.1,
+        "error": -5.207899324932708e-05,
+        "p\u2074a\u00b2": 0.0006250000000000001,
+        "coefficient_extracted": -0.08332638919892331,
+        "coefficient_expected": -0.08333333333333333,
+        "matches": "True"
+      },
+      "taylor_verification": {
+        "sin\u00b2_x\u00b2_coeff": 1.0,
+        "sin\u00b2_x\u2074_coeff": -0.3333333333333333,
+        "dispersion_p\u00b2_coeff": 1.0,
+        "dispersion_p\u2074a\u00b2_coeff": -0.08333333333333333,
+        "derivation": "(4/a\u00b2) \u00d7 (pa/2)\u2074 \u00d7 (-1/3) = -p\u2074a\u00b2/12"
+      },
+      "passed": "True"
+    },
+    "test_4": {
+      "test": "4",
+      "name": "Geometric Improvement Pattern",
+      "simplices": {
+        "0-simplices (vertices)": 8,
+        "1-simplices (edges)": 12,
+        "2-simplices (faces)": 8
+      },
+      "coefficients": {
+        "\u03bb (quartic coupling)": {
+          "p": 0,
+          "n_p": 8,
+          "c_p": 0.125,
+          "value": 0.125,
+          "operator": "\u03c6\u2074 at vertices"
+        },
+        "c\u2081 (Symanzik)": {
+          "p": 1,
+          "n_p": 12,
+          "c_p": 0.08333333333333333,
+          "value": 0.08333333333333333,
+          "operator": "\u2202\u00b2\u03c6 along edges"
+        },
+        "c\u2082 (vertex improvement)": {
+          "p": 2,
+          "n_p": 8,
+          "c_p": 0.125,
+          "value": 0.125,
+          "operator": "\u03c6\u00b2(\u2202\u03c6)\u00b2 on faces"
+        }
+      },
+      "pattern_tests": [
+        {
+          "name": "\u03bb (quartic coupling)",
+          "p": 0,
+          "n_p": 8,
+          "c_p": 0.125,
+          "1/n_p": 0.125,
+          "matches": "True"
+        },
+        {
+          "name": "c\u2081 (Symanzik)",
+          "p": 1,
+          "n_p": 12,
+          "c_p": 0.08333333333333333,
+          "1/n_p": 0.08333333333333333,
+          "matches": "True"
+        },
+        {
+          "name": "c\u2082 (vertex improvement)",
+          "p": 2,
+          "n_p": 8,
+          "c_p": 0.125,
+          "1/n_p": 0.125,
+          "matches": "True"
+        }
+      ],
+      "euler_characteristic": {
+        "V - E + F": "8 - 12 + 8",
+        "\u03c7": 4,
+        "interpretation": "Two disjoint S\u00b2 (\u03c7 = 2 each)"
+      },
+      "self_duality": {
+        "n_vertices": 8,
+        "n_faces": 8,
+        "are_equal": true,
+        "implication": "\u03bb = c\u2082 = 1/8 (vertex-face duality)"
+      },
+      "passed": true
+    },
+    "test_5": {
+      "test": "5",
+      "name": "Trace = 2\u00d7n_edges Identity",
+      "complete_graphs": [
+        {
+          "graph": "K_3",
+          "n_vertices": 3,
+          "n_edges": 3,
+          "Tr(L)": 6,
+          "2\u00d7n_edges": 6,
+          "matches": true
+        },
+        {
+          "graph": "K_4",
+          "n_vertices": 4,
+          "n_edges": 6,
+          "Tr(L)": 12,
+          "2\u00d7n_edges": 12,
+          "matches": true
+        },
+        {
+          "graph": "K_5",
+          "n_vertices": 5,
+          "n_edges": 10,
+          "Tr(L)": 20,
+          "2\u00d7n_edges": 20,
+          "matches": true
+        },
+        {
+          "graph": "K_6",
+          "n_vertices": 6,
+          "n_edges": 15,
+          "Tr(L)": 30,
+          "2\u00d7n_edges": 30,
+          "matches": true
+        },
+        {
+          "graph": "K_7",
+          "n_vertices": 7,
+          "n_edges": 21,
+          "Tr(L)": 42,
+          "2\u00d7n_edges": 42,
+          "matches": true
+        },
+        {
+          "graph": "K_8",
+          "n_vertices": 8,
+          "n_edges": 28,
+          "Tr(L)": 56,
+          "2\u00d7n_edges": 56,
+          "matches": true
+        }
+      ],
+      "cycle_graphs": [
+        {
+          "graph": "C_3",
+          "n_vertices": 3,
+          "n_edges": 3,
+          "Tr(L)": 6,
+          "2\u00d7n_edges": 6,
+          "matches": true
+        },
+        {
+          "graph": "C_4",
+          "n_vertices": 4,
+          "n_edges": 4,
+          "Tr(L)": 8,
+          "2\u00d7n_edges": 8,
+          "matches": true
+        },
+        {
+          "graph": "C_5",
+          "n_vertices": 5,
+          "n_edges": 5,
+          "Tr(L)": 10,
+          "2\u00d7n_edges": 10,
+          "matches": true
+        },
+        {
+          "graph": "C_6",
+          "n_vertices": 6,
+          "n_edges": 6,
+          "Tr(L)": 12,
+          "2\u00d7n_edges": 12,
+          "matches": true
+        },
+        {
+          "graph": "C_7",
+          "n_vertices": 7,
+          "n_edges": 7,
+          "Tr(L)": 14,
+          "2\u00d7n_edges": 14,
+          "matches": true
+        },
+        {
+          "graph": "C_8",
+          "n_vertices": 8,
+          "n_edges": 8,
+          "Tr(L)": 16,
+          "2\u00d7n_edges": 16,
+          "matches": true
+        }
+      ],
+      "explanation": {
+        "statement": "For any graph G, Tr(L_G) = \u03a3_v degree(v) = 2 \u00d7 n_edges",
+        "reason": "Each edge contributes 1 to the degree of each of its two endpoints",
+        "for_K_n": "Tr(L_K\u2099) = n \u00d7 (n-1) because each vertex has degree n-1"
+      },
+      "passed": true
+    },
+    "test_6": {
+      "test": "6",
+      "name": "Stella = Two Disjoint K\u2084",
+      "K4": {
+        "n_vertices": 4,
+        "n_edges": 6,
+        "Tr(L)": 12,
+        "eigenvalues": [
+          0,
+          4,
+          4,
+          4
+        ]
+      },
+      "stella": {
+        "n_vertices": 8,
+        "n_edges": 12,
+        "Tr(L_\u2202S)": 24,
+        "Tr(L_\u2202S) = 2\u00d7Tr(L_K\u2084)": true,
+        "eigenvalues": [
+          0,
+          0,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      "explanation": {
+        "key_insight": "The two K\u2084 subsystems are INDEPENDENT (disjoint)",
+        "consequence": "O(a\u00b2) error applies to EACH subsystem separately",
+        "c1_formula": "c\u2081 = 1/Tr(L_K\u2084) = 1/12, not 1/Tr(L_\u2202S) = 1/24",
+        "physical_meaning": "Kinetic improvement acts within each tetrahedron"
+      },
+      "key_relationship": {
+        "Tr(L_K\u2084)": 12,
+        "n_edges(stella)": 12,
+        "are_equal": true,
+        "formula": "c\u2081 = 1/Tr(L_K\u2084) = 1/n_edges(stella) = 1/12"
+      },
+      "passed": true
+    },
+    "test_7": {
+      "test": "7",
+      "name": "Symmetry Argument under O_h",
+      "oh_symmetry": {
+        "group": "O_h",
+        "order": 48,
+        "generators": "Rotations of cube + inversion",
+        "stella_property": "All 8 vertices equivalent, all 12 edges equivalent"
+      },
+      "symmetry_argument": {
+        "principle": "Under full symmetry, coefficients are averages over equivalent simplices",
+        "vertex_operator": {
+          "type": "0-form (\u03c6\u2074 at vertices)",
+          "equivalent_simplices": 8,
+          "coefficient": "\u03bb = \u03bb\u2080/n_v = 1/8 (with \u03bb\u2080 = 1)"
+        },
+        "edge_operator": {
+          "type": "1-form (kinetic along edges)",
+          "equivalent_simplices": 12,
+          "coefficient": "c\u2081 = c\u2081\u2080/n_e = 1/12 (with c\u2081\u2080 = 1)"
+        },
+        "face_operator": {
+          "type": "2-form (plaquette on faces)",
+          "equivalent_simplices": 8,
+          "coefficient": "c\u2082 = c\u2082\u2080/n_f = 1/8 (with c\u2082\u2080 = 1)"
+        }
+      },
+      "normalization": {
+        "statement": "The 'bare' coefficient c_{p,0} = 1 is natural",
+        "reason": "Corresponds to unit contribution per simplex before averaging",
+        "analogy": "Same logic as \u03bb\u2080 = 1 for Higgs quartic (see \u00a73.2)"
+      },
+      "numerical_verification": {
+        "\u03bb = 1/8": "True",
+        "c\u2081 = 1/12": "True",
+        "c\u2082 = 1/8": "True"
+      },
+      "passed": true
+    }
+  },
+  "overall_status": "PASSED"
+}

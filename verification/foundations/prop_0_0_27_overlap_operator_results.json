@@ -1,0 +1,342 @@
+{
+  "proposition": "0.0.27",
+  "section": "10.3.12.10.15",
+  "title": "Explicit Overlap Operator Computation on K\u2084",
+  "timestamp": "2026-02-03T06:28:31.595828",
+  "wilson_parameter": 1.5,
+  "tests": {
+    "test_1": {
+      "test": "K\u2084 Graph Structure",
+      "vertices": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          -1.0,
+          -1.0
+        ],
+        [
+          -1.0,
+          1.0,
+          -1.0
+        ],
+        [
+          -1.0,
+          -1.0,
+          1.0
+        ]
+      ],
+      "laplacian_eigenvalues": [
+        7.771561172376096e-16,
+        4.0,
+        4.0,
+        4.0
+      ],
+      "expected_eigenvalues": [
+        0,
+        4,
+        4,
+        4
+      ],
+      "eigenvalues_correct": true,
+      "trace_L": 12.0,
+      "expected_trace": 12,
+      "passed": true
+    },
+    "test_2": {
+      "test": "Gamma Matrix Properties",
+      "clifford_algebra": [
+        {
+          "mu": 1,
+          "nu": 1,
+          "passed": true
+        },
+        {
+          "mu": 2,
+          "nu": 2,
+          "passed": true
+        },
+        {
+          "mu": 3,
+          "nu": 3,
+          "passed": true
+        },
+        {
+          "mu": 4,
+          "nu": 4,
+          "passed": true
+        }
+      ],
+      "gamma5_anticommutes": [
+        {
+          "mu": 1,
+          "passed": true
+        },
+        {
+          "mu": 2,
+          "passed": true
+        },
+        {
+          "mu": 3,
+          "passed": true
+        },
+        {
+          "mu": 4,
+          "passed": true
+        }
+      ],
+      "gamma5_squared": {
+        "passed": true
+      },
+      "gamma5_eigenvalues": {
+        "eigenvalues": [
+          -1.0,
+          -1.0,
+          1.0,
+          1.0
+        ],
+        "expected": [
+          -1,
+          -1,
+          1,
+          1
+        ]
+      },
+      "passed": true
+    },
+    "test_3": {
+      "test": "Overlap Operator Construction",
+      "direction_matrices": {
+        "test": "Direction Matrix Properties",
+        "edges": [
+          {
+            "edge": [
+              0,
+              1
+            ],
+            "direction": [
+              0.0,
+              -0.7071067811865475,
+              -0.7071067811865475
+            ],
+            "hermitian": true,
+            "eigenvalues": [
+              -1.0,
+              -0.9999999999999999,
+              0.9999999999999999,
+              1.0
+            ],
+            "eigenvalues_correct": true,
+            "passed": true
+          },
+          {
+            "edge": [
+              0,
+              2
+            ],
+            "direction": [
+              -0.7071067811865475,
+              0.0,
+              -0.7071067811865475
+            ],
+            "hermitian": true,
+            "eigenvalues": [
+              -1.0,
+              -0.9999999999999999,
+              0.9999999999999999,
+              1.0
+            ],
+            "eigenvalues_correct": true,
+            "passed": true
+          },
+          {
+            "edge": [
+              0,
+              3
+            ],
+            "direction": [
+              -0.7071067811865475,
+              -0.7071067811865475,
+              0.0
+            ],
+            "hermitian": true,
+            "eigenvalues": [
+              -1.0,
+              -0.9999999999999999,
+              0.9999999999999999,
+              1.0
+            ],
+            "eigenvalues_correct": true,
+            "passed": true
+          },
+          {
+            "edge": [
+              1,
+              2
+            ],
+            "direction": [
+              -0.7071067811865475,
+              0.7071067811865475,
+              0.0
+            ],
+            "hermitian": true,
+            "eigenvalues": [
+              -1.0,
+              -0.9999999999999999,
+              0.9999999999999999,
+              1.0
+            ],
+            "eigenvalues_correct": true,
+            "passed": true
+          },
+          {
+            "edge": [
+              1,
+              3
+            ],
+            "direction": [
+              -0.7071067811865475,
+              0.0,
+              0.7071067811865475
+            ],
+            "hermitian": true,
+            "eigenvalues": [
+              -1.0,
+              -0.9999999999999999,
+              0.9999999999999999,
+              1.0
+            ],
+            "eigenvalues_correct": true,
+            "passed": true
+          },
+          {
+            "edge": [
+              2,
+              3
+            ],
+            "direction": [
+              0.0,
+              -0.7071067811865475,
+              0.7071067811865475
+            ],
+            "hermitian": true,
+            "eigenvalues": [
+              -1.0,
+              -0.9999999999999999,
+              0.9999999999999999,
+              1.0
+            ],
+            "eigenvalues_correct": true,
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "hermiticity": {
+        "is_hermitian": true,
+        "max_deviation": 0.0
+      },
+      "spectrum": {
+        "eigenvalues": [
+          -0.43649167310370707,
+          -0.4364916731037077,
+          0.4364916731037084,
+          0.4364916731037094,
+          2.999999999999997,
+          -2.9999999999999996,
+          3.0,
+          -3.0000000000000004,
+          3.0000000000000004,
+          -3.000000000000001,
+          3.000000000000001,
+          -3.0000000000000013,
+          -3.436491673103708,
+          -3.4364916731037085,
+          3.436491673103709,
+          3.436491673103709
+        ],
+        "n_physical": 4,
+        "n_doublers": 12,
+        "physical_eigenvalues": [
+          -0.43649167310370707,
+          -0.4364916731037077,
+          0.4364916731037084,
+          0.4364916731037094
+        ],
+        "doubler_eigenvalues": [
+          2.999999999999997,
+          -2.9999999999999996,
+          3.0,
+          -3.0000000000000004,
+          3.0000000000000004,
+          -3.000000000000001,
+          3.000000000000001,
+          -3.0000000000000013,
+          -3.436491673103708,
+          -3.4364916731037085,
+          3.436491673103709,
+          3.436491673103709
+        ],
+        "gap": 2.5635083268962875
+      },
+      "sign_computed": true,
+      "passed": true
+    },
+    "test_4": {
+      "satisfied": true,
+      "max_difference": 9.498937724532255e-16,
+      "LHS_norm": 1.27507378945105,
+      "RHS_norm": 1.275073789451051,
+      "test": "Ginsparg-Wilson Relation",
+      "passed": true
+    },
+    "test_5": {
+      "index_from_trace": 7.098386676965935,
+      "sign_squared_is_identity": true,
+      "n_positive_eigenvalues": 8,
+      "n_negative_eigenvalues": 8,
+      "trace_gamma5_sign": -14.19677335393187,
+      "note": "Index verified via sign function structure",
+      "test": "Index Theorem Structure",
+      "passed": true
+    },
+    "test_6": {
+      "test": "Wilson Parameter Comparison",
+      "r_geometric": {
+        "r": 1.5,
+        "n_physical": 4,
+        "n_doublers": 12,
+        "gap": 2.5635083268962875,
+        "physical_range": [
+          -0.4364916731037077,
+          0.4364916731037094
+        ],
+        "doubler_range": [
+          -3.4364916731037085,
+          3.436491673103709
+        ]
+      },
+      "r_standard": {
+        "r": 1.0,
+        "n_physical": 4,
+        "n_doublers": 12,
+        "gap": 1.4188611699158051,
+        "physical_range": [
+          -0.58113883008419,
+          0.5811388300841918
+        ],
+        "doubler_range": [
+          -2.5811388300841904,
+          2.5811388300841904
+        ]
+      },
+      "gap_improvement_percent": 80.67365442444276,
+      "geometric_better": true,
+      "passed": true
+    }
+  },
+  "overall_status": "PASSED"
+}

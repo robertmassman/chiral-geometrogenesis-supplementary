@@ -1,0 +1,300 @@
+{
+  "proposition": "0.0.27",
+  "section": "10.3.12.10.8",
+  "title": "c\u2082 = 1/n_faces = 1/8 Verification",
+  "timestamp": "2026-02-03T07:15:34.080289",
+  "stella_counts": {
+    "n_v": 8,
+    "n_e": 12,
+    "n_f": 8
+  },
+  "predicted_c2": 0.125,
+  "tests": {
+    "test_1": {
+      "test": "\u03c6\u00b2(\u0394\u03c6)\u00b2 Term Structure",
+      "vertex": 0,
+      "neighbors": [
+        1,
+        2,
+        3
+      ],
+      "n_neighbors": 3,
+      "n_diagonal_terms": 3,
+      "off_diagonal_pairs": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "n_off_diagonal_terms": 3,
+      "faces_at_vertex": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          2,
+          3
+        ]
+      ],
+      "n_faces_at_vertex": 3,
+      "expected_faces_per_vertex": 3.0,
+      "faces_match": true,
+      "passed": true
+    },
+    "test_2": {
+      "test": "Face Adjacency",
+      "vertex_to_faces": {
+        "0": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            0,
+            2,
+            3
+          ]
+        ],
+        "1": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "2": [
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "3": [
+          [
+            0,
+            1,
+            3
+          ],
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      },
+      "face_to_opposite": {
+        "[0, 1, 2]": 3,
+        "[0, 1, 3]": 2,
+        "[0, 2, 3]": 1,
+        "[1, 2, 3]": 0
+      },
+      "all_vertices_have_3_faces": true,
+      "passed": true
+    },
+    "test_3": {
+      "test": "Face-Weighted Interaction",
+      "phi_values": {
+        "0": 1.0,
+        "1": 1.1,
+        "2": 1.2,
+        "3": 1.3
+      },
+      "face_contributions": [
+        {
+          "face": [
+            0,
+            1,
+            2
+          ],
+          "opposite": 3,
+          "face_product": 1.32,
+          "quartic_contribution": 1.7160000000000002
+        },
+        {
+          "face": [
+            0,
+            1,
+            3
+          ],
+          "opposite": 2,
+          "face_product": 1.4300000000000002,
+          "quartic_contribution": 1.7160000000000002
+        },
+        {
+          "face": [
+            0,
+            2,
+            3
+          ],
+          "opposite": 1,
+          "face_product": 1.56,
+          "quartic_contribution": 1.7160000000000002
+        },
+        {
+          "face": [
+            1,
+            2,
+            3
+          ],
+          "opposite": 0,
+          "face_product": 1.7160000000000002,
+          "quartic_contribution": 1.7160000000000002
+        }
+      ],
+      "total_interaction": 6.864000000000001,
+      "n_faces": 4,
+      "c_per_face_k4": 0.25,
+      "c2_stella": 0.125,
+      "matches_prediction": "True",
+      "passed": "True"
+    },
+    "test_4": {
+      "test": "Physical Consistency",
+      "c1": 0.08333333333333333,
+      "c2": 0.125,
+      "lambda": 0.125,
+      "delta_gamma_4_coeff": 0.015625,
+      "delta_gamma_2_coeff": 0.08333333333333333,
+      "ratio": 0.1875,
+      "expected_ratio": 0.1875,
+      "ratio_formula": 0.1875,
+      "ratio_matches": "True",
+      "is_reasonable": true,
+      "passed": true
+    },
+    "test_5": {
+      "test": "Self-Duality Signature",
+      "k4": {
+        "n_v": 4,
+        "n_f": 4,
+        "self_dual": true
+      },
+      "stella": {
+        "n_v": 8,
+        "n_f": 8,
+        "self_dual": true
+      },
+      "lambda": 0.125,
+      "c2": 0.125,
+      "lambda_equals_c2": "True",
+      "passed": "True"
+    },
+    "test_6": {
+      "test": "Geometric Improvement Principle",
+      "simplices": {
+        "0": {
+          "name": "vertices",
+          "n_p": 8,
+          "c_p": 0.125,
+          "physics": "\u03bb (quartic coupling)"
+        },
+        "1": {
+          "name": "edges",
+          "n_p": 12,
+          "c_p": 0.08333333333333333,
+          "physics": "c\u2081 (kinetic improvement)"
+        },
+        "2": {
+          "name": "faces",
+          "n_p": 8,
+          "c_p": 0.125,
+          "physics": "c\u2082 (vertex improvement)"
+        }
+      },
+      "all_normalized": true,
+      "passed": true
+    },
+    "test_7": {
+      "test": "Plaquette Counting",
+      "k4": {
+        "n_plaquettes": 4,
+        "c_plaq": 0.25
+      },
+      "stella": {
+        "n_plaquettes": 8,
+        "c_plaq": 0.125
+      },
+      "matches_c2": "True",
+      "passed": "True"
+    },
+    "test_8": {
+      "test": "c\u2082 Summary",
+      "derivations": [
+        {
+          "method": "Face counting",
+          "formula": "c\u2082 = 1/n_faces",
+          "value": 0.125,
+          "section": "\u00a710.3.12.10.8b"
+        },
+        {
+          "method": "Plaquette counting",
+          "formula": "c\u2082 = 1/n_plaquettes",
+          "value": 0.125,
+          "section": "\u00a710.3.12.10.8f"
+        },
+        {
+          "method": "Geometric principle",
+          "formula": "c\u2082 = 1/n_{2-simplices}",
+          "value": 0.125,
+          "section": "\u00a710.3.12.10.8g"
+        },
+        {
+          "method": "Self-duality",
+          "formula": "c\u2082 = \u03bb = 1/n_v",
+          "value": 0.125,
+          "section": "\u00a710.3.12.10.8h"
+        }
+      ],
+      "all_agree": true,
+      "passed": true
+    }
+  },
+  "overall_status": "PASSED"
+}

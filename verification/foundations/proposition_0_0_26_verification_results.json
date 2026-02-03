@@ -1,0 +1,144 @@
+{
+  "proposition": "0.0.26",
+  "title": "Electroweak Cutoff from Gauge Structure",
+  "timestamp": "2026-02-02T09:03:02.238883",
+  "claim": {
+    "formula": "\u039b_EW = dim(adj_EW) \u00d7 v_H",
+    "numerical": "984.88 GeV"
+  },
+  "tests": [
+    {
+      "test": "arithmetic",
+      "expected": 984.88,
+      "computed": 984.88,
+      "error_gev": 0.0,
+      "passed": true
+    },
+    {
+      "test": "dimensional_analysis",
+      "checks": 4,
+      "all_consistent": true,
+      "passed": true
+    },
+    {
+      "test": "nda_comparison",
+      "lambda_proposed_gev": 984.88,
+      "lambda_nda_gev": 3094.091772667515,
+      "ratio": 0.3183098861837907,
+      "factor_difference": 3.141592653589793,
+      "conflicts_with_nda": true,
+      "passed": true
+    },
+    {
+      "test": "unitarity_bound",
+      "lambda_proposed_gev": 984.88,
+      "lambda_unitarity_gev": 1891.1659683764208,
+      "ratio": 0.5207792528360302,
+      "agrees_with_unitarity": "False",
+      "passed": true
+    },
+    {
+      "test": "phenomenological_consistency",
+      "lambda_gev": 984.88,
+      "higgs_deviation_percent": 6.25,
+      "testable_at_hllhc": true,
+      "ewpt_status": "marginally_consistent",
+      "lhc_bsm_status": "consistent",
+      "passed": true
+    },
+    {
+      "test": "extended_gauge_groups",
+      "predictions": [
+        {
+          "name": "SM: SU(2)\u00d7U(1)",
+          "dim_adj": 4,
+          "lambda_gev": 984.88,
+          "lambda_tev": 0.98488
+        },
+        {
+          "name": "Left-Right: SU(2)_L\u00d7SU(2)_R\u00d7U(1)",
+          "dim_adj": 7,
+          "lambda_gev": 1723.54,
+          "lambda_tev": 1.72354
+        },
+        {
+          "name": "Pati-Salam: SU(4)\u00d7SU(2)_L\u00d7SU(2)_R",
+          "dim_adj": 21,
+          "lambda_gev": 5170.62,
+          "lambda_tev": 5.1706199999999995
+        },
+        {
+          "name": "SO(10)",
+          "dim_adj": 45,
+          "lambda_gev": 11079.9,
+          "lambda_tev": 11.0799
+        },
+        {
+          "name": "E6",
+          "dim_adj": 78,
+          "lambda_gev": 19205.16,
+          "lambda_tev": 19.20516
+        }
+      ],
+      "formula_problematic_for_large_groups": true,
+      "passed": true
+    },
+    {
+      "test": "ratio_analysis",
+      "lambda_ew_gev": 984.88,
+      "lambda_qcd_gev": 1.1573627335824799,
+      "ratio_gev": 850.9691658650698,
+      "ratio_mev": 850.9691658650698,
+      "document_claim": 0.85,
+      "document_claim_verified": false,
+      "passed": false
+    },
+    {
+      "test": "sensitivity_analysis",
+      "v_h_uncertainty_gev": 0.1,
+      "lambda_range_gev": [
+        984.48,
+        984.88,
+        985.28
+      ],
+      "factor_variations": [
+        {
+          "name": "dim(adj_EW) = 4",
+          "factor": 4,
+          "lambda_gev": 984.88
+        },
+        {
+          "name": "\u03c0",
+          "factor": 3.141592653589793,
+          "lambda_gev": 773.5229431668788
+        },
+        {
+          "name": "3 (N_gen)",
+          "factor": 3,
+          "lambda_gev": 738.66
+        },
+        {
+          "name": "2",
+          "factor": 2,
+          "lambda_gev": 492.44
+        },
+        {
+          "name": "4\u03c0 (NDA)",
+          "factor": 12.566370614359172,
+          "lambda_gev": 3094.091772667515
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "total": 8,
+    "overall_status": "PARTIAL",
+    "key_issues": [
+      "Conflicts with standard NDA",
+      "Unphysical for extended gauge groups",
+      "Novel claim (4\u03c0 \u2192 dim(adj)) not derived"
+    ]
+  }
+}

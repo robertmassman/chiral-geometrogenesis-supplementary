@@ -2386,6 +2386,25 @@ The polyhedral encoding is no longer a choice but a **necessity** for emergent s
     - *Dependencies:* Prop 0.0.17y ✅ (bootstrap fixed-point uniqueness), Lawvere (1969) ✅, Tarski (1955) ✅
     - *Impact:* **Resolves why bootstrap produces unique answer, not Gödelian paradox**. Physics evades incompleteness by asking quantitative questions ("What scale?") rather than logical questions ("Is this provable?"). Makes Wheeler's "it from bit" mathematically precise via Lawvere categorical structure.
 
+51b. **Theorem 0.0.XXc (Gödel-Bootstrap Separation)** 🔶 NOVEL ✅ ESTABLISHED (2026-02-03)
+    - *Status:* 🔶 **NOVEL** ✅ **ESTABLISHED** — Rigorous proof of bootstrap escape from Gödelian undecidability
+    - *Document:* [Theorem-0.0.XXc-Godel-Bootstrap-Separation.md](proofs/foundations/Theorem-0.0.XXc-Godel-Bootstrap-Separation.md)
+    - *Derivation:* [Theorem-0.0.XXc-Godel-Bootstrap-Separation-Derivation.md](proofs/foundations/Theorem-0.0.XXc-Godel-Bootstrap-Separation-Derivation.md)
+    - *Applications:* [Theorem-0.0.XXc-Godel-Bootstrap-Separation-Applications.md](proofs/foundations/Theorem-0.0.XXc-Godel-Bootstrap-Separation-Applications.md)
+    - *Verification:* ✅ **VERIFIED** — [theorem_0_0_XXc_godel_bootstrap.py](../verification/foundations/theorem_0_0_XXc_godel_bootstrap.py) (4/4 tests pass)
+    - *Lean Formalization:* ✅ **COMPLETE** — [Theorem_0_0_XXc.lean](../lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_XXc.lean) — Main theorem proven; acceptable axioms for Gödel I and Chaitin Ω
+    - *Statement:* The CG bootstrap escapes Gödelian undecidability because:
+      - **Part I (Arithmetic Hierarchy):** Bootstrap questions ∈ Δ₁ (decidable); Gödel sentences ∈ Σ₁ \ Δ₁ (undecidable)
+      - **Part II (Structure):** Bootstrap has DAG (depth 3, terminating); Gödel has cyclic dependency (non-terminating)
+      - **Part III (Computability):** Bootstrap is computable with K = O(1); Chaitin's Ω is incomputable with K ≥ n - O(1)
+    - *Key Lemmas:*
+      - ✅ **Lemma 2.1:** Bootstrap uses only computable operations → Δ₁ classification
+      - ✅ **Lemma 2.2:** Provability predicate is Σ₁-complete → Σ₁ \ Δ₁
+      - ✅ **Lemma 2.3:** DAG depth 3 → guaranteed termination
+      - ✅ **Lemma 2.4:** K(Bootstrap) = O(1) ≈ 205 bits vs K(Ω|n) ≥ n - O(1)
+    - *Dependencies:* Theorem 0.0.19 ✅ (quantitative self-reference), Prop 0.0.XXb ✅ (computability), Gödel (1931) ✅, Chaitin (1987) ✅, Rogers (1967) ✅
+    - *Impact:* **Completes Path E of Research-Meta-Foundational-Directions.md**. Transforms informal philosophical observation in Theorem 0.0.19 §7 into rigorous mathematical theorem. Provides falsifiability criterion: if bootstrap were undecidable, CG would be falsified. Strengthens "It from Bit" interpretation with decidability guarantees.
+
 52. **Proposition 0.0.18 (Electroweak Scale from χ-Field Structure)** 🔶 NOVEL — CONJECTURE (2026-01-22)
     - *Status:* 🔶 **NOVEL** — Geometric approach to electroweak hierarchy
     - *Document:* [Proposition-0.0.18-Electroweak-Scale-From-Chi-Field.md](proofs/foundations/Proposition-0.0.18-Electroweak-Scale-From-Chi-Field.md)
@@ -2538,6 +2557,50 @@ The polyhedral encoding is no longer a choice but a **necessity** for emergent s
     - *Impact:* Provides the **"8th bootstrap equation"** fixing α_GUT ≈ 1/25 from pure geometry.
     - *Verification:* [Multi-Agent Verification Report (2026-01-23)](proofs/verification-records/Conjecture-0.0.25-Multi-Agent-Verification-2026-01-23.md) — Mathematics ✅, Physics 🔶 ADDRESSED, Literature ✅
     - *Adversarial Scripts:* [conjecture_0_0_25_verification.py](../verification/foundations/conjecture_0_0_25_verification.py), [heterotic_appendix_V_verification.py](../verification/supporting/heterotic_appendix_V_verification.py), [heterotic_appendix_W_dilaton_verification.py](../verification/supporting/heterotic_appendix_W_dilaton_verification.py)
+
+60. **Proposition 0.0.26 (Electroweak Cutoff Scale from Unitarity)** 🔶 NOVEL ✅ VERIFIED (2026-02-02)
+    - *Status:* 🔶 **NOVEL** ✅ **VERIFIED** — Electroweak cutoff derived from λ-corrected unitarity bound
+    - *Document:* [Proposition-0.0.26-Electroweak-Cutoff-Derivation.md](proofs/foundations/Proposition-0.0.26-Electroweak-Cutoff-Derivation.md)
+    - *Statement:* The electroweak cutoff scale is determined by partial-wave unitarity with geometrically-derived quartic:
+      $$\Lambda_{EW} = \frac{4\pi v_H}{\sqrt{N_{eff}}} \cdot \sqrt{\frac{2}{3\lambda}} \approx 982 \text{ GeV}$$
+    - *Key Results:*
+      - ✅ N_eff = 4 from SU(2) doublet counting
+      - ✅ λ = 1/8 from stella octangula (Prop 0.0.27)
+      - ✅ Λ_EW = 982 GeV (λ-corrected) vs 1.2 TeV (naive)
+      - 🔶 NOVEL: Unitarity bound with geometrically-derived coupling
+    - *Dependencies:* Proposition 0.0.27 ✅ (λ = 1/8), Proposition 0.0.21 ✅ (v_H = 246 GeV)
+    - *Downstream:* Theorem 3.2.1 (low-energy equivalence), Phase 6 scattering calculations
+
+61. **Proposition 0.0.27 (Higgs Mass from Stella Octangula Geometry)** 🔶 NOVEL ✅ VERIFIED (2026-02-02)
+    - *Status:* 🔶 **NOVEL** ✅ **VERIFIED** — Higgs mass derived from vertex-counting on ∂S
+    - *Document:* [Proposition-0.0.27-Higgs-Mass-From-Geometry.md](proofs/foundations/Proposition-0.0.27-Higgs-Mass-From-Geometry.md)
+    - *Statement:* The Higgs quartic coupling and mass are determined by stella octangula topology:
+      $$\lambda = \frac{\lambda_0}{n_{modes}} = \frac{1}{8}, \quad m_H^{(0)} = \frac{v_H}{2} = 123.3 \text{ GeV}$$
+    - *Key Results:*
+      - ✅ n_modes = 8 from stella vertex count (Definition 0.1.1)
+      - ✅ λ₀ = 1 from maximum entropy (Prop 0.0.27a)
+      - ✅ m_H = 125.2 GeV after radiative corrections (98.5% tree-level, 99.96% with loops)
+      - ✅ V = F = 8 forced by tetrahedral self-duality (§3.4a)
+      - 🔶 NOVEL: Higgs mass from pure geometry with no fitted parameters
+    - *Dependencies:* Definition 0.1.1 ✅ (8 vertices), Theorem 0.0.3 ✅ (stella uniqueness), Proposition 0.0.21 ✅ (v_H), Proposition 0.0.27a ✅ (λ₀ = 1)
+    - *Downstream:* Proposition 0.0.26 ✅ (Λ_EW), Theorem 3.2.1 (low-energy equivalence), Theorem 6.7.2 ✅ (EWSB dynamics)
+    - *Open Conjecture (§3.6):* 🔮 **λ = N_gen/n_vertices(24-cell) = 3/24 = 1/8** — Numerically true but lacks mechanistic derivation. Partial progress via D₄ triality (3 sixteen-cells ↔ 3 generations). See [Research-Plan-Lambda-Equals-Ngen-Over-24.md](proofs/supporting/Research-Plan-Lambda-Equals-Ngen-Over-24.md)
+
+62. **Proposition 0.0.27a (Scalar Quartic Normalization from Maximum Entropy)** 🔶 NOVEL ✅ VERIFIED (2026-02-02)
+    - *Status:* 🔶 **NOVEL** ✅ **VERIFIED** — First-principles derivation of λ₀ = 1
+    - *Document:* [Proposition-0.0.27a-Quartic-Normalization-From-Equipartition.md](proofs/foundations/Proposition-0.0.27a-Quartic-Normalization-From-Equipartition.md)
+    - *Verification:* [Proposition-0.0.27a-Multi-Agent-Verification-2026-02-02.md](proofs/verification-records/Proposition-0.0.27a-Multi-Agent-Verification-2026-02-02.md) | [verify_prop_0_0_27a_quartic_normalization.py](../verification/foundations/verify_prop_0_0_27a_quartic_normalization.py)
+    - *Statement:* The bare scalar quartic coupling is uniquely determined by maximum entropy:
+      $$\lambda_0 = 1 \text{ (unique value maximizing microcanonical entropy on } \partial\mathcal{S})$$
+    - *Key Results:*
+      - ✅ O_h symmetry forces uniform distribution p_v = 1/8 over 8 vertices
+      - ✅ S_max = ln(8) achieved at equipartition
+      - ✅ Partition function normalization → λ₀ = 1
+      - ✅ Combined with n_modes = 8: λ = λ₀/8 = 1/8 = 0.125 (96.7% of experimental λ = 0.129)
+      - 🔶 NOVEL: Equipartition identification λ_eff = p_v is novel physical hypothesis
+    - *Dependencies:* Definition 0.1.1 ✅ (8 vertices), Theorem 0.0.3 ✅ (stella uniqueness), Proposition 0.0.17w ✅ (maximum entropy pattern)
+    - *Downstream:* Proposition 0.0.27 ✅ (resolves λ₀ = 1 limitation), Bootstrap DAG (adds equation E₉)
+    - *Impact:* **Closes limitation 1 of Prop 0.0.27** — λ₀ = 1 is now derived, not assumed. The Higgs quartic coupling λ = 1/8 is fully first-principles.
 
 ### Foundation Assessment
 

@@ -1,0 +1,201 @@
+{
+  "perturbation": {
+    "passed": true,
+    "data": [
+      {
+        "N_c": 2,
+        "N_f": 2,
+        "Z3": 2,
+        "xi": 12391.647807914504,
+        "xi_ratio": -0.9999999999999996,
+        "note": "SU(2) gauge"
+      },
+      {
+        "N_c": 3,
+        "N_f": 2,
+        "Z3": 3,
+        "xi": 1.1647288240670525e+18,
+        "xi_ratio": -0.954105449124827,
+        "note": "N_f=2 (two flavors)"
+      },
+      {
+        "N_c": 3,
+        "N_f": 4,
+        "Z3": 3,
+        "xi": 9.053589412615978e+20,
+        "xi_ratio": 34.67443436742079,
+        "note": "N_f=4 (four flavors)"
+      },
+      {
+        "N_c": 3,
+        "N_f": 6,
+        "Z3": 3,
+        "xi": 8.883747056145964e+24,
+        "xi_ratio": 350050.93724559905,
+        "note": "N_f=6 (conformal window edge)"
+      },
+      {
+        "N_c": 4,
+        "N_f": 4,
+        "Z3": 4,
+        "xi": 1.4591947856759805e+51,
+        "xi_ratio": 5.74975805047461e+31,
+        "note": "SU(4) hypothetical"
+      },
+      {
+        "N_c": 5,
+        "N_f": 5,
+        "Z3": 5,
+        "xi": 6.082806131627713e+104,
+        "xi_ratio": 2.3968467999013954e+85,
+        "note": "SU(5) hypothetical"
+      }
+    ]
+  },
+  "k_complexity": {
+    "passed": true,
+    "data": {
+      "Minimal (shared library)": {
+        "data": 7,
+        "library": 140,
+        "formulas": 50,
+        "total": 197
+      },
+      "Compact (custom library)": {
+        "data": 15,
+        "library": 140,
+        "formulas": 50,
+        "total": 205
+      },
+      "Verbose (standalone)": {
+        "data": 23,
+        "library": 190,
+        "formulas": 70,
+        "total": 283
+      },
+      "Pessimistic (worst case)": {
+        "data": 30,
+        "library": 220,
+        "formulas": 90,
+        "total": 340
+      }
+    }
+  },
+  "dag_structure": {
+    "passed": true,
+    "data": {
+      "original": {
+        "has_cycle": false,
+        "depth": 3,
+        "levels": {
+          "N_c": 0,
+          "N_f": 0,
+          "Z3": 0,
+          "alpha_s": 1,
+          "b0": 1,
+          "eta": 1,
+          "xi": 2,
+          "zeta": 3
+        },
+        "topological_order": [
+          "N_c",
+          "N_f",
+          "Z3",
+          "alpha_s",
+          "b0",
+          "eta",
+          "xi",
+          "zeta"
+        ]
+      },
+      "corrected": {
+        "has_cycle": false,
+        "depth": 3,
+        "levels": {
+          "N_c": 0,
+          "N_f": 0,
+          "Z3": 0,
+          "alpha_s": 1,
+          "b0": 1,
+          "eta": 1,
+          "xi": 2,
+          "zeta": 3
+        },
+        "topological_order": [
+          "N_c",
+          "N_f",
+          "Z3",
+          "alpha_s",
+          "b0",
+          "eta",
+          "xi",
+          "zeta"
+        ]
+      },
+      "cyclic": {
+        "has_cycle": true,
+        "depth": 1,
+        "levels": {
+          "N_c": 0,
+          "N_f": 0,
+          "Z3": 0,
+          "alpha_s": 0,
+          "b0": 1,
+          "eta": 1,
+          "xi": 0,
+          "zeta": 0
+        },
+        "topological_order": [
+          "N_f",
+          "Z3",
+          "eta"
+        ]
+      }
+    }
+  },
+  "numerical_stability": {
+    "passed": true,
+    "data": {
+      "xi_values": [
+        2.53783684959671e+19,
+        2.53783684959671e+19,
+        2.53783684959671e+19,
+        2.53783684959671e+19,
+        2.53783684959671e+19
+      ],
+      "eta_values": [
+        2.252614659630118,
+        2.252614659630118,
+        2.252614659630118,
+        2.252614659630118,
+        2.252614659630118
+      ],
+      "precisions": [
+        50,
+        100,
+        200,
+        500,
+        1000
+      ]
+    }
+  },
+  "godelian_comparison": {
+    "passed": true,
+    "data": {
+      "Bootstrap": {
+        "dependency": "Acyclic DAG",
+        "termination": "Guaranteed (finite)",
+        "decidability": "\u0394\u2081 (decidable)",
+        "complexity": "O(1) Kolmogorov",
+        "fixed_point": "Unique, computable"
+      },
+      "G\u00f6del": {
+        "dependency": "Cyclic (Truth \u2194 Provability)",
+        "termination": "Not guaranteed",
+        "decidability": "\u03a3\u2081 \\ \u0394\u2081 (undecidable)",
+        "complexity": "Unbounded (for consistency)",
+        "fixed_point": "Exists but undecidable"
+      }
+    }
+  }
+}

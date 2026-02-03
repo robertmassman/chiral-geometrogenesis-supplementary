@@ -1,0 +1,315 @@
+{
+  "proposition": "0.0.27",
+  "section": "10.3.12.10.14",
+  "title": "Non-Abelian Cohomology and Full Gauge Theory",
+  "timestamp": "2026-02-03T06:48:44.157884",
+  "tests": {
+    "test_I": {
+      "test": "I",
+      "name": "Non-Abelian Clover Coefficient",
+      "K4": {
+        "n_f": 4,
+        "n_e": 6,
+        "c_SW = n_f/n_e": 0.6666666666666666,
+        "expected": 0.6666666666666666,
+        "passed": true
+      },
+      "stella": {
+        "n_f": 8,
+        "n_e": 12,
+        "c_SW = n_f/n_e": 0.6666666666666666,
+        "expected": 0.6666666666666666,
+        "passed": true
+      },
+      "key_result": "c_SW is INDEPENDENT of gauge group (same for U(1), SU(2), SU(3))",
+      "reason": "Depends only on simplex counts, not internal symmetry",
+      "passed": true
+    },
+    "test_II": {
+      "test": "II",
+      "name": "Wilson Action Structure",
+      "K4": {
+        "n_faces": 4,
+        "normalization": 0.25,
+        "formula": "S_W = \u03b2 \u03a3_f (1 - Re Tr(W_f)/N)"
+      },
+      "stella": {
+        "n_faces": 8,
+        "normalization": 0.125,
+        "\u03b2_geometric": "16N/g\u00b2 (enhanced by n_f)"
+      },
+      "plaquette_norm": {
+        "K4": 0.25,
+        "stella": 0.125,
+        "formula": "1/n_f"
+      },
+      "passed": true
+    },
+    "test_III": {
+      "test": "III",
+      "name": "Dimension Counting for Gauge Configurations",
+      "K4_structure": {
+        "n_e (edges)": 6,
+        "n_v (vertices)": 4,
+        "n_f (faces)": 4
+      },
+      "SU3_dimensions": {
+        "dim(SU(3))": 8,
+        "dim(G^6) configs": 48,
+        "dim(G^4) gauge": 32,
+        "dim flatness (naive)": 32,
+        "dim flatness (actual)": 24
+      },
+      "moduli_calculation": {
+        "formula": "dim(configs) - dim(flatness) - dim(gauge) + dim(global)",
+        "value": 0,
+        "interpretation": "Trivial moduli for flat SU(3) connections on K\u2084"
+      },
+      "passed": true
+    },
+    "test_IV": {
+      "test": "IV",
+      "name": "SU(N) Casimir Invariants",
+      "groups": {
+        "SU(2)": {
+          "dim": 3,
+          "C2_fundamental": {
+            "computed": 0.75,
+            "formula": "(N\u00b2-1)/(2N)",
+            "expected": 0.75,
+            "passed": true
+          },
+          "C2_adjoint": {
+            "computed": 2,
+            "formula": "N",
+            "expected": 2,
+            "passed": true
+          }
+        },
+        "SU(3)": {
+          "dim": 8,
+          "C2_fundamental": {
+            "computed": 1.3333333333333333,
+            "formula": "(N\u00b2-1)/(2N)",
+            "expected": 1.3333333333333333,
+            "passed": true
+          },
+          "C2_adjoint": {
+            "computed": 3,
+            "formula": "N",
+            "expected": 3,
+            "passed": true
+          }
+        },
+        "SU(5)": {
+          "dim": 24,
+          "C2_fundamental": {
+            "computed": 2.4,
+            "formula": "(N\u00b2-1)/(2N)",
+            "expected": 2.4,
+            "passed": true
+          },
+          "C2_adjoint": {
+            "computed": 5,
+            "formula": "N",
+            "expected": 5,
+            "passed": true
+          }
+        }
+      },
+      "SU3_specific": {
+        "C2_F": 1.3333333333333333,
+        "expected_C2_F": 1.3333333333333333,
+        "C2_A": 3,
+        "expected_C2_A": 3
+      },
+      "passed": true
+    },
+    "test_V": {
+      "test": "V",
+      "name": "Flat Connections H\u00b9(K\u2084; G)",
+      "K4_topology": {
+        "\u03c7": 2,
+        "n_independent_cycles": 3,
+        "formula": "n_e - n_v + 1 = 6 - 4 + 1 = 3"
+      },
+      "flatness_analysis": {
+        "n_face_constraints": 4,
+        "n_cycles": 3,
+        "overconstrained": true
+      },
+      "result": {
+        "H1": 0,
+        "interpretation": "Only trivial flat connections on K\u2084",
+        "consequence": "No SU(3) instantons on single tetrahedron"
+      },
+      "passed": true
+    },
+    "test_VI": {
+      "test": "VI",
+      "name": "Instanton Density Normalization",
+      "stella": {
+        "n_f": 8,
+        "density_normalization": 0.125
+      },
+      "instanton_action": {
+        "formula": "S_inst = (8\u03c0\u00b2/g\u00b2)|Q|",
+        "coefficient": 78.95683520871486
+      },
+      "geometric_density": {
+        "formula": "n_inst = Q/n_f",
+        "Q": 1,
+        "density": 0.125,
+        "expected": 0.125
+      },
+      "homotopy_group": {
+        "\u03c0\u2083(SU(N))": "\u2124",
+        "interpretation": "Integer-valued topological charge"
+      },
+      "passed": true
+    },
+    "test_VII": {
+      "test": "VII",
+      "name": "Anomaly Coefficient",
+      "coefficient": {
+        "value": 0.006332573977646111,
+        "formula": "1/(16\u03c0\u00b2)",
+        "numerical": 0.006332573977646111
+      },
+      "decomposition": {
+        "1/(4\u03c0)": 0.07957747154594767,
+        "1/(4\u03c0) \u00d7 1/(4\u03c0)": 0.006332573977646112,
+        "equals_1/16\u03c0\u00b2": true
+      },
+      "geometric_interpretation": {
+        "4\u03c0": "Solid angle of sphere",
+        "two_factors": "One for T\u208a, one for T\u208b",
+        "topological": true
+      },
+      "ABJ_anomaly": {
+        "formula": "\u2202_\u03bc J\u2085^\u03bc = (g\u00b2/16\u03c0\u00b2) Tr(F F\u0303)",
+        "independence": "Coefficient is topological, not simplex-dependent"
+      },
+      "passed": true
+    },
+    "test_VIII": {
+      "test": "VIII",
+      "name": "Standard Model Gauge Group Accommodation",
+      "universal_coefficients": {
+        "c_SW": 0.6666666666666666,
+        "r_Wilson": 1.5,
+        "applies_to_all": true
+      },
+      "gauge_groups": {
+        "SU(3)_C": {
+          "dim": 8,
+          "generators": "8 gluons",
+          "c_SW": 0.6666666666666666,
+          "r": 1.5,
+          "geometric": true
+        },
+        "SU(2)_L": {
+          "dim": 3,
+          "generators": "W\u00b1, W\u00b3",
+          "c_SW": 0.6666666666666666,
+          "r": 1.5,
+          "geometric": true
+        },
+        "U(1)_Y": {
+          "dim": 1,
+          "generators": "B",
+          "c_SW": 0.6666666666666666,
+          "r": 1.5,
+          "geometric": true
+        }
+      },
+      "stella_correspondence": {
+        "8_vertices": "\u2194 8 gluons (SU(3) adjoint)",
+        "color_at_vertices": "T\u208a vertices = R,G,B,W; T\u208b = R\u0304,\u1e20,B\u0304,W\u0304",
+        "doublet_structure": "T\u208a/T\u208b separation \u2194 SU(2) doublets"
+      },
+      "passed": true
+    },
+    "test_IX": {
+      "test": "IX",
+      "name": "Unified Geometric Improvement Principle",
+      "coefficients": {
+        "\u03bb (scalar)": {
+          "formula": "1/n_v",
+          "value": 0.125,
+          "expected": 0.125,
+          "passed": true
+        },
+        "c\u2081 (kinetic)": {
+          "formula": "1/n_e",
+          "value": 0.08333333333333333,
+          "expected": 0.08333333333333333,
+          "passed": true
+        },
+        "c\u2082 (vertex)": {
+          "formula": "1/n_f",
+          "value": 0.125,
+          "expected": 0.125,
+          "passed": true
+        },
+        "c_SW (clover)": {
+          "formula": "n_f/n_e",
+          "value": 0.6666666666666666,
+          "expected": 0.6666666666666666,
+          "passed": true
+        },
+        "r (Wilson)": {
+          "formula": "n_e/n_v",
+          "value": 1.5,
+          "expected": 1.5,
+          "passed": true
+        },
+        "c_R (Regge)": {
+          "formula": "1/n_v",
+          "value": 0.125,
+          "expected": 0.125,
+          "passed": true
+        },
+        "c_{R,\u0394} (gravity)": {
+          "formula": "n_v/n_e",
+          "value": 0.6666666666666666,
+          "expected": 0.6666666666666666,
+          "passed": true
+        }
+      },
+      "principle": {
+        "I": "Pure p-form: c_p = 1/n_p",
+        "II": "Mixed (p\u2192q): c_{p\u2192q} = n_q/n_p",
+        "III": "One-loop: \u03b4c = c\u207d\u2070\u207e \u00d7 g\u00b2r^ord/(16\u03c0\u00b2)",
+        "IV": "INDEPENDENT of gauge group"
+      },
+      "gauge_independence": {
+        "U(1)": "Same coefficients",
+        "SU(2)": "Same coefficients",
+        "SU(3)": "Same coefficients",
+        "any_G": "Same coefficients"
+      },
+      "passed": true
+    },
+    "test_X": {
+      "test": "X",
+      "name": "Discrete Bianchi Identity",
+      "K4_structure": {
+        "n_faces": 4,
+        "bounds_3_simplex": true
+      },
+      "bianchi_identity": {
+        "formula": "\u220f_{f \u2208 \u2202\u03c3\u2083} W_f^\u00b11 = 1",
+        "meaning": "Product of face holonomies around 3-simplex = 1",
+        "analog": "Continuous: D \u2227 F = 0"
+      },
+      "constraint_reduction": {
+        "naive_constraints": 4,
+        "independent_constraints": 3,
+        "reduced_by": 1
+      },
+      "passed": true
+    }
+  },
+  "overall_status": "PASSED"
+}

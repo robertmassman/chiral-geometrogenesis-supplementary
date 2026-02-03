@@ -1,0 +1,60 @@
+{
+  "config": {
+    "beta": 2.5,
+    "lambda": 0.125,
+    "m2": -0.1,
+    "n_trajectories": 200,
+    "gauge_group": "SU2"
+  },
+  "statistics": {
+    "n_measurements": 40,
+    "acceptance_rate": 0.235
+  },
+  "observables": {
+    "plaquette": {
+      "mean": 0.5514971196388997,
+      "error": 0.03897610431427296,
+      "n_samples": 40
+    },
+    "phi_squared_avg": {
+      "mean": 0.5671030794322791,
+      "error": 0.045483958589622786,
+      "n_samples": 40
+    },
+    "phi_fourth_avg": {
+      "mean": 0.6265995327203712,
+      "error": 0.10274709398194734,
+      "n_samples": 40
+    },
+    "gauge_action": {
+      "mean": 4.485028803611003,
+      "error": 0.3897610431427286,
+      "n_samples": 40
+    },
+    "scalar_action": {
+      "mean": 3.219999603549674,
+      "error": 0.23252631204745564,
+      "n_samples": 40
+    }
+  },
+  "higgs_prediction": {
+    "lambda": 0.125,
+    "v_GeV": 246.22,
+    "m_H_tree_GeV": 123.11,
+    "m_H_pdg_GeV": 125.2,
+    "ratio_to_pdg": 0.9833067092651757,
+    "deviation_percent": 1.6693290734824309
+  },
+  "scale_setting": {
+    "a_sqrt_sigma": 0.6697035764882104,
+    "a_fm": 0.3003422673583843,
+    "sqrt_sigma_lat": 1.4931979387713545
+  },
+  "timestamp": "2026-02-03T07:36:38.155308",
+  "geometric_coefficients": {
+    "lambda_higgs": 0.125,
+    "c1_symanzik": 0.08333333333333333,
+    "c_sw": 0.6666666666666666,
+    "r_wilson": 1.5
+  }
+}

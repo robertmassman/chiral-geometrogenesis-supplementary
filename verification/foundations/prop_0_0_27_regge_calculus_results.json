@@ -1,0 +1,270 @@
+{
+  "proposition": "0.0.27",
+  "section": "10.3.12.10.13",
+  "title": "Regge Calculus Improvement (Gravity)",
+  "timestamp": "2026-02-03T06:44:48.941963",
+  "tests": {
+    "test_I": {
+      "test": "I",
+      "name": "Regge Improvement Coefficient c_R",
+      "K4": {
+        "n_v": 4,
+        "c_R = 1/n_v": 0.25,
+        "expected": 0.25,
+        "passed": true
+      },
+      "stella": {
+        "n_v": 8,
+        "c_R = 1/n_v": 0.125,
+        "expected": 0.125,
+        "passed": true
+      },
+      "interpretation": "\u03b5\u00b2 improvement coefficient equals scalar \u03bb = 1/n_v",
+      "matches_scalar_lambda": true,
+      "passed": true
+    },
+    "test_II": {
+      "test": "II",
+      "name": "Derivative Improvement c_{R,\u0394}",
+      "K4": {
+        "n_v": 4,
+        "n_e": 6,
+        "c_{R,\u0394} = n_v/n_e": 0.6666666666666666,
+        "fraction": "4/6 = 2/3",
+        "expected": 0.6666666666666666,
+        "passed": true
+      },
+      "stella": {
+        "n_v": 8,
+        "n_e": 12,
+        "c_{R,\u0394} = n_v/n_e": 0.6666666666666666,
+        "fraction": "8/12 = 2/3",
+        "expected": 0.6666666666666666,
+        "passed": true
+      },
+      "note": "This is the INVERSE of Wilson parameter r = n_e/n_v",
+      "passed": true
+    },
+    "test_III": {
+      "test": "III",
+      "name": "Gravity-Matter Duality",
+      "fermion": {
+        "r = n_e/n_v": 1.5,
+        "direction": "vertex \u2192 edge",
+        "value": 1.5
+      },
+      "gravity": {
+        "c_{R,\u0394} = n_v/n_e": 0.6666666666666666,
+        "direction": "edge \u2192 vertex",
+        "value": 0.6666666666666666
+      },
+      "product": {
+        "r \u00d7 c_{R,\u0394}": 1.0,
+        "expected": 1.0,
+        "passed": true
+      },
+      "interpretation": "Matter and gravity improvement schemes are mutually consistent",
+      "passed": true
+    },
+    "test_IV": {
+      "test": "IV",
+      "name": "Discrete Gauss-Bonnet",
+      "K4": {
+        "\u03c7": 2,
+        "\u03a3\u03b5_v = 2\u03c0\u03c7": 12.566370614359172,
+        "expected_total": 12.566370614359172,
+        "\u03b5_v = 2\u03c0\u03c7/n_v": 3.141592653589793,
+        "expected_per_vertex": 3.141592653589793,
+        "passed": true
+      },
+      "stella": {
+        "\u03c7": 4,
+        "\u03a3\u03b5_v = 2\u03c0\u03c7": 25.132741228718345,
+        "expected_total": 25.132741228718345,
+        "\u03b5_v = 2\u03c0\u03c7/n_v": 3.141592653589793,
+        "expected_per_vertex": 3.141592653589793,
+        "passed": true
+      },
+      "theorem": "For closed 2D surface: \u03a3\u03b5_v = 2\u03c0\u03c7",
+      "passed": true
+    },
+    "test_V": {
+      "test": "V",
+      "name": "Dihedral Angle of Regular Tetrahedron",
+      "dihedral_angle": {
+        "formula": "\u03b8 = arccos(1/3)",
+        "radians": 1.2309594173407747,
+        "degrees": 70.52877936550931,
+        "expected_rad": 1.2309594173407747,
+        "expected_deg": 70.52877936550931
+      },
+      "verification": {
+        "cos(\u03b8)": 0.33333333333333326,
+        "expected_cos": 0.3333333333333333,
+        "passed": true
+      },
+      "passed": true
+    },
+    "test_VI": {
+      "test": "VI",
+      "name": "Extrinsic Deficit Angle",
+      "calculation": {
+        "\u03b8_dihedral": 1.2309594173407747,
+        "faces_per_vertex": 3,
+        "\u03b5_v = 2\u03c0 - 3\u03b8": 2.590307055157262,
+        "\u03b5_v_degrees": 148.41366190347205
+      },
+      "expected": {
+        "\u03b5_v_rad": 2.590307055157262,
+        "\u03b5_v_deg": 148.41
+      },
+      "note": "This is the EXTRINSIC (embedded) result, differs from intrinsic \u03c0",
+      "intrinsic_vs_extrinsic": {
+        "intrinsic_\u03b5": 3.141592653589793,
+        "extrinsic_\u03b5": 2.590307055157262,
+        "difference": 0.5512855984325311
+      },
+      "passed": true
+    },
+    "test_VII": {
+      "test": "VII",
+      "name": "Complete Gravitational Improvement Table",
+      "coefficients": {
+        "Regge_action_norm": {
+          "value": 0.125,
+          "formula": "1/n_v",
+          "expected": 0.125,
+          "passed": true
+        },
+        "\u03b5\u00b2_improvement": {
+          "value": 0.125,
+          "formula": "1/n_v",
+          "expected": 0.125,
+          "passed": true
+        },
+        "(\u0394\u03b5)\u00b2_improvement": {
+          "value": 0.6666666666666666,
+          "formula": "n_v/n_e",
+          "expected": 0.6666666666666666,
+          "passed": true
+        },
+        "Cosmological_term": {
+          "value": 0.125,
+          "formula": "1/n_v",
+          "expected": 0.125,
+          "passed": true
+        },
+        "Gauss_Bonnet": {
+          "value": 3.141592653589793,
+          "formula": "2\u03c0\u03c7/n_v",
+          "expected": 3.141592653589793,
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    "test_VIII": {
+      "test": "VIII",
+      "name": "4D Regge Calculus (24-cell)",
+      "24_cell": {
+        "n_v": 24,
+        "n_e": 96,
+        "n_f": 96,
+        "n_c": 24,
+        "\u03c7_4D": 0,
+        "c_R_4D = 1/n_f": 0.010416666666666666,
+        "expected": 0.010416666666666666
+      },
+      "600_cell": {
+        "n_v": 120,
+        "n_e": 720,
+        "n_f": 1200,
+        "n_c": 600,
+        "\u03c7_4D": 0,
+        "c_R_4D = 1/n_f": 0.0008333333333333334,
+        "expected": 0.0008333333333333334
+      },
+      "note": "In 4D, hinges are faces (2-simplices), so c_R = 1/n_f",
+      "passed": true
+    },
+    "test_IX": {
+      "test": "IX",
+      "name": "Complete Geometric Improvement Principle",
+      "coefficients": {
+        "\u03bb (scalar self)": {
+          "formula": "1/n_v",
+          "value": 0.125,
+          "expected": 0.125,
+          "passed": true
+        },
+        "c\u2081 (kinetic)": {
+          "formula": "1/n_e",
+          "value": 0.08333333333333333,
+          "expected": 0.08333333333333333,
+          "passed": true
+        },
+        "c\u2082 (vertex)": {
+          "formula": "1/n_f",
+          "value": 0.125,
+          "expected": 0.125,
+          "passed": true
+        },
+        "c_SW (clover)": {
+          "formula": "n_f/n_e",
+          "value": 0.6666666666666666,
+          "expected": 0.6666666666666666,
+          "passed": true
+        },
+        "r (Wilson)": {
+          "formula": "n_e/n_v",
+          "value": 1.5,
+          "expected": 1.5,
+          "passed": true
+        },
+        "c_R (Regge)": {
+          "formula": "1/n_v",
+          "value": 0.125,
+          "expected": 0.125,
+          "passed": true
+        },
+        "c_{R,\u0394} (gravity deriv)": {
+          "formula": "n_v/n_e",
+          "value": 0.6666666666666666,
+          "expected": 0.6666666666666666,
+          "passed": true
+        }
+      },
+      "sectors_covered": [
+        "Scalar",
+        "Gauge",
+        "Fermion",
+        "Gravity"
+      ],
+      "passed": true
+    },
+    "test_X": {
+      "test": "X",
+      "name": "One-Loop Gravity Corrections",
+      "geometric_ratio": {
+        "r = 1 - \u03c7/(2n_v)": 0.75,
+        "expected": 0.75,
+        "passed": true
+      },
+      "\u03b5\u00b2_term": {
+        "c_R_tree": 0.125,
+        "p": 0,
+        "c_R_1loop": 0.12579157174720576,
+        "relative_correction": 0.006332573977646083
+      },
+      "(\u0394\u03b5)\u00b2_term": {
+        "c_R_delta_tree": 0.6666666666666666,
+        "p": 1,
+        "c_R_delta_1loop": 0.6698329536554897,
+        "relative_correction": 0.004749430483234562
+      },
+      "formula": "c^(1) = c^(0) \u00d7 (1 + G\u00b7r^p/(16\u03c0\u00b2))",
+      "passed": true
+    }
+  },
+  "overall_status": "PASSED"
+}

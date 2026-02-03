@@ -1,0 +1,372 @@
+{
+  "proposition": "0.0.27",
+  "section": "10.3.12.10.17",
+  "title": "Application to Lattice CG Simulations",
+  "timestamp": "2026-02-03T06:19:39.706806",
+  "tests": {
+    "test_I_1": {
+      "test": "I.1",
+      "name": "Laplacian Trace",
+      "analytical": {
+        "Tr(L)": 12.0,
+        "expected": 12,
+        "passed": "True"
+      },
+      "eigenvalues": {
+        "computed": [
+          7.771561172376096e-16,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "expected": [
+          0,
+          4,
+          4,
+          4
+        ],
+        "passed": true
+      },
+      "trace_L2": {
+        "Tr(L\u00b2)": 48.0,
+        "expected": 48,
+        "passed": "True"
+      },
+      "monte_carlo": {
+        "n_samples": 100000,
+        "mean": 12.06382859790697,
+        "expected_mean": 12,
+        "std": 9.867823755717223,
+        "expected_std": 9.797958971132712,
+        "stderr": 0.031204798617183407,
+        "passed": "True"
+      }
+    },
+    "test_I_2": {
+      "test": "I.2",
+      "name": "Eigenvector Verification",
+      "eigenvector_tests": [
+        {
+          "n": 0,
+          "eigenvalue": 0.0,
+          "L|n\u27e9": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "\u03bb_n|n\u27e9": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "passed": true
+        },
+        {
+          "n": 1,
+          "eigenvalue": 4.0,
+          "L|n\u27e9": [
+            2.0,
+            2.0,
+            -2.0,
+            -2.0
+          ],
+          "\u03bb_n|n\u27e9": [
+            2.0,
+            2.0,
+            -2.0,
+            -2.0
+          ],
+          "passed": true
+        },
+        {
+          "n": 2,
+          "eigenvalue": 4.0,
+          "L|n\u27e9": [
+            2.0,
+            -2.0,
+            2.0,
+            -2.0
+          ],
+          "\u03bb_n|n\u27e9": [
+            2.0,
+            -2.0,
+            2.0,
+            -2.0
+          ],
+          "passed": true
+        },
+        {
+          "n": 3,
+          "eigenvalue": 4.0,
+          "L|n\u27e9": [
+            2.0,
+            -2.0,
+            -2.0,
+            2.0
+          ],
+          "\u03bb_n|n\u27e9": [
+            2.0,
+            -2.0,
+            -2.0,
+            2.0
+          ],
+          "passed": true
+        }
+      ],
+      "orthonormality": {
+        "\u27e8n|m\u27e9_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "is_orthonormal": true
+      },
+      "passed": true
+    },
+    "test_II_1": {
+      "test": "II.1",
+      "name": "Scalar Partition Function",
+      "mass_tests": [
+        {
+          "m2": 0.01,
+          "det_computed": 0.6448120099999994,
+          "det_expected": 0.6448120099999999,
+          "F_computed": -3.8951523638350203,
+          "F_expected": -3.8951523638350194,
+          "passed": "True"
+        },
+        {
+          "m2": 0.1,
+          "det_computed": 6.892100000000002,
+          "det_expected": 6.892099999999998,
+          "F_computed": -2.71056621875032,
+          "F_expected": -2.71056621875032,
+          "passed": "True"
+        },
+        {
+          "m2": 1.0,
+          "det_computed": 125.00000000000004,
+          "det_expected": 125.0,
+          "F_computed": -1.26159726416754,
+          "F_expected": -1.2615972641675404,
+          "passed": "True"
+        },
+        {
+          "m2": 4.0,
+          "det_computed": 2047.9999999999984,
+          "det_expected": 2048.0,
+          "F_computed": 0.13655536026100812,
+          "F_expected": 0.13655536026100812,
+          "passed": "True"
+        }
+      ],
+      "passed": "True"
+    },
+    "test_II_2": {
+      "test": "II.2",
+      "name": "Scalar Propagator",
+      "m2": 1.0,
+      "G_vv": {
+        "computed": 0.39999999999999997,
+        "expected": 0.4,
+        "passed": "True"
+      },
+      "G_vw": {
+        "computed": 0.19999999999999998,
+        "expected": 0.2,
+        "passed": "True"
+      },
+      "ratio": {
+        "computed": 2.0,
+        "expected": 2.0,
+        "passed": "True"
+      },
+      "eigendecomposition_agrees": true,
+      "passed": "True",
+      "monte_carlo": {
+        "n_samples": 50000,
+        "G_vv": 0.4003747924826025,
+        "G_vw": 0.20207350732365575,
+        "ratio": 1.981332425934157,
+        "ratio_error": 0.018667574065843073,
+        "passed": "True"
+      }
+    },
+    "test_II_3": {
+      "test": "II.3",
+      "name": "Scalar Four-Point Function",
+      "free_field": {
+        "phi4_mean": 0.47936336969396404,
+        "phi2_mean": 0.4010495946981354,
+        "3*phi2\u00b2": 0.482522332222616,
+        "G4_connected": -0.003158962528651943,
+        "expected": 0.0,
+        "passed": "True"
+      },
+      "perturbative": {
+        "lambda": 0.125,
+        "G_vv": 0.39999999999999997,
+        "G4_connected_expected": -0.4799999999999999,
+        "normalized_expected": -3.0,
+        "formula": "G\u2084^(c) = -\u03bb \u00d7 4! \u00d7 G_vv\u00b2 = -3 \u00d7 G_vv\u00b2"
+      },
+      "passed": "True"
+    },
+    "test_III_1": {
+      "test": "III.1",
+      "name": "Improvement Coefficients",
+      "coefficients": {
+        "lambda_higgs": {
+          "value": 0.125,
+          "expected": 0.125,
+          "formula": "1/n_vertices = 1/8",
+          "passed": "True"
+        },
+        "c1_symanzik": {
+          "value": 0.08333333333333333,
+          "expected": 0.08333333333333333,
+          "formula": "1/12 (geometric derivation)",
+          "passed": "True"
+        },
+        "c_sw_clover": {
+          "value": 0.6666666666666666,
+          "expected": 0.6666666666666666,
+          "formula": "2/3 (triangular geometry)",
+          "passed": "True"
+        },
+        "r_wilson": {
+          "value": 1.5,
+          "expected": 1.5,
+          "formula": "3/2 (overlap requirement)",
+          "passed": "True"
+        },
+        "c_r_delta_regge": {
+          "value": 0.08333333333333333,
+          "expected": 0.08333333333333333,
+          "formula": "1/12 (Regge improvement)",
+          "passed": "True"
+        }
+      },
+      "passed": "True"
+    },
+    "test_III_2": {
+      "test": "III.2",
+      "name": "O(a\u00b2) Scaling",
+      "improved": {
+        "ratios": [
+          2.0000383607357595,
+          1.9999616399999993,
+          4.0
+        ],
+        "epsilon_a_over_epsilon_a_half": 4.0,
+        "expected": 4.0,
+        "passed": "True"
+      },
+      "unimproved": {
+        "ratios": [
+          1.4142271248762552,
+          1.4142,
+          2.0
+        ],
+        "epsilon_a_over_epsilon_a_half": 2.0,
+        "expected": 2.0
+      },
+      "passed": "True"
+    },
+    "test_III_3": {
+      "test": "III.3",
+      "name": "Higgs Mass Prediction",
+      "tree_level": {
+        "lambda": 0.125,
+        "v_H_GeV": 246.22,
+        "m_H_tree_GeV": 123.11,
+        "m_H_expected_tree_GeV": 123.11,
+        "passed": "True"
+      },
+      "with_corrections": {
+        "m_H_tree_GeV": 123.11,
+        "m_H_pdg_GeV": 125.2,
+        "radiative_correction_percent": 1.6976687515230404,
+        "agreement_percent": 98.33067092651757
+      },
+      "passed": "True"
+    },
+    "test_III_4": {
+      "test": "III.4",
+      "name": "Euler Characteristic",
+      "V": 8,
+      "E": 12,
+      "F": 8,
+      "chi_computed": 4,
+      "chi_expected": 4,
+      "interpretation": "Two disjoint S\u00b2 (\u03c7 = 2 each)",
+      "passed": true
+    },
+    "test_III_5": {
+      "test": "III.5",
+      "name": "Plaquette Predictions",
+      "predictions": [
+        {
+          "beta": 0.1,
+          "expected": 0.006,
+          "strong_coupling": 0.005555555555555556,
+          "weak_coupling": -12.333333333333332,
+          "regime": "Strong"
+        },
+        {
+          "beta": 1.0,
+          "expected": 0.056,
+          "strong_coupling": 0.05555555555555555,
+          "weak_coupling": -0.33333333333333326,
+          "regime": "Strong"
+        },
+        {
+          "beta": 3.0,
+          "expected": 0.35,
+          "strong_coupling": 0.16666666666666666,
+          "weak_coupling": 0.5555555555555556,
+          "regime": "Crossover"
+        },
+        {
+          "beta": 6.0,
+          "expected": 0.78,
+          "strong_coupling": 0.3333333333333333,
+          "weak_coupling": 0.7777777777777778,
+          "regime": "Weak"
+        },
+        {
+          "beta": 10.0,
+          "expected": 0.87,
+          "strong_coupling": 0.5555555555555556,
+          "weak_coupling": 0.8666666666666667,
+          "regime": "Weak"
+        }
+      ],
+      "passed": true
+    }
+  },
+  "overall_status": "PASSED"
+}

@@ -1,0 +1,269 @@
+{
+  "proposition": "0.0.27",
+  "section": "10.3.12.10.16",
+  "title": "Numerical Verification of Improvement Coefficients",
+  "timestamp": "2026-02-03T06:27:01.864771",
+  "stella_counts": {
+    "n_v": 8,
+    "n_e": 12,
+    "n_f": 8,
+    "chi": 4
+  },
+  "tests": {
+    "test_1": {
+      "test": "Laplacian Eigenvalues",
+      "eigenvalues": [
+        7.771561172376096e-16,
+        4.0,
+        4.0,
+        4.0
+      ],
+      "expected": [
+        0,
+        4,
+        4,
+        4
+      ],
+      "eigenvalues_correct": true,
+      "trace_L": 12.0,
+      "expected_trace": 12,
+      "trace_correct": "True",
+      "det_at_0": 0.0,
+      "det_at_4": 0.0,
+      "det_at_2": -15.999999999999998,
+      "passed": "True"
+    },
+    "test_2": {
+      "test": "Euler Characteristic",
+      "tetrahedron": {
+        "n_v": 4,
+        "n_e": 6,
+        "n_f": 4,
+        "chi": 2,
+        "expected": 2,
+        "correct": true
+      },
+      "stella": {
+        "n_v": 8,
+        "n_e": 12,
+        "n_f": 8,
+        "chi": 4,
+        "expected": 4,
+        "correct": true
+      },
+      "r_loop": {
+        "computed": 0.75,
+        "expected": 0.75,
+        "correct": "True"
+      },
+      "passed": "True"
+    },
+    "test_3": {
+      "test": "Simplex Ratios",
+      "p_forms": {
+        "0": {
+          "name": "vertices",
+          "n_p": 8,
+          "c_p": 0.125
+        },
+        "1": {
+          "name": "edges",
+          "n_p": 12,
+          "c_p": 0.08333333333333333
+        },
+        "2": {
+          "name": "faces",
+          "n_p": 8,
+          "c_p": 0.125
+        }
+      },
+      "normalization_correct": "True",
+      "passed": "True"
+    },
+    "test_4": {
+      "test": "Mixed Operator Coefficients",
+      "coefficients": {
+        "(0\u21921)": {
+          "n_q": 12,
+          "n_p": 8,
+          "value": 1.5,
+          "name": "r (Wilson)"
+        },
+        "(1\u21922)": {
+          "n_q": 8,
+          "n_p": 12,
+          "value": 0.6666666666666666,
+          "name": "c_SW (clover)"
+        },
+        "(0\u21922)": {
+          "n_q": 8,
+          "n_p": 8,
+          "value": 1.0,
+          "name": "face/vertex"
+        },
+        "(2\u21921)": {
+          "n_q": 12,
+          "n_p": 8,
+          "value": 1.5,
+          "name": "edge/face"
+        }
+      },
+      "transitivity": {
+        "c_01": 1.5,
+        "c_12": 0.6666666666666666,
+        "product": 1.0,
+        "direct": 1.0,
+        "correct": "True"
+      },
+      "passed": "True"
+    },
+    "test_5": {
+      "test": "Coefficient Table",
+      "coefficients": {
+        "lambda_higgs": {
+          "formula": "1/n_v",
+          "value": 0.125,
+          "section": "\u00a73.2"
+        },
+        "c1_kinetic": {
+          "formula": "1/n_e",
+          "value": 0.08333333333333333,
+          "section": "\u00a710.3.12.10.7"
+        },
+        "c2_vertex": {
+          "formula": "1/n_f",
+          "value": 0.125,
+          "section": "\u00a710.3.12.10.8"
+        },
+        "c_sw_clover": {
+          "formula": "n_f/n_e",
+          "value": 0.6666666666666666,
+          "section": "\u00a710.3.12.10.10"
+        },
+        "r_wilson": {
+          "formula": "n_e/n_v",
+          "value": 1.5,
+          "section": "\u00a710.3.12.10.12"
+        },
+        "c_r_regge": {
+          "formula": "1/n_f",
+          "value": 0.125,
+          "section": "\u00a710.3.12.10.13"
+        },
+        "c_r_delta": {
+          "formula": "n_f/n_e",
+          "value": 0.6666666666666666,
+          "section": "\u00a710.3.12.10.13"
+        },
+        "r_loop": {
+          "formula": "1 - \u03c7/(2n_v)",
+          "value": 0.75,
+          "section": "\u00a710.3.12.10.9"
+        }
+      },
+      "passed": true
+    },
+    "test_6": {
+      "test": "Consistency Relations",
+      "relations": [
+        {
+          "name": "Tr(L) = 2n_e",
+          "lhs": 12.0,
+          "rhs": 12.0,
+          "correct": "True"
+        },
+        {
+          "name": "\u03c7 = n_v - n_e + n_f",
+          "lhs": 4.0,
+          "rhs": 4.0,
+          "correct": "True"
+        },
+        {
+          "name": "c\u2081 \u00d7 n_e = 1",
+          "lhs": 1.0,
+          "rhs": 1.0,
+          "correct": "True"
+        },
+        {
+          "name": "c\u2082 \u00d7 n_f = 1",
+          "lhs": 1.0,
+          "rhs": 1.0,
+          "correct": "True"
+        },
+        {
+          "name": "r \u00d7 c_{R,\u2206} = 1",
+          "lhs": 1.0,
+          "rhs": 1.0,
+          "correct": "True"
+        },
+        {
+          "name": "c_{0\u21921} \u00d7 c_{1\u21922} = c_{0\u21922}",
+          "lhs": 1.0,
+          "rhs": 1.0,
+          "correct": "True"
+        }
+      ],
+      "passed": "True"
+    },
+    "test_7": {
+      "test": "Lattice QCD Comparison",
+      "comparisons": [
+        {
+          "coefficient": "c\u2081 (tree)",
+          "geometric": 0.08333333333333333,
+          "standard": 0.08333333333333333,
+          "ratio": 1.0,
+          "notes": "Universal - appears in both discretizations"
+        },
+        {
+          "coefficient": "c_SW (tree)",
+          "geometric": 0.6666666666666666,
+          "standard": 1.0,
+          "ratio": 0.6666666666666666,
+          "notes": "Differs due to geometry (triangular vs square)"
+        },
+        {
+          "coefficient": "r (Wilson)",
+          "geometric": 1.5,
+          "standard": 1.0,
+          "ratio": 1.5,
+          "notes": "Geometric value in optimal range [1, 2]"
+        }
+      ],
+      "c1_universal": "True",
+      "r_optimal": true,
+      "passed": true
+    },
+    "test_8": {
+      "test": "Regge Calculus",
+      "dihedral_angle_rad": 1.2309594173407747,
+      "dihedral_angle_deg": 70.52877936550931,
+      "deficit_angle_rad": 3.8212664724980367,
+      "deficit_angle_deg": 218.94244126898138,
+      "c_R": 0.125,
+      "c_R_delta": 0.6666666666666666,
+      "passed": true
+    },
+    "test_9": {
+      "test": "Gravity-Matter Duality",
+      "r_wilson": 1.5,
+      "c_r_delta": 0.6666666666666666,
+      "product": 1.0,
+      "expected": 1.0,
+      "is_unity": "True",
+      "matches": "True",
+      "passed": "True"
+    },
+    "test_10": {
+      "test": "Higgs Quartic",
+      "lambda_geometric": 0.125,
+      "lambda_experimental": 0.1292801978686813,
+      "deviation_percent": -3.31079155140913,
+      "m_H_tree_GeV": 123.11,
+      "m_H_exp_GeV": 125.2,
+      "tree_agreement_percent": 98.33067092651757,
+      "passed": true
+    }
+  },
+  "overall_status": "PASSED"
+}

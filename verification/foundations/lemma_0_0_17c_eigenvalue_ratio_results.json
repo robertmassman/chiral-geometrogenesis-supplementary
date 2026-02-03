@@ -1,0 +1,91 @@
+{
+  "lemma": "0.0.17c",
+  "title": "Fisher-Killing Equivalence - Eigenvalue Ratio Verification",
+  "timestamp": "2026-02-01T17:11:27.838222",
+  "results": [
+    {
+      "N": 3,
+      "eigenvalues_K": [
+        6.0,
+        18.0
+      ],
+      "eigenvalues_F": [
+        0.7355104985712828,
+        2.206531495718316
+      ],
+      "ratios_K": [
+        1.0,
+        3.0
+      ],
+      "ratios_F": [
+        1.0,
+        3.0000000000060743
+      ],
+      "max_ratio_difference": 6.0742522123291565e-12,
+      "is_proportional": true,
+      "tolerance": 0.05,
+      "model": "stella"
+    },
+    {
+      "N": 4,
+      "eigenvalues_K": [
+        7.999999999999995,
+        8.0,
+        31.99999999999999
+      ],
+      "eigenvalues_F": [
+        1.1930389118489173,
+        1.3571785169321382,
+        5.152805016115189
+      ],
+      "ratios_K": [
+        1.0,
+        1.0000000000000007,
+        4.000000000000002
+      ],
+      "ratios_F": [
+        1.0,
+        1.1375810993698812,
+        4.319058636679006
+      ],
+      "max_ratio_difference": 0.3190586366790038,
+      "is_proportional": false,
+      "tolerance": 0.05,
+      "model": "stella"
+    },
+    {
+      "N": 5,
+      "eigenvalues_K": [
+        9.999999999999998,
+        10.0,
+        10.00000000000001,
+        50.00000000000001
+      ],
+      "eigenvalues_F": [
+        1.2886654428856497,
+        1.3694005100755287,
+        1.4640923228378306,
+        6.8888727873369895
+      ],
+      "ratios_K": [
+        1.0,
+        1.0000000000000002,
+        1.0000000000000013,
+        5.000000000000002
+      ],
+      "ratios_F": [
+        1.0,
+        1.0626501375012374,
+        1.1361306620897318,
+        5.345741848955809
+      ],
+      "max_ratio_difference": 0.3457418489558073,
+      "is_proportional": false,
+      "tolerance": 0.05,
+      "model": "stella"
+    }
+  ],
+  "n3_passed": true,
+  "conclusion": "g^F \u221d g^K verified for N=3 (SU(3)) by matching eigenvalue ratios",
+  "note": "Stella model has S_{N-1} symmetry; full S_N symmetry required for N>3"
+}

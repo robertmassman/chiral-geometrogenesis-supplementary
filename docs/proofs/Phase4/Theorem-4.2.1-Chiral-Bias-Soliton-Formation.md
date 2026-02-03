@@ -72,6 +72,7 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 - ✅ **Theorem 2.2.4** (Chirality Selection) — Provides α = 2π/3 and sign from ⟨Q_inst⟩
 - ✅ **Theorem 2.2.3** (Time Irreversibility) — Shows chiral dynamics break T-symmetry
 - ✅ **Theorem 0.2.1** (Three-Color Superposition) — Provides chiral field structure
+- ✅ **[Theorem 4.2.3](./Theorem-4.2.3-First-Order-Phase-Transition.md)** (First-Order EWPT) — Provides v(T_c)/T_c ≈ 1.2 for out-of-equilibrium condition (Sakharov 3rd)
 
 ### Dependent Theorems (will need re-verification if this changes)
 - **Theorem 4.2.2** (Sakharov Conditions) — Uses this as mechanism for CP violation

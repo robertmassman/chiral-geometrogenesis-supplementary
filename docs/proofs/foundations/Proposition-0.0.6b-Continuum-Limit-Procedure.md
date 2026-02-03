@@ -373,6 +373,15 @@ $$\boxed{\text{Discrete stella} \xrightarrow{\text{limits}} \text{Continuous SU(
 
 ---
 
+## 7a. Dependent Theorems (use this result)
+
+| Theorem | What It Uses | Purpose |
+|---------|--------------|---------|
+| **[Prop 0.0.27 §10.3](Proposition-0.0.27-Higgs-Mass-From-Geometry.md)** | Continuum limit a → 0 | Loop structure emerges from ∂S in continuum |
+| **[Prop 0.0.27 §3.5a](Proposition-0.0.27-Higgs-Mass-From-Geometry.md)** | Irrelevant operator suppression | Higher-dim operators (\|Φ\|⁶, \|Φ\|⁸) suppressed → V = μ²\|Φ\|² + λ\|Φ\|⁴ |
+
+---
+
 ## 8. References
 
 ### Framework Documents

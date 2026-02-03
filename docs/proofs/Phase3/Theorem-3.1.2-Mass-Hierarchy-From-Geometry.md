@@ -14,6 +14,7 @@
 - [Derivation file](./Theorem-3.1.2-Mass-Hierarchy-From-Geometry-Derivation.md) — Full derivation of λ from stella octangula geometry
 - [Applications file](./Theorem-3.1.2-Mass-Hierarchy-From-Geometry-Applications.md) — PDG comparisons and consistency verification
 - [Extension 3.1.2b](./Extension-3.1.2b-Complete-Wolfenstein-Parameters.md) — Complete Wolfenstein parameter derivations (A, ρ, η, CP angles)
+- [Extension 3.1.2c](./Extension-3.1.2c-Instanton-Overlap-Derivation.md) — Instanton overlap derivation of c_f coefficients (NEW)
 - [Lemma 3.1.2a](./Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md) — 24-cell geometric connection
 - [Mathematical Proof Plan](../Mathematical-Proof-Plan.md)
 - [Academic Structure Guidelines](../verification-prompts/restructuring-guide.md)

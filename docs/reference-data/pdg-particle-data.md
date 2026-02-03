@@ -93,7 +93,7 @@ $$\langle\bar{q}q\rangle \approx -(272 \text{ MeV})^3 \approx -2.0 \times 10^7 \
 
 | Property | Value | Uncertainty | Source | Used In |
 |----------|-------|-------------|--------|---------|
-| Mass ($m_H$) | 125.11 GeV | $\pm 0.11$ GeV | PDG 2024 | Theorem 3.2.1 |
+| Mass ($m_H$) | 125.20 GeV | $\pm 0.11$ GeV | PDG 2024 | Theorem 3.2.1, Prop 0.0.27 |
 | Width ($\Gamma_H$) | 4.1 MeV | $\pm 0.5$ MeV | PDG 2024 | Theorem 3.2.1 |
 | VEV ($v$) | 246.22 GeV | derived | $(\sqrt{2}G_F)^{-1/2}$ | Theorems 3.2.1, 4.2.1 |
 
