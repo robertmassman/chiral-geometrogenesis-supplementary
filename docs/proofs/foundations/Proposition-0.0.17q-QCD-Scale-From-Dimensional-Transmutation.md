@@ -4,6 +4,7 @@
 
 **Created:** 2026-01-05
 **Updated:** 2026-01-21 (Adversarial physics verification added)
+**Updated:** 2026-02-08 (RETRACTION: scheme conversion θ_O/θ_T = 1.55215 applied to α_s invalidated; NNLO target ~99.3 was factor-of-2 bug, correct value ~52-55; actual discrepancy ~17-22%)
 **Purpose:** Derive the QCD confinement scale R_stella from Planck-scale physics via dimensional transmutation, completing Path A of the P2-P4 unification program.
 
 **Role in Framework:** This proposition closes the loop on dimensional transmutation — where Theorem 5.2.6 derives M_P from QCD parameters, this proposition inverts the logic to derive the QCD scale from gravitational inputs. Together they show the Planck and QCD scales are mutually determined by topology.
@@ -36,7 +37,9 @@ $$\boxed{R_{\text{stella}} = \frac{\ell_P \sqrt{\chi}}{2} \times \exp\left(\frac
 | R_stella | 0.41 fm | 0.44847 fm | 91% | Phenomenological |
 | √σ | 481 MeV | 440 ± 30 MeV | 91% (within combined uncertainty) | FLAG 2024 lattice |
 
-**Additional validation:** The UV coupling 1/α_s(M_P) = 64 (CG geometric scheme) converts to 99.34 in MS-bar scheme, matching NNLO QCD (99.3) to **0.04%** accuracy.
+~~**Additional validation:** The UV coupling 1/α_s(M_P) = 64 (CG geometric scheme) converts to 99.34 in MS-bar scheme, matching NNLO QCD (99.3) to 0.04% accuracy.~~
+
+> **RETRACTION NOTE (2026-02-08):** The "additional validation" above is retracted. The NNLO target 1/α_s(M_P) ~ 99.3 was based on a factor-of-2 bug; the correct NNLO two-loop running gives ~52-55. The scheme conversion factor θ_O/θ_T = 1.55215 applied to α_s is retracted (see Prop 0.0.17s retraction). The actual discrepancy between the geometric value (64) and corrected MS-bar (~52-55) is ~17-22%, not 0.04%.
 
 ---
 
@@ -202,8 +205,8 @@ Neither M_P nor R_stella is "more fundamental" than the other. They are **mutual
 
 The ~10% discrepancy between predicted and observed values reflects:
 - Higher-loop corrections to the β-function
-- The scheme conversion factor θ_O/θ_T (see Theorem 5.2.6)
-- Non-perturbative effects near the confinement scale
+- ~~The scheme conversion factor θ_O/θ_T~~ → Resolved by [Prop 0.0.17ac](Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md) (52/12 edge-mode decomposition)
+- Non-perturbative effects near the confinement scale (Prop 0.0.17z)
 
 ---
 
@@ -218,39 +221,42 @@ The ~10% discrepancy between predicted and observed values reflects:
 | Scheme conversion (θ_O/θ_T) | ~3% |
 | Non-perturbative corrections | ~2% |
 
-### 6.2 Scheme Validation via θ_O/θ_T Factor
+### 6.2 ~~Scheme Validation via θ_O/θ_T Factor~~ Scheme Comparison (RETRACTED)
 
-The scheme correction factor θ_O/θ_T = 1.55215 from Theorem 0.0.6 validates the UV coupling prediction rather than changing the R_stella prediction.
+> **RETRACTION NOTE (2026-02-08):** This entire subsection's conclusion is retracted. The NNLO target 1/α_s(M_P) ~ 99.3 was based on a factor-of-2 bug. The correct NNLO two-loop running from α_s(M_Z) = 0.1180 gives 1/α_s(M_P) ~ 52-55, not ~99. The scheme conversion factor θ_O/θ_T = 1.55215 applied to α_s is retracted (see [Prop 0.0.17s retraction](Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md)).
 
 **The Question:** Is CG's topological coupling 1/α_s(M_P) = 64 consistent with standard QCD?
 
-**Analysis:**
-1. CG predicts 1/α_s(M_P) = 64 in its "geometric scheme" (from adj⊗adj equipartition)
-2. NNLO QCD running from α_s(M_Z) = 0.1180 (PDG 2024) gives 1/α_s(M_P) ≈ 99.3 in MS-bar scheme
-3. These differ by a factor ~1.55
+**Corrected Analysis:**
+1. CG predicts 1/α_s(M_P) = 64 in its "geometric scheme" (from adj x adj equipartition)
+2. Corrected NNLO QCD running from α_s(M_Z) = 0.1180 (PDG 2024) gives 1/α_s(M_P) ~ 52-55 in MS-bar scheme
+3. These differ by ~17-22%
 
-**Resolution via Scheme Conversion:**
+~~**Resolution via Scheme Conversion:**~~
 
-The dihedral angles of the tetrahedral-octahedral honeycomb (Theorem 0.0.6) provide the geometric scheme → MS-bar conversion:
+~~The dihedral angles of the tetrahedral-octahedral honeycomb (Theorem 0.0.6) provide the geometric scheme -> MS-bar conversion:~~
 
-$$\frac{\theta_O}{\theta_T} = \frac{\arccos(-1/3)}{\arccos(1/3)} = \frac{109.47°}{70.53°} \approx 1.55215$$
+~~$$\frac{\theta_O}{\theta_T} = \frac{\arccos(-1/3)}{\arccos(1/3)} = \frac{109.47°}{70.53°} \approx 1.55215$$~~
 
-Converting the CG coupling:
+~~Converting the CG coupling:~~
 
-$$\frac{1}{\alpha_s(M_P)}\bigg|_{\text{MS-bar}} = 64 \times 1.55215 = 99.34$$
+~~$$\frac{1}{\alpha_s(M_P)}\bigg|_{\text{MS-bar}} = 64 \times 1.55215 = 99.34$$~~
 
-Comparing to NNLO QCD:
+~~Comparing to NNLO QCD:~~
 
-$$\frac{|99.34 - 99.3|}{99.3} = 0.04\%$$
+~~$$\frac{|99.34 - 99.3|}{99.3} = 0.04\%$$~~
 
-**Interpretation:**
-- The scheme factor validates CG's coupling prediction (0.04% agreement with NNLO QCD)
+**Corrected Status:**
+- The geometric-scheme value 1/α_s(M_P) = 64 differs from the corrected MS-bar value (~52-55) by ~17-22%
+- This discrepancy is **resolved** by [Proposition 0.0.17ac](Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md): 64 = 52 (running) + 12 (holonomy)
 - The R_stella prediction remains 0.41 fm (91% of phenomenological) in the CG framework
-- The 9% discrepancy arises from higher-loop corrections and non-perturbative effects, NOT from scheme issues
+- The ~17-22% coupling discrepancy is resolved by Prop 0.0.17ac (52 running + 12 holonomy = 64 total); the 9% R_stella discrepancy is explained by non-perturbative corrections (Prop 0.0.17z)
 
-**Important Clarification:** The scheme conversion addresses *whether CG's coupling is correct*, not *what R_stella should be*. The CG formula uses its native geometric scheme coupling (1/α_s = 64), giving R_stella = 0.41 fm.
+**Important Clarification:** The scheme conversion claim (θ_O/θ_T = 1.55215 bridging 64 to ~99) is retracted because the ~99 target was wrong. The CG formula uses the total exponent (N_c²-1)² = 64 in the M_P formula, giving R_stella = 0.41 fm.
 
-> **Rigorous derivation of scheme conversion:** [Proposition-0.0.17s](Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md) derives the scheme conversion factor θ_O/θ_T = 1.55215 rigorously via heat kernel methods on polyhedral boundaries (Balian & Bloch 1970). It also provides an **independent derivation path** for α_s via gauge unification (sin²θ_W = 3/8 from Theorem 2.4.1), confirming the equipartition result.
+> **Resolution (2026-02-08):** [Proposition 0.0.17ac](Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md) resolves the relationship between the geometric value 64 and the MS-bar running value ~52: the 64 adj⊗adj channels decompose as **52 local running face modes + 12 non-local non-running holonomy modes**. The running coupling 1/α_s(M_P) = 52 matches QCD running from α_s(M_Z) to ~1% at 1-loop. The total exponent (52 + 12 = 64) in the M_P formula is preserved.
+
+> **Note on Prop 0.0.17s:** [Proposition-0.0.17s](Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md) provides heat kernel calculations and an independent derivation path for α_s via gauge unification. The heat kernel mathematics may be independently valid, but its application as a scheme conversion factor for α_s is retracted.
 
 ---
 
@@ -321,7 +327,7 @@ This proposition would be **falsified** if:
 
 1. **Lattice QCD refines √σ significantly:** If √σ moves away from 440 MeV toward a value incompatible with the prediction (e.g., √σ < 400 MeV or > 550 MeV)
 
-2. **α_s(M_P) ≠ 1/64:** If asymptotic safety calculations or other approaches give a significantly different UV coupling
+2. **α_s(M_P) ≠ 1/52 (running):** If the running coupling at M_P differs significantly from 1/52, or if the total exponent (N_c²-1)² = 64 is not the correct phase stiffness (see [Prop 0.0.17ac](Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md) for the 52/12 decomposition)
 
 3. **Higher-loop corrections diverge:** If 3-loop or 4-loop β-function corrections move the prediction away from observation rather than toward it
 
@@ -339,7 +345,7 @@ The one-loop prediction gives 91% agreement with phenomenological R_stella. The 
 | Non-perturbative effects near confinement | ~2-3% |
 | Lattice QCD uncertainties in √σ | ~3% (440 ± 30 MeV) |
 
-**Note on scheme correction:** The θ_O/θ_T factor validates the *coupling prediction* (0.04% agreement with NNLO QCD), not the R_stella value. The CG formula operates in its native geometric scheme where 1/αs = 64.
+**Note on scheme correction (RETRACTED 2026-02-08):** ~~The θ_O/θ_T factor validates the *coupling prediction* (0.04% agreement with NNLO QCD), not the R_stella value.~~ The 0.04% agreement claim was based on a buggy NNLO target (~99.3, which should be ~52-55). The actual discrepancy between the geometric value (64) and corrected MS-bar (~52-55) is ~17-22%. The CG formula operates in its native geometric scheme where 1/αs = 64.
 
 ### 10.2 Is G Fundamental or Derived?
 
@@ -361,7 +367,7 @@ See `verification/foundations/proposition_0_0_17q_verification.py`:
 2. ✅ √σ from R_stella: 481 MeV (predicted) vs 440 ± 30 MeV (lattice) — **agrees within combined uncertainty**
 3. ✅ Self-consistency: M_P(predicted) = M_P(input) exactly (ratio = 1.000000)
 4. ✅ Dimensional analysis: all quantities have correct dimensions
-5. ✅ Scheme conversion: 1/αs = 64 × 1.55215 = 99.34 matches NNLO 99.3 to 0.04%
+5. ~~✅ Scheme conversion: 1/αs = 64 × 1.55215 = 99.34 matches NNLO 99.3 to 0.04%~~ **RETRACTED** — NNLO target was buggy (~99.3 should be ~52-55); actual discrepancy is ~17-22%
 6. ✅ Limiting cases: Large N_c and small αs limits behave correctly
 7. ✅ Hierarchy ratio: log₁₀(R_stella/ℓ_P) = 19.40 (predicted) vs 19.44 (phenomenological)
 
@@ -372,7 +378,7 @@ See `verification/foundations/prop_0_0_17q_physics_verification.py` — Tests ag
 | Test | Category | Result | Sources |
 |------|----------|--------|---------|
 | UV coupling 1/α_s = 64 derivation | derivation | ✅ DERIVED | SU(3) representation theory |
-| Scheme conversion θ_O/θ_T = 1.552 | derivation | ✅ GEOMETRICALLY DERIVED | Theorem 0.0.6 (dihedral angles) |
+| Scheme conversion θ_O/θ_T = 1.552 | derivation | ✅ GEOMETRICALLY DERIVED (but application to α_s **RETRACTED** — see 2026-02-08 retraction) | Theorem 0.0.6 (dihedral angles) |
 | Higher-loop corrections magnitude | prediction | ✅ WITHIN THEORY UNCERTAINTY | Two-loop β-function |
 | Bootstrap cross-validation | consistency | ✅ CONSISTENT (0.1%) | Props 0.0.17y/z |
 | Parameter sensitivity analysis | consistency | ✅ TOPOLOGICALLY STABLE | CODATA 2022 (G_N) |
@@ -411,7 +417,7 @@ $$R_{\text{stella}} = \ell_P \times \exp\left(\frac{(N_c^2-1)^2}{2b_0}\right)$$
 2. ✅ Shows R_stella is not an independent input
 3. ✅ Explains the QCD-Planck hierarchy via asymptotic freedom
 4. ✅ R_stella **independently verified** by Bali 2005 flux tube width (0.40 ± 0.05 fm matches predicted 0.41 fm)
-5. ✅ UV coupling validated to 0.04% via scheme conversion (64 → 99.34 vs NNLO 99.3)
+5. ~~✅ UV coupling validated to 0.04% via scheme conversion (64 → 99.34 vs NNLO 99.3)~~ **RETRACTED** — scheme conversion invalidated; actual discrepancy ~17-22%
 6. ✅ Self-consistent with Theorem 5.2.6 by construction
 
 **Status:** 🔶 NOVEL — This represents a genuine first-principles derivation of the QCD scale from gravitational and topological inputs.

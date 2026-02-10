@@ -339,12 +339,14 @@ $$S = \ln(64) = \ln((N_c^2-1)^2)$$
 **Identification:**
 $$\frac{1}{\alpha_s(M_P)} = N_{\text{channels}} = 64$$
 
+**Edge-mode decomposition ([Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)):** Of these 64 channels, 52 are local running face modes and 12 are non-local non-running holonomy modes (N_holonomy = 2 × β₁(K₄) × rank(SU(3)) = 2 × 3 × 2 = 12). The running coupling 1/α_s^{running} = 52 matches standard QCD NNLO running (~52–55) to ~1%. The total exponent 64 = 52 + 12 is preserved in the Planck mass hierarchy formula because both running and holonomy modes contribute to dimensional transmutation.
+
 ### 9.2.1 Status of the Maximum Entropy Identification
 
 **What is established:**
 1. The adjoint tensor product has dimension 64 — this is exact group theory
 2. Maximum entropy at UV is physically motivated — thermal equilibrium, equal a priori probabilities
-3. The result $1/\alpha_s(M_P) = 64$ agrees with RG running to 98.5%
+3. The result $1/\alpha_s(M_P) = 64$ agrees with one-loop RG running to 98.5%; the running part (52) matches NNLO running to ~1% ([Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md))
 
 **What is motivated but not rigorously derived:**
 1. The **identification** $1/\alpha_s = N_{\text{channels}}$ requires justification

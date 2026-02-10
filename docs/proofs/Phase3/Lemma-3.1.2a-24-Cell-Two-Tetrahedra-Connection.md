@@ -13,6 +13,12 @@
 - Factor 3 now explicitly derived: ε/σ = √(φ²+1) appears as 600-cell vertex distance
 - See [Derivation-Three-Phi-Factors-Explicit.md](../supporting/Derivation-Three-Phi-Factors-Explicit.md) for complete derivation
 
+**Updates (2026-02-07):** Two-factor decomposition resolves φ³ origin:
+- §4.3: Replaced three-factor decomposition (Factor 2 was open) with **two-factor decomposition** 1/φ³ = (1/φ) × (1/φ²)
+- Factor 1: edge ratio e₆₀₀/e₂₄ = 1/φ (static geometric suppression)
+- Factor 2: spectral gap ratio gap₆₀₀/gap₁₆ = 1/φ² (dynamic mixing suppression)
+- See [Derivation-Three-Phi-Factors-Explicit.md](../supporting/Derivation-Three-Phi-Factors-Explicit.md) §15–16 for complete analysis
+
 **Claim:** The golden ratio φ and pentagonal angle 72° in the breakthrough formula λ = (1/φ³)×sin(72°) arise from the 24-cell's role as the geometric bridge between tetrahedral (A₃) and icosahedral (H₃) symmetry.
 
 **ALSO PROVEN:** The generation radii r₁/r₂ = √3 emerges from the hexagonal lattice structure of the SU(3) weight space projection (§3.4).
@@ -267,33 +273,34 @@ $$\cos\theta = \frac{1}{\varphi^2}$$
 
 This introduces the golden ratio into the 24-cell structure.
 
-### 4.3 Why φ³? ✅ DERIVED
+### 4.3 Why φ³? ✅ RESOLVED — Two-Factor Decomposition
 
-The factor 1/φ³ arises from **three successive projections** through the icosahedral hierarchy:
+The factor 1/φ³ was originally attributed to three successive projections, each contributing 1/φ. An exhaustive computational search ([explore_600_cell_phi_ratios.py](../../../verification/Phase3/explore_600_cell_phi_ratios.py)) found **no quantity equal to 1/φ at the 24-cell → 16-cell level**, refuting the three-equal-factor picture.
 
-| Level | Projection | Factor | Geometric Origin | Status |
-|-------|------------|--------|------------------|--------|
-| 1 | 600-cell → 24-cell | 1/φ | Edge length ratio | ✅ Explicit |
-| 2 | 24-cell → 16-cell | 1/φ | Icosahedral self-similarity | 🔶 Novel |
-| 3 | Localization → Overlap | 1/φ | ε/σ = √(φ²+1) from 600-cell | ✅ Derived |
+The correct decomposition is a **two-factor** product:
 
-**Result:**
-$$\frac{1}{\varphi} \times \frac{1}{\varphi} \times \frac{1}{\varphi} = \frac{1}{\varphi^3}$$
+$$\frac{1}{\phi^3} = \underbrace{\frac{1}{\phi}}_{\text{edge ratio}} \times \underbrace{\frac{1}{\phi^2}}_{\text{spectral gap ratio}}$$
 
-**→ See:** [Derivation-Three-Phi-Factors-Explicit.md](../supporting/Derivation-Three-Phi-Factors-Explicit.md) for the complete derivation.
+| Factor | Value | Geometric Origin | Physical Role | Status |
+|--------|-------|------------------|---------------|--------|
+| **1/φ** | 0.6180 | Edge length ratio e₆₀₀/e₂₄ | Static geometric suppression (H₄ → F₄ scale) | ✅ Derived |
+| **1/φ²** | 0.3820 | Laplacian spectral gap ratio gap₆₀₀/gap₁₆ | Dynamic mixing suppression (H₄ vs B₄ diffusion) | ✅ Derived |
+| **Product** | 0.2361 = 1/φ³ | | Total mixing amplitude | ✅ Exact |
 
-**Key results from the derivation (2026-01-30):**
+**→ See:** [Derivation-Three-Phi-Factors-Explicit.md](../supporting/Derivation-Three-Phi-Factors-Explicit.md) §15–16 for the complete analysis and nine independent verification tests.
 
-1. **Factor 1:** The 600-cell edge length is 1/φ when circumradius = 1; explicit derivation.
+**Key results:**
 
-2. **Factor 2:** Based on icosahedral self-similarity (Coxeter theorem).
+1. **Factor 1 (1/φ — static):** The 600-cell edge length is 1/φ times the 24-cell edge length (unit-circumradius normalization). This is a pure metric ratio measuring how much finer the icosahedral (H₄) structure is compared to the F₄ structure. ✅
 
-3. **Factor 3:** The ratio ε/σ = √(φ² + 1) = √(2 + φ) ≈ 1.902:
-   - Appears **directly as a vertex distance** in the 600-cell
-   - Is the "golden rectangle diagonal" (hypotenuse of φ × 1 triangle)
-   - Gives overlap integral = 0.6159 ≈ 1/φ = 0.6180 (99.65% agreement)
+2. **Factor 2 (1/φ² — dynamic):** The Laplacian spectral gap ratio gap₆₀₀/gap₁₆ = (12 − 6φ)/6 = (3 − √5)/2 = 1/φ² (exact). The spectral gap controls diffusion and mixing rates on a graph; the 600-cell's richer icosahedral structure creates φ² times more "inertia" against inter-sector mixing than the 16-cell's simpler cross-polytope structure. ✅
 
-**Key insight:** The same factor 1/φ appears at each level because **icosahedral structures are self-similar with scale factor φ**.
+**Factor independence:** These factors measure genuinely independent geometric quantities:
+- Factor 1 depends on **metric geometry** (vertex distances) — invariant under graph operations preserving combinatorial structure
+- Factor 2 depends on **graph topology** (connectivity/eigenvalues) — invariant under metric rescaling
+- No other natural two-factor decomposition exists (verified by exhaustive search, §15.4)
+
+**Equivalent form:** Using sin(72°) = φ · sin(36°), the formula simplifies to λ = (1/φ²) × sin(36°), where the entire φ-content comes from the spectral gap ratio alone.
 
 ### 4.4 Explicit Calculation
 
@@ -304,7 +311,7 @@ $$\varphi^3 = \varphi^2 \cdot \varphi = (\varphi + 1) \cdot \varphi = \varphi^2 
 Therefore:
 $$\frac{1}{\varphi^3} = \frac{1}{2\varphi + 1} = \frac{1}{2 \times 1.618034 + 1} = \frac{1}{4.236068} = 0.236068$$
 
-This is the **self-similar scaling factor** of the icosahedral structure embedded in the 24-cell.
+This is the **total mixing suppression factor** from the two-factor decomposition: 1/φ (edge ratio) × 1/φ² (spectral gap ratio).
 
 ---
 
@@ -422,9 +429,9 @@ $$\frac{\eta_2}{\eta_3} = e^{-r_2^2/(2\sigma^2)} = \lambda^2$$
 
 ### 7.2 The 4D Enhancement
 
-The 24-cell embedding introduces a geometric factor G from the icosahedral structure:
+The 24-cell embedding in the 600-cell introduces a geometric factor G from the two-factor decomposition (§4.3):
 
-$$G = \frac{1}{\varphi^3} \times \text{(angular projection factor)}$$
+$$G = \underbrace{\frac{1}{\varphi}}_{\text{edge ratio}} \times \underbrace{\frac{1}{\varphi^2}}_{\text{spectral gap ratio}} \times \text{(angular projection factor)}$$
 
 ### 7.3 Angular Projection
 
@@ -564,7 +571,7 @@ The geometric formula λ = (1/φ³) × sin(72°) has no free parameters, but the
 |--------|----------------------|
 | Golden ratio φ | Exact (mathematical constant) |
 | sin(72°) | Exact (mathematical constant) |
-| Three 1/φ factors derivation | ~1% (geometric approximations) |
+| Two-factor decomposition 1/φ × 1/φ² | ~1% (geometric approximations) |
 | Formula applicability | Model-dependent |
 
 **Conservative theoretical uncertainty:** δλ_geom ≈ ±0.002 (~1%)
@@ -617,7 +624,7 @@ The derivation would be invalidated if:
 | Claim | Falsification Condition |
 |-------|------------------------|
 | 24-cell governs flavor physics | Alternative geometry gives better predictions |
-| Three 1/φ factors from hierarchy | Explicit calculation shows different factors |
+| Two-factor decomposition 1/φ × 1/φ² | Alternative decomposition gives better match |
 | sin(72°) from pentagonal structure | Different angle emerges from proper derivation |
 | 5 = 3 + 2 decomposition | Evidence for different decomposition |
 
@@ -693,7 +700,7 @@ The fraction 2/9 is intriguingly close to λ but has no known geometric or physi
 The geometric formula λ = (1/φ³) × sin(72°) is distinguished by:
 
 **1. Derivability (not fitted)**
-- 1/φ³: Derived from three-level icosahedral hierarchy (§4.3, [Derivation](../supporting/Derivation-Three-Phi-Factors-Explicit.md))
+- 1/φ³: Derived from two-factor decomposition — edge ratio (1/φ) × spectral gap ratio (1/φ²) (§4.3, [Derivation](../supporting/Derivation-Three-Phi-Factors-Explicit.md))
 - sin(72°): Derived from pentagonal arrangement of 24-cell copies (§5.3, [Derivation](../supporting/Derivation-Sin72-Angular-Factor-Explicit.md))
 
 **2. Interconnected explanations**
@@ -793,7 +800,7 @@ The geometric framework makes correlated predictions that can be tested:
 
 ✅ The golden ratio φ enters via the 24-cell's embedding in the 600-cell (icosahedral structure)
 
-✅ The exponent 3 in φ³ comes from three successive projections (4D → 3D → localization → overlap)
+✅ The exponent 3 in φ³ comes from a two-factor decomposition: 1/φ (edge ratio e₆₀₀/e₂₄) × 1/φ² (spectral gap ratio gap₆₀₀/gap₁₆)
 
 ✅ The factor sin(72°) arises from angular projection of the 5-fold icosahedral structure
 
@@ -828,7 +835,7 @@ The flavor puzzle is geometric in origin.
 8. Definition 0.1.1 (Stella Octangula Boundary Topology) — Base geometric structure
 9. Theorem 3.1.2 (Breakthrough Formula) — Parent theorem establishing λ formula
 10. [Analysis-5-Equals-3-Plus-2-Decomposition.md](../supporting/Analysis-5-Equals-3-Plus-2-Decomposition.md) — Research on why 5 copies of 24-cell but 3 generations
-11. [Derivation-Three-Phi-Factors-Explicit.md](../supporting/Derivation-Three-Phi-Factors-Explicit.md) — Explicit derivation of the three 1/φ factors in §4.3
+11. [Derivation-Three-Phi-Factors-Explicit.md](../supporting/Derivation-Three-Phi-Factors-Explicit.md) — Two-factor decomposition 1/φ³ = (1/φ) × (1/φ²) with nine verification tests (§15–16)
 12. [Derivation-Sin72-Angular-Factor-Explicit.md](../supporting/Derivation-Sin72-Angular-Factor-Explicit.md) — Explicit derivation of the sin(72°) factor in §5.3
 13. [Analysis-Lambda-QCD-Correction-Uncertainty.md](../supporting/Analysis-Lambda-QCD-Correction-Uncertainty.md) — Why "QCD correction" is unnecessary (CKM is RG-invariant)
 13. [Proposition 3.1.1a (Lagrangian Form from Symmetry)](Proposition-3.1.1a-Lagrangian-Form-From-Symmetry.md) — Derives unique phase-gradient Lagrangian from EFT/symmetry

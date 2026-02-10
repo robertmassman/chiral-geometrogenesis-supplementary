@@ -1,0 +1,136 @@
+{
+  "proposition": "0.0.36",
+  "title": "Anthropic Bounds on R_stella",
+  "tests_passed": 10,
+  "tests_failed": 0,
+  "bounds": {
+    "deuteron": {
+      "r_max_fm": 0.47537820000000003,
+      "sqrt_sigma_min_MeV": 415.09476034029325
+    },
+    "diproton": {
+      "r_min_fm": 0.43053119999999995,
+      "sqrt_sigma_max_MeV": 458.3337978757405
+    },
+    "hoyle_state": {
+      "r_min_fm": 0.43053119999999995,
+      "r_max_fm": 0.4708935
+    },
+    "combined": {
+      "r_min_fm": 0.43053119999999995,
+      "r_max_fm": 0.4708935,
+      "sqrt_sigma_min_MeV": 419.0480437721056,
+      "sqrt_sigma_max_MeV": 458.3337978757405,
+      "fractional_width": 0.08955223880597031
+    }
+  },
+  "observed_value": {
+    "r_stella_fm": 0.44847,
+    "position_in_window": 0.4444444444444444
+  },
+  "bootstrap": {
+    "uncorrected": {
+      "r_bootstrap": 0.41,
+      "in_window": false,
+      "position": -0.5086726970464996,
+      "comment": "Below window (needs NP corrections)"
+    },
+    "corrected": {
+      "r_bootstrap": 0.454,
+      "in_window": true,
+      "position": 0.581453485059078,
+      "comment": "Within window"
+    },
+    "r_bootstrap": 0.454,
+    "in_window": true,
+    "position": 0.581453485059078
+  },
+  "neutron_stability": {
+    "hydrogen_stability": {
+      "r_max_fm": 0.9343125,
+      "description": "m_n > m_p (protons lighter than neutrons)",
+      "subsumed_by_deuteron": true
+    },
+    "deuterium_stability": {
+      "r_min_fm": 0.21245650219780216,
+      "description": "m_n - m_p < 2.7 MeV (deuterium formation)",
+      "subsumed_by_diproton": true
+    },
+    "combined_window": {
+      "r_min_fm": 0.43053119999999995,
+      "r_max_fm": 0.4708935
+    },
+    "conclusion": "Neutron stability bounds are automatically satisfied for the anthropic window"
+  },
+  "bbn": {
+    "quark_mass_constraint": {
+      "bound_percent": 1.0,
+      "description": "From He-4 abundance (Dmitriev & Flambaum)",
+      "constrains_r_stella": false,
+      "reason": "Quark masses set by Yukawa couplings, not R_stella"
+    },
+    "lambda_qcd_constraint": {
+      "bound_percent": 6.0,
+      "description": "From deuteron binding (same as \u00a73)",
+      "constrains_r_stella": true,
+      "r_max_fm": 0.47537820000000003
+    },
+    "observed_abundances": {
+      "deuterium_ratio": 2.527e-05,
+      "helium4_fraction": 0.2449,
+      "match_predictions": true
+    },
+    "consistency_check": {
+      "r_obs_in_window": true,
+      "bbn_compatible": true,
+      "comment": "Observed R_stella produces nuclear physics compatible with BBN"
+    },
+    "conclusion": "BBN consistent with but does not tighten R_stella window"
+  },
+  "stellar_structure": {
+    "stellar_lifetime_constraint": {
+      "min_lifetime_gyr": 1.0,
+      "sun_lifetime_gyr": 10.0,
+      "sensitivity_percent": 50.0,
+      "r_min_fm": 0.224235,
+      "r_max_fm": 0.672705
+    },
+    "nuclear_binding_constraint": {
+      "deuteron_r_max_fm": 0.47537820000000003,
+      "hoyle_r_min_fm": 0.43053119999999995,
+      "hoyle_r_max_fm": 0.4708935,
+      "combined_r_min_fm": 0.43053119999999995,
+      "combined_r_max_fm": 0.4708935
+    },
+    "comparison": {
+      "stellar_window_fm": 0.44847000000000004,
+      "nuclear_window_fm": 0.04036230000000007,
+      "stellar_subsumed_by_nuclear": true
+    },
+    "pp_chain_viable": true,
+    "cno_cycle_viable": true,
+    "conclusion": "Stellar structure automatically satisfied when nuclear binding satisfied"
+  },
+  "supernova": {
+    "damico_constraint": {
+      "v_predicted_gev": 17675.123395220362,
+      "v_observed_gev": 246.22,
+      "ratio": 0.013930312931596384,
+      "within_tolerance": false,
+      "tolerance_factor": 3.0
+    },
+    "r_stella_inference": {
+      "r_inferred_fm": 294.3576683788986,
+      "r_observed_fm": 0.44847,
+      "order_of_magnitude_match": false
+    },
+    "constraint_comparison": {
+      "nuclear_fractional_width": 0.09000000000000016,
+      "supernova_fractional_width": 4.0,
+      "nuclear_is_tighter": true
+    },
+    "weak_scale_independent": true,
+    "heavy_yields_subsumed": true,
+    "conclusion": "Supernova constrains weak scale, not R_stella directly"
+  }
+}

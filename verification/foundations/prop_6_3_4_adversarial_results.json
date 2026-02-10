@@ -1,0 +1,19 @@
+{
+  "gamma_NLO_keV": 6.564077161213137,
+  "gamma_LO_keV": 6.251502058298226,
+  "A_total_sq": 29.923538414947743,
+  "BR": 0.0016009944295641797,
+  "mu": 1.0386198039894206,
+  "phase_space": 0.10349169103156225,
+  "amp_W": 5.772679045477583,
+  "amp_t": -0.3092440840193087,
+  "tests_passed": "12",
+  "tests_total": 12,
+  "verdict": "VERIFIED",
+  "warnings": [
+    "\u00a75.3 prefactor typo: 1.029e-13 should be ~1.03e-12 (final width correct)",
+    "\u00a79 Summary: W/top signs reversed vs \u00a74.2 (\u00a74.2 is correct)",
+    "\u00a74.1 table: C_b=0.263 omits N_c factor; C_\u03c4 has sign error",
+    "I\u2081,I\u2082 formulas use \u03c4=4m\u00b2/m_H\u00b2 but parameter table uses \u03c4=m_H\u00b2/(4m\u00b2)"
+  ]
+}

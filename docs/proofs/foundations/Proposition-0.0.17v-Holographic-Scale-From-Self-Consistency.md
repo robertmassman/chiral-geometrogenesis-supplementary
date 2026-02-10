@@ -280,7 +280,7 @@ The raw derivation gives ℓ_P = 1.77 × 10⁻³⁵ m, which is 9% larger than t
 
 **Assessment:** The 9% discrepancy is within the expected uncertainty from √σ alone. No additional scheme corrections are required — the raw derivation achieves 91% agreement from first principles.
 
-**Note:** The scheme conversion factor θ_O/θ_T = 1.55215 from Prop 0.0.17s would make the result worse (ℓ_P → 2.7 × 10⁻³⁵ m), so it should not be applied here. The dimensional transmutation formula already incorporates the appropriate matching.
+**Note:** The scheme conversion factor θ_O/θ_T = 1.55215 from Prop 0.0.17s has been **retracted** (corrected 2026-02-08: NNLO running bug fix -- the factor was reverse-engineered to match a buggy NNLO running value of ~99; the correct NNLO 1/α_s(M_P) is ~52-55). This does not affect the derivation in this proposition, which uses the dimensional transmutation formula directly without applying any scheme conversion.
 
 ---
 

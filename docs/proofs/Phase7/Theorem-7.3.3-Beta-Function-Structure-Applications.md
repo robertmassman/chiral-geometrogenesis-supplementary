@@ -21,7 +21,7 @@ Using the one-loop β-functions, we solve the RG equations numerically.
 
 | Coupling | UV Value | Source |
 |----------|----------|--------|
-| $\alpha_s(M_P)$ | $1/99.34 = 0.0101$ | Prop 0.0.17s |
+| $\alpha_s(M_P)$ | $1/64 = 0.0156$ | Prop 0.0.17s (geometric scheme; corrected 2026-02-08: previous value $1/99.34$ was based on retracted $\theta_O/\theta_T$ scheme conversion) |
 | $g_\chi(M_P)$ | $3/(2\pi) \approx 0.477$ | Thm 7.3.2 (topological) |
 | $\lambda(M_P)$ | $\sim 0.01$ | Perturbativity bound |
 
@@ -35,7 +35,7 @@ $$g^2(\mu) = \frac{g^2(\mu_0)}{1 + \frac{7g^2(\mu_0)}{8\pi^2}\ln(\mu/\mu_0)}$$
 
 | Scale | $\ln(\mu/\Lambda_{QCD})$ | $\alpha_s(\mu)$ | $g_\chi(\mu)$ | $\lambda(\mu)$ |
 |-------|--------------------------|-----------------|---------------|----------------|
-| $M_P$ | 45.0 | 0.0101 | 0.477 | 0.01 |
+| $M_P$ | 45.0 | 0.0156 (geometric; see note) | 0.477 | 0.01 |
 | $M_{GUT}$ | 37.4 | 0.024 | 0.58 | 0.02 |
 | $m_t$ | 6.76 | 0.107 | 1.05 | 0.08 |
 | $M_Z$ | 6.12 | 0.118 | 1.09 | 0.09 |
@@ -46,17 +46,17 @@ $$g^2(\mu) = \frac{g^2(\mu_0)}{1 + \frac{7g^2(\mu_0)}{8\pi^2}\ln(\mu/\mu_0)}$$
 
 **Check 1: $\alpha_s(M_Z)$ prediction**
 
-Starting from $\alpha_s(M_P) = 0.0101$:
+Starting from $\alpha_s(M_P) = 1/64 = 0.0156$ (geometric scheme; corrected 2026-02-08):
 
-$$\alpha_s(M_Z) = \frac{0.0101}{1 - \frac{7 \times 0.0101}{4\pi}\ln(M_Z/M_P)}$$
+> **NOTE (corrected 2026-02-08: NNLO running bug fix):** The previous value $\alpha_s(M_P) = 1/99.34 = 0.0101$ was based on the retracted $\theta_O/\theta_T$ scheme conversion. The geometric prediction is $1/\alpha_s = 64$, giving $\alpha_s(M_P) = 0.0156$. SM NNLO running from $\alpha_s(M_Z) = 0.1180$ gives $1/\alpha_s(M_P) \approx 52$-$55$, representing a genuine ~17-22% discrepancy with the geometric value. The crude one-loop check below illustrates the running direction but does not resolve this discrepancy.
 
-$$= \frac{0.0101}{1 - 0.0056 \times (-38.9)} = \frac{0.0101}{1.22} \approx 0.008$$
+$$\alpha_s(M_Z) = \frac{0.0156}{1 - \frac{7 \times 0.0156}{4\pi}\ln(M_Z/M_P)}$$
 
 **Correction needed:** This uses full running without thresholds. With proper threshold matching:
 
 $$\alpha_s(M_Z) \approx 0.118 \quad \text{(PDG: } 0.1180 \pm 0.0009\text{)}$$
 
-**Match:** ✅ Within 1σ
+**Match:** The PDG value is reproduced by SM running from any reasonable UV boundary condition; the open question is whether the geometric UV prediction (64) is correct.
 
 **Check 2: $g_\chi(\Lambda_{QCD})$ prediction**
 

@@ -1,0 +1,123 @@
+{
+  "tests": [
+    {
+      "name": "c\u2081 analytical = 3.0 matches numerical",
+      "passed": true,
+      "details": "Analytical: 3.0000, Numerical: 3.0152, Ratio: 1.0051"
+    },
+    {
+      "name": "\u039b_MS\u0304/\u039b_stella = 10.6 within known range [6.3, 28.8]",
+      "passed": true,
+      "details": "Required: 10.6"
+    },
+    {
+      "name": "Mean-field \u03b4_MF captures majority of \u03b4_required (>50%)",
+      "passed": true,
+      "details": "\u03b4_MF/\u03b4_req = 0.80 (80%)"
+    },
+    {
+      "name": "\u03b4_MF has correct sign (positive)",
+      "passed": true,
+      "details": "\u03b4_MF = 2.0944"
+    },
+    {
+      "name": "Mean-field \u039b ratio in known lattice range",
+      "passed": true,
+      "details": "\u039b_MF = 6.55, range [6.3, 28.8]"
+    },
+    {
+      "name": "L\u2081 = 4I\u2086 confirmed",
+      "passed": true,
+      "details": "max|L\u2081 - 4I\u2086| = 0.00e+00"
+    },
+    {
+      "name": "Tree-gauge mass matrix M is positive definite",
+      "passed": true,
+      "details": "Eigenvalues: [1. 1. 4.]"
+    },
+    {
+      "name": "c\u2081 = 3.0 confirmed numerically",
+      "passed": true,
+      "details": "c\u2081 (fit) = 3.0152"
+    },
+    {
+      "name": "Single-link c\u2081 = 4 (cross-check of formula)",
+      "passed": true,
+      "details": "dim_adj \u00d7 v_single / (2 \u00d7 N_f=1) = 8\u00d71/2 = 4"
+    },
+    {
+      "name": "MC acceptance rates reasonable",
+      "passed": true,
+      "details": "Range: [0.279, 0.888]"
+    },
+    {
+      "name": "Gaussian+Haar matches MC at high \u03b2 (within 15% of 1-P)",
+      "passed": true,
+      "details": "Checked at \u03b2 = 200, 500, 1000"
+    }
+  ],
+  "summary": {
+    "total_tests": 11,
+    "passed": 11,
+    "failed": 0,
+    "pass_rate": "100.0%",
+    "key_results": {
+      "c1_analytical": 3.0,
+      "c1_numerical": 3.015152443422393,
+      "c2_numerical": -0.4899690289676455,
+      "c2_gaussian_haar": 3.3126106565279363,
+      "c2_non_gaussian": 4.41013079629714,
+      "delta_MF": 2.0943951023931953,
+      "delta_remainder": 0.534648101020712,
+      "delta_required": 2.6290432034139073,
+      "delta_MF_fraction": 0.7966377652803681,
+      "lambda_ratio_required": 10.58908402025504,
+      "lambda_ratio_MF": 6.553011059960798,
+      "lambda_ratio_in_range": true,
+      "L1_equals_4I": true,
+      "M_tree_eigenvalues": [
+        0.9999999999999992,
+        0.9999999999999998,
+        3.999999999999999
+      ],
+      "haar_jacobian_coefficient": 0.125,
+      "mc_data": {
+        "10": {
+          "P": 0.6925528199876326,
+          "P_err": 0.0002839206337446236,
+          "acc": 0.2792935982339956
+        },
+        "20": {
+          "P": 0.8488138214075365,
+          "P_err": 0.00013733617632796116,
+          "acc": 0.3738355408388521
+        },
+        "50": {
+          "P": 0.9398254285869356,
+          "P_err": 5.4571485498156024e-05,
+          "acc": 0.5446401766004415
+        },
+        "100": {
+          "P": 0.9696764188435352,
+          "P_err": 2.7683167842787865e-05,
+          "acc": 0.6612748344370861
+        },
+        "200": {
+          "P": 0.9849192357601317,
+          "P_err": 1.3859230312865114e-05,
+          "acc": 0.7542229580573951
+        },
+        "500": {
+          "P": 0.9938987644779439,
+          "P_err": 5.6179209532771705e-06,
+          "acc": 0.8413366445916115
+        },
+        "1000": {
+          "P": 0.9970053712257503,
+          "P_err": 2.7501164358183835e-06,
+          "acc": 0.8879746136865342
+        }
+      }
+    }
+  }
+}

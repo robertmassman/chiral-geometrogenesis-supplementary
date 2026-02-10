@@ -1460,6 +1460,8 @@ $$\text{adj} \otimes \text{adj} = \mathbf{1} \oplus \mathbf{8}_s \oplus \mathbf{
 Maximum entropy equipartition at the pre-geometric scale gives p_I = 1/64 for all irreducible components, fixing:
 $$\alpha_s^{geom}(M_P) = \frac{1}{64}$$
 
+(These 64 channels decompose as 52 running + 12 holonomy per [Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md); the running part 1/α_s = 52 matches QCD to ~1%.)
+
 **Candidate for g_χ:**
 
 The chiral coupling g_χ mediates ψ̄_L γ^μ (∂_μ χ) ψ_R — a coupling between fermion bilinear (in 3̄ ⊗ 3) and a color singlet (χ). The relevant decomposition is:
@@ -1975,7 +1977,7 @@ The physical mechanism involves three elements converging at the Planck scale:
 
 $$g_\chi^{UV} = \frac{\text{(Euler characteristic)} \times \text{(color factor)}}{\text{(total solid angle)}} = \frac{\chi \cdot N_c}{4\pi}$$
 
-This parallels the α_s derivation where equipartition over adj⊗adj = 64 channels gives 1/α_s = 64.
+This parallels the α_s derivation where equipartition over adj⊗adj = 64 channels gives 1/α_s = 64 (decomposed as 52 running + 12 holonomy per [Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)).
 
 **Status:** ✅ RESOLVED
 
@@ -2012,11 +2014,11 @@ Physical interpretation:
 |---------|---------------------|
 | **Origin** | Maximum entropy over tensor product decomposition |
 | **Applies to** | **Gauge couplings** (SU(3), SU(2), U(1)) |
-| **Example** | 1/α_s = (N_c² - 1)² = 8² = 64, so α_s = 1/64 |
+| **Example** | 1/α_s = (N_c² - 1)² = 8² = 64 (total); running part = 52 ([Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)) |
 
 Physical interpretation:
 - dim R = N_c² - 1 = 8: Adjoint representation dimension
-- n = 2: From adj⊗adj = **64** channels
+- n = 2: From adj⊗adj = **64** channels (52 running face modes + 12 holonomy modes)
 - Equipartition: Each channel carries probability 1/64
 
 ---

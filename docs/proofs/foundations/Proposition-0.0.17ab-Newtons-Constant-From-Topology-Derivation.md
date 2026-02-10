@@ -46,7 +46,7 @@ $$\frac{1}{\alpha_s(M_P)} = (N_c^2 - 1)^2 = (9 - 1)^2 = 64$$
 
 **Dependencies:** Theorem 0.0.3 ($N_c = 3$), Prop 0.0.17w (five independent arguments converge on this value).
 
-**Status:** 🔶 NOVEL ✅ ESTABLISHED. Confirmed by geometric scheme analysis: $1/\alpha_s^{\overline{\text{MS}}}(M_P) = 64 \times (\theta_O/\theta_T) = 99.34$, matching NNLO QCD requirement of 99.3 to 0.038%.
+**Status:** 🔶 NOVEL. The equipartition derivation gives $1/\alpha_s^{\text{geom}}(M_P) = 64$. **(corrected 2026-02-08: NNLO running bug fix)** The previously claimed scheme conversion $1/\alpha_s^{\overline{\text{MS}}}(M_P) = 64 \times (\theta_O/\theta_T) = 99.34$ matching NNLO to 0.038% has been **retracted**. The $\theta_O/\theta_T = 1.55215$ factor was reverse-engineered to match a buggy NNLO running script (which used $\ln(\mu^2/\mu_0^2)$ instead of $\ln(\mu/\mu_0)$, yielding $1/\alpha_s \approx 96\text{--}99$ instead of the correct $\sim 52\text{--}55$). The CG prediction $1/\alpha_s = 64$ has a genuine $\sim$17--22% discrepancy from the standard NNLO value that is currently **unresolved**.
 
 ### Step 4: Planck Mass from Dimensional Transmutation ✅ DERIVED
 
@@ -242,7 +242,7 @@ The difference is that $M_P$ now has an independent derivation from $R_{\text{st
 | $1/\alpha_s = 64$ (exact in framework) | — | — |
 | $b_0 = 9/(4\pi)$ (exact in framework) | — | — |
 | NP corrections: $9.6\% \pm 2\%$ | $\pm 2\%$ | $\pm 4\%$ |
-| Geometric scheme factor | $\pm 0.038\%$ | $\pm 0.076\%$ |
+| ~~Geometric scheme factor~~ | ~~$\pm 0.038\%$~~ | ~~$\pm 0.076\%$~~ | **(retracted 2026-02-08: NNLO running bug fix — scheme conversion was based on buggy values; ~17-22% discrepancy unresolved)** |
 
 ### §7.2. Combined Uncertainty
 

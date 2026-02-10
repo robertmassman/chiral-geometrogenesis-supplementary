@@ -55,16 +55,18 @@ def beta_coefficients(N_f: int, N_c: int = 3) -> dict:
     """
     QCD β-function coefficients for SU(N_c) with N_f flavors.
 
-    Convention: dα_s/d(ln μ²) = β(α_s) = -α_s² Σ β_n (α_s/π)^n
+    Convention used in this script:
+    dα_s/d(ln μ) = -(α_s²/(2π)) × [β_0 + β_1(α_s/π) + β_2(α_s/π)² + ...]
+
+    IMPORTANT: The integration variable is ln(μ), NOT ln(μ²).
+    Equivalently: dα_s/d(ln μ²) = -(α_s²/(4π)) × [β_0 + ...]
+    where b_0 = β_0/(4π), b_1 = β_1/(16π²), etc.
 
     In MS-bar scheme:
     - β_0 = (11*N_c - 2*N_f) / 3
     - β_1 = (34*N_c² - 10*N_c*N_f - 3*(N_c²-1)*N_f/N_c) / 3  [= (102 - 38*N_f/3) for SU(3)]
     - β_2 = 2857/2 - 5033*N_f/18 + 325*N_f²/54  [for SU(3)]
     - β_3 = complex expression with ζ(3)
-
-    Alternative convention used in many papers:
-    b_0 = β_0/(4π), b_1 = β_1/(16π²), etc.
     """
     C_A = N_c                    # Adjoint Casimir
     C_F = (N_c**2 - 1)/(2*N_c)   # Fundamental Casimir
@@ -133,12 +135,15 @@ def alpha_s_running_1loop(alpha_s_0: float, mu_0: float, mu: float, N_f: int) ->
     """
     One-loop running of α_s.
 
-    1/α_s(μ) = 1/α_s(μ_0) + (β_0/2π) * ln(μ²/μ_0²)
+    1/α_s(μ) = 1/α_s(μ_0) + (β_0/(2π)) * ln(μ/μ_0)
+
+    Convention: β_0 = (11N_c - 2N_f)/3 with dα_s/d(ln μ) = -β_0/(2π) α_s²
+    The integration variable is ln(μ), NOT ln(μ²).
     """
     coeff = beta_coefficients(N_f)
     beta_0 = coeff['beta_0']
 
-    L = np.log(mu**2 / mu_0**2)
+    L = np.log(mu / mu_0)  # ln(μ/μ₀), NOT ln(μ²/μ₀²)
     inv_alpha = 1/alpha_s_0 + (beta_0 / (2 * np.pi)) * L
 
     if inv_alpha <= 0:
@@ -151,12 +156,14 @@ def alpha_s_running_2loop(alpha_s_0: float, mu_0: float, mu: float, N_f: int) ->
     Two-loop running of α_s using iterative solution.
 
     Uses the implicit equation and iterates to convergence.
+    Convention: L = ln(μ/μ₀), b0 = β_0/(4π), b1 = β_1/(16π²)
+    One-loop part: 1/α_s = 1/α_s_0 + 2*b0*L where L = ln(μ/μ₀)
     """
     coeff = beta_coefficients(N_f)
     beta_0 = coeff['beta_0']
     beta_1 = coeff['beta_1']
 
-    L = np.log(mu**2 / mu_0**2)
+    L = np.log(mu / mu_0)  # ln(μ/μ₀), NOT ln(μ²/μ₀²)
 
     # Start with one-loop result
     alpha_s = alpha_s_running_1loop(alpha_s_0, mu_0, mu, N_f)
@@ -168,6 +175,7 @@ def alpha_s_running_2loop(alpha_s_0: float, mu_0: float, mu: float, N_f: int) ->
     b1 = beta_1 / (16 * np.pi**2)
 
     # Iterate to solve implicit equation
+    # Note: 2*b0*L with L = ln(μ/μ₀) is correct (same as b0*ln(μ²/μ₀²))
     for _ in range(20):
         # Two-loop formula
         inv_alpha_new = 1/alpha_s_0 + 2 * b0 * L + (b1/b0) * np.log(1 + 2 * b0 * alpha_s * L)
@@ -186,7 +194,10 @@ def alpha_s_running_3loop_numerical(alpha_s_0: float, mu_0: float, mu: float, N_
     """
     Three-loop running of α_s using numerical ODE integration.
 
-    Solves: d(α_s)/d(ln μ²) = β(α_s) = -(α_s²/2π)[β_0 + (α_s/π)β_1 + (α_s/π)²β_2 + ...]
+    Solves: d(α_s)/d(ln μ) = β(α_s) = -(α_s²/2π)[β_0 + (α_s/π)β_1 + (α_s/π)²β_2 + ...]
+
+    Convention: integration variable is t = ln(μ/μ₀), NOT ln(μ²/μ₀²).
+    The β-function -(α_s²/(2π))×β_0 is dα_s/d(ln μ).
     """
     coeff = beta_coefficients(N_f)
     beta_0 = coeff['beta_0']
@@ -194,7 +205,7 @@ def alpha_s_running_3loop_numerical(alpha_s_0: float, mu_0: float, mu: float, N_
     beta_2 = coeff['beta_2']
 
     def beta_function(t, alpha):
-        """β(α_s) = d(α_s)/d(ln μ²)"""
+        """β(α_s) = d(α_s)/d(ln μ)"""
         a = alpha[0]
         if a <= 0:
             return [0]
@@ -202,8 +213,8 @@ def alpha_s_running_3loop_numerical(alpha_s_0: float, mu_0: float, mu: float, N_
         beta = -(a**2 / (2 * np.pi)) * (beta_0 + beta_1 * a_pi + beta_2 * a_pi**2)
         return [beta]
 
-    # Integrate from ln(μ_0²) to ln(μ²)
-    t_span = [0, np.log(mu**2 / mu_0**2)]
+    # Integrate from 0 to ln(μ/μ₀) — NOT ln(μ²/μ₀²)
+    t_span = [0, np.log(mu / mu_0)]
 
     sol = solve_ivp(beta_function, t_span, [alpha_s_0], method='RK45',
                     dense_output=True, rtol=1e-10, atol=1e-12)
@@ -217,6 +228,8 @@ def alpha_s_running_3loop_numerical(alpha_s_0: float, mu_0: float, mu: float, N_
 def alpha_s_running_4loop_numerical(alpha_s_0: float, mu_0: float, mu: float, N_f: int) -> float:
     """
     Four-loop running of α_s using numerical ODE integration.
+
+    Convention: integration variable is t = ln(μ/μ₀), NOT ln(μ²/μ₀²).
     """
     coeff = beta_coefficients(N_f)
     beta_0 = coeff['beta_0']
@@ -225,7 +238,7 @@ def alpha_s_running_4loop_numerical(alpha_s_0: float, mu_0: float, mu: float, N_
     beta_3 = coeff['beta_3']
 
     def beta_function(t, alpha):
-        """β(α_s) = d(α_s)/d(ln μ²)"""
+        """β(α_s) = d(α_s)/d(ln μ)"""
         a = alpha[0]
         if a <= 0:
             return [0]
@@ -233,7 +246,7 @@ def alpha_s_running_4loop_numerical(alpha_s_0: float, mu_0: float, mu: float, N_
         beta = -(a**2 / (2 * np.pi)) * (beta_0 + beta_1 * a_pi + beta_2 * a_pi**2 + beta_3 * a_pi**3)
         return [beta]
 
-    t_span = [0, np.log(mu**2 / mu_0**2)]
+    t_span = [0, np.log(mu / mu_0)]
 
     sol = solve_ivp(beta_function, t_span, [alpha_s_0], method='RK45',
                     dense_output=True, rtol=1e-10, atol=1e-12)

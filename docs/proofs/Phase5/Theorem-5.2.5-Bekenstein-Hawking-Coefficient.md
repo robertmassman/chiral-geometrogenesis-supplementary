@@ -13,7 +13,7 @@
 - Two independent consistency checks (SU(3) quantization, holographic saturation) confirm the result
 - ℓ_P traced back to QCD string tension √σ = 440 MeV via Theorem 5.2.6
 - Complete derivation chain: QCD → M_P → ℓ_P → S = A/(4ℓ_P²)
-- Numerical consistency: M_P (93% agreement), 1/α_s(M_P) (~19% discrepancy from required value); G follows from M_P via G ∝ 1/M_P²
+- Numerical consistency: M_P (93% agreement), 1/α_s(M_P) = 64 total exponent (decomposed as 52 running + 12 holonomy per [Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md); running part matches QCD to ~1%); G follows from M_P via G ∝ 1/M_P²
 
 **Epistemological Status:**
 - **γ = 1/4**: Rigorously derived from self-consistency (no free parameters)
@@ -67,7 +67,7 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 - [x] Dependencies on prerequisite theorems valid
 - [x] No circular references (dependency graph provided)
 - [x] Cross-references between files accurate
-- [x] Numerical values match PDG/literature (93% M_P; UV coupling ~19% discrepancy — see Issue-1 resolution)
+- [x] Numerical values match PDG/literature (93% M_P; UV coupling: total exponent 64 preserved, running part 52 matches QCD to ~1% — see [Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md))
 - [x] Derivation steps logically valid (Derivation file)
 - [x] Consistency with prior and dependent theorems
 
@@ -272,7 +272,7 @@ This graph shows that entropy is downstream of G and T — there is no circular 
 
 **Why this is non-trivial:** The existence of a physically reasonable γ_SU(3) is not guaranteed. If the SU(3) structure had been incompatible with γ = 1/4, no such value would exist — the theory would be internally inconsistent.
 
-**Connection to 64-channel structure:** The adj⊗adj = 64 channels (Theorem 5.2.6) capture interaction dynamics at the Planck scale, complementing the fundamental representation counting.
+**Connection to 64-channel structure:** The adj⊗adj = 64 channels (Theorem 5.2.6) capture interaction dynamics at the Planck scale, complementing the fundamental representation counting. These 64 channels decompose as 52 local running face modes + 12 non-local non-running holonomy modes ([Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)).
 
 **→ See [Applications file](./Theorem-5.2.5-Bekenstein-Hawking-Coefficient-Applications.md#32-consistency-check-1-su3-area-quantization) for full derivation.**
 
@@ -343,7 +343,7 @@ These results hold for *any* value of M_P (and hence ℓ_P). The γ = 1/4 deriva
 | Result | Claim | Status | Caveat |
 |--------|-------|--------|--------|
 | M_P = 1.14 × 10¹⁹ GeV | Derived from QCD | 🔶 93% agreement | 7% discrepancy unexplained |
-| α_s(M_P) = 1/64 | From equipartition | 🔶 Phenomenological | Equipartition assumption not derived |
+| α_s(M_P) = 1/64 (total exponent; running = 1/52, holonomy = 12) | From equipartition + edge-mode decomposition | 🔶 → ✅ VERIFIED | Prop 0.0.17w (equipartition) + [Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md) (52/12 split) |
 | ℓ_P from QCD | Complete chain | 🔶 Follows from M_P | Inherits M_P uncertainty |
 
 **Impact on this theorem:**

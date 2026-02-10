@@ -1,0 +1,94 @@
+{
+  "proposition": "0.0.37",
+  "title": "Complete Higgs Potential and Trilinear Coupling",
+  "timestamp": "2026-02-09T20:38:54.292209",
+  "verifications": [
+    {
+      "claim": "Tree-level \u03ba_\u03bb = \u03bb_CG/\u03bb_SM",
+      "lambda_CG": 0.125,
+      "lambda_SM": 0.12928,
+      "kappa_tree": 0.966892,
+      "kappa_tree_alt": 0.966892,
+      "deficit_percent": 3.31,
+      "formulas_agree": true,
+      "passed": true
+    },
+    {
+      "claim": "One-loop \u03ba_\u03bb from Coleman-Weinberg",
+      "kappa_lambda_1loop": 0.964563,
+      "lambda3_CG_GeV": 30.7472,
+      "lambda3_SM_GeV": 31.8768,
+      "loop_correction_pct": -0.241,
+      "passed": "True"
+    },
+    {
+      "claim": "Individual loop contributions (well-behaved particles)",
+      "tree_d3V": 184.665,
+      "contributions_pct": {
+        "top": 0.4025,
+        "W": -0.3127,
+        "Z": -0.1876
+      },
+      "total_loop_pct": -0.0979,
+      "note": "Goldstones and Higgs self-energy cancel in kappa_lambda ratio",
+      "passed": true
+    },
+    {
+      "claim": "\u03ba_\u03bb with full error propagation",
+      "kappa_mean": 0.9743,
+      "kappa_std": 0.0307,
+      "ci_68": [
+        0.9439,
+        1.0045
+      ],
+      "ci_95": [
+        0.9202,
+        1.0402
+      ],
+      "passed": true
+    },
+    {
+      "claim": "Tree-level limit: \u03ba_\u03bb \u2192 \u03bb_CG/\u03bb_SM = 0.967",
+      "kappa_tree": 0.966892,
+      "expected": 0.966892,
+      "passed": true
+    },
+    {
+      "claim": "SM limit: \u03ba_\u03bb \u2192 1.0 when both use \u03bb_SM",
+      "ratio": 1.0,
+      "passed": "True"
+    },
+    {
+      "claim": "Dimensional consistency: V ~ GeV\u2074, \u03bb\u2083 ~ GeV",
+      "V_at_vev": -78729881.3,
+      "V_tree_expected": -114853260.75,
+      "lambda3_numerical": 30.7472,
+      "lambda3_tree_expected": 30.7775,
+      "V_order_ok": "True",
+      "lambda3_order_ok": "True",
+      "passed": "True"
+    },
+    {
+      "claim": "Consistency with Prop 0.0.21: \u03ba_\u03bb \u2208 [0.8, 1.2]",
+      "kappa_lambda": 0.9646,
+      "prop_0021_range": [
+        0.8,
+        1.2
+      ],
+      "within_range": "True",
+      "improvement_factor": 6.7,
+      "passed": "True"
+    },
+    {
+      "claim": "Within LHC bounds: \u03ba_\u03bb \u2208 [-0.4, 6.3] at 95% CL",
+      "kappa_lambda": 0.9646,
+      "lhc_bounds_95cl": [
+        -0.4,
+        6.3
+      ],
+      "within_bounds": "True",
+      "passed": "True"
+    }
+  ],
+  "overall_status": "PASSED"
+}

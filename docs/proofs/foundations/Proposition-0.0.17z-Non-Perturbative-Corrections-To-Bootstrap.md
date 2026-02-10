@@ -187,6 +187,8 @@ $$b_0^{\text{eff}} = \frac{0.96 + 0.79 + 2.27 + 21.6}{45.0} = \frac{25.6}{45.0} 
 The hierarchy exponent is $64/(2b_0)$. With $N_f = 3$: exponent = $44.68$.
 With effective $b_0$: exponent = $64/(2 \times 0.569) = 56.2$.
 
+**Note on edge-mode decomposition ([Prop 0.0.17ac](Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)):** The 64 in this exponent is the total adj⊗adj channel count, which decomposes as 52 local running face modes + 12 non-local non-running holonomy modes. The running coupling is 1/α_s^{running} = 52 (matching QCD to ~1%), but the **total exponent** 64 = 52 + 12 is correct because both running and holonomy modes contribute to the dimensional transmutation that generates the hierarchy.
+
 However, this misidentifies where the threshold correction enters. The bootstrap hierarchy formula uses the **low-energy** β-function (where the stella lives at scale $\Lambda_{\text{QCD}}$). The threshold corrections enter in **scale matching** when relating $\alpha_s(M_Z)$ to $\Lambda_{\text{QCD}}$.
 
 **Correct treatment:**
@@ -560,6 +562,7 @@ Results saved to `verification/foundations/prop_0_0_17z_adversarial_results_v2.j
 ### 8.1 Dependencies (This Proposition Uses)
 
 - Proposition 0.0.17y: Bootstrap Fixed-Point Uniqueness (provides 481.1 MeV prediction)
+- [Proposition 0.0.17ac](Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md): Edge-mode decomposition — clarifies that hierarchy exponent 64 = 52 (running) + 12 (holonomy)
 - SVZ sum rules: Gluon condensate formalism
 - Instanton liquid model: Non-perturbative tunneling effects
 

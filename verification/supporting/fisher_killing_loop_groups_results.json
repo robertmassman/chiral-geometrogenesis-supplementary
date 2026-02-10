@@ -1,0 +1,244 @@
+{
+  "research_document": "Research-Fisher-Killing-Loop-Groups.md",
+  "verification_date": "2026-02-05T09:27:00.294613",
+  "tests": [
+    {
+      "name": "Affine Killing form B_aff for A_2^(1)",
+      "passed": true,
+      "expected": [
+        [
+          6,
+          -3,
+          0,
+          0
+        ],
+        [
+          -3,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "computed": [
+        [
+          6.0,
+          -3.0,
+          0.0,
+          0.0
+        ],
+        [
+          -3.0,
+          6.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      ],
+      "tolerance": 1e-10,
+      "message": "Eigenvalues: [-1.  1.  3.  9.], max error: 0.00e+00"
+    },
+    {
+      "name": "Affine Killing form signature",
+      "passed": true,
+      "expected": [
+        3,
+        1,
+        0
+      ],
+      "computed": [
+        3,
+        1,
+        0
+      ],
+      "tolerance": 0,
+      "message": "Signature (+, -, 0) = (np.int64(3), np.int64(1), np.int64(0))"
+    },
+    {
+      "name": "Finite Cartan recovery from affine",
+      "passed": true,
+      "expected": [
+        [
+          6,
+          -3
+        ],
+        [
+          -3,
+          6
+        ]
+      ],
+      "computed": [
+        [
+          6.0,
+          -3.0
+        ],
+        [
+          -3.0,
+          6.0
+        ]
+      ],
+      "tolerance": 1e-10,
+      "message": "Max error: 0.00e+00"
+    },
+    {
+      "name": "W_aff distribution normalizability",
+      "passed": true,
+      "expected": "Finite positive integral",
+      "computed": 3.085112576206644,
+      "tolerance": 0,
+      "message": "Integral over fundamental domain: 3.0851"
+    },
+    {
+      "name": "W_aff distribution at equilibrium",
+      "passed": true,
+      "expected": "p(0) > 0 (equilibrium is valid)",
+      "computed": {
+        "p_eq": 0.327853450662282,
+        "p_test": 0.32642874801191657
+      },
+      "tolerance": 0.1,
+      "message": "p(0)=0.3279, p(0.1, 0.1)=0.3264"
+    },
+    {
+      "name": "Finite SU(3) Fisher metric (reference)",
+      "passed": true,
+      "expected": "Positive-definite",
+      "computed": {
+        "eigenvalues": [
+          0.7355104985694164,
+          2.2065314957192292
+        ],
+        "matrix": [
+          [
+            1.4710209971346704,
+            0.7355104985749064
+          ],
+          [
+            0.7355104985749064,
+            1.4710209971539752
+          ]
+        ]
+      },
+      "tolerance": 0,
+      "message": "Eigenvalues: [0.7355105 2.2065315], min=0.735510"
+    },
+    {
+      "name": "Fisher metric positive-semidefinite (k=3)",
+      "passed": true,
+      "expected": "All eigenvalues >= 0",
+      "computed": {
+        "eig_F": [
+          0.20108719459034774,
+          1.3654190050575465
+        ],
+        "min_eig": 0.20108719459034774,
+        "eig_K_ref": [
+          0.5,
+          1.5
+        ]
+      },
+      "tolerance": 1e-06,
+      "message": "Min eigenvalue: 0.201087. Mean ratio g^F/g^K: 0.6562"
+    },
+    {
+      "name": "Large-k limit convergence",
+      "passed": true,
+      "expected": "Metrics converge as k \u2192 \u221e",
+      "computed": {
+        "levels": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "final_diff": 0.0
+      },
+      "tolerance": 0.5,
+      "message": "Difference between k=3 and k=5: 0.0000"
+    }
+  ],
+  "data": {
+    "affine_killing_form": [
+      [
+        6.0,
+        -3.0,
+        0.0,
+        0.0
+      ],
+      [
+        -3.0,
+        6.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "finite_fisher_metric": {
+      "eigenvalues": [
+        0.7355104985694164,
+        2.2065314957192292
+      ],
+      "matrix": [
+        [
+          1.4710209971346704,
+          0.7355104985749064
+        ],
+        [
+          0.7355104985749064,
+          1.4710209971539752
+        ]
+      ]
+    },
+    "proportionality_k3": {
+      "eig_F": [
+        0.20108719459034774,
+        1.3654190050575465
+      ],
+      "min_eig": 0.20108719459034774,
+      "eig_K_ref": [
+        0.5,
+        1.5
+      ]
+    },
+    "all_passed": true
+  },
+  "summary": {
+    "total_tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "all_passed": true
+  }
+}

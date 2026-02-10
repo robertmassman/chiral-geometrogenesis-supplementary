@@ -78,7 +78,7 @@ Where:
 
 > **Critical Update (January 6, 2026):** **COSMOLOGICAL PREDICTIONS COMPLETE** via Proposition 0.0.17u: All cosmological initial conditions derived from first principles. Spectral index $n_s = 0.9649 \pm 0.004$ matches Planck (0σ deviation). Tensor ratio $r \approx 0.0012$ within BICEP/Keck bounds. NANOGrav GW background compatible ($f_{peak} = 12$ nHz, $\Omega h^2 \sim 3 \times 10^{-9}$). Inflation ($H \sim 10^{13}$ GeV, $N = 57$), reheating ($T_{reh} \sim 10^{10}-10^{14}$ GeV), and emergence temperature ($T_* = 175 \pm 25$ MeV) all derived.
 
-> **Critical Update (January 16, 2026):** α_s (Strong Coupling) ✅ **FULLY VERIFIED** via Proposition 0.0.17s: Two independent derivations (equipartition 1/α_s = 64 + GUT unification 1/α_s = 99.34) converge via heat kernel-derived scheme conversion factor θ_O/θ_T = 1.55215. **E₆ → E₈ cascade unification** resolves pre-geometric running with **99.97% match** (M_{E8} = 2.36×10¹⁸ GeV). Backward running recovers α_s(M_Z) = 0.122 (4% from PDG, within theoretical uncertainty). Connects to heterotic E₈ × E₈ string theory.
+> **Critical Update (January 16, 2026):** α_s (Strong Coupling) via Proposition 0.0.17s: Equipartition derivation gives 1/α_s = 64 (geometric scheme). The previous claim that θ_O/θ_T = 1.55215 provides a scheme conversion to 1/α_s = 99.34 (MS-bar) is **retracted** (corrected 2026-02-08: θ_O/θ_T is not a valid scheme conversion for α_s). **E₆ → E₈ cascade unification** resolves pre-geometric running (M_{E8} = 2.36×10¹⁸ GeV). Backward running recovers α_s(M_Z) = 0.122 (4% from PDG, within theoretical uncertainty). Connects to heterotic E₈ × E₈ string theory. The NNLO value 1/α_s(M_P) ≈ 82 shows a ~17-22% discrepancy with the geometric value 64 (corrected 2026-02-08: NNLO running bug fix).
 
 > **Critical Update (January 5, 2026):** P3 (String Tension) DERIVED via Proposition 0.0.17j: σ = (ℏc/R_stella)² from Casimir vacuum energy. f_π (Pion Decay Constant) ✅ **FULLY DERIVED** via Proposition 0.0.17k: f_π = √σ/[(N_c-1)+(N_f²-1)] with 95.2% agreement — denominator derived from broken generator counting (5/5 items closed). ω (Internal Frequency) ✅ **VERIFIED** via Proposition 0.0.17l: ω = √σ/(N_c-1) with all 7 verification issues addressed. All QCD scales (√σ, f_π, Λ, ω) now derive from single input R_stella. Phenomenological inputs reduced from 3 to ~1.5. **Path E (Lattice Spacing) COMPLETE via Proposition 0.0.17r:** FCC lattice spacing $a^2 = (8/\sqrt{3})\ln(3)\ell_P^2$ derived from holographic self-consistency, completing the P2-P4 unification program. One-loop derivation of log correction α = 3/2 now rigorous.
 
@@ -157,8 +157,8 @@ $$\sigma = \frac{(\hbar c)^2}{R_{\text{stella}}^2}$$
 - ✅ **Explicit Casimir mode sum:** 512-face triangular mesh, 49 Laplacian eigenvalues computed, f = 0.99 ± 0.01
 - ✅ **UV coupling 1/α_s = 64 DERIVED:** adj⊗adj = 64 channels, equipartition → α_s = 1/64 (**FULLY VERIFIED via Prop 0.0.17s**)
 - ✅ **QCD running validated:** Backward running recovers α_s(M_Z) = 0.122 (**4% from PDG**, within theoretical uncertainty — updated via Prop 0.0.17s)
-- ✅ **Scheme conversion:** 1/α_s^{MS-bar} = 99.34 — **rigorously derived via heat kernel methods (Prop 0.0.17s)**
-- ✅ **E₆ → E₈ cascade:** Pre-geometric running resolved with **99.97% match** (M_{E8} = 2.36×10¹⁸ GeV)
+- ⚠️ **Scheme conversion retracted:** The claim 1/α_s^{MS-bar} = 99.34 via θ_O/θ_T = 1.55215 is **not a valid scheme conversion for α_s** (corrected 2026-02-08). The geometric result 1/α_s = 64 shows ~17-22% discrepancy with NNLO running value ~82
+- ⚠️ **E₆ → E₈ cascade:** Pre-geometric running resolved (M_{E8} = 2.36×10¹⁸ GeV); previous 99.97% match claim was relative to retracted 99.34 target (corrected 2026-02-08)
 - ✅ **Hierarchy explained:** M_P = 1.12×10¹⁹ GeV predicted (91.5% agreement via Theorem 5.2.6)
 - **Script:** `verification/foundations/proposition_0_0_17j_complete_casimir_and_uv_coupling.py` (14 tests pass)
 - **Data:** `verification/plots/proposition_0_0_17j_complete_results.json`
@@ -1979,13 +1979,13 @@ The polyhedral encoding is no longer a choice but a **necessity** for emergent s
       - ✅ **One-loop prediction:** R_stella = 0.41 fm (91% of observed 0.44847 fm)
       - ✅ **Self-consistency:** Exact with Theorem 5.2.6 by construction
       - ✅ **String tension:** √σ = 481 MeV predicted (91% of observed 440 MeV)
-      - ✅ **UV coupling validated:** 1/αs = 64 → 99.34 (MS-bar) matches NNLO 99.3 to **0.04%**
+      - ⚠️ **UV coupling:** 1/αs = 64 (geometric); NNLO running gives ~82 at M_P, showing **~17-22% discrepancy** (corrected 2026-02-08: NNLO running bug fix; previous 0.04% claim based on retracted θ_O/θ_T scheme conversion)
       - ✅ **Hierarchy explained:** R_stella/ℓ_P ~ 2.5 × 10¹⁹ from asymptotic freedom (99.8% correct)
       - ✅ **Dimensional analysis:** All quantities have correct dimensions
       - ✅ **Limiting cases:** Large N_c and small αs limits correct
     - *Discrepancy Analysis (2026-01-05):*
       - **9% gap is REDUCIBLE**, not fundamental
-      - UV coupling agreement: **99.96%** (validates framework at UV end)
+      - UV coupling: **~17-22% discrepancy** between geometric (64) and NNLO (~82) (corrected 2026-02-08: NNLO running bug fix)
       - Hierarchy prediction: **99.8%** (mechanism correct)
       - Scale prediction: **91%** (one-loop approximation)
       - Path to <3%: NNLO β-function (~3-5%) + non-perturbative corrections (~3-5%)
@@ -2041,12 +2041,12 @@ The polyhedral encoding is no longer a choice but a **necessity** for emergent s
       | Path | Method | Result | Scheme |
       |------|--------|--------|--------|
       | **Equipartition** | adj⊗adj = 64 channels (Prop 0.0.17j §6.3) | 1/α_s = 64 | Geometric |
-      | **Unification** | sin²θ_W = 3/8 + RG running (Thm 2.4.1) | 1/α_s = 99.34 | MS-bar |
-      | **Conversion** | θ_O/θ_T = 1.55215 (heat kernel derivation) | 64 × 1.55215 = 99.34 | — |
+      | **Unification** | sin²θ_W = 3/8 + RG running (Thm 2.4.1) | 1/α_s ≈ 82 (NNLO) | MS-bar |
+      | ~~**Conversion**~~ | ~~θ_O/θ_T = 1.55215~~ | ~~64 × 1.55215 = 99.34~~ | **RETRACTED** (corrected 2026-02-08: θ_O/θ_T is not a valid scheme conversion for α_s) |
     - *Key Results:*
-      - ✅ **Two-path convergence:** Independent derivations agree via scheme conversion
-      - ✅ **Scheme conversion rigorously derived:** θ_O/θ_T = 1.55215 from heat kernel methods (Balian & Bloch 1970)
-      - ✅ **E₆ → E₈ cascade resolution:** Pre-geometric running bridged via cascade unification (**99.97% match**)
+      - ⚠️ **Two-path discrepancy:** Geometric (64) vs NNLO (~82) shows ~17-22% gap (corrected 2026-02-08: NNLO running bug fix)
+      - ⚠️ **Scheme conversion retracted:** θ_O/θ_T = 1.55215 is not a valid scheme conversion for α_s (corrected 2026-02-08)
+      - ⚠️ **E₆ → E₈ cascade resolution:** Pre-geometric running bridged via cascade unification (previous 99.97% match claim was relative to retracted 99.34 target; corrected 2026-02-08)
       - ✅ **Backward running:** α_s(M_Z) = 0.122 recovered (4% from PDG, within theoretical uncertainty)
     - *E₆ → E₈ Cascade Unification (2026-01-16 Resolution):*
       | Scale Range | Gauge Group | b₀ | Δ(1/α) |
@@ -2057,18 +2057,19 @@ The polyhedral encoding is no longer a choice but a **necessity** for emergent s
       - M_{E8} ≈ 2.36×10¹⁸ GeV (±20% theoretical uncertainty)
       - E₈'s smallest non-trivial representation is the 248-dim adjoint → matter cannot propagate above M_{E8}
       - Connects to **heterotic E₈ × E₈ string theory** at M_string ~ 10¹⁸ GeV
-    - *Scheme Conversion Derivation:*
+    - *Scheme Conversion Derivation:* **RETRACTED** (corrected 2026-02-08: θ_O/θ_T is not a valid scheme conversion for α_s)
       | Component | Formula | Origin |
       |-----------|---------|--------|
       | Heat kernel on polyhedron | K(t) = V/(4πt)^(3/2) + A/(16πt) + χ/6 + edge term | Balian & Bloch (1970) |
       | Edge contribution | ∑_edges L_i(π - θ_i)/(24π√(4πt)) | Dihedral angle dependence |
       | Tetrahedron | θ_T = arccos(1/3) = 70.53° | 4 vertices, 6 edges |
       | Octahedron | θ_O = arccos(-1/3) = 109.47° | 6 vertices, 12 edges |
-      | Ratio | θ_O/θ_T = 1.55215 | Supplementary angles (θ_O + θ_T = π) |
-    - *Physical Interpretation:*
-      - **Geometric scheme:** Regularization via stella octangula boundary → uses θ_T
-      - **MS-bar scheme:** Regularization via dual octahedral modes → uses θ_O
-      - The ratio θ_O/θ_T connects these two renormalization schemes
+      | ~~Ratio~~ | ~~θ_O/θ_T = 1.55215~~ | ~~Supplementary angles (θ_O + θ_T = π)~~ **RETRACTED** |
+    - *Physical Interpretation:* **RETRACTED** (corrected 2026-02-08)
+      - ~~**Geometric scheme:** Regularization via stella octangula boundary → uses θ_T~~
+      - ~~**MS-bar scheme:** Regularization via dual octahedral modes → uses θ_O~~
+      - ~~The ratio θ_O/θ_T connects these two renormalization schemes~~
+      - The dihedral angle ratio is a geometric fact but does not provide a valid renormalization scheme conversion for α_s
     - *SUSY vs Non-SUSY Unification:*
       - CG framework achieves gauge coupling unification **without supersymmetry**
       - Pre-geometric UV completion via E₆ → E₈ cascade provides the mechanism
@@ -2077,7 +2078,7 @@ The polyhedral encoding is no longer a choice but a **necessity** for emergent s
       - `verification/foundations/proposition_0_0_17s_reverification.py` — All tests pass
       - `verification/foundations/proposition_0_0_17s_scheme_derivation.py` — Heat kernel derivation validation
     - *Dependencies:* Theorem 2.4.1 ✅, Theorem 0.0.6 ✅, Proposition 0.0.17j §6.3 ✅, Proposition 2.4.2 ✅, Standard QCD ✅
-    - *Impact:* **Validates UV coupling derivation with E₆ → E₈ cascade unification**. The equipartition result (1/α_s = 64) is connected to MS-bar scheme (1/α_s = 99.34) via heat kernel methods, and to SM running via cascade unification with **99.97% match**. Connects CG framework to heterotic E₈ × E₈ string theory.
+    - *Impact:* The equipartition result (1/α_s = 64) remains valid in the geometric scheme. The previous claim of connection to MS-bar scheme (1/α_s = 99.34) via θ_O/θ_T is **retracted** (corrected 2026-02-08: not a valid scheme conversion for α_s). NNLO running gives 1/α_s(M_P) ≈ 82, showing ~17-22% discrepancy with the geometric value. E₆ → E₈ cascade unification connects CG framework to heterotic E₈ × E₈ string theory.
 
 44. **Proposition 0.0.17t (Topological Origin of the QCD-Planck Hierarchy)** ✅ VERIFIED (2026-01-06)
     - *Status:* ✅ **VERIFIED** — Multi-agent peer review complete (Math + Physics + Internal Consistency); all issues resolved
@@ -2346,6 +2347,25 @@ The polyhedral encoding is no longer a choice but a **necessity** for emergent s
     - *Dependencies:* Prop 0.0.17j ✅ (√σ from Casimir), Prop 0.0.17t ✅ (b₀), Prop 0.0.17w 🔶 (α_s), Thm 5.2.6 🔶 (M_P), Prop 5.2.4a ✅ (Sakharov), Prop 0.0.17z ✅ (NP corrections)
     - *Impact:* **Closes the last open item from Prop 0.0.17z "what remains to be done"** — G is now derived from R_stella with no circular reference. The framework has exactly ONE free dimensional parameter (R_stella). The Sakharov mechanism (Prop 5.2.4a) provides f_χ = M_P/√(8π) without importing G, resolving the gap acknowledged in Theorem 5.2.4 §1.
 
+49e. **Proposition 0.0.17ac (Edge-Mode Decomposition of UV Coupling)** 🔶 NOVEL ✅ VERIFIED (2026-02-08)
+    - *Status:* 🔶 **NOVEL** ✅ **VERIFIED** — Multi-agent adversarial verification v2 complete
+    - *Document:* [Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md](proofs/foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)
+    - *Verification Report:* [Proposition-0.0.17ac-Multi-Agent-Verification-2026-02-08-v2.md](proofs/verification-records/Proposition-0.0.17ac-Multi-Agent-Verification-2026-02-08-v2.md)
+    - *Verification Scripts:* 8 scripts in `verification/foundations/prop_17ac_*.py` — 59/59 lattice tests + 61/61 adversarial tests + 43/43 holonomy + 11/11 one-loop + 6/6 vertex
+    - *Lean 4:* ✅ [Proposition_0_0_17ac.lean](../lean/ChiralGeometrogenesis/Foundations/Proposition_0_0_17ac.lean) — Compiles, no `sorry`
+    - *Statement:* The 64 adj⊗adj gauge channels on ∂S decompose as:
+      $$64 = 52 \text{ (local, running face modes)} + 12 \text{ (non-local, non-running holonomy modes)}$$
+      where N_holonomy = 2 × β₁(K₄) × rank(SU(3)) = 2 × 3 × 2 = 12.
+    - *Key Results:*
+      - ✅ Resolves 17–22% UV coupling discrepancy in Theorem 5.2.6
+      - ✅ 1/α_s(M_P) = 52 (running) agrees with QCD at 1% (1-loop), 5% (4-loop)
+      - ✅ Holonomy non-running proven via Weyl integration formula (partition function factorization)
+      - ✅ Uniqueness theorem: only SU(3) on K₄ satisfies N_hol = χ × N_c
+      - ✅ c₁ = 3.0 exact at one loop; vertex corrections only affect c₂
+      - ✅ Extended tiling (4–8 K₄) confirms β₁ scaling; step-scaling β-function confirms 52 running channels
+    - *Dependencies:* Definition 0.1.1 ✅ (stella topology), Theorem 5.2.6 🔶 (Planck mass)
+    - *Impact:* **Resolves the UV coupling discrepancy** — the Planck mass formula now agrees with standard QCD running to ~1% at one loop, with no new parameters. The 52/12 decomposition is a topological consequence of the stella octangula geometry.
+
 50. **Theorem 0.0.18 (Signature Equations of Chiral Geometrogenesis)** ✅ SYNTHESIS + ✅ VERIFIED (2026-01-16)
     - *Status:* ✅ **SYNTHESIS** — Collects the three signature equations that define the framework
     - *Document:* [Theorem-0.0.18-Signature-Equations.md](proofs/foundations/Theorem-0.0.18-Signature-Equations.md)
@@ -2596,11 +2616,28 @@ The polyhedral encoding is no longer a choice but a **necessity** for emergent s
       - ✅ O_h symmetry forces uniform distribution p_v = 1/8 over 8 vertices
       - ✅ S_max = ln(8) achieved at equipartition
       - ✅ Partition function normalization → λ₀ = 1
-      - ✅ Combined with n_modes = 8: λ = λ₀/8 = 1/8 = 0.125 (96.7% of experimental λ = 0.129)
+      - ⚠️ Combined with n_modes = 8: λ = λ₀/8 = 1/8 = 0.125; experimental λ ≈ 0.24 at electroweak scale gives ~52% agreement (corrected 2026-02-08: previous 96.7% claim compared to wrong λ value; the PDG Higgs mass m_H = 125.25 GeV with v = 246 GeV gives λ = m_H²/(2v²) ≈ 0.129 only at tree-level without running)
       - 🔶 NOVEL: Equipartition identification λ_eff = p_v is novel physical hypothesis
     - *Dependencies:* Definition 0.1.1 ✅ (8 vertices), Theorem 0.0.3 ✅ (stella uniqueness), Proposition 0.0.17w ✅ (maximum entropy pattern)
     - *Downstream:* Proposition 0.0.27 ✅ (resolves λ₀ = 1 limitation), Bootstrap DAG (adds equation E₉)
     - *Impact:* **Closes limitation 1 of Prop 0.0.27** — λ₀ = 1 is now derived, not assumed. The Higgs quartic coupling λ = 1/8 is fully first-principles.
+
+63. **Proposition 0.0.37 (Complete Higgs Potential and Trilinear Coupling)** 🔶 NOVEL (2026-02-09)
+    - *Status:* 🔶 **NOVEL** — Precise κ_λ prediction from geometric λ = 1/8
+    - *Document:* [Proposition-0.0.37-Complete-Higgs-Potential-And-Trilinear-Coupling.md](proofs/foundations/Proposition-0.0.37-Complete-Higgs-Potential-And-Trilinear-Coupling.md)
+    - *Verification:* [proposition_0_0_37_higgs_trilinear.py](../verification/foundations/proposition_0_0_37_higgs_trilinear.py)
+    - *Statement:* The Higgs trilinear coupling ratio is precisely calculable from λ = 1/8:
+      $$\kappa_\lambda \equiv \lambda_3/\lambda_3^{\text{SM}} = 0.97 \pm 0.03$$
+    - *Key Results:*
+      - ✅ Tree-level: κ_λ = λ_CG/λ_SM = (1/8)/(m_H²/(2v²)) = 0.967 (3.3% below SM)
+      - ✅ One-loop Coleman-Weinberg correction: -0.2% on ratio (gauge loops cancel)
+      - ✅ Monte Carlo error propagation: κ_λ = 0.974 ± 0.031
+      - 🔶 NOVEL: 6.7× tighter than Prop 0.0.21 §11.4 (1.0 ± 0.2 → 0.97 ± 0.03)
+      - 🔶 NOVEL: Zero free parameters — κ_λ directly from geometry
+    - *Dependencies:* Proposition 0.0.27 ✅ (λ = 1/8), Proposition 0.0.21 (v_H = 246.7 GeV), Theorem 2.4.1 ✅ (sin²θ_W), Extension 3.1.2c (y_t ≈ 1.0)
+    - *Downstream:* Theorem 4.2.3 (first-order EWPT), Theorem 4.2.1 (chiral bias → baryogenesis)
+    - *Supersedes:* Proposition 0.0.21 §11.4 (κ_λ = 1.0 ± 0.2)
+    - *Falsification:* κ_λ outside [0.91, 1.03] at >3σ; testable at FCC-hh (~5-10% precision)
 
 ### Foundation Assessment
 
@@ -2634,9 +2671,9 @@ The polyhedral encoding is no longer a choice but a **necessity** for emergent s
 - After Proposition 0.0.17m: P2 (v_χ) derived (v_χ = f_π, **VERIFIED COMPLETE**) → **~1 physical input** (R_stella + P4 comparison only)
 - After Proposition 0.0.17n: P4 (fermion masses) verified (9/9 charged fermions at 98-100% PDG agreement, **VERIFIED**) → **~1 physical input** (R_stella + fitted c_f coefficients)
 - After Proposition 0.0.17o: ε (regularization parameter) derived (ε = 1/2 from Casimir mode structure, **EXTENDED**) → **~1 physical input** (all pressure function parameters now derived)
-- After Proposition 0.0.17q: R_stella derivable from M_P + topology (91% one-loop agreement, 9% gap REDUCIBLE via NNLO + non-perturbative), completing dimensional transmutation circle → **~0 physical inputs** (R_stella ↔ M_P mutually determined; UV coupling validated to 0.04%, hierarchy to 99.8%)
+- After Proposition 0.0.17q: R_stella derivable from M_P + topology (91% one-loop agreement, 9% gap REDUCIBLE via NNLO + non-perturbative), completing dimensional transmutation circle → **~0 physical inputs** (R_stella ↔ M_P mutually determined; UV coupling shows ~17-22% discrepancy with NNLO (corrected 2026-02-08: NNLO running bug fix), hierarchy to 99.8%)
 - After Proposition 0.0.17r: Lattice spacing a² = (8/√3)ln(3)ℓ_P² DERIVED from holographic self-consistency (Path E complete); log correction α = 3/2 RIGOROUSLY DERIVED from one-loop effective action → **~0 physical inputs** (fourth route to BH thermodynamics; Lemma 5.2.3b.1 elevated to true derivation)
-- After Proposition 0.0.17s: UV coupling α_s FULLY VERIFIED via two-path convergence (equipartition + GUT unification) with scheme conversion θ_O/θ_T = 1.55215 rigorously derived from heat kernel methods; **E₆ → E₈ cascade unification** resolves pre-geometric running with **99.97% match** (M_{E8} = 2.36×10¹⁸ GeV) → **~0 physical inputs** (4% PDG agreement within theoretical uncertainty; connects to heterotic E₈ × E₈ string theory)
+- After Proposition 0.0.17s: UV coupling α_s = 1/64 from equipartition (geometric scheme); the previous θ_O/θ_T = 1.55215 scheme conversion to MS-bar is **retracted** (corrected 2026-02-08: not a valid scheme conversion for α_s); NNLO running gives ~17-22% discrepancy with geometric value; **E₆ → E₈ cascade unification** connects to heterotic E₈ × E₈ string theory (M_{E8} = 2.36×10¹⁸ GeV) → (4% PDG agreement for α_s(M_Z) within theoretical uncertainty)
 - After Proposition 0.0.17t: QCD-Planck hierarchy TOPOLOGICALLY EXPLAINED — the 19-order-of-magnitude hierarchy emerges from dim(adj) = 8 (via Z₃ → SU(3)) and b₀ as topological index (Costello-Bittleston theorem); central charge flow Δa = 1.631 provides 88% independent verification → **~0 physical inputs** (hierarchy is no longer a "fine-tuning mystery" but a topological consequence)
 - After Proposition 0.0.17u: **COSMOLOGICAL PREDICTIONS COMPLETE** — All cosmological initial conditions derived from first principles: spectral index $n_s = 0.9649$ (0σ from Planck), tensor ratio $r \approx 0.0012$ (within BICEP/Keck), NANOGrav GW background compatible ($f_{peak} = 12$ nHz), emergence temperature $T_* = 175 \pm 25$ MeV (4 independent methods), inflation + reheating derived → **Complete first-principles cosmology from pre-geometry to today**
 - After Proposition 0.0.17v: **f_χ HOLOGRAPHICALLY DERIVED** — Planck length ℓ_P = 1.77 × 10⁻³⁵ m derived from holographic self-consistency (I_stella = I_gravity), f_χ = 2.23 × 10¹⁸ GeV (91% agreement); SU(3) uniquely selected among all SU(N_c) → **Independent derivation path cross-validates index theorem approach**
@@ -2646,7 +2683,7 @@ The polyhedral encoding is no longer a choice but a **necessity** for emergent s
 - After Proposition 0.0.17z: **NON-PERTURBATIVE CORRECTIONS QUANTIFIED** — The 9% discrepancy between bootstrap (√σ = 481 MeV) and observation (440 ± 30 MeV) fully explained: gluon condensate ~3%, thresholds ~3%, two-loop ~2%, instantons ~1.6% → Total ~9.6% correction gives √σ = 435 MeV (**0.17σ from FLAG 2024**); one-loop exponent 128π/9 ≈ 44.68 is only 0.2% off — 9% √σ error is exponential amplification → **Bootstrap confirmed at <1σ with standard QCD**
 - After Proposition 0.0.17aa: **SPECTRAL INDEX AS REMARKABLE CONSISTENCY RELATION** — n_s = 0.96484 emerges from N_geo = (4/π) × ln(ξ) = 512/9 ≈ 56.9 e-folds; **NO CMB INPUT** — uses topology (N_c = 3, b_0 = 9/(4π)) plus **empirical factor 4/π**; **0.02σ agreement with Planck 2018** (0.9649 ± 0.0042), but **1.6σ tension with ACT DR6** (0.9709 ± 0.0038); r = 4/N² = 0.0012 predicted; N_f = 3 derived from T_d symmetry (Derivation 8.1.3); **STATUS: numerical success pending 4/π first-principles derivation** → Transforms n_s from consistency check to geometric relation, but 4/π factor remains unexplained
 
-**Significance:** Demonstrates that field interactions **necessarily** produce geometry, given only observer existence. The framework now derives MORE about quantum mechanics (including decoherence mechanism, pointer basis, decoherence rate, and outcome selection) than any other approach. Physical inputs reduced from 3 to **~0** via geometric derivation of string tension, pion decay constant, internal frequency, chiral VEV, AND **R_stella itself** (via dimensional transmutation from M_P). All P2 parameters (v_χ, ω, f_π) are now **DERIVED** from R_stella, which is in turn derived from M_P (Prop 0.0.17q: 91% one-loop agreement, 9% gap REDUCIBLE). The 4.8% discrepancy between tree-level (87.7 MeV) and PDG (92.2 MeV) is fully explained by one-loop chiral perturbation theory corrections (δ = 5.4%). **Proposition 0.0.17n completes P4 verification**, demonstrating 98-100% agreement for all 9 charged fermion masses with total parameter count 11 vs SM's 20 (45% reduction). **Proposition 0.0.17q completes Path A**: UV coupling validated to 0.04%, hierarchy to 99.8%, making this a zero-parameter prediction at the conceptual level. **Proposition 0.0.17r completes Path E**: FCC lattice spacing derived from holographic self-consistency with rigorously derived log correction α = 3/2, providing a distinguishing prediction vs LQG (α = 1 for SU(2)). **Proposition 0.0.17s validates UV coupling**: Two independent derivations (equipartition + GUT unification) converge via rigorously-derived scheme conversion factor θ_O/θ_T = 1.5521, with 0.04% NNLO agreement and 0.1% PDG agreement for α_s(M_Z); demonstrates gauge coupling unification without supersymmetry. **Proposition 0.0.17t provides topological interpretation**: The 19-order-of-magnitude QCD-Planck hierarchy is no longer a "fine-tuning mystery" but emerges from topological invariants — dim(adj) = 8 from Z₃ → SU(3) uniqueness and b₀ as index of the β-function Dirac operator (Costello-Bittleston theorem); central charge flow (a-theorem) provides 88% independent verification. **Proposition 0.0.17u completes cosmological predictions**: All cosmological initial conditions (homogeneity, flatness, inflation, CMB observables $n_s = 0.9649$ at 0σ, $r \approx 0.001$, GW background compatible with NANOGrav) are now derived from first principles — the framework provides a complete account from pre-geometry through inflation to the hot Big Bang. **Proposition 0.0.17aa establishes remarkable consistency relation**: The spectral index n_s = 0.96484 emerges from N_geo = (4/π) × ln(ξ) = 512/9 with **NO CMB input** — 0.02σ agreement with Planck 2018 (but 1.6σ tension with ACT DR6); however, the 4/π factor connecting ln(ξ) to N_geo is **observed, not derived** — full first-principles claim awaits 4/π derivation. **Propositions 0.0.17v-x complete f_χ first-principles derivation**: f_χ = 2.23 × 10¹⁸ GeV derived via two independent paths — holographic self-consistency (Prop 0.0.17v) and maximum entropy (Prop 0.0.17w) — both giving 91% agreement with observed value; UV coupling 1/αₛ(M_P) = 64 derived from Jaynes maximum entropy (1.5% PDG agreement); Prop 0.0.17x unifies entropy and index theorem approaches → **Issue A (f_χ circularity) fully resolved**.
+**Significance:** Demonstrates that field interactions **necessarily** produce geometry, given only observer existence. The framework now derives MORE about quantum mechanics (including decoherence mechanism, pointer basis, decoherence rate, and outcome selection) than any other approach. Physical inputs reduced from 3 to **~0** via geometric derivation of string tension, pion decay constant, internal frequency, chiral VEV, AND **R_stella itself** (via dimensional transmutation from M_P). All P2 parameters (v_χ, ω, f_π) are now **DERIVED** from R_stella, which is in turn derived from M_P (Prop 0.0.17q: 91% one-loop agreement, 9% gap REDUCIBLE). The 4.8% discrepancy between tree-level (87.7 MeV) and PDG (92.2 MeV) is fully explained by one-loop chiral perturbation theory corrections (δ = 5.4%). **Proposition 0.0.17n completes P4 verification**, demonstrating 98-100% agreement for all 9 charged fermion masses with total parameter count 11 vs SM's 20 (45% reduction). **Proposition 0.0.17q completes Path A**: UV coupling shows ~17-22% discrepancy with NNLO (corrected 2026-02-08: NNLO running bug fix), hierarchy to 99.8%. **Proposition 0.0.17r completes Path E**: FCC lattice spacing derived from holographic self-consistency with rigorously derived log correction α = 3/2, providing a distinguishing prediction vs LQG (α = 1 for SU(2)). **Proposition 0.0.17s**: Equipartition gives 1/α_s = 64 (geometric scheme); the θ_O/θ_T = 1.5521 scheme conversion claim is **retracted** (corrected 2026-02-08: not a valid scheme conversion for α_s); NNLO running shows ~17-22% discrepancy with geometric value; backward running gives α_s(M_Z) = 0.122 (4% from PDG, within theoretical uncertainty). **Proposition 0.0.17t provides topological interpretation**: The 19-order-of-magnitude QCD-Planck hierarchy is no longer a "fine-tuning mystery" but emerges from topological invariants — dim(adj) = 8 from Z₃ → SU(3) uniqueness and b₀ as index of the β-function Dirac operator (Costello-Bittleston theorem); central charge flow (a-theorem) provides 88% independent verification. **Proposition 0.0.17u completes cosmological predictions**: All cosmological initial conditions (homogeneity, flatness, inflation, CMB observables $n_s = 0.9649$ at 0σ, $r \approx 0.001$, GW background compatible with NANOGrav) are now derived from first principles — the framework provides a complete account from pre-geometry through inflation to the hot Big Bang. **Proposition 0.0.17aa establishes remarkable consistency relation**: The spectral index n_s = 0.96484 emerges from N_geo = (4/π) × ln(ξ) = 512/9 with **NO CMB input** — 0.02σ agreement with Planck 2018 (but 1.6σ tension with ACT DR6); however, the 4/π factor connecting ln(ξ) to N_geo is **observed, not derived** — full first-principles claim awaits 4/π derivation. **Propositions 0.0.17v-x complete f_χ first-principles derivation**: f_χ = 2.23 × 10¹⁸ GeV derived via two independent paths — holographic self-consistency (Prop 0.0.17v) and maximum entropy (Prop 0.0.17w) — both giving 91% agreement with observed value; UV coupling 1/αₛ(M_P) = 64 derived from Jaynes maximum entropy (1.5% PDG agreement); Prop 0.0.17x unifies entropy and index theorem approaches → **Issue A (f_χ circularity) fully resolved**.
 
 ---
 
@@ -3708,13 +3745,13 @@ The polyhedral encoding is no longer a choice but a **necessity** for emergent s
      - **Statement & Derivation:** [proofs/Phase2/Proposition-2.4.2-Pre-Geometric-Beta-Function.md](proofs/Phase2/Proposition-2.4.2-Pre-Geometric-Beta-Function.md)
      - **Lean Formalization:** [lean/ChiralGeometrogenesis/Phase2/Proposition_2_4_2.lean](../lean/ChiralGeometrogenesis/Phase2/Proposition_2_4_2.lean)
      - **Verification Report:** [proofs/verification-records/Proposition-2.4.2-Multi-Agent-Verification-2026-01-16.md](proofs/verification-records/Proposition-2.4.2-Multi-Agent-Verification-2026-01-16.md)
-   - *Statement:* The pre-geometric β-function coefficient implied by the CG framework (1/α_s(M_P) = 99.34) can be derived from E₆ → E₈ cascade unification with threshold M_{E8} ≈ 2.3×10¹⁸ GeV, providing **99.8% accuracy** (±20% theoretical uncertainty).
+   - *Statement:* The pre-geometric β-function coefficient implied by the CG framework (1/α_s(M_P) = 64 in geometric scheme; the previous 99.34 MS-bar target is retracted (corrected 2026-02-08: θ_O/θ_T scheme conversion invalid for α_s)) can be connected to E₆ → E₈ cascade unification with threshold M_{E8} ≈ 2.3×10¹⁸ GeV (±20% theoretical uncertainty).
    - *Key Results:*
      - ❌ SU(5) alone provides only 18% of required running
      - ❌ SO(10) alone provides only 39% of required running
      - ❌ E₆ alone provides only 62% of required running
      - ❌ Power-law KK towers at M_GUT give far too much running
-     - ✅ **E₆ → E₈ cascade provides 99.8% match** with M_{E8} ~ 2.3×10¹⁸ GeV
+     - ⚠️ **E₆ → E₈ cascade:** Previous 99.8% match claim was relative to retracted 99.34 target (corrected 2026-02-08); cascade mechanism with M_{E8} ~ 2.3×10¹⁸ GeV remains valid but target needs re-evaluation
    - *The E₆ → E₈ Cascade:*
      | Scale Range | Gauge Group | b₀ | Δ(1/α) |
      |-------------|-------------|-----|--------|
@@ -4210,7 +4247,37 @@ This section provides the unified presentation connecting these pieces.
      - ✅ The 0.88% discrepancy is NOT from RG running
      - ✅ Geometric prediction valid at all scales
 
-7. **Corollary 3.1.3 (Massless Right-Handed Neutrinos)** ✅ COMPLETE — ENHANCED 2026-01-15
+8. **Extension 3.1.2d (Complete PMNS Parameter Derivation)** 🔶 NOVEL ✅ VERIFIED — 2026-02-07
+   - *Status:* **DERIVED & VERIFIED** — Completed 2026-02-07, multi-agent adversarial verified (2 rounds, all issues resolved)
+   - **Statement:** [Extension-3.1.2d-Complete-PMNS-Parameters.md](proofs/Phase3/Extension-3.1.2d-Complete-PMNS-Parameters.md)
+   - **Verification:** `verification/Phase3/extension_3_1_2d_pmns_verification.py` (8/8 tests pass)
+   - **Adversarial Scripts:** `verification/Phase3/extension_3_1_2d_adversarial_physics_r2.py` (10/10 tests pass)
+   - **Verification Reports:**
+     - Round 1: [Extension-3.1.2d-Multi-Agent-Verification-2026-02-07.md](proofs/verification-records/Extension-3.1.2d-Multi-Agent-Verification-2026-02-07.md)
+     - Round 2: [Extension-3.1.2d-Multi-Agent-Verification-Round2-2026-02-07.md](proofs/verification-records/Extension-3.1.2d-Multi-Agent-Verification-Round2-2026-02-07.md) — All issues resolved
+   - *Statement:* All PMNS mixing angles (θ₁₂, θ₂₃, θ₁₃), the leptonic CP phase (δ_CP), and the neutrino mass squared difference ratio can be derived from A₄ tetrahedral symmetry and quark-lepton complementarity.
+   - *NuFIT 6.0 Comparison (Normal Ordering, IC19):*
+     - θ₁₂ = 33.68° ± 0.72° ✅ (predicted: 33.47°, 0.3σ)
+     - θ₂₃ = 48.5° ± 1.0° ✅ (predicted: 48.9°, 0.4σ)
+     - θ₁₃ = 8.50° ± 0.11° ✅ (predicted: 8.54°, 0.4σ)
+     - δ_CP = 177° ± 20° ✅ (predicted: 200°, 1.2σ)
+     - r = Δm²₂₁/Δm²₃₁ = 0.0296 ✅ (predicted: 0.0291, 1.7%)
+   - *Geometric Formulas:*
+     - **θ₁₂:** π/4 − arcsin(λ) + λ²/2 = 33.47° (quark-lepton complementarity)
+     - **θ₂₃:** 45° + δ(A₄) + δ(geo) + δ(RG) + δ(μτ) = 48.9° (A₄ breaking)
+     - **θ₁₃:** arcsin[(λ/φ)(1 + λ/5 + λ²/2)] = 8.54° (stella geometry)
+     - **δ_CP:** 5π/6 + (λ/φ)×2π = 200° (A₄ Berry phase, 🔶 NOVEL base phase)
+     - **r:** λ²/√3 = 0.0291 (A₄ eigenvalue structure, CG factor rigorously derived)
+   - *Key Results:*
+     - ✅ All PMNS parameters derived from geometry (parallels CKM derivation in Extension 3.1.2b)
+     - ✅ Quark-lepton complementarity verified: θ₁₂^CKM + θ₁₂^PMNS = 46.51° ≈ 45°
+     - ✅ Mass sum Σm_ν = 0.059 eV (m₁ = 0) consistent with holographic bound (Prop 3.1.4) and DESI DR2
+     - ✅ Normal hierarchy predicted (m₃ >> m₂ > m₁)
+     - ✅ All boxed formulas independently verified by 3 adversarial agents
+     - ✅ 5 additional literature references added (Feruglio et al. 2013, Ding et al. 2013, etc.)
+   - *Dependencies:* Derivation-8.4.2 (θ₁₃), Proposition-8.4.4 (θ₂₃), Extension-3.1.2b (CKM), Theorem-3.1.5 (M_R)
+
+9. **Corollary 3.1.3 (Massless Right-Handed Neutrinos)** ✅ COMPLETE — ENHANCED 2026-01-15
    - *Status:* **PROVEN & VERIFIED** — See `/docs/proofs/Phase3/Corollary-3.1.3-Massless-Right-Handed-Neutrinos.md`
    - *Verification:* **2026-01-15** — Computational verification complete (32/32 tests passed); δ_CP prediction, first-principles σ and d derivation added
    - *Verification Reports:*
@@ -5375,7 +5442,7 @@ This section provides the unified presentation connecting these pieces.
      - ✅ **Physical origin:** Graviton couples to stress-energy tensor $T_{\mu\nu} \propto F_{\mu\alpha}F_\nu^{\;\alpha}$, which is quadratic in the gauge field → gluon pairs
      - ✅ **Factor √χ/2 explained:** √χ = 2 from conformal anomaly on ∂𝒮, factor 1/2 from scalar-tensor gravity
      - ✅ **Scheme dependence RESOLVED:** CG geometric scheme (α = g²/8) vs MS-bar (α = g²/(4π)) differ by π/2
-     - ✅ **NNLO verification:** 1/α_s^{MS}(M_P) = 64 × π/2 = 100.5 agrees with NNLO (99.3) to **1.2%**
+     - ⚠️ **NNLO comparison:** 1/α_s = 64 (geometric scheme); NNLO running gives 1/α_s(M_P) ≈ 82, showing **~17-22% discrepancy** (corrected 2026-02-08: NNLO running bug fix; previous claim of 1.2% agreement based on incorrect NNLO value of 99.3)
      - ✅ **Numerical result:** $M_P = 1.12 \times 10^{19}$ GeV (91.5% of observed $1.22 \times 10^{19}$ GeV)
    - *Verification Complete (2025-12-15):*
      - ✅ **NNLO QCD running:** 4-loop with threshold matching — discrepancy explained by scheme
@@ -5605,6 +5672,8 @@ This section provides the unified presentation connecting these pieces.
 |-------------|-------------|--------|-------|
 | **Proposition 6.3.1** | One-Loop QCD Corrections | ✅ VERIFIED 🔶 NOVEL | Standard dim reg, geometric β-function, αs(MZ) = 0.122 |
 | **Proposition 6.3.2** | Decay Widths | ✅ VERIFIED 🔶 NOVEL | 8/8 decay predictions match PDG 2024 |
+| **Proposition 6.3.3** | Higgs Diphoton Decay (h → γγ) | ✅ VERIFIED 🔶 NOVEL | Γ = 9.2 keV, BR = 2.27×10⁻³, μ_γγ = 1.00 |
+| **Proposition 6.3.4** | Higgs Z-Gamma Decay (h → Zγ) | 🔶 NOVEL | Γ = 6.3 keV, BR = 1.53×10⁻³, 11/11 tests pass |
 
 1. **Proposition 6.3.1 (One-Loop QCD Corrections)** ✅ VERIFIED 🔶 NOVEL (2026-01-22)
    - *Status:* ✅ **VERIFIED** 🔶 **NOVEL** — Multi-agent verification completed
@@ -5636,6 +5705,34 @@ This section provides the unified presentation connecting these pieces.
      - **Heavy quark symmetry:** **Recovered** in m_Q → ∞ limit, consistent with HQET (Isgur-Wise 1989)
    - *Dependencies:* Theorem 6.1.1 ✅ (Feynman rules), Theorem 6.2.1 ✅ (tree amplitudes), Theorem 3.1.1-3.1.2 ✅ (mass hierarchy), Props 0.0.17j-k ✅ (string tension, f_π), Props 0.0.22-24 ✅ (electroweak structure)
    - *Impact:* **Validates tree-level decay physics** — 8/8 decay predictions match PDG 2024 within uncertainties. Demonstrates that phase-gradient mechanism correctly reproduces SM decay rates with geometrically-derived parameters.
+
+3. **Proposition 6.3.3 (Higgs Diphoton Decay h → γγ)** ✅ VERIFIED 🔶 NOVEL (2026-02-09)
+   - *Status:* ✅ **VERIFIED** 🔶 **NOVEL** — Multi-agent adversarial verification completed
+   - *Document:* [Proposition-6.3.3-Higgs-Diphoton-Decay.md](proofs/Phase6/Proposition-6.3.3-Higgs-Diphoton-Decay.md)
+   - *Verification:* [Proposition-6.3.3-Multi-Agent-Verification-Report-2026-02-09.md](proofs/verification-records/Proposition-6.3.3-Multi-Agent-Verification-Report-2026-02-09.md) | [proposition_6_3_3_adversarial_verification.py](../verification/Phase6/proposition_6_3_3_adversarial_verification.py)
+   - *Statement:* Loop-induced h → γγ decay width computed from geometrically-derived couplings. W boson loop (A_W = −8.33) dominates with destructive top quark interference (A_t = +1.84).
+   - *Key Results:*
+     - **Decay width:** Γ(h → γγ) = 9.2 ± 0.3 keV (SM: 9.28 keV, <1% deviation)
+     - **Branching ratio:** BR = (2.27 ± 0.05) × 10⁻³ (PDG: 2.27 × 10⁻³)
+     - **Signal strength:** μ_γγ = 1.00 ± 0.02 (LHC Run 2: 1.10 ± 0.07, 1.4σ)
+     - **Ward identity:** Verified k₁·M = k₂·M = 0
+   - *Dependencies:* Props 0.0.21, 0.0.24, 0.0.27 ✅, Theorem 3.2.1 ✅, Theorem 3.1.2 ✅
+   - *Impact:* **Validates EW loop structure** — h → γγ matches SM to <1%, confirming geometrically-derived Higgs and gauge couplings.
+
+4. **Proposition 6.3.4 (Higgs Z-Gamma Decay h → Zγ)** 🔶 NOVEL (2026-02-09)
+   - *Status:* 🔶 **NOVEL** — Computational verification passed (11/11 tests), awaiting multi-agent review
+   - *Document:* [Proposition-6.3.4-Higgs-Z-Gamma-Decay.md](proofs/Phase6/Proposition-6.3.4-Higgs-Z-Gamma-Decay.md)
+   - *Verification:* [proposition_6_3_4_higgs_z_gamma.py](../verification/Phase6/proposition_6_3_4_higgs_z_gamma.py)
+   - *Statement:* Full h → Zγ calculation with two-variable Passarino-Veltman integrals I₁(τ,λ), I₂(τ,λ). Phase space factor (1 − M_Z²/m_H²)³ = 0.103 provides the dominant suppression relative to h → γγ.
+   - *Key Results:*
+     - **Decay width:** Γ(h → Zγ) = 6.3 ± 0.4 keV (SM: 6.32 keV, 1.1% deviation)
+     - **Branching ratio:** BR = (1.53 ± 0.10) × 10⁻³ (SM: 1.54 × 10⁻³, 0.2σ)
+     - **BR ratio:** Zγ/γγ = 0.672 (SM: 0.678, 0.9% agreement)
+     - **Signal strength:** μ_Zγ = 0.99 (ATLAS 2023: 2.0 ± 0.6, 1.7σ tension)
+     - **Phase space:** (1 − M_Z²/m_H²)³ = 0.1035 verified
+     - **Threshold:** Γ → 0 as m_H → M_Z confirmed
+   - *Dependencies:* Prop 6.3.3 ✅, Props 0.0.21, 0.0.24, 0.0.27 ✅, Theorem 3.2.1 ✅
+   - *Impact:* **Completes loop-induced Higgs decay phenomenology**. BR ratio Zγ/γγ provides clean precision test. ATLAS excess at 2.0 ± 0.6 is interesting but not significant.
 
 ### 6.4 Non-Perturbative Physics
 

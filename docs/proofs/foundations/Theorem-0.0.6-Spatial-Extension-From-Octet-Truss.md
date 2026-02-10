@@ -540,30 +540,21 @@ Extended 3D space **emerges** rather than being postulated—it's the unique way
 - **The $O_h$ symmetry (order 48)** becomes SO(3) rotational invariance in the continuum limit
 - **The structure explains** why the strong force has a single global phase structure throughout the universe
 
-### 7. Dihedral Angle Ratio: Scheme Conversion Factor (2026-01-06)
+### 7. Dihedral Angle Ratio (2026-01-06; corrected 2026-02-08)
 
-The dihedral angles of the tetrahedron and octahedron play a key role in **renormalization scheme conversion**:
+The dihedral angles of the tetrahedron and octahedron are geometrically significant:
 
 | Polyhedron | Dihedral Angle | Formula |
 |------------|---------------|---------|
 | Tetrahedron | $\theta_T = \arccos(1/3) \approx 70.53°$ | Edge-to-face angle |
 | Octahedron | $\theta_O = \arccos(-1/3) \approx 109.47°$ | Edge-to-face angle |
-| **Ratio** | $\theta_O/\theta_T = 1.55215$ | Scheme conversion factor |
+| **Ratio** | $\theta_O/\theta_T = 1.55215$ | Geometric ratio |
 
 **Key identity:** $\theta_O + \theta_T = \pi$ (supplementary angles from the honeycomb tiling constraint).
 
-**Application to strong coupling (Prop 0.0.17s):**
+> **(corrected 2026-02-08: NNLO running bug fix)** The previous claim that $\theta_O/\theta_T = 1.55215$ serves as a "scheme conversion factor" between geometric and MS-bar renormalization schemes has been **retracted**. This factor was reverse-engineered to produce $64 \times 1.55215 = 99.34$, which was supposed to match NNLO QCD running. However, the NNLO running script had a factor-of-2 bug (using $\ln(\mu^2/\mu_0^2)$ instead of $\ln(\mu/\mu_0)$), yielding $1/\alpha_s(M_P) \approx 96\text{--}99$ instead of the correct $\sim 52\text{--}55$. The "0.04% agreement" claim, the "99.34" value, and the purported heat-kernel derivation of the scheme conversion are all **retracted**. The CG prediction $1/\alpha_s = 64$ has a genuine $\sim$17--22% discrepancy from the required $\sim 52\text{--}55$ that is currently **unresolved**. The dihedral angle ratio $\theta_O/\theta_T$ remains a well-defined geometric quantity but its role as a renormalization scheme conversion factor is not established.
 
-The ratio $\theta_O/\theta_T = 1.55215$ provides the conversion factor between:
-- **Geometric scheme:** Regularization via stella octangula boundary → uses $\theta_T$
-- **MS-bar scheme:** Regularization via dual octahedral modes → uses $\theta_O$
-
-This is rigorously derived via heat kernel edge contributions on polyhedral boundaries (Balian & Bloch 1970):
-$$K(t)|_{\text{edge}} = \frac{L_i(\pi - \theta_i)}{24\pi\sqrt{4\pi t}}$$
-
-**Result:** The equipartition derivation ($1/\alpha_s = 64$, geometric scheme) and unification derivation ($1/\alpha_s \approx 99$, MS-bar scheme) are related by $64 \times 1.55215 = 99.34$, matching NNLO QCD to **0.04%**.
-
-> **Full derivation:** [Proposition-0.0.17s](Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md)
+> **See also:** [Proposition-0.0.17s](Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md)
 
 ---
 

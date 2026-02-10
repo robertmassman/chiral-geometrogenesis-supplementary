@@ -642,6 +642,9 @@ Tests:
 3. ✅ Program length measurement (verify O(1) description)
 4. ✅ Comparison with mpmath arbitrary-precision library
 
+### Lean 4 Formalization
+- [Proposition_0_0_XXb.lean](../../../lean/ChiralGeometrogenesis/Foundations/Proposition_0_0_XXb.lean) — Machine-verified formalization
+
 ### 8.3 Multi-Agent Verification
 
 **Verification report:** [Proposition-0.0.XXb-Multi-Agent-Verification-2026-02-01.md](../verification-records/Proposition-0.0.XXb-Multi-Agent-Verification-2026-02-01.md)
@@ -2554,7 +2557,7 @@ Physical reality ("It") emerges as the unique computable fixed point of informat
 1. ✅ Multi-agent adversarial verification (Mathematical, Physics, Literature)
 2. ✅ Computational verification script (`verification/foundations/proposition_0_0_XXb_computability.py`)
 3. ✅ Peer review of Kolmogorov argument
-4. ⬜ Lean 4 formalization (optional but desirable)
+4. ✅ [Lean 4 formalization](../../../lean/ChiralGeometrogenesis/Foundations/Proposition_0_0_XXb.lean)
 
 ---
 

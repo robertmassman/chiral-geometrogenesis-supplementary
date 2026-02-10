@@ -404,7 +404,7 @@ $$\lambda = \underbrace{\frac{1}{\phi^3}}_{\text{radial suppression}} \times \un
 
 | Factor | Origin | Value |
 |--------|--------|-------|
-| 1/φ³ | Three-level icosahedral hierarchy | 0.236 |
+| 1/φ³ | Two-factor decomposition: edge ratio (1/φ) × spectral gap ratio (1/φ²) | 0.236 |
 | sin(72°) | Pentagonal arrangement of 24-cell copies | 0.951 |
 | λ | Product = CKM mixing parameter | **0.2245** |
 
@@ -503,7 +503,7 @@ The sin(72°) factor is not a numerical coincidence because:
 | Document | Relationship | Key Content |
 |----------|--------------|-------------|
 | [Lemma 3.1.2a](../Phase3/Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md) | Parent lemma | 24-cell/600-cell structure, PDG comparison |
-| [Derivation-Three-Phi-Factors-Explicit.md](Derivation-Three-Phi-Factors-Explicit.md) | Sibling | The 1/φ³ radial factor derivation |
+| [Derivation-Three-Phi-Factors-Explicit.md](Derivation-Three-Phi-Factors-Explicit.md) | Sibling | Two-factor decomposition of 1/φ³ (§15–16) |
 | [Extension-3.1.2b](../Phase3/Extension-3.1.2b-Complete-Wolfenstein-Parameters.md) | Extension | Complete A, ρ̄, η̄, CP angles derivation |
 
 **Supporting Analyses:**
@@ -528,7 +528,7 @@ The formula λ = (1/φ³) × sin(72°) encodes:
 
 | Part | Geometric Meaning | Physical Meaning |
 |------|-------------------|------------------|
-| 1/φ³ | Icosahedral self-similarity (3 levels) | Mass hierarchy suppression |
+| 1/φ³ | Edge ratio (1/φ) × spectral gap ratio (1/φ²) | Mass hierarchy suppression |
 | sin(72°) | Pentagonal angle (5-fold symmetry) | Flavor mixing angle |
 
 Both arise from the **same underlying geometry**: the icosahedral embedding of the stella octangula through the 24-cell in the 600-cell.

@@ -2,6 +2,28 @@
 
 This file provides guidance for creating publication-quality figures for the Chiral Geometrogenesis paper.
 
+## DO NOT CREATE
+
+- **DO NOT USE PURPLE!
+- **Flowcharts** - No boxes-and-arrows derivation diagrams
+- **Derivation paths** - No step-by-step logical flow visualizations
+- **Dependency graphs** - No theorem/proof dependency trees
+- **Multi-panel figures by default** - Use a single panel unless multiple panels are genuinely required
+- **Equations on the figure** - Formulas belong in captions or the paper text, not on the visualization
+- **Invented physics** - Never create a figure that isn't grounded in a specific proof document
+
+## REQUIREMENTS
+
+Before creating any figure:
+
+1. **Read the proof document first** - Every figure must correspond to a theorem, proposition, or definition in `docs/proofs/`. Read it completely before writing any code.
+2. **Use actual values from the proof** - Parameters, scales, and relationships must match what's derived in the proof, not made-up approximations.
+3. **Physical accuracy over aesthetics** - If the physics says something looks a certain way, visualize that, even if a different visualization would "look nicer."
+4. **Cite the source** - The script docstring must include the exact proof document path (e.g., `Proof Document: docs/proofs/Phase3/Theorem-3.1.2-Mass-Generation.md`).
+5. **All panels must have titles** - Every panel (including single-panel figures) must have a descriptive title.
+
+If you cannot point to a specific proof document that contains the physics being visualized, **do not create the figure**.
+
 ## Directory Structure
 
 ```

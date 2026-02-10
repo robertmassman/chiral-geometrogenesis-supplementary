@@ -21,7 +21,7 @@
 | §5 | Threshold matching | ✅ ESTABLISHED |
 | §6 | Two-loop corrections | 🔶 NOVEL |
 | §7 | Fixed point analysis | 🔶 NOVEL |
-| §8 | E₆ → E₈ cascade connection | ✅ VERIFIED |
+| §8 | E₆ → E₈ cascade connection | 🔸 PARTIAL (corrected 2026-02-08: target value retracted) |
 | §9 | Consistency checks | ✅ VERIFIED (§9.6 axial matching ✅, §9.7 lattice determination ✅ RESOLVED) |
 
 ---
@@ -708,18 +708,18 @@ From Proposition 0.0.17s:
 
 $$\frac{1}{\alpha_s^{geom}(M_P)} = (N_c^2 - 1)^2 = 64$$
 
-The cascade running gives:
+> **RETRACTION (corrected 2026-02-08: NNLO running bug fix):** The previous version of this section claimed that cascade running produced $1/\alpha_s(M_P) = 99.34$ in $\overline{MS}$, and that a scheme conversion factor $\theta_O/\theta_T = 1.55$ mapped this to the geometric value of 64. Both claims are retracted:
+>
+> - The value 99.34 was derived from cascade running calibrated to a buggy NNLO script (factor-of-2 error: $\ln(\mu^2/\mu_0^2)$ vs $\ln(\mu/\mu_0)$)
+> - The $\theta_O/\theta_T$ factor was reverse-engineered to match the buggy output
+> - Corrected SM NNLO running gives $1/\alpha_s^{SM}(M_P) \approx 52$-$55$
+> - The geometric prediction $1/\alpha_s = 64$ has a genuine ~17-22% discrepancy from SM running that is **unresolved**
 
-| Quantity | Value |
-|----------|-------|
-| $1/\alpha_s(M_{GUT})$ | 44.5 |
-| $\Delta(1/\alpha)$ [E₆] | 26.05 |
-| $\Delta(1/\alpha)$ [E₈] | 28.90 |
-| $1/\alpha_s(M_P)$ | 99.34 (MS-bar) |
-
-With scheme conversion $\theta_O/\theta_T = 1.55$:
-
-$$\frac{99.34}{1.55} = 64.1 \approx 64 \quad \checkmark$$
+| Quantity | Previous (retracted) | Corrected |
+|----------|---------------------|-----------|
+| $1/\alpha_s^{geom}(M_P)$ | 64 | 64 (unchanged) |
+| $1/\alpha_s^{SM}(M_P)$ | ~99 (buggy) | ~52-55 |
+| Discrepancy | "0.04%" (via $\theta_O/\theta_T$) | **~17-22%** (genuinely open) |
 
 ---
 
@@ -849,7 +849,7 @@ The phenomenological degeneracy has been **resolved** through Strategy 2 (axial 
 | CG β-function | 🔶 NOVEL | $\beta_{g_\chi} = \frac{g_\chi^3}{16\pi^2}(2 - \frac{N_c N_f}{2})$ |
 | UV-IR running | 🔶 NOVEL | $g_\chi(M_P) \approx 0.48 \to g_\chi(\Lambda_{QCD}) \approx 1.3$ |
 | Confinement connection | 🔶 NOVEL | Asymptotic freedom → strong IR coupling → confinement |
-| E₆ → E₈ extension | ✅ VERIFIED | Pre-geometric running resolved |
+| E₆ → E₈ extension | 🔸 PARTIAL | Cascade mechanism valid but calibrated to retracted target; ~17-22% discrepancy unresolved (corrected 2026-02-08) |
 
 ### 10.2 Physical Picture
 

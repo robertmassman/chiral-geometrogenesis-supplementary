@@ -2,7 +2,7 @@
   "proposition": "0.0.27",
   "section": "10.3.12.10.15",
   "title": "Explicit Overlap Operator Computation on K\u2084",
-  "timestamp": "2026-02-03T06:28:31.595828",
+  "timestamp": "2026-02-05T17:45:56.449254",
   "wilson_parameter": 1.5,
   "tests": {
     "test_1": {

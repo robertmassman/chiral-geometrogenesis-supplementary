@@ -1,0 +1,415 @@
+{
+  "tests": [
+    {
+      "name": "\u03b2\u00b2\u00d7C_ff(1,4) approximately constant at large \u03b2 (Gaussian scaling)",
+      "passed": true,
+      "details": "\u03b2=200: 0.2372, \u03b2=500: 0.1742"
+    },
+    {
+      "name": "\u03b2\u00b2\u00d7Var(P\u2081) approximately constant (1/\u03b2\u00b2 scaling of face fluctuations)",
+      "passed": true,
+      "details": "\u03b2=200: 2.2020, \u03b2=500: 1.9476"
+    },
+    {
+      "name": "|C_ff| decreases with increasing \u03b2",
+      "passed": true,
+      "details": "|C_ff| at \u03b2=20: 0.000710, at \u03b2=500: 0.000001"
+    },
+    {
+      "name": "Action variance Var(S) > 0 at all \u03b2",
+      "passed": true,
+      "details": "Var(S) range: [10.4476, 12.7076]"
+    },
+    {
+      "name": "\u27e8\u03c7\u2081(H_f)\u27e9 = 1 at all \u03b2 (trivial representation)",
+      "passed": true,
+      "details": "Values: ['1.0000', '1.0000', '1.0000', '1.0000', '1.0000', '1.0000', '1.0000']"
+    },
+    {
+      "name": "\u27e8\u03c7\u2088(H_f)\u27e9 \u2192 8 as \u03b2 \u2192 \u221e",
+      "passed": true,
+      "details": "At \u03b2=500: \u27e8\u03c7\u2088\u27e9 = 7.8922"
+    },
+    {
+      "name": "\u27e8\u03c7\u2082\u2087(H_f)\u27e9 \u2192 27 as \u03b2 \u2192 \u221e (within 10%)",
+      "passed": true,
+      "details": "At \u03b2=500: \u27e8\u03c7\u2082\u2087\u27e9 = 26.0403 (dim=27)"
+    },
+    {
+      "name": "\u27e8\u03c7_1\u27e9 approximately monotone increasing with \u03b2",
+      "passed": true,
+      "details": "Values: ['1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00']"
+    },
+    {
+      "name": "\u27e8\u03c7_8\u27e9 approximately monotone increasing with \u03b2",
+      "passed": true,
+      "details": "Values: ['1.18', '3.53', '5.54', '6.96', '7.47', '7.73', '7.89']"
+    },
+    {
+      "name": "\u27e8\u03c7_10\u27e9 approximately monotone increasing with \u03b2",
+      "passed": true,
+      "details": "Values: ['0.30', '2.02', '4.81', '7.57', '8.73', '9.34', '9.73']"
+    },
+    {
+      "name": "\u27e8\u03c7_10bar\u27e9 approximately monotone increasing with \u03b2",
+      "passed": true,
+      "details": "Values: ['0.30', '2.02', '4.81', '7.57', '8.73', '9.34', '9.73']"
+    },
+    {
+      "name": "\u27e8\u03c7_27\u27e9 approximately monotone increasing with \u03b2",
+      "passed": true,
+      "details": "Values: ['0.30', '3.28', '10.19', '18.64', '22.52', '24.66', '26.04']"
+    },
+    {
+      "name": "8\u22978 sum rule \u03a3 d_R\u27e8\u03c7_R\u27e9 = \u27e8(\u03c7\u2088)\u00b2\u27e9 at \u03b2=50",
+      "passed": true,
+      "details": "\u03a3 d_R\u27e8\u03c7_R\u27e9 = 767.18"
+    },
+    {
+      "name": "8\u22978 sum rule \u03a3 d_R\u27e8\u03c7_R\u27e9 = \u27e8(\u03c7\u2088)\u00b2\u27e9 at \u03b2=200",
+      "passed": true,
+      "details": "\u03a3 d_R\u27e8\u03c7_R\u27e9 = 977.43"
+    },
+    {
+      "name": "Eigenvalue repulsion at \u03b2=2: fraction near coincidence < 5%",
+      "passed": true,
+      "details": "Fraction with |\u03c6\u2081\u2212\u03c6\u2082| < 0.15: 0.0008"
+    },
+    {
+      "name": "Eigenvalue repulsion at \u03b2=20: fraction near coincidence < 5%",
+      "passed": true,
+      "details": "Fraction with |\u03c6\u2081\u2212\u03c6\u2082| < 0.057 (= 0.3\u00d7\u03c3): 0.0006"
+    },
+    {
+      "name": "Dividing by |\u0394|\u00b2 smooths distribution at \u03b2=2",
+      "passed": true,
+      "details": "CV(hist) = 1.067, CV(W\u0303) = 1.034, valid bins: 32"
+    },
+    {
+      "name": "Distribution narrows at larger \u03b2 (holonomies \u2192 identity)",
+      "passed": true,
+      "details": "std(\u03c6\u2081) at \u03b2=2: 0.535, at \u03b2=20: 0.188"
+    },
+    {
+      "name": "Stella \u03b2\u2081 = 6",
+      "passed": true,
+      "details": "E - V + c = 12 - 8 + 2 = 6"
+    },
+    {
+      "name": "Stella N_holonomy = 12",
+      "passed": true,
+      "details": "\u03b2\u2081 \u00d7 rank = 6 \u00d7 2 = 12"
+    },
+    {
+      "name": "Stella N_local = 52",
+      "passed": true,
+      "details": "64 - 12 = 52"
+    },
+    {
+      "name": "Stella cycle space dimension = 6 (computed from null space)",
+      "passed": true,
+      "details": "dim(ker(\u2202\u2081)) = 6"
+    },
+    {
+      "name": "Cycle space has rank 3 on K\u208a edges and rank 3 on K\u208b edges",
+      "passed": true,
+      "details": "rank(K\u208a block) = 3, rank(K\u208b block) = 3"
+    },
+    {
+      "name": "T\u208a and T\u208b plaquettes consistent (within 3\u03c3)",
+      "passed": true,
+      "details": "\u27e8P\u27e9\u208a = 0.939627, \u27e8P\u27e9\u208b = 0.939808, diff = 1.0\u03c3"
+    },
+    {
+      "name": "Inter-tetrahedron holonomy correlator \u2248 0 (independent systems)",
+      "passed": true,
+      "details": "|C_cross| = 0.000016, Var(L\u208a) = 0.000891"
+    },
+    {
+      "name": "Holonomy parameter count: 3 cycles \u00d7 2 Cartan \u00d7 2 tetrahedra = 12",
+      "passed": true,
+      "details": "12 = 2 \u00d7 3 \u00d7 2"
+    },
+    {
+      "name": "Per unit cell: N_running = 52, N_holonomy = 12, total = 64",
+      "passed": true,
+      "details": "52 + 12 = 64 = (N_c\u00b2-1)\u00b2 \u2713"
+    },
+    {
+      "name": "SU(2): N_holonomy = 6",
+      "passed": true,
+      "details": "2 \u00d7 \u03b2\u2081 \u00d7 rank = 2 \u00d7 3 \u00d7 1 = 6"
+    },
+    {
+      "name": "SU(2): N_local = 3",
+      "passed": true,
+      "details": "9 - 6 = 3"
+    },
+    {
+      "name": "SU(2): Uniqueness identity FAILS (N_hol \u2260 \u03c7 \u00d7 N_c)",
+      "passed": true,
+      "details": "N_hol = 6 \u2260 \u03c7\u00d7N_c = 8"
+    },
+    {
+      "name": "Holonomy fractions differ: SU(2) 66.7% vs SU(3) 18.75%",
+      "passed": true,
+      "details": "SU(2): 0.667, SU(3): 0.188"
+    },
+    {
+      "name": "SU(2) c\u2081 analytical matches MC (within 10%)",
+      "passed": true,
+      "details": "Analytical: 1.1250, MC: 1.1314"
+    },
+    {
+      "name": "SU(2) c\u2081 differs from SU(3) c\u2081",
+      "passed": true,
+      "details": "SU(2): 1.1250, SU(3): 3.0000"
+    },
+    {
+      "name": "SU(2) c\u2081 = dim_adj \u00d7 \u03a3v_f / (2N_f) = 1.1250",
+      "passed": true,
+      "details": "Computed: 1.1250"
+    },
+    {
+      "name": "Uniqueness: only N_c=3 gives integer V=4",
+      "passed": true,
+      "details": "N_c=3 \u2192 V=4.0000; all others non-integer or V<4"
+    },
+    {
+      "name": "C_V Gaussian matches MC at \u03b2=500 (within 30%)",
+      "passed": true,
+      "details": "Ratio MC/Gauss = 0.9662"
+    },
+    {
+      "name": "Gaussian approximation improves with increasing \u03b2",
+      "passed": true,
+      "details": "Ratio at \u03b2=20: 1.1350, at \u03b2=500: 0.9662"
+    },
+    {
+      "name": "Asymptotic C_V is finite and positive",
+      "passed": true,
+      "details": "C_V(\u221e) = 12.0000"
+    },
+    {
+      "name": "n=2 K\u2084: \u03b2\u2081 = 6 (algebraic)",
+      "passed": true,
+      "details": "E-V+c = 12-8+2 = 6"
+    },
+    {
+      "name": "n=2 K\u2084: \u03b2\u2081 = 6 (null space)",
+      "passed": true,
+      "details": "dim(ker \u2202\u2081) = 6"
+    },
+    {
+      "name": "n=4 K\u2084: \u03b2\u2081 = 12 (algebraic)",
+      "passed": true,
+      "details": "E-V+c = 24-16+4 = 12"
+    },
+    {
+      "name": "n=4 K\u2084: \u03b2\u2081 = 12 (null space)",
+      "passed": true,
+      "details": "dim(ker \u2202\u2081) = 12"
+    },
+    {
+      "name": "n=8 K\u2084: \u03b2\u2081 = 24 (algebraic)",
+      "passed": true,
+      "details": "E-V+c = 48-32+8 = 24"
+    },
+    {
+      "name": "n=8 K\u2084: \u03b2\u2081 = 24 (null space)",
+      "passed": true,
+      "details": "dim(ker \u2202\u2081) = 24"
+    },
+    {
+      "name": "n=2 K\u2084: N_holonomy = 12 (stella canonical)",
+      "passed": true,
+      "details": "\u03b2\u2081 \u00d7 rank = 6 \u00d7 2 = 12"
+    },
+    {
+      "name": "n=4 K\u2084: N_holonomy = 24 (extended)",
+      "passed": true,
+      "details": "\u03b2\u2081 \u00d7 rank = 12 \u00d7 2 = 24"
+    },
+    {
+      "name": "n=8 K\u2084: N_holonomy = 48 (extended)",
+      "passed": true,
+      "details": "\u03b2\u2081 \u00d7 rank = 24 \u00d7 2 = 48"
+    },
+    {
+      "name": "n=4 K\u2084: all tet plaquettes consistent at \u03b2=50",
+      "passed": true,
+      "details": "\u27e8P\u27e9 range: [0.939085, 0.940057], spread=0.000972"
+    },
+    {
+      "name": "n=4 K\u2084: \u27e8P\u27e9 matches single K\u2084 (Part 4)",
+      "passed": true,
+      "details": "Multi: 0.939789, Single: 0.939627"
+    },
+    {
+      "name": "n=8 K\u2084: all tet plaquettes consistent at \u03b2=50",
+      "passed": true,
+      "details": "\u27e8P\u27e9 range: [0.938841, 0.940446], spread=0.001605"
+    },
+    {
+      "name": "n=8 K\u2084: \u27e8P\u27e9 matches single K\u2084 (Part 4)",
+      "passed": true,
+      "details": "Multi: 0.939653, Single: 0.939627"
+    },
+    {
+      "name": "c\u2081 extracted from high-\u03b2 plaquettes \u2248 3.0",
+      "passed": true,
+      "details": "c\u2081 = 2.9676 \u00b1 0.0423 (expected 3.0)"
+    },
+    {
+      "name": "Linear fit c\u2081 from \u03b2(1-\u27e8P\u27e9) vs 1/\u03b2 \u2248 3.0",
+      "passed": true,
+      "details": "c\u2081(fit) = 2.9648, c\u2082(fit) = 1.8051"
+    },
+    {
+      "name": "c\u2082 coefficient is finite (subleading correction exists)",
+      "passed": true,
+      "details": "c\u2082 = 1.8051"
+    },
+    {
+      "name": "|B(\u03b2)| \u2192 c\u2081 = 3.0 at large \u03b2",
+      "passed": true,
+      "details": "\u27e8|B|\u27e9(\u03b2>100) = 3.1550"
+    },
+    {
+      "name": "Effective dim_adj from c\u2081 \u2248 8 (all adjoint gluons run locally)",
+      "passed": true,
+      "details": "dim_adj_eff = 7.91 (expected 8)"
+    },
+    {
+      "name": "52/12 decomposition consistent: c\u2081 encodes 52 running channels",
+      "passed": true,
+      "details": "N_running = 50.9 (expected 52)"
+    },
+    {
+      "name": "g\u00b2_L monotonically decreases with \u03b2 (asymptotic freedom)",
+      "passed": true,
+      "details": "g\u00b2_L range: [0.034605, 1.836710]"
+    },
+    {
+      "name": "g\u00b2_L \u2192 0 at large \u03b2 (weak coupling)",
+      "passed": true,
+      "details": "g\u00b2_L(\u03b2=500) = 0.034605"
+    }
+  ],
+  "summary": {
+    "total_tests": 59,
+    "passed": 59,
+    "failed": 0,
+    "pass_rate": "100.0%",
+    "key_results": {
+      "correlators": {
+        "beta_values": [
+          20,
+          50,
+          100,
+          200,
+          500
+        ],
+        "C_ff_14": {
+          "20": 0.0007102356244248487,
+          "50": 0.00010674873888150138,
+          "100": 3.1223909777056136e-05,
+          "200": 5.930104020168692e-06,
+          "500": 6.969770016684862e-07
+        },
+        "C_hh_12": {
+          "20": 0.0006611883004364882,
+          "50": 9.81949268482607e-05,
+          "100": 2.9058207729359964e-05,
+          "200": 5.466228050532429e-06,
+          "500": 6.472202550567019e-07
+        },
+        "var_S": {
+          "20": 11.967931590855864,
+          "50": 11.821515712629868,
+          "100": 12.707554063325617,
+          "200": 11.440523845694416,
+          "500": 10.447605826691548
+        }
+      },
+      "character_plaquette": {
+        "beta_values": [
+          5,
+          10,
+          20,
+          50,
+          100,
+          200,
+          500
+        ],
+        "chi_8_at_max_beta": 7.89216049130849,
+        "chi_27_at_max_beta": 26.040263729000106
+      },
+      "cartan_histogram": {
+        "beta_low": 2,
+        "beta_high": 20,
+        "spread_low_beta": 0.53453914396699,
+        "spread_high_beta": 0.18847158004882772,
+        "cv_hist_low": 1.0671048213534242,
+        "cv_w_tilde_low": 1.0336629301807123
+      },
+      "stella_lattice": {
+        "beta1": 6,
+        "N_holonomy": 12,
+        "N_local": 52,
+        "P_stella": 0.9397176927225994
+      },
+      "su2_null_test": {
+        "N_hol_su2": 6,
+        "N_local_su2": 3,
+        "uniqueness_fails": true,
+        "c1_su2_analytical": 1.125,
+        "c1_su2_mc": 1.1314297296930453
+      },
+      "specific_heat": {
+        "cv_asymptotic": 12.0,
+        "ratio_at_max_beta": 0.9662399545021826
+      },
+      "extended_tiling": {
+        "n_tetrahedra_tested": [
+          2,
+          4,
+          8
+        ],
+        "beta1_scaling": "3n confirmed"
+      },
+      "step_scaling": {
+        "c1_extracted": 2.9676397134652683,
+        "c1_fit": 2.9647601241726207,
+        "c2_fit": 1.8051092417144199,
+        "dim_adj_eff": 7.913705902574049,
+        "beta_scan": [
+          10,
+          15,
+          20,
+          30,
+          50,
+          75,
+          100,
+          150,
+          200,
+          300,
+          500
+        ],
+        "plaquettes": {
+          "10": 0.6938816569208726,
+          "15": 0.7980287050976179,
+          "20": 0.8482787927584617,
+          "30": 0.8988641743474989,
+          "50": 0.9398073595401317,
+          "75": 0.9596553914592757,
+          "100": 0.9701788666374043,
+          "150": 0.9800675475261622,
+          "200": 0.9850754349207588,
+          "300": 0.9900082300191706,
+          "500": 0.9942324533002119
+        }
+      }
+    }
+  }
+}

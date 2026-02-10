@@ -1,4 +1,7 @@
 # Theorem 5.2.6: Emergence of the Planck Mass from QCD and Topology
+
+> **Correction Notice (2026-02-08):** This verification record references claims about a θ_O/θ_T = 1.55215 "scheme conversion factor" yielding "0.038% agreement" between CG's 1/α_s = 64 and NNLO QCD running. These claims are **retracted**: the NNLO running script (`theorem_5_2_6_nnlo_running.py`) contained a factor-of-2 bug that produced 1/α_s(M_P) ≈ 96–99 instead of the correct ~52–55. The ~17–22% discrepancy between CG's prediction (64) and experiment (~52–55) is genuinely unresolved. See Theorem 5.2.6 Statement file for current status.
+
 ## ADVERSARIAL PHYSICS VERIFICATION REPORT
 
 **Verification Date:** 2026-01-22

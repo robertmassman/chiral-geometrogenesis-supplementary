@@ -286,6 +286,9 @@ This principle transforms the question "Why N = 3?" from a geometric observation
 - [Lemma-0.0.17c-Fisher-Killing-Equivalence.md](Lemma-0.0.17c-Fisher-Killing-Equivalence.md)
 - [Research-Pure-Information-Bound-On-N.md](../supporting/Research-Pure-Information-Bound-On-N.md)
 
+### Lean 4 Formalization
+- [Proposition_0_0_XXa.lean](../../../lean/ChiralGeometrogenesis/Foundations/Proposition_0_0_XXa.lean) — Machine-verified formalization
+
 ### Verification Scripts
 - `verification/foundations/proposition_0_0_XX_first_stable_principle.py`
 - `verification/foundations/proposition_0_0_XX_minimality_principle.py`

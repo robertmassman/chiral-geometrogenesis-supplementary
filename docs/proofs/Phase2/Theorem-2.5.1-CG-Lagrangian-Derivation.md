@@ -507,16 +507,16 @@ At the Planck scale (from Prop 0.0.17s):
 
 $$\frac{1}{\alpha_s^{UV}} = 64 \quad \text{(equipartition, geometric scheme)}$$
 
-$$\frac{1}{\alpha_s^{MS-bar}} = 64 \times \frac{\theta_O}{\theta_T} = 99.34$$
+> **RETRACTION (corrected 2026-02-08: NNLO running bug fix):** A previous version of this section claimed $1/\alpha_s^{\overline{MS}} = 64 \times \theta_O/\theta_T = 99.34$. The $\theta_O/\theta_T = 1.55215$ scheme conversion factor and the value 99.34 are retracted — they were reverse-engineered to match a buggy NNLO running script. The geometric prediction remains $1/\alpha_s = 64$, with a genuine ~17-22% discrepancy from SM NNLO running ($\sim 52$-$55$) that is unresolved.
 
-**Pre-geometric running (Prop 2.4.2):** The connection from $M_P$ to $M_Z$ is mediated by **E₆ → E₈ cascade unification**:
+**Pre-geometric running (Prop 2.4.2):** The connection from $M_P$ to $M_Z$ may be mediated by E₆ → E₈ cascade unification. The cascade mechanism is mathematically valid but was previously calibrated to the retracted target value (corrected 2026-02-08):
 
 | Scale Range | Gauge Group | b₀ |
 |-------------|-------------|-----|
-| M_GUT → M_{E8} (2.3×10¹⁸ GeV) | E₆ | 30 |
+| M_GUT → M_{E8} | E₆ | 30 |
 | M_{E8} → M_P | E₈ (pure gauge) | 110 |
 
-This provides 99.8% match to the required running and connects to heterotic E₈ × E₈ string theory, extending the embedding chain:
+The cascade connects to heterotic E₈ × E₈ string theory, extending the embedding chain:
 
 $$\text{Stella} \to D_4 \to E_8 \times E_8 \text{ (heterotic)} \to E_6 \to SO(10) \to SU(5) \to \text{SM}$$
 

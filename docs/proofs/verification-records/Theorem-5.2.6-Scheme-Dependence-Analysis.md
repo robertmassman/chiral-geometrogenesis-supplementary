@@ -1,7 +1,9 @@
 # Theorem 5.2.6: Scheme Dependence Analysis
 
+> **RETRACTED (2026-02-08):** This analysis is **invalidated** by a factor-of-2 bug in the NNLO running script (`theorem_5_2_6_nnlo_running.py`). The script used `ln(μ²/μ₀²)` where the correct formula requires `ln(μ/μ₀)`, producing 1/α_s(M_P) ≈ 96–99 instead of the correct ~52–55. The entire "scheme conversion" argument (π/2, θ_O/θ_T) was reverse-engineered to match the buggy values. After correction, the ~17–22% discrepancy between CG's prediction (64) and QCD running (~52–55) is genuinely unresolved. See Theorem 5.2.6 Statement file for current status.
+
 **Date:** 2025-12-15
-**Finding:** The ~35% discrepancy between CG prediction and QCD running is explained by scheme dependence
+**Finding:** ~~The ~35% discrepancy between CG prediction and QCD running is explained by scheme dependence~~ **RETRACTED** — see note above
 
 ---
 

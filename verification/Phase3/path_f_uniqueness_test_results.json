@@ -1,0 +1,308 @@
+{
+  "test": "Path F \u2014 Uniqueness Test (Numerology Control)",
+  "date": "2026-02-07",
+  "script": "verification/Phase3/path_f_uniqueness_test.py",
+  "target": {
+    "lambda_PDG": 0.22497,
+    "sigma": 0.0007,
+    "window": [
+      0.22427,
+      0.22567
+    ]
+  },
+  "our_formula": {
+    "expression": "(1/\u03c6\u00b3) \u00d7 sin(72\u00b0)",
+    "value": 0.2245139882897927,
+    "deviation_sigma": -0.6514453002961654,
+    "complexity": 8,
+    "overall_rank": 1,
+    "phi_trig_rank": 1,
+    "geo_motivated_rank": 1
+  },
+  "search_space": {
+    "algebraic_values": 764,
+    "trigonometric_values": 34,
+    "total_products": 25976
+  },
+  "results_1sigma": {
+    "total_unique_matches": 23,
+    "phi_trig_matches": 9,
+    "phi_only_matches": 1,
+    "rational_trig_matches": 13,
+    "pure_rational_matches": 0,
+    "geo_motivated_matches": 1
+  },
+  "sigma_scan": {
+    "phi_trig_1sigma": 9,
+    "phi_trig_2sigma": 20,
+    "phi_trig_3sigma": 31
+  },
+  "competitors": {
+    "at_leq_our_complexity": 0,
+    "geo_motivated_at_leq_ours": 0
+  },
+  "conclusion": {
+    "verdict": "STRONG_UNIQUENESS",
+    "text": "STRONG UNIQUENESS: (1/\u03c6\u00b3)\u00b7sin(72\u00b0) ranks #1 among 9 \u03c6\u00d7trig matches. Only 0 competitors at equal or lower complexity. The formula is NOT a generic numerological coincidence \u2014 it is distinguished by its simplicity within the \u03c6\u00d7trig class.\n\n  Geometric motivation filter: Among 1 geometrically motivated formulas,\n  0 are at \u2264 our complexity (rank #1).\n\n  Control group: 0 pure rational fractions also match within 1\u03c3.\n  This provides the numerological baseline \u2014 any target in [0,1] will have\n  ~0 simple rational matches, so the \u03c6\u00d7trig matches must be\n  assessed relative to this background."
+  },
+  "top_matches_all": [
+    {
+      "rank": 1,
+      "formula": "(\u03c6^(-2))\u00b7sin(36\u00b0)",
+      "value": 0.2245139882897927,
+      "deviation_sigma": -0.6514453002961654,
+      "complexity": 8,
+      "alt_count": 11
+    },
+    {
+      "rank": 2,
+      "formula": "(5/2)\u00b7\u03c6^(-5)",
+      "value": 0.22542485937368556,
+      "deviation_sigma": 0.6497991052650809,
+      "complexity": 10,
+      "alt_count": 2
+    },
+    {
+      "rank": 3,
+      "formula": "(1/4)\u00b7cos(25.7\u00b0)",
+      "value": 0.2252422169756048,
+      "deviation_sigma": 0.38888139372111885,
+      "complexity": 12,
+      "alt_count": 1
+    },
+    {
+      "rank": 4,
+      "formula": "((5/6)\u00b7\u03c6^(-2))\u00b7sin(45\u00b0)",
+      "value": 0.22507563061477204,
+      "deviation_sigma": 0.15090087824576326,
+      "complexity": 13,
+      "alt_count": 0
+    },
+    {
+      "rank": 5,
+      "formula": "(4/5)\u00b7sin(16.4\u00b0)",
+      "value": 0.22538604547314375,
+      "deviation_sigma": 0.5943506759196431,
+      "complexity": 17,
+      "alt_count": 1
+    },
+    {
+      "rank": 6,
+      "formula": "((4/1)\u00b7\u03c6^(-5))\u00b7cos(51.4\u00b0)",
+      "value": 0.22488016144789133,
+      "deviation_sigma": -0.12834078872667584,
+      "complexity": 18,
+      "alt_count": 0
+    },
+    {
+      "rank": 7,
+      "formula": "(8/11)\u00b7cos(72\u00b0)",
+      "value": 0.22473963227268906,
+      "deviation_sigma": -0.32909675330134686,
+      "complexity": 18,
+      "alt_count": 0
+    },
+    {
+      "rank": 8,
+      "formula": "((5/3)\u00b7\u03c6^(-4))\u00b7cos(22.5\u00b0)",
+      "value": 0.2246536786925956,
+      "deviation_sigma": -0.45188758200630824,
+      "complexity": 18,
+      "alt_count": 0
+    },
+    {
+      "rank": 9,
+      "formula": "((4/5)\u00b7\u03c6)\u00b7cos(80\u00b0)",
+      "value": 0.2247749228396591,
+      "deviation_sigma": -0.27868165762985025,
+      "complexity": 19,
+      "alt_count": 0
+    },
+    {
+      "rank": 10,
+      "formula": "((2/5)/\u03c6)\u00b7sin(65.5\u00b0)",
+      "value": 0.2248733961533915,
+      "deviation_sigma": -0.13800549515500884,
+      "complexity": 21,
+      "alt_count": 0
+    },
+    {
+      "rank": 11,
+      "formula": "(\u03c6^(-1)/\u221a7)\u00b7cos(15\u00b0)",
+      "value": 0.22563533797050697,
+      "deviation_sigma": 0.9504828150099549,
+      "complexity": 21,
+      "alt_count": 0
+    },
+    {
+      "rank": 12,
+      "formula": "(-3\u00b7\u03c6^(-3)+2)\u00b7cos(80\u00b0)",
+      "value": 0.2243180330387916,
+      "deviation_sigma": -0.9313813731548493,
+      "complexity": 22,
+      "alt_count": 0
+    },
+    {
+      "rank": 13,
+      "formula": "(3/13)\u00b7sin(77.1\u00b0)",
+      "value": 0.2249833643496516,
+      "deviation_sigma": 0.01909192807371594,
+      "complexity": 23,
+      "alt_count": 0
+    },
+    {
+      "rank": 14,
+      "formula": "(9/20)\u00b7cos(60\u00b0)",
+      "value": 0.22500000000000006,
+      "deviation_sigma": 0.04285714285722537,
+      "complexity": 24,
+      "alt_count": 0
+    },
+    {
+      "rank": 15,
+      "formula": "(5/18)\u00b7cos(36\u00b0)",
+      "value": 0.22472694288192985,
+      "deviation_sigma": -0.34722445438593674,
+      "complexity": 24,
+      "alt_count": 0
+    },
+    {
+      "rank": 16,
+      "formula": "(5/12)\u00b7sin(32.7\u00b0)",
+      "value": 0.22526700727316565,
+      "deviation_sigma": 0.4242961045223497,
+      "complexity": 25,
+      "alt_count": 0
+    },
+    {
+      "rank": 17,
+      "formula": "(10/17)\u00b7sin(22.5\u00b0)",
+      "value": 0.2251079013912293,
+      "deviation_sigma": 0.19700198747042114,
+      "complexity": 26,
+      "alt_count": 0
+    },
+    {
+      "rank": 18,
+      "formula": "((6/1)\u00b7\u03c6^(-5))\u00b7cos(65.5\u00b0)",
+      "value": 0.2247476901304032,
+      "deviation_sigma": -0.31758552799545015,
+      "complexity": 26,
+      "alt_count": 0
+    },
+    {
+      "rank": 19,
+      "formula": "(5/17)\u00b7cos(40\u00b0)",
+      "value": 0.2253071891526406,
+      "deviation_sigma": 0.4816987894865859,
+      "complexity": 28,
+      "alt_count": 0
+    },
+    {
+      "rank": 20,
+      "formula": "(4/15)\u00b7cos(32.7\u00b0)",
+      "value": 0.22433427542164833,
+      "deviation_sigma": -0.9081779690738233,
+      "complexity": 28,
+      "alt_count": 0
+    },
+    {
+      "rank": 21,
+      "formula": "(13/15)\u00b7sin(15\u00b0)",
+      "value": 0.22430983908885133,
+      "deviation_sigma": -0.9430870159266818,
+      "complexity": 28,
+      "alt_count": 0
+    },
+    {
+      "rank": 22,
+      "formula": "(7/20)\u00b7sin(40\u00b0)",
+      "value": 0.2249756633902887,
+      "deviation_sigma": 0.008090557555295863,
+      "complexity": 31,
+      "alt_count": 0
+    },
+    {
+      "rank": 23,
+      "formula": "(19/12)\u00b7cos(81.8\u00b0)",
+      "value": 0.2253318272660351,
+      "deviation_sigma": 0.5168960943358455,
+      "complexity": 35,
+      "alt_count": 0
+    }
+  ],
+  "top_phi_trig": [
+    {
+      "rank": 1,
+      "formula": "(\u03c6^(-2))\u00b7sin(36\u00b0)",
+      "value": 0.2245139882897927,
+      "deviation_sigma": -0.6514453002961654,
+      "complexity": 8
+    },
+    {
+      "rank": 2,
+      "formula": "((5/6)\u00b7\u03c6^(-2))\u00b7sin(45\u00b0)",
+      "value": 0.22507563061477204,
+      "deviation_sigma": 0.15090087824576326,
+      "complexity": 13
+    },
+    {
+      "rank": 3,
+      "formula": "((4/1)\u00b7\u03c6^(-5))\u00b7cos(51.4\u00b0)",
+      "value": 0.22488016144789133,
+      "deviation_sigma": -0.12834078872667584,
+      "complexity": 18
+    },
+    {
+      "rank": 4,
+      "formula": "((5/3)\u00b7\u03c6^(-4))\u00b7cos(22.5\u00b0)",
+      "value": 0.2246536786925956,
+      "deviation_sigma": -0.45188758200630824,
+      "complexity": 18
+    },
+    {
+      "rank": 5,
+      "formula": "((4/5)\u00b7\u03c6)\u00b7cos(80\u00b0)",
+      "value": 0.2247749228396591,
+      "deviation_sigma": -0.27868165762985025,
+      "complexity": 19
+    },
+    {
+      "rank": 6,
+      "formula": "((2/5)/\u03c6)\u00b7sin(65.5\u00b0)",
+      "value": 0.2248733961533915,
+      "deviation_sigma": -0.13800549515500884,
+      "complexity": 21
+    },
+    {
+      "rank": 7,
+      "formula": "(\u03c6^(-1)/\u221a7)\u00b7cos(15\u00b0)",
+      "value": 0.22563533797050697,
+      "deviation_sigma": 0.9504828150099549,
+      "complexity": 21
+    },
+    {
+      "rank": 8,
+      "formula": "(-3\u00b7\u03c6^(-3)+2)\u00b7cos(80\u00b0)",
+      "value": 0.2243180330387916,
+      "deviation_sigma": -0.9313813731548493,
+      "complexity": 22
+    },
+    {
+      "rank": 9,
+      "formula": "((6/1)\u00b7\u03c6^(-5))\u00b7cos(65.5\u00b0)",
+      "value": 0.2247476901304032,
+      "deviation_sigma": -0.31758552799545015,
+      "complexity": 26
+    }
+  ],
+  "geo_motivated_matches": [
+    {
+      "rank": 1,
+      "formula": "(\u03c6^(-2))\u00b7sin(36\u00b0)",
+      "value": 0.2245139882897927,
+      "deviation_sigma": -0.6514453002961654,
+      "complexity": 8
+    }
+  ]
+}

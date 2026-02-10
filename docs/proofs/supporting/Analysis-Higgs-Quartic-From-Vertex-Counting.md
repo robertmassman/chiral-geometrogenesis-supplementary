@@ -352,7 +352,7 @@ The identification λ = 1/8 from stella octangula vertex counting achieves:
 
 ### Related supporting analyses:
 - [Analysis-Quaternionic-Structure-Icosian-Group.md](./Analysis-Quaternionic-Structure-Icosian-Group.md) — Icosian embedding and golden ratio structure
-- [Derivation-Three-Phi-Factors-Explicit.md](./Derivation-Three-Phi-Factors-Explicit.md) — Why 1/φ³ appears in generation hierarchy
+- [Derivation-Three-Phi-Factors-Explicit.md](./Derivation-Three-Phi-Factors-Explicit.md) — Two-factor decomposition of 1/φ³ in generation hierarchy (§15–16)
 
 ---
 

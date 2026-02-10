@@ -154,10 +154,48 @@ $$\langle\bar{q}q\rangle \approx -(272 \text{ MeV})^3 \approx -2.0 \times 10^7 \
 
 ---
 
+## 10. Nuclear Physics Parameters
+
+### 10.1 Binding Energies
+
+| Property | Value | Uncertainty | Source | Used In |
+|----------|-------|-------------|--------|---------|
+| Deuteron binding ($B_d$) | 2.224 MeV | $\pm 0.001$ MeV | PDG 2024 | Prop 0.0.36 |
+| Di-proton unbound by | ~60 keV | — | Nuclear models | Prop 0.0.36 |
+| Hoyle state energy ($^{12}$C*) | 7.654 MeV | $\pm 0.001$ MeV | PDG 2024 | Prop 0.0.36 |
+| Triple-alpha threshold | 7.275 MeV | — | PDG 2024 | Prop 0.0.36 |
+| Hoyle-to-threshold gap | 380 keV | — | Derived | Prop 0.0.36 |
+
+### 10.2 Mass Differences
+
+| Property | Value | Uncertainty | Source | Used In |
+|----------|-------|-------------|--------|---------|
+| $m_n - m_p$ | 1.2933324 MeV | $\pm 0.0000005$ MeV | PDG 2024 | Prop 0.0.36 |
+| $(m_n - m_p)_{\text{QCD}}$ | +2.5 MeV | $\pm 0.3$ MeV | Lattice QCD | Prop 0.0.36 |
+| $(m_n - m_p)_{\text{EM}}$ | −1.2 MeV | $\pm 0.2$ MeV | Lattice QCD | Prop 0.0.36 |
+
+### 10.3 QCD Scale Parameters
+
+| Property | Value | Uncertainty | Source | Used In |
+|----------|-------|-------------|--------|---------|
+| $\sqrt{\sigma}$ (string tension) | 440 MeV | $\pm 30$ MeV | FLAG 2024 | Prop 0.0.17j, 0.0.36 |
+| $R_{\text{stella}}$ (observed) | 0.44847 fm | — | $\hbar c / \sqrt{\sigma}$ | Prop 0.0.36 |
+| $\hbar c$ | 197.327 MeV·fm | exact | CODATA 2022 | All |
+
+### 10.4 BBN Primordial Abundances
+
+| Property | Value | Uncertainty | Source | Used In |
+|----------|-------|-------------|--------|---------|
+| Primordial D/H | $(2.527 \pm 0.030) \times 10^{-5}$ | 1.2% | PDG 2024 | Prop 0.0.36 |
+| Primordial $Y_p$ (He-4 mass fraction) | 0.2449 | $\pm 0.0040$ | PDG 2024 | Prop 0.0.36 |
+
+---
+
 ## Changelog
 
 | Date | Update | Affected Theorems |
 |------|--------|-------------------|
+| 2026-02-09 | Added §10: Nuclear physics parameters (binding energies, mass differences, QCD scale, BBN) | Prop 0.0.36 |
 | 2026-01-16 | Updated top mass to 172.57 ± 0.29 GeV (PDG 2024 world average) | Theorem 0.0.18, 3.1.2 |
 | 2025-12-13 | Added chiral condensate §3.2: $\langle\bar{q}q\rangle^{1/3} = -272$ MeV (FLAG) | Theorem 2.1.2 |
 | 2025-12-13 | Added proton charge radius (CODATA 2022: 0.84075 fm) and Delta mass | Theorem 2.1.1 |

@@ -284,9 +284,9 @@ $$\ln\left(\frac{R_{\text{stella}}}{\ell_P}\right) \propto \Delta a = a_{\text{U
 
 **Status:** 🔬 PARTIALLY USED
 
-**Current use:** The edge term in K(t) gives the scheme conversion factor θ_O/θ_T = 1.55215 (Prop 0.0.17s).
+**Previously claimed:** The edge term in K(t) was claimed to give a scheme conversion factor θ_O/θ_T = 1.55215 (Prop 0.0.17s), but this interpretation has been **retracted** (corrected 2026-02-08: NNLO running bug fix -- the θ_O/θ_T ratio was reverse-engineered to match a buggy NNLO running value of ~99; correct value is ~52-55).
 
-**Extension:** Could the full heat kernel expansion constrain more than just scheme conversion?
+**Extension:** Could the full heat kernel expansion provide physically meaningful constraints?
 
 ---
 
@@ -358,7 +358,7 @@ The χ/6 term in K(t) gives the Euler characteristic. For the stella:
 - χ = 4 (two disjoint tetrahedra)
 - This enters the prefactor √χ = 2 in Prop 0.0.17q
 
-**New insight:** The edge terms (giving θ_O/θ_T = 1.55215) may encode additional index information related to gauge degrees of freedom.
+**Note:** The edge terms were previously claimed to give a scheme conversion factor θ_O/θ_T = 1.55215 (Prop 0.0.17s), but this interpretation has been **retracted** (corrected 2026-02-08: NNLO running bug fix). Whether the edge terms encode other physically meaningful index information related to gauge degrees of freedom remains an open question.
 
 ### 6A.5 Status of Path T1
 
@@ -482,9 +482,8 @@ For a bundle with structure group SU(3) in the adjoint representation:
 - b₀ = 27/(12π) = 9/(4π) ✓
 
 **Cross-check with heat kernel (Prop 0.0.17s):**
-- The scheme conversion factor θ_O/θ_T = 1.55215 was computed from the stella heat kernel
-- This involves the same β-function coefficient b₀
-- The heat kernel on stella reproduces the continuum result
+- The heat kernel on the stella boundary involves the same β-function coefficient b₀
+- ~~The scheme conversion factor θ_O/θ_T = 1.55215 was computed from the stella heat kernel~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix -- the θ_O/θ_T ratio was reverse-engineered to match a buggy NNLO value; the heat kernel mathematics is correct but the physical interpretation as a scheme conversion is not justified)
 
 ### 6A.6.6 Status Summary
 
@@ -495,13 +494,12 @@ For a bundle with structure group SU(3) in the adjoint representation:
 | Z₃ action compatibility | ✅ VERIFIED | Same cyclic symmetry |
 | Index equals 27 | ✅ CONSISTENT | Topological, gauge-group property |
 | β-function = index/(12π) | ✅ DERIVED | Standard conversion |
-| Heat kernel cross-check | ✅ VERIFIED | Prop 0.0.17s agreement |
+| ~~Heat kernel cross-check~~ | ~~✅ VERIFIED~~ | ~~Prop 0.0.17s agreement~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix -- Prop 0.0.17s scheme conversion interpretation retracted) |
 
 **Conclusion:** The Costello-Bittleston index formula applies to the stella framework because:
 1. The stella embeds naturally in twistor space CP³
 2. The Z₃ symmetry is preserved
 3. The index is a topological invariant of the SU(3) bundle, independent of detailed geometry
-4. The heat kernel calculation (Prop 0.0.17s) provides independent verification
 
 ---
 
@@ -1246,7 +1244,7 @@ A topological derivation would:
 
 - [Proposition-0.0.17q](Proposition-0.0.17q-QCD-Scale-From-Dimensional-Transmutation.md) — Hierarchy derivation
 - [Proposition-0.0.17j](Proposition-0.0.17j-String-Tension-From-Casimir-Energy.md) — Casimir energy, UV coupling
-- [Proposition-0.0.17s](Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md) — Scheme conversion via heat kernel
+- [Proposition-0.0.17s](Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md) — ~~Scheme conversion via heat kernel~~ (scheme conversion interpretation **RETRACTED** 2026-02-08: NNLO running bug fix)
 - [Research-P2-P4-Physical-Inputs-Unification.md](Research-P2-P4-Physical-Inputs-Unification.md) — Master research document
 - **[Proposition-0.0.17y-Bootstrap-Fixed-Point-Uniqueness.md](Proposition-0.0.17y-Bootstrap-Fixed-Point-Uniqueness.md)** — **SYNTHESIZES:** This proposition (β-function from index theorem) is Eq. 5 of the 7-equation bootstrap system with unique fixed point
 

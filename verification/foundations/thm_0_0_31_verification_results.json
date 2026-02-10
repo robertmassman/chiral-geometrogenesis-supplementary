@@ -1,0 +1,141 @@
+{
+  "theorem": "0.0.31",
+  "title": "Unconditional Uniqueness of CG Fixed Point",
+  "timestamp": "2026-02-05T10:28:01.568062",
+  "summary": {
+    "total_tests": 21,
+    "passed_tests": 21,
+    "overall_status": "VERIFIED"
+  },
+  "approaches": {
+    "A_topological_exclusion": {
+      "Nc": [
+        {
+          "name": "N_c=2 exclusion",
+          "passed": true,
+          "notes": "Correctly excluded: \u221a\u03c3 = 3.03e+17 MeV"
+        },
+        {
+          "name": "N_c=3 exclusion",
+          "passed": "True",
+          "notes": "\u221a\u03c3 = 481.1 MeV"
+        },
+        {
+          "name": "N_c=4 exclusion",
+          "passed": true,
+          "notes": "Correctly excluded: \u221a\u03c3 = 4.12e-27 MeV"
+        },
+        {
+          "name": "N_c=5 exclusion",
+          "passed": true,
+          "notes": "Correctly excluded: \u221a\u03c3 = 7.18e-75 MeV"
+        }
+      ],
+      "Nf": [
+        {
+          "name": "N_f=0 test",
+          "passed": true,
+          "notes": "N_f=0: Pure gluons"
+        },
+        {
+          "name": "N_f=3 test",
+          "passed": "True",
+          "notes": "N_f=3: Physical case"
+        },
+        {
+          "name": "N_f=6 test",
+          "passed": true,
+          "notes": "N_f=6: Still AF"
+        },
+        {
+          "name": "N_f=10 test",
+          "passed": true,
+          "notes": "N_f=10: Near conformal window"
+        },
+        {
+          "name": "N_f=16 test",
+          "passed": true,
+          "notes": "N_f=16: Edge of AF"
+        },
+        {
+          "name": "N_f=17 test",
+          "passed": true,
+          "notes": "N_f=17: Beyond AF limit"
+        }
+      ],
+      "ZN": [
+        {
+          "name": "|Z_3|=3 matches stella geometry",
+          "passed": "True",
+          "notes": ""
+        }
+      ]
+    },
+    "B_constraint_counting": {
+      "counting": [
+        {
+          "name": "Constraint counting",
+          "passed": true,
+          "notes": "5 DOF, 5 constraints"
+        }
+      ],
+      "dag": [
+        {
+          "name": "DAG acyclicity",
+          "passed": true,
+          "notes": "Levels: 0 \u2192 1 \u2192 2 with no back-edges"
+        },
+        {
+          "name": "Constant map property",
+          "passed": true,
+          "notes": "Level-0 constants from topology \u2192 f is constant \u2192 unique fixed point"
+        }
+      ],
+      "jacobian": [
+        {
+          "name": "Jacobian is zero",
+          "passed": true,
+          "notes": "Constant map \u2192 J_F = 0 \u2192 unique fixed point"
+        }
+      ]
+    },
+    "C_bootstrap_necessity": [
+      {
+        "name": "E\u2085 from asymptotic freedom",
+        "passed": true,
+        "expected": 0.716197243913529,
+        "computed": 0.716197243913529
+      },
+      {
+        "name": "E\u2082 from dim. transmutation",
+        "passed": "True",
+        "expected": 2.5378368495988343e+19,
+        "computed": 2.5378368495988343e+19
+      },
+      {
+        "name": "E\u2083 from holographic bound",
+        "passed": "True",
+        "expected": 2.252614659630118,
+        "computed": 2.252614659630118
+      },
+      {
+        "name": "E\u2084 from maximum entropy",
+        "passed": true,
+        "expected": 0.015625,
+        "computed": 0.015625
+      }
+    ],
+    "unified": [
+      {
+        "name": "All fixed-point values",
+        "passed": true,
+        "notes": "5 observables match expected CG values"
+      },
+      {
+        "name": "Physical scale agreement",
+        "passed": "True",
+        "notes": "1.37\u03c3 from FLAG 2024"
+      }
+    ]
+  }
+}

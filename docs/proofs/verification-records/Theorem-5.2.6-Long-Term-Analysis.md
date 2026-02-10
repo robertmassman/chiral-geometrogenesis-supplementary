@@ -73,9 +73,9 @@ This is because it depends only on dim(adj), not the phase.
 ### 2.1 The Puzzle
 
 CG predicts: 1/α_s^{CG}(M_P) = 64
-NNLO QCD running gives: 1/α_s^{MS-bar}(M_P) = 99.3
+~~NNLO QCD running gives: 1/α_s^{MS-bar}(M_P) = 99.3~~ (corrected 2026-02-08: NNLO running bug fix — the value ~99.3 came from a factor-of-2 bug; correct NNLO running gives ~52-55)
 
-Ratio: 99.3/64 = 1.55 ≈ π/2 = 1.571
+~~Ratio: 99.3/64 = 1.55 ≈ π/2 = 1.571~~ (corrected 2026-02-08: this ratio was an artifact of the buggy NNLO value)
 
 ### 2.2 Resolution: Coupling Definition Mismatch
 
@@ -101,9 +101,9 @@ $$\frac{1/\alpha_s^{MS}}{1/\alpha_s^{CG}} = \frac{\pi}{2}$$
 Prediction:
 $$\frac{1}{\alpha_s^{MS}(M_P)} = 64 \times \frac{\pi}{2} = 100.5$$
 
-NNLO result: 99.3
+~~NNLO result: 99.3~~ (corrected 2026-02-08: NNLO running bug fix — the value ~99.3 came from a factor-of-2 bug in `theorem_5_2_6_nnlo_running.py`; correct NNLO running gives ~52-55)
 
-**Agreement: 1.2%**
+~~**Agreement: 1.2%**~~ (corrected 2026-02-08: the apparent agreement was with a buggy value; comparison with correct SM running is under investigation)
 
 ### 2.4 Geometric Interpretation
 
@@ -223,7 +223,7 @@ The analysis of Long-Term approaches reveals that the CG framework is:
 | Quantity | CG Prediction | Experimental/Theoretical | Agreement |
 |----------|---------------|--------------------------|-----------|
 | M_P | 1.12×10¹⁹ GeV | 1.22×10¹⁹ GeV | **91.5%** |
-| 1/α_s^{MS}(M_P) | 100.5 | 99.3 (NNLO) | **1.2%** |
+| 1/α_s^{MS}(M_P) | 100.5 | ~~99.3 (NNLO)~~ ~52-55 (corrected) | ~~**1.2%**~~ under revision (corrected 2026-02-08: NNLO running bug fix) |
 | g* (AS fixed pt) | 0.5 | 0.4-0.7 | **EXACT** |
 | S_EE^{SU(3)}/S_EE^{SU(2)} | 8/3 | awaiting lattice | **TESTABLE** |
 

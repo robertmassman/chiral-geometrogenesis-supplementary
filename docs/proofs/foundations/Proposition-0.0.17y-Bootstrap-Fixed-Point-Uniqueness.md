@@ -100,6 +100,8 @@ $$\frac{1}{\alpha_s(M_P)} = (N_c^2 - 1)^2 = 64$$
 
 **Origin:** Equipartition over adj⊗adj gluon channels maximizes entropy.
 
+**Edge-mode decomposition ([Prop 0.0.17ac](Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)):** The 64 channels decompose as 52 local running face modes + 12 non-local non-running holonomy modes. The running coupling is 1/α_s^{running} = 52 (matching QCD to ~1%), while the total exponent 64 = 52 + 12 is preserved in the hierarchy formula (Eq. 2). This decomposition does not affect the bootstrap uniqueness proof (which uses the total 64).
+
 ### Equation 5: β-Function from Index Theorem (Prop 0.0.17t)
 
 $$b_0 = \frac{11N_c - 2N_f}{12\pi} = \frac{27}{12\pi} = \frac{9}{4\pi} \approx 0.716$$
@@ -590,6 +592,7 @@ All values determined by (N_c, N_f, |Z₃|) = (3, 3, 3). The overall scale ℓ_P
 - Proposition 0.0.17t: β-function from index theorem
 - Proposition 0.0.17v: Holographic self-encoding
 - Proposition 0.0.17w: UV coupling from maximum entropy
+- **[Proposition 0.0.17ac](Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md):** Edge-mode decomposition — refines 64 = 52 (running) + 12 (holonomy)
 
 ### 8.2 Enables (Other Results That Use This)
 

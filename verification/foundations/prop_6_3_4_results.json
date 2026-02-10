@@ -1,0 +1,87 @@
+{
+  "proposition": "6.3.4",
+  "title": "Higgs Z-Gamma Decay (h -> Zgamma)",
+  "timestamp": "2026-02-09T20:59:58.762003",
+  "tests_passed": 11,
+  "tests_total": 11,
+  "results": {
+    "Gamma_Zgamma_keV": 6.252504786137546,
+    "BR_Zgamma": 0.001525001167350621,
+    "Gamma_gammagamma_keV": 9.299222244441754,
+    "BR_ratio_Zgamma_gg": 0.6723685725303249,
+    "mu_Zgamma": 0.9893203775534093,
+    "phase_space_factor": 0.1035101578248078,
+    "A_total_real": 5.470244510279965,
+    "A_total_imag": -0.0038058904602180682,
+    "A_total_squared": 29.923589487050293,
+    "contributions": {
+      "W": {
+        "real": 5.772683098668691,
+        "imag": 0.0,
+        "abs": 5.772683098668691
+      },
+      "top": {
+        "real": -0.3092436314633408,
+        "imag": 0.0,
+        "abs": 0.3092436314633408
+      },
+      "bottom": {
+        "real": 0.0066349601445022,
+        "imag": -0.0037326685461473237,
+        "abs": 0.00761285167296265
+      },
+      "tau": {
+        "real": 0.00017008293011249836,
+        "imag": -7.322191407074441e-05,
+        "abs": 0.00018517465219580265
+      }
+    }
+  },
+  "test_results": [
+    {
+      "name": "g(tau) function",
+      "passed": true
+    },
+    {
+      "name": "I1, I2 consistency",
+      "passed": true
+    },
+    {
+      "name": "M_Z -> 0 limit",
+      "passed": true
+    },
+    {
+      "name": "Loop function values",
+      "passed": true
+    },
+    {
+      "name": "Fermion couplings",
+      "passed": true
+    },
+    {
+      "name": "Phase space factor",
+      "passed": true
+    },
+    {
+      "name": "Total amplitude",
+      "passed": true
+    },
+    {
+      "name": "Decay width",
+      "passed": true
+    },
+    {
+      "name": "Branching ratio",
+      "passed": true
+    },
+    {
+      "name": "BR ratio Zgamma/gg",
+      "passed": true
+    },
+    {
+      "name": "m_H=M_Z threshold",
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED"
+}

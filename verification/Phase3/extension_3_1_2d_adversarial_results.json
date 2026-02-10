@@ -1,0 +1,163 @@
+{
+  "theorem": "Extension 3.1.2d",
+  "title": "Complete PMNS Parameter Derivation - Adversarial Physics Verification",
+  "timestamp": "2026-02-07T16:52:01.466267",
+  "lambda": 0.22451398828979266,
+  "phi": 1.618033988749895,
+  "verifications": [
+    {
+      "test": "theta12_dimensional_consistency",
+      "theta12_degrees_interp": 32.05090268449161,
+      "theta12_radians_interp": 33.469740160338176,
+      "theta12_all_radians": 33.46974016033818,
+      "dimensional_error_confirmed": "True",
+      "passed": "True"
+    },
+    {
+      "test": "nufit60_comparison",
+      "comparisons": [
+        {
+          "dataset": "NuFIT 5.x (document uses)",
+          "sin2_theta12_pred": 0.3041483950738122,
+          "sin2_theta12_obs": 0.303,
+          "sin2_theta12_sigma": 0.09569958948435024,
+          "delta_CP_pred": 199.9526192566396,
+          "delta_CP_obs": 197.0,
+          "delta_CP_sigma": 0.12302580235998306,
+          "r_pred": 0.029102224205847772,
+          "r_obs": 0.029514717581543354,
+          "r_percent": 1.397585372639749
+        },
+        {
+          "dataset": "NuFIT 6.0 IC19 (actual)",
+          "sin2_theta12_pred": 0.3041483950738122,
+          "sin2_theta12_obs": 0.307,
+          "sin2_theta12_sigma": 0.2376337438489834,
+          "delta_CP_pred": 199.9526192566396,
+          "delta_CP_obs": 177.0,
+          "delta_CP_sigma": 1.1476309628319796,
+          "r_pred": 0.029102224205847772,
+          "r_obs": 0.029558011049723762,
+          "r_percent": 1.5420078269449367
+        },
+        {
+          "dataset": "NuFIT 6.0 IC24 (actual)",
+          "sin2_theta12_pred": 0.3041483950738122,
+          "sin2_theta12_obs": 0.308,
+          "sin2_theta12_sigma": 0.3209670771823168,
+          "delta_CP_pred": 199.9526192566396,
+          "delta_CP_obs": 212.0,
+          "delta_CP_sigma": 0.3543347277458943,
+          "r_pred": 0.029102224205847772,
+          "r_obs": 0.029805013927576604,
+          "r_percent": 2.357958038323837
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "tbm_limit_recovery",
+      "theta12_limit": 44.999999994270425,
+      "theta12_tbm": 35.264389682754654,
+      "theta23_limit": 45.0,
+      "theta13_limit": 3.541073915171299e-09,
+      "theta12_recovers_tbm": "False",
+      "theta23_recovers_tbm": true,
+      "theta13_recovers_tbm": "True",
+      "passed": "False"
+    },
+    {
+      "test": "jarlskog_consistency",
+      "J_predicted": -0.011307743437252963,
+      "J_nufit5x": -0.009653376747474345,
+      "J_nufit60_IC19": 0.0017359130944756363,
+      "J_max": 0.03316865151784975,
+      "document_claims_observed": 0.033,
+      "jmax_confusion_confirmed": true,
+      "passed": true
+    },
+    {
+      "test": "deltaCP_formula_consistency",
+      "formula_a_value": 49.952619256639586,
+      "formula_b_value": 52.523292150113555,
+      "difference_deg": 2.5706728934739687,
+      "delta_cp_a": 199.9526192566396,
+      "delta_cp_b": 202.52329215011355,
+      "algebraic_error_confirmed": true,
+      "passed": true
+    },
+    {
+      "test": "mass_ratio_sensitivity",
+      "r_observed": 0.029558011049723762,
+      "candidates": [
+        {
+          "formula": "lambda^2 / sqrt(3)",
+          "value": 0.029102224205847772,
+          "pct_error": 1.5420078269449367
+        },
+        {
+          "formula": "lambda^2 / phi",
+          "value": 0.031152949374526808,
+          "pct_error": 5.395959566156099
+        },
+        {
+          "formula": "lambda^2 * phi / 3",
+          "value": 0.027186493437438657,
+          "pct_error": 8.023265192964558
+        },
+        {
+          "formula": "lambda^2 * cos(60)",
+          "value": 0.025203265468894585,
+          "pct_error": 14.732877572524874
+        },
+        {
+          "formula": "lambda^2 / 2",
+          "value": 0.02520326546889458,
+          "pct_error": 14.732877572524899
+        },
+        {
+          "formula": "lambda^2 / sqrt(2)",
+          "value": 0.035642799842200215,
+          "pct_error": 20.58592096146239
+        },
+        {
+          "formula": "lambda^2 / pi",
+          "value": 0.01604489712572739,
+          "pct_error": 45.71726392978211
+        },
+        {
+          "formula": "lambda^3 / (1-lambda)",
+          "value": 0.014593391919137446,
+          "pct_error": 50.62796378759108
+        },
+        {
+          "formula": "lambda^2",
+          "value": 0.05040653093778916,
+          "pct_error": 70.5342448549502
+        }
+      ],
+      "num_within_5pct": 1,
+      "passed": true
+    },
+    {
+      "test": "parameter_count",
+      "n_measured": 2,
+      "n_structural": 6,
+      "n_constants": 1,
+      "n_outputs": 5,
+      "overfitting_detected": true,
+      "passed": true
+    },
+    {
+      "test": "section54_numerical",
+      "computed_deg": 0.8244734132751576,
+      "claimed_deg": 1.5,
+      "discrepancy_factor": 1.819343081108419,
+      "error_confirmed": "True",
+      "passed": "True"
+    }
+  ],
+  "issues_confirmed": "7",
+  "total_issues_checked": 8,
+  "overall_status": "ISSUES CONFIRMED"
+}

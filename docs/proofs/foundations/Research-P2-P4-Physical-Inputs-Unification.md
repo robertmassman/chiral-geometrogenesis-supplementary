@@ -77,7 +77,7 @@ See: [Proposition-0.0.17l-Internal-Frequency-From-Casimir-Equipartition.md](Prop
 | Explicit Casimir mode sum | 512-face mesh, 49 eigenvalues | f = 0.99 ± 0.01 ✅ |
 | UV coupling 1/α_s = 64 | adj⊗adj = 64 channels, equipartition | α_s = 1/64 DERIVED ✅ |
 | QCD running validation | Two-loop with thresholds | α_s(M_Z) = 0.1180 (0.1% from PDG) ✅ |
-| Scheme conversion | θ_O/θ_T dihedral ratio | 1/α_s^{MS-bar} = 99.34 (0.038% from NNLO) ✅ |
+| ~~Scheme conversion~~ | ~~θ_O/θ_T dihedral ratio~~ | ~~1/α_s^{MS-bar} = 99.34 (0.038% from NNLO)~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix — the NNLO target ~99 was produced by a factor-of-2 bug using ln(μ²/μ₀²) instead of ln(μ/μ₀); correct NNLO value is ~52-55; the θ_O/θ_T = 1.55215 conversion factor was reverse-engineered to match the buggy value) |
 | Hierarchy R_stella/ℓ_P | Theorem 5.2.6 dimensional transmutation | M_P = 1.12×10¹⁹ GeV (91.5%) ✅ |
 | **f_π from √σ** | **Phase-lock stiffness counting** | **f_π = 87.7 MeV (95.2%)** ✅ |
 | **ω from √σ** | **Cartan torus mode partition (Prop 0.0.17l)** | **ω = 219 MeV (VERIFIED)** ✅ |
@@ -89,7 +89,7 @@ See: [Proposition-0.0.17l-Internal-Frequency-From-Casimir-Equipartition.md](Prop
 | **ε(T) temperature** | **ε(T) = ε₀ × √(1-(T/T_c)²) (Prop 0.0.17o §12)** | **R_obs constant to 4%** ✅ |
 | **R_stella from M_P** | **Dimensional transmutation (Prop 0.0.17q)** | **R_stella = 0.41 fm (91%)** ✅ |
 | **9% discrepancy analysis** | **Higher-loop + non-perturbative corrections** | **REDUCIBLE (not fundamental)** ✅ |
-| **UV coupling validation** | **64 × θ_O/θ_T = 99.34 vs NNLO 99.3** | **0.04% agreement** ✅ |
+| ~~**UV coupling validation**~~ | ~~**64 × θ_O/θ_T = 99.34 vs NNLO 99.3**~~ | ~~**0.04% agreement**~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix — correct NNLO 1/α_s(M_P) ~ 52-55, not ~99; CG prediction 1/α_s = 64 has genuine ~17-22% discrepancy) |
 | **Lattice spacing a** | **Holographic self-consistency (Prop 0.0.17r)** | **a² = (8/√3)ln(3)ℓ_P² DERIVED** ✅ |
 
 **Verification:**
@@ -109,7 +109,7 @@ See: [Proposition-0.0.17l-Internal-Frequency-From-Casimir-Equipartition.md](Prop
 - `proposition_0_0_17q_discrepancy_corrected.py` — Final analysis: discrepancy is REDUCIBLE
 - `proposition_0_0_17r_verification.py` — **9/9 tests pass** (Path E: Lattice spacing from holographic self-consistency)
 - `proposition_0_0_17s_verification.py` — **7/7 tests pass** (α_s from gauge unification)
-- `proposition_0_0_17s_scheme_derivation.py` — Heat kernel derivation of scheme conversion factor
+- `proposition_0_0_17s_scheme_derivation.py` — ~~Heat kernel derivation of scheme conversion factor~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix -- scheme conversion interpretation invalid)
 - `proposition_0_0_17t_verification.py` — **11/11 tests pass** (topological origin of hierarchy)
 - `proposition_0_0_17t_index_derivation.py` — Rigorous index derivations (Z₃ → SU(3))
 - `proposition_0_0_17t_complete_derivations.py` — Complete derivations for all verification issues
@@ -249,7 +249,7 @@ The one-loop prediction gives R_stella = 0.41 fm vs observed 0.44847 fm (9% gap)
 | Experimental uncertainty | ~7% (440 ± 30 MeV) | √σ measurement |
 
 **Key findings:**
-- UV coupling validated to **0.04%**: 64 × 1.55215 = 99.34 vs NNLO 99.3
+- ~~UV coupling validated to 0.04%: 64 × 1.55215 = 99.34 vs NNLO 99.3~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix — correct NNLO 1/α_s(M_P) ~ 52-55; CG prediction 1/α_s = 64 has genuine ~17-22% discrepancy)
 - Hierarchy correctly captured: log₁₀(R/ℓ_P) = 19.40 (pred) vs 19.44 (obs) — **99.8%**
 - With ~8% non-perturbative correction: R_stella = 0.44847 fm (1.6% discrepancy)
 - Prediction is only **1.2σ** from observed central value
@@ -426,7 +426,7 @@ $$\boxed{\alpha = \frac{|Z(G)| \times n_{\text{zero}}}{2} = \frac{3 \times 1}{2}
 
 | Path | Difficulty | Impact | Likelihood | Status |
 |------|------------|--------|------------|--------|
-| **A: R_stella from M_P** | ~~High~~ | Very High | ~~Low~~ | ✅ **COMPLETE** (Prop 0.0.17q) — R_stella = 0.41 fm (91%); UV coupling 0.04%; 9% gap REDUCIBLE |
+| **A: R_stella from M_P** | ~~High~~ | Very High | ~~Low~~ | ✅ **COMPLETE** (Prop 0.0.17q) — R_stella = 0.41 fm (91%); ~~UV coupling 0.04%~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix); 9% gap REDUCIBLE |
 | **B: σ from geometry** | ~~Very High~~ | Very High | ~~Very Low~~ | ✅ **COMPLETE + PEER-REVIEW READY** |
 | **C: f_π from phase-lock** | ~~Medium-High~~ | High | ~~Medium~~ | ✅ **FULLY DERIVED** (f_π = √σ/[(N_c-1)+(N_f²-1)], 95.2%, 5/5 closed) |
 | **D: ω from Casimir** | ~~Medium~~ | High | ~~Medium~~ | ✅ **FULLY DERIVED** (ω = √σ/(N_c-1), 91%, Prop 0.0.17l) |
@@ -501,7 +501,7 @@ v_χ = f_π = 96 MeV ← Prop 0.0.17m (104%, DERIVED via NLσM identification)
 **Discrepancy Status:**
 | Aspect | Agreement | Notes |
 |--------|-----------|-------|
-| UV coupling | **99.96%** | 64 × 1.55215 = 99.34 vs NNLO 99.3 |
+| ~~UV coupling~~ | ~~**99.96%**~~ | ~~64 × 1.55215 = 99.34 vs NNLO 99.3~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix — correct NNLO 1/α_s(M_P) ~ 52-55; CG 1/α_s = 64 has ~17-22% discrepancy; the θ_O/θ_T scheme conversion was reverse-engineered to match the buggy ~99 value) |
 | Hierarchy | **99.8%** | log₁₀(R/ℓ_P) = 19.40 vs 19.44 |
 | Absolute scale | **91%** | 0.41 fm vs 0.44847 fm (one-loop) |
 | Discrepancy | **REDUCIBLE** | Via NNLO + non-perturbative corrections |
@@ -650,30 +650,19 @@ Geometric candidates:
 | Approach | Method | Result | Scheme |
 |----------|--------|--------|--------|
 | **Equipartition** | adj⊗adj = 64 channels (Prop 0.0.17j §6.3) | 1/α_s = 64 | Geometric |
-| **Unification** | sin²θ_W = 3/8 + RG running (Thm 2.4.1) | 1/α_s ≈ 99 | MS-bar |
-| **Conversion** | θ_O/θ_T = 1.55215 (heat kernel derivation) | 64 × 1.55 = 99.3 | — |
+| **Unification** | sin²θ_W = 3/8 + RG running (Thm 2.4.1) | ~~1/α_s ≈ 99~~ **corrected: ~52-55** (corrected 2026-02-08: NNLO running bug fix) | MS-bar |
+| ~~**Conversion**~~ | ~~θ_O/θ_T = 1.55215 (heat kernel derivation)~~ | ~~64 × 1.55 = 99.3~~ | **RETRACTED** |
 
-**Key results:**
-- Two independent derivations converge via scheme conversion factor
-- Agreement with NNLO QCD: **0.04%** (1/α_s^{MS-bar} = 99.34 vs 99.3)
-- α_s(M_Z) = 0.1180 matches PDG 2024 (0.1180 ± 0.0009) to **0.1%**
+> **RETRACTION NOTE (corrected 2026-02-08: NNLO running bug fix):** The θ_O/θ_T = 1.55215 "scheme conversion factor" was reverse-engineered to match the buggy NNLO running result of 1/α_s(M_P) ~ 99. The NNLO running script had a factor-of-2 bug (using ln(μ²/μ₀²) instead of ln(μ/μ₀)), making it output ~96-99 instead of the correct ~52-55. After correction, the CG prediction 1/α_s = 64 has a genuine ~17-22% discrepancy from the required ~52-55. The 0.038%/0.04% agreement claim, 33x improvement claim, and 99.34 value are all retracted. The heat kernel mathematics (dihedral angles, Balian & Bloch) is correct; the physical interpretation as a scheme conversion factor connecting geometric and MS-bar schemes was not justified.
 
-### Rigorous Scheme Conversion (θ_O/θ_T = 1.55215)
+**Surviving results:**
+- CG UV coupling: 1/α_s(M_P) = 64 (from equipartition over adj x adj channels) -- this is the geometric prediction
+- Correct NNLO running: 1/α_s(M_P) ~ 52-55 -- this is the standard QCD result
+- α_s(M_Z) = 0.1180 matches PDG 2024 (0.1180 +/- 0.0009) to **0.1%** -- this result is independent of the bug
 
-The scheme conversion factor is now **rigorously derived** via heat kernel methods:
+### ~~Rigorous Scheme Conversion (θ_O/θ_T = 1.55215)~~ RETRACTED
 
-| Component | Formula | Origin |
-|-----------|---------|--------|
-| **Heat kernel on polyhedron** | K(t) = V/(4πt)^(3/2) + A/(16πt) + χ/6 + edge term | Balian & Bloch (1970) |
-| **Edge contribution** | ∑_edges L_i(π - θ_i)/(24π√(4πt)) | Dihedral angle dependence |
-| **Tetrahedron** | Total edge length = 6, θ_T = arccos(1/3) | 4 vertices, 6 edges |
-| **Octahedron** | Total edge length = 12, θ_O = arccos(-1/3) | 6 vertices, 12 edges |
-| **Ratio** | θ_O/θ_T = 1.55215 | Supplementary angles: θ_O + θ_T = π |
-
-**Physical interpretation:**
-- **Geometric scheme:** Regularization via stella octangula boundary → uses θ_T
-- **MS-bar scheme:** Regularization via dual octahedral modes → uses θ_O
-- The ratio θ_O/θ_T connects these two renormalization schemes
+> **RETRACTED (corrected 2026-02-08: NNLO running bug fix).** The entire scheme conversion interpretation is retracted. The heat kernel dihedral angle mathematics is correct, but the ratio θ_O/θ_T = 1.55215 does not serve as a scheme conversion factor between geometric and MS-bar renormalization schemes. This ratio was reverse-engineered to match the buggy NNLO value of ~99.
 
 ### SUSY vs Non-SUSY Unification
 
@@ -695,10 +684,10 @@ The CG framework naturally evades proton decay constraints because:
 
 | Check | Result | Status |
 |-------|--------|--------|
-| Scheme conversion θ_O/θ_T | 1.55215 (0.003% from expected) | ✅ |
-| Two-path convergence | 99.34 vs 99.3 (0.04%) | ✅ |
+| ~~Scheme conversion θ_O/θ_T~~ | ~~1.55215 (0.003% from expected)~~ | **RETRACTED** (corrected 2026-02-08: NNLO running bug fix) |
+| ~~Two-path convergence~~ | ~~99.34 vs 99.3 (0.04%)~~ | **RETRACTED** (corrected 2026-02-08: NNLO running bug fix) |
 | α_s(M_Z) backward running | 0.1180 vs PDG 0.1180 (0.1%) | ✅ |
-| Heat kernel derivation | Edge terms scale correctly | ✅ |
+| ~~Heat kernel derivation~~ | ~~Edge terms scale correctly~~ | **RETRACTED** (math correct, physical interpretation invalid) |
 | Self-consistency chain | sin²θ_W → 1/α_GUT → 1/α_s | ✅ |
 
 **Verification scripts:**
@@ -780,7 +769,7 @@ The heat kernel K(t) on the stella octangula boundary has an asymptotic expansio
 
 $$K(t) = \frac{V}{(4\pi t)^{3/2}} + \frac{A}{16\pi t} + \frac{\chi}{6} + \sum_{\text{edges}} \frac{L_i(\pi - \theta_i)}{24\pi\sqrt{4\pi t}} + O(\sqrt{t})$$
 
-**Already used:** The edge term gives the scheme conversion factor θ_O/θ_T = 1.55215 (Prop 0.0.17s).
+**Previously claimed:** The edge term was claimed to give a scheme conversion factor θ_O/θ_T = 1.55215 (Prop 0.0.17s), but this interpretation has been **retracted** (corrected 2026-02-08: NNLO running bug fix — the "scheme conversion" was reverse-engineered to match a buggy NNLO running value).
 
 **Not yet explored:** The coefficient of the χ/6 term and its relationship to the hierarchy.
 

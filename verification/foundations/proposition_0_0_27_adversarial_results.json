@@ -1,0 +1,181 @@
+{
+  "proposition": "0.0.27",
+  "title": "Higgs Mass from Stella Octangula Geometry",
+  "date": "2026-02-08T07:01:33.798095",
+  "tests": [
+    {
+      "name": "m_H = sqrt(2*lambda)*v_H",
+      "passed": true,
+      "details": "m_H = sqrt(2*0.125)*246.7 = 123.35 GeV (expected 123.35)",
+      "severity": "normal"
+    },
+    {
+      "name": "sqrt(2*lambda) = 1/2 exactly",
+      "passed": true,
+      "details": "sqrt(2/8) = sqrt(1/4) = 0.500000000000000",
+      "severity": "normal"
+    },
+    {
+      "name": "lambda_exp from PDG values",
+      "passed": true,
+      "details": "lambda = 125.2^2 / (2*246.22^2) = 0.1293",
+      "severity": "normal"
+    },
+    {
+      "name": "lambda_CG vs MS-bar (Buttazzo et al.)",
+      "passed": true,
+      "details": "|0.125 - 0.12604| / 0.00206 = 0.5 sigma",
+      "severity": "normal"
+    },
+    {
+      "name": "Tree-level agreement (lambda)",
+      "passed": true,
+      "details": "Discrepancy: 3.3% (should be ~3.3%)",
+      "severity": "normal"
+    },
+    {
+      "name": "Vertex count = 8",
+      "passed": true,
+      "details": "V = 8 (4 + 4 from two tetrahedra)",
+      "severity": "normal"
+    },
+    {
+      "name": "Euler characteristic = 4",
+      "passed": true,
+      "details": "chi = V - E + F = 8 - 12 + 8 = 4 (= 2*chi(S^2))",
+      "severity": "normal"
+    },
+    {
+      "name": "V = F = 8 (self-duality)",
+      "passed": true,
+      "details": "V = 8, F = 8",
+      "severity": "normal"
+    },
+    {
+      "name": "K4 Laplacian eigenvalues = {0, 4, 4, 4}",
+      "passed": true,
+      "details": "Eigenvalues: [1.19237232e-16 4.00000000e+00 4.00000000e+00 4.00000000e+00]",
+      "severity": "normal"
+    },
+    {
+      "name": "Tr(L_K4) = 2*n_edges = 12",
+      "passed": true,
+      "details": "Tr(L) = 12.0",
+      "severity": "normal"
+    },
+    {
+      "name": "K4 propagator G_vv (diagonal)",
+      "passed": true,
+      "details": "G_vv = 0.400000, expected 0.400000",
+      "severity": "normal"
+    },
+    {
+      "name": "K4 propagator G_vw (off-diagonal)",
+      "passed": true,
+      "details": "G_vw = 0.200000, expected 0.200000",
+      "severity": "normal"
+    },
+    {
+      "name": "Top loop: m_t = v/sqrt(2) when y_t = 1",
+      "passed": true,
+      "details": "m_t = 174.44 GeV (= v/sqrt(2) = 174.44)",
+      "severity": "normal"
+    },
+    {
+      "name": "ln(m_t^2/m_H^2) = ln(2) when y_t=1, lambda=1/8",
+      "passed": true,
+      "details": "ln(m_t^2/m_H^2) = 0.6931, ln(2) = 0.6931",
+      "severity": "normal"
+    },
+    {
+      "name": "Top one-loop correction ~+4.2%",
+      "passed": true,
+      "details": "delta_top = 4.17%",
+      "severity": "normal"
+    },
+    {
+      "name": "W loop correction |delta_W| ~ 0.12%",
+      "passed": true,
+      "details": "|delta_W| = 0.118% (sign convention may differ; physical value is negative)",
+      "severity": "normal"
+    },
+    {
+      "name": "Z loop correction |delta_Z| ~ 0.06%",
+      "passed": true,
+      "details": "|delta_Z| = 0.062% (sign convention may differ; physical value is negative)",
+      "severity": "normal"
+    },
+    {
+      "name": "One-loop prediction m_H ~ 128 GeV",
+      "passed": true,
+      "details": "m_H(1-loop) = 128.7 GeV (this is the honest CG prediction)",
+      "severity": "normal"
+    },
+    {
+      "name": "NNLO prediction m_H ~ 125.2 GeV",
+      "passed": true,
+      "details": "m_H(NNLO) = 125.2 GeV vs PDG 125.2 GeV (NOTE: NNLO imports SM two-loop structure)",
+      "severity": "normal"
+    },
+    {
+      "name": "Perturbativity: lambda << lambda_max",
+      "passed": true,
+      "details": "lambda/lambda_max = 3.0%",
+      "severity": "normal"
+    },
+    {
+      "name": "Unitarity: |a_0| << 1/2",
+      "passed": true,
+      "details": "|a_0| = lambda/(8*pi) = 0.0050 << 0.5",
+      "severity": "normal"
+    },
+    {
+      "name": "Vacuum stability: lambda > 0 at EW scale",
+      "passed": true,
+      "details": "lambda = 0.125 > 0",
+      "severity": "normal"
+    },
+    {
+      "name": "Z3 eigenspaces: N_gen/n_24cell = 3/24 = 1/8",
+      "passed": true,
+      "details": "3/24 = 0.125",
+      "severity": "normal"
+    },
+    {
+      "name": "Representation theory: |Z3|/|F4/Oh| = 3/24",
+      "passed": true,
+      "details": "|Z3| = 3, |F4/Oh| = 24, ratio = 0.125",
+      "severity": "normal"
+    },
+    {
+      "name": "Vertex counting: 1/n_modes = 1/8",
+      "passed": true,
+      "details": "1/8 = 0.125",
+      "severity": "normal"
+    },
+    {
+      "name": "NNLO table entries sum to claimed +1.5%",
+      "passed": false,
+      "details": "Sum = 1.1% (claimed +1.5%, discrepancy = -0.4%)",
+      "severity": "adversarial"
+    },
+    {
+      "name": "One-loop table entries sum to claimed +4.1%",
+      "passed": true,
+      "details": "Sum = 4.12% (claimed +4.1%)",
+      "severity": "normal"
+    },
+    {
+      "name": "Only n=8 gives m_H in PDG range",
+      "passed": true,
+      "details": "n=4: 174, n=8: 123, n=12: 101, n=24: 71 GeV",
+      "severity": "normal"
+    },
+    {
+      "name": "m_H(1-loop) sensitivity to y_t (\u00b110% -> span < 10 GeV)",
+      "passed": true,
+      "details": "Range: 126.4 - 131.5 GeV (span = 5.1 GeV; shows moderate sensitivity to y_t)",
+      "severity": "normal"
+    }
+  ]
+}

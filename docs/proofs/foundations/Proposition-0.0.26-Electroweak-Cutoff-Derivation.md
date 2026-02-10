@@ -1479,6 +1479,9 @@ DERIVED CUTOFF:           Λ_EW = 2√π × (2/√π) × v_H = 4 v_H = 982 GeV
 3. Standardized numerical values: λ-corrected = 982 GeV, gauge algebra = 985 GeV
 4. Added critical dependency note for Proposition 0.0.27 in Dependencies section
 
+### Lean 4 Formalization
+- [Proposition_0_0_26.lean](../../../lean/ChiralGeometrogenesis/Foundations/Proposition_0_0_26.lean) — Machine-verified formalization
+
 ### Adversarial Physics Verification
 
 **Scripts:**

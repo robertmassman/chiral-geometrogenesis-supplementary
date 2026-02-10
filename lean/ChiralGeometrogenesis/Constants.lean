@@ -564,6 +564,36 @@ theorem planck_length_pos : planck_length_SI > 0 := by
   · apply mul_pos hbar_SI_pos G_SI_pos
   · exact pow_pos c_SI_pos 3
 
+/-- Boltzmann constant: k_B = 1.380649 × 10⁻²³ J/K (exact by definition).
+
+    **Citation:** BIPM SI definition (2019) -/
+noncomputable def kB_SI : ℝ := 1.380649e-23
+
+/-- k_B > 0 -/
+theorem kB_SI_pos : kB_SI > 0 := by unfold kB_SI; norm_num
+
+/-- Planck temperature: T_P = √(ℏc⁵/(G k_B²)) ≈ 1.416784 × 10³² K.
+
+    Equivalently: T_P = M_P c² / k_B = E_P / k_B.
+
+    **Physical meaning:**
+    The temperature at which thermal wavelength equals the Planck length.
+    At T_P, each Planck-area cell on a surface carries O(1) bits of entropy.
+
+    **Citation:** CODATA 2018, Proposition 0.0.30 §4.2 -/
+noncomputable def planck_temperature_SI : ℝ := Real.sqrt (hbar_SI * c_SI^5 / (G_SI * kB_SI^2))
+
+/-- Planck temperature numerical value (for direct comparisons) -/
+noncomputable def planck_temperature_value : ℝ := 1.416784e32
+
+/-- Planck temperature is positive -/
+theorem planck_temperature_pos : planck_temperature_SI > 0 := by
+  unfold planck_temperature_SI
+  apply Real.sqrt_pos.mpr
+  apply div_pos
+  · apply mul_pos hbar_SI_pos (pow_pos c_SI_pos 5)
+  · apply mul_pos G_SI_pos (sq_pos_of_pos kB_SI_pos)
+
 /-! ═══════════════════════════════════════════════════════════════════════════
     SECTION 8: GRAVITATIONAL CONSTANTS STRUCTURE
     ═══════════════════════════════════════════════════════════════════════════
@@ -1514,6 +1544,111 @@ noncomputable def mass_ratio_function (x : ℝ) : ℝ := (1 - x) / (1 + x)
 
 /-- f(m_μ/m_τ) ≈ 0.889 -/
 noncomputable def f_mu_tau : ℝ := mass_ratio_function (m_muon_MeV / m_tau_MeV)
+
+/-! ### NuFIT 6.0 PMNS Observables (Extension 3.1.2d)
+
+Additional NuFIT 6.0 values needed for the complete PMNS parameter derivation.
+Two datasets are maintained: IC19 (without SK atmospheric) and IC24 (with SK atmospheric).
+
+Reference: NuFIT 6.0, arXiv:2410.05380 (Esteban et al. 2024)
+-/
+
+/-- sin²θ₁₂ observed (NuFIT 6.0, IC19, NO): 0.307 ± 0.012.
+
+    **Physical meaning:**
+    The solar mixing angle squared sine, governing ν_e ↔ ν₂ oscillations.
+
+    **Citation:** NuFIT 6.0 (2024), Table 1, Normal Ordering, IC19 -/
+noncomputable def sin_sq_theta12_observed : ℝ := 0.307
+
+/-- sin²θ₁₂ > 0 -/
+theorem sin_sq_theta12_observed_pos : sin_sq_theta12_observed > 0 := by
+  unfold sin_sq_theta12_observed; norm_num
+
+/-- sin²θ₁₂ < 1 -/
+theorem sin_sq_theta12_observed_lt_one : sin_sq_theta12_observed < 1 := by
+  unfold sin_sq_theta12_observed; norm_num
+
+/-- Uncertainty in sin²θ₁₂: ±0.012 (1σ) -/
+noncomputable def sin_sq_theta12_uncertainty : ℝ := 0.012
+
+/-- NuFIT 6.0 θ₁₂ best fit: 33.68° ± 0.72° (IC19, NO).
+
+    **Note:** This differs slightly from the generic theta12_deg = 33.41° above,
+    which may use a different NuFIT extraction. For Extension 3.1.2d comparisons,
+    use this value.
+
+    **Citation:** NuFIT 6.0 (2024), IC19 -/
+noncomputable def theta12_nufit60_IC19_deg : ℝ := 33.68
+
+/-- θ₁₂ uncertainty: ±0.72° (1σ) -/
+noncomputable def theta12_nufit60_uncertainty_deg : ℝ := 0.72
+
+/-- sin²θ₁₃ observed (NuFIT 6.0, IC19, NO): 0.02195 ± 0.00054.
+
+    **Citation:** NuFIT 6.0 (2024), IC19, Normal Ordering -/
+noncomputable def sin_sq_theta13_observed : ℝ := 0.02195
+
+/-- sin²θ₁₃ > 0 -/
+theorem sin_sq_theta13_observed_pos : sin_sq_theta13_observed > 0 := by
+  unfold sin_sq_theta13_observed; norm_num
+
+/-- NuFIT 6.0 δ_CP best fit (IC19, NO): 177° ± 20°.
+
+    **Note:** IC19 (without SK atmospheric) gives δ_CP near CP conservation.
+
+    **Citation:** NuFIT 6.0 (2024), IC19 -/
+noncomputable def delta_CP_nufit60_IC19_deg : ℝ := 177
+
+/-- NuFIT 6.0 δ_CP best fit (IC24, NO): 212° ± 34°.
+
+    **Note:** IC24 (with SK atmospheric) gives significant CP violation.
+
+    **Citation:** NuFIT 6.0 (2024), IC24 -/
+noncomputable def delta_CP_nufit60_IC24_deg : ℝ := 212
+
+/-- Neutrino mass squared difference Δm²₂₁ = 7.49 × 10⁻⁵ eV² (NuFIT 6.0).
+
+    **Physical meaning:**
+    The solar mass splitting governing ν_e → ν_μ oscillations in the Sun.
+    This value is common to both IC19 and IC24 datasets.
+
+    **Citation:** NuFIT 6.0 (2024), Normal Ordering -/
+noncomputable def delta_m2_21_eV2 : ℝ := 7.49e-5
+
+/-- Δm²₂₁ > 0 -/
+theorem delta_m2_21_pos : delta_m2_21_eV2 > 0 := by
+  unfold delta_m2_21_eV2; norm_num
+
+/-- Uncertainty in Δm²₂₁: ±0.19 × 10⁻⁵ eV² (1σ range: 7.30–7.68) -/
+noncomputable def delta_m2_21_uncertainty_eV2 : ℝ := 0.19e-5
+
+/-- Neutrino mass squared difference Δm²₃₁ = 2.534 × 10⁻³ eV² (NuFIT 6.0, IC19, NO).
+
+    **Physical meaning:**
+    The atmospheric mass splitting governing ν_μ → ν_τ oscillations.
+    Positive value indicates normal mass ordering (m₃ > m₂ > m₁).
+
+    **Citation:** NuFIT 6.0 (2024), IC19, Normal Ordering -/
+noncomputable def delta_m2_31_IC19_eV2 : ℝ := 2.534e-3
+
+/-- Δm²₃₁ > 0 (normal ordering) -/
+theorem delta_m2_31_IC19_pos : delta_m2_31_IC19_eV2 > 0 := by
+  unfold delta_m2_31_IC19_eV2; norm_num
+
+/-- Observed mass squared ratio r = Δm²₂₁/Δm²₃₁ ≈ 0.0296 (NuFIT 6.0, IC19).
+
+    **Physical meaning:**
+    The ratio of solar to atmospheric mass splittings. A key structural
+    parameter predicted by the A₄ → Z₃ breaking pattern.
+
+    **Calculation:** 7.49e-5 / 2.534e-3 = 0.02956 -/
+noncomputable def mass_squared_ratio_observed : ℝ := delta_m2_21_eV2 / delta_m2_31_IC19_eV2
+
+/-- r_obs > 0 -/
+theorem mass_squared_ratio_observed_pos : mass_squared_ratio_observed > 0 := by
+  unfold mass_squared_ratio_observed
+  exact div_pos delta_m2_21_pos delta_m2_31_IC19_pos
 
 /-! ═══════════════════════════════════════════════════════════════════════════
     SECTION 15: DARK MATTER AND COSMOLOGY CONSTANTS
@@ -3576,6 +3711,35 @@ theorem cosSqThetaW_lt_one : cosSqThetaW < 1 := by
 theorem sin_cos_theta_W_sum : sinSqThetaW + cosSqThetaW = 1 := by
   unfold cosSqThetaW; ring
 
+/-- cosθ_W (MS-bar at M_Z): cos(θ_W) = √(1 - sin²θ_W) ≈ 0.8768.
+
+    **Physical meaning:**
+    The cosine of the weak mixing angle in the MS-bar scheme.
+    Used in h → Zγ loop calculations where the Z coupling involves
+    factors of 1/cos(θ_W).
+
+    **Value:** √(1 - 0.23122) = √0.76878 ≈ 0.8768
+
+    **Citation:** PDG 2024, derived from sin²θ_W(MS-bar) = 0.23122 -/
+noncomputable def cos_theta_W_MSbar : ℝ := 0.8768
+
+/-- cos_theta_W > 0 -/
+theorem cos_theta_W_MSbar_pos : cos_theta_W_MSbar > 0 := by
+  unfold cos_theta_W_MSbar; norm_num
+
+/-- cos_theta_W < 1 -/
+theorem cos_theta_W_MSbar_lt_one : cos_theta_W_MSbar < 1 := by
+  unfold cos_theta_W_MSbar; norm_num
+
+/-- cos²θ_W(MS-bar) + sin²θ_W(MS-bar) ≈ 1 (consistency check).
+
+    cos_theta_W_MSbar² + sin_sq_theta_W_PDG
+    = 0.8768² + 0.23122 ≈ 0.76878 + 0.23122 ≈ 1.0000
+    (Small residual from rounding cos_theta_W to 4 decimal places) -/
+theorem cos_sin_MSbar_sum :
+    |cos_theta_W_MSbar^2 + sin_sq_theta_W_PDG - 1| < 0.0001 := by
+  unfold cos_theta_W_MSbar sin_sq_theta_W_PDG; norm_num
+
 /-- Number of stella octangula vertices: n = 8.
 
     **Physical meaning:**
@@ -3646,5 +3810,531 @@ theorem Lambda_LQT_pos : Lambda_LQT_GeV > 0 := by unfold Lambda_LQT_GeV; norm_nu
 
 /-- Λ_LQT > 1 TeV -/
 theorem Lambda_LQT_gt_TeV : Lambda_LQT_GeV > 1000 := by unfold Lambda_LQT_GeV; norm_num
+
+/-! ═══════════════════════════════════════════════════════════════════════════
+    SECTION 22a: SPHALERON CONSTANTS (PROPOSITION 4.2.4)
+    ═══════════════════════════════════════════════════════════════════════════
+
+    Constants for sphaleron rate and energy calculations.
+    Reference: docs/proofs/Phase4/Proposition-4.2.4-Sphaleron-Rate-From-CG-Topology.md
+-/
+
+/-- Sphaleron lattice prefactor: κ = 18 ± 3.
+
+    **Physical meaning:**
+    Non-perturbative prefactor in the sphaleron rate formula
+    Γ_sph = κ α_W⁵ T⁴ in the symmetric phase.
+
+    **Citation:** D'Onofrio, Rummukainen & Tranberg (2014),
+    Phys. Rev. Lett. 113:141602 [arXiv:1404.3565] -/
+noncomputable def sphaleron_kappa : ℝ := 18
+
+/-- κ > 0 -/
+theorem sphaleron_kappa_pos : sphaleron_kappa > 0 := by
+  unfold sphaleron_kappa; norm_num
+
+/-- Sphaleron shape function: B(λ_H/g₂²) ≈ 1.87.
+
+    **Physical meaning:**
+    Dimensionless shape function from the numerical sphaleron
+    profile solution. Depends on the ratio λ_H/g₂².
+
+    For λ_H/g₂² ≈ 0.30: B ≈ 1.87
+
+    Asymptotic limits:
+    - B(0) = 1.52 (pure gauge)
+    - B(∞) → 2.72 (heavy Higgs)
+
+    **Citation:** Klinkhamer & Manton (1984), Phys. Rev. D 30:2212;
+    Arnold & McLerran (1987), Phys. Rev. D 36:581 -/
+noncomputable def sphaleron_shape_B : ℝ := 1.87
+
+/-- B > 0 -/
+theorem sphaleron_shape_B_pos : sphaleron_shape_B > 0 := by
+  unfold sphaleron_shape_B; norm_num
+
+/-- B > 1 (shape function exceeds pure gauge limit) -/
+theorem sphaleron_shape_B_gt_one : sphaleron_shape_B > 1 := by
+  unfold sphaleron_shape_B; norm_num
+
+/-- SU(2) on-shell coupling: g₂ = 0.6528 (defined as 2M_W/v_H).
+
+    **Physical meaning:**
+    On-shell weak coupling used in sphaleron energy calculation.
+    g₂ = 2 × 80.37 / 246.22 = 0.6528
+
+    Note: This is slightly different from the Z-pole value g₂ = 0.653
+    used in g2_weak_coupling. The on-shell value is appropriate for
+    sphaleron calculations at T ~ 100 GeV.
+
+    **Citation:** Proposition 0.0.24, PDG 2024 -/
+noncomputable def g2_onshell : ℝ := 0.6528
+
+/-- g₂_onshell > 0 -/
+theorem g2_onshell_pos : g2_onshell > 0 := by
+  unfold g2_onshell; norm_num
+
+/-! ═══════════════════════════════════════════════════════════════════════════
+    SECTION 22: EDGE-MODE DECOMPOSITION (PROP 0.0.17ac)
+    ═══════════════════════════════════════════════════════════════════════════
+
+    Constants for the 64 = 52 + 12 decomposition of adj⊗adj channels
+    into running (local) and non-running (holonomy) modes on the
+    stella octangula.
+
+    Reference: Proposition 0.0.17ac
+-/
+
+/-- Cycle rank (first Betti number) of the complete graph K₄:
+    β₁(K₄) = |E| - |V| + 1 = 6 - 4 + 1 = 3.
+
+    Counts the number of independent closed loops in the
+    tetrahedral 1-skeleton.
+
+    **Citation:** Standard graph theory -/
+def cycle_rank_K4 : ℕ := 6 - 4 + 1
+
+/-- β₁(K₄) = 3 -/
+theorem cycle_rank_K4_value : cycle_rank_K4 = 3 := rfl
+
+/-- Cycle rank of the stella octangula 1-skeleton:
+    β₁(∂S) = β₁(K₊) + β₁(K₋) = 3 + 3 = 6.
+
+    For a disconnected graph with c = 2 components:
+    β₁ = |E| - |V| + c = 12 - 8 + 2 = 6.
+
+    **Citation:** Proposition 0.0.17ac, Lemma 3.2.2 -/
+def cycle_rank_stella : ℕ := 2 * cycle_rank_K4
+
+/-- β₁(∂S) = 6 -/
+theorem cycle_rank_stella_value : cycle_rank_stella = 6 := rfl
+
+/-- Dimension of the adj⊗adj tensor product for SU(N_c):
+    (N_c² - 1)² = 8² = 64 for SU(3).
+
+    The decomposition: 8⊗8 = 1 ⊕ 8_s ⊕ 8_a ⊕ 10 ⊕ 10̄ ⊕ 27.
+    Total: 1 + 8 + 8 + 10 + 10 + 27 = 64.
+
+    **Citation:** Proposition 0.0.17ac §3.1 -/
+def adj_tensor_dim (Nc : ℕ) : ℕ := (Nc * Nc - 1) * (Nc * Nc - 1)
+
+/-- adj⊗adj dimension for SU(3) = 64 -/
+theorem adj_tensor_dim_su3 : adj_tensor_dim 3 = 64 := rfl
+
+/-- Number of non-running holonomy modes on the stella octangula:
+    N_holonomy = β₁(∂S) × rank(SU(N_c)) = 6 × (N_c - 1).
+
+    For SU(3): N_holonomy = 6 × 2 = 12.
+
+    These modes parameterize the gauge-invariant configuration space
+    (Cartan angles on independent cycles) and are protected from
+    Wilsonian RG flow by the β-independent Weyl measure.
+
+    **Citation:** Proposition 0.0.17ac, Theorem 3.4.1 -/
+def holonomy_mode_count (Nc : ℕ) : ℕ := cycle_rank_stella * (Nc - 1)
+
+/-- N_holonomy = 12 for SU(3) -/
+theorem holonomy_mode_count_su3 : holonomy_mode_count 3 = 12 := rfl
+
+/-- Number of running (local) face modes:
+    N_local = (N_c² - 1)² - N_holonomy.
+
+    For SU(3): N_local = 64 - 12 = 52.
+
+    These modes participate in standard QCD running and give
+    the coupling 1/α_s(M_P) = 52.
+
+    **Citation:** Proposition 0.0.17ac, Corollary 3.4.2 -/
+def local_mode_count (Nc : ℕ) : ℕ := adj_tensor_dim Nc - holonomy_mode_count Nc
+
+/-- N_local = 52 for SU(3) -/
+theorem local_mode_count_su3 : local_mode_count 3 = 52 := rfl
+
+/-- The fundamental decomposition: 64 = 52 + 12 -/
+theorem edge_mode_decomposition_su3 :
+    adj_tensor_dim 3 = local_mode_count 3 + holonomy_mode_count 3 := rfl
+
+/-- Weyl group order of SU(3): |W(SU(3))| = |S₃| = 6.
+
+    The Weyl group permutes the eigenvalues of conjugacy class
+    representatives on the maximal torus.
+
+    **Citation:** Standard Lie theory -/
+def weyl_group_order_su3 : ℕ := 6
+
+/-- |W(SU(3))| = 3! -/
+theorem weyl_group_order_su3_value : weyl_group_order_su3 = Nat.factorial 3 := rfl
+
+/-! ═══════════════════════════════════════════════════════════════════════════
+    SECTION 15: ANTHROPIC BOUNDS ON R_STELLA
+    ═══════════════════════════════════════════════════════════════════════════
+
+    Proposition 0.0.36 derives the range of R_stella values compatible with
+    observer existence (complex observers capable of carbon-based chemistry
+    sustained by stellar nucleosynthesis).
+
+    Reference: docs/proofs/foundations/Proposition-0.0.36-Anthropic-Bounds-On-R-Stella.md
+-/
+
+/-- Lower bound on R_stella from anthropic constraints: R_min ≈ 0.42 fm.
+
+    **Physical origin:**
+    Primarily from di-proton stability and Hoyle state (¹²C resonance).
+    If R_stella < R_min, the strong force becomes too strong, potentially
+    binding the di-proton and/or disrupting the Hoyle state for carbon production.
+
+    **Literature:**
+    - Barrow & Tipler (1986): Di-proton binds at +4% QCD increase
+    - MacDonald & Mullan (2009): H survival threshold at +50%
+    - Epelbaum et al. (2013): Hoyle state sensitivity ±4%
+
+    **Citation:** Proposition 0.0.36 §4, §5 -/
+noncomputable def R_stella_min_fm : ℝ := 0.42
+
+/-- R_stella_min > 0 -/
+theorem R_stella_min_pos : R_stella_min_fm > 0 := by
+  unfold R_stella_min_fm; norm_num
+
+/-- Upper bound on R_stella from anthropic constraints: R_max ≈ 0.48 fm.
+
+    **Physical origin:**
+    Primarily from deuteron binding. The deuteron (²H) is essential for
+    stellar nucleosynthesis (p + n → d + γ). If R_stella > R_max, the
+    strong force becomes too weak and the deuteron unbinds.
+
+    **Literature:**
+    - Barnes & Lewis (2017): "The most definitive boundary... is between
+      a bound and unbound deuteron."
+    - Damour & Donoghue (2008): Deuteron unbinds at -6% QCD decrease
+
+    **Citation:** Proposition 0.0.36 §3 -/
+noncomputable def R_stella_max_fm : ℝ := 0.48
+
+/-- R_stella_max > 0 -/
+theorem R_stella_max_pos : R_stella_max_fm > 0 := by
+  unfold R_stella_max_fm; norm_num
+
+/-- The anthropic window width: ΔR ≈ 0.06 fm.
+
+    **Citation:** Proposition 0.0.36 §6.2 -/
+noncomputable def anthropic_window_width_fm : ℝ := R_stella_max_fm - R_stella_min_fm
+
+/-- Anthropic window width is positive -/
+theorem anthropic_window_width_pos : anthropic_window_width_fm > 0 := by
+  unfold anthropic_window_width_fm R_stella_max_fm R_stella_min_fm
+  norm_num
+
+/-- Anthropic window width ≈ 0.06 fm -/
+theorem anthropic_window_width_value : anthropic_window_width_fm = 0.06 := by
+  unfold anthropic_window_width_fm R_stella_max_fm R_stella_min_fm
+  norm_num
+
+/-- Lower bound on √σ from anthropic constraints: √σ_min ≈ 411 MeV.
+
+    **Derivation:** √σ_min = ℏc/R_max = 197.327/0.48 ≈ 411 MeV
+
+    **Citation:** Proposition 0.0.36 §6.1 -/
+noncomputable def sqrt_sigma_min_MeV : ℝ := hbar_c_MeV_fm / R_stella_max_fm
+
+/-- √σ_min > 0 -/
+theorem sqrt_sigma_min_pos : sqrt_sigma_min_MeV > 0 := by
+  unfold sqrt_sigma_min_MeV
+  exact div_pos hbar_c_pos R_stella_max_pos
+
+/-- √σ_min ≈ 411 MeV (numerical check) -/
+theorem sqrt_sigma_min_approx : sqrt_sigma_min_MeV > 410 ∧ sqrt_sigma_min_MeV < 412 := by
+  unfold sqrt_sigma_min_MeV hbar_c_MeV_fm R_stella_max_fm
+  constructor <;> norm_num
+
+/-- Upper bound on √σ from anthropic constraints: √σ_max ≈ 470 MeV.
+
+    **Derivation:** √σ_max = ℏc/R_min = 197.327/0.42 ≈ 470 MeV
+
+    **Citation:** Proposition 0.0.36 §6.1 -/
+noncomputable def sqrt_sigma_max_MeV : ℝ := hbar_c_MeV_fm / R_stella_min_fm
+
+/-- √σ_max > 0 -/
+theorem sqrt_sigma_max_pos : sqrt_sigma_max_MeV > 0 := by
+  unfold sqrt_sigma_max_MeV
+  exact div_pos hbar_c_pos R_stella_min_pos
+
+/-- √σ_max ≈ 470 MeV (numerical check) -/
+theorem sqrt_sigma_max_approx : sqrt_sigma_max_MeV > 469 ∧ sqrt_sigma_max_MeV < 471 := by
+  unfold sqrt_sigma_max_MeV hbar_c_MeV_fm R_stella_min_fm
+  constructor <;> norm_num
+
+/-- The string tension anthropic window width: Δ√σ ≈ 59 MeV.
+
+    **Citation:** Proposition 0.0.36 §6.1 -/
+noncomputable def sqrt_sigma_window_MeV : ℝ := sqrt_sigma_max_MeV - sqrt_sigma_min_MeV
+
+/-- √σ window is positive -/
+theorem sqrt_sigma_window_pos : sqrt_sigma_window_MeV > 0 := by
+  unfold sqrt_sigma_window_MeV sqrt_sigma_max_MeV sqrt_sigma_min_MeV
+    hbar_c_MeV_fm R_stella_min_fm R_stella_max_fm
+  norm_num
+
+/-- Fractional width of anthropic window: ΔR/R_center ≈ 13%.
+
+    **Citation:** Proposition 0.0.36 §6.2 -/
+noncomputable def anthropic_fractional_width : ℝ :=
+  anthropic_window_width_fm / ((R_stella_min_fm + R_stella_max_fm) / 2)
+
+/-- Fractional width ≈ 13% -/
+theorem anthropic_fractional_width_approx :
+    anthropic_fractional_width > 0.13 ∧ anthropic_fractional_width < 0.14 := by
+  unfold anthropic_fractional_width anthropic_window_width_fm
+    R_stella_min_fm R_stella_max_fm
+  constructor <;> norm_num
+
+/-- Position of observed R_stella in the anthropic window (as fraction from R_min).
+
+    Position = (R_obs - R_min) / (R_max - R_min) ≈ 47.4%
+
+    **Interpretation:**
+    The observed value sits approximately at the CENTER of the anthropic window,
+    neither at an edge nor requiring explanation for its particular position.
+    This is NOT fine-tuning.
+
+    **Citation:** Proposition 0.0.36 §6.3, Corollary 0.0.36.2 -/
+noncomputable def observed_position_in_window : ℝ :=
+  (R_stella_fm - R_stella_min_fm) / anthropic_window_width_fm
+
+/-- Position ≈ 47% (near center) -/
+theorem observed_position_approx :
+    observed_position_in_window > 0.47 ∧ observed_position_in_window < 0.48 := by
+  unfold observed_position_in_window anthropic_window_width_fm
+    R_stella_fm R_stella_min_fm R_stella_max_fm
+  constructor <;> norm_num
+
+/-- The observed R_stella lies within the anthropic window.
+
+    **Citation:** Proposition 0.0.36 §6.3 -/
+theorem R_stella_in_anthropic_window :
+    R_stella_min_fm < R_stella_fm ∧ R_stella_fm < R_stella_max_fm := by
+  unfold R_stella_min_fm R_stella_fm R_stella_max_fm
+  constructor <;> norm_num
+
+/-! ═══════════════════════════════════════════════════════════════════════════
+    SECTION 24: OBLIQUE PARAMETER CONSTANTS (Proposition 0.0.24a)
+    ═══════════════════════════════════════════════════════════════════════════
+
+    Peskin-Takeuchi oblique parameters (S, T, U) experimental values
+    and CG framework constants.
+    Reference: docs/proofs/foundations/Proposition-0.0.24a-Electroweak-Precision-Oblique-Parameters.md
+-/
+
+/-- S parameter experimental central value (PDG 2024): S = -0.01.
+
+    **Citation:** PDG 2024, Electroweak Model and Constraints on New Physics -/
+noncomputable def S_PDG_central : ℝ := -0.01
+
+/-- S parameter experimental uncertainty (PDG 2024): ±0.07 -/
+noncomputable def S_PDG_uncertainty : ℝ := 0.07
+
+/-- S uncertainty > 0 -/
+theorem S_PDG_uncertainty_pos : S_PDG_uncertainty > 0 := by
+  unfold S_PDG_uncertainty; norm_num
+
+/-- T parameter experimental central value (PDG 2024): T = +0.05.
+
+    **Citation:** PDG 2024, Electroweak Model and Constraints on New Physics -/
+noncomputable def T_PDG_central : ℝ := 0.05
+
+/-- T parameter experimental uncertainty (PDG 2024): ±0.06 -/
+noncomputable def T_PDG_uncertainty : ℝ := 0.06
+
+/-- T uncertainty > 0 -/
+theorem T_PDG_uncertainty_pos : T_PDG_uncertainty > 0 := by
+  unfold T_PDG_uncertainty; norm_num
+
+/-- U parameter experimental central value (PDG 2024): U = +0.02.
+
+    **Citation:** PDG 2024, Electroweak Model and Constraints on New Physics -/
+noncomputable def U_PDG_central : ℝ := 0.02
+
+/-- U parameter experimental uncertainty (PDG 2024): ±0.09 -/
+noncomputable def U_PDG_uncertainty : ℝ := 0.09
+
+/-- U uncertainty > 0 -/
+theorem U_PDG_uncertainty_pos : U_PDG_uncertainty > 0 := by
+  unfold U_PDG_uncertainty; norm_num
+
+/-- Electroweak EFT scale in GeV: Λ_EW = 10000 GeV (= 10 TeV).
+
+    **Physical meaning:**
+    The cutoff scale for CG form factor corrections.
+    Equivalent to Lambda_EW_TeV × 1000.
+
+    **Citation:** Proposition 0.0.24a §4, Proposition 6.5.1 §4.1 -/
+noncomputable def Lambda_EW_GeV : ℝ := 10000
+
+/-- Λ_EW (GeV) > 0 -/
+theorem Lambda_EW_GeV_pos : Lambda_EW_GeV > 0 := by unfold Lambda_EW_GeV; norm_num
+
+/-- Λ_EW consistency: GeV value = 1000 × TeV value -/
+theorem Lambda_EW_consistency : Lambda_EW_GeV = 1000 * Lambda_EW_TeV := by
+  unfold Lambda_EW_GeV Lambda_EW_TeV; norm_num
+
+/-- Mass ratio squared: (m_H/Λ)² = (125.11/10000)² ≈ 1.57 × 10⁻⁴.
+
+    **Physical meaning:**
+    This is the suppression factor for oblique parameter loop corrections.
+    The heavy suppression ensures CG predictions are SM-like.
+
+    **Citation:** Proposition 0.0.24a §4.4 -/
+noncomputable def mH_over_Lambda_sq : ℝ := (m_h_GeV / Lambda_EW_GeV) ^ 2
+
+/-- (m_H/Λ)² > 0 -/
+theorem mH_over_Lambda_sq_pos : mH_over_Lambda_sq > 0 := by
+  unfold mH_over_Lambda_sq
+  exact sq_pos_of_pos (div_pos m_h_GeV_pos Lambda_EW_GeV_pos)
+
+/-- (m_H/Λ)² < 1 (hierarchy exists) -/
+theorem mH_over_Lambda_sq_lt_one : mH_over_Lambda_sq < 1 := by
+  unfold mH_over_Lambda_sq m_h_GeV Lambda_EW_GeV
+  norm_num
+
+/-! ═══════════════════════════════════════════════════════════════════════════
+    SECTION 26: ELECTROMAGNETIC AND FERMI CONSTANTS
+    ═══════════════════════════════════════════════════════════════════════════
+
+    QED fine structure constant and Fermi constant.
+    Used in loop-level calculations (e.g., h → γγ, Proposition 6.3.3).
+-/
+
+/-- Fine structure constant: α = e²/(4π) = 1/137.036.
+
+    **Physical meaning:**
+    The dimensionless coupling strength of quantum electrodynamics.
+
+    **Citation:** PDG 2024, α⁻¹ = 137.035999177 ± 0.000000021 -/
+noncomputable def alpha_em : ℝ := 1 / 137.036
+
+/-- α > 0 -/
+theorem alpha_em_pos : alpha_em > 0 := by unfold alpha_em; norm_num
+
+/-- α < 1 (perturbative) -/
+theorem alpha_em_lt_one : alpha_em < 1 := by unfold alpha_em; norm_num
+
+/-- Inverse fine structure constant: α⁻¹ = 137.036 -/
+noncomputable def alpha_em_inv : ℝ := 137.036
+
+/-- α × α⁻¹ = 1 -/
+theorem alpha_em_inv_relation : alpha_em * alpha_em_inv = 1 := by
+  unfold alpha_em alpha_em_inv; field_simp
+
+/-- Fermi constant: G_F = 1.1664 × 10⁻⁵ GeV⁻².
+
+    **Physical meaning:**
+    Effective strength of weak interactions at low energies.
+    G_F/√2 = g₂²/(8M_W²) = 1/(2v_H²)
+
+    **Citation:** PDG 2024, G_F = 1.1663787(6) × 10⁻⁵ GeV⁻² -/
+noncomputable def G_F_GeV : ℝ := 1.1664e-5
+
+/-- G_F > 0 -/
+theorem G_F_GeV_pos : G_F_GeV > 0 := by unfold G_F_GeV; norm_num
+
+/-- Top quark mass: m_t = 172.5 GeV.
+
+    **Physical meaning:**
+    Pole mass of the top quark. In CG, determined by phase-gradient
+    mechanism with η_t ~ 1.
+
+    **Citation:** PDG 2024, m_t = 172.52 ± 0.33 GeV -/
+noncomputable def m_t_GeV : ℝ := 172.5
+
+/-- m_t > 0 -/
+theorem m_t_GeV_pos : m_t_GeV > 0 := by unfold m_t_GeV; norm_num
+
+/-- Bottom quark mass: m_b = 4.18 GeV (MS-bar at m_b).
+
+    **Citation:** PDG 2024 -/
+noncomputable def m_b_GeV : ℝ := 4.18
+
+/-- m_b > 0 -/
+theorem m_b_GeV_pos : m_b_GeV > 0 := by unfold m_b_GeV; norm_num
+
+/-- Tau lepton mass: m_τ = 1.777 GeV.
+
+    **Citation:** PDG 2024, m_τ = 1776.86 ± 0.12 MeV -/
+noncomputable def m_tau_GeV : ℝ := 1.777
+
+/-- m_τ > 0 -/
+theorem m_tau_GeV_pos : m_tau_GeV > 0 := by unfold m_tau_GeV; norm_num
+
+/-! ═══════════════════════════════════════════════════════════════════════════
+    SECTION 30: HIGGS TRILINEAR COUPLING CONSTANTS (PROPOSITION 0.0.37)
+    ═══════════════════════════════════════════════════════════════════════════
+
+    Constants for the Higgs trilinear self-coupling ratio κ_λ.
+    Reference: docs/proofs/foundations/Proposition-0.0.37-Complete-Higgs-Potential-And-Trilinear-Coupling.md
+-/
+
+/-- Higgs pole mass (PDG 2024 updated): m_H = 125.20 GeV.
+
+    **Physical meaning:**
+    The physical (pole) mass of the Higgs boson measured at the LHC.
+
+    **Citation:** PDG 2024, m_H = 125.20 ± 0.11 GeV -/
+noncomputable def m_H_pole_GeV : ℝ := 125.20
+
+/-- m_H_pole > 0 -/
+theorem m_H_pole_GeV_pos : m_H_pole_GeV > 0 := by unfold m_H_pole_GeV; norm_num
+
+/-- SM Higgs quartic coupling: λ_SM = m_H²/(2v²) ≈ 0.1293.
+
+    **Physical meaning:**
+    The effective Higgs self-coupling extracted from experiment,
+    absorbing all radiative corrections into a single measured parameter.
+
+    **Citation:** PDG 2024, from m_H = 125.20 GeV, v = 246.22 GeV -/
+noncomputable def lambda_SM : ℝ := m_H_pole_GeV ^ 2 / (2 * v_H_GeV ^ 2)
+
+/-- λ_SM > 0 -/
+theorem lambda_SM_pos : lambda_SM > 0 := by
+  unfold lambda_SM m_H_pole_GeV v_H_GeV
+  positivity
+
+/-- Top Yukawa coupling (CG prediction): y_t = 1.0.
+
+    **Physical meaning:**
+    The top quark Yukawa coupling in the CG framework.
+    Quasi-fixed point value from Extension 3.1.2c.
+    SM value: y_t^SM = √2 m_t/v ≈ 0.991.
+
+    **Citation:** Extension 3.1.2c -/
+noncomputable def y_t_CG : ℝ := 1.0
+
+/-- y_t_CG > 0 -/
+theorem y_t_CG_pos : y_t_CG > 0 := by unfold y_t_CG; norm_num
+
+/-- Higgs trilinear coupling ratio: κ_λ = 0.97 (central value).
+
+    **Physical meaning:**
+    The ratio of the CG-predicted Higgs trilinear self-coupling
+    to the SM value: κ_λ ≡ λ₃^CG / λ₃^SM.
+
+    **Citation:** Proposition 0.0.37 -/
+noncomputable def kappa_lambda_central : ℝ := 0.97
+
+/-- κ_λ > 0 -/
+theorem kappa_lambda_central_pos : kappa_lambda_central > 0 := by
+  unfold kappa_lambda_central; norm_num
+
+/-- κ_λ uncertainty: ±0.03 (1σ from Monte Carlo).
+
+    **Citation:** Proposition 0.0.37 §8 -/
+noncomputable def kappa_lambda_uncertainty : ℝ := 0.03
+
+/-- One-loop Coleman-Weinberg correction to κ_λ: δ_loop = -0.002.
+
+    **Physical meaning:**
+    The shift in the trilinear ratio from one-loop effects.
+    Small because gauge boson loops cancel in the CG/SM ratio.
+
+    **Citation:** Proposition 0.0.37 §7 -/
+noncomputable def delta_loop_kappa : ℝ := -0.002
 
 end ChiralGeometrogenesis.Constants

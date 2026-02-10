@@ -111,7 +111,9 @@ def beta_simple(n_f: int) -> Tuple[float, float]:
     """
     Simple β-function coefficients in common notation:
 
-    dα_s/d ln μ² = -b_1 α_s²/(2π) - b_2 α_s³/(4π²) - ...
+    dα_s/d(ln μ) = -b_1 α_s²/(2π) - b_2 α_s³/(4π²) - ...
+
+    Equivalently: dα_s/d(ln μ²) = -b_1 α_s²/(4π) - b_2 α_s³/(8π²) - ...
 
     where b_1 = (11N_c - 2N_f)/3, b_2 = (34N_c³ - 13N_c²N_f + 3N_f)/(3N_c)
     """
@@ -144,13 +146,16 @@ def alpha_s_1loop_fixed_nf(Q: float, alpha_ref: float, mu_ref: float, n_f: int) 
     """
     One-loop running with fixed N_f.
 
-    α_s(Q) = α_s(μ) / [1 + (b_1 α_s(μ)/(2π)) ln(Q²/μ²)]
+    α_s(Q) = α_s(μ) / [1 + (b_1 α_s(μ)/(2π)) ln(Q/μ)]
+
+    Convention: b_1 = (11N_c - 2N_f)/3 with dα_s/d(ln μ) = -b_1/(2π) α_s²
+    Integration variable is ln(μ), NOT ln(μ²).
     """
     if Q <= 0 or mu_ref <= 0:
         return None
 
     b_1, _ = beta_simple(n_f)
-    ln_ratio = np.log(Q**2 / mu_ref**2)
+    ln_ratio = np.log(Q / mu_ref)  # ln(Q/μ), NOT ln(Q²/μ²)
     denom = 1 + (b_1 * alpha_ref / (2 * PI)) * ln_ratio
 
     if denom <= 0:
@@ -163,9 +168,10 @@ def alpha_s_from_lambda(Q: float, Lambda_QCD: float, n_f: int) -> Optional[float
     """
     One-loop running from Λ_QCD.
 
-    α_s(Q) = 2π / (b_1 ln(Q²/Λ²))
+    α_s(Q) = 4π / (b_1 ln(Q²/Λ²))
 
-    This form is equivalent to the running form but parameterized by Λ.
+    where b_1 = (11N_c - 2N_f)/3 and ln is ln(Q²/Λ²).
+    This follows from 1/α_s = (b_1/(4π)) ln(Q²/Λ²) [PDG convention].
     """
     if Q <= Lambda_QCD:
         return None
@@ -176,7 +182,7 @@ def alpha_s_from_lambda(Q: float, Lambda_QCD: float, n_f: int) -> Optional[float
     if ln_ratio <= 0:
         return None
 
-    return 2 * PI / (b_1 * ln_ratio)
+    return 4 * PI / (b_1 * ln_ratio)
 
 
 def threshold_matching_coefficient(n_f: int, order: int = 1) -> float:

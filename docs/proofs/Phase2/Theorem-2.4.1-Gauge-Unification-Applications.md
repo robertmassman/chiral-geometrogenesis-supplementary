@@ -67,13 +67,14 @@ The Weinberg angle condition $\sin^2\theta_W = 3/8$ at the GUT scale, combined w
 | Path | Method | Result | Scheme |
 |------|--------|--------|--------|
 | **Equipartition** | adj⊗adj = 64 channels (Prop 0.0.17j §6.3) | $1/\alpha_s = 64$ | Geometric |
-| **Unification** | $\sin^2\theta_W = 3/8$ + RG running (this theorem) | $1/\alpha_s \approx 99$ | MS-bar |
-| **Conversion** | $\theta_O/\theta_T = 1.55215$ (heat kernel, Thm 0.0.6) | $64 \times 1.55 = 99.3$ | — |
 
-**Key results:**
-- Agreement with NNLO QCD: **0.04%** ($1/\alpha_s^{MS\text{-}bar} = 99.34$ vs 99.3)
-- $\alpha_s(M_Z) = 0.1180$ matches PDG 2024 ($0.1180 \pm 0.0009$) to **0.1%**
-- Scheme conversion factor $\theta_O/\theta_T$ rigorously derived via heat kernel methods
+**(corrected 2026-02-08: NNLO running bug fix)** The previously listed "Unification" path ($1/\alpha_s \approx 99$ in MS-bar) and "Conversion" path ($\theta_O/\theta_T = 1.55215$ giving $64 \times 1.55 = 99.3$) have been **retracted**. The scheme conversion factor $\theta_O/\theta_T = 1.55215$ was reverse-engineered to match a buggy NNLO running script that used $\ln(\mu^2/\mu_0^2)$ instead of $\ln(\mu/\mu_0)$, yielding $1/\alpha_s(M_P) \approx 96\text{--}99$ instead of the correct $\sim 52\text{--}55$.
+
+**Current status:**
+- ~~Agreement with NNLO QCD: 0.04%~~ **RETRACTED**
+- ~~$1/\alpha_s^{MS\text{-}bar} = 99.34$~~ **RETRACTED**
+- The CG prediction $1/\alpha_s = 64$ has a genuine $\sim$17--22% discrepancy from the standard NNLO value of $\sim 52\text{--}55$ that is currently **unresolved**
+- The cascade running from $1/\alpha_s = 64$ gives $\alpha_s(M_Z) = 0.122 \pm 0.010$, consistent with PDG at the 3.4% level
 
 **Significance:** The CG framework achieves gauge coupling unification **without supersymmetry**. The pre-geometric UV completion provides the mechanism instead of superpartners, and proton decay is naturally suppressed because X and Y bosons never appear as propagating degrees of freedom.
 

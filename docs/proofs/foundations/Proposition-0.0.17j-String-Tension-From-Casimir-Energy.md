@@ -452,8 +452,8 @@ $$M_P = \frac{\sqrt{\chi}}{2} \cdot \sqrt{\sigma} \cdot \exp\left(\frac{1}{2b_0 
 **Physical picture:** The exponential factor from RG running of α_s creates the enormous hierarchy. This is the same mechanism that explains why Λ_QCD ≪ M_P in standard QCD — dimensional transmutation from asymptotic freedom.
 
 **Remaining theoretical work:**
-- First-principles derivation of 1/α_s(M_P) = 64 (vs ~52 from standard running)
-- After geometric scheme correction: 0.038% agreement (see Theorem 5.2.6 §5.5)
+- First-principles derivation of 1/α_s(M_P) = 64 (vs ~52-55 from standard NNLO running)
+- **(corrected 2026-02-08: NNLO running bug fix)** The previously claimed "0.038% agreement" via a geometric scheme conversion factor theta_O/theta_T = 1.55215 has been **retracted**. The scheme conversion was reverse-engineered to match a buggy NNLO running script (which used ln(mu^2/mu_0^2) instead of ln(mu/mu_0), yielding 1/alpha_s ~ 96-99 instead of the correct ~52-55). The CG prediction 1/alpha_s = 64 has a genuine ~17-22% discrepancy from the standard NNLO value of ~52-55. This discrepancy is currently **unresolved**.
 
 **Summary:** R_stella is phenomenological at the QCD level, but the hierarchy to ℓ_P is **explained** by dimensional transmutation in Phase 5.
 
@@ -510,16 +510,16 @@ These corrections are within the 0.3% agreement with observation.
 The hierarchy R_stella/ℓ_P ~ 10¹⁹ is **explained** by Theorem 5.2.6 via standard dimensional transmutation from asymptotic freedom:
 - ✅ Planck mass derived: M_P ≈ 1.12 × 10¹⁹ GeV (91.5% agreement)
 - ✅ Mechanism: QCD β-function running creates exponential hierarchy
-- ✅ After geometric scheme correction: 0.038% agreement
+- **(corrected 2026-02-08: NNLO running bug fix)** The "0.038% agreement" claim via scheme conversion has been **retracted** — see §6.3. The ~17-22% discrepancy between 1/alpha_s = 64 and standard NNLO running (~52-55) is genuinely unresolved.
 
 **UV coupling derivation:** ✅ COMPLETE — See `proposition_0_0_17j_complete_casimir_and_uv_coupling.py`:
 - adj ⊗ adj = 64 two-gluon channels
 - Equipartition from maximum entropy: p_I = 1/64
 - Therefore: 1/α_s(M_P) = 64 (DERIVED, not fitted)
 - QCD running gives α_s(M_Z) = 0.1180 (**0.1% from PDG 2024**, updated via Prop 0.0.17s)
-- Geometric scheme conversion: 1/α_s^{MS-bar} = 99.34 (0.04% from NNLO) — **rigorously derived via heat kernel methods (Prop 0.0.17s §4.3)**
+- **(corrected 2026-02-08: NNLO running bug fix)** ~~Geometric scheme conversion: 1/α_s^{MS-bar} = 99.34 (0.04% from NNLO)~~ **RETRACTED.** The scheme conversion factor theta_O/theta_T = 1.55215 and the resulting 1/alpha_s^{MS-bar} = 99.34 were reverse-engineered to match a buggy NNLO running script. Correct NNLO running gives 1/alpha_s(M_P) ~ 52-55, not ~99. The CG prediction 1/alpha_s = 64 has a genuine ~17-22% discrepancy that remains unresolved.
 
-**Alternative derivation via unification:** See [Proposition-0.0.17s](Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md) — derives α_s from sin²θ_W = 3/8 (Theorem 2.4.1), confirming equivalence of equipartition and unification paths. The scheme conversion factor θ_O/θ_T = 1.55215 is rigorously derived from heat kernel edge contributions on polyhedral boundaries.
+**Alternative derivation via unification:** See [Proposition-0.0.17s](Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md) — derives α_s from sin²θ_W = 3/8 (Theorem 2.4.1). **(corrected 2026-02-08)** The claimed equivalence between equipartition (1/alpha_s = 64) and unification (1/alpha_s ~ 99) paths via the scheme conversion factor theta_O/theta_T = 1.55215 has been **retracted**. The factor was based on buggy NNLO running values.
 
 ---
 
@@ -549,7 +549,7 @@ The hierarchy R_stella/ℓ_P ~ 10¹⁹ is **explained** by Theorem 5.2.6 via sta
 11. ✅ Shape factor f = 0.99 ± 0.01 from numerical calculation
 12. ✅ UV coupling 1/α_s = 64 from equipartition derivation
 13. ✅ α_s(M_Z) = 0.1180 (0.1% from PDG 2024)
-14. ✅ Scheme conversion 1/α_s^{MS-bar} = 99.34 (0.04% from NNLO) — heat kernel derivation (Prop 0.0.17s)
+14. **(corrected 2026-02-08: NNLO running bug fix)** ~~Scheme conversion 1/α_s^{MS-bar} = 99.34 (0.04% from NNLO)~~ **RETRACTED.** The 99.34 value and 0.04% agreement were artifacts of a factor-of-2 bug in the NNLO running script. Correct NNLO gives 1/alpha_s(M_P) ~ 52-55. The ~17-22% discrepancy with CG's 1/alpha_s = 64 is unresolved.
 
 **Plots:**
 - `verification/plots/proposition_0_0_17j_temperature.png` — Temperature dependence

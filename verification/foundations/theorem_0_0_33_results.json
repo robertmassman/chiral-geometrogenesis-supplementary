@@ -1,0 +1,342 @@
+{
+  "n2_degeneracy": {
+    "equilibrium": {
+      "phases": [
+        0.0,
+        0.0
+      ],
+      "fisher_metric": [
+        [
+          0.0
+        ]
+      ],
+      "eigenvalues": [
+        0.0
+      ],
+      "is_degenerate": "True",
+      "condition_number": Infinity
+    },
+    "non_equilibrium": {
+      "phases": [
+        0.3,
+        -0.3
+      ],
+      "fisher_metric": [
+        [
+          0.25
+        ]
+      ],
+      "eigenvalues": [
+        0.25
+      ],
+      "is_degenerate": "False"
+    },
+    "eigenvalue_trajectory": [
+      {
+        "delta": 0.0,
+        "min_eigenvalue": 0.0,
+        "max_eigenvalue": 0.0
+      },
+      {
+        "delta": 0.02631578947368421,
+        "min_eigenvalue": 0.24999999999999997,
+        "max_eigenvalue": 0.24999999999999997
+      },
+      {
+        "delta": 0.05263157894736842,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.07894736842105263,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.10526315789473684,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.13157894736842105,
+        "min_eigenvalue": 0.24999999999999997,
+        "max_eigenvalue": 0.24999999999999997
+      },
+      {
+        "delta": 0.15789473684210525,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.18421052631578946,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.21052631578947367,
+        "min_eigenvalue": 0.24999999999999997,
+        "max_eigenvalue": 0.24999999999999997
+      },
+      {
+        "delta": 0.23684210526315788,
+        "min_eigenvalue": 0.24999999999999997,
+        "max_eigenvalue": 0.24999999999999997
+      },
+      {
+        "delta": 0.2631578947368421,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.2894736842105263,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.3157894736842105,
+        "min_eigenvalue": 0.24999999999999997,
+        "max_eigenvalue": 0.24999999999999997
+      },
+      {
+        "delta": 0.3421052631578947,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.3684210526315789,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.39473684210526316,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.42105263157894735,
+        "min_eigenvalue": 0.24999999999999997,
+        "max_eigenvalue": 0.24999999999999997
+      },
+      {
+        "delta": 0.4473684210526315,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.47368421052631576,
+        "min_eigenvalue": 0.25,
+        "max_eigenvalue": 0.25
+      },
+      {
+        "delta": 0.5,
+        "min_eigenvalue": 0.24999999999999997,
+        "max_eigenvalue": 0.24999999999999997
+      }
+    ]
+  },
+  "proportionality": {
+    "tests": [
+      {
+        "N": 3,
+        "c_N_estimated": 1.0,
+        "c_N_theoretical": 1.0,
+        "relative_error": 0.0,
+        "proportionality_verified": "True",
+        "fisher_trace": 0.3333333333333333,
+        "killing_trace": 0.3333333333333333,
+        "fisher_is_proportional_to_I": "True",
+        "killing_is_proportional_to_I": "True"
+      },
+      {
+        "N": 4,
+        "c_N_estimated": 1.0,
+        "c_N_theoretical": 1.0,
+        "relative_error": 0.0,
+        "proportionality_verified": "True",
+        "fisher_trace": 0.375,
+        "killing_trace": 0.375,
+        "fisher_is_proportional_to_I": "True",
+        "killing_is_proportional_to_I": "True"
+      },
+      {
+        "N": 5,
+        "c_N_estimated": 1.0,
+        "c_N_theoretical": 1.0,
+        "relative_error": 0.0,
+        "proportionality_verified": "True",
+        "fisher_trace": 0.4,
+        "killing_trace": 0.4,
+        "fisher_is_proportional_to_I": "True",
+        "killing_is_proportional_to_I": "True"
+      },
+      {
+        "N": 6,
+        "c_N_estimated": 1.0,
+        "c_N_theoretical": 1.0,
+        "relative_error": 0.0,
+        "proportionality_verified": "True",
+        "fisher_trace": 0.41666666666666663,
+        "killing_trace": 0.41666666666666663,
+        "fisher_is_proportional_to_I": "True",
+        "killing_is_proportional_to_I": "True"
+      },
+      {
+        "N": 7,
+        "c_N_estimated": 1.0,
+        "c_N_theoretical": 1.0,
+        "relative_error": 0.0,
+        "proportionality_verified": "True",
+        "fisher_trace": 0.4285714285714285,
+        "killing_trace": 0.4285714285714285,
+        "fisher_is_proportional_to_I": "True",
+        "killing_is_proportional_to_I": "True"
+      },
+      {
+        "N": 8,
+        "c_N_estimated": 1.0,
+        "c_N_theoretical": 1.0,
+        "relative_error": 0.0,
+        "proportionality_verified": "True",
+        "fisher_trace": 0.4375,
+        "killing_trace": 0.4375,
+        "fisher_is_proportional_to_I": "True",
+        "killing_is_proportional_to_I": "True"
+      }
+    ],
+    "summary": {
+      "all_verified": true,
+      "mean_relative_error": 0.0,
+      "max_relative_error": 0.0,
+      "N_tested": 6,
+      "all_fisher_proportional_to_I": true,
+      "all_killing_proportional_to_I": true
+    }
+  },
+  "roundtrip": [
+    {
+      "N": 3,
+      "c_N": 1.0,
+      "g_F_norm": 0.32507980968365,
+      "g_K_norm": 0.23570226039551584,
+      "error_GF": 0.0,
+      "error_FG": 0.0,
+      "GF_is_identity": "True",
+      "FG_is_identity": "True"
+    },
+    {
+      "N": 4,
+      "c_N": 1.0,
+      "g_F_norm": 0.3578656038431998,
+      "g_K_norm": 0.21650635094610965,
+      "error_GF": 0.0,
+      "error_FG": 0.0,
+      "GF_is_identity": "True",
+      "FG_is_identity": "True"
+    },
+    {
+      "N": 5,
+      "c_N": 0.9999999999999998,
+      "g_F_norm": 0.3264824742497,
+      "g_K_norm": 0.2,
+      "error_GF": 0.0,
+      "error_FG": 0.0,
+      "GF_is_identity": "True",
+      "FG_is_identity": "True"
+    },
+    {
+      "N": 6,
+      "c_N": 1.0000000000000002,
+      "g_F_norm": 0.35741737322752937,
+      "g_K_norm": 0.18633899812498247,
+      "error_GF": 0.0,
+      "error_FG": 0.0,
+      "GF_is_identity": "True",
+      "FG_is_identity": "True"
+    },
+    {
+      "N": 7,
+      "c_N": 1.0000000000000002,
+      "g_F_norm": 0.3053843958750578,
+      "g_K_norm": 0.1749635530559413,
+      "error_GF": 0.0,
+      "error_FG": 0.0,
+      "GF_is_identity": "True",
+      "FG_is_identity": "True"
+    },
+    {
+      "N": 8,
+      "c_N": 1.0000000000000002,
+      "g_F_norm": 0.4060860739811999,
+      "g_K_norm": 0.16535945694153692,
+      "error_GF": 0.0,
+      "error_FG": 0.0,
+      "GF_is_identity": "True",
+      "FG_is_identity": "True"
+    }
+  ],
+  "symmetry": {
+    "permutation_tests": [
+      {
+        "permutation": [
+          0,
+          1,
+          2
+        ],
+        "trace_original": 0.3333333333333333,
+        "trace_permuted": 0.3333333333333333,
+        "trace_preserved": "True"
+      },
+      {
+        "permutation": [
+          0,
+          2,
+          1
+        ],
+        "trace_original": 0.3333333333333333,
+        "trace_permuted": 0.3333333333333333,
+        "trace_preserved": "True"
+      },
+      {
+        "permutation": [
+          1,
+          0,
+          2
+        ],
+        "trace_original": 0.3333333333333333,
+        "trace_permuted": 0.3333333333333333,
+        "trace_preserved": "True"
+      },
+      {
+        "permutation": [
+          1,
+          2,
+          0
+        ],
+        "trace_original": 0.3333333333333333,
+        "trace_permuted": 0.33333333333333326,
+        "trace_preserved": "True"
+      },
+      {
+        "permutation": [
+          2,
+          0,
+          1
+        ],
+        "trace_original": 0.3333333333333333,
+        "trace_permuted": 0.3333333333333333,
+        "trace_preserved": "True"
+      },
+      {
+        "permutation": [
+          2,
+          1,
+          0
+        ],
+        "trace_original": 0.3333333333333333,
+        "trace_permuted": 0.33333333333333326,
+        "trace_preserved": "True"
+      }
+    ],
+    "symmetry_preserved": true
+  }
+}

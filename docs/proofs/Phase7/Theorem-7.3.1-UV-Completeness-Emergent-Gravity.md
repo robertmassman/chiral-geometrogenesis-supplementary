@@ -139,7 +139,7 @@ This is strongly supported by the explicit calculation showing $\langle T_{\mu\n
 | $G$ | Newton's constant | $[L^3 M^{-1} T^{-2}]$ | $G = 1/(8\pi f_\chi^2)$ | Emergent |
 | $\sqrt{\sigma}$ | String tension | $[M]$ | QCD confinement scale | 440 MeV |
 | $b_0$ | β-function coefficient | [1] | $(11N_c - 2N_f)/(12\pi)$ | $9/(4\pi)$ |
-| $1/\alpha_s(M_P)$ | UV coupling inverse | [1] | Maximum entropy result | 64 |
+| $1/\alpha_s(M_P)$ | UV coupling inverse (total exponent) | [1] | Maximum entropy result; decomposes as 52 running + 12 holonomy ([Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)) | 64 |
 | **Group Theory** | | | | |
 | $N_c$ | Color number | [1] | SU(3) rank + 1 | 3 |
 | $N_f$ | Flavor number | [1] | Light quarks at Λ_QCD | 3 |
@@ -275,6 +275,8 @@ $$b_0 = \frac{11N_c - 2N_f}{12\pi} = \frac{27}{12\pi} = \frac{9}{4\pi}$$
 
 **Step 3 (Prop 0.0.17w):** UV coupling from maximum entropy
 $$\frac{1}{\alpha_s(M_P)} = (\dim(\text{adj}))^2 = (N_c^2 - 1)^2 = 64$$
+
+**Edge-mode decomposition ([Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)):** This total of 64 decomposes as 52 running face modes + 12 non-running holonomy modes. The running coupling 1/α_s^{running} = 52 matches QCD to ~1%, while the full 64 enters the hierarchy formula in Step 4.
 
 **Step 4 (Prop 0.0.17v):** Planck scale from holographic self-consistency
 $$\ell_P = R_{\text{stella}} \times \exp\left(-\frac{(N_c^2-1)^2}{2b_0}\right)$$

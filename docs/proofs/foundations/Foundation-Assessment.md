@@ -65,9 +65,9 @@ See: [Proposition-0.0.17k-Pion-Decay-Constant-From-Phase-Lock.md](Proposition-0.
 $$R_{\text{stella}} = \ell_P \times \exp\left(\frac{(N_c^2-1)^2}{2b_0}\right) = 0.41 \text{ fm (91% of observed 0.44847 fm)}$$
 
 **Key findings:**
-- UV coupling validated: 1/αs = 64 → 99.34 (MS-bar) matches NNLO 99.3 to **0.04%**
+- UV coupling: 1/α_s = 64 (CG prediction) vs ~52–55 (QCD running from experiment) — **~17–22% discrepancy** genuinely unresolved (corrected 2026-02-08: earlier "0.04% agreement via θ_O/θ_T" claim retracted due to factor-of-2 bug in NNLO script)
 - Hierarchy correctly captured: log₁₀(R/ℓ_P) = 19.40 vs 19.44 — **99.8%**
-- 9% discrepancy is **REDUCIBLE** (not fundamental) via NNLO + non-perturbative corrections
+- 91.5% M_P agreement with zero free parameters
 
 **Result:** R_stella ↔ M_P are now **mutually determined** by topology. Zero phenomenological QCD inputs remain.
 

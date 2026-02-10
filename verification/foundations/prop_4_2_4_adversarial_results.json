@@ -1,0 +1,64 @@
+{
+  "sphaleron_energy": {
+    "E_sph_TeV": 8.879761681212829,
+    "sigma_TeV": 0.09673790173967893,
+    "within_literature": true,
+    "within_proposition": true
+  },
+  "rate_formula": {
+    "gamma_kappa25": 110.24728382726592,
+    "gamma_kappa18": 79.37804435563146,
+    "hubble_100GeV": 2.804482466397134e-15,
+    "equilibrium_ratio": 28303990239.45653,
+    "in_equilibrium": true
+  },
+  "washout_criterion": {
+    "ratio_CG": 43.99849423718484,
+    "ratio_SM": 1.081930186160283,
+    "CG_passes": true,
+    "SM_fails": true,
+    "suppression_CG": 7.792857606316324e-20,
+    "suppression_SM": 0.33894067525613425
+  },
+  "limiting_cases": {
+    "pure_gauge": true,
+    "heavy_higgs": true,
+    "physical_value": true,
+    "high_T": true,
+    "low_T": true
+  },
+  "cg_corrections": {
+    "E_SM_TeV": 8.879761681212829,
+    "E_CG_TeV": 8.968559298024957,
+    "relative_correction_pct": 0.9999999999999931,
+    "matches_claim": true
+  },
+  "sensitivity": {
+    "v +1%": {
+      "E_TeV": 8.968559298024957,
+      "change_pct": 0.9999999999999931
+    },
+    "v -1%": {
+      "E_TeV": 8.7909640644007,
+      "change_pct": -0.9999999999999931
+    },
+    "g2 +1%": {
+      "E_TeV": 8.791843248725572,
+      "change_pct": -0.9900990099010012
+    },
+    "g2 -1%": {
+      "E_TeV": 8.969456243649324,
+      "change_pct": 1.0101010101010233
+    },
+    "v/T +5%": {
+      "ratio": 46.19841894904408,
+      "change_pct": 4.999999999999993
+    },
+    "v/T -5%": {
+      "ratio": 41.798569525325604,
+      "change_pct": -4.999999999999993
+    }
+  },
+  "all_passed": true,
+  "verification_date": "2026-02-09"
+}

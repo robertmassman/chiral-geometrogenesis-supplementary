@@ -53,6 +53,9 @@ import ChiralGeometrogenesis.Phase5.Proposition_5_2_4c  -- Tensor Rank from Deri
 import ChiralGeometrogenesis.Phase6.Theorem_6_1_1  -- Complete Feynman Rules
 import ChiralGeometrogenesis.Phase6.Theorem_6_2_1  -- Tree-Level Scattering Amplitudes
 
+-- Information-Geometry Duality
+import ChiralGeometrogenesis.Foundations.Theorem_0_0_33  -- Information-Geometry Duality
+
 -- Phase 8: Predictions and Tests
 import ChiralGeometrogenesis.Phase8.Proposition_8_4_4  -- Atmospheric Angle θ₂₃ Correction
 import ChiralGeometrogenesis.Phase8.Proposition_8_5_1  -- Lattice QCD and Heavy-Ion Predictions

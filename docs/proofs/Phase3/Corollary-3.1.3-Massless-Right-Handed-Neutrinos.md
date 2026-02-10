@@ -942,49 +942,43 @@ The protection of $\nu_R$ masslessness until the GUT scale is consistent with:
 uncertainties are more appropriate. NuFIT 6.0 reports δ_CP = 212° (+26°, −41°) for normal
 ordering with SK atmospheric data. The previous "±40°" was a symmetric approximation.
 
-**Predictions from A₄ symmetry:**
-| Parameter | TBM | Corrected | Observed |
+**Predictions from A₄ symmetry (see [Extension 3.1.2d](Extension-3.1.2d-Complete-PMNS-Parameters.md) for complete derivations):**
+| Parameter | TBM | Corrected | Observed (NuFIT 6.0) |
 |-----------|-----|-----------|----------|
-| $\theta_{12}$ | 35.3° | 33° | 33.4° ✓ |
-| $\theta_{23}$ | 45° | 48° | 49° ✓ |
-| $\theta_{13}$ | 0° | 8.5° | 8.5° ✓ |
-| $\delta_{CP}$ | 0° (or 180°) | 195° ± 20° | 212° (+26°/−41°) ✓ |
+| $\theta_{12}$ | 35.3° | 33.47° | 33.68° ± 0.72° ✓ |
+| $\theta_{23}$ | 45° | 48.9° | 48.5° ± 1.0° (IC19) ✓ |
+| $\theta_{13}$ | 0° | 8.54° | 8.50° ± 0.11° (IC19) ✓ |
+| $\delta_{CP}$ | 0° (or 180°) | 200° | 177° ± 20° (IC19) / 212° ± 34° (IC24) ✓ |
 
 **Note on $\delta_{CP}$ prediction:**
 
 Pure tribimaximal mixing (exact A₄ symmetry) predicts $\theta_{13} = 0$ and therefore CP conservation ($\delta_{CP} = 0°$ or $180°$). Since $\theta_{13} \approx 8.5° \neq 0$ experimentally, A₄ symmetry must be broken—the same breaking mechanism that generates $\theta_{13}$ also determines $\delta_{CP}$.
 
-The Chiral Geometrogenesis framework predicts:
+The Chiral Geometrogenesis framework predicts (from [Extension 3.1.2d §8](Extension-3.1.2d-Complete-PMNS-Parameters.md)):
 
-$$\boxed{\delta_{CP} = 195° \pm 20°}$$
+$$\boxed{\delta_{CP} = \frac{5\pi}{6} + \frac{\lambda}{\varphi} \times 2\pi = 150° + 49.95° \approx 200°}$$
 
-This prediction arises from the **A₄ group structure** with 12 elements, which quantizes phases in units of 30°. The specific value emerges from:
+This prediction arises from the **inter-tetrahedral Berry phase** mechanism (🔶 NOVEL):
 
-1. **Geometric quantization:** A₄ has 12 elements (even permutations of 4 objects), giving phase quantization $\delta_{CP} = k \times 30°$ for integer $k$
-2. **Best geometric matches:**
-   - $k = 7$ → $\delta_{CP} = 210°$ (within 1σ of experimental best-fit)
-   - $k = 6$ → $\delta_{CP} = 180°$ (CP-conserving limit)
-   - Interpolation → $\delta_{CP} \approx 195°$
-3. **Alternative geometric derivation:** The phase difference between the two interlocking tetrahedra (T₁ and T₂) in the stella octangula is:
-   $$\Delta\phi_{T_1-T_2} = 180° + \Omega_{tet}/2 = 219° \text{ (close to } k=7 \text{ value)}$$
-   where $\Omega_{tet}$ is the tetrahedral solid angle
-4. **TBM complement relation:** $\delta_{CP} \approx 180° + \theta_{12}^{TBM}/2 = 180° + 35.3°/2 = 197.6°$ (essentially exact match to experimental best-fit!)
+1. **A₄ base phase:** The Berry phase accumulated in the T₊ → T₋ transition between the two tetrahedra of the stella octangula gives a residual geometric phase $\delta_{CP}^{(0)} = 2\pi - 2\pi/3 - \pi/2 = 5\pi/6 = 150°$, where 2π/3 comes from the T³ = 1 relation (Z₃ subgroup) and π/2 from the S² = 1 relation (Z₂ subgroup) of the A₄ generators S² = T³ = (ST)³ = 1.
 
-This last relation is particularly striking—it suggests that the CP phase is **geometrically locked** to the solar mixing angle through the A₄ tetrahedral structure. Since $\theta_{12}^{TBM} = \arcsin(1/\sqrt{3}) = 35.26°$ is exactly determined by A₄ symmetry, this provides a **first-principles prediction** for $\delta_{CP}$.
+2. **Electroweak correction:** The base phase receives a correction from the 600-cell embedding: $\delta_{EW} = (\lambda/\varphi) \times 2\pi = 49.95°$, where λ = 0.2245 (Wolfenstein parameter) and φ = (1+√5)/2 (golden ratio from 600-cell geometry).
+
+**Status:** The 5π/6 base phase is a 🔶 NOVEL structural assumption specific to the CG framework. It does not appear as a standard prediction in A₄ flavor models (see Extension 3.1.2d §8.3 for literature context: Feruglio et al. 2013, Ding et al. 2013).
 
 **Jarlskog invariant (measure of CP violation):**
 
-For the predicted value $\delta_{CP} \approx 195°$, the Jarlskog invariant is:
+For the predicted value $\delta_{CP} = 200°$, the Jarlskog invariant is (using framework-predicted mixing angles):
 
-$$J_{CP} = \frac{1}{8}\sin 2\theta_{12} \sin 2\theta_{23} \sin 2\theta_{13} \cos\theta_{13} \sin\delta_{CP} \approx -0.010$$
+$$J_{CP} = \frac{1}{8}\sin(2 \times 33.47°)\sin(2 \times 48.9°)\sin(2 \times 8.54°)\cos(8.54°)\sin(200°) = -0.0113$$
 
-This corresponds to **29% of maximum possible CP violation** for the observed mixing angles, indicating moderate CP violation in neutrino oscillations. The negative sign indicates the phase is in the **second quadrant** (sin $\delta_{CP} < 0$ for $\delta_{CP} \in [180°, 360°]$), which is preferred by current global fits in normal mass ordering.
+This corresponds to **34% of maximum possible CP violation** for the predicted mixing angles. The negative sign indicates the phase is in the **third quadrant** (sin $\delta_{CP} < 0$ for $\delta_{CP} \in [180°, 360°]$), which is preferred by current global fits in normal mass ordering.
 
 **Experimental status:**
-- Current best-fit: $\delta_{CP} = 212°$ (+26°, −41°) (NuFIT 6.0, normal ordering, 1σ)
-- Framework prediction: $\delta_{CP} = 195° \pm 20°$
-- **Agreement:** Good (17° from central value, within 1σ lower uncertainty of 41°)
-- **Future tests:** DUNE and Hyper-Kamiokande (2030s) will measure $\delta_{CP}$ to $\sim 10°$ precision
+- NuFIT 6.0 IC19: $\delta_{CP} = 177° \pm 20°$ → Deviation: 1.2σ
+- NuFIT 6.0 IC24: $\delta_{CP} = 212° \pm 34°$ → Deviation: 0.4σ
+- Framework prediction: $\delta_{CP} = 200°$ (lies between IC19 and IC24 best fits)
+- **Future tests:** DUNE and Hyper-Kamiokande (2030s) will measure $\delta_{CP}$ to $\pm 5$–$10°$ precision, providing a decisive test
 
 ### 12.4 Novel Testable Predictions
 
@@ -992,20 +986,21 @@ The Chiral Geometrogenesis framework provides **three novel, falsifiable predict
 
 #### Prediction 1: CP-Violating Phase
 
-$$\boxed{\delta_{CP} = 195° \pm 20°}$$
+$$\boxed{\delta_{CP} = \frac{5\pi}{6} + \frac{\lambda}{\varphi} \times 2\pi \approx 200°}$$
 
-**Origin:** A₄ tetrahedral flavor symmetry with 12 elements → phase quantization in 30° units. The specific value emerges from the TBM complement relation $\delta_{CP} \approx 180° + \theta_{12}^{TBM}/2$, geometrically locking the CP phase to the solar mixing angle.
+**Origin:** Inter-tetrahedral Berry phase (5π/6 = 150° base from A₄ generators) plus electroweak correction ((λ/φ) × 2π = 49.95° from 600-cell embedding). See [Extension 3.1.2d §8](Extension-3.1.2d-Complete-PMNS-Parameters.md) for the complete derivation.
 
 **Current status:**
-- Experimental: $\delta_{CP} = 212°$ (+26°, −41°) (NuFIT 6.0, 1σ, normal ordering)
-- Agreement: Within 1σ (framework prediction 195° is 17° below best-fit, well within −41° lower uncertainty)
+- NuFIT 6.0 IC19: $\delta_{CP} = 177° \pm 20°$ → Deviation: 1.2σ
+- NuFIT 6.0 IC24: $\delta_{CP} = 212° \pm 34°$ → Deviation: 0.4σ
+- Prediction (200°) lies between IC19 and IC24 best fits
 
 **Future test:**
-- **DUNE** (2030s): Long-baseline neutrino oscillations, δ_CP precision ~10°
-- **Hyper-Kamiokande** (2030s): Atmospheric + long-baseline, δ_CP precision ~10°
-- **Decisiveness:** Factor of 2 improvement in precision will provide stringent test
+- **DUNE** (2030s): Long-baseline neutrino oscillations, δ_CP precision ~5–10°
+- **Hyper-Kamiokande** (2030s): Atmospheric + long-baseline, δ_CP precision ~5–10°
+- **Decisiveness:** Will distinguish 200° from both CP conservation (180°) and maximal CP violation (270°)
 
-**Computational verification:** `verification/Phase3/delta_CP_calculation.py`, `delta_CP_geometric_refined.py`
+**Computational verification:** `verification/Phase3/extension_3_1_2d_pmns_verification.py`, `extension_3_1_2d_adversarial_physics_r2.py`
 
 #### Prediction 2: Neutrino Mass Sum
 

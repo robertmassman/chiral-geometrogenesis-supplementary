@@ -486,6 +486,9 @@ This theorem is documented across three files following the standard academic st
 
 **Full Report:** [Theorem-0.0.XXc-Multi-Agent-Verification-2026-02-03.md](../verification-records/Theorem-0.0.XXc-Multi-Agent-Verification-2026-02-03.md)
 
+### Lean 4 Formalization
+- [Theorem_0_0_XXc.lean](../../../lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_XXc.lean) — Machine-verified formalization
+
 ### 14.2 Computational Verification
 
 **Script:** `verification/foundations/theorem_0_0_XXc_godel_bootstrap.py`

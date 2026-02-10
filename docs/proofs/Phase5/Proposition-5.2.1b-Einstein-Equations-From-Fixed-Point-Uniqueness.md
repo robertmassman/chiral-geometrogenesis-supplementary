@@ -207,7 +207,16 @@ $$g^{(n)} \xrightarrow{n \to \infty} g^*$$
 
 with convergence rate $\|g^{(n)} - g^*\| \leq \Lambda_{contract}^n \|g^{(0)} - g^*\|/(1-\Lambda_{contract})$.
 
-**Physical interpretation:** The contraction condition is equivalent to $R > 2R_S$ (size exceeds twice Schwarzschild radius), i.e., the weak-field regime.
+**Physical interpretation:** For a spherical source of mass $M$ and radius $R$, the contraction parameter evaluates to:
+$$\Lambda_{contract} = \frac{GM}{Rc^2} = \frac{R_S}{2R}$$
+where $R_S = 2GM/c^2$ is the Schwarzschild radius. Two distinct conditions arise:
+
+| Condition | Requirement | Physical meaning |
+|-----------|-------------|------------------|
+| **Banach convergence** ($\Lambda < 1$) | $R > R_S/2$ | Iteration converges to fixed point |
+| **Weak-field validity** ($|h_{\mu\nu}| \ll 1$) | $R \gtrsim 2R_S$ | Perturbative expansion well-controlled |
+
+The Banach condition is less restrictive: even at the horizon ($R = R_S$), $\Lambda = 0.5 < 1$, so the iteration still converges. All non-black-hole matter configurations satisfy both conditions easily.
 
 ### 2.3 The Fixed-Point Equation
 

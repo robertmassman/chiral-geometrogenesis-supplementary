@@ -1,7 +1,7 @@
 # Proof Index: Chiral Geometrogenesis
 
 > **Auto-generated hierarchical index of all proof documents**
-> Last updated: 2026-02-01
+> Last updated: 2026-02-08
 
 This document provides an organized, hierarchical listing of all proof files in `docs/proofs/`. For theorem status, dependencies, and verification details, see [Mathematical-Proof-Plan.md](../Mathematical-Proof-Plan.md).
 
@@ -48,7 +48,7 @@ This document provides an organized, hierarchical listing of all proof files in 
 
 ## Foundations (Phase -1)
 
-**102 files** — Minimal axioms and foundational theorems (0.0.x numbering)
+**120 files** — Minimal axioms and foundational theorems (0.0.x numbering)
 
 ### Definitions
 
@@ -116,6 +116,7 @@ This document provides an organized, hierarchical listing of all proof files in 
 | 0.0.17a | Born Rule From Geodesic Flow | [Proposition-0.0.17a-Born-Rule-From-Geodesic-Flow.md](foundations/Proposition-0.0.17a-Born-Rule-From-Geodesic-Flow.md) |
 | 0.0.17b | Fisher Metric Uniqueness | [Proposition-0.0.17b-Fisher-Metric-Uniqueness.md](foundations/Proposition-0.0.17b-Fisher-Metric-Uniqueness.md) |
 | 0.0.17c | Arrow of Time From Information Geometry | [Proposition-0.0.17c-Arrow-of-Time-From-Information-Geometry.md](foundations/Proposition-0.0.17c-Arrow-of-Time-From-Information-Geometry.md) |
+| 0.0.17c (Lemma) | Fisher Killing Equivalence | [Lemma-0.0.17c-Fisher-Killing-Equivalence.md](foundations/Lemma-0.0.17c-Fisher-Killing-Equivalence.md) |
 | 0.0.17d | EFT Cutoff From Confinement | [Proposition-0.0.17d-EFT-Cutoff-From-Confinement.md](foundations/Proposition-0.0.17d-EFT-Cutoff-From-Confinement.md) |
 | 0.0.17e | Square Integrability From Finite Energy | [Proposition-0.0.17e-Square-Integrability-From-Finite-Energy.md](foundations/Proposition-0.0.17e-Square-Integrability-From-Finite-Energy.md) |
 | 0.0.17f | Decoherence From Geodesic Mixing | [Proposition-0.0.17f-Decoherence-From-Geodesic-Mixing.md](foundations/Proposition-0.0.17f-Decoherence-From-Geodesic-Mixing.md) |
@@ -173,7 +174,7 @@ This document provides an organized, hierarchical listing of all proof files in 
 |--------|-------|-------|
 | 0.0.17ab | Newton's Constant From Topology | [Statement](foundations/Proposition-0.0.17ab-Newtons-Constant-From-Topology.md), [Derivation](foundations/Proposition-0.0.17ab-Newtons-Constant-From-Topology-Derivation.md), [Applications](foundations/Proposition-0.0.17ab-Newtons-Constant-From-Topology-Applications.md) |
 
-### Propositions (0.0.18-0.0.25 - Electroweak)
+### Propositions (0.0.18-0.0.27 - Electroweak & Higgs)
 
 | Number | Title | File |
 |--------|-------|------|
@@ -184,7 +185,11 @@ This document provides an organized, hierarchical listing of all proof files in 
 | 0.0.22 | SU(2) Substructure From Stella Octangula | [Proposition-0.0.22-SU2-Substructure-From-Stella-Octangula.md](foundations/Proposition-0.0.22-SU2-Substructure-From-Stella-Octangula.md) |
 | 0.0.23 | Hypercharge From Geometric Embedding | [Proposition-0.0.23-Hypercharge-From-Geometric-Embedding.md](foundations/Proposition-0.0.23-Hypercharge-From-Geometric-Embedding.md) |
 | 0.0.24 | SU(2) Gauge Coupling From Unification | [Proposition-0.0.24-SU2-Gauge-Coupling-From-Unification.md](foundations/Proposition-0.0.24-SU2-Gauge-Coupling-From-Unification.md) |
+| 0.0.24a | Electroweak Precision Oblique Parameters (S, T, U) | [Proposition-0.0.24a-Electroweak-Precision-Oblique-Parameters.md](foundations/Proposition-0.0.24a-Electroweak-Precision-Oblique-Parameters.md) |
 | 0.0.25 | Alpha GUT Threshold Formula | [Proposition-0.0.25-Alpha-GUT-Threshold-Formula.md](foundations/Proposition-0.0.25-Alpha-GUT-Threshold-Formula.md) |
+| 0.0.26 | Electroweak Cutoff Derivation | [Proposition-0.0.26-Electroweak-Cutoff-Derivation.md](foundations/Proposition-0.0.26-Electroweak-Cutoff-Derivation.md) |
+| 0.0.27 | Higgs Mass From Geometry | [Statement](foundations/Proposition-0.0.27-Higgs-Mass-From-Geometry.md), [Lattice QFT](foundations/Proposition-0.0.27-Lattice-QFT-On-Stella.md), [Gauge/Fermion/Instanton](foundations/Proposition-0.0.27-Gauge-Fermion-Instanton-Structure.md) |
+| 0.0.27a | Quartic Normalization From Equipartition | [Proposition-0.0.27a-Quartic-Normalization-From-Equipartition.md](foundations/Proposition-0.0.27a-Quartic-Normalization-From-Equipartition.md) |
 
 ### Research Documents
 
@@ -197,6 +202,21 @@ This document provides an organized, hierarchical listing of all proof files in 
 | Research D3: Computational Bootstrap | [Research-D3-Computational-Bootstrap.md](foundations/Research-D3-Computational-Bootstrap.md) |
 | Research D3: Fixed Point Proof | [Research-D3-Fixed-Point-Proof.md](foundations/Research-D3-Fixed-Point-Proof.md) |
 | Research D3: Higher Loop Analysis | [Research-D3-Higher-Loop-Analysis.md](foundations/Research-D3-Higher-Loop-Analysis.md) |
+
+### Propositions & Theorems (0.0.28-0.0.36 - Meta-Foundational)
+
+| Number | Title | Files |
+|--------|-------|-------|
+| 0.0.28 | Theory Space Fixed Point | [Proposition-0.0.28-Theory-Space-Fixed-Point.md](foundations/Proposition-0.0.28-Theory-Space-Fixed-Point.md) |
+| 0.0.29 | Lawvere-DAG Uniqueness | [Theorem-0.0.29-Lawvere-Bootstrap-Uniqueness.md](foundations/Theorem-0.0.29-Lawvere-Bootstrap-Uniqueness.md) |
+| 0.0.30 | Holographic Saturation From Thermodynamic Equilibrium | [Proposition-0.0.30-Holographic-Saturation-From-Thermodynamic-Equilibrium.md](foundations/Proposition-0.0.30-Holographic-Saturation-From-Thermodynamic-Equilibrium.md) |
+| 0.0.31 | Unconditional Uniqueness CG Fixed Point | [Theorem-0.0.31-Unconditional-Uniqueness-CG-Fixed-Point.md](foundations/Theorem-0.0.31-Unconditional-Uniqueness-CG-Fixed-Point.md) |
+| 0.0.32 | Internal Observer (Definition) | [Definition-0.0.32-Internal-Observer.md](foundations/Definition-0.0.32-Internal-Observer.md) |
+| 0.0.32a | Observer Fixed Point | [Proposition-0.0.32a-Observer-Fixed-Point.md](foundations/Proposition-0.0.32a-Observer-Fixed-Point.md) |
+| 0.0.33 | Information Geometry Duality | [Theorem-0.0.33-Information-Geometry-Duality.md](foundations/Theorem-0.0.33-Information-Geometry-Duality.md) |
+| 0.0.34 | Observer Participation | [Proposition-0.0.34-Observer-Participation.md](foundations/Proposition-0.0.34-Observer-Participation.md) |
+| 0.0.35 | Dimensional Uniqueness Of R Stella | [Statement](foundations/Proposition-0.0.35-Dimensional-Uniqueness-Of-R-Stella.md), [Derivation](foundations/Proposition-0.0.35-Dimensional-Uniqueness-Of-R-Stella-Derivation.md), [Applications](foundations/Proposition-0.0.35-Dimensional-Uniqueness-Of-R-Stella-Applications.md) |
+| 0.0.36 | Anthropic Bounds On R Stella | [Proposition-0.0.36-Anthropic-Bounds-On-R-Stella.md](foundations/Proposition-0.0.36-Anthropic-Bounds-On-R-Stella.md) |
 
 ---
 
@@ -293,7 +313,7 @@ This document provides an organized, hierarchical listing of all proof files in 
 
 ## Phase 3
 
-**29 files** — Mass generation via phase-gradient coupling
+**31 files** — Mass generation via phase-gradient coupling
 
 ### Corollaries
 
@@ -324,6 +344,8 @@ This document provides an organized, hierarchical listing of all proof files in 
 | Number | Title | File |
 |--------|-------|------|
 | 3.1.2b | Complete Wolfenstein Parameters | [Extension-3.1.2b-Complete-Wolfenstein-Parameters.md](Phase3/Extension-3.1.2b-Complete-Wolfenstein-Parameters.md) |
+| 3.1.2c | Instanton Overlap Derivation | [Extension-3.1.2c-Instanton-Overlap-Derivation.md](Phase3/Extension-3.1.2c-Instanton-Overlap-Derivation.md) |
+| 3.1.2d | Complete PMNS Parameters | [Extension-3.1.2d-Complete-PMNS-Parameters.md](Phase3/Extension-3.1.2d-Complete-PMNS-Parameters.md) |
 
 ### Theorems
 
@@ -362,6 +384,12 @@ This document provides an organized, hierarchical listing of all proof files in 
 | 4.2.1 | Chiral Bias Soliton Formation | [Statement](Phase4/Theorem-4.2.1-Chiral-Bias-Soliton-Formation.md), [Derivation](Phase4/Theorem-4.2.1-Chiral-Bias-Soliton-Formation-Derivation.md), [Applications](Phase4/Theorem-4.2.1-Chiral-Bias-Soliton-Formation-Applications.md) |
 | 4.2.2 | Sakharov Conditions | [Statement](Phase4/Theorem-4.2.2-Sakharov-Conditions.md), [Derivation](Phase4/Theorem-4.2.2-Sakharov-Conditions-Derivation.md), [Applications](Phase4/Theorem-4.2.2-Sakharov-Conditions-Applications.md) |
 | 4.2.3 | First Order Phase Transition | [Theorem-4.2.3-First-Order-Phase-Transition.md](Phase4/Theorem-4.2.3-First-Order-Phase-Transition.md) |
+
+### Propositions
+
+| Number | Title | File |
+|--------|-------|------|
+| 4.2.4 | Sphaleron Rate From CG Topology | [Proposition-4.2.4-Sphaleron-Rate-From-CG-Topology.md](Phase4/Proposition-4.2.4-Sphaleron-Rate-From-CG-Topology.md) |
 
 ---
 
@@ -427,6 +455,7 @@ This document provides an organized, hierarchical listing of all proof files in 
 |--------|-------|------|
 | 6.3.1 | One-Loop QCD Corrections | [Proposition-6.3.1-One-Loop-QCD-Corrections.md](Phase6/Proposition-6.3.1-One-Loop-QCD-Corrections.md) |
 | 6.3.2 | Decay Widths | [Proposition-6.3.2-Decay-Widths.md](Phase6/Proposition-6.3.2-Decay-Widths.md) |
+| 6.3.3 | Higgs Diphoton Decay (h → γγ) | [Proposition-6.3.3-Higgs-Diphoton-Decay.md](Phase6/Proposition-6.3.3-Higgs-Diphoton-Decay.md) |
 | 6.4.1 | Hadronization Framework | [Proposition-6.4.1-Hadronization-Framework.md](Phase6/Proposition-6.4.1-Hadronization-Framework.md) |
 | 6.5.1 | LHC Cross Section Predictions | [Proposition-6.5.1-LHC-Cross-Section-Predictions.md](Phase6/Proposition-6.5.1-LHC-Cross-Section-Predictions.md) |
 
@@ -518,7 +547,7 @@ This document provides an organized, hierarchical listing of all proof files in 
 
 ## Supporting
 
-**43 files** — Research and analysis documents
+**50 files** — Research and analysis documents
 
 | Title | File |
 |-------|------|
@@ -539,6 +568,7 @@ This document provides an organized, hierarchical listing of all proof files in 
 | Analysis PMNS 5 Copy Structure Connection | [Analysis-PMNS-5-Copy-Structure-Connection.md](supporting/Analysis-PMNS-5-Copy-Structure-Connection.md) |
 | Analysis Quaternionic Structure Icosian Group | [Analysis-Quaternionic-Structure-Icosian-Group.md](supporting/Analysis-Quaternionic-Structure-Icosian-Group.md) |
 | Analysis Unified Geometric Mismatch Resolution | [Analysis-Unified-Geometric-Mismatch-Resolution.md](supporting/Analysis-Unified-Geometric-Mismatch-Resolution.md) |
+| Analysis Higgs Quartic From Vertex Counting | [Analysis-Higgs-Quartic-From-Vertex-Counting.md](supporting/Analysis-Higgs-Quartic-From-Vertex-Counting.md) |
 | Color Constraints Necessity Conclusion | [Color-Constraints-Necessity-Conclusion.md](supporting/Color-Constraints-Necessity-Conclusion.md) |
 | Color Constraints Necessity Research Plan | [Color-Constraints-Necessity-Research-Plan.md](supporting/Color-Constraints-Necessity-Research-Plan.md) |
 | Configuration Space Topology Analysis | [Configuration-Space-Topology-Analysis.md](supporting/Configuration-Space-Topology-Analysis.md) |
@@ -561,6 +591,12 @@ This document provides an organized, hierarchical listing of all proof files in 
 | Phase6 Scattering Theory Plan | [Phase6-Scattering-Theory-Plan.md](supporting/Phase6-Scattering-Theory-Plan.md) |
 | Plan 5.2.5 Bekenstein-Hawking Coefficient Derivation | [Plan-5.2.5-Bekenstein-Hawking-Coefficient-Derivation.md](supporting/Plan-5.2.5-Bekenstein-Hawking-Coefficient-Derivation.md) |
 | QCD Skyrme CG Connection Analysis | [QCD-Skyrme-CG-Connection-Analysis.md](supporting/QCD-Skyrme-CG-Connection-Analysis.md) |
+| Research Alternative Derivations 2sqrtPi To 4 Bridge | [Research-Alternative-Derivations-2sqrtPi-To-4-Bridge.md](supporting/Research-Alternative-Derivations-2sqrtPi-To-4-Bridge.md) |
+| Research Fisher Killing Loop Groups | [Research-Fisher-Killing-Loop-Groups.md](supporting/Research-Fisher-Killing-Loop-Groups.md) |
+| Research Meta Foundational Directions | [Research-Meta-Foundational-Directions.md](supporting/Research-Meta-Foundational-Directions.md) |
+| Research Plan Graviton Dynamics Extension | [Research-Plan-Graviton-Dynamics-Extension.md](supporting/Research-Plan-Graviton-Dynamics-Extension.md) |
+| Research Plan Lambda Equals Ngen Over 24 | [Research-Plan-Lambda-Equals-Ngen-Over-24.md](supporting/Research-Plan-Lambda-Equals-Ngen-Over-24.md) |
+| Research Pure Information Bound On N | [Research-Pure-Information-Bound-On-N.md](supporting/Research-Pure-Information-Bound-On-N.md) |
 | Research Remaining Gaps Worksheet | [Research-Remaining-Gaps-Worksheet.md](supporting/Research-Remaining-Gaps-Worksheet.md) |
 | RESTRUCTURED FILES NOTE | [RESTRUCTURED-FILES-NOTE.md](supporting/RESTRUCTURED-FILES-NOTE.md) |
 | RESTRUCTURED FILES NOTE Theorem 0.2.3 | [RESTRUCTURED-FILES-NOTE-Theorem-0.2.3.md](supporting/RESTRUCTURED-FILES-NOTE-Theorem-0.2.3.md) |
@@ -586,21 +622,21 @@ See [verification-records/](verification-records/) for the complete collection o
 
 | Directory | Files | Description |
 |-----------|-------|-------------|
-| foundations/ | 102 | Minimal axioms (0.0.x) |
+| foundations/ | 120 | Minimal axioms (0.0.x) |
 | Phase0/ | 16 | Pre-geometric (0.1-0.3.x) |
 | Phase1/ | 6 | SU(3) geometry |
 | Phase2/ | 31 | Pressure dynamics |
-| Phase3/ | 29 | Mass generation |
+| Phase3/ | 31 | Mass generation |
 | Phase4/ | 15 | Topological solitons |
 | Phase5/ | 41 | Spacetime & gravity |
 | Phase6/ | 10 | Scattering theory |
 | Phase7/ | 16 | Renormalization |
 | Phase8/ | 17 | Predictions |
 | reference/ | 6 | Reference docs |
-| supporting/ | 43 | Research docs |
-| verification-records/ | 352 | Verification reports |
-| **TOTAL** | **689** | All proof files |
+| supporting/ | 50 | Research docs |
+| verification-records/ | 382 | Verification reports |
+| **TOTAL** | **741** | All proof files |
 
 ---
 
-*Generated from filesystem scan on 2026-02-01*
+*Generated from filesystem scan on 2026-02-07*

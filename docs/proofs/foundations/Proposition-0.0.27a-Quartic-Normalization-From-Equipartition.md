@@ -650,6 +650,9 @@ $$\boxed{\lambda_0 = 1 \text{ is the unique value maximizing entropy on } \parti
 | λ/4 convention statement | ✅ RESOLVED | Added convention note in §4.1 |
 | Quantitative RG verification needed | ✅ RESOLVED | Added §8.4 with SM beta function and numerical estimate |
 
+### Lean 4 Formalization
+- [Proposition_0_0_27a.lean](../../../lean/ChiralGeometrogenesis/Foundations/Proposition_0_0_27a.lean) — Machine-verified formalization
+
 ### Adversarial Physics Verification
 
 **Python Script:** [verify_prop_0_0_27a_adversarial.py](../../../verification/foundations/verify_prop_0_0_27a_adversarial.py)

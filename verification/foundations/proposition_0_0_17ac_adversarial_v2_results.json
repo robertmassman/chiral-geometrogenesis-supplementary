@@ -1,0 +1,326 @@
+{
+  "tests": [
+    {
+      "name": "beta_1(K_4) = 3",
+      "passed": true,
+      "details": "beta_1 = 6 - 4 + 1 = 3"
+    },
+    {
+      "name": "beta_1(stella) = 6",
+      "passed": true,
+      "details": "beta_1 = 12 - 8 + 2 = 6"
+    },
+    {
+      "name": "Additivity: beta_1(stella) = 2 * beta_1(K_4)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "K_4 has C(4,2) = 6 edges",
+      "passed": true,
+      "details": "C(4,2) = 6"
+    },
+    {
+      "name": "Non-tree edges = beta_1 = 3",
+      "passed": true,
+      "details": "6 - 3 = 3"
+    },
+    {
+      "name": "rank(SU(3)) = 2",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "N_holonomy = 12",
+      "passed": true,
+      "details": "6 x 2 = 12"
+    },
+    {
+      "name": "N_total = (N_c^2 - 1)^2 = 64",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "N_local = 52",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Conservation: N_local + N_holonomy = N_total",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "8 \u2297 8 = 1+8+8+10+10+27 = 64",
+      "passed": true,
+      "details": "Sum: 1 + 8 + 8 + 10 + 10 + 27 = 64"
+    },
+    {
+      "name": "Per tetrahedron: 3 cycles x 2 Cartan = 6",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Weight conservation: 6 cycles x 2 = 12 constraints",
+      "passed": true,
+      "details": "6 x 2 = 12"
+    },
+    {
+      "name": "Constraints match N_holonomy",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Triangulation: E = 3V - 6",
+      "passed": true,
+      "details": "3*4 - 6 = 6 = 6"
+    },
+    {
+      "name": "Triangulation: F = 2V - 4",
+      "passed": true,
+      "details": "2*4 - 4 = 4"
+    },
+    {
+      "name": "beta_1 = 2V - 5 for triangulated S^2",
+      "passed": true,
+      "details": "2*4 - 5 = 3 = 3"
+    },
+    {
+      "name": "N_c = 3 \u2192 V = 4 (unique integer solution)",
+      "passed": true,
+      "details": "V = 4.0"
+    },
+    {
+      "name": "N_c = 2 \u2192 V = 4.5 (non-integer)",
+      "passed": true,
+      "details": "V = 4.5"
+    },
+    {
+      "name": "Unique solution: only N_c=3, V=4 (checked N_c=2..1000)",
+      "passed": true,
+      "details": "None found"
+    },
+    {
+      "name": "V \u2192 7/2 < 4 as N_c \u2192 \u221e",
+      "passed": true,
+      "details": "lim V = 3.5"
+    },
+    {
+      "name": "N_hol = 4*N_c uniquely selects (3,4)",
+      "passed": true,
+      "details": "Solutions: [(3, 4)]"
+    },
+    {
+      "name": "Alternative N_hol = 2*dim(adj) does NOT uniquely select (3,4)",
+      "passed": true,
+      "details": "Solutions: [(2, 4), (4, 5), (6, 6), (8, 7), (10, 8), (12, 9), (14, 10), (16, 11), (18, 12), (20, 13), (22, 14), (24, 15), (26, 16), (28, 17), (30, 18), (32, 19), (34, 20), (36, 21), (38, 22), (40, 23), (42, 24), (44, 25), (46, 26), (48, 27), (50, 28), (52, 29), (54, 30), (56, 31), (58, 32), (60, 33), (62, 34), (64, 35), (66, 36), (68, 37), (70, 38), (72, 39), (74, 40), (76, 41), (78, 42), (80, 43), (82, 44), (84, 45), (86, 46), (88, 47), (90, 48), (92, 49), (94, 50), (96, 51), (98, 52), (100, 53)]"
+    },
+    {
+      "name": "beta_0 = 9 for N_f = 3",
+      "passed": true,
+      "details": "(33 - 6)/3 = 9.0"
+    },
+    {
+      "name": "b_0 = 9/(4pi)",
+      "passed": true,
+      "details": "b_0 = 0.716197"
+    },
+    {
+      "name": "Exponents identical: original = decomposed",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Exponent = 128pi/9 \u2248 44.68",
+      "passed": true,
+      "details": "128pi/9 = 44.6804"
+    },
+    {
+      "name": "Exponent formula: 64/(2*b_0) = 128pi/9",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "sqrt(chi)/2 = 1",
+      "passed": "True",
+      "details": "sqrt(4)/2 = 1.0"
+    },
+    {
+      "name": "M_P \u2248 1.12 \u00d7 10^19 GeV",
+      "passed": "True",
+      "details": "M_P = 1.117e+19 GeV"
+    },
+    {
+      "name": "M_P within 10% of observed",
+      "passed": "True",
+      "details": "Ratio = 0.9146 (91.5% agreement)"
+    },
+    {
+      "name": "1-loop: 1/alpha_s(M_P) = 52.48",
+      "passed": true,
+      "details": "52 disc: 0.9%, 64 disc: 22.0%"
+    },
+    {
+      "name": "2-loop: 1/alpha_s(M_P) = 53.23",
+      "passed": true,
+      "details": "52 disc: 2.3%, 64 disc: 20.2%"
+    },
+    {
+      "name": "52 is better prediction than 64",
+      "passed": "True",
+      "details": "0.9% < 22.0%"
+    },
+    {
+      "name": "1-loop analytical \u2248 52.5",
+      "passed": "True",
+      "details": "1/alpha = 52.48"
+    },
+    {
+      "name": "Forward: alpha_s(M_Z) within 10% of PDG",
+      "passed": "True",
+      "details": "alpha_s(M_Z) = 0.1250, off by 6.0%"
+    },
+    {
+      "name": "1/alpha_s(M_P) uncertainty ~ 0.1",
+      "passed": "True",
+      "details": "delta = 0.065"
+    },
+    {
+      "name": "L_1 = 4*I_6 (Hodge Laplacian)",
+      "passed": true,
+      "details": "Eigenvalues: [4. 4. 4. 4. 4. 4.]"
+    },
+    {
+      "name": "All L_1 eigenvalues = 4 (6-fold degenerate)",
+      "passed": true,
+      "details": "Max deviation: 0.00e+00"
+    },
+    {
+      "name": "Vandermonde: correct prefactor is 64 (not 8)",
+      "passed": "True",
+      "details": "Max rel. error between direct and trig(64): 9.63e-13"
+    },
+    {
+      "name": "Vandermonde: prefactor 8 gives ~87.5% error",
+      "passed": "True",
+      "details": "Mean rel. error with prefactor 8: 0.875"
+    },
+    {
+      "name": "Weyl measure normalization: integral = 1",
+      "passed": "True",
+      "details": "Integral = 1.000000"
+    },
+    {
+      "name": "Character orthogonality: <chi_8, chi_8> = 1",
+      "passed": "True",
+      "details": "Inner product = 1.0000"
+    },
+    {
+      "name": "Per-dimension: <chi_8, chi_8>/d_8 = 1/8",
+      "passed": "True",
+      "details": "1/d_8 = 0.1250"
+    },
+    {
+      "name": "ker(d1) has dimension beta_1 = 3",
+      "passed": "True",
+      "details": "rank(d1) = 3, nullity = 3"
+    },
+    {
+      "name": "L_1 on cycle space = 4*I_3 (S_4 invariance \u2192 Schur)",
+      "passed": true,
+      "details": "Eigenvalues: [4. 4. 4.]"
+    },
+    {
+      "name": "Face f3 = H1*H3*H2^{-1} (Bianchi constraint)",
+      "passed": "True",
+      "details": "d2[nontree, f3] = [ 1. -1.  1.]"
+    },
+    {
+      "name": "Holonomy fraction at N_c=3: 12/64 = 18.75%",
+      "passed": "True",
+      "details": "18.75%"
+    },
+    {
+      "name": "Holonomy fraction \u2192 0 as N_c \u2192 \u221e",
+      "passed": "True",
+      "details": "At N_c=50: 0.000047"
+    },
+    {
+      "name": "Holonomy fraction ~ N_c^(-3) at large N_c",
+      "passed": "True",
+      "details": "Power law slope: -2.96 (expected: -3)"
+    },
+    {
+      "name": "SU(2): N_hol = 6 \u2260 chi*N_c = 8 (uniqueness fails)",
+      "passed": true,
+      "details": "N_hol=6, chi*N_c=8"
+    },
+    {
+      "name": "Strong coupling: total channel count = 64",
+      "passed": true,
+      "details": "At beta\u21920, all channels democratic (equipartition)"
+    },
+    {
+      "name": "M_P independent of split (sum always 64)",
+      "passed": true,
+      "details": "Max variation: 0.00e+00"
+    },
+    {
+      "name": "delta_stella\u2192MS-bar = 2.63",
+      "passed": true,
+      "details": "delta = 2.63"
+    },
+    {
+      "name": "Lambda_MSbar/Lambda_stella \u2248 10.6",
+      "passed": "True",
+      "details": "Ratio = 10.6"
+    },
+    {
+      "name": "Lambda ratio in known range [6.3, 28.8]",
+      "passed": "True",
+      "details": "Stella: 10.6, range: [6.3, 28.8]"
+    },
+    {
+      "name": "Universal (beta_0+beta_1) dominates: > 90%",
+      "passed": true,
+      "details": "Universal: 97.7% (2.57/2.63)"
+    },
+    {
+      "name": "Scheme-dependent (beta_2+beta_3) < 5%",
+      "passed": true,
+      "details": "beta_2+beta_3: 0.06 (2.3%)"
+    },
+    {
+      "name": "beta_0(N_f=3) = 9",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "beta_0(N_f=5) = 23/3",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "beta_0(N_f=6) = 7",
+      "passed": true,
+      "details": ""
+    }
+  ],
+  "summary": {
+    "total_tests": 61,
+    "passed": 61,
+    "failed": 0,
+    "pass_rate": "100.0%",
+    "verdict": "FULL VERIFICATION",
+    "sections": {
+      "1_graph_theory": "All passed",
+      "2_holonomy_channels": "All passed",
+      "3_uniqueness": "All passed",
+      "4_planck_mass": "All passed",
+      "5_qcd_running": "Running coupling comparison verified",
+      "6_factorization": "Hodge Laplacian, Weyl measure, Vandermonde verified",
+      "7_large_Nc": "Scaling and limits verified",
+      "8_scheme_conversion": "Within known range [6.3, 28.8]"
+    }
+  }
+}

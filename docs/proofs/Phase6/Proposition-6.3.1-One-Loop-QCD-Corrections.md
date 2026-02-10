@@ -187,8 +187,9 @@ $$\alpha_s(Q^2) = \frac{\alpha_s(\mu^2)}{1 + \frac{b_1\alpha_s(\mu^2)}{2\pi}\ln(
 In the geometric scheme from equipartition:
 $$\frac{1}{\alpha_s^{geom}(M_P)} = (N_c^2 - 1)^2 = 64$$
 
-Converting to MS-bar via the scheme factor $\theta_O/\theta_T = 1.55215$ (Theorem 0.0.6):
-$$\frac{1}{\alpha_s^{\overline{MS}}(M_P)} = 64 \times 1.55215 = 99.34$$
+**Edge-mode decomposition ([Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)):** This total of 64 decomposes as 52 local running face modes + 12 non-local non-running holonomy modes. The running coupling 1/α_s^{running} = 52 matches standard QCD running (which gives ~52–55 at NNLO) to ~1%, largely resolving the discrepancy noted below. The full 64 remains the correct total exponent in the Planck mass formula.
+
+**(corrected 2026-02-08: NNLO running bug fix)** ~~Converting to MS-bar via the scheme factor $\theta_O/\theta_T = 1.55215$: $1/\alpha_s^{\overline{MS}}(M_P) = 64 \times 1.55215 = 99.34$~~ **RETRACTED.** The scheme conversion factor $\theta_O/\theta_T = 1.55215$ was reverse-engineered to match a buggy NNLO running script that used $\ln(\mu^2/\mu_0^2)$ instead of $\ln(\mu/\mu_0)$, yielding $1/\alpha_s \approx 96\text{--}99$ instead of the correct $\sim 52\text{--}55$. The CG prediction $1/\alpha_s^{\text{geom}}(M_P) = 64$ has a genuine $\sim$17--22% discrepancy from the standard NNLO value of $\sim 52\text{--}55$ that is currently **unresolved**.
 
 **Running to $M_Z$ via E₆ → E₈ cascade (Prop 0.0.17s §5.1):**
 
@@ -200,7 +201,7 @@ Direct SM running from $M_P$ is insufficient; the framework requires **E₆ → 
 | $M_{GUT} \to M_{E8}$ | E₆ | 30 |
 | $M_{E8} \to M_P$ | E₈ (pure gauge) | 110 |
 
-Backward running from $1/\alpha_s(M_P) = 99.34$ through this cascade recovers:
+Running from $1/\alpha_s^{\text{geom}}(M_P) = 64$ through this cascade gives:
 
 $$\alpha_s(M_Z) = 0.122 \pm 0.010$$
 

@@ -512,7 +512,7 @@ They define parametrized measure models as fundamental geometric objects that ca
 
 $$\underbrace{\text{Chentsov uniqueness}}_{\text{Ay-Jost-Lê-Schwachhöfer}} + \underbrace{S_N \text{ symmetry}}_{\text{This lemma}} \implies g^F \propto g^K$$
 
-**Extension Opportunity:** Their infinite-dimensional framework could extend this lemma to loop groups and affine Lie algebras, where the Cartan torus becomes infinite-dimensional but retains Weyl group structure. This direction is explored separately in [Research-Fisher-Killing-Loop-Groups.md](../supporting/Research-Fisher-Killing-Loop-Groups.md) — marked as exploratory research outside the main proof chain.
+**Extension to Loop Groups (Completed):** Their infinite-dimensional framework was applied to extend this lemma to loop groups and affine Lie algebras. The key finding: **Fisher-Killing equivalence holds on the finite Cartan subalgebra h at each level k**, recovering exactly this lemma's result. The extension fails on the central direction c due to a fundamental signature mismatch (the Killing form is indefinite on the affine Cartan, while the Fisher metric must be positive-semidefinite). This confirms that the finite Fisher-Killing equivalence is not accidental but part of a universal pattern. See [Research-Fisher-Killing-Loop-Groups.md](../supporting/Research-Fisher-Killing-Loop-Groups.md) for complete details (exploratory research, outside main proof chain).
 
 ---
 
@@ -534,7 +534,7 @@ $$\underbrace{\text{Chentsov uniqueness}}_{\text{Ay-Jost-Lê-Schwachhöfer}} + \
 
 ### 7.3 Exploratory Directions (Outside Main Proof Chain)
 
-- 🔮 [Loop groups and affine Lie algebras extension](../supporting/Research-Fisher-Killing-Loop-Groups.md) — Conjectured extension to Kac-Moody groups
+- ✅ [Loop groups and affine Lie algebras extension](../supporting/Research-Fisher-Killing-Loop-Groups.md) — **Research complete (2026-02-05):** Fisher-Killing equivalence holds on finite Cartan h at each level k; fails on central direction c due to signature mismatch (Killing indefinite, Fisher positive-semidefinite). This confirms the finite case is not a "finite accident" but part of a universal pattern.
 
 ---
 

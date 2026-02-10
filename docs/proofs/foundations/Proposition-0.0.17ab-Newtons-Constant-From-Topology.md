@@ -28,7 +28,7 @@ $$\boxed{G = \frac{\hbar c}{8\pi f_\chi^2}}$$
 
 $$f_\chi = \frac{M_P}{\sqrt{8\pi}}, \qquad M_P = \frac{\sqrt{\chi}}{2} \cdot \sqrt{\sigma} \cdot \exp\!\left(\frac{1}{2b_0 \alpha_s(M_P)}\right) \cdot \mathcal{C}_{\text{NP}}$$
 
-*with $\sqrt{\sigma} = \hbar c / R_{\text{stella}}$, $b_0 = 9/(4\pi)$, $\alpha_s(M_P) = 1/64$, and $\mathcal{C}_{\text{NP}}$ the non-perturbative correction factor from Proposition 0.0.17z.*
+*with $\sqrt{\sigma} = \hbar c / R_{\text{stella}}$, $b_0 = 9/(4\pi)$, $1/(2b_0\alpha_s(M_P)) = 128\pi/9$ (total exponent from 52 running + 12 holonomy modes; see [Prop 0.0.17ac](Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)), and $\mathcal{C}_{\text{NP}}$ the non-perturbative correction factor from Proposition 0.0.17z.*
 
 *This yields $G \approx 6.52 \times 10^{-11}\;\text{m}^3/(\text{kg}\cdot\text{s}^2)$, within 2.3% of the CODATA value $G_{\text{obs}} = 6.67430(15) \times 10^{-11}\;\text{m}^3/(\text{kg}\cdot\text{s}^2)$, well inside the $\pm 14\%$ theoretical uncertainty budget.*
 
@@ -44,7 +44,7 @@ $$f_\chi = \frac{M_P}{\sqrt{8\pi}}, \qquad M_P = \frac{\sqrt{\chi}}{2} \cdot \sq
 | $N_f$ | Number of light flavors | 3 | Standard QCD |
 | $\chi$ | Euler characteristic of $\partial\mathcal{S}$ | 4 | Def 0.1.1 |
 | $b_0$ | One-loop β-function coefficient | $9/(4\pi)$ | Prop 0.0.17t |
-| $\alpha_s(M_P)$ | Strong coupling at Planck scale | 1/64 | Prop 0.0.17w |
+| $\alpha_s(M_P)$ | Strong coupling at Planck scale | 1/64 (total exponent); running part = 1/52, holonomy = 12 | Prop 0.0.17w, Prop 0.0.17ac |
 | $M_P$ | Planck mass | $1.22 \times 10^{19}$ GeV (obs) | Thm 5.2.6 |
 | $f_\chi$ | Chiral decay constant | $M_P/\sqrt{8\pi} \approx 2.44 \times 10^{18}$ GeV | Prop 5.2.4a |
 | $G$ | Newton's gravitational constant | $6.52 \times 10^{-11}\;\text{m}^3/(\text{kg}\cdot\text{s}^2)$ (predicted) | **OUTPUT** |
@@ -62,7 +62,8 @@ TOPOLOGICAL INPUTS (no free parameters)
 ├── Def 0.1.1: ∂S = ∂T₊ ⊔ ∂T₋ → χ = 4
 ├── Thm 0.0.3: SU(3) from stella → N_c = 3
 ├── Prop 0.0.17t: b₀ = (11N_c − 2N_f)/(12π) = 9/(4π)
-└── Prop 0.0.17w: 1/α_s(M_P) = (N_c² − 1)² = 64
+├── Prop 0.0.17w: 1/α_s(M_P) = (N_c² − 1)² = 64 (total exponent)
+└── Prop 0.0.17ac: 64 = 52 (running face modes) + 12 (holonomy modes)
 
 DIMENSIONAL INPUT (one free parameter)
 └── R_stella = 0.44847 fm (observed QCD string tension)

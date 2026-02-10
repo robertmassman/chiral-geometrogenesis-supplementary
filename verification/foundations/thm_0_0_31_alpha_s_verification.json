@@ -1,0 +1,60 @@
+{
+  "timestamp": "2026-02-05T10:48:30.804729",
+  "test_name": "Alpha_s Constraint Verification for Theorem 0.0.31",
+  "tests": {
+    "max_entropy": {
+      "dim_adj": 8,
+      "channels": 64,
+      "inv_alpha_s": 64,
+      "alpha_s": 0.015625,
+      "status": "PASS"
+    },
+    "rg_running": {
+      "b0": 0.716197243913529,
+      "ln_ratio": 39.43577794494305,
+      "inv_alpha_MZ": 8.474576271186441,
+      "inv_alpha_MP": 64.96216722269473,
+      "alpha_s_MP": 0.015393575103058553,
+      "deviation_from_64_percent": 1.5033862854605173,
+      "status": "PASS"
+    },
+    "bootstrap_consistency": {
+      "exponent_predicted": 44.680428851054835,
+      "xi_predicted": 2.5378368495988343e+19,
+      "xi_observed": 2.77475e+19,
+      "hierarchy_deviation_percent": 8.538180030675402,
+      "sqrt_sigma_pred_MeV": 481.0750542112235,
+      "sqrt_sigma_obs_MeV": 440,
+      "sigma_deviation_percent": 9.33523959345989,
+      "sigma_deviation_sigma_units": 1.3691684737074505,
+      "status": "PASS"
+    },
+    "standard_comparison": {
+      "alpha_s_max_entropy": 0.015625,
+      "alpha_s_standard_range": [
+        0.02,
+        0.04
+      ],
+      "alpha_s_one_loop_running": 0.015393575103058553,
+      "tension_with_standard_percent": 92.0,
+      "note": "Standard includes GUT/SUSY thresholds; one-loop QCD agrees to 1.5%",
+      "status": "ACKNOWLEDGED"
+    },
+    "alternative_derivations": {
+      "max_entropy": "Primary derivation - Prop 0.0.17w",
+      "rg_consistency": "Independent validation - 98.5% agreement",
+      "group_theoretic": "Naturalness argument - (dim adj)\u00b2",
+      "bootstrap": "Self-consistency requirement",
+      "self_duality": "Speculative connection",
+      "status": "DOCUMENTED"
+    }
+  },
+  "summary": {
+    "inv_alpha_s_predicted": 64,
+    "inv_alpha_s_from_rg": 64.96216722269473,
+    "rg_deviation_percent": 1.5033862854605173,
+    "sqrt_sigma_pred_MeV": 481.0750542112235,
+    "sqrt_sigma_obs_MeV": 440,
+    "overall_status": "PASS"
+  }
+}

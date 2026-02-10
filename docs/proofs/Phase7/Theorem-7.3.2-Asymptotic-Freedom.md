@@ -183,7 +183,7 @@ The UV derivations for g_χ and α_s follow **fundamentally different patterns**
 
 **Examples:**
 - **g_χ (Class 1):** $g_\chi^{UV} = \frac{\chi \cdot N_c}{4\pi} = \frac{2 \cdot 3}{4\pi} = \frac{3}{2\pi} \approx 0.48$ — Linear in $N_c$, involves topology (χ = 2)
-- **α_s (Class 2):** $\frac{1}{\alpha_s^{geom}} = (N_c^2 - 1)^2 = 64$ — Quartic in $N_c$, pure representation theory (adj⊗adj decomposition)
+- **α_s (Class 2):** $\frac{1}{\alpha_s^{geom}} = (N_c^2 - 1)^2 = 64$ — Quartic in $N_c$, pure representation theory (adj⊗adj decomposition); decomposes as 52 running + 12 holonomy ([Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md))
 
 **Physical distinction:**
 - Class 1 (topological): Coupling strength set by **boundary curvature** of stella octangula
@@ -346,18 +346,18 @@ From Proposition 0.0.17s:
 
 $$\frac{1}{\alpha_s^{geom}(M_P)} = (N_c^2 - 1)^2 = 64$$
 
+**Edge-mode decomposition ([Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)):** This total exponent 64 decomposes as 52 local running face modes + 12 non-local non-running holonomy modes. The running coupling 1/α_s^{running} = 52 matches standard QCD running to ~1% at one loop.
+
 With E₆ → E₈ cascade running and scheme conversion:
 
-$$\frac{1}{\alpha_s^{MS-bar}(M_P)} = 99.34$$
-
-**Match with SM running:** 99.97% agreement at M_P with $M_{E8} = 2.36 \times 10^{18}$ GeV.
+> **RETRACTED (corrected 2026-02-08: NNLO running bug fix):** The value ~~1/α_s^{MS-bar}(M_P) = 99.34~~ was based on a factor-of-2 bug in `theorem_5_2_6_nnlo_running.py`. The correct NNLO running gives 1/α_s(M_P) ~ 52-55, not ~96-99. The "scheme conversion factor" θ_O/θ_T = 1.55215 was reverse-engineered to match the buggy output. The CG geometric prediction remains 1/α_s^{geom}(M_P) = 64; comparison with correct SM running is an open question under active investigation.
 
 ### 5.3 Complete UV Picture
 
 ```
 M_P ──────── E₈ (pure gauge) ──────── M_{E8}
                     ↓
-              1/α = 99.34
+              1/α = 64 (geometric; MS-bar value under revision)
 
 M_{E8} ────── E₆ (with matter) ────── M_{GUT}
                     ↓
@@ -410,6 +410,7 @@ Asymptotic freedom provides the UV completion for dynamical confinement (Theorem
 6. **Theorem 2.5.2** — Dynamical Confinement from Pressure Mechanism
 7. **Theorem 3.1.1** — Chiral Drag Mass Formula
 8. **[Two-Loop-Calculation.md](./Theorem-7.3.2-Two-Loop-Calculation.md)** — Two-loop β-function coefficient (NEW)
+9. **[Proposition 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)** — Edge-mode decomposition: 64 = 52 (running) + 12 (holonomy)
 
 ### 7.2 External Literature
 

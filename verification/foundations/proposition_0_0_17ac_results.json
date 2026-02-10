@@ -1,0 +1,211 @@
+{
+  "tests": [
+    {
+      "name": "beta_1(K_4) = 3",
+      "passed": true,
+      "details": "beta_1 = 6 - 4 + 1 = 3"
+    },
+    {
+      "name": "beta_1(stella) = 6",
+      "passed": true,
+      "details": "beta_1 = 12 - 8 + 2 = 6"
+    },
+    {
+      "name": "beta_1(stella) = 2 * beta_1(K_4)",
+      "passed": true,
+      "details": "6 == 2 * 3"
+    },
+    {
+      "name": "rank(SU(3)) = 2",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "N_holonomy = 12",
+      "passed": true,
+      "details": "6 x 2 = 12"
+    },
+    {
+      "name": "N_total = (N_c^2 - 1)^2 = 64",
+      "passed": true,
+      "details": "(3^2 - 1)^2 = 64"
+    },
+    {
+      "name": "N_local = 52",
+      "passed": true,
+      "details": "64 - 12 = 52"
+    },
+    {
+      "name": "Conservation: N_local + N_holonomy = N_total",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "8 x 8 decomposition: 1+8+8+10+10+27 = 64",
+      "passed": true,
+      "details": "Sum of irreps: 1 + 8 + 8 + 10 + 10 + 27 = 64"
+    },
+    {
+      "name": "Matches (N_c^2 - 1)^2",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "N_c = 3 \u2192 V = 4",
+      "passed": true,
+      "details": "V = (7*3 - 5)/(2*2) = 16/4 = 4.0"
+    },
+    {
+      "name": "N_c = 2 \u2192 V = 4.5 (non-integer)",
+      "passed": true,
+      "details": "V = (7*2 - 5)/(2*1) = 9/2 = 4.5"
+    },
+    {
+      "name": "Unique solution: only N_c=3 gives integer V >= 4 (checked N_c=2..100)",
+      "passed": true,
+      "details": "None"
+    },
+    {
+      "name": "V \u2192 7/2 = 3.5 as N_c \u2192 \u221e",
+      "passed": true,
+      "details": "lim V = 7/2 = 3.5, below minimum V = 4"
+    },
+    {
+      "name": "Exponents identical: original = decomposed",
+      "passed": true,
+      "details": "Original: 44.6804, Decomposed: 44.6804"
+    },
+    {
+      "name": "Exponent = 128\u03c0/9 \u2248 44.68",
+      "passed": true,
+      "details": "128\u03c0/9 = 44.6804"
+    },
+    {
+      "name": "M_P \u2248 1.12 \u00d7 10^19 GeV",
+      "passed": "True",
+      "details": "M_P = 1.117e+19 GeV"
+    },
+    {
+      "name": "M_P prediction within 10% of observed",
+      "passed": "True",
+      "details": "Predicted/Observed = 0.9146 (91.5% agreement)"
+    },
+    {
+      "name": "1-loop: 1/\u03b1_s(M_P) = 52.5",
+      "passed": true,
+      "details": "52 discrepancy: 0.9%, 64 discrepancy: 22.0%"
+    },
+    {
+      "name": "2-loop: 1/\u03b1_s(M_P) = 53.2",
+      "passed": true,
+      "details": "52 discrepancy: 2.3%, 64 discrepancy: 20.2%"
+    },
+    {
+      "name": "3-loop: 1/\u03b1_s(M_P) = 53.5",
+      "passed": true,
+      "details": "52 discrepancy: 2.8%, 64 discrepancy: 19.6%"
+    },
+    {
+      "name": "1-loop agreement with 52 better than 5%",
+      "passed": "True",
+      "details": "Discrepancy: 0.9%"
+    },
+    {
+      "name": "52 is a better prediction than 64 at 1-loop",
+      "passed": "True",
+      "details": "Improvement: 21.0 percentage points"
+    },
+    {
+      "name": "1/\u03b1_s(M_Z) forward running \u2248 8.1",
+      "passed": "True",
+      "details": "1/\u03b1_s(M_Z) = 8.07"
+    },
+    {
+      "name": "\u03b1_s(M_Z) forward \u2248 0.12",
+      "passed": "True",
+      "details": "\u03b1_s(M_Z) = 0.1240"
+    },
+    {
+      "name": "Forward running within 10% of PDG",
+      "passed": "True",
+      "details": "Predicted: 0.1240, PDG: 0.118, off by 5.1%"
+    },
+    {
+      "name": "With threshold matching: \u03b1_s(M_Z) prediction",
+      "passed": true,
+      "details": "\u03b1_s(M_Z) = 0.1250 (PDG: 0.118, off by 6.0%)"
+    },
+    {
+      "name": "M_P independent of N_holonomy (given N_local + N_holonomy = 64)",
+      "passed": true,
+      "details": "Max relative variation: 0.00e+00"
+    },
+    {
+      "name": "M_P sensitive to total channel count",
+      "passed": "True",
+      "details": "Range: 6.36e+14 to 7.93e+23"
+    },
+    {
+      "name": "Holonomy fraction at N_c = 3: 12/64 = 18.75%",
+      "passed": "True",
+      "details": "Fraction = 0.1875 = 18.75%"
+    },
+    {
+      "name": "Holonomy fraction \u2192 0 as N_c \u2192 \u221e",
+      "passed": "True",
+      "details": "At N_c = 50: fraction = 0.000047"
+    },
+    {
+      "name": "Holonomy fraction scales as ~N_c^(-3)",
+      "passed": "True",
+      "details": "Power law slope: -2.96 (expected: -3)"
+    },
+    {
+      "name": "Identity N_hol = 4*N_c: unique solution is (N_c=3, V=4)",
+      "passed": true,
+      "details": "Solutions: [(3, 4)]"
+    },
+    {
+      "name": "Alternative identity N_hol = 2*dim(adj) also has solutions",
+      "passed": true,
+      "details": "Solutions: [(2, 4), (4, 5), (6, 6), (8, 7), (10, 8), (12, 9), (14, 10), (16, 11), (18, 12), (20, 13), (22, 14), (24, 15), (26, 16), (28, 17), (30, 18), (32, 19), (34, 20), (36, 21), (38, 22), (40, 23), (42, 24), (44, 25), (46, 26), (48, 27), (50, 28), (52, 29), (54, 30), (56, 31), (58, 32), (60, 33), (62, 34), (64, 35), (66, 36), (68, 37), (70, 38), (72, 39), (74, 40), (76, 41), (78, 42), (80, 43), (82, 44), (84, 45), (86, 46), (88, 47), (90, 48), (92, 49), (94, 50), (96, 51), (98, 52), (100, 53)]"
+    },
+    {
+      "name": "Alternative identity N_hol = dim(adj) may have solutions",
+      "passed": true,
+      "details": "Solutions: [(5, 4), (9, 5), (13, 6), (17, 7), (21, 8), (25, 9), (29, 10), (33, 11), (37, 12), (41, 13), (45, 14), (49, 15), (53, 16), (57, 17), (61, 18), (65, 19), (69, 20), (73, 21), (77, 22), (81, 23), (85, 24), (89, 25), (93, 26), (97, 27)]"
+    },
+    {
+      "name": "Proposition's identity uniquely selects (N_c=3, V=4)",
+      "passed": true,
+      "details": "N_hol = 4*N_c is unique among tested identities in selecting only (3,4)"
+    },
+    {
+      "name": "b\u2080 = 9/(4\u03c0) corresponds to N_f = 3, NOT N_f = 0",
+      "passed": true,
+      "details": "N_f=3: b\u2080 = 0.716197 = 9/(4\u03c0) = 0.716197"
+    },
+    {
+      "name": "N_f = 0 gives b\u2080 = 11/(4\u03c0), not 9/(4\u03c0)",
+      "passed": true,
+      "details": "N_f=0: b\u2080 = 0.875352 = 11/(4\u03c0) = 0.875352"
+    },
+    {
+      "name": "1/\u03b1_s(M_P) uncertainty from \u03b1_s(M_Z) input",
+      "passed": true,
+      "details": "1/\u03b1_s(M_P) = 52.5 \u00b1 0.1"
+    },
+    {
+      "name": "CG prediction 52 within 2\u03c3 of 1-loop running",
+      "passed": "False",
+      "details": "|52 - 52.5| = 0.5 vs 2\u03c3 = 0.1"
+    }
+  ],
+  "summary": {
+    "total_tests": 40,
+    "passed": 39,
+    "failed": 1,
+    "pass_rate": "97.5%",
+    "verdict": "PARTIAL VERIFICATION"
+  }
+}

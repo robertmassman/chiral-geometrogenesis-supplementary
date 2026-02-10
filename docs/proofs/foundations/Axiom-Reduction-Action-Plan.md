@@ -52,9 +52,9 @@ The framework has achieved significant axiom reduction:
 
 **🎉 TOPOLOGICAL HIERARCHY VERIFIED (2026-01-06):** Proposition 0.0.17t establishes the topological origin of the QCD-Planck hierarchy. β-function coefficient b₀ is an index on twistor space (Costello-Bittleston theorem). dim(adj) = 8 derived via Z₃ → SU(3) uniqueness. Central charge flow Δa = 1.63 gives 88% agreement with hierarchy exponent. Multi-agent verified.
 
-**🎉 α_s UNIFICATION VERIFIED (2026-01-06):** Proposition 0.0.17s derives the strong coupling from two independent paths (equipartition + GUT unification) with scheme conversion via heat kernel methods. θ_O/θ_T = 1.55215 rigorously derived. Agreement with NNLO QCD: 0.04%. α_s(M_Z) matches PDG 2024 to 0.1%. Multi-agent verified.
+**🎉 α_s UNIFICATION ~~VERIFIED~~ PARTIALLY RETRACTED (2026-01-06; corrected 2026-02-08: NNLO running bug fix):** Proposition 0.0.17s derives the strong coupling from two independent paths (equipartition + GUT unification). ~~θ_O/θ_T = 1.55215 rigorously derived. Agreement with NNLO QCD: 0.04%.~~ **RETRACTED:** The scheme conversion factor θ_O/θ_T = 1.55215 was reverse-engineered to match a buggy NNLO running value (~99); the correct NNLO 1/α_s(M_P) is ~52-55, giving CG prediction 1/α_s = 64 a genuine ~17-22% discrepancy. α_s(M_Z) matches PDG 2024 to 0.1% (this result is independent of the bug).
 
-**🎉 R_stella NOW DERIVED (2026-01-05):** Proposition 0.0.17q derives R_stella = 0.41 fm from M_P via dimensional transmutation (91% agreement with observed 0.44847 fm). The 9% discrepancy is REDUCIBLE (not fundamental) via NNLO + non-perturbative corrections. UV coupling validated to 0.04%.
+**🎉 R_stella NOW DERIVED (2026-01-05):** Proposition 0.0.17q derives R_stella = 0.41 fm from M_P via dimensional transmutation (91% agreement with observed 0.44847 fm). The 9% discrepancy is REDUCIBLE (not fundamental) via NNLO + non-perturbative corrections. ~~UV coupling validated to 0.04%.~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix -- correct NNLO 1/α_s(M_P) ~ 52-55; CG 1/α_s = 64 has ~17-22% discrepancy).
 
 **🎉 MILESTONE ACHIEVED (2026-01-05):** P4 (Fermion Masses) VERIFIED — All 9 charged fermion masses agree with PDG 2024 at 99%+ (Prop 0.0.17n). Framework reduces SM parameter count from 20 to 11 (45% reduction).
 
@@ -81,7 +81,7 @@ The framework has achieved significant axiom reduction:
   - ✅ **Explicit Casimir mode sum:** 512-face mesh, 49 eigenvalues, f = 0.99 ± 0.01
   - ✅ Temperature dependence quantitatively derived (T_c/√σ = 0.35)
   - ✅ All scale relationships (Λ_QCD, f_π, ω) derived from single input R_stella
-  - ✅ **UV coupling 1/α_s = 64 DERIVED** from first principles (equipartition over 64 gluon-gluon channels; **FULLY VERIFIED via Prop 0.0.17s with 0.04% NNLO agreement**)
+  - ✅ **UV coupling 1/α_s = 64 DERIVED** from first principles (equipartition over 64 gluon-gluon channels; ~~FULLY VERIFIED via Prop 0.0.17s with 0.04% NNLO agreement~~ **scheme conversion RETRACTED** (corrected 2026-02-08: NNLO running bug fix -- CG 1/α_s = 64 vs correct NNLO ~52-55, genuine ~17-22% discrepancy))
   - ✅ **Hierarchy R_stella/ℓ_P ~ 10¹⁹ EXPLAINED** via Theorem 5.2.6 (dimensional transmutation, 91.5% M_P agreement)
   - ✅ Multi-agent verification: **14/14 computational tests pass**, 99.7% agreement with lattice QCD
   - ✅ Reduces phenomenological inputs from 3 (P2-P4) to 2 (P2 + P4)
@@ -90,7 +90,7 @@ The framework has achieved significant axiom reduction:
   - `verification/foundations/proposition_0_0_17j_complete_derivation.py` — Full derivations
   - `verification/foundations/proposition_0_0_17j_complete_casimir_and_uv_coupling.py` — Explicit mode sum + UV coupling
   - `verification/foundations/proposition_0_0_17s_verification.py` — α_s from gauge unification (7/7 pass)
-  - `verification/foundations/proposition_0_0_17s_scheme_derivation.py` — Heat kernel scheme conversion derivation
+  - `verification/foundations/proposition_0_0_17s_scheme_derivation.py` — ~~Heat kernel scheme conversion derivation~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix -- scheme conversion interpretation invalid)
 - **Plots and Data:**
   - `verification/plots/proposition_0_0_17j_temperature.png` — Temperature dependence
   - `verification/plots/proposition_0_0_17j_shape_factor.png` — Shape factor derivation
@@ -814,16 +814,18 @@ g_χ estimates from lattice matching:
   | Path | Method | Result | Scheme |
   |------|--------|--------|--------|
   | **Equipartition** | adj⊗adj = 64 channels (Prop 0.0.17j §6.3) | 1/α_s = 64 | Geometric |
-  | **Unification** | sin²θ_W = 3/8 + RG running (Thm 2.4.1) | 1/α_s ≈ 99 | MS-bar |
-  | **Conversion** | θ_O/θ_T = 1.55215 (heat kernel derivation) | 64 × 1.55 = 99.3 | — |
+  | **Unification** | sin²θ_W = 3/8 + RG running (Thm 2.4.1) | ~~1/α_s ≈ 99~~ **corrected: ~52-55** (corrected 2026-02-08: NNLO running bug fix) | MS-bar |
+  | ~~**Conversion**~~ | ~~θ_O/θ_T = 1.55215 (heat kernel derivation)~~ | ~~64 × 1.55 = 99.3~~ | **RETRACTED** |
 
-- **Scheme Conversion Factor Rigorously Derived:**
-  - Heat kernel methods on polyhedral boundaries (Balian & Bloch 1970)
-  - Edge contribution scales as (π - θ) for dihedral angles
-  - θ_T = arccos(1/3) ≈ 70.53° (tetrahedral)
-  - θ_O = arccos(-1/3) ≈ 109.47° (octahedral)
-  - θ_O + θ_T = π (supplementary angles from honeycomb tiling)
-  - Ratio θ_O/θ_T = 1.55215 connects geometric and MS-bar schemes
+> **RETRACTION NOTE (corrected 2026-02-08: NNLO running bug fix):** The entire scheme conversion section below is retracted. The θ_O/θ_T = 1.55215 factor was reverse-engineered to match a buggy NNLO running result of 1/α_s(M_P) ~ 99. The bug was using ln(μ²/μ₀²) instead of ln(μ/μ₀). Correct NNLO 1/α_s(M_P) ~ 52-55. CG prediction 1/α_s = 64 has genuine ~17-22% discrepancy.
+
+- ~~**Scheme Conversion Factor Rigorously Derived:**~~
+  - ~~Heat kernel methods on polyhedral boundaries (Balian & Bloch 1970)~~
+  - ~~Edge contribution scales as (π - θ) for dihedral angles~~
+  - ~~θ_T = arccos(1/3) ≈ 70.53° (tetrahedral)~~
+  - ~~θ_O = arccos(-1/3) ≈ 109.47° (octahedral)~~
+  - ~~θ_O + θ_T = π (supplementary angles from honeycomb tiling)~~
+  - ~~Ratio θ_O/θ_T = 1.55215 connects geometric and MS-bar schemes~~ **RETRACTED**
 
 - **SUSY vs Non-SUSY Unification:**
   - CG framework achieves gauge unification **without supersymmetry**
@@ -831,8 +833,8 @@ g_χ estimates from lattice matching:
   - Proton decay naturally suppressed (no X,Y bosons at low energy)
 
 - **Key Results:**
-  - Agreement with NNLO QCD: **0.04%** (1/α_s^{MS-bar} = 99.34 vs 99.3)
-  - α_s(M_Z) = 0.1180 matches PDG 2024 (0.1180 ± 0.0009) to **0.1%**
+  - ~~Agreement with NNLO QCD: **0.04%** (1/α_s^{MS-bar} = 99.34 vs 99.3)~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix)
+  - α_s(M_Z) = 0.1180 matches PDG 2024 (0.1180 ± 0.0009) to **0.1%** (independent of bug)
 
 - **Multi-Agent Verification Complete:**
   - Mathematical Agent: ✅ VERIFIED (all calculations correct)
@@ -840,8 +842,8 @@ g_χ estimates from lattice matching:
   - Literature Agent: ✅ VERIFIED (citations accurate)
   - Computational Agent: ✅ VERIFIED (7/7 numerical checks pass)
   - All issues from initial verification resolved:
-    - Scheme conversion now rigorously derived via heat kernel methods
-    - RG running logic gap (45 vs 99) clarified
+    - ~~Scheme conversion now rigorously derived via heat kernel methods~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix)
+    - ~~RG running logic gap (45 vs 99) clarified~~ (corrected 2026-02-08: the "99" was from buggy NNLO running; correct value ~52-55)
     - SUSY vs minimal SU(5) ambiguity addressed
     - Proton decay constraints explained
     - α_s(M_Z) value updated to PDG 2024
@@ -849,15 +851,15 @@ g_χ estimates from lattice matching:
 
 - **Verification:**
   - `proposition_0_0_17s_verification.py` — 7/7 tests pass
-  - `proposition_0_0_17s_scheme_derivation.py` — Heat kernel derivation validation
+  - `proposition_0_0_17s_scheme_derivation.py` — ~~Heat kernel derivation validation~~ **scheme conversion RETRACTED** (corrected 2026-02-08: NNLO running bug fix)
   - `verification/plots/prop_0_0_17s_rg_running.png` — RG running visualization
-  - `verification/plots/prop_0_0_17s_scheme_comparison.png` — Two-path convergence
+  - `verification/plots/prop_0_0_17s_scheme_comparison.png` — ~~Two-path convergence~~ (scheme conversion path **RETRACTED** 2026-02-08)
 
 - **Files:**
   - [Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md](Proposition-0.0.17s-Strong-Coupling-From-Gauge-Unification.md)
   - [Proposition-0.0.17s-Verification-Report.md](../../verification/shared/Proposition-0.0.17s-Verification-Report.md)
 
-- **Impact:** UV coupling derivation now fully verified with rigorous scheme conversion
+- **Impact:** UV coupling derivation 1/α_s = 64 stands; ~~fully verified with rigorous scheme conversion~~ **scheme conversion RETRACTED** (corrected 2026-02-08: NNLO running bug fix)
 
 ### 2026-01-05: PATH E COMPLETE — Lattice Spacing from Holographic Self-Consistency (Prop 0.0.17r)
 - ✅ **Created Proposition 0.0.17r: Lattice Spacing from Holographic Self-Consistency**
@@ -1597,7 +1599,7 @@ $$R_{\text{stella}} = \ell_P \times \exp\left(\frac{(N_c^2-1)^2}{2b_0}\right) = 
 |----------|-----------|----------|-----------|
 | R_stella | 0.41 fm | 0.44847 fm | **91%** |
 | √σ | 481 MeV | 440 MeV | **91%** |
-| UV coupling (MS-bar) | 99.34 | 99.3 (NNLO) | **99.96%** |
+| ~~UV coupling (MS-bar)~~ | ~~99.34~~ | ~~99.3 (NNLO)~~ | ~~**99.96%**~~ **RETRACTED** (corrected 2026-02-08: NNLO running bug fix -- correct NNLO 1/α_s(M_P) ~ 52-55; CG 1/α_s = 64 has ~17-22% discrepancy) |
 | log₁₀(R/ℓ_P) | 19.40 | 19.44 | **99.8%** |
 
 **9% Discrepancy Analysis:**

@@ -75,20 +75,26 @@ def test_fixed_point_convergence() -> bool:
     # Test 1a: Contraction constant formula
     print("\n--- Test 1a: Contraction Constant Formula ---")
 
-    # Λ = κ · C_G · C_T · ||χ||²_{C¹} ≈ (G ρ L²) / c²
-    # For weak field: this equals R_S / R
+    # Λ = κ · C_G · C_T · ||χ||²_{C¹} ≈ GM/(Rc²)
+    # For weak field: this equals R_S / (2R) where R_S = 2GM/c²
+    # Derivation: h ~ κT/□ ~ (G/c⁴)(Mc²/R³)(R²) ~ GM/(c²R) = R_S/(2R)
 
     def contraction_constant(M: float, R: float) -> float:
-        """Compute contraction constant for mass M at radius R."""
+        """Compute contraction constant for mass M at radius R.
+
+        Λ = GM/(Rc²) = R_S/(2R) where R_S = 2GM/c² is the Schwarzschild radius.
+        Convergence (Λ < 1) requires R > R_S/2.
+        """
         R_S = 2 * G_NEWTON * M / C**2  # Schwarzschild radius
-        return R_S / R
+        return R_S / (2 * R)  # Λ = R_S/(2R)
 
     # Test cases: Earth, Sun, Neutron star
     test_cases = [
         ("Earth", 5.97e24, 6.37e6),      # kg, m
         ("Sun", 1.99e30, 6.96e8),
         ("Neutron Star", 2.8e30, 1e4),
-        ("Black Hole (at 2R_S)", 1e30, 2 * 2 * G_NEWTON * 1e30 / C**2),
+        ("At R = 2R_S", 1e30, 2 * 2 * G_NEWTON * 1e30 / C**2),
+        ("At R = R_S (horizon)", 1e30, 2 * G_NEWTON * 1e30 / C**2),
     ]
 
     print(f"\n{'Object':<25} {'M (kg)':<12} {'R (m)':<12} {'Λ':<12} {'Λ < 1?':<10}")
@@ -99,11 +105,16 @@ def test_fixed_point_convergence() -> bool:
         converges = Lambda < 1
         print(f"{name:<25} {M:<12.2e} {R:<12.2e} {Lambda:<12.6f} {'✓' if converges else '✗'}")
 
-        if name == "Black Hole (at 2R_S)":
-            # At exactly 2R_S, Λ = 0.5 < 1 ✓
+        if name == "At R = 2R_S":
+            # At exactly 2R_S, Λ = R_S/(2×2R_S) = 0.25 < 1 ✓
+            if not (0.24 < Lambda < 0.26):
+                all_passed = False
+                print(f"  ERROR: Expected Λ ≈ 0.25 at 2R_S, got {Lambda}")
+        elif name == "At R = R_S (horizon)":
+            # At exactly R_S, Λ = R_S/(2×R_S) = 0.5 < 1 ✓ (still converges!)
             if not (0.49 < Lambda < 0.51):
                 all_passed = False
-                print(f"  ERROR: Expected Λ ≈ 0.5 at 2R_S, got {Lambda}")
+                print(f"  ERROR: Expected Λ ≈ 0.5 at R_S, got {Lambda}")
 
     # Test 1b: Iteration convergence rate
     print("\n--- Test 1b: Iteration Convergence Rate ---")
@@ -121,20 +132,27 @@ def test_fixed_point_convergence() -> bool:
     else:
         print("  ✓ Rapid convergence verified (10 iterations → 1e-10)")
 
-    # Test 1c: Weak-field condition
-    print("\n--- Test 1c: Weak-Field Condition R > 2R_S ---")
+    # Test 1c: Convergence conditions
+    print("\n--- Test 1c: Banach vs Weak-Field Conditions ---")
 
-    # The condition Λ < 1 is equivalent to R > R_S (Schwarzschild)
-    # For iteration to converge within weak-field space: R > 2R_S
+    # Two distinct conditions:
+    # 1. Banach contraction (Λ < 1): R > R_S/2 — iteration converges
+    # 2. Weak-field validity (|h| << 1): R > 2R_S — perturbation theory valid
+    #
+    # The Banach condition is LESS restrictive. Even at R = R_S (horizon),
+    # Λ = 0.5 < 1, so the iteration still converges!
 
     M_test = 1e30  # kg
     R_S = 2 * G_NEWTON * M_test / C**2
 
     print(f"  Test mass: M = {M_test:.2e} kg")
     print(f"  Schwarzschild radius: R_S = {R_S:.2e} m")
-    print(f"  Convergence requires: R > 2R_S = {2*R_S:.2e} m")
-    print(f"  At R = 3R_S: Λ = {contraction_constant(M_test, 3*R_S):.4f} < 1 ✓")
-    print(f"  At R = 1.5R_S: Λ = {contraction_constant(M_test, 1.5*R_S):.4f} > 1 ✗ (needs different method)")
+    print(f"\n  Banach convergence (Λ < 1) requires: R > R_S/2 = {R_S/2:.2e} m")
+    print(f"  Weak-field validity (|h| << 1) requires: R > 2R_S = {2*R_S:.2e} m")
+    print(f"\n  At R = 3R_S:   Λ = {contraction_constant(M_test, 3*R_S):.4f} < 1 ✓ (weak-field)")
+    print(f"  At R = R_S:    Λ = {contraction_constant(M_test, R_S):.4f} < 1 ✓ (strong-field, still converges)")
+    print(f"  At R = R_S/2:  Λ = {contraction_constant(M_test, R_S/2):.4f} = 1 (boundary)")
+    print(f"  At R = R_S/4:  Λ = {contraction_constant(M_test, R_S/4):.4f} > 1 ✗ (inside horizon, diverges)")
 
     record_test("Fixed-Point Convergence", all_passed,
                 "Banach conditions verified for weak-field regime")

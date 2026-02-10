@@ -85,6 +85,8 @@ is the **unique** value maximizing microcanonical entropy on the SU(3) Cartan to
 
 **Corollary 0.0.17w.1:** The UV coupling is αₛ(M_P) = 1/64 ≈ 0.0156.
 
+**Note on edge-mode decomposition:** The 64 adj⊗adj channels decompose as 52 local running face modes + 12 non-local non-running holonomy modes ([Prop 0.0.17ac](Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)). The running coupling is 1/α_s^{running} = 52, while the total exponent 64 = 52 + 12 is preserved in the Planck mass formula. This decomposition does not affect the maximum entropy derivation (which counts all 64 channels), but clarifies which modes contribute to RG running vs. topological holonomy.
+
 **Corollary 0.0.17w.2:** Combined with b₀ = 9/(4π) (Prop 0.0.17t), this gives the dimensional transmutation exponent:
 
 $$\frac{1}{2b_0\alpha_s(M_P)} = \frac{64 \times 4\pi}{2 \times 9} = \frac{128\pi}{9} \approx 44.68$$
@@ -501,6 +503,7 @@ This is within 10% of the observed value, and NO reference to G is required.
 4. Proposition 0.0.17t: Topological Origin of the QCD-Planck Hierarchy
 5. Theorem 5.2.6: Planck Mass Emergence from QCD
 6. **[Proposition-0.0.17y-Bootstrap-Fixed-Point-Uniqueness.md](Proposition-0.0.17y-Bootstrap-Fixed-Point-Uniqueness.md)** — **SYNTHESIZES:** This proposition (UV coupling from maximum entropy) is Eq. 4 of the 7-equation bootstrap system with unique fixed point
+7. **[Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md](Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)** — **REFINES:** Decomposes the 64 channels into 52 running face modes + 12 non-running holonomy modes; the running coupling 1/α_s = 52 matches QCD to ~1%
 
 ---
 

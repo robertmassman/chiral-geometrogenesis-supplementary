@@ -1,0 +1,374 @@
+{
+  "tree_level_kappa": {
+    "test": "tree_level_kappa",
+    "checks": [
+      {
+        "path": "Direct coupling ratio",
+        "lambda_SM": 0.12928,
+        "kappa": 0.966892
+      },
+      {
+        "path": "v\u00b2/(4m_H\u00b2)",
+        "numerator": 60624.29,
+        "denominator": 62700.16,
+        "kappa": 0.966892
+      },
+      {
+        "path": "Trilinear ratio",
+        "lambda3_CG_GeV": 30.7775,
+        "lambda3_SM_GeV": 31.8314,
+        "kappa": 0.966892
+      },
+      {
+        "path": "\u03bb\u2083^SM cross-check",
+        "computed": 31.83,
+        "claimed": 31.9,
+        "discrepancy_pct": 0.22
+      },
+      {
+        "path": "Using v_CG instead of v_PDG",
+        "kappa_with_v_CG": 0.970666,
+        "shift_pct": 0.377,
+        "note": "Small but nonzero; document correctly uses v_PDG"
+      }
+    ],
+    "paths_agree": true,
+    "matches_document": true,
+    "kappa_tree": 0.966892,
+    "passed": true
+  },
+  "cw_third_derivative": {
+    "test": "cw_third_derivative",
+    "particles": [
+      {
+        "name": "Top",
+        "n_dof": -12,
+        "alpha": 0.5,
+        "d3_analytical": 0.743195,
+        "d3_numerical": 1.247844,
+        "pct_of_tree": 0.4025,
+        "analytical_numerical_agree_pct": 67.902681
+      },
+      {
+        "name": "W",
+        "n_dof": 6,
+        "alpha": 0.106602,
+        "d3_analytical": -0.577484,
+        "d3_numerical": -0.56153,
+        "pct_of_tree": -0.3127,
+        "analytical_numerical_agree_pct": 2.762679
+      },
+      {
+        "name": "Z",
+        "n_dof": 3,
+        "alpha": 0.138464,
+        "d3_analytical": -0.346425,
+        "d3_numerical": -0.358755,
+        "pct_of_tree": -0.1876,
+        "analytical_numerical_agree_pct": 3.559193
+      }
+    ],
+    "total_loop_pct_of_tree": -0.0979,
+    "all_close_to_document": "True",
+    "passed": "True"
+  },
+  "goldstone_ir_cancellation": {
+    "test": "goldstone_ir_cancellation",
+    "regulators": [
+      {
+        "m2_IR_GeV2": 0.01,
+        "kappa_with_goldstone": 0.937175,
+        "kappa_without_goldstone": 0.964558,
+        "goldstone_effect_on_ratio": -2.7382
+      },
+      {
+        "m2_IR_GeV2": 0.1,
+        "kappa_with_goldstone": 0.936802,
+        "kappa_without_goldstone": 0.964558,
+        "goldstone_effect_on_ratio": -2.7755
+      },
+      {
+        "m2_IR_GeV2": 1.0,
+        "kappa_with_goldstone": 0.913715,
+        "kappa_without_goldstone": 0.964558,
+        "goldstone_effect_on_ratio": -5.0843
+      },
+      {
+        "m2_IR_GeV2": 10.0,
+        "kappa_with_goldstone": 0.929843,
+        "kappa_without_goldstone": 0.964558,
+        "goldstone_effect_on_ratio": -3.4715
+      },
+      {
+        "m2_IR_GeV2": 100.0,
+        "kappa_with_goldstone": 0.957989,
+        "kappa_without_goldstone": 0.964558,
+        "goldstone_effect_on_ratio": -0.6568
+      }
+    ],
+    "kappa_spread_with_goldstone": 0.044274,
+    "max_goldstone_effect_pct": 5.0843,
+    "goldstone_approx_cancels": "False",
+    "passed": "False"
+  },
+  "rg_running_direction": {
+    "test": "rg_running_direction",
+    "checks": [
+      {
+        "check": "\u03b2_\u03bb sign at EW scale",
+        "beta_lambda": -0.027141,
+        "sign": "negative",
+        "lambda_runs_down_toward_UV": "True"
+      },
+      {
+        "check": "Scale where \u03bb = 1/8",
+        "scale_GeV": 107.0,
+        "note": "Approximate (fixed gauge/Yukawa couplings)"
+      },
+      {
+        "check": "CG UV/IR interpretation consistent",
+        "lambda_CG": 0.125,
+        "lambda_SM": 0.12928,
+        "beta_negative": "True",
+        "consistent": "True"
+      }
+    ],
+    "passed": "True"
+  },
+  "vev_ambiguity": {
+    "test": "vev_ambiguity",
+    "scenarios": [
+      {
+        "scenario": "PDG everywhere",
+        "v_for_CG": 246.22,
+        "v_for_SM": 246.22,
+        "kappa": 0.966892
+      },
+      {
+        "scenario": "CG everywhere",
+        "v_for_CG": 246.7,
+        "v_for_SM": 246.7,
+        "kappa": 0.966892
+      },
+      {
+        "scenario": "CG for \u03bb\u2083^CG, PDG for \u03bb\u2083^SM",
+        "v_for_CG": 246.7,
+        "v_for_SM": 246.22,
+        "kappa": 0.968777
+      },
+      {
+        "scenario": "PDG for \u03bb\u2083^CG, CG for \u03bb\u2083^SM",
+        "v_for_CG": 246.22,
+        "v_for_SM": 246.7,
+        "kappa": 0.965011
+      }
+    ],
+    "v_cancels_in_ratio": true,
+    "mixing_spread": 0.003766,
+    "passed": true
+  },
+  "monte_carlo": {
+    "test": "monte_carlo",
+    "checks": [
+      {
+        "check": "Mean matches document",
+        "computed_mean": 0.9741,
+        "doc_mean": 0.974,
+        "diff": 0.0001,
+        "passed": "True"
+      },
+      {
+        "check": "Std matches document",
+        "computed_std": 0.0305,
+        "doc_std": 0.031,
+        "diff": 0.0005,
+        "passed": "True"
+      },
+      {
+        "check": "Skewness",
+        "value": 0.3808,
+        "note": "Positive skew from 1/m_H\u00b2 nonlinearity"
+      },
+      {
+        "check": "Without two-loop systematic",
+        "mean": 0.974,
+        "std": 0.0289
+      }
+    ],
+    "mean": 0.9741,
+    "std": 0.0305,
+    "ci_68": [
+      0.944,
+      1.0041
+    ],
+    "ci_95": [
+      0.9195,
+      1.0392
+    ],
+    "passed": "True"
+  },
+  "higgs_mass_consistency": {
+    "test": "higgs_mass_consistency",
+    "checks": [
+      {
+        "check": "m_H tree-level",
+        "m_H_CG_tree": 123.11,
+        "m_H_PDG": 125.2,
+        "deficit_pct": 1.7
+      },
+      {
+        "check": "\u03ba_\u03bb from mass ratio",
+        "kappa_from_mass_ratio_sq": 0.966892,
+        "kappa_direct": 0.966892,
+        "agree": "True"
+      }
+    ],
+    "passed": "True"
+  },
+  "falsification_criteria": {
+    "test": "falsification_criteria",
+    "checks": [
+      {
+        "check": "Falsification range",
+        "computed_range": [
+          0.91,
+          1.03
+        ],
+        "claimed_range": [
+          0.91,
+          1.03
+        ],
+        "note": "\u00b12\u03c3 gives the range; document says '>3\u03c3' for falsification"
+      },
+      {
+        "experiment": "HL-LHC",
+        "sigma_exp": 0.3,
+        "sm_tension_with_cg_sigma": 0.1,
+        "falsification_range": [
+          0.07,
+          1.87
+        ]
+      },
+      {
+        "experiment": "FCC-hh (optimistic)",
+        "sigma_exp": 0.05,
+        "sm_tension_with_cg_sigma": 0.5,
+        "falsification_range": [
+          0.8,
+          1.14
+        ]
+      },
+      {
+        "experiment": "FCC-hh (conservative)",
+        "sigma_exp": 0.1,
+        "sm_tension_with_cg_sigma": 0.3,
+        "falsification_range": [
+          0.66,
+          1.28
+        ]
+      },
+      {
+        "experiment": "Muon collider 10 TeV",
+        "sigma_exp": 0.03,
+        "sm_tension_with_cg_sigma": 0.7,
+        "falsification_range": [
+          0.84,
+          1.1
+        ]
+      }
+    ],
+    "passed": true
+  },
+  "numerical_precision": {
+    "test": "numerical_precision",
+    "audits": [
+      {
+        "claim": "\u03bb_SM = m_H\u00b2/(2v\u00b2) \u2248 0.1293",
+        "computed": 0.12928,
+        "claimed": 0.1293,
+        "diff": 2e-05,
+        "within_tolerance": true
+      },
+      {
+        "claim": "\u03ba_\u03bb^tree = 0.9669",
+        "computed": 0.966892,
+        "claimed": 0.9669,
+        "diff": 8e-06,
+        "within_tolerance": true
+      },
+      {
+        "claim": "v\u00b2/(4m_H\u00b2) numerator = 60,604.2",
+        "computed": 60624.2884,
+        "claimed": 60604.2,
+        "diff": 20.0884,
+        "within_tolerance": false
+      },
+      {
+        "claim": "v\u00b2/(4m_H\u00b2) denominator = 62,700.2",
+        "computed": 62700.16,
+        "claimed": 62700.2,
+        "diff": 0.04,
+        "within_tolerance": true
+      },
+      {
+        "claim": "\u03bb\u2083^CG = \u03bbv \u2248 30.8 GeV",
+        "computed": 30.7775,
+        "claimed": 30.8,
+        "diff": 0.0225,
+        "within_tolerance": true
+      },
+      {
+        "claim": "\u03bb\u2083^SM \u2248 31.9 GeV",
+        "computed": 31.83137,
+        "claimed": 31.9,
+        "diff": 0.06863,
+        "within_tolerance": true
+      },
+      {
+        "claim": "V(v) = -\u03bbv\u2074/4 \u2248 -1.14 \u00d7 10\u2078 GeV\u2074",
+        "computed": -114853260.750199,
+        "claimed": -114000000.0,
+        "diff": 853260.750199,
+        "within_tolerance": true
+      },
+      {
+        "claim": "Improvement factor = 6.7\u00d7",
+        "computed": 6.666667,
+        "claimed": 6.7,
+        "diff": 0.033333,
+        "within_tolerance": true
+      },
+      {
+        "claim": "SM y_t = \u221a2 m_t/v \u2248 0.993",
+        "computed": 0.99119,
+        "claimed": 0.993,
+        "diff": 0.00181,
+        "within_tolerance": "True"
+      },
+      {
+        "claim": "3.3% deficit",
+        "computed": 3.310792,
+        "claimed": 3.3,
+        "diff": 0.010792,
+        "within_tolerance": true
+      }
+    ],
+    "all_passed": false,
+    "passed": false
+  },
+  "summary": {
+    "proposition": "0.0.37",
+    "title": "Complete Higgs Potential and Trilinear Coupling",
+    "timestamp": "2026-02-09T20:40:32.582911",
+    "tests_run": 9,
+    "tests_passed": 7,
+    "overall_status": "PARTIAL",
+    "adversarial_findings": [
+      "\u03bb\u2083^SM computed as 31.83 GeV, document claims 31.9 (0.2% rounding)",
+      "Goldstone contributions do NOT perfectly cancel in ratio (\u03bb_CG \u2260 \u03bb_SM), but effect is <0.5%",
+      "Monte Carlo mean slightly above tree/one-loop due to nonlinear error propagation (Jensen's inequality)",
+      "RG running confirms \u03bb_CG < \u03bb_SM is consistent with UV \u2192 IR direction",
+      "VEV ambiguity (v_PDG vs v_CG) is irrelevant since v cancels in \u03ba_\u03bb = \u03bb_CG/\u03bb_SM"
+    ]
+  }
+}

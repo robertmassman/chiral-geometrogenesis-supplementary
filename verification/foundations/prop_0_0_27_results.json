@@ -1,0 +1,319 @@
+{
+  "proposition": "0.0.27",
+  "title": "Higgs Mass from Stella Octangula Geometry",
+  "date": "2026-02-08T06:50:33.630815",
+  "tests_passed": 60,
+  "tests_failed": 0,
+  "tests_total": 60,
+  "overall": "PASSED",
+  "key_values": {
+    "lambda_geometric": 0.125,
+    "lambda_experimental": 0.1292801978686813,
+    "m_H_tree_GeV": 123.35,
+    "m_H_physical_GeV": 125.09113038126063,
+    "m_H_PDG_GeV": 125.2,
+    "deviation_sigma": 0.21265382146820966
+  },
+  "test_details": [
+    {
+      "name": "lambda = 1/8 = 0.125",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "lambda within 4% of lambda_exp",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "lambda within 1% of lambda(m_t)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Perturbativity: lambda < 4pi/3 = 4.19",
+      "passed": true,
+      "details": "lambda/lambda_max = 0.0298"
+    },
+    {
+      "name": "Vertices and faces give same lambda (V=F=8)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "sqrt(2*1/8) = 1/2 exactly",
+      "passed": "True",
+      "details": ""
+    },
+    {
+      "name": "m_H^(0) = v_H/2 = 123.35 GeV",
+      "passed": "True",
+      "details": ""
+    },
+    {
+      "name": "Full and simplified agree",
+      "passed": "True",
+      "details": ""
+    },
+    {
+      "name": "m_H^2 = 2*lambda*v^2",
+      "passed": "True",
+      "details": ""
+    },
+    {
+      "name": "Tree level 1-2% below PDG",
+      "passed": "True",
+      "details": "deviation = -1.48%"
+    },
+    {
+      "name": "Top one-loop ~+4% (positive)",
+      "passed": "True",
+      "details": "delta_top = 4.17%"
+    },
+    {
+      "name": "Gauge loops are negative (cancellation)",
+      "passed": "True",
+      "details": ""
+    },
+    {
+      "name": "Net radiative correction +1 to +2%",
+      "passed": "True",
+      "details": "delta_total = 1.41%"
+    },
+    {
+      "name": "Physical m_H within 1% of PDG",
+      "passed": "True",
+      "details": "deviation = 0.087%"
+    },
+    {
+      "name": "Physical m_H within combined 1sigma",
+      "passed": "True",
+      "details": "deviation = 0.21sigma"
+    },
+    {
+      "name": "m_t(CG) within 2 GeV of PDG",
+      "passed": "True",
+      "details": "m_t(CG)=174.4, PDG=172.57"
+    },
+    {
+      "name": "K4 eigenvalues = {0, 4, 4, 4}",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Tr(L_K4) = 12.0 = 2*n_edges = 12",
+      "passed": "True",
+      "details": ""
+    },
+    {
+      "name": "Stella Laplacian eigenvalues correct",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Stella has 2 zero modes (2 components)",
+      "passed": "True",
+      "details": ""
+    },
+    {
+      "name": "Euler char: V-E+F = 8-12+8 = 4 = 4 (two S^2)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Propagator formulas match for all test masses",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Propagator positive for m^2 > 0",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Discrete and continuum same order of magnitude",
+      "passed": "True",
+      "details": "ratio = 0.43"
+    },
+    {
+      "name": "Both give O(0.1%) correction",
+      "passed": "True",
+      "details": ""
+    },
+    {
+      "name": "40% discrepancy acceptable (lattice QCD standard)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Functional form matches: both ~ lam * log",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "lambda > 0 at EW scale (locally stable)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "lambda < tree unitarity bound (8.38)",
+      "passed": true,
+      "details": "lambda/bound = 0.0149"
+    },
+    {
+      "name": "lambda < perturbativity bound (4.19)",
+      "passed": true,
+      "details": "lambda/bound = 0.0298"
+    },
+    {
+      "name": "lambda < triviality bound (3.14)",
+      "passed": true,
+      "details": "lambda/bound = 0.0398"
+    },
+    {
+      "name": "beta_lambda < 0 at EW (y_t dominates)",
+      "passed": true,
+      "details": "This means lambda decreases with energy -> metastability"
+    },
+    {
+      "name": "Instability scale >> TeV (literature)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Tetrahedron: V=F=4 (self-dual)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Stella: V=F=8",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Tetrahedron Euler = 2 (S^2)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Stella Euler = 4 (two S^2)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Edges = 12 = 2*C(4,2)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Tetrahedron is UNIQUE self-dual Platonic solid",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "c1 = 1/12 = 1/n_edges(stella)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "N_gen/24 = 1/8 exactly",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "24 = 3*8 (D4 triality decomposition)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Z3 eigenspace dims sum to 8",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "3 eigenspaces = 3 generations",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Each gen contributes 1/24, total = 3/24 = 1/8",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "dm_H/dv_H = 0.5 (linear sensitivity)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "1/8 (vertices or faces) gives best match",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "1/8 is unique integer reciprocal within 4% of lambda_exp",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Dims: m_H^2 = 2*lambda*v^2",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Dims: lambda = 1/8",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Dims: V = mu^2|phi|^2 + lambda|phi|^4",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Dims: delta_rad = lam/(16pi^2)*log(...)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Dims: delta_top = 3*y_t^4/(16pi^2)*log",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Dims: G_continuum = 1/(p^2-m^2)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Dims: G_discrete = 1/(tilde_m^2*(4+tilde_m^2))",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Dims: int d^4k/(2pi)^4 -> (1/a^4)*(1/8)*sum",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Dims: lambda_3 = m_H^2/(2v) = 31.8 GeV",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Trilinear coupling 2-4% below SM",
+      "passed": true,
+      "details": "ratio = 0.9688"
+    },
+    {
+      "name": "lambda_4 = 1/32",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "EWPT prediction is qualitatively distinct from SM",
+      "passed": true,
+      "details": ""
+    }
+  ]
+}

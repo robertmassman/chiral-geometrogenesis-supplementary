@@ -1,0 +1,84 @@
+{
+  "calculation": {
+    "tau_W": 0.606681469114887,
+    "tau_t": 0.1314057252162284,
+    "A_1_W": -8.331467766510292,
+    "A_half_t": 1.3765704951772197,
+    "A_total": -6.543510863407944,
+    "gamma_NLO_keV": 9.485475045629325,
+    "BR": 0.0023135304989339816
+  },
+  "comparisons": {
+    "tau_W": {
+      "calculated": 0.606681469114887,
+      "claimed": 0.607,
+      "diff_percent": 0.05247625784399044
+    },
+    "tau_t": {
+      "calculated": 0.1314057252162284,
+      "claimed": 0.131,
+      "diff_percent": 0.30971390551785644
+    },
+    "A_1_W": {
+      "calculated": -8.331467766510292,
+      "claimed": -8.32,
+      "diff_percent": 0.137833732094848
+    },
+    "A_half_t": {
+      "calculated": 1.3765704951772197,
+      "claimed": 1.38,
+      "diff_percent": 0.24851484223044562
+    },
+    "amplitude_t": {
+      "calculated": 1.8354273269029595,
+      "claimed": 1.84,
+      "diff_percent": 0.24851484223046574
+    },
+    "A_total_real": {
+      "calculated": -6.543510863407944,
+      "claimed": -6.44,
+      "diff_percent": 1.6073115436016048
+    },
+    "gamma_keV": {
+      "calculated": 9.485475045629325,
+      "claimed": 9.2,
+      "diff_percent": 3.1029896264057175
+    },
+    "BR": {
+      "calculated": 0.0023135304989339816,
+      "claimed": 0.00224,
+      "diff_percent": 3.2826115595527607
+    }
+  },
+  "limits": {
+    "heavy_fermion": {
+      "calculated": 1.3333336446547466,
+      "expected": 1.3333333333333333,
+      "error_percent": 2.3349105998660136e-05
+    },
+    "heavy_W": {
+      "calculated": -7.000001467042533,
+      "expected": -7.0,
+      "error_percent": 2.0957750468397762e-05
+    },
+    "light_fermion": {
+      "calculated": 0.0378121159782251,
+      "expected": 0.0,
+      "approaching_zero": "False"
+    }
+  },
+  "experimental": {
+    "gamma_CG_keV": 9.485475045629325,
+    "gamma_SM_keV": 9.28,
+    "gamma_ratio": 1.02214170750316,
+    "mu_CG": 1.02214170750316,
+    "mu_exp": 1.1,
+    "tension_sigma": 1.0694658965447934
+  },
+  "verdict": {
+    "calculation_verified": true,
+    "limits_verified": "False",
+    "experimental_agreement": "True",
+    "overall": "False"
+  }
+}

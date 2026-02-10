@@ -1,0 +1,123 @@
+{
+  "proposition": "0.0.35",
+  "title": "Dimensional Uniqueness of R_stella",
+  "timestamp": "2026-02-08T15:44:42.227524",
+  "R_stella_fm": 0.44847,
+  "dag_structure": {
+    "acyclic": true,
+    "unique_source": true,
+    "sources": [
+      "R_stella",
+      "g_chi",
+      "alpha_s_MP",
+      "b_0",
+      "theta_bar",
+      "lambda_W",
+      "A_wolf"
+    ],
+    "sinks": [
+      "sigma",
+      "omega",
+      "v_chi",
+      "Lambda",
+      "epsilon",
+      "g_chi",
+      "M_rho",
+      "f_pi_1loop",
+      "ell_P",
+      "m_H",
+      "Lambda_EW",
+      "T_c_ratio",
+      "theta_bar",
+      "lambda_W",
+      "A_wolf"
+    ],
+    "max_path_length": 5,
+    "nilpotent_index": 6
+  },
+  "circularity_check": {
+    "no_circularity": true,
+    "upstream_correct": true,
+    "cross_scale_correct": "True"
+  },
+  "hierarchy": {
+    "exponent": 44.680428851054835,
+    "log10_hierarchy": 19.404463699083962
+  },
+  "parameter_count": {
+    "sm_total": 25,
+    "cg_optimistic": 4,
+    "cg_conservative": 8,
+    "reduction_opt": 84.0,
+    "reduction_cons": 68.0
+  },
+  "monte_carlo": {
+    "\u221a\u03c3 (MeV)": {
+      "mean": 440.0290060442284,
+      "std": 30.027028628846708,
+      "exp": 440.0,
+      "exp_err": 30.0,
+      "tension_sigma": 0.0006833711066035346,
+      "within_1sig": 0.68213
+    },
+    "f_\u03c0 tree (MeV)": {
+      "mean": 88.0058012088457,
+      "std": 6.005405725769342,
+      "exp": 92.1,
+      "exp_err": 0.8,
+      "tension_sigma": 0.6757824598952248,
+      "within_1sig": 0.57823
+    },
+    "f_\u03c0 1-loop (MeV)": {
+      "mean": 94.2023860945746,
+      "std": 5.578643940142416,
+      "exp": 92.1,
+      "exp_err": 0.8,
+      "tension_sigma": 0.3730470051484155,
+      "within_1sig": 0.65175
+    },
+    "\u03c9 (MeV)": {
+      "mean": 220.0145030221142,
+      "std": 15.013514314423354,
+      "exp": 210.0,
+      "exp_err": 14.0,
+      "tension_sigma": 0.48784206395568047,
+      "within_1sig": 0.58299
+    },
+    "M_\u03c1 (MeV)": {
+      "mean": 777.2461911261113,
+      "std": 53.03830727527085,
+      "exp": 775.26,
+      "exp_err": 0.23,
+      "tension_sigma": 0.037447885370365704,
+      "within_1sig": 0.68132
+    },
+    "\u03b5": {
+      "mean": 0.5017753916726551,
+      "std": 0.034240524701890165,
+      "exp": 0.5,
+      "exp_err": 0.01,
+      "tension_sigma": 0.04977142085339967,
+      "within_1sig": 0.68072
+    },
+    "v_H (GeV)": {
+      "mean": 246.74523994523116,
+      "std": 16.837586345665596,
+      "exp": 246.22,
+      "exp_err": 0.01,
+      "tension_sigma": 0.03119448606319375,
+      "within_1sig": 0.68173
+    },
+    "m_H (GeV)": {
+      "mean": 123.37261997261558,
+      "std": 8.418793172832798,
+      "exp": 125.25,
+      "exp_err": 0.17,
+      "tension_sigma": 0.2229532607958328,
+      "within_1sig": 0.66997
+    }
+  },
+  "n_quantities_tested": 22,
+  "n_passed": 22,
+  "overall_status": "PASSED"
+}

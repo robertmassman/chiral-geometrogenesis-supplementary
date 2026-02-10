@@ -2,7 +2,7 @@
   "proposition": "0.0.27",
   "section": "10.3.12.10.17",
   "title": "Application to Lattice CG Simulations",
-  "timestamp": "2026-02-03T06:19:39.706806",
+  "timestamp": "2026-02-05T17:46:00.452818",
   "tests": {
     "test_I_1": {
       "test": "I.1",
@@ -34,11 +34,11 @@
       },
       "monte_carlo": {
         "n_samples": 100000,
-        "mean": 12.06382859790697,
+        "mean": 11.978573422660812,
         "expected_mean": 12,
-        "std": 9.867823755717223,
+        "std": 9.73017665838929,
         "expected_std": 9.797958971132712,
-        "stderr": 0.031204798617183407,
+        "stderr": 0.03076952027631626,
         "passed": "True"
       }
     },
@@ -208,10 +208,10 @@
       "passed": "True",
       "monte_carlo": {
         "n_samples": 50000,
-        "G_vv": 0.4003747924826025,
-        "G_vw": 0.20207350732365575,
-        "ratio": 1.981332425934157,
-        "ratio_error": 0.018667574065843073,
+        "G_vv": 0.402326367836279,
+        "G_vw": 0.20049716110698845,
+        "ratio": 2.006643713132633,
+        "ratio_error": 0.0066437131326329,
         "passed": "True"
       }
     },
@@ -219,10 +219,10 @@
       "test": "II.3",
       "name": "Scalar Four-Point Function",
       "free_field": {
-        "phi4_mean": 0.47936336969396404,
-        "phi2_mean": 0.4010495946981354,
-        "3*phi2\u00b2": 0.482522332222616,
-        "G4_connected": -0.003158962528651943,
+        "phi4_mean": 0.47512647453478335,
+        "phi2_mean": 0.3979270733144398,
+        "3*phi2\u00b2": 0.4750378670297867,
+        "G4_connected": 8.860750499667391e-05,
         "expected": 0.0,
         "passed": "True"
       },

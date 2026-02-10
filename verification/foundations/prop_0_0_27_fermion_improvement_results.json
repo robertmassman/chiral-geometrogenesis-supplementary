@@ -2,7 +2,7 @@
   "proposition": "0.0.27",
   "section": "10.3.12.10.12",
   "title": "Fermion Improvement: Wilson vs Overlap",
-  "timestamp": "2026-02-03T06:42:27.967016",
+  "timestamp": "2026-02-05T17:45:50.411710",
   "tests": {
     "test_I": {
       "test": "I",

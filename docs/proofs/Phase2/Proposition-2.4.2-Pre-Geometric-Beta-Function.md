@@ -1,11 +1,11 @@
 # Proposition 2.4.2: Pre-Geometric β-Function from Unified Gauge Groups
 
-**Status:** 🔶 NOVEL ✅ VERIFIED (COMPLETE) — E₆ → E₈ cascade
+**Status:** 🔶 NOVEL 🔸 PARTIAL — E₆ → E₈ cascade mechanism valid but calibrated to retracted target (corrected 2026-02-08)
 **Lean Formalization:** [Proposition_2_4_2.lean](../../../lean/ChiralGeometrogenesis/Phase2/Proposition_2_4_2.lean)
 
 **Purpose:** This proposition investigates whether the pre-geometric β-function coefficient implied by the CG framework can be derived from the unified gauge group structure of Theorem 2.4.1.
 
-**Key Finding:** Standard unified gauge groups (SU(5), SO(10), E₆) provide **insufficient** running individually. However, **E₆ → E₈ cascade unification** with threshold M_{E8} ≈ 2.3×10¹⁸ GeV provides the required running with **99.8% accuracy** (within ±20% theoretical uncertainty from two-loop corrections).
+**Key Finding (updated 2026-02-08):** The E₆ → E₈ cascade mechanism is mathematically valid but the previous "99.8% accuracy" claim is **retracted** — it was fitted to $1/\alpha_s(M_P) = 99.34$, a value derived from a buggy NNLO running script and the ad-hoc $\theta_O/\theta_T$ scheme conversion. The geometric prediction $1/\alpha_s = 64$ has a genuine ~17-22% discrepancy from SM NNLO running (~52-55) that remains unresolved.
 
 **Connection to Theorem 2.4.1:** This proposition extends the gauge embedding chain (stella → 16-cell → 24-cell → D₄ → SO(10) → SU(5) → SM) by asking: "What β-function governs running above M_GUT?" The answer connects to heterotic E₈ × E₈ string theory.
 
@@ -19,19 +19,15 @@ From Proposition 0.0.17j (equipartition) and Proposition 0.0.17s (gauge unificat
 
 $$\frac{1}{\alpha_s^{geom}(M_P)} = (N_c^2 - 1)^2 = 64$$
 
-With scheme conversion:
-
-$$\frac{1}{\alpha_s^{MS-bar}(M_P)} = 64 \times \frac{\theta_O}{\theta_T} = 99.34$$
-
-where θ_O = arccos(-1/3) and θ_T = arccos(1/3) are dihedral angles of the stella octangula.
+> **RETRACTION (corrected 2026-02-08: NNLO running bug fix):** A previous version of this section claimed a scheme conversion factor $\theta_O/\theta_T = 1.55215$ converting the geometric value 64 to an $\overline{MS}$ value of 99.34. This factor was reverse-engineered to match a buggy NNLO running script that used $\ln(\mu^2/\mu_0^2)$ instead of $\ln(\mu/\mu_0)$, producing an erroneous $1/\alpha_s(M_P) \approx 96$-$99$ instead of the correct $\sim 52$-$55$. The $\theta_O/\theta_T$ scheme conversion, the value 99.34, and all claims of sub-percent agreement are retracted. The geometric prediction remains $1/\alpha_s^{geom}(M_P) = 64$.
 
 ### 1.2 The SM Running Result
 
 Standard Model two-loop RG running from α_s(M_Z) = 0.1180 (PDG 2024) gives:
 
-$$\frac{1}{\alpha_s^{SM}(M_P)} \approx 52.65$$
+$$\frac{1}{\alpha_s^{SM}(M_P)} \approx 52\text{--}55$$
 
-**Discrepancy at M_P:** 47% (or 88% if comparing 99.34 to 52.65)
+**Discrepancy at M_P:** The geometric prediction $1/\alpha_s = 64$ exceeds the SM running value by ~17-22%. This is a genuine unresolved discrepancy (corrected 2026-02-08: NNLO running bug fix).
 
 ### 1.3 The Question
 
@@ -98,7 +94,9 @@ $$\frac{1}{\alpha(\mu_2)} = \frac{1}{\alpha(\mu_1)} + \frac{b_0}{2\pi}\ln\frac{\
 
 ### 3.2 Matching Conditions
 
-To connect α_s(M_Z) = 0.1180 to 1/α_s(M_P) = 99.34:
+> **NOTE (corrected 2026-02-08: NNLO running bug fix):** The original version of this section targeted $1/\alpha_s(M_P) = 99.34$ (from the retracted scheme conversion). With the corrected SM running giving $1/\alpha_s^{SM}(M_P) \approx 52$-$55$ and the geometric prediction $1/\alpha_s^{geom}(M_P) = 64$, the required additional running from pre-geometric physics is $\Delta(1/\alpha) \approx 64 - 44.5 = 19.5$ rather than $54.85$. The E₆ → E₈ cascade analysis below was calibrated to the incorrect target and needs re-evaluation.
+
+To connect α_s(M_Z) = 0.1180 to $1/\alpha_s(M_P) = 64$ (geometric prediction):
 
 **Step 1: M_Z → M_GUT (SM running)**
 
@@ -110,24 +108,24 @@ $$\frac{1}{\alpha_s(M_{GUT})} = \frac{1}{0.1180} + \frac{7}{2\pi}\ln\frac{10^{16
 
 Required change:
 
-$$\Delta\left(\frac{1}{\alpha}\right) = 99.34 - 44.5 = 54.85$$
+$$\Delta\left(\frac{1}{\alpha}\right) = 64 - 44.5 = 19.5$$
 
 $$\Delta\ln\mu = \ln\frac{M_P}{M_{GUT}} = \ln\frac{1.22 \times 10^{19}}{10^{16}} = 7.11$$
 
 **Required b₀:**
 
-$$b_0^{pre-geo} = \frac{2\pi \times 54.85}{7.11} = 48.5$$
+$$b_0^{pre-geo} = \frac{2\pi \times 19.5}{7.11} = 17.2$$
 
 ### 3.3 Comparison with Unified Groups
 
-| Group | b₀ | Fraction of Required |
+| Group | b₀ | Fraction of Required (b₀ = 17.2) |
 |-------|----|--------------------|
-| SU(5) | 8.5 | 18% |
-| SO(10) | 18.7 | 39% |
-| E₆ | 30.0 | 62% |
-| **Required** | **48.5** | **100%** |
+| SU(5) | 8.5 | 49% |
+| SO(10) | 18.7 | 109% |
+| E₆ | 30.0 | 174% |
+| **Required** | **17.2** | **100%** |
 
-**Conclusion:** Even E₆, the largest exceptional GUT group commonly considered, provides only 62% of the required running.
+**Conclusion (corrected 2026-02-08):** With the corrected target $1/\alpha_s(M_P) = 64$, the required $b_0 = 17.2$ is within reach of SO(10) and E₆ individually. The E₆ → E₈ cascade mechanism described in §4.5 was calibrated to the incorrect target of $b_0 = 48.5$ and provides far more running than needed. The resolution of the ~17-22% discrepancy between the geometric prediction (64) and SM running ($\sim 52$-$55$) remains an open question that may involve threshold corrections, scheme ambiguity, or modifications to the geometric prediction itself.
 
 ---
 
@@ -174,7 +172,9 @@ $$\text{Index}^{pre-geo} = 48.5 \times 12\pi \approx 1826$$
 
 This is much larger than any standard Lie-theoretic index.
 
-### 4.5 E₆ → E₈ Cascade Unification (SOLUTION)
+### 4.5 E₆ → E₈ Cascade Unification (REQUIRES RE-EVALUATION)
+
+> **NOTE (corrected 2026-02-08: NNLO running bug fix):** The cascade analysis below was calibrated to the retracted target $1/\alpha_s(M_P) = 99.34$, requiring $\Delta(1/\alpha) = 54.85$. With the corrected target $1/\alpha_s(M_P) = 64$, the required $\Delta(1/\alpha) = 19.5$ is much smaller. The E₆ → E₈ cascade provides far more running than needed for this corrected target. The cascade mechanism itself is mathematically valid, but the fitted threshold $M_{E8} \approx 2.3 \times 10^{18}$ GeV and the "99.8% match" claim are specific to the incorrect target and must be re-derived. Whether the underlying ~17-22% discrepancy between 64 (geometric) and ~52-55 (SM running) is resolved by GUT-scale running, scheme conversion, or something else remains genuinely open.
 
 **The E₈ exceptional Lie group:**
 - dim(E₈) = 248
@@ -200,12 +200,12 @@ Solving for the M_{E8} that matches Δ(1/α) = 54.85:
 
 $$\boxed{M_{E8} \approx 2.3 \times 10^{18} \text{ GeV}}$$
 
-With this threshold:
+With this threshold (calibrated to retracted target):
 - E₆ running (M_GUT → M_{E8}): Δ(1/α) = 26.05
 - E₈ running (M_{E8} → M_P): Δ(1/α) = 28.90
-- **Total: Δ(1/α) = 54.95 ≈ 54.85 (99.8% match)**
+- ~~**Total: Δ(1/α) = 54.95 ≈ 54.85 (99.8% match)**~~ **(RETRACTED — fitted to buggy target; corrected 2026-02-08)**
 
-**This is the resolution of the discrepancy.**
+**Status: The cascade mechanism is mathematically valid but was fitted to an incorrect target. The ~17-22% discrepancy between 1/α_s = 64 (geometric) and ~52-55 (SM NNLO running) is genuinely unresolved.**
 
 ### 4.6 Pure E₈ Gauge Theory Justification
 
@@ -339,16 +339,18 @@ The threshold correction method gives **excellent agreement** with the fitted va
 
 ---
 
-## 6. Interpretation Options (Updated)
+## 6. Interpretation Options (Updated 2026-02-08)
 
-### Option A: Accept 18% Discrepancy as Approximate
+> **NOTE (corrected 2026-02-08: NNLO running bug fix):** This section has been updated to reflect the corrected SM NNLO running value $1/\alpha_s^{SM}(M_P) \approx 52$-$55$. The previous "Option C" invoked a $\theta_O/\theta_T$ scheme conversion factor that was reverse-engineered to match buggy running output and is retracted.
 
-The geometric value 1/α = 64 is a topological prediction, not derived from RG running. The 18% discrepancy between 64 and 52.65 (computed from SM) represents:
+### Option A: Accept ~17-22% Discrepancy as Approximate
+
+The geometric value 1/α = 64 is a topological prediction, not derived from RG running. The ~17-22% discrepancy between 64 and ~52-55 (SM NNLO running) represents:
 - Uncertainty from unknown Planck-scale physics
-- Scheme ambiguity (the θ_O/θ_T factor may not apply straightforwardly)
+- Genuine scheme ambiguity between geometric and $\overline{MS}$ prescriptions
 - Threshold corrections from heavy particles
 
-**Status:** Internally consistent; requires clarifying that 64 is approximate.
+**Status:** Internally consistent; requires clarifying that 64 is approximate. This is the most conservative interpretation.
 
 ### Option B: Pre-Geometric Physics Modifies Running
 
@@ -358,17 +360,13 @@ Above M_GUT, the running is NOT governed by standard gauge β-functions but by p
 3. Asymptotic safety from gravity
 4. Non-perturbative effects
 
-**Required:** Explicit derivation of pre-geometric β-function b₀ ≈ 48.5
+**Required:** Explicit derivation of pre-geometric β-function $b_0 \approx 17$ (corrected from the previous $b_0 \approx 48.5$ which targeted the retracted value).
 
-### Option C: Different Scheme Conversion
+### Option C: Scheme Conversion (Open Question)
 
-The factor θ_O/θ_T = 1.55 may not be the correct scheme conversion. An alternative:
+The ratio $64 / 52.65 \approx 1.22$ represents the genuine discrepancy. A legitimate scheme conversion between the geometric scheme and $\overline{MS}$ could in principle account for some or all of this, but must be derived from first principles rather than reverse-engineered.
 
-$$\frac{64}{52.65} = 1.216$$
-
-This would relate the geometric scheme to MS-bar directly through SM running rather than dihedral angles.
-
-**Status:** Requires re-examining the scheme derivation in Proposition 0.0.17s.
+**Status (corrected 2026-02-08):** The previous claim that $\theta_O/\theta_T = 1.55215$ provides the scheme conversion is **retracted** — this factor was reverse-engineered to match buggy NNLO running output (~96-99). Any scheme conversion must be independently derived.
 
 ---
 
@@ -385,8 +383,8 @@ $$\boxed{\text{Stella} \to D_4 \to E_8 \to E_6 \to SO(10) \to SU(5) \to \text{SM
 **Key findings:**
 
 1. ✅ The embedding chain correctly identifies SU(5) or SO(10) as intermediate unified groups
-2. ✅ E₆ → E₈ cascade at M_{E8} ~ 2.3×10¹⁸ GeV provides exact running
-3. ✅ This connects to heterotic E₈ × E₈ string theory
+2. ~~✅ E₆ → E₈ cascade at M_{E8} ~ 2.3×10¹⁸ GeV provides exact running~~ (retracted — calibrated to buggy target; corrected 2026-02-08)
+3. ✅ This connects to heterotic E₈ × E₈ string theory (mathematical connection valid)
 4. ✅ D₄ root system connects to E₈ via triality embedding (see §5.1)
 
 **The framework now specifies what physics operates between M_GUT and M_P: E₆ → E₈ cascade unification.**
@@ -397,7 +395,7 @@ $$\boxed{\text{Stella} \to D_4 \to E_8 \to E_6 \to SO(10) \to SU(5) \to \text{SM
 
 ### 8.1 Two-Loop Corrections
 
-The one-loop analysis gives 99.8% agreement. Two-loop corrections modify this estimate:
+~~The one-loop analysis gives 99.8% agreement.~~ **(RETRACTED — see §4.5 note; corrected 2026-02-08)** Two-loop corrections modify the cascade estimate:
 
 **Two-loop β-function coefficients (pure gauge):**
 $$b_1 = \frac{34}{3} C_A^2$$
@@ -420,8 +418,7 @@ M_{E8} is determined to ~3% precision, contributing ±0.7% uncertainty.
 
 **Total theoretical uncertainty:** ±20%
 
-The 99.8% one-loop match should be quoted as:
-$$\boxed{99.8\% \pm 20\% \text{ (theoretical uncertainty)}}$$
+~~The 99.8% one-loop match should be quoted as: $99.8\% \pm 20\%$~~ **(RETRACTED — the 99.8% match was fitted to the buggy target; corrected 2026-02-08)**
 
 ### 8.2 Electroweak Coupling Verification
 
@@ -436,14 +433,14 @@ All three SM couplings must unify correctly through the cascade:
 
 **Unification quality at M_GUT:** ±19% spread (improves with SUSY thresholds, but within SM this is acceptable for order-of-magnitude estimates).
 
-**Unified running through cascade:**
+**Unified running through cascade (corrected 2026-02-08: values below were calibrated to the retracted target 99.3):**
 - 1/α(M_GUT) ≈ 42.8 (average)
 - 1/α(M_E8) ≈ 68.7 (after E₆ running)
 - 1/α(M_P) ≈ 97.9 (after E₈ running)
-- Target: 99.3
-- **Match: 98.6%** ✓
+- ~~Target: 99.3~~ Corrected target: 64 (geometric) or ~52-55 (SM NNLO running)
+- **The cascade overshoots the corrected target significantly** — requires re-evaluation of threshold M_{E8}.
 
-All couplings run correctly through the cascade structure.
+The cascade mechanism is mathematically valid but must be re-fitted to the corrected target.
 
 ### 8.3 Proton Decay Constraints
 
@@ -477,31 +474,20 @@ $$\tau_p \sim 2 \times 10^{39} \text{ years}$$
 
 ## 9. Summary
 
-$$\boxed{E_6 \to E_8 \text{ cascade with } M_{E8} \approx 2.3 \times 10^{18} \text{ GeV resolves the discrepancy}}$$
+> **RETRACTION (corrected 2026-02-08: NNLO running bug fix):** The boxed claim below and the "99.8% match" are retracted. The cascade was fitted to the incorrect target $1/\alpha_s(M_P) = 99.34$ derived from the buggy $\theta_O/\theta_T$ scheme conversion. The corrected target is either 64 (geometric) or ~52-55 (SM NNLO running), with a genuine ~17-22% discrepancy that is unresolved.
 
-**Key Results:**
+~~$E_6 \to E_8$ cascade with $M_{E8} \approx 2.3 \times 10^{18}$ GeV resolves the discrepancy~~ **(RETRACTED)**
 
-1. ❌ SU(5) alone provides only 18% of required running
-2. ❌ SO(10) alone provides only 39% of required running
-3. ❌ E₆ alone provides only 62% of required running
-4. ❌ Power-law KK towers at M_GUT give far too much running
-5. ✅ **E₆ → E₈ cascade provides 99.8% match** with M_{E8} ~ 2.3×10¹⁸ GeV
+**Key Results (updated 2026-02-08):**
 
-**Resolution:**
+1. With the corrected target ($b_0 \approx 17.2$), SU(5) provides ~49% and SO(10) provides ~109% of required running
+2. ❌ Power-law KK towers at M_GUT give far too much running
+3. The E₆ → E₈ cascade mechanism is mathematically valid but was fitted to the wrong target
+4. The ~17-22% discrepancy between 1/α_s = 64 (geometric) and ~52-55 (SM NNLO running) is **genuinely unresolved**
 
-| Scale Range | Gauge Group | b₀ | Δ(1/α) |
-|-------------|-------------|-----|--------|
-| M_GUT → M_{E8} | E₆ | 30 | 26.05 |
-| M_{E8} → M_P | E₈ (pure) | 110 | 28.90 |
-| **Total** | — | — | **54.95** |
-| **Required** | — | — | **54.85** |
+**Status (updated 2026-02-08):** 🔶 NOVEL 🔸 PARTIAL — The cascade mechanism is valid but needs re-calibration. The underlying discrepancy is open.
 
-**Physical Interpretation:**
-The stella octangula embedding chain connects to heterotic E₈ × E₈ string theory at M_{E8} ~ 2.3×10¹⁸ GeV.
-
-**Status:** 🔶 NOVEL ✅ VERIFIED (COMPLETE) — E₆ → E₈ cascade unification provides the required pre-geometric running.
-
-**Verification:** [Multi-Agent Verification Report](../verification-records/Proposition-2.4.2-Multi-Agent-Verification-2026-01-16.md) — All issues resolved (2026-01-16)
+**Verification:** [Multi-Agent Verification Report](../verification-records/Proposition-2.4.2-Multi-Agent-Verification-2026-01-16.md) — Note: verification was against the now-retracted target value.
 
 ---
 
@@ -563,4 +549,4 @@ python3 verification/Phase2/proposition_2_4_2_corrections.py
 *Document created: 2026-01-16*
 *Updated: 2026-01-16 — Added E₆ → E₈ cascade solution; status changed to RESOLVED*
 *Updated: 2026-01-16 — Addressed all verification issues: pure E₈ justification (§4.6), D₄→E₈ derivation (§5.1), chirality clarification (§5.2), M_{E8} prediction (§5.3), two-loop corrections (§8.1), electroweak verification (§8.2), proton decay (§8.3), additional references*
-*Status: 🔶 NOVEL ✅ VERIFIED (COMPLETE) — All verification issues resolved; E₆ → E₈ cascade unification provides the required pre-geometric running*
+*Status: 🔶 NOVEL 🔸 PARTIAL — E₆ → E₈ cascade mechanism valid but calibrated to retracted target; ~17-22% discrepancy genuinely unresolved (corrected 2026-02-08)*

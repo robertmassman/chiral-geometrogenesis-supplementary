@@ -73,7 +73,7 @@ $$= 8.47 + 56.5 = 65.0$$
 
 | Quantity | Predicted | From PDG Running | Agreement |
 |----------|-----------|------------------|-----------|
-| $1/\alpha_s(M_P)$ | 64 | 65.0 | 98.5% |
+| $1/\alpha_s(M_P)$ | 64 (total exponent; running part = 52, holonomy = 12 per [Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)) | 65.0 (one-loop) | 98.5% |
 
 ### 15.3 Black Hole Entropy Coefficient
 
@@ -290,9 +290,9 @@ If improved measurements of $\sqrt{\sigma}$ reduce uncertainty below 9%, and the
 
 If multi-loop QCD running from $M_Z$ to $M_P$ gives $1/\alpha_s(M_P)$ far from 64, the maximum entropy derivation is falsified.
 
-**Current status:** One-loop gives 65.0 (1.5% from 64). Two-loop corrections are expected to be small.
+**Current status:** One-loop gives 65.0 (1.5% from 64). NNLO running gives ~52–55, which matches the **running part** (52) of the edge-mode decomposition ([Prop 0.0.17ac](../foundations/Proposition-0.0.17ac-Edge-Mode-Decomposition-UV-Coupling.md)): the 64 total channels decompose as 52 local running face modes + 12 non-local non-running holonomy modes.
 
-**What would falsify:** Full NNLO running giving $1/\alpha_s(M_P) = 50$ or $80$ (> 20% discrepancy).
+**What would falsify:** Full NNLO running giving $1/\alpha_s(M_P)$ far from 52 (the running part), or topological arguments contradicting the 12 holonomy modes.
 
 ---
 

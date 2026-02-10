@@ -525,7 +525,7 @@ $$\frac{c_d}{c_u} = \frac{1/4 + 0.29}{1/4} = \frac{0.54}{0.25} = 2.16 \approx 2.
 
 **Supporting Derivations:**
 - [Lemma 3.1.2a](./Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md) — Establishes 24-cell ↔ stella octangula connection
-- [Derivation: Three φ Factors](../supporting/Derivation-Three-Phi-Factors-Explicit.md) — Why 1/φ³ appears from icosahedral self-similarity
+- [Derivation: Three φ Factors](../supporting/Derivation-Three-Phi-Factors-Explicit.md) — Two-factor decomposition 1/φ³ = (1/φ) × (1/φ²) from edge ratio × spectral gap ratio
 - [Analysis: Quaternionic Structure](../supporting/Analysis-Quaternionic-Structure-Icosian-Group.md) — Icosian group embedding of 600-cell
 
 **Physical Mechanism:**
@@ -583,7 +583,7 @@ Stella octangula (two tetrahedra T₊, T₋)
 ```
 
 **Key Mathematical Fact:** Icosahedral structures exhibit self-similarity with scale factor φ (Coxeter, 1973 [1]). This means:
-- The generation hierarchy involves φ through λ = (1/φ³) × sin(72°) — see [Derivation-Three-Phi-Factors-Explicit.md](../supporting/Derivation-Three-Phi-Factors-Explicit.md) §4.3
+- The generation hierarchy involves φ through λ = (1/φ³) × sin(72°) — see [Derivation-Three-Phi-Factors-Explicit.md](../supporting/Derivation-Three-Phi-Factors-Explicit.md) §15–16
 - The isospin deformation also involves φ through the volume ratio formula
 - **Both arise from the same geometric embedding**
 
@@ -2043,6 +2043,9 @@ Three independent verification agents initially reviewed this document:
 | c_μ/c_e ≈ 10.4 ratio | Vertex vs center localization | ✅ DERIVED (§6.6.4) |
 | Sphaleron-stella connection | S³ ↔ 600-cell ↔ stella | ✅ CONNECTED (§6.7) |
 
+### Lean 4 Formalization
+- [Extension_3_1_2c.lean](../../../lean/ChiralGeometrogenesis/Phase3/Extension_3_1_2c.lean) — Machine-verified formalization
+
 ### 9.3 Adversarial Physics Verification
 
 **Script:** [`verification/Phase3/verify_instanton_overlap_cf.py`](../../../verification/Phase3/verify_instanton_overlap_cf.py)
@@ -2146,7 +2149,7 @@ The following aspects were previously phenomenological and have now been address
 1. Coxeter, H.S.M. (1973). *Regular Polytopes*, 3rd ed. Dover. — Icosahedral self-similarity, golden ratio scaling
 2. Conway, J.H. & Smith, D.A. (2003). *On Quaternions and Octonions*. A.K. Peters. — Icosian ring, 600-cell structure
 3. [Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md](./Lemma-3.1.2a-24-Cell-Two-Tetrahedra-Connection.md) — 24-cell ↔ stella octangula
-4. [Derivation-Three-Phi-Factors-Explicit.md](../supporting/Derivation-Three-Phi-Factors-Explicit.md) — Why 1/φ³ appears
+4. [Derivation-Three-Phi-Factors-Explicit.md](../supporting/Derivation-Three-Phi-Factors-Explicit.md) — Two-factor decomposition of 1/φ³ (§15–16)
 5. [Analysis-Quaternionic-Structure-Icosian-Group.md](../supporting/Analysis-Quaternionic-Structure-Icosian-Group.md) — Icosian group embedding
 
 ### Framework References

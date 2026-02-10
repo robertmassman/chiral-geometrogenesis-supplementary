@@ -1,16 +1,16 @@
 # Proposition 0.0.17s: Strong Coupling from Gauge Unification
 
-**Status:** 🔶 NOVEL ✅ RESOLVED (2026-01-16: E₆ → E₈ cascade provides pre-geometric running — see §5.1)
+**Status:** 🔶 NOVEL — PARTIALLY RETRACTED (2026-02-08: Scheme conversion θ_O/θ_T = 1.55215 as applied to α_s is retracted; NNLO target ~99.3 was buggy. Geometric derivation 1/α_s = 64 stands. ~17-22% discrepancy with corrected MS-bar is open.)
 
 **Purpose:** Derive the UV strong coupling α_s(M_P) from gauge unification conditions, providing an independent cross-check on the equipartition derivation in Proposition 0.0.17j §6.3.
 
-**Connection to Topological Hierarchy:** The UV coupling 1/α_s = 64 derived here is the key numerator in the hierarchy formula R_stella/ℓ_P = exp(64/(2b₀)). [Proposition 0.0.17t](Proposition-0.0.17t-Topological-Origin-Of-Scale-Hierarchy.md) shows this entire formula has a **topological interpretation**: the β-function coefficient b₀ is a topological index (Costello-Bittleston theorem), and the scheme conversion factor θ_O/θ_T = 1.55215 derived here connects the geometric scheme (64) to MS-bar scheme (99.34).
+**Connection to Topological Hierarchy:** The UV coupling 1/α_s = 64 derived here is the key numerator in the hierarchy formula R_stella/ℓ_P = exp(64/(2b₀)). [Proposition 0.0.17t](Proposition-0.0.17t-Topological-Origin-Of-Scale-Hierarchy.md) shows this entire formula has a **topological interpretation**: the β-function coefficient b₀ is a topological index (Costello-Bittleston theorem).
 
-**Key Result:** Two independent derivations of α_s converge:
-1. **Equipartition:** 1/α_s = 64 (geometric scheme)
-2. **Unification:** 1/α_s ≈ 99 (MS-bar scheme)
+> **RETRACTION NOTE (2026-02-08):** The scheme conversion factor θ_O/θ_T = 1.55215, previously claimed to connect the geometric scheme (64) to MS-bar scheme (99.34), is **retracted**. The NNLO target 1/α_s(M_P) ~ 99.3 was based on a factor-of-2 bug; the correct NNLO two-loop running from α_s(M_Z) = 0.1180 gives 1/α_s(M_P) ~ 52-55, not ~99. The heat kernel mathematics in §4.3 may be independently valid, but its application as a scheme conversion bridging 64 to 99.34 is invalidated. See §4.3 retraction note.
 
-Connected by scheme conversion factor θ_O/θ_T = 1.55215, with backward running recovering α_s(M_Z) to within **4% theoretical uncertainty**.
+**Key Result:** The equipartition derivation gives 1/α_s = 64 in the geometric scheme.
+
+> **RETRACTION NOTE (2026-02-08):** The previous claim that θ_O/θ_T = 1.55215 converts 64 to 99.34 (MS-bar) is retracted. The NNLO target ~99.3 was incorrect (factor-of-2 bug); the actual NNLO value is 1/α_s(M_P) ~ 52-55. The discrepancy between the geometric-scheme value (64) and the corrected MS-bar value (~52-55) is ~17-22%, not 0.04% as previously claimed.
 
 > ⚠️ **THEORETICAL UNCERTAINTY:** All results in this proposition carry a **±20% theoretical uncertainty** from one-loop running, threshold corrections, and scale uncertainties. See §7.1 for the complete error budget.
 
@@ -33,13 +33,15 @@ $$\frac{1}{\alpha_{GUT}} \approx 24.5$$
 **(c)** The equipartition derivation gives (in geometric scheme):
 $$\frac{1}{\alpha_s^{geom}(M_P)} = (N_c^2 - 1)^2 = 64$$
 
-**(d)** The scheme conversion factor from Theorem 0.0.6 relates them:
+**(d)** ~~The scheme conversion factor from Theorem 0.0.6 relates them:~~
 $$\frac{\theta_O}{\theta_T} = \frac{\arccos(-1/3)}{\arccos(1/3)} = 1.552155$$
 
-**(e)** Therefore:
-$$\frac{1}{\alpha_s^{MS-bar}(M_P)} = 64 \times 1.55215 = 99.34$$
+> **RETRACTED (2026-02-08):** Parts (d) and (e) are retracted. The dihedral angle ratio θ_O/θ_T = 1.55215 is a correct geometric identity, but its application as a scheme conversion factor to produce 1/α_s^{MS-bar}(M_P) = 99.34 is invalidated. The NNLO target ~99.3 was based on a factor-of-2 bug; the correct value from two-loop running is ~52-55. The actual discrepancy between the geometric-scheme value (64) and corrected MS-bar (~52-55) is ~17-22%.
 
-Backward running from this value with E₆ → E₈ cascade and SM β-functions recovers **α_s(M_Z) = 0.122 ± 0.010**, consistent with the PDG 2024 value (0.1180 ± 0.0009) to within 0.4σ (see §7.1 for error budget).
+**(e)** ~~Therefore:~~
+$$\text{[RETRACTED]} \quad \frac{1}{\alpha_s^{MS-bar}(M_P)} = 64 \times 1.55215 = 99.34$$
+
+The backward running and error budget in §7.1 used the incorrect target value of 99.34 and are therefore unreliable. The geometric-scheme value 1/α_s = 64 remains the primary result of this proposition.
 
 **Corollary 0.0.17s.1:** The strong coupling is derivable from geometry alone — no phenomenological input is required beyond the Standard Model particle content.
 
@@ -151,13 +153,19 @@ $$\frac{64}{45} \approx 1.42$$
 
 This additional factor comes from the pre-geometric structure above M_P, encoded in the scheme conversion.
 
-### 4.3 Resolution: Scheme Conversion — RIGOROUS DERIVATION
+### 4.3 ~~Resolution: Scheme Conversion~~ — Heat Kernel Calculations (RETRACTED AS SCHEME CONVERSION)
 
-**Key Insight:** The two derivations use different renormalization schemes:
-- **Equipartition (Prop 0.0.17j):** Geometric scheme based on stella topology
-- **Standard QFT:** MS-bar scheme with dimensional regularization
+> **RETRACTION NOTE (2026-02-08):** This entire section's *application* as a scheme conversion factor bridging 64 to ~99 is **retracted**. The NNLO target 1/α_s(M_P) ~ 99.3 was based on a factor-of-2 bug in the running calculation. The correct NNLO two-loop running from α_s(M_Z) = 0.1180 gives 1/α_s(M_P) ~ 52-55 in MS-bar. The actual discrepancy between the geometric value (64) and the corrected MS-bar value (~52-55) is ~17-22%.
+>
+> The heat kernel mathematics below (dihedral angles, Balian-Bloch expansion, edge contributions) may be independently valid as pure mathematics, but the claim that θ_O/θ_T = 1.55215 serves as a renormalization scheme conversion factor for α_s is not justified. The "0.04% agreement" previously claimed was an artifact of comparing against the buggy target value.
 
-**The Scheme Conversion Factor — Derived from Heat Kernel Methods**
+**[The following heat kernel derivation is preserved for mathematical reference but its physical interpretation as a scheme conversion is retracted.]**
+
+~~**Key Insight:** The two derivations use different renormalization schemes:~~
+~~- **Equipartition (Prop 0.0.17j):** Geometric scheme based on stella topology~~
+~~- **Standard QFT:** MS-bar scheme with dimensional regularization~~
+
+**The Dihedral Angle Ratio — Heat Kernel Mathematics**
 
 From Theorem 0.0.6, the dihedral angles of the tetrahedral-octahedral honeycomb are:
 
@@ -166,75 +174,64 @@ $$\theta_O = \arccos\left(-\frac{1}{3}\right) \approx 109.47°$$
 
 **Fundamental Identity:** $\theta_O + \theta_T = \pi$ (supplementary angles)
 
-This identity is NOT a coincidence — it's forced by the honeycomb tiling requirement: $2\theta_T + 2\theta_O = 2\pi$ around each edge.
+This identity is NOT a coincidence -- it's forced by the honeycomb tiling requirement: $2\theta_T + 2\theta_O = 2\pi$ around each edge.
 
-**Physical Derivation of θ_O/θ_T as Scheme Factor:**
+**Heat Kernel Expansion on Polyhedral Domains:**
 
-The scheme conversion factor arises from heat kernel asymptotics on polyhedral domains. For a bounded domain D with edges of dihedral angle θ, the heat kernel K(t) has the expansion (Balian & Bloch 1970):
+The heat kernel asymptotics on polyhedral domains give, for a bounded domain D with edges of dihedral angle theta, the expansion (Balian & Bloch 1970):
 
 $$K(t) \sim (4\pi t)^{-d/2}\left[a_0 + a_1 t^{1/2} + a_2 t + ...\right]$$
 
-The edge contribution to a₁ is:
+The edge contribution to a_1 is:
 $$a_1^{\text{edge}} \propto L \times \frac{\pi - \theta}{2\pi}$$
 
 where L is the edge length.
 
-For tetrahedral edges: contribution ∝ (π - θ_T) = θ_O
-For octahedral edges: contribution ∝ (π - θ_O) = θ_T
+For tetrahedral edges: contribution proportional to (pi - theta_T) = theta_O
+For octahedral edges: contribution proportional to (pi - theta_O) = theta_T
 
 **The ratio of boundary contributions:**
 $$\frac{(\pi - \theta_T)}{(\pi - \theta_O)} = \frac{\theta_O}{\theta_T} = 1.55215$$
 
-**Rigorous Connection to Renormalization Schemes:**
+**Connection to Renormalization (for reference; application as scheme conversion is retracted):**
 
-The heat kernel coefficients a_n directly encode UV divergences in quantum field theory (Vassilevich 2003). Specifically:
+The heat kernel coefficients a_n encode UV divergences in quantum field theory (Vassilevich 2003). Specifically:
 
-1. **Heat kernel ↔ zeta function:** The spectral zeta function ζ(s) = Σ λ_n^{-s} is related to K(t) by Mellin transform. The pole structure of ζ(s) at s = d/2 is determined by a_n.
+1. **Heat kernel <-> zeta function:** The spectral zeta function zeta(s) = Sigma lambda_n^{-s} is related to K(t) by Mellin transform. The pole structure of zeta(s) at s = d/2 is determined by a_n.
 
-2. **Zeta function regularization:** The UV-divergent effective action Γ = -½ log det(-∇²) is regularized as Γ_reg = -½ ζ'(0). The finite part depends on a_d/2.
+2. **Zeta function regularization:** The UV-divergent effective action Gamma = -1/2 log det(-nabla^2) is regularized as Gamma_reg = -1/2 zeta'(0). The finite part depends on a_{d/2}.
 
-3. **MS-bar equivalence:** For d=4, the MS-bar scheme subtracts the 1/ε pole plus ln(4π) - γ_E. This corresponds to a specific prescription for handling the a₂ coefficient.
+3. **MS-bar equivalence:** For d=4, the MS-bar scheme subtracts the 1/epsilon pole plus ln(4pi) - gamma_E. This corresponds to a specific prescription for handling the a_2 coefficient.
 
-**Key insight:** The geometric scheme counts modes on the stella (bounded by tetrahedral faces), while MS-bar dimensional regularization effectively integrates over the complete honeycomb (tetrahedra + octahedra). The ratio of their UV divergence structures is:
+~~**Key insight:** The geometric scheme counts modes on the stella (bounded by tetrahedral faces), while MS-bar dimensional regularization effectively integrates over the complete honeycomb (tetrahedra + octahedra). The ratio of their UV divergence structures is:~~
 
-$$\frac{\text{a}_1^{\text{honeycomb}}}{\text{a}_1^{\text{stella}}} = \frac{\theta_O}{\theta_T} = 1.55215$$
+~~$$\frac{\text{a}_1^{\text{honeycomb}}}{\text{a}_1^{\text{stella}}} = \frac{\theta_O}{\theta_T} = 1.55215$$~~
 
-This follows from the edge contributions because:
-- Stella edges have dihedral angle θ_T → deficit angle (π - θ_T) = θ_O
-- Octahedral transition edges have angle θ_O → deficit angle (π - θ_O) = θ_T
-- The honeycomb includes both, with the octahedral contribution dominant
+> **Why this application fails:** The leap from "edge contributions scale differently for tetrahedral vs octahedral domains" to "therefore θ_O/θ_T is the exact scheme conversion factor for α_s" was never rigorously established. The coincidental numerical match (64 x 1.55215 = 99.34 vs the buggy target ~99.3) masked this gap. With the corrected NNLO target of ~52-55, the scheme conversion claim is clearly invalidated.
 
-**Physical Interpretation:**
-1. **Geometric scheme:** Counts modes on TETRAHEDRAL faces of the stella (fundamental angle θ_T)
-2. **MS-bar scheme:** Dimensional regularization integrates over the full honeycomb, including OCTAHEDRAL transition regions (effective angle θ_O)
-3. The ratio θ_O/θ_T measures how much more "spread out" the octahedral modes are compared to tetrahedral modes
-
-**Ratio:**
+**Ratio (as pure geometry):**
 $$\frac{\theta_O}{\theta_T} = \frac{\arccos(-1/3)}{\arccos(1/3)} = \frac{1.9106}{1.2310} = 1.55215$$
 
-**MS-bar Conversion:**
-$$\frac{1}{\alpha_s^{MS-bar}(M_P)} = 64 \times 1.55215 = 99.34$$
+~~**MS-bar Conversion:**~~
+~~$$\frac{1}{\alpha_s^{MS-bar}(M_P)} = 64 \times 1.55215 = 99.34$$~~
 
-**Backward running from this value to α_s(M_Z):**
-Using E₆ → E₈ cascade running (§5.1), backward running from 1/α_s(M_P) = 99.34 recovers α_s(M_Z) = 0.122, consistent with the PDG 2024 value (0.1180 ± 0.0009) to within 4%. This agreement provides empirical validation of the scheme conversion factor.
-
-> **Note on rigor:** The identification of θ_O/θ_T with the scheme conversion rests on two established results: (1) heat kernel coefficients encode UV divergences (Gilkey 1975, Vassilevich 2003), and (2) the tetrahedral-octahedral honeycomb is the unique space-filling tiling of the stella octangula (Theorem 0.0.6). The scheme conversion is therefore a geometric consequence, not a phenomenological fit.
+> **Status of the discrepancy:** The geometric-scheme value 1/α_s^{geom}(M_P) = 64 differs from the corrected NNLO MS-bar value (~52-55) by approximately 17-22%. This discrepancy remains an open problem in the framework.
 
 ### 4.4 Self-Consistency of the Two Paths
 
-The two paths are:
+> **RETRACTION NOTE (2026-02-08):** The claimed convergence of the two paths via θ_O/θ_T is retracted. The NNLO target ~99.3 was incorrect (factor-of-2 bug). The corrected MS-bar value from two-loop running is ~52-55, not ~99.
 
-**PATH 1 (Equipartition → MS-bar at M_P):**
-$$\frac{1}{\alpha_s^{\text{geom}}} = 64 \xrightarrow{\times \theta_O/\theta_T} \frac{1}{\alpha_s^{\overline{MS}}} = 99.34$$
+**PATH 1 (Equipartition):**
+$$\frac{1}{\alpha_s^{\text{geom}}} = 64$$
 
 **PATH 2 (Low-energy → M_GUT → UV completion):**
 $$\alpha_s(M_Z) \to \alpha_{GUT}(M_{GUT}) \to \text{pre-geometric UV}$$
 
-The connection: Starting from 1/α_s^{MS-bar}(M_P) = 99.3 and running BACKWARD with standard QCD β-functions reproduces:
-- α_s(M_Z) = 0.118 (matches PDG 2024: 0.1180 ± 0.0009)
-- 1/α_GUT = 24.5 at M_GUT
+~~The connection: Starting from 1/α_s^{MS-bar}(M_P) = 99.3 and running BACKWARD with standard QCD β-functions reproduces:~~
+~~- α_s(M_Z) = 0.118~~
+~~- 1/α_GUT = 24.5 at M_GUT~~
 
-This validates that 99.3 is the correct MS-bar value at M_P.
+**Corrected status:** Standard two-loop running from α_s(M_Z) = 0.1180 gives 1/α_s(M_P) ~ 52-55 in MS-bar. The geometric value of 64 is ~17-22% higher. This discrepancy is an open problem.
 
 ### 4.5 Gauge Coupling Unification Without Supersymmetry
 
@@ -271,10 +268,12 @@ The framework does not require minimal SU(5) — the geometric embedding chain (
 
 > **✅ RESOLUTION (2026-01-16):** The discrepancy between CG predictions and standard SM running has been resolved via **E₆ → E₈ cascade unification**. See [Proposition-2.4.2-Pre-Geometric-Beta-Function.md](../Phase2/Proposition-2.4.2-Pre-Geometric-Beta-Function.md) for full derivation.
 
-**The Problem (now resolved):**
-- Direct SM two-loop running from α_s(M_Z) = 0.1180 gives 1/α_s(M_P) = 52.65
-- CG framework claims 1/α_s(M_P) = 64 × θ_O/θ_T = 99.34
-- This was a 47% discrepancy requiring explanation
+**The Problem (REOPENED — 2026-02-08):**
+- Direct SM two-loop running from α_s(M_Z) = 0.1180 gives 1/α_s(M_P) ~ 52-55
+- CG framework gives 1/α_s^{geom}(M_P) = 64
+- The scheme conversion claim (64 x 1.55215 = 99.34) is **retracted** because the NNLO target ~99.3 was based on a factor-of-2 bug
+- The actual discrepancy between 64 (geometric) and ~52-55 (MS-bar) is ~17-22%
+- The E_6 -> E_8 cascade was calibrated to bridge 64 to the buggy 99.34 target and needs re-evaluation
 
 **The Solution: E₆ → E₈ Cascade Unification**
 
@@ -371,96 +370,89 @@ The three couplings converge to α_GUT ≈ 0.041, confirming 1/α_GUT ≈ 24.5.
 
 ### 5.3 Self-Consistency Check
 
-The complete chain:
+> **RETRACTION NOTE (2026-02-08):** The "self-consistency" chain below relied on the retracted scheme conversion. With the corrected NNLO target (~52-55 instead of ~99.3), the chain does not close.
+
+~~The complete chain:~~
 ```
 sin²θ_W = 3/8 (Theorem 2.4.1)
     ↓
 α_GUT = 0.041 at M_GUT (SM running)
     ↓
-1/α_s^{MS-bar}(M_P) ≈ 99.3 (from geometric scheme + conversion)
+1/α_s^{MS-bar}(M_P) ≈ 99.3 (RETRACTED — correct value is ~52-55)
     ↓
-1/α_s^{geom}(M_P) = 99.3/1.55215 ≈ 64 (inverse conversion)
+1/α_s^{geom}(M_P) = 99.3/1.55215 ≈ 64 (RETRACTED — scheme conversion invalidated)
     ↓
-(N_c² - 1)² = 64 ✓ (equipartition)
+(N_c² - 1)² = 64 (equipartition — this result stands independently)
 ```
 
-**Both paths converge on the same value.**
+**Open problem:** The geometric-scheme value (64) and the corrected MS-bar value (~52-55) differ by ~17-22%. This discrepancy needs a genuine explanation.
 
 ---
 
 ## 6. Physical Interpretation
 
-### 6.1 What the Scheme Conversion Means
+### 6.1 ~~What the Scheme Conversion Means~~ The Dihedral Angle Ratio (Retracted as Scheme Conversion)
 
-The ratio θ_O/θ_T = 1.55215 encodes the relationship between:
-- **Geometric scheme:** Counts modes on TETRAHEDRAL faces (sharp, focused structure)
-- **MS-bar scheme:** Integrates over full honeycomb including OCTAHEDRAL regions (diffuse, transitional)
+> **RETRACTION NOTE (2026-02-08):** The interpretation of θ_O/θ_T = 1.55215 as a scheme conversion factor is retracted. The ratio is a valid geometric identity of the tetrahedral-octahedral honeycomb, but its application to bridge 64 to ~99 in α_s was based on the buggy NNLO target.
 
-**Physical content:** The tetrahedral and octahedral dihedral angles arise from the stella octangula and its dual, which together form the tetrahedral-octahedral honeycomb (Theorem 0.0.6). The honeycomb is the natural discretization of the pre-geometric arena.
+The ratio θ_O/θ_T = 1.55215 is a geometric property of the tetrahedral-octahedral honeycomb (Theorem 0.0.6). Its physical significance within the framework remains to be determined.
 
-### 6.2 Mathematical Basis of Scheme Conversion
+### 6.2 Mathematical Properties of θ_O/θ_T
 
-The ratio θ_O/θ_T appears in three independent derivations:
+The ratio θ_O/θ_T appears in heat kernel calculations on polyhedral domains:
 
-1. **Heat kernel method:** Edge contributions scale as (π - θ), giving ratio θ_O/θ_T
+1. **Heat kernel method:** Edge contributions scale as (pi - theta), giving ratio theta_O/theta_T
 2. **Solid angle deficit:** Mode counting on edges weighted by dihedral angle
 3. **Casimir regularization:** UV divergences from edge geometry
 
-All three give the SAME ratio, confirming the geometric origin.
+All three give the SAME ratio, confirming the geometric origin. However, the identification of this ratio with a renormalization scheme conversion factor for alpha_s is **retracted**.
 
-### 6.3 Why Two Paths Agree
+### 6.3 Open Questions
 
-The agreement is not coincidental:
-1. **Equipartition** counts degrees of freedom in the pre-geometric sector
-2. **Unification** uses the geometrically-derived gauge structure
-3. Both emerge from the same stella octangula geometry
-4. The scheme conversion factor is itself geometric (dihedral angle ratio)
+With the retraction of the scheme conversion, the following questions are open:
+1. What is the physical significance of theta_O/theta_T in the CG framework?
+2. How should the ~17-22% discrepancy between 1/alpha_s^{geom} = 64 and 1/alpha_s^{MS-bar} ~ 52-55 be resolved?
+3. Does the equipartition derivation (64) need modification, or is there a genuine scheme difference that is not theta_O/theta_T?
 
-### 6.4 Implications for Framework Consistency
+### 6.4 What Remains Valid
 
-The convergence of two independent derivations provides:
-1. **Cross-validation:** Either derivation can be used; both give the same physics
-2. **Scheme understanding:** The geometric vs. perturbative difference is calculable
-3. **Predictive power:** α_s at any scale is determined by geometry alone
+Despite the retraction of the scheme conversion:
+1. **Equipartition derivation (1/alpha_s = 64):** The group-theoretic counting of adj x adj channels is independent of the scheme conversion claim
+2. **GUT unification (sin^2 theta_W = 3/8):** The geometric derivation from Theorem 2.4.1 is independent
+3. **Heat kernel mathematics:** The Balian-Bloch expansion and dihedral angle identities are mathematically valid
+4. **E_6 -> E_8 cascade structure:** The group-theoretic cascade may still be relevant, but the calibration used the buggy target
 
 ---
 
 ## 7. Summary Table
 
-| Quantity | Path 1 (Equipartition) | Path 2 (Unification) | Agreement |
-|----------|------------------------|----------------------|-----------|
-| Starting point | adj⊗adj = 64 | sin²θ_W = 3/8 | Both geometric |
-| Scheme | Geometric | MS-bar | θ_O/θ_T converts |
-| 1/α_s(M_P) | 64 | 99.34 | 64 × 1.55215 = 99.34 |
-| α_s(M_Z) recovered | — | 0.122 | 4% from PDG (within uncertainty) |
-| Cascade match | — | 99.97% | M_{E8} = 2.36×10¹⁸ GeV |
+| Quantity | Path 1 (Equipartition) | Path 2 (Unification) | Status |
+|----------|------------------------|----------------------|--------|
+| Starting point | adj x adj = 64 | sin^2 theta_W = 3/8 | Both geometric |
+| Scheme | Geometric | MS-bar | ~~theta_O/theta_T converts~~ RETRACTED |
+| 1/alpha_s(M_P) | 64 (geometric) | ~52-55 (MS-bar, corrected) | **~17-22% discrepancy (OPEN)** |
+| ~~alpha_s(M_Z) recovered~~ | — | ~~0.122~~ | ~~4% from PDG~~ RETRACTED |
+| ~~Cascade match~~ | — | ~~99.97%~~ | Calibrated to buggy target; needs re-evaluation |
 
-### 7.1 Full Error Analysis for Backward Running
+### 7.1 ~~Full Error Analysis for Backward Running~~ Error Analysis (RETRACTED)
 
-The backward running from 1/α_s(M_P) = 99.34 yields α_s(M_Z) = 0.122, which differs from the PDG 2024 value of 0.1180 ± 0.0009 by 4%. This section provides a complete error budget:
+> **RETRACTION NOTE (2026-02-08):** The backward running analysis below used 1/alpha_s(M_P) = 99.34 as the starting point, which was based on the retracted scheme conversion (64 x 1.55215 = 99.34). The NNLO target ~99.3 was itself incorrect due to a factor-of-2 bug. The correct two-loop MS-bar value is ~52-55. The error budget, comparison with PDG, and the claimed 0.4-sigma agreement are therefore unreliable.
 
-**Systematic Uncertainties:**
+**Corrected Status:**
+- Geometric-scheme prediction: 1/alpha_s(M_P) = 64
+- Corrected MS-bar (NNLO two-loop): 1/alpha_s(M_P) ~ 52-55
+- Discrepancy: ~17-22%
+- This is a significant discrepancy that remains an open problem
 
-| Source | Magnitude | Impact on α_s(M_Z) |
-|--------|-----------|-------------------|
-| Two-loop β-function corrections | ~10-15% on Δ(1/α) | ±0.008 on α_s(M_Z) |
-| M_{E8} threshold (±20%) | ±0.5 on Δ(1/α) at M_{E8} | ±0.003 on α_s(M_Z) |
-| M_GUT threshold (±10%) | ±0.3 on Δ(1/α) at M_GUT | ±0.002 on α_s(M_Z) |
-| Three-loop and higher | ~3% on Δ(1/α) | ±0.003 on α_s(M_Z) |
-| **Total theoretical** | Combined | **±0.010** (±8.5%) |
+~~**Systematic Uncertainties:**~~ (Based on retracted 99.34 starting point -- not reliable)
 
-**Comparison with PDG:**
-- Predicted: α_s(M_Z) = 0.122 ± 0.010
-- Observed: α_s(M_Z) = 0.1180 ± 0.0009
-- Discrepancy: 0.004 (4%)
-- Significance: **0.4σ** (well within theoretical uncertainty)
+~~**Comparison with PDG:**~~
+~~- Predicted: alpha_s(M_Z) = 0.122 +/- 0.010~~
+~~- Observed: alpha_s(M_Z) = 0.1180 +/- 0.0009~~
+~~- Discrepancy: 0.004 (4%)~~
+~~- Significance: 0.4-sigma~~
 
-**Interpretation:** The 4% discrepancy is **not statistically significant** given the ~10% theoretical uncertainty from one-loop running. This is expected since:
-1. One-loop running inherently has ~10-15% uncertainty from missing two-loop terms
-2. Threshold corrections at scale boundaries contribute ~3-5%
-3. The fitted M_{E8} has ~4% uncertainty from heterotic string matching
-
-> **Conclusion:** The backward running result α_s(M_Z) = 0.122 is **consistent** with the experimental value to within 0.4σ. The framework passes this test at the level expected from one-loop accuracy.
+> **Note:** A proper error analysis requires restarting from the correct MS-bar value (~52-55) and understanding the genuine ~17-22% discrepancy between the geometric and perturbative determinations.
 
 ---
 
@@ -473,23 +465,23 @@ See:
 - `verification/foundations/proposition_0_0_17s_scheme_derivation.py` — Scheme factor θ_O/θ_T derivations
 
 **Tests:**
-1. ✅ Scheme conversion factor θ_O/θ_T = 1.55215
-2. ✅ 64 × 1.55215 = 99.34 (MS-bar at M_P)
-3. ✅ Backward running: α_s(M_Z) = 0.122 (4% from PDG, within theoretical uncertainty)
-4. ✅ Forward running: 1/α_GUT = 24.5 at M_GUT
-5. ✅ E₆ → E₈ cascade: 99.97% match with M_{E8} = 2.36×10¹⁸ GeV
-6. ✅ Heat kernel derivation of scheme factor
-7. ✅ Solid angle derivation confirms ratio
+1. ✅ Geometric ratio θ_O/θ_T = 1.55215 (valid as pure geometry)
+2. ~~✅ 64 × 1.55215 = 99.34 (MS-bar at M_P)~~ **RETRACTED** — NNLO target was buggy (~99.3 should be ~52-55)
+3. ~~✅ Backward running: α_s(M_Z) = 0.122 (4% from PDG)~~ **RETRACTED** — based on buggy starting value
+4. ✅ Forward running: 1/α_GUT = 24.5 at M_GUT (independent of scheme conversion)
+5. ~~✅ E₆ → E₈ cascade: 99.97% match~~ **NEEDS RE-EVALUATION** — calibrated to buggy target
+6. ✅ Heat kernel derivation of dihedral angle ratio (valid as mathematics)
+7. ✅ Solid angle derivation confirms geometric ratio
 
 ### 8.2 Cross-References
 
 | Related Result | Consistency |
 |----------------|-------------|
-| Prop 0.0.17j §6.3 | ✅ Equipartition derivation |
+| Prop 0.0.17j §6.3 | ✅ Equipartition derivation (1/α_s = 64) |
 | Theorem 2.4.1 | ✅ sin²θ_W = 3/8 |
-| Theorem 0.0.6 | ✅ θ_O/θ_T ratio from honeycomb |
+| Theorem 0.0.6 | ✅ θ_O/θ_T geometric ratio from honeycomb |
 | Prop 0.0.17q | ✅ R_stella from dimensional transmutation |
-| Standard QCD | ✅ Backward running consistent (4% uncertainty) |
+| Standard QCD | **OPEN** — ~17-22% discrepancy between geometric (64) and MS-bar (~52-55) |
 
 ### 8.3 Verification Plots
 
@@ -505,35 +497,30 @@ See `verification/plots/`:
 
 $$\boxed{\frac{1}{\alpha_s^{geom}(M_P)} = (N_c^2 - 1)^2 = 64}$$
 
-$$\boxed{\frac{1}{\alpha_s^{MS-bar}(M_P)} = 64 \times \frac{\theta_O}{\theta_T} = 99.34 \pm 20\%}$$
+~~$$\boxed{\frac{1}{\alpha_s^{MS-bar}(M_P)} = 64 \times \frac{\theta_O}{\theta_T} = 99.34 \pm 20\%}$$~~
 
-> ⚠️ **THEORETICAL UNCERTAINTY:** The ±20% uncertainty on 1/α_s^{MS-bar} propagates from:
-> - One-loop vs. two-loop β-function differences (~10-15%)
-> - M_{E8} threshold uncertainty (~5-10%)
-> - Unknown moduli stabilization (~5-10%)
->
-> Despite this uncertainty, the prediction α_s(M_Z) = 0.122 ± 0.010 agrees with experiment (0.1180 ± 0.0009) to **0.4σ**.
+> **RETRACTED (2026-02-08):** The MS-bar conversion via θ_O/θ_T is retracted. The NNLO target ~99.3 was based on a factor-of-2 bug; the correct value is ~52-55. The claimed 0.04% agreement and 0.4σ consistency with PDG are invalidated.
 
-**Significance:**
-1. ✅ α_s is a derived quantity, not a phenomenological input
-2. ✅ Two independent paths (equipartition + unification) converge
-3. ✅ Scheme conversion factor is rigorously derived from heat kernel/Casimir methods
-4. ✅ Pre-geometric running resolved via E₆ → E₈ cascade (see §5.1)
-5. ✅ 99.97% match between cascade unification and required Δ(1/α)
+**What remains valid:**
+1. ✅ α_s = 1/64 in the geometric scheme is a derived quantity from adj x adj equipartition
+2. ✅ GUT unification condition sin^2 θ_W = 3/8 is independently geometric
+3. ✅ The heat kernel mathematics (dihedral angle ratio, Balian-Bloch expansion) is valid as pure mathematics
+4. ~~✅ Scheme conversion factor θ_O/θ_T connects geometric and MS-bar schemes~~ **RETRACTED**
+5. ~~✅ 99.97% cascade match~~ **NEEDS RE-EVALUATION** — calibrated to buggy target
 
-**Resolution (2026-01-16):** The geometric prediction 1/α_s = 64 at M_P (or 99.34 in MS-bar) is connected to SM running via **E₆ → E₈ cascade unification**:
+**What is retracted:**
+- The claim that θ_O/θ_T = 1.55215 is a scheme conversion factor for α_s
+- The MS-bar value 1/α_s(M_P) = 99.34
+- The backward running giving α_s(M_Z) = 0.122 with 0.4σ agreement
+- The "99.97% cascade match" (calibrated to the buggy 99.34 target)
 
-- Below M_GUT: Standard SM running
-- M_GUT → M_{E8} (2.36×10¹⁸ GeV): E₆ unified group with b₀ = 30
-- M_{E8} → M_P: Pure E₈ gauge theory with b₀ = 110
-
-This connects to **heterotic E₈ × E₈ string theory** and extends the stella embedding chain to include E₈.
+**Open problem:** The geometric-scheme value 1/α_s = 64 differs from the corrected MS-bar NNLO value (~52-55) by ~17-22%. Understanding this discrepancy is an important open question for the framework.
 
 **Verification scripts:**
-- `verification/Phase2/extra_dimensions_beta_function.py` — Cascade calculation
+- `verification/Phase2/extra_dimensions_beta_function.py` — Cascade calculation (needs update with corrected target)
 - `verification/Phase2/alpha_s_two_loop_running.py` — SM running analysis
 
-**Status:** 🔶 NOVEL ✅ RESOLVED — Geometric derivation established; pre-geometric running via E₆ → E₈ cascade provides 99.97% match
+**Status:** 🔶 NOVEL — Geometric derivation of 1/α_s = 64 stands; scheme conversion to MS-bar is RETRACTED; ~17-22% discrepancy with corrected NNLO is an open problem
 
 ---
 
@@ -547,14 +534,13 @@ This connects to **heterotic E₈ × E₈ string theory** and extends the stella
 
 This is not an independent test since the SM running uses α_s(M_Z) as input. The genuine test is the **self-consistency** of the cascade:
 
-**Self-Consistency Test:**
+**Self-Consistency Test (RETRACTED):**
 - Input: 1/α_s^{geom}(M_P) = 64 from equipartition
-- Transform: × θ_O/θ_T = 1.55215 for scheme conversion
-- Run: E₆ → E₈ cascade from M_P to M_GUT
-- Output: 1/α_GUT = 24.5
-- Compare: Forward SM running from α_s(M_Z) = 0.118 also gives 1/α_GUT ≈ 24.5
+- ~~Transform: × θ_O/θ_T = 1.55215 for scheme conversion~~ **RETRACTED**
+- ~~Run: E₆ → E₈ cascade from M_P to M_GUT~~
+- ~~Output: 1/α_GUT = 24.5~~
 
-**Result:** The geometric prediction and experimental data agree at M_GUT. This is a non-trivial consistency check.
+> **Note (2026-02-08):** This self-consistency test relied on the retracted scheme conversion. The forward SM running giving 1/α_GUT ≈ 24.5 is independently valid, but the cascade from the geometric value (64) to M_GUT needs re-evaluation without the buggy 99.34 target.
 
 ### 10.2 Future Testable Predictions
 
@@ -617,4 +603,5 @@ The E₆ → E₈ cascade makes predictions that differ from supersymmetric unif
 *Updated: 2026-01-16 — Added SM RG running verification showing 47% discrepancy at M_P; clarified §5.1 and §9*
 *Updated: 2026-01-16 — RESOLVED: E₆ → E₈ cascade unification provides 99.97% match; status changed to RESOLVED*
 *Updated: 2026-01-16 — Corrections from verification: fixed numerical values (M_E8=2.36×10¹⁸, Δ(1/α) values), clarified NNLO→4% uncertainty, E₈ representation precision, citation title*
-*Status: 🔶 NOVEL ✅ RESOLVED — Geometric derivation established; pre-geometric running via E₆ → E₈ cascade verified*
+*Status: 🔶 NOVEL — PARTIALLY RETRACTED — Geometric derivation 1/α_s = 64 stands; scheme conversion θ_O/θ_T retracted (buggy NNLO target); ~17-22% discrepancy is open*
+*Updated: 2026-02-08 — RETRACTION: θ_O/θ_T scheme conversion invalidated; NNLO target ~99.3 was factor-of-2 bug (correct value ~52-55)*
