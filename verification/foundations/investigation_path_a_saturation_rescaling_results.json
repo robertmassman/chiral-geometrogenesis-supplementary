@@ -1,0 +1,286 @@
+{
+  "date": "2026-03-29T11:04:04.343060",
+  "investigation": "Path A Holographic Saturation Rescaling",
+  "tests": [
+    {
+      "name": "I_stella homogeneity",
+      "claim": "I_stella is homogeneous degree 0 under (a,A) \u2192 (\u03bba, \u03bb\u00b2A)",
+      "passed": true,
+      "details": [
+        {
+          "lambda": 0.01,
+          "I_scaled": 126.85682011951282,
+          "I_ref": 126.8568201195128,
+          "ratio": 1.0000000000000002,
+          "invariant": "True"
+        },
+        {
+          "lambda": 0.1,
+          "I_scaled": 126.8568201195128,
+          "I_ref": 126.8568201195128,
+          "ratio": 1.0,
+          "invariant": "True"
+        },
+        {
+          "lambda": 0.5,
+          "I_scaled": 126.8568201195128,
+          "I_ref": 126.8568201195128,
+          "ratio": 1.0,
+          "invariant": "True"
+        },
+        {
+          "lambda": 1.0,
+          "I_scaled": 126.8568201195128,
+          "I_ref": 126.8568201195128,
+          "ratio": 1.0,
+          "invariant": "True"
+        },
+        {
+          "lambda": 2.0,
+          "I_scaled": 126.8568201195128,
+          "I_ref": 126.8568201195128,
+          "ratio": 1.0,
+          "invariant": "True"
+        },
+        {
+          "lambda": 10.0,
+          "I_scaled": 126.8568201195128,
+          "I_ref": 126.8568201195128,
+          "ratio": 1.0,
+          "invariant": "True"
+        },
+        {
+          "lambda": 100.0,
+          "I_scaled": 126.8568201195128,
+          "I_ref": 126.8568201195128,
+          "ratio": 1.0,
+          "invariant": "True"
+        }
+      ]
+    },
+    {
+      "name": "I_gravity homogeneity",
+      "claim": "I_gravity is homogeneous degree 0 under (l_P,A) \u2192 (\u03bbl_P, \u03bb\u00b2A)",
+      "passed": true,
+      "details": [
+        {
+          "lambda": 0.01,
+          "I_scaled": 25.0,
+          "I_ref": 25.0,
+          "ratio": 1.0,
+          "invariant": true
+        },
+        {
+          "lambda": 0.1,
+          "I_scaled": 25.0,
+          "I_ref": 25.0,
+          "ratio": 1.0,
+          "invariant": true
+        },
+        {
+          "lambda": 0.5,
+          "I_scaled": 25.0,
+          "I_ref": 25.0,
+          "ratio": 1.0,
+          "invariant": true
+        },
+        {
+          "lambda": 1.0,
+          "I_scaled": 25.0,
+          "I_ref": 25.0,
+          "ratio": 1.0,
+          "invariant": true
+        },
+        {
+          "lambda": 2.0,
+          "I_scaled": 25.0,
+          "I_ref": 25.0,
+          "ratio": 1.0,
+          "invariant": true
+        },
+        {
+          "lambda": 10.0,
+          "I_scaled": 25.0,
+          "I_ref": 25.0,
+          "ratio": 1.0,
+          "invariant": true
+        },
+        {
+          "lambda": 100.0,
+          "I_scaled": 25.0,
+          "I_ref": 25.0,
+          "ratio": 1.0,
+          "invariant": true
+        }
+      ]
+    },
+    {
+      "name": "Saturation preserved under rescaling",
+      "claim": "I_stella = I_gravity is preserved for all \u03bb > 0",
+      "passed": true,
+      "details": [
+        {
+          "lambda": 0.01,
+          "I_stella": 9.570183076266539e+58,
+          "I_gravity": 9.570183076266539e+58,
+          "relative_diff": 0.0,
+          "match": "True"
+        },
+        {
+          "lambda": 0.1,
+          "I_stella": 9.570183076266541e+58,
+          "I_gravity": 9.570183076266538e+58,
+          "relative_diff": 3.495347741126565e-16,
+          "match": "True"
+        },
+        {
+          "lambda": 0.5,
+          "I_stella": 9.57018307626654e+58,
+          "I_gravity": 9.570183076266538e+58,
+          "relative_diff": 2.3302318274177103e-16,
+          "match": "True"
+        },
+        {
+          "lambda": 1.0,
+          "I_stella": 9.57018307626654e+58,
+          "I_gravity": 9.570183076266538e+58,
+          "relative_diff": 2.3302318274177103e-16,
+          "match": "True"
+        },
+        {
+          "lambda": 2.0,
+          "I_stella": 9.57018307626654e+58,
+          "I_gravity": 9.570183076266538e+58,
+          "relative_diff": 2.3302318274177103e-16,
+          "match": "True"
+        },
+        {
+          "lambda": 10.0,
+          "I_stella": 9.570183076266539e+58,
+          "I_gravity": 9.570183076266537e+58,
+          "relative_diff": 2.3302318274177103e-16,
+          "match": "True"
+        },
+        {
+          "lambda": 100.0,
+          "I_stella": 9.570183076266539e+58,
+          "I_gravity": 9.570183076266538e+58,
+          "relative_diff": 1.1651159137088552e-16,
+          "match": "True"
+        }
+      ]
+    },
+    {
+      "name": "Planck temperature covariance",
+      "claim": "T_P transforms as T_P/\u03bb under G \u2192 \u03bb\u00b2G (not absolute)",
+      "passed": true,
+      "details": [
+        {
+          "lambda": 0.01,
+          "T_P_scaled": 1.4167841617232971e+34,
+          "T_P_expected": 1.4167841617232971e+34,
+          "ratio": 1.0,
+          "covariant": "True"
+        },
+        {
+          "lambda": 0.1,
+          "T_P_scaled": 1.416784161723297e+33,
+          "T_P_expected": 1.416784161723297e+33,
+          "ratio": 1.0,
+          "covariant": "True"
+        },
+        {
+          "lambda": 0.5,
+          "T_P_scaled": 2.833568323446594e+32,
+          "T_P_expected": 2.833568323446594e+32,
+          "ratio": 1.0,
+          "covariant": "True"
+        },
+        {
+          "lambda": 1.0,
+          "T_P_scaled": 1.416784161723297e+32,
+          "T_P_expected": 1.416784161723297e+32,
+          "ratio": 1.0,
+          "covariant": "True"
+        },
+        {
+          "lambda": 2.0,
+          "T_P_scaled": 7.083920808616485e+31,
+          "T_P_expected": 7.083920808616485e+31,
+          "ratio": 1.0,
+          "covariant": "True"
+        },
+        {
+          "lambda": 10.0,
+          "T_P_scaled": 1.4167841617232972e+31,
+          "T_P_expected": 1.416784161723297e+31,
+          "ratio": 1.0000000000000002,
+          "covariant": "True"
+        },
+        {
+          "lambda": 100.0,
+          "T_P_scaled": 1.4167841617232972e+30,
+          "T_P_expected": 1.4167841617232972e+30,
+          "ratio": 1.0,
+          "covariant": "True"
+        }
+      ]
+    },
+    {
+      "name": "Minimality principle scale invariance",
+      "claim": "\u03b7 = I_stella/I_gravity = 1 is preserved under rescaling",
+      "passed": true,
+      "details": [
+        {
+          "lambda": 0.01,
+          "eta": 1.0,
+          "deviation_from_1": 0.0,
+          "invariant": "True"
+        },
+        {
+          "lambda": 0.1,
+          "eta": 1.0000000000000004,
+          "deviation_from_1": 4.440892098500626e-16,
+          "invariant": "True"
+        },
+        {
+          "lambda": 0.5,
+          "eta": 1.0000000000000002,
+          "deviation_from_1": 2.220446049250313e-16,
+          "invariant": "True"
+        },
+        {
+          "lambda": 1.0,
+          "eta": 1.0000000000000002,
+          "deviation_from_1": 2.220446049250313e-16,
+          "invariant": "True"
+        },
+        {
+          "lambda": 2.0,
+          "eta": 1.0000000000000002,
+          "deviation_from_1": 2.220446049250313e-16,
+          "invariant": "True"
+        },
+        {
+          "lambda": 10.0,
+          "eta": 1.0000000000000002,
+          "deviation_from_1": 2.220446049250313e-16,
+          "invariant": "True"
+        },
+        {
+          "lambda": 100.0,
+          "eta": 1.0000000000000002,
+          "deviation_from_1": 2.220446049250313e-16,
+          "invariant": "True"
+        }
+      ]
+    },
+    {
+      "name": "Ratio a/l_P determination",
+      "claim": "Saturation determines a/l_P = \u221a(8ln3/\u221a3) and nothing more",
+      "passed": true,
+      "ratio_value": 2.252614659630118
+    }
+  ],
+  "overall_status": "PASSED"
+}

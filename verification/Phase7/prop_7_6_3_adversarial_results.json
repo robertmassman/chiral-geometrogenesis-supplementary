@@ -1,0 +1,111 @@
+{
+  "proposition": "7.6.3",
+  "title": "Regular Configurations & Variational Problem on D4 Lattice",
+  "verification_type": "adversarial_physics",
+  "timestamp": "2026-02-14T09:26:55.210104",
+  "overall_status": "PASSED",
+  "passed": 12,
+  "total": 12,
+  "results": [
+    {
+      "test": "ADV-1: Plaquette count per vertex",
+      "ordered_pairs": 192,
+      "unordered_plaquettes": 96,
+      "expected": 96,
+      "partners_per_link": 8,
+      "expected_per_link": 8,
+      "passed": true,
+      "details": "24\u00d78/2 = 96 confirmed by enumeration"
+    },
+    {
+      "test": "ADV-2: Plaquettes per link (all directions)",
+      "d4_min": 8,
+      "d4_max": 8,
+      "d4_all_equal_8": true,
+      "z4_per_link": 6,
+      "d4_z4_ratio": 1.3333333333333333,
+      "passed": true
+    },
+    {
+      "test": "ADV-3: Equilateral triangle verification",
+      "total_checked": 192,
+      "all_equilateral": true,
+      "side_length": 1.4142135623730951,
+      "area": 0.8660254037844388,
+      "expected_area": 0.8660254037844386,
+      "passed": "True"
+    },
+    {
+      "test": "ADV-4: Regularity constant rescaling",
+      "area_square": 1.0,
+      "area_triangle": 0.8660254037844386,
+      "area_ratio": 0.8660254037844386,
+      "p0_ratio": 1.1547005383792517,
+      "expected_ratio": 1.1547005383792517,
+      "pct_larger": 15.470053837925168,
+      "passed": "True"
+    },
+    {
+      "test": "ADV-5: Gauge invariance of plaquette norm",
+      "n_trials": 200,
+      "max_error": 8.881784197001252e-16,
+      "tolerance": 1e-10,
+      "passed": "True"
+    },
+    {
+      "test": "ADV-6: Contractibility homotopy monotonicity",
+      "n_trials": 100,
+      "monotonic_count": 100,
+      "non_monotonic_count": 0,
+      "max_non_monotonicity": 0.0,
+      "passed": true
+    },
+    {
+      "test": "ADV-7: Hessian leading factor",
+      "mean_action_over_trace": 0.16668049536820645,
+      "expected_1_over_6": 0.16666666666666666,
+      "c_H_D4": 0.4330127018922193,
+      "c_H_Z4": 0.25,
+      "ratio": 1.7320508075688772,
+      "passed": "True"
+    },
+    {
+      "test": "ADV-8: Independent variable count",
+      "algebraic_check": true,
+      "lattice_checks_passed": true,
+      "passed": true
+    },
+    {
+      "test": "ADV-9: Convexity of Wilson action",
+      "n_trials": 500,
+      "mean_ratio": 1.2458054785310302,
+      "min_ratio": 1.0000434191484977,
+      "violations": 0,
+      "passed": true
+    },
+    {
+      "test": "ADV-10: Hessian spectral bounds",
+      "n_momenta": 200,
+      "c_H": 0.08196060399411192,
+      "C_H": 0.7840647997903267,
+      "lower_violations": 0,
+      "upper_violations": 0,
+      "passed": true
+    },
+    {
+      "test": "ADV-11: Plaquette area verification",
+      "area_ratio": 0.8660254037844386,
+      "expected_ratio": 0.8660254037844386,
+      "passed": "True"
+    },
+    {
+      "test": "ADV-12: D4 fourth-moment isotropy",
+      "coefficient_A": 4.0,
+      "max_deviation": 0.0,
+      "is_isotropic": "True",
+      "z4_max_deviation": 1.0,
+      "d4_more_isotropic": "True",
+      "passed": "True"
+    }
+  ]
+}

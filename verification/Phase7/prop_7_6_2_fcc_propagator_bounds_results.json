@@ -1,0 +1,324 @@
+{
+  "proposition": "7.6.2",
+  "title": "FCC Propagator Bounds on the D\u2084 Lattice",
+  "date": "2026-02-14T08:49:39.026947",
+  "summary": "12/12 tests passed",
+  "all_passed": true,
+  "tests": [
+    {
+      "test": "T1: BZ volume",
+      "det_B": 2.0,
+      "V_BZ": 779.2727282720193,
+      "expected": 779.2727282720193,
+      "relative_error": 0.0,
+      "passed": "True"
+    },
+    {
+      "test": "T2: Laplacian normalization (k\u0302\u00b2 \u2192 k\u00b2)",
+      "ratios_at_small_k": [
+        0.9999998474297133,
+        0.9999847501136828,
+        0.9996188207354368,
+        0.9984761313976419
+      ],
+      "max_deviation": 0.0015238686023580916,
+      "passed": true
+    },
+    {
+      "test": "T3: Diagonal norm = 4/a\u00b2 (= 8/d_nn\u00b2)",
+      "diagonal_fcc_coord": 4.0,
+      "diagonal_fcc_per_dnn_sq": 8.000000000000002,
+      "diagonal_cubic": 8.0,
+      "expected_coord": 4.0,
+      "hopping_norm_match_per_dnn": "True",
+      "passed": "True"
+    },
+    {
+      "test": "T4: Max eigenvalue \u2264 8/a\u00b2",
+      "max_eigenvalue_found": 5.333333333333333,
+      "upper_bound": 8.0,
+      "fraction_of_bound": 0.6666666666666666,
+      "passed": "True"
+    },
+    {
+      "test": "T5: Free propagator decay |G\u2080| ~ 1/(4\u03c0\u00b2|x|\u00b2)",
+      "results": [
+        {
+          "distance": 1.4142135623730951,
+          "G0": 0.026373161541897224,
+          "G0_times_4pi2_x2": 2.082341369796396
+        },
+        {
+          "distance": 2.8284271247461903,
+          "G0": 0.006425337139344885,
+          "G0_times_4pi2_x2": 2.0292971426867585
+        },
+        {
+          "distance": 4.242640687119285,
+          "G0": 0.00274362546050375,
+          "G0_times_4pi2_x2": 1.949651850234861
+        },
+        {
+          "distance": 5.656854249492381,
+          "G0": 0.0014979023267012832,
+          "G0_times_4pi2_x2": 1.892314034689661
+        },
+        {
+          "distance": 7.0710678118654755,
+          "G0": 0.0009260373837842952,
+          "G0_times_4pi2_x2": 1.8279245277141514
+        },
+        {
+          "distance": 9.899494936611665,
+          "G0": 0.00042929761725535044,
+          "G0_times_4pi2_x2": 1.6609030798351079
+        },
+        {
+          "distance": 14.142135623730951,
+          "G0": 0.00016605245662978338,
+          "G0_times_4pi2_x2": 1.311097645412008
+        }
+      ],
+      "decay_ratios": [
+        {
+          "r1": 1.4142135623730951,
+          "r2": 2.8284271247461903,
+          "measured_ratio": 4.104556845804075,
+          "expected_ratio": 4.0,
+          "relative_error": 0.02613921145101883
+        },
+        {
+          "r1": 2.8284271247461903,
+          "r2": 4.242640687119285,
+          "measured_ratio": 2.341914824687895,
+          "expected_ratio": 2.249999999999999,
+          "relative_error": 0.04085103319462037
+        },
+        {
+          "r1": 4.242640687119285,
+          "r2": 5.656854249492381,
+          "measured_ratio": 1.831645102351786,
+          "expected_ratio": 1.7777777777777781,
+          "relative_error": 0.03030037007287937
+        },
+        {
+          "r1": 5.656854249492381,
+          "r2": 7.0710678118654755,
+          "measured_ratio": 1.6175398023134173,
+          "expected_ratio": 1.5625,
+          "relative_error": 0.035225473480587084
+        },
+        {
+          "r1": 7.0710678118654755,
+          "r2": 9.899494936611665,
+          "measured_ratio": 2.1570988204052366,
+          "expected_ratio": 1.9599999999999997,
+          "relative_error": 0.1005606226557331
+        },
+        {
+          "r1": 9.899494936611665,
+          "r2": 14.142135623730951,
+          "measured_ratio": 2.5853132556326845,
+          "expected_ratio": 2.0408163265306123,
+          "relative_error": 0.2668034952600154
+        }
+      ],
+      "convergence_to_1": 1.311097645412008,
+      "monotonic_decrease": true,
+      "max_reliable_ratio_error": 0.04085103319462037,
+      "passed": true
+    },
+    {
+      "test": "T6: Gradient bound |\u2207G\u2080| ~ C/|x|\u00b3",
+      "results": [
+        {
+          "distance": 2.8284271247461903,
+          "gradient": -0.0020390269938452945,
+          "grad_times_x3": 0.04613791405985372
+        },
+        {
+          "distance": 4.242640687119285,
+          "gradient": -0.0006224166200101661,
+          "grad_times_x3": 0.04753242137509908
+        },
+        {
+          "distance": 7.0710678118654755,
+          "gradient": -0.00013888466024961465,
+          "grad_times_x3": 0.04910314253264613
+        },
+        {
+          "distance": 9.899494936611665,
+          "gradient": -5.114619161647168e-05,
+          "grad_times_x3": 0.04961950356355468
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "T7: FCC vs hypercubic isotropy comparison",
+      "directions": {
+        "axis": {
+          "x": [
+            2.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "distance": 2.0,
+          "G_continuum": 0.006332573977646111,
+          "G_fcc": 0.011953280993658999,
+          "G_cubic": 0.00816724104993296,
+          "fcc_relative_error": 0.8875864752395941,
+          "cubic_relative_error": 0.28971901137881606
+        },
+        "face_diag": {
+          "x": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "distance": 2.0,
+          "G_continuum": 0.006332573977646111,
+          "G_fcc": 0.011953306689497798,
+          "G_cubic": 0.005512673896889937,
+          "fcc_relative_error": 0.8875905329638133,
+          "cubic_relative_error": 0.12947343112775442
+        }
+      },
+      "anisotropy_fcc": 2.1496891784264077e-06,
+      "anisotropy_cubic": 0.325026179197296,
+      "fcc_more_isotropic": true,
+      "passed": true
+    },
+    {
+      "test": "T8: Covariant Laplacian positivity (-\u0394_U \u2265 0)",
+      "n_configs_tested": 5,
+      "lattice_size": "4^4 D\u2084",
+      "n_sites": 128,
+      "all_eigenvalues_nonnegative": true,
+      "passed": true
+    },
+    {
+      "test": "T9: Combes-Thomas decay rate \u03b3 = ln(1 + m\u00b2a\u00b2/8)",
+      "results": [
+        {
+          "ma": 0.1,
+          "gamma_exact": 0.0012492194004318981,
+          "gamma_leading_order": 0.0012500000000000002,
+          "relative_correction": 0.0006248698730040847
+        },
+        {
+          "ma": 0.5,
+          "gamma_exact": 0.030771658666753687,
+          "gamma_leading_order": 0.03125,
+          "relative_correction": 0.015544866736843216
+        },
+        {
+          "ma": 1.0,
+          "gamma_exact": 0.11778303565638346,
+          "gamma_leading_order": 0.125,
+          "relative_correction": 0.06127337696297021
+        },
+        {
+          "ma": 2.0,
+          "gamma_exact": 0.4054651081081644,
+          "gamma_leading_order": 0.5,
+          "relative_correction": 0.23315173118821583
+        },
+        {
+          "ma": 5.0,
+          "gamma_exact": 1.4170660197866443,
+          "gamma_leading_order": 3.125,
+          "relative_correction": 1.205260698065786
+        }
+      ],
+      "small_ma_leading_order_accuracy": 0.0006248698730040847,
+      "passed": true
+    },
+    {
+      "test": "T10: Combes-Thomas bound verification",
+      "mass": 1.0,
+      "gamma": 0.11778303565638346,
+      "results": [
+        {
+          "nn_steps": 1,
+          "distance": 1.4142135623730951,
+          "G_m": 0.010869880382655357,
+          "abs_G_m": 0.010869880382655357,
+          "CT_bound": 1.777777777777778,
+          "bound_satisfied": "True"
+        },
+        {
+          "nn_steps": 2,
+          "distance": 2.8284271247461903,
+          "G_m": 0.0009321398874981692,
+          "abs_G_m": 0.0009321398874981692,
+          "CT_bound": 1.580246913580247,
+          "bound_satisfied": "True"
+        },
+        {
+          "nn_steps": 3,
+          "distance": 4.242640687119285,
+          "G_m": 0.00011875753250099905,
+          "abs_G_m": 0.00011875753250099905,
+          "CT_bound": 1.4046639231824418,
+          "bound_satisfied": "True"
+        },
+        {
+          "nn_steps": 4,
+          "distance": 5.656854249492381,
+          "G_m": 1.892931846880193e-05,
+          "abs_G_m": 1.892931846880193e-05,
+          "CT_bound": 1.2485901539399482,
+          "bound_satisfied": "True"
+        },
+        {
+          "nn_steps": 5,
+          "distance": 7.0710678118654755,
+          "G_m": 3.399761464548266e-06,
+          "abs_G_m": 3.399761464548266e-06,
+          "CT_bound": 1.1098579146132872,
+          "bound_satisfied": "True"
+        },
+        {
+          "nn_steps": 7,
+          "distance": 9.899494936611665,
+          "G_m": 1.3228468523404814e-07,
+          "abs_G_m": 1.3228468523404814e-07,
+          "CT_bound": 0.8769247720401283,
+          "bound_satisfied": "True"
+        },
+        {
+          "nn_steps": 10,
+          "distance": 14.142135623730951,
+          "G_m": 1.2908387715202713e-09,
+          "abs_G_m": 1.2908387715202713e-09,
+          "CT_bound": 0.6158922953148774,
+          "bound_satisfied": "True"
+        }
+      ],
+      "all_bounds_satisfied": true,
+      "passed": true
+    },
+    {
+      "test": "T11: Hopping norm matching (D\u2084 vs Z\u2074 per d_nn\u00b2)",
+      "hopping_fcc_coord": 4.0,
+      "hopping_cubic_coord": 8.0,
+      "hopping_fcc_per_dnn_sq": 8.000000000000002,
+      "hopping_cubic_per_dnn_sq": 8.0,
+      "expected_per_dnn_sq": 8.0,
+      "match": "True",
+      "passed": "True"
+    },
+    {
+      "test": "T12: Tadpole integral I_FCC \u2248 0.276",
+      "G0_at_0": 0.2763731615421302,
+      "I_FCC": 0.2763731615421302,
+      "expected": 0.276,
+      "relative_error": 0.0013520345729354521,
+      "n_grid_points": 2560000,
+      "passed": "True"
+    }
+  ]
+}

@@ -3,7 +3,7 @@
 Theorem 0.0.16: Adjacency Structure from SU(3) Representation Theory
 ====================================================================
 
-Verifies that FCC lattice constraints (12-regularity, girth > 3, 4-squares-per-edge)
+Verifies that FCC lattice constraints (12-regularity, no intra-rep root triangles, 4-squares-per-edge)
 are derived from SU(3) representation theory rather than assumed as axioms.
 
 Related Documents:

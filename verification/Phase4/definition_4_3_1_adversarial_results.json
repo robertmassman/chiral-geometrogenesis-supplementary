@@ -1,0 +1,131 @@
+{
+  "definition": "4.3.1",
+  "title": "W-Sector Field Theory",
+  "timestamp": "2026-02-25T06:43:31.514703",
+  "verifications": [
+    {
+      "test": "vertex_geometry",
+      "all_unit_sphere": true,
+      "antipodal_relation": "True",
+      "tetrahedral_angles": true,
+      "centroid_at_origin": "True",
+      "face_centroid_match": "True",
+      "passed": "True"
+    },
+    {
+      "test": "phase_determination",
+      "proof_gap_confirmed": true,
+      "intermediate_gives_5pi3": "True",
+      "z3_candidates_correct": true,
+      "cross_term_vanishes": "True",
+      "phi_pi_preferred": true,
+      "notes": "Proof gap confirmed: intermediate formula gives 5pi/3 not pi. Z_3 invariance argument needed to select phi_W = pi.",
+      "passed": true
+    },
+    {
+      "test": "solid_angle",
+      "voronoi_omega_W_sr": 3.1403422997136645,
+      "expected_sr": 3.141592653589793,
+      "relative_error": 0.00039799999999995487,
+      "vertex_solid_angle_sr": 0.5512855984325311,
+      "symmetry_spread": 0.0017078061950935562,
+      "MC_samples": 2000000,
+      "passed": "True"
+    },
+    {
+      "test": "vev_consistency",
+      "v_W_geometric_GeV": 142.15518327986968,
+      "v_W_computed_GeV": 122.49902848675177,
+      "v_W_claimed_GeV": 123.0,
+      "mu_H_sq_GeV2": 15641.0664072,
+      "mu_W_sq_GeV2": 5213.6888024,
+      "portal_correction_GeV2": 2182.4743823999997,
+      "M_soliton_GeV": 1612.0226009093544,
+      "lambda_ratio": 0.7829457364341086,
+      "passed": true
+    },
+    {
+      "test": "portal_coupling",
+      "lambda_HP_computed": 0.035826756508391636,
+      "lambda_HP_claimed": 0.036,
+      "relative_error": 0.00481231921134338,
+      "g_0": 1.0,
+      "epsilon": 0.5,
+      "passed": "True"
+    },
+    {
+      "test": "higgs_exotic_decay",
+      "m_dark_higgs_GeV": 55.28162443344081,
+      "m_H_half_GeV": 62.6,
+      "kinematically_open": "True",
+      "BR_exotic": 0.41847948695985826,
+      "mu_signal": 0.5815205130401417,
+      "Gamma_exotic_MeV": 2.928893261258098,
+      "lambda_W_min_to_close": 0.12951153413973163,
+      "tension_sigma": 6.974658115997638,
+      "is_critical": "True",
+      "passed": false
+    },
+    {
+      "test": "direct_detection",
+      "M_DM_GeV": 1618.6151217786546,
+      "sigma_SI_cm2": 1.7385122177312357e-47,
+      "sigma_claimed_cm2": 1.5e-47,
+      "ratio_computed_claimed": 1.1590081451541572,
+      "below_LZ_bound": true,
+      "testable_DARWIN": true,
+      "passed": true
+    },
+    {
+      "test": "relic_abundance",
+      "sigma_v_simple_GeV2": 9.841197764995697e-12,
+      "Omega_h2_simple": 21.548415874724785,
+      "sigma_v_detailed_GeV2": 6.1721438820580555e-15,
+      "Omega_h2_detailed": 34357.951823188676,
+      "overabundance_factor": 179.57013228937322,
+      "ADM_required": "True",
+      "passed": "True"
+    },
+    {
+      "test": "cross_term_off_center",
+      "max_cross_term": 1.5205470270561365,
+      "mean_cross_term": 0.3809027547987425,
+      "relative_max": 0.17923870455598392,
+      "cross_center": 4.2926331773577883e-16,
+      "center_cancellation_exact": "True",
+      "passed": "True"
+    },
+    {
+      "test": "weight_space_projection",
+      "weights": {
+        "R": [
+          0.816496580927726,
+          0.4714045207910318
+        ],
+        "G": [
+          -0.816496580927726,
+          0.4714045207910318
+        ],
+        "B": [
+          0.0,
+          -0.9428090415820636
+        ],
+        "W": [
+          0.0,
+          0.0
+        ]
+      },
+      "W_at_origin": "True",
+      "RGB_equilateral": "True",
+      "centroid_at_origin": "True",
+      "passed": "True"
+    }
+  ],
+  "summary": {
+    "total_tests": 10,
+    "passed": 9,
+    "failed": 1,
+    "critical_issues": 1,
+    "overall_status": "CRITICAL ISSUES"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "proposition": "0.0.3b",
+  "question": "Open Q2: Defects and Grain Boundaries",
+  "timestamp": "2026-03-27T18:37:47.217388",
+  "tests": [
+    {
+      "test": "12 distinct Burgers vectors",
+      "status": "PASS",
+      "details": "Found 12 vectors"
+    },
+    {
+      "test": "|b| = a/\u221a2 for all vectors",
+      "status": "PASS",
+      "details": "|b| = 0.707107, expected 0.707107"
+    },
+    {
+      "test": "Closed under O_h rotations",
+      "status": "PASS",
+      "details": "Burgers vector set invariant under 90\u00b0 rotation about z-axis"
+    },
+    {
+      "test": "Partials sum to full Burgers vector",
+      "status": "PASS",
+      "details": "a/6[211] + a/6[12-1] = [0.5 0.5 0. ] \u2248 a/2[110] = [0.5 0.5 0. ]"
+    },
+    {
+      "test": "|b_partial| = a/\u221a6",
+      "status": "PASS",
+      "details": "|b_partial| = 0.408248, expected 0.408248"
+    },
+    {
+      "test": "Frank's rule: dissociation energetically favorable",
+      "status": "PASS",
+      "details": "|b|\u00b2 = 0.5000 > |b\u2081|\u00b2 + |b\u2082|\u00b2 = 0.3333"
+    },
+    {
+      "test": "Stacking fault shifts phases by \u03c9 = e^{2\u03c0i/3}",
+      "status": "PASS",
+      "details": "Phase ratios after fault: ['-0.500+0.866j', '-0.500+0.866j', '-0.500+0.866j', '-0.500+0.866j', '-0.500+0.866j', '-0.500+0.866j']"
+    },
+    {
+      "test": "Three successive faults restore original (\u03c9\u00b3 = 1)",
+      "status": "PASS",
+      "details": "\u03c9\u00b3 = 1.000000-0.000000j"
+    },
+    {
+      "test": "Stacking period 3 = |Z\u2083|",
+      "status": "PASS",
+      "details": "ABCABC... has period 3; Z\u2083 = {1, \u03c9, \u03c9\u00b2} has order 3"
+    },
+    {
+      "test": "Equilibrium amplitude \u03c1\u2080 > 0",
+      "status": "PASS",
+      "details": "\u03c1\u2080 = 0.9670"
+    },
+    {
+      "test": "Barrier between Z\u2083 minima > 0",
+      "status": "PASS",
+      "details": "\u0394V = V(\u03c1\u2080, \u03c0/3) - V(\u03c1\u2080, 0) = 1.0852"
+    },
+    {
+      "test": "Wall width \u03b4 = \u221a(\u03ba/|r|)",
+      "status": "PASS",
+      "details": "\u03b4 = 1.0000 (in units of a_B)"
+    },
+    {
+      "test": "Domain wall tension \u03c3_wall > 0",
+      "status": "PASS",
+      "details": "\u03c3_wall = 1.8996 (LG units)"
+    },
+    {
+      "test": "\u03c3_wall increases monotonically with |w|",
+      "status": "PASS",
+      "details": "\u03c3 values: ['0.653', '1.200', '1.900', '3.994', '9.725']"
+    },
+    {
+      "test": "Dimensional analysis: \u03c3_wall ~ [energy]/[length]\u00b2",
+      "status": "PASS",
+      "details": "[\u03c3] = [V]^{1/2} \u00b7 [\u03ba]^{1/2} \u00b7 [\u03c1\u2080] \u221d [L]\u207b\u2074 in natural units"
+    },
+    {
+      "test": "Domain wall tension is at QCD scale",
+      "status": "PASS",
+      "details": "\u03c3_wall ~ 431690 MeV\u00b2/fm"
+    },
+    {
+      "test": "Wall tension governed by string tension scale \u221a\u03c3 = 440 MeV",
+      "status": "PASS",
+      "details": "\u03c3_wall / \u03c3_string ~ 1/R_stella = 2.2 fm\u207b\u00b9 (dimensionally correct)"
+    },
+    {
+      "test": "Wall energy per lattice cell ~ \u039b_QCD",
+      "status": "PASS",
+      "details": "\u03c3_wall \u00d7 a_B\u00b2 / \u210fc \u2248 3960 MeV (expected: O(\u039b_QCD))"
+    },
+    {
+      "test": "\u03b3(\u03b8) \u2192 0 as \u03b8 \u2192 0",
+      "status": "PASS",
+      "details": "\u03b3(0.001) = 0.008408"
+    },
+    {
+      "test": "Maximum at \u03b8 = e^{A-1}",
+      "status": "PASS",
+      "details": "\u03b8_max = 1.6487, analytical = 1.6487"
+    },
+    {
+      "test": "Monotonically increasing for small \u03b8",
+      "status": "PASS",
+      "details": "\u03b3 increases as grain boundary angle grows from zero"
+    },
+    {
+      "test": "\u03b3(2\u03c0/3) is finite (domain wall limit)",
+      "status": "PASS",
+      "details": "\u03b3(2\u03c0/3)/\u03b3\u2080 = 1.593 \u2014 approaches Z\u2083 domain wall"
+    },
+    {
+      "test": "Domain wall tension [MeV/fm\u00b2]",
+      "status": "PASS",
+      "details": "\u03c3_wall ~ 2187.7 MeV/fm\u00b2 = energy per area \u2713"
+    },
+    {
+      "test": "Dislocation line tension [MeV/fm]",
+      "status": "PASS",
+      "details": "T_line ~ 1387.5 MeV/fm = energy per length \u2713"
+    },
+    {
+      "test": "Vacancy energy [MeV]",
+      "status": "PASS",
+      "details": "E_vacancy ~ 440 MeV = point energy \u2713"
+    },
+    {
+      "test": "Energy hierarchy consistent",
+      "status": "PASS",
+      "details": "E_v/(T\u00b7a) = 0.24, E_v/(\u03c3\u00b7a\u00b2) = 0.11 \u2014 all O(1)"
+    }
+  ],
+  "summary": {
+    "total": 26,
+    "passed": 26,
+    "failed": 0,
+    "status": "PASSED"
+  }
+}

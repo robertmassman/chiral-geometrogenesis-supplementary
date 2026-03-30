@@ -1,0 +1,298 @@
+{
+  "proposition": "0.0.41a",
+  "name": "CG Dimensional Optimality",
+  "date": "2026-03-29T13:47:55.294493",
+  "tests": [
+    {
+      "name": "sqrt_sigma = hbar*c / R_stella",
+      "passed": true,
+      "details": "CG: 440.0 MeV, FLAG: 440.0 +/- 30.0 MeV, rel_err: 0.0000 (by construction)",
+      "data": {
+        "sqrt_sigma_cg": 440.00044596071086,
+        "sqrt_sigma_flag": 440.0,
+        "rel_err": 1.0135470701429353e-06
+      }
+    },
+    {
+      "name": "f_pi = sqrt_sigma / 5",
+      "passed": true,
+      "details": "CG: 88.0 MeV, PDG: 92.1 MeV, rel_err: 0.0445 (95.5% agreement)",
+      "data": {
+        "f_pi_cg": 88.00008919214217,
+        "f_pi_pdg": 92.1,
+        "rel_err": 0.04451586110594815
+      }
+    },
+    {
+      "name": "Lambda = 4*pi*f_pi",
+      "passed": true,
+      "details": "Lambda_CG = 1105.8 MeV",
+      "data": {
+        "lambda_cg": 1105.8417348851215
+      }
+    },
+    {
+      "name": "v_H = sqrt_sigma * exp(1/4 + 120/(2*pi^2))",
+      "passed": "True",
+      "details": "CG: 246.73 GeV, PDG: 246.22 GeV, rel_err: 0.0021 (0.21%)",
+      "data": {
+        "v_h_cg": 246729.22494493882,
+        "v_h_pdg": 246220.0,
+        "rel_err": 0.00206817051798724,
+        "exponent": 6.3292710185402665
+      }
+    },
+    {
+      "name": "m_H (CG-consistent: lambda=1/8, v_H from CG)",
+      "passed": "True",
+      "details": "CG-consistent: 123.36 GeV, PDG: 125.20 GeV, rel_err: 0.0147 (1.47%)",
+      "data": {
+        "m_h_cg_consistent": 123364.61247246941,
+        "m_h_pdg": 125200.0,
+        "rel_err_consistent": 0.014659644788582993,
+        "m_h_claimed": 125100.0,
+        "lambda_cg": 0.125,
+        "lambda_implied_by_claim": 0.12854152107305272
+      }
+    },
+    {
+      "name": "M_P from transmutation: R_stella/ell_P = exp(128*pi/9)",
+      "passed": "True",
+      "details": "M_P(CG): 1.117e+22 MeV, M_P(obs): 1.221e+22 MeV, rel_err: 0.0854 (8.5%)",
+      "data": {
+        "m_p_cg": 1.1166493455990124e+22,
+        "m_p_obs": 1.22089e+22,
+        "rel_err": 0.08538087329815756,
+        "transmutation_exponent": 44.680428851054835
+      }
+    },
+    {
+      "name": "Scale-homogeneity at lambda=0.1",
+      "passed": true,
+      "details": "Expected factor: 10.000000, sqrt_sigma: 10.000000, f_pi: 10.000000, v_H: 10.000000, m_H: 10.000000"
+    },
+    {
+      "name": "Scale-homogeneity at lambda=0.5",
+      "passed": true,
+      "details": "Expected factor: 2.000000, sqrt_sigma: 2.000000, f_pi: 2.000000, v_H: 2.000000, m_H: 2.000000"
+    },
+    {
+      "name": "Scale-homogeneity at lambda=0.99",
+      "passed": true,
+      "details": "Expected factor: 1.010101, sqrt_sigma: 1.010101, f_pi: 1.010101, v_H: 1.010101, m_H: 1.010101"
+    },
+    {
+      "name": "Scale-homogeneity at lambda=1.001",
+      "passed": true,
+      "details": "Expected factor: 0.999001, sqrt_sigma: 0.999001, f_pi: 0.999001, v_H: 0.999001, m_H: 0.999001"
+    },
+    {
+      "name": "Scale-homogeneity at lambda=2.0",
+      "passed": true,
+      "details": "Expected factor: 0.500000, sqrt_sigma: 0.500000, f_pi: 0.500000, v_H: 0.500000, m_H: 0.500000"
+    },
+    {
+      "name": "Scale-homogeneity at lambda=10.0",
+      "passed": true,
+      "details": "Expected factor: 0.100000, sqrt_sigma: 0.100000, f_pi: 0.100000, v_H: 0.100000, m_H: 0.100000"
+    },
+    {
+      "name": "Dimensionless ratio invariance at lambda=0.1",
+      "passed": "True",
+      "details": "f_pi/sqrt_sigma = 0.2000000000 (expect 0.2), v_H/sqrt_sigma = 560.747670 (expect 560.747670)"
+    },
+    {
+      "name": "Dimensionless ratio invariance at lambda=0.5",
+      "passed": "True",
+      "details": "f_pi/sqrt_sigma = 0.2000000000 (expect 0.2), v_H/sqrt_sigma = 560.747670 (expect 560.747670)"
+    },
+    {
+      "name": "Dimensionless ratio invariance at lambda=0.99",
+      "passed": "True",
+      "details": "f_pi/sqrt_sigma = 0.2000000000 (expect 0.2), v_H/sqrt_sigma = 560.747670 (expect 560.747670)"
+    },
+    {
+      "name": "Dimensionless ratio invariance at lambda=1.001",
+      "passed": "True",
+      "details": "f_pi/sqrt_sigma = 0.2000000000 (expect 0.2), v_H/sqrt_sigma = 560.747670 (expect 560.747670)"
+    },
+    {
+      "name": "Dimensionless ratio invariance at lambda=2.0",
+      "passed": "True",
+      "details": "f_pi/sqrt_sigma = 0.2000000000 (expect 0.2), v_H/sqrt_sigma = 560.747670 (expect 560.747670)"
+    },
+    {
+      "name": "Dimensionless ratio invariance at lambda=10.0",
+      "passed": "True",
+      "details": "f_pi/sqrt_sigma = 0.2000000000 (expect 0.2), v_H/sqrt_sigma = 560.747670 (expect 560.747670)"
+    },
+    {
+      "name": "f_pi with N_f=3 (wrong) vs N_f=2 (correct)",
+      "passed": true,
+      "details": "N_f=2: f_pi = 88.0 MeV (correct, 95.5% of PDG), N_f=3: f_pi = 44.0 MeV (wrong, 47.8% of PDG). Framework correctly distinguishes topological N_f=3 (beta function) from light N_f=2 (chiral breaking).",
+      "data": {
+        "f_pi_nf2": 88.00008919214217,
+        "f_pi_nf3": 44.000044596071085,
+        "rel_err_nf2": 0.04451586110594815,
+        "rel_err_nf3": 0.5222579305529741
+      }
+    },
+    {
+      "name": "Beta function coefficient b0",
+      "passed": true,
+      "details": "b0(N_f=3) = 9.0000 (used in beta function), b0(N_f=2) = 9.6667 (NOT used). Framework correctly uses N_f=3 for RG running.",
+      "data": {
+        "b0_nf3": 9.0,
+        "b0_nf2": 9.666666666666666
+      }
+    },
+    {
+      "name": "m_H from CG lambda=1/8 + CG v_H",
+      "passed": "True",
+      "details": "m_H(CG,CG) = 123.36 GeV, m_H(CG,PDG) = 123.11 GeV, PDG: 125.20 GeV",
+      "data": {
+        "m_h_cg_cg": 123364.61247246941,
+        "m_h_cg_pdg": 123110.0,
+        "m_h_pdg": 125200.0
+      }
+    },
+    {
+      "name": "Lambda quartic needed for exact m_H match",
+      "passed": "True",
+      "details": "lambda_CG = 0.1250, lambda_needed(CG v_H) = 0.1287 (3.0% off), lambda_needed(PDG v_H) = 0.1293 (3.4% off)",
+      "data": {
+        "lambda_cg": 0.125,
+        "lambda_needed_cg_vh": 0.12874710524024868,
+        "lambda_needed_pdg_vh": 0.12928019786868128
+      }
+    },
+    {
+      "name": "SM parameter count",
+      "passed": true,
+      "details": "SM total: 19 (dimensionless: 18, dimensionful: 1). Breakdown: {'gauge_couplings': 3, 'quark_masses': 6, 'lepton_masses': 3, 'ckm_angles': 3, 'ckm_phase': 1, 'theta_qcd': 1, 'higgs_mass': 1, 'higgs_vev': 1}",
+      "data": {
+        "sm_total": 19,
+        "sm_dimensionless": 18
+      }
+    },
+    {
+      "name": "CG parameter count",
+      "passed": true,
+      "details": "CG total: 1 (dimensionless: 0, dimensionful: 1). Reduction from SM: 95%",
+      "data": {
+        "cg_total": 1,
+        "reduction_pct": 94.73684210526316
+      }
+    },
+    {
+      "name": "String theory underdetermination",
+      "passed": "True",
+      "details": "String landscape: ~10^500 vacua = 1661 bits. CG underdetermination: 0 bits (just R+ orbit). Ratio: 1661:0 (infinite improvement in discrete ambiguity).",
+      "data": {
+        "string_bits": 1660.964047443681
+      }
+    },
+    {
+      "name": "Moduli space is R+ (dimensionless ratios invariant)",
+      "passed": "True",
+      "details": "f_pi/sqrt_sigma spread: 2.78e-17 (expect 0), v_H/sqrt_sigma spread: 0.00e+00 (expect 0). Moduli space has dim = 1 (the R+ orbit) with 0 discrete ambiguity.",
+      "data": {
+        "ratio1_spread": 2.7755575615628914e-17,
+        "ratio2_spread": 0.0
+      }
+    },
+    {
+      "name": "Goldstone factor = 1/4",
+      "passed": true,
+      "details": "n_physical/n_total = 1/4 = 0.25 (1 physical Higgs / 4 real scalar d.o.f. in Higgs doublet)"
+    },
+    {
+      "name": "Conformal anomaly: 120/(2*pi^2) = 120 * c_scalar / pi^2 * 60",
+      "passed": true,
+      "details": "120/(2*pi^2) = 6.07927. c_scalar = 1/120 = 0.008333 (standard free-field value).",
+      "data": {
+        "conformal_factor": 6.0792710185402665,
+        "c_scalar": 0.008333333333333333
+      }
+    },
+    {
+      "name": "Total exponent = 6.329",
+      "passed": true,
+      "details": "1/4 + 120/(2*pi^2) = 6.32927. exp(6.32927) = 560.75 (hierarchy factor sqrt_sigma -> v_H).",
+      "data": {
+        "total_exponent": 6.3292710185402665,
+        "hierarchy_factor": 560.7476701670664
+      }
+    },
+    {
+      "name": "Prediction accuracy table",
+      "passed": true,
+      "details": "Generated comprehensive prediction table with 4 entries. See detailed output above.",
+      "data": {
+        "predictions": [
+          {
+            "name": "sqrt_sigma",
+            "cg_value": 440.00044596071086,
+            "obs_value": 440.0,
+            "obs_err": 30.0,
+            "unit": "MeV",
+            "note": "By construction (defines R_stella)",
+            "rel_err": 1.0135470701429353e-06,
+            "sigma": 1.4865357028763053e-05
+          },
+          {
+            "name": "f_pi",
+            "cg_value": 88.00008919214217,
+            "obs_value": 92.1,
+            "obs_err": 0.8,
+            "unit": "MeV",
+            "note": "Genuine prediction",
+            "rel_err": 0.04451586110594815,
+            "sigma": 5.124888509822281
+          },
+          {
+            "name": "v_H",
+            "cg_value": 246.7292249449388,
+            "obs_value": 246.22,
+            "obs_err": 0.01,
+            "unit": "GeV",
+            "note": "From a-theorem mapping",
+            "rel_err": 0.0020681705179871977,
+            "sigma": 50.92249449388078
+          },
+          {
+            "name": "m_H (lambda=1/8)",
+            "cg_value": 123.3646124724694,
+            "obs_value": 125.2,
+            "obs_err": 0.11,
+            "unit": "GeV",
+            "note": "CG-consistent (lambda=1/8)",
+            "rel_err": 0.014659644788583063,
+            "sigma": 16.685341159369088
+          }
+        ]
+      }
+    },
+    {
+      "name": "ADVERSARIAL: m_H claimed agreement (0.08%) vs actual",
+      "passed": "True",
+      "details": "Claimed: 0.08% agreement (m_H = 125.1 GeV). Actual with lambda=1/8, CG v_H: m_H = 123.36 GeV, rel_err = 1.47%. The 0.08% claim likely uses PDG lambda, not CG lambda=1/8.",
+      "data": {
+        "claimed_agreement": 0.0008,
+        "actual_rel_err": 0.014659644788582993,
+        "m_h_cg_consistent": 123.3646124724694,
+        "m_h_pdg": 125.2
+      }
+    },
+    {
+      "name": "ADVERSARIAL: 0.02sigma is for sqrt_sigma bootstrap, not M_P",
+      "passed": true,
+      "details": "Bootstrap sqrt_sigma: 439.2 +/- 7.0 MeV vs FLAG: 440.0 +/- 30.0 MeV. Deviation: 0.03sigma \u2014 this is the 0.02sigma claim. M_P from transmutation has rel_err = 8.5%, which is much larger.",
+      "data": {
+        "sigma_deviation_bootstrap": 0.026666666666667047,
+        "m_p_rel_err": 0.08538087329815756
+      }
+    }
+  ],
+  "overall_pass": true
+}

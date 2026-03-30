@@ -1,0 +1,187 @@
+{
+  "proposition": "0.0.XXd",
+  "title": "Computational Universality of CG Primitives",
+  "type": "adversarial_physics_verification",
+  "timestamp": "2026-03-07T07:15:43.482208",
+  "overall_status": "PASSED",
+  "tests_passed": 14,
+  "tests_total": 14,
+  "results": [
+    {
+      "test": "z3_encoding_capacity",
+      "capacity": 729,
+      "injective": true,
+      "collisions": 0,
+      "passed": true
+    },
+    {
+      "test": "z3_increment_carry",
+      "failures": 0,
+      "passed": true
+    },
+    {
+      "test": "z3_zero_detection",
+      "false_positives": 0,
+      "false_negatives": 0,
+      "passed": true
+    },
+    {
+      "test": "adversarial_foods",
+      "results": {
+        "all_zeros": {
+          "source_preserved": true,
+          "copy_made": true
+        },
+        "all_ones": {
+          "source_preserved": true,
+          "copy_made": true
+        },
+        "all_twos": {
+          "source_preserved": true,
+          "copy_made": true
+        },
+        "copy_of_source": {
+          "source_preserved": true,
+          "copy_made": true
+        },
+        "reversed_source": {
+          "source_preserved": true,
+          "copy_made": true
+        },
+        "anti_source": {
+          "source_preserved": true,
+          "copy_made": true
+        },
+        "alternating_01": {
+          "source_preserved": true,
+          "copy_made": true
+        },
+        "alternating_012": {
+          "source_preserved": true,
+          "copy_made": true
+        },
+        "single_nonzero_pos0": {
+          "source_preserved": true,
+          "copy_made": true
+        },
+        "single_nonzero_last": {
+          "source_preserved": true,
+          "copy_made": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "test": "step_trace",
+      "total_steps": 729,
+      "copy_events": 174,
+      "pass1_copies": 94,
+      "food_reads_pass1": 0,
+      "source_preserved": true,
+      "copy_made": true,
+      "passed": true
+    },
+    {
+      "test": "non_termination",
+      "passed": true
+    },
+    {
+      "test": "idempotent_passes",
+      "passed": true
+    },
+    {
+      "test": "nop_dilution",
+      "z3_perfect_fit": true,
+      "results": {
+        "Z_2": {
+          "n_sq": 4,
+          "semantic": 9,
+          "structurally_impossible": true
+        },
+        "Z_3": {
+          "n_sq": 9,
+          "nop_frac": 0.0,
+          "expected": 0.0,
+          "match": true
+        },
+        "Z_4": {
+          "n_sq": 16,
+          "nop_frac": 0.4375,
+          "expected": 0.4375,
+          "match": true
+        },
+        "Z_5": {
+          "n_sq": 25,
+          "nop_frac": 0.64,
+          "expected": 0.64,
+          "match": true
+        },
+        "Z_7": {
+          "n_sq": 49,
+          "nop_frac": 0.8163265306122449,
+          "expected": 0.8163265306122449,
+          "match": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "test": "instruction_set_completeness",
+      "all_unique": true,
+      "full_coverage": true,
+      "computationally_complete": true,
+      "passed": true
+    },
+    {
+      "test": "gate_encoding",
+      "nop_is_zero_zero": true,
+      "mean_zeros_random": 6.6589,
+      "replicator_zero_positions": [
+        6,
+        11,
+        16,
+        19
+      ],
+      "passed": true
+    },
+    {
+      "test": "mutation_sensitivity",
+      "total_mutations": 40,
+      "self_replicating_mutants": 1,
+      "fraction_robust": 0.025,
+      "passed": true
+    },
+    {
+      "test": "random_baseline",
+      "n_programs": 1000,
+      "replicators": 0,
+      "replication_rate": 0.0,
+      "source_preservers": 426,
+      "preservation_rate": 0.426,
+      "passed": true
+    },
+    {
+      "test": "soup_micro",
+      "soup_size": 256,
+      "epochs": 5000,
+      "final_replicator_count": 228,
+      "final_fraction": 0.890625,
+      "passed": true
+    },
+    {
+      "test": "fixed_point",
+      "n_trials": 200,
+      "source_preserved": 200,
+      "full_replication": 200,
+      "fixed_point_rate": 1.0,
+      "replication_rate": 1.0,
+      "passed": true
+    }
+  ],
+  "plots": [
+    "plots/Prop_0_0_XXd_nop_dilution.png",
+    "plots/Prop_0_0_XXd_mutation_sensitivity.png",
+    "plots/Prop_0_0_XXd_soup_micro.png",
+    "plots/Prop_0_0_XXd_adversarial_summary.png"
+  ]
+}

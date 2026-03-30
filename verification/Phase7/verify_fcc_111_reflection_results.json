@@ -1,0 +1,26 @@
+{
+  "test": "FCC tet-oct honeycomb checkerboard under (111) reflection",
+  "fcc_vertices_generated": 500,
+  "up_tetrahedra": 365,
+  "down_tetrahedra": 364,
+  "octahedra": 256,
+  "tet_oct_ratio": 2.84765625,
+  "bipartite_pre_reflection": true,
+  "det_reflection_matrix": -1.0000000000000007,
+  "reflection_reverses_orientation": true,
+  "111_mirror_in_Oh": false,
+  "reflected_lattice_is_shifted_copy": true,
+  "octahedra_geometry_preserved": true,
+  "bipartite_post_reflection": true,
+  "adjacency_counts_preserved": true,
+  "checkerboard_2_coloring_preserved": true,
+  "finer_3_coloring_preserved": false,
+  "finer_3_coloring_automorphism": true,
+  "conclusions": {
+    "checkerboard_preserved": "YES - the 2-coloring (tet=black, oct=white) is invariant",
+    "up_down_swapped": "YES - orientation is reversed, up tets become down tets",
+    "lattice_symmetry": "NO - (111) mirror is not in Oh; reflected honeycomb is congruent but shifted",
+    "bipartite_structure": "PRESERVED - tets share faces only with octs in both original and reflected"
+  },
+  "overall_status": "PASSED"
+}

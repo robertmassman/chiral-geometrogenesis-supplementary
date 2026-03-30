@@ -1,0 +1,229 @@
+{
+  "proposition": "5.2.5e",
+  "title": "Holographic Self-Encoding Scale Invariance",
+  "date": "2026-03-29",
+  "all_pass": true,
+  "n_tests": 54,
+  "n_pass": 54,
+  "n_fail": 0,
+  "ratio_a_over_ell_P": 2.252614659630118,
+  "gamma_BH": 0.25,
+  "results": {
+    "I_stella invariance (lambda: 1e-30 to 1e30)": {
+      "status": "PASS",
+      "details": "max relative error = 3.36e-16"
+    },
+    "I_gravity invariance (lambda: 1e-30 to 1e30)": {
+      "status": "PASS",
+      "details": "max relative error = 4.48e-16"
+    },
+    "eta = 1 invariance (lambda: 1e-30 to 1e30)": {
+      "status": "PASS",
+      "details": "max |eta - 1| = 4.44e-16"
+    },
+    "Ratio numerical consistency (5 independent computations)": {
+      "status": "PASS",
+      "details": "spread = 4.44e-16, value = 2.2526146596"
+    },
+    "Ratio matches claimed 2.2526": {
+      "status": "PASS",
+      "details": "exact = 2.252615, claimed ~ 2.2526"
+    },
+    "ln(3) = 1.09861 check": {
+      "status": "PASS",
+      "details": "ln(3) = 1.0986122887"
+    },
+    "8*ln(3)/sqrt(3) = 5.07427 check": {
+      "status": "PASS",
+      "details": "8*ln(3)/sqrt(3) = 5.0742728048"
+    },
+    "Entropy invariance at lambda=1e-10": {
+      "status": "PASS",
+      "details": "S_ref=239.738377, S_scaled=239.738377, rel_err=0.00e+00"
+    },
+    "Entropy invariance at lambda=1e-05": {
+      "status": "PASS",
+      "details": "S_ref=239.738377, S_scaled=239.738377, rel_err=0.00e+00"
+    },
+    "Entropy invariance at lambda=1e-02": {
+      "status": "PASS",
+      "details": "S_ref=239.738377, S_scaled=239.738377, rel_err=0.00e+00"
+    },
+    "Entropy invariance at lambda=1e-01": {
+      "status": "PASS",
+      "details": "S_ref=239.738377, S_scaled=239.738377, rel_err=0.00e+00"
+    },
+    "Entropy invariance at lambda=1e+00": {
+      "status": "PASS",
+      "details": "S_ref=239.738377, S_scaled=239.738377, rel_err=0.00e+00"
+    },
+    "Entropy invariance at lambda=1e+01": {
+      "status": "PASS",
+      "details": "S_ref=239.738377, S_scaled=239.738377, rel_err=0.00e+00"
+    },
+    "Entropy invariance at lambda=1e+02": {
+      "status": "PASS",
+      "details": "S_ref=239.738377, S_scaled=239.738377, rel_err=0.00e+00"
+    },
+    "Entropy invariance at lambda=1e+05": {
+      "status": "PASS",
+      "details": "S_ref=239.738377, S_scaled=239.738377, rel_err=0.00e+00"
+    },
+    "Entropy invariance at lambda=1e+10": {
+      "status": "PASS",
+      "details": "S_ref=239.738377, S_scaled=239.738377, rel_err=0.00e+00"
+    },
+    "Entropy invariance (alpha=-1.5)": {
+      "status": "PASS",
+      "details": "rel_err=0.00e+00"
+    },
+    "Entropy invariance (alpha=-2)": {
+      "status": "PASS",
+      "details": "rel_err=0.00e+00"
+    },
+    "Entropy invariance (alpha=-1)": {
+      "status": "PASS",
+      "details": "rel_err=0.00e+00"
+    },
+    "Entropy invariance (alpha=0)": {
+      "status": "PASS",
+      "details": "rel_err=0.00e+00"
+    },
+    "Entropy invariance (alpha=1)": {
+      "status": "PASS",
+      "details": "rel_err=0.00e+00"
+    },
+    "Entropy invariance (alpha=5)": {
+      "status": "PASS",
+      "details": "rel_err=0.00e+00"
+    },
+    "N_c=2: scale invariance": {
+      "status": "PASS",
+      "details": "ratio=1.7893, I_stella rel_err=0.00e+00, I_gravity rel_err=0.00e+00"
+    },
+    "N_c=2: self-encoding condition satisfied": {
+      "status": "PASS",
+      "details": "|I_stella - I_gravity|/I_gravity = 0.00e+00"
+    },
+    "N_c=3: scale invariance": {
+      "status": "PASS",
+      "details": "ratio=2.2526, I_stella rel_err=1.42e-16, I_gravity rel_err=0.00e+00"
+    },
+    "N_c=3: self-encoding condition satisfied": {
+      "status": "PASS",
+      "details": "|I_stella - I_gravity|/I_gravity = 0.00e+00"
+    },
+    "N_c=4: scale invariance": {
+      "status": "PASS",
+      "details": "ratio=2.5304, I_stella rel_err=0.00e+00, I_gravity rel_err=0.00e+00"
+    },
+    "N_c=4: self-encoding condition satisfied": {
+      "status": "PASS",
+      "details": "|I_stella - I_gravity|/I_gravity = 1.42e-16"
+    },
+    "N_c=5: scale invariance": {
+      "status": "PASS",
+      "details": "ratio=2.7265, I_stella rel_err=1.42e-16, I_gravity rel_err=0.00e+00"
+    },
+    "N_c=5: self-encoding condition satisfied": {
+      "status": "PASS",
+      "details": "|I_stella - I_gravity|/I_gravity = 1.42e-16"
+    },
+    "N_c=6: scale invariance": {
+      "status": "PASS",
+      "details": "ratio=2.8768, I_stella rel_err=2.84e-16, I_gravity rel_err=0.00e+00"
+    },
+    "N_c=6: self-encoding condition satisfied": {
+      "status": "PASS",
+      "details": "|I_stella - I_gravity|/I_gravity = 1.42e-16"
+    },
+    "N_c=8: scale invariance": {
+      "status": "PASS",
+      "details": "ratio=3.0991, I_stella rel_err=0.00e+00, I_gravity rel_err=0.00e+00"
+    },
+    "N_c=8: self-encoding condition satisfied": {
+      "status": "PASS",
+      "details": "|I_stella - I_gravity|/I_gravity = 0.00e+00"
+    },
+    "N_c=10: scale invariance": {
+      "status": "PASS",
+      "details": "ratio=3.2612, I_stella rel_err=1.42e-16, I_gravity rel_err=0.00e+00"
+    },
+    "N_c=10: self-encoding condition satisfied": {
+      "status": "PASS",
+      "details": "|I_stella - I_gravity|/I_gravity = 2.84e-16"
+    },
+    "N_c=100: scale invariance": {
+      "status": "PASS",
+      "details": "ratio=4.6120, I_stella rel_err=1.42e-16, I_gravity rel_err=0.00e+00"
+    },
+    "N_c=100: self-encoding condition satisfied": {
+      "status": "PASS",
+      "details": "|I_stella - I_gravity|/I_gravity = 0.00e+00"
+    },
+    "N_c=1000: scale invariance": {
+      "status": "PASS",
+      "details": "ratio=5.6485, I_stella rel_err=2.84e-16, I_gravity rel_err=0.00e+00"
+    },
+    "N_c=1000: self-encoding condition satisfied": {
+      "status": "PASS",
+      "details": "|I_stella - I_gravity|/I_gravity = 2.84e-16"
+    },
+    "Perturbation eps=1e-10: breaks scale invariance": {
+      "status": "PASS",
+      "details": "spread across lambdas = 5.968559e-13"
+    },
+    "Perturbation eps=1e-06: breaks scale invariance": {
+      "status": "PASS",
+      "details": "spread across lambdas = 5.991474e-09"
+    },
+    "Perturbation eps=0.001: breaks scale invariance": {
+      "status": "PASS",
+      "details": "spread across lambdas = 6.001124e-06"
+    },
+    "Perturbation eps=0.01: breaks scale invariance": {
+      "status": "PASS",
+      "details": "spread across lambdas = 6.089584e-05"
+    },
+    "Perturbation eps=0.1: breaks scale invariance": {
+      "status": "PASS",
+      "details": "spread across lambdas = 7.143426e-04"
+    },
+    "Monte Carlo: max |eta - 1| over 100000 samples": {
+      "status": "PASS",
+      "details": "max = 6.66e-16, mean = 1.24e-16"
+    },
+    "Monte Carlo: max |I_s - I_g|/I_g over 100000 samples": {
+      "status": "PASS",
+      "details": "max = 6.33e-16"
+    },
+    "Only exact ratio gives eta = 1": {
+      "status": "PASS",
+      "details": "|eta(exact) - 1| = 0.00e+00"
+    },
+    "1% ratio perturbation gives eta != 1": {
+      "status": "PASS",
+      "details": "eta at 1% perturbation = 0.980296 (deviation = 0.0197)"
+    },
+    "gamma = 2pi/(8pi) = 1/4": {
+      "status": "PASS",
+      "details": "gamma = 0.2500000000000000"
+    },
+    "gamma independent of N_c=2": {
+      "status": "PASS",
+      "details": "gamma(N_c=2) = 0.25"
+    },
+    "gamma independent of N_c=3": {
+      "status": "PASS",
+      "details": "gamma(N_c=3) = 0.25"
+    },
+    "gamma independent of N_c=5": {
+      "status": "PASS",
+      "details": "gamma(N_c=5) = 0.25"
+    },
+    "gamma independent of N_c=10": {
+      "status": "PASS",
+      "details": "gamma(N_c=10) = 0.25"
+    }
+  }
+}

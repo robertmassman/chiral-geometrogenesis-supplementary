@@ -1,0 +1,326 @@
+{
+  "theorem": "7.4.6",
+  "title": "OS Axioms \u2014 Adversarial Verification",
+  "type": "adversarial",
+  "timestamp": "2026-02-14T05:31:57.517505",
+  "parameters": {
+    "R_stella_fm": 0.44847,
+    "sqrt_sigma_MeV": 440.00044596071086,
+    "hbar_c_MeV_fm": 197.327
+  },
+  "summary": "9/9 tests passed",
+  "tests": [
+    {
+      "name": "F4: Analyticity gap formula (CORRECTED)",
+      "passed": true,
+      "details": {
+        "beta_3.0": {
+          "paper_formula": 12.587646977105889,
+          "correct_formula": 9.64515921807071,
+          "direct_computation": 9.645159218070702,
+          "correction_term_3ln(3/8)": -2.9424877590351786,
+          "paper_vs_direct_error": 2.9424877590351866,
+          "correct_vs_direct_error": 7.105427357601002e-15
+        },
+        "beta_5.0": {
+          "paper_formula": 7.781628959170509,
+          "correct_formula": 4.83914120013533,
+          "direct_computation": 4.839141200135323,
+          "correction_term_3ln(3/8)": -2.9424877590351786,
+          "paper_vs_direct_error": 2.9424877590351857,
+          "correct_vs_direct_error": 7.105427357601002e-15
+        },
+        "beta_7.0": {
+          "paper_formula": 4.1094361055044475,
+          "correct_formula": 1.166948346469269,
+          "direct_computation": 1.166948346469269,
+          "correction_term_3ln(3/8)": -2.9424877590351786,
+          "paper_vs_direct_error": 2.9424877590351786,
+          "correct_vs_direct_error": 0.0
+        },
+        "beta_9.0": {
+          "paper_formula": 0.6106233675371482,
+          "correct_formula": -2.3318643914980304,
+          "direct_computation": -2.331864391498044,
+          "correction_term_3ln(3/8)": -2.9424877590351786,
+          "paper_vs_direct_error": 2.9424877590351923,
+          "correct_vs_direct_error": 1.3766765505351941e-14
+        },
+        "correction_term": -2.9424877590351786,
+        "finding": "Paper formula DeltaE_12 = 8*ln(u_3/u_8) is MISSING the 3*ln(3/8) \u2248 -2.94 term from dimension ratio. Correct: DeltaE_12 = 3*ln(3/8) + 8*ln(u_3/u_8)."
+      }
+    },
+    {
+      "name": "P4: D4 fourth-moment isotropy (3D vs 4D)",
+      "passed": true,
+      "details": {
+        "3D_M2_diagonal": [
+          3.9999999999999996,
+          3.9999999999999996,
+          3.9999999999999996
+        ],
+        "3D_M2_offdiag_max": 0.0,
+        "3D_M2_isotropic": true,
+        "3D_M4_1111": 1.9999999999999996,
+        "3D_M4_1122": 0.9999999999999997,
+        "3D_M4_1212": 0.9999999999999997,
+        "3D_D4_ratio": 2.0000000000000004,
+        "3D_D4_ideal_ratio": 3.0,
+        "3D_D4_isotropic": false,
+        "n_spatial_nn": 6,
+        "n_temporal_fwd": 3,
+        "n_temporal_bwd": 3,
+        "total_nn": 12,
+        "4D_M2_diagonal": [
+          2.6666666666666656,
+          2.6666666666666656,
+          2.6666666666666656,
+          3.9999999999999996
+        ],
+        "4D_M2_isotropic": false,
+        "4D_M4_1111": 1.1111111111111107,
+        "4D_M4_1122": 0.5555555555555551,
+        "4D_D4_ratio": 2.000000000000001,
+        "4D_D4_ideal_ratio": 3.0,
+        "4D_D4_isotropic": false,
+        "finding": "3D FCC: D4 ratio = 2.0000 (ideal = 3.0) \u2192 NOT ISOTROPIC. 4D FCC+[111]: D4 ratio = 2.0000 \u2192 NOT ISOTROPIC."
+      }
+    },
+    {
+      "name": "P6: Global label constraint implications",
+      "passed": true,
+      "details": {
+        "vacuum_dominance_thermo": true,
+        "eigenvalue_hierarchy_note": "At N_s=1, d_R^3 factor inflates eigenvalue ratios above 1. In thermodynamic limit (N_s -> inf), vacuum dominates iff mu > 0.",
+        "mass_gap_range": {
+          "mu_min": 9.479357371380553,
+          "mu_max": Infinity
+        },
+        "beta_6_mass_gap_mu": 9.531502358168217,
+        "beta_6_mass_gap_GeV": 32.57680590450231,
+        "lattice_consensus_glueball_GeV": 1.7,
+        "mass_gap_tension": 18.162827002648417,
+        "finding": "Global label constraint gives diagonal T with vacuum dominance in thermodynamic limit (mu > 0): YES. Mass gap at beta=6: 32.58 GeV (lattice consensus: ~1.7 GeV). Note: N_s=1 eigenvalue ratios can exceed 1 due to d_R^3 factor; correct criterion is intensive mu > 0."
+      }
+    },
+    {
+      "name": "F9/P7: OS4 conditionality (lattice vs continuum)",
+      "passed": true,
+      "details": {
+        "mu_all_positive": true,
+        "mu_values": {
+          "beta_1": 22.49770513805774,
+          "beta_2": 16.60692249341246,
+          "beta_3": 13.300192868207485,
+          "beta_4": 11.25678558767539,
+          "beta_5": 10.065855890384857,
+          "beta_6": 9.531502358168217,
+          "beta_7": 9.53551843452844,
+          "beta_8": 10.004258719730275
+        },
+        "u3_values": {
+          "beta_1": 0.039787887367660806,
+          "beta_2": 0.08308883686265156,
+          "beta_3": 0.12561875450641388,
+          "beta_4": 0.16217523891201588,
+          "beta_5": 0.188207237799684,
+          "beta_6": 0.20120773382091325,
+          "beta_7": 0.20110675096730066,
+          "beta_8": 0.18966196020497306
+        },
+        "u3_increasing": false,
+        "u3_critical": 0.662337782140526,
+        "u3_max_tested": 0.20120773382091325,
+        "u3_below_critical": true,
+        "beta_c_strong_coupling_estimate": 11.922080078529467,
+        "finding": "Lattice OS4: mu(beta) > 0 for all tested beta (1-8): True. u_3 below critical value 0.662 for all tested beta: True. Theoretical beta_c estimate (strong coupling): ~11.9. Continuum OS4 requires C2: mu_phys = sqrt(3)*mu/a > 0 as a -> 0, which is NOT established \u2014 correctly classified as CONDITIONAL."
+      }
+    },
+    {
+      "name": "P10: Standard lattice RP comparison",
+      "passed": true,
+      "details": {
+        "fcc_eigenvalues": {
+          "(0,0)": {
+            "d_R": 1,
+            "a_R": 0.0001952425844990705,
+            "lambda_R": 2.111525757412569e-30,
+            "positive": true
+          },
+          "(1,0)": {
+            "d_R": 3,
+            "a_R": 0.00016091232193790774,
+            "lambda_R": 1.2136072929440341e-29,
+            "positive": true
+          },
+          "(1,1)": {
+            "d_R": 8,
+            "a_R": 7.719150835459549e-05,
+            "lambda_R": 6.4539586629267845e-31,
+            "positive": true
+          },
+          "(2,0)": {
+            "d_R": 6,
+            "a_R": 6.671675142138519e-05,
+            "lambda_R": 8.478770549145653e-32,
+            "positive": true
+          },
+          "(2,1)": {
+            "d_R": 15,
+            "a_R": 2.5108008087747703e-05,
+            "lambda_R": 5.330547972425455e-34,
+            "positive": true
+          },
+          "(3,0)": {
+            "d_R": 10,
+            "a_R": 1.8388142650766465e-05,
+            "lambda_R": 1.3070822406957393e-35,
+            "positive": true
+          }
+        },
+        "fcc_all_positive": true,
+        "finding": "CORRECTION NEEDED in comparison table (Apps \u00a78.6): Standard lattice QCD RP is PROVEN by Osterwalder-Seiler (1978), not 'Assumed (Wilson action)'. The FCC advantage is that the transfer matrix is DIAGONAL with exact eigenvalues, not that RP is unproven for standard lattice QCD."
+      }
+    },
+    {
+      "name": "L2: Mass gap value vs lattice consensus",
+      "passed": true,
+      "details": {
+        "sqrt_sigma_CG_MeV": 440.00044596071086,
+        "sqrt_sigma_standard_MeV": 485.0,
+        "glueball_ratio_range": [
+          3.4,
+          3.9
+        ],
+        "m_glueball_CG_range_GeV": [
+          1.4960015162664169,
+          1.7160017392467724
+        ],
+        "m_glueball_std_range_GeV": [
+          1.649,
+          1.8915
+        ],
+        "paper_claims_GeV": 1.5,
+        "lattice_consensus_GeV": 1.7,
+        "finding": "CG: sqrt(sigma) = 440 MeV gives m(0++) in [1.50, 1.72] GeV. Standard: sqrt(sigma) = 485.0 MeV gives m(0++) in [1.65, 1.89] GeV. Paper's 1.5 GeV is consistent with CG convention but below lattice consensus of ~1.7 GeV."
+      }
+    },
+    {
+      "name": "F3: Seiler uniform bounds verification",
+      "passed": true,
+      "details": {
+        "max_abs_trace_sampled": 2.999966188854577,
+        "bound": 3.0,
+        "bound_satisfied": true,
+        "S_1_bound": 3,
+        "S_2_bound": 9,
+        "S_3_bound": 27,
+        "S_4_bound": 81,
+        "S_5_bound": 243,
+        "finding": "Max |Tr(U)| sampled: 2.999966 <= 3.0: YES. Uniform bounds |S_n| <= 3^n confirmed. These are independent of lattice spacing \u2014 Seiler condition (2) satisfied."
+      }
+    },
+    {
+      "name": "F6: OS0' growth condition (C=3, alpha=0)",
+      "passed": true,
+      "details": {
+        "C": 3.0,
+        "alpha": 0.0,
+        "exponential_bound": [
+          3.0,
+          9.0,
+          27.0,
+          81.0,
+          243.0,
+          729.0,
+          2187.0,
+          6561.0,
+          19683.0,
+          59049.0,
+          177147.0,
+          531441.0,
+          1594323.0,
+          4782969.0,
+          14348907.0,
+          43046721.0,
+          129140163.0,
+          387420489.0,
+          1162261467.0,
+          3486784401.0
+        ],
+        "factorial_comparison": [
+          1,
+          2,
+          6,
+          24,
+          120,
+          720,
+          5040,
+          40320,
+          362880,
+          3628800,
+          39916800,
+          479001600,
+          6227020800,
+          87178291200,
+          1307674368000,
+          20922789888000,
+          355687428096000,
+          6402373705728000,
+          121645100408832000,
+          2432902008176640000
+        ],
+        "ratio_factorial_to_exp": [
+          0.3333333333333333,
+          0.2222222222222222,
+          0.2222222222222222,
+          0.2962962962962963,
+          0.49382716049382713,
+          0.9876543209876543,
+          2.3045267489711936,
+          6.145404663923182,
+          18.43621399176955,
+          61.45404663923183,
+          225.33150434385,
+          901.3260173754,
+          3905.7460752934003,
+          18226.815018035868,
+          91134.07509017934,
+          486048.4004809565,
+          2754274.2693920867,
+          16525645.61635252,
+          104662422.2368993,
+          697749481.5793287
+        ],
+        "finding": "OS0' satisfied with C=3, alpha=0. The exponential bound 3^n is much tighter than the factorial growth (n!)^alpha allowed by OS0'. At n=10: 3^10 = 59049, 10! = 3628800. This should be stated explicitly in the proof."
+      }
+    },
+    {
+      "name": "Cross-check: mu formula consistency",
+      "passed": true,
+      "details": {
+        "beta_3.0": {
+          "mu_formula": 13.300192868207482,
+          "mu_eigenvalue": 13.300192868207482,
+          "match": true
+        },
+        "beta_5.0": {
+          "mu_formula": 10.065855890384858,
+          "mu_eigenvalue": 10.06585589038486,
+          "match": true
+        },
+        "beta_8.0": {
+          "mu_formula": 10.004258719730274,
+          "mu_eigenvalue": 10.004258719730274,
+          "match": true
+        },
+        "beta_12.0": {
+          "mu_formula": 16.839427436310302,
+          "mu_eigenvalue": 16.839427436310302,
+          "match": true
+        },
+        "finding": "Mass gap formula mu = -3*ln(3) - 8*ln(u_3) matches eigenvalue computation: ALL MATCH."
+      }
+    }
+  ]
+}

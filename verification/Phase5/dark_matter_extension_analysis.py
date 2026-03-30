@@ -658,21 +658,21 @@ def analyze_W_vertex_dm():
     
     # Vertex positions
     sqrt3 = np.sqrt(3)
-    x_R = np.array([1, 1, 1]) / sqrt3
-    x_G = np.array([1, -1, -1]) / sqrt3
-    x_B = np.array([-1, 1, -1]) / sqrt3
-    x_W = np.array([-1, -1, 1]) / sqrt3
-    
+    x_R = np.array([1, -1, -1]) / sqrt3
+    x_G = np.array([-1, 1, -1]) / sqrt3
+    x_B = np.array([-1, -1, 1]) / sqrt3
+    x_W = np.array([1, 1, 1]) / sqrt3
+
     # Verify they form a regular tetrahedron
     edge_RG = np.linalg.norm(x_R - x_G)
     edge_RB = np.linalg.norm(x_R - x_B)
     edge_RW = np.linalg.norm(x_R - x_W)
-    
+
     print(f"\n    Vertex positions (normalized):")
-    print(f"        x_R = (1,1,1)/√3")
-    print(f"        x_G = (1,-1,-1)/√3")
-    print(f"        x_B = (-1,1,-1)/√3")
-    print(f"        x_W = (-1,-1,1)/√3")
+    print(f"        x_R = (1,-1,-1)/√3")
+    print(f"        x_G = (-1,1,-1)/√3")
+    print(f"        x_B = (-1,-1,1)/√3")
+    print(f"        x_W = (1,1,1)/√3")
     print(f"\n    Edge lengths: {edge_RG:.4f}, {edge_RB:.4f}, {edge_RW:.4f}")
     print(f"    (Regular tetrahedron: all edges equal ✓)")
     

@@ -1,0 +1,188 @@
+{
+  "theorem": "5.4.1",
+  "title": "Singularity Resolution in Emergent Gravity",
+  "timestamp": "2026-02-27T12:41:49.907758",
+  "verifications": [
+    {
+      "test": "R_max computation",
+      "a_squared_lp": 5.074272804780512,
+      "a_lp": 2.252614659630118,
+      "R_max_coefficient": 4.729741762679652,
+      "R_max_m2": 1.8105797292812844e+70,
+      "relative_error_methods": 0.0,
+      "passed": "True"
+    },
+    {
+      "test": "K_max computation",
+      "K_max_lp4": 12.428031745353344,
+      "K_schwarzschild_lp4": 0.4660511904507504,
+      "passed": "True"
+    },
+    {
+      "test": "A_min computation",
+      "A_min_lp2": 8.788898309344878,
+      "A_min_m2": 2.2959065933072215e-69,
+      "min_entropy_bits": 2.0,
+      "exceeds_one_bit": "True",
+      "passed": "True"
+    },
+    {
+      "test": "Critical densities",
+      "rho_crit_electron_kg_m3": 3.691125788696969e+94,
+      "rho_crit_proton_kg_m3": 1.2444470550045225e+101,
+      "ratio_electron": 0.0071604932407069045,
+      "ratio_proton": 24141.292483351484,
+      "electron_before_planck": "True",
+      "proton_after_planck": "True",
+      "passed": "True"
+    },
+    {
+      "test": "Minimum BH mass",
+      "M_min_kg": 9.100764203422312e-09,
+      "M_min_MP": 0.41815018388496483,
+      "r_s_min_lp": 0.8363003677699299,
+      "passed": "True"
+    },
+    {
+      "test": "Modified Raychaudhuri",
+      "kappa_T": 2.5958093035562147e-44,
+      "dimensional_check": true,
+      "torsion_gravity_ratio_at_rho_crit": 4.018436277738988e+25,
+      "torsion_is_repulsive": true,
+      "passed": true
+    },
+    {
+      "test": "Penrose-Hawking hypothesis table",
+      "hypotheses": [
+        {
+          "name": "NEC (null energy)",
+          "penrose_1965": true,
+          "hawking_penrose_1970": false,
+          "cg_satisfied": true,
+          "notes": "Satisfied generically (positive kinetic terms)"
+        },
+        {
+          "name": "SEC (strong energy)",
+          "penrose_1965": false,
+          "hawking_penrose_1970": true,
+          "cg_satisfied": false,
+          "notes": "VIOLATED for \u03c9\u2080 > \u03c9_crit (rapid oscillation)"
+        },
+        {
+          "name": "Trapped surface",
+          "penrose_1965": true,
+          "hawking_penrose_1970": true,
+          "cg_satisfied": true,
+          "notes": "Exists but A \u2265 A_min \u2248 8.78 \u2113_P\u00b2"
+        },
+        {
+          "name": "Non-compact Cauchy surface",
+          "penrose_1965": true,
+          "hawking_penrose_1970": false,
+          "cg_satisfied": true,
+          "notes": "FCC lattice is non-compact"
+        },
+        {
+          "name": "Smooth manifold",
+          "penrose_1965": true,
+          "hawking_penrose_1970": true,
+          "cg_satisfied": false,
+          "notes": "FAILS at \u03b5 \u2265 1 (lattice scale)"
+        }
+      ],
+      "hp_blocked_by_sec": true,
+      "both_blocked_by_manifold": true,
+      "passed": true
+    },
+    {
+      "test": "Dimensional analysis",
+      "checks": [
+        {
+          "quantity": "R_max = 24/a\u00b2",
+          "dimension": "[length\u207b\u00b2]",
+          "passed": true
+        },
+        {
+          "quantity": "K_max = 320/a\u2074",
+          "dimension": "[length\u207b\u2074]",
+          "passed": true
+        },
+        {
+          "quantity": "A_min = \u221a3 a\u00b2",
+          "dimension": "[length\u00b2]",
+          "passed": true
+        },
+        {
+          "quantity": "M_min ~ c\u00b2a/G",
+          "dimension": "[mass]",
+          "passed": true
+        },
+        {
+          "quantity": "\u03c1_crit = m\u00b2/(3\u03ba_T\u00b2\u210f\u00b2)",
+          "dimension": "[density]",
+          "passed": "True"
+        },
+        {
+          "quantity": "\u03ba_T\u00b2 J\u2085\u00b2",
+          "dimension": "[length\u207b\u00b2] (matches Raychaudhuri)",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "Limiting cases",
+      "checks": [
+        {
+          "case": "Weak field: lattice corrections \u2192 0",
+          "detail": "(a/L)\u00b2 = 1.33e-69",
+          "passed": "True"
+        },
+        {
+          "case": "Continuum: R_max(a/10) = 100 \u00d7 R_max(a)",
+          "detail": "ratio = 100.0",
+          "passed": "True"
+        },
+        {
+          "case": "Torsion-free: \u03ba_T \u2192 0 gives standard Raychaudhuri",
+          "detail": "torsion term \u221d \u03ba_T\u00b2 \u2192 0",
+          "passed": true
+        },
+        {
+          "case": "Large BH: corrections at r_s ~ 3 km negligible",
+          "detail": "(a/r_s)\u00b2 = 1.47e-76",
+          "passed": "True"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "Cross-theorem consistency",
+      "checks": [
+        {
+          "check": "R_max (4.73/\u2113_P\u00b2) vs k_max\u00b2 (1.95/\u2113_P\u00b2)",
+          "passed": "True"
+        },
+        {
+          "check": "A_min (8.79) > 4ln(3) (4.39) \u2113_P\u00b2",
+          "passed": "True"
+        },
+        {
+          "check": "\u2113_P derived (1.77e-35) vs observed (1.62e-35): 91%",
+          "passed": true
+        },
+        {
+          "check": "v_\u03c7(0)=0 \u2192 torsion vanishes at center (lattice dominates)",
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED",
+  "summary": {
+    "passed": 10,
+    "total": 10,
+    "all_passed": true
+  }
+}

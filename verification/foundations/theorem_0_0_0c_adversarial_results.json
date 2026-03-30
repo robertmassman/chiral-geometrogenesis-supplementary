@@ -1,0 +1,353 @@
+{
+  "test_1_distinguishability": {
+    "description": "Observer distinguishability bound |S/~| \u2264 N (Lemma 0.0.0c.2, revised)",
+    "passed": true,
+    "details": {
+      "1": {
+        "N_states": 2,
+        "memory_bits_M": 1,
+        "substrates_tested": 32,
+        "distinguished": 2,
+        "bound_N": 2,
+        "bound_satisfied": true
+      },
+      "2": {
+        "N_states": 4,
+        "memory_bits_M": 2,
+        "substrates_tested": 64,
+        "distinguished": 4,
+        "bound_N": 4,
+        "bound_satisfied": true
+      },
+      "3": {
+        "N_states": 8,
+        "memory_bits_M": 3,
+        "substrates_tested": 128,
+        "distinguished": 8,
+        "bound_N": 8,
+        "bound_satisfied": true
+      },
+      "4": {
+        "N_states": 16,
+        "memory_bits_M": 4,
+        "substrates_tested": 256,
+        "distinguished": 16,
+        "bound_N": 16,
+        "bound_satisfied": true
+      },
+      "5": {
+        "N_states": 32,
+        "memory_bits_M": 5,
+        "substrates_tested": 512,
+        "distinguished": 32,
+        "bound_N": 32,
+        "bound_satisfied": true
+      },
+      "6": {
+        "N_states": 64,
+        "memory_bits_M": 6,
+        "substrates_tested": 1024,
+        "distinguished": 64,
+        "bound_N": 64,
+        "bound_satisfied": true
+      },
+      "7": {
+        "N_states": 128,
+        "memory_bits_M": 7,
+        "substrates_tested": 2048,
+        "distinguished": 128,
+        "bound_N": 128,
+        "bound_satisfied": true
+      },
+      "8": {
+        "N_states": 256,
+        "memory_bits_M": 8,
+        "substrates_tested": 4096,
+        "distinguished": 256,
+        "bound_N": 256,
+        "bound_satisfied": true
+      },
+      "9": {
+        "N_states": 512,
+        "memory_bits_M": 9,
+        "substrates_tested": 8192,
+        "distinguished": 512,
+        "bound_N": 512,
+        "bound_satisfied": true
+      },
+      "10": {
+        "N_states": 1024,
+        "memory_bits_M": 10,
+        "substrates_tested": 10000,
+        "distinguished": 1024,
+        "bound_N": 1024,
+        "bound_satisfied": true
+      },
+      "11": {
+        "N_states": 2048,
+        "memory_bits_M": 11,
+        "substrates_tested": 10000,
+        "distinguished": 2031,
+        "bound_N": 2048,
+        "bound_satisfied": true
+      },
+      "12": {
+        "N_states": 4096,
+        "memory_bits_M": 12,
+        "substrates_tested": 10000,
+        "distinguished": 3721,
+        "bound_N": 4096,
+        "bound_satisfied": true
+      }
+    }
+  },
+  "test_2_multi_observer": {
+    "description": "Multi-observer equivalence classes (Remark 3.2)",
+    "passed": true,
+    "details": {
+      "1": {
+        "n_observers": 1,
+        "bits_per_observer": 4,
+        "total_bits": 4,
+        "distinguished": 4808,
+        "combined_bound": 5000,
+        "bound_satisfied": true
+      },
+      "2": {
+        "n_observers": 2,
+        "bits_per_observer": 4,
+        "total_bits": 8,
+        "distinguished": 5000,
+        "combined_bound": 5000,
+        "bound_satisfied": true
+      },
+      "5": {
+        "n_observers": 5,
+        "bits_per_observer": 4,
+        "total_bits": 20,
+        "distinguished": 5000,
+        "combined_bound": 5000,
+        "bound_satisfied": true
+      },
+      "10": {
+        "n_observers": 10,
+        "bits_per_observer": 4,
+        "total_bits": 40,
+        "distinguished": 5000,
+        "combined_bound": 5000,
+        "bound_satisfied": true
+      },
+      "20": {
+        "n_observers": 20,
+        "bits_per_observer": 4,
+        "total_bits": 80,
+        "distinguished": 5000,
+        "combined_bound": 5000,
+        "bound_satisfied": true
+      },
+      "50": {
+        "n_observers": 50,
+        "bits_per_observer": 4,
+        "total_bits": 200,
+        "distinguished": 5000,
+        "combined_bound": 5000,
+        "bound_satisfied": true
+      }
+    }
+  },
+  "test_3_constructive_definability": {
+    "description": "Constructive definability implies finite K(S)",
+    "passed": true,
+    "stella_K_bits": 392,
+    "random_8_K_bits": 1536,
+    "compression_ratio": 3.9183673469387754,
+    "details": {
+      "tetrahedron": {
+        "type": "constructive",
+        "K_upper_bits": 328,
+        "algo_chars": 41,
+        "n_vertices": 4
+      },
+      "stella_octangula": {
+        "type": "constructive",
+        "K_upper_bits": 392,
+        "algo_chars": 49,
+        "n_vertices": 8
+      },
+      "cube": {
+        "type": "constructive",
+        "K_upper_bits": 112,
+        "algo_chars": 14,
+        "n_vertices": 8
+      },
+      "icosahedron": {
+        "type": "constructive",
+        "K_upper_bits": 344,
+        "algo_chars": 43,
+        "n_vertices": 12
+      },
+      "random_4": {
+        "type": "random",
+        "K_approx_bits": 768,
+        "n_vertices": 4
+      },
+      "random_8": {
+        "type": "random",
+        "K_approx_bits": 1536,
+        "n_vertices": 8
+      },
+      "random_12": {
+        "type": "random",
+        "K_approx_bits": 2304,
+        "n_vertices": 12
+      },
+      "random_20": {
+        "type": "random",
+        "K_approx_bits": 3840,
+        "n_vertices": 20
+      },
+      "random_50": {
+        "type": "random",
+        "K_approx_bits": 9600,
+        "n_vertices": 50
+      },
+      "random_100": {
+        "type": "random",
+        "K_approx_bits": 19200,
+        "n_vertices": 100
+      }
+    }
+  },
+  "test_4_bekenstein": {
+    "description": "Bekenstein bound bootstrap self-consistency (Route C)",
+    "passed": true,
+    "S_bekenstein": 6.283185307179586,
+    "S_bits": 9.064720283654388,
+    "K_stella_bits": 416,
+    "scale_dependence": {
+      "QCD (\u221a\u03c3)": {
+        "energy_MeV": 440.0004022565612,
+        "S_bits": 9.064720283654388
+      },
+      "Hadronic (~1 GeV)": {
+        "energy_MeV": 1000.0,
+        "S_bits": 20.601618173905237
+      },
+      "EW (v=246 GeV)": {
+        "energy_MeV": 246000.0,
+        "S_bits": 5067.99807078069
+      },
+      "GUT (~10^16 GeV)": {
+        "energy_MeV": 1e+19,
+        "S_bits": 2.060161817390524e+17
+      },
+      "Planck (~10^19 GeV)": {
+        "energy_MeV": 1.22e+22,
+        "S_bits": 2.5133974172164394e+20
+      }
+    }
+  },
+  "test_5_adversarial_infinite": {
+    "description": "Infinite substrate with finite effective information",
+    "passed": true,
+    "findings": [
+      "Finite observers cannot distinguish periodic from aperiodic beyond window",
+      "Disconnected extensions are unobservable (effective = core)",
+      "Equivalence class shrinks exponentially with observer capacity"
+    ]
+  },
+  "test_6_route_independence": {
+    "description": "Route A independence from Route B",
+    "passed": true,
+    "finding": "Route A derives effective FI without CD. Full FI requires PII_op (effective = physical). Route A (I1 + PII_op) is logically independent of Route B (CD). Revised theorem makes this explicit.",
+    "details": {
+      "4": {
+        "observer_bits": 4,
+        "n_classes": 16,
+        "bound": 16,
+        "bounded": true
+      },
+      "8": {
+        "observer_bits": 8,
+        "n_classes": 256,
+        "bound": 256,
+        "bounded": true
+      },
+      "12": {
+        "observer_bits": 12,
+        "n_classes": 3734,
+        "bound": 4096,
+        "bounded": true
+      },
+      "16": {
+        "observer_bits": 16,
+        "n_classes": 9260,
+        "bound": 10000,
+        "bounded": true
+      },
+      "20": {
+        "observer_bits": 20,
+        "n_classes": 9943,
+        "bound": 10000,
+        "bounded": true
+      }
+    }
+  },
+  "test_7_kolmogorov_scaling": {
+    "description": "Kolmogorov complexity scaling for framework structures",
+    "passed": true,
+    "K_stella_bits": 704,
+    "structures": {
+      "tetrahedron": {
+        "K_bits": 544,
+        "V": 4,
+        "type": "platonic"
+      },
+      "cube": {
+        "K_bits": 592,
+        "V": 8,
+        "type": "platonic"
+      },
+      "octahedron": {
+        "K_bits": 608,
+        "V": 6,
+        "type": "platonic"
+      },
+      "icosahedron": {
+        "K_bits": 416,
+        "V": 12,
+        "type": "platonic"
+      },
+      "dodecahedron": {
+        "K_bits": 416,
+        "V": 20,
+        "type": "platonic"
+      },
+      "stella_octangula": {
+        "K_bits": 704,
+        "V": 8,
+        "type": "framework"
+      },
+      "random_8v": {
+        "K_bits": 2328,
+        "V": 8,
+        "type": "random"
+      },
+      "random_20v": {
+        "K_bits": 5216,
+        "V": 20,
+        "type": "random"
+      },
+      "random_50v": {
+        "K_bits": 12544,
+        "V": 50,
+        "type": "random"
+      },
+      "random_100v": {
+        "K_bits": 24736,
+        "V": 100,
+        "type": "random"
+      }
+    }
+  }
+}

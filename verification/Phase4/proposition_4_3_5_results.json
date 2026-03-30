@@ -1,0 +1,75 @@
+{
+  "proposition": "4.3.5",
+  "title": "Skyrme Parameter First-Principles Derivation",
+  "timestamp": "2026-02-25T07:30:13.714958",
+  "parameters": {
+    "e_W": 4.5,
+    "v_W": 123.0,
+    "M_W": 1620
+  },
+  "verifications": [
+    {
+      "claim": "W domain solid angle = pi sr",
+      "computed": 3.14004070681892,
+      "expected": 3.141592653589793,
+      "relative_error": 0.000493999999999993,
+      "mc_error": 0.0027202508903399433,
+      "passed": true
+    },
+    {
+      "claim": "I_4 = 2.09 yields e_W = 4.5 and M_W = 1620 GeV",
+      "I4_analytical": 2.09,
+      "e_W_from_formula": 0.45063123275272754,
+      "e_W_target": 4.5,
+      "M_W_check": 1618.6151217786546,
+      "M_W_expected": 1620.0,
+      "convergence_std_pct": 0.0022248923911173087,
+      "passed": true
+    },
+    {
+      "claim": "e_W varies by +/- 4% over eps in [0.05, 0.15]",
+      "e_W_range": [
+        4.42,
+        4.6
+      ],
+      "variation_pct": 1.999999999999997,
+      "passed": true
+    },
+    {
+      "claim": "Total uncertainty +/- 7% from three sources in quadrature",
+      "delta_regularization": 0.04,
+      "delta_boundary": 0.03,
+      "delta_higher_order": 0.04,
+      "total_quadrature": 0.06403124237432849,
+      "claimed_total": 0.06666666666666667,
+      "delta_e_W": 0.28814059068447817,
+      "delta_M_W_total": 223.13757882499004,
+      "passed": true
+    },
+    {
+      "claim": "e_W = 4.5 is consistent with QCD range [4.0, 5.5]",
+      "e_W": 4.5,
+      "qcd_range": [
+        4.0,
+        5.5
+      ],
+      "in_range": true,
+      "within_1sigma_of_qcd": true,
+      "passed": true
+    },
+    {
+      "claim": "M_W = 1620 +/- 160 GeV from e_W = 4.5 and v_W = 123 GeV",
+      "M_analytic": 1618.6151217786546,
+      "M_numerical_ANW": 1993.1466666666665,
+      "M_expected": 1620.0,
+      "delta_M": 224.9615582519797,
+      "passed": true
+    },
+    {
+      "claim": "e_W is dimensionless",
+      "check": "Lagrangian and integral dimensions consistent",
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED"
+}

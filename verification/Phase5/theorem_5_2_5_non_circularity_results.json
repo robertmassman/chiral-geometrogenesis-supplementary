@@ -1,0 +1,109 @@
+{
+  "theorem": "5.2.5",
+  "title": "BH Coefficient Non-Circularity",
+  "timestamp": "2026-03-29T11:04:04.481235",
+  "verifications": [
+    {
+      "claim": "Derivation chain is non-circular: no step uses S or \u03b3 as input",
+      "passed": true,
+      "chain": {
+        "Step 1: Newton's constant G": {
+          "uses_entropy": false,
+          "uses_gamma": false
+        },
+        "Step 2: Surface gravity \u03ba": {
+          "uses_entropy": false,
+          "uses_gamma": false
+        },
+        "Step 3: Hawking temperature T_H": {
+          "uses_entropy": false,
+          "uses_gamma": false
+        },
+        "Step 4: First law of BH mechanics": {
+          "uses_entropy": false,
+          "uses_gamma": false
+        },
+        "Step 5: Thermodynamic integration": {
+          "uses_entropy": false,
+          "uses_gamma": false
+        }
+      }
+    },
+    {
+      "claim": "\u03b3 = 2\u03c0/(8\u03c0) = 1/4 exactly",
+      "gamma_derived": 0.25,
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "claim": "\u03ba cancels in dS/dA: \u03b3 = 1/4 independent of BH mass",
+      "max_error": 5.551115123125783e-17,
+      "passed": "True"
+    },
+    {
+      "claim": "Sensitivity: only G = \u210fc/(8\u03c0f_\u03c7\u00b2) gives \u03b3 = 1/4",
+      "passed": true,
+      "notes": "The 8\u03c0 coefficient is derived, not chosen"
+    },
+    {
+      "claim": "CG derives \u03b3 = 1/4 non-circularly (unlike LQG and Jacobson)",
+      "passed": true,
+      "comparison": {
+        "Chiral Geometrogenesis": {
+          "how_gamma_obtained": "DERIVED as output of consistency",
+          "free_parameters_used": "NONE (G, T both derived independently)",
+          "circularity": "NON-CIRCULAR",
+          "gamma_status": "PREDICTION"
+        },
+        "Loop Quantum Gravity": {
+          "how_gamma_obtained": "MATCHED via Immirzi parameter \u03b2_BI",
+          "free_parameters_used": "\u03b2_BI = ln(2)/(\u03c0\u221a3) chosen to reproduce 1/4",
+          "circularity": "PARAMETER FIT",
+          "gamma_status": "INPUT (disguised)"
+        },
+        "Jacobson (1995)": {
+          "how_gamma_obtained": "ASSUMED S = \u03b7A for some \u03b7",
+          "free_parameters_used": "\u03b7 = 1/(4l_P\u00b2) assumed from BH thermodynamics",
+          "circularity": "ASSUMES BH RESULT",
+          "gamma_status": "INPUT"
+        },
+        "String theory": {
+          "how_gamma_obtained": "DERIVED from D-brane microstate counting",
+          "free_parameters_used": "NONE (for BPS states)",
+          "circularity": "NON-CIRCULAR (for specific BH types)",
+          "gamma_status": "PREDICTION (limited cases)"
+        }
+      }
+    },
+    {
+      "claim": "Three derivation inputs (G, T_H, Clausius) are mutually independent",
+      "passed": true,
+      "inputs": {
+        "G (Newton's constant)": {
+          "source": "Thm 5.2.4 / Prop 5.2.4a",
+          "independent_of": [
+            "BH entropy",
+            "Hawking temperature",
+            "\u03b3 = 1/4"
+          ]
+        },
+        "T_H (Hawking temperature)": {
+          "source": "Derivation-5.2.5b",
+          "independent_of": [
+            "BH entropy formula",
+            "\u03b3 = 1/4",
+            "G derivation"
+          ]
+        },
+        "Clausius relation \u03b4Q = T\u03b4S": {
+          "source": "Thm 5.2.3 (upgraded from Jacobson assumption)",
+          "independent_of": [
+            "Specific entropy formula",
+            "\u03b3 = 1/4"
+          ]
+        }
+      }
+    }
+  ],
+  "overall_status": "PASSED"
+}

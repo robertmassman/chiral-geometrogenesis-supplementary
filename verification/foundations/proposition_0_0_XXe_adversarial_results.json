@@ -1,0 +1,285 @@
+{
+  "theorem": "0.0.XXe",
+  "title": "Continuum Limit of Self-Replicating Fields on \u2202S",
+  "timestamp": "2026-03-10T04:11:40.168389",
+  "steady_state": {
+    "claim": "Steady-state \u03c1* = (k_eff - \u03bc_eff)/(k_eff + \u03b3)",
+    "tests": [],
+    "mu_c_computed": 0.011,
+    "mu_c_claimed": 0.011,
+    "mu_c_relative_error": 0.0,
+    "rho_star_mu001": 0.8097165991902835,
+    "rho_star_mu001_claimed": 0.81,
+    "rho_star_mu001_error": 0.00034987754285995156,
+    "passed": true
+  },
+  "stability": {
+    "claim": "All perturbation modes decay at \u03c1*",
+    "tests": [
+      {
+        "n_sub": 4,
+        "n_vertices": 34,
+        "rho_star": 0.8097165991902835,
+        "f_prime_computed": -0.2,
+        "f_prime_claimed": -0.2,
+        "f_prime_match": true,
+        "max_eigenvalue": -0.20008558853099215,
+        "all_negative": true,
+        "passed": true
+      },
+      {
+        "n_sub": 8,
+        "n_vertices": 130,
+        "rho_star": 0.8097165991902835,
+        "f_prime_computed": -0.2,
+        "f_prime_claimed": -0.2,
+        "f_prime_match": true,
+        "max_eigenvalue": -0.1999837162294239,
+        "all_negative": true,
+        "passed": true
+      },
+      {
+        "n_sub": 16,
+        "n_vertices": 514,
+        "rho_star": 0.8097165991902835,
+        "f_prime_computed": -0.2,
+        "f_prime_claimed": -0.2,
+        "f_prime_match": true,
+        "max_eigenvalue": -0.2000012883941549,
+        "all_negative": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "bilayer_pde": {
+    "claim": "Bilayer PDE converges to uniform \u03c1*",
+    "tests": [
+      {
+        "initial_condition": "Seed on T+",
+        "rho_plus_final": 0.8097165991902832,
+        "rho_minus_final": 0.8097165991902832,
+        "rho_avg": 0.8097165991902832,
+        "rho_star_expected": 0.8097165991902835,
+        "relative_error": 4.1133763062362046e-16,
+        "symmetry_error": 0.0,
+        "passed": true
+      },
+      {
+        "initial_condition": "Uniform 10%",
+        "rho_plus_final": 0.8097165991902832,
+        "rho_minus_final": 0.8097165991902832,
+        "rho_avg": 0.8097165991902832,
+        "rho_star_expected": 0.8097165991902835,
+        "relative_error": 4.1133763062362046e-16,
+        "symmetry_error": 0.0,
+        "passed": true
+      },
+      {
+        "initial_condition": "Asymmetric",
+        "rho_plus_final": 0.8097165991902832,
+        "rho_minus_final": 0.8097165991902832,
+        "rho_avg": 0.8097165991902832,
+        "rho_star_expected": 0.8097165991902835,
+        "relative_error": 4.1133763062362046e-16,
+        "symmetry_error": 0.0,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "error_catastrophe": {
+    "claim": "Sharp transition at \u03bc_c \u2248 0.011",
+    "tests": [],
+    "mu_c_analytical": 0.01090909090909091,
+    "mu_c_numerical": 0.011212121212121211,
+    "mu_c_claimed": 0.011,
+    "transition_error": 0.01928374655647383,
+    "monotonic_decrease": true,
+    "passed": "True"
+  },
+  "skyrme_mass": {
+    "claim": "M_skyrmion \u2248 1180 MeV (classical), ~940 MeV (quantum)",
+    "tests": [
+      {
+        "formula": "M = 73 f_\u03c0 / e",
+        "f_pi_MeV": 88.0,
+        "e_skyrme": 5.45,
+        "M_computed": 1178.7155963302753,
+        "M_claimed": 1180.0,
+        "relative_error": 0.0010884776862073939,
+        "passed": true
+      },
+      {
+        "description": "With 20% quantum correction",
+        "M_quantum_CG": 942.9724770642202,
+        "M_quantum_PDG_fpi": 986.5849541284402,
+        "M_nucleon_PDG": 938.272,
+        "CG_error_vs_nucleon": 0.005009716866985474,
+        "PDG_fpi_error_vs_nucleon": 0.051491416272083354,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "f_prime": {
+    "claim": "f'(\u03c1*) = -(k_eff - \u03bc_eff)",
+    "tests": [
+      {
+        "mu": 0.0,
+        "mu_eff": 0.0,
+        "rho_star": 0.8906882591093117,
+        "f_prime_direct": -0.22,
+        "f_prime_claimed": -0.22,
+        "absolute_error": 0.0,
+        "passed": true
+      },
+      {
+        "mu": 0.001,
+        "mu_eff": 0.02,
+        "rho_star": 0.8097165991902835,
+        "f_prime_direct": -0.2,
+        "f_prime_claimed": -0.2,
+        "absolute_error": 0.0,
+        "passed": true
+      },
+      {
+        "mu": 0.005,
+        "mu_eff": 0.1,
+        "rho_star": 0.48582995951417,
+        "f_prime_direct": -0.12,
+        "f_prime_claimed": -0.12,
+        "absolute_error": 0.0,
+        "passed": true
+      },
+      {
+        "mu": 0.01,
+        "mu_eff": 0.2,
+        "rho_star": 0.0809716599190283,
+        "f_prime_direct": -0.020000000000000004,
+        "f_prime_claimed": -0.01999999999999999,
+        "absolute_error": 1.3877787807814457e-17,
+        "passed": true
+      },
+      {
+        "mu": 0.0109,
+        "mu_eff": 0.218,
+        "rho_star": 0.008097165991902841,
+        "f_prime_direct": -0.0019999999999999957,
+        "f_prime_claimed": -0.0020000000000000018,
+        "absolute_error": 6.071532165918825e-18,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "laplacian": {
+    "claim": "Laplacian spectrum ensures stability at \u03c1*",
+    "tests": [
+      {
+        "n_sub": 8,
+        "n_vertices": 130,
+        "lambda_max": -1.0236183410945117e-16,
+        "lambda_min": -8.910427281805744,
+        "near_zero_mode": true,
+        "all_nonpositive": true,
+        "max_jacobian_eigenvalue": -0.2,
+        "stability_guaranteed": true,
+        "passed": true
+      },
+      {
+        "n_sub": 16,
+        "n_vertices": 514,
+        "lambda_max": 1.9864225263055526e-14,
+        "lambda_min": -8.98088154249364,
+        "near_zero_mode": true,
+        "all_nonpositive": true,
+        "max_jacobian_eigenvalue": -0.19999999999999982,
+        "stability_guaranteed": true,
+        "passed": true
+      },
+      {
+        "n_sub": 32,
+        "n_vertices": 2050,
+        "lambda_max": -2.6200532280242413e-15,
+        "lambda_min": -8.995326376137237,
+        "near_zero_mode": true,
+        "all_nonpositive": true,
+        "max_jacobian_eigenvalue": -0.20000000000000004,
+        "stability_guaranteed": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "front_speed": {
+    "claim": "Front speed v = 2\u221a(Dk_eff), reduced on curved surface",
+    "tests": [
+      {
+        "v_flat_predicted_with_mu": 0.08944271909999159,
+        "v_flat_predicted_no_mu": 0.0938083151964686,
+        "v_measured_1d": 0.08773953054202858,
+        "speed_ratio": 0.9809577730294744,
+        "v_flat_error": 0.019042226970525582,
+        "v_claimed_2d_ratio": 0.51,
+        "note": "1D validates Fisher-KPP formula; 2D curvature reduces speed to ~51%",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "dimensions": {
+    "claim": "All equations dimensionally consistent",
+    "tests": [
+      {
+        "equation": "\u2202\u03c1/\u2202t = D\u2207\u00b2\u03c1 + k_eff \u03c1(1-\u03c1) - \u03bc_eff \u03c1 - \u03b3\u03c1\u00b2",
+        "LHS_dims": "1/epochs",
+        "term_D_laplacian": "length\u00b2/epochs \u00d7 1/length\u00b2 = 1/epochs",
+        "term_growth": "1/epochs \u00d7 1 \u00d7 1 = 1/epochs",
+        "term_mutation": "1/epochs \u00d7 1 = 1/epochs",
+        "term_competition": "1/epochs \u00d7 1 = 1/epochs",
+        "consistent": true,
+        "passed": true
+      },
+      {
+        "equation": "D = a\u00b2/(6\u0394t)",
+        "dims": "length\u00b2/epochs",
+        "consistent": true,
+        "passed": true
+      },
+      {
+        "equation": "v = 2\u221a(D k_eff)",
+        "dims": "\u221a(length\u00b2/epochs\u00b2) = length/epochs",
+        "consistent": true,
+        "passed": true
+      },
+      {
+        "equation": "M = 73 f_\u03c0 / e",
+        "f_pi_dims": "MeV",
+        "e_dims": "dimensionless",
+        "M_dims": "MeV",
+        "consistent": true,
+        "passed": true
+      },
+      {
+        "equation": "\u03ba/2(\u03c1_\u2213 - \u03c1_\u00b1)",
+        "dims": "1/epochs \u00d7 1 = 1/epochs",
+        "consistent": true,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "sensitivity": {
+    "claim": "Results robust under parameter perturbation",
+    "tests": [],
+    "n_perturbations": 81,
+    "n_pathological": 0,
+    "pathological_cases": [],
+    "passed": true,
+    "rho_star_bounded_proof": "\u03c1* < 1 always since k - \u03bc_eff < k + \u03b3 for \u03b3 > 0"
+  },
+  "overall_status": "PASSED",
+  "passed_count": 10,
+  "total_count": 10
+}

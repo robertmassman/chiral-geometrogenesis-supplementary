@@ -1,0 +1,143 @@
+{
+  "theorem": "7.5.1",
+  "title": "Symanzik Effective Theory for FCC Lattice",
+  "timestamp": "2026-02-13T17:32:08.577734",
+  "verifications": [
+    {
+      "name": "D4 fourth-moment isotropy",
+      "passed": "True",
+      "details": "Max deviation from isotropic tensor: 4.44e-16",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "T_1111": 2.9999999999999996,
+        "T_1122": 0.9999999999999997,
+        "T_1112": 0.0,
+        "T_1234": 0.0,
+        "T_1111_iso": 3.0,
+        "T_1122_iso": 1.0,
+        "max_deviation": 4.440892098500626e-16,
+        "z": 24,
+        "d": 4
+      }
+    },
+    {
+      "name": "Cubic fourth-moment anisotropy",
+      "passed": "True",
+      "details": "Max deviation from isotropic: 1.0000 (expected > 0)",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "T_1111_cubic": 2.0,
+        "T_1122_cubic": 0.0,
+        "T_1111_iso": 1.0,
+        "T_1122_iso": 0.3333333333333333,
+        "max_deviation": 1.0
+      }
+    },
+    {
+      "name": "D4 sixth-moment anisotropy (first anisotropy)",
+      "passed": "True",
+      "details": "T_111111 = 1.5000, isotropic = 1.8750, diff = 0.3750",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "T6_111111_D4": 1.4999999999999993,
+        "T6_111111_iso": 1.875,
+        "deviation": 0.37500000000000067
+      }
+    },
+    {
+      "name": "c_4^(FCC) = 0 (rotational breaking vanishes)",
+      "passed": "True",
+      "details": "max|\u0394T| = 4.44e-16 (should be 0 for D4)",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "c4_proxy": 4.440892098500626e-16,
+        "c4_cubic_tree_level": 0.08333333333333333
+      }
+    },
+    {
+      "name": "c_4^(cubic) \u2260 0 (rotational breaking present on cubic)",
+      "passed": "True",
+      "details": "max|\u0394T_cubic| = 1.0000 (should be nonzero)",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "c4_cubic_proxy": 1.0
+      }
+    },
+    {
+      "name": "Tree-level c_1 = 1/12",
+      "passed": true,
+      "details": "c_1^(0) = 0.083333, expected = 0.083333",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "c1_tree": 0.08333333333333333,
+        "c1_expected": 0.08333333333333333,
+        "relative_error": 0.0
+      }
+    },
+    {
+      "name": "D4 lattice: 24 unit nearest-neighbor vectors",
+      "passed": true,
+      "details": "Count = 24, all unit = True, all distinct = True",
+      "severity": "INFO",
+      "numerical_data": {
+        "n_vectors": 24,
+        "min_norm": 0.9999999999999999,
+        "max_norm": 0.9999999999999999,
+        "n_unique": 24
+      }
+    },
+    {
+      "name": "FCC propagator continuum limit: k_hat^2 \u2192 k^2",
+      "passed": "True",
+      "details": "k^2 = 0.000750, k_hat^2_FCC = 0.000750, rel error = 3.12e-05",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "k2_continuum": 0.00075,
+        "khat2_fcc": 0.0007499765628639447,
+        "relative_error": 3.124951474048459e-05
+      }
+    },
+    {
+      "name": "Tadpole integrals: I_FCC \u2248 0.276, I_cubic \u2248 0.155",
+      "passed": "True",
+      "details": "I_FCC = 0.2761 (expected ~0.276), I_cubic = 0.1548 (expected ~0.15493), FCC > cubic: True",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "I_fcc_computed": 0.27609447573442225,
+        "I_fcc_expected": 0.276,
+        "I_cubic_computed": 0.15483168431078753,
+        "I_cubic_expected": 0.15493,
+        "delta_I": 0.12126279142363472
+      }
+    },
+    {
+      "name": "Plaquette sum isotropy (FCC)",
+      "passed": "True",
+      "details": "Found 96 triangular plaquettes. Proportionality constant = 3.0000. Max residual from isotropic = 0.00e+00",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "n_plaquettes": 96,
+        "proportionality_constant": 2.9999999999999996,
+        "max_residual": 0.0
+      }
+    },
+    {
+      "name": "Dimensional analysis: a^2 \u222bd^4x O_i^(6) is dimensionless",
+      "passed": true,
+      "details": "Total dimension = 0 (should be 0)",
+      "severity": "INFO",
+      "numerical_data": {
+        "dim_a2": 2,
+        "dim_d4x": 4,
+        "dim_O6": -6,
+        "total_dim": 0
+      }
+    }
+  ],
+  "overall_status": "PASSED",
+  "summary": {
+    "total_tests": 11,
+    "passed": 11,
+    "failed": 0
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "falsification_condition": "FC3",
+  "claim": "Stella octangula is the unique minimal geometric realization of SU(3)",
+  "timestamp": "2026-03-21T07:52:08.884993",
+  "tests": [
+    {
+      "test": "GR_criteria",
+      "checks": [
+        {
+          "name": "GR1_edge_root",
+          "passed": true
+        },
+        {
+          "name": "GR2_weight_embedding",
+          "passed": true
+        },
+        {
+          "name": "GR3_minimal_faces",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "MIN_criteria",
+      "checks": [
+        {
+          "name": "MIN1_V_equals_8",
+          "passed": true
+        },
+        {
+          "name": "MIN2_E_equals_12",
+          "passed": true
+        },
+        {
+          "name": "MIN3_dim_equals_3",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "euler_characteristic",
+      "checks": [
+        {
+          "name": "chi_tetrahedron_equals_2",
+          "passed": true
+        },
+        {
+          "name": "chi_stella_equals_4",
+          "passed": true
+        },
+        {
+          "name": "connected_components_equals_2",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "A2_root_encoding",
+      "checks": [
+        {
+          "name": "weight_diffs_match_roots",
+          "passed": true
+        },
+        {
+          "name": "all_6_roots_covered",
+          "passed": true
+        },
+        {
+          "name": "A2_simply_laced",
+          "passed": true
+        },
+        {
+          "name": "A2_root_angle_60_degrees",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "candidate_elimination",
+      "checks": [
+        {
+          "name": "all_candidates_eliminated",
+          "passed": true
+        },
+        {
+          "name": "each_candidate_fails_min_or_chi",
+          "passed": true
+        }
+      ],
+      "candidates": [
+        {
+          "name": "Regular octahedron",
+          "V": 6,
+          "E": 12,
+          "F": 8,
+          "chi": 2,
+          "components": 1,
+          "eliminated": true,
+          "failure_count": 3
+        },
+        {
+          "name": "Cube",
+          "V": 8,
+          "E": 12,
+          "F": 6,
+          "chi": 2,
+          "components": 1,
+          "eliminated": true,
+          "failure_count": 4
+        },
+        {
+          "name": "Regular tetrahedron",
+          "V": 4,
+          "E": 6,
+          "F": 4,
+          "chi": 2,
+          "components": 1,
+          "eliminated": true,
+          "failure_count": 4
+        },
+        {
+          "name": "Triangular bipyramid",
+          "V": 5,
+          "E": 9,
+          "F": 6,
+          "chi": 2,
+          "components": 1,
+          "eliminated": true,
+          "failure_count": 4
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "6_plus_2_decomposition",
+      "checks": [
+        {
+          "name": "decomposition_6_plus_2",
+          "passed": true
+        },
+        {
+          "name": "polar_vertices_antipodal",
+          "passed": true
+        },
+        {
+          "name": "equatorial_equal_radius",
+          "passed": true
+        },
+        {
+          "name": "3_plus_3bar_split",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "weyl_group_action",
+      "checks": [
+        {
+          "name": "weyl_equals_S3",
+          "passed": true
+        },
+        {
+          "name": "transitive_action_on_colors",
+          "passed": true
+        },
+        {
+          "name": "weyl_group_order_6",
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED",
+  "conclusion": "The stella octangula is the UNIQUE minimal geometric realization of SU(3). Verified: GR criteria (edge-root, weight embedding, minimal faces), MIN criteria (V=8, E=12, dim=3), Euler characteristic chi=4, A2 root encoding, candidate elimination (octahedron, cube, tetrahedron, bipyramid all fail), 6+2 decomposition, and Weyl group S3 action."
+}

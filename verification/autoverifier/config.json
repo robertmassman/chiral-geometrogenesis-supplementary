@@ -1,0 +1,51 @@
+{
+  "_comment": "AutoVerifier-CG Configuration — Autonomous three-layer group audit",
+
+  "time_budgets": {
+    "per_module_minutes": 20,
+    "per_layer_hours": 3,
+    "campaign_hours": 24
+  },
+
+  "agent": {
+    "command": "claude",
+    "model": "",
+    "flags": [],
+    "max_turns": 75
+  },
+
+  "layers": {
+    "coherence": {
+      "enabled": true,
+      "modules": ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10"],
+      "threshold": "All checks must PASS. Any FAIL must be resolved before proceeding."
+    },
+    "validity": {
+      "enabled": true,
+      "modules": ["V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8"],
+      "execution_order": ["V1", "V3", "V2", "V5", "V6", "V4", "V7", "V8"],
+      "threshold": "No INVALID findings. All SMUGGLED assumptions must be declared."
+    },
+    "adversarial": {
+      "enabled": true,
+      "modules": ["A1", "A2", "A3", "A4", "A5", "A6"],
+      "execution_phases": {
+        "phase1_structural": ["A4", "A2"],
+        "phase2_physics": ["A1", "A3"],
+        "phase3_fragility": ["A5", "A6"]
+      },
+      "halt_on_broken": true,
+      "threshold": "Resilience > 80% = Adversarially Robust"
+    }
+  },
+
+  "output": {
+    "reviews_dir": "docs/proofs/reviews",
+    "results_file": "verification/autoverifier/results.tsv",
+    "log_file": "verification/autoverifier/campaign.log"
+  },
+
+  "logging": {
+    "level": "info"
+  }
+}

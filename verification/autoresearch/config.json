@@ -1,0 +1,49 @@
+{
+  "_comment": "AutoResearch-CG Configuration — Autonomous proof refinement loop",
+
+  "time_budgets": {
+    "per_issue_minutes": 15,
+    "per_theorem_minutes": 25,
+    "campaign_hours": 8
+  },
+
+  "early_exit": {
+    "max_consecutive_failures": 3,
+    "skip_on_agent_unable": true
+  },
+
+  "target_selection": {
+    "priority": ["partial", "conjecture", "novel_unverified", "weakest_verified"],
+    "phases": [],
+    "tags": [],
+    "skip_tags": ["established"],
+    "max_dependency_depth": 0
+  },
+
+  "agent": {
+    "command": "claude",
+    "model": "",
+    "flags": [],
+    "max_turns": 50
+  },
+
+  "verification": {
+    "run_scripts": true,
+    "run_dependency_checks": true,
+    "run_plan_sync": true,
+    "regression_check": true
+  },
+
+  "git": {
+    "branch_prefix": "autoresearch",
+    "auto_commit": true,
+    "revert_on_failure": true,
+    "base_branch": "main"
+  },
+
+  "logging": {
+    "results_file": "results.tsv",
+    "log_file": "campaign.log",
+    "level": "info"
+  }
+}

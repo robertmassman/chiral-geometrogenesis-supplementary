@@ -1,0 +1,407 @@
+{
+  "theorem": "7.4.5",
+  "title": "Continuum Mass Gap from FCC Scaling",
+  "verification_type": "adversarial_physics",
+  "date": "2026-02-13T13:36:41.843750",
+  "parameters": {
+    "R_stella_fm": 0.44847,
+    "sqrt_sigma_MeV": 440.00044596071086,
+    "hbar_c_MeV_fm": 197.327,
+    "Lambda_MSbar_MeV": 340.0
+  },
+  "tests_total": 17,
+  "tests_passed": 17,
+  "tests_failed": 0,
+  "overall": "PASS",
+  "results": [
+    {
+      "name": "C1: Mass gap positivity at 20 beta values in [0.5, beta_c - 0.1]",
+      "passed": true,
+      "details": "Scanned 20 points. All m_phys > 0: True. Min m_phys = 39.9 MeV at beta = 11.32. beta_c ~ 11.42.",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta_c": 11.421598734315259,
+        "min_m_MeV": 39.91018035904123,
+        "min_beta": 11.321598734315259
+      }
+    },
+    {
+      "name": "C2: R(beta) strictly decreasing for beta in [0.5, beta_c - 0.1]",
+      "passed": true,
+      "details": "Tested 40 points. Monotone: True. R ranges from 13.307 to 0.052. Violations: 0.",
+      "severity": "INFO",
+      "numerical_data": {
+        "R_range": [
+          13.30688006798291,
+          0.05236847731685364
+        ],
+        "violations": []
+      }
+    },
+    {
+      "name": "C3: sigma_lat(beta_c) = (3/8)*ln(3) = 0.411980 > 0",
+      "passed": "True",
+      "details": "sigma_lat(beta_c) = 0.411980 (analytical). Expected = 0.411980. sigma near beta_c = 0.414080. String tension finite and positive at transition.",
+      "severity": "INFO",
+      "numerical_data": {
+        "sigma_critical": 0.41197960825054114,
+        "sigma_expected": 0.41197960825054114,
+        "sigma_near_beta_c": 0.4140802757120915
+      }
+    },
+    {
+      "name": "C4: mu ~ C*(beta_c - beta) linear vanishing",
+      "passed": "True",
+      "details": "mu/eps ratios at small eps: ['0.336', '0.338', '0.341']. Mean slope: 0.3384. Relative variation: 0.015. Linear: True.",
+      "severity": "INFO",
+      "numerical_data": {
+        "mus": [
+          0.016805339692402832,
+          0.03378488170784433,
+          0.0682535796843533,
+          0.17591311066452775,
+          0.3707999762390224,
+          0.8298093633086134
+        ],
+        "epsilons": [
+          0.05,
+          0.1,
+          0.2,
+          0.5,
+          1.0,
+          2.0
+        ],
+        "ratios": [
+          0.33610679384805664,
+          0.3378488170784433,
+          0.3412678984217665,
+          0.3518262213290555,
+          0.3707999762390224,
+          0.4149046816543067
+        ],
+        "mean_slope": 0.33840783644942213
+      }
+    },
+    {
+      "name": "C5: Scaling window identification",
+      "passed": true,
+      "details": "Window found: True. Beta range: [3.0, 9.064893992806038]. R in window: 4.048 +/- 1.789",
+      "severity": "INFO",
+      "numerical_data": {
+        "window_beta_range": [
+          3.0,
+          9.064893992806038
+        ],
+        "R_mean": 4.047937815277079,
+        "R_std": 1.7886112907077203,
+        "window_length": 44
+      }
+    },
+    {
+      "name": "C6: CG prediction m_phys = 1646 MeV vs lattice 1730 +/- 50 MeV",
+      "passed": true,
+      "details": "m_CG = 1646 MeV. m_lattice = 1730 +/- 50 MeV. Deviation: 1.69 sigma. C_gap = m/Lambda_MSbar = 4.84 (expected ~ 5.09). m_phys at beta=7: 2253 MeV, R(7) = 2.956.",
+      "severity": "INFO",
+      "numerical_data": {
+        "m_CG_MeV": 1645.6016678930587,
+        "m_lattice_MeV": 1730,
+        "deviation_sigma": 1.6879666421388264,
+        "C_gap": 4.840004905567819
+      }
+    },
+    {
+      "name": "C7: m(2++) / m(0++) = 1.387 (expected ~ 1.39)",
+      "passed": true,
+      "details": "m(2++) = 2400 MeV, m(0++) = 1730 MeV. Ratio = 1.387 (expected 1.39 +/- 0.1). CG: m(0++)_CG = 1646 MeV, m(2++)_CG = 2284 MeV, ratio_CG = 1.388.",
+      "severity": "INFO",
+      "numerical_data": {
+        "ratio_lattice": 1.3872832369942196,
+        "ratio_expected": 1.39,
+        "m_0pp_CG": 1645.6016678930587,
+        "m_2pp_CG": 2283.6023145360896,
+        "ratio_CG": 1.3877005347593583
+      }
+    },
+    {
+      "name": "C8: Part (b) gives m > 0 at fixed beta; infimum -> 0",
+      "passed": "True",
+      "details": "m_phys values as beta -> beta_c: ['881', '417', '204', '80', '40', '20'] MeV. Approaches zero: True. Infimum estimate: 20 MeV. This gap between Part (b) and Part (c) is the Millennium Problem.",
+      "severity": "INFO",
+      "numerical_data": {
+        "m_vals_MeV": [
+          880.6251330294334,
+          417.4115732170758,
+          203.5085805664605,
+          80.21403061353237,
+          39.910180359038094,
+          19.903010290848904
+        ],
+        "epsilons": [
+          2.0,
+          1.0,
+          0.5,
+          0.2,
+          0.1,
+          0.05
+        ],
+        "infimum_MeV": 19.903010290848904
+      }
+    },
+    {
+      "name": "C9: Sensitivity to R_stella +/- 0.001 fm",
+      "passed": true,
+      "details": "R_stella = 0.44847 +/- 0.001 fm. m_phys predictions: ['1649', '1646', '1642'] MeV. dm/dR = -3669.4 MeV/fm. Relative sensitivity: 0.0022 (0.22%). At beta=7: ['2258', '2253', '2248'] MeV.",
+      "severity": "INFO",
+      "numerical_data": {
+        "R_stella_vals": [
+          0.44747,
+          0.44847,
+          0.44947
+        ],
+        "m_predictions_MeV": [
+          1649.279236596867,
+          1645.6016678930587,
+          1641.940463212228
+        ],
+        "dm_dR": -3669.386692319449,
+        "relative_sensitivity": 0.002229814640998473
+      }
+    },
+    {
+      "name": "C10: R ~ 8*sqrt(x) at strong coupling",
+      "passed": true,
+      "details": "Results: [\n  {\n    \"beta\": 0.3,\n    \"x\": 4.069678108506904,\n    \"R\": 14.505004277609741,\n    \"R_asymptotic\": 16.138754566088483,\n    \"relative_error\": 0.11263356130136665,\n    \"expected_correction\": 0.10123149725020623\n  },\n  {\n    \"beta\": 0.5,\n    \"x\": 3.5428183393662946,\n    \"R\": 13.306880067982908,\n    \"R_asymptotic\": 15.057900707583473,\n    \"relative_error\": 0.1315876171315031,\n    \"expected_correction\": 0.11628584047700061\n  },\n  {\n    \"beta\": 1.0,\n    \"x\": 2.8113036908728675,\n    \"R\": 11.447878692258527,\n    \"R_asymptotic\": 13.413554197745784,\n    \"relative_error\": 0.17170652819867124,\n    \"expected_correction\": 0.14654397160579535\n  }\n]",
+      "severity": "INFO",
+      "numerical_data": {
+        "results": [
+          {
+            "beta": 0.3,
+            "x": 4.069678108506904,
+            "R": 14.505004277609741,
+            "R_asymptotic": 16.138754566088483,
+            "relative_error": 0.11263356130136665,
+            "expected_correction": 0.10123149725020623
+          },
+          {
+            "beta": 0.5,
+            "x": 3.5428183393662946,
+            "R": 13.306880067982908,
+            "R_asymptotic": 15.057900707583473,
+            "relative_error": 0.1315876171315031,
+            "expected_correction": 0.11628584047700061
+          },
+          {
+            "beta": 1.0,
+            "x": 2.8113036908728675,
+            "R": 11.447878692258527,
+            "R_asymptotic": 13.413554197745784,
+            "relative_error": 0.17170652819867124,
+            "expected_correction": 0.14654397160579535
+          }
+        ]
+      }
+    },
+    {
+      "name": "C11: m_phys(beta=7) = 2253 MeV",
+      "passed": "True",
+      "details": "mu = 2.5210, u_3 = 0.483309, sigma_lat = 0.7271. R = 2.9564, m_phys = 2253 MeV. m/sqrt(sigma) = 5.121 (lattice QCD target: 3.74). a = 0.3824 fm, xi = 0.40 lattice layers.",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 7.0,
+        "mu": 2.5209637575156743,
+        "u3": 0.4833085168800006,
+        "sigma_lat": 0.7271000779400004,
+        "R": 2.9564429745636267,
+        "m_phys_MeV": 2253.1144379498983,
+        "ratio": 5.120709441624263,
+        "a_fm": 0.38241110214545176,
+        "xi": 0.396673691566858
+      }
+    },
+    {
+      "name": "C12: m_phys / Lambda_MSbar = 4.84 (lattice: 5.09)",
+      "passed": true,
+      "details": "C_gap (CG) = 4.84. C_gap (lattice) = 5.09. Relative error: 0.049 (4.9%). sqrt(sigma)/Lambda_MSbar = 1.294. Lambda_MSbar = 340.0 MeV.",
+      "severity": "INFO",
+      "numerical_data": {
+        "C_gap_CG": 4.840004905567819,
+        "C_gap_lattice": 5.088235294117647,
+        "rel_err": 0.048785163067596136,
+        "sigma_over_lambda": 1.294118958707973
+      }
+    },
+    {
+      "name": "C13: R(beta_c) = 0 exactly (C1 with R_infty > 0 is falsified)",
+      "passed": true,
+      "details": "mu(beta_c) = 0.00e+00 (should be 0). R(beta_c) = 0.00e+00 (should be 0). sigma_lat(beta_c) = 0.411980 > 0 (finite). R approaches: ['1.1555', '0.5477', '0.2670', '0.1053', '0.0524', '0.0261']. Monotonically decreasing: True. IMPLICATION: Conjecture C1 requiring R_infty > 0 is falsified.",
+      "severity": "INFO",
+      "numerical_data": {
+        "mu_critical": 0.0,
+        "R_critical": 0.0,
+        "sigma_critical": 0.41197960825054114,
+        "approach_data": [
+          {
+            "eps": 2.0,
+            "R": 1.155519641575756
+          },
+          {
+            "eps": 1.0,
+            "R": 0.5477100906876421
+          },
+          {
+            "eps": 0.5,
+            "R": 0.26703548792070136
+          },
+          {
+            "eps": 0.2,
+            "R": 0.10525351188312915
+          },
+          {
+            "eps": 0.1,
+            "R": 0.05236847731684952
+          },
+          {
+            "eps": 0.05,
+            "R": 0.026115901596453335
+          }
+        ]
+      }
+    },
+    {
+      "name": "C14: Glueball ratio sensitivity (1498-1729 MeV spread)",
+      "passed": "True",
+      "details": "Predictions range: 1498 - 1729 MeV. Spread: 231 MeV (14.4%). Most recent (A&T 2020): 1498 MeV. Used in theorem: 1646 MeV.",
+      "severity": "INFO",
+      "numerical_data": {
+        "Athenodorou_Teper_2020": {
+          "ratio": 3.405,
+          "m_pred_MeV": 1498.2015184962204,
+          "m_err_MeV": 9.240009365174929,
+          "note": "Most recent, continuum extrapolated"
+        },
+        "Chen_et_al_2006": {
+          "ratio": 3.55,
+          "m_pred_MeV": 1562.0015831605235,
+          "m_err_MeV": 66.00006689410662,
+          "note": "Anisotropic lattice"
+        },
+        "Morningstar_Peardon_1999_r0": {
+          "ratio": 3.74,
+          "m_pred_MeV": 1645.6016678930587,
+          "m_err_MeV": 52.8000535152853,
+          "note": "Via r_0 conversion (used in theorem)"
+        },
+        "Morningstar_Peardon_1999_direct": {
+          "ratio": 3.93,
+          "m_pred_MeV": 1729.2017526255938,
+          "m_err_MeV": 101.20010257096351,
+          "note": "Direct sqrt(sigma) = 440 MeV"
+        }
+      }
+    },
+    {
+      "name": "C15: Lambda_QCD convention (claimed ratio 2.5 vs actual 1.69 or 1.29)",
+      "passed": true,
+      "details": "Theorem claims sqrt(sigma)/Lambda ~ 2.5. With Lambda=260 (quenched): 1.69. With Lambda=340 (N_f=3): 1.29. Neither matches 2.5. Ratio error vs quenched: 48%. RECOMMENDATION: Use Lambda=260 MeV for pure gauge SU(3).",
+      "severity": "WARNING",
+      "numerical_data": {
+        "quenched_Sommer": {
+          "Lambda_MeV": 260,
+          "C_gap": 6.3292371842040716,
+          "sigma_over_lambda": 1.6923094075411955,
+          "note": "N_f=0, Sommer (1994)"
+        },
+        "quenched_recent": {
+          "Lambda_MeV": 250,
+          "C_gap": 6.582406671572235,
+          "sigma_over_lambda": 1.7600017838428434,
+          "note": "N_f=0, recent determinations"
+        },
+        "Nf3": {
+          "Lambda_MeV": 340,
+          "C_gap": 4.840004905567819,
+          "sigma_over_lambda": 1.294118958707973,
+          "note": "N_f=3 (used in theorem symbol table)"
+        }
+      }
+    },
+    {
+      "name": "C16: CG vs Athenodorou & Teper 2020 (most recent lattice data)",
+      "passed": true,
+      "details": "A&T 2020: m(0++) = 1653 +/- 29 MeV, ratio = 3.405 +/- 0.021. CG with A&T ratio: 1498 MeV (5.3 sigma from A&T mass). CG with M&P ratio: 1646 MeV (0.3 sigma from A&T mass). CG vs M&P mass: 1.7 sigma. NOTE: Using A&T 2020 ratio would give 1498 MeV instead of 1646 MeV.",
+      "severity": "INFO",
+      "numerical_data": {
+        "AT_ratio": 3.405,
+        "AT_mass_MeV": 1653,
+        "m_CG_AT_MeV": 1498.2015184962204,
+        "m_CG_MP_MeV": 1645.6016678930587,
+        "dev_AT_sigma": 5.337878672544124,
+        "dev_MP_sigma": 0.255114900239356
+      }
+    },
+    {
+      "name": "C17: Both lattice spacing definitions fail at continuum limit",
+      "passed": true,
+      "details": "Non-perturbative a(beta_c) = 0.2879 fm (FINITE). m_phys(beta_c) = 0.0 MeV (ZERO). Non-pert m near beta_c: ['881', '417', '204', '80', '40'] MeV. Perturbative m near beta_c: diverges (a -> 0 exponentially). CONCLUSION: Neither definition yields finite positive m_phys in continuum.",
+      "severity": "INFO",
+      "numerical_data": {
+        "a_np_beta_c_fm": 0.2878533292377188,
+        "m_np_beta_c_MeV": 0.0,
+        "results_np": [
+          {
+            "eps": 2.0,
+            "a_fm": 0.3220582253846665,
+            "m_MeV": 880.6251330294333
+          },
+          {
+            "eps": 1.0,
+            "a_fm": 0.3036143904800737,
+            "m_MeV": 417.41157321707584
+          },
+          {
+            "eps": 0.5,
+            "a_fm": 0.2954354619830469,
+            "m_MeV": 203.50858056646052
+          },
+          {
+            "eps": 0.2,
+            "a_fm": 0.29081863714942024,
+            "m_MeV": 80.21403061353237
+          },
+          {
+            "eps": 0.1,
+            "a_fm": 0.2893249274338163,
+            "m_MeV": 39.9101803590381
+          }
+        ],
+        "results_pt": [
+          {
+            "eps": 2.0,
+            "a_rel": 1.2734364616764755e-05,
+            "m_rel": 112865.62157602549
+          },
+          {
+            "eps": 1.0,
+            "a_rel": 3.849674231518819e-06,
+            "m_rel": 166830.84325239994
+          },
+          {
+            "eps": 0.5,
+            "a_rel": 2.116641611414547e-06,
+            "m_rel": 143949.9458695913
+          },
+          {
+            "eps": 0.2,
+            "a_rel": 1.4783638678133236e-06,
+            "m_rel": 79965.88010948234
+          },
+          {
+            "eps": 0.1,
+            "a_rel": 1.3116743003868523e-06,
+            "m_rel": 44612.54720659869
+          }
+        ]
+      }
+    }
+  ]
+}

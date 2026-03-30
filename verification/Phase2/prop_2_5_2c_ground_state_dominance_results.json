@@ -1,0 +1,18 @@
+{
+  "proposition": "2.5.2c",
+  "test": "ground_state_dominance",
+  "date": "2026-02-12T11:18:51.231103",
+  "beta_c": 11.421576425238568,
+  "u3_crit": 0.662337782140526,
+  "max_ratio_at_critical": 1.0000000000000013,
+  "max_rep_at_critical": [
+    0,
+    1
+  ],
+  "all_pass_at_critical": true,
+  "all_pass_confined": true,
+  "monotonicity_verified": true,
+  "fund_threshold_largest": true,
+  "overall_pass": true,
+  "n_reps_tested": 44
+}

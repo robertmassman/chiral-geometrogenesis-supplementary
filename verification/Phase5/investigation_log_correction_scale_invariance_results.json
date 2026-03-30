@@ -1,0 +1,90 @@
+{
+  "date": "2026-03-29T11:04:04.390064",
+  "investigation": "Logarithmic Correction Scale Invariance",
+  "tests": [
+    {
+      "name": "Leading term invariance",
+      "passed": true
+    },
+    {
+      "name": "Log term invariance",
+      "passed": true,
+      "details": [
+        {
+          "alpha_name": "SU(2) LQG (Kaul-Majumdar)",
+          "alpha": -1.5,
+          "invariant": true
+        },
+        {
+          "alpha_name": "SU(3) CG (proof doc claim)",
+          "alpha": -1.5,
+          "invariant": true
+        },
+        {
+          "alpha_name": "SU(3) CG (script prediction)",
+          "alpha": -2,
+          "invariant": true
+        },
+        {
+          "alpha_name": "CFT central charge",
+          "alpha": -0.5,
+          "invariant": true
+        },
+        {
+          "alpha_name": "Arbitrary test",
+          "alpha": -7.3,
+          "invariant": true
+        }
+      ]
+    },
+    {
+      "name": "Full entropy scale invariance",
+      "passed": true
+    },
+    {
+      "name": "Dimensionless argument necessity",
+      "passed": true,
+      "claim": "Only ln(A/l_P\u00b2) is physically meaningful; it is scale-invariant"
+    },
+    {
+      "name": "Log coefficient discrepancy",
+      "passed": true,
+      "claim": "The -3/2 vs -2 discrepancy has no impact on scale determination",
+      "details": {
+        "alpha_method_A": -1.5,
+        "alpha_method_B": -2.0,
+        "alpha_standard_LQG": -1.5,
+        "resolution": "Both methods are heuristic; rigorous SU(3) CS needed",
+        "impact_on_scale": "NONE \u2014 log term is scale-invariant for any \u03b1"
+      }
+    },
+    {
+      "name": "General scale invariance proof",
+      "passed": true,
+      "claim": "Any S = f(A/l_P\u00b2) is invariant under projective rescaling",
+      "details": [
+        {
+          "correction": "x^(1/3)",
+          "invariant": true
+        },
+        {
+          "correction": "exp(-1/x)",
+          "invariant": true
+        },
+        {
+          "correction": "sin(ln(x))",
+          "invariant": true
+        },
+        {
+          "correction": "x\u00b7exp(-x)",
+          "invariant": true
+        },
+        {
+          "correction": "zeta-like 1/x^2",
+          "invariant": true
+        }
+      ]
+    }
+  ],
+  "overall_status": "PASSED"
+}

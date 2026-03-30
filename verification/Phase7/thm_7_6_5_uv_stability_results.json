@@ -1,0 +1,121 @@
+{
+  "theorem": "7.6.5",
+  "title": "Small-Field UV Stability on D4 Lattice",
+  "verification_type": "standard_and_adversarial",
+  "timestamp": "2026-02-14T13:00:10.540937",
+  "overall_status": "PASSED",
+  "standard_passed": 14,
+  "standard_total": 14,
+  "adversarial_passed": 12,
+  "adversarial_total": 12,
+  "total_passed": 26,
+  "total_tests": 26,
+  "standard_results": [
+    {
+      "name": "T1",
+      "passed": true
+    },
+    {
+      "name": "T2",
+      "passed": "True"
+    },
+    {
+      "name": "T3",
+      "passed": "True"
+    },
+    {
+      "name": "T4",
+      "passed": true
+    },
+    {
+      "name": "T5",
+      "passed": true
+    },
+    {
+      "name": "T6",
+      "passed": "True"
+    },
+    {
+      "name": "T7",
+      "passed": true
+    },
+    {
+      "name": "T8",
+      "passed": true
+    },
+    {
+      "name": "T9",
+      "passed": "True"
+    },
+    {
+      "name": "T10",
+      "passed": "True"
+    },
+    {
+      "name": "T11",
+      "passed": "True"
+    },
+    {
+      "name": "T12",
+      "passed": true
+    },
+    {
+      "name": "T13",
+      "passed": "True"
+    },
+    {
+      "name": "T14",
+      "passed": "True"
+    }
+  ],
+  "adversarial_results": [
+    {
+      "test": "ADV-1: b\u2080 lattice sensitivity",
+      "passed": "True"
+    },
+    {
+      "test": "ADV-2: Contraction boundary",
+      "passed": true
+    },
+    {
+      "test": "ADV-3: Large-field dominance",
+      "passed": true
+    },
+    {
+      "test": "ADV-4: Convergence vs divergence",
+      "passed": "True"
+    },
+    {
+      "test": "ADV-5: Gauge invariance",
+      "passed": "True"
+    },
+    {
+      "test": "ADV-6: Symanzik on perturbed lattice",
+      "passed": "True"
+    },
+    {
+      "test": "ADV-7: Tadpole convergence",
+      "passed": "True"
+    },
+    {
+      "test": "ADV-8: Two-loop scaling",
+      "passed": "True"
+    },
+    {
+      "test": "ADV-9: RG composition",
+      "passed": "True"
+    },
+    {
+      "test": "ADV-10: Mass counterterm",
+      "passed": true
+    },
+    {
+      "test": "ADV-11: Action penalty formula",
+      "passed": "True"
+    },
+    {
+      "test": "ADV-12: Balaban/Dimock cross-check",
+      "passed": true
+    }
+  ]
+}

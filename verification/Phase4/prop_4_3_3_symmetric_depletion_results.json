@@ -1,0 +1,48 @@
+{
+  "theorem": "4.3.3",
+  "title": "W-Soliton Symmetric Depletion Analysis",
+  "timestamp": "2026-02-25T09:58:22.180953",
+  "parameters": {
+    "M_W_GeV": 1620.0,
+    "lambda_HPhi": 0.036,
+    "epsilon_W": 3.1e-13
+  },
+  "cross_section": {
+    "total_GeV2": 4.925324176725674e-12,
+    "total_cm3_s": 5.74967231081908e-29,
+    "WW_fraction": 0.4983136001920834,
+    "ZZ_fraction": 0.24889281491354878,
+    "tt_fraction": 0.004204922684882035,
+    "hh_fraction": 0.24858866220948564,
+    "quoted_cm3_s": 1.3e-28
+  },
+  "freeze_out": {
+    "x_f": 22.318023707395163,
+    "T_f_GeV": 72.58707228020404
+  },
+  "boltzmann_result": {
+    "Y_bar_residual": 3.153966333087663e-11,
+    "epsilon_W": 3.1e-13,
+    "delta_sym": 101.74084945444073,
+    "adm_works": "False"
+  },
+  "thresholds": {
+    "delta_sym_0.01": 8.643882620598297e-26,
+    "delta_sym_0.1": 4.294487988789272e-26,
+    "delta_sym_1": 1.2626001098748578e-26
+  },
+  "direct_detection": {
+    "sigma_SI_cm2": 1.7385785611392285e-47,
+    "LZ_bound_cm2": 4.7e-47,
+    "lambda_max_LZ": 0.05919080817814476
+  },
+  "issues": [
+    {
+      "severity": "MAJOR",
+      "location": "\u00a74.2",
+      "description": "Symmetric depletion fails: delta_sym = 102 >> 1. The Higgs portal cross section (5.7e-29 cm^3/s) is ~1503x too small for ADM.",
+      "recommended_fix": "Include W-sector self-annihilation channels or other non-portal annihilation mechanisms."
+    }
+  ],
+  "overall_status": "ISSUE_FOUND"
+}

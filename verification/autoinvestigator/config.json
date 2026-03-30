@@ -1,0 +1,46 @@
+{
+  "_comment": "AutoInvestigator-CG Configuration — Autonomous finding resolution",
+
+  "time_budgets": {
+    "per_finding_minutes": 15,
+    "per_report_minutes": 60,
+    "campaign_hours": 8
+  },
+
+  "early_exit": {
+    "max_consecutive_failures": 5,
+    "skip_on_agent_unable": true
+  },
+
+  "finding_selection": {
+    "include_results": ["FAIL", "WEAK", "SMUGGLED", "BROKEN", "CRACKED"],
+    "exclude_results": ["PASS", "NOTE", "SOUND", "QUALIFIED", "SURVIVED", "DENTED"],
+    "include_severities": ["CRITICAL", "MAJOR", "MODERATE", "MINOR"],
+    "_comment_thresholds": "Per-result-type severity gates: only findings at or above this severity are investigated. FAIL/BROKEN = investigate all (proof-blocking). WEAK/SMUGGLED/CRACKED = only MAJOR+ (skip hair-splitting).",
+    "min_severity_for_fail": "MINOR",
+    "min_severity_for_broken": "MINOR",
+    "min_severity_for_cracked": "MAJOR",
+    "min_severity_for_weak": "MAJOR",
+    "min_severity_for_smuggled": "MAJOR"
+  },
+
+  "agent": {
+    "command": "claude",
+    "model": "",
+    "flags": [],
+    "max_turns": 50
+  },
+
+  "git": {
+    "branch_prefix": "autoinvestigate",
+    "auto_commit": true,
+    "revert_on_failure": true,
+    "base_branch": "main"
+  },
+
+  "logging": {
+    "results_file": "results.tsv",
+    "log_file": "campaign.log",
+    "level": "info"
+  }
+}

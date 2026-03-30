@@ -1,0 +1,43 @@
+{
+  "proposition": "2.5.2a",
+  "title": "Wilson Loop Area Law from Stella Geometry",
+  "date": "2026-02-11",
+  "R_stella_fm": 0.44847,
+  "sqrt_sigma_MeV": 440.0004022565612,
+  "sigma_GeV2": 0.19360035398593567,
+  "T_c_MeV": 154.0,
+  "casimir_ratio_adj_fund": 2.25,
+  "tests_passed": 7,
+  "tests_total": 7,
+  "all_pass": true,
+  "results": {
+    "T1: Single plaquette \u27e8W\u2083\u27e9 = \u03b2/18": {
+      "status": "PASS",
+      "details": "Verified for \u03b2 = [0.01, 0.05, 0.1, 0.5, 1.0]"
+    },
+    "T2: Area law scaling": {
+      "status": "PASS",
+      "details": "slope = -3.583519, expected = -3.583519"
+    },
+    "T3: String tension \u03c3 = (\u210fc/R_stella)\u00b2": {
+      "status": "PASS",
+      "details": "\u221a\u03c3 = 440.0 MeV, deviation = 0.00%"
+    },
+    "T4: N-ality 0 \u2192 perimeter law": {
+      "status": "PASS",
+      "details": "All N-ality predictions correct"
+    },
+    "T5: Creutz ratio extraction": {
+      "status": "PASS",
+      "details": "\u03c3_lat\u00b7a\u00b2 = 2.890372 for \u03b2 = 1.0"
+    },
+    "T6: Casimir scaling \u03c3_adj/\u03c3_fund = 9/4": {
+      "status": "PASS",
+      "details": "ratio = 2.2500, lattice = 2.26 \u00b1 0.06"
+    },
+    "T7: Temperature dependence \u03c3(T) \u2192 0 at T_c": {
+      "status": "PASS",
+      "details": "T_c = 154.0 MeV (1.6% from lattice)"
+    }
+  }
+}

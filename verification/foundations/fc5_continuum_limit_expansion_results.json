@@ -1,0 +1,196 @@
+{
+  "title": "FC5 Continuum Limit Expansion",
+  "timestamp": "2026-03-21T06:50:06.095547",
+  "tests": [
+    {
+      "test": "EX-7: Wilson Loop Area Law (MC)",
+      "beta": 3.0,
+      "L": 3,
+      "n_therm": 300,
+      "n_meas": 500,
+      "elapsed_s": 0.3623158931732178,
+      "claims": [
+        {
+          "claim": "Plaquette agrees with single-plaquette prediction (within 0.15)",
+          "measured": 0.21264288191718297,
+          "exact": 0.20307505003021892,
+          "difference": 0.009567831886964057,
+          "passed": "True"
+        },
+        {
+          "claim": "String tension \u03c3 > 0 (confinement)",
+          "sigma_lattice_units": 1.5941796636818903,
+          "passed": "True"
+        },
+        {
+          "claim": "Exact strong-coupling mass gap \u03bc > 0 (confinement)",
+          "exact_mass_gap": 9.457600443450794,
+          "correlator": [
+            0.04670671923973463,
+            -0.012530848636713526
+          ],
+          "passed": "True"
+        },
+        {
+          "claim": "Polyakov loop small in confined phase (<|P|> < 0.5)",
+          "polyakov_mean": 0.1897692915775141,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "EX-8: Universality Class (MC)",
+      "betas": [
+        3.0,
+        5.0
+      ],
+      "fcc_results": {
+        "3.0": {
+          "plaq": 0.21525652395934508,
+          "plaq_err": 0.0012613694112993518,
+          "poly": 0.1984648608253534
+        },
+        "5.0": {
+          "plaq": 0.40685958376007375,
+          "plaq_err": 0.0014314752499048255,
+          "poly": 0.18731300565113196
+        }
+      },
+      "z4_results": {
+        "3.0": {
+          "plaq": 0.20550217423907888,
+          "plaq_err": 0.00047255051687194327,
+          "poly": 0.1920214538419063
+        },
+        "5.0": {
+          "plaq": 0.39844039240307755,
+          "plaq_err": 0.0010847483268242046,
+          "poly": 0.1917047694228124
+        }
+      },
+      "claims": [
+        {
+          "claim": "Both plaquettes larger at \u03b2=5.0 than \u03b2=3.0 (approaching continuum)",
+          "fcc_plaq_beta3": 0.21525652395934508,
+          "fcc_plaq_beta5": 0.40685958376007375,
+          "z4_plaq_beta3": 0.20550217423907888,
+          "z4_plaq_beta5": 0.39844039240307755,
+          "passed": "True"
+        },
+        {
+          "claim": "Both show confinement at strong coupling (\u03b2=3.0): <|P|> < 0.5",
+          "fcc_poly_beta3": 0.1984648608253534,
+          "z4_poly_beta3": 0.1920214538419063,
+          "passed": true
+        },
+        {
+          "claim": "Plaquette difference reasonable at both couplings (< 0.5)",
+          "gap_beta3": 0.009754349720266203,
+          "gap_beta5": 0.008419191356996203,
+          "passed": "True"
+        },
+        {
+          "claim": "Single-plaquette exact prediction shared (lattice-independent)",
+          "exact_plaq_beta3": 0.20307505003021892,
+          "exact_plaq_beta5": 0.3539544367052705,
+          "passed": "True"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "EX-9: D\u2084 Self-Coarsening (MC)",
+      "beta": 3.0,
+      "original_plaquette": 0.2625083145636319,
+      "elapsed_s": 0.9793078899383545,
+      "claims": [
+        {
+          "claim": "2\u00b7D\u2084 \u2282 D\u2084: doubled coordinates satisfy parity constraint",
+          "n_sites_checked": 128,
+          "all_even_sum": true,
+          "passed": "True"
+        },
+        {
+          "claim": "Thermalized links are valid SU(3) (unitarity + det=1)",
+          "max_unitarity_violation": 8.420970285681931e-16,
+          "max_det_violation": 6.661338147750939e-16,
+          "n_checked": 100,
+          "passed": true
+        },
+        {
+          "claim": "Blocked links remain valid SU(3) after reprojection",
+          "max_unitarity_violation": 8.86659237418113e-16,
+          "n_blocked": 50,
+          "passed": true
+        },
+        {
+          "claim": "D\u2084 coordination number = 24",
+          "coordination": 24,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "EX-10: Balaban RG Compatibility (MC)",
+      "betas": [
+        3.0,
+        4.0
+      ],
+      "mass_gaps": {
+        "3.0": 1.181383529730772,
+        "4.0": null
+      },
+      "correlators": {
+        "3.0": [
+          0.01956752725133735,
+          0.006004372114699761
+        ],
+        "4.0": [
+          0.028972606801571658,
+          -0.008938771515961775
+        ]
+      },
+      "claims": [
+        {
+          "claim": "MC plaquette confirms confined phase at both \u03b2 (plaq < 0.5)",
+          "plaq_beta3": 0.21075857675429624,
+          "plaq_beta4": 0.30673460483548987,
+          "mc_mass_gap_beta3": 1.181383529730772,
+          "mc_mass_gap_beta4": null,
+          "note": "Direct MC mass extraction unreliable at L=3 (max_sep=1)",
+          "passed": "True"
+        },
+        {
+          "claim": "Exact strong-coupling mass gap positive at both \u03b2 (IR regulated)",
+          "exact_mass_gap_beta3": 9.457600443450794,
+          "exact_mass_gap_beta4": 6.898777393030569,
+          "passed": "True"
+        },
+        {
+          "claim": "Finite correlation length \u03be = 1/\u03bc (IR regulated)",
+          "xi_beta3": 0.10573506525034908,
+          "xi_beta4": 0.14495322040833516,
+          "passed": true
+        },
+        {
+          "claim": "Exact mass gap decreases with \u03b2 (RG flow: lattice spacing shrinks)",
+          "exact_mu_beta3": 9.457600443450794,
+          "exact_mu_beta4": 6.898777393030569,
+          "passed": "True"
+        },
+        {
+          "claim": "Correlator C(0) > 0 (Osterwalder-Schrader reflection positivity)",
+          "C_0": 0.01956752725133735,
+          "passed": "True"
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "n_passed": 4,
+  "n_total": 4,
+  "all_passed": true,
+  "total_time_s": 7.824628114700317
+}

@@ -1,0 +1,377 @@
+{
+  "proposition": "0.0.40",
+  "title": "Embedding Dimension from Confinement",
+  "date": "2026-02-22T13:24:49.962366",
+  "tests": [
+    {
+      "name": "Affine Independence (Part A)",
+      "description": "N fundamental weights of SU(N) require d >= N-1",
+      "results": [
+        {
+          "N": 2,
+          "rank_SU_N": 1,
+          "num_weights": 2,
+          "affine_rank": 1,
+          "min_dim_required": 1,
+          "affinely_independent": 1,
+          "pass": 1
+        },
+        {
+          "N": 3,
+          "rank_SU_N": 2,
+          "num_weights": 3,
+          "affine_rank": 2,
+          "min_dim_required": 2,
+          "affinely_independent": 1,
+          "pass": 1
+        },
+        {
+          "N": 4,
+          "rank_SU_N": 3,
+          "num_weights": 4,
+          "affine_rank": 3,
+          "min_dim_required": 3,
+          "affinely_independent": 1,
+          "pass": 1
+        },
+        {
+          "N": 5,
+          "rank_SU_N": 4,
+          "num_weights": 5,
+          "affine_rank": 4,
+          "min_dim_required": 4,
+          "affinely_independent": 1,
+          "pass": 1
+        },
+        {
+          "N": 6,
+          "rank_SU_N": 5,
+          "num_weights": 6,
+          "affine_rank": 5,
+          "min_dim_required": 5,
+          "affinely_independent": 1,
+          "pass": 1
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Beta Function (Part C)",
+      "description": "SU(N) has single gauge coupling with one-loop beta_0",
+      "results": [
+        {
+          "N": 2,
+          "N_f": 0,
+          "beta_0": 0.583568,
+          "asymptotically_free": true,
+          "af_condition": "11*2 = 22 > 2*0 = 0: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 2,
+          "N_f": 2,
+          "beta_0": 0.477465,
+          "asymptotically_free": true,
+          "af_condition": "11*2 = 22 > 2*2 = 4: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 2,
+          "N_f": 3,
+          "beta_0": 0.424413,
+          "asymptotically_free": true,
+          "af_condition": "11*2 = 22 > 2*3 = 6: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 2,
+          "N_f": 6,
+          "beta_0": 0.265258,
+          "asymptotically_free": true,
+          "af_condition": "11*2 = 22 > 2*6 = 12: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 3,
+          "N_f": 0,
+          "beta_0": 0.875352,
+          "asymptotically_free": true,
+          "af_condition": "11*3 = 33 > 2*0 = 0: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 3,
+          "N_f": 2,
+          "beta_0": 0.769249,
+          "asymptotically_free": true,
+          "af_condition": "11*3 = 33 > 2*2 = 4: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 3,
+          "N_f": 3,
+          "beta_0": 0.716197,
+          "asymptotically_free": true,
+          "af_condition": "11*3 = 33 > 2*3 = 6: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 3,
+          "N_f": 6,
+          "beta_0": 0.557042,
+          "asymptotically_free": true,
+          "af_condition": "11*3 = 33 > 2*6 = 12: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 4,
+          "N_f": 0,
+          "beta_0": 1.167136,
+          "asymptotically_free": true,
+          "af_condition": "11*4 = 44 > 2*0 = 0: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 4,
+          "N_f": 2,
+          "beta_0": 1.061033,
+          "asymptotically_free": true,
+          "af_condition": "11*4 = 44 > 2*2 = 4: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 4,
+          "N_f": 3,
+          "beta_0": 1.007981,
+          "asymptotically_free": true,
+          "af_condition": "11*4 = 44 > 2*3 = 6: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 4,
+          "N_f": 6,
+          "beta_0": 0.848826,
+          "asymptotically_free": true,
+          "af_condition": "11*4 = 44 > 2*6 = 12: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 5,
+          "N_f": 0,
+          "beta_0": 1.45892,
+          "asymptotically_free": true,
+          "af_condition": "11*5 = 55 > 2*0 = 0: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 5,
+          "N_f": 2,
+          "beta_0": 1.352817,
+          "asymptotically_free": true,
+          "af_condition": "11*5 = 55 > 2*2 = 4: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 5,
+          "N_f": 3,
+          "beta_0": 1.299765,
+          "asymptotically_free": true,
+          "af_condition": "11*5 = 55 > 2*3 = 6: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 5,
+          "N_f": 6,
+          "beta_0": 1.14061,
+          "asymptotically_free": true,
+          "af_condition": "11*5 = 55 > 2*6 = 12: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 6,
+          "N_f": 0,
+          "beta_0": 1.750704,
+          "asymptotically_free": true,
+          "af_condition": "11*6 = 66 > 2*0 = 0: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 6,
+          "N_f": 2,
+          "beta_0": 1.644601,
+          "asymptotically_free": true,
+          "af_condition": "11*6 = 66 > 2*2 = 4: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 6,
+          "N_f": 3,
+          "beta_0": 1.591549,
+          "asymptotically_free": true,
+          "af_condition": "11*6 = 66 > 2*3 = 6: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        },
+        {
+          "N": 6,
+          "N_f": 6,
+          "beta_0": 1.432394,
+          "asymptotically_free": true,
+          "af_condition": "11*6 = 66 > 2*6 = 12: True",
+          "num_independent_couplings": 1,
+          "pass": true
+        }
+      ],
+      "qcd_beta_0": 0.716197,
+      "pass": true
+    },
+    {
+      "name": "Dimensional Transmutation Uniqueness (Part C)",
+      "description": "Single coupling -> single Lambda_QCD",
+      "results": {
+        "Lambda_MSbar_PDG_MeV": 210,
+        "Lambda_derived_MeV": 87.8,
+        "lambdas_at_different_scales": [
+          87.8,
+          87.8,
+          87.8,
+          87.8
+        ],
+        "spread_MeV": 0.0,
+        "scale_unique": 1,
+        "num_independent_scales": 1,
+        "pass": 1
+      },
+      "pass": 1
+    },
+    {
+      "name": "Embedding Dimension Formula",
+      "description": "d_embed = rank(G) + 1 = N for SU(N)",
+      "results": [
+        {
+          "N": 2,
+          "rank": 1,
+          "d_weight": 1,
+          "d_radial": 1,
+          "d_embed": 2,
+          "D_spacetime": 3,
+          "d_embed_equals_N": true,
+          "status": "(2+1)D lower-dim QFT",
+          "pass": true
+        },
+        {
+          "N": 3,
+          "rank": 2,
+          "d_weight": 2,
+          "d_radial": 1,
+          "d_embed": 3,
+          "D_spacetime": 4,
+          "d_embed_equals_N": true,
+          "status": "OBSERVED (3+1)D",
+          "pass": true
+        },
+        {
+          "N": 4,
+          "rank": 3,
+          "d_weight": 3,
+          "d_radial": 1,
+          "d_embed": 4,
+          "D_spacetime": 5,
+          "d_embed_equals_N": true,
+          "status": "Unstable orbits (D=5)",
+          "pass": true
+        },
+        {
+          "N": 5,
+          "rank": 4,
+          "d_weight": 4,
+          "d_radial": 1,
+          "d_embed": 5,
+          "D_spacetime": 6,
+          "d_embed_equals_N": true,
+          "status": "Unstable orbits (D=6)",
+          "pass": true
+        },
+        {
+          "N": 6,
+          "rank": 5,
+          "d_weight": 5,
+          "d_radial": 1,
+          "d_embed": 6,
+          "D_spacetime": 7,
+          "d_embed_equals_N": true,
+          "status": "Unstable orbits (D=7)",
+          "pass": true
+        }
+      ],
+      "R_conf_fm": 0.44847,
+      "pass": true
+    },
+    {
+      "name": "Consistency with Theorem 0.0.2b",
+      "description": "d_embed matches D_space from D = N + 1 formula",
+      "results": [
+        {
+          "N": 2,
+          "d_embed_prop_40": 2,
+          "D_space_thm_2b": 2,
+          "D_total_thm_2b": 3,
+          "consistent": true,
+          "pass": true
+        },
+        {
+          "N": 3,
+          "d_embed_prop_40": 3,
+          "D_space_thm_2b": 3,
+          "D_total_thm_2b": 4,
+          "consistent": true,
+          "pass": true
+        },
+        {
+          "N": 4,
+          "d_embed_prop_40": 4,
+          "D_space_thm_2b": 4,
+          "D_total_thm_2b": 5,
+          "consistent": true,
+          "pass": true
+        },
+        {
+          "N": 5,
+          "d_embed_prop_40": 5,
+          "D_space_thm_2b": 5,
+          "D_total_thm_2b": 6,
+          "consistent": true,
+          "pass": true
+        },
+        {
+          "N": 6,
+          "d_embed_prop_40": 6,
+          "D_space_thm_2b": 6,
+          "D_total_thm_2b": 7,
+          "consistent": true,
+          "pass": true
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "overall_pass": true
+}

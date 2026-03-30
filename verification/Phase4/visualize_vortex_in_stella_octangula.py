@@ -34,17 +34,17 @@ def create_tetrahedron_vertices(scale=1.0):
     """
     Create vertices of T₊ tetrahedron per Definition 0.1.1.
 
-    Vertex coordinates (from Definition 0.1.1 §2.2):
-    - v_R = (1, 1, 1)/√3     (Red)
-    - v_G = (1, -1, -1)/√3   (Green)
-    - v_B = (-1, 1, -1)/√3   (Blue)
-    - v_W = (-1, -1, 1)/√3   (White/singlet)
+    Vertex coordinates (from Definition 0.1.1 §2.2, Convention A):
+    - v_R = (1, -1, -1)/√3   (Red)
+    - v_G = (-1, 1, -1)/√3   (Green)
+    - v_B = (-1, -1, 1)/√3   (Blue)
+    - v_W = (1, 1, 1)/√3     (White/singlet)
     """
     vertices = np.array([
-        [1, 1, 1],      # R (Red)
-        [1, -1, -1],    # G (Green)
-        [-1, 1, -1],    # B (Blue)
-        [-1, -1, 1]     # W (White/singlet)
+        [1, -1, -1],    # R (Red)
+        [-1, 1, -1],    # G (Green)
+        [-1, -1, 1],    # B (Blue)
+        [1, 1, 1]       # W (White/singlet)
     ]) * scale / np.sqrt(3)
     return vertices
 
@@ -180,11 +180,11 @@ def main():
     # =========================================================================
     # From the proof documents:
     # - χ_total = 0 requires P_R = P_G = P_B
-    # - This occurs along the line (t, t, -t), i.e., the W̄-W direction
-    # - W̄ = (1, 1, -1)/√3, W = (-1, -1, 1)/√3
+    # - This occurs along the line (t, t, t), i.e., the W-W̄ direction
+    # - W = (1, 1, 1)/√3 (Convention A), W̄ = (-1, -1, -1)/√3
 
     # W-W̄ axis direction (normalized)
-    w_axis = np.array([1, 1, -1]) / np.sqrt(3)  # Points from W toward W̄
+    w_axis = np.array([-1, -1, -1]) / np.sqrt(3)  # Points from W toward W̄
 
     # Perpendicular basis vectors for the helicoid plane
     # Chosen so that e1 × e2 = +w_axis (counterclockwise when viewed from W̄)
@@ -377,8 +377,8 @@ def main():
             ),
             dict(
                 text='<b>W-W̄ axis (singlet direction):</b><br>'
-                     'W = (-1,-1,1)/√3 (white vertex)<br>'
-                     'W̄ = (1,1,-1)/√3 (anti-white)<br>'
+                     'W = (1,1,1)/√3 (white vertex)<br>'
+                     'W̄ = (-1,-1,-1)/√3 (anti-white)<br>'
                      'Perpendicular to R-G-B plane',
                 x=0.02, y=0.05,
                 xref='paper', yref='paper',

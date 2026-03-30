@@ -1,0 +1,28 @@
+{
+  "_comment": "AutoReconciler-CG Configuration — Update tracking after audit cycles",
+
+  "time_budgets": {
+    "per_group_minutes": 15,
+    "campaign_hours": 2
+  },
+
+  "agent": {
+    "command": "claude",
+    "model": "",
+    "flags": [],
+    "max_turns": 30
+  },
+
+  "updates": {
+    "thematic_groups_checklist": true,
+    "thematic_groups_tracker": true,
+    "proof_plan_dates": true,
+    "verification_record": true
+  },
+
+  "logging": {
+    "results_file": "results.tsv",
+    "log_file": "campaign.log",
+    "level": "info"
+  }
+}

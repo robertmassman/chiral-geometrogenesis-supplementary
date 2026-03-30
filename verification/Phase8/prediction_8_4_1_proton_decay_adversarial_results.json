@@ -1,0 +1,104 @@
+{
+  "prediction": "8.4.1",
+  "title": "Proton Decay from Geometric GUT \u2014 Adversarial Verification",
+  "timestamp": "2026-02-28T12:38:05.791270",
+  "tests": [
+    {
+      "name": "Independent re-derivation",
+      "passed": true,
+      "errors": [
+        0.00021604744337890407,
+        0.0008584501845018602,
+        0.0005517342841163268,
+        0.0004928270541470533,
+        0.0018840938218953388
+      ]
+    },
+    {
+      "name": "Alternative formula cross-check",
+      "passed": true,
+      "ratio": 0.8240591022592092
+    },
+    {
+      "name": "M_GUT exclusion boundary",
+      "passed": "True",
+      "m_gut_min": 5314359158053252.0
+    },
+    {
+      "name": "2D parameter space scan",
+      "passed": "True",
+      "frac_allowed": 0.731475
+    },
+    {
+      "name": "alpha_H sensitivity",
+      "passed": true,
+      "spread_factor": 2.777777777777778
+    },
+    {
+      "name": "RG running factor",
+      "passed": "True",
+      "a_r_correct": 1.9457429179954953,
+      "a_r_proof_formula": 0.5139425104680325,
+      "issue": "Proof \u00a73.2 formula inverted; VALUE A_R=2.5 is correct"
+    },
+    {
+      "name": "Branching ratio robustness",
+      "passed": true,
+      "dominant_stable": true
+    },
+    {
+      "name": "SUSY vs non-SUSY discrimination",
+      "passed": true,
+      "cg_ratio": 127.0,
+      "susy_ratio": 0.14285714285714288
+    },
+    {
+      "name": "Correlated MC",
+      "passed": true,
+      "results": {
+        "Uncorrelated": {
+          "median_log": 36.723124630325586,
+          "sigma_log": 0.3617842413059064,
+          "lower_1sig_yr": 2.3332815977282345e+36,
+          "median_yr": 5.285969224904693e+36,
+          "upper_1sig_yr": 1.1853459270747986e+37
+        },
+        "Positive corr (rho=+0.5)": {
+          "median_log": 36.72422197694342,
+          "sigma_log": 0.3672420645866082,
+          "lower_1sig_yr": 2.3076349874870952e+36,
+          "median_yr": 5.2993423509292195e+36,
+          "upper_1sig_yr": 1.1970269689151062e+37
+        },
+        "Anti-corr (rho=-0.5)": {
+          "median_log": 36.72431276519001,
+          "sigma_log": 0.35921435031009724,
+          "lower_1sig_yr": 2.3604686146209854e+36,
+          "median_yr": 5.3004502818653986e+36,
+          "upper_1sig_yr": 1.180472277634592e+37
+        }
+      }
+    },
+    {
+      "name": "Pre-geometric form factor",
+      "passed": "True",
+      "kappa_critical": 14.591105850385459
+    },
+    {
+      "name": "Deep dimensional analysis",
+      "passed": true
+    },
+    {
+      "name": "Reconciliation arithmetic",
+      "passed": true,
+      "net_scaling": 7.773169122940223
+    },
+    {
+      "name": "Model comparison",
+      "passed": true
+    }
+  ],
+  "n_passed": 13,
+  "n_total": 13,
+  "overall_status": "PASSED"
+}

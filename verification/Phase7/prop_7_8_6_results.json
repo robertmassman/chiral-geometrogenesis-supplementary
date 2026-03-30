@@ -1,0 +1,185 @@
+{
+  "proposition": "7.8.6",
+  "title": "Full Two-Gluon Glueball Spectrum",
+  "timestamp": "2026-02-28T06:03:49.389038",
+  "parameters": {
+    "alpha_V": 0.373,
+    "delta_alpha_V": 0.01,
+    "sqrt_sigma_MeV": 440.0,
+    "Delta_SS": 1.33
+  },
+  "L_centroids": {
+    "L=0": {
+      "R": 3.448695405512061,
+      "dR": 0.05871785593947891
+    },
+    "L=1": {
+      "R": 5.6930879143045034,
+      "dR": 0.029641207467742986
+    },
+    "L=2": {
+      "R": 7.1589454530677905,
+      "dR": 0.02200044699774982
+    },
+    "L=3": {
+      "R": 8.346863183256332,
+      "dR": 0.018195458181782437
+    }
+  },
+  "spectrum": {
+    "0++": {
+      "R": 3.448695405512061,
+      "dR": 0.06
+    },
+    "2++": {
+      "R": 4.778695405512061,
+      "dR": 0.5
+    },
+    "0-+": {
+      "R": 5.2330879143045035,
+      "dR": 0.55
+    },
+    "1-+": {
+      "R": 5.463087914304503,
+      "dR": 0.55
+    },
+    "2-+": {
+      "R": 5.923087914304504,
+      "dR": 0.55
+    },
+    "0++*": {
+      "R": 5.3454778785436945,
+      "dR": 0.5
+    },
+    "3++": {
+      "R": 7.1589454530677905,
+      "dR": 0.5,
+      "note": "With corrected <L.S>=0 for J=3, L=2, S=2 (was +1 before fix)"
+    }
+  },
+  "tests": {
+    "standard": {
+      "passed": 14,
+      "total": 14
+    },
+    "adversarial": {
+      "passed": 6,
+      "total": 6
+    },
+    "overall": {
+      "passed": 20,
+      "total": 20
+    }
+  },
+  "test_details": [
+    {
+      "name": "C-1: Bose symmetry classification",
+      "passed": true,
+      "details": "All L=0,1,2 multiplets satisfy Bose symmetry; 1-+ is exotic"
+    },
+    {
+      "name": "C-2: <p^2>_L = beta^2 independent of L",
+      "passed": true,
+      "details": "Verified for L=0..4, max rel_err = 4.62e-16"
+    },
+    {
+      "name": "C-3: <r>_L = (2L+3)/(2*beta)",
+      "passed": "True",
+      "details": "Verified for L=0..4 via Gauss-Laguerre quadrature"
+    },
+    {
+      "name": "C-4: <1/r>_L = beta/(L+1)",
+      "passed": "True",
+      "details": "Verified for L=0..4 via Gauss-Laguerre quadrature"
+    },
+    {
+      "name": "C-5: AFM optimization nu* = beta",
+      "passed": true,
+      "details": "Universal for all L (since <p^2> = beta^2)"
+    },
+    {
+      "name": "C-6: Closed-form R_L formula",
+      "passed": true,
+      "details": "Direct E* and formula agree for L=0..4"
+    },
+    {
+      "name": "C-7: L=0 recovery matches Prop 7.8.3",
+      "passed": true,
+      "details": "R_0 = 3.4487 = 3*sqrt(3*(2-3*0.373)/2) = 3.4487"
+    },
+    {
+      "name": "C-8: R_0(0.373) = 3.45",
+      "passed": true,
+      "details": "R_0 = 3.4487, matches Prop 7.8.4 to 0.04%"
+    },
+    {
+      "name": "C-9: Large-L Regge slope",
+      "passed": "True",
+      "details": "Slope = 18.038, expected 18.0, err = 0.2%",
+      "numerical_data": {
+        "slope": 18.037537534164684,
+        "expected": 18.0
+      }
+    },
+    {
+      "name": "C-10: RMS radii within Cornell validity",
+      "passed": true,
+      "details": "All states have r_rms/r_break < 0.7"
+    },
+    {
+      "name": "C-11: Delta_SS = 1.33 calibration",
+      "passed": true,
+      "details": "Lattice: 1.325, calibration: 1.33"
+    },
+    {
+      "name": "C-12: R(2++) = 4.78 consistent with lattice",
+      "passed": true,
+      "details": "Predicted 4.78, lattice 4.73, tension 0.10sigma"
+    },
+    {
+      "name": "C-13: Dimensional consistency",
+      "passed": true,
+      "details": "All 6 dimensional checks passed"
+    },
+    {
+      "name": "C-14: Mass ordering matches lattice",
+      "passed": true,
+      "details": "All ordering relations satisfied"
+    },
+    {
+      "name": "ADV-1: Alpha_V sensitivity",
+      "passed": true,
+      "details": "All R_L well-defined over 3-sigma alpha_V range; lattice within band for L=0"
+    },
+    {
+      "name": "ADV-2: Variational upper bound",
+      "passed": true,
+      "details": "R_var = 3.449 >= R_lat = 3.405, excess = 1.3%"
+    },
+    {
+      "name": "ADV-3: Numerical matrix elements",
+      "passed": "True",
+      "details": "Max relative error: 3.18e-14"
+    },
+    {
+      "name": "ADV-4: L-centroid monotonicity",
+      "passed": true,
+      "details": "R_L strictly increasing for L=0..9"
+    },
+    {
+      "name": "ADV-5: Regge linearity",
+      "passed": "True",
+      "details": "Linearity = 0.31% < 5%",
+      "numerical_data": {
+        "slope": 18.207639417011556,
+        "intercept": 14.361594607892096,
+        "linearity": 0.003082126446439872
+      }
+    },
+    {
+      "name": "ADV-6: Monte Carlo bootstrap",
+      "passed": "True",
+      "details": "MC uncertainties agree with analytical to within 20%"
+    }
+  ]
+}

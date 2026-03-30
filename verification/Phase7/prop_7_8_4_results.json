@@ -1,0 +1,251 @@
+{
+  "proposition": "7.8.4",
+  "title": "V-Scheme BLM Scale-Setting for Glueball Mass Ratio",
+  "verification_type": "standard_and_adversarial",
+  "date": "2026-02-23T10:29:43.325420",
+  "key_values": {
+    "alpha_V": 0.374,
+    "alpha_V_err": 0.01,
+    "R_V": 3.4428186127067457,
+    "R_V_err": 0.058818085638497934,
+    "R_cont_782": 3.38,
+    "R_cont_782_err": 0.27,
+    "R_combined": 3.4399725356540656,
+    "R_combined_err": 0.05747022804263265,
+    "c_FI_combined": 6.859305236094206,
+    "c_FI_combined_err": 0.1354647325598224,
+    "R_cont_lat": 3.405,
+    "R_cont_lat_err": 0.021,
+    "lambda_V_over_lambda_MS": 4.092233500280074,
+    "BLM_factor": 0.24436533250890002
+  },
+  "tests_total": 24,
+  "tests_passed": 24,
+  "tests_failed": 0,
+  "standard_passed": 16,
+  "adversarial_passed": 8,
+  "overall": "PASS",
+  "results": [
+    {
+      "name": "C-1: V-scheme definition (Coulomb = alpha_V by definition)",
+      "passed": true,
+      "details": "C_F = 1.3333333333333333, color factor = -3.0",
+      "numerical_data": {
+        "C_F": 1.3333333333333333,
+        "color_factor": -3.0
+      }
+    },
+    {
+      "name": "C-2: NLO coefficient a1 = 31 (N_f=0, SU(3))",
+      "passed": true,
+      "details": "a1 = 31.0, expected = 31.0",
+      "numerical_data": {
+        "a1": 31.0,
+        "expected": 31.0
+      }
+    },
+    {
+      "name": "C-3: BLM scale mu_BLM = q*exp(-31/22) = 0.244*q",
+      "passed": "True",
+      "details": "BLM factor = 0.2444, expected ~ 0.244",
+      "numerical_data": {
+        "blm_factor": 0.24436533250890002,
+        "mu_BLM_at_870": 212.59783928274302
+      }
+    },
+    {
+      "name": "C-4: Beta function beta0=11, beta1=102 (pure SU(3))",
+      "passed": true,
+      "details": "beta0=11.0, beta1=102.0",
+      "numerical_data": {
+        "beta0": 11.0,
+        "beta1": 102.0
+      }
+    },
+    {
+      "name": "C-5: Two-loop running formula verified",
+      "passed": "True",
+      "details": "alpha_s(5GeV)=0.143, alpha_s(2GeV)=0.195",
+      "numerical_data": {
+        "alpha_5GeV": 0.14264213413181406,
+        "alpha_2GeV": 0.19533454235651262,
+        "alpha_1p5GeV": 0.223076881554434
+      }
+    },
+    {
+      "name": "C-6: Lambda_V/Lambda_MSbar = exp(31/22) ~ 4.10",
+      "passed": "True",
+      "details": "Ratio = 4.0922, expected ~ 4.10",
+      "numerical_data": {
+        "lambda_ratio": 4.092233500280074,
+        "Lambda_V_MeV": 903.0003711751416
+      }
+    },
+    {
+      "name": "C-7: Lattice alpha_V(870 MeV) = 0.374 +/- 0.010",
+      "passed": true,
+      "details": "alpha_V = 0.3726 +/- 0.0103, chi^2/dof = 0.092",
+      "numerical_data": {
+        "alpha_V": 0.3726470588235294,
+        "delta_alpha_V": 0.01028991510855053,
+        "chi2_dof": 0.09191176470588253
+      }
+    },
+    {
+      "name": "C-8: R_V = 3*sqrt(3*(2-3*0.374)/2) = 3.44",
+      "passed": "True",
+      "details": "R_V = 3.4428",
+      "numerical_data": {
+        "R_V": 3.4428186127067457
+      }
+    },
+    {
+      "name": "C-9: delta_R_V = |dR/dalpha| * 0.010 = 0.059 (1.7%)",
+      "passed": "True",
+      "details": "delta_R = 0.0588, rel = 1.7%",
+      "numerical_data": {
+        "delta_R": 0.058818085638497934,
+        "rel_err": 0.017084282460136675,
+        "deriv": 5.881808563849793
+      }
+    },
+    {
+      "name": "C-10: V-scheme convergence (NLO absorbed, NNLO small)",
+      "passed": true,
+      "details": "MSbar NLO: 94%, V-scheme NLO: 0%, NNLO: 9.0%",
+      "numerical_data": {
+        "nlo_msbar": 0.9374226148112637,
+        "nnlo_running": 0.0903490620051172
+      }
+    },
+    {
+      "name": "C-11: Combined R = 3.44 +/- 0.059 (1.7%)",
+      "passed": "True",
+      "details": "R_combined = 3.4400 +/- 0.0575 (1.7%)",
+      "numerical_data": {
+        "R_combined": 3.4399725356540656,
+        "delta_combined": 0.05747022804263265,
+        "tension_782_vs_784": 0.22732992679025366
+      }
+    },
+    {
+      "name": "C-12: Updated c_FI = 6.86 +/- 0.14 (2.0%)",
+      "passed": "True",
+      "details": "c_FI = 6.8593 +/- 0.1355 (2.0%)",
+      "numerical_data": {
+        "c_FI": 6.859305236094206,
+        "delta_c": 0.1354647325598224,
+        "rel_c": 0.019749045697368336
+      }
+    },
+    {
+      "name": "C-13: Dimensional consistency",
+      "passed": true,
+      "details": "7/7 equations dimensionally consistent",
+      "numerical_data": {
+        "n_equations": 7
+      }
+    },
+    {
+      "name": "C-14: BLM-converted alpha_MSbar consistent with PDG",
+      "passed": true,
+      "details": "alpha_MSbar(870MeV) = 0.195, alpha_V(870MeV) = 0.374",
+      "numerical_data": {
+        "alpha_ms_870": 0.19452609750022196
+      }
+    },
+    {
+      "name": "C-15: Tension with lattice R_cont = 0.56 sigma",
+      "passed": "True",
+      "details": "Tension = 0.61 sigma (< 2.0)",
+      "numerical_data": {
+        "R_V": 3.4428186127067457,
+        "tension": 0.6055384314498377
+      }
+    },
+    {
+      "name": "C-16: Improvement 6.3% -> 1.7% (3.7x)",
+      "passed": "True",
+      "details": "Relative: 6.3% -> 1.7% (3.8x)",
+      "numerical_data": {
+        "rel_old": 0.063,
+        "rel_new": 0.0167065950227726,
+        "improvement": 3.770965891860388
+      }
+    },
+    {
+      "name": "ADV-1: R_V insensitive to alpha_s(M_Z) uncertainty",
+      "passed": true,
+      "details": "alpha_V is a direct lattice input, not derived from M_Z",
+      "numerical_data": {
+        "delta_R_from_MZ": 0.0
+      }
+    },
+    {
+      "name": "ADV-2: BLM NNLO corrections do not affect R_V",
+      "passed": true,
+      "details": "BLM is a consistency check, not an input to R_V",
+      "numerical_data": {
+        "blm_exponent": -1.4090909090909092
+      }
+    },
+    {
+      "name": "ADV-3: Lattice interpolation uncertainty subdominant",
+      "passed": true,
+      "details": "Interpolation: 0.0042 < 0.01 (total alpha_V error)",
+      "numerical_data": {
+        "interp_unc": 0.0042220952589507145,
+        "r_glueball_fm": 0.22681264367816092
+      }
+    },
+    {
+      "name": "ADV-4: Independence from Prop 7.8.2",
+      "passed": true,
+      "details": "Shared: Casimir scaling only. Different methods and dominant uncertainties.",
+      "numerical_data": {
+        "shared": [
+          "Casimir scaling"
+        ],
+        "n_unique_784": 3
+      }
+    },
+    {
+      "name": "ADV-5: AFM correction sensitivity (3-7%)",
+      "passed": "True",
+      "details": "Corrected R ~ 3.271, tension 1.87 sigma",
+      "numerical_data": {
+        "R_corrected": 3.2706776820714083,
+        "tension": 1.8659117201401196
+      }
+    },
+    {
+      "name": "ADV-6: Casimir scaling correction negligible",
+      "passed": true,
+      "details": "Casimir effect: 0.22% << alpha_V: 1.71%",
+      "numerical_data": {
+        "casimir_correction": 0.002222222222222175,
+        "bali_tension": 0.16666666666666313
+      }
+    },
+    {
+      "name": "ADV-7: V-scheme perturbative convergence at 870 MeV",
+      "passed": true,
+      "details": "alpha_V/(4pi) = 0.0298, NNLO = 9.0%",
+      "numerical_data": {
+        "expansion_param": 0.02976197435818443,
+        "nnlo_correction": 0.0903490620051172
+      }
+    },
+    {
+      "name": "ADV-8: Monte Carlo bootstrap confirms analytic uncertainty",
+      "passed": "True",
+      "details": "MC: R_V = 3.4423+/-0.0589, c = 6.86+/-0.14",
+      "numerical_data": {
+        "R_V_mc": 3.4422578429932886,
+        "R_V_mc_err": 0.05890127973234529,
+        "c_mc": 6.858322569281159,
+        "c_mc_err": 0.1354336278097921
+      }
+    }
+  ]
+}

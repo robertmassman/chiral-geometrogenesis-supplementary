@@ -1,0 +1,593 @@
+{
+  "proposition": "4.3.5",
+  "title": "Skyrme Parameter from Pressure-Kurtosis Geometry",
+  "review": 2,
+  "timestamp": "2026-02-26T11:41:25.755804",
+  "verifications": [
+    {
+      "test": "Matching derivation consistency",
+      "I2": 182.80367432926693,
+      "I4": 216953.42501006922,
+      "Omega_W": 3.141592653589793,
+      "e_sq_from_eqA_line158": 0.1540292961345493,
+      "e_from_eqA": 0.39246566236366376,
+      "e_sq_from_eqB_line166": 0.04902904772155778,
+      "e_from_eqB": 0.22142503860574977,
+      "e_sq_boxed_line170": 20.39607225657589,
+      "e_from_boxed": 4.516201086817978,
+      "e_sq_analytical_formula": 20.3960722565759,
+      "boxed_matches_analytical": true,
+      "eqA_matches_boxed": false,
+      "eqB_matches_boxed": false,
+      "eqB_is_reciprocal_of_boxed": true,
+      "adversarial_flag": true,
+      "finding": "CONFIRMED: Matching equations (lines 158, 166) give e_W ~ 0.2-0.4, while boxed formula (line 170) gives e_W ~ 4.5. The boxed formula is the reciprocal of what the matching produces. The analytical formula e\u00b2 = 1 + 1/(3c(1+c)) independently matches the boxed formula.",
+      "passed": true
+    },
+    {
+      "test": "Cap integral analytical vs numerical",
+      "details": [
+        {
+          "eps_tilde": 0.08,
+          "I2_analytical": 487.75223780147576,
+          "I2_numerical": 487.7522378014764,
+          "I2_rel_error": 1.2819574345518165e-15,
+          "I4_analytical": 3994740.607772858,
+          "I4_numerical": 3994740.6077728784,
+          "I4_rel_error": 5.129018039787939e-15
+        },
+        {
+          "eps_tilde": 0.1,
+          "I2_analytical": 311.0487775831478,
+          "I2_numerical": 311.048777583148,
+          "I2_rel_error": 7.309904163904057e-16,
+          "I4_analytical": 1047196.5347969709,
+          "I4_numerical": 1047196.5347969739,
+          "I4_rel_error": 2.89038233695753e-15
+        },
+        {
+          "eps_tilde": 0.13,
+          "I2_analytical": 182.80367432926693,
+          "I2_numerical": 182.8036743292669,
+          "I2_rel_error": 1.5547668576513776e-16,
+          "I4_analytical": 216953.42501006922,
+          "I4_numerical": 216953.42501006954,
+          "I4_rel_error": 1.475626093523123e-15
+        },
+        {
+          "eps_tilde": 0.15,
+          "I2_analytical": 136.55387790664682,
+          "I2_numerical": 136.5538779066468,
+          "I2_rel_error": 2.0813549835497256e-16,
+          "I4_analytical": 91934.0592109793,
+          "I4_numerical": 91934.05921097932,
+          "I4_rel_error": 1.5828644305775388e-16
+        },
+        {
+          "eps_tilde": 0.2,
+          "I2_analytical": 75.51905417283155,
+          "I2_numerical": 75.51905417283155,
+          "I2_rel_error": 0.0,
+          "I4_analytical": 16361.530782637004,
+          "I4_numerical": 16361.530782637004,
+          "I4_rel_error": 0.0
+        },
+        {
+          "eps_tilde": 0.5,
+          "I2_analytical": 10.053096491487338,
+          "I2_numerical": 10.053096491487338,
+          "I2_rel_error": 0.0,
+          "I4_analytical": 66.4844781303696,
+          "I4_numerical": 66.48447813036958,
+          "I4_rel_error": 2.1374695439942994e-16
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "Kurtosis formula independent re-derivation",
+      "details": [
+        {
+          "eps_tilde": 0.05,
+          "c": 0.0025000000000000005,
+          "e_sq_integrals": 134.0008312551953,
+          "e_sq_formula": 134.00083125519532,
+          "e_sq_expanded": 134.00083125519532,
+          "e_W": 11.575872807490384,
+          "rel_error_integrals_vs_formula": 2.1210099343545732e-16
+        },
+        {
+          "eps_tilde": 0.08,
+          "c": 0.0064,
+          "e_sq_integrals": 52.75211976682563,
+          "e_sq_formula": 52.75211976682565,
+          "e_sq_expanded": 52.75211976682565,
+          "e_W": 7.263065452467412,
+          "rel_error_integrals_vs_formula": 4.040838959083541e-16
+        },
+        {
+          "eps_tilde": 0.1,
+          "c": 0.010000000000000002,
+          "e_sq_integrals": 34.003300330032985,
+          "e_sq_formula": 34.00330033003299,
+          "e_sq_expanded": 34.00330033003299,
+          "e_W": 5.831234888943593,
+          "rel_error_integrals_vs_formula": 2.0896287385743028e-16
+        },
+        {
+          "eps_tilde": 0.12,
+          "c": 0.0144,
+          "e_sq_integrals": 23.81954667601354,
+          "e_sq_formula": 23.81954667601355,
+          "e_sq_expanded": 23.81954667601355,
+          "e_W": 4.880527294874351,
+          "rel_error_integrals_vs_formula": 4.474535633011993e-16
+        },
+        {
+          "eps_tilde": 0.13,
+          "c": 0.016900000000000002,
+          "e_sq_integrals": 20.39607225657589,
+          "e_sq_formula": 20.3960722565759,
+          "e_sq_expanded": 20.3960722565759,
+          "e_W": 4.516201086817979,
+          "rel_error_integrals_vs_formula": 3.4837233699788156e-16
+        },
+        {
+          "eps_tilde": 0.14,
+          "c": 0.019600000000000003,
+          "e_sq_integrals": 17.679877129353116,
+          "e_sq_formula": 17.679877129353113,
+          "e_sq_expanded": 17.679877129353113,
+          "e_W": 4.204744597398648,
+          "rel_error_integrals_vs_formula": 2.009467403425609e-16
+        },
+        {
+          "eps_tilde": 0.15,
+          "c": 0.0225,
+          "e_sq_integrals": 15.488816444806663,
+          "e_sq_formula": 15.488816444806664,
+          "e_sq_expanded": 15.488816444806663,
+          "e_W": 3.9355833677876353,
+          "rel_error_integrals_vs_formula": 1.1468641556507408e-16
+        },
+        {
+          "eps_tilde": 0.2,
+          "c": 0.04000000000000001,
+          "e_sq_integrals": 9.012820512820511,
+          "e_sq_formula": 9.012820512820511,
+          "e_sq_expanded": 9.012820512820511,
+          "e_W": 3.0021359917266426,
+          "rel_error_integrals_vs_formula": 0.0
+        },
+        {
+          "eps_tilde": 0.5,
+          "c": 0.25,
+          "e_sq_integrals": 2.066666666666667,
+          "e_sq_formula": 2.0666666666666664,
+          "e_sq_expanded": 2.066666666666667,
+          "e_W": 1.4375905768565216,
+          "rel_error_integrals_vs_formula": 2.148818757339013e-16
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "Scale independence (P \u2192 \u03b1P)",
+      "e_W_base": 4.516201086817979,
+      "details": [
+        {
+          "alpha": 1e-06,
+          "e_W": 4.516201086817978,
+          "rel_diff": 1.9666494087089403e-16
+        },
+        {
+          "alpha": 0.001,
+          "e_W": 4.516201086817979,
+          "rel_diff": 0.0
+        },
+        {
+          "alpha": 0.01,
+          "e_W": 4.516201086817978,
+          "rel_diff": 1.9666494087089403e-16
+        },
+        {
+          "alpha": 0.1,
+          "e_W": 4.516201086817978,
+          "rel_diff": 1.9666494087089403e-16
+        },
+        {
+          "alpha": 1.0,
+          "e_W": 4.516201086817978,
+          "rel_diff": 1.9666494087089403e-16
+        },
+        {
+          "alpha": 10.0,
+          "e_W": 4.516201086817978,
+          "rel_diff": 1.9666494087089403e-16
+        },
+        {
+          "alpha": 100.0,
+          "e_W": 4.516201086817979,
+          "rel_diff": 0.0
+        },
+        {
+          "alpha": 1000000.0,
+          "e_W": 4.516201086817978,
+          "rel_diff": 1.9666494087089403e-16
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "Limiting cases",
+      "details": {
+        "eps=1e-06_e_W": 577350.269190203,
+        "eps=1e-06_asymptotic": 577350.2691896259,
+        "eps=1e-06_rel_diff": 9.99717496326949e-13,
+        "eps=0.0001_e_W": 5773.502749631284,
+        "eps=0.0001_asymptotic": 5773.502691896258,
+        "eps=0.0001_rel_diff": 9.999999932678407e-09,
+        "eps=0.01_e_W": 57.740800421625615,
+        "eps=0.01_asymptotic": 57.735026918962575,
+        "eps=0.01_rel_diff": 9.999999950018915e-05,
+        "eps=10_e_W": 1.000016501514015,
+        "eps=10_to_1_diff": 1.650151401499933e-05,
+        "eps=100_e_W": 1.0000000016665,
+        "eps=100_to_1_diff": 1.6665000490689863e-09,
+        "eps=1000_e_W": 1.0000000000001665,
+        "eps=1000_to_1_diff": 1.6653345369377348e-13,
+        "jensen_min_e_W": 1.0000000000001665,
+        "jensen_bound_holds": true,
+        "monotonically_decreasing": true
+      },
+      "passed": true
+    },
+    {
+      "test": "Domain geometry sweep",
+      "details": [
+        {
+          "domain": "hemisphere",
+          "Omega_sr": 6.283185307179586,
+          "t0": 1.0,
+          "e_W": 6.333813344846523
+        },
+        {
+          "domain": "tetrahedral_voronoi",
+          "Omega_sr": 3.141592653589793,
+          "t0": 0.5,
+          "e_W": 4.516201086817979
+        },
+        {
+          "domain": "octahedral_voronoi",
+          "Omega_sr": 2.0943951023931953,
+          "t0": 0.33333333333333326,
+          "e_W": 3.7180844091481013
+        },
+        {
+          "domain": "small_cap_30deg",
+          "Omega_sr": 0.8417872144769325,
+          "t0": 0.1339745962155613,
+          "e_W": 2.4436524193996574
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "Monte Carlo Voronoi vs cap",
+      "details": [
+        {
+          "eps_tilde": 0.08,
+          "e_cap_analytical": 7.263065452467412,
+          "e_mc_voronoi": 7.218505148418642,
+          "omega_mc": 3.1352592028001562,
+          "rel_diff_pct": 0.6135192411577652
+        },
+        {
+          "eps_tilde": 0.1,
+          "e_cap_analytical": 5.831234888943593,
+          "e_mc_voronoi": 5.795893014985246,
+          "omega_mc": 3.1352592028001562,
+          "rel_diff_pct": 0.6060787231424506
+        },
+        {
+          "eps_tilde": 0.13,
+          "e_cap_analytical": 4.516201086817979,
+          "e_mc_voronoi": 4.495626484674818,
+          "omega_mc": 3.1352592028001562,
+          "rel_diff_pct": 0.4555732073847361
+        },
+        {
+          "eps_tilde": 0.15,
+          "e_cap_analytical": 3.9355833677876353,
+          "e_mc_voronoi": 3.922242600971931,
+          "omega_mc": 3.1352592028001562,
+          "rel_diff_pct": 0.338978127738242
+        },
+        {
+          "eps_tilde": 0.2,
+          "e_cap_analytical": 3.0021359917266426,
+          "e_mc_voronoi": 2.9991398250489407,
+          "omega_mc": 3.1352592028001562,
+          "rel_diff_pct": 0.0998011644362137
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "GL-Skyrme matching",
+      "l1r_MV": -0.004111082225637703,
+      "l2r_MV": 0.0016988681137034996,
+      "l2r_minus_l1r": 0.005809950339341203,
+      "e_GL": 4.6384063906761455,
+      "eps_tilde_GL": 0.12646207342187002,
+      "e_NJL": 4.442882938158366,
+      "eps_tilde_NJL": 0.13222095770215206,
+      "eps_tilde_mean": 0.12934151556201104,
+      "scale_scan": [
+        {
+          "mu_MeV": 135,
+          "l2r_minus_l1r": 0.009498860966469166,
+          "e": 3.6275987284684357
+        },
+        {
+          "mu_MeV": 300,
+          "l2r_minus_l1r": 0.007813324613796229,
+          "e": 3.9997889155780784
+        },
+        {
+          "mu_MeV": 500,
+          "l2r_minus_l1r": 0.0067350442630711126,
+          "e": 4.308090117359369
+        },
+        {
+          "mu_MeV": 775,
+          "l2r_minus_l1r": 0.005809950339341203,
+          "e": 4.6384063906761455
+        },
+        {
+          "mu_MeV": 1000,
+          "l2r_minus_l1r": 0.005271908996973553,
+          "e": 4.869350696086514
+        },
+        {
+          "mu_MeV": 1157,
+          "l2r_minus_l1r": 0.004964081629809264,
+          "e": 5.01805652770058
+        }
+      ],
+      "gl_vs_central_pct": 3.0756975705810103,
+      "njl_vs_central_pct": 1.2692680409251977,
+      "passed": true
+    },
+    {
+      "test": "NJL N_c scan",
+      "details": [
+        {
+          "N_c": 2,
+          "e_NJL": 5.441398092702653,
+          "diff_from_4.5_pct": 20.91995761561451
+        },
+        {
+          "N_c": 3,
+          "e_NJL": 4.442882938158366,
+          "diff_from_4.5_pct": -1.2692680409251977
+        },
+        {
+          "N_c": 4,
+          "e_NJL": 3.8476494904855922,
+          "diff_from_4.5_pct": -14.496677989209061
+        },
+        {
+          "N_c": 5,
+          "e_NJL": 3.441442325727286,
+          "diff_from_4.5_pct": -23.52350387272698
+        },
+        {
+          "N_c": 6,
+          "e_NJL": 3.141592653589793,
+          "diff_from_4.5_pct": -30.18682992022682
+        },
+        {
+          "N_c": 7,
+          "e_NJL": 2.908549623991217,
+          "diff_from_4.5_pct": -35.36556391130629
+        }
+      ],
+      "best_N_c": 3,
+      "passed": true
+    },
+    {
+      "test": "Regularization sensitivity",
+      "e_central": 4.516201086817979,
+      "proof_range_0.10_0.16": {
+        "e_low_eps0.10": 5.831234888943593,
+        "pct_up": 29.118141040352985,
+        "e_high_eps0.16": 3.700786447880141,
+        "pct_down": -18.05532179065043,
+        "symmetrized_pct": 23.58673141550171
+      },
+      "broad_range_0.08_0.18": {
+        "e_low_eps0.08": 7.263065452467412,
+        "pct_up": 60.8224548208684,
+        "e_high_eps0.18": 3.311373366428512,
+        "pct_down": -26.677902450051523,
+        "symmetrized_pct": 43.75017863545996
+      },
+      "gl_range_0.110_0.142": {
+        "e_low_eps0.110": 5.312142801781435,
+        "pct_up": 17.624142496370983,
+        "e_high_eps0.142": 4.147814689901941,
+        "pct_down": -8.156997215896675,
+        "symmetrized_pct": 12.89056985613383
+      },
+      "passed": true
+    },
+    {
+      "test": "Error budget quadrature",
+      "components": {
+        "regularization_pct": 24.0,
+        "higher_order_pct": 12.0,
+        "boundary_pct": 3.0,
+        "cap_geometry_pct": 2.0
+      },
+      "total_pct": 27.073972741361768,
+      "claimed_total_pct": 27.0,
+      "delta_e_W": 1.2183287733612795,
+      "claimed_delta_e_W": 1.2,
+      "total_matches_claimed": "True",
+      "delta_matches_claimed": "True",
+      "passed": "True"
+    },
+    {
+      "test": "Soliton mass consistency",
+      "M_FB_GeV": 1618.6151217786546,
+      "M_ANW_GeV": 1994.24,
+      "Lambda_W_GeV": 1545.6635855661782,
+      "M_FB_over_Lambda": 1.0471975511965976,
+      "M_ANW_over_Lambda": 1.2902160719982982,
+      "ANW_over_FB": 1.2320655930908275,
+      "claimed_M_FB": 1619,
+      "claimed_M_ANW": 1994,
+      "claimed_Lambda": 1546,
+      "M_FB_matches": true,
+      "M_ANW_matches": true,
+      "Lambda_matches": true,
+      "EFT_validity_note": "M_W sits at or above EFT cutoff (M/\u039b > 1)",
+      "passed": true
+    },
+    {
+      "test": "Physical \u03b5 vs effective \u03b5\u0303",
+      "eps_physical": 0.5,
+      "e_W_with_physical_eps": 1.4375905768565216,
+      "eps_tilde_estimate_eps_over_4": 0.125,
+      "e_W_with_estimate": 4.690962396473479,
+      "eps_tilde_required": 0.13,
+      "e_W_with_required": 4.516201086817979,
+      "ratio_eps_tilde_over_eps": 0.26,
+      "half_width_ratios": {
+        "n=1_hw_deg": 28.64788975654116,
+        "n=2_hw_deg": 18.437617205182605,
+        "n=4_hw_deg": 12.46124310209795
+      },
+      "hw_ratio_P4_to_P1": 0.43497944204608224,
+      "adversarial_flag": true,
+      "finding": "Physical \u03b5 = 0.5 gives e_W = 1.44, far below QCD range. Required \u03b5\u0303 = 0.13 is 0.26\u00d7 smaller. Derivative-order estimate \u03b5/4 = 0.125 gives e_W = 4.69, within 4% of central value.",
+      "passed": true
+    },
+    {
+      "test": "GL-Skyrme scale dependence",
+      "e_at_m_pi": 3.6067613959611804,
+      "e_at_M_V": 4.631153031775872,
+      "e_at_4pi_f_pi": 5.009968647206232,
+      "variation_across_scales_pct": 30.299306492728334,
+      "scale_scan_points": 200,
+      "adversarial_note": "40% variation across natural scales comparable to total uncertainty",
+      "passed": true
+    },
+    {
+      "test": "Dimensional analysis",
+      "P_W_dimensions": "[Length^{-2}]",
+      "integral_P4_dimensions": "[Length^{-8}]",
+      "integral_P2_sq_dimensions": "[Length^{-8}]",
+      "kurtosis_dimensions": "[dimensionless]",
+      "e_W_dimensionless": true,
+      "scale_independent": true,
+      "passed": true
+    },
+    {
+      "test": "Numerical table verification (\u00a74.6)",
+      "details": [
+        {
+          "eps_tilde": 0.05,
+          "e_sq_computed": 134.0,
+          "e_sq_claimed": 134.0,
+          "e_sq_rel_error": 6.203396980018326e-06,
+          "e_computed": 11.58,
+          "e_claimed": 11.58,
+          "e_rel_error": 0.00035640695247113953
+        },
+        {
+          "eps_tilde": 0.08,
+          "e_sq_computed": 52.75,
+          "e_sq_claimed": 52.73,
+          "e_sq_rel_error": 0.0004194911212906058,
+          "e_computed": 7.26,
+          "e_claimed": 7.26,
+          "e_rel_error": 0.0004222386318749724
+        },
+        {
+          "eps_tilde": 0.1,
+          "e_sq_computed": 34.0,
+          "e_sq_claimed": 34.0,
+          "e_sq_rel_error": 9.706853038212792e-05,
+          "e_computed": 5.83,
+          "e_claimed": 5.83,
+          "e_rel_error": 0.00021181628535037626
+        },
+        {
+          "eps_tilde": 0.12,
+          "e_sq_computed": 23.82,
+          "e_sq_claimed": 23.83,
+          "e_sq_rel_error": 0.00043866235780304683,
+          "e_computed": 4.88,
+          "e_claimed": 4.88,
+          "e_rel_error": 0.00010805222835072687
+        },
+        {
+          "eps_tilde": 0.13,
+          "e_sq_computed": 20.4,
+          "e_sq_claimed": 20.4,
+          "e_sq_rel_error": 0.00019253644235784668,
+          "e_computed": 4.52,
+          "e_claimed": 4.52,
+          "e_rel_error": 0.0008404675181461093
+        },
+        {
+          "eps_tilde": 0.14,
+          "e_sq_computed": 17.68,
+          "e_sq_claimed": 17.68,
+          "e_sq_rel_error": 6.949697222127128e-06,
+          "e_computed": 4.2,
+          "e_claimed": 4.21,
+          "e_rel_error": 0.0012483141570907995
+        },
+        {
+          "eps_tilde": 0.15,
+          "e_sq_computed": 15.49,
+          "e_sq_claimed": 15.49,
+          "e_sq_rel_error": 7.640769485706299e-05,
+          "e_computed": 3.94,
+          "e_claimed": 3.94,
+          "e_rel_error": 0.0011209726427321466
+        },
+        {
+          "eps_tilde": 0.2,
+          "e_sq_computed": 9.01,
+          "e_sq_claimed": 9.01,
+          "e_sq_rel_error": 0.0003130424884030202,
+          "e_computed": 3.0,
+          "e_claimed": 3.0,
+          "e_rel_error": 0.0007119972422141944
+        },
+        {
+          "eps_tilde": 0.5,
+          "e_sq_computed": 2.07,
+          "e_sq_claimed": 2.07,
+          "e_sq_rel_error": 0.0016103059581320824,
+          "e_computed": 1.44,
+          "e_claimed": 1.44,
+          "e_rel_error": 0.0016732105163044181
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total_tests": 16,
+    "passed": 16,
+    "failed": 0,
+    "adversarial_flags": 2,
+    "overall_status": "PASS",
+    "plot_path": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/prop_4_3_5_adversarial_review2.png"
+  }
+}

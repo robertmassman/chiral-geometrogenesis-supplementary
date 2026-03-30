@@ -1,0 +1,563 @@
+{
+  "theorem": "7.5.5",
+  "title": "Absence of Bulk Phase Transition for SU(N) on Z^4",
+  "timestamp": "2026-02-19T14:10:03.736287",
+  "verification_date": "2026-02-19",
+  "verifications": [
+    {
+      "test": "C-1",
+      "description": "Wilson action well-definedness for SU(N)",
+      "checks": [
+        {
+          "N": 2,
+          "positive_boltzmann": true,
+          "trace_bounded": true,
+          "gauge_invariant": true
+        },
+        {
+          "N": 3,
+          "positive_boltzmann": true,
+          "trace_bounded": true,
+          "gauge_invariant": true
+        },
+        {
+          "N": 4,
+          "positive_boltzmann": true,
+          "trace_bounded": true,
+          "gauge_invariant": true
+        },
+        {
+          "N": 5,
+          "positive_boltzmann": true,
+          "trace_bounded": true,
+          "gauge_invariant": true
+        },
+        {
+          "N": 8,
+          "positive_boltzmann": true,
+          "trace_bounded": true,
+          "gauge_invariant": true
+        }
+      ],
+      "passed": true,
+      "notes": "Verified for N = [2, 3, 4, 5, 8]"
+    },
+    {
+      "test": "C-2",
+      "description": "Strong-coupling mass gap positivity (character expansion)",
+      "results": [
+        {
+          "N": 2,
+          "beta_range": "0.01 to 2",
+          "min_gap": 1.416755,
+          "all_positive": true
+        },
+        {
+          "N": 3,
+          "beta_range": "0.01 to 3",
+          "min_gap": 1.098612,
+          "all_positive": true
+        },
+        {
+          "N": 4,
+          "beta_range": "0.01 to 4",
+          "min_gap": 1.098612,
+          "all_positive": true
+        },
+        {
+          "N": 5,
+          "beta_range": "0.01 to 5",
+          "min_gap": 1.098612,
+          "all_positive": true
+        }
+      ],
+      "passed": true,
+      "notes": "Min gaps: [np.float64(1.416755), np.float64(1.098612), np.float64(1.098612), np.float64(1.098612)]"
+    },
+    {
+      "test": "C-3",
+      "description": "Weak-coupling Hessian positivity (Brascamp-Lieb bound)",
+      "results": [
+        {
+          "N": 2,
+          "beta": 10.0,
+          "lambda_min": 2.928932,
+          "positive": "True"
+        },
+        {
+          "N": 2,
+          "beta": 20.0,
+          "lambda_min": 5.857864,
+          "positive": "True"
+        },
+        {
+          "N": 2,
+          "beta": 50.0,
+          "lambda_min": 14.644661,
+          "positive": "True"
+        },
+        {
+          "N": 2,
+          "beta": 100.0,
+          "lambda_min": 29.289322,
+          "positive": "True"
+        },
+        {
+          "N": 3,
+          "beta": 10.0,
+          "lambda_min": 1.952621,
+          "positive": "True"
+        },
+        {
+          "N": 3,
+          "beta": 20.0,
+          "lambda_min": 3.905243,
+          "positive": "True"
+        },
+        {
+          "N": 3,
+          "beta": 50.0,
+          "lambda_min": 9.763107,
+          "positive": "True"
+        },
+        {
+          "N": 3,
+          "beta": 100.0,
+          "lambda_min": 19.526215,
+          "positive": "True"
+        },
+        {
+          "N": 4,
+          "beta": 10.0,
+          "lambda_min": 1.464466,
+          "positive": "True"
+        },
+        {
+          "N": 4,
+          "beta": 20.0,
+          "lambda_min": 2.928932,
+          "positive": "True"
+        },
+        {
+          "N": 4,
+          "beta": 50.0,
+          "lambda_min": 7.32233,
+          "positive": "True"
+        },
+        {
+          "N": 4,
+          "beta": 100.0,
+          "lambda_min": 14.644661,
+          "positive": "True"
+        },
+        {
+          "N": 5,
+          "beta": 10.0,
+          "lambda_min": 1.171573,
+          "positive": "True"
+        },
+        {
+          "N": 5,
+          "beta": 20.0,
+          "lambda_min": 2.343146,
+          "positive": "True"
+        },
+        {
+          "N": 5,
+          "beta": 50.0,
+          "lambda_min": 5.857864,
+          "positive": "True"
+        },
+        {
+          "N": 5,
+          "beta": 100.0,
+          "lambda_min": 11.715729,
+          "positive": "True"
+        }
+      ],
+      "passed": true,
+      "notes": "Hessian = (beta/N) * Delta_gauge; lambda_min > 0 in axial gauge"
+    },
+    {
+      "test": "C-4",
+      "description": "Dobrushin uniqueness criterion satisfaction",
+      "coord_number": 24,
+      "results": [
+        {
+          "N": 2,
+          "dim_G": 3,
+          "c1": 1.5,
+          "beta_WC": 36.0,
+          "beta_test": 54.0,
+          "dobrushin_value": 0.666667,
+          "satisfied": true
+        },
+        {
+          "N": 3,
+          "dim_G": 8,
+          "c1": 2.6667,
+          "beta_WC": 64.0,
+          "beta_test": 96.0,
+          "dobrushin_value": 0.666667,
+          "satisfied": true
+        },
+        {
+          "N": 4,
+          "dim_G": 15,
+          "c1": 3.75,
+          "beta_WC": 90.0,
+          "beta_test": 135.0,
+          "dobrushin_value": 0.666667,
+          "satisfied": true
+        },
+        {
+          "N": 5,
+          "dim_G": 24,
+          "c1": 4.8,
+          "beta_WC": 115.2,
+          "beta_test": 172.8,
+          "dobrushin_value": 0.666667,
+          "satisfied": true
+        },
+        {
+          "N": 8,
+          "dim_G": 63,
+          "c1": 7.875,
+          "beta_WC": 189.0,
+          "beta_test": 283.5,
+          "dobrushin_value": 0.666667,
+          "satisfied": true
+        }
+      ],
+      "passed": true,
+      "notes": "beta_WC values: [36.0, 64.0, 90.0, 115.2, 189.0]"
+    },
+    {
+      "test": "C-5",
+      "description": "Ground state uniqueness (no competing minima)",
+      "results": [
+        {
+          "N": 2,
+          "center_traces": [
+            {
+              "k": 0,
+              "z": "exp(2pi*i*0/2)",
+              "Re_Tr": 2.0,
+              "is_maximum": "True"
+            },
+            {
+              "k": 1,
+              "z": "exp(2pi*i*1/2)",
+              "Re_Tr": -2.0,
+              "is_maximum": "False"
+            }
+          ],
+          "n_maxima": 1,
+          "unique_ground_state": true
+        },
+        {
+          "N": 3,
+          "center_traces": [
+            {
+              "k": 0,
+              "z": "exp(2pi*i*0/3)",
+              "Re_Tr": 3.0,
+              "is_maximum": "True"
+            },
+            {
+              "k": 1,
+              "z": "exp(2pi*i*1/3)",
+              "Re_Tr": -1.5,
+              "is_maximum": "False"
+            },
+            {
+              "k": 2,
+              "z": "exp(2pi*i*2/3)",
+              "Re_Tr": -1.5,
+              "is_maximum": "False"
+            }
+          ],
+          "n_maxima": 1,
+          "unique_ground_state": true
+        },
+        {
+          "N": 4,
+          "center_traces": [
+            {
+              "k": 0,
+              "z": "exp(2pi*i*0/4)",
+              "Re_Tr": 4.0,
+              "is_maximum": "True"
+            },
+            {
+              "k": 1,
+              "z": "exp(2pi*i*1/4)",
+              "Re_Tr": 0.0,
+              "is_maximum": "False"
+            },
+            {
+              "k": 2,
+              "z": "exp(2pi*i*2/4)",
+              "Re_Tr": -4.0,
+              "is_maximum": "False"
+            },
+            {
+              "k": 3,
+              "z": "exp(2pi*i*3/4)",
+              "Re_Tr": -0.0,
+              "is_maximum": "False"
+            }
+          ],
+          "n_maxima": 1,
+          "unique_ground_state": true
+        },
+        {
+          "N": 5,
+          "center_traces": [
+            {
+              "k": 0,
+              "z": "exp(2pi*i*0/5)",
+              "Re_Tr": 5.0,
+              "is_maximum": "True"
+            },
+            {
+              "k": 1,
+              "z": "exp(2pi*i*1/5)",
+              "Re_Tr": 1.545085,
+              "is_maximum": "False"
+            },
+            {
+              "k": 2,
+              "z": "exp(2pi*i*2/5)",
+              "Re_Tr": -4.045085,
+              "is_maximum": "False"
+            },
+            {
+              "k": 3,
+              "z": "exp(2pi*i*3/5)",
+              "Re_Tr": -4.045085,
+              "is_maximum": "False"
+            },
+            {
+              "k": 4,
+              "z": "exp(2pi*i*4/5)",
+              "Re_Tr": 1.545085,
+              "is_maximum": "False"
+            }
+          ],
+          "n_maxima": 1,
+          "unique_ground_state": true
+        }
+      ],
+      "z4_no_global_constraint": true,
+      "passed": true,
+      "notes": "U_P = 1 is the unique maximum of Re Tr_fund(U_P) for all N"
+    },
+    {
+      "test": "C-6",
+      "description": "Pirogov-Sinai necessary conditions check (failure for Z^4)",
+      "checks": {
+        "PS1_multiple_ground_states": {
+          "Z4_fundamental": {
+            "q": 1,
+            "description": "Unique ground state U_P = 1",
+            "satisfied": false
+          },
+          "FCC_fundamental": {
+            "q": 2,
+            "description": "Two ground states: R=1 vs R=3",
+            "satisfied": true
+          },
+          "Z4_adjoint_SU3": {
+            "q": 3,
+            "description": "Z_3 center symmetry: 3 degenerate ground states",
+            "satisfied": true
+          }
+        },
+        "PS2_peierls_condition": {
+          "Z4_fundamental": {
+            "applicable": false,
+            "reason": "Cannot define contours with single ground state"
+          },
+          "FCC_fundamental": {
+            "applicable": true,
+            "reason": "Contours between R=1 and R=3 regions"
+          }
+        },
+        "PS3_finite_range": {
+          "Z4_fundamental": {
+            "satisfied": true,
+            "reason": "Nearest-neighbor plaquette interaction"
+          }
+        }
+      },
+      "ps1_fails_for_z4": true,
+      "ps2_vacuous_for_z4": true,
+      "no_first_order_predicted": true,
+      "passed": true,
+      "notes": "PS1 violated: unique ground state \u2192 no first-order transition"
+    },
+    {
+      "test": "C-7",
+      "description": "FCC vs Z^4 transfer matrix structure comparison",
+      "z4": {
+        "global_label_constraint": false,
+        "min_gap": 0.014857,
+        "all_gaps_positive": true,
+        "has_transition": false
+      },
+      "fcc": {
+        "global_label_constraint": true,
+        "beta_c": 5.1,
+        "has_transition": true,
+        "mechanism": "R=1 vs R=3 competition from global label constraint"
+      },
+      "passed": true,
+      "notes": "Z^4: no constraint, gap always positive. FCC: global constraint creates transition."
+    },
+    {
+      "test": "C-8",
+      "description": "Fundamental vs adjoint action phase structure",
+      "results": [
+        {
+          "N": 2,
+          "fundamental": {
+            "center_degeneracy": 1,
+            "ground_states": 1,
+            "pirogov_sinai_applicable": false,
+            "bulk_transition": false
+          },
+          "adjoint": {
+            "center_degeneracy": 2,
+            "ground_states": 2,
+            "pirogov_sinai_applicable": true,
+            "bulk_transition": true
+          }
+        },
+        {
+          "N": 3,
+          "fundamental": {
+            "center_degeneracy": 1,
+            "ground_states": 1,
+            "pirogov_sinai_applicable": false,
+            "bulk_transition": false
+          },
+          "adjoint": {
+            "center_degeneracy": 3,
+            "ground_states": 3,
+            "pirogov_sinai_applicable": true,
+            "bulk_transition": true
+          }
+        },
+        {
+          "N": 4,
+          "fundamental": {
+            "center_degeneracy": 1,
+            "ground_states": 1,
+            "pirogov_sinai_applicable": false,
+            "bulk_transition": false
+          },
+          "adjoint": {
+            "center_degeneracy": 4,
+            "ground_states": 4,
+            "pirogov_sinai_applicable": true,
+            "bulk_transition": true
+          }
+        },
+        {
+          "N": 5,
+          "fundamental": {
+            "center_degeneracy": 1,
+            "ground_states": 1,
+            "pirogov_sinai_applicable": false,
+            "bulk_transition": false
+          },
+          "adjoint": {
+            "center_degeneracy": 5,
+            "ground_states": 5,
+            "pirogov_sinai_applicable": true,
+            "bulk_transition": true
+          }
+        }
+      ],
+      "passed": true,
+      "notes": "Fundamental: unique ground state, no transition. Adjoint: Z_N degeneracy, transition."
+    },
+    {
+      "test": "C-9",
+      "description": "Mass gap continuity verification (numerical)",
+      "results": [
+        {
+          "N": 2,
+          "n_points": 1000,
+          "max_jump": 0.057888,
+          "jump_location_beta": 0.5,
+          "max_derivative": 1.9603,
+          "is_continuous": "True"
+        },
+        {
+          "N": 3,
+          "n_points": 1000,
+          "max_jump": 0.052976,
+          "jump_location_beta": 0.5,
+          "max_derivative": 1.794,
+          "is_continuous": "True"
+        },
+        {
+          "N": 5,
+          "n_points": 1000,
+          "max_jump": 0.054577,
+          "jump_location_beta": 0.5,
+          "max_derivative": 1.8482,
+          "is_continuous": "True"
+        }
+      ],
+      "passed": true,
+      "notes": "Mass gap is smooth across all beta for all N tested"
+    },
+    {
+      "test": "C-10",
+      "description": "Free energy analyticity (numerical derivatives)",
+      "results": [
+        {
+          "N": 2,
+          "n_points": 500,
+          "f1_finite": true,
+          "f2_finite": true,
+          "f3_finite": true,
+          "f2_max_jump": 0.000379,
+          "f2_spike_ratio": 0.0635,
+          "all_smooth": "True"
+        },
+        {
+          "N": 3,
+          "n_points": 500,
+          "f1_finite": true,
+          "f2_finite": true,
+          "f3_finite": true,
+          "f2_max_jump": 0.012712,
+          "f2_spike_ratio": 1.6695,
+          "all_smooth": "True"
+        },
+        {
+          "N": 5,
+          "n_points": 500,
+          "f1_finite": true,
+          "f2_finite": true,
+          "f3_finite": true,
+          "f2_max_jump": 0.00474,
+          "f2_spike_ratio": 1.0899,
+          "all_smooth": "True"
+        }
+      ],
+      "passed": true,
+      "notes": "All derivatives finite and smooth; no singularities detected"
+    }
+  ],
+  "overall_status": "PASSED",
+  "summary": {
+    "total_tests": 10,
+    "passed": 10,
+    "failed": 0
+  }
+}

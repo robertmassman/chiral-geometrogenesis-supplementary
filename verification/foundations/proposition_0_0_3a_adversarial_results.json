@@ -1,0 +1,53 @@
+{
+  "theorem": "Proposition 0.0.3a",
+  "title": "Computational Crystallization of the Stella Octangula",
+  "timestamp": "2026-03-26T09:18:52.162504",
+  "c_tests_passed": true,
+  "python_tests": [
+    {
+      "test": "T7",
+      "claim": "Fisher rank 0 for N=2",
+      "degenerate": 200,
+      "trials": 200,
+      "passed": true
+    },
+    {
+      "test": "T8",
+      "claim": "Fisher rank 2 for N=3",
+      "nondegenerate": 200,
+      "trials": 200,
+      "passed": true
+    },
+    {
+      "test": "T11",
+      "claim": "\u210d Fisher rank = \u2102 Fisher rank",
+      "results": {
+        "3": {
+          "complex_rank": 2,
+          "quaternion_rank": 2,
+          "match": "True"
+        },
+        "4": {
+          "complex_rank": 3,
+          "quaternion_rank": 3,
+          "match": "True"
+        },
+        "5": {
+          "complex_rank": 4,
+          "quaternion_rank": 4,
+          "match": "True"
+        }
+      },
+      "passed": true
+    },
+    {
+      "test": "T12",
+      "claim": "Z\u2086 \u2245 Z\u2082 \u00d7 Z\u2083, Z\u2084 \u2247 Z\u2082\u00d7Z\u2082",
+      "bijection": true,
+      "op_preserved": true,
+      "z4_not_product": true,
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED"
+}

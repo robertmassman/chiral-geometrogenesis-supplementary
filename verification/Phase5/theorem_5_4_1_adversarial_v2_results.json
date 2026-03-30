@@ -1,0 +1,333 @@
+{
+  "theorem": "5.4.1",
+  "title": "Singularity Resolution in Emergent Gravity",
+  "version": "v2_rerun",
+  "timestamp": "2026-02-27T13:40:07.749004",
+  "tests": [
+    {
+      "test": "1a. NN distances all equal a",
+      "passed": true,
+      "details": "max deviation = 5.35e-51"
+    },
+    {
+      "test": "1b. Spectral radius = 8/a^2 at BZ points",
+      "passed": true,
+      "details": "|lambda(X)| = 6.035266e+69, |lambda(W)| = 6.035266e+69, theory = 6.035266e+69",
+      "computed": 6.0352657642709485e+69,
+      "expected": 6.0352657642709485e+69
+    },
+    {
+      "test": "1c. Grid search confirms bound (81^3)",
+      "passed": true,
+      "details": "grid max = 5.800686e+69 (0.961132 of theoretical)",
+      "computed": 5.800686157068557e+69,
+      "expected": 6.0352657642709485e+69
+    },
+    {
+      "test": "2. Cosine factorization identity (20000 trials)",
+      "passed": true,
+      "details": "max error: 7.11e-15",
+      "computed": 7.105427357601002e-15
+    },
+    {
+      "test": "3. M_ab = 4a^2 delta_ab",
+      "passed": true,
+      "details": "max deviation = 1.03e-84"
+    },
+    {
+      "test": "4. lambda(k) -> -k^2 as k -> 0",
+      "passed": true,
+      "details": "Convergence: scale=1e-01: err=4.41e-04, scale=1e-02: err=4.41e-06, scale=1e-03: err=4.46e-08, scale=1e-04: err=8.27e-08"
+    },
+    {
+      "test": "5a. R_max = sqrt(3)/ln(3) = 1.577",
+      "passed": true,
+      "details": "sqrt(3)/ln(3) = 1.576581",
+      "computed": 1.5765805875598837,
+      "expected": 1.577
+    },
+    {
+      "test": "5b. Algebraic chain consistent",
+      "passed": true,
+      "details": "Direct: 1.5765805876, From a^2: 1.5765805876"
+    },
+    {
+      "test": "6a. Triangle side = a (not sqrt(2)*a)",
+      "passed": true,
+      "details": "d12/a=1.0000000000, d13/a=1.0000000000, d23/a=1.0000000000"
+    },
+    {
+      "test": "6b. A_min = sqrt(3)*a^2 = 8.8 l_P^2",
+      "passed": true,
+      "details": "Computed: 8.7889 l_P^2, Theorem: 8.7889 l_P^2",
+      "computed": 8.788898309344878,
+      "expected": 8.788898309344878
+    },
+    {
+      "test": "6c. Triangle side != sqrt(2)*a (v1 error would give this)",
+      "passed": true,
+      "details": "dist/(sqrt(2)*a) = 0.7071 (far from 1.0, confirming side = a)"
+    },
+    {
+      "test": "7. A_min > 4*ln(3)*l_P^2",
+      "passed": true,
+      "details": "A_min = 8.79 > 4.39 l_P^2 (ratio 2.00)",
+      "computed": 8.788898309344878,
+      "expected": 4.394449154672439
+    },
+    {
+      "test": "8a. M_min (bare) = 0.42 M_P",
+      "passed": true,
+      "details": "M_min = 0.4182 M_P = 9.1008e-09 kg",
+      "computed": 0.41815018388496483,
+      "expected": 0.42
+    },
+    {
+      "test": "8b. Conservative M_min ~ 0.7 M_P (with form factor)",
+      "passed": true,
+      "details": "bare 0.42 M_P < conservative 0.7 M_P < 2.0 M_P"
+    },
+    {
+      "test": "9. rho_crit (Electron)/rho_P",
+      "passed": true,
+      "details": "7.1605e-03 (expected ~7.2e-03)",
+      "computed": 0.0071604932407069045,
+      "expected": 0.0072
+    },
+    {
+      "test": "9. rho_crit (Proton)/rho_P",
+      "passed": true,
+      "details": "2.4141e+04 (expected ~2.4e+04)",
+      "computed": 24141.292483351484,
+      "expected": 24000.0
+    },
+    {
+      "test": "9. rho_crit (Neutron)/rho_P",
+      "passed": true,
+      "details": "2.4208e+04 (expected ~2.4e+04)",
+      "computed": 24207.891999993084,
+      "expected": 24000.0
+    },
+    {
+      "test": "9d. Hierarchy: rho_crit(e) < 1 < rho_crit(p)",
+      "passed": true,
+      "details": "e: 7.1605e-03 < 1 < p: 2.4141e+04"
+    },
+    {
+      "test": "10a. J5.J5 < 0 for timelike current",
+      "passed": true,
+      "details": "J5.J5 = -0.9700",
+      "computed": -0.97
+    },
+    {
+      "test": "10b. -(3/2)*kappa_T^2*(J5.J5) > 0 (defocusing)",
+      "passed": true,
+      "details": "Torsion contribution = +1.4550*kappa_T^2 (positive = defocusing)"
+    },
+    {
+      "test": "11a. f(r, r_s=0) = 1 (flat space)",
+      "passed": true,
+      "details": "f = 1 when r_s = 0"
+    },
+    {
+      "test": "11b. f(r, a^2=0) = 1-r_s/r (Schwarzschild)",
+      "passed": true,
+      "details": "Recovers exact Schwarzschild"
+    },
+    {
+      "test": "11c. f(a) is finite",
+      "passed": true,
+      "details": "f(a) = 0.0000e+00"
+    },
+    {
+      "test": "11d. f(r >> r_s) -> 1 (asymptotic flatness)",
+      "passed": true,
+      "details": "f(10^10 r_s) = 0.999999999900"
+    },
+    {
+      "test": "12. GW echo Dt ~ 0.01-0.2 s for 30 M_sun",
+      "passed": true,
+      "details": "Dt = 0.0268 s (single-trip); round-trip ~ 0.0536 s",
+      "computed": 0.026809648016436562
+    },
+    {
+      "test": "13. Both O(1/l_P^2), CG tighter",
+      "passed": true,
+      "details": "CG: 1.58, LQG: 17.7, ratio: 0.089",
+      "computed": 1.5765805875598837,
+      "expected": 17.72853185595568
+    },
+    {
+      "test": "14. Form factor at BZ points",
+      "passed": true,
+      "details": "Gamma=1.0000(exp 1.0000); X=-0.3333(exp -0.3333); W=-0.3333(exp -0.3333); L=0.0000(exp 0.0000)"
+    },
+    {
+      "test": "15. LV at LHC << GRB bound",
+      "passed": true,
+      "details": "CG: 1.31e-30 << GRB: 1e-16 (margin: 1.31e-14)",
+      "computed": 1.3149311032378943e-30,
+      "expected": 1e-16
+    },
+    {
+      "test": "16a. K_bound = 20*R_max^2 = 1280/a^4",
+      "passed": true,
+      "details": "20 * (8)^2 = 1280"
+    },
+    {
+      "test": "16b. Physical K << rigorous bound",
+      "passed": true,
+      "details": "Schw: 12.0/a^4, dS: 10.7/a^4, Bound: 1280/a^4"
+    },
+    {
+      "test": "17. All dimensions consistent",
+      "passed": true,
+      "details": "R_max [1/m^2]: OK; K_max [1/m^4]: OK; A_min [m^2]: OK; rho_crit [kg/m^3]: OK; kappa_T [m^2 s^2 / kg]: OK; a^2 [m^2]: OK"
+    },
+    {
+      "test": "18a. O(k^4) coeff [100]",
+      "passed": true,
+      "details": "computed=2.000000, expected=2.000000"
+    },
+    {
+      "test": "18a. O(k^4) coeff [110]",
+      "passed": true,
+      "details": "computed=2.500000, expected=2.500000"
+    },
+    {
+      "test": "18a. O(k^4) coeff [111]",
+      "passed": true,
+      "details": "computed=2.666667, expected=2.666667"
+    },
+    {
+      "test": "18b. Anisotropy ratio [111]/[100] = 4/3",
+      "passed": true,
+      "details": "ratio = 1.333333, expected = 1.333333",
+      "computed": 1.333333333333334,
+      "expected": 1.3333333333333333
+    },
+    {
+      "test": "19a. epsilon(a) for 10 M_P BH",
+      "passed": true,
+      "details": "epsilon(a) = 1.1098 (>0.1 means lattice effects significant)",
+      "computed": 1.1098214198830183
+    },
+    {
+      "test": "19b. epsilon(r_s) << 1 for M >> M_P regime",
+      "passed": true,
+      "details": "epsilon(r_s) = 0.001586 for 10 M_P BH",
+      "computed": 0.00158571025149391
+    },
+    {
+      "test": "19c. epsilon(r_s) negligible for 3 M_sun BH",
+      "passed": true,
+      "details": "epsilon = 2.11e-78 (vanishingly small, confirming GR validity at horizon)",
+      "computed": 2.1096135112049683e-78
+    },
+    {
+      "test": "20a. S_min (BH) = A_min / (4 l_P^2)",
+      "passed": true,
+      "details": "S_min = 2.20 (> 1 means at least 1 nat of entropy)",
+      "computed": 2.1972245773362196
+    },
+    {
+      "test": "20b. S_min (Z3 counting) ~ 2 bits",
+      "passed": true,
+      "details": "S_min = 2.00 (using ln(3) base)",
+      "computed": 2.0
+    },
+    {
+      "test": "21a. T_H(M_min) ~ T_Planck",
+      "passed": true,
+      "details": "T_H = 0.0947 T_P = 1.34e+31 K",
+      "computed": 0.09473508517374724
+    },
+    {
+      "test": "21b. Evaporation time at M_min ~ Planck time",
+      "passed": true,
+      "details": "tau(M_min) = 1191.7 t_P = 6.42e-41 s",
+      "computed": 1191.702100578102
+    },
+    {
+      "test": "22a. SEC violation possible for omega >> grad/|chi|",
+      "passed": true,
+      "details": "omega^2|chi|^2 = 100.0 vs 3|nabla chi|^2 + 2V = 4.0",
+      "computed": 100.0,
+      "expected": 4.0
+    },
+    {
+      "test": "22b. Critical frequency omega_crit",
+      "passed": true,
+      "details": "omega_crit = 2.0000, omega = 10.0, ratio = 5.0",
+      "computed": 2.0
+    },
+    {
+      "test": "22c. NOTE: SEC violation is CG-specific (pressure functions)",
+      "passed": null,
+      "details": "Standard scalar does NOT violate SEC with V>=0. CG formula from Thm 5.1.1 \u00a78.4 includes pressure functions P_c(x) which modify T_mu_nu structure. Full re-derivation from CG Lagrangian needed to confirm. Theorem is honest about this (\u00a70, Honest Limitations #3)."
+    },
+    {
+      "test": "23a. Proton: lattice before torsion",
+      "passed": true,
+      "details": "rho_crit(p) = 2.4e+04 rho_P >> 1"
+    },
+    {
+      "test": "23b. Electron: torsion before lattice",
+      "passed": true,
+      "details": "rho_crit(e) = 7.2e-03 rho_P << 1"
+    },
+    {
+      "test": "23c. Lattice bound universal (independent of species)",
+      "passed": true,
+      "details": "R_max = 1.58/l_P^2 regardless of matter content"
+    },
+    {
+      "test": "24a. Two horizons for 5 M_P BH",
+      "passed": true,
+      "details": "r_outer = 9.43 l_P (cf r_s = 10 l_P), r_inner = 2.62 l_P (cf a = 2.25 l_P)",
+      "computed": 9.429289485206713,
+      "expected": 10.0
+    },
+    {
+      "test": "24b. No horizon for M < M_min",
+      "passed": true,
+      "details": "M = 0.3 M_P < M_min ~ 0.42 M_P: 0 real positive root(s)"
+    },
+    {
+      "test": "25a. Two independent hypothesis failures",
+      "passed": true,
+      "details": "SEC violation (Hypothesis 2) AND smooth manifold failure (Hypothesis 7) each independently block the singularity theorems"
+    },
+    {
+      "test": "25b. NEC generically satisfied",
+      "passed": true,
+      "details": "NEC: R_mu_nu k^mu k^nu >= 0 from positive-definite kinetic terms"
+    },
+    {
+      "test": "25c. Trapped surfaces exist but A >= A_min",
+      "passed": true,
+      "details": "A_min = 8.79 l_P^2 > 0"
+    },
+    {
+      "test": "26a. R_max vs k_max^2 same order",
+      "passed": true,
+      "details": "R_max = 1.58/l_P^2, k_max^2 = 1.95/l_P^2, ratio = 0.811",
+      "computed": 1.576580587559884,
+      "expected": 1.9450283382066345
+    },
+    {
+      "test": "26b. a^2 = 8*ln(3)/sqrt(3) l_P^2 = 5.07 l_P^2",
+      "passed": true,
+      "details": "a^2 = 5.0743 l_P^2",
+      "computed": 5.074272804780512,
+      "expected": 5.07
+    }
+  ],
+  "summary": {
+    "total": 55,
+    "passed": 54,
+    "failed": 0,
+    "issues": 1,
+    "verdict": "PASS"
+  }
+}

@@ -25,12 +25,12 @@ print("=" * 70)
 
 print("\n### Coordinate Convention Comparison ###\n")
 
-# Convention 1: Definition 0.1.1 (§2.2)
+# Convention 1: Definition 0.1.1 (§2.2) — Convention A (canonical)
 # Vertices on unit sphere, specific labeling
-v_R_def = np.array([1, 1, 1]) / np.sqrt(3)
-v_G_def = np.array([1, -1, -1]) / np.sqrt(3)
-v_B_def = np.array([-1, 1, -1]) / np.sqrt(3)
-v_W_def = np.array([-1, -1, 1]) / np.sqrt(3)  # W = (-1,-1,1)/√3
+v_R_def = np.array([1, -1, -1]) / np.sqrt(3)
+v_G_def = np.array([-1, 1, -1]) / np.sqrt(3)
+v_B_def = np.array([-1, -1, 1]) / np.sqrt(3)
+v_W_def = np.array([1, 1, 1]) / np.sqrt(3)  # W = (1,1,1)/√3
 
 print("Convention 1 (Definition 0.1.1 §2.2):")
 print(f"  v_R = {v_R_def}")
@@ -133,8 +133,8 @@ print(f"This IS proportional to normal: {np.allclose(W_thm_norm, normal/norm(nor
 
 # What about Definition's v_W?
 print(f"\nDefinition's v_W = {v_W_def}")
-# v_W = (-1,-1,1)/√3 ≈ (-0.577, -0.577, 0.577)
-# This is NOT proportional to (1,1,1)!
+# v_W = (1,1,1)/√3 ≈ (0.577, 0.577, 0.577) — Convention A (canonical)
+# This IS proportional to (1,1,1)!
 
 # Let's check which Definition vertex is perpendicular to the RGB plane
 print("\nChecking which Definition vertex is ⊥ to RGB plane:")
@@ -148,8 +148,8 @@ for name, v in def_dict.items():
 
 print("\n### Determining correct W in Definition 0.1.1 convention ###")
 
-# In Def 0.1.1:
-# v_R = (1,1,1)/√3, v_G = (1,-1,-1)/√3, v_B = (-1,1,-1)/√3, v_W = (-1,-1,1)/√3
+# In Def 0.1.1 (Convention A):
+# v_R = (1,-1,-1)/√3, v_G = (-1,1,-1)/√3, v_B = (-1,-1,1)/√3, v_W = (1,1,1)/√3
 
 # Compute the plane through v_R, v_G, v_B
 def_v1 = v_G_def - v_R_def
@@ -290,10 +290,10 @@ print("\n" + "=" * 70)
 print("PROVING EQUIVALENCE OF CONVENTIONS")
 print("=" * 70)
 
-# Definition 0.1.1 uses:
-# v_R = (1,1,1)/√3, v_G = (1,-1,-1)/√3, v_B = (-1,1,-1)/√3, v_W = (-1,-1,1)/√3
+# Definition 0.1.1 uses (Convention A):
+# v_R = (1,-1,-1)/√3, v_G = (-1,1,-1)/√3, v_B = (-1,-1,1)/√3, v_W = (1,1,1)/√3
 
-# Theorem 0.3.1 body uses:
+# Theorem 0.3.1 body uses (same Convention A):
 # R = (1,-1,-1), G = (-1,1,-1), B = (-1,-1,1), W = (1,1,1)
 
 # These are related by a COORDINATE RELABELING
@@ -358,27 +358,25 @@ print("EXPLICIT CORRESPONDENCE")
 print("=" * 70)
 
 # From the output above, we have:
-# Theorem R (1,-1,-1)/√3 = Definition v_G
-# Theorem G (-1,1,-1)/√3 = Definition v_B
-# Theorem B (-1,-1,1)/√3 = Definition v_W
-# Theorem W (1,1,1)/√3 = Definition v_R
+# Theorem R (1,-1,-1)/√3 = Definition v_R  (Convention A: both match)
+# Theorem G (-1,1,-1)/√3 = Definition v_G  (Convention A: both match)
+# Theorem B (-1,-1,1)/√3 = Definition v_B  (Convention A: both match)
+# Theorem W (1,1,1)/√3 = Definition v_W    (Convention A: both match)
 
 print("""
-The correspondence is:
-  Theorem R = Definition v_G = (1,-1,-1)/√3
-  Theorem G = Definition v_B = (-1,1,-1)/√3
-  Theorem B = Definition v_W = (-1,-1,1)/√3
-  Theorem W = Definition v_R = (1,1,1)/√3
+The correspondence is (both use Convention A):
+  Theorem R = Definition v_R = (1,-1,-1)/√3
+  Theorem G = Definition v_G = (-1,1,-1)/√3
+  Theorem B = Definition v_B = (-1,-1,1)/√3
+  Theorem W = Definition v_W = (1,1,1)/√3
 
-This is a CYCLIC PERMUTATION of the color labels!
+Both conventions are IDENTICAL under Convention A (canonical labeling).
 
-In the Theorem's convention:
+In Convention A:
   - The vertex called "W" is at (1,1,1)/√3
-  - This is what Definition 0.1.1 calls "v_R"
-
-In Definition 0.1.1's convention:
-  - The vertex called "v_W" is at (-1,-1,1)/√3
-  - This is what the Theorem calls "B"
+  - The vertex called "R" is at (1,-1,-1)/√3
+  - The vertex called "G" is at (-1,1,-1)/√3
+  - The vertex called "B" is at (-1,-1,1)/√3
 """)
 
 # ============================================================================
@@ -404,12 +402,12 @@ REQUIRED CHANGES:
    FROM: "Fourth tetrahedron vertex at (1,1,1) or (-1,-1,1)/√3 normalized"
    TO:   "Fourth tetrahedron vertex at (1,1,1), normalized to (1,1,1)/√3"
 
-4. Add NOTE after Symbol Table explaining convention:
-   "NOTE: This theorem uses a different vertex labeling than Definition 0.1.1.
-    The correspondence is: Theorem's (R,G,B,W) = Definition's (v_G,v_B,v_W,v_R).
-    Both describe the same geometric tetrahedron; only labels differ.
+4. Add NOTE after Symbol Table confirming convention:
+   "NOTE: This theorem uses Convention A, consistent with Definition 0.1.1.
+    The correspondence is: Theorem's (R,G,B,W) = Definition's (v_R,v_G,v_B,v_W).
+    Both describe the same geometric tetrahedron with identical labeling.
     The key geometric property—that one vertex direction is perpendicular to
-    the plane through the other three—is independent of labeling."
+    the plane through the other three—is fully consistent across the framework."
 
 The proofs in §5-§8 are CORRECT with the (1,1,1)/√3 convention.
 Only the statement and symbol table need correction.

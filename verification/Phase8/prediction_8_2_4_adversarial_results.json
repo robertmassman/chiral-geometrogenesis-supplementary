@@ -1,0 +1,121 @@
+{
+  "V1_c_W": {
+    "paper": 0.054,
+    "computed_1dof": 0.0535,
+    "computed_4dof": 0.0625,
+    "status": "MINOR_ROUNDING_ERROR"
+  },
+  "V2_E_W": {
+    "paper": 0.00241,
+    "computed": 0.00241,
+    "status": "VERIFIED"
+  },
+  "V3_T_c": {
+    "T_c_scenario_C": 312.7,
+    "T_c_scenario_B": 220.8,
+    "T_c_adopted": 130,
+    "c_W_needed_for_130": 0.18,
+    "c_W_computed": 0.0535,
+    "enhancement_needed": 3.4,
+    "status": "ISSUE_T_C_NOT_DERIVED"
+  },
+  "V4_alpha_W": {
+    "alpha_W_minimal": 3.6334e-07,
+    "alpha_W_adopted": 0.01,
+    "enhancement_needed": 165.9,
+    "alpha_n3_actual": 3.27e-06,
+    "alpha_n10_actual": 3.6334e-05,
+    "paper_claims_n3": 0.003,
+    "paper_claims_n10": 0.04,
+    "status": "CRITICAL_ARITHMETIC_ERROR"
+  },
+  "V5_efficiencies": {
+    "kappa_v_formula": 0.0134,
+    "kappa_v_paper": 0.8,
+    "kappa_v_jouguet_approx": 0.76,
+    "kappa_turb_paper": 0.08,
+    "kappa_turb_correct_jouguet": 0.04,
+    "status": "CRITICAL_WRONG_FORMULA_CITED"
+  },
+  "V6_GW_spectrum": {
+    "f_col_mHz": 3.2,
+    "f_sw_mHz": 20.81,
+    "f_turb_mHz": 29.57,
+    "Omega_col_paper": 6.41e-17,
+    "Omega_col_corrected": 1.95e-18,
+    "Omega_sw_paper_kv08": 1.95e-13,
+    "Omega_sw_kv_formula": 5.45e-17,
+    "Omega_turb_paper": 8.77e-12,
+    "Omega_turb_computed": 8.77e-12,
+    "turb_discrepancy_factor": 974.3,
+    "status": "MULTIPLE_ISSUES"
+  },
+  "V7_parameter_scan": {
+    "a0.001_b50": 1.95e-15,
+    "a0.001_b100": 9.74e-16,
+    "a0.001_b200": 4.87e-16,
+    "a0.001_b500": 1.95e-16,
+    "a0.001_b1000": 9.74e-17,
+    "a0.001_b2000": 4.87e-17,
+    "a0.001_b5000": 1.95e-17,
+    "a0.005_b50": 2.27e-13,
+    "a0.005_b100": 1.13e-13,
+    "a0.005_b200": 5.67e-14,
+    "a0.005_b500": 2.27e-14,
+    "a0.005_b1000": 1.13e-14,
+    "a0.005_b2000": 5.67e-15,
+    "a0.005_b5000": 2.27e-15,
+    "a0.01_b50": 1.75e-12,
+    "a0.01_b100": 8.73e-13,
+    "a0.01_b200": 4.36e-13,
+    "a0.01_b500": 1.75e-13,
+    "a0.01_b1000": 8.73e-14,
+    "a0.01_b2000": 4.36e-14,
+    "a0.01_b5000": 1.75e-14,
+    "a0.02_b50": 7.66e-12,
+    "a0.02_b100": 3.83e-12,
+    "a0.02_b200": 1.91e-12,
+    "a0.02_b500": 7.66e-13,
+    "a0.02_b1000": 3.83e-13,
+    "a0.02_b2000": 1.91e-13,
+    "a0.02_b5000": 7.66e-14,
+    "a0.03_b50": 1.69e-11,
+    "a0.03_b100": 8.45e-12,
+    "a0.03_b200": 4.22e-12,
+    "a0.03_b500": 1.69e-12,
+    "a0.03_b1000": 8.45e-13,
+    "a0.03_b2000": 4.22e-13,
+    "a0.03_b5000": 1.69e-13,
+    "a0.05_b50": 4.52e-11,
+    "a0.05_b100": 2.26e-11,
+    "a0.05_b200": 1.13e-11,
+    "a0.05_b500": 4.52e-12,
+    "a0.05_b1000": 2.26e-12,
+    "a0.05_b2000": 1.13e-12,
+    "a0.05_b5000": 4.52e-13,
+    "a0.1_b50": 1.65e-10,
+    "a0.1_b100": 8.23e-11,
+    "a0.1_b200": 4.11e-11,
+    "a0.1_b500": 1.65e-11,
+    "a0.1_b1000": 8.23e-12,
+    "a0.1_b2000": 4.11e-12,
+    "a0.1_b5000": 1.65e-12
+  },
+  "V8_phase_transition_order": {
+    "v_Tc_over_Tc_minimal": 0.01788,
+    "v_Tc_over_Tc_n10": 0.1788,
+    "v_Tc_over_Tc_n167": 2.9864,
+    "status": "EXTREMELY_WEAK_WITHOUT_ENHANCEMENT"
+  },
+  "issues": [
+    "V1: c_W rounding error (0.054 vs 0.0535, ~1% difference)",
+    "V3: T_c=130 GeV requires c_W enhancement of 3.4x over minimal value",
+    "V4 [CRITICAL]: Geometric enhancement of E_W needs factor 166, paper claims 3-10",
+    "V5 [CRITICAL]: kappa_v = 0.0134 from cited formula, paper uses 0.8 (factor 60 discrepancy)",
+    "V6: Turbulence amplitude discrepancy: computed 8.77e-12, paper claims 9.0e-15 (factor 974x)"
+  ],
+  "warnings": [
+    "V1: Using 4 Higgs dof in symmetric phase gives c_W = 0.0625 (17% larger)"
+  ],
+  "verdict": "FAIL_CRITICAL_ISSUES"
+}

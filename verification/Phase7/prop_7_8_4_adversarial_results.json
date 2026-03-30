@@ -1,0 +1,133 @@
+{
+  "proposition": "7.8.4",
+  "title": "V-Scheme BLM Glueball Mass Ratio \u2014 Adversarial",
+  "verification_type": "multi_agent_adversarial",
+  "date": "2026-02-23T10:56:13.158027",
+  "tests_total": 10,
+  "tests_passed": 10,
+  "tests_failed": 0,
+  "overall": "PASS",
+  "results": [
+    {
+      "name": "MAV-1: Chi-squared correction (M-1 fix)",
+      "passed": true,
+      "details": "chi2_correct=0.1838 vs doc=0.064; still << 1, conclusion unchanged",
+      "numerical_data": {
+        "chi2_correct": 0.18382352941176505,
+        "chi2_dof_correct": 0.09191176470588253,
+        "chi2_document": 0.064,
+        "alpha_avg": 0.3726470588235294,
+        "error_factor": 10.201083763139078
+      }
+    },
+    {
+      "name": "MAV-2: Weighted average rounding impact (M-2)",
+      "passed": "True",
+      "details": "alpha_exact=0.37265, shift=0.00135, |dR|=0.00795 << delta_R=0.0605",
+      "numerical_data": {
+        "alpha_exact": 0.3726470588235294,
+        "alpha_rounded": 0.374,
+        "R_exact": 3.4507671781282294,
+        "R_rounded": 3.4428186127067457,
+        "rounding_fraction": 0.13133064459844324
+      }
+    },
+    {
+      "name": "MAV-3: Derivative consistency (M-3)",
+      "passed": "True",
+      "details": "|dR/dalpha|(0.374) = 5.882 (correct), |dR/dalpha|(0.38) = 5.943 (Prop 7.8.3); both give delta_R = 0.059",
+      "numerical_data": {
+        "dR_at_374": 5.881808563849793,
+        "dR_at_380": 5.9430436176979615,
+        "delta_R_374": 0.058818085638497934,
+        "delta_R_380": 0.059430436176979615
+      }
+    },
+    {
+      "name": "MAV-4: BLM scale computation",
+      "passed": "True",
+      "details": "exp(-31/22)=0.2444, Lambda_V/Lambda_MS=4.092, mu_BLM=210.8 MeV",
+      "numerical_data": {
+        "mu_blm_factor": 0.24436533250890002,
+        "lambda_ratio": 4.092233500280074,
+        "q_star": 862.6652560313029,
+        "mu_blm": 210.8054821339647,
+        "beta_star": 1.9606028546165974
+      }
+    },
+    {
+      "name": "MAV-5: V-scheme vs MSbar conversion (P-4)",
+      "passed": "True",
+      "details": "NLO correction at 870 MeV: 71% (large, justifies direct lattice); upward BLM check works: alpha_MS(1222)=0.2326",
+      "numerical_data": {
+        "alpha_ms_870": 0.2872521229644249,
+        "nlo_correction_870": 0.7086227268931522,
+        "alpha_v_pert_870": 0.49080550564532277,
+        "alpha_v_lattice_870": 0.374
+      }
+    },
+    {
+      "name": "MAV-6: Lattice correlation and TUMQCD quenching (P-3/L-3)",
+      "passed": "True",
+      "details": "Worst case (rho=0.7): 2.5% (<3%); w/o TUMQCD: 2.4%; tension with lattice: 0.65sigma",
+      "numerical_data": {
+        "delta_naive": 0.01028991510855053,
+        "delta_rho50": 0.01414213562373095,
+        "delta_rho70": 0.014948186373673194,
+        "rel_worst": 2.523757451017985,
+        "rel_no_tumqcd": 2.424366106925306
+      }
+    },
+    {
+      "name": "MAV-7: Salpeter critical coupling (P-2)",
+      "passed": true,
+      "details": "alpha_V=0.374 > alpha_c(Salpeter)=0.2122 but < alpha_c(AFM)=0.6667; linear potential stabilizes (C/L ratio=0.852)",
+      "numerical_data": {
+        "alpha_c_afm": 0.6666666666666666,
+        "alpha_c_salpeter": 0.2122065907891938,
+        "alpha_V": 0.374,
+        "coulomb_linear_ratio": 0.8519362186788153
+      }
+    },
+    {
+      "name": "MAV-8: Combined analysis robustness",
+      "passed": "True",
+      "details": "R_comb = 3.4400 +/- 0.0575 (1.7%); c_FI = 6.86 +/- 0.14; method tension = 0.23sigma; lattice tension = 0.57sigma",
+      "numerical_data": {
+        "R_combined": 3.4399725356540656,
+        "dR_combined": 0.05747022804263265,
+        "c_FI": 6.859305236094206,
+        "dc_FI": 0.1354647325598224,
+        "tension_methods": 0.22732992679025366,
+        "tension_lattice": 0.5715697410341631,
+        "c_3sigma_lower": 6.309661935297029
+      }
+    },
+    {
+      "name": "MAV-9: NLO Casimir scaling correction (P-1)",
+      "passed": "True",
+      "details": "NLO correction: 1.42%; Casimir uncertainty on R: 0.67% (subdominant)",
+      "numerical_data": {
+        "nlo_correction": 0.014172401883155638,
+        "casimir_delta_R": 0.022952124084711638,
+        "casimir_rel_pct": 0.6666666666666666
+      }
+    },
+    {
+      "name": "MAV-10: Monte Carlo bootstrap (N=100k)",
+      "passed": "True",
+      "details": "R_V(MC) = 3.4502 +/- 0.0605 (analytic: 3.4428 +/- 0.0588); c_FI(MC) = 6.873 +/- 0.138; 3sigma lower = 6.455",
+      "numerical_data": {
+        "R_mc_mean": 3.4502392786894944,
+        "R_mc_std": 0.0604697456752167,
+        "R_comb_mc_mean": 3.447055420400434,
+        "R_comb_mc_std": 0.059072976229957254,
+        "c_FI_mc_mean": 6.872983226134614,
+        "c_FI_mc_std": 0.1382601081528205,
+        "c_FI_3sigma_lower": 6.455313248763455,
+        "R_agreement_sigma": 0.1227170033524722,
+        "dR_agreement_pct": 0.028080819339650738
+      }
+    }
+  ]
+}

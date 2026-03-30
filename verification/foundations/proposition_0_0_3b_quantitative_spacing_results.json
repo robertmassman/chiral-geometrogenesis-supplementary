@@ -1,0 +1,143 @@
+{
+  "proposition": "0.0.3b",
+  "open_question": "1 \u2014 Quantitative Lattice Spacing",
+  "timestamp": "2026-03-27T18:16:44.238241",
+  "tests": [
+    {
+      "test": "fourier_transform",
+      "checks": [
+        {
+          "name": "FT analytical vs numerical",
+          "max_relative_error": 0.028706194912404635,
+          "passed": "True"
+        },
+        {
+          "name": "V\u0302(k\u21920) diverges (long-range potential)",
+          "V_hat_at_k=0.01": 1954.2800392937152,
+          "passed": "True"
+        },
+        {
+          "name": "V\u0302(k) decays exponentially at large k",
+          "values": {
+            "k=5": 0.0266003485425923,
+            "k=10": 8.961586931859365e-05,
+            "k=20": 2.0342770863340863e-09
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "dispersion_and_k0",
+      "checks": [
+        {
+          "name": "k\u2080\u00b7R_stella is O(1) across C_bare range",
+          "k0_R_values": [
+            2.3838192519524446,
+            1.8560614933431498,
+            1.6572476698494853,
+            1.259142937741446,
+            1.113593637750686,
+            0.982528585474971,
+            0.8299519686314735
+          ],
+          "passed": true
+        }
+      ],
+      "reference_case": {
+        "C_bare": 0.1,
+        "k0": 1.6572476698494853,
+        "k0_R": 1.6572476698494853,
+        "a_B_over_R": 3.791337542052624,
+        "a_B_fm": 1.7003011474843401
+      }
+    },
+    {
+      "test": "scale_comparison",
+      "checks": [
+        {
+          "name": "a_B/a_H ratio matches QCD-Planck hierarchy",
+          "log10_R_over_lP": 19.40427745143729,
+          "log10_ratios": [
+            19.090536609098415,
+            19.567657863818077,
+            19.86868785948206,
+            20.090536609098415
+          ],
+          "passed": true
+        },
+        {
+          "name": "Prop 0.0.17q hierarchy: R = \u2113_P exp(44.68)",
+          "R_computed_fm": 0.41000328168709554,
+          "R_observed_fm": 0.44847,
+          "relative_error": 0.08577322521663532,
+          "passed": "True",
+          "note": "Prop 0.0.17q gives 91% agreement (0.41 vs 0.45 fm)"
+        }
+      ],
+      "scale_table": {
+        "l_P_fm": 1.616255e-20,
+        "a_H_fm": 3.6407997067004766e-20,
+        "R_stella_fm": 0.44847,
+        "a_B_typical_fm": 1.34541,
+        "log10_separation": 19.40427745143729
+      }
+    },
+    {
+      "test": "analytical_k0",
+      "checks": [
+        {
+          "name": "x = k\u2080R is O(1) for all \u03b7",
+          "x_solutions": [
+            0.9337291054971275,
+            1.3256980212129565,
+            1.5299177178243981,
+            2.0905944885867345,
+            2.3693823798504834,
+            3.0999936219658992,
+            3.448533456937105
+          ],
+          "passed": true
+        }
+      ],
+      "a_over_R_range": [
+        6.729130826262881,
+        4.739529822508706,
+        4.106877928124473,
+        3.00545387519274,
+        2.651824104295094,
+        2.0268381401362454,
+        1.821987632029571
+      ]
+    },
+    {
+      "test": "two_scale_consistency",
+      "checks": [
+        {
+          "name": "Many Planck sites per Brazovskii wavelength",
+          "N_1d": 3.69536944733303e+19,
+          "N_3d": 5.046306110907897e+58,
+          "passed": "True"
+        },
+        {
+          "name": "Z\u2083 stacking period 3 at both scales",
+          "passed": true,
+          "note": "Topological constraint, same group Z3 = Z(SU(3))"
+        },
+        {
+          "name": "Hierarchy matches Prop 0.0.17q",
+          "log10_ratio": 19.44322351519893,
+          "log10_expected": 19.404277451437288,
+          "fractional_agreement": 0.997992913476984,
+          "passed": "True"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_checks": 10,
+    "passed": 10,
+    "failed": 0,
+    "overall": "PASSED"
+  }
+}

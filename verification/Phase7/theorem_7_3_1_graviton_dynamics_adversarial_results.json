@@ -1,0 +1,120 @@
+{
+  "theorem": "7.3.1 (Graviton Dynamics Extension)",
+  "title": "Adversarial Physics Verification",
+  "timestamp": "2026-02-27T11:33:56.512676",
+  "protocol": "ADVERSARIAL",
+  "tests": [
+    {
+      "test": "Independent propagator re-derivation",
+      "c_W_agreement": 0.0,
+      "ghost_pole_M_P_sq": 789.5683520871487,
+      "bz_boundary_M_P_sq": 3.1531611751197675,
+      "ghost_inaccessible": true,
+      "errors": [],
+      "warnings": [],
+      "verified": true,
+      "confidence": "HIGH"
+    },
+    {
+      "test": "Dimensional analysis of all key equations",
+      "checks": [
+        {
+          "equation": "Eq. (12.6.11)",
+          "LHS": "[D_\u03bc\u03bd\u03b1\u03b2(k)]",
+          "RHS": "GeV\u207b\u2074",
+          "consistent": true
+        },
+        {
+          "equation": "Eq. (12.7.3)",
+          "LHS": "[M]",
+          "RHS": "dimensionless",
+          "consistent": true
+        },
+        {
+          "equation": "Eq. (12.7.5)",
+          "LHS": "[\u03b4]",
+          "RHS": "dimensionless",
+          "consistent": true
+        },
+        {
+          "equation": "Eq. (12.9.7)",
+          "LHS": "[\u03b4m\u00b2]",
+          "RHS": "GeV\u00b2",
+          "consistent": true
+        },
+        {
+          "equation": "Eq. (12.10.10)",
+          "LHS": "[D]",
+          "RHS": "integer",
+          "consistent": true
+        },
+        {
+          "equation": "\u03ba\u00b2 = 16\u03c0G = 16\u03c0/M_P\u00b2",
+          "LHS": "3.372227e-37",
+          "RHS": "3.372227e-37",
+          "consistent": true
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "verified": true,
+      "confidence": "HIGH"
+    },
+    {
+      "test": "Limiting cases verification",
+      "limits_checked": 6,
+      "errors": [],
+      "warnings": [
+        "Continuum limit formally recovers GR divergences \u2014 CG relies on physical lattice"
+      ],
+      "verified": true,
+      "confidence": "HIGH"
+    },
+    {
+      "test": "Adversarial stress-test of all-orders argument",
+      "attacks": 5,
+      "errors": [],
+      "warnings": [
+        "Non-perturbative effects acknowledged as Phase 6 open question"
+      ],
+      "verified": true,
+      "confidence": "HIGH"
+    },
+    {
+      "test": "Independent numerical cross-checks",
+      "G_consistency": 3.2187087923456033e-07,
+      "ghost_safety_margin": 250.40532603194896,
+      "electron_correction": 1.1312013080000112e-43,
+      "planck_correction": 0.0012665147955292222,
+      "errors": [],
+      "warnings": [],
+      "verified": true,
+      "confidence": "HIGH"
+    },
+    {
+      "test": "Comparison with established literature",
+      "comparisons_made": 5,
+      "errors": [],
+      "warnings": [
+        "CG uses polynomial (lattice) softening vs string theory exponential \u2014 different but both work"
+      ],
+      "verified": true,
+      "confidence": "HIGH"
+    }
+  ],
+  "summary": {
+    "total_tests": 6,
+    "verified": 6,
+    "failed": 0,
+    "total_errors": 0,
+    "total_warnings": 3,
+    "errors": [],
+    "warnings": [
+      "Continuum limit formally recovers GR divergences \u2014 CG relies on physical lattice",
+      "Non-perturbative effects acknowledged as Phase 6 open question",
+      "CG uses polynomial (lattice) softening vs string theory exponential \u2014 different but both work"
+    ],
+    "overall_confidence": "HIGH"
+  },
+  "overall_status": "VERIFIED"
+}

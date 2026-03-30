@@ -1,0 +1,132 @@
+{
+  "proposition": "0.0.39",
+  "title": "SU(3) Root Space Geometry Verification",
+  "timestamp": "2026-02-12T14:49:05.417159",
+  "tasks": [
+    {
+      "task": 1,
+      "passed": true,
+      "checks": [
+        {
+          "name": "weight_sum_zero",
+          "passed": true
+        },
+        {
+          "name": "equilateral_weights",
+          "passed": true
+        },
+        {
+          "name": "root_sum",
+          "passed": true
+        },
+        {
+          "name": "Z3_permutes_weights",
+          "passed": true
+        },
+        {
+          "name": "Z3_cycle_alpha2",
+          "passed": true
+        },
+        {
+          "name": "orbit_mixes_signs",
+          "passed": true,
+          "detail": "Z_3 orbit {alpha_2, -(alpha_1+alpha_2), alpha_1} mixes positive and negative"
+        }
+      ]
+    },
+    {
+      "task": 2,
+      "passed": true,
+      "checks": [
+        {
+          "name": "S3_does_not_preserve_positive_roots",
+          "passed": true
+        },
+        {
+          "name": "s1s2_is_R120",
+          "passed": true
+        },
+        {
+          "name": "s2s1_is_R240",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "task": 3,
+      "passed": true,
+      "checks": [
+        {
+          "name": "T+_orbit_correct",
+          "passed": true
+        },
+        {
+          "name": "T+_orbit_mixed_sign",
+          "passed": true,
+          "detail": "2 positive, 1 negative"
+        },
+        {
+          "name": "T-_orbit_correct",
+          "passed": true
+        },
+        {
+          "name": "orbits_partition_roots",
+          "passed": true
+        },
+        {
+          "name": "direct_matches_Z3",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "task": 4,
+      "passed": true,
+      "checks": [
+        {
+          "name": "S3_preserves_h",
+          "passed": true
+        },
+        {
+          "name": "S3_nontrivial_on_h",
+          "passed": true
+        },
+        {
+          "name": "S3_fixed_point_zero",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "task": 5,
+      "passed": true,
+      "checks": [
+        {
+          "name": "C_negates_H1",
+          "passed": true
+        },
+        {
+          "name": "C_negates_H2",
+          "passed": true
+        },
+        {
+          "name": "C_maps_E_alpha_to_neg_E_neg_alpha",
+          "passed": true
+        },
+        {
+          "name": "3bar_weights_negate",
+          "passed": true
+        },
+        {
+          "name": "w0_sends_alpha_i_to_neg_alpha_j",
+          "passed": true
+        },
+        {
+          "name": "negation_equals_w0_times_dynkin",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "overall_status": "PASSED"
+}

@@ -1,0 +1,253 @@
+{
+  "theorem": "0.0.41",
+  "name": "Dimensional Incompleteness",
+  "date": "2026-03-29T13:21:57.184966",
+  "tests": [
+    {
+      "name": "R+ action freeness",
+      "passed": true,
+      "details": "Tested 7 values of lambda. Action is free: no lambda != 1 fixes all quantities.",
+      "data": {
+        "lambdas_tested": [
+          0.5,
+          0.99,
+          1.001,
+          2.0,
+          10.0,
+          1e-10,
+          10000000000.0
+        ]
+      }
+    },
+    {
+      "name": "Dimensionless quantities invariant under R+",
+      "passed": true,
+      "details": "All dim=0 quantities unchanged under rescaling (as expected)."
+    },
+    {
+      "name": "Scale homogeneity: epsilon_1 (degree 0)",
+      "passed": true,
+      "details": "Max relative violation: 0.00e+00",
+      "data": {
+        "max_violation": 0.0,
+        "degree": 0
+      }
+    },
+    {
+      "name": "Scale homogeneity: epsilon_2 (degree 0)",
+      "passed": true,
+      "details": "Max relative violation: 0.00e+00",
+      "data": {
+        "max_violation": 0.0,
+        "degree": 0
+      }
+    },
+    {
+      "name": "Scale homogeneity: epsilon_3 (degree 0)",
+      "passed": true,
+      "details": "Max relative violation: 1.78e-15",
+      "data": {
+        "max_violation": 1.7763568394002505e-15,
+        "degree": 0
+      }
+    },
+    {
+      "name": "Scale homogeneity: epsilon_4 (degree 1)",
+      "passed": true,
+      "details": "Max relative violation: 5.82e-35",
+      "data": {
+        "max_violation": 5.819875138301567e-35,
+        "degree": 1
+      }
+    },
+    {
+      "name": "Scale homogeneity: epsilon_5 (degree -2)",
+      "passed": true,
+      "details": "Max relative violation: 9.62e-77",
+      "data": {
+        "max_violation": 9.620480176262676e-77,
+        "degree": -2
+      }
+    },
+    {
+      "name": "Scale homogeneity: epsilon_6 (degree 1)",
+      "passed": true,
+      "details": "Max relative violation: 2.15e-15",
+      "data": {
+        "max_violation": 2.1471549443438796e-15,
+        "degree": 1
+      }
+    },
+    {
+      "name": "Scale homogeneity: epsilon_7 (degree 0)",
+      "passed": true,
+      "details": "Max relative violation: 4.44e-16",
+      "data": {
+        "max_violation": 4.440892098500626e-16,
+        "degree": 0
+      }
+    },
+    {
+      "name": "All orbit points satisfy bootstrap equations",
+      "passed": "True",
+      "details": "Max |epsilon_4| on orbit: 5.82e-11 (over 1000 points)",
+      "data": {
+        "orbit_points": 1000,
+        "max_residual": 5.820766091346741e-11
+      }
+    },
+    {
+      "name": "Fiber is non-compact (R+, not S1)",
+      "passed": "True",
+      "details": "R_stella range on orbit: [4.48e-04, 4.48e+02] fm (spans 1e+06x)"
+    },
+    {
+      "name": "Irreducibility: adding 'ratio sqrt_sigma/M_P' preserves fiber",
+      "passed": "True",
+      "details": "Max residual on orbit: 6.02e-36. Fiber persists \u2014 equation is degree 0 (scale-homogeneous)."
+    },
+    {
+      "name": "Irreducibility: adding 'ratio (R_stella/ell_P)^3' preserves fiber",
+      "passed": "True",
+      "details": "Max residual on orbit: 2.22e-16. Fiber persists \u2014 equation is degree 0 (scale-homogeneous)."
+    },
+    {
+      "name": "Irreducibility: adding 'product sqrt_sigma^2 * R_stella^2' preserves fiber",
+      "passed": "True",
+      "details": "Max residual on orbit: 2.18e-11. Fiber persists \u2014 equation is degree 0 (scale-homogeneous)."
+    },
+    {
+      "name": "One input (R_stella) uniquely selects fiber point",
+      "passed": true,
+      "details": "After fixing R_stella: recovered R = 0.4484700000 fm (target: 0.44847 fm, error: 0.00e+00)"
+    },
+    {
+      "name": "One input determines all other dimensionful quantities",
+      "passed": true,
+      "details": "Max relative error in recovery: 1.72e-16",
+      "data": {
+        "R_stella": {
+          "recovered": 0.44847,
+          "original": 0.44847,
+          "rel_error": 0.0
+        },
+        "sqrt_sigma": {
+          "recovered": 440.0004459607108,
+          "original": 440.00044596071086,
+          "rel_error": 1.291894573804222e-16
+        },
+        "ell_P": {
+          "recovered": 1.6162553547002596e-20,
+          "original": 1.6162553547002596e-20,
+          "rel_error": 0.0
+        },
+        "M_P": {
+          "recovered": 1.2208899999999998e+22,
+          "original": 1.22089e+22,
+          "rel_error": 1.717723955475104e-16
+        },
+        "a_lattice": {
+          "recovered": 3.640800505703481e-20,
+          "original": 3.640800505703481e-20,
+          "rel_error": 0.0
+        }
+      }
+    },
+    {
+      "name": "Alternative anchor: sqrt_sigma (dim=1)",
+      "passed": true,
+      "details": "Fixed sqrt_sigma = 4.400004e+02 (target: 4.400004e+02, error: 1.29e-16)"
+    },
+    {
+      "name": "Alternative anchor: ell_P (dim=-1)",
+      "passed": true,
+      "details": "Fixed ell_P = 1.616255e-20 (target: 1.616255e-20, error: 0.00e+00)"
+    },
+    {
+      "name": "Alternative anchor: M_P (dim=1)",
+      "passed": true,
+      "details": "Fixed M_P = 1.220890e+22 (target: 1.220890e+22, error: 0.00e+00)"
+    },
+    {
+      "name": "Alternative anchor: a_lattice (dim=-1)",
+      "passed": "True",
+      "details": "Fixed a_lattice = 3.640801e-20 (target: 3.640801e-20, error: 0.00e+00)"
+    },
+    {
+      "name": "Dimensionless system: entire R+ orbit is valid",
+      "passed": true,
+      "details": "All 5 degree-0 equations have CONSTANT residual across lambda in [1e-5, 1e5]. Worst variation: 1.78e-15 (epsilon_3). Scale is completely undetermined \u2014 any lambda gives an equally valid solution."
+    },
+    {
+      "name": "Inhomogeneous eq (R_stella = 0.44847) breaks fiber",
+      "passed": "True",
+      "details": "Of 500 orbit points, only 0 satisfy R_stella = 0.44847 fm. Fiber is collapsed to a point."
+    },
+    {
+      "name": "Bound check: Standard Model (minimal)",
+      "passed": true,
+      "details": "N_dim = 1 >= 1 \u2713. N_dimensionless = 19. Does not saturate."
+    },
+    {
+      "name": "Bound check: Standard Model (with neutrinos)",
+      "passed": true,
+      "details": "N_dim = 1 >= 1 \u2713. N_dimensionless = 26. Does not saturate."
+    },
+    {
+      "name": "Bound check: String Theory (typical CY)",
+      "passed": true,
+      "details": "N_dim = 1 >= 1 \u2713. N_dimensionless = 100-500. Does not saturate."
+    },
+    {
+      "name": "Bound check: Chiral Geometrogenesis",
+      "passed": true,
+      "details": "N_dim = 1 >= 1 \u2713. N_dimensionless = 0. Saturates bound."
+    },
+    {
+      "name": "Information content of R_stella",
+      "passed": "True",
+      "details": "Range: 132.9 bits, Precision: 3.8 bits, Total: 136.7 bits (theorem claims ~137).",
+      "data": {
+        "range_bits": 132.8771237954945,
+        "precision_bits": 3.8365012677171206,
+        "total_bits": 136.71362506321162
+      }
+    },
+    {
+      "name": "Dimensionless ratios invariant on fiber (S_bar well-defined)",
+      "passed": true,
+      "details": "All ratios invariant under R+ scaling. R_stella/ell_P = 2.774747e+19, sqrt_sigma/M_P = 3.603932e-20."
+    },
+    {
+      "name": "Adversarial: N_c * R_stella is still scale-homogeneous",
+      "passed": true,
+      "details": "Topological integer \u00d7 dimensionful = scale-homogeneous (degree -1)."
+    },
+    {
+      "name": "Adversarial: pi * R/ell_P is scale-invariant (degree 0)",
+      "passed": true,
+      "details": "Transcendental \u00d7 ratio = dimensionless, trivially scale-invariant."
+    },
+    {
+      "name": "Adversarial: f(R/ell_P) is scale-invariant for any f",
+      "passed": true,
+      "details": "Any function of dimensionless ratios is scale-invariant (tested log, sin)."
+    },
+    {
+      "name": "Adversarial: floor(R/ell_P) is still scale-invariant",
+      "passed": true,
+      "details": "floor(R/ell_P) = 27747471876631175168. Non-analytic function of dimensionless ratio is still invariant."
+    },
+    {
+      "name": "Second input (sqrt_sigma) is redundant",
+      "passed": true,
+      "details": "R_stella -> sqrt_sigma = 440.0004 MeV (matches 440.0004 MeV). Second input adds no information."
+    },
+    {
+      "name": "Contradictory second input is detected",
+      "passed": true,
+      "details": "If sqrt_sigma = 500.0 MeV but R_stella predicts 440.0 MeV: system is inconsistent. Second input is either redundant or contradictory."
+    }
+  ],
+  "overall_pass": true
+}

@@ -1,0 +1,609 @@
+{
+  "falsification_condition": "FC2",
+  "claim": "SU(3) is the unique confining gauge group",
+  "timestamp": "2026-03-21T06:09:05.997982",
+  "total_groups_tested": 35,
+  "tests": [
+    {
+      "test": "C1_rank_constraint",
+      "constraint": "rank(G) \u2264 2",
+      "derivation": "D = 4 \u2192 D_space = 3 \u2192 weight space \u2282 \u211d\u00b2 \u2192 rank \u2264 2",
+      "groups_tested": 35,
+      "groups_passing": [
+        "SU(2)",
+        "SU(3)",
+        "SO(5)",
+        "Sp(2)",
+        "Sp(4)",
+        "G\u2082",
+        "SO(3)"
+      ],
+      "groups_failing": [
+        "SU(4)",
+        "SU(5)",
+        "SU(6)",
+        "SU(7)",
+        "SU(8)",
+        "SU(9)",
+        "SO(7)",
+        "SO(9)",
+        "SO(11)",
+        "SO(13)",
+        "SO(15)",
+        "SO(17)",
+        "Sp(6)",
+        "Sp(8)",
+        "Sp(10)",
+        "Sp(12)",
+        "Sp(14)",
+        "Sp(16)",
+        "SO(6)",
+        "SO(8)",
+        "SO(10)",
+        "SO(12)",
+        "SO(14)",
+        "SO(16)",
+        "F\u2084",
+        "E\u2086",
+        "E\u2087",
+        "E\u2088"
+      ],
+      "passed": true
+    },
+    {
+      "test": "C2_z3_center",
+      "constraint": "Z\u2083 \u2286 center(G)",
+      "derivation": "Stella phases = cube roots of unity \u27f9 Z\u2083 \u2282 center(G)",
+      "groups_tested": 35,
+      "groups_passing": [
+        "SU(3)",
+        "SU(6)",
+        "SU(9)",
+        "E\u2086"
+      ],
+      "groups_failing": [
+        "SU(2)",
+        "SU(4)",
+        "SU(5)",
+        "SU(7)",
+        "SU(8)",
+        "SO(5)",
+        "SO(7)",
+        "SO(9)",
+        "SO(11)",
+        "SO(13)",
+        "SO(15)",
+        "SO(17)",
+        "Sp(2)",
+        "Sp(4)",
+        "Sp(6)",
+        "Sp(8)",
+        "Sp(10)",
+        "Sp(12)",
+        "Sp(14)",
+        "Sp(16)",
+        "SO(6)",
+        "SO(8)",
+        "SO(10)",
+        "SO(12)",
+        "SO(14)",
+        "SO(16)",
+        "G\u2082",
+        "F\u2084",
+        "E\u2087",
+        "E\u2088",
+        "SO(3)"
+      ],
+      "passed": true
+    },
+    {
+      "test": "C3_confinement",
+      "constraint": "Z\u2083 center symmetry for quark confinement",
+      "groups_tested": 35,
+      "groups_passing": [
+        "SU(3)",
+        "SU(6)",
+        "SU(9)",
+        "E\u2086"
+      ],
+      "groups_failing": [
+        "SU(2)",
+        "SU(4)",
+        "SU(5)",
+        "SU(7)",
+        "SU(8)",
+        "SO(5)",
+        "SO(7)",
+        "SO(9)",
+        "SO(11)",
+        "SO(13)",
+        "SO(15)",
+        "SO(17)",
+        "Sp(2)",
+        "Sp(4)",
+        "Sp(6)",
+        "Sp(8)",
+        "Sp(10)",
+        "Sp(12)",
+        "Sp(14)",
+        "Sp(16)",
+        "SO(6)",
+        "SO(8)",
+        "SO(10)",
+        "SO(12)",
+        "SO(14)",
+        "SO(16)",
+        "G\u2082",
+        "F\u2084",
+        "E\u2087",
+        "E\u2088",
+        "SO(3)"
+      ],
+      "passed": true
+    },
+    {
+      "test": "C4_homotopy_pi3",
+      "constraint": "\u03c0\u2083(G) = \u2124",
+      "groups_tested": 35,
+      "groups_passing": [
+        "SU(2)",
+        "SU(3)",
+        "SU(4)",
+        "SU(5)",
+        "SU(6)",
+        "SU(7)",
+        "SU(8)",
+        "SU(9)",
+        "SO(5)",
+        "SO(7)",
+        "SO(9)",
+        "SO(11)",
+        "SO(13)",
+        "SO(15)",
+        "SO(17)",
+        "Sp(2)",
+        "Sp(4)",
+        "Sp(6)",
+        "Sp(8)",
+        "Sp(10)",
+        "Sp(12)",
+        "Sp(14)",
+        "Sp(16)",
+        "SO(6)",
+        "SO(8)",
+        "SO(10)",
+        "SO(12)",
+        "SO(14)",
+        "SO(16)",
+        "G\u2082",
+        "F\u2084",
+        "E\u2086",
+        "E\u2087",
+        "E\u2088",
+        "SO(3)"
+      ],
+      "groups_failing": [],
+      "note": "\u03c0\u2083 = \u2124 is universal; selection comes from C1 \u2229 C2 \u2229 C3 \u2229 C4",
+      "passed": true
+    },
+    {
+      "test": "combined_uniqueness",
+      "constraint": "C1 \u2229 C2 \u2229 C3 \u2229 C4",
+      "groups_tested": 35,
+      "survivors": [
+        "SU(3)"
+      ],
+      "elimination_matrix": [
+        {
+          "group": "SU(2)",
+          "rank": 1,
+          "center": "Z\u2082",
+          "C1_rank": true,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SU(3)",
+          "rank": 2,
+          "center": "Z\u2083",
+          "C1_rank": true,
+          "C2_z3_center": true,
+          "C3_confinement": true,
+          "C4_pi3": true,
+          "passes_all": true
+        },
+        {
+          "group": "SU(4)",
+          "rank": 3,
+          "center": "Z\u2084",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SU(5)",
+          "rank": 4,
+          "center": "Z\u2085",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SU(6)",
+          "rank": 5,
+          "center": "Z\u2086",
+          "C1_rank": false,
+          "C2_z3_center": true,
+          "C3_confinement": true,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SU(7)",
+          "rank": 6,
+          "center": "Z\u2087",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SU(8)",
+          "rank": 7,
+          "center": "Z\u2088",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SU(9)",
+          "rank": 8,
+          "center": "Z\u2089",
+          "C1_rank": false,
+          "C2_z3_center": true,
+          "C3_confinement": true,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(5)",
+          "rank": 2,
+          "center": "Z\u2082",
+          "C1_rank": true,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(7)",
+          "rank": 3,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(9)",
+          "rank": 4,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(11)",
+          "rank": 5,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(13)",
+          "rank": 6,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(15)",
+          "rank": 7,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(17)",
+          "rank": 8,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "Sp(2)",
+          "rank": 1,
+          "center": "Z\u2082",
+          "C1_rank": true,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "Sp(4)",
+          "rank": 2,
+          "center": "Z\u2082",
+          "C1_rank": true,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "Sp(6)",
+          "rank": 3,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "Sp(8)",
+          "rank": 4,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "Sp(10)",
+          "rank": 5,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "Sp(12)",
+          "rank": 6,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "Sp(14)",
+          "rank": 7,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "Sp(16)",
+          "rank": 8,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(6)",
+          "rank": 3,
+          "center": "Z\u2084",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(8)",
+          "rank": 4,
+          "center": "Z\u2082\u00d7Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(10)",
+          "rank": 5,
+          "center": "Z\u2084",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(12)",
+          "rank": 6,
+          "center": "Z\u2082\u00d7Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(14)",
+          "rank": 7,
+          "center": "Z\u2084",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(16)",
+          "rank": 8,
+          "center": "Z\u2082\u00d7Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "G\u2082",
+          "rank": 2,
+          "center": "trivial",
+          "C1_rank": true,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "F\u2084",
+          "rank": 4,
+          "center": "trivial",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "E\u2086",
+          "rank": 6,
+          "center": "Z\u2083",
+          "C1_rank": false,
+          "C2_z3_center": true,
+          "C3_confinement": true,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "E\u2087",
+          "rank": 7,
+          "center": "Z\u2082",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "E\u2088",
+          "rank": 8,
+          "center": "trivial",
+          "C1_rank": false,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        },
+        {
+          "group": "SO(3)",
+          "rank": 1,
+          "center": "trivial",
+          "C1_rank": true,
+          "C2_z3_center": false,
+          "C3_confinement": false,
+          "C4_pi3": true,
+          "passes_all": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "G2_elimination",
+      "passed": true,
+      "checks": [
+        {
+          "name": "G\u2082 root ratio = \u221a3",
+          "passed": true
+        },
+        {
+          "name": "G\u2082 center is trivial (det(Cartan) = 1)",
+          "passed": true
+        },
+        {
+          "name": "SU(3) center order = 3 (det(Cartan) = 3)",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test": "cross_theorem_consistency",
+      "checks": [
+        {
+          "name": "Both paths agree on all test groups",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "killing_form_comparison",
+      "checks": [
+        {
+          "name": "SU(3) weights form equilateral triangle",
+          "passed": true
+        },
+        {
+          "name": "SU(3) weights sum to zero (color neutrality)",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "completeness",
+      "checks": [
+        {
+          "name": "Enumeration of rank \u2264 2 groups is complete (Cartan classification)",
+          "passed": true
+        },
+        {
+          "name": "Only SU(3) has rank \u2264 2 AND Z\u2083 center",
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED",
+  "conclusion": "SU(3) is the UNIQUE compact simple Lie group satisfying all four constraints: rank \u2264 2 (from D=4), Z\u2083 \u2286 center (from stella phases), confinement via center symmetry, and \u03c0\u2083 = \u2124 (instantons). Verified against 35 groups."
+}

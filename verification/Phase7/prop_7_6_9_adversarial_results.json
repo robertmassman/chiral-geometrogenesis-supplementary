@@ -1,0 +1,474 @@
+{
+  "proposition": "7.6.9",
+  "title": "Scaling Window and Mass Ratio Stabilization on D\u2084 Lattice",
+  "verification_type": "adversarial_physics",
+  "timestamp": "2026-02-14T18:45:58.220129",
+  "based_on": "Multi-Agent Verification Report 2026-02-14",
+  "tests": [
+    {
+      "test": "APV-1",
+      "description": "k_max factor-of-2 convention check (M-1)",
+      "beta": 100,
+      "g0_sq": 0.06,
+      "k_max_no_factor2": 138,
+      "k_max_with_factor2": 69,
+      "ratio": 2.0,
+      "g_at_kmax_no2": 0.09996452593997122,
+      "g_at_kmax_with2": 0.09996452593997122,
+      "factor2_detected": true,
+      "both_reach_g_star": "True",
+      "passed": true,
+      "finding": "CONFIRMED: k_max differs by factor ~2 between conventions. No-factor-2: k_max=138, With-factor-2: k_max=69. Both reach g*\u00b2 at their respective k_max.",
+      "notes": "Convention must be explicitly stated and consistently applied."
+    },
+    {
+      "test": "APV-2",
+      "description": "Eq.(1.4) coefficient: 3/b\u2080 vs 12b\u2080 (M-2)",
+      "coeff_statement_3_over_b0": 43.06736465929902,
+      "coeff_derivation_12b0": 0.8358997650492866,
+      "log_term": 5.131263281884871,
+      "delta_term": 1.1512925464970227,
+      "beta_from_statement_coeff": 270.5731228533274,
+      "beta_from_derivation_coeff": 5.251586940853451,
+      "beta_iterative": 6.201884745328056,
+      "derivation_matches_iterative": "False",
+      "statement_wildly_off": "True",
+      "passed": true,
+      "finding": "CONFIRMED ERROR: Statement Eq.(1.4) uses 3/b\u2080=43.07, giving \u03b2_sc=270.6. Correct 12b\u2080=0.836 gives \u03b2_sc=5.3 \u2248 6.2 (iterative).",
+      "notes": "Statement Eq.(1.4) must be corrected to use 12b\u2080."
+    },
+    {
+      "test": "APV-3",
+      "description": "Dimensional consistency Eq.(1.11) (M-3)",
+      "a4_sigma2_dimension": "Energy^(-4) \u00d7 Energy^4 = dimensionless",
+      "m_phys_dimension": "Energy",
+      "eq_1_11_consistent": false,
+      "eq_1_12_consistent": true,
+      "correct_option_A": "m(a) = m(0)(1 + c_m\u00b7a\u2074\u03c3\u00b2)",
+      "correct_option_B": "m(a) = m(0) + c_m\u00b7a\u2074\u03c3^{5/2}",
+      "passed": true,
+      "finding": "CONFIRMED ERROR: Eq.(1.11) is dimensionally inconsistent. c_m\u00b7a\u2074\u03c3\u00b2 is dimensionless, cannot be added to m(0) [Energy]. Eq.(1.12) for string tension IS consistent.",
+      "notes": "The Applications file \u00a712.1 acknowledges this but resolves it by reinterpreting the correction as multiplicative."
+    },
+    {
+      "test": "APV-4",
+      "description": "(a\u221a\u03c3)\u2074 table numerical verification (M-4)",
+      "results": [
+        {
+          "a_fm": 0.05,
+          "a_sqrt_sigma": 0.11149007578894671,
+          "correct_a_sqrt_sigma_4": 0.00015450581980707646,
+          "correct_a_sqrt_sigma_2": 0.012430036999425081,
+          "doc_stated_value": 2.4e-05,
+          "ratio_correct_to_stated": 6.437742491961519
+        },
+        {
+          "a_fm": 0.1,
+          "a_sqrt_sigma": 0.22298015157789342,
+          "correct_a_sqrt_sigma_4": 0.0024720931169132233,
+          "correct_a_sqrt_sigma_2": 0.049720147997700324,
+          "doc_stated_value": 0.00039,
+          "ratio_correct_to_stated": 6.3387002997774955
+        },
+        {
+          "a_fm": 0.15,
+          "a_sqrt_sigma": 0.3344702273668401,
+          "correct_a_sqrt_sigma_4": 0.012514971404373194,
+          "correct_a_sqrt_sigma_2": 0.11187033299482572,
+          "doc_stated_value": 0.002,
+          "ratio_correct_to_stated": 6.257485702186597
+        },
+        {
+          "a_fm": 0.2,
+          "a_sqrt_sigma": 0.44596030315578683,
+          "correct_a_sqrt_sigma_4": 0.03955348987061157,
+          "correct_a_sqrt_sigma_2": 0.1988805919908013,
+          "doc_stated_value": 0.0063,
+          "ratio_correct_to_stated": 6.2783317254939
+        }
+      ],
+      "average_ratio_correct_to_stated": 6.328065054854878,
+      "systematic_error_detected": true,
+      "passed": true,
+      "finding": "CONFIRMED: Table values are systematically 6.3\u00d7 too small. Tables appear to include an implicit C_art factor without stating it.",
+      "notes": "Column headers say (a\u221a\u03c3)\u2074 but values include unstated coefficient."
+    },
+    {
+      "test": "APV-5",
+      "description": "k_max table consistency with g*\u00b2 = 0.1 (M-5)",
+      "results": [
+        {
+          "beta": 6,
+          "g0_sq": 1.0,
+          "doc_kmax": 0,
+          "computed_kmax_factor2": 0,
+          "computed_kmax_no_factor2": 0,
+          "g0sq_ge_gstar": true,
+          "inconsistent_with_gstar": false
+        },
+        {
+          "beta": 10,
+          "g0_sq": 0.6,
+          "doc_kmax": 0,
+          "computed_kmax_factor2": 0,
+          "computed_kmax_no_factor2": 0,
+          "g0sq_ge_gstar": true,
+          "inconsistent_with_gstar": false
+        },
+        {
+          "beta": 20,
+          "g0_sq": 0.3,
+          "doc_kmax": 3,
+          "computed_kmax_factor2": 0,
+          "computed_kmax_no_factor2": 0,
+          "g0sq_ge_gstar": true,
+          "inconsistent_with_gstar": true
+        },
+        {
+          "beta": 50,
+          "g0_sq": 0.12,
+          "doc_kmax": 28,
+          "computed_kmax_factor2": 0,
+          "computed_kmax_no_factor2": 0,
+          "g0sq_ge_gstar": true,
+          "inconsistent_with_gstar": true
+        },
+        {
+          "beta": 100,
+          "g0_sq": 0.06,
+          "doc_kmax": 69,
+          "computed_kmax_factor2": 69,
+          "computed_kmax_no_factor2": 138,
+          "g0sq_ge_gstar": false,
+          "inconsistent_with_gstar": false
+        },
+        {
+          "beta": 200,
+          "g0_sq": 0.03,
+          "doc_kmax": 153,
+          "computed_kmax_factor2": 241,
+          "computed_kmax_no_factor2": 483,
+          "g0sq_ge_gstar": false,
+          "inconsistent_with_gstar": false
+        }
+      ],
+      "num_inconsistent": 2,
+      "passed": true,
+      "finding": "CONFIRMED: 2 table entries show k_max > 0 where g\u2080\u00b2 \u2265 g*\u00b2 = 0.1 (should give k_max = 0). Table may use different g*\u00b2 or different formula."
+    },
+    {
+      "test": "APV-6",
+      "description": "R_cont arithmetic consistency (P-1/L-1)",
+      "R_cont_cited": 3.74,
+      "sqrt_sigma_MeV": 440.0,
+      "m_glueball_cited": 1730.0,
+      "m_from_R_times_sqrt_sigma": 1645.6000000000001,
+      "R_from_m_over_sqrt_sigma": 3.9318181818181817,
+      "m_discrepancy_MeV": 84.39999999999986,
+      "R_discrepancy": 0.19181818181818144,
+      "R_AT20": 3.405,
+      "m_from_AT20": 1498.1999999999998,
+      "passed": true,
+      "finding": "CONFIRMED: R_cont=3.74 \u00d7 \u221a\u03c3=440 = 1646 MeV \u2260 1730 MeV (cited). Ratio from m/\u221a\u03c3 = 3.932. Modern value: R_cont = 3.405 (A&T 2020)."
+    },
+    {
+      "test": "APV-7",
+      "description": "D\u2084/Z\u2074 improvement factor at a=0.1 fm (P-3)",
+      "a_fm": 0.1,
+      "a_sqrt_sigma": 0.22298015157789342,
+      "d4_artifact_a4": 0.0024720931169132233,
+      "z4_artifact_a2": 0.049720147997700324,
+      "correct_improvement": 20.112570864556808,
+      "doc_claimed_improvement": 50,
+      "ratio_doc_to_correct": 2.486007399885016,
+      "passed": true,
+      "finding": "CONFIRMED: Correct improvement = 1/(a\u221a\u03c3)\u00b2 = 20.1\u00d7, not 50\u00d7 as stated. Off by 2.5\u00d7.",
+      "notes": "Doc value would require implicit C_art ratio of ~2.5 between D\u2084 and Z\u2074."
+    },
+    {
+      "test": "APV-8",
+      "description": "C_art sensitivity and B.1 sign check (M-6)",
+      "results": [
+        {
+          "C_art": 0.1,
+          "a_max_fm": 0.25219344466805915,
+          "beta_sc": 5.690375386226282
+        },
+        {
+          "C_art": 0.5,
+          "a_max_fm": 0.1686519211003723,
+          "beta_sc": 6.048193330484151
+        },
+        {
+          "C_art": 1.0,
+          "a_max_fm": 0.14181879587895538,
+          "beta_sc": 6.201884745328056
+        },
+        {
+          "C_art": 5.0,
+          "a_max_fm": 0.09483994480748156,
+          "beta_sc": 6.557881537494666
+        },
+        {
+          "C_art": 10.0,
+          "a_max_fm": 0.0797505696114714,
+          "beta_sc": 6.71085607622301
+        }
+      ],
+      "monotonically_increasing": true,
+      "passed": true,
+      "finding": "\u03b2_sc increases with C_art (confirmed). Eq.(B.1) sign should be +3b\u2080 ln(C_art), not \u22123b\u2080 ln(C_art). Table values in B.1 are correct."
+    },
+    {
+      "test": "APV-9",
+      "description": "R(\u03b2) \u2192 0 vs R_phys distinction (physics check)",
+      "beta_c": 5.404615121239899,
+      "R_values": [
+        {
+          "beta": 4.404615121239899,
+          "mu": 0.9500158391373486,
+          "sigma_lat": 0.5307315881427097,
+          "R_beta": 1.3040474004492126
+        },
+        {
+          "beta": 4.904615121239899,
+          "mu": 0.4290862871446399,
+          "sigma_lat": 0.46561539414362113,
+          "R_beta": 0.6288266951182971
+        },
+        {
+          "beta": 5.304615121239899,
+          "mu": 0.07944457303245667,
+          "sigma_lat": 0.4219101798795982,
+          "R_beta": 0.1223078221909481
+        },
+        {
+          "beta": 5.394615121239899,
+          "mu": 0.00781148014808597,
+          "sigma_lat": 0.4129560432690519,
+          "R_beta": 0.012155740504575036
+        }
+      ],
+      "R_approaches_zero": true,
+      "sigma_stays_positive": true,
+      "distinction_valid": true,
+      "sigma_at_beta_c": 0.41197960825054114,
+      "passed": true,
+      "finding": "R(\u03b2) \u2192 0 as \u03b2 \u2192 \u03b2_c=5.40 while \u03c3_lat \u2192 0.4120 > 0. The physical ratio R_phys is a continuum quantity, distinct from R(\u03b2)."
+    },
+    {
+      "test": "APV-10",
+      "description": "Scaling window non-emptiness",
+      "results": [
+        {
+          "delta": 0.1,
+          "a_max_fm": 0.25219344466805915,
+          "beta_sc": 5.690375386226282,
+          "window_nonempty": "True"
+        },
+        {
+          "delta": 0.01,
+          "a_max_fm": 0.14181879587895538,
+          "beta_sc": 6.201884745328056,
+          "window_nonempty": "True"
+        },
+        {
+          "delta": 0.001,
+          "a_max_fm": 0.0797505696114714,
+          "beta_sc": 6.71085607622301,
+          "window_nonempty": "True"
+        },
+        {
+          "delta": 0.0001,
+          "a_max_fm": 0.044847041000000004,
+          "beta_sc": 7.2176906609501295,
+          "window_nonempty": "True"
+        },
+        {
+          "delta": 1e-05,
+          "a_max_fm": 0.025219344466805918,
+          "beta_sc": 7.722700405483578,
+          "window_nonempty": "True"
+        }
+      ],
+      "all_nonempty": true,
+      "passed": true
+    },
+    {
+      "test": "APV-11",
+      "description": "UV sum \u03b6(3/2) bound stress test",
+      "beta": 100,
+      "k_max_factor2": 69,
+      "uv_sum_factor2": 1.4982739655163222,
+      "k_max_no_factor2": 138,
+      "uv_sum_no_factor2": 2.973355247093479,
+      "zeta_32": 2.612,
+      "both_finite": "True",
+      "both_bounded": "True",
+      "passed": "True"
+    },
+    {
+      "test": "APV-12",
+      "description": "IR sum super-exponential convergence",
+      "alpha_0": 0.25,
+      "first_5_terms": [
+        0.6065306597126334,
+        0.1353352832366127,
+        0.00033546262790251185,
+        1.2664165549094176e-14,
+        2.572209372642415e-56
+      ],
+      "total_sum": 0.7422014055771613,
+      "first_3_fraction": 0.9999999999999829,
+      "super_exponential": "False",
+      "passed": "False"
+    },
+    {
+      "test": "APV-13",
+      "description": "Full D\u2084 fourth-moment isotropy tensor check",
+      "num_neighbors": 24,
+      "fourth_moment_max_error": 1.3877787807814457e-17,
+      "fourth_moment_isotropic": "True",
+      "second_moment_max_error": 2.7755575615628914e-17,
+      "second_moment_isotropic": "True",
+      "passed": "True"
+    },
+    {
+      "test": "APV-14",
+      "description": "Asymptotic scaling inversion roundtrip",
+      "results": [
+        {
+          "beta_input": 5.5,
+          "a_fm": 0.3121872155248096,
+          "beta_recovered": 5.499999999998838,
+          "relative_error": 2.1122497690322978e-13
+        },
+        {
+          "beta_input": 6.0,
+          "a_fm": 0.1780597969623081,
+          "beta_recovered": 5.9999999999995,
+          "relative_error": 8.334074171519508e-14
+        },
+        {
+          "beta_input": 6.5,
+          "a_fm": 0.1012607221742577,
+          "beta_recovered": 6.499999999999769,
+          "relative_error": 3.552713678800501e-14
+        },
+        {
+          "beta_input": 7.0,
+          "a_fm": 0.05744203471798752,
+          "beta_recovered": 6.999999999999888,
+          "relative_error": 1.5987211554602254e-14
+        },
+        {
+          "beta_input": 8.0,
+          "a_fm": 0.018370433351789256,
+          "beta_recovered": 7.999999999999969,
+          "relative_error": 3.885780586188048e-15
+        },
+        {
+          "beta_input": 10.0,
+          "a_fm": 0.0018444172239431152,
+          "beta_recovered": 9.999999999999995,
+          "relative_error": 5.329070518200751e-16
+        }
+      ],
+      "max_relative_error": 2.1122497690322978e-13,
+      "all_consistent": true,
+      "passed": true
+    },
+    {
+      "test": "APV-15",
+      "description": "Mass ratio Taylor expansion verification",
+      "results": [
+        {
+          "a_fm": 0.05,
+          "a_sqrt_sigma": 0.11149007578894671,
+          "R_exact": 3.7400433387429546,
+          "R_taylor": 3.740043338882456,
+          "taylor_error_fraction": 3.2188589214013765e-06
+        },
+        {
+          "a_fm": 0.1,
+          "a_sqrt_sigma": 0.22298015157789342,
+          "R_exact": 3.7406933864097995,
+          "R_taylor": 3.7406934221192945,
+          "taylor_error_fraction": 5.150013673751904e-05
+        },
+        {
+          "a_fm": 0.15,
+          "a_sqrt_sigma": 0.3344702273668401,
+          "R_exact": 3.7435095346051623,
+          "R_taylor": 3.743510449478927,
+          "taylor_error_fraction": 0.0002606823603904845
+        }
+      ],
+      "max_taylor_error": 0.0002606823603904845,
+      "taylor_accurate": true,
+      "passed": true
+    },
+    {
+      "test": "APV-16",
+      "description": "Two-loop vs one-loop running coupling sensitivity",
+      "beta": 100,
+      "results": [
+        {
+          "k": 0,
+          "g_1loop": 0.06,
+          "g_2loop": 0.06,
+          "relative_diff": 0.0
+        },
+        {
+          "k": 10,
+          "g_1loop": 0.06369022139768772,
+          "g_2loop": 0.06370440062792788,
+          "relative_diff": 0.00022262805700779207
+        },
+        {
+          "k": 20,
+          "g_1loop": 0.06786411487869609,
+          "g_2loop": 0.06789734400432267,
+          "relative_diff": 0.0004896420690960136
+        },
+        {
+          "k": 30,
+          "g_1loop": 0.07262344053943147,
+          "g_2loop": 0.07268245691135979,
+          "relative_diff": 0.0008126353074152848
+        },
+        {
+          "k": 50,
+          "g_1loop": 0.08447144321375086,
+          "g_2loop": 0.08461462211358395,
+          "relative_diff": 0.0016949976747855902
+        },
+        {
+          "k": 69,
+          "g_1loop": 0.09996452593997122,
+          "g_2loop": 0.10026420176482302,
+          "relative_diff": 0.0029978216975865297
+        }
+      ],
+      "max_relative_diff": 0.0029978216975865297,
+      "two_loop_small_correction": true,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total_tests": 16,
+    "passed": 15,
+    "failed": 1,
+    "status": "SOME FAILURES",
+    "errors_confirmed": [
+      "M-1: k_max factor-of-2 discrepancy",
+      "M-2: Eq.(1.4) coefficient 3/b\u2080 instead of 12b\u2080",
+      "M-3: Eq.(1.11) dimensional inconsistency",
+      "M-4: Table numerics ~6\u00d7 off",
+      "M-5: k_max table inconsistent with g*\u00b2=0.1",
+      "P-1: R_cont=3.74 vs m(0++)/\u221a\u03c3=3.93"
+    ],
+    "structure_sound": true,
+    "numerics_need_correction": true
+  }
+}

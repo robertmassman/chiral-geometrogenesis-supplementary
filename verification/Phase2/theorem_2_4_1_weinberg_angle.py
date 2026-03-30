@@ -225,13 +225,13 @@ print(f"Expected: {sin2_exp}")
 def run_couplings_inv(mu, alpha_1_0, alpha_2_0, alpha_3_0, mu_0):
     """
     Run inverse gauge couplings from μ₀ to μ using one-loop beta functions.
-    α_i^(-1)(μ) = α_i^(-1)(μ₀) + b_i/(2π) × ln(μ/μ₀)
+    d(α_i⁻¹)/d(ln μ) = -b_i/(2π)  =>  α_i⁻¹(μ) = α_i⁻¹(μ₀) - b_i/(2π) × ln(μ/μ₀)
     """
     ln_ratio = np.log(mu / mu_0)
 
-    alpha_1_inv = 1/alpha_1_0 + b1_GUT/(2*np.pi) * ln_ratio
-    alpha_2_inv = 1/alpha_2_0 + b2/(2*np.pi) * ln_ratio
-    alpha_3_inv = 1/alpha_3_0 + b3/(2*np.pi) * ln_ratio
+    alpha_1_inv = 1/alpha_1_0 - b1_GUT/(2*np.pi) * ln_ratio
+    alpha_2_inv = 1/alpha_2_0 - b2/(2*np.pi) * ln_ratio
+    alpha_3_inv = 1/alpha_3_0 - b3/(2*np.pi) * ln_ratio
 
     return alpha_1_inv, alpha_2_inv, alpha_3_inv
 

@@ -1,0 +1,378 @@
+{
+  "proposition": "0.1.3a",
+  "title": "Pressure Function Form-Independence",
+  "timestamp": "2026-02-23T08:29:07.959343",
+  "verifications": {
+    "axioms": {
+      "Standard (1/r\u00b2)": {
+        "P1_max_at_source": true,
+        "P2_min_at_antipode": true,
+        "P3_color_symmetry": true,
+        "P4_smoothness": true,
+        "P4_smooth_at_origin": true,
+        "P5_monotonicity": true,
+        "P6_radial": true,
+        "P7_L2_integrable": true,
+        "P7_L2_value": 5.225987770982958,
+        "all_axioms_satisfied": true
+      },
+      "Gaussian": {
+        "P1_max_at_source": true,
+        "P2_min_at_antipode": true,
+        "P3_color_symmetry": true,
+        "P4_smoothness": true,
+        "P4_smooth_at_origin": true,
+        "P5_monotonicity": true,
+        "P6_radial": true,
+        "P7_L2_integrable": true,
+        "P7_L2_value": 38.682535102330256,
+        "all_axioms_satisfied": true
+      },
+      "Yukawa": {
+        "P1_max_at_source": true,
+        "P2_min_at_antipode": true,
+        "P3_color_symmetry": true,
+        "P4_smoothness": true,
+        "P4_smooth_at_origin": true,
+        "P5_monotonicity": true,
+        "P6_radial": true,
+        "P7_L2_integrable": true,
+        "P7_L2_value": 2.4159117425132006,
+        "all_axioms_satisfied": true
+      },
+      "Power-law (\u03b1=1.5)": {
+        "P1_max_at_source": true,
+        "P2_min_at_antipode": true,
+        "P3_color_symmetry": true,
+        "P4_smoothness": true,
+        "P4_smooth_at_origin": true,
+        "P5_monotonicity": true,
+        "P6_radial": true,
+        "P7_L2_integrable": true,
+        "P7_L2_value": 58.17764139981233,
+        "all_axioms_satisfied": true
+      },
+      "Inverse-distance": {
+        "P1_max_at_source": true,
+        "P2_min_at_antipode": true,
+        "P3_color_symmetry": true,
+        "P4_smoothness": true,
+        "P4_smooth_at_origin": true,
+        "P5_monotonicity": true,
+        "P6_radial": true,
+        "P7_L2_integrable": false,
+        "P7_L2_value": 98.19863862289527,
+        "all_axioms_satisfied": false
+      },
+      "Step function": {
+        "P1_max_at_source": true,
+        "P2_min_at_antipode": true,
+        "P3_color_symmetry": true,
+        "P4_smoothness": true,
+        "P4_smooth_at_origin": true,
+        "P5_monotonicity": false,
+        "P6_radial": true,
+        "P7_L2_integrable": true,
+        "P7_L2_value": 0.0,
+        "all_axioms_satisfied": false
+      }
+    },
+    "L2_integrability": {
+      "Standard (1/r\u00b2)": {
+        "integrals": [
+          53.41575062675174,
+          63.285595295125795,
+          64.54091406989022,
+          65.54603676959412,
+          65.67169915628064,
+          65.77222993420831
+        ],
+        "bounds": [
+          1,
+          5,
+          10,
+          50,
+          100,
+          500
+        ],
+        "converging": true,
+        "final_value": 65.77222993420831
+      },
+      "Gaussian": {
+        "integrals": [
+          485.54784368746044,
+          486.09907239883995,
+          486.09907239883995,
+          486.0990723988401,
+          486.0990723988401,
+          486.09907239884006
+        ],
+        "bounds": [
+          1,
+          5,
+          10,
+          50,
+          100,
+          500
+        ],
+        "converging": true,
+        "final_value": 486.09907239884006
+      },
+      "Yukawa": {
+        "integrals": [
+          29.901377363972898,
+          30.359232716488613,
+          30.359242327885017,
+          30.35924232800315,
+          30.35924232800315,
+          30.359242328003152
+        ],
+        "bounds": [
+          1,
+          5,
+          10,
+          50,
+          100,
+          500
+        ],
+        "converging": true,
+        "final_value": 30.359242328003152
+      },
+      "Power-law (\u03b1=1.5)": {
+        "integrals": [
+          727.0573651448179,
+          731.0483513834675,
+          731.0776203938108,
+          731.0817739783218,
+          731.0818032993274,
+          731.08180745459
+        ],
+        "bounds": [
+          1,
+          5,
+          10,
+          50,
+          100,
+          500
+        ],
+        "converging": true,
+        "final_value": 731.08180745459
+      },
+      "Inverse-distance": {
+        "integrals": [
+          6.526598474927692,
+          51.331061150066425,
+          111.63216135850948,
+          608.2866024239627,
+          1234.000486760827,
+          6254.48807222561
+        ],
+        "bounds": [
+          1,
+          5,
+          10,
+          50,
+          100,
+          500
+        ],
+        "converging": false,
+        "final_value": Infinity
+      },
+      "Step function": {
+        "integrals": [
+          0.014137166939514556,
+          0.014137166540716452,
+          0.014137166540716452,
+          0.014137167309112103,
+          0.0,
+          0.0
+        ],
+        "bounds": [
+          1,
+          5,
+          10,
+          50,
+          100,
+          500
+        ],
+        "converging": true,
+        "final_value": 0.0
+      },
+      "analytical_check": {
+        "analytical": 65.79736267392906,
+        "numerical": 65.77222993420831,
+        "relative_error": 0.00038197184050211956,
+        "passed": true
+      }
+    },
+    "voronoi": {
+      "Standard (1/r\u00b2)": {
+        "agreement_with_standard": 1.0,
+        "identical": true
+      },
+      "Gaussian": {
+        "agreement_with_standard": 1.0,
+        "identical": true
+      },
+      "Yukawa": {
+        "agreement_with_standard": 1.0,
+        "identical": true
+      },
+      "Power-law (\u03b1=1.5)": {
+        "agreement_with_standard": 1.0,
+        "identical": true
+      },
+      "voronoi_match": {
+        "agreement": 1.0,
+        "identical": true
+      }
+    },
+    "nodal_line": {
+      "Standard (1/r\u00b2)": {
+        "equal_pressure_points": [],
+        "n_equal_points": 0,
+        "max_residual": 0.025300804427459744
+      },
+      "Gaussian": {
+        "equal_pressure_points": [],
+        "n_equal_points": 0,
+        "max_residual": 1.897427018324712e-05
+      },
+      "Yukawa": {
+        "equal_pressure_points": [],
+        "n_equal_points": 0,
+        "max_residual": 0.014034560137469287
+      },
+      "Power-law (\u03b1=1.5)": {
+        "equal_pressure_points": [],
+        "n_equal_points": 0,
+        "max_residual": 0.03741003330279613
+      },
+      "all_agree": true
+    },
+    "phase_cancellation": {
+      "Standard (1/r\u00b2)": {
+        "chi_total_at_centroid": {
+          "real": -2.7755575615628914e-16,
+          "imag": 3.3306690738754696e-16
+        },
+        "chi_magnitude": 4.335559509131367e-16,
+        "pressures_at_centroid": [
+          0.9779951100244499,
+          0.9779951100244499,
+          0.9779951100244499
+        ],
+        "pressure_spread": 0.0,
+        "phase_sum": {
+          "real": -2.220446049250313e-16,
+          "imag": 3.3306690738754696e-16
+        },
+        "phase_cancellation": true,
+        "field_cancellation": true
+      },
+      "Gaussian": {
+        "chi_total_at_centroid": {
+          "real": -2.7755575615628914e-16,
+          "imag": 2.220446049250313e-16
+        },
+        "chi_magnitude": 3.554447978966673e-16,
+        "pressures_at_centroid": [
+          0.8140283950548524,
+          0.8140283950548524,
+          0.8140283950548524
+        ],
+        "pressure_spread": 0.0,
+        "phase_sum": {
+          "real": -2.220446049250313e-16,
+          "imag": 3.3306690738754696e-16
+        },
+        "phase_cancellation": true,
+        "field_cancellation": true
+      },
+      "Yukawa": {
+        "chi_total_at_centroid": {
+          "real": -1.1102230246251565e-16,
+          "imag": 1.1102230246251565e-16
+        },
+        "chi_magnitude": 1.5700924586837752e-16,
+        "pressures_at_centroid": [
+          0.3597842945441979,
+          0.3597842945441979,
+          0.3597842945441979
+        ],
+        "pressure_spread": 0.0,
+        "phase_sum": {
+          "real": -2.220446049250313e-16,
+          "imag": 3.3306690738754696e-16
+        },
+        "phase_cancellation": true,
+        "field_cancellation": true
+      },
+      "Power-law (\u03b1=1.5)": {
+        "chi_total_at_centroid": {
+          "real": -2.7755575615628914e-16,
+          "imag": 3.3306690738754696e-16
+        },
+        "chi_magnitude": 4.335559509131367e-16,
+        "pressures_at_centroid": [
+          0.9671749172306088,
+          0.9671749172306088,
+          0.9671749172306088
+        ],
+        "pressure_spread": 0.0,
+        "phase_sum": {
+          "real": -2.220446049250313e-16,
+          "imag": 3.3306690738754696e-16
+        },
+        "phase_cancellation": true,
+        "field_cancellation": true
+      }
+    },
+    "frequency_ratio": {
+      "Standard (1/r\u00b2)": {
+        "E_total": 197.01509746884193,
+        "I_total": 197.01509746884193,
+        "omega_0": 1.4142135623730951,
+        "omega_0_equals_sqrt2": true
+      },
+      "Gaussian": {
+        "E_total": 1458.2972171965203,
+        "I_total": 1458.2972171965203,
+        "omega_0": 1.4142135623730951,
+        "omega_0_equals_sqrt2": true
+      },
+      "Yukawa": {
+        "E_total": 91.07772698400944,
+        "I_total": 91.07772698400944,
+        "omega_0": 1.4142135623730951,
+        "omega_0_equals_sqrt2": true
+      },
+      "Power-law (\u03b1=1.5)": {
+        "E_total": 2193.245409897982,
+        "I_total": 2193.245409897982,
+        "omega_0": 1.4142135623730951,
+        "omega_0_equals_sqrt2": true
+      }
+    },
+    "profile_comparison": {
+      "Standard (1/r\u00b2)": {
+        "E_single_integral": 65.67169915628064,
+        "a0_normalization": 0.10638571767668147
+      },
+      "Gaussian": {
+        "E_single_integral": 486.0990723988401,
+        "a0_normalization": 0.039102998211485704
+      },
+      "Yukawa": {
+        "E_single_integral": 30.35924232800315,
+        "a0_normalization": 0.15646852547406795
+      },
+      "Power-law (\u03b1=1.5)": {
+        "E_single_integral": 731.0818032993274,
+        "a0_normalization": 0.0318852236112575
+      }
+    }
+  },
+  "plot_path": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/proposition_0_1_3a_form_independence.png",
+  "overall_status": "PASSED"
+}

@@ -1,0 +1,197 @@
+{
+  "falsification_condition": "FC5",
+  "statement": "The continuum limit does not recover SU(3) Yang-Mills",
+  "timestamp": "2026-03-21T06:39:59.977058",
+  "tests": [
+    {
+      "test": "A\u2082 root system recovery",
+      "checks": {
+        "equal_root_lengths": true,
+        "angle_120_deg": "True",
+        "cartan_matrix_A2": true,
+        "det_cartan_3": "True",
+        "root_count_6": true
+      },
+      "passed": true
+    },
+    {
+      "test": "O \u2192 SO(3) effective symmetry enhancement",
+      "checks": {
+        "O_has_24_elements": true,
+        "Oh_has_48_elements": true,
+        "O_all_proper_rotations": true,
+        "Oh_has_improper": true,
+        "O_all_orthogonal": true,
+        "K4_Oh_invariant": true,
+        "no_ell2_quadrupole": "True",
+        "nuclear_suppression": "True",
+        "macroscopic_suppression": "True"
+      },
+      "passed": true
+    },
+    {
+      "test": "Z\u2083 center preservation through all limits",
+      "checks": {
+        "omega_cubed_is_1": "True",
+        "cyclic_permutation": true,
+        "R_z3_cubed_is_identity": true,
+        "center_order_from_cartan": true,
+        "z3_group_closure": true
+      },
+      "passed": true
+    },
+    {
+      "test": "\u03c0\u2083(SU(3)) \u2245 \u2124 instanton classification",
+      "checks": {
+        "integer_labeling": true,
+        "additivity": true,
+        "injectivity": true,
+        "surjectivity": true,
+        "charge_quantization": true
+      },
+      "passed": true
+    },
+    {
+      "test": "Lorentz violation bounds",
+      "checks": {
+        "cpt_forbids_odd_power": true,
+        "lv_suppression_tiny": true,
+        "no_quadrupole_anisotropy": true,
+        "all_experiments_satisfied": true,
+        "falsifiable_ell2_prediction": true
+      },
+      "delta_c_over_c_1TeV": 6.70883215937701e-33,
+      "experimental_margins": {
+        "LHAASO (gamma-ray, 2024)": {
+          "bound_GeV": 60000000000000.0,
+          "margin": 203481.66666666666,
+          "orders_of_magnitude": 5.308525286169717
+        },
+        "DisCan (photon, 2025)": {
+          "bound_GeV": 22000000000000.0,
+          "margin": 554950.0,
+          "orders_of_magnitude": 5.744253855731154
+        },
+        "GW170817 (gravitational)": {
+          "bound_GeV": 1000000000000000.0,
+          "margin": 12208.9,
+          "orders_of_magnitude": 4.086676536553361
+        },
+        "SME compilation (Kostelecky)": {
+          "bound_GeV": 10000000000000.0,
+          "margin": 1220890.0,
+          "orders_of_magnitude": 6.086676536553361
+        }
+      },
+      "passed": true
+    },
+    {
+      "test": "\u03b8 = 0 vacuum selection",
+      "checks": {
+        "delta_E_positive": true,
+        "energy_diverges": "True",
+        "unique_minimum_at_zero": "True",
+        "z3_selects_theta_zero": true,
+        "chi_top_consistent": true
+      },
+      "passed": true
+    },
+    {
+      "test": "Wilson loop area law on FCC",
+      "checks": {
+        "plaquettes_per_edge_4": true,
+        "string_tension_positive": "True",
+        "creutz_ratio_convergence": true,
+        "asymptotic_freedom": true,
+        "a_decreases_with_beta": true
+      },
+      "strong_coupling_sigma_a2": 3.58351893845611,
+      "creutz_ratios": [
+        3.5835189384561112,
+        3.583518938456109,
+        3.583518938456109,
+        3.583518938456109,
+        3.583518938456116,
+        3.5835189384561055,
+        3.583518938456109,
+        3.5835189384561055,
+        3.583518938456116
+      ],
+      "passed": true
+    },
+    {
+      "test": "Universality class FCC vs hypercubic",
+      "checks": {
+        "same_gauge_group": true,
+        "same_point_group": true,
+        "same_dimension": true,
+        "same_beta_function": true,
+        "same_artifact_structure": true,
+        "fcc_higher_coordination": true,
+        "symanzik_condition_a": true,
+        "symanzik_condition_b": true,
+        "symanzik_condition_c": true,
+        "both_a_squared_artifacts": true
+      },
+      "lattice_comparison": {
+        "fcc": {
+          "name": "FCC",
+          "coord": 12,
+          "point_group": "O_h",
+          "point_group_order": 48,
+          "plaquettes_per_edge": 4,
+          "nn_distance": 1.4142135623730951,
+          "dimension": 3
+        },
+        "hypercubic": {
+          "name": "Simple cubic (Z\u00b3)",
+          "coord": 6,
+          "point_group": "O_h",
+          "point_group_order": 48,
+          "plaquettes_per_edge": 4,
+          "nn_distance": 1.0,
+          "dimension": 3
+        }
+      },
+      "passed": true
+    },
+    {
+      "test": "D\u2084 self-coarsening under blocking",
+      "checks": {
+        "d4_density_correct": true,
+        "d4_coordination_24": true,
+        "blocked_in_d4": true,
+        "d4_self_similar": true,
+        "d4_slice_gives_fcc": true,
+        "fcc_self_coarsening": true,
+        "gauge_covariant_blocking": true,
+        "reasonable_blocking_steps": true
+      },
+      "blocking_steps_to_1fm": 65,
+      "passed": true
+    },
+    {
+      "test": "Balaban RG compatibility \u2014 mass gap as IR regulator",
+      "checks": {
+        "uv_cutoff_exists": "True",
+        "mass_gap_positive": true,
+        "ir_regulated": true,
+        "large_scale_separation": "True",
+        "d4_blocking_compatible": true,
+        "all_balaban_steps": true,
+        "asymptotic_scaling": "True",
+        "os_axioms_satisfied": true
+      },
+      "mass_gap_MeV": 440.0,
+      "correlation_length_fm": 0.44847045454545453,
+      "scale_ratio": 1.2317910642546358e+19,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total_tests": 10,
+    "passed": 10,
+    "failed": 0,
+    "overall_status": "PASSED"
+  }
+}

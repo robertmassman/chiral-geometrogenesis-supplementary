@@ -1,0 +1,221 @@
+{
+  "theorem": "7.5.3",
+  "title": "Bulk Transition Termination \u2014 Adversarial Physics Verification",
+  "timestamp": "2026-02-13T20:21:19.769112",
+  "verification_type": "adversarial",
+  "tests": [
+    {
+      "test": "ADV-1: Non-diagonal trace identity",
+      "n_samples": 500,
+      "max_error": 2.6645352591003757e-15,
+      "mean_error": 2.7741697827821097e-16,
+      "special_cases": [
+        [
+          "Identity",
+          0.0
+        ],
+        [
+          "Z_3 center k=1",
+          0.0
+        ],
+        [
+          "Z_3 center k=2",
+          0.0
+        ],
+        [
+          "Near-identity",
+          0.0
+        ]
+      ],
+      "passed": "True"
+    },
+    {
+      "test": "ADV-2: Casimir coefficient re-derivation",
+      "fund_coeff": 0.1111111111111111,
+      "adj_coeff": 0.09375,
+      "ratio": 0.84375,
+      "T_fund": 0.5,
+      "T_adj": 3.0,
+      "passed": true
+    },
+    {
+      "test": "ADV-3: Representation mixing",
+      "results": {
+        "0.0": {
+          "tilde_a_1": 1.0,
+          "tilde_a_3": 0.006274357263217655,
+          "tilde_a_8": -0.0014210489289207175
+        },
+        "0.5": {
+          "tilde_a_1": 1.0028126955940604,
+          "tilde_a_3": -0.013261945432113896,
+          "tilde_a_8": 0.07990805905302242
+        },
+        "1.0": {
+          "tilde_a_1": 1.0086874440565032,
+          "tilde_a_3": 0.019945010879635548,
+          "tilde_a_8": 0.1449521091431797
+        },
+        "2.0": {
+          "tilde_a_1": 1.038501360652457,
+          "tilde_a_3": -0.003672045165474153,
+          "tilde_a_8": 0.3449111791032876
+        },
+        "5.0": {
+          "tilde_a_1": 1.371114578580984,
+          "tilde_a_3": 0.05658113562423117,
+          "tilde_a_8": 1.7850883615358104
+        }
+      },
+      "mixing_increases": "True",
+      "passed": "True"
+    },
+    {
+      "test": "ADV-4: Pirogov-Sinai latent heat model",
+      "initial_latent_heat": 3.5555555555555554,
+      "monotone": true,
+      "vanishes": "True",
+      "eps_star_approx": 3.341708542713568,
+      "passed": "True"
+    },
+    {
+      "test": "ADV-5: Lee-Yang zero migration",
+      "N_values": [
+        10,
+        50,
+        100,
+        500,
+        1000
+      ],
+      "zero_distances": [
+        0.3485494807976841,
+        0.06970989615953682,
+        0.03485494807976841,
+        0.006970989615953682,
+        0.003485494807976841
+      ],
+      "scaling_ok": true,
+      "zeros_move_away": true,
+      "passed": true
+    },
+    {
+      "test": "ADV-6: Transfer matrix mass gap",
+      "crossover_positive": true,
+      "exact_min_near_bc": 0.03770884353741587,
+      "passed": "True"
+    },
+    {
+      "test": "ADV-7: Ising universality",
+      "nu_exact": 0.6299709,
+      "gamma_exact": 1.2372,
+      "beta_exact": 0.32643,
+      "hyperscaling_ok": true,
+      "fisher_ok": true,
+      "rushbrooke_ok": true,
+      "nu_match": true,
+      "passed": true
+    },
+    {
+      "test": "ADV-8: Peierls bound saturation",
+      "z_fcc_3d": 12,
+      "threshold_3d": 3.4849066497880004,
+      "convergence_windows": [
+        {
+          "c": 0.5,
+          "eps_max_3d": 0.0009398283558098103,
+          "eps_max_4d": 0.00023495708895245274
+        },
+        {
+          "c": 0.8,
+          "eps_max_3d": 0.012827893334548842,
+          "eps_max_4d": 0.005393464760139572
+        },
+        {
+          "c": 1.0,
+          "eps_max_3d": 0.030656620097620192,
+          "eps_max_4d": 0.015328310048810101
+        },
+        {
+          "c": 1.5,
+          "eps_max_3d": 0.09795264808788458,
+          "eps_max_4d": 0.0617063016094353
+        },
+        {
+          "c": 2.0,
+          "eps_max_3d": 0.1750903198284251,
+          "eps_max_4d": 0.12380755247080083
+        }
+      ],
+      "kp_criterion": "True",
+      "passed": "True"
+    },
+    {
+      "test": "ADV-9: Large-epsilon pathology scan",
+      "z3_energies": [
+        {
+          "k": 0,
+          "fund": 0.0,
+          "adj": 0.0
+        },
+        {
+          "k": 1,
+          "fund": 1.4999999999999998,
+          "adj": 0.0
+        },
+        {
+          "k": 2,
+          "fund": 1.5000000000000004,
+          "adj": 0.0
+        }
+      ],
+      "k0_unique": true,
+      "fund_nonneg": true,
+      "adj_nonneg": true,
+      "minimum_at_identity": true,
+      "all_above_identity": true,
+      "passed": true
+    },
+    {
+      "test": "ADV-10: U(1) reduction",
+      "u1_trivial": true,
+      "su2_check": "True",
+      "results": [
+        {
+          "nc": 2,
+          "adj_dim": 3,
+          "identity_check": "True",
+          "center_check": "True",
+          "tr_adj_formula": -0.007020103524528976
+        },
+        {
+          "nc": 3,
+          "adj_dim": 8,
+          "identity_check": "True",
+          "center_check": "True",
+          "tr_adj_formula": -0.5186266733960425
+        },
+        {
+          "nc": 4,
+          "adj_dim": 15,
+          "identity_check": "True",
+          "center_check": "True",
+          "tr_adj_formula": -0.47318984895264693
+        },
+        {
+          "nc": 5,
+          "adj_dim": 24,
+          "identity_check": "True",
+          "center_check": "True",
+          "tr_adj_formula": 1.3668787804300573
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "overall_status": "PASSED"
+  }
+}

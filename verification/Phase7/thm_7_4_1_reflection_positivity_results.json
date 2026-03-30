@@ -1,0 +1,115 @@
+{
+  "theorem": "7.4.1",
+  "title": "Reflection Positivity on FCC Lattice",
+  "verification_type": "standard",
+  "date": "2026-02-13T07:02:35.179628",
+  "tests_total": 10,
+  "tests_passed": 10,
+  "tests_failed": 0,
+  "overall": "PASS",
+  "results": [
+    {
+      "name": "T1: (111) midplane cleanly separates FCC",
+      "passed": "True",
+      "details": "Min distance to midplane: 2.886751e-01. Vertices above: 206, below: 50, on plane: 0. Unique layer heights: 11.",
+      "numerical_data": {
+        "min_distance": "0.2886751341896258",
+        "n_above": 206,
+        "n_below": 50,
+        "n_layers": 11
+      }
+    },
+    {
+      "name": "T2: Action decomposition: Tr(T^L) = Z_FCC for L = 1,2,3,5,8",
+      "passed": true,
+      "details": "Max relative error: 1.42e-16. Action decomposition consistent with diagonal transfer matrix.",
+      "numerical_data": {
+        "max_err": "1.4211189628279966e-16"
+      }
+    },
+    {
+      "name": "T3: a_R(beta) > 0 for all R and all beta > 0",
+      "passed": true,
+      "details": "Tested 15 reps x 7 betas. Min a_R = 2.216000e-10. Violations: 0.",
+      "numerical_data": {
+        "min_a_R": "2.216000150332952e-10",
+        "n_violations": 0
+      }
+    },
+    {
+      "name": "T4: lambda_R > 0 for all R, beta, N_s tested",
+      "passed": true,
+      "details": "Tested 12 reps x 5 betas x 3 N_s values. Min eigenvalue = 2.353092e-153.",
+      "numerical_data": {
+        "min_eigenval": "2.3530918376706484e-153",
+        "all_positive": true
+      }
+    },
+    {
+      "name": "T5: Self-adjointness: all eigenvalues real",
+      "passed": true,
+      "details": "Max |Im(a_R)/Re(a_R)| = 1.24e-14. All heat kernel coefficients have negligible imaginary parts.",
+      "numerical_data": {
+        "max_imag_frac": "1.2382605824151845e-14"
+      }
+    },
+    {
+      "name": "T6: Charge conjugation: lambda_{(p,q)} = lambda_{(q,p)}",
+      "passed": true,
+      "details": "Max relative error: 3.35e-15. Tested 6 conjugate pairs at beta=4.0.",
+      "numerical_data": {
+        "max_err": "3.352745564443185e-15"
+      }
+    },
+    {
+      "name": "T7: Tr(T^L) = Z_FCC for L = 1,2,4,6,10",
+      "passed": true,
+      "details": "Max error: 6.93e-16",
+      "numerical_data": {
+        "L=1": {
+          "err": 0.0
+        },
+        "L=2": {
+          "err": 1.5316322239397388e-16
+        },
+        "L=4": {
+          "err": 2.1129964155922851e-16
+        },
+        "L=6": {
+          "err": 4.372544969177479e-16
+        },
+        "L=10": {
+          "err": 6.934921814476199e-16
+        }
+      }
+    },
+    {
+      "name": "T8: Strong coupling: lambda_1 dominates",
+      "passed": "True",
+      "details": "lambda_1 = 1.002237e+00, lambda_3/lambda_1 = 2.618264e-17, lambda_8/lambda_1 = 1.181723e-33. Trivial rep dominates at strong coupling.",
+      "numerical_data": {
+        "lam_1": "1.002237065542374",
+        "ratio_3": "2.6182635576805894e-17",
+        "ratio_8": "1.1817232084658596e-33"
+      }
+    },
+    {
+      "name": "T9: Weak coupling: u_R approaches 1 (reps equalize)",
+      "passed": "True",
+      "details": "At beta=15.0: u_3 = 0.7396, mu = -0.8827. u_R ratios approach 1 at weak coupling (max deviation 0.5257).",
+      "numerical_data": {
+        "u_3": "0.739605570696967",
+        "mu": "-0.8827308863460446",
+        "max_deviation": "0.5256937015071514"
+      }
+    },
+    {
+      "name": "T10: RP functional test: all contributions >= 0",
+      "passed": true,
+      "details": "Min RP contribution: 1.329352e-147. All spectral contributions to <conj(Theta F) * F> are non-negative.",
+      "numerical_data": {
+        "min_rp": "1.3293524280961968e-147"
+      }
+    }
+  ]
+}

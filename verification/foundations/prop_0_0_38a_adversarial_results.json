@@ -1,0 +1,941 @@
+{
+  "proposition": "0.0.38a",
+  "title": "Gauge-Invariant Spectrum on the Stella \u2014 Adversarial Physics Verification",
+  "timestamp": "2026-02-11T10:32:51.643143",
+  "overall_status": "PASSED WITH WARNINGS",
+  "summary": "81/82 tests passed, 1 failed",
+  "tests": [
+    {
+      "name": "A1.1: Gap formula at \u03b2=0.5",
+      "passed": "True",
+      "details": "Direct=11.9740487801, Formula=11.9740487801, \u0394=1.78e-15",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.5,
+        "gap_direct": 11.97404878012896,
+        "gap_formula": 11.974048780128959,
+        "error": 1.7763568394002505e-15
+      }
+    },
+    {
+      "name": "A1.1: Gap formula at \u03b2=1.0",
+      "passed": "True",
+      "details": "Direct=9.0479901862, Formula=9.0479901862, \u0394=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "gap_direct": 9.04799018615525,
+        "gap_formula": 9.04799018615525,
+        "error": 0.0
+      }
+    },
+    {
+      "name": "A1.1: Gap formula at \u03b2=2.0",
+      "passed": "True",
+      "details": "Direct=6.0061051445, Formula=6.0061051445, \u0394=8.88e-16",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "gap_direct": 6.006105144539476,
+        "gap_formula": 6.006105144539475,
+        "error": 8.881784197001252e-16
+      }
+    },
+    {
+      "name": "A1.1: Gap formula at \u03b2=4.0",
+      "passed": "True",
+      "details": "Direct=2.9000825522, Formula=2.9000825522, \u0394=4.44e-16",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 4.0,
+        "gap_direct": 2.900082552181229,
+        "gap_formula": 2.9000825521812295,
+        "error": 4.440892098500626e-16
+      }
+    },
+    {
+      "name": "A1.1: Gap formula at \u03b2=6.0",
+      "passed": "True",
+      "details": "Direct=1.2487382690, Formula=1.2487382690, \u0394=2.22e-16",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 6.0,
+        "gap_direct": 1.2487382689622561,
+        "gap_formula": 1.2487382689622564,
+        "error": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "A1.1: Gap formula at \u03b2=8.0",
+      "passed": "True",
+      "details": "Direct=0.2990962097, Formula=0.2990962097, \u0394=5.55e-17",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 8.0,
+        "gap_direct": 0.29909620968001477,
+        "gap_formula": 0.2990962096800147,
+        "error": 5.551115123125783e-17
+      }
+    },
+    {
+      "name": "A1.2: Fundamental is lowest excitation at \u03b2=0.5",
+      "passed": "True",
+      "details": "E_3=11.9740, next=11.9740",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.5,
+        "E_fund": 11.97404878012896,
+        "E_next": 11.97404878012896
+      }
+    },
+    {
+      "name": "A1.2: Fundamental is lowest excitation at \u03b2=1.0",
+      "passed": "True",
+      "details": "E_3=9.0480, next=9.0480",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "E_fund": 9.04799018615525,
+        "E_next": 9.04799018615525
+      }
+    },
+    {
+      "name": "A1.2: Fundamental is lowest excitation at \u03b2=2.0",
+      "passed": "True",
+      "details": "E_3=6.0061, next=6.0061",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "E_fund": 6.006105144539476,
+        "E_next": 6.006105144539476
+      }
+    },
+    {
+      "name": "A1.2: Fundamental is lowest excitation at \u03b2=4.0",
+      "passed": "True",
+      "details": "E_3=2.9001, next=2.9001",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 4.0,
+        "E_fund": 2.900082552181229,
+        "E_next": 2.900082552181229
+      }
+    },
+    {
+      "name": "A2.1: Strong coupling gap at \u03b2=0.01",
+      "passed": "True",
+      "details": "Exact=27.7816, Asymp=27.7849, rel_err=0.0001, u_3=0.000556, \u03b2/18=0.000556",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.01,
+        "exact": 27.78161125684384,
+        "asymptotic": 27.784943198200807,
+        "rel_err": 0.0001199333374210888
+      }
+    },
+    {
+      "name": "A2.1: Strong coupling gap at \u03b2=0.05",
+      "passed": "True",
+      "details": "Exact=21.3306, Asymp=21.3472, rel_err=0.0008, u_3=0.002789, \u03b2/18=0.002778",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.05,
+        "exact": 21.330559990518278,
+        "asymptotic": 21.347191548464405,
+        "rel_err": 0.0007797056408045485
+      }
+    },
+    {
+      "name": "A2.1: Strong coupling gap at \u03b2=0.1",
+      "passed": "True",
+      "details": "Exact=18.5414, Asymp=18.5746, rel_err=0.0018, u_3=0.005602, \u03b2/18=0.005556",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.1,
+        "exact": 18.541411479213487,
+        "asymptotic": 18.574602826224623,
+        "rel_err": 0.0017901197569746528
+      }
+    },
+    {
+      "name": "A2.1: Strong coupling gap at \u03b2=0.2",
+      "passed": "True",
+      "details": "Exact=15.7359, Asymp=15.8020, rel_err=0.0042, u_3=0.011296, \u03b2/18=0.011111",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.2,
+        "exact": 15.735927856520876,
+        "asymptotic": 15.80201410398484,
+        "rel_err": 0.004199704527533058
+      }
+    },
+    {
+      "name": "A2.1: Strong coupling gap at \u03b2=0.5",
+      "passed": "True",
+      "details": "Exact=11.9740, Asymp=12.1369, rel_err=0.0136, u_3=0.028932, \u03b2/18=0.027778",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.5,
+        "exact": 11.974048780128959,
+        "asymptotic": 12.13685117648822,
+        "rel_err": 0.013596269678593018
+      }
+    },
+    {
+      "name": "A2.1: Strong coupling gap at \u03b2=1.0",
+      "passed": "True",
+      "details": "Exact=9.0480, Asymp=9.3643, rel_err=0.0350, u_3=0.060127, \u03b2/18=0.055556",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "exact": 9.04799018615525,
+        "asymptotic": 9.364262454248438,
+        "rel_err": 0.03495497470555738
+      }
+    },
+    {
+      "name": "A2.1: Strong coupling gap at \u03b2=2.0",
+      "passed": "True",
+      "details": "Exact=6.0061, Asymp=6.5917, rel_err=0.0975, u_3=0.128628, \u03b2/18=0.111111",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "exact": 6.006105144539475,
+        "asymptotic": 6.591673732008658,
+        "rel_err": 0.0974955604967322
+      }
+    },
+    {
+      "name": "A2.2: u_3 \u2248 \u03b2/18 at \u03b2=0.01",
+      "passed": "True",
+      "details": "u_3=0.00055602, \u03b2/18=0.00055556, rel_err=0.000833",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.01,
+        "u_3": 0.0005560185179821555,
+        "u_3_asymp": 0.0005555555555555556
+      }
+    },
+    {
+      "name": "A2.2: u_3 \u2248 \u03b2/18 at \u03b2=0.05",
+      "passed": "True",
+      "details": "u_3=0.00278935, \u03b2/18=0.00277778, rel_err=0.004167",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.05,
+        "u_3": 0.0027893515152827312,
+        "u_3_asymp": 0.002777777777777778
+      }
+    },
+    {
+      "name": "A2.2: u_3 \u2248 \u03b2/18 at \u03b2=0.1",
+      "passed": "True",
+      "details": "u_3=0.00560185, \u03b2/18=0.00555556, rel_err=0.008332",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.1,
+        "u_3": 0.005601846440118761,
+        "u_3_asymp": 0.005555555555555556
+      }
+    },
+    {
+      "name": "A3.1: Gap=0 condition algebraic check",
+      "passed": "True",
+      "details": "\u0394(u_3=3^{-1/2}) = 0.00e+00 (should be 0)",
+      "severity": "INFO",
+      "numerical_data": {
+        "u3_critical": 0.5773502691896257,
+        "delta_at_critical": 0.0
+      }
+    },
+    {
+      "name": "A3.2: Alternative derivation u_3 = 9^{-1/4}",
+      "passed": true,
+      "details": "9^{-1/4} = 0.577350269189626, 3^{-1/2} = 0.577350269189626",
+      "severity": "INFO",
+      "numerical_data": {
+        "u3_from_w": 0.5773502691896257
+      }
+    },
+    {
+      "name": "A3.3: Critical coupling \u03b2_c^(K\u2084)",
+      "passed": true,
+      "details": "\u03b2_c = 8.927 (paper claims \u22488.9), gap=0.000000, u_3=0.577350",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta_c": 8.926706431063792,
+        "gap_at_bc": 0.0,
+        "u3_at_bc": 0.5773502691896257
+      }
+    },
+    {
+      "name": "A3.4: u_3 at critical coupling",
+      "passed": "True",
+      "details": "u_3(\u03b2_c) = 0.577350, expected 3^{-1/2} = 0.577350, \u0394 = 0.000000",
+      "severity": "INFO",
+      "numerical_data": {
+        "u3_at_bc": 0.5773502691896257,
+        "u3_critical": 0.5773502691896257
+      }
+    },
+    {
+      "name": "A4.1: m_gap = (5/2)\u0394 + ln3 at \u03b2=1.0",
+      "passed": "True",
+      "details": "\u0394_Z=9.047990, m_gap=23.718588, (5/2)\u0394+ln3=23.718588, err=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "delta_Z": 9.04799018615525,
+        "m_gap": 23.718587754056234,
+        "expected_m_gap": 23.718587754056234,
+        "error": 0.0
+      }
+    },
+    {
+      "name": "A4.1: m_gap = (5/2)\u0394 + ln3 at \u03b2=4.0",
+      "passed": "True",
+      "details": "\u0394_Z=2.900083, m_gap=8.348819, (5/2)\u0394+ln3=8.348819, err=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 4.0,
+        "delta_Z": 2.9000825521812295,
+        "m_gap": 8.348818669121183,
+        "expected_m_gap": 8.348818669121183,
+        "error": 0.0
+      }
+    },
+    {
+      "name": "A4.1: m_gap = (5/2)\u0394 + ln3 at \u03b2=8.0",
+      "passed": "True",
+      "details": "\u0394_Z=0.299096, m_gap=1.846353, (5/2)\u0394+ln3=1.846353, err=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 8.0,
+        "delta_Z": 0.2990962096800147,
+        "m_gap": 1.8463528128681466,
+        "expected_m_gap": 1.8463528128681466,
+        "error": 0.0
+      }
+    },
+    {
+      "name": "A4.2: m_gap > 0 when \u0394 > 0 at \u03b2=0.5",
+      "passed": "True",
+      "details": "\u0394_Z=11.9740, m_gap=31.0337",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A4.2: m_gap > 0 when \u0394 > 0 at \u03b2=1.0",
+      "passed": "True",
+      "details": "\u0394_Z=9.0480, m_gap=23.7186",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A4.2: m_gap > 0 when \u0394 > 0 at \u03b2=2.0",
+      "passed": "True",
+      "details": "\u0394_Z=6.0061, m_gap=16.1139",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A4.2: m_gap > 0 when \u0394 > 0 at \u03b2=4.0",
+      "passed": "True",
+      "details": "\u0394_Z=2.9001, m_gap=8.3488",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A4.2: m_gap > 0 when \u0394 > 0 at \u03b2=6.0",
+      "passed": "True",
+      "details": "\u0394_Z=1.2487, m_gap=4.2205",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A4.3: Transfer gap closes at higher u_3",
+      "passed": true,
+      "details": "u_3 critical (transfer)=0.644394, u_3 critical (Z)=0.577350",
+      "severity": "INFO",
+      "numerical_data": {
+        "u3_transfer_crit": 0.6443940149772542,
+        "u3_Z_crit": 0.5773502691896257
+      }
+    },
+    {
+      "name": "A5.1: Convergence at \u03b2=1.0 (N_reps=15)",
+      "passed": "True",
+      "details": "Z(N=12)=1.124651e+00, Z(N=15)=1.124651e+00, rel_change=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "Z_final": 1.1246511813916436,
+        "rel_change": 0.0
+      }
+    },
+    {
+      "name": "A5.2: Largest non-trivial w_R/w_1 at \u03b2=1.0",
+      "passed": "True",
+      "details": "max w_R/w_1 = 0.000118 (rep (1, 0))",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "max_ratio": 0.0001176272083011259
+      }
+    },
+    {
+      "name": "A5.1: Convergence at \u03b2=4.0 (N_reps=15)",
+      "passed": "True",
+      "details": "Z(N=12)=9.267622e+00, Z(N=15)=9.267623e+00, rel_change=6.64e-08",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 4.0,
+        "Z_final": 9.267623087409918,
+        "rel_change": 6.641789535145706e-08
+      }
+    },
+    {
+      "name": "A5.2: Largest non-trivial w_R/w_1 at \u03b2=4.0",
+      "passed": "True",
+      "details": "max w_R/w_1 = 0.055019 (rep (1, 0))",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 4.0,
+        "max_ratio": 0.055018677957056
+      }
+    },
+    {
+      "name": "A5.1: Convergence at \u03b2=8.0 (N_reps=15)",
+      "passed": "True",
+      "details": "Z(N=12)=1.996933e+04, Z(N=15)=1.998590e+04, rel_change=8.29e-04",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 8.0,
+        "Z_final": 19985.896612167904,
+        "rel_change": 0.0008289600555121824
+      }
+    },
+    {
+      "name": "A5.2: Largest non-trivial w_R/w_1 at \u03b2=8.0",
+      "passed": "True",
+      "details": "max w_R/w_1 = 0.741488 (rep (1, 0))",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 8.0,
+        "max_ratio": 0.7414880676734551
+      }
+    },
+    {
+      "name": "A5.1: Convergence at \u03b2=12.0 (N_reps=15)",
+      "passed": "False",
+      "details": "Z(N=12)=1.204080e+09, Z(N=15)=1.231637e+09, rel_change=2.24e-02",
+      "severity": "WARNING",
+      "numerical_data": {
+        "beta": 12.0,
+        "Z_final": 1231636553.026517,
+        "rel_change": 0.022373545455017553
+      }
+    },
+    {
+      "name": "A5.2: Largest non-trivial w_R/w_1 at \u03b2=12.0",
+      "passed": "True",
+      "details": "max w_R/w_1 = 1.898107 (rep (1, 0))",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 12.0,
+        "max_ratio": 1.8981073579334438
+      }
+    },
+    {
+      "name": "A6.1: w_(1,0) = w_(0,1) at \u03b2=2.0",
+      "passed": "True",
+      "details": "w_(1,0)=4.0305616525e-03, w_(0,1)=4.0305616525e-03, rel_err=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "p": 1,
+        "q": 0,
+        "rel_err": 0.0
+      }
+    },
+    {
+      "name": "A6.1: w_(2,0) = w_(0,2) at \u03b2=2.0",
+      "passed": "True",
+      "details": "w_(2,0)=1.3678227767e-06, w_(0,2)=1.3678227767e-06, rel_err=4.64e-16",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "p": 2,
+        "q": 0,
+        "rel_err": 4.644422664049175e-16
+      }
+    },
+    {
+      "name": "A6.1: w_(2,1) = w_(1,2) at \u03b2=2.0",
+      "passed": "True",
+      "details": "w_(2,1)=2.3992148176e-09, w_(1,2)=2.3992148176e-09, rel_err=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "p": 2,
+        "q": 1,
+        "rel_err": 0.0
+      }
+    },
+    {
+      "name": "A6.2: N-ality 1 \u2248 N-ality 2 at \u03b2=2.0",
+      "passed": "True",
+      "details": "w(k=1)=4.031932e-03, w(k=2)=4.031932e-03, ratio=1.00000000",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "ratio_12": 1.0
+      }
+    },
+    {
+      "name": "A6.3: N-ality 0 dominates at \u03b2=2.0",
+      "passed": "True",
+      "details": "N-ality 0 fraction = 99.5%",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "frac_0": 0.9950951953017038
+      }
+    },
+    {
+      "name": "A6.1: w_(1,0) = w_(0,1) at \u03b2=6.0",
+      "passed": "True",
+      "details": "w_(1,0)=4.0238413434e+01, w_(0,1)=4.0238413434e+01, rel_err=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 6.0,
+        "p": 1,
+        "q": 0,
+        "rel_err": 0.0
+      }
+    },
+    {
+      "name": "A6.1: w_(2,0) = w_(0,2) at \u03b2=6.0",
+      "passed": "True",
+      "details": "w_(2,0)=1.7255604697e+00, w_(0,2)=1.7255604697e+00, rel_err=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 6.0,
+        "p": 2,
+        "q": 0,
+        "rel_err": 0.0
+      }
+    },
+    {
+      "name": "A6.1: w_(2,1) = w_(1,2) at \u03b2=6.0",
+      "passed": "True",
+      "details": "w_(2,1)=1.7159411043e-01, w_(1,2)=1.7159411043e-01, rel_err=6.47e-16",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 6.0,
+        "p": 2,
+        "q": 1,
+        "rel_err": 6.470053207620638e-16
+      }
+    },
+    {
+      "name": "A6.2: N-ality 1 \u2248 N-ality 2 at \u03b2=6.0",
+      "passed": "True",
+      "details": "w(k=1)=4.213716e+01, w(k=2)=4.213716e+01, ratio=1.00000000",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 6.0,
+        "ratio_12": 1.0
+      }
+    },
+    {
+      "name": "A6.3: N-ality 0 dominates at \u03b2=6.0",
+      "passed": "True",
+      "details": "N-ality 0 fraction = 63.5%",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 6.0,
+        "frac_0": 0.6348784101716762
+      }
+    },
+    {
+      "name": "A6.1: w_(1,0) = w_(0,1) at \u03b2=10.0",
+      "passed": "True",
+      "details": "w_(1,0)=8.9633892084e+05, w_(0,1)=8.9633892084e+05, rel_err=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 10.0,
+        "p": 1,
+        "q": 0,
+        "rel_err": 0.0
+      }
+    },
+    {
+      "name": "A6.1: w_(2,0) = w_(0,2) at \u03b2=10.0",
+      "passed": "True",
+      "details": "w_(2,0)=2.2998522918e+05, w_(0,2)=2.2998522918e+05, rel_err=6.33e-16",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 10.0,
+        "p": 2,
+        "q": 0,
+        "rel_err": 6.32732601132218e-16
+      }
+    },
+    {
+      "name": "A6.1: w_(2,1) = w_(1,2) at \u03b2=10.0",
+      "passed": "True",
+      "details": "w_(2,1)=1.0405107234e+05, w_(1,2)=1.0405107234e+05, rel_err=1.54e-15",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 10.0,
+        "p": 2,
+        "q": 1,
+        "rel_err": 1.5383894073570839e-15
+      }
+    },
+    {
+      "name": "A6.2: N-ality 1 \u2248 N-ality 2 at \u03b2=10.0",
+      "passed": "True",
+      "details": "w(k=1)=1.237299e+06, w(k=2)=1.237299e+06, ratio=1.00000000",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 10.0,
+        "ratio_12": 1.0
+      }
+    },
+    {
+      "name": "A7.1: Casimir scaling at \u03b2=0.5",
+      "passed": "True",
+      "details": "E/C\u2082 values: ['8.981', '8.981', '7.941', '7.774', '7.774', '6.851', '6.851'], CV=0.1025",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.5,
+        "cv": 0.10249012315074743,
+        "ratios": [
+          8.98053658509672,
+          8.98053658509672,
+          7.940878362028191,
+          7.773549489098077,
+          7.773549489098075,
+          6.85147467535248,
+          6.851474675352434
+        ]
+      }
+    },
+    {
+      "name": "A7.1: Casimir scaling at \u03b2=1.0",
+      "passed": "True",
+      "details": "E/C\u2082 values: ['6.786', '6.786', '6.026', '6.019', '6.019', '5.391', '5.391'], CV=0.0872",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "cv": 0.08718016454078044,
+        "ratios": [
+          6.785992639616437,
+          6.785992639616437,
+          6.025871158921348,
+          6.019478957092445,
+          6.019478957092445,
+          5.391005890410366,
+          5.391005890410372
+        ]
+      }
+    },
+    {
+      "name": "A7.1: Casimir scaling at \u03b2=2.0",
+      "passed": "True",
+      "details": "E/C\u2082 values: ['4.505', '4.505', '4.064', '4.198', '4.198', '3.877', '3.877'], CV=0.0579",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "cv": 0.05787286547667287,
+        "ratios": [
+          4.504578858404607,
+          4.504578858404607,
+          4.0642460958449975,
+          4.198363768810594,
+          4.198363768810594,
+          3.8766601395364035,
+          3.876660139536403
+        ]
+      }
+    },
+    {
+      "name": "A7.1: Casimir scaling at \u03b2=4.0",
+      "passed": "True",
+      "details": "E/C\u2082 values: ['2.175', '2.175', '2.093', '2.334', '2.334', '2.324', '2.324'], CV=0.0415",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 4.0,
+        "cv": 0.04145969116427908,
+        "ratios": [
+          2.175061914135922,
+          2.175061914135922,
+          2.0929701082107943,
+          2.333917810396046,
+          2.3339178103960463,
+          2.3242465612849426,
+          2.324246561284942
+        ]
+      }
+    },
+    {
+      "name": "A8.1: Table entry \u03b2=0.1",
+      "passed": "True",
+      "details": "u_3: paper=0.0056, exact=0.0056 (err=0.03%); \u0394: paper=18.54, exact=18.54 (err=0.00)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.1,
+        "u3_paper": 0.0056,
+        "u3_exact": 0.005601846440118725,
+        "delta_paper": 18.54,
+        "delta_exact": 18.54141147921351
+      }
+    },
+    {
+      "name": "A8.1: Table entry \u03b2=0.5",
+      "passed": "True",
+      "details": "u_3: paper=0.0289, exact=0.0289 (err=0.11%); \u0394: paper=11.97, exact=11.97 (err=0.00)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.5,
+        "u3_paper": 0.0289,
+        "u3_exact": 0.028931672799122857,
+        "delta_paper": 11.97,
+        "delta_exact": 11.974048780128964
+      }
+    },
+    {
+      "name": "A8.1: Table entry \u03b2=1.0",
+      "passed": "True",
+      "details": "u_3: paper=0.0601, exact=0.0601 (err=0.04%); \u0394: paper=9.05, exact=9.05 (err=0.00)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "u3_paper": 0.0601,
+        "u3_exact": 0.06012655483356471,
+        "delta_paper": 9.05,
+        "delta_exact": 9.047990186155252
+      }
+    },
+    {
+      "name": "A8.1: Table entry \u03b2=2.0",
+      "passed": "True",
+      "details": "u_3: paper=0.1286, exact=0.1286 (err=0.02%); \u0394: paper=6.01, exact=6.01 (err=0.00)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "u3_paper": 0.1286,
+        "u3_exact": 0.12862778532208335,
+        "delta_paper": 6.01,
+        "delta_exact": 6.006105144539477
+      }
+    },
+    {
+      "name": "A8.1: Table entry \u03b2=4.0",
+      "passed": "True",
+      "details": "u_3: paper=0.2796, exact=0.2796 (err=0.01%); \u0394: paper=2.9, exact=2.90 (err=0.00)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 4.0,
+        "u3_paper": 0.2796,
+        "u3_exact": 0.27961914940930427,
+        "delta_paper": 2.9,
+        "delta_exact": 2.9000825521812303
+      }
+    },
+    {
+      "name": "A8.1: Table entry \u03b2=6.0",
+      "passed": "True",
+      "details": "u_3: paper=0.4225, exact=0.4225 (err=0.01%); \u0394: paper=1.25, exact=1.25 (err=0.00)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 6.0,
+        "u3_paper": 0.4225,
+        "u3_exact": 0.4225317396499835,
+        "delta_paper": 1.25,
+        "delta_exact": 1.248738268962255
+      }
+    },
+    {
+      "name": "A8.1: Table entry \u03b2=8.0",
+      "passed": "True",
+      "details": "u_3: paper=0.5358, exact=0.5358 (err=0.01%); \u0394: paper=0.3, exact=0.30 (err=0.00)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 8.0,
+        "u3_paper": 0.5358,
+        "u3_exact": 0.5357539902135648,
+        "delta_paper": 0.3,
+        "delta_exact": 0.2990962096800147
+      }
+    },
+    {
+      "name": "A8.1: Table entry \u03b2=10.0",
+      "passed": "True",
+      "details": "u_3: paper=0.6182, exact=0.6182 (err=0.00%); \u0394: paper=-0.27, exact=-0.27 (err=0.00)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 10.0,
+        "u3_paper": 0.6182,
+        "u3_exact": 0.6181757389675139,
+        "delta_paper": -0.27,
+        "delta_exact": -0.2732945985850068
+      }
+    },
+    {
+      "name": "A8.1: Table entry \u03b2=15.0",
+      "passed": "True",
+      "details": "u_3: paper=0.7396, exact=0.7396 (err=0.00%); \u0394: paper=-0.99, exact=-0.99 (err=0.00)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 15.0,
+        "u3_paper": 0.7396,
+        "u3_exact": 0.7396055706969672,
+        "delta_paper": -0.99,
+        "delta_exact": -0.9906715875070786
+      }
+    },
+    {
+      "name": "A8.2: Phase 'Deeply gapped' at \u03b2=0.1 has \u0394>0",
+      "passed": "True",
+      "details": "\u0394 = 18.5414",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A8.2: Phase 'Gapped' at \u03b2=0.5 has \u0394>0",
+      "passed": "True",
+      "details": "\u0394 = 11.9740",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A8.2: Phase 'Gapped' at \u03b2=1.0 has \u0394>0",
+      "passed": "True",
+      "details": "\u0394 = 9.0480",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A8.2: Phase 'Gapped' at \u03b2=2.0 has \u0394>0",
+      "passed": "True",
+      "details": "\u0394 = 6.0061",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A8.2: Phase 'Gapped' at \u03b2=4.0 has \u0394>0",
+      "passed": "True",
+      "details": "\u0394 = 2.9001",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A8.2: Phase 'Weakly gapped' at \u03b2=6.0 has \u0394>0",
+      "passed": "True",
+      "details": "\u0394 = 1.2487",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A9.1: \u27e8P\u27e9 char vs MC at \u03b2=1.0",
+      "passed": "True",
+      "details": "char=0.060379, MC=0.060988\u00b10.001432, \u0394=0.000609 (0.4\u03c3)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "plaq_char": 0.060379239560362855,
+        "plaq_mc": 0.06098829362965273,
+        "plaq_mc_err": 0.0014318173834712183
+      }
+    },
+    {
+      "name": "A9.1: \u27e8P\u27e9 char vs MC at \u03b2=2.0",
+      "passed": "True",
+      "details": "char=0.131380, MC=0.131938\u00b10.001569, \u0394=0.000558 (0.4\u03c3)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "plaq_char": 0.13138037579369793,
+        "plaq_mc": 0.13193810518928756,
+        "plaq_mc_err": 0.0015693944478243113
+      }
+    },
+    {
+      "name": "A9.1: \u27e8P\u27e9 char vs MC at \u03b2=4.0",
+      "passed": "True",
+      "details": "char=0.307843, MC=0.307083\u00b10.001728, \u0394=0.000760 (0.4\u03c3)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 4.0,
+        "plaq_char": 0.3078428245581022,
+        "plaq_mc": 0.3070831492418738,
+        "plaq_mc_err": 0.001728336310926825
+      }
+    },
+    {
+      "name": "A9.1: \u27e8P\u27e9 char vs MC at \u03b2=6.0",
+      "passed": "True",
+      "details": "char=0.489697, MC=0.490664\u00b10.001558, \u0394=0.000967 (0.6\u03c3)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 6.0,
+        "plaq_char": 0.489696964194164,
+        "plaq_mc": 0.4906635813678285,
+        "plaq_mc_err": 0.0015583740281848878
+      }
+    },
+    {
+      "name": "A10.1: Gap independence of N_reps at \u03b2=2.0",
+      "passed": "True",
+      "details": "Gaps: ['6.006105', '6.006105', '6.006105', '6.006105', '6.006105', '6.006105'], spread=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "spread": 0.0
+      }
+    },
+    {
+      "name": "A10.1: Gap independence of N_reps at \u03b2=6.0",
+      "passed": "True",
+      "details": "Gaps: ['1.248738', '1.248738', '1.248738', '1.248738', '1.248738', '1.248738'], spread=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 6.0,
+        "spread": 0.0
+      }
+    },
+    {
+      "name": "A10.1: Gap independence of N_reps at \u03b2=10.0",
+      "passed": "True",
+      "details": "Gaps: ['-0.273295', '-0.273295', '-0.273295', '-0.273295', '-0.273295', '-0.273295'], spread=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 10.0,
+        "spread": 0.0
+      }
+    },
+    {
+      "name": "A10.1: Gap independence of N_reps at \u03b2=15.0",
+      "passed": "True",
+      "details": "Gaps: ['-0.990672', '-0.990672', '-0.990672', '-0.990672', '-0.990672', '-0.990672'], spread=0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 15.0,
+        "spread": 0.0
+      }
+    }
+  ],
+  "plots_generated": [
+    "prop_0_0_38a_A2_strong_coupling.png",
+    "prop_0_0_38a_A3_critical_coupling.png",
+    "prop_0_0_38a_A4_gap_comparison.png",
+    "prop_0_0_38a_A5_convergence.png",
+    "prop_0_0_38a_A6_Z3_symmetry.png",
+    "prop_0_0_38a_A7_casimir_scaling.png",
+    "prop_0_0_38a_A9_plaquette_crosscheck.png",
+    "prop_0_0_38a_A10_truncation.png"
+  ]
+}

@@ -1,0 +1,435 @@
+{
+  "proposition": "7.6.6",
+  "title": "Correlation Decay at Weak Coupling on D\u2084 Lattice",
+  "timestamp": "2026-02-14T13:46:44.455978",
+  "overall_status": "PASSED",
+  "standard_tests": "13/13",
+  "adversarial_tests": "12/12",
+  "total": "25/25",
+  "findings_flagged": [
+    "F4: \u03b2/3 \u2260 \u03b2/(2Nc) for SU(3)",
+    "F5: \u221a\u03b2 bound fails for large \u03b2"
+  ],
+  "results": [
+    {
+      "test": "T1",
+      "name": "D\u2084 entropy ratio",
+      "computed": 1.5283208335737188,
+      "expected": 1.5283208335737188,
+      "abs_error": 0.0,
+      "passed": "True",
+      "details": "ln(24)/ln(8) = 1.528321, 1 + ln3/(3ln2) = 1.528321"
+    },
+    {
+      "test": "T2",
+      "name": "Plaquette density ratio",
+      "computed": 4.0,
+      "expected": 4.0,
+      "passed": true,
+      "details": "D\u2084 has 4\u00d7 more plaquettes per vertex than Z\u2074"
+    },
+    {
+      "test": "T3",
+      "name": "Peierls energy/entropy ratio",
+      "computed": 1.163222890589502,
+      "improvement_pct": 16.32228905895019,
+      "ee_d4": 0.023307998551416662,
+      "ee_z4": 0.020037431123457825,
+      "passed": "True",
+      "details": "D\u2084/Z\u2074 ratio = 1.1632 (16.3% better)"
+    },
+    {
+      "test": "T4",
+      "name": "D\u2084 threshold for Z\u2082",
+      "beta_d4": 121.16703787691222,
+      "beta_z4": 116.77258872223977,
+      "expected_d4": 121.16703787691222,
+      "excess_pct": 3.763254033123542,
+      "passed": "True",
+      "details": "\u03b2_wc^D\u2084 = 121.17, \u03b2_wc^Z\u2074 = 116.77 (D\u2084 is 3.8% larger)"
+    },
+    {
+      "test": "T5",
+      "name": "Hessian coefficient",
+      "hessian_claimed": 0.3333333333333333,
+      "hessian_2Nc": 0.16666666666666666,
+      "claim_beta3_eq_beta_2Nc": false,
+      "finding_F4_flagged": true,
+      "passed": true,
+      "details": "\u03b2/3 = 0.3333, \u03b2/(2Nc) = 0.1667. These are NOT equal for Nc=3 (Finding F4). Derivation uses 8 plaq/link \u00d7 (\u03b2/6)/4 = \u03b2/3."
+    },
+    {
+      "test": "T6",
+      "name": "Decay rate \u2194 Combes-Thomas (\u03b2 = 18)",
+      "m_formula": 0.49012907173427356,
+      "m_ct": 0.49012907173427356,
+      "expected": 0.49012907173427356,
+      "abs_error": 0.0,
+      "value_per_a": 0.49012907173427356,
+      "passed": "True",
+      "details": "m_wc(18) = ln(2)/\u221a2 = 0.490129/a. Formula and CT path agree exactly."
+    },
+    {
+      "test": "T7",
+      "name": "Finite subgroup \u0394_{G_N} ~ C/N\u00b2 scaling",
+      "N_values": [
+        3,
+        5,
+        7,
+        10,
+        15,
+        20
+      ],
+      "delta_values": [
+        0.5333,
+        0.192,
+        0.098,
+        0.048,
+        0.0213,
+        0.012
+      ],
+      "N2_delta_products": [
+        4.8,
+        4.8,
+        4.8,
+        4.8,
+        4.8,
+        4.8
+      ],
+      "spread": 0.0,
+      "C_delta": 4.8,
+      "passed": true,
+      "details": "N\u00b2\u00d7\u0394_N products: [4.8, 4.8, 4.8, 4.8, 4.8, 4.8], converge to C_\u0394 = 4.8"
+    },
+    {
+      "test": "T8",
+      "name": "Threshold divergence \u03b2_wc^{G_N} \u2192 \u221e",
+      "N_values": [
+        3,
+        5,
+        10,
+        20,
+        50,
+        100
+      ],
+      "thresholds": [
+        246.7,
+        717.2,
+        3042.2,
+        12861.9,
+        86113.9,
+        361784.4
+      ],
+      "monotonic": true,
+      "ratio_last_first": 1466.4454190194003,
+      "passed": "True",
+      "details": "Thresholds: ['247', '717', '3042', '12862', '86114', '361784']. Ratio last/first = 1466\u00d7"
+    },
+    {
+      "test": "T9",
+      "name": "Crossover path \u03bc(\u03b2,\u03b5) continuity profile",
+      "all_positive": true,
+      "mu_start": 2.144401719026387,
+      "mu_end": 1.0898416532450934,
+      "mu_min": 0.5605826473210034,
+      "beta_at_min": 10.629118236472946,
+      "min_at_interior": "True",
+      "passed": "True",
+      "details": "\u03bc(0) = 2.144, \u03bc(50) = 1.090, \u03bc_min = 0.561 at \u03b2 = 10.6"
+    },
+    {
+      "test": "T10",
+      "name": "Dimensional consistency",
+      "m_wc_units": "1/fm",
+      "m_wc_value": "2.0342 fm\u207b\u00b9",
+      "lambda1_units": "1/fm\u00b2",
+      "lambda1_value": "25.4644 fm\u207b\u00b2",
+      "gamma_dimensionless": true,
+      "passed": true,
+      "details": "All quantities have correct dimensions: [m_wc] = 1/a, [\u03bb\u2081] = 1/a\u00b2, [\u03b3] = 1, [\u03b2] = 1"
+    },
+    {
+      "test": "T11",
+      "name": "Free field limit recovery",
+      "results": [
+        {
+          "beta": 100,
+          "m_wc": 1.3296,
+          "ratio_check": 1.0
+        },
+        {
+          "beta": 1000,
+          "m_wc": 2.8533,
+          "ratio_check": 1.0
+        },
+        {
+          "beta": 10000,
+          "m_wc": 4.4702,
+          "ratio_check": 1.0
+        },
+        {
+          "beta": 100000,
+          "m_wc": 6.0972,
+          "ratio_check": 1.0
+        }
+      ],
+      "all_exact_match": true,
+      "m_wc_grows_with_beta": "True",
+      "passed": "True",
+      "details": "m_wc \u00d7 \u221a2 / ln(1+\u03b2/18) = 1.0 exactly at all \u03b2. Asymptotic: m_wc ~ ln(\u03b2/18)/\u221a2 as \u03b2 \u2192 \u221e."
+    },
+    {
+      "test": "T12",
+      "name": "Z\u2074 limit recovery",
+      "beta_d4": 121.16703787691222,
+      "beta_z4": 116.77258872223977,
+      "difference": 4.394449154672444,
+      "expected_difference": 4.394449154672439,
+      "abs_error": 4.440892098500626e-15,
+      "passed": "True",
+      "details": "\u03b2_D\u2084 - \u03b2_Z\u2074 = 4.394449 = 4 ln(3) = 4.394449"
+    },
+    {
+      "test": "T13",
+      "name": "\u03b2 \u2192 \u221e no pathologies",
+      "results": [
+        {
+          "beta": "1e+03",
+          "m_wc": 2.8533,
+          "xi": 0.350467
+        },
+        {
+          "beta": "1e+06",
+          "m_wc": 7.7253,
+          "xi": 0.129446
+        },
+        {
+          "beta": "1e+09",
+          "m_wc": 12.6098,
+          "xi": 0.079304
+        },
+        {
+          "beta": "1e+12",
+          "m_wc": 17.4943,
+          "xi": 0.057162
+        },
+        {
+          "beta": "1e+15",
+          "m_wc": 22.3788,
+          "xi": 0.044685
+        }
+      ],
+      "m_monotonic_increase": true,
+      "no_infinities": true,
+      "xi_decreasing": true,
+      "passed": true,
+      "details": "m_wc \u2192 \u221e monotonically, \u03be \u2192 0, no NaN/Inf"
+    },
+    {
+      "test": "ADV-1",
+      "name": "Gauge invariance \u2014 decay rate tree-independent",
+      "m_wc_tree1": 0.2034219442564539,
+      "m_wc_tree2": 0.2034219442564539,
+      "tree_independent": true,
+      "passed": true,
+      "details": "m_wc(\u03b2) = ln(1+\u03b2/18)/(a\u221a2) \u2014 formula has no tree dependence. Gauge fixing is intermediate step; final bound is gauge-invariant."
+    },
+    {
+      "test": "ADV-2",
+      "name": "Wrong lattice constants detection",
+      "beta_correct_d4": 121.16703787691222,
+      "beta_wrong_z4_in_d4": 116.77258872223977,
+      "error": 4.394449154672444,
+      "expected_error": 4.394449154672439,
+      "wrong_gives_smaller": "True",
+      "passed": "True",
+      "details": "Wrong constants give \u03b2 = 116.77 vs correct 121.17. Error = 4 ln(3) = 4.3944. Using Z\u2074 constants in D\u2084 gives non-conservative (too small) threshold."
+    },
+    {
+      "test": "ADV-3",
+      "name": "Graceful failure at strong coupling",
+      "beta": 1.0,
+      "g0_sq": 6.0,
+      "g_crit_sq": 2.95e-07,
+      "small_field_violated": true,
+      "m_wc_formal": 0.03823129880012555,
+      "mu_strong_approx": 2.890371757896165,
+      "strong_gap_larger": "True",
+      "passed": "True",
+      "details": "At \u03b2 = 1: g\u2080\u00b2 = 6.0 >> g_crit\u00b2 = 2.95e-07. BL gives m = 0.0382/a (useless). Thm 7.4.2 gives \u03bc \u2248 2.8904/a (dominant)."
+    },
+    {
+      "test": "ADV-4",
+      "name": "Non-gauge-invariant observable exclusion",
+      "gauge_invariance_required": true,
+      "single_link_excluded": true,
+      "reason": "Swapping map and BL both require gauge invariance",
+      "polynomial_decay_possible": true,
+      "passed": true,
+      "details": "Non-gauge-invariant observables (e.g., single link U_\u2113) are correctly excluded. In axial gauge, link-link correlations can have polynomial decay."
+    },
+    {
+      "test": "ADV-5",
+      "name": "\u03b2 \u2192 \u221e quantitative: \u221a\u03b2 vs ln(\u03b2) growth",
+      "finding_F5_confirmed": true,
+      "beta_crossover": 1.0,
+      "m_wc_at_1e6": 7.725252458739932,
+      "sqrt_at_1e6": 100.0,
+      "log_growth_correct": true,
+      "passed": true,
+      "details": "Finding F5 confirmed: \u221a\u03b2 bound fails at \u03b2 \u2248 1 for c\u2080 = 0.1. At \u03b2 = 10\u2076: m_wc = 7.73/a vs c\u2080\u221a\u03b2 = 100/a. Correct asymptotic: m_wc ~ ln(\u03b2)/(a\u221a2)."
+    },
+    {
+      "test": "ADV-6",
+      "name": "No boundary-dependent effects",
+      "Ns_values": [
+        4,
+        8,
+        16,
+        32,
+        64
+      ],
+      "global_gaps": [
+        "2222.2222",
+        "650.8738",
+        "169.1566",
+        "42.6994",
+        "10.7006"
+      ],
+      "m_wc_values": [
+        "4.470164",
+        "4.470164",
+        "4.470164",
+        "4.470164",
+        "4.470164"
+      ],
+      "m_wc_Ns_independent": "True",
+      "global_gap_shrinks": "True",
+      "passed": "True",
+      "details": "m_wc = 4.470164/a for all N_s. Global spectral gap shrinks: 2222.22 \u2192 10.700607 as N_s grows. Local decay rate is N_s-independent."
+    },
+    {
+      "test": "ADV-7",
+      "name": "Observable-independent decay rate",
+      "beta": 6.0,
+      "m_wc": 0.2034219442564539,
+      "observables": [
+        {
+          "name": "Wilson loop W(C)",
+          "Lip_norm": 1.0,
+          "decay_rate": 0.2034219442564539
+        },
+        {
+          "name": "Plaquette-plaquette",
+          "Lip_norm": 2.0,
+          "decay_rate": 0.2034219442564539
+        },
+        {
+          "name": "Polyakov loop correlator",
+          "Lip_norm": 0.5,
+          "decay_rate": 0.2034219442564539
+        }
+      ],
+      "all_same_rate": true,
+      "passed": true,
+      "details": "All gauge-invariant observables share decay rate m_wc = 0.203422/a. Only prefactors differ."
+    },
+    {
+      "test": "ADV-8",
+      "name": "\u03bc_min well-defined",
+      "mu_min": 0.5605826185557776,
+      "beta_star": 10.63,
+      "all_positive": true,
+      "mu_min_positive": true,
+      "endpoints_larger": true,
+      "passed": "True",
+      "details": "\u03bc_min = 0.5606 at \u03b2* = 10.63. All \u03bc > 0, endpoints larger."
+    },
+    {
+      "test": "ADV-9",
+      "name": "Route 1 vs Route 2 consistency",
+      "beta": 100.0,
+      "N": 10,
+      "delta_GN": 0.048,
+      "m_route1": 2.4,
+      "m_route2": 1.3295819787036094,
+      "beta_threshold_route1": 3042.197297304187,
+      "route1_applies_here": "False",
+      "route2_tighter_where_both_apply": true,
+      "passed": true,
+      "details": "Route 1: m = 2.4000/a (threshold \u03b2 \u2265 3042). Route 2: m = 1.3296/a (applies at \u03b2 = 100.0). Route 1 requires \u03b2 \u2265 3042, so doesn't apply here. Routes are compatible; Route 2 is practical."
+    },
+    {
+      "test": "ADV-10",
+      "name": "Decay rate monotonicity",
+      "all_positive_derivatives": true,
+      "min_derivative": 0.0006946380322007771,
+      "max_rel_error_vs_analytical": 0.0027662494345522814,
+      "passed": "True",
+      "details": "dm/d\u03b2 > 0 everywhere. Min derivative = 6.946380e-04. Analytical match: 2.77e-03."
+    },
+    {
+      "test": "ADV-11",
+      "name": "Dobrushin criterion quantitative",
+      "C1": 1.0,
+      "c1": 0.5,
+      "results": [
+        {
+          "beta": 5,
+          "alpha_D": "1.97e+00",
+          "satisfied": "False"
+        },
+        {
+          "beta": 10,
+          "alpha_D": "1.62e-01",
+          "satisfied": "True"
+        },
+        {
+          "beta": 20,
+          "alpha_D": "1.09e-03",
+          "satisfied": "True"
+        },
+        {
+          "beta": 50,
+          "alpha_D": "3.33e-10",
+          "satisfied": "True"
+        },
+        {
+          "beta": 100,
+          "alpha_D": "4.63e-21",
+          "satisfied": "True"
+        },
+        {
+          "beta": 10000.0,
+          "alpha_D": "0.00e+00",
+          "satisfied": "True"
+        },
+        {
+          "beta": 10000000.0,
+          "alpha_D": "0.00e+00",
+          "satisfied": "True"
+        }
+      ],
+      "beta_threshold": 6.3561076606958915,
+      "all_above_threshold_satisfied": true,
+      "passed": true,
+      "details": "Dobrushin threshold: \u03b2 > 6.4. Criterion satisfied for \u03b2 \u2265 10."
+    },
+    {
+      "test": "ADV-12",
+      "name": "RG blocking consistency",
+      "beta_0": 100.0,
+      "beta_1": 100.2897,
+      "a_0": 1.0,
+      "a_1": 2.0,
+      "m_phys_0": 1.329582,
+      "m_phys_1": 0.665658,
+      "m_a_0": 1.329582,
+      "m_a_1": 1.331316,
+      "ratio_physical": 0.5007,
+      "lattice_mass_increases": "True",
+      "passed": "True",
+      "details": "m_wc\u00b7a before: 1.3296, after: 1.3313 (increases \u2713). Physical m_wc: 1.3296 \u2192 0.6657 (ratio 0.501). BL bound consistent with asymptotic freedom under RG blocking."
+    }
+  ]
+}

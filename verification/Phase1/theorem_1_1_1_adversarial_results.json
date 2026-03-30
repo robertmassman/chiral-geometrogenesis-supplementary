@@ -1,0 +1,356 @@
+{
+  "theorem": "1.1.1",
+  "title": "SU(3) Weight Diagram <-> Stella Octangula Isomorphism",
+  "verification_type": "adversarial",
+  "timestamp": "2026-02-21T18:20:40.938761",
+  "total_passed": 10,
+  "total_tests": 10,
+  "errors_confirmed": 5,
+  "results": [
+    {
+      "test": "E1_euclidean_distances",
+      "description": "Section 4.2 expected output is wrong: triangle is isosceles in Euclidean (T3,Y)",
+      "passed": true,
+      "computed": {
+        "d_RG": 1.0,
+        "d_GB": 1.118033988749895,
+        "d_BR": 1.118033988749895
+      },
+      "proof_claims_equilateral": false,
+      "actually_isosceles": true,
+      "error_confirmed": true
+    },
+    {
+      "test": "E2_transformation_matrix",
+      "description": "Matrix entry d = 1/(2*sqrt(6)) is wrong; correct is d = sqrt(6)/4",
+      "passed": true,
+      "d_proof": 0.20412414523193154,
+      "d_correct": 0.6123724356957945,
+      "d_ratio": 0.3333333333333334,
+      "d_error": 0.4082482904638629,
+      "A_proof": [
+        [
+          0.5303300858899106,
+          -0.30618621784789724
+        ],
+        [
+          0.35355339059327373,
+          0.20412414523193154
+        ]
+      ],
+      "A_correct": [
+        [
+          0.5303300858899106,
+          -0.30618621784789724
+        ],
+        [
+          0.35355339059327373,
+          0.6123724356957945
+        ]
+      ],
+      "proof_matrix_results": {
+        "R": {
+          "mapped": [
+            0.5,
+            0.3333333333333333
+          ],
+          "target": [
+            0.5,
+            0.3333333333333333
+          ],
+          "error": 0.0
+        },
+        "G": {
+          "mapped": [
+            -0.5,
+            2.7755575615628914e-17
+          ],
+          "target": [
+            -0.5,
+            0.3333333333333333
+          ],
+          "error": 0.33333333333333326
+        },
+        "B": {
+          "mapped": [
+            -2.7755575615628914e-17,
+            -0.33333333333333337
+          ],
+          "target": [
+            0.0,
+            -0.6666666666666666
+          ],
+          "error": 0.33333333333333326
+        }
+      },
+      "correct_matrix_results": {
+        "R": {
+          "mapped": [
+            0.5,
+            0.3333333333333333
+          ],
+          "target": [
+            0.5,
+            0.3333333333333333
+          ],
+          "error": 0.0
+        },
+        "G": {
+          "mapped": [
+            -0.5,
+            0.33333333333333326
+          ],
+          "target": [
+            -0.5,
+            0.3333333333333333
+          ],
+          "error": 5.551115123125783e-17
+        },
+        "B": {
+          "mapped": [
+            -2.7755575615628914e-17,
+            -0.6666666666666666
+          ],
+          "target": [
+            0.0,
+            -0.6666666666666666
+          ],
+          "error": 2.7755575615628914e-17
+        }
+      },
+      "error_confirmed": true
+    },
+    {
+      "test": "E3_root_weight_relation",
+      "description": "Weight differences are full roots, not half-roots",
+      "passed": true,
+      "diff_RG": [
+        1.0,
+        0.0
+      ],
+      "alpha1": [
+        1.0,
+        0.0
+      ],
+      "RG_equals_alpha1": true,
+      "RG_equals_half_alpha1": false,
+      "diff_GB": [
+        -0.5,
+        0.8660254037844386
+      ],
+      "alpha2": [
+        -0.5,
+        0.8660254037844386
+      ],
+      "GB_equals_alpha2": true,
+      "diff_RB": [
+        0.5,
+        0.8660254037844386
+      ],
+      "alpha1_plus_alpha2": [
+        0.5,
+        0.8660254037844386
+      ],
+      "RB_equals_alpha1_plus_alpha2": true,
+      "error_confirmed": true
+    },
+    {
+      "test": "E4_killing_form_basis",
+      "description": "Killing form is NOT Euclidean in (T3, Y*sqrt(3)) basis",
+      "passed": true,
+      "killing_metric": {
+        "(H1,H2)_basis": {
+          "g11": 12.0,
+          "g22": 12.000000000000004,
+          "g12": 0.0,
+          "is_euclidean": true
+        },
+        "(T3,Y)_basis": {
+          "g11": 3.0,
+          "g22": 4.000000000000003,
+          "g12": 0.0,
+          "is_euclidean": false
+        },
+        "(T3,Y*sqrt3)_basis": {
+          "g11": 3.0,
+          "g22": 12.000000000000004,
+          "g12": 0.0,
+          "is_euclidean": false
+        },
+        "(T3,T8)_basis": {
+          "g11": 3.0,
+          "g22": 3.000000000000001,
+          "g12": 0.0,
+          "is_euclidean": true
+        }
+      },
+      "error_confirmed": true,
+      "note": "(H1,H2) and (T3,T8) bases give Euclidean Killing metric; (T3,Y) and (T3,Y*sqrt3) do NOT"
+    },
+    {
+      "test": "E5_rotation_vs_reflection",
+      "description": "sigma_1 and sigma_2 are reflections (det=-1), not rotations (det=+1)",
+      "passed": true,
+      "sigma1": {
+        "determinant": -1.0,
+        "is_reflection": true,
+        "is_rotation": false,
+        "is_orthogonal": true,
+        "v0_fixed": true,
+        "v1_to_v2": true,
+        "v2_to_v1": true,
+        "v3_fixed": true
+      },
+      "sigma2": {
+        "determinant": -0.9999999999999999,
+        "is_reflection": true,
+        "is_orthogonal": true
+      },
+      "error_confirmed": true
+    },
+    {
+      "test": "A1_weyl_reflections_proper_basis",
+      "description": "Weyl reflections correctly permute weights in orthonormal Killing basis",
+      "passed": true,
+      "weights": {
+        "R": [
+          0.5,
+          0.28867513459481287
+        ],
+        "G": [
+          -0.5,
+          0.28867513459481287
+        ],
+        "B": [
+          0.0,
+          -0.5773502691896257
+        ]
+      },
+      "s1": {
+        "s1(R)": [
+          -0.5,
+          0.28867513459481287
+        ],
+        "s1(G)": [
+          0.5,
+          0.28867513459481287
+        ],
+        "s1(B)": [
+          0.0,
+          -0.5773502691896257
+        ],
+        "swaps_RG": true,
+        "fixes_B": true
+      },
+      "s2": {
+        "s2(R)": [
+          0.49999999999999994,
+          0.2886751345948129
+        ],
+        "s2(G)": [
+          1.1102230246251565e-16,
+          -0.577350269189626
+        ],
+        "s2(B)": [
+          -0.5,
+          0.28867513459481287
+        ],
+        "swaps_GB": true,
+        "fixes_R": true
+      },
+      "composite_s1s2s1": {
+        "swaps_RB": true,
+        "fixes_G": true
+      }
+    },
+    {
+      "test": "A2_convention_consistency",
+      "description": "(T3, Y) and (T3, T8) conventions related by T8 = Y*sqrt(3)/2",
+      "passed": true,
+      "conversion": {
+        "R": true,
+        "G": true,
+        "B": true
+      },
+      "T3T8_distances": {
+        "d_RG": 1.0,
+        "d_GB": 1.0000000000000002,
+        "d_BR": 1.0000000000000002
+      },
+      "equilateral_in_T3T8": true,
+      "note": "Triangle IS equilateral in Euclidean (T3, T8) \u2014 this is the Lean convention"
+    },
+    {
+      "test": "A3_killing_form_adjoint",
+      "description": "Killing form B(X,Y) = 6 Tr(XY) verified via adjoint representation",
+      "passed": true,
+      "adjoint_computation": {
+        "B_H1H1": 12.0,
+        "B_H2H2": 12.000000000000005,
+        "B_H1H2": 0.0
+      },
+      "trace_formula": {
+        "B_H1H1": 12.0,
+        "B_H2H2": 12.000000000000004,
+        "B_H1H2": 0.0
+      },
+      "match": true,
+      "note": "Killing form normalization B = 6 Tr for SU(3) Gell-Mann convention verified"
+    },
+    {
+      "test": "A4_full_S3_structure",
+      "description": "Full S_3 group structure verified (6 elements, closure, inverses)",
+      "passed": true,
+      "elements": {
+        "e": [
+          0,
+          1,
+          2
+        ],
+        "s1": [
+          1,
+          0,
+          2
+        ],
+        "s2": [
+          0,
+          2,
+          1
+        ],
+        "s1s2": [
+          1,
+          2,
+          0
+        ],
+        "s2s1": [
+          2,
+          0,
+          1
+        ],
+        "s1s2s1": [
+          2,
+          1,
+          0
+        ]
+      },
+      "has_6_elements": true,
+      "closure": true,
+      "has_inverses": true,
+      "preserves_weights": true
+    },
+    {
+      "test": "A5_stella_topology",
+      "description": "Stella octangula topology consistent with Definition 0.1.1",
+      "passed": true,
+      "vertices": 8,
+      "edges": 12,
+      "faces": 8,
+      "euler_characteristic": 4,
+      "expected_chi": 4,
+      "connected_components": 2,
+      "disjoint": true,
+      "centroids_at_origin": true,
+      "T_minus_equals_neg_T_plus": true
+    }
+  ]
+}

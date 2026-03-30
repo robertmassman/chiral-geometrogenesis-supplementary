@@ -8,6 +8,7 @@ Author: Verification Suite
 Date: January 2026
 """
 
+import os
 import numpy as np
 import plotly.graph_objects as go
 from skimage import measure
@@ -492,7 +493,7 @@ def main():
     html_content = html_content.replace('</body>', camera_script + '</body>')
 
     # Write to file and open
-    html_path = '/tmp/theorem_0_2_1_interactive_3d.html'
+    html_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'plots', 'theorem_0_2_1_interactive_3d.html')
     with open(html_path, 'w') as f:
         f.write(html_content)
 

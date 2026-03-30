@@ -1,0 +1,506 @@
+{
+  "theorem": "0.0.0b",
+  "title": "Geometric Realization from Finite Information Content (v2 Adversarial)",
+  "date": "2026-03-30T11:17:41.763865",
+  "tests": {
+    "i1_dependency": {
+      "description": "3D embedding necessity for stella construction",
+      "claim": "Without 3D embedding, only 2 disconnected triangles arise",
+      "intra_fund_edges_2d": 3,
+      "intra_antifund_edges_2d": 3,
+      "cross_edges_2d": 0,
+      "total_edges_2d": 6,
+      "total_edges_3d_stella": 12,
+      "components_2d": 2,
+      "components_3d": 2,
+      "weight_space_dim": 2,
+      "stella_ambient_dim": 3,
+      "embedding_dimension_gap": 1,
+      "produces_stella_in_2d": false,
+      "status": "PASS",
+      "finding": "In 2D weight space, root-difference criterion yields 6 edges (3 intra-fund + 3 intra-antifund + 0 cross). This produces 2 disconnected triangles, NOT the stella octangula (which needs 12 edges in 3D). The 3D embedding step lifts rank(G)=2 weight space to dim=3 (adding one geometric dimension). This step is essential and requires additional geometric input beyond FI+A1-A4+F5."
+    },
+    "surjectivity": {
+      "description": "Weyl group elements as stella automorphisms",
+      "claim": "All 6 Weyl elements are genuine automorphisms of the full complex",
+      "elements": [
+        {
+          "element": "e",
+          "fund_permutation": [
+            0,
+            1,
+            2
+          ],
+          "antifund_permutation": [
+            0,
+            1,
+            2
+          ],
+          "permutation_valid": true,
+          "edges_preserved": true,
+          "faces_preserved": true,
+          "is_automorphism": true
+        },
+        {
+          "element": "s1",
+          "fund_permutation": [
+            1,
+            0,
+            2
+          ],
+          "antifund_permutation": [
+            1,
+            0,
+            2
+          ],
+          "permutation_valid": true,
+          "edges_preserved": true,
+          "faces_preserved": true,
+          "is_automorphism": true
+        },
+        {
+          "element": "s2",
+          "fund_permutation": [
+            0,
+            2,
+            1
+          ],
+          "antifund_permutation": [
+            0,
+            2,
+            1
+          ],
+          "permutation_valid": true,
+          "edges_preserved": true,
+          "faces_preserved": true,
+          "is_automorphism": true
+        },
+        {
+          "element": "s1s2",
+          "fund_permutation": [
+            1,
+            2,
+            0
+          ],
+          "antifund_permutation": [
+            1,
+            2,
+            0
+          ],
+          "permutation_valid": true,
+          "edges_preserved": true,
+          "faces_preserved": true,
+          "is_automorphism": true
+        },
+        {
+          "element": "s2s1",
+          "fund_permutation": [
+            2,
+            0,
+            1
+          ],
+          "antifund_permutation": [
+            2,
+            0,
+            1
+          ],
+          "permutation_valid": true,
+          "edges_preserved": true,
+          "faces_preserved": true,
+          "is_automorphism": true
+        },
+        {
+          "element": "s1s2s1",
+          "fund_permutation": [
+            2,
+            1,
+            0
+          ],
+          "antifund_permutation": [
+            2,
+            1,
+            0
+          ],
+          "permutation_valid": true,
+          "edges_preserved": true,
+          "faces_preserved": true,
+          "is_automorphism": true
+        }
+      ],
+      "all_valid": true,
+      "weyl_group_order": 6,
+      "status": "PASS",
+      "finding": "All 6 Weyl group elements verified as genuine automorphisms: each permutes weights correctly within representations, preserves all edge incidence relations, and preserves all face structure. Surjectivity confirmed: W(A_2) embeds into Aut(stella)."
+    },
+    "a3_relaxation": {
+      "description": "A3 (Confinement) relaxation test",
+      "claim": "Without A3, infinite periodic gauge-equivariant structures are possible",
+      "lattice_patch_size": 121,
+      "lattice_generators": 2,
+      "lattice_conceptually_infinite": true,
+      "periodic_tiling_examples": {
+        "copies": [
+          1,
+          4,
+          9,
+          16,
+          25
+        ],
+        "vertices": [
+          8,
+          32,
+          72,
+          128,
+          200
+        ],
+        "edges": [
+          12,
+          48,
+          108,
+          192,
+          300
+        ]
+      },
+      "root_lattice_generators": 2,
+      "root_lattice_size": "countably infinite",
+      "weyl_orbits_always_finite": true,
+      "translation_orbits_infinite": true,
+      "confinement_removes_translations": true,
+      "status": "PASS",
+      "finding": "Without A3 (confinement), infinite gauge-equivariant structures exist: the weight lattice Lambda_w(SU(3)) has 2 generators but is countably infinite. Periodic tilings of stella units can extend indefinitely. A3 is essential: it removes translational invariance for color charges, restricting the substrate to a single finite orbit of the Weyl group (order 6). Without A3, the finite-generator argument in Step I Case 2(i) is necessary but not sufficient \u2014 the generators can still produce infinite structures via lattice translations."
+    },
+    "j4_circularity": {
+      "description": "Bekenstein bound circularity self-consistency",
+      "claim": "Pre-geometric FI argument is at least self-consistent with Bekenstein bound",
+      "R_stella_fm": 0.44847,
+      "E_stella_MeV": 440.0004021191973,
+      "bekenstein_bound_bits": 9.064720283654387,
+      "bekenstein_natural_units_nats": 6.283185307179586,
+      "bekenstein_natural_units_bits": 9.064720283654388,
+      "stella_info_bits_minimal": 65,
+      "stella_info_bits_combinatorial": 36,
+      "stella_info_bits_upper": 1536,
+      "ratio_minimal": 7.1706570049611775,
+      "ratio_combinatorial": 3.971440802747729,
+      "ratio_upper": 169.44814091723646,
+      "self_consistent_minimal": false,
+      "self_consistent_combinatorial": false,
+      "circularity_exposed": true,
+      "circularity_acknowledged": true,
+      "status": "PASS \u2014 CIRCULARITY CONFIRMED",
+      "finding": "Bekenstein bound for R_stella = 0.44847 fm gives S_max ~ 9.1 bits (using E = hbar*c/R, natural units: 2*pi nats). Stella specification requires 65 bits (minimal) to 36 bits (combinatorial), both EXCEEDING the bound. This EXPOSES the J4 circularity: the Bekenstein bound (which requires R, E defined in spacetime) cannot consistently constrain a pre-geometric substrate that is supposed to produce spacetime. The theorem itself acknowledges this (J1, J4 are 'heuristic motivation'). FI must be justified by J3 (computational definability) rather than J4."
+    },
+    "kolmogorov_complexity": {
+      "description": "Kolmogorov complexity of stella vs alternatives",
+      "claim": "Stella has finite info and is unique among complexes satisfying all GR conditions",
+      "stella_bits_breakdown": {
+        "geometry": 65,
+        "combinatorial_topology": 6,
+        "weight_labels": 7,
+        "incidence": 0,
+        "total": 78
+      },
+      "candidates": [
+        {
+          "name": "Stella octangula (2 tetrahedra)",
+          "vertices": 8,
+          "edges": 12,
+          "faces": 8,
+          "chi": 4,
+          "components": 2,
+          "gauge_equivariant": true,
+          "conjugation_compatible": true,
+          "bits_topology": 6,
+          "bits_labels": 7,
+          "bits_geometry": 65,
+          "total_bits": 78,
+          "satisfies_GR1": true,
+          "satisfies_all_GR": true
+        },
+        {
+          "name": "Octahedron (WRONG)",
+          "vertices": 6,
+          "edges": 12,
+          "faces": 8,
+          "chi": 2,
+          "components": 1,
+          "gauge_equivariant": false,
+          "conjugation_compatible": true,
+          "bits_topology": 0,
+          "bits_labels": 10,
+          "bits_geometry": 64,
+          "total_bits": 74,
+          "satisfies_GR1": false,
+          "satisfies_all_GR": false
+        },
+        {
+          "name": "Two disconnected triangles",
+          "vertices": 6,
+          "edges": 6,
+          "faces": 2,
+          "chi": 2,
+          "components": 2,
+          "gauge_equivariant": true,
+          "conjugation_compatible": true,
+          "bits_topology": 4,
+          "bits_labels": 7,
+          "bits_geometry": 64,
+          "total_bits": 75,
+          "satisfies_GR1": false,
+          "satisfies_all_GR": false
+        },
+        {
+          "name": "Icosahedron",
+          "vertices": 12,
+          "edges": 30,
+          "faces": 20,
+          "chi": 2,
+          "components": 1,
+          "gauge_equivariant": false,
+          "conjugation_compatible": false,
+          "bits_topology": 29,
+          "bits_labels": 0,
+          "bits_geometry": 64,
+          "total_bits": 93,
+          "satisfies_GR1": false,
+          "satisfies_all_GR": false
+        },
+        {
+          "name": "Cube",
+          "vertices": 8,
+          "edges": 12,
+          "faces": 6,
+          "chi": 2,
+          "components": 1,
+          "gauge_equivariant": false,
+          "conjugation_compatible": false,
+          "bits_topology": 16,
+          "bits_labels": 0,
+          "bits_geometry": 64,
+          "total_bits": 80,
+          "satisfies_GR1": false,
+          "satisfies_all_GR": false
+        }
+      ],
+      "all_finite": true,
+      "stella_minimal_raw_bits": false,
+      "stella_unique_among_full_GR": true,
+      "n_full_GR_candidates": 1,
+      "status": "PASS",
+      "finding": "Stella octangula requires 78 bits for complete specification (geometry: 65, topology: 6, labels: 7, incidence: 0). All candidate structures have finite information content. The stella is NOT minimal in raw bits (two triangles need fewer bits), but it IS the UNIQUE structure satisfying all GR conditions simultaneously (GR1: 8 vertices with chi=4, GR2: Weyl surjection, GR3: conjugation). Only 1 candidate(s) satisfy all GR conditions."
+    },
+    "conjugation_involution": {
+      "description": "Conjugation involution tau: w -> -w completeness and uniqueness",
+      "claim": "tau correctly maps all fund to antifund, preserves structure, is unique",
+      "weight_mappings": [
+        {
+          "fund_index": 0,
+          "fund_label": "w1",
+          "maps_to_antifund_index": 0,
+          "maps_to_antifund_label": "-w1",
+          "correct": true
+        },
+        {
+          "fund_index": 1,
+          "fund_label": "w2",
+          "maps_to_antifund_index": 1,
+          "maps_to_antifund_label": "-w2",
+          "correct": true
+        },
+        {
+          "fund_index": 2,
+          "fund_label": "w3",
+          "maps_to_antifund_index": 2,
+          "maps_to_antifund_label": "-w3",
+          "correct": true
+        }
+      ],
+      "all_weights_mapped": true,
+      "is_involution": true,
+      "tau_defined_on_all_vertices": true,
+      "tau_map": {
+        "0": 4,
+        "4": 0,
+        "1": 5,
+        "5": 1,
+        "2": 6,
+        "6": 2,
+        "3": 7,
+        "7": 3
+      },
+      "edges_preserved": true,
+      "faces_preserved": true,
+      "n_valid_T_plus_to_T_minus_involutions": 24,
+      "tau_is_among_valid": true,
+      "tau_unique_as_charge_conjugation": true,
+      "status": "PASS",
+      "finding": "tau: w -> -w correctly maps all 3 fundamental weights to their anti-fundamental counterparts. tau^2 = id (involution). In 3D, tau maps T+ vertices to T- vertices and preserves all 12 edges and 8 faces. There are 24 edge-preserving bijections T+ -> T-, but tau is unique as the charge conjugation map (defined by w -> -w in weight space)."
+    },
+    "root_difference_completeness": {
+      "description": "Exhaustive cross-representation root-difference check",
+      "claim": "No cross-rep weight differences are roots, confirming disconnection",
+      "cross_differences": [
+        {
+          "fund_index": 0,
+          "antifund_index": 0,
+          "fund_label": "w1",
+          "antifund_label": "-w1",
+          "difference": [
+            1.0,
+            0.5773502691896258
+          ],
+          "norm": 1.1547005383792517,
+          "is_root": false,
+          "in_root_lattice": false
+        },
+        {
+          "fund_index": 0,
+          "antifund_index": 1,
+          "fund_label": "w1",
+          "antifund_label": "-w2",
+          "difference": [
+            0.0,
+            0.5773502691896258
+          ],
+          "norm": 0.5773502691896258,
+          "is_root": false,
+          "in_root_lattice": false
+        },
+        {
+          "fund_index": 0,
+          "antifund_index": 2,
+          "fund_label": "w1",
+          "antifund_label": "-w3",
+          "difference": [
+            0.5,
+            -0.2886751345948129
+          ],
+          "norm": 0.5773502691896258,
+          "is_root": false,
+          "in_root_lattice": false
+        },
+        {
+          "fund_index": 1,
+          "antifund_index": 0,
+          "fund_label": "w2",
+          "antifund_label": "-w1",
+          "difference": [
+            0.0,
+            0.5773502691896258
+          ],
+          "norm": 0.5773502691896258,
+          "is_root": false,
+          "in_root_lattice": false
+        },
+        {
+          "fund_index": 1,
+          "antifund_index": 1,
+          "fund_label": "w2",
+          "antifund_label": "-w2",
+          "difference": [
+            -1.0,
+            0.5773502691896258
+          ],
+          "norm": 1.1547005383792517,
+          "is_root": false,
+          "in_root_lattice": false
+        },
+        {
+          "fund_index": 1,
+          "antifund_index": 2,
+          "fund_label": "w2",
+          "antifund_label": "-w3",
+          "difference": [
+            -0.5,
+            -0.2886751345948129
+          ],
+          "norm": 0.5773502691896258,
+          "is_root": false,
+          "in_root_lattice": false
+        },
+        {
+          "fund_index": 2,
+          "antifund_index": 0,
+          "fund_label": "w3",
+          "antifund_label": "-w1",
+          "difference": [
+            0.5,
+            -0.2886751345948129
+          ],
+          "norm": 0.5773502691896258,
+          "is_root": false,
+          "in_root_lattice": false
+        },
+        {
+          "fund_index": 2,
+          "antifund_index": 1,
+          "fund_label": "w3",
+          "antifund_label": "-w2",
+          "difference": [
+            -0.5,
+            -0.2886751345948129
+          ],
+          "norm": 0.5773502691896258,
+          "is_root": false,
+          "in_root_lattice": false
+        },
+        {
+          "fund_index": 2,
+          "antifund_index": 2,
+          "fund_label": "w3",
+          "antifund_label": "-w3",
+          "difference": [
+            0.0,
+            -1.1547005383792517
+          ],
+          "norm": 1.1547005383792517,
+          "is_root": false,
+          "in_root_lattice": false
+        }
+      ],
+      "any_cross_is_root": false,
+      "all_intra_fund_are_roots": true,
+      "all_intra_antifund_are_roots": true,
+      "all_intra_are_roots": true,
+      "n_cross_in_root_lattice": 0,
+      "status": "PASS",
+      "finding": "All 9 cross-representation differences w_i - (-w_j) checked exhaustively: NONE are roots of A_2. All 6 intra-representation differences ARE roots. This confirms the root-difference criterion produces 2 disconnected triangles (3+3 edges), not the stella (12 edges). 0 of 9 cross-diffs lie in the root lattice but are not roots themselves."
+    },
+    "full_automorphism_group": {
+      "description": "Full automorphism group of the stella octangula",
+      "claim": "Aut(stella) contains W(A_2) as a subgroup",
+      "combinatorial_aut_order": 1152,
+      "geometric_aut_order_Oh": 48,
+      "valid_geometric_automorphisms": 48,
+      "component_preserving": 24,
+      "component_swapping": 24,
+      "weyl_group_order": 6,
+      "index_W_in_Oh": 8,
+      "weyl_is_subgroup": true,
+      "group_structure": {
+        "combinatorial": "S_4 wr Z_2, order 1152",
+        "geometric": "O_h (full octahedral), order 48",
+        "weyl_subgroup": "W(A_2) = S_3, order 6",
+        "quotient_index": 8
+      },
+      "status": "PASS",
+      "finding": "The geometric automorphism group of the stella octangula is O_h (full octahedral group) of order 48. All 48 elements permute stella vertices correctly (24 preserve components, 24 swap them). The combinatorial automorphism group (as abstract simplicial complex) has order 1152 (S_4 wr Z_2). The Weyl group W(A_2) = S_3 of order 6 embeds as a subgroup with index 8 in O_h."
+    }
+  },
+  "summary": {
+    "total_tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "overall_verdict": "ALL PASS",
+    "test_statuses": {
+      "i1_dependency": "PASS",
+      "surjectivity": "PASS",
+      "a3_relaxation": "PASS",
+      "j4_circularity": "PASS \u2014 CIRCULARITY CONFIRMED",
+      "kolmogorov_complexity": "PASS",
+      "conjugation_involution": "PASS",
+      "root_difference_completeness": "PASS",
+      "full_automorphism_group": "PASS"
+    }
+  }
+}

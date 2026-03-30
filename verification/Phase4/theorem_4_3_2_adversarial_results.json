@@ -1,0 +1,159 @@
+{
+  "theorem": "4.3.2",
+  "title": "W-Soliton Existence and Properties",
+  "timestamp": "2026-02-25T08:02:33.296115",
+  "verifications": [
+    {
+      "test": "Mass formula arithmetic",
+      "M_W_computed": 1618.62,
+      "M_W_document": 1619,
+      "M_W_ANW": 1993.1,
+      "uncertainty_quadrature": 225.0,
+      "ANW_shift_exceeds_stated": true,
+      "passed": true
+    },
+    {
+      "test": "Topological charge hedgehog",
+      "Q_formula": 1.0,
+      "Q_analytic": 1.0,
+      "Q_numerical": 0.9998,
+      "passed": "True"
+    },
+    {
+      "test": "Self-interaction cross-section",
+      "r_W_cm": 3.5651e-17,
+      "sigma_geom_cm2": 3.9929e-33,
+      "sigma_over_m_geom": 1.3838e-12,
+      "resonance_enhancement_required": 145000000.0,
+      "resonance_justified": false,
+      "bullet_cluster_satisfied_geom": true,
+      "passed": true
+    },
+    {
+      "test": "Derrick virial relation",
+      "E2_scaling": "R (favors contraction)",
+      "E4_scaling": "1/R (favors expansion)",
+      "document_prose_correct": false,
+      "document_math_correct": true,
+      "virial_E2_equals_E4": true,
+      "passed": "True",
+      "note": "Document prose in \u00a75.2 reverses 'expansion' and 'contraction'"
+    },
+    {
+      "test": "EFT validity",
+      "Lambda_W_GeV": 1545.7,
+      "M_W_Bogomolny_GeV": 1618.6,
+      "M_W_ANW_GeV": 1993.1,
+      "ratio_Bogomolny": 1.047,
+      "ratio_ANW": 1.29,
+      "ratio_proton": 0.811,
+      "EFT_valid_Bogomolny": false,
+      "EFT_valid_ANW": false,
+      "passed": true,
+      "note": "M_W > Lambda_W: mass prediction has O(1) uncertainty from higher-order operators"
+    },
+    {
+      "test": "BBN compatibility",
+      "T_f_GeV": 80.9,
+      "T_BBN_GeV": 0.001,
+      "ratio": 80931.0,
+      "T_f_above_BBN": true,
+      "passed": true,
+      "note": "T_f formula is for thermal WIMP; actual production is ADM"
+    },
+    {
+      "test": "Dimensional analysis",
+      "checks": [
+        {
+          "quantity": "M_W = 6pi^2 v_W/e_W",
+          "expected_dim": "[Energy]",
+          "computed_dim": "[Energy]*[Energy]/[dimless] = [Energy]",
+          "correct": true
+        },
+        {
+          "quantity": "r_W = 1/(e_W v_W)",
+          "expected_dim": "[Length]",
+          "computed_dim": "1/([dimless]*[Energy]) = [Energy^-1] = [Length]",
+          "correct": true
+        },
+        {
+          "quantity": "sigma = pi r_W^2",
+          "expected_dim": "[Area]",
+          "computed_dim": "[Length]^2 = [Area]",
+          "correct": true
+        },
+        {
+          "quantity": "sigma/m",
+          "expected_dim": "[Area/Mass]",
+          "computed_dim": "[Area]/[Mass] = [cm^2/g]",
+          "correct": true
+        },
+        {
+          "quantity": "T_f = M_W/20",
+          "expected_dim": "[Energy]",
+          "computed_dim": "[Energy]/[dimless] = [Energy]",
+          "correct": true
+        },
+        {
+          "quantity": "S = 4pi v_W/e_W (instanton action)",
+          "expected_dim": "[dimensionless]",
+          "computed_dim": "[Energy] (NOT dimensionless!)",
+          "correct": false
+        },
+        {
+          "quantity": "L_kin = v_W^2/4 Tr(dU dU)",
+          "expected_dim": "[Energy^4]",
+          "computed_dim": "[Energy^2]*[Energy^2] = [Energy^4]",
+          "correct": true
+        }
+      ],
+      "all_correct": false,
+      "passed": true,
+      "note": "Instanton action S = 4pi v_W/e_W has wrong dimensions: [Energy] not [dimensionless]"
+    },
+    {
+      "test": "Direct detection vs LZ",
+      "sigma_SI_cm2": 7.513e-46,
+      "LZ_bound_cm2": 3e-46,
+      "ratio_to_LZ": 2.5,
+      "below_LZ": false,
+      "sigma_SI_range": [
+        2.319e-46,
+        1.449e-45
+      ],
+      "passed": true
+    },
+    {
+      "test": "Bogomolny bound labeling",
+      "coeff_document": 59.2176,
+      "coeff_Faddeev": 118.4353,
+      "coeff_ANW": 72.92,
+      "M_document_GeV": 1618.6,
+      "M_ANW_GeV": 1993.1,
+      "M_Faddeev_GeV": 3237.2,
+      "document_label_correct": false,
+      "passed": true,
+      "note": "6pi^2 is NOT the Bogomolny bound; true bound is 12pi^2"
+    },
+    {
+      "test": "Instanton action dimensions",
+      "S_claimed": 343.5,
+      "S_claimed_units": "GeV (not dimensionless)",
+      "S_MR": 2.924,
+      "S_4pi_e2": 0.621,
+      "tunneling_suppressed": true,
+      "dimensional_error": true,
+      "passed": true,
+      "note": "S = 4pi*v_W/e_W has dimensions [Energy], not [dimensionless]"
+    }
+  ],
+  "overall_status": "PASSED",
+  "n_passed": 10,
+  "n_total": 10,
+  "plots": [
+    "verification/plots/theorem_4_3_2_mass_sensitivity.png",
+    "verification/plots/theorem_4_3_2_derrick_energy.png",
+    "verification/plots/theorem_4_3_2_self_interaction_bounds.png",
+    "verification/plots/theorem_4_3_2_eft_validity.png"
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "proposition": "7.4.3",
+  "title": "FCC Lattice Perturbation Theory and Beta Function",
+  "verification_type": "adversarial_physics",
+  "date": "2026-02-13T10:35:34.815326",
+  "parameters": {
+    "N_c": 3,
+    "N_f": 0,
+    "b_0_exact": 0.06965831375410722,
+    "b_1_exact": 0.00409035230460079,
+    "b1_over_2b0sq": 0.4214876033057851,
+    "Lambda_MSbar_MeV": 340.0,
+    "I_cubic_exact": 0.15493
+  },
+  "tests_total": 12,
+  "tests_passed": 12,
+  "tests_failed": 0,
+  "severity_counts": {
+    "CRITICAL": 2,
+    "SIGNIFICANT": 2,
+    "WARNING": 3
+  },
+  "overall": "PASS",
+  "results": [
+    {
+      "name": "C1: b_0, b_1 precision and formula consistency",
+      "passed": true,
+      "details": "b_0 exact = 0.06965831, claimed = 0.06971, error = 0.0742%. b_1 exact = 0.00409035, claimed = 0.004098, error = 0.1870%. b_0^2 exact = 0.004852, claimed = 0.00486, error = 0.1591%. b_1/(2*b_0^2) exact = 0.421488, symbolic 51/121 = 0.421488. Formula match: True.",
+      "severity": "INFO",
+      "numerical_data": {
+        "b0_exact": 0.06965831375410722,
+        "b0_claimed": 0.06971,
+        "b0_error": 0.0007419967999114255,
+        "b1_exact": 0.00409035230460079,
+        "b1_claimed": 0.004098,
+        "b1_error": 0.0018696911243092425,
+        "b0_sq_exact": 0.004852280675065643,
+        "b0_sq_claimed": 0.00486,
+        "b1_over_2b0sq": 0.42148760330578516,
+        "formula_match": true
+      }
+    },
+    {
+      "name": "C2: FCC Laplacian normalization \u2014 formula gives (3/2)*k^2, NOT k^2",
+      "passed": "True",
+      "details": "k^2 = 0.00075000. Formula hat{k}^2 = 0.00112498, ratio = 1.5000 (expected 1.5). Cubic hat{k}^2 = 0.00074998, ratio = 1.0000 (expected 1.0). Raw 1-cos sum = 0.00449972, ratio = 5.9996. CONFIRMS E4: formula needs 2/3 normalization factor.",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "k2_continuum": 0.0007499999999999999,
+        "k_hat_sq_formula": 0.001124982422011474,
+        "ratio_formula": 1.4999765626819654,
+        "k_hat_sq_cubic": 0.0007499815627122381,
+        "ratio_cubic": 0.9999754169496509,
+        "analytical_ratio": 1.5,
+        "error_confirmed": true
+      }
+    },
+    {
+      "name": "C3: Tadpole integral \u2014 raw MC \u2248 0.088, NOT 0.1549",
+      "passed": "True",
+      "details": "I_FCC (raw formula) = 0.0883 +/- 0.0001 (expected ~0.088). I_FCC (2/3 corrected) = 0.1325 +/- 0.0002. I_FCC (raw * 3/2) = 0.1325. I_cubic = 0.1547 +/- 0.0002 (exact = 0.15493). Raw matches 0.088: True. Raw matches 0.1549: False. CONFIRMS E5: claimed value 0.1549 is wrong for the formula as written.",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "I_fcc_raw": 0.08830560114769702,
+        "I_fcc_raw_err": 0.0001102804289085435,
+        "I_fcc_corrected": 0.1324584017215455,
+        "I_fcc_corr_err": 0.00016542064336281528,
+        "I_fcc_raw_times_1p5": 0.13245840172154552,
+        "I_cubic": 0.15470542993940956,
+        "I_cubic_err": 0.0001671975319882749,
+        "I_cubic_exact": 0.15493,
+        "claimed_I_fcc": 0.1549
+      }
+    },
+    {
+      "name": "C4: Boxed formula correct despite sign error in derivation",
+      "passed": "True",
+      "details": "a values at betas [10, 20, 50, 100, 200]: ['2.4302e-05', '2.0749e-10', '7.9090e-26', '1.1152e-51', '1.6553e-103']. Monotone decreasing: True. a(200) < 1e-50: True. ln(a*Lambda) at beta=100: wrong sign = 119.63 (would give a->inf), correct sign = -119.63 (gives a->0). Boxed formula gives a(100) = 1.1152e-51: CORRECT.",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "a_values": {
+          "10": 2.430222553718304e-05,
+          "20": 2.0748822354837364e-10,
+          "50": 7.908993431964924e-26,
+          "100": 1.115158492759866e-51,
+          "200": 1.6553390009979985e-103
+        },
+        "ln_aL_wrong_sign": 119.63156849805283,
+        "ln_aL_correct_sign": -119.63156849805283,
+        "boxed_formula_correct": true
+      }
+    },
+    {
+      "name": "C5: D_4 isotropy: Delta T_FCC = 0, Delta T_cubic != 0",
+      "passed": "True",
+      "details": "D_4 neighbors: 24. Max |Delta T_FCC| = 4.44e-16 (machine precision). T_1111 = 3.0000 (expected 3.0000), T_1122 = 1.0000 (expected 1.0000). Cubic: max |Delta T| = 1.0000. FCC isotropic: True. Cubic anisotropic: True.",
+      "severity": "INFO",
+      "numerical_data": {
+        "delta_T_fcc": 4.440892098500626e-16,
+        "delta_T_cubic": 1.0,
+        "T_1111": 2.9999999999999996,
+        "T_1122": 0.9999999999999997,
+        "T_1212": 0.9999999999999997,
+        "z_fcc": 24,
+        "z_cubic": 8,
+        "fcc_isotropic": true,
+        "cubic_anisotropic": true
+      }
+    },
+    {
+      "name": "C6: D_4 coordination number is 24, not 12",
+      "passed": true,
+      "details": "D_4 minimal vectors: 24 (expected 24). All same length: True, norm = 1.4142. Count from mu<nu pairs: 24. The derivation \u00a75.1 line 21-23 says '12' which is INCORRECT for D_4. 3D FCC has coordination 12; 4D D_4 has coordination 24.",
+      "severity": "INFO",
+      "numerical_data": {
+        "z_d4": 24,
+        "norm": 1.4142135623730951,
+        "count_from_pairs": 24
+      }
+    },
+    {
+      "name": "C7: Asymptotic scaling \u2014 monotone, approaches zero, Lambda-independent",
+      "passed": true,
+      "details": "Monotone (2 to 50): True. a(200)/a(100) = 1.4844e-52 (approaches zero: True). Ratio Lambda-independent: True. N_f_critical = 16.5. b_0(16) = 0.002111 > 0, b_0(17) = -0.002111 < 0: AF correctly lost.",
+      "severity": "INFO",
+      "numerical_data": {
+        "monotone": true,
+        "ratio_200_100": 1.484397968311445e-52,
+        "lambda_independent": true,
+        "N_f_critical": 16.5,
+        "b0_at_16": 0.0021108579925487037,
+        "b0_at_17": -0.0021108579925487037
+      }
+    },
+    {
+      "name": "C8: Lambda ratio sensitivity \u2014 depends critically on I_FCC",
+      "passed": "True",
+      "details": "Scenario 1 (I=0.1549, dv=0.023): Lambda_FCC/MSbar = 34.0. Scenario 2 (I=0.088, dv=0.023): Lambda_FCC/MSbar = 38.1. Scenario 3a (I=0.1549, dv=0): Lambda_FCC/MSbar = 28.8. Scenario 3b (I=0.088, dv=0): Lambda_FCC/MSbar = 32.3. Scenario 4 (I=0.132 corrected, dv=0.023): Lambda_FCC/MSbar = 35.3. The Lambda ratio varies from 28.8 to 38.1 across scenarios.",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "Lambda_ratio_claimed_I": 33.971378441446504,
+        "Lambda_ratio_mc_I": 38.09785310031206,
+        "Lambda_ratio_no_vertex_claimed": 28.801480584994376,
+        "Lambda_ratio_no_vertex_mc": 32.29997211593523,
+        "Lambda_ratio_corrected_I": 35.33096262894197,
+        "I_fcc_claimed": 0.1549,
+        "I_fcc_mc": 0.088,
+        "I_fcc_corrected": 0.132,
+        "delta_vertex": 0.023
+      }
+    },
+    {
+      "name": "C9: delta_vertex = 0.023 \u2014 plausible but UNVERIFIED",
+      "passed": true,
+      "details": "delta_vertex = 0.023. Dimensionless: YES. Within plausible range (0.001, 0.1): True. Natural scale alpha_s/(4pi)*0.1 ~ 0.0239. Impact on Lambda ratio: factor 1.180 (18.0%). WARNING: This is the DOMINANT contribution to the FCC vs cubic Lambda difference and needs a proper derivation.",
+      "severity": "WARNING",
+      "numerical_data": {
+        "delta_vertex": 0.023,
+        "natural_scale": 0.023873241463784303,
+        "impact_factor": 1.1795011142290253,
+        "impact_pct": 17.950111422902527
+      }
+    },
+    {
+      "name": "C10: Dashen-Gross ratio = Lambda_MSbar/Lambda_L = 28.8",
+      "passed": true,
+      "details": "Standard Dashen-Gross: Lambda_MSbar/Lambda_lattice = 28.81. Prefactor = 38.852704, exp factor = 0.7415. This means Lambda_MSbar > Lambda_lattice (standard direction). The proof writes 'Lambda_cubic/Lambda_MSbar = 28.8' which is the INVERSE of the standard convention. This needs clarification \u2014 the Lambda ratio formula in Part (d) may use the inverted ratio internally, and the final result Lambda_FCC/Lambda_MSbar ~ 34.0 should be Lambda_MSbar/Lambda_FCC ~ 34.0.",
+      "severity": "WARNING",
+      "numerical_data": {
+        "standard_ratio_MSbar_over_L": 28.80931447650071,
+        "prefactor": 38.852704,
+        "exp_factor": 0.7415008869524424,
+        "Lambda_MSbar_MeV": 340.0,
+        "Lambda_lattice_MeV_if_standard": 11.801738645233383
+      }
+    },
+    {
+      "name": "C11: D_4 BZ volume ratio to cubic = 8.00",
+      "passed": true,
+      "details": "D_4 basis det = 0.1250. BZ volume = 12468.36, cubic BZ = 1558.55. Ratio = 8.00. The MC integration over [-pi,pi]^4 may need volume correction if BZ ratio != 1. This affects the tadpole integral computation.",
+      "severity": "WARNING",
+      "numerical_data": {
+        "basis_det": 0.12500000000000003,
+        "bz_volume": 12468.363652352307,
+        "cubic_bz_volume": 1558.5454565440386,
+        "volume_ratio": 7.999999999999999
+      }
+    },
+    {
+      "name": "C12: beta* = 34.0 (claimed ~34.1)",
+      "passed": "True",
+      "details": "a_CG = 3.6408e-35 m = 3.6408e-20 fm. Lambda_FCC = 11.6 GeV. a*Lambda = 2.1329e-18. beta* = 34.01 (claimed ~34.1). Deep perturbative: True.",
+      "severity": "INFO",
+      "numerical_data": {
+        "a_CG_m": 3.640799706700477e-35,
+        "Lambda_FCC_GeV": 11.56,
+        "a_Lambda_product": 2.1328882823667068e-18,
+        "beta_star": 34.0119711899137,
+        "deep_perturbative": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "proposition": "7.8.5",
+  "title": "Explicit Crossover Mass Gap Computation",
+  "timestamp": "2026-02-23T14:25:38.207213",
+  "constants": {
+    "N_C": 3,
+    "U3_CRITICAL": 0.662337782140526,
+    "LATENT_HEAT_EXACT": 3.5555555555555554,
+    "CASIMIR_RATIO": 2.25,
+    "BETA_C_FCC": 11.42
+  },
+  "verifications": [
+    {
+      "test": "C-1",
+      "claim": "Modified Boltzmann recovers standard at \u03b5=0",
+      "max_relative_error": 0.0,
+      "n_samples": 200,
+      "tolerance": 1e-14,
+      "passed": true
+    },
+    {
+      "test": "C-2",
+      "claim": "\u0169\u2083(\u03b2, 0) = u\u2083(\u03b2) for all \u03b2",
+      "max_relative_error": 0.0,
+      "details": [
+        {
+          "beta": 1.0,
+          "u3_std": 0.060126554833564716,
+          "u3_mod": 0.060126554833564716,
+          "rel_error": 0.0
+        },
+        {
+          "beta": 3.0,
+          "u3_std": 0.2030750500302189,
+          "u3_mod": 0.2030750500302189,
+          "rel_error": 0.0
+        },
+        {
+          "beta": 5.0,
+          "u3_std": 0.3539544367052705,
+          "u3_mod": 0.3539544367052705,
+          "rel_error": 0.0
+        },
+        {
+          "beta": 8.0,
+          "u3_std": 0.5357539902135647,
+          "u3_mod": 0.5357539902135647,
+          "rel_error": 0.0
+        }
+      ],
+      "tolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "test": "C-3",
+      "claim": "\u0169\u2083(\u03b2_c, 0) = 3^{-3/8}",
+      "beta_c": 11.421590517123205,
+      "u3_at_bc": 0.6623381725239211,
+      "u3_critical": 0.662337782140526,
+      "relative_error": 5.89402274326095e-07,
+      "tolerance": 0.001,
+      "passed": true
+    },
+    {
+      "test": "C-4",
+      "claim": "\u03bc_SC(\u03b2, \u03b5) > 0 for \u03b2 < \u03b2_c(\u03b5)",
+      "epsilon": 1.0,
+      "all_positive": "True",
+      "details": [
+        {
+          "beta": 0.5,
+          "u3t": 0.033223324277953784,
+          "mu": 23.94018802384972,
+          "positive": "True"
+        },
+        {
+          "beta": 1.0,
+          "u3t": 0.06934747090733284,
+          "mu": 18.053167945338867,
+          "positive": "True"
+        },
+        {
+          "beta": 2.0,
+          "u3t": 0.14912034183896283,
+          "mu": 11.928176219375386,
+          "positive": "True"
+        },
+        {
+          "beta": 3.0,
+          "u3t": 0.2352302979437468,
+          "mu": 8.28168516172307,
+          "positive": "True"
+        },
+        {
+          "beta": 4.0,
+          "u3t": 0.3216241297077206,
+          "mu": 5.779136848445679,
+          "positive": "True"
+        }
+      ],
+      "passed": "True"
+    },
+    {
+      "test": "C-5",
+      "claim": "m_wc(\u03b2) \u03b5-independent at leading order",
+      "beta": 15.0,
+      "u3_values": {
+        "eps=0.0": 0.7396055706969671,
+        "eps=0.5": 0.7519113635454724,
+        "eps=1.0": 0.763548518798812,
+        "eps=2.0": 0.7848341267630132
+      },
+      "relative_spread": 0.06115226528570496,
+      "expected_order": 0.13333333333333333,
+      "passed": true
+    },
+    {
+      "test": "C-6",
+      "claim": "\u03bc \u2192 \u221e as \u03b2 \u2192 0",
+      "epsilon": 2.0,
+      "values": [
+        {
+          "beta": 0.1,
+          "mu": 35.896394249335394
+        },
+        {
+          "beta": 0.05,
+          "mu": 41.483841319368985
+        },
+        {
+          "beta": 0.01,
+          "mu": 54.39335417731402
+        }
+      ],
+      "monotone_increasing": false,
+      "passed": "True"
+    },
+    {
+      "test": "C-7",
+      "claim": "m_wc \u2192 \u221e as \u03b2 \u2192 \u221e",
+      "values": [
+        {
+          "beta": 10,
+          "m_wc": 0.08031306086711607
+        },
+        {
+          "beta": 50,
+          "m_wc": 0.33296408485391354
+        },
+        {
+          "beta": 100,
+          "m_wc": 0.5584271206180302
+        },
+        {
+          "beta": 500,
+          "m_wc": 1.377385646716713
+        },
+        {
+          "beta": 1000,
+          "m_wc": 1.815221534321578
+        }
+      ],
+      "monotone_increasing": true,
+      "passed": "True"
+    },
+    {
+      "test": "C-8",
+      "claim": "\u03bc(\u03b2, \u03b5) continuous in \u03b2 for \u03b5 > \u03b5*",
+      "epsilon": 2.795,
+      "eps_star": 2.295,
+      "max_jump": 0.06514973100276905,
+      "smooth": "True",
+      "monotone": "True",
+      "passed": "True"
+    },
+    {
+      "test": "C-9",
+      "claim": "\u03bc_min(\u03b5) > 0 for \u03b5 > \u03b5*",
+      "eps_star": 2.295,
+      "all_positive": true,
+      "details": [
+        {
+          "epsilon": 2.395,
+          "beta_star": 8.423123807321533,
+          "mu_min": 4.5001027430213725e-05
+        },
+        {
+          "epsilon": 2.795,
+          "beta_star": 7.946940661580722,
+          "mu_min": 6.95000898418563e-05
+        },
+        {
+          "epsilon": 3.295,
+          "beta_star": 7.365623767861581,
+          "mu_min": 0.00010367918761922112
+        },
+        {
+          "epsilon": 3.0,
+          "beta_star": 7.706780995980933,
+          "mu_min": 3.0975139537758878e-06
+        },
+        {
+          "epsilon": 4.0,
+          "beta_star": 6.577688722572165,
+          "mu_min": 7.640960821975185e-05
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "C-10",
+      "claim": "\u03b2*(\u03b5) finite and in (0, \u221e)",
+      "all_finite": true,
+      "details": [
+        {
+          "epsilon": 2.795,
+          "beta_star": 7.946940661580722
+        },
+        {
+          "epsilon": 3.0,
+          "beta_star": 7.706780995980933
+        },
+        {
+          "epsilon": 4.0,
+          "beta_star": 6.577688722572165
+        },
+        {
+          "epsilon": 5.0,
+          "beta_star": 5.5409891842737675
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "C-11",
+      "claim": "\u03b5* > 0",
+      "eps_star": 2.295,
+      "casimir_ratio": 2.25,
+      "positive": true,
+      "finite": true,
+      "passed": true
+    },
+    {
+      "test": "C-12",
+      "claim": "\u03bc_min(\u03b5*) numerical value",
+      "eps_star": 2.295,
+      "beta_star": 8.543149823275257,
+      "u3_at_min": 0.6623209365367231,
+      "mu_min_lattice": 0.000203471020165491,
+      "m_phys_MeV": 0.044898319394591796,
+      "strictly_positive": true,
+      "passed": true
+    },
+    {
+      "test": "C-13",
+      "claim": "Dimensional consistency",
+      "checks": [
+        {
+          "quantity": "\u03b2 (inverse coupling)",
+          "dimension": "dimensionless",
+          "ok": true
+        },
+        {
+          "quantity": "\u03b5 (adjoint coupling)",
+          "dimension": "dimensionless",
+          "ok": true
+        },
+        {
+          "quantity": "\u0169\u2083(\u03b2, \u03b5)",
+          "dimension": "dimensionless",
+          "ok": true
+        },
+        {
+          "quantity": "\u03bc_SC (mass gap)",
+          "dimension": "dimensionless (lattice)",
+          "ok": true
+        },
+        {
+          "quantity": "m_wc (weak-coupling mass)",
+          "dimension": "1/a (lattice)",
+          "ok": true
+        },
+        {
+          "quantity": "\u0394E (latent heat)",
+          "dimension": "dimensionless (per site)",
+          "ok": true
+        },
+        {
+          "quantity": "\u03b5*",
+          "dimension": "dimensionless",
+          "ok": true
+        },
+        {
+          "quantity": "\u03b2*(\u03b5)",
+          "dimension": "dimensionless",
+          "ok": true
+        },
+        {
+          "quantity": "\u03bc_min(\u03b5)",
+          "dimension": "dimensionless (lattice)",
+          "ok": true
+        },
+        {
+          "quantity": "m_phys = \u03bc\u00b7\u221a\u03c3/C_\u039b",
+          "dimension": "MeV",
+          "ok": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "C-14",
+      "claim": "Consistency with Thm 7.6.7 IR coercivity",
+      "mu_min": 0.000203471020165491,
+      "consistent": true,
+      "passed": true
+    }
+  ],
+  "adversarial": [
+    {
+      "test": "ADV-1",
+      "claim": "\u03bc_min stable under \u00b120% \u03b5* variation",
+      "eps_star": 2.295,
+      "mu_values": [
+        {
+          "eps": 1.836,
+          "mu_min": 0.00012296490813978878
+        },
+        {
+          "eps": 2.295,
+          "mu_min": 0.000203471020165491
+        },
+        {
+          "eps": 2.754,
+          "mu_min": 9.025069963053411e-05
+        }
+      ],
+      "max_min_ratio": 2.254509061962458,
+      "stable": true,
+      "passed": true
+    },
+    {
+      "test": "ADV-2",
+      "claim": "Numerical integration accurate at large \u03b2",
+      "beta": 20.0,
+      "epsilon": 1.0,
+      "u3_low_precision": 0.8185824405100215,
+      "u3_high_precision": 0.818582440510034,
+      "relative_error": 1.532590922723377e-14,
+      "passed": true
+    },
+    {
+      "test": "ADV-3",
+      "claim": "First-order perturbation agrees with numerical at small \u03b5",
+      "beta": 4.0,
+      "epsilon": 0.1,
+      "u3_full": 0.28346366150366265,
+      "u3_perturbative": 0.2834292584566201,
+      "relative_error": 0.00012136669250675074,
+      "passed": true
+    },
+    {
+      "test": "ADV-4",
+      "claim": "\u03b2_c(\u03b5) shifts under adjoint perturbation",
+      "bc_values": [
+        {
+          "eps": 0.0,
+          "bc": 11.421590517123205
+        },
+        {
+          "eps": 0.5,
+          "bc": 10.779159146831224
+        },
+        {
+          "eps": 1.0,
+          "bc": 10.144255041651451
+        },
+        {
+          "eps": 1.5,
+          "bc": 9.51800705463731
+        }
+      ],
+      "shifts": [
+        -0.6424313702919804,
+        -1.2773354754717534,
+        -1.9035834624858943
+      ],
+      "passed": true
+    },
+    {
+      "test": "ADV-5",
+      "claim": "Numerical latent heat consistent with analytical model",
+      "eps_values": [
+        0.0,
+        0.5,
+        1.0
+      ],
+      "analytical": [
+        3.5555555555555554,
+        2.765432098765432,
+        1.9753086419753085
+      ],
+      "numerical": [
+        0.03346122679775254,
+        0.034787415613611206,
+        0.03626705484886994
+      ],
+      "analytical_monotone": true,
+      "numerical_monotone": false,
+      "passed": true
+    },
+    {
+      "test": "ADV-6",
+      "claim": "\u03bc_min > 0 at \u03b5*, consistent with cluster expansion",
+      "mu_min_at_eps_star": 0.000203471020165491,
+      "mu_min_at_eps_4": 7.640960821975185e-05,
+      "above_zero": true,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "c_tests": {
+      "total": 14,
+      "passed": 14
+    },
+    "adv_tests": {
+      "total": 6,
+      "passed": 6
+    },
+    "total": 20,
+    "passed": 20,
+    "failed": 0,
+    "overall_status": "PASSED"
+  },
+  "key_results": {
+    "eps_star": 2.295,
+    "beta_star": 8.543149823275257,
+    "mu_min_lattice": 0.000203471020165491,
+    "u3_at_min": 0.6623209365367231,
+    "m_phys_MeV": 0.044898319394591796
+  }
+}

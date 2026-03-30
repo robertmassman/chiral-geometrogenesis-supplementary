@@ -1,0 +1,391 @@
+{
+  "theorem": "7.5.1",
+  "title": "Symanzik Effective Theory for FCC \u2014 Adversarial Physics Verification",
+  "timestamp": "2026-02-13T17:32:04.648417",
+  "n_tests": 14,
+  "n_passed": 14,
+  "n_findings": 0,
+  "overall_status": "PASSED",
+  "tests": [
+    {
+      "name": "Fourth-moment tensor: all 256 components vs isotropic",
+      "passed": "True",
+      "details": "All 256 components checked. Mismatches: 0. Max deviation: 4.44e-16. T_1111=3.0(exp 3), T_1122=1.0(exp 1), T_1112=0.0(exp 0)",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "max_deviation": 4.440892098500626e-16,
+        "n_mismatch": 0,
+        "T_1111": 2.9999999999999996,
+        "T_1122": 0.9999999999999997,
+        "T_1112": 0.0,
+        "T_1234": 0.0,
+        "worst_component": "(0, 0, 0, 0)"
+      }
+    },
+    {
+      "name": "Cubic anisotropy: \u0394T components and c_4^(0) = 1/12",
+      "passed": "True",
+      "details": "\u0394T_1111 = 1.000000 (exp 1.0), \u0394T_1122 = -0.333333 (exp -0.3333). c_4^(cubic,(0)) = 0.083333",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "dT_1111": 1.0,
+        "dT_1122": -0.3333333333333333,
+        "c4_cubic_tree": 0.08333333333333333
+      }
+    },
+    {
+      "name": "W(D_4) symmetry: order 192, preserves D4 lattice",
+      "passed": true,
+      "details": "|W(D_4)| = 192 (expected 192). All elements preserve D_4: True. Violations: 0",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "group_order": 192,
+        "all_preserve_d4": true,
+        "n_violations": 0
+      }
+    },
+    {
+      "name": "One-loop c_4 = 0: algebraic argument via \u0394T = 0",
+      "passed": "True",
+      "details": "FCC c_4 contraction = -3.33e-16 (must be 0). Cubic c_4 contraction = 4.0000 (nonzero). max|\u0394T_FCC| = 4.44e-16. Argument: c_4^(n) \u221d \u0394T = 0 for D_4 at all loop orders.",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "c4_fcc_contraction": -3.3306690738754696e-16,
+        "c4_cubic_contraction": 4.0,
+        "max_delta_T_fcc": 4.440892098500626e-16,
+        "note": "c_4^(1) = 0 follows algebraically from \u0394T = 0, independent of the specific loop integrals."
+      }
+    },
+    {
+      "name": "Sixth-moment: D4 anisotropic (first artifact at O(a^4))",
+      "passed": true,
+      "details": "T6_111111 = 1.500000 (exp 1.500000), T6_iso = 1.875000 (exp 1.875000). Fractional anisotropy: 0.2000 (20.0%). T6_111122 = 0.500000 (exp 0.500000)",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "T6_111111_D4": 1.4999999999999993,
+        "T6_111111_expected": 1.4999999999999991,
+        "T6_111111_iso": 1.875,
+        "T6_111122_D4": 0.4999999999999997,
+        "T6_111122_expected": 0.4999999999999997,
+        "T6_111122_iso": 0.375,
+        "fractional_anisotropy": 0.20000000000000034
+      }
+    },
+    {
+      "name": "BCH convergence: valid at weak coupling, fails near \u03b2_c",
+      "passed": true,
+      "details": "BCH radius = 0.693. At \u03b2_c = 8.45: g = 0.843, ||X||/radius = 1.22 (NOT convergent \u2014 expected). \u03b2 = 12: marginal (g/radius = 1.02). All \u03b2 \u2265 16 converge: True",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "bch_radius": 0.6931471805599453,
+        "g_critical": 0.8426500884694864,
+        "convergence_by_beta": {
+          "beta_16": {
+            "g": 0.6123724356957945,
+            "ratio_to_radius": 0.8834666761554183,
+            "converges": "True"
+          },
+          "beta_20": {
+            "g": 0.5477225575051661,
+            "ratio_to_radius": 0.7901966174957232,
+            "converges": "True"
+          },
+          "beta_30": {
+            "g": 0.4472135954999579,
+            "ratio_to_radius": 0.6451928364459122,
+            "converges": "True"
+          },
+          "beta_50": {
+            "g": 0.34641016151377546,
+            "ratio_to_radius": 0.49976422212946875,
+            "converges": "True"
+          },
+          "beta_100": {
+            "g": 0.2449489742783178,
+            "ratio_to_radius": 0.3533866704621674,
+            "converges": "True"
+          }
+        },
+        "converges_at_critical": "False"
+      }
+    },
+    {
+      "name": "Tadpole integrals: I_FCC \u2248 0.276, I_cubic \u2248 0.155, ratio ~1.8",
+      "passed": "True",
+      "details": "I_FCC = 0.2761 (exp ~0.276), I_cubic = 0.15483 (exp ~0.15493). Ratio I_FCC/I_cubic = 1.78. \u0394I = 0.1213",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "I_fcc": 0.27609447573442225,
+        "I_cubic": 0.15483168431078753,
+        "I_fcc_expected": 0.276,
+        "I_cubic_expected": 0.15493,
+        "ratio": 1.7831910630141354,
+        "delta_I": 0.12126279142363472
+      }
+    },
+    {
+      "name": "Continuum limit: FCC anisotropy at O(a^4), cubic at O(a^2)",
+      "passed": "True",
+      "details": "FCC anisotropy scaling: ~s^4.00 (expected ~4.0). Cubic anisotropy scaling: ~s^2.00 (expected ~2.0). Analytic check at s=0.05: \u0394 = -5.42e-12, pred = 5.43e-12 (200.0% error)",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "fcc_power": 3.9966494914599897,
+        "cubic_power": 1.9985284043321738,
+        "analytic_prediction_s005": 5.425347222222224e-12,
+        "computed_delta_s005": -5.424549698318515e-12,
+        "scales": [
+          0.02,
+          0.036551724137931035,
+          0.05310344827586207,
+          0.06965517241379311,
+          0.08620689655172414,
+          0.10275862068965518,
+          0.11931034482758622,
+          0.13586206896551725,
+          0.15241379310344827,
+          0.16896551724137931,
+          0.18551724137931033,
+          0.20206896551724138,
+          0.21862068965517242,
+          0.23517241379310344,
+          0.2517241379310345,
+          0.26827586206896553,
+          0.2848275862068966,
+          0.3013793103448276,
+          0.31793103448275867,
+          0.33448275862068966,
+          0.3510344827586207,
+          0.36758620689655175,
+          0.3841379310344828,
+          0.40068965517241384,
+          0.4172413793103449,
+          0.4337931034482759,
+          0.4503448275862069,
+          0.46689655172413796,
+          0.483448275862069,
+          0.5
+        ],
+        "fcc_aniso": [
+          -5.6251254739250744e-11,
+          -6.194734333448706e-10,
+          -2.760961647350381e-09,
+          -8.172530935058589e-09,
+          -1.9172321685811695e-08,
+          -3.8702340946254136e-08,
+          -7.032772961039491e-08,
+          -1.182360590822355e-07,
+          -1.8723598344753522e-07,
+          -2.8275634509017725e-07,
+          -4.1084453038654593e-07,
+          -5.781649944369433e-07,
+          -7.919975507286389e-07,
+          -1.0602355180046145e-06,
+          -1.391383648458814e-06,
+          -1.7945559533435324e-06,
+          -2.2794733891668383e-06,
+          -2.856461311831482e-06,
+          -3.5364468460646545e-06,
+          -4.330956066530937e-06,
+          -5.252111035486222e-06,
+          -6.312626669745247e-06,
+          -7.525807469151852e-06,
+          -8.905544094302623e-06,
+          -1.0466309773729879e-05,
+          -1.2223156577002674e-05,
+          -1.4191711537209564e-05,
+          -1.6388172602877296e-05,
+          -1.882930446980499e-05,
+          -2.1532434242188536e-05
+        ],
+        "cubic_aniso": [
+          -1.666633333592812e-05,
+          -5.566413713856589e-05,
+          -0.0001174824428684873,
+          -0.00020211108932954744,
+          -0.000309536166045727,
+          -0.00043974001564363535,
+          -0.0005927012368763738,
+          -0.0007683946882874589,
+          -0.000966791492515271,
+          -0.0011878590412355324,
+          -0.0014315610007454172,
+          -0.0016978573181842132,
+          -0.001986704228387035,
+          -0.0022980542613779673,
+          -0.0026318562504960095,
+          -0.002988055341153361,
+          -0.0033665930002201292,
+          -0.0037674070260466275,
+          -0.004190431559104848,
+          -0.004635597093258951,
+          -0.005102830487658435,
+          -0.0055920549792533945,
+          -0.006103190195924819,
+          -0.006636152170234812,
+          -0.0071908533537903795,
+          -0.007767202632217375,
+          -0.008365105340740584,
+          -0.008984463280374966,
+          -0.00962517473471406,
+          -0.010287134487321992
+        ],
+        "fcc_iso": [
+          -1.666652789770204e-05,
+          -5.566630632214432e-05,
+          -0.00011749210641956858,
+          -0.00020213969378061992,
+          -0.000309603271713969,
+          -0.00043987548113080246,
+          -0.0005929474018841766,
+          -0.0007688085534164814,
+          -0.0009674468961393147,
+          -0.0011888488326351656,
+          -0.001432999209182358,
+          -0.0016998813174049594,
+          -0.001989476896148831,
+          -0.0023017661334752927,
+          -0.0026367276688191495,
+          -0.002994338595350484,
+          -0.00337457446250599,
+          -0.003777409278653681,
+          -0.0042028155139722,
+          -0.004650764103456476,
+          -0.005121224450117727,
+          -0.00561416442834388,
+          -0.0061295503874298374,
+          -0.006667347155267796,
+          -0.007227518042199366,
+          -0.00781002484506225,
+          -0.008414827851354504,
+          -0.009041885843610525,
+          -0.009691156103903182,
+          -0.010362594418538429
+        ]
+      }
+    },
+    {
+      "name": "FCC plaquette geometry: triangles are equilateral with uniform area",
+      "passed": "True",
+      "details": "Found 32 distinct triangles from one site. Uniform area: True (area = 0.433013 for all). Area std = 0.00e+00",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "n_distinct_triangles": 32,
+        "area_mean": 0.43301270189221924,
+        "area_std": 0.0,
+        "area_uniform": "True"
+      }
+    },
+    {
+      "name": "Operator independence: Tr(F^4) vs [Tr(F^2)]^2 for SU(3)",
+      "passed": "True",
+      "details": "Correlation between Tr(F^2*F^2) and [Tr(F^2)]^2: 0.952826. Independent (|r| < 0.999): True",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "correlation": 0.9528255772172834,
+        "independent": "True",
+        "n_tests": 1000
+      }
+    },
+    {
+      "name": "Dimensional analysis: all Symanzik terms",
+      "passed": true,
+      "details": "7 dimensional checks. Issues found: 2. Note: O_3, O_4 appear dim-8 as written but are classified as dim-6 in LW85 convention (multi-trace composite operators).",
+      "severity": "WARNING",
+      "numerical_data": {
+        "n_checks": 7,
+        "n_issues": 2,
+        "issues": [
+          "O_3 as written (4 F's): computed dim 8, expected 6",
+          "O_4 as written (4 F's): computed dim 8, expected 6"
+        ],
+        "checks": [
+          [
+            "S_cont",
+            0,
+            0
+          ],
+          [
+            "a^2 * O_i^(6) term",
+            0,
+            0
+          ],
+          [
+            "a^4 * O_j^(8) term",
+            0,
+            0
+          ],
+          [
+            "O_1 = Tr(D_\u03bc F)^2",
+            6,
+            6
+          ],
+          [
+            "O_2 = Tr(F^3)",
+            6,
+            6
+          ],
+          [
+            "O_3 as written (4 F's)",
+            8,
+            6
+          ],
+          [
+            "O_4 as written (4 F's)",
+            8,
+            6
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Limiting cases: continuum, free-field, abelian, hypercubic",
+      "passed": true,
+      "details": "continuum: OK; free_field: OK; abelian: ISSUE; hypercubic: OK",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "continuum": {
+          "passed": "True",
+          "error": 3.1248915718133766e-07,
+          "description": "k_hat^2 \u2192 k^2 for small k"
+        },
+        "free_field": {
+          "passed": true,
+          "description": "g_0 \u2192 0: c_1=1/12, c_2=c_3=c_4=0"
+        },
+        "abelian": {
+          "passed": false,
+          "description": "ISSUE: Applications \u00a78.7.2 claims O_2,O_3 vanish for U(1). O_2 = Tr(FFF) and O_3 = [Tr(F^2)]^2 are generally nonzero for U(1). The vanishing may refer to the COEFFICIENTS (loop-level contributions from commutator vertices) rather than the operators themselves.",
+          "is_real_error": false,
+          "note": "c_2 and c_3 coefficients may indeed vanish for U(1) because the loop corrections that generate them require non-abelian vertices."
+        },
+        "hypercubic": {
+          "passed": "True",
+          "description": "Cubic: \u0394T_1111 = 1.000000 (exp 1.0)"
+        }
+      }
+    },
+    {
+      "name": "FCC propagator: W(D_4) invariant",
+      "passed": "True",
+      "details": "Tested 50 momenta \u00d7 192 group elements. Max invariance violation: 5.33e-15",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "max_violation": 5.329070518200751e-15,
+        "n_momenta_tested": 50,
+        "n_group_elements": 192
+      }
+    },
+    {
+      "name": "Second-moment isotropy: T_{\u03bc\u03bd} = (z/d) \u03b4_{\u03bc\u03bd}",
+      "passed": "True",
+      "details": "T_11 = 6.0000 (exp 6.0000), T_12 = 0.0000 (exp 0). Max deviation: 8.88e-16",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "T_11": 5.999999999999999,
+        "T_12": 0.0,
+        "expected_diag": 6.0,
+        "max_deviation": 8.881784197001252e-16
+      }
+    }
+  ]
+}

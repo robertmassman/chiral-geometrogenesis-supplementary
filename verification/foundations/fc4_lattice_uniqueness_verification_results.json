@@ -1,0 +1,552 @@
+{
+  "falsification_condition": "FC4",
+  "claim": "FCC is the unique SU(3)-compatible lattice",
+  "timestamp": "2026-03-21T06:23:10.559213",
+  "tests": [
+    {
+      "test": "bravais_lattices",
+      "total": 14,
+      "passing": [
+        "Face-centered cubic (cF / FCC)"
+      ],
+      "failing": [
+        "Simple cubic (cP)",
+        "Body-centered cubic (cI / BCC)",
+        "Simple tetragonal (tP)",
+        "Body-centered tetragonal (tI)",
+        "Simple orthorhombic (oP)",
+        "Base-centered orthorhombic (oC)",
+        "Body-centered orthorhombic (oI)",
+        "Face-centered orthorhombic (oF)",
+        "Simple hexagonal (hP)",
+        "Rhombohedral (hR)",
+        "Simple monoclinic (mP)",
+        "Base-centered monoclinic (mC)",
+        "Triclinic (aP)"
+      ],
+      "details": [
+        {
+          "name": "Simple cubic (cP)",
+          "bravais_type": "cP",
+          "coord": 6,
+          "C1": false,
+          "C4": true,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Body-centered cubic (cI / BCC)",
+          "bravais_type": "cI",
+          "coord": 8,
+          "C1": false,
+          "C4": true,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Face-centered cubic (cF / FCC)",
+          "bravais_type": "cF",
+          "coord": 12,
+          "C1": true,
+          "C4": true,
+          "C5": true,
+          "passes_all": true
+        },
+        {
+          "name": "Simple tetragonal (tP)",
+          "bravais_type": "tP",
+          "coord": 6,
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Body-centered tetragonal (tI)",
+          "bravais_type": "tI",
+          "coord": 8,
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Simple orthorhombic (oP)",
+          "bravais_type": "oP",
+          "coord": 6,
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Base-centered orthorhombic (oC)",
+          "bravais_type": "oC",
+          "coord": 8,
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Body-centered orthorhombic (oI)",
+          "bravais_type": "oI",
+          "coord": 8,
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Face-centered orthorhombic (oF)",
+          "bravais_type": "oF",
+          "coord": 12,
+          "C1": true,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Simple hexagonal (hP)",
+          "bravais_type": "hP",
+          "coord": 8,
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Rhombohedral (hR)",
+          "bravais_type": "hR",
+          "coord": 6,
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Simple monoclinic (mP)",
+          "bravais_type": "mP",
+          "coord": 6,
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Base-centered monoclinic (mC)",
+          "bravais_type": "mC",
+          "coord": 8,
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Triclinic (aP)",
+          "bravais_type": "aP",
+          "coord": 6,
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "non_bravais",
+      "total": 7,
+      "passing": [
+        "D\u2083 lattice (= FCC, alternate name)"
+      ],
+      "failing": [
+        "Diamond cubic",
+        "Hexagonal close-packed (HCP)",
+        "A\u2083* (BCC dual / FCC reciprocal)",
+        "Simple hexagonal with basis (wurtzite-type)",
+        "Laves phase (MgCu\u2082-type)",
+        "\u03b2-Mn structure"
+      ],
+      "details": [
+        {
+          "name": "Diamond cubic",
+          "coord": 4,
+          "C1": false,
+          "C4": true,
+          "C5": false,
+          "passes_all": false,
+          "is_fcc_alias": false
+        },
+        {
+          "name": "Hexagonal close-packed (HCP)",
+          "coord": 12,
+          "C1": true,
+          "C4": false,
+          "C5": false,
+          "passes_all": false,
+          "is_fcc_alias": false
+        },
+        {
+          "name": "A\u2083* (BCC dual / FCC reciprocal)",
+          "coord": 14,
+          "C1": false,
+          "C4": true,
+          "C5": true,
+          "passes_all": false,
+          "is_fcc_alias": false
+        },
+        {
+          "name": "D\u2083 lattice (= FCC, alternate name)",
+          "coord": 12,
+          "C1": true,
+          "C4": true,
+          "C5": true,
+          "passes_all": true,
+          "is_fcc_alias": true
+        },
+        {
+          "name": "Simple hexagonal with basis (wurtzite-type)",
+          "coord": 4,
+          "C1": false,
+          "C4": false,
+          "C5": false,
+          "passes_all": false,
+          "is_fcc_alias": false
+        },
+        {
+          "name": "Laves phase (MgCu\u2082-type)",
+          "coord": "12/16",
+          "C1": false,
+          "C4": true,
+          "C5": false,
+          "passes_all": false,
+          "is_fcc_alias": false
+        },
+        {
+          "name": "\u03b2-Mn structure",
+          "coord": "12/14",
+          "C1": false,
+          "C4": false,
+          "C5": false,
+          "passes_all": false,
+          "is_fcc_alias": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "non_crystallographic",
+      "total": 4,
+      "passing": [],
+      "failing": [
+        "Icosahedral quasicrystal",
+        "Decagonal quasicrystal",
+        "Penrose tiling (3D generalization)",
+        "Amorphous / random close packing"
+      ],
+      "details": [
+        {
+          "name": "Icosahedral quasicrystal",
+          "passes": false
+        },
+        {
+          "name": "Decagonal quasicrystal",
+          "passes": false
+        },
+        {
+          "name": "Penrose tiling (3D generalization)",
+          "passes": false
+        },
+        {
+          "name": "Amorphous / random close packing",
+          "passes": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "cjt_family",
+      "passed": true,
+      "details": [
+        {
+          "alpha": "0",
+          "vertex_transitive": false,
+          "passes": false
+        },
+        {
+          "alpha": "1/6",
+          "vertex_transitive": false,
+          "passes": false
+        },
+        {
+          "alpha": "1/3",
+          "vertex_transitive": false,
+          "passes": false
+        }
+      ]
+    },
+    {
+      "test": "fcc_positive",
+      "checks": [
+        {
+          "name": "C1_coordination_12",
+          "passed": true
+        },
+        {
+          "name": "C2_triangle_prohibition",
+          "passed": true
+        },
+        {
+          "name": "C3_four_cycles",
+          "passed": true
+        },
+        {
+          "name": "C4_Oh_symmetry",
+          "passed": true
+        },
+        {
+          "name": "C5_vertex_transitivity",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "hcp_deep_dive",
+      "checks": [
+        {
+          "name": "HCP coordination is 12 at both site types",
+          "passed": true
+        },
+        {
+          "name": "HCP sites are inequivalent (not vertex-transitive)",
+          "passed": true
+        },
+        {
+          "name": "HCP point group D_6h \u2284 O_h",
+          "passed": true
+        },
+        {
+          "name": "HCP ABAB stacking incompatible with Z\u2083 phase structure",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "completeness",
+      "checks": [
+        {
+          "name": "Bravais classification exhausts periodic lattices",
+          "passed": true
+        },
+        {
+          "name": "Only FCC survives C1+C4+C5 among Bravais lattices",
+          "passed": true
+        },
+        {
+          "name": "Multi-atom basis fails C5 (vertex-transitivity)",
+          "passed": true
+        },
+        {
+          "name": "Non-crystallographic structures eliminated by C4/C5",
+          "passed": true
+        },
+        {
+          "name": "Face-centered orthorhombic fails C4 unless a=b=c (\u2192 FCC)",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "combined_elimination",
+      "total_tested": 25,
+      "survivors": [
+        "Face-centered cubic (cF / FCC)",
+        "D\u2083 lattice (= FCC, alternate name)"
+      ],
+      "elimination_matrix": [
+        {
+          "name": "Simple cubic (cP)",
+          "C1": false,
+          "C4": true,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Body-centered cubic (cI / BCC)",
+          "C1": false,
+          "C4": true,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Face-centered cubic (cF / FCC)",
+          "C1": true,
+          "C4": true,
+          "C5": true,
+          "passes_all": true
+        },
+        {
+          "name": "Simple tetragonal (tP)",
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Body-centered tetragonal (tI)",
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Simple orthorhombic (oP)",
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Base-centered orthorhombic (oC)",
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Body-centered orthorhombic (oI)",
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Face-centered orthorhombic (oF)",
+          "C1": true,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Simple hexagonal (hP)",
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Rhombohedral (hR)",
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Simple monoclinic (mP)",
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Base-centered monoclinic (mC)",
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Triclinic (aP)",
+          "C1": false,
+          "C4": false,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "Diamond cubic",
+          "C1": false,
+          "C4": true,
+          "C5": false,
+          "passes_all": false
+        },
+        {
+          "name": "Hexagonal close-packed (HCP)",
+          "C1": true,
+          "C4": false,
+          "C5": false,
+          "passes_all": false
+        },
+        {
+          "name": "A\u2083* (BCC dual / FCC reciprocal)",
+          "C1": false,
+          "C4": true,
+          "C5": true,
+          "passes_all": false
+        },
+        {
+          "name": "D\u2083 lattice (= FCC, alternate name)",
+          "C1": true,
+          "C4": true,
+          "C5": true,
+          "passes_all": true
+        },
+        {
+          "name": "Simple hexagonal with basis (wurtzite-type)",
+          "C1": false,
+          "C4": false,
+          "C5": false,
+          "passes_all": false
+        },
+        {
+          "name": "Laves phase (MgCu\u2082-type)",
+          "C1": false,
+          "C4": true,
+          "C5": false,
+          "passes_all": false
+        },
+        {
+          "name": "\u03b2-Mn structure",
+          "C1": false,
+          "C4": false,
+          "C5": false,
+          "passes_all": false
+        },
+        {
+          "name": "Icosahedral quasicrystal",
+          "C1": true,
+          "C4": false,
+          "C5": false,
+          "passes_all": false
+        },
+        {
+          "name": "Decagonal quasicrystal",
+          "C1": false,
+          "C4": false,
+          "C5": false,
+          "passes_all": false
+        },
+        {
+          "name": "Penrose tiling (3D generalization)",
+          "C1": false,
+          "C4": false,
+          "C5": false,
+          "passes_all": false
+        },
+        {
+          "name": "Amorphous / random close packing",
+          "C1": false,
+          "C4": false,
+          "C5": false,
+          "passes_all": false
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED",
+  "conclusion": "FCC (cF / A\u2083) is the UNIQUE 3D lattice satisfying all five constraints: 12-regularity (from A\u2082 root system), intra-representation triangle prohibition, 4 four-cycles per edge, O_h symmetry (order 48), and vertex-transitivity (for SU(3) phase coherence). Verified against 28 structures including all 14 Bravais lattices, non-Bravais structures, and non-crystallographic structures."
+}

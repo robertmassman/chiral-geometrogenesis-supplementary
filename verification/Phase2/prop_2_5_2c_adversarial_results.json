@@ -1,0 +1,643 @@
+{
+  "proposition": "2.5.2c",
+  "title": "Transfer Matrix for FCC Layers",
+  "verification_type": "adversarial_physics",
+  "date": "2026-02-12T11:23:41.702009",
+  "tests_total": 44,
+  "tests_passed": 44,
+  "tests_failed": 0,
+  "warnings": 0,
+  "critical": 0,
+  "overall": "PASS",
+  "categories": {
+    "C1": {
+      "description": "Transfer Matrix Structure",
+      "passed": 6,
+      "failed": 0
+    },
+    "C2": {
+      "description": "Mass Gap Physics",
+      "passed": 6,
+      "failed": 0
+    },
+    "C3": {
+      "description": "Critical Coupling",
+      "passed": 5,
+      "failed": 0
+    },
+    "C4": {
+      "description": "Spectral Properties",
+      "passed": 6,
+      "failed": 0
+    },
+    "C5": {
+      "description": "Consistency Checks",
+      "passed": 6,
+      "failed": 0
+    },
+    "C6": {
+      "description": "Edge Cases",
+      "passed": 5,
+      "failed": 0
+    },
+    "C7": {
+      "description": "FCC-Specific Physics",
+      "passed": 10,
+      "failed": 0
+    }
+  },
+  "results": [
+    {
+      "name": "C1.1: Diagonal property: off-diagonal elements zero",
+      "passed": "True",
+      "details": "Tr(T^3) = 1.9173585910e+01, Z_direct = 1.9173585910e+01, rel_err = 1.85e-16. If off-diagonal elements existed, Tr(T^L) != Sum_R lambda_R^L.",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_diagonal": "19.17358591029544",
+        "Z_direct": "19.173585910295444",
+        "rel_err": "1.8529208335999562e-16"
+      }
+    },
+    {
+      "name": "C1.2: Self-adjointness: all eigenvalues real",
+      "passed": true,
+      "details": "All heat kernel coefficients a_R have negligible imaginary parts (max Im/Re < 1e-6). Since lambda_R = d_R^{3N_s} * a_R^{8N_s} with d_R integer and a_R real, all eigenvalues are real.",
+      "severity": "INFO",
+      "numerical_data": {
+        "all_real": true
+      }
+    },
+    {
+      "name": "C1.3: Tr(T^L) = Z_FCC for L = 1, 2, 3, 5",
+      "passed": true,
+      "details": "Max rel error across L values: 2.07e-16",
+      "severity": "INFO",
+      "numerical_data": {
+        "L=1": {
+          "Z_trace": 2.6765141183320913,
+          "Z_fcc": 2.6765141183320913,
+          "err": 0.0
+        },
+        "L=2": {
+          "Z_trace": 7.163669850937168,
+          "Z_fcc": 7.163669850937168,
+          "err": 0.0
+        },
+        "L=3": {
+          "Z_trace": 19.17358591029544,
+          "Z_fcc": 19.173585910295444,
+          "err": 1.8529208335999562e-16
+        },
+        "L=5": {
+          "Z_trace": 137.35323931881263,
+          "Z_fcc": 137.35323931881265,
+          "err": 2.069242019435301e-16
+        }
+      }
+    },
+    {
+      "name": "C1.4: Eigenvalue scaling lambda_R(N_s=2) = [lambda_R(N_s=1)]^2",
+      "passed": true,
+      "details": "Verified for 6 reps at beta=4.0. Max err for N_s=2: 1.98e-16, Max err for N_s=4: 4.83e-16",
+      "severity": "INFO",
+      "numerical_data": {
+        "(0,0)": {
+          "err_Ns2": 1.8903835725938203e-16,
+          "err_Ns4": 4.828151604141576e-16
+        },
+        "(1,0)": {
+          "err_Ns2": 0.0,
+          "err_Ns4": 2.82418815738912e-16
+        },
+        "(0,1)": {
+          "err_Ns2": 0.0,
+          "err_Ns4": 2.82418815738912e-16
+        },
+        "(2,0)": {
+          "err_Ns2": 0.0,
+          "err_Ns4": 1.7611720294492386e-16
+        },
+        "(0,2)": {
+          "err_Ns2": 1.9775205371476512e-16,
+          "err_Ns4": 1.7611720294492468e-16
+        },
+        "(1,1)": {
+          "err_Ns2": 1.1117944979566295e-16,
+          "err_Ns4": 1.1133681956415675e-16
+        }
+      }
+    },
+    {
+      "name": "C1.5: Hilbert space dimension matches representation count",
+      "passed": true,
+      "details": "Number of SU(3) irreps with d_R <= 30: 17. Distinct dimensions: [1, 3, 6, 8, 10, 15, 21, 24, 27]. Transfer matrix is countably infinite-dimensional in rep basis.",
+      "severity": "INFO",
+      "numerical_data": {
+        "n_reps_d30": 17,
+        "dims": [
+          1,
+          3,
+          6,
+          8,
+          10,
+          15,
+          21,
+          24,
+          27
+        ]
+      }
+    },
+    {
+      "name": "C1.6: Eigenvalue extraction from Z(L+1)/Z(L) at strong coupling",
+      "passed": "True",
+      "details": "lambda_1(formula) = 1.2642453258e+00, lambda_1(Z ratio) = 1.2642453142e+00, rel_err = 9.22e-09 (should be small at strong coupling beta=1.0)",
+      "severity": "INFO",
+      "numerical_data": {
+        "lambda_1_formula": "1.2642453258303767",
+        "lambda_1_ratio": "1.2642453141688428",
+        "cross_err": "9.224106842590575e-09"
+      }
+    },
+    {
+      "name": "C2.1: Mass gap positive (confined) at beta=1, negative (deconfined) at beta=20",
+      "passed": "True",
+      "details": "mu(beta=1) = 19.1946 (u_3 = 0.060127), mu(beta=20) = -1.5426 (u_3 = 0.803194). Sign change confirms phase transition.",
+      "severity": "INFO",
+      "numerical_data": {
+        "mu_strong": "19.19459266097861",
+        "mu_weak": "-1.5425616447605153",
+        "u3_strong": "0.06012655483356475",
+        "u3_weak": "0.8031936767438922"
+      }
+    },
+    {
+      "name": "C2.2: Intensive gap mu(beta) is N_s-independent",
+      "passed": true,
+      "details": "mu from N_s=[1, 2, 4]: ['9.45760044', '9.45760044', '9.45760044']. mu(formula) = 9.45760044. Spread = 0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "mu_values": [
+          9.457600443450795,
+          9.457600443450795,
+          9.457600443450795
+        ],
+        "mu_formula": "9.457600443450795",
+        "mu_spread": "0.0"
+      }
+    },
+    {
+      "name": "C2.3: Mass gap diverges as beta -> 0",
+      "passed": true,
+      "details": "mu at beta=[0.01, 0.05, 0.1, 0.5]: ['56.66', '43.76', '38.18', '25.05']. mu(0.01) = 56.66 >> 1 (deep confinement). Monotonically increasing toward beta=0: True",
+      "severity": "INFO",
+      "numerical_data": {
+        "betas": [
+          0.01,
+          0.05,
+          0.1,
+          0.5
+        ],
+        "mu_values": [
+          56.661834802356246,
+          43.75973226970477,
+          38.18143524709513,
+          25.04670984892604
+        ]
+      }
+    },
+    {
+      "name": "C2.4: Mass gap vanishes at u_3 = 3^(-3/8)",
+      "passed": "True",
+      "details": "u_3_crit = 3^(-3/8) = 0.6623377821. mu(u_3_crit) = 0.00e+00 (should be exactly 0). Derivation: -3*ln(3) - 8*(-3/8)*ln(3) = -3*ln(3) + 3*ln(3) = 0.",
+      "severity": "INFO",
+      "numerical_data": {
+        "u3_crit": 0.662337782140526,
+        "mu_at_crit": "0.0"
+      }
+    },
+    {
+      "name": "C2.5: Comparison of gap formulas across geometries at beta=2",
+      "passed": "True",
+      "details": "K4 partition gap (chi=2,F=4): 6.0061, FCC intensive gap (chi=3,F=8): 13.1108, K4 transfer matrix (chi=4,F=10): 16.1139. All follow general formula -chi*ln(d_3) - F*ln(u_3). FCC has different chi/F ratio (3/8=0.375) vs K4 (2/5=0.4).",
+      "severity": "INFO",
+      "numerical_data": {
+        "gap_K4": "6.0061051445394735",
+        "gap_FCC": "13.110822577747058",
+        "gap_K4_tm": "16.113875150016792",
+        "u3": "0.12862778532208344"
+      }
+    },
+    {
+      "name": "C2.6: Gap is extensive: m_gap(N_s) = N_s * mu(beta)",
+      "passed": true,
+      "details": "Verified m_gap = N_s * mu for N_s = 1, 2, 4, 8 at beta=2.0. mu = 13.110823. Linear scaling confirms extensive gap (volume-wide excitation).",
+      "severity": "INFO",
+      "numerical_data": {
+        "mu": "13.110822577747058",
+        "beta": 2.0
+      }
+    },
+    {
+      "name": "C3.1: Critical condition u_3(beta_c) = 3^(-3/8) verified numerically",
+      "passed": true,
+      "details": "u_3_crit(exact) = 0.66233778. beta_c = 11.4216, u_3(beta_c) = 0.66233778, rel_err = 9.32e-10",
+      "severity": "INFO",
+      "numerical_data": {
+        "u3_crit_exact": 0.662337782140526,
+        "beta_c": 11.421576447517191,
+        "u_3_c": 0.662337782757705,
+        "u3_err": 9.31819235226438e-10
+      }
+    },
+    {
+      "name": "C3.2: Level crossing at beta_c: lambda_3 = lambda_1",
+      "passed": "True",
+      "details": "At beta_c = 11.421576447517191: lambda_3/lambda_1 = 1.000000 (should be 1.0). This is the deconfinement transition where the fundamental representation eigenvalue catches the trivial.",
+      "severity": "INFO",
+      "numerical_data": {
+        "ratio": "1.000000007454553",
+        "beta_c": 11.421576447517191
+      }
+    },
+    {
+      "name": "C3.3: Phase identification: confined (beta<beta_c) vs deconfined (beta>beta_c)",
+      "passed": "True",
+      "details": "mu(beta_c - 0.5) = 0.1759 (> 0 => confined), mu(beta_c + 0.5) = -0.1594 (< 0 => deconfined). Sign change confirms deconfinement transition.",
+      "severity": "INFO",
+      "numerical_data": {
+        "mu_below": "0.17592135470609715",
+        "mu_above": "-0.15944611720643298"
+      }
+    },
+    {
+      "name": "C3.4: Polyakov loop order parameter changes at beta_c",
+      "passed": "True",
+      "details": "<|L|^2>(confined, L=10) = 1.0010 (expect ~1), <|L|^2>(deconfined, L=10) = 3.0391 (expect ~3). Confirms order parameter distinction between phases.",
+      "severity": "INFO",
+      "numerical_data": {
+        "poly_confined": "1.000995354822945",
+        "poly_deconfined": "3.0391462311426833"
+      }
+    },
+    {
+      "name": "C3.5: Critical exponent nu = 1 (mean-field) from correlation length",
+      "passed": "True",
+      "details": "Fitted nu = 1.133 (expected 1.0 for mean-field). Error = 0.133. xi(beta) = 1/mu(beta) ~ (beta_c - beta)^(-nu).",
+      "severity": "INFO",
+      "numerical_data": {
+        "nu_measured": "1.1331767269556374",
+        "nu_err": "0.13317672695563743",
+        "beta_c": 11.421576447517191
+      }
+    },
+    {
+      "name": "C4.1: Eigenvalue positivity lambda_R > 0 for all R, beta > 0",
+      "passed": true,
+      "details": "Tested 12 reps at 9 beta values. All a_R > 0: True. Min a_R = 2.150765e-14 at (0,4) at beta=0.01. Positivity required for reflection positivity (Osterwalder-Schrader).",
+      "severity": "INFO",
+      "numerical_data": {
+        "all_positive": true,
+        "min_a_R": "2.150765491630106e-14"
+      }
+    },
+    {
+      "name": "C4.2: Casimir ordering at strong coupling (beta=1)",
+      "passed": "True",
+      "details": "lambda_1 = 1.264245e+00, lambda_3 = 5.830767e-09, lambda_6 = 7.861465e-19, lambda_8 = 3.138527e-17. Ordering lambda_1 > lambda_3 > max(lambda_6, lambda_8): True",
+      "severity": "INFO",
+      "numerical_data": {
+        "lam_1": "1.2642453258303767",
+        "lam_3": "5.830766925075813e-09",
+        "lam_6": "7.861464777133931e-19",
+        "lam_8": "3.138526585400748e-17"
+      }
+    },
+    {
+      "name": "C4.3: Charge conjugation symmetry a_{(p,q)} = a_{(q,p)}",
+      "passed": true,
+      "details": "Max rel diff: 4.44e-16. 3/3bar: 0.00e+00, 6/6bar: 0.00e+00. Degeneracy required by charge conjugation C: U -> U*.",
+      "severity": "INFO",
+      "numerical_data": {
+        "3/3bar": {
+          "a_R": 0.271005610913929,
+          "a_Rbar": 0.271005610913929,
+          "rel_diff": 0.0
+        },
+        "6/6bar": {
+          "a_R": 0.040993317314745537,
+          "a_Rbar": 0.040993317314745537,
+          "rel_diff": 0.0
+        },
+        "10/10bar": {
+          "a_R": 0.004924778246102774,
+          "a_Rbar": 0.004924778246102776,
+          "rel_diff": 3.522439771475155e-16
+        },
+        "15/15bar": {
+          "a_R": 0.007818581422659504,
+          "a_Rbar": 0.007818581422659508,
+          "rel_diff": 4.4374378987709966e-16
+        }
+      }
+    },
+    {
+      "name": "C4.4: Gap ratios approach integers at strong coupling (beta=0.5)",
+      "passed": "True",
+      "details": "gap_6/gap_3 = 2.141 (expect ~2), gap_8/gap_3 = 1.985 (expect ~2), gap_10/gap_3 = 3.375 (expect ~3). Integer ratios reflect quark-model counting at strong coupling.",
+      "severity": "INFO",
+      "numerical_data": {
+        "ratio_6_3": "2.140617392594633",
+        "ratio_8_3": "1.9852791849218006",
+        "ratio_10_3": "3.37450634063484"
+      }
+    },
+    {
+      "name": "C4.5: Representation sum convergence (heat kernel decay)",
+      "passed": "True",
+      "details": "Trivial rep fraction: 9.999960e-01 (should dominate at beta=2.0). Last rep ((3,3), d=64) fraction: 5.83e-44. Exponential suppression from exp(-beta*C_2/6) ensures convergence.",
+      "severity": "INFO",
+      "numerical_data": {
+        "trivial_frac": "0.9999959535823248",
+        "last_frac": "5.827765779858487e-44",
+        "total": "2.6765141183320913"
+      }
+    },
+    {
+      "name": "C4.6: Level crossing sequence 1 -> 3 -> ... at weak coupling",
+      "passed": true,
+      "details": "Dominant reps vs beta: transitions detected = True. First transition near beta = 11.1. Sequence at selected betas: [(np.float64(1.0), '1'), (np.float64(4.9), '1'), (np.float64(8.8), '1'), (np.float64(12.6), '3'), (np.float64(16.5), '8')]",
+      "severity": "INFO",
+      "numerical_data": {
+        "dominant_reps": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "trans_beta": 11.081632653061224
+      }
+    },
+    {
+      "name": "C5.1: Universal plaquette <P> ~ beta/18 at strong coupling (FCC)",
+      "passed": "True",
+      "details": "<P>_FCC = 0.028932, beta/(2*Nc^2) = 0.027778, rel diff = 0.0415. Universality: all SU(3) lattices give beta/18 at strong coupling.",
+      "severity": "INFO",
+      "numerical_data": {
+        "plaq_fcc": "0.02893189121339875",
+        "expected": 0.027777777777777776
+      }
+    },
+    {
+      "name": "C5.2: Free energy per cell converges in thermodynamic limit",
+      "passed": "True",
+      "details": "f(beta=1) for N_s=1,2,4,8: ['-0.078158', '-0.078158', '-0.078158', '-0.078158']. Spread = 3.07e-09. Asymptotic: -(8/3)*ln(a_1) = -0.078158",
+      "severity": "INFO",
+      "numerical_data": {
+        "f_vals": {
+          "1": -0.07815845766915645,
+          "2": -0.07815845459445418,
+          "4": -0.07815845459445417,
+          "8": -0.07815845459445417
+        },
+        "f_spread": "3.0747022844446192e-09"
+      }
+    },
+    {
+      "name": "C5.3: Reflection positivity (all eigenvalues positive)",
+      "passed": true,
+      "details": "Min eigenvalue at each beta: {'beta=0.1': np.float64(1.962601372551713e-74), 'beta=1.0': np.float64(2.1924377412098338e-41), 'beta=5.0': np.float64(6.83793360458082e-14), 'beta=10.0': np.float64(34874.253655064655), 'beta=20.0': np.float64(2.226447021283984e+35)}. All positive: True. Positive T => T = exp(-H) with self-adjoint H (Osterwalder-Schrader).",
+      "severity": "INFO",
+      "numerical_data": {
+        "all_positive": true,
+        "rp_data": {
+          "beta=0.1": 1.962601372551713e-74,
+          "beta=1.0": 2.1924377412098338e-41,
+          "beta=5.0": 6.83793360458082e-14,
+          "beta=10.0": 34874.253655064655,
+          "beta=20.0": 2.226447021283984e+35
+        }
+      }
+    },
+    {
+      "name": "C5.4: Isotropy: Z independent of slicing (N_s*L = 6 fixed)",
+      "passed": "True",
+      "details": "Z for (N_s,L) = [(1, 6), (2, 3), (3, 2), (6, 1)]: ['2.567829e+01', '2.567829e+01', '2.567829e+01', '2.567829e+01']. Spread/Z = 0.00e+00. Isotropy follows because Z depends only on N = N_s*L, not on decomposition.",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_values": [
+          25.678292299588207,
+          25.678292299588207,
+          25.678292299588207,
+          25.678292299588207
+        ],
+        "Z_spread": "0.0"
+      }
+    },
+    {
+      "name": "C5.5: ABC stacking invariance: T_AB = T_BC = T_CA",
+      "passed": "True",
+      "details": "Tr(T^3) = 1.9173585910e+01, Z_FCC(N=3) = 1.9173585910e+01, rel_err = 1.85e-16. Stacking offset affects geometry, not 2-skeleton combinatorics.",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_L3_homo": "19.17358591029544",
+        "Z_L3_direct": "19.173585910295444",
+        "abc_err": "1.8529208335999562e-16"
+      }
+    },
+    {
+      "name": "C5.6: Consistency with Prop 2.5.2b partition function",
+      "passed": "True",
+      "details": "Z_FCC(Prop 2.5.2b) = 1.0361968284e+06, Tr(T^3) = 1.0361968284e+06, rel_err = 1.12e-16. N_s=2, L=3, N=6.",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_25b": "1036196.8283792062",
+        "Z_tm": "1036196.8283792061",
+        "err": "1.123486567788755e-16"
+      }
+    },
+    {
+      "name": "C6.1: beta=0 limit: a_1(0)=1, a_R(0)=0 for R != 1",
+      "passed": "True",
+      "details": "a_1(0) = 1.000000 (expect 1), a_3(0) = 0.000000 (expect 0), a_8(0) = -0.000000 (expect 0). At beta=0, only trivial rep survives: Z_FCC = 1.",
+      "severity": "INFO",
+      "numerical_data": {
+        "a_1_0": "1.0000000000000004",
+        "a_3_0": "9.473903143468002e-18",
+        "a_8_0": "-1.6105635343895605e-17"
+      }
+    },
+    {
+      "name": "C6.2: beta -> infinity: u_3 -> 1 monotonically, mu -> -3*ln(3)",
+      "passed": true,
+      "details": "u_3 at beta=[1.0, 2.0, 4.0, 6.0, 8.0, 10.0]: ['0.060127', '0.128628', '0.279619', '0.422532', '0.535754', '0.618176']. Monotone: True, all < 1: True. Asymptotic mu -> -3*ln(3) = -3.2958 (deconfined).",
+      "severity": "INFO",
+      "numerical_data": {
+        "betas": [
+          1.0,
+          2.0,
+          4.0,
+          6.0,
+          8.0,
+          10.0
+        ],
+        "u3_values": [
+          0.06012655483356475,
+          0.12862778532208344,
+          0.2796191494093043,
+          0.4225317396499834,
+          0.535753990213565,
+          0.6181757389675137
+        ],
+        "mu_inf": "-3.295836866004329"
+      }
+    },
+    {
+      "name": "C6.3: N_s = 1 minimal case: lambda_R = d_R^3 * a_R^8",
+      "passed": "True",
+      "details": "Z(N_s=1, L=1, beta=2.0) = 2.676514e+00. lambda_1 = 2.676503e+00, lambda_3 = 5.415142e-06, lambda_8 = 8.590133e-12.",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_min": "2.6765141183320913",
+        "lam_1": "2.676503288038055",
+        "lam_3": "5.415142411493932e-06"
+      }
+    },
+    {
+      "name": "C6.4: Single layer L=1: Tr(T) = Z_FCC(N_s) for N_s=1,2,3",
+      "passed": "True",
+      "details": "Z(Tr) = Z(direct) verified for N_s = 1, 2, 3 at beta=2.0. Last error = 0.00e+00. Trivially consistent since Tr(T^1) = Sum lambda_R = Z(N=N_s).",
+      "severity": "INFO",
+      "numerical_data": {
+        "err_L1": "0.0"
+      }
+    },
+    {
+      "name": "C6.5: Large N_s scaling: lambda_3/lambda_1 -> 0 exponentially",
+      "passed": "True",
+      "details": "lambda_3/lambda_1 = (d_3^3 * u_3^8)^N_s at beta=2.0: N_s=1: 2.02e-06, N_s=10: 1.15e-57, N_s=50: 2.00e-285, N_s=100: 0.00e+00. Exponential suppression = deep confinement.",
+      "severity": "INFO",
+      "numerical_data": {
+        "ratios": {
+          "1": 2.0232153032262345e-06,
+          "10": 1.1492672015117689e-57,
+          "50": 2.0049570036197636e-285,
+          "100": 0.0
+        },
+        "ratio_base": "2.0232153032262345e-06"
+      }
+    },
+    {
+      "name": "C7.1: Per-layer chi_2 = 3*N_s for N_s=1",
+      "passed": true,
+      "details": "V/L = 1, E/L = 6, F/L = 8, chi_2/L = 1 - 6 + 8 = 3 (expected 3). This sets d_R exponent = 3 in lambda_R.",
+      "severity": "INFO",
+      "numerical_data": {
+        "N_s": 1,
+        "chi_layer": 3
+      }
+    },
+    {
+      "name": "C7.1: Per-layer chi_2 = 3*N_s for N_s=2",
+      "passed": true,
+      "details": "V/L = 2, E/L = 12, F/L = 16, chi_2/L = 2 - 12 + 16 = 6 (expected 6). This sets d_R exponent = 6 in lambda_R.",
+      "severity": "INFO",
+      "numerical_data": {
+        "N_s": 2,
+        "chi_layer": 6
+      }
+    },
+    {
+      "name": "C7.1: Per-layer chi_2 = 3*N_s for N_s=4",
+      "passed": true,
+      "details": "V/L = 4, E/L = 24, F/L = 32, chi_2/L = 4 - 24 + 32 = 12 (expected 12). This sets d_R exponent = 12 in lambda_R.",
+      "severity": "INFO",
+      "numerical_data": {
+        "N_s": 4,
+        "chi_layer": 12
+      }
+    },
+    {
+      "name": "C7.1: Per-layer chi_2 = 3*N_s for N_s=10",
+      "passed": true,
+      "details": "V/L = 10, E/L = 60, F/L = 80, chi_2/L = 10 - 60 + 80 = 30 (expected 30). This sets d_R exponent = 30 in lambda_R.",
+      "severity": "INFO",
+      "numerical_data": {
+        "N_s": 10,
+        "chi_layer": 30
+      }
+    },
+    {
+      "name": "C7.2: Per-layer face count F/L = 8*N_s for N_s=1",
+      "passed": true,
+      "details": "Tet incidences = 8, oct incidences = 8, total = 16, distinct = 16/2 = 8 (expected 8). This sets a_R exponent = 8 in lambda_R.",
+      "severity": "INFO",
+      "numerical_data": {
+        "N_s": 1,
+        "distinct_faces": 8
+      }
+    },
+    {
+      "name": "C7.2: Per-layer face count F/L = 8*N_s for N_s=2",
+      "passed": true,
+      "details": "Tet incidences = 16, oct incidences = 16, total = 32, distinct = 32/2 = 16 (expected 16). This sets a_R exponent = 16 in lambda_R.",
+      "severity": "INFO",
+      "numerical_data": {
+        "N_s": 2,
+        "distinct_faces": 16
+      }
+    },
+    {
+      "name": "C7.2: Per-layer face count F/L = 8*N_s for N_s=4",
+      "passed": true,
+      "details": "Tet incidences = 32, oct incidences = 32, total = 64, distinct = 64/2 = 32 (expected 32). This sets a_R exponent = 32 in lambda_R.",
+      "severity": "INFO",
+      "numerical_data": {
+        "N_s": 4,
+        "distinct_faces": 32
+      }
+    },
+    {
+      "name": "C7.3: Decoupling limit: Z_coupled <= Z_decoupled",
+      "passed": "True",
+      "details": "Z_coupled = 2.676514e+00, Z_decoupled = 7.234546e+00, ratio = 0.36996296. Z_coupled < Z_decoupled because global label constraint reduces degrees of freedom.",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_coupled": "2.6765141183320913",
+        "Z_decoupled": "7.234546143749206",
+        "ratio": "0.3699629617601725"
+      }
+    },
+    {
+      "name": "C7.4: K4 vs FCC mass gaps: m_K4 - mu_FCC = -ln(3) - 2*ln(u_3)",
+      "passed": true,
+      "details": "Verified m_K4 - mu_FCC = -ln(3) - 2*ln(u_3) at beta = [1.0, 2.0, 4.0, 6.0, 8.0]. K4 has more faces per cell (10 vs 8 per chi), so larger gap. FCC assembly reduces gap through face sharing.",
+      "severity": "INFO",
+      "numerical_data": {
+        "betas": [
+          1.0,
+          2.0,
+          4.0,
+          6.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "name": "C7.5: Critical u_3 comparison: general formula u_3_crit = 3^(-chi/F)",
+      "passed": true,
+      "details": "K4 partition (chi=2,F=4): u_3_crit = 3^(-1/2) = 0.5774, K4 transfer (chi=4,F=10): u_3_crit = 3^(-2/5) = 0.6444, FCC (chi=3,F=8): u_3_crit = 3^(-3/8) = 0.6623. Larger chi/F ratio => larger critical u_3 => wider confined phase. FCC assembly changes entropy-energy balance relative to isolated K4.",
+      "severity": "INFO",
+      "numerical_data": {
+        "u3_K4_part": 0.5773502691896257,
+        "u3_K4_tm": 0.6443940149772542,
+        "u3_FCC": 0.662337782140526
+      }
+    }
+  ]
+}

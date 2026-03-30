@@ -1,0 +1,64 @@
+{
+  "theorem": "7.7.4",
+  "title": "Yang-Mills Mass Gap for General Compact Simple G",
+  "phase": "H.5",
+  "timestamp": "2026-02-15T08:01:09.295035",
+  "tests": [
+    {
+      "name": "C-1: Dependency chain completeness",
+      "passed": true,
+      "details": "All 9 dependencies satisfied."
+    },
+    {
+      "name": "C-2: Beta function b_0 > 0 for all G",
+      "passed": true,
+      "details": "b_0 > 0 for all groups:\n  SU(2): h^v=2, b_0=0.04644 PASS\n  SU(3): h^v=3, b_0=0.06966 PASS\n  SU(4): h^v=4, b_0=0.09288 PASS\n  SU(5): h^v=5, b_0=0.11610 PASS\n  SU(6): h^v=6, b_0=0.13932 PASS\n  SU(8): h^v=8, b_0=0.18576 PASS\n  SO(5): h^v=3, b_0=0.06966 PASS\n  SO(7): h^v=5, b_0=0.11610 PASS\n  Sp(4): h^v=3, b_0=0.06966 PASS\n  Sp(6): h^v=4, b_0=0.09288 PASS\n  G2: h^v=4, b_0=0.09288 PASS\n  F4: h^v=9, b_0=0.20897 PASS\n  E6: h^v=12, b_0=0.27863 PASS\n  E7: h^v=18, b_0=0.41795 PASS\n  E8: h^v=30, b_0=0.69658 PASS"
+    },
+    {
+      "name": "C-3: Asymptotic freedom for all G",
+      "passed": true,
+      "details": "Running coupling monotone decreasing for all G:\n  SU(2): g_1^2=15.533 -> g_10^2=1.5533 monotone decreasing\n  SU(3): g_1^2=10.356 -> g_10^2=1.0356 monotone decreasing\n  SU(4): g_1^2=7.767 -> g_10^2=0.7767 monotone decreasing\n  SU(5): g_1^2=6.213 -> g_10^2=0.6213 monotone decreasing\n  SU(6): g_1^2=5.178 -> g_10^2=0.5178 monotone decreasing\n  SU(8): g_1^2=3.883 -> g_10^2=0.3883 monotone decreasing\n  SO(5): g_1^2=10.356 -> g_10^2=1.0356 monotone decreasing\n  SO(7): g_1^2=6.213 -> g_10^2=0.6213 monotone decreasing\n  Sp(4): g_1^2=10.356 -> g_10^2=1.0356 monotone decreasing\n  Sp(6): g_1^2=7.767 -> g_10^2=0.7767 monotone decreasing\n  G2: g_1^2=7.767 -> g_10^2=0.7767 monotone decreasing\n  F4: g_1^2=3.452 -> g_10^2=0.3452 monotone decreasing\n  E6: g_1^2=2.589 -> g_10^2=0.2589 monotone decreasing\n  E7: g_1^2=1.726 -> g_10^2=0.1726 monotone decreasing\n  E8: g_1^2=1.036 -> g_10^2=0.1036 monotone decreasing"
+    },
+    {
+      "name": "C-4: Dual Coxeter numbers correct",
+      "passed": true,
+      "details": "Dual Coxeter number check:\n  SU(2): expected h^v=2, got 2 PASS\n  SU(3): expected h^v=3, got 3 PASS\n  SU(4): expected h^v=4, got 4 PASS\n  SU(5): expected h^v=5, got 5 PASS\n  SU(6): expected h^v=6, got 6 PASS\n  SU(8): expected h^v=8, got 8 PASS\n  SO(5): expected h^v=3, got 3 PASS\n  SO(7): expected h^v=5, got 5 PASS\n  Sp(4): expected h^v=3, got 3 PASS\n  Sp(6): expected h^v=4, got 4 PASS\n  G2: expected h^v=4, got 4 PASS\n  F4: expected h^v=9, got 9 PASS\n  E6: expected h^v=12, got 12 PASS\n  E7: expected h^v=18, got 18 PASS\n  E8: expected h^v=30, got 30 PASS"
+    },
+    {
+      "name": "C-5: Dimensional consistency",
+      "passed": true,
+      "details": "Dimensional consistency checks:\n  Eq 1.3: m = R_cont * sqrt(sigma): mass = dimensionless * mass PASS\n  Eq 1.4: m >= c * Lambda: mass >= dimensionless * mass PASS\n  Eq 3.1: b_0 = 11*h^v/(48*pi^2): dimensionless = dimensionless PASS\n  Eq 4.8: g_k^2 = 1/(2*b_0*k*ln2): dimensionless = dimensionless PASS\n  Eq 4.6: mu = -ln(ratio): dimensionless = dimensionless PASS"
+    },
+    {
+      "name": "C-6: SU(3) recovery",
+      "passed": true,
+      "details": "SU(3) recovery checks:\n  b_0 match: rel_err = 0.00e+00 PASS\n  R_cont match: general=3.405, SU(3)=3.405 PASS\n  m_phys match: general=1498.2 MeV, SU(3)=1498.2 MeV PASS\n  dim_adj = 8: got 8 PASS\n  center = Z3: got Z3 PASS"
+    },
+    {
+      "name": "C-7: Large-N scaling of R_cont",
+      "passed": "True",
+      "details": "SU(N) R_cont values: {'SU(2)': 3.56, 'SU(3)': 3.405, 'SU(4)': 3.65, 'SU(5)': 3.7, 'SU(6)': 3.72, 'SU(8)': 3.55}\n  Mean R_cont = 3.598, std = 0.107, std/mean = 0.030\n  Large-N extrapolation: R_inf = 3.643\n  Range check: True, stability: True, R_inf reasonable: True"
+    },
+    {
+      "name": "C-8: Center structure correct",
+      "passed": true,
+      "details": "Center structure check:\n  SU(2): expected Z(G)=Z2, got Z2 PASS\n  SU(3): expected Z(G)=Z3, got Z3 PASS\n  SU(4): expected Z(G)=Z4, got Z4 PASS\n  SU(5): expected Z(G)=Z5, got Z5 PASS\n  SU(6): expected Z(G)=Z6, got Z6 PASS\n  SU(8): expected Z(G)=Z8, got Z8 PASS\n  SO(5): expected Z(G)=Z2, got Z2 PASS\n  SO(7): expected Z(G)=Z2, got Z2 PASS\n  Sp(4): expected Z(G)=Z2, got Z2 PASS\n  Sp(6): expected Z(G)=Z2, got Z2 PASS\n  G2: expected Z(G)={1}, got {1} PASS\n  F4: expected Z(G)={1}, got {1} PASS\n  E6: expected Z(G)=Z3, got Z3 PASS\n  E7: expected Z(G)=Z2, got Z2 PASS\n  E8: expected Z(G)={1}, got {1} PASS"
+    },
+    {
+      "name": "C-9: Strong-coupling mass gap positive",
+      "passed": true,
+      "details": "Strong-coupling mass gap at beta = 0.5:\n  SU(2) (d_fund=2): mu(beta=0.5) = 8.318 > 0 PASS\n  SU(3) (d_fund=3): mu(beta=0.5) = 10.751 > 0 PASS\n  SU(4) (d_fund=4): mu(beta=0.5) = 12.477 > 0 PASS\n  SU(5) (d_fund=5): mu(beta=0.5) = 13.816 > 0 PASS\n  SU(6) (d_fund=6): mu(beta=0.5) = 14.909 > 0 PASS\n  SU(8) (d_fund=8): mu(beta=0.5) = 16.636 > 0 PASS\n  SO(5) (d_fund=5): mu(beta=0.5) = 13.816 > 0 PASS\n  SO(7) (d_fund=7): mu(beta=0.5) = 15.834 > 0 PASS\n  Sp(4) (d_fund=4): mu(beta=0.5) = 12.477 > 0 PASS\n  Sp(6) (d_fund=6): mu(beta=0.5) = 14.909 > 0 PASS\n  G2 (d_fund=7): mu(beta=0.5) = 15.834 > 0 PASS\n  F4 (d_fund=26): mu(beta=0.5) = 23.707 > 0 PASS\n  E6 (d_fund=27): mu(beta=0.5) = 23.934 > 0 PASS\n  E7 (d_fund=56): mu(beta=0.5) = 28.311 > 0 PASS\n  E8 (d_fund=248): mu(beta=0.5) = 37.239 > 0 PASS"
+    },
+    {
+      "name": "C-10: OS reconstruction group-independence",
+      "passed": true,
+      "details": "OS reconstruction chain group-independence:\n  OS reconstruction requires only OS0-OS4: OS axioms are group-independent structural properties PASS\n  Spectral gap extraction uses spectral theorem: Spectral theorem is a Hilbert space result, no group input PASS\n  Exponential clustering requires only mu_min > 0: mu_min > 0 proven for all G in \u00a74.6 PASS\n  Reflection positivity on Z^4 holds for any compact G: Wilson action is RP for any compact G (Seiler 1982) PASS\n  Contradiction argument (\u00a74.8) is group-independent: Uses only spectral decomposition and decay rate PASS"
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "overall": "PASSED"
+  }
+}

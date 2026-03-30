@@ -1,0 +1,322 @@
+{
+  "proposition": "7.4.4",
+  "title": "Scaling Window Identification on FCC \u2014 Adversarial Physics Verification",
+  "timestamp": "2026-02-13T12:17:38.404157",
+  "verdict": "PARTIAL VERIFICATION",
+  "summary": "12/12 adversarial findings confirmed",
+  "critical_findings": 4,
+  "significant_findings": 5,
+  "tests": [
+    {
+      "name": "A1:  R(beta) strictly decreasing",
+      "confirmed": true,
+      "severity": "CRITICAL",
+      "finding_type": "R_monotonicity",
+      "data": [
+        {
+          "beta": 2.0,
+          "mu": 13.1108,
+          "u3": 0.128628,
+          "sigma_lat": 2.0508,
+          "R": 9.1551
+        },
+        {
+          "beta": 3.0,
+          "mu": 9.4576,
+          "u3": 0.203075,
+          "sigma_lat": 1.5942,
+          "R": 7.4905
+        },
+        {
+          "beta": 4.0,
+          "mu": 6.8988,
+          "u3": 0.279619,
+          "sigma_lat": 1.2743,
+          "R": 6.1113
+        },
+        {
+          "beta": 5.0,
+          "mu": 5.0129,
+          "u3": 0.353954,
+          "sigma_lat": 1.0386,
+          "R": 4.9189
+        },
+        {
+          "beta": 6.0,
+          "mu": 3.5961,
+          "u3": 0.422532,
+          "sigma_lat": 0.8615,
+          "R": 3.8744
+        },
+        {
+          "beta": 7.0,
+          "mu": 2.521,
+          "u3": 0.483309,
+          "sigma_lat": 0.7271,
+          "R": 2.9564
+        },
+        {
+          "beta": 7.5,
+          "mu": 2.0822,
+          "u3": 0.510558,
+          "sigma_lat": 0.6723,
+          "R": 2.5395
+        },
+        {
+          "beta": 8.0,
+          "mu": 1.6968,
+          "u3": 0.535754,
+          "sigma_lat": 0.6241,
+          "R": 2.1479
+        },
+        {
+          "beta": 8.5,
+          "mu": 1.3572,
+          "u3": 0.558986,
+          "sigma_lat": 0.5816,
+          "R": 1.7796
+        },
+        {
+          "beta": 8.8,
+          "mu": 1.1726,
+          "u3": 0.572032,
+          "sigma_lat": 0.5586,
+          "R": 1.569
+        }
+      ],
+      "strictly_decreasing": true,
+      "R_range": "9.155 -> 1.569",
+      "finding": "R(beta) is strictly monotonically decreasing \u2014 it does NOT stabilize to R_infinity > 0"
+    },
+    {
+      "name": "A2:  R(beta_c) = 0 (not R_infinity > 0)",
+      "confirmed": true,
+      "severity": "CRITICAL",
+      "finding_type": "R_at_critical",
+      "x_c": 0.41198,
+      "R_analytical_at_beta_c": 0.0,
+      "R_trend_toward_beta_c": [
+        {
+          "beta": 7.0,
+          "R": 2.9564
+        },
+        {
+          "beta": 8.0,
+          "R": 2.1479
+        },
+        {
+          "beta": 8.5,
+          "R": 1.7796
+        },
+        {
+          "beta": 9.0,
+          "R": 1.4327
+        }
+      ],
+      "analytical_confirms_zero": "True",
+      "numerical_trend_decreasing": true,
+      "finding": "R(beta_c) = 0.00e+00 analytically (exactly 0). Numerically, R decreases monotonically: [np.float64(2.9564), np.float64(2.1479), np.float64(1.7796), np.float64(1.4327)]. R_infinity = 0, NOT a positive universal constant."
+    },
+    {
+      "name": "A3:  R never matches glueball ratio 3.7 in scaling window",
+      "confirmed": true,
+      "severity": "CRITICAL",
+      "finding_type": "glueball_mismatch",
+      "match_beta": 6.224489795918367,
+      "target_glueball_ratio": 3.7,
+      "near_bc_R_range": [
+        1.433,
+        2.921
+      ],
+      "target_above_near_bc_window": true,
+      "finding": "R = 3.7 is achieved at beta ~ 6.2. Near beta_c (beta = 7-9), R ranges from 2.92 down to 1.43 \u2014 all BELOW the glueball ratio 3.7. The FCC model gives R -> 0 in the continuum limit, not the expected ~3.7."
+    },
+    {
+      "name": "A4:  m_phys diverges (perturbative a)",
+      "confirmed": "True",
+      "severity": "SIGNIFICANT",
+      "finding_type": "m_phys_diverge",
+      "data": [
+        {
+          "beta": 5.0,
+          "mu": 5.0129,
+          "a_pert_inv_MeV": 361.78,
+          "m_phys_pert_MeV": 3141.14
+        },
+        {
+          "beta": 7.0,
+          "mu": 2.521,
+          "a_pert_inv_MeV": 3435.24,
+          "m_phys_pert_MeV": 14999.75
+        },
+        {
+          "beta": 8.0,
+          "mu": 1.6968,
+          "a_pert_inv_MeV": 10741.55,
+          "m_phys_pert_MeV": 31568.91
+        },
+        {
+          "beta": 8.5,
+          "mu": 1.3572,
+          "a_pert_inv_MeV": 19043.48,
+          "m_phys_pert_MeV": 44766.5
+        },
+        {
+          "beta": 8.8,
+          "mu": 1.1726,
+          "a_pert_inv_MeV": 26869.72,
+          "m_phys_pert_MeV": 54574.32
+        },
+        {
+          "beta": 8.95,
+          "mu": 1.0852,
+          "a_pert_inv_MeV": 31922.9,
+          "m_phys_pert_MeV": 60005.48
+        }
+      ],
+      "diverging_toward_beta_c": "True",
+      "finding": "With perturbative a(beta), m_phys diverges as beta -> beta_c^-. The exponential decay of a(beta) dominates the linear decay of mu."
+    },
+    {
+      "name": "A5:  m_phys -> 0 (non-perturbative a)",
+      "confirmed": "True",
+      "severity": "SIGNIFICANT",
+      "finding_type": "m_phys_vanish",
+      "data": [
+        {
+          "beta": 5.0,
+          "mu": 5.0129,
+          "R": 4.9189,
+          "m_phys_nonpert_MeV": 3748.67
+        },
+        {
+          "beta": 7.0,
+          "mu": 2.521,
+          "R": 2.9564,
+          "m_phys_nonpert_MeV": 2253.11
+        },
+        {
+          "beta": 8.0,
+          "mu": 1.6968,
+          "R": 2.1479,
+          "m_phys_nonpert_MeV": 1636.91
+        },
+        {
+          "beta": 8.5,
+          "mu": 1.3572,
+          "R": 1.7796,
+          "m_phys_nonpert_MeV": 1356.24
+        },
+        {
+          "beta": 8.8,
+          "mu": 1.1726,
+          "R": 1.569,
+          "m_phys_nonpert_MeV": 1195.76
+        },
+        {
+          "beta": 8.95,
+          "mu": 1.0852,
+          "R": 1.4665,
+          "m_phys_nonpert_MeV": 1117.62
+        }
+      ],
+      "vanishing_toward_beta_c": "True",
+      "finding": "With non-perturbative a(beta) = sqrt(sigma_phys/sigma_lat), m_phys -> 0 as beta -> beta_c^-. Neither definition gives a finite positive mass gap."
+    },
+    {
+      "name": "A6:  Lambda_FCC factor ~3400 inconsistency",
+      "confirmed": true,
+      "severity": "CRITICAL",
+      "finding_type": "lambda_inconsistency",
+      "Lambda_FCC_Prop743_MeV": 2.6,
+      "Lambda_FCC_Prop744_MeV": 11560.0,
+      "discrepancy_factor": 4446.2,
+      "beta_star_correct": 41.0,
+      "beta_star_wrong": 34.0,
+      "finding": "Lambda_FCC differs by factor 4446 between propositions. Correct beta_* = 41.0 (not 34.0). Qualitative conclusion (beta_* >> beta_c) unchanged."
+    },
+    {
+      "name": "A7:  Lambda_MSbar wrong for quenched",
+      "confirmed": true,
+      "severity": "MODERATE",
+      "finding_type": "lambda_msbar",
+      "Lambda_MSbar_used_MeV": 340.0,
+      "Lambda_MSbar_quenched_MeV": 260.0,
+      "deviation_percent": 30.8,
+      "finding": "Derivation uses Lambda_MSbar = 340.0 MeV (appropriate for N_f = 3 QCD), but framework is pure gauge (N_f = 0). Quenched value is 260.0 +/- 20 MeV."
+    },
+    {
+      "name": "A8:  R varies by factor >3 in 'scaling window'",
+      "confirmed": "True",
+      "severity": "SIGNIFICANT",
+      "finding_type": "R_variation",
+      "beta_range": "5.0 - 8.5",
+      "R_max": 4.919,
+      "R_min": 1.78,
+      "variation_factor": 2.76,
+      "finding": "In the claimed scaling window (beta = 5-8.5), R varies by factor 2.8x (from 4.92 to 1.78). This is NOT 'approximately constant' or 'stabilized'."
+    },
+    {
+      "name": "A9:  sigma_lat > 0 at beta_c (while mu = 0)",
+      "confirmed": true,
+      "severity": "MODERATE",
+      "finding_type": "sigma_at_bc",
+      "sigma_lat_at_beta_c_analytical": 0.41198,
+      "sigma_trend": [
+        {
+          "beta": 7.0,
+          "sigma_lat": 0.7271
+        },
+        {
+          "beta": 8.0,
+          "sigma_lat": 0.6241
+        },
+        {
+          "beta": 8.5,
+          "sigma_lat": 0.5816
+        },
+        {
+          "beta": 9.0,
+          "sigma_lat": 0.5441
+        }
+      ],
+      "analytical_positive": "True",
+      "numerical_all_finite": true,
+      "finding": "sigma_lat(beta_c) = (3/8)*ln(3) = 0.4120 > 0 analytically. Numerical trend: [np.float64(0.7271), np.float64(0.6241), np.float64(0.5816), np.float64(0.5441)]. The string tension remains FINITE at beta_c while mu -> 0. This causes R = mu/sqrt(sigma_lat) -> 0."
+    },
+    {
+      "name": "A10: dR/dx > 0 always (analytic proof of monotonicity)",
+      "confirmed": "True",
+      "severity": "MODERATE",
+      "finding_type": "dR_dx_positive",
+      "all_positive": "True",
+      "min_dR_dx": 0.4016479184330022,
+      "x_range_tested": "10^-3 to 10^2",
+      "finding": "dR/dx > 0 for ALL x > 0 (proven analytically: numerator = 8x + 3*ln3 > 0). Since x decreases with beta, R STRICTLY DECREASES with beta. There is NO plateau, NO stabilization, NO finite R_infinity."
+    },
+    {
+      "name": "A11: Corrected beta_* = 41 (not 34)",
+      "confirmed": "True",
+      "severity": "SIGNIFICANT",
+      "finding_type": "beta_star_corrected",
+      "a_CG_m": 3.640799706700477e-35,
+      "a_CG_energy_scale_GeV": 5.419880682720397e+21,
+      "beta_star_correct": 41.0,
+      "beta_star_wrong": 34.0,
+      "Lambda_FCC_correct_MeV": 2.6,
+      "Lambda_FCC_wrong_MeV": 11560.0,
+      "both_above_beta_c": "True",
+      "finding": "Correct beta_* = 41.0 (using Lambda_FCC = 2.6 MeV). Wrong beta_* = 34.0 (using Lambda_FCC = 11560.0 MeV). Qualitative conclusion unchanged: beta_* >> beta_c ~ 11.4."
+    },
+    {
+      "name": "A12: RG flow crosses first-order transition",
+      "confirmed": "True",
+      "severity": "SIGNIFICANT",
+      "finding_type": "rg_transition",
+      "beta_star": 41.0,
+      "beta_c": 11.4,
+      "gap": 29.6,
+      "finding": "beta_* = 41.0 > beta_c = 11.4. RG flow from Planck scale (beta_*) to QCD scale (beta < beta_c) MUST cross the first-order bulk transition at beta_c. No mechanism is demonstrated for this crossing."
+    }
+  ]
+}

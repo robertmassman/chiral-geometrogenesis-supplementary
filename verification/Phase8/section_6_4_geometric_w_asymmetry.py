@@ -48,10 +48,10 @@ s_0_over_n_gamma = 7.04   # Entropy to photon ratio
 # Tetrahedron T1: R, G, B vertices (color triplet)
 # Tetrahedron T2: W vertex is the singlet point
 
-x_R = np.array([1, 1, 1]) / np.sqrt(3)
-x_G = np.array([1, -1, -1]) / np.sqrt(3)
-x_B = np.array([-1, 1, -1]) / np.sqrt(3)
-x_W = np.array([-1, -1, 1]) / np.sqrt(3)
+x_R = np.array([1, -1, -1]) / np.sqrt(3)
+x_G = np.array([-1, 1, -1]) / np.sqrt(3)
+x_B = np.array([-1, -1, 1]) / np.sqrt(3)
+x_W = np.array([1, 1, 1]) / np.sqrt(3)
 
 # VEV from self-consistent derivation (Proposition 5.1.2b §4.5)
 # NOTE: The geometric estimate v_H/√3 = 142 GeV is superseded by the self-consistent
@@ -95,25 +95,25 @@ def compute_stella_geometry():
     r_RGB = (x_R + x_G + x_B) / 3
 
     # Verify RGB centroid calculation
-    r_RGB_computed = np.array([1, 1, -1]) / (3 * np.sqrt(3))
+    r_RGB_computed = np.array([-1, -1, -1]) / (3 * np.sqrt(3))
 
     print("\n1.1 Vertex Coordinates:")
-    print(f"  x_R = {x_R} = (1, 1, 1)/√3")
-    print(f"  x_G = {x_G} = (1, -1, -1)/√3")
-    print(f"  x_B = {x_B} = (-1, 1, -1)/√3")
-    print(f"  x_W = {x_W} = (-1, -1, 1)/√3")
+    print(f"  x_R = {x_R} = (1, -1, -1)/√3")
+    print(f"  x_G = {x_G} = (-1, 1, -1)/√3")
+    print(f"  x_B = {x_B} = (-1, -1, 1)/√3")
+    print(f"  x_W = {x_W} = (1, 1, 1)/√3")
 
     print("\n1.2 RGB Centroid:")
     print(f"  r_RGB = (x_R + x_G + x_B)/3 = {r_RGB}")
-    print(f"  Expected: (1, 1, -1)/(3√3) = {r_RGB_computed}")
+    print(f"  Expected: (-1, -1, -1)/(3√3) = {r_RGB_computed}")
     print(f"  Match: {np.allclose(r_RGB, r_RGB_computed)}")
 
     # Distance from W to RGB centroid
     d_W_RGB = np.linalg.norm(x_W - r_RGB)
 
     # Theoretical calculation
-    diff = x_W - r_RGB  # Should be (-1-1/3, -1-1/3, 1+1/3)/√3 = (-4/3, -4/3, 4/3)/√3
-    d_W_RGB_theory = np.linalg.norm(np.array([-4, -4, 4]) / (3 * np.sqrt(3)))
+    diff = x_W - r_RGB  # Should be (1+1/3, 1+1/3, 1+1/3)/√3 = (4/3, 4/3, 4/3)/√3
+    d_W_RGB_theory = np.linalg.norm(np.array([4, 4, 4]) / (3 * np.sqrt(3)))
 
     print("\n1.3 W-RGB Separation:")
     print(f"  x_W - r_RGB = {x_W - r_RGB}")

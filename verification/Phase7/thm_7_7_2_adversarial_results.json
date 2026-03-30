@@ -1,0 +1,492 @@
+{
+  "theorem": "7.7.2",
+  "title": "Wightman Reconstruction and Mass Gap -- Adversarial Physics",
+  "phase": "H.2 + H.3",
+  "timestamp": "2026-02-15T06:50:15.673070",
+  "overall_status": "PASSED",
+  "summary": {
+    "total_pass": 12,
+    "total_tests": 12
+  },
+  "tests": [
+    {
+      "test_id": "APV-1",
+      "description": "Spectral gap proof by contradiction (numerical validation)",
+      "n_delta_function_tests": 5,
+      "all_below_gap_contradict": true,
+      "continuous_measure_contradicts": "True",
+      "above_gap_no_violation": true,
+      "delta_function_tests": [
+        {
+          "E0": 0.1,
+          "m_phys": 1.0,
+          "rho_weight": 0.1,
+          "C_bound": 10.0,
+          "contradiction_found": true,
+          "t_violation_numerical": 5.2,
+          "t_violation_analytic": 5.117
+        },
+        {
+          "E0": 0.3,
+          "m_phys": 1.0,
+          "rho_weight": 0.1,
+          "C_bound": 10.0,
+          "contradiction_found": true,
+          "t_violation_numerical": 6.6,
+          "t_violation_analytic": 6.579
+        },
+        {
+          "E0": 0.5,
+          "m_phys": 1.0,
+          "rho_weight": 0.1,
+          "C_bound": 10.0,
+          "contradiction_found": true,
+          "t_violation_numerical": 9.3,
+          "t_violation_analytic": 9.21
+        },
+        {
+          "E0": 0.7,
+          "m_phys": 1.0,
+          "rho_weight": 0.1,
+          "C_bound": 10.0,
+          "contradiction_found": true,
+          "t_violation_numerical": 15.4,
+          "t_violation_analytic": 15.351
+        },
+        {
+          "E0": 0.9,
+          "m_phys": 1.0,
+          "rho_weight": 0.1,
+          "C_bound": 10.0,
+          "contradiction_found": true,
+          "t_violation_numerical": 46.1,
+          "t_violation_analytic": 46.052
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test_id": "APV-2",
+      "description": "GNS construction: reflection positivity kernel PSD verification",
+      "n_models_tested": 6,
+      "all_PSD": true,
+      "test_details": [
+        {
+          "model": "free_massive_scalar",
+          "mass": 0.5,
+          "matrix_size": 30,
+          "min_eigenvalue": -8.63872898735013e-17,
+          "is_PSD": "True"
+        },
+        {
+          "model": "free_massive_scalar",
+          "mass": 1.0,
+          "matrix_size": 30,
+          "min_eigenvalue": -2.4134208036275406e-17,
+          "is_PSD": "True"
+        },
+        {
+          "model": "free_massive_scalar",
+          "mass": 2.0,
+          "matrix_size": 30,
+          "min_eigenvalue": -6.8473168232322925e-18,
+          "is_PSD": "True"
+        },
+        {
+          "model": "free_massive_scalar",
+          "mass": 5.0,
+          "matrix_size": 30,
+          "min_eigenvalue": -7.54562338730473e-20,
+          "is_PSD": "True"
+        },
+        {
+          "model": "wilson_loop_confining",
+          "mass_gap_inv_fm": 7.5925,
+          "is_PSD": "True",
+          "is_rank_1": "True",
+          "min_eigenvalue": -9.943633990275209e-19,
+          "max_eigenvalue": 1.7783211856420724
+        },
+        {
+          "model": "multi_state_spectral",
+          "n_states": 3,
+          "is_PSD": "True",
+          "min_eigenvalue": -8.141651919113433e-19,
+          "effective_rank": 3
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test_id": "APV-3",
+      "description": "Hille-Yosida semigroup contraction property",
+      "discrete_spectrum": {
+        "n_states": 50,
+        "mass_gap": 1.0,
+        "all_contraction": "True",
+        "norm_equals_1": "True",
+        "semigroup_error": 8.673617379884035e-19,
+        "generator_error": 0.00031249741958561117,
+        "strongly_continuous": "True"
+      },
+      "continuous_spectrum": {
+        "contraction_tests": [
+          {
+            "t": 0.5,
+            "||f||": 0.940294,
+            "||T_t f||": 0.356121,
+            "contraction": "True"
+          },
+          {
+            "t": 1.0,
+            "||f||": 0.940294,
+            "||T_t f||": 0.143139,
+            "contraction": "True"
+          },
+          {
+            "t": 2.0,
+            "||f||": 0.940294,
+            "||T_t f||": 0.027287,
+            "contraction": "True"
+          },
+          {
+            "t": 5.0,
+            "||f||": 0.940294,
+            "||T_t f||": 0.000476,
+            "contraction": "True"
+          }
+        ],
+        "all_contraction": true
+      },
+      "passed": true
+    },
+    {
+      "test_id": "APV-4",
+      "description": "E(4) -> Poincare analytic continuation structure",
+      "dim_E4": 10,
+      "dim_Poincare": 10,
+      "dim_match": true,
+      "rotation_algebra_[J1,J2]=J3": true,
+      "euclidean_compact_[K1,K2]=+J3": true,
+      "minkowski_noncompact_[K1,K2]=-J3": true,
+      "SO3_common_subgroup": true,
+      "edge_of_wedge_conditions": {
+        "domain_tubular": true,
+        "boundary_values_exist": true,
+        "analyticity_in_wedge": true
+      },
+      "passed": true
+    },
+    {
+      "test_id": "APV-5",
+      "description": "Exponential clustering <-> spectral gap bound direction",
+      "tight_bound": {
+        "spectral_gap": 1.0,
+        "clustering_rate": 1.0,
+        "is_tight": "True"
+      },
+      "non_tight_bound": {
+        "spectral_gap": 1.5,
+        "clustering_rate": 1.5,
+        "gap_>=_rate": "True"
+      },
+      "multi_state": {
+        "lightest_energy": 1.0,
+        "asymptotic_rate": 1.000001,
+        "rate_matches_lightest": "True"
+      },
+      "inequality_direction_correct": true,
+      "passed": true
+    },
+    {
+      "test_id": "APV-6",
+      "description": "Lehmann-Kallen spectral representation verification",
+      "mass_gap_inv_fm": 7.5925,
+      "rho_positive": "True",
+      "rho_zero_below_gap": "True",
+      "spectral_sum_rule": 6.725566,
+      "sum_rule_finite": "True",
+      "large_t_decay_rate": 7.7632,
+      "rate_consistent_with_gap": "True",
+      "passed": "True"
+    },
+    {
+      "test_id": "APV-7",
+      "description": "Mass gap vs glueball spectrum (lattice QCD comparison)",
+      "lightest_state": "0++",
+      "is_0pp_lightest": true,
+      "m_gap_MeV": 1498.0,
+      "m_gap_claimed_MeV": 1498.0,
+      "gap_matches_claim": true,
+      "lattice_determinations": {
+        "Morningstar-Peardon 1999": {
+          "m_0pp_over_sqrt_sigma": 3.405,
+          "err": 0.021
+        },
+        "Chen et al 2006": {
+          "m_0pp_over_sqrt_sigma": 3.55,
+          "err": 0.08
+        },
+        "Athenodorou-Teper 2020": {
+          "m_0pp_over_sqrt_sigma": 3.405,
+          "err": 0.015
+        }
+      },
+      "all_lattice_consistent": true,
+      "physical_range_1200_2000": true,
+      "m_gap_over_Lambda_QCD": 4.41,
+      "two_glueball_threshold_MeV": 2996.0,
+      "2pp_below_threshold": true,
+      "glueball_masses": {
+        "0++": {
+          "m_over_sqrt_sigma": 3.405,
+          "m_MeV": 1498.0,
+          "dm_MeV": 103.0
+        },
+        "2++": {
+          "m_over_sqrt_sigma": 5.45,
+          "m_MeV": 2398.0,
+          "dm_MeV": 164.0
+        },
+        "0-+": {
+          "m_over_sqrt_sigma": 5.94,
+          "m_MeV": 2614.0,
+          "dm_MeV": 180.0
+        },
+        "1+-": {
+          "m_over_sqrt_sigma": 6.33,
+          "m_MeV": 2785.0,
+          "dm_MeV": 192.0
+        },
+        "0++*": {
+          "m_over_sqrt_sigma": 5.69,
+          "m_MeV": 2504.0,
+          "dm_MeV": 174.0
+        },
+        "3++": {
+          "m_over_sqrt_sigma": 8.66,
+          "m_MeV": 3810.0,
+          "dm_MeV": 270.0
+        }
+      },
+      "passed": true
+    },
+    {
+      "test_id": "APV-8",
+      "description": "Vacuum uniqueness from cluster decomposition + mass gap",
+      "lambda_0": 1.0,
+      "lambda_1": 0.367879,
+      "lambda_ratio": 0.367879,
+      "mass_gap_from_ratio": 1.0,
+      "unique_largest_eigenvalue": "True",
+      "degenerate_vacuum_breaks_clustering": "True",
+      "logical_chain_valid": "True",
+      "theta_sectors_separate": true,
+      "passed": true
+    },
+    {
+      "test_id": "APV-9",
+      "description": "RG invariance of physical mass m_phys = mu_min/a",
+      "n_rg_steps": 15,
+      "m_phys_value_MeV": 2959.9,
+      "rg_invariance_spread": 1.5363580792471096e-16,
+      "all_equal": "True",
+      "beta_rg_invariance": 2.958433357241639e-16,
+      "in_physical_range": true,
+      "passed": "True"
+    },
+    {
+      "test_id": "APV-10",
+      "description": "Wightman axiom derivation chain completeness",
+      "n_wightman_axioms": 6,
+      "all_os_axioms_used": true,
+      "os_axioms_used": [
+        "OS0",
+        "OS0'",
+        "OS1",
+        "OS2",
+        "OS3",
+        "OS4"
+      ],
+      "all_sections_referenced": true,
+      "valid_classifications": true,
+      "novel_count": 1,
+      "novel_axioms": [
+        "W1 (Poincare covariance)"
+      ],
+      "additional_results": {
+        "Mass gap": {
+          "source": "OS4 + exponential rate m > 0",
+          "section": "4.6",
+          "classification": "NOVEL"
+        },
+        "Vacuum uniqueness": {
+          "source": "OS4 + mass gap",
+          "section": "4.7",
+          "classification": "ESTABLISHED + NOVEL application"
+        }
+      },
+      "wightman_derivations": {
+        "W0 (Temperedness)": {
+          "os_source": [
+            "OS0",
+            "OS0'"
+          ],
+          "section": "4.5",
+          "mechanism": "OS0' growth bound (alpha=0) preserved under Wick rotation",
+          "classification": "ESTABLISHED",
+          "key_bound": "|S_n(f)| <= 3^n ||f||_0"
+        },
+        "W1 (Poincare covariance)": {
+          "os_source": [
+            "OS1"
+          ],
+          "section": "4.3",
+          "mechanism": "E(4) -> P+^ via Wick rotation; edge-of-wedge theorem",
+          "classification": "NOVEL",
+          "key_step": "D4 has O_4 = 0, so SO(4) restoration at O(a^4)"
+        },
+        "W2 (Spectrum condition)": {
+          "os_source": [
+            "OS2",
+            "OS1"
+          ],
+          "section": "4.4",
+          "mechanism": "H >= 0 (from OS2) + Lorentz covariance => forward light cone",
+          "classification": "ESTABLISHED",
+          "key_step": "Lorentz-invariant spectrum + P^0 >= 0 => V_+ support"
+        },
+        "W3 (Locality)": {
+          "os_source": [
+            "OS3"
+          ],
+          "section": "4.5",
+          "mechanism": "Permutation symmetry -> spacelike commutativity",
+          "classification": "ESTABLISHED",
+          "key_step": "Edge-of-wedge: Euclidean symmetry -> Minkowski locality"
+        },
+        "W4 (Cluster property)": {
+          "os_source": [
+            "OS4"
+          ],
+          "section": "4.5",
+          "mechanism": "Exponential clustering of S_n continues to W_n",
+          "classification": "ESTABLISHED",
+          "key_bound": "Rate m_phys > 0 from Thm 7.6.8 (c.2)"
+        },
+        "W5 (Vacuum)": {
+          "os_source": [
+            "OS2"
+          ],
+          "section": "4.2",
+          "mechanism": "GNS construction: n=0 sector gives |Omega>, H|Omega>=0",
+          "classification": "ESTABLISHED",
+          "key_step": "Time-translation invariance of constant => E=0"
+        }
+      },
+      "passed": true
+    },
+    {
+      "test_id": "APV-11",
+      "description": "Dimensional analysis (11 equations)",
+      "n_equations_checked": 11,
+      "all_consistent": true,
+      "checks": [
+        {
+          "eq": "1.1",
+          "statement": "spec(H) in {0} cup [m_phys, inf)",
+          "lhs_dim": "[energy] (Hamiltonian spectrum)",
+          "rhs_dim": "[energy] (mass gap m_phys)",
+          "consistent": true
+        },
+        {
+          "eq": "1.2",
+          "statement": "dim(ker H) = 1",
+          "lhs_dim": "dimensionless (integer)",
+          "rhs_dim": "dimensionless (1)",
+          "consistent": true
+        },
+        {
+          "eq": "4.1",
+          "statement": "<f,g>_OS = S_2(Theta f, g)",
+          "lhs_dim": "dimensionless (inner product)",
+          "rhs_dim": "S_2 . test functions = dimensionless",
+          "consistent": true
+        },
+        {
+          "eq": "4.3",
+          "statement": "(T_t f)(x0, x) = f(x0 - t, x)",
+          "lhs_dim": "[f] (test function value)",
+          "rhs_dim": "[f] (test function value)",
+          "consistent": true
+        },
+        {
+          "eq": "4.5",
+          "statement": "H = -d/dt T_t, T_t = exp(-tH)",
+          "lhs_dim": "[energy] = [1/time]",
+          "rhs_dim": "[1/time] from -d/dt of dimensionless operator",
+          "consistent": true
+        },
+        {
+          "eq": "4.7",
+          "statement": "S_n(Rx+a) = S_n(x)",
+          "lhs_dim": "[S_n] = dimensionless",
+          "rhs_dim": "[S_n] = dimensionless",
+          "consistent": true
+        },
+        {
+          "eq": "4.9",
+          "statement": "U(a) = exp(iP_mu a^mu), H = P^0",
+          "lhs_dim": "dimensionless (unitary operator)",
+          "rhs_dim": "exp(i * [energy][length]) = exp(i * dimensionless)",
+          "consistent": true
+        },
+        {
+          "eq": "4.11",
+          "statement": "G_c(t) = <O(t)O(0)>_c",
+          "lhs_dim": "[O]^2 (dimensionless for Wilson loops)",
+          "rhs_dim": "[O]^2 (dimensionless for Wilson loops)",
+          "consistent": true
+        },
+        {
+          "eq": "4.12",
+          "statement": "G_c(t) = int d_rho(E) exp(-Et)",
+          "lhs_dim": "[O]^2",
+          "rhs_dim": "int [d_rho/dE][dE] * dimensionless = [O]^2",
+          "consistent": true
+        },
+        {
+          "eq": "4.22",
+          "statement": "m_phys = mu_min / a * (hbar c)",
+          "lhs_dim": "[energy]",
+          "rhs_dim": "(dimensionless / [length]) * [energy * length] = [energy]",
+          "consistent": true
+        },
+        {
+          "eq": "4.24",
+          "statement": "m_phys = R_cont * sqrt(sigma) = 1498.2 MeV",
+          "lhs_dim": "[energy] (MeV)",
+          "rhs_dim": "dimensionless * [energy] = [energy]",
+          "consistent": true,
+          "numerical_value_correct": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test_id": "APV-12",
+      "description": "OS0' growth condition and Wick rotation control",
+      "C_growth": 3,
+      "alpha_growth": 0,
+      "alpha_sufficient_for_reconstruction": true,
+      "max_|Tr(U)|_sampled": 2.823117,
+      "Wilson_bound_verified": "True",
+      "3^n_over_n!_at_n=20": 1.433179137212025e-09,
+      "subexponential_growth": true,
+      "1973_error_identified": true,
+      "1975_correction": "Added E0' (OS0') linear growth condition",
+      "CG_satisfies_strongest_form": true,
+      "passed": true
+    }
+  ]
+}

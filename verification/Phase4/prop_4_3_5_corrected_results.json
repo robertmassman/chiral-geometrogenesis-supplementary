@@ -1,0 +1,342 @@
+{
+  "theorem": "4.3.5",
+  "title": "Skyrme Parameter First-Principles Derivation (Corrected)",
+  "timestamp": "2026-02-26T12:22:30.672112",
+  "verifications": [
+    {
+      "test": "dimensional_analysis",
+      "passed": true,
+      "formula": "e_W^2 = Omega_W * int(P_W^4 dOmega) / (int(P_W^2 dOmega))^2",
+      "dim_numerator": "[L^{-8}]",
+      "dim_denominator": "[L^{-8}]",
+      "dim_ratio": "dimensionless",
+      "scale_independent": true,
+      "note": "Under P -> alpha*P: both num and denom scale as alpha^4, so ratio is invariant. Formula is manifestly dimensionless and independent of the pressure amplitude normalization."
+    },
+    {
+      "test": "analytical_cap_integral",
+      "eps_tilde_for_eW_4.5": 0.13048420698337398,
+      "eW2_simplified": 20.25000000000001,
+      "eW2_exact_cap": 20.250000000000007,
+      "eW": 4.500000000000001,
+      "formulas_match": "True",
+      "passed": "True"
+    },
+    {
+      "test": "eps_tilde_scan",
+      "scan_results": [
+        {
+          "eps_tilde": 0.03,
+          "c": 0.0009,
+          "I2_cap": 3487.5197362260556,
+          "I4_cap": 1436484980.0209165,
+          "eW2_cap": 371.03733676727984,
+          "eW_cap": 19.26232947406102,
+          "eW2_simplified": 371.03733676727984,
+          "eW_simplified": 19.26232947406102,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.05,
+          "c": 0.0025000000000000005,
+          "I2_cap": 1253.5033031779722,
+          "I4_cap": 67020642.23719954,
+          "eW2_cap": 134.0008312551953,
+          "eW_cap": 11.575872807490384,
+          "eW2_simplified": 134.00083125519532,
+          "eW_simplified": 11.575872807490384,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.08,
+          "c": 0.0064,
+          "I2_cap": 487.75223780147576,
+          "I4_cap": 3994740.607772858,
+          "eW2_cap": 52.75211976682563,
+          "eW_cap": 7.26306545246741,
+          "eW2_simplified": 52.75211976682565,
+          "eW_simplified": 7.263065452467412,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.1,
+          "c": 0.010000000000000002,
+          "I2_cap": 311.0487775831478,
+          "I4_cap": 1047196.5347969709,
+          "eW2_cap": 34.003300330032985,
+          "eW_cap": 5.831234888943592,
+          "eW2_simplified": 34.00330033003299,
+          "eW_simplified": 5.831234888943593,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.12,
+          "c": 0.0144,
+          "I2_cap": 215.0691605868407,
+          "I4_cap": 350703.3378495022,
+          "eW2_cap": 23.81954667601354,
+          "eW_cap": 4.88052729487435,
+          "eW2_simplified": 23.81954667601355,
+          "eW_simplified": 4.880527294874351,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.13,
+          "c": 0.016900000000000002,
+          "I2_cap": 182.8036743292669,
+          "I4_cap": 216953.42501006922,
+          "eW2_cap": 20.396072256575895,
+          "eW_cap": 4.516201086817979,
+          "eW2_simplified": 20.3960722565759,
+          "eW_simplified": 4.516201086817979,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.14,
+          "c": 0.019600000000000003,
+          "I2_cap": 157.20413835706844,
+          "I4_cap": 139077.64201141286,
+          "eW2_cap": 17.679877129353113,
+          "eW_cap": 4.204744597398648,
+          "eW2_simplified": 17.679877129353113,
+          "eW_simplified": 4.204744597398648,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.15,
+          "c": 0.0225,
+          "I2_cap": 136.5538779066468,
+          "I4_cap": 91934.0592109793,
+          "eW2_cap": 15.488816444806668,
+          "eW_cap": 3.9355833677876357,
+          "eW2_simplified": 15.488816444806664,
+          "eW_simplified": 3.9355833677876353,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.18,
+          "c": 0.0324,
+          "I2_cap": 93.91973675116932,
+          "I4_cap": 30787.906810025535,
+          "eW2_cap": 10.965193571892094,
+          "eW_cap": 3.3113733664285117,
+          "eW2_simplified": 10.965193571892096,
+          "eW_simplified": 3.311373366428512,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.2,
+          "c": 0.04000000000000001,
+          "I2_cap": 75.51905417283156,
+          "I4_cap": 16361.530782637004,
+          "eW2_cap": 9.012820512820507,
+          "eW_cap": 3.0021359917266417,
+          "eW2_simplified": 9.012820512820511,
+          "eW_simplified": 3.0021359917266426,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.25,
+          "c": 0.0625,
+          "I2_cap": 47.30868937170512,
+          "I4_cap": 4288.448114303401,
+          "eW2_cap": 6.019607843137255,
+          "eW_cap": 2.4534889123730017,
+          "eW2_simplified": 6.019607843137255,
+          "eW_simplified": 2.4534889123730017,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.3,
+          "c": 0.09,
+          "I2_cap": 32.02438994485008,
+          "I4_cap": 1435.6763524158973,
+          "eW2_cap": 4.397893306150189,
+          "eW_cap": 2.097115472774494,
+          "eW2_simplified": 4.397893306150186,
+          "eW_simplified": 2.097115472774493,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.4,
+          "c": 0.16000000000000003,
+          "I2_cap": 16.926684555979488,
+          "I4_cap": 254.9925695007189,
+          "eW2_cap": 2.7959770114942515,
+          "eW_cap": 1.6721175232304253,
+          "eW2_simplified": 2.7959770114942524,
+          "eW_simplified": 1.6721175232304255,
+          "formula_match": "True"
+        },
+        {
+          "eps_tilde": 0.5,
+          "c": 0.25,
+          "I2_cap": 10.053096491487338,
+          "I4_cap": 66.4844781303696,
+          "eW2_cap": 2.066666666666667,
+          "eW_cap": 1.4375905768565218,
+          "eW2_simplified": 2.0666666666666664,
+          "eW_simplified": 1.4375905768565216,
+          "formula_match": "True"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "monte_carlo_voronoi",
+      "passed": "True",
+      "eps_tilde": 0.13,
+      "omega_measured": 3.141281007598557,
+      "omega_expected": 3.141592653589793,
+      "omega_relerr": 9.919999999996872e-05,
+      "I2": 183.33464746782485,
+      "I4": 217616.73865413113,
+      "eW2": 20.340099566950848,
+      "eW": 4.509999951990116,
+      "n_in_DW": "1249876",
+      "fraction_in_DW": 0.2499752,
+      "cap_eW": 4.516201086817979,
+      "cap_voronoi_diff_pct": 0.13730865186591218
+    },
+    {
+      "test": "domain_geometry",
+      "passed": true,
+      "theta_min_deg": 54.735610317245346,
+      "theta_max_deg": 70.52877936550931,
+      "theta_equal_area_deg": 59.99999999999999,
+      "omega_inscribed_sr": 2.65558657871115,
+      "omega_equal_area_sr": 3.1415926535897922,
+      "omega_circumscribed_sr": 4.188790204786391,
+      "omega_voronoi_sr": 3.141592653589793,
+      "inscribed_fraction": 0.8452994616207483,
+      "circumscribed_fraction": 1.3333333333333335,
+      "note": "60-deg cap is equal-area approximation, NOT inscribed. True inscribed cap has theta=54.74 deg (Omega=2.655 sr < pi)."
+    },
+    {
+      "test": "angular_gradient",
+      "passed": true,
+      "point_theta_deg": 29.999999999999996,
+      "point_phi_deg": 45.0,
+      "grad_R3_norm": 21.33250334771318,
+      "grad_tangential_norm": 20.83743536044476,
+      "grad_embedding_norm": 21.33250334771318,
+      "relative_difference": 0.02320721479326465,
+      "tangential_projection_matters": "True",
+      "note": "Tangential projection removes radial component; on unit sphere the radial component of nabla P is generally non-zero because P depends on |x-x_W|, not just angle."
+    },
+    {
+      "test": "mass_formula",
+      "passed": true,
+      "v_W_GeV": 123.0,
+      "e_W": 4.5,
+      "M_Faddeev_GeV": 1618.6151217786546,
+      "M_ANW_GeV": 1993.1466666666665,
+      "ANW_factor": 1.231390118533212,
+      "ratio_M_ANW_to_Faddeev": 1.231390118533212,
+      "Lambda_W_GeV": 1545.6635855661782,
+      "M_Faddeev_over_Lambda": 1.0471975511965976,
+      "M_ANW_over_Lambda": 1.2895087166956676,
+      "EFT_valid_Faddeev": false,
+      "EFT_valid_ANW": false,
+      "note": "M = 6*pi^2*v/e is the Faddeev-Bogomolny lower bound. Actual B=1 Skyrmion mass is ~1.23x higher (ANW numerical)."
+    },
+    {
+      "test": "error_budget",
+      "passed": true,
+      "eps_central": 0.13,
+      "eW_central": 4.516201086817979,
+      "eps_range": [
+        0.1,
+        0.16
+      ],
+      "eW_at_eps_low": 5.831234888943593,
+      "eW_at_eps_high": 3.700786447880141,
+      "uncertainties": {
+        "regularization_pct": 23.58673141550171,
+        "boundary_pct": 3.0,
+        "higher_order_pct": 12.0,
+        "cap_geometry_pct": 2.0,
+        "total_pct": 26.708311419238306
+      },
+      "eW_with_error": "4.5 +/- 1.2",
+      "eW_range": [
+        3.3100000362316084,
+        5.72240213740435
+      ],
+      "note": "Error budget aligned with proof \u00a75.4: regularization dominates at +29%/-18% (sym. \u00b124%) over eps_tilde in [0.10, 0.16], higher-order corrections \u00b112% (M_W ~ Lambda_W). Total \u00b127% in quadrature, giving e_W = 4.5 \u00b1 1.2."
+    },
+    {
+      "test": "limiting_cases",
+      "passed": true,
+      "eps=0.01": 57.740800421625615,
+      "eps=0.005": 115.4729405892702,
+      "eps=0.001": 577.350846539895,
+      "limit_eps_to_0": "e_W -> infinity (verified: diverges as 1/eps_tilde)",
+      "eps=1.0": 1.0801234497346435,
+      "eps=5.0": 1.0002563773917268,
+      "eps=100.0": 1.0000000016665,
+      "limit_eps_to_inf": "e_W -> 1 (verified: approaches 1 for large eps_tilde)",
+      "domain_sweep": {
+        "hemisphere": {
+          "Omega_sr": 6.283185307179586,
+          "eW": 6.333813344846523
+        },
+        "tetrahedral_voronoi": {
+          "Omega_sr": 3.141592653589793,
+          "eW": 4.516201086817979
+        },
+        "octahedral_voronoi": {
+          "Omega_sr": 2.0943951023931953,
+          "eW": 3.7180844091481013
+        },
+        "small_cap_30deg": {
+          "Omega_sr": 0.8417872144769325,
+          "eW": 2.4436524193996574
+        }
+      }
+    },
+    {
+      "test": "literature_comparison",
+      "passed": true,
+      "geometric_eW": 4.5,
+      "geometric_note": "Bare geometric value from pressure kurtosis on D_W",
+      "literature_values": [
+        {
+          "source": "ANW (1983) Nucl. Phys. B 228, m_N+m_Delta fit",
+          "e_pi": 4.25,
+          "convention": "f_pi^2/4 kinetic normalization",
+          "includes": "chiral limit, no pion mass"
+        },
+        {
+          "source": "Holzwarth & Schwesinger (1986), m_N only",
+          "e_pi": 4.84,
+          "convention": "f_pi^2/4 kinetic normalization",
+          "includes": "chiral limit"
+        },
+        {
+          "source": "Adkins & Nappi (1984) Nucl. Phys. B 233",
+          "e_pi": 5.45,
+          "convention": "f_pi^2/4 kinetic normalization",
+          "includes": "massive pion correction"
+        },
+        {
+          "source": "Gudnason & Halcrow (2022) JHEP [2202.01792]",
+          "e_range": [
+            4.0,
+            5.0
+          ],
+          "convention": "generalized Skyrme with sextic term",
+          "includes": "modern fit with omega-meson, BPS submodel"
+        }
+      ],
+      "comparison_caveats": [
+        "Geometric e_W is a bare value: no pion mass, no omega-meson, no nuclear binding corrections",
+        "QCD e_pi values are dressed: include many-body effects from fitting to N and Delta masses",
+        "Different Lagrangian conventions affect e values: f_pi^2/16 (Manton-Sutcliffe) vs f_pi^2/4 (ANW)",
+        "Scale-factor-of-2 between conventions: e_{MS} = 2*e_{ANW}",
+        "All values in table use ANW convention (f_pi^2/4 kinetic term)"
+      ]
+    }
+  ],
+  "overall_status": "PASSED"
+}

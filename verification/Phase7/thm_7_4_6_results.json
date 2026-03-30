@@ -1,0 +1,903 @@
+{
+  "theorem": "7.4.6",
+  "title": "Osterwalder-Schrader Axioms for CG Yang-Mills",
+  "timestamp": "2026-02-14T05:31:23.442688",
+  "parameters": {
+    "R_stella_fm": 0.44847,
+    "sqrt_sigma_MeV": 440.00044596071086,
+    "hbar_c_MeV_fm": 197.327
+  },
+  "summary": "13/13 tests passed",
+  "tests": [
+    {
+      "name": "C1: Schwinger function analyticity (OS0)",
+      "passed": true,
+      "details": {
+        "description": "OS0: Lattice Schwinger functions are finite and positive",
+        "betas_tested": 5,
+        "all_finite": true,
+        "results": [
+          {
+            "beta": 1.0,
+            "a_1": 1.0297431688041567,
+            "a_3": 0.061914909103591834,
+            "a_8": 0.003966723977380563,
+            "all_finite_positive": true
+          },
+          {
+            "beta": 3.0,
+            "a_1": 1.334509635100922,
+            "a_3": 0.27100561091392883,
+            "a_8": 0.05349441001612375,
+            "all_finite_positive": true
+          },
+          {
+            "beta": 5.0,
+            "a_1": 2.332770939519182,
+            "a_3": 0.8256946238599369,
+            "a_8": 0.26901622450456036,
+            "all_finite_positive": true
+          },
+          {
+            "beta": 7.0,
+            "a_1": 5.416786037422402,
+            "a_3": 2.617978826002916,
+            "a_8": 1.1438220393958003,
+            "all_finite_positive": true
+          },
+          {
+            "beta": 8.5,
+            "a_1": 11.863695733463018,
+            "a_3": 6.631642233945403,
+            "a_8": 3.3540163594779973,
+            "all_finite_positive": true
+          }
+        ],
+        "note": "Analyticity on lattice is trivial (finite-dim integral over compact group)"
+      }
+    },
+    {
+      "name": "C2: Rotational artifact scaling O(a^4) (OS1)",
+      "passed": true,
+      "details": {
+        "description": "OS1: FCC rotational artifacts scale as O(a^4)",
+        "lattice_spacings_fm": [
+          0.2,
+          0.15,
+          0.1,
+          0.05
+        ],
+        "fcc_artifacts": [
+          1.0552951193249826e-12,
+          3.339019713489204e-13,
+          6.595594495781141e-14,
+          4.122246559863213e-15
+        ],
+        "cubic_artifacts": [
+          1.0272755810029667e-06,
+          5.778425143141688e-07,
+          2.5681889525074167e-07,
+          6.420472381268542e-08
+        ],
+        "improvement_factors": [
+          973448.6232250002,
+          1730575.3301777777,
+          3893794.492900001,
+          15575177.971600004
+        ],
+        "scaling_tests": [
+          {
+            "a_coarse": 0.2,
+            "a_fine": 0.15,
+            "expected_ratio": 3.1604938271604954,
+            "actual_ratio": 3.1604938271604928,
+            "scaling_ok": true
+          },
+          {
+            "a_coarse": 0.15,
+            "a_fine": 0.1,
+            "expected_ratio": 5.062499999999997,
+            "actual_ratio": 5.062500000000002,
+            "scaling_ok": true
+          },
+          {
+            "a_coarse": 0.1,
+            "a_fine": 0.05,
+            "expected_ratio": 16.0,
+            "actual_ratio": 16.0,
+            "scaling_ok": true
+          }
+        ],
+        "all_scaling_correct": true,
+        "note": "D_4 isotropy gives O(a^4) rotational artifacts (Prop 7.4.3)"
+      }
+    },
+    {
+      "name": "C3: RP eigenvalue positivity (OS2)",
+      "passed": true,
+      "details": {
+        "description": "OS2: All transfer matrix eigenvalues lambda_R > 0",
+        "betas_tested": 5,
+        "reps_tested": 5,
+        "all_positive": true,
+        "results": [
+          {
+            "beta": 1.0,
+            "representations": [
+              {
+                "rep": "(0,0)",
+                "dim": 1,
+                "a_R": 1.0297431688041567,
+                "lambda_R": 1.2642453258303723,
+                "positive": true
+              },
+              {
+                "rep": "(1,0)",
+                "dim": 3,
+                "a_R": 0.061914909103591834,
+                "lambda_R": 5.8307669250757755e-09,
+                "positive": true
+              },
+              {
+                "rep": "(0,1)",
+                "dim": 3,
+                "a_R": 0.061914909103591834,
+                "lambda_R": 5.8307669250757755e-09,
+                "positive": true
+              },
+              {
+                "rep": "(1,1)",
+                "dim": 8,
+                "a_R": 0.003966723977380563,
+                "lambda_R": 3.138526585400841e-17,
+                "positive": true
+              },
+              {
+                "rep": "(2,0)",
+                "dim": 6,
+                "a_R": 0.002786963078340304,
+                "lambda_R": 7.861464777133197e-19,
+                "positive": true
+              }
+            ]
+          },
+          {
+            "beta": 3.0,
+            "representations": [
+              {
+                "rep": "(0,0)",
+                "dim": 1,
+                "a_R": 1.334509635100922,
+                "lambda_R": 10.059437803403704,
+                "positive": true
+              },
+              {
+                "rep": "(1,0)",
+                "dim": 3,
+                "a_R": 0.27100561091392883,
+                "lambda_R": 0.0007855792888950782,
+                "positive": true
+              },
+              {
+                "rep": "(0,1)",
+                "dim": 3,
+                "a_R": 0.27100561091392883,
+                "lambda_R": 0.0007855792888950782,
+                "positive": true
+              },
+              {
+                "rep": "(1,1)",
+                "dim": 8,
+                "a_R": 0.05349441001612375,
+                "lambda_R": 3.433500996265736e-08,
+                "positive": true
+              },
+              {
+                "rep": "(2,0)",
+                "dim": 6,
+                "a_R": 0.04099331731474546,
+                "lambda_R": 1.722496171986528e-09,
+                "positive": true
+              }
+            ]
+          },
+          {
+            "beta": 5.0,
+            "representations": [
+              {
+                "rep": "(0,0)",
+                "dim": 1,
+                "a_R": 2.332770939519182,
+                "lambda_R": 876.9539156951603,
+                "positive": true
+              },
+              {
+                "rep": "(1,0)",
+                "dim": 3,
+                "a_R": 0.8256946238599369,
+                "lambda_R": 5.8333685961267205,
+                "positive": true
+              },
+              {
+                "rep": "(0,1)",
+                "dim": 3,
+                "a_R": 0.8256946238599369,
+                "lambda_R": 5.8333685961267205,
+                "positive": true
+              },
+              {
+                "rep": "(1,1)",
+                "dim": 8,
+                "a_R": 0.26901622450456036,
+                "lambda_R": 0.014044223993323657,
+                "positive": true
+              },
+              {
+                "rep": "(2,0)",
+                "dim": 6,
+                "a_R": 0.21986400327250288,
+                "lambda_R": 0.0011794697356749915,
+                "positive": true
+              }
+            ]
+          },
+          {
+            "beta": 7.0,
+            "representations": [
+              {
+                "rep": "(0,0)",
+                "dim": 1,
+                "a_R": 5.416786037422402,
+                "lambda_R": 741196.6549341468,
+                "positive": true
+              },
+              {
+                "rep": "(1,0)",
+                "dim": 3,
+                "a_R": 2.617978826002916,
+                "lambda_R": 59578.9440467662,
+                "positive": true
+              },
+              {
+                "rep": "(0,1)",
+                "dim": 3,
+                "a_R": 2.617978826002916,
+                "lambda_R": 59578.9440467662,
+                "positive": true
+              },
+              {
+                "rep": "(1,1)",
+                "dim": 8,
+                "a_R": 1.1438220393958003,
+                "lambda_R": 1500.1602161379228,
+                "positive": true
+              },
+              {
+                "rep": "(2,0)",
+                "dim": 6,
+                "a_R": 0.9786577896346988,
+                "lambda_R": 181.7609604590093,
+                "positive": true
+              }
+            ]
+          },
+          {
+            "beta": 8.0,
+            "representations": [
+              {
+                "rep": "(0,0)",
+                "dim": 1,
+                "a_R": 9.02247284150434,
+                "lambda_R": 43914168.88247907,
+                "positive": true
+              },
+              {
+                "rep": "(1,0)",
+                "dim": 3,
+                "a_R": 4.83382582642947,
+                "lambda_R": 8048070.019587337,
+                "positive": true
+              },
+              {
+                "rep": "(0,1)",
+                "dim": 3,
+                "a_R": 4.83382582642947,
+                "lambda_R": 8048070.019587337,
+                "positive": true
+              },
+              {
+                "rep": "(1,1)",
+                "dim": 8,
+                "a_R": 2.340494105961817,
+                "lambda_R": 461031.26185999863,
+                "positive": true
+              },
+              {
+                "rep": "(2,0)",
+                "dim": 6,
+                "a_R": 2.0377395771469464,
+                "lambda_R": 64215.991821622665,
+                "positive": true
+              }
+            ]
+          }
+        ],
+        "note": "RP proven in Thm 7.4.1; survives continuum by Seiler compactness"
+      }
+    },
+    {
+      "name": "C4: Cluster exponential decay rate (OS4)",
+      "passed": true,
+      "details": {
+        "description": "OS4: Cluster decay rate = mass gap mu(beta)",
+        "betas_tested": 3,
+        "all_rates_match": true,
+        "results": [
+          {
+            "beta": 3.0,
+            "mu": 9.457600443450794,
+            "decay_rate": 9.457600443450794,
+            "match": true,
+            "relative_error": 0.0,
+            "exponential_decay": {
+              "1": 7.80937567534115e-05,
+              "2": 6.098634843861002e-09,
+              "5": 2.90456819024229e-21,
+              "10": 8.436516371767373e-42
+            }
+          },
+          {
+            "beta": 5.0,
+            "mu": 5.0128598060301215,
+            "decay_rate": 5.0128598060301215,
+            "match": true,
+            "relative_error": 0.0,
+            "exponential_decay": {
+              "1": 0.006651853069727848,
+              "2": 4.424714926124779e-05,
+              "5": 1.3023065906865864e-11,
+              "10": 1.6960024561457202e-22
+            }
+          },
+          {
+            "beta": 7.0,
+            "mu": 2.520963757515675,
+            "decay_rate": 2.520963757515675,
+            "match": true,
+            "relative_error": 0.0,
+            "exponential_decay": {
+              "1": 0.08038210055340798,
+              "2": 0.006461282089378192,
+              "5": 3.3558052965050598e-06,
+              "10": 1.1261429188051413e-11
+            }
+          }
+        ],
+        "note": "Exponential clustering proven in Thm 7.4.2"
+      }
+    },
+    {
+      "name": "C5: 4D propagator isotropy measure (OS1)",
+      "passed": true,
+      "details": {
+        "description": "OS1: D_4 fourth-moment isotropy comparison (FCC vs cubic)",
+        "fcc_D4_deviation": 0.25819888974716104,
+        "cubic_D4_deviation": 0.816496580927726,
+        "fcc_anisotropy_ratio": 2.0000000000000004,
+        "ideal_ratio": 3.0,
+        "cubic_anisotropy_ratio": Infinity,
+        "fcc_better_than_cubic": true,
+        "fcc_D4_0000": 1.9999999999999996,
+        "fcc_D4_0011": 0.9999999999999997,
+        "cubic_D4_0000": 2.0,
+        "cubic_D4_0011": 0.0,
+        "note": "FCC D4 ratio = 2 (ideal = 3); cubic D4 ratio = inf. FCC has significantly better D4 isotropy than cubic, though not exact. Both have O(a^2) Symanzik artifacts, but FCC's higher coordination (12 vs 6) and O_h symmetry give smaller rotational breaking coefficients."
+      }
+    },
+    {
+      "name": "C6: OS spectral representation positivity",
+      "passed": true,
+      "details": {
+        "description": "OS spectral representation: all coefficients positive",
+        "beta": 5.0,
+        "eigenvalues": [
+          {
+            "rep": "(0,0)",
+            "dim": 1,
+            "lambda_R": 876.9539156951603,
+            "E_R": -6.776454443323502,
+            "positive_lambda": true
+          },
+          {
+            "rep": "(1,0)",
+            "dim": 3,
+            "lambda_R": 5.8333685961267205,
+            "E_R": -1.7635946372933824,
+            "positive_lambda": true
+          },
+          {
+            "rep": "(0,1)",
+            "dim": 3,
+            "lambda_R": 5.8333685961267205,
+            "E_R": -1.7635946372933824,
+            "positive_lambda": true
+          },
+          {
+            "rep": "(1,1)",
+            "dim": 8,
+            "lambda_R": 0.014044223993323657,
+            "E_R": 4.265544071406698,
+            "positive_lambda": true
+          },
+          {
+            "rep": "(2,0)",
+            "dim": 6,
+            "lambda_R": 0.0011794697356749915,
+            "E_R": 6.74269031805108,
+            "positive_lambda": true
+          },
+          {
+            "rep": "(0,2)",
+            "dim": 6,
+            "lambda_R": 0.0011794697356749915,
+            "E_R": 6.74269031805108,
+            "positive_lambda": true
+          },
+          {
+            "rep": "(3,0)",
+            "dim": 10,
+            "lambda_R": 2.238444475140093e-08,
+            "E_R": 17.61489955005516,
+            "positive_lambda": true
+          }
+        ],
+        "spectral_coefficients": [
+          1,
+          9,
+          9,
+          64,
+          36,
+          36,
+          100
+        ],
+        "all_eigenvalues_positive": true,
+        "all_coefficients_positive": true,
+        "note": "Positivity from RP (Thm 7.4.1): lambda_R = d_R^{3N_s} a_R^{8N_s} > 0"
+      }
+    },
+    {
+      "name": "C7: Seiler compactness: uniform bounds",
+      "passed": true,
+      "details": {
+        "description": "Seiler compactness: uniform bounds on Schwinger functions",
+        "conditions_checked": [
+          "Wilson loop bound |Tr U/3| <= 1",
+          "Mass gap mu > 0 (exponential decay)",
+          "Lattice RP (eigenvalue positivity)"
+        ],
+        "betas_tested": 5,
+        "all_bounded": true,
+        "results": [
+          {
+            "beta": 3.0,
+            "u3": 0.20307505003021883,
+            "mu": 9.457600443450797,
+            "wilson_bound": 1.0,
+            "mass_gap_positive": true,
+            "bounded": true
+          },
+          {
+            "beta": 5.0,
+            "u3": 0.35395443670527055,
+            "mu": 5.01285980603012,
+            "wilson_bound": 1.0,
+            "mass_gap_positive": true,
+            "bounded": true
+          },
+          {
+            "beta": 7.0,
+            "u3": 0.48330851688000054,
+            "mu": 2.520963757515675,
+            "wilson_bound": 1.0,
+            "mass_gap_positive": true,
+            "bounded": true
+          },
+          {
+            "beta": 8.0,
+            "u3": 0.5357539902135647,
+            "mu": 1.6968047080281412,
+            "wilson_bound": 1.0,
+            "mass_gap_positive": true,
+            "bounded": true
+          },
+          {
+            "beta": 8.5,
+            "u3": 0.5589862031980505,
+            "mu": 1.357207032808228,
+            "wilson_bound": 1.0,
+            "mass_gap_positive": true,
+            "bounded": true
+          }
+        ],
+        "note": "Seiler 1982 Thm 3.1: RP + uniform bounds \u2192 RP in continuum"
+      }
+    },
+    {
+      "name": "C8: Strong vs weak coupling consistency",
+      "passed": true,
+      "details": {
+        "description": "OS consistency: mass gap positive across entire confined phase",
+        "strong_coupling": [
+          {
+            "beta": 1.0,
+            "mu": 19.19459266097861,
+            "u3": 0.06012655483356473,
+            "mu_positive": true
+          },
+          {
+            "beta": 2.0,
+            "mu": 13.110822577747062,
+            "u3": 0.12862778532208338,
+            "mu_positive": true
+          },
+          {
+            "beta": 3.0,
+            "mu": 9.457600443450797,
+            "u3": 0.20307505003021883,
+            "mu_positive": true
+          }
+        ],
+        "weak_coupling": [
+          {
+            "beta": 6.0,
+            "mu": 3.596088826592621,
+            "u3": 0.4225317396499834,
+            "mu_positive": true
+          },
+          {
+            "beta": 7.0,
+            "mu": 2.520963757515675,
+            "u3": 0.48330851688000054,
+            "mu_positive": true
+          },
+          {
+            "beta": 8.0,
+            "mu": 1.6968047080281412,
+            "u3": 0.5357539902135647,
+            "mu_positive": true
+          }
+        ],
+        "all_positive": true,
+        "monotonically_decreasing": true,
+        "note": "Mass gap positive for all beta < beta_c (Thm 7.4.2)"
+      }
+    },
+    {
+      "name": "C9: Cross-check with Thm 7.4.1 eigenvalues",
+      "passed": true,
+      "details": {
+        "description": "Cross-check: eigenvalue formula lambda_R = d_R^{3N_s} a_R^{8N_s}",
+        "beta": 5.0,
+        "N_s_values": [
+          1,
+          2,
+          3
+        ],
+        "results": [
+          {
+            "N_s": 1,
+            "rep": "(0,0)",
+            "dim": 1,
+            "lambda_direct": 876.953915695167,
+            "lambda_intensive": 876.9539156951672,
+            "relative_error": 2.5927665225485823e-16,
+            "match": true
+          },
+          {
+            "N_s": 1,
+            "rep": "(1,0)",
+            "dim": 3,
+            "lambda_direct": 5.833368596126758,
+            "lambda_intensive": 5.833368596126758,
+            "relative_error": 0.0,
+            "match": true
+          },
+          {
+            "N_s": 1,
+            "rep": "(1,1)",
+            "dim": 8,
+            "lambda_direct": 0.014044223993323751,
+            "lambda_intensive": 0.014044223993323732,
+            "relative_error": 1.358705062295783e-15,
+            "match": true
+          },
+          {
+            "N_s": 2,
+            "rep": "(0,0)",
+            "dim": 1,
+            "lambda_direct": 769048.170253086,
+            "lambda_intensive": 769048.1702530865,
+            "relative_error": 6.055034070941158e-16,
+            "match": true
+          },
+          {
+            "N_s": 2,
+            "rep": "(1,0)",
+            "dim": 3,
+            "lambda_direct": 34.02818917827787,
+            "lambda_intensive": 34.02818917827786,
+            "relative_error": 2.088100345385643e-16,
+            "match": true
+          },
+          {
+            "N_s": 2,
+            "rep": "(1,1)",
+            "dim": 8,
+            "lambda_direct": 0.0001972402275746505,
+            "lambda_intensive": 0.00019724022757465,
+            "relative_error": 2.6110091144348403e-15,
+            "match": true
+          },
+          {
+            "N_s": 3,
+            "rep": "(0,0)",
+            "dim": 1,
+            "lambda_direct": 674419804.2616472,
+            "lambda_intensive": 674419804.2616484,
+            "relative_error": 1.76758287341949e-15,
+            "match": true
+          },
+          {
+            "N_s": 3,
+            "rep": "(1,0)",
+            "dim": 3,
+            "lambda_direct": 198.4989701356265,
+            "lambda_intensive": 198.49897013562645,
+            "relative_error": 2.8636631626838744e-16,
+            "match": true
+          },
+          {
+            "N_s": 3,
+            "rep": "(1,1)",
+            "dim": 8,
+            "lambda_direct": 2.7700859365525435e-06,
+            "lambda_intensive": 2.770085936552533e-06,
+            "relative_error": 3.8222322639765226e-15,
+            "match": true
+          }
+        ],
+        "all_match": true,
+        "note": "Eigenvalue formula from Thm 7.4.1 / Prop 2.5.2c"
+      }
+    },
+    {
+      "name": "C10: Summary diagnostics",
+      "passed": true,
+      "details": {
+        "description": "OS axiom summary at beta = 5.0",
+        "beta": 5.0,
+        "OS0_analyticity": {
+          "status": "ESTABLISHED",
+          "mu_finite": true,
+          "evidence": "Finite-dim integral over compact group"
+        },
+        "OS1_covariance": {
+          "status": "CONJECTURE",
+          "D4_isotropy": true,
+          "artifact_order": "O(a^4)",
+          "evidence": "Universality argument; FCC has improved isotropy"
+        },
+        "OS2_reflection_positivity": {
+          "status": "ESTABLISHED",
+          "lambda_3_positive": true,
+          "lambda_3_value": 5.833368596126758,
+          "evidence": "Thm 7.4.1 + Seiler compactness"
+        },
+        "OS3_symmetry": {
+          "status": "ESTABLISHED",
+          "evidence": "Automatic from OS0 + OS1 (commuting integrand)"
+        },
+        "OS4_cluster": {
+          "status": "ESTABLISHED",
+          "mu_positive": true,
+          "mu_value": 5.0128598060301215,
+          "evidence": "Thm 7.4.2 (mass gap \u2192 exponential decay)"
+        },
+        "overall": "ESTABLISHED (OS0,OS2,OS3,OS4) + CONJECTURE (OS1)",
+        "note": "OS1 conditional on universality (C1/C3 from Thm 7.4.5)"
+      }
+    },
+    {
+      "name": "C11: FOS1' virtual covariance (FOS framework)",
+      "passed": true,
+      "details": {
+        "description": "FOS1': Virtual covariance \u2014 Wilson loop expectations respect O_h \u00d7 Z_2",
+        "beta": 5.0,
+        "mu": 5.0128598060301215,
+        "mu_valid": true,
+        "G_lat_order": 96,
+        "G_lat_structure": "O_h \u00d7 Z_2 (octahedral \u00d7 temporal reflection)",
+        "z_contributions": [
+          {
+            "rep": "(0,0)",
+            "dim": 1,
+            "a_R": 2.332770939519182,
+            "z_contrib": 876.9539156951603,
+            "positive": true
+          },
+          {
+            "rep": "(1,0)",
+            "dim": 3,
+            "a_R": 0.8256946238599369,
+            "z_contrib": 5.8333685961267205,
+            "positive": true
+          },
+          {
+            "rep": "(0,1)",
+            "dim": 3,
+            "a_R": 0.8256946238599369,
+            "z_contrib": 5.8333685961267205,
+            "positive": true
+          },
+          {
+            "rep": "(1,1)",
+            "dim": 8,
+            "a_R": 0.26901622450456036,
+            "z_contrib": 0.014044223993323657,
+            "positive": true
+          }
+        ],
+        "all_positive": true,
+        "fos1_status": "ESTABLISHED",
+        "reason": "FOS1' is automatic: Wilson action + Haar measure are invariant under all lattice symmetries. The partition function Z_FCC and mass gap mu(beta) depend only on representation-theoretic quantities (d_R, a_R) which are lattice-symmetry-invariant.",
+        "note": "Thm 7.4.6 \u00a76B.2: FOS1' requires no conjecture"
+      }
+    },
+    {
+      "name": "C12: FOS reconstruction independence from OS1",
+      "passed": true,
+      "details": {
+        "description": "FOS reconstruction: H-space + Hamiltonian + mass gap independent of OS1",
+        "inputs_used": [
+          "SU(3) representation theory (d_R, C_2(R))",
+          "Heat kernel coefficients a_R(beta)",
+          "FCC lattice geometry (exponents 3, 8)",
+          "Reflection positivity (Thm 7.4.1)"
+        ],
+        "inputs_NOT_used": [
+          "SO(4) Euclidean covariance (OS1)",
+          "Universality conjecture (C3)",
+          "Continuum limit existence (C1)"
+        ],
+        "betas_tested": 3,
+        "all_independent": true,
+        "results": [
+          {
+            "beta": 3.0,
+            "lambda_1": 10.059437803403744,
+            "lambda_3": 0.0007855792888950835,
+            "lambda_8": 3.433500996265758e-08,
+            "mu": 9.457600443450794,
+            "E_3": 9.457600443450794,
+            "E_8": 19.495611583469906,
+            "spectral_gap": 9.457600443450794,
+            "gap_matches_mu": true,
+            "independent_of_OS1": true
+          },
+          {
+            "beta": 5.0,
+            "lambda_1": 876.953915695167,
+            "lambda_3": 5.833368596126758,
+            "lambda_8": 0.014044223993323751,
+            "mu": 5.0128598060301215,
+            "E_3": 5.012859806030121,
+            "E_8": 11.041998514730201,
+            "spectral_gap": 5.012859806030121,
+            "gap_matches_mu": true,
+            "independent_of_OS1": true
+          },
+          {
+            "beta": 7.0,
+            "lambda_1": 741196.6549341506,
+            "lambda_3": 59578.94404676652,
+            "lambda_8": 1500.1602161379321,
+            "mu": 2.520963757515675,
+            "E_3": 2.5209637575156756,
+            "E_8": 6.202694068197287,
+            "spectral_gap": 2.5209637575156756,
+            "gap_matches_mu": true,
+            "independent_of_OS1": true
+          }
+        ],
+        "note": "The mass gap mu, transfer matrix eigenvalues lambda_R, and spectral gap E_3 - E_1 are computed from RP + lattice structure alone. FOS reconstruction (Seiler 1982 \u00a74-5) produces H-space + H from these ingredients without requiring SO(4). See Thm 7.4.6 \u00a76B.3."
+      }
+    },
+    {
+      "name": "C13: FOS vs OS conditional structure",
+      "passed": true,
+      "details": {
+        "description": "FOS vs OS: conditional dependency structure verification",
+        "conjectures": {
+          "C1": "Continuum limit exists",
+          "C2": "Mass gap survives a -> 0",
+          "C3": "Universality (FCC = standard SU(3) YM)"
+        },
+        "os_path": {
+          "lattice_mass_gap": {
+            "requires": [],
+            "status": "PROVEN"
+          },
+          "continuum_mass_gap_existence": {
+            "requires": [
+              "C1",
+              "C2",
+              "C3"
+            ],
+            "status": "CONDITIONAL"
+          },
+          "continuum_mass_gap_value": {
+            "requires": [
+              "C1",
+              "C2",
+              "C3"
+            ],
+            "status": "CONDITIONAL"
+          },
+          "wightman_axioms": {
+            "requires": [
+              "C1",
+              "C2",
+              "C3"
+            ],
+            "status": "CONDITIONAL"
+          }
+        },
+        "fos_path": {
+          "lattice_mass_gap": {
+            "requires": [],
+            "status": "PROVEN"
+          },
+          "continuum_mass_gap_existence": {
+            "requires": [
+              "C1",
+              "C2"
+            ],
+            "status": "CONDITIONAL"
+          },
+          "continuum_mass_gap_value": {
+            "requires": [
+              "C1",
+              "C2",
+              "C3"
+            ],
+            "status": "CONDITIONAL"
+          },
+          "wightman_axioms": {
+            "requires": [
+              "C1",
+              "C2",
+              "C3"
+            ],
+            "status": "CONDITIONAL"
+          }
+        },
+        "checks": {
+          "fos_drops_c3_for_mass_gap": true,
+          "lattice_results_agree": true,
+          "wightman_requirements_agree": true,
+          "fos_strictly_weaker_for_gap": true,
+          "axiom_difference_correct": true
+        },
+        "summary": {
+          "os_conjectures_for_mass_gap": 3,
+          "fos_conjectures_for_mass_gap": 2,
+          "conjectures_saved": 1,
+          "key_axiom_replaced": "OS1 (SO(4) covariance) \u2192 FOS1' (virtual covariance)",
+          "os1_status": "CONJECTURE (requires C3)",
+          "fos1_status": "ESTABLISHED (automatic on lattice)"
+        },
+        "note": "FOS path requires C1+C2 for mass gap existence (2 conjectures). OS path requires C1+C2+C3 (3 conjectures). Both converge for Wightman axioms. See Thm 7.4.6 \u00a76B.5 and Thm 7.4.7 \u00a76.7."
+      }
+    }
+  ]
+}

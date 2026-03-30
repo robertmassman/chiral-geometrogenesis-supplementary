@@ -1,0 +1,148 @@
+{
+  "proposition": "2.5.2c",
+  "title": "Transfer Matrix for FCC Layers",
+  "timestamp": "2026-02-12T10:37:44.151423",
+  "verifications": [
+    {
+      "test": "1",
+      "name": "Transfer Matrix Eigenvalue Computation",
+      "n_reps": 7,
+      "n_betas": 5,
+      "n_Ns": 3,
+      "passed": true
+    },
+    {
+      "test": "2",
+      "name": "Partition Function Consistency",
+      "passed": true
+    },
+    {
+      "test": "3",
+      "name": "Mass Gap Formula Verification",
+      "gap_data": {
+        "0.5": {
+          "mu_formula": 25.04670984892604,
+          "mu_eigenval": 25.04670984892604,
+          "u_3": 0.028931672799122857,
+          "error": 0.0
+        },
+        "1.0": {
+          "mu_formula": 19.194592660978614,
+          "mu_eigenval": 19.194592660978614,
+          "u_3": 0.06012655483356471,
+          "error": 0.0
+        },
+        "2.0": {
+          "mu_formula": 13.110822577747065,
+          "mu_eigenval": 13.110822577747063,
+          "u_3": 0.12862778532208335,
+          "error": 1.3548782533410622e-16
+        },
+        "3.0": {
+          "mu_formula": 9.457600443450797,
+          "mu_eigenval": 9.457600443450797,
+          "u_3": 0.20307505003021883,
+          "error": 0.0
+        },
+        "4.0": {
+          "mu_formula": 6.898777393030571,
+          "mu_eigenval": 6.89877739303057,
+          "u_3": 0.27961914940930427,
+          "error": 1.2874432223271904e-16
+        },
+        "5.0": {
+          "mu_formula": 5.012859806030118,
+          "mu_eigenval": 5.012859806030118,
+          "u_3": 0.35395443670527066,
+          "error": 0.0
+        },
+        "6.0": {
+          "mu_formula": 3.59608882659262,
+          "mu_eigenval": 3.5960888265926196,
+          "u_3": 0.4225317396499835,
+          "error": 1.2349228043703463e-16
+        },
+        "7.0": {
+          "mu_formula": 2.520963757515678,
+          "mu_eigenval": 2.5209637575156782,
+          "u_3": 0.48330851688000037,
+          "error": 1.7615850625623317e-16
+        },
+        "8.0": {
+          "mu_formula": 1.6968047080281394,
+          "mu_eigenval": 1.69680470802814,
+          "u_3": 0.5357539902135648,
+          "error": 3.925813098133194e-16
+        }
+      },
+      "passed": true
+    },
+    {
+      "test": "4",
+      "name": "Critical Coupling",
+      "u_3_crit_exact": 0.662337782140526,
+      "beta_c": 11.421576425238563,
+      "passed": true
+    },
+    {
+      "test": "5",
+      "name": "Strong Coupling Expansion",
+      "passed": true
+    },
+    {
+      "test": "6",
+      "name": "Eigenvalue Positivity and Ordering",
+      "n_positive": 299,
+      "n_total": 299,
+      "level_crossing_beta": 12.0,
+      "passed": true
+    },
+    {
+      "test": "7",
+      "name": "Extensive vs Intensive Mass Gap",
+      "passed": true
+    },
+    {
+      "test": "8",
+      "name": "Comparison with K4 Spectrum",
+      "k4_data": {
+        "1.0": 23.71858775405624,
+        "2.0": 16.113875150016803,
+        "4.0": 8.348818669121187,
+        "6.0": 4.220457961073747,
+        "8.0": 1.8463528128681466,
+        "10.0": 0.41537579220559273,
+        "15.0": -1.3780666800995869
+      },
+      "fcc_data": {
+        "1.0": 19.194592660978614,
+        "2.0": 13.110822577747065,
+        "4.0": 6.898777393030571,
+        "6.0": 3.59608882659262,
+        "8.0": 1.6968047080281394,
+        "10.0": 0.5520230914980964,
+        "15.0": -0.8827308863460472
+      },
+      "u_3_crit_k4": 0.6443940149772542,
+      "u_3_crit_fcc": 0.662337782140526,
+      "passed": true
+    },
+    {
+      "test": "9",
+      "name": "Eigenvalue Spectral Ratios",
+      "passed": true
+    },
+    {
+      "test": "10",
+      "name": "Monotonicity and Limiting Behavior",
+      "n_beta_points": 50,
+      "n_decreasing": 49,
+      "n_increasing": 0,
+      "beta_c_approx": 11.423318797709529,
+      "mu_inf_limit": -3.295836866004329,
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED",
+  "summary": "10/10 tests passed"
+}

@@ -1,0 +1,125 @@
+{
+  "proposition": "7.8.3",
+  "title": "Bethe-Salpeter Glueball Mass Ratio \u2014 Adversarial",
+  "verification_type": "multi_agent_adversarial",
+  "date": "2026-02-23T08:43:38.187202",
+  "tests_total": 10,
+  "tests_passed": 8,
+  "tests_failed": 2,
+  "overall": "FAIL",
+  "results": [
+    {
+      "name": "MAV-1: b0 formula consistency (typo identified, numerics correct)",
+      "passed": "False",
+      "details": "b0_stated=0.8754 (WRONG), b0_correct=2.6261, b0_used=2.626 (correct). Typo in \u00a79.2: 12*pi should be 4*pi.",
+      "numerical_data": {
+        "b0_stated": 0.8753521870054244,
+        "b0_correct": 2.626056561016273,
+        "b0_used": 2.626,
+        "alpha_standard": 0.4668787409582796,
+        "alpha_used": 0.1556295989962563
+      }
+    },
+    {
+      "name": "MAV-2: Two-loop alpha_s at glueball scale",
+      "passed": "False",
+      "details": "Two-loop: alpha_s = 0.305 +/- 0.018; tension with adopted: 1.87sigma; R_BS(2-loop) = 3.827, lattice tension: 4.28sigma",
+      "numerical_data": {
+        "alpha_a_1loop": 0.46733739941612595,
+        "alpha_a_2loop": 0.3232868323458198,
+        "alpha_b_1loop": 0.41579466771208007,
+        "alpha_b_2loop": 0.2868585518013904,
+        "alpha_2loop_central": 0.3050726920736051,
+        "R_BS_2loop": 3.826820608680134,
+        "tension": 1.8731826981598725
+      }
+    },
+    {
+      "name": "MAV-3: Uncertainty robustness (conservative scenarios)",
+      "passed": "True",
+      "details": "Even conservative delta=0.06 gives combined 6.3% (vs 8.0% for 7.8.2 alone). Lattice consistent at all levels.",
+      "numerical_data": {
+        "dR_optimistic": 0.23772174470791846,
+        "dR_conservative": 0.35658261706187766,
+        "dR_very_conservative": 0.4754434894158369,
+        "dR_quadrature": 0.2924664560372296
+      }
+    },
+    {
+      "name": "MAV-4: AFM accuracy vs numerical Salpeter",
+      "passed": "True",
+      "details": "R_numerical = 3.3262, R_variational = 3.4073, overestimate = 2.4%",
+      "numerical_data": {
+        "R_numerical": 3.326158265487093,
+        "R_variational": 3.407345007480164,
+        "R_formula": 3.407345007480164,
+        "afm_overestimate_pct": 2.4408562525566264,
+        "beta_num_opt": 1.8670886075949367,
+        "beta_var_opt": 1.9810145392326537
+      }
+    },
+    {
+      "name": "MAV-5: Glueball size vs Cornell potential validity",
+      "passed": "True",
+      "details": "RMS = 0.392 fm, 90th = 0.532 fm, string breaking = 1.25 fm",
+      "numerical_data": {
+        "rms_r_fm": 0.392108991419679,
+        "mean_r_fm": 0.3395763476217365,
+        "r90_fm": 0.5320029446073872,
+        "r_break_fm": 1.25
+      }
+    },
+    {
+      "name": "MAV-6: Weighted average robustness to Casimir scaling",
+      "passed": "True",
+      "details": "Casimir systematic: 0.0262 (0.77%), subdominant: True",
+      "numerical_data": {
+        "casimir_sigma_effect": 0.02620643077796103,
+        "max_shift_combined": 0.05241286155592206
+      }
+    },
+    {
+      "name": "MAV-7: sqrt(sigma)/Lambda sensitivity (NS vs Ishikawa)",
+      "passed": "True",
+      "details": "c_FI(NS) = 6.78, c_FI(Ish) = 6.58, tension = 1.13 sigma, shift = 3.0%",
+      "numerical_data": {
+        "c_FI_NS": 6.779599999999999,
+        "c_FI_Ishikawa": 6.5756,
+        "tension": 1.1254837102261943,
+        "ratio_weighted": 1.9846896551724136
+      }
+    },
+    {
+      "name": "MAV-8: Pure-confinement limit (alpha=0)",
+      "passed": "True",
+      "details": "R_AFM = 5.196, R_numerical = 4.977, overestimate = 4.4%",
+      "numerical_data": {
+        "R_afm_pure": 5.196152422706632,
+        "R_num_pure": 4.976644642304896,
+        "afm_error_pct": 4.410758576888721
+      }
+    },
+    {
+      "name": "MAV-9: Critical coupling behavior (alpha -> 2/3)",
+      "passed": true,
+      "details": "R(2/3) = 0.000000, monotonic: True, alpha_s/alpha_crit = 0.570",
+      "numerical_data": {
+        "R_at_crit": 0.0,
+        "alpha_crit": 0.6666666666666666,
+        "alpha_s_over_crit": 0.5700000000000001
+      }
+    },
+    {
+      "name": "MAV-10: Full numerical Salpeter at physical alpha_s",
+      "passed": "True",
+      "details": "R_numerical = 3.3260, R_formula = 3.4073, overestimate = 2.4%",
+      "numerical_data": {
+        "R_numerical": 3.326007991543177,
+        "R_formula": 3.407345007480164,
+        "overestimate_pct": 2.4454846814498685,
+        "beta_num_opt": 1.902013422818792,
+        "beta_var_opt": 1.9810145392326537
+      }
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "proposition": "4.3.3",
+  "title": "W-Soliton Cosmological Abundance",
+  "timestamp": "2026-02-25T09:13:46.646205",
+  "verifications": [
+    {
+      "test": "Five geometric factors product",
+      "factors": {
+        "f_singlet": {
+          "value": 0.3333333333333333,
+          "claimed": 0.3333333333333333,
+          "exact": true
+        },
+        "f_VEV": {
+          "value": 0.24955344465536028,
+          "claimed": 0.25,
+          "relative_error": 0.0017862213785588832
+        },
+        "f_solid": {
+          "value": 0.5,
+          "claimed": 0.5,
+          "exact": true
+        },
+        "f_overlap": {
+          "value": 0.0071,
+          "claimed": 0.0071,
+          "uncertainty": 0.0011
+        },
+        "f_chiral_abs": {
+          "value": 1.7320508075688772,
+          "claimed": 1.7320508075688772,
+          "exact": true
+        }
+      },
+      "kappa_computed": 0.0005114831069938457,
+      "kappa_claimed": 0.00051,
+      "relative_error": 0.0029080529291091776,
+      "passed": "True"
+    },
+    {
+      "test": "W-asymmetry epsilon_W",
+      "epsilon_precise": 3.1212e-13,
+      "epsilon_rounded_eta": 3.111e-13,
+      "epsilon_claimed": 3.1e-13,
+      "relative_error_precise": 0.006838709677419339,
+      "relative_error_rounded": 0.0035483870967742436,
+      "passed": true
+    },
+    {
+      "test": "Required epsilon_W from Planck",
+      "Omega_DM_over_Omega_b": 5.364327223960661,
+      "epsilon_req_precise": 2.7008954091654133e-13,
+      "epsilon_req_doc_inputs": 2.7593557098765427e-13,
+      "doc_claim": 2.2e-13,
+      "error_in_doc": 0.25425259539842854,
+      "correct_value": 2.7593557098765427e-13,
+      "discrepancy_pct": 25.425259539842855,
+      "passed": false,
+      "note": "ARITHMETIC ERROR IN DOCUMENT: 2.2e-13 should be ~2.7e-13"
+    },
+    {
+      "test": "ADM relic abundance",
+      "M_W_over_m_p": 1727.0788912579958,
+      "Omega_b_times_s_ngamma": 0.157696,
+      "Omega_W_rounded": 0.13890025074626866,
+      "Omega_W_precise": 0.13867401111831112,
+      "doc_claim": 0.139,
+      "Planck_obs": 0.12,
+      "overshoot_pct": 15.83333333333335,
+      "relative_error": 0.0007176205304413782,
+      "passed": true
+    },
+    {
+      "test": "Thermal freeze-out failure",
+      "lambda_HPhi": 0.036,
+      "M_W": 1620.0,
+      "sigma_v_natural_GeV-2": 1.964875840640683e-11,
+      "sigma_v_cm3_per_s": 6.885949826808308e-29,
+      "doc_sigma_v": 1.3e-28,
+      "Omega_thermal": 43.56697442552415,
+      "doc_Omega_thermal": 23,
+      "overabundant_factor": 363.0581202127013,
+      "thermal_fails": true,
+      "passed": true
+    },
+    {
+      "test": "Symmetric component depletion",
+      "T_freeze_out_GeV": 81.0,
+      "x_fo": 20.0,
+      "n_eq_cm3": 8.095827796556672e+38,
+      "H_fo_per_s": 14019929343.557255,
+      "Gamma_per_s": 105245761355.23674,
+      "Gamma_over_H": 7.506868171457767,
+      "symmetric_depleted": "True",
+      "marginal": "True",
+      "passed": "True",
+      "note": "Gamma/H > 1 required for symmetric depletion"
+    },
+    {
+      "test": "Direct detection vs LZ",
+      "sigma_SI_cm2": 4.3389898604341095e-48,
+      "LZ_limit_1600GeV": 5e-46,
+      "factor_below_LZ": 115.2341941518102,
+      "below_LZ": true,
+      "sigma_thermal_cm2": 8.369965008553452e-46,
+      "doc_factor_300_issue": "Document's 'factor ~300' may compare against LZ best (40 GeV), not at 1.6 TeV",
+      "passed": true
+    },
+    {
+      "test": "Sensitivity analysis",
+      "nominal_Omega": 0.13907728248253506,
+      "variations": [
+        {
+          "variation": "v_W: 123 -> 138 GeV",
+          "Omega": 0.17506694213744448,
+          "delta_pct": 25.87745389649017
+        },
+        {
+          "variation": "e_W: 4.5 -> 4.8",
+          "Omega": 0.13907728248253506,
+          "delta_pct": 0.0
+        },
+        {
+          "variation": "f_overlap: 7.1e-3 -> 8.2e-3",
+          "Omega": 0.16062446709250527,
+          "delta_pct": 15.492957746478867
+        },
+        {
+          "variation": "eta_B: 6.12e-10 -> 6.3e-10",
+          "Omega": 0.13907728248253506,
+          "delta_pct": 0.0
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "Mass value sensitivity",
+      "predictions": {
+        "Faddeev bound": {
+          "M_W": 1620.0,
+          "Omega": 0.13867401111831112,
+          "overshoot_pct": 15.561675931925942
+        },
+        "Central value": {
+          "M_W": 1800.0,
+          "Omega": 0.15408223457590126,
+          "overshoot_pct": 28.401862146584385
+        },
+        "ANW numerical": {
+          "M_W": 1993.0,
+          "Omega": 0.17060327417209512,
+          "overshoot_pct": 42.1693951434126
+        }
+      },
+      "passed": true
+    },
+    {
+      "test": "Dimensional analysis",
+      "checks": [
+        {
+          "quantity": "kappa_W^geom",
+          "dimension": "dimensionless",
+          "consistent": true
+        },
+        {
+          "quantity": "epsilon_W = eta_B * kappa",
+          "dimension": "dimensionless",
+          "consistent": true
+        },
+        {
+          "quantity": "Omega_W h^2 (ADM)",
+          "dimension": "dimensionless",
+          "consistent": true
+        },
+        {
+          "quantity": "sigma_v = lambda^2/(8pi M^2)",
+          "dimension": "[GeV^-2] -> [cm^2]",
+          "consistent": true
+        },
+        {
+          "quantity": "Omega_thermal = 3e-27/sigma_v",
+          "dimension": "dimensionless",
+          "consistent": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "Section 6.3 vs 6.4 consistency",
+      "excess_section_6.3_doc": 40.90909090909091,
+      "excess_section_6.4_doc": 15.83333333333335,
+      "epsilon_required_correct": 2.7008954091654133e-13,
+      "excess_corrected": 14.776751053751887,
+      "sections_consistent": false,
+      "passed": false,
+      "note": "Sections are inconsistent due to arithmetic error in epsilon_required"
+    },
+    {
+      "test": "Monte Carlo uncertainty propagation",
+      "N_samples": 100000,
+      "N_valid": 99976,
+      "Omega_mean": 0.15689302456172147,
+      "Omega_median": 0.14843061044544634,
+      "Omega_std": 0.06417131869171548,
+      "Omega_1sigma": [
+        0.09546677924337929,
+        0.2183974227279235
+      ],
+      "Omega_2sigma": [
+        0.05585235389923186,
+        0.3053376687781989
+      ],
+      "relative_uncertainty": 0.4090132041942412,
+      "frac_planck_1sigma": 0.015973833720092822,
+      "frac_within_30pct_planck": 0.44312635032407777,
+      "doc_claimed_uncertainty": 0.3,
+      "actual_uncertainty": 0.4090132041942412,
+      "passed": true
+    }
+  ],
+  "overall_status": "PARTIAL",
+  "tests_passed": 10,
+  "tests_failed": 2
+}

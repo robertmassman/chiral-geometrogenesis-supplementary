@@ -1,0 +1,94 @@
+{
+  "type": "validation",
+  "timestamp": "2026-02-24T06:51:57.782127",
+  "results": [
+    {
+      "test": "su3_ops",
+      "passed": true
+    },
+    {
+      "test": "lattice_L3",
+      "passed": true
+    },
+    {
+      "test": "lattice_L4",
+      "passed": true
+    },
+    {
+      "test": "lattice_L5",
+      "passed": true
+    },
+    {
+      "test": "cold_start",
+      "passed": true,
+      "plaquette": 1.0
+    },
+    {
+      "test": "hot_start",
+      "passed": true,
+      "plaquette": -0.004345210461503496
+    },
+    {
+      "test": "gauge_invariance",
+      "passed": true,
+      "diff": 1.3877787807814457e-17
+    },
+    {
+      "test": "mc_beta1",
+      "passed": "True",
+      "plaq_mc": 0.05756747043876609,
+      "plaq_exact": 0.06012655483356475,
+      "diff_sigma": 1.1490492775755106
+    },
+    {
+      "test": "metro_vs_hb",
+      "passed": "True",
+      "plaq_metro": 0.2158068147254061,
+      "plaq_hb": 0.2141059889356666,
+      "diff_sigma": 0.3775359027796455
+    },
+    {
+      "test": "d4_lattice_L4",
+      "passed": true
+    },
+    {
+      "test": "d4_lattice_L6",
+      "passed": true
+    },
+    {
+      "test": "d4_cold_start",
+      "passed": true,
+      "plaquette": 1.0
+    },
+    {
+      "test": "d4_hot_start",
+      "passed": true,
+      "plaquette": -0.0011723976237800187
+    },
+    {
+      "test": "d4_gauge_invariance",
+      "passed": true,
+      "diff": 9.324138683375338e-18
+    },
+    {
+      "test": "d4_mc_beta1",
+      "passed": "True",
+      "plaq_mc": 0.0606954627638245,
+      "plaq_exact": 0.06012655483356475,
+      "diff_sigma": 1.2546575642867992
+    },
+    {
+      "test": "d4_metro_vs_hb",
+      "passed": "True",
+      "plaq_metro": 0.1383895984087116,
+      "plaq_hb": 0.13786676064088463,
+      "diff_sigma": 0.5912079012793859
+    },
+    {
+      "test": "d4_polyakov_paths",
+      "passed": true
+    }
+  ],
+  "all_passed": true,
+  "summary": "17/17 tests passed"
+}

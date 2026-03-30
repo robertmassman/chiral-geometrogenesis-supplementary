@@ -1,0 +1,89 @@
+{
+  "proposition": "7.8.6",
+  "title": "Full Two-Gluon Glueball Spectrum \u2014 Adversarial Physics",
+  "timestamp": "2026-02-28T06:08:39.080058",
+  "parameters": {
+    "alpha_V": 0.373,
+    "delta_alpha_V": 0.01,
+    "sqrt_sigma_MeV": 440.0,
+    "Delta_SS": 1.33,
+    "c_LS": 0.23,
+    "radial_ratio": 1.55
+  },
+  "tests": {
+    "passed": 12,
+    "total": 12,
+    "details": [
+      {
+        "name": "MAV-1: Bose symmetry completeness",
+        "passed": true,
+        "details": "20 states classified; 1^{-+} exotic confirmed"
+      },
+      {
+        "name": "MAV-2: Matrix elements via scipy",
+        "passed": true,
+        "details": "All matrix elements verified to high precision; max err=2.44e-15"
+      },
+      {
+        "name": "MAV-3: Numerical optimization vs closed form",
+        "passed": "True",
+        "details": "Formula and numerical minimization agree for L=0..3"
+      },
+      {
+        "name": "MAV-4: Spin-orbit coefficient robustness",
+        "passed": "True",
+        "details": "c_LS = 0.23 within 2-sigma of optimal 0.302",
+        "numerical_data": {
+          "c_ls_best": 0.3020408163265306,
+          "chi2_min": 0.8768544616381926
+        }
+      },
+      {
+        "name": "MAV-5: Centroid identification",
+        "passed": true,
+        "details": "R_0 = 0++ gives chi2 = 4.8 vs centroid chi2 = 2799.3"
+      },
+      {
+        "name": "MAV-6: Radial excitation sensitivity",
+        "passed": true,
+        "details": "Ratio 1.55 gives tension 0.07sigma; lattice implies 1.540"
+      },
+      {
+        "name": "MAV-7: Regge trajectory and Pomeron",
+        "passed": true,
+        "details": "Slope = 18.11 (expected 18), alpha'_G/alpha'_meson = 0.444 (expected 0.444)"
+      },
+      {
+        "name": "MAV-8: Gaussian vs exponential wavefunction",
+        "passed": "True",
+        "details": "Max deviation = 1.5% (< 5%); spectrum robust against ansatz choice"
+      },
+      {
+        "name": "MAV-9: Cornell potential validity",
+        "passed": true,
+        "details": "All states with r_rms/r_break < 0.8"
+      },
+      {
+        "name": "MAV-10: Full spectrum chi-squared",
+        "passed": "True",
+        "details": "chi2/dof = 0.20, p = 0.937",
+        "numerical_data": {
+          "chi2": 0.8106430123001317,
+          "n_dof": 4,
+          "chi2_per_dof": 0.20266075307503292,
+          "p_value": 0.9370155517071567
+        }
+      },
+      {
+        "name": "MAV-11: 1^{-+} exotic prediction",
+        "passed": true,
+        "details": "m = 2404 +/- 242 MeV, in expected range and consistent with lattice"
+      },
+      {
+        "name": "MAV-12: Large-L asymptotics",
+        "passed": "True",
+        "details": "Asymptotic error 1.11% at L=50; slope convergence 1.10e-04"
+      }
+    ]
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "derivation": "2.1.2c",
+  "title": "Bag Constant from Pure Stella Geometry",
+  "timestamp": "2026-02-27T17:26:24.072558",
+  "verdict": "PARTIAL",
+  "confidence": "Medium",
+  "summary": {
+    "total_tests": 32,
+    "passed": 30,
+    "failed": 2,
+    "expected_adversarial_failures": 3
+  },
+  "key_results": {
+    "B_fourth_MeV": 146.667,
+    "B_MeV4": 462730000.0,
+    "alpha_s_conf": 2.417166,
+    "B_chiral_fourth_MeV": 117.0,
+    "chiral_fraction": 0.405,
+    "R_perp_fm": 1.61,
+    "E_proton_bag_MeV": 1434.1,
+    "T_c_simple_MeV": 146.7,
+    "T_c_full_SB_MeV": 103.3
+  },
+  "adversarial_findings": [
+    "Large-N_c scaling fails: B ~ N_c^{-4} vs expected N_c^0",
+    "N_c=1 limit unphysical: U(1) does not confine",
+    "Z_3 equal partition is assumption, not derivation",
+    "Unit coefficient in B = Lambda^4 is assumed",
+    "Stefan-Boltzmann T_c = 103 MeV (34% below lattice)",
+    "Neutron star constraints prefer B^{1/4} = 126-141 MeV",
+    "Route 3 is self-consistency check, not independent"
+  ],
+  "tests": [
+    {
+      "name": "B^{1/4} = \u221a\u03c3/N_c computation",
+      "category": "route1",
+      "severity": "critical",
+      "passed": true,
+      "detail": "B^{1/4} = 440.00/3 = 146.667 MeV"
+    },
+    {
+      "name": "B = \u03c3\u00b2/N_c\u2074 algebraic equivalence",
+      "category": "route1",
+      "severity": "critical",
+      "passed": true,
+      "detail": "(\u221a\u03c3/N_c)\u2074 = 4.6273e+08, \u03c3\u00b2/N_c\u2074 = 4.6273e+08"
+    },
+    {
+      "name": "B^{1/4} within DeGrand et al. \u00b125 MeV",
+      "category": "route1",
+      "severity": "significant",
+      "passed": true,
+      "detail": "|146.7 - 145.0| = 1.7 MeV < 25.0 MeV"
+    },
+    {
+      "name": "B^{1/4} above neutron star upper bound",
+      "category": "adversarial",
+      "severity": "moderate",
+      "passed": true,
+      "detail": "Prediction 146.7 MeV > neutron star upper bound 141.0 MeV (tension: 5.7 MeV)"
+    },
+    {
+      "name": "\u03bb = m_\u03c3\u00b2/(2f_\u03c0\u00b2) = 25/2",
+      "category": "route2",
+      "severity": "significant",
+      "passed": true,
+      "detail": "\u03bb = 440.0\u00b2 / (2 \u00d7 88.0\u00b2) = 12.5000"
+    },
+    {
+      "name": "B_chiral = \u03c3\u00b2/200",
+      "category": "route2",
+      "severity": "significant",
+      "passed": true,
+      "detail": "(\u03bb/4)f_\u03c0\u2074 = 1.8741e+08, \u03c3\u00b2/200 = 1.8741e+08"
+    },
+    {
+      "name": "B_chiral^{1/4} = 117.0 MeV",
+      "category": "route2",
+      "severity": "moderate",
+      "passed": true,
+      "detail": "B_chiral^{1/4} = 117.00 MeV"
+    },
+    {
+      "name": "Chiral + gluonic = total (exact)",
+      "category": "route2",
+      "severity": "critical",
+      "passed": true,
+      "detail": "B_chiral + B_gluon = 4.6273e+08, B_total = 4.6273e+08"
+    },
+    {
+      "name": "Chiral fraction ~40%",
+      "category": "route2",
+      "severity": "moderate",
+      "passed": true,
+      "detail": "B_chiral/B_total = 0.4050 (40.5%)"
+    },
+    {
+      "name": "m_\u03c3 = \u221a\u03c3 within PDG f\u2080(500) range",
+      "category": "adversarial",
+      "severity": "moderate",
+      "passed": true,
+      "detail": "m_\u03c3 = 440.0 MeV, PDG range: [400.0, 550.0] MeV"
+    },
+    {
+      "name": "\u03b1_s = 3N_c\u2074/(32\u03c0) = 2.42",
+      "category": "route3",
+      "severity": "significant",
+      "passed": true,
+      "detail": "\u03b1_s = 2.417166"
+    },
+    {
+      "name": "\u03b1_s in Taylor/MiniMOM lattice range [2.0, 3.0]",
+      "category": "route3",
+      "severity": "moderate",
+      "passed": true,
+      "detail": "\u03b1_s = 2.417, range: [2.0, 3.0]"
+    },
+    {
+      "name": "Flux tube \u03c3\u00b2 recovery",
+      "category": "route3",
+      "severity": "critical",
+      "passed": true,
+      "detail": "\u03c3\u00b2 from flux tube: 3.7481e+10, from Casimir: 3.7481e+10"
+    },
+    {
+      "name": "Flux tube radius R_\u22a5 = 1.61 fm (bag model)",
+      "category": "route3",
+      "severity": "moderate",
+      "passed": "True",
+      "detail": "R_\u22a5 = 1.610 fm (lattice Gaussian width: 0.35 fm)"
+    },
+    {
+      "name": "[B] = [M]\u2074: \u03c3\u00b2/N_c\u2074 = [M]\u2074/1",
+      "category": "dimensional",
+      "severity": "critical",
+      "passed": true,
+      "detail": "\u03c3\u00b2 has dim [M]\u2074, N_c\u2074 is dimensionless \u2192 B has dim [M]\u2074 \u2713"
+    },
+    {
+      "name": "[\u03b1_s] dimensionless: 3N_c\u2074/(32\u03c0)",
+      "category": "dimensional",
+      "severity": "critical",
+      "passed": true,
+      "detail": "Pure numbers only \u2192 dimensionless \u2713"
+    },
+    {
+      "name": "[R_\u22a5] = [L]: \u221a(\u03c3/(2\u03c0B)) = \u221a([M]\u00b2/[M]\u2074) = [M]\u207b\u00b9",
+      "category": "dimensional",
+      "severity": "critical",
+      "passed": true,
+      "detail": "[M]\u207b\u00b9 converts to fm via \u210fc \u2713"
+    },
+    {
+      "name": "R_\u22a5 unit conversion consistent",
+      "category": "dimensional",
+      "severity": "moderate",
+      "passed": "True",
+      "detail": "Via MeV\u207b\u00b9\u2192fm: 1.6102, Via R_stella: 1.6102"
+    },
+    {
+      "name": "\u03c3 \u2192 0: B \u2192 0 (deconfinement)",
+      "category": "limits",
+      "severity": "significant",
+      "passed": true,
+      "detail": "String tension vanishes at deconfinement \u2192 bag constant vanishes \u2713"
+    },
+    {
+      "name": "R \u2192 \u221e: \u221a\u03c3 \u2192 0 \u2192 B \u2192 0",
+      "category": "limits",
+      "severity": "significant",
+      "passed": true,
+      "detail": "Large R means weak confinement \u2192 B vanishes \u2713"
+    },
+    {
+      "name": "Large-N_c: B ~ 1/N_c\u2074 (NOT N_c\u2070 as expected)",
+      "category": "adversarial",
+      "severity": "significant",
+      "passed": false,
+      "detail": "Formula gives B \u221d N_c\u207b\u2074; standard expectation B \u221d N_c\u2070. Resolution: formula is SU(3)-specific, not a scaling law."
+    },
+    {
+      "name": "N_c = 1: formula gives B^{1/4} = \u221a\u03c3 but U(1) doesn't confine",
+      "category": "adversarial",
+      "severity": "moderate",
+      "passed": false,
+      "detail": "B^{1/4}(N_c=1) = 440.0 MeV \u2014 unphysical (U(1) is non-confining)"
+    },
+    {
+      "name": "Uncorrected proton mass in [1300, 1600] MeV",
+      "category": "predictions",
+      "severity": "moderate",
+      "passed": true,
+      "detail": "M_p(bag) = 1434 MeV (standard; corrections \u2192 938 MeV)"
+    },
+    {
+      "name": "Proton bag radius > charge radius (0.841 fm)",
+      "category": "predictions",
+      "severity": "moderate",
+      "passed": true,
+      "detail": "R_bag = 1.124 fm > r_charge = 0.841 fm"
+    },
+    {
+      "name": "T_c(simple) within 10% of lattice",
+      "category": "predictions",
+      "severity": "moderate",
+      "passed": true,
+      "detail": "|146.7 - 156.5| / 156.5 = 6.3%"
+    },
+    {
+      "name": "T_c(full S-B) significantly below lattice",
+      "category": "adversarial",
+      "severity": "moderate",
+      "passed": true,
+      "detail": "T_c(S-B) = 103.3 MeV \u2014 34% below lattice (caution: simple T_c ~ B^{1/4} is parametric only)"
+    },
+    {
+      "name": "Unit coefficient matches DeGrand to 1.2%",
+      "category": "adversarial",
+      "severity": "significant",
+      "passed": true,
+      "detail": "c(DeGrand) = 0.9553 \u2248 1"
+    },
+    {
+      "name": "k = 1 is best fit for DeGrand value",
+      "category": "adversarial",
+      "severity": "info",
+      "passed": true,
+      "detail": "Equal partition (k=1) gives B^{1/4} = 146.7 vs 145 \u00b1 25 MeV"
+    },
+    {
+      "name": "B_total > B_chiral (Routes 1 > 2)",
+      "category": "consistency",
+      "severity": "critical",
+      "passed": true,
+      "detail": "B_total = 4.6273e+08 > B_chiral = 1.8741e+08"
+    },
+    {
+      "name": "B_gluon > 0",
+      "category": "consistency",
+      "severity": "critical",
+      "passed": true,
+      "detail": "B_gluon = B_total - B_chiral = 2.7532e+08 > 0"
+    },
+    {
+      "name": "\u03b1_s > 0 from Route 3",
+      "category": "consistency",
+      "severity": "critical",
+      "passed": true,
+      "detail": "\u03b1_s = 2.4172 > 0"
+    },
+    {
+      "name": "Chiral fraction = N_c\u2074/200 (pure group theory + chiral ratio)",
+      "category": "consistency",
+      "severity": "moderate",
+      "passed": true,
+      "detail": "B_chiral/B_total = (\u03c3\u00b2/200)/(\u03c3\u00b2/81) = 81/200 = 0.4050"
+    }
+  ]
+}

@@ -1,0 +1,578 @@
+{
+  "theorem": "7.6.8",
+  "title": "Adversarial Physics Verification (Multi-Agent Review)",
+  "timestamp": "2026-02-14T17:10:06.662468",
+  "total_tests": 16,
+  "passed": 16,
+  "overall_status": "PASSED",
+  "multi_agent_findings_addressed": [
+    "M-4/P-8: \u03b5-independence sign error (APV-5)",
+    "M-5: Factor of 2 in running coupling (APV-1, APV-2)",
+    "M-6: Bernoulli inequality (APV-10)",
+    "P-1: Gauge invariance / mass gap RG invariance (APV-4)",
+    "P-5: UV convergence constants (APV-2, APV-9)",
+    "P-12: \u03b4 < 1/2 requirement (APV-16)",
+    "L-14: \u039b_QCD vs \u221a\u03c3 (APV-13)"
+  ],
+  "results": [
+    {
+      "test": "APV-1",
+      "name": "Two-loop correction sensitivity",
+      "passed": true,
+      "details": {
+        "beta": 120.0,
+        "k_max": 103,
+        "max_rel_diff": 0.0039317136143665376,
+        "avg_rel_diff": 0.0013906468850784016,
+        "max_weak_coupling_diff": 0.0010998049749160843,
+        "uv_sum_1loop": 1.9109167362347237,
+        "uv_sum_2loop": 1.9159527701645598,
+        "n_scales": 102
+      }
+    },
+    {
+      "test": "APV-2",
+      "name": "UV sum k_max-independence",
+      "passed": true,
+      "details": {
+        "results": [
+          {
+            "beta": 60,
+            "k_max": 0,
+            "uv_sum": 0.0
+          },
+          {
+            "beta": 80,
+            "k_max": 34,
+            "uv_sum": 0.8665649217221365
+          },
+          {
+            "beta": 100,
+            "k_max": 69,
+            "uv_sum": 1.4835770270596231
+          },
+          {
+            "beta": 150,
+            "k_max": 155,
+            "uv_sum": 2.408470512266934
+          },
+          {
+            "beta": 200,
+            "k_max": 241,
+            "uv_sum": 2.9554638503244006
+          },
+          {
+            "beta": 300,
+            "k_max": 414,
+            "uv_sum": 3.6278425528933975
+          },
+          {
+            "beta": 500,
+            "k_max": 759,
+            "uv_sum": 4.282975949909992
+          },
+          {
+            "beta": 1000,
+            "k_max": 1622,
+            "uv_sum": 4.949198511782397
+          }
+        ],
+        "all_finite": true,
+        "theoretical_bound": 6.549401000924857,
+        "below_bound": true,
+        "sublinear_growth": "True",
+        "no_doubling": true,
+        "consecutive_ratios": [
+          1.7120206344278164,
+          1.6234212773167596,
+          1.2271123251339364,
+          1.2275036125023808,
+          1.1805848482851304,
+          1.1555513198448863
+        ],
+        "sum_to_kmax_ratios": [
+          0.025487203580062838,
+          0.021501116334197438,
+          0.01553851943398022,
+          0.012263335478524484,
+          0.00876290471713381,
+          0.005642919565098803,
+          0.0030512937803837217
+        ]
+      }
+    },
+    {
+      "test": "APV-3",
+      "name": "IR double-exponential convergence",
+      "passed": true,
+      "details": {
+        "increments": [
+          0.1353352832366127,
+          0.00033546262790251185,
+          1.2664165549094176e-14,
+          2.572209372642415e-56,
+          4.377491037053051e-223
+        ],
+        "log_ratios": [
+          4.0,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "avg_log_ratio": 4.0,
+        "expected_ratio": 4.0,
+        "ir_total": 0.13567074586452788,
+        "first_term_fraction": 0.9975273768432721
+      }
+    },
+    {
+      "test": "APV-4",
+      "name": "Mass gap RG invariance",
+      "passed": true,
+      "details": {
+        "mu_min": 0.5,
+        "a": 0.1,
+        "m_phys_0": 5.0,
+        "max_relative_deviation": 0.0,
+        "n_scales_checked": 100
+      }
+    },
+    {
+      "test": "APV-5",
+      "name": "\u03b5-independence analysis",
+      "passed": true,
+      "details": {
+        "results": [
+          {
+            "epsilon": 0.01,
+            "wrong_at_uv_exceeds_1": "False",
+            "correct_at_uv_small": "True",
+            "wrong_ratio_at_uv": 0.33236766405770896,
+            "correct_ratio_at_uv": 0.0003008716274596346,
+            "wrong_grows_toward_uv": "True",
+            "correct_shrinks_toward_uv": "True"
+          },
+          {
+            "epsilon": 0.05,
+            "wrong_at_uv_exceeds_1": "True",
+            "correct_at_uv_small": "True",
+            "wrong_ratio_at_uv": 1.661838320288545,
+            "correct_ratio_at_uv": 0.0015043581372981732,
+            "wrong_grows_toward_uv": "True",
+            "correct_shrinks_toward_uv": "True"
+          },
+          {
+            "epsilon": 0.1,
+            "wrong_at_uv_exceeds_1": "True",
+            "correct_at_uv_small": "True",
+            "wrong_ratio_at_uv": 3.32367664057709,
+            "correct_ratio_at_uv": 0.0030087162745963464,
+            "wrong_grows_toward_uv": "True",
+            "correct_shrinks_toward_uv": "True"
+          },
+          {
+            "epsilon": 0.5,
+            "wrong_at_uv_exceeds_1": "True",
+            "correct_at_uv_small": "True",
+            "wrong_ratio_at_uv": 16.618383202885447,
+            "correct_ratio_at_uv": 0.015043581372981731,
+            "wrong_grows_toward_uv": "True",
+            "correct_shrinks_toward_uv": "True"
+          },
+          {
+            "epsilon": 1.0,
+            "wrong_at_uv_exceeds_1": "True",
+            "correct_at_uv_small": "True",
+            "wrong_ratio_at_uv": 33.236766405770894,
+            "correct_ratio_at_uv": 0.030087162745963462,
+            "wrong_grows_toward_uv": "True",
+            "correct_shrinks_toward_uv": "True"
+          }
+        ],
+        "wrong_grows_toward_uv": true,
+        "correct_shrinks_toward_uv": true,
+        "continuum_correction_vanishes": "True",
+        "note": "Eq (8.6) has sign error: \u03b5/g_k\u00b2 grows toward UV (wrong), \u03b5\u00b7g_k\u00b2 shrinks toward UV (correct). Corrections vanish as a\u21920."
+      }
+    },
+    {
+      "test": "APV-6",
+      "name": "D\u2084 fourth-moment isotropy",
+      "passed": true,
+      "details": {
+        "n_d4_vectors": 24,
+        "M2_diagonal": 0.5,
+        "lambda": 0.16666666666666666,
+        "max_isotropy_error": 0.0,
+        "d4_is_isotropic": true,
+        "z4_anisotropy": 0.25,
+        "z4_is_anisotropic": "True",
+        "M4_0000_d4": 0.5,
+        "M4_0011_d4": 0.16666666666666666,
+        "M4_0000_z4": 0.25,
+        "M4_0011_z4": 0.0
+      }
+    },
+    {
+      "test": "APV-7",
+      "name": "Splicing error at k_max",
+      "passed": true,
+      "details": [
+        {
+          "g_star_sq": 0.05,
+          "splice_error": 3.720075976020836e-44,
+          "pert_scale_g3": 0.01118033988749895,
+          "ratio_nonpert_to_pert": 3.3273371055385864e-42,
+          "nonpert_smaller": "True"
+        },
+        {
+          "g_star_sq": 0.1,
+          "splice_error": 1.9287498479639178e-22,
+          "pert_scale_g3": 0.0316227766016838,
+          "ratio_nonpert_to_pert": 6.0992425562694545e-21,
+          "nonpert_smaller": "True"
+        },
+        {
+          "g_star_sq": 0.15,
+          "splice_error": 3.3382377953649984e-15,
+          "pert_scale_g3": 0.05809475019311125,
+          "ratio_nonpert_to_pert": 5.746195283168356e-14,
+          "nonpert_smaller": "True"
+        },
+        {
+          "g_star_sq": 0.2,
+          "splice_error": 1.3887943864964021e-11,
+          "pert_scale_g3": 0.0894427190999916,
+          "ratio_nonpert_to_pert": 1.5527193274880352e-10,
+          "nonpert_smaller": "True"
+        },
+        {
+          "g_star_sq": 0.3,
+          "splice_error": 5.777748519419133e-08,
+          "pert_scale_g3": 0.1643167672515498,
+          "ratio_nonpert_to_pert": 3.5162257729754833e-07,
+          "nonpert_smaller": "True"
+        }
+      ]
+    },
+    {
+      "test": "APV-8",
+      "name": "Cutoff independence",
+      "passed": true,
+      "details": [
+        {
+          "beta": 80,
+          "g0_sq": 0.075,
+          "k_max": 34,
+          "extra_uv_increment": 0.020539595906443726,
+          "nonpert_residual": 1.1143831578403364e-29,
+          "residual_small": "True"
+        },
+        {
+          "beta": 120,
+          "g0_sq": 0.05,
+          "k_max": 103,
+          "extra_uv_increment": 0.01118033988749895,
+          "nonpert_residual": 3.720075976020836e-44,
+          "residual_small": "True"
+        },
+        {
+          "beta": 200,
+          "g0_sq": 0.03,
+          "k_max": 241,
+          "extra_uv_increment": 0.005196152422706632,
+          "nonpert_residual": 4.145590013564012e-73,
+          "residual_small": "True"
+        },
+        {
+          "beta": 400,
+          "g0_sq": 0.015,
+          "k_max": 586,
+          "extra_uv_increment": 0.0018371173070873834,
+          "nonpert_residual": 1.7185916560561663e-145,
+          "residual_small": "True"
+        }
+      ]
+    },
+    {
+      "test": "APV-9",
+      "name": "UV tail integral comparison",
+      "passed": true,
+      "details": [
+        {
+          "K": 5,
+          "actual_tail_sum": 0.9213763668504061,
+          "integral_bound": 1.0,
+          "bound_holds": true,
+          "tightness": 0.9213763668504061
+        },
+        {
+          "K": 10,
+          "actual_tail_sum": 0.628671125184414,
+          "integral_bound": 0.6666666666666666,
+          "bound_holds": true,
+          "tightness": 0.9430066877766211
+        },
+        {
+          "K": 20,
+          "actual_tail_sum": 0.4328930886631197,
+          "integral_bound": 0.45883146774112354,
+          "bound_holds": true,
+          "tightness": 0.9434686134198658
+        },
+        {
+          "K": 50,
+          "actual_tail_sum": 0.2643133136846221,
+          "integral_bound": 0.2857142857142857,
+          "bound_holds": true,
+          "tightness": 0.9250965978961773
+        },
+        {
+          "K": 100,
+          "actual_tail_sum": 0.1806000135727108,
+          "integral_bound": 0.20100756305184242,
+          "bound_holds": true,
+          "tightness": 0.8984737232306614
+        },
+        {
+          "K": 200,
+          "actual_tail_sum": 0.12179491766479686,
+          "integral_bound": 0.1417762410016672,
+          "bound_holds": true,
+          "tightness": 0.8590643735812169
+        }
+      ]
+    },
+    {
+      "test": "APV-10",
+      "name": "Bernoulli inequality (4^j \u2265 1+3j)",
+      "passed": true,
+      "details": {
+        "all_hold": true,
+        "tangent_line_is_weaker": true,
+        "note": "Convexity gives 4^j \u2265 1+ln(4)\u00b7j \u2248 1+1.386j, which is WEAKER than 1+3j. Correct justification: Bernoulli (1+3)^j \u2265 1+3j.",
+        "sample": [
+          {
+            "j": 0,
+            "lhs_4j": 1,
+            "rhs_1plus3j": 1,
+            "bernoulli_holds": true,
+            "tangent_bound": 1.0,
+            "tangent_weaker": "True"
+          },
+          {
+            "j": 1,
+            "lhs_4j": 4,
+            "rhs_1plus3j": 4,
+            "bernoulli_holds": true,
+            "tangent_bound": 2.386294361119891,
+            "tangent_weaker": "True"
+          },
+          {
+            "j": 2,
+            "lhs_4j": 16,
+            "rhs_1plus3j": 7,
+            "bernoulli_holds": true,
+            "tangent_bound": 3.772588722239781,
+            "tangent_weaker": "True"
+          },
+          {
+            "j": 3,
+            "lhs_4j": 64,
+            "rhs_1plus3j": 10,
+            "bernoulli_holds": true,
+            "tangent_bound": 5.1588830833596715,
+            "tangent_weaker": "True"
+          },
+          {
+            "j": 4,
+            "lhs_4j": 256,
+            "rhs_1plus3j": 13,
+            "bernoulli_holds": true,
+            "tangent_bound": 6.545177444479562,
+            "tangent_weaker": "True"
+          },
+          {
+            "j": 5,
+            "lhs_4j": 1024,
+            "rhs_1plus3j": 16,
+            "bernoulli_holds": true,
+            "tangent_bound": 7.931471805599453,
+            "tangent_weaker": "True"
+          }
+        ]
+      }
+    },
+    {
+      "test": "APV-11",
+      "name": "Projective norm weight sensitivity",
+      "passed": true,
+      "details": {
+        "1/(1+k\u00b2)": {
+          "weighted_sum": 0.005732723302969684,
+          "finite": "True",
+          "summable": "True"
+        },
+        "1/(1+k)": {
+          "weighted_sum": 0.03727343955495564,
+          "finite": "True",
+          "summable": "True"
+        },
+        "2^{-k}": {
+          "weighted_sum": 0.005241810236142923,
+          "finite": "True",
+          "summable": "True"
+        },
+        "1 (no weight)": {
+          "weighted_sum": 2.9241268475470226,
+          "finite": "True",
+          "summable": "True"
+        }
+      }
+    },
+    {
+      "test": "APV-12",
+      "name": "b\u2080 coefficient cross-check",
+      "passed": true,
+      "details": {
+        "b0_conv1": 0.06965831375410722,
+        "b0_conv2_alpha": 0.8753521870054244,
+        "b0_conv3": 0.06965831375410722,
+        "b0_numerical": 0.06965831375410722,
+        "b0_expected": 0.06966,
+        "b0_error": 2.420680293969428e-05,
+        "b1_numerical": 0.00409035230460079,
+        "b1_expected": 0.004092,
+        "b1_error": 0.0004026626097776207,
+        "conv1_eq_conv3": true,
+        "b0_convention_used": "\u03b2(g) = -b\u2080 g\u00b3, b\u2080 = 11/(16\u03c0\u00b2)"
+      }
+    },
+    {
+      "test": "APV-13",
+      "name": "Mass gap vs glueball comparison",
+      "passed": true,
+      "details": {
+        "sqrt_sigma_MeV": 440.00044596071086,
+        "lambda_msbar_MeV": 260.0,
+        "ratio_sqrt_sigma_to_lambda": 1.6923094075411955,
+        "glueball_0pp_MeV": 1710.0,
+        "mu_min": 0.5,
+        "c_lambda_for_glueball": 0.12865510115810258,
+        "c_lambda_for_CG_prediction": 0.13750013936272215,
+        "cg_prediction_MeV": 1600.0,
+        "cg_to_glueball_ratio": 0.935672514619883
+      }
+    },
+    {
+      "test": "APV-14",
+      "name": "Cluster bound verification",
+      "passed": true,
+      "details": {
+        "n_configs": 100,
+        "n_points": 4,
+        "avg_mst_distance": 39.33364403044063,
+        "all_decay": true,
+        "m_phys": 0.5
+      }
+    },
+    {
+      "test": "APV-15",
+      "name": "D\u2084 O(a\u2074) vs Z\u2074 O(a\u00b2) scaling",
+      "passed": true,
+      "details": {
+        "slope_d4": 3.999999999999999,
+        "slope_z4": 2.0,
+        "expected_d4": 4.0,
+        "expected_z4": 2.0,
+        "ratio_at_a01": 0.01,
+        "improvement_factor": 100.0
+      }
+    },
+    {
+      "test": "APV-16",
+      "name": "\u03b4 < 1/2 convergence threshold",
+      "passed": true,
+      "details": {
+        "critical_check": true,
+        "results": [
+          {
+            "delta": 0.1,
+            "g_exponent": 3.6,
+            "k_exponent": 1.8,
+            "converges_theory": true,
+            "partial_sum_10000": 1.8814409529691432,
+            "partial_sum_bounded": true
+          },
+          {
+            "delta": 0.2,
+            "g_exponent": 3.2,
+            "k_exponent": 1.6,
+            "converges_theory": true,
+            "partial_sum_10000": 2.27913074521919,
+            "partial_sum_bounded": true
+          },
+          {
+            "delta": 0.25,
+            "g_exponent": 3.0,
+            "k_exponent": 1.5,
+            "converges_theory": true,
+            "partial_sum_10000": 2.5923758486729866,
+            "partial_sum_bounded": true
+          },
+          {
+            "delta": 0.3,
+            "g_exponent": 2.8,
+            "k_exponent": 1.4,
+            "converges_theory": true,
+            "partial_sum_10000": 3.042751373103738,
+            "partial_sum_bounded": true
+          },
+          {
+            "delta": 0.4,
+            "g_exponent": 2.4,
+            "k_exponent": 1.2,
+            "converges_theory": true,
+            "partial_sum_10000": 4.799143769254644,
+            "partial_sum_bounded": true
+          },
+          {
+            "delta": 0.49,
+            "g_exponent": 2.04,
+            "k_exponent": 1.02,
+            "converges_theory": true,
+            "partial_sum_10000": 8.990523073363669,
+            "partial_sum_bounded": true
+          },
+          {
+            "delta": 0.5,
+            "g_exponent": 2.0,
+            "k_exponent": 1.0,
+            "converges_theory": false,
+            "partial_sum_10000": 9.787606036044348,
+            "partial_sum_bounded": true
+          },
+          {
+            "delta": 0.6,
+            "g_exponent": 1.6,
+            "k_exponent": 0.8,
+            "converges_theory": false,
+            "partial_sum_10000": 27.110644282579823,
+            "partial_sum_bounded": true
+          },
+          {
+            "delta": 0.75,
+            "g_exponent": 1.0,
+            "k_exponent": 0.5,
+            "converges_theory": false,
+            "partial_sum_10000": 198.54464544952413,
+            "partial_sum_bounded": true
+          }
+        ],
+        "standard_delta": 0.25,
+        "standard_converges": true,
+        "note": "Convergence requires 4-4\u03b4 > 2, i.e., \u03b4 < 1/2. Standard choice \u03b4=1/4 gives exponent 3, sum ~\u03b6(3/2)."
+      }
+    }
+  ]
+}

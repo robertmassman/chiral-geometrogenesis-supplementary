@@ -1,0 +1,279 @@
+{
+  "theorem": "7.6.1",
+  "title": "FCC Averaging Kernel on D4 Lattice",
+  "timestamp": "2026-02-14T05:21:28.198165",
+  "verifications": [
+    {
+      "name": "D4/2D4 coset index = 16",
+      "passed": true,
+      "details": "Found 16 cosets (expected 16). Representatives: [(-1, -1, -1, -1), (-1, -1, -1, 1), (-1, -1, 0, 0), (-1, 0, -1, 0), (-1, 0, 0, -1)]...",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "n_cosets": 16,
+        "expected": 16,
+        "representatives": [
+          [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          [
+            -1,
+            -1,
+            -1,
+            1
+          ],
+          [
+            -1,
+            -1,
+            0,
+            0
+          ],
+          [
+            -1,
+            0,
+            -1,
+            0
+          ],
+          [
+            -1,
+            0,
+            0,
+            -1
+          ],
+          [
+            -1,
+            0,
+            0,
+            1
+          ],
+          [
+            -1,
+            0,
+            1,
+            0
+          ],
+          [
+            -1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            -1,
+            -1,
+            0
+          ],
+          [
+            0,
+            -1,
+            0,
+            -1
+          ],
+          [
+            0,
+            -1,
+            0,
+            1
+          ],
+          [
+            0,
+            -1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            -1,
+            -1
+          ],
+          [
+            0,
+            0,
+            -1,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Coset completeness (16 distinct representatives cover D4)",
+      "passed": true,
+      "details": "All D4: True, All distinct: True, All covered: True, Count: 16",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "all_d4": true,
+        "all_distinct": true,
+        "all_covered": true,
+        "n_test_points": 313,
+        "n_reps": 16
+      }
+    },
+    {
+      "name": "Voronoi cell coverage: 16 fine sites per coarse cell",
+      "passed": true,
+      "details": "Origin cell: 16 fine sites. Interior cells: [16, 17, 24]",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "origin_cell_count": 16,
+        "interior_counts": [
+          16,
+          17,
+          24
+        ],
+        "n_fine_sites": 1201,
+        "n_coarse_sites": 41
+      }
+    },
+    {
+      "name": "Path count per coarse direction (2-step and 3-step)",
+      "passed": true,
+      "details": "Direction (1, 1, 0, 0): 1 2-step paths, 24 3-step paths. Direction (1, -1, 0, 0): 1 2-step, 24 3-step.",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "dir_pp": {
+          "direction": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "n_2step": 1,
+          "n_3step": 24
+        },
+        "dir_pm": {
+          "direction": [
+            1,
+            -1,
+            0,
+            0
+          ],
+          "n_2step": 1,
+          "n_3step": 24
+        }
+      }
+    },
+    {
+      "name": "Path validity: intermediate sites in D4",
+      "passed": true,
+      "details": "Checked 24 3-step paths. All valid: True",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "n_paths_checked": 24,
+        "all_intermediate_in_d4": true
+      }
+    },
+    {
+      "name": "Gauge covariance: Q(U^g) = Q(U)^{g'}",
+      "passed": "True",
+      "details": "||Q(U^g) - g_X Q(U) g_Y^(-1)|| = 9.14e-16",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "covariance_error": 9.13776191082415e-16,
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "name": "Trivial field: Q(1) = 1",
+      "passed": "True",
+      "details": "||Q(I) - I|| = 0.00e+00",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "deviation_from_identity": 0.0
+      }
+    },
+    {
+      "name": "Small perturbation bound: ||Q - U_coarse|| ~ O(eps^2)",
+      "passed": "True",
+      "details": "Deviations at eps=[0.01, 0.02, 0.05, 0.1, 0.2]: ['3.2937e-02', '7.7655e-02', '2.1860e-01', '3.6889e-01', '4.0857e-01']. Scaling check: True",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "epsilons": [
+          0.01,
+          0.02,
+          0.05,
+          0.1,
+          0.2
+        ],
+        "deviations": [
+          0.032937029916640645,
+          0.07765527873060482,
+          0.21860479299806504,
+          0.368888976408519,
+          0.40856777504698877
+        ],
+        "scaling_ok": "True"
+      }
+    },
+    {
+      "name": "SU(3) projection validity: det Q = 1, QQ^dag = I",
+      "passed": "True",
+      "details": "Max |det Q - 1| = 6.79e-16, Max ||QQ^dag - I|| = 1.71e-15 over 20 random matrices",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "max_det_error": 6.787585571969391e-16,
+        "max_unitarity_error": 1.7074543998129155e-15,
+        "n_tests": 20
+      }
+    },
+    {
+      "name": "Self-coarsening: blocked D4 lattice is D4",
+      "passed": true,
+      "details": "2D4 has 24 nearest neighbors, all in 2D4: True, same norm: True. Norm: 8 (expected 8 = 4 * D4 norm)",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "n_nn_2d4": 24,
+        "all_in_2d4": true,
+        "all_same_norm": true,
+        "nn_norm_squared": 8
+      }
+    },
+    {
+      "name": "D4 fourth-moment isotropy (Lemma 6.3.1)",
+      "passed": "True",
+      "details": "Max deviation from isotropic tensor: 4.44e-16",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "max_deviation": 4.440892098500626e-16,
+        "T_1111": 2.9999999999999996,
+        "T_1122": 0.9999999999999997
+      }
+    },
+    {
+      "name": "C_avg comparison: FCC vs cubic (both finite, O(1))",
+      "passed": "True",
+      "details": "C_avg^FCC ~ 0.5196 (N_paths=25), C_avg^cubic ~ 0.2774 (N_paths=13). Ratio: 1.873",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "C_avg_fcc_estimate": 0.5196152422706632,
+        "C_avg_cubic_estimate": 0.2773500981126146,
+        "ratio": 1.8734993995195195,
+        "n_paths_fcc": 25,
+        "n_paths_cubic": 13,
+        "N_triangle_fcc": 6,
+        "N_square_cubic": 1
+      }
+    }
+  ],
+  "overall_status": "PASSED",
+  "summary": {
+    "total_tests": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

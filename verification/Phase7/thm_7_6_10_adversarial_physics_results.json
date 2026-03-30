@@ -1,0 +1,352 @@
+{
+  "theorem": "7.6.10",
+  "title": "Adversarial Physics Verification \u2014 Constructive SU(3) YM Mass Gap",
+  "phase": "G.7 (Synthesis)",
+  "timestamp": "2026-02-14T20:15:45.763739",
+  "multi_agent_findings_addressed": [
+    "Finding 1: Non-perturbative universality (APV-A2, A3, A6)",
+    "Finding 4: String tension convention (APV-A5)",
+    "Note M-W4: Tautological APV tests (all tests now computational)"
+  ],
+  "verifications": [
+    {
+      "test_id": "APV-A1",
+      "description": "RG trajectory and mass gap survival chain",
+      "g0_sq": 1.0,
+      "g_final_sq": 0.248742,
+      "k_max": 22,
+      "ir_contraction_product_5steps": 0.0,
+      "rg_invariance_spread": 1.920447599058888e-16,
+      "m_phys_MeV": 296.0,
+      "asymptotic_freedom": true,
+      "passed": "True"
+    },
+    {
+      "test_id": "APV-A2",
+      "description": "D4 vs Z4 lattice artifact comparison",
+      "a_1pct_D4_fm": 0.1418,
+      "a_1pct_Z4_fm": 0.0448,
+      "D4_artifact_at_0.1fm": 0.002472,
+      "Z4_artifact_at_0.1fm": 0.0497,
+      "improvement_at_0.1fm": 20.1,
+      "D4_always_better": true,
+      "passed": true
+    },
+    {
+      "test_id": "APV-A3",
+      "description": "Two-loop beta function and scheme comparison",
+      "b0_computed": 0.06965831,
+      "b0_expected": 0.06965831,
+      "b0_match": true,
+      "b1_computed": 0.00409035,
+      "b1_expected": 0.00409035,
+      "b1_match": true,
+      "g_sq_initial": 1.0,
+      "g_sq_final": 0.578263,
+      "asymptotic_freedom": true,
+      "two_loop_correction_small": "True",
+      "lambda_ratio_FCC_over_cubic": 0.29,
+      "passed": "True"
+    },
+    {
+      "test_id": "APV-A4",
+      "description": "Error propagation with correlated uncertainties",
+      "analytic_delta_m_MeV": 102.6,
+      "analytic_rel_err_pct": 6.85,
+      "mc_results": {
+        "uncorrelated": {
+          "mean_MeV": 1498.3,
+          "std_MeV": 102.5,
+          "rel_err_pct": 6.84
+        },
+        "correlated_0.9": {
+          "mean_MeV": 1498.6,
+          "std_MeV": 110.3,
+          "rel_err_pct": 7.36
+        },
+        "anticorrelated_-0.9": {
+          "mean_MeV": 1497.5,
+          "std_MeV": 94.0,
+          "rel_err_pct": 6.28
+        }
+      },
+      "mc_analytic_agreement": "True",
+      "correlation_impact_pct": 7.6,
+      "anticorrelation_impact_pct": 8.3,
+      "n_samples": 100000,
+      "passed": "True"
+    },
+    {
+      "test_id": "APV-A5",
+      "description": "String tension convention analysis",
+      "cg_convention": {
+        "sqrt_sigma_MeV": 440.0,
+        "m_phys_MeV": 1498.0,
+        "dm_MeV": 103.0
+      },
+      "quenched_convention": {
+        "sqrt_sigma_MeV": 485.0,
+        "m_phys_MeV": 1651.0,
+        "dm_MeV": 86.0
+      },
+      "mp99_direct": {
+        "m_phys_MeV": 1710.0,
+        "dm_MeV": 94.0
+      },
+      "dimensionless_ratio_R_cont": 3.405,
+      "ratio_convention_independent": true,
+      "tension_CG_vs_quenched_sigma": 1.15,
+      "tension_CG_vs_MP99_sigma": 1.52,
+      "sqrt_sigma_tension_sigma": 1.15,
+      "passed": "True"
+    },
+    {
+      "test_id": "APV-A6",
+      "description": "Crossover path irrelevance bound",
+      "artifact_power": 2,
+      "D4_rotational_power": 4,
+      "epsilon_scan": [
+        {
+          "epsilon": 0.01,
+          "adjoint_at_0.1fm": 0.000456,
+          "rotational_at_0.1fm": 0.002081,
+          "total_at_0.1fm": 0.002538,
+          "a_1pct_fm": 0.02
+        },
+        {
+          "epsilon": 0.05,
+          "adjoint_at_0.1fm": 0.002281,
+          "rotational_at_0.1fm": 0.002081,
+          "total_at_0.1fm": 0.004362,
+          "a_1pct_fm": 0.02
+        },
+        {
+          "epsilon": 0.1,
+          "adjoint_at_0.1fm": 0.004562,
+          "rotational_at_0.1fm": 0.002081,
+          "total_at_0.1fm": 0.006643,
+          "a_1pct_fm": 0.2
+        },
+        {
+          "epsilon": 0.2,
+          "adjoint_at_0.1fm": 0.009124,
+          "rotational_at_0.1fm": 0.002081,
+          "total_at_0.1fm": 0.011206,
+          "a_1pct_fm": 0.2
+        },
+        {
+          "epsilon": 0.5,
+          "adjoint_at_0.1fm": 0.022811,
+          "rotational_at_0.1fm": 0.002081,
+          "total_at_0.1fm": 0.024892,
+          "a_1pct_fm": 0.2
+        }
+      ],
+      "adjoint_vanishes_at_finest": "True",
+      "adjoint_subleading_for_small_eps": true,
+      "conclusion": "Adjoint term is irrelevant (dim-6); vanishes as a->0",
+      "passed": true
+    },
+    {
+      "test_id": "APV-A7",
+      "description": "UV convergence rate (p-series, p=3/2)",
+      "p_exponent": 1.5,
+      "converges": true,
+      "zeta_3_2": 2.612375,
+      "coefficient": 33.324019,
+      "partial_sum_100": 80.406663,
+      "tail_bound_K10": 0.6325,
+      "tail_actual_K10": 0.5854,
+      "series_bounded": "True",
+      "passed": "True"
+    },
+    {
+      "test_id": "APV-A8",
+      "description": "IR convergence rate (super-exponential)",
+      "mu_min": 0.15,
+      "contraction_factors": [
+        0.165298888222,
+        0.000746585808,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "partial_sums": [
+        0.1652988882,
+        0.166045474,
+        0.166045474,
+        0.166045474,
+        0.166045474,
+        0.166045474
+      ],
+      "total_sum": 0.166045474,
+      "first_term_fraction": 0.995504,
+      "negligible_after_step_3": "True",
+      "passed": "True"
+    },
+    {
+      "test_id": "APV-A9",
+      "description": "D4 fourth-moment isotropy tensor verification",
+      "d4_coordination": 24,
+      "d4_nn_length": 1.0,
+      "d4_isotropic": "True",
+      "d4_O4": 4.440892098500626e-16,
+      "d4_ratio_T_iiii_over_T_iijj": 3.0,
+      "z4_coordination": 8,
+      "z4_isotropic": false,
+      "z4_O4": Infinity,
+      "z4_ratio": "inf",
+      "M2_isotropic": true,
+      "uniform_nn_length": "True",
+      "passed": true
+    },
+    {
+      "test_id": "APV-A10",
+      "description": "Glueball spectrum ratios vs lattice MC",
+      "predictions": {
+        "0++": {
+          "ratio": 3.405,
+          "m_cg_MeV": 1498.0,
+          "dm_cg_MeV": 103.0,
+          "m_quenched_MeV": 1651.0
+        },
+        "2++": {
+          "ratio": 5.45,
+          "m_cg_MeV": 2398.0,
+          "dm_cg_MeV": 164.0,
+          "m_quenched_MeV": 2643.0
+        },
+        "0-+": {
+          "ratio": 5.94,
+          "m_cg_MeV": 2614.0,
+          "dm_cg_MeV": 180.0,
+          "m_quenched_MeV": 2881.0
+        },
+        "1+-": {
+          "ratio": 6.33,
+          "m_cg_MeV": 2785.0,
+          "dm_cg_MeV": 192.0,
+          "m_quenched_MeV": 3070.0
+        },
+        "2-+": {
+          "ratio": 6.74,
+          "m_cg_MeV": 2966.0,
+          "dm_cg_MeV": 205.0,
+          "m_quenched_MeV": 3269.0
+        },
+        "3++": {
+          "ratio": 7.78,
+          "m_cg_MeV": 3423.0,
+          "dm_cg_MeV": 238.0,
+          "m_quenched_MeV": 3773.0
+        },
+        "0++*": {
+          "ratio": 5.69,
+          "m_cg_MeV": 2504.0,
+          "dm_cg_MeV": 174.0,
+          "m_quenched_MeV": 2760.0
+        }
+      },
+      "ordering_correct": true,
+      "mass_gap_is_0++": true,
+      "all_ratios_positive": true,
+      "n_states": 7,
+      "passed": true
+    },
+    {
+      "test_id": "APV-A11",
+      "description": "Mass gap landscape across parameter space",
+      "m_central_MeV": 1498.0,
+      "m_3sigma_low_MeV": 1170.0,
+      "m_3sigma_high_MeV": 1838.0,
+      "always_positive": "True",
+      "sigma_dominance_pct": 99.2,
+      "sensitivity_dm_dR_MeV": 440.0,
+      "sensitivity_dm_dsigma": 3.405,
+      "passed": true
+    },
+    {
+      "test_id": "APV-A12",
+      "description": "Dimensional analysis of all key equations",
+      "n_equations_checked": 10,
+      "all_consistent": true,
+      "equations": [
+        {
+          "eq": "(1.1)",
+          "lhs": "S",
+          "lhs_dim": 0,
+          "rhs_dim": 0,
+          "consistent": true
+        },
+        {
+          "eq": "(1.3)",
+          "lhs": "spec(H)",
+          "lhs_dim": 1,
+          "rhs_dim": 1,
+          "consistent": true
+        },
+        {
+          "eq": "(1.4)",
+          "lhs": "m_phys",
+          "lhs_dim": 1,
+          "rhs_dim": 1,
+          "consistent": true
+        },
+        {
+          "eq": "(1.5)",
+          "lhs": "|S_n^c|",
+          "note": "exp argument",
+          "lhs_dim": 0,
+          "rhs_dim": 0,
+          "consistent": true
+        },
+        {
+          "eq": "(1.6)",
+          "lhs": "m_k",
+          "lhs_dim": 1,
+          "rhs_dim": 1,
+          "consistent": true
+        },
+        {
+          "eq": "(1.9)",
+          "lhs": "m_phys",
+          "lhs_dim": 1,
+          "rhs_dim": 1,
+          "consistent": true
+        },
+        {
+          "eq": "(5.3)",
+          "lhs": "epsilon_{k+1}",
+          "lhs_dim": 0,
+          "rhs_dim": 0,
+          "consistent": true
+        },
+        {
+          "eq": "(5.11)",
+          "lhs": "A_infty",
+          "lhs_dim": 0,
+          "rhs_dim": 0,
+          "consistent": true,
+          "note": "lattice sum is dimensionless"
+        },
+        {
+          "eq": "(6.2)",
+          "lhs": "A_{k_max}",
+          "lhs_dim": 0,
+          "rhs_dim": 0,
+          "consistent": true
+        },
+        {
+          "eq": "(8.5)",
+          "lhs": "delta_m/m",
+          "lhs_dim": 0,
+          "rhs_dim": 0,
+          "consistent": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "overall_status": "ALL PASS"
+}

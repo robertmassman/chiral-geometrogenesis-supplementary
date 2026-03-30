@@ -1,0 +1,174 @@
+{
+  "tests": [
+    {
+      "name": "lambda = (1/phi^3)*sin(72deg)",
+      "passed": "True",
+      "details": "Computed: 0.224514, Claimed: 0.2245, Diff: 0.000014"
+    },
+    {
+      "name": "A = sin(36deg)/sin(45deg)",
+      "passed": "True",
+      "details": "Computed: 0.831254, Claimed: 0.8313, Diff: 0.000046"
+    },
+    {
+      "name": "A = sqrt((5-sqrt(5))/4) identity",
+      "passed": "True",
+      "details": "sin(36)/sin(45) = 0.8312538756, sqrt((5-sqrt5)/4) = 0.8312538756"
+    },
+    {
+      "name": "beta = 36deg/phi",
+      "passed": "True",
+      "details": "Computed: 22.2492 deg, Claimed: 22.25 deg (rounded)"
+    },
+    {
+      "name": "gamma = arccos(1/3) - 5deg",
+      "passed": "True",
+      "details": "Computed: 65.5288 deg, Claimed: 65.53 deg"
+    },
+    {
+      "name": "rho_bar = tan(beta)/(tan(beta)+tan(gamma))",
+      "passed": true,
+      "details": "Computed: 0.15696, Claimed: 0.159, PDG: 0.1581"
+    },
+    {
+      "name": "eta_bar = rho_bar * tan(gamma)",
+      "passed": true,
+      "details": "Computed: 0.34488, Claimed: 0.348, PDG: 0.3548"
+    },
+    {
+      "name": "rho_bar claimed value accuracy",
+      "passed": "True",
+      "details": "Proof claims 0.159, actual formula gives 0.15696 \u2014 difference = 0.00204 (favorable rounding detected)"
+    },
+    {
+      "name": "eta_bar claimed value accuracy",
+      "passed": "True",
+      "details": "Proof claims 0.348, actual formula gives 0.34488 \u2014 difference = 0.00312 (favorable rounding detected)"
+    },
+    {
+      "name": "PDG comparison: lambda",
+      "passed": "True",
+      "details": "0.73\u03c3 deviation, 0.22% error"
+    },
+    {
+      "name": "PDG comparison: A (vs global fit)",
+      "passed": "True",
+      "details": "0.35\u03c3 deviation, 0.64% error"
+    },
+    {
+      "name": "PDG comparison: A (vs exclusive)",
+      "passed": "True",
+      "details": "0.70\u03c3 deviation, 0.92% error"
+    },
+    {
+      "name": "PDG comparison: beta",
+      "passed": "True",
+      "details": "0.07\u03c3 deviation, 0.22% error"
+    },
+    {
+      "name": "PDG comparison: gamma",
+      "passed": "True",
+      "details": "0.01\u03c3 deviation, 0.04% error"
+    },
+    {
+      "name": "PDG comparison: rho_bar",
+      "passed": "True",
+      "details": "0.12\u03c3 deviation, 0.72% error"
+    },
+    {
+      "name": "PDG comparison: eta_bar",
+      "passed": "True",
+      "details": "1.38\u03c3 deviation, 2.80% error"
+    },
+    {
+      "name": "A value consistency (old vs new)",
+      "passed": false,
+      "details": "Proof uses A=0.823 (old formula) in \u00a77-9 but claims A=0.8313 (new formula) in \u00a75. Difference: 0.0083 = 1.0%"
+    },
+    {
+      "name": "J consistency (\u00a78 vs \u00a710)",
+      "passed": false,
+      "details": "\u00a78 claims J=3.0e-5 (using A=0.823), \u00a710 claims J=3.08e-5 (source unclear). With new A: J=3.052e-05, With old A: J=3.078e-05"
+    },
+    {
+      "name": "PDG A consistency within proof",
+      "passed": false,
+      "details": "\u00a71.3 cites A=0.826\u00b10.015, \u00a75.1 cites A=0.839\u00b10.011. These differ by 0.013, which is 0.9\u03c3 of the quoted error"
+    },
+    {
+      "name": "PDG beta consistency within proof",
+      "passed": false,
+      "details": "\u00a76.2 cites \u03b2=22.2\u00b0\u00b10.7\u00b0, \u00a710.2 summary cites \u03b2=22.9\u00b0 (no error). These differ by 0.7\u00b0, which is 1.0\u03c3 of the quoted error"
+    },
+    {
+      "name": "|V_cb| consistency within proof",
+      "passed": false,
+      "details": "\u00a72.3 uses |V_cb|=0.0408, \u00a75.1 uses |V_cb|=0.0422. Difference: 0.0014 (inclusive vs exclusive tension)"
+    },
+    {
+      "name": "Unitarity triangle angle sum",
+      "passed": "True",
+      "details": "\u03b1=92.2220\u00b0 + \u03b2=22.2492\u00b0 + \u03b3=65.5288\u00b0 = 180.0000\u00b0"
+    },
+    {
+      "name": "CKM unitarity (V V\u2020 \u2248 I)",
+      "passed": "True",
+      "details": "Max deviation from identity: 0.002391 (expected O(\u03bb\u2074) \u2248 0.002541)"
+    },
+    {
+      "name": "Look-elsewhere: sin(a)/sin(b) matches for A",
+      "passed": true,
+      "details": "Found 1 formulas matching A to 1% out of 256 candidates"
+    },
+    {
+      "name": "Look-elsewhere: angle/const matches for beta",
+      "passed": false,
+      "details": "Found 2 formulas matching beta to 2%"
+    },
+    {
+      "name": "Look-elsewhere: arccos(x)\u00b1angle matches for gamma",
+      "passed": false,
+      "details": "Found 7 formulas matching gamma to 2%"
+    },
+    {
+      "name": "Random target test: are geometric matches special?",
+      "passed": "False",
+      "details": "57.0% of random targets have sin(a)/sin(b) matches at 1% \u2014 formula is NOT special"
+    },
+    {
+      "name": "arccos(1/3) = tetrahedron dihedral angle",
+      "passed": "True",
+      "details": "arccos(1/3) = 70.5288\u00b0 \u2014 this is the DIHEDRAL angle, NOT the 'edge-face angle' (54.7356\u00b0) as claimed in \u00a76.4"
+    },
+    {
+      "name": "Golden section: 36\u00b0 = beta * phi",
+      "passed": "True",
+      "details": "beta * phi = 36.0000000000\u00b0 (should be exactly 36\u00b0)"
+    },
+    {
+      "name": "Golden gnomon terminology",
+      "passed": false,
+      "details": "Proof calls 36\u00b0-72\u00b0-72\u00b0 the 'golden gnomon' \u2014 it is actually the 'golden triangle'"
+    }
+  ],
+  "summary": {
+    "max_sigma_deviation": 1.3774575675711693,
+    "look_elsewhere": {
+      "A_matches": 1,
+      "beta_matches": 2,
+      "gamma_matches": 7,
+      "total_search_space": 704
+    },
+    "tests_passed": 21,
+    "tests_failed": 9,
+    "corrected_values": {
+      "lambda": 0.2245139882897927,
+      "A": 0.8312538755549069,
+      "beta_deg": 22.249223594996213,
+      "gamma_deg": 65.52877936550931,
+      "rho_bar": 0.15696275895587927,
+      "eta_bar": 0.3448823055134876,
+      "J": 3.052099643171009e-05
+    }
+  }
+}

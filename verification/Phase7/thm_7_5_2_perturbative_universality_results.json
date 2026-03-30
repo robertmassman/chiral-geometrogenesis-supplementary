@@ -1,0 +1,180 @@
+{
+  "theorem": "7.5.2",
+  "title": "Perturbative Universality: FCC \u2194 Hypercubic",
+  "timestamp": "2026-02-13T15:21:06.334379",
+  "verifications": [
+    {
+      "name": "b_0 universality",
+      "passed": true,
+      "details": "b_0 = 0.06965831, expected = 0.06965831, rel error = 0.00e+00",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "b0_computed": 0.06965831375410722,
+        "b0_expected": 0.06965831375410722,
+        "b0_numerical": 0.06966,
+        "relative_error": 0.0
+      }
+    },
+    {
+      "name": "b_1 universality",
+      "passed": true,
+      "details": "b_1 = 0.00409035, expected = 0.00409035, rel error = 2.12e-16",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "b1_computed": 0.004090352304600791,
+        "b1_expected": 0.00409035230460079,
+        "relative_error": 2.1205061896815174e-16
+      }
+    },
+    {
+      "name": "Lambda_FCC/Lambda_cubic \u2248 0.29",
+      "passed": true,
+      "details": "\u039b_FCC/\u039b_cubic = 0.2890 (Celmaster SU(2): 0.289), expected \u2248 0.29",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "lambda_ratio": 0.289,
+        "celmaster_su2": 0.289,
+        "expected": 0.29,
+        "relative_error": 0.003448275862068969
+      }
+    },
+    {
+      "name": "Lambda_FCC/Lambda_MSbar \u2248 0.010",
+      "passed": true,
+      "details": "\u039b_FCC/\u039b_MSbar = 0.01007, expected \u2248 0.010",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "lambda_fcc_over_msbar": 0.010069444444444443,
+        "lambda_fcc_over_cubic": 0.29,
+        "lambda_msbar_over_cubic": 28.8,
+        "expected": 0.01
+      }
+    },
+    {
+      "name": "Lambda_FCC \u2248 2.6 MeV (physical)",
+      "passed": true,
+      "details": "\u039b_FCC = 2.62 MeV, expected \u2248 2.6 MeV",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "lambda_fcc_mev": 2.6180555555555554,
+        "expected_mev": 2.6
+      }
+    },
+    {
+      "name": "Dashen-Gross relation consistency",
+      "passed": true,
+      "details": "\u0394_finite = 0.1729, tadpole = 0.3632 (210% of total)",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "delta_finite": 0.1729377129094914,
+        "tadpole_contribution": 0.36321000000000003,
+        "tadpole_fraction": 2.1002359398038846,
+        "celmaster_ratio": 0.289
+      }
+    },
+    {
+      "name": "Asymptotic scaling ratio a(\u03b2\u2081)/a(\u03b2\u2082)",
+      "passed": "True",
+      "details": "Perturbative: 9.692738, Direct: 9.692738, rel error = 3.67e-16",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta1": 6.0,
+        "beta2": 8.0,
+        "ratio_perturbative": 9.6927379747939,
+        "ratio_direct": 9.692737974793904,
+        "relative_error": 3.6653355203033264e-16
+      }
+    },
+    {
+      "name": "Observable agreement: m_{0++} from different routes",
+      "passed": true,
+      "details": "Route 1 (cubic): 1709 MeV, Route 2 (CG): 1498 MeV, Route 3 (\u039b): 1709 MeV",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "m_gap_cubic_mev": 1708.629,
+        "m_gap_cg_mev": 1498.2015184962204,
+        "m_gap_lambda_mev": 1708.6289999999997,
+        "c_gap": 6.571649999999999,
+        "sqrt_sigma_cubic_mev": 501.8,
+        "sqrt_sigma_cg_mev": 440.00044596071086
+      }
+    },
+    {
+      "name": "All operator differences have dimension \u2265 6 (irrelevant)",
+      "passed": true,
+      "details": "Minimum dimension in S_FCC - S_cubic: 6 (need > 4 for irrelevance)",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "min_dim_difference": 6,
+        "space_dim": 4,
+        "is_irrelevant": true
+      }
+    },
+    {
+      "name": "N_c-scaling: \u039b_FCC/\u039b_cubic approximately N_c-independent",
+      "passed": "True",
+      "details": "SU(2): 0.2890, SU(3) predicted: 0.2890",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "lambda_ratio_su2": 0.289,
+        "lambda_ratio_su3_predicted": 0.289,
+        "delta_over_2b0": 1.241328590869705
+      }
+    },
+    {
+      "name": "Dimensional analysis and Lambda ordering",
+      "passed": true,
+      "details": "\u039b_FCC = 2.62 MeV < \u039b_cubic = 9.03 MeV < \u039b_MSbar = 260 MeV: True",
+      "severity": "INFO",
+      "numerical_data": {
+        "lambda_fcc_mev": 2.6180555555555554,
+        "lambda_cubic_mev": 9.027777777777777,
+        "lambda_msbar_mev": 260.0,
+        "correct_ordering": true
+      }
+    },
+    {
+      "name": "Continuum limit convergence (both lattices \u2192 0)",
+      "passed": true,
+      "details": "FCC decreasing: True, cubic decreasing: True. a_FCC/a_cubic ratios: ['3.45', '3.45', '3.45', '3.45', '3.45']",
+      "severity": "SIGNIFICANT",
+      "numerical_data": {
+        "betas": [
+          6.0,
+          8.0,
+          10.0,
+          12.0,
+          15.0
+        ],
+        "a_fcc": [
+          0.002346133666889079,
+          0.0002420506644242557,
+          2.4302225537183055e-05,
+          2.3983544061823537e-06,
+          7.279471109468293e-08
+        ],
+        "a_cubic": [
+          0.0006803787633978328,
+          7.019469268303414e-05,
+          7.047645405783086e-06,
+          6.955227777928825e-07,
+          2.111046621745805e-08
+        ],
+        "a_ratio": [
+          3.4482758620689657,
+          3.448275862068966,
+          3.4482758620689657,
+          3.4482758620689657,
+          3.4482758620689653
+        ],
+        "ratio_cv": 8.145133647097945e-17
+      }
+    }
+  ],
+  "overall_status": "PASSED",
+  "summary": {
+    "total_tests": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

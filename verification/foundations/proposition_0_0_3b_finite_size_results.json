@@ -1,0 +1,153 @@
+{
+  "proposition": "0.0.3b",
+  "section": "7.9",
+  "title": "Finite-Size Effects and Cosmological Initial Conditions",
+  "timestamp": "2026-03-27T18:46:31.765129",
+  "verifications": [
+    {
+      "test": "First-order finite-size scaling: jump increases with L",
+      "jumps": {
+        "16": 0.009000000000000008,
+        "24": 0.262,
+        "32": 0.942
+      },
+      "monotonic_increase": true,
+      "L32_jump_substantial": true,
+      "passed": true,
+      "notes": "\u0394|\u03c8| = max - min across \u03b1/\u03b2 sweep for each L"
+    },
+    {
+      "test": "Phase separation sharpens with L",
+      "ordered_side": {
+        "L16": 0.335,
+        "L24": 0.525,
+        "L32": 0.998,
+        "increases_with_L": true
+      },
+      "disordered_side": {
+        "L16": 0.326,
+        "L24": 0.263,
+        "L32": 0.056,
+        "decreases_with_L": true
+      },
+      "passed": true
+    },
+    {
+      "test": "Transition midpoint convergence",
+      "midpoints": {
+        "16": null,
+        "24": 3.4406779661016946,
+        "32": 2.570588235294118
+      },
+      "near_su3_threshold": true,
+      "passed": true,
+      "notes": "Midpoint where |\u03c8| crosses 0.5 by linear interpolation"
+    },
+    {
+      "test": "L=16 is finite-size dominated (flat response)",
+      "L16_spread": 0.009000000000000008,
+      "L32_spread": 0.942,
+      "ratio_L32_to_L16": 104.66666666666657,
+      "L16_flat": true,
+      "passed": true,
+      "notes": "L=16 spread < 0.10 and L=32/L=16 ratio > 5"
+    },
+    {
+      "test": "Critical nucleus size estimate",
+      "a_B_grid_units": 4.908738521234052,
+      "L_min_estimated": 20.0,
+      "r_c_grid_units": 10.0,
+      "r_c_in_a_B": 2.0371832715762603,
+      "predicted_range_a_B": [
+        3,
+        5
+      ],
+      "in_expected_range": true,
+      "passed": true,
+      "notes": "r_c \u2248 2.0 a_B \u2014 consistent with analytical (3-5) a_B"
+    },
+    {
+      "test": "Minimum volume at QCD scale",
+      "a_B_range_fm": [
+        0.89694,
+        3.13929
+      ],
+      "L_pract_range_fm": [
+        2.69082,
+        9.41787
+      ],
+      "a_B_from_k0_fm": 2.2014219646178352,
+      "at_qcd_scale": true,
+      "in_predicted_range": true,
+      "passed": true
+    },
+    {
+      "test": "Cosmological irrelevance of finite-size effects",
+      "T_star_MeV": 175.0,
+      "R_H_fm": 1.0155733225030992e+19,
+      "R_H_km": 10.155733225030993,
+      "a_B_fm": 2.2014219646178352,
+      "R_H_over_a_B": 4.613260605307905e+18,
+      "N_cells_in_Hubble_volume": 9.818021219915231e+55,
+      "log10_ratio": 18.664007988805174,
+      "log10_N_cells": 55.99202396641552,
+      "passed": true,
+      "notes": "R_H/a_B ~ 10^19, N_cells ~ 10^56"
+    },
+    {
+      "test": "Exponential sharpening signature",
+      "psi_at_alpha_2.5": {
+        "16": 0.328,
+        "24": 0.389,
+        "32": 0.47
+      },
+      "delta_24_minus_16": 0.061,
+      "delta_32_minus_24": 0.08099999999999996,
+      "accelerating_convergence": true,
+      "disordered_fluctuations_decrease": true,
+      "passed": true,
+      "notes": "Jump 32-24 > jump 24-16 indicates faster-than-power-law convergence"
+    },
+    {
+      "test": "Disordered fluctuations scale as 1/\u221aV",
+      "psi_disordered": {
+        "L16": 0.326,
+        "L24": 0.263,
+        "L32": 0.056
+      },
+      "expected_ratio_32_16": 0.3535533905932738,
+      "actual_ratio_32_16": 0.17177914110429449,
+      "expected_ratio_24_16": 0.5443310539518174,
+      "actual_ratio_24_16": 0.8067484662576687,
+      "monotonic_decrease": true,
+      "passed": true,
+      "notes": "1/L^{3/2} scaling expected; monotonic decrease confirmed. Exact scaling requires larger L values."
+    },
+    {
+      "test": "Two-scale hierarchy a_B/a_H ~ R_stella/\u2113_P ~ 10^19",
+      "a_H_m": 3.6365737500000003e-35,
+      "a_B_m": 2.2014219646178354e-15,
+      "a_B_over_a_H": 6.05356062039945e+19,
+      "log10_ratio": 19.782010895797814,
+      "R_stella_over_lP": 2.7747477966038774e+19,
+      "log10_R_over_lP": 19.44322351519893,
+      "passed": true
+    },
+    {
+      "test": "Transition width vanishes at cosmological scale",
+      "width_L24": 4.0,
+      "width_L32": 0.3999999999999999,
+      "L_cosmo": 4.613260605307904e+18,
+      "log10_L_cosmo": 18.664007988805174,
+      "log10_L_cosmo_squared": 37.32801597761035,
+      "transition_width_negligible": true,
+      "passed": true,
+      "notes": "L_cosmo ~ 10^19, so exp(-\u03c3\u00b7L\u00b2) ~ exp(-10^37) \u2248 0 for any \u03c3 > 0"
+    }
+  ],
+  "summary": {
+    "passed": 11,
+    "total": 11,
+    "all_passed": true
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "prediction": "8.4.1",
+  "title": "Proton Decay from Geometric GUT",
+  "timestamp": "2026-02-28T12:31:20.025694",
+  "tests": [
+    {
+      "name": "Central lifetime computation",
+      "tau_yr": 5.109608878491666e+36,
+      "log10_tau": 36.708387657783675,
+      "gamma_gev": 4.08201073438092e-69,
+      "superk_ratio": 212.90036993715276,
+      "passed": true
+    },
+    {
+      "name": "Uncertainty propagation",
+      "median_yr": 5.279482543207574e+36,
+      "log10_median": 36.72259135820761,
+      "log10_sigma": 0.3639205266813513,
+      "lower_1sigma_yr": 2.3194627232375346e+36,
+      "upper_1sigma_yr": 1.183904584114739e+37,
+      "lower_exceeds_superk": "True",
+      "passed": "True"
+    },
+    {
+      "name": "Branching ratios",
+      "branching_ratios": {
+        "p \u2192 e\u207a\u03c0\u2070": 0.38129362845366255,
+        "p \u2192 \u03bc\u207a\u03c0\u2070": 0.17349844360059555,
+        "p \u2192 \u03bd\u0304K\u207a": 0.003465692301167903,
+        "p \u2192 e\u207a\u03b7": 0.0006430087939370049,
+        "p \u2192 e\u207a\u03c9": 0.0036789369069541384,
+        "n \u2192 e\u207a\u03c0\u207b": 0.38022624567563346,
+        "n \u2192 \u03bd\u0304\u03c0\u2070": 0.05719404426804938
+      },
+      "br_sum": 0.9999999999999999,
+      "all_channels_above_bounds": true,
+      "passed": true
+    },
+    {
+      "name": "Dimensional analysis",
+      "checks": [
+        {
+          "check": "Decay rate dimensions",
+          "expected": "[GeV\u00b9]",
+          "computed_power": 1,
+          "passed": true
+        },
+        {
+          "check": "Lifetime dimensions",
+          "expected": "[seconds]",
+          "passed": true,
+          "notes": "\u03c4 = \u210f/\u0393 \u2192 [GeV\u00b7s]/[GeV] = [s]"
+        },
+        {
+          "check": "Branching ratios sum to 1",
+          "computed_sum": 0.9999999999999999,
+          "passed": true
+        },
+        {
+          "check": "M\u2074 scaling of decay rate",
+          "ratio_computed": 16.0,
+          "ratio_expected": 16.0,
+          "relative_error": 0.0,
+          "passed": true
+        },
+        {
+          "check": "\u03b1\u00b2 scaling of decay rate",
+          "ratio_computed": 3.3261388067723736,
+          "ratio_expected": 3.3261388067723736,
+          "relative_error": 0.0,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "Literature cross-checks",
+      "checks": [
+        {
+          "check": "Minimal SU(5) lifetime",
+          "expected_range": "10\u00b2\u2079\u201310\u00b3\u00b9 years",
+          "computed_yr": 2.42229241108823e+30,
+          "log10_tau": 30.384226568557942,
+          "passed": "True",
+          "notes": "Minimal SU(5) with M_X = 4\u00d710\u00b9\u2074 GeV, \u03b1_GUT = 1/42"
+        },
+        {
+          "check": "Standard SO(10) lifetime",
+          "expected_range": "10\u00b3\u2074\u201310\u00b3\u2076 years",
+          "computed_yr": 8.582385243368158e+35,
+          "log10_tau": 35.933608005106215,
+          "passed": "True",
+          "notes": "SO(10) with M_GUT = 10\u00b9\u2076 GeV, \u03b1_GUT = 1/40"
+        },
+        {
+          "check": "CG prediction exceeds Super-K bound",
+          "tau_cg_yr": 5.109608878491666e+36,
+          "superk_bound_yr": 2.4e+34,
+          "ratio": 212.90036993715276,
+          "passed": true
+        },
+        {
+          "check": "CG within SO(10) range",
+          "tau_cg_yr": 5.109608878491666e+36,
+          "log10_tau": 36.708387657783675,
+          "expected_range": "10\u00b3\u2074\u201310\u00b3\u2078 years",
+          "passed": "True"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "Reconciliation with Prop 2.4.2",
+      "reconciliation": {
+        "old_alpha_gut_inv": 44.5,
+        "old_m_gut_gev": 1e+16,
+        "old_tau_claimed_yr": 2e+39,
+        "old_tau_computed_yr": 6.57339213604932e+35,
+        "new_alpha_gut_inv": 24.4,
+        "new_m_gut_gev": 2e+16,
+        "new_tau_yr": 5.109608878491666e+36,
+        "scaling_m4": 16.0,
+        "scaling_alpha2": 0.3006489079661658,
+        "scaling_total": 4.8103825274586525,
+        "discrepancy_sources": [
+          "1. \u03b1_GUT changed: 1/44.5 \u2192 1/24.4 (larger coupling, MORE decay)",
+          "2. M_GUT changed: 10\u00b9\u2076 \u2192 2\u00d710\u00b9\u2076 GeV (heavier X/Y, LESS decay)",
+          "3. Matrix element updated: 0.015 \u2192 0.0118 GeV\u00b3 (lattice QCD improvement)",
+          "4. Net effect: M\u2074 enhancement wins over \u03b1\u00b2 enhancement"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "Sensitivity analysis",
+      "data": [
+        {
+          "parameter": "M_GUT",
+          "value_gev": 1e+16,
+          "alpha_gut_inv": 24.4,
+          "tau_yr": 3.1935055490572912e+35,
+          "above_superk": true
+        },
+        {
+          "parameter": "M_GUT",
+          "value_gev": 1.5e+16,
+          "alpha_gut_inv": 24.4,
+          "tau_yr": 1.6167121842102537e+36,
+          "above_superk": true
+        },
+        {
+          "parameter": "M_GUT",
+          "value_gev": 2e+16,
+          "alpha_gut_inv": 24.4,
+          "tau_yr": 5.109608878491666e+36,
+          "above_superk": true
+        },
+        {
+          "parameter": "M_GUT",
+          "value_gev": 2.5e+16,
+          "alpha_gut_inv": 24.4,
+          "tau_yr": 1.2474631051005046e+37,
+          "above_superk": true
+        },
+        {
+          "parameter": "M_GUT",
+          "value_gev": 3e+16,
+          "alpha_gut_inv": 24.4,
+          "tau_yr": 2.586739494736406e+37,
+          "above_superk": true
+        },
+        {
+          "parameter": "\u03b1_GUT\u207b\u00b9",
+          "value_gev": 20.0,
+          "alpha_gut_inv": 20.0,
+          "tau_yr": 3.432954097347263e+36,
+          "above_superk": true
+        },
+        {
+          "parameter": "\u03b1_GUT\u207b\u00b9",
+          "value_gev": 22.0,
+          "alpha_gut_inv": 22.0,
+          "tau_yr": 4.1538744577901883e+36,
+          "above_superk": true
+        },
+        {
+          "parameter": "\u03b1_GUT\u207b\u00b9",
+          "value_gev": 24.4,
+          "alpha_gut_inv": 24.4,
+          "tau_yr": 5.109608878491666e+36,
+          "above_superk": true
+        },
+        {
+          "parameter": "\u03b1_GUT\u207b\u00b9",
+          "value_gev": 26.0,
+          "alpha_gut_inv": 26.0,
+          "tau_yr": 5.801692424516876e+36,
+          "above_superk": true
+        },
+        {
+          "parameter": "\u03b1_GUT\u207b\u00b9",
+          "value_gev": 30.0,
+          "alpha_gut_inv": 30.0,
+          "tau_yr": 7.724146719031344e+36,
+          "above_superk": true
+        },
+        {
+          "parameter": "\u03b1_GUT\u207b\u00b9",
+          "value_gev": 35.0,
+          "alpha_gut_inv": 35.0,
+          "tau_yr": 1.0513421923125994e+37,
+          "above_superk": true
+        },
+        {
+          "parameter": "\u03b1_GUT\u207b\u00b9",
+          "value_gev": 40.0,
+          "alpha_gut_inv": 40.0,
+          "tau_yr": 1.3731816389389052e+37,
+          "above_superk": true
+        },
+        {
+          "parameter": "\u03b1_GUT\u207b\u00b9",
+          "value_gev": 44.5,
+          "alpha_gut_inv": 44.5,
+          "tau_yr": 1.6995268378179799e+37,
+          "above_superk": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "Future experiment comparison",
+      "passed": true,
+      "notes": "Informational comparison with projected sensitivities"
+    }
+  ],
+  "n_passed": 8,
+  "n_total": 8,
+  "overall_status": "PASSED"
+}

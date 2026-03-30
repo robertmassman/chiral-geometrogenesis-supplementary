@@ -1,0 +1,320 @@
+{
+  "proposition": "7.4.4",
+  "title": "Scaling Window Identification on FCC",
+  "timestamp": "2026-02-13T12:17:05.799007",
+  "summary": "12/12 tests passed",
+  "tests": [
+    {
+      "name": "T1: Critical coupling beta_c",
+      "passed": "True",
+      "details": {
+        "beta_c": 11.42157642523857,
+        "u3_at_beta_c": 0.662337782140526,
+        "u3_target": 0.662337782140526,
+        "u3_error": 0.0,
+        "reasonable_range": true
+      }
+    },
+    {
+      "name": "T2: Mass gap vanishes at beta_c",
+      "passed": "True",
+      "details": {
+        "beta_c_numerical": 11.42157642523857,
+        "beta_tested": 11.32157642523857,
+        "mu_numerical": 0.033792495227010555,
+        "u3": 0.6595459269835083,
+        "u3_critical": 0.662337782140526,
+        "mu_analytical_at_exact_bc": 0.0,
+        "mu_small_near_bc": "True",
+        "analytical_exactly_zero": "True"
+      }
+    },
+    {
+      "name": "T3: Correlation length diverges",
+      "passed": true,
+      "details": {
+        "results": [
+          {
+            "beta": 5.0,
+            "mu": 5.01285980603012,
+            "xi": 0.19948692736171675
+          },
+          {
+            "beta": 7.0,
+            "mu": 2.520963757515675,
+            "xi": 0.3966736915668579
+          },
+          {
+            "beta": 9.0,
+            "mu": 1.0568019867654455,
+            "xi": 0.9462510598231374
+          },
+          {
+            "beta": 10.0,
+            "mu": 0.552023091498099,
+            "xi": 1.8115184226916414
+          },
+          {
+            "beta": 11.0,
+            "mu": 0.14714297536350385,
+            "xi": 6.796111044578156
+          }
+        ],
+        "xi_increasing": true,
+        "note": "Correlation length diverges at beta_c"
+      }
+    },
+    {
+      "name": "T4: Dimensionless ratio R(beta)",
+      "passed": true,
+      "details": {
+        "results": [
+          {
+            "beta": 2.0,
+            "mu": 13.110822577747062,
+            "u3": 0.12862778532208338,
+            "sigma_lat": 2.050832430468924,
+            "R": 9.155137095253949,
+            "R_tilde": 6.392927273316653
+          },
+          {
+            "beta": 3.0,
+            "mu": 9.457600443450797,
+            "u3": 0.20307505003021883,
+            "sigma_lat": 1.5941796636818908,
+            "R": 7.490526244932288,
+            "R_tilde": 5.932581288615664
+          },
+          {
+            "beta": 4.0,
+            "mu": 6.898777393030569,
+            "u3": 0.2796191494093043,
+            "sigma_lat": 1.2743267823793623,
+            "R": 6.1112735827835065,
+            "R_tilde": 5.413664288016847
+          },
+          {
+            "beta": 5.0,
+            "mu": 5.01285980603012,
+            "u3": 0.35395443670527055,
+            "sigma_lat": 1.038587084004306,
+            "R": 4.918855903956751,
+            "R_tilde": 4.826614814718162
+          },
+          {
+            "beta": 6.0,
+            "mu": 3.596088826592621,
+            "u3": 0.4225317396499834,
+            "sigma_lat": 0.8614907115746188,
+            "R": 3.8744058429012176,
+            "R_tilde": 4.174263028349717
+          },
+          {
+            "beta": 7.0,
+            "mu": 2.520963757515675,
+            "u3": 0.48330851688000054,
+            "sigma_lat": 0.7271000779400005,
+            "R": 2.956442974563628,
+            "R_tilde": 3.467148242726089
+          },
+          {
+            "beta": 8.0,
+            "mu": 1.6968047080281412,
+            "u3": 0.5357539902135647,
+            "sigma_lat": 0.6240801967540588,
+            "R": 2.1478881382622528,
+            "R_tilde": 2.7188888813545034
+          },
+          {
+            "beta": 8.5,
+            "mu": 1.357207032808228,
+            "u3": 0.5589862031980505,
+            "sigma_lat": 0.5816304873515696,
+            "R": 1.7796005036049503,
+            "R_tilde": 2.333452359053966
+          }
+        ],
+        "R_decreasing": true
+      }
+    },
+    {
+      "name": "T5: Analytical R formula",
+      "passed": true,
+      "details": {
+        "results": [
+          {
+            "beta": 3.0,
+            "R_numerical": 7.490526244932288,
+            "R_formula": 7.490526244932288,
+            "relative_error": 0.0
+          },
+          {
+            "beta": 5.0,
+            "R_numerical": 4.918855903956751,
+            "R_formula": 4.918855903956751,
+            "relative_error": 0.0
+          },
+          {
+            "beta": 7.0,
+            "R_numerical": 2.956442974563628,
+            "R_formula": 2.956442974563628,
+            "relative_error": 0.0
+          },
+          {
+            "beta": 8.0,
+            "R_numerical": 2.1478881382622528,
+            "R_formula": 2.1478881382622528,
+            "relative_error": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "name": "T6: CG lattice spacing value",
+      "passed": "True",
+      "details": {
+        "a_CG_m": 3.640799706700477e-35,
+        "a_CG_fm": 3.6407997067004766e-20,
+        "l_Planck_m": 1.616255e-35,
+        "ratio_a_CG_over_l_P": 2.252614659630118,
+        "planck_scale": "True",
+        "sub_qcd": "True"
+      }
+    },
+    {
+      "name": "T7: beta_* from CG spacing",
+      "passed": "True",
+      "details": {
+        "beta_star": 41.03335760376453,
+        "expected": "~41.0 (with Lambda_FCC = 2.6 MeV from Prop 7.4.3)",
+        "deep_perturbative": "True",
+        "above_beta_c": "True",
+        "near_expected_41": "True",
+        "Lambda_FCC_MeV": 2.6,
+        "note": "beta_* >> beta_c confirms CG lattice spacing is at Planck scale"
+      }
+    },
+    {
+      "name": "T8: mu/sigma formula",
+      "passed": true,
+      "details": {
+        "results": [
+          {
+            "beta": 3.0,
+            "ratio_numerical": 5.932581288615664,
+            "ratio_formula": 5.932581288615664,
+            "relative_error": 0.0
+          },
+          {
+            "beta": 5.0,
+            "ratio_numerical": 4.826614814718162,
+            "ratio_formula": 4.826614814718162,
+            "relative_error": 0.0
+          },
+          {
+            "beta": 7.0,
+            "ratio_numerical": 3.467148242726089,
+            "ratio_formula": 3.467148242726089,
+            "relative_error": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "name": "T9: R(beta) monotonicity and range",
+      "passed": "True",
+      "details": {
+        "strictly_decreasing": true,
+        "R_at_beta_c_analytical": 0.0,
+        "R_zero_at_bc": "True",
+        "R_at_beta_5": 4.918855903956749,
+        "R_at_beta_8": 2.1478881382622528,
+        "variation_factor_5_to_8": 2.2900894214799967,
+        "note": "R is proven strictly monotonically decreasing to 0 at beta_c"
+      }
+    },
+    {
+      "name": "T10: Physical mass gap (non-pert)",
+      "passed": true,
+      "details": {
+        "results": [
+          {
+            "beta": 5.0,
+            "mu": 5.01285980603012,
+            "u3": 0.35395443670527055,
+            "m_phys_MeV": 0.0201101341868192,
+            "R_ratio": 4.918855903956751,
+            "m_phys_over_sqrt_sigma": 4.5704850424589095e-05
+          },
+          {
+            "beta": 6.0,
+            "mu": 3.596088826592621,
+            "u3": 0.4225317396499834,
+            "m_phys_MeV": 0.01313904079885646,
+            "R_ratio": 3.8744058429012176,
+            "m_phys_over_sqrt_sigma": 2.9861456361037407e-05
+          },
+          {
+            "beta": 7.0,
+            "mu": 2.520963757515675,
+            "u3": 0.48330851688000054,
+            "m_phys_MeV": 0.008461973259347952,
+            "R_ratio": 2.956442974563628,
+            "m_phys_over_sqrt_sigma": 1.923175740760898e-05
+          },
+          {
+            "beta": 8.0,
+            "mu": 1.6968047080281412,
+            "u3": 0.5357539902135647,
+            "m_phys_MeV": 0.005276670945406449,
+            "R_ratio": 2.1478881382622528,
+            "m_phys_over_sqrt_sigma": 1.199243396683284e-05
+          }
+        ],
+        "all_positive": true,
+        "note": "m_phys varies with beta; should stabilize in scaling window"
+      }
+    },
+    {
+      "name": "T11: R_tilde -> 8 at strong coupling",
+      "passed": "True",
+      "details": {
+        "results": [
+          {
+            "beta": 0.1,
+            "R_tilde": 7.364309811500177
+          },
+          {
+            "beta": 0.5,
+            "R_tilde": 7.069713276183996
+          },
+          {
+            "beta": 1.0,
+            "R_tilde": 6.827648227153637
+          },
+          {
+            "beta": 2.0,
+            "R_tilde": 6.392927273316653
+          }
+        ],
+        "closest_to_8": 7.364309811500177,
+        "expected_limit": 8.0,
+        "deviation": 0.6356901884998232,
+        "approaching_from_below": "True",
+        "note": "R_tilde = 8 - 3*ln(3)/x approaches 8 as x -> infinity (beta -> 0)"
+      }
+    },
+    {
+      "name": "T12: Glueball ratio R=3.93 location",
+      "passed": true,
+      "details": {
+        "glueball_target": 3.93,
+        "match_beta": 5.962025316455696,
+        "beta_c": 11.4,
+        "distance_from_bc": 5.4,
+        "far_from_scaling_window": true,
+        "note": "R = 3.93 occurs at beta ~ 6.0, which is 5.4 units below beta_c. This is in the strong-coupling regime, not the scaling window."
+      }
+    }
+  ]
+}

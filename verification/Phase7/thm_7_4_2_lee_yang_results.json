@@ -1,0 +1,162 @@
+{
+  "theorem": "7.4.2",
+  "title": "Lee-Yang Zero Analysis for FCC Partition Function",
+  "timestamp": "2026-02-13T08:51:23.619169",
+  "verifications": [
+    {
+      "name": "Lee-Yang zeros 1/L scaling",
+      "passed": "True",
+      "scaling_exponent": 1.0,
+      "details": {
+        "beta_c": 0.9269541185637176,
+        "N_s": 1,
+        "L_values": [
+          4,
+          8,
+          16,
+          32,
+          64
+        ],
+        "nearest_im": {
+          "4": 0.22098799895004184,
+          "8": 0.08835458463011273,
+          "16": 0.04417864601298871,
+          "32": 0.022089323345553136,
+          "64": 0.011044661672776627
+        },
+        "analytical_im": {
+          "4": 0.22089323311197437,
+          "8": 0.11044661655598718,
+          "16": 0.05522330827799359,
+          "32": 0.027611654138996796,
+          "64": 0.013805827069498398
+        },
+        "scaling_exponent": 1.0,
+        "scaling_amplitude": 0.883572932447897,
+        "scaling_passed": "True"
+      }
+    },
+    {
+      "name": "Zero density linear scaling",
+      "passed": "True",
+      "power_exponent": 0.9657859035691578,
+      "details": {
+        "L_values": [
+          4,
+          8,
+          16,
+          32,
+          64
+        ],
+        "zero_counts": {
+          "4": 20,
+          "8": 38,
+          "16": 74,
+          "32": 146,
+          "64": 290
+        },
+        "density_scaling": {
+          "4": 5.0,
+          "8": 4.75,
+          "16": 4.625,
+          "32": 4.5625,
+          "64": 4.53125
+        },
+        "power_exponent": 0.9657859035691578,
+        "linear_slope": 4.500000000000002,
+        "density_scaling_passed": "True"
+      }
+    },
+    {
+      "name": "Nonzero latent heat (first-order criterion)",
+      "passed": true,
+      "intensive_latent_heat": 3.5555555555555554,
+      "details": {
+        "beta_c": 0.9269541185637176,
+        "N_s_values": [
+          1,
+          2,
+          4,
+          8
+        ],
+        "latent_heats": {
+          "1": {
+            "analytical": 3.5555555555555554,
+            "numerical": 3.555555561085555,
+            "relative_error": 1.5553123788869527e-09,
+            "nonzero": true
+          },
+          "2": {
+            "analytical": 7.111111111111111,
+            "numerical": 7.11111112217111,
+            "relative_error": 1.5553123788869527e-09,
+            "nonzero": true
+          },
+          "4": {
+            "analytical": 14.222222222222221,
+            "numerical": 14.22222224434222,
+            "relative_error": 1.5553123788869527e-09,
+            "nonzero": true
+          },
+          "8": {
+            "analytical": 28.444444444444443,
+            "numerical": 28.44444448868444,
+            "relative_error": 1.5553123788869527e-09,
+            "nonzero": true
+          }
+        },
+        "all_passed": true,
+        "intensive_latent_heat": 3.5555555555555554
+      }
+    },
+    {
+      "name": "Eigenvalue crossing at beta_c",
+      "passed": "True",
+      "crossing_ratio": 1.0000000000000002,
+      "details": {
+        "beta_c": 0.9269541185637176,
+        "eigenvalues_at_crossing": {
+          "1": {
+            "dim": 1,
+            "casimir": 0.0,
+            "u_R": 1.0,
+            "lambda_R": 1.0
+          },
+          "3": {
+            "dim": 3,
+            "casimir": 1.3333333333333333,
+            "u_R": 0.662337782140526,
+            "lambda_R": 1.0000000000000002
+          },
+          "3bar": {
+            "dim": 3,
+            "casimir": 1.3333333333333333,
+            "u_R": 0.662337782140526,
+            "lambda_R": 1.0000000000000002
+          },
+          "6": {
+            "dim": 6,
+            "casimir": 3.3333333333333335,
+            "u_R": 0.3570251610243048,
+            "lambda_R": 0.05702224880885192
+          },
+          "8": {
+            "dim": 8,
+            "casimir": 3.0,
+            "u_R": 0.39575730626831834,
+            "lambda_R": 0.3081069477053844
+          },
+          "10": {
+            "dim": 10,
+            "casimir": 6.0,
+            "u_R": 0.15662384546475552,
+            "lambda_R": 0.0003621287964795245
+          }
+        },
+        "crossing_ratio": 1.0000000000000002,
+        "crossing_confirmed": "True"
+      }
+    }
+  ],
+  "overall_status": "PASSED"
+}

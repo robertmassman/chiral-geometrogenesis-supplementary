@@ -1,0 +1,166 @@
+{
+  "proposition": "7.8.7",
+  "title": "Three-Gluon Glueball Spectrum \u2014 Adversarial Physics",
+  "timestamp": "2026-02-28T10:53:07.188380",
+  "parameters": {
+    "alpha_V": 0.373,
+    "delta_alpha_V": 0.01,
+    "sqrt_sigma_MeV": 440.0,
+    "sigma_3g_eff": 2.25,
+    "f_Y": 0.9515,
+    "f_R": 1.34,
+    "f_hyp": 0.85
+  },
+  "tests": {
+    "passed": 12,
+    "total": 12,
+    "details": [
+      {
+        "name": "MAV-1: Bose symmetry",
+        "passed": true,
+        "details": "8 helicity states; C=(-1)^3=-1; K=0: ['1+-', '3+-']; K=1: ['0--', '1--', '2--']; 0-- exotic=True; 2-- non-exotic (qqbar \u00b3D\u2082: L=2,S=1)",
+        "numerical_data": {
+          "n_helicity": 8,
+          "C": -1,
+          "K0": [
+            "1+-",
+            "3+-"
+          ],
+          "K1": [
+            "0--",
+            "1--",
+            "2--"
+          ],
+          "0mm_exotic": true,
+          "2mm_exotic": false
+        }
+      },
+      {
+        "name": "MAV-2: 6D matrix elements via scipy",
+        "passed": true,
+        "details": "All position/inverse matrix elements verified to <1e-10; <p^2> verified to <5%; max_err=1.60e-15"
+      },
+      {
+        "name": "MAV-3: Numerical optimization vs closed form",
+        "passed": "True",
+        "details": "All K-centroids agree between numerical and closed form"
+      },
+      {
+        "name": "MAV-4: Helicity selection rules",
+        "passed": true,
+        "details": "K=0: P=+,C=- => ['1+-', '3+-']; K=1: P=-,C=- => ['0--', '1--', '2--']; K=2: P=+,C=- => 2+-,3--",
+        "numerical_data": {
+          "P_K0": 1,
+          "P_K1": -1,
+          "P_K2": 1,
+          "C": -1
+        }
+      },
+      {
+        "name": "MAV-5: K-centroid vs lattice average",
+        "passed": "True",
+        "details": "K=0: err=0.8%, K=1: err=1.4%, K=2: err=3.3%",
+        "numerical_data": {
+          "centroids": {
+            "0": 7.08500699619851,
+            "1": 8.112395938625838,
+            "2": 9.022898076453618
+          },
+          "lat_avgs": {
+            "K0": 7.140000000000001,
+            "K1": 8.23,
+            "K2": 8.733333333333334
+          }
+        }
+      },
+      {
+        "name": "MAV-6: Y-junction vs Delta-model",
+        "passed": true,
+        "details": "Systematic difference: K=0: 6.9%, K=1: 6.9%, K=2: 6.9%",
+        "numerical_data": {
+          "diffs": {
+            "0": 6.9395140897900385,
+            "1": 6.939514089790041,
+            "2": 6.93951408979
+          },
+          "y_better": "True"
+        }
+      },
+      {
+        "name": "MAV-7: Odderon vs Pomeron Regge",
+        "passed": "True",
+        "details": "Odderon slope = 15.59, Pomeron slope = 18.12, ratio = 0.860",
+        "numerical_data": {
+          "odd_slope": 15.59043481062459,
+          "pom_slope": 18.120392410714274,
+          "alpha_prime_odd": 0.33131143030586285,
+          "alpha_prime_pom": 0.2850539402857634
+        }
+      },
+      {
+        "name": "MAV-8: Gaussian vs exponential wavefunction",
+        "passed": "True",
+        "details": "Max deviation = 10.6%",
+        "numerical_data": {
+          "results": {
+            "0": {
+              "R_exp": 7.08500699619851,
+              "R_gauss": 6.33545023052964,
+              "ratio": 0.8942052187004123
+            },
+            "1": {
+              "R_exp": 8.112395938625838,
+              "R_gauss": 7.4729003295198275,
+              "ratio": 0.9211705624399867
+            },
+            "2": {
+              "R_exp": 9.022898076453618,
+              "R_gauss": 8.455579995115377,
+              "ratio": 0.9371246270842039
+            }
+          }
+        }
+      },
+      {
+        "name": "MAV-9: Potential validity",
+        "passed": true,
+        "details": "All K=0..3 states within adjoint string-breaking distance"
+      },
+      {
+        "name": "MAV-10: Full spectrum chi-squared",
+        "passed": "True",
+        "details": "chi2/dof = 0.052, p = 0.998, max tension = 0.36sigma",
+        "numerical_data": {
+          "chi2": 0.2624931675229186,
+          "n_eff": 5,
+          "chi2_per_dof": 0.052498633504583725,
+          "p_value": 0.9982895887097274,
+          "mean_tension": 0.16810488340405783
+        }
+      },
+      {
+        "name": "MAV-11: Exotic/non-exotic predictions",
+        "passed": "True",
+        "details": "0-- (exotic) = 3728 MeV (prediction); 2-- (non-exotic) = 3569 MeV (tension 0.17sigma with lattice)",
+        "numerical_data": {
+          "R_0mm": 8.47294686923143,
+          "m_0mm": 3728.096622461829,
+          "R_2mm": 8.112395938625838,
+          "m_2mm": 3569.454212995369,
+          "tension_2mm": 0.16948841587151267
+        }
+      },
+      {
+        "name": "MAV-12: Large-K asymptotics",
+        "passed": "True",
+        "details": "Slope convergence 0.00% at K=50; R^2 linearity RMS deviation 1.8782e-06",
+        "numerical_data": {
+          "slope_K50": 15.58852815562534,
+          "expected": 15.588457268119894,
+          "slope_err": 4.5474355946056675e-06,
+          "rms_deviation": 1.8782240577682659e-06
+        }
+      }
+    ]
+  }
+}

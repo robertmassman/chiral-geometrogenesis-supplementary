@@ -88,19 +88,19 @@ def effective_potential(r, epsilon=0.50, R_stella=1.0):
 
     The potential arises from the superposition of three pressure functions
     located at the tetrahedron vertices:
-        x_R = (1,1,1)/√3, x_G = (1,-1,-1)/√3, x_B = (-1,1,-1)/√3
+        x_R = (1,-1,-1)/√3, x_G = (-1,1,-1)/√3, x_B = (-1,-1,1)/√3
 
     After angular averaging (projection onto A₁ sector):
         V_eff(r) = -Σ_c <P_c(r,Ω)²>_Ω
 
     The minus sign makes this an ATTRACTIVE potential at short range.
     """
-    # Vertex positions (normalized to unit sphere)
+    # Vertex positions (normalized to unit sphere, Convention A)
     vertices = np.array([
-        [1, 1, 1],
         [1, -1, -1],
         [-1, 1, -1],
-        [-1, -1, 1]  # The W vertex for completeness
+        [-1, -1, 1],
+        [1, 1, 1]   # The W vertex for completeness
     ]) / np.sqrt(3) * R_stella
 
     # For the A₁ (spherically symmetric) sector, we average over angles

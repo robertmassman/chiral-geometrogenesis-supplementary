@@ -1,0 +1,205 @@
+{
+  "proposition": "4.3.4",
+  "title": "W-Soliton Structure Formation Compatibility",
+  "timestamp": "2026-02-25T14:05:09.826206",
+  "overall_passed": true,
+  "tests_passed": 11,
+  "tests_total": 11,
+  "confirmed_values": {
+    "sigma_over_m_cm2_per_g": 1.4e-12,
+    "v_over_c_conservative": "<=1e-10",
+    "lambda_fs_conservative_Mpc": "<=3e-10",
+    "Omega_W_h2": "0.14 +/- 0.05"
+  },
+  "plot_files": [
+    "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/prop_4_3_4_adversarial_verification.png",
+    "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/plots/prop_4_3_4_interaction_range.png"
+  ],
+  "verifications": [
+    {
+      "test": "Kinetic Decoupling Velocity at T_eq",
+      "T_eq_eV": 0.7993646999999999,
+      "T_f_GeV": 81.0,
+      "T_kd_table": {
+        "81.0 GeV": {
+          "computed": 3.822131074871714e-12,
+          "proof": 3.6e-12
+        },
+        "10.0 GeV": {
+          "computed": 1.0877975741071957e-11,
+          "proof": 1e-11
+        },
+        "1.0 GeV": {
+          "computed": 3.439917967384542e-11,
+          "proof": 3.2e-11
+        },
+        "0.1 GeV": {
+          "computed": 1.0877975741071957e-10,
+          "proof": 1e-10
+        }
+      },
+      "max_v_over_c": 1.0877975741071957e-10,
+      "is_CDM": true,
+      "table_agreement": true,
+      "passed": true
+    },
+    {
+      "test": "Free-Streaming Length (Kinetic Decoupling)",
+      "table": [
+        {
+          "T_kd_GeV": 81.0,
+          "label": "T_f (= chemical freeze-out)",
+          "v_eq": 3.822131074871714e-12,
+          "lambda_numerical_Mpc": 1.0145387159221913e-08,
+          "lambda_analytic_Mpc": 1.4868786691279416e-12,
+          "lambda_proof_Mpc": 1e-12
+        },
+        {
+          "T_kd_GeV": 1.0,
+          "label": "Fiducial",
+          "v_eq": 3.439917967384542e-11,
+          "lambda_numerical_Mpc": 7.544166044445557e-08,
+          "lambda_analytic_Mpc": 1.1061376112321894e-11,
+          "lambda_proof_Mpc": 4e-11
+        },
+        {
+          "T_kd_GeV": 0.1,
+          "label": "Conservative",
+          "v_eq": 1.0877975741071957e-10,
+          "lambda_numerical_Mpc": 2.122944354028722e-07,
+          "lambda_analytic_Mpc": 3.113412091973435e-11,
+          "lambda_proof_Mpc": 3e-10
+        }
+      ],
+      "max_lambda_Mpc": 2.122944354028722e-07,
+      "is_CDM": true,
+      "passed": true
+    },
+    {
+      "test": "Self-Interaction Cross-Section",
+      "r_W_fm": 0.0003565076784101174,
+      "r_W_proof_fm": 0.00036,
+      "sigma_WW_cm2": 3.9928927841086914e-33,
+      "sigma_over_m_computed": 1.382624074229443e-12,
+      "sigma_over_m_proof": 1.4e-12,
+      "sigma_over_m_thm432": 1.4e-12,
+      "consistent_with_proof": true,
+      "consistent_with_thm432": true,
+      "within_bounds": true,
+      "safety_factor_Bullet": 723262395497.7168,
+      "passed": true
+    },
+    {
+      "test": "Bullet Cluster Constraint",
+      "mass_range_GeV": [
+        1120.0,
+        2193.0
+      ],
+      "sigma_WW_cm2": 3.9928927841086935e-33,
+      "max_sigma_over_m": 1.9998669645104454e-12,
+      "bound": 1.0,
+      "min_safety_factor": 500033261084.841,
+      "all_within_bound": true,
+      "passed": true
+    },
+    {
+      "test": "CDM Classification Table",
+      "v_over_c_W_soliton_conservative": 1.0877975741071957e-10,
+      "classification": "Cold DM",
+      "passed": true
+    },
+    {
+      "test": "Lyman-alpha Constraint",
+      "m_WDM_bound_keV": 5.3,
+      "M_W_GeV": 1620.0,
+      "ratio": 305660377.3584906,
+      "passed": true
+    },
+    {
+      "test": "CMB Annihilation Bound (ADM)",
+      "delta_sym": 1e-06,
+      "sigma_v_0_geometric": 3.990230855585954e-23,
+      "sigma_v_0_proof": 1e-22,
+      "sigma_v_eff_geometric": 3.9902308555859537e-35,
+      "sigma_v_eff_proof": 1e-34,
+      "p_ann_geometric": 2.4631054664110824e-38,
+      "p_ann_proof": 6.17283950617284e-38,
+      "p_ann_bound": 3.2e-28,
+      "safety_factor": 12991729520.46842,
+      "passed": true
+    },
+    {
+      "test": "Planck Consistency",
+      "Omega_W_h2": 0.14,
+      "Omega_W_h2_unc": 0.05,
+      "Omega_Planck_h2": 0.12,
+      "Omega_Planck_h2_unc": 0.0012,
+      "tension_sigma": 0.3998848497425245,
+      "passed": true
+    },
+    {
+      "test": "Dimensional Analysis",
+      "num_checks": 7,
+      "all_passed": true,
+      "passed": true
+    },
+    {
+      "test": "Mass Range Robustness (\u00a78)",
+      "T_kd_conservative_GeV": 0.1,
+      "table": [
+        {
+          "M_W_GeV": 1300,
+          "label": "lower edge",
+          "v_over_c": 1.2143221505205376e-10,
+          "sigma_over_m": 1.7229623078859222e-12,
+          "sigma_m_ratio": 1.7229623078859222e-12
+        },
+        {
+          "M_W_GeV": 1620,
+          "label": "Faddeev",
+          "v_over_c": 1.0877975741071957e-10,
+          "sigma_over_m": 1.3826240742294438e-12,
+          "sigma_m_ratio": 1.3826240742294438e-12
+        },
+        {
+          "M_W_GeV": 1800,
+          "label": "central",
+          "v_over_c": 1.0319753902153625e-10,
+          "sigma_over_m": 1.2443616668064995e-12,
+          "sigma_m_ratio": 1.2443616668064995e-12
+        },
+        {
+          "M_W_GeV": 2400,
+          "label": "upper edge",
+          "v_over_c": 8.93716904006863e-11,
+          "sigma_over_m": 9.332712501048747e-13,
+          "sigma_m_ratio": 9.332712501048747e-13
+        }
+      ],
+      "scaling_1_over_M_confirmed": true,
+      "all_pass": true,
+      "passed": true
+    },
+    {
+      "test": "Monte Carlo Uncertainty Propagation",
+      "N_samples": 50000,
+      "T_kd_range_GeV": [
+        0.1,
+        81.0
+      ],
+      "v_over_c_median": 1.9663245732656337e-11,
+      "v_over_c_95CI": [
+        3.864961170495763e-12,
+        1.009100422189316e-10
+      ],
+      "sigma_over_m_median": 1.2842220378139564e-12,
+      "sigma_over_m_95CI": [
+        6.355041723257091e-13,
+        3.3194435790153523e-12
+      ],
+      "cdm_fraction": 1.0,
+      "within_bullet_fraction": 1.0,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "theorem": "7.5.1",
+  "title": "Symanzik Effective Theory for FCC \u2014 Adversarial Round 2",
+  "timestamp": "2026-02-13T17:43:53.356363",
+  "round": 2,
+  "n_tests": 3,
+  "n_passed": 3,
+  "n_findings": 0,
+  "overall_status": "PASSED",
+  "combined_with_round1": {
+    "round1_tests": 14,
+    "round1_passed": 14,
+    "total_tests": 17,
+    "total_passed": 17
+  },
+  "tests": [
+    {
+      "name": "R2-A: Plaquette count \u2014 32 distinct triangles from one site",
+      "passed": "True",
+      "details": "Distinct unoriented triangles from one site: 32 (expected 32). Ordered pairs (i<j) with closure: 96. All equilateral: True. Uniform area: True (area = 0.433013 for all). Partners per vector with dot=-1/2: 8. NOTE: 'Per unit cell' count depends on convention: 32/3 \u2248 10.7 (3 sites per triangle), NOT 8 as claimed in Appendix A.3.",
+      "severity": "MODERATE",
+      "numerical_data": {
+        "n_distinct_triangles": 32,
+        "expected": 32,
+        "ordered_pairs": 96,
+        "all_equilateral": true,
+        "triangle_area": 0.43301270189221924,
+        "area_std": 0.0,
+        "partners_per_vector": 8,
+        "per_unit_cell_naive": 10.666666666666666
+      }
+    },
+    {
+      "name": "R2-B: c_1 universality \u2014 T_{\u03bc\u03bd}/z = (1/d)\u03b4_{\u03bc\u03bd} for both lattices",
+      "passed": "True",
+      "details": "D4 second-moment isotropic: True (max err: 8.88e-16). Cubic second-moment isotropic: True (max err: 0.00e+00). Normalized tensors match: True. T_{\u03bc\u03bc}/z: D4 = 0.250000, cubic = 0.250000, expected 1/d = 0.250000. Conclusion: c_1^(0) = 1/12 universality confirmed \u2014 both lattices have T_{\u03bc\u03bd}/z = (1/d)\u03b4_{\u03bc\u03bd}.",
+      "severity": "MODERATE",
+      "numerical_data": {
+        "T2_d4_diag": 5.999999999999999,
+        "T2_d4_offdiag": 0.0,
+        "T2_cubic_diag": 2.0,
+        "T2_cubic_offdiag": 0.0,
+        "d4_isotropic": "True",
+        "cubic_isotropic": "True",
+        "normalized_match": "True",
+        "T_diag_per_z_d4": 0.24999999999999997,
+        "T_diag_per_z_cubic": 0.25,
+        "expected_1_over_d": 0.25
+      }
+    },
+    {
+      "name": "R2-C: W(B_4) symmetry (order 384) of FCC propagator",
+      "passed": true,
+      "details": "|W(B_4)| = 384 (expected 384). Propagator W(B_4)-invariant: True (max violation: 5.33e-15). Single-component sign flips preserve D4: True. Odd sign changes preserving D4 vectors: 8/8 (NOT all \u2014 but propagator is still invariant because cos is even).",
+      "severity": "CRITICAL",
+      "numerical_data": {
+        "wb4_order": 384,
+        "propagator_invariant": "True",
+        "max_violation": 5.329070518200751e-15,
+        "single_sign_flip_preserves_d4": true,
+        "n_momenta_tested": 30,
+        "note": "W(B_4) is strictly larger than W(D_4). The propagator has W(B_4) symmetry because single-component sign flips map D4 vectors to D4 vectors, so cos(k\u00b7n_i) terms are preserved."
+      }
+    }
+  ]
+}

@@ -183,7 +183,7 @@ class WCondensateVerification:
 
         # WARNING: This is a hand-wavy geometric argument
         # The stella octangula vertices are:
-        # x_R = (1,1,1)/√3, x_G = (1,-1,-1)/√3, x_B = (-1,1,-1)/√3, x_W = (-1,-1,1)/√3
+        # x_R = (1,-1,-1)/√3, x_G = (-1,1,-1)/√3, x_B = (-1,-1,1)/√3, x_W = (1,1,1)/√3
         #
         # But the SU(3) weight space is 2D, not 3D!
         # The projection map needs to be specified more carefully.

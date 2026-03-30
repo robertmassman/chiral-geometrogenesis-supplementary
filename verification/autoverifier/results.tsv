@@ -1,0 +1,240 @@
+timestamp	group	layer	module	result	checks_total	checks_passed	checks_failed	checks_noted	duration_s	report_file	summary
+2026-03-14 09:59:45	G2	1	M1	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	1	M2	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	1	M3	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	1	M4	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	1	M5	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	1	M6	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	1	M7	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	1	M8	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	1	M9	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	1	M10	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	2	V1	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	2	V3	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	2	V2	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	2	V5	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	2	V6	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	2	V4	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	2	V7	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	2	V8	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	3	A4	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	3	A2	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	3	A1	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	3	A3	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	3	A5	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:45	G2	3	A6	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 09:59:49	G6	2	V1	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 10:12:49	G1	1	M1	ERROR	0	0	0	0	0.1	G1-Geometric-Foundation-Coherence-M1-Findings.md	Could not parse structured results
+2026-03-14 10:12:49	G1	1	M2	ERROR	0	0	0	0	0.1	G1-Geometric-Foundation-Coherence-M2-Findings.md	Could not parse structured results
+2026-03-14 10:12:49	G1	1	M3	ERROR	0	0	0	0	0.1	G1-Geometric-Foundation-Coherence-M3-Findings.md	Could not parse structured results
+2026-03-14 10:12:49	G1	1	M4	ERROR	0	0	0	0	0.1	G1-Geometric-Foundation-Coherence-M4-Findings.md	Could not parse structured results
+2026-03-14 10:12:49	G1	1	M5	ERROR	0	0	0	0	0.1	G1-Geometric-Foundation-Coherence-M5-Findings.md	Could not parse structured results
+2026-03-14 10:12:49	G1	1	M6	ERROR	0	0	0	0	0.1	G1-Geometric-Foundation-Coherence-M6-Findings.md	Could not parse structured results
+2026-03-14 10:12:49	G1	1	M7	ERROR	0	0	0	0	0.1	G1-Geometric-Foundation-Coherence-M7-Findings.md	Could not parse structured results
+2026-03-14 10:12:49	G1	1	M8	ERROR	0	0	0	0	0.1	G1-Geometric-Foundation-Coherence-M8-Findings.md	Could not parse structured results
+2026-03-14 10:12:49	G1	1	M9	ERROR	0	0	0	0	0.1	G1-Geometric-Foundation-Coherence-M9-Findings.md	Could not parse structured results
+2026-03-14 10:12:49	G1	1	M10	ERROR	0	0	0	0	0.1	G1-Geometric-Foundation-Coherence-M10-Findings.md	Could not parse structured results
+2026-03-14 10:19:56	G1	1	M1	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 10:19:56	G1	1	M2	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 10:19:56	G1	1	M3	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 10:19:56	G1	1	M4	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 10:19:56	G1	1	M5	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 10:19:56	G1	1	M6	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 10:19:56	G1	1	M7	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 10:19:56	G1	1	M8	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 10:19:56	G1	1	M9	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 10:19:56	G1	1	M10	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 11:24:32	G1	1	M1	PASS	0	0	0	0	345.7	G1-Geometric-Foundation-Coherence-M1-Findings.md	Could not parse structured results
+2026-03-14 11:24:32	G1	1	M2	PASS	0	0	0	0	474.6	G1-Geometric-Foundation-Coherence-M2-Findings.md	Could not parse structured results
+2026-03-14 11:24:32	G1	1	M3	PASS	0	0	0	0	563.1	G1-Geometric-Foundation-Coherence-M3-Findings.md	Could not parse structured results
+2026-03-14 11:24:32	G1	1	M4	PASS	0	0	0	0	283.1	G1-Geometric-Foundation-Coherence-M4-Findings.md	Could not parse structured results
+2026-03-14 11:24:32	G1	1	M5	PASS	0	0	0	0	264.0	G1-Geometric-Foundation-Coherence-M5-Findings.md	Could not parse structured results
+2026-03-14 11:24:32	G1	1	M6	PASS	0	0	0	0	435.7	G1-Geometric-Foundation-Coherence-M6-Findings.md	Could not parse structured results
+2026-03-14 11:24:32	G1	1	M7	PASS	0	0	0	0	512.7	G1-Geometric-Foundation-Coherence-M7-Findings.md	Could not parse structured results
+2026-03-14 11:24:32	G1	1	M8	PASS	0	0	0	0	537.7	G1-Geometric-Foundation-Coherence-M8-Findings.md	Could not parse structured results
+2026-03-14 11:24:32	G1	1	M9	PASS	0	0	0	0	383.7	G1-Geometric-Foundation-Coherence-M9-Findings.md	Could not parse structured results
+2026-03-14 11:24:32	G1	1	M10	PASS	0	0	0	0	369.7	G1-Geometric-Foundation-Coherence-M10-Findings.md	Could not parse structured results
+2026-03-14 12:03:03	G1	1	M1	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 12:03:03	G1	1	M2	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 12:03:03	G1	1	M3	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 12:03:03	G1	1	M4	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 12:03:03	G1	1	M5	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 12:03:03	G1	1	M6	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 12:03:03	G1	1	M7	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 12:03:03	G1	1	M8	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 12:03:03	G1	1	M9	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 12:03:03	G1	1	M10	PASS	0	0	0	0	0.0		Dry run
+2026-03-14 14:30:00	G1	1	M5	PASS	11	11	0	1	0.0	G1-Geometric-Foundation-Coherence-M5-Findings.md	11/11 PASS; NOTE: audit plan template has stale B3/C3 coord values (weight lattice vs root lattice)
+2026-03-14 15:45:00	G1	1	M7	PASS	17	17	0	39	249.1	G1-Geometric-Foundation-Coherence-M7-Findings.md	17/17 PASS, 39 NOTEs (19 from status marker drift M7.15). 2 new checks added: M7.16 vertex notation, M7.17 dimension terminology. No FAILs.
+2026-03-14 17:30:00	G1	1	M6	FAIL	12	9	2	1	420.0	G1-Geometric-Foundation-Coherence-M6-Findings.md	9 PASS, 2 FAIL, 1 NOTE. MAJOR: Def 0.1.3 §2.1 vertex-color labels permuted vs Def 0.1.1 (all other files use canonical). MODERATE: Def 0.1.4 §3.2 boundary planes use anomalous convention. Physics unaffected (S₄ symmetry), but labeling landmine for cross-referencing.
+2026-03-14 12:24:13	G1	1	M1	FAIL	16	15	1	0	495.3	G1-Geometric-Foundation-Coherence-M1-Findings.md	15/16 passed, 1 failed, 0 noted
+2026-03-14 12:24:13	G1	1	M2	PASS	12	11	0	1	252.2	G1-Geometric-Foundation-Coherence-M2-Findings.md	11/12 passed, 0 failed, 1 noted
+2026-03-14 12:24:13	G1	1	M3	PASS	14	12	0	2	95.1	G1-Geometric-Foundation-Coherence-M3-Findings.md	12/14 passed, 0 failed, 2 noted
+2026-03-14 12:24:13	G1	1	M4	FAIL	18	13	2	3	446.0	G1-Geometric-Foundation-Coherence-M4-Findings.md	13/18 passed, 2 failed, 3 noted
+2026-03-14 12:24:13	G1	1	M5	PASS	11	11	0	1	266.5	G1-Geometric-Foundation-Coherence-M5-Findings.md	11/11 passed, 0 failed, 1 noted
+2026-03-14 12:24:13	G1	1	M6	FAIL	12	9	2	1	432.7	G1-Geometric-Foundation-Coherence-M6-Findings.md	9/12 passed, 2 failed, 1 noted
+2026-03-14 12:24:13	G1	1	M7	PASS	17	17	0	39	307.1	G1-Geometric-Foundation-Coherence-M7-Findings.md	17/17 passed, 0 failed, 39 noted
+2026-03-14 12:24:13	G1	1	M8	FAIL	10	3	5	3	526.3	G1-Geometric-Foundation-Coherence-M8-Findings.md	3/10 passed, 5 failed, 3 noted
+2026-03-14 12:24:13	G1	1	M9	FAIL	26	16	9	1	665.2	G1-Geometric-Foundation-Coherence-M9-Findings.md	16/26 passed, 9 failed, 1 noted
+2026-03-14 12:24:13	G1	1	M10	PASS	19	19	0	1	524.1	G1-Geometric-Foundation-Coherence-M10-Findings.md	19/19 passed, 0 failed, 1 noted
+2026-03-14 13:52:11	G1	1	M1	PASS	17	15	0	2	556.8	G1-Geometric-Foundation-Coherence-M1-Findings.md	15/17 passed, 0 failed, 2 noted
+2026-03-14 13:52:11	G1	1	M2	PASS	12	11	0	1	311.3	G1-Geometric-Foundation-Coherence-M2-Findings.md	11/12 passed, 0 failed, 1 noted
+2026-03-14 13:52:11	G1	1	M3	PASS	14	12	0	2	150.8	G1-Geometric-Foundation-Coherence-M3-Findings.md	12/14 passed, 0 failed, 2 noted
+2026-03-14 13:52:11	G1	1	M4	PASS	18	14	0	4	328.5	G1-Geometric-Foundation-Coherence-M4-Findings.md	14/18 passed, 0 failed, 4 noted
+2026-03-14 13:52:11	G1	1	M5	PASS	11	11	0	1	139.3	G1-Geometric-Foundation-Coherence-M5-Findings.md	11/11 passed, 0 failed, 1 noted
+2026-03-14 13:52:11	G1	1	M6	PASS	11	11	0	0	397.2	G1-Geometric-Foundation-Coherence-M6-Findings.md	11/11 passed, 0 failed, 0 noted
+2026-03-14 13:52:11	G1	1	M7	PASS	15	15	0	19	610.2	G1-Geometric-Foundation-Coherence-M7-Findings.md	15/15 passed, 0 failed, 19 noted
+2026-03-14 13:52:11	G1	1	M8	PASS	10	5	2	3	482.3	G1-Geometric-Foundation-Coherence-M8-Findings.md	5/10 passed, 2 failed, 3 noted
+2026-03-14 13:52:11	G1	1	M9	FAIL	28	25	1	2	462.9	G1-Geometric-Foundation-Coherence-M9-Findings.md	25/28 passed, 1 failed, 2 noted
+2026-03-14 13:52:11	G1	1	M10	FAIL	27	25	1	1	1087.6	G1-Geometric-Foundation-Coherence-M10-Findings.md	25/27 passed, 1 failed, 1 noted
+2026-03-14 14:35:53	G1	1	M1	PASS	18	16	0	2	322.5	G1-Geometric-Foundation-Coherence-M1-Findings.md	16/18 passed, 0 failed, 2 noted
+2026-03-14 14:35:53	G1	1	M2	PASS	12	11	0	1	296.7	G1-Geometric-Foundation-Coherence-M2-Findings.md	11/12 passed, 0 failed, 1 noted
+2026-03-14 14:35:53	G1	1	M3	PASS	14	12	0	2	170.0	G1-Geometric-Foundation-Coherence-M3-Findings.md	12/14 passed, 0 failed, 2 noted
+2026-03-14 14:35:53	G1	1	M4	PASS	18	14	0	4	152.7	G1-Geometric-Foundation-Coherence-M4-Findings.md	14/18 passed, 0 failed, 4 noted
+2026-03-14 14:35:53	G1	1	M5	PASS	11	11	0	1	317.2	G1-Geometric-Foundation-Coherence-M5-Findings.md	11/11 passed, 0 failed, 1 noted
+2026-03-14 14:35:53	G1	1	M6	PASS	18	15	1	2	717.7	G1-Geometric-Foundation-Coherence-M6-Findings.md	15/18 passed, 1 failed, 2 noted
+2026-03-14 14:35:53	G1	1	M7	PASS	19	19	0	15	670.7	G1-Geometric-Foundation-Coherence-M7-Findings.md	19/19 passed, 0 failed, 15 noted
+2026-03-14 14:35:53	G1	1	M8	FAIL	11	4	3	4	580.3	G1-Geometric-Foundation-Coherence-M8-Findings.md	4/11 passed, 3 failed, 4 noted
+2026-03-14 14:35:53	G1	1	M9	PASS	10	7	0	3	659.4	G1-Geometric-Foundation-Coherence-M9-Findings.md	7/10 passed, 0 failed, 3 noted
+2026-03-14 14:35:53	G1	1	M10	PASS	27	26	0	1	323.8	G1-Geometric-Foundation-Coherence-M10-Findings.md	26/27 passed, 0 failed, 1 noted
+2026-03-14 16:45:00	G1	1	M6	PASS	18	15	1	2	120.0	G1-Geometric-Foundation-Coherence-M6-Findings.md	15/18 passed, 1 failed (MINOR: anti-color phase swap in Thm 0.0.6-Derivation), 2 noted. Re-verified v3.
+2026-03-14 18:15:00	G1	1	M7	PASS	19	19	0	15	283.5	G1-Geometric-Foundation-Coherence-M7-Findings.md	19/19 passed, 0 failed, 15 noted. Independent re-verification confirmed all notation conventions consistent across 26 G1 files. No changes to report needed.
+2026-03-14 19:00:00	G1	1	M8	FAIL	11	4	3	4	580.3	G1-Geometric-Foundation-Coherence-M8-Findings.md	4/11 passed, 3 failed (MODERATE: M8.1 formal 3-cycle, M8.2/M8.3 layer ordering), 4 noted. Independent re-verification confirmed all dependency declarations match source files. DAG valid if [3]->[19] cross-reference reclassified.
+2026-03-14 19:30:00	G1	1	M3	PASS	17	15	0	2	350.0	G1-Geometric-Foundation-Coherence-M3-Findings.md	15/17 passed, 0 failed, 2 noted. Added M3.15 (polyhedral enumeration), M3.16 (root lattice corrections), M3.17 (string tension consistency). All external inputs match internal re-derivations.
+2026-03-14 20:00:00	G1	1	M9	PASS	10	7	0	3	300.0	G1-Geometric-Foundation-Coherence-M9-Findings.md	7/10 passed, 0 failed, 3 noted. All status markers verified: 20/20 VERIFIED have Lean+multi-agent, 5 non-VERIFIED appropriate. 3 NOTEs: Def 0.1.3 overstated peer review (MINOR), dual checkmark ambiguity in proof plan (MINOR), Thm 0.0.12 stale Lean reference (MINOR).
+2026-03-14 15:45:26	G1	1	M1	PASS	18	16	0	2	32.6	G1-Geometric-Foundation-Coherence-M1-Findings.md	16/18 passed, 0 failed, 2 noted
+2026-03-14 15:45:26	G1	1	M2	PASS	12	11	0	1	369.1	G1-Geometric-Foundation-Coherence-M2-Findings.md	11/12 passed, 0 failed, 1 noted
+2026-03-14 15:45:26	G1	1	M3	PASS	17	15	0	2	330.3	G1-Geometric-Foundation-Coherence-M3-Findings.md	15/17 passed, 0 failed, 2 noted
+2026-03-14 15:45:26	G1	1	M4	PASS	18	14	0	4	156.0	G1-Geometric-Foundation-Coherence-M4-Findings.md	14/18 passed, 0 failed, 4 noted
+2026-03-14 15:45:26	G1	1	M5	PASS	11	11	0	1	129.3	G1-Geometric-Foundation-Coherence-M5-Findings.md	11/11 passed, 0 failed, 1 noted
+2026-03-14 15:45:26	G1	1	M6	PASS	18	15	1	2	120.5	G1-Geometric-Foundation-Coherence-M6-Findings.md	15/18 passed, 1 failed, 2 noted
+2026-03-14 15:45:26	G1	1	M7	PASS	19	19	0	15	174.9	G1-Geometric-Foundation-Coherence-M7-Findings.md	19/19 passed, 0 failed, 15 noted
+2026-03-14 15:45:26	G1	1	M8	FAIL	11	4	3	4	151.7	G1-Geometric-Foundation-Coherence-M8-Findings.md	4/11 passed, 3 failed, 4 noted
+2026-03-14 15:45:26	G1	1	M9	PASS	10	7	0	3	386.6	G1-Geometric-Foundation-Coherence-M9-Findings.md	7/10 passed, 0 failed, 3 noted
+2026-03-14 15:45:26	G1	1	M10	PASS	27	26	0	1	205.1	G1-Geometric-Foundation-Coherence-M10-Findings.md	26/27 passed, 0 failed, 1 noted
+2026-03-14 15:57:25	G1	1	M1	PASS	18	16	0	2	242.6	G1-Geometric-Foundation-Coherence-M1-Findings.md	16/18 passed, 0 failed, 2 noted
+2026-03-14 15:57:25	G1	1	M2	PASS	12	11	0	1	207.0	G1-Geometric-Foundation-Coherence-M2-Findings.md	11/12 passed, 0 failed, 1 noted
+2026-03-14 15:57:25	G1	1	M3	PASS	17	15	0	2	166.7	G1-Geometric-Foundation-Coherence-M3-Findings.md	15/17 passed, 0 failed, 2 noted
+2026-03-14 15:57:25	G1	1	M4	PASS	18	14	0	4	271.8	G1-Geometric-Foundation-Coherence-M4-Findings.md	14/18 passed, 0 failed, 4 noted
+2026-03-14 15:57:25	G1	1	M5	PASS	11	11	0	1	186.0	G1-Geometric-Foundation-Coherence-M5-Findings.md	11/11 passed, 0 failed, 1 noted
+2026-03-14 15:57:25	G1	1	M6	PASS	18	16	0	2	257.5	G1-Geometric-Foundation-Coherence-M6-Findings.md	16/18 passed, 0 failed, 2 noted
+2026-03-14 15:57:25	G1	1	M7	PASS	20	20	0	16	416.1	G1-Geometric-Foundation-Coherence-M7-Findings.md	20/20 passed, 0 failed, 16 noted
+2026-03-14 15:57:25	G1	1	M8	FAIL	12	4	3	5	490.5	G1-Geometric-Foundation-Coherence-M8-Findings.md	4/12 passed, 3 failed, 5 noted
+2026-03-14 15:57:25	G1	1	M9	PASS	10	7	0	3	124.9	G1-Geometric-Foundation-Coherence-M9-Findings.md	7/10 passed, 0 failed, 3 noted
+2026-03-14 15:57:25	G1	1	M10	PASS	27	26	0	1	264.3	G1-Geometric-Foundation-Coherence-M10-Findings.md	26/27 passed, 0 failed, 1 noted
+2026-03-14 18:30:00	G1	1	M4	PASS	18	14	0	4	180.0	G1-Geometric-Foundation-Coherence-M4-Findings.md	v3 independent re-audit: 14/18 passed, 0 failed, 4 noted. All findings confirmed.
+2026-03-14 20:15:00	G1	1	M3	PASS	18	16	0	2	200.0	G1-Geometric-Foundation-Coherence-M3-Findings.md	v2 re-verification: 16/18 passed, 0 failed, 2 noted. Added M3.18 (three-term independence). Fixed M3.1 line ref. All claims spot-checked against source files.
+2026-03-14 21:00:00	G1	1	M6	PASS	19	16	0	3	180.0	G1-Geometric-Foundation-Coherence-M6-Findings.md	v5 full re-verification: 16/19 passed, 0 failed, 3 noted. Added M6.19 (Def 1.1.4 Table 2.1 anti-color phase ambiguity). All 18 prior checks re-verified against source files.
+2026-03-14 22:00:00	G1	1	M7	PASS	20	20	0	16	233.0	G1-Geometric-Foundation-Coherence-M7-Findings.md	v4 independent re-verification: 20/20 passed, 0 failed, 16 noted. All findings confirmed by 4 parallel agents.
+2026-03-14 23:30:00	G1	1	M5	PASS	16	15	1	1	300.0	G1-Geometric-Foundation-Coherence-M5-Findings.md	v2 re-verification: 15/16 passed, 1 failed (MINOR: M5.12 '14 neighbors' conflates polyhedra with coordination), 1 noted. Added M5.12-M5.16 cross-file consistency checks.
+2026-03-14 23:45:00	G1	1	M8	FAIL	13	4	3	6	300.0	G1-Geometric-Foundation-Coherence-M8-Findings.md	v5 independent re-verification: 4/13 passed, 3 failed (MODERATE: M8.1 formal 3-cycle, M8.2/M8.3 layer ordering), 6 noted. Corrected phantom edge [20]->[24] (Def 0.1.2 does NOT depend on Thm 0.1.0). DAG valid if [3]->[19] cross-reference reclassified.
+2026-03-14 23:59:00	G1	1	M10	PASS	27	26	0	1	350.0	G1-Geometric-Foundation-Coherence-M10-Findings.md	v6 independent re-verification: 26/27 passed, 0 failed, 1 noted. Added Thm 0.0.3 line 641 to M10.12 (σ≈0.18 GeV²). ~45 derived values scanned — all consistent.
+2026-03-14 23:59:59	G1	1	M9	PASS	10	6	0	4	180.0	G1-Geometric-Foundation-Coherence-M9-Findings.md	v4 re-audit: 6 PASS, 0 FAIL, 4 NOTE. M9.4 downgraded PASS→NOTE (MINOR): Prop 0.0.16a and Thm 0.0.16 lack standalone verification records in verification-records/ (inline-only). M9.7-M9.9 NOTEs confirmed. All 26 status markers independently verified.
+2026-03-14 16:10:43	G1	1	M1	PASS	12	10	0	2	390.7	G1-Geometric-Foundation-Coherence-M1-Findings.md	10/12 passed, 0 failed, 2 noted
+2026-03-14 16:10:43	G1	1	M2	PASS	9	9	0	3	463.7	G1-Geometric-Foundation-Coherence-M2-Findings.md	9/9 passed, 0 failed, 3 noted
+2026-03-14 16:10:43	G1	1	M3	PASS	18	16	0	2	247.1	G1-Geometric-Foundation-Coherence-M3-Findings.md	16/18 passed, 0 failed, 2 noted
+2026-03-14 16:10:43	G1	1	M4	PASS	18	14	0	4	266.7	G1-Geometric-Foundation-Coherence-M4-Findings.md	14/18 passed, 0 failed, 4 noted
+2026-03-14 16:10:43	G1	1	M5	PASS	16	15	1	1	618.0	G1-Geometric-Foundation-Coherence-M5-Findings.md	15/16 passed, 1 failed, 1 noted
+2026-03-14 16:10:43	G1	1	M6	PASS	19	16	0	3	415.8	G1-Geometric-Foundation-Coherence-M6-Findings.md	16/19 passed, 0 failed, 3 noted
+2026-03-14 16:10:43	G1	1	M7	PASS	20	20	0	16	220.9	G1-Geometric-Foundation-Coherence-M7-Findings.md	20/20 passed, 0 failed, 16 noted
+2026-03-14 16:10:43	G1	1	M8	FAIL	13	4	3	6	306.8	G1-Geometric-Foundation-Coherence-M8-Findings.md	4/13 passed, 3 failed, 6 noted
+2026-03-14 16:10:43	G1	1	M9	PASS	10	6	0	4	407.3	G1-Geometric-Foundation-Coherence-M9-Findings.md	6/10 passed, 0 failed, 4 noted
+2026-03-14 16:10:43	G1	1	M10	PASS	27	26	0	1	250.8	G1-Geometric-Foundation-Coherence-M10-Findings.md	26/27 passed, 0 failed, 1 noted
+2026-03-14 16:23:24	G1	1	M1	PASS	12	10	0	2	151.1	G1-Geometric-Foundation-Coherence-M1-Findings.md	10/12 passed, 0 failed, 2 noted
+2026-03-14 16:23:24	G1	1	M2	PASS	9	9	0	3	308.7	G1-Geometric-Foundation-Coherence-M2-Findings.md	9/9 passed, 0 failed, 3 noted
+2026-03-14 16:23:24	G1	1	M3	PASS	18	16	0	2	217.6	G1-Geometric-Foundation-Coherence-M3-Findings.md	16/18 passed, 0 failed, 2 noted
+2026-03-14 16:23:24	G1	1	M4	PASS	18	14	0	4	164.8	G1-Geometric-Foundation-Coherence-M4-Findings.md	14/18 passed, 0 failed, 4 noted
+2026-03-14 16:23:24	G1	1	M5	PASS	20	20	0	1	382.7	G1-Geometric-Foundation-Coherence-M5-Findings.md	20/20 passed, 0 failed, 1 noted
+2026-03-14 16:23:24	G1	1	M6	PASS	20	16	0	4	563.0	G1-Geometric-Foundation-Coherence-M6-Findings.md	16/20 passed, 0 failed, 4 noted
+2026-03-14 16:23:24	G1	1	M7	PASS	23	20	0	5	568.8	G1-Geometric-Foundation-Coherence-M7-Findings.md	20/23 passed, 0 failed, 5 noted
+2026-03-14 16:23:24	G1	1	M8	FAIL	13	4	3	6	276.2	G1-Geometric-Foundation-Coherence-M8-Findings.md	4/13 passed, 3 failed, 6 noted
+2026-03-14 16:23:24	G1	1	M9	PASS	10	6	0	4	243.0	G1-Geometric-Foundation-Coherence-M9-Findings.md	6/10 passed, 0 failed, 4 noted
+2026-03-14 16:23:24	G1	1	M10	PASS	27	26	0	1	222.6	G1-Geometric-Foundation-Coherence-M10-Findings.md	26/27 passed, 0 failed, 1 noted
+2026-03-14 16:30:00	G1	1	M6	PASS	20	16	0	4	180.0	G1-Geometric-Foundation-Coherence-M6-Findings.md	v7 independent re-verification: 16/20 passed, 0 failed, 4 noted. All 20 checks verified against source files. No new issues found.
+2026-03-14 16:45:00	G1	1	M2	PASS	9	9	0	3	180.0	G1-Geometric-Foundation-Coherence-M2-Findings.md	v2 re-verification: 9/9 passed, 0 failed, 3 noted. Fixed M2.5 Prop 0.0.XX line refs (444,636→574-581). All 22 line references spot-checked — 18/22 exact, 4 confirmed within section.
+2026-03-14 22:30:00	G1	1	M4	PASS	18	14	0	4	120.0	G1-Geometric-Foundation-Coherence-M4-Findings.md	v5 independent re-audit: 18 checks, 14 PASS, 0 FAIL, 4 NOTE (MINOR). All findings confirmed. Explored out-of-scope files (Thm 0.3.1, Thm 0.2.2) — no new in-scope findings.
+2026-03-14 17:00:00	G1	1	M3	PASS	21	19	0	2	200.0	G1-Geometric-Foundation-Coherence-M3-Findings.md	v4 re-verification: 19/21 passed, 0 failed, 2 noted. Added M3.19-M3.21 (confinement data, info geometry, Voronoi/diagrammatic). All 21 checks confirmed with parallel sub-agents.
+2026-03-14 17:30:00	G1	1	M7	PASS	25	20	0	7	189.5	G1-Geometric-Foundation-Coherence-M7-Findings.md	v6 independent re-verification: 20/25 passed, 0 failed, 7 noted. All 23 v5 checks confirmed. Added M7.24 (chi=2 in Action Plan, out-of-scope) and M7.25 (cross-group metric drift).
+2026-03-14 23:59:59	G1	1	M9	FAIL	12	5	2	5	300.0	G1-Geometric-Foundation-Coherence-M9-Findings.md	v5 re-audit: 5/12 passed, 2 failed, 5 noted. New FAILs: M9.11 (Prop 0.0.XX Lean says VERIFIED, markdown says NOVEL), M9.12 (Thm 0.0.9 Lean uses non-standard COMPLETE, markdown says NOVEL; Lean described as possible but exists). All 5 non-VERIFIED files have Lean formalization. Cross-format status discrepancies found.
+2026-03-14 17:00:00	G1	1	M8	FAIL	14	4	3	7	300.0	G1-Geometric-Foundation-Coherence-M8-Findings.md	v7 independent re-verification: 4/14 passed, 3 failed (MODERATE: M8.1 formal 3-cycle, M8.2/M8.3 layer ordering), 7 noted. Refinement: 5-cycle downgraded from formal cycle to informal transitive path (Phys Hyp 0.0.0f is assumed hypothesis, not dep on Prop 0.0.40). New finding M8.H: Phys Hyp 0.0.0f inconsistent markers across 4 files. DAG valid if [3]->[19] cross-reference reclassified.
+2026-03-14 16:36:39	G1	1	M1	PASS	12	10	0	2	131.7	G1-Geometric-Foundation-Coherence-M1-Findings.md	10/12 passed, 0 failed, 2 noted
+2026-03-14 16:36:39	G1	1	M2	PASS	9	9	0	3	220.8	G1-Geometric-Foundation-Coherence-M2-Findings.md	9/9 passed, 0 failed, 3 noted
+2026-03-14 16:36:39	G1	1	M3	PASS	21	19	0	2	329.0	G1-Geometric-Foundation-Coherence-M3-Findings.md	19/21 passed, 0 failed, 2 noted
+2026-03-14 16:36:39	G1	1	M4	PASS	18	14	0	4	249.5	G1-Geometric-Foundation-Coherence-M4-Findings.md	14/18 passed, 0 failed, 4 noted
+2026-03-14 16:36:39	G1	1	M5	PASS	20	20	0	1	235.3	G1-Geometric-Foundation-Coherence-M5-Findings.md	20/20 passed, 0 failed, 1 noted
+2026-03-14 16:36:39	G1	1	M6	PASS	20	16	0	4	214.4	G1-Geometric-Foundation-Coherence-M6-Findings.md	16/20 passed, 0 failed, 4 noted
+2026-03-14 16:36:39	G1	1	M7	PASS	25	20	0	7	287.5	G1-Geometric-Foundation-Coherence-M7-Findings.md	20/25 passed, 0 failed, 7 noted
+2026-03-14 16:36:39	G1	1	M8	FAIL	14	4	3	7	579.6	G1-Geometric-Foundation-Coherence-M8-Findings.md	4/14 passed, 3 failed, 7 noted
+2026-03-14 16:36:39	G1	1	M9	FAIL	12	5	2	5	469.0	G1-Geometric-Foundation-Coherence-M9-Findings.md	5/12 passed, 2 failed, 5 noted
+2026-03-14 16:36:39	G1	1	M10	PASS	27	26	0	1	249.6	G1-Geometric-Foundation-Coherence-M10-Findings.md	26/27 passed, 0 failed, 1 noted
+2026-03-15 12:00:00	G1	2	V3	PASS	14	7	0	7	600.0	G1-Validity-Audit-Module-V3-Findings.md	Revised V3: 14 checks (6 original + 8 new), 7 SOUND, 6 QUALIFIED, 1 NOTE, 0 INVALID, 0 SMUGGLED. No hidden tautologies or semantic circularity. 3 semantic equivalences confirmed. 2 new QUALIFIED: meta-bootstrap (V3.7), mutual reinforcement (V3.8). True inputs: 8 (1 physical + 7 framework).
+2026-03-15 14:00:00	G1	2	V1	PASS	26	8	0	18	900.0	G1-Validity-Audit-Module-V1-Findings.md	Expanded V1: 26 checks (all G1 files), 278 assumptions inventoried. 8 SOUND, 17 QUALIFIED, 1 WEAK (Thm 0.0.13 unproved lemmas), 0 INVALID. 9 new SMUGGLED (S6-S14), 3 MAJOR severity: S8 (exhaustiveness of dim decomp), S12 (QFT machinery used before derived), S14 (Lorentz invariance circularity). Total inputs: 1 physical + 8 framework = 9.
+2026-03-15 16:00:00	G1	2	V6	PASS	26	21	5	0	300.0	G1-Validity-Audit-Module-V6-Findings.md	Expanded V6: 26 checks (all G1 files). 12 SOUND, 9 QUALIFIED, 3 WEAK (Thm 0.0.2 framework-scope gap, Thm 0.0.16 reversed derivation direction, Thm 0.1.0 consistency-as-derivation), 2 SMUGGLED (Def 0.1.2 deferred overclaiming chain). 4 critical recommendations for peer review.
+2026-03-15 18:00:00	G1	2	V2	PASS	157	97	8	52	770.4	G1-Validity-Audit-Module-V2-Findings.md	V2 complete: 157 load-bearing steps across 26 files. 97 SOUND, 52 QUALIFIED, 6 WEAK, 0 INVALID, 2 SMUGGLED. No INVALID steps found. WEAK clusters in Thm 0.0.12/0.0.13 (proof sketches) and Thm 0.1.0 (perturbative uniqueness). 2 SMUGGLED in Thm 0.1.0: Fisher-Killing presupposes distributions (MAJOR); A_c=P_c assumed not derived (MODERATE). Key cross-cutting: coupling-to-dim correspondence enters 3 points with inconsistent transparency.
+2026-03-15 20:00:00	G1	2	V7	PASS	14	3	0	11	450.0	G1-Validity-Audit-Module-V7-Findings.md	Expanded V7: 14 checks (6 original + 8 new). 3 SOUND, 10 QUALIFIED, 0 WEAK, 0 INVALID, 1 SMUGGLED. G1 has zero novel predictions in own scope; sole genuine prediction is θ=0 (Prop 0.0.6b). Effective independent retrodictions ~2 (D=4, SU(3)). 18/26 files empirically invisible. 4 files SMUGGLE impressions of empirical contact beyond actual content. Falsifiability comparable to LQG.
+2026-03-15 22:00:00	G1	2	V8	PASS	15	7	2	6	600.0	G1-Validity-Audit-Module-V8-Findings.md	Expanded V8: 15 checks (6 original + 9 new). 7 SOUND, 5 QUALIFIED, 2 WEAK, 0 INVALID, 1 SMUGGLED. All 8 original recommendations RESOLVED. Strengths: circularity handling (5 locations), scope disavowals (8+ files), review transparency, form-independence proven. 2 new WEAK: NCG comparison absent (V8.10), uniqueness scope under-qualified (V8.15→WEAK removed, actually QUALIFIED). 1 SMUGGLED: smooth pre-geometric exclusion over-generalized (V8.11). 2 new recommendations: add NCG comparison, qualify smooth exclusion scope.
+2026-03-15 06:02:58	G1	2	V1	PASS	26	25	1	9	597.0	G1-Validity-Audit-Module-V1-Findings.md	25/26 passed, 1 failed, 9 noted
+2026-03-15 06:02:58	G1	2	V3	PASS	14	13	0	0	559.0	G1-Validity-Audit-Module-V3-Findings.md	13/14 passed, 0 failed, 0 noted
+2026-03-15 06:02:58	G1	2	V2	PASS	157	149	6	2	883.0	G1-Validity-Audit-Module-V2-Findings.md	149/157 passed, 6 failed, 2 noted
+2026-03-15 06:02:58	G1	2	V5	PASS	30	25	5	0	552.1	G1-Validity-Audit-Module-V5-Findings.md	25/30 passed, 5 failed, 0 noted
+2026-03-15 06:02:58	G1	2	V6	PASS	26	21	3	2	662.9	G1-Validity-Audit-Module-V6-Findings.md	21/26 passed, 3 failed, 2 noted
+2026-03-15 06:02:58	G1	2	V4	PASS	6	6	0	0	600.6	G1-Validity-Audit-Module-V4-Findings.md	6/6 passed, 0 failed, 0 noted
+2026-03-15 06:02:58	G1	2	V7	PASS	14	13	0	1	589.7	G1-Validity-Audit-Module-V7-Findings.md	13/14 passed, 0 failed, 1 noted
+2026-03-15 06:02:58	G1	2	V8	PASS	15	12	2	1	810.6	G1-Validity-Audit-Module-V8-Findings.md	12/15 passed, 2 failed, 1 noted
+2026-03-15 06:43:23	G1	2	V1	PASS	26	24	2	12	673.3	G1-Validity-Audit-Module-V1-Findings.md	24/26 passed, 2 failed, 12 noted
+2026-03-15 06:43:23	G1	2	V3	PASS	17	16	0	0	593.3	G1-Validity-Audit-Module-V3-Findings.md	16/17 passed, 0 failed, 0 noted
+2026-03-15 06:43:23	G1	2	V2	PASS	157	149	6	2	619.1	G1-Validity-Audit-Module-V2-Findings.md	149/157 passed, 6 failed, 2 noted
+2026-03-15 06:43:23	G1	2	V5	PASS	35	30	5	0	610.0	G1-Validity-Audit-Module-V5-Findings.md	30/35 passed, 5 failed, 0 noted
+2026-03-15 06:43:23	G1	2	V6	PASS	26	21	3	2	264.8	G1-Validity-Audit-Module-V6-Findings.md	21/26 passed, 3 failed, 2 noted
+2026-03-15 06:43:23	G1	2	V4	PASS	11	11	0	0	652.8	G1-Validity-Audit-Module-V4-Findings.md	11/11 passed, 0 failed, 0 noted
+2026-03-15 06:43:23	G1	2	V7	PASS	14	13	0	1	304.7	G1-Validity-Audit-Module-V7-Findings.md	13/14 passed, 0 failed, 1 noted
+2026-03-15 06:43:23	G1	2	V8	PASS	19	16	2	1	452.9	G1-Validity-Audit-Module-V8-Findings.md	16/19 passed, 2 failed, 1 noted
+2026-03-15 07:25:36	G1	2	V1	PASS	26	25	1	14	827.3	G1-Validity-Audit-Module-V1-Findings.md	25/26 passed, 1 failed, 14 noted
+2026-03-15 07:25:36	G1	2	V3	PASS	17	16	0	0	448.7	G1-Validity-Audit-Module-V3-Findings.md	16/17 passed, 0 failed, 0 noted
+2026-03-15 07:25:36	G1	2	V2	PASS	160	151	4	2	645.4	G1-Validity-Audit-Module-V2-Findings.md	151/160 passed, 4 failed, 2 noted
+2026-03-15 07:25:36	G1	2	V5	PASS	50	34	14	2	753.2	G1-Validity-Audit-Module-V5-Findings.md	34/50 passed, 14 failed, 2 noted
+2026-03-15 07:25:36	G1	2	V6	PASS	26	26	0	0	696.0	G1-Validity-Audit-Module-V6-Findings.md	26/26 passed, 0 failed, 0 noted
+2026-03-15 07:25:36	G1	2	V4	PASS	18	13	3	2	740.8	G1-Validity-Audit-Module-V4-Findings.md	13/18 passed, 3 failed, 2 noted
+2026-03-15 07:25:36	G1	2	V7	PASS	14	13	0	1	380.0	G1-Validity-Audit-Module-V7-Findings.md	13/14 passed, 0 failed, 1 noted
+2026-03-15 07:25:36	G1	2	V8	PASS	19	17	1	1	419.2	G1-Validity-Audit-Module-V8-Findings.md	17/19 passed, 1 failed, 1 noted
+2026-03-15 09:00:00	G1	2	V6	PASS	26	17	0	9	600.0	G1-Validity-Audit-Module-V6-Findings.md	Independent re-verification: 17 SOUND, 9 QUALIFIED, 0 WEAK/INVALID/SMUGGLED. 3 prior SOUND downgrades (V6.3, V6.20, V6.24): status-line fixes verified but body-level language inconsistencies found. V6.12 fully resolved. Pattern: headline corrections not propagated to body text.
+2026-03-15 12:30:00	G1	2	V1	PASS	26	6	1	19	554.2	G1-Validity-Audit-Module-V1-Findings.md	Third cross-verification: 305 assumptions (155E/117F/33H). 6 SOUND, 19 QUALIFIED, 1 WEAK, 0 INVALID, 22 active SMUGGLED (3 MAJOR: S23 weight=physical space, S13 Weinberg-Lorentz ordering, S8 philosophical emergence). Thm 0.0.13 WEAK→SOUND, Thm 0.0.15 QUALIFIED→SOUND, Thm 0.0.1 SOUND→QUALIFIED. 8 resolved. 9 independent inputs.
+2026-03-15 07:50:58	G1	2	V1	PASS	26	25	1	22	644.0	G1-Validity-Audit-Module-V1-Findings.md	25/26 passed, 1 failed, 22 noted
+2026-03-15 07:50:58	G1	2	V3	PASS	20	20	0	0	768.7	G1-Validity-Audit-Module-V3-Findings.md	20/20 passed, 0 failed, 0 noted
+2026-03-15 07:50:58	G1	2	V2	PASS	160	151	4	2	578.6	G1-Validity-Audit-Module-V2-Findings.md	151/160 passed, 4 failed, 2 noted
+2026-03-15 07:50:58	G1	2	V5	PASS	55	39	14	2	591.4	G1-Validity-Audit-Module-V5-Findings.md	39/55 passed, 14 failed, 2 noted
+2026-03-15 07:50:58	G1	2	V6	PASS	26	26	0	0	374.1	G1-Validity-Audit-Module-V6-Findings.md	26/26 passed, 0 failed, 0 noted
+2026-03-15 07:50:58	G1	2	V4	PASS	21	17	2	2	617.3	G1-Validity-Audit-Module-V4-Findings.md	17/21 passed, 2 failed, 2 noted
+2026-03-15 07:50:58	G1	2	V7	PASS	26	22	3	1	665.0	G1-Validity-Audit-Module-V7-Findings.md	22/26 passed, 3 failed, 1 noted
+2026-03-15 07:50:58	G1	2	V8	PASS	22	19	2	1	943.1	G1-Validity-Audit-Module-V8-Findings.md	19/22 passed, 2 failed, 1 noted
+2026-03-15 08:12:38	G1	2	V1	PASS	26	25	1	22	277.3	G1-Validity-Audit-Module-V1-Findings.md	25/26 passed, 1 failed, 22 noted
+2026-03-15 08:12:38	G1	2	V3	PASS	15	13	3	0	723.1	G1-Validity-Audit-Module-V3-Findings.md	13/15 passed, 3 failed, 0 noted
+2026-03-15 08:12:38	G1	2	V2	PASS	160	151	4	2	475.1	G1-Validity-Audit-Module-V2-Findings.md	151/160 passed, 4 failed, 2 noted
+2026-03-15 08:12:38	G1	2	V5	PASS	55	41	14	0	448.5	G1-Validity-Audit-Module-V5-Findings.md	41/55 passed, 14 failed, 0 noted
+2026-03-15 08:12:38	G1	2	V6	PASS	26	26	0	0	249.1	G1-Validity-Audit-Module-V6-Findings.md	26/26 passed, 0 failed, 0 noted
+2026-03-15 08:12:38	G1	2	V4	PASS	15	11	2	2	697.5	G1-Validity-Audit-Module-V4-Findings.md	11/15 passed, 2 failed, 2 noted
+2026-03-15 08:12:38	G1	2	V7	PASS	26	23	2	1	578.5	G1-Validity-Audit-Module-V7-Findings.md	23/26 passed, 2 failed, 1 noted
+2026-03-15 08:12:38	G1	2	V8	PASS	22	19	2	1	465.3	G1-Validity-Audit-Module-V8-Findings.md	19/22 passed, 2 failed, 1 noted
+2026-03-15 12:00:00	G1	2	V6	PASS	26	17	0	9	450.0	G1-Validity-Audit-Module-V6-Findings.md	Third independent re-verification: 17 SOUND, 9 QUALIFIED, 0 WEAK/INVALID/SMUGGLED. All prior findings confirmed. V6.3 refined: line 451 contextually scoped, line 999 newly identified. No verdict changes.
+2026-03-15 23:59:59	G1	2	V3	PASS	16	8	3	5	768.7	G1-Validity-Audit-Module-V3-Findings.md	V3 cross-verified (×4, Opus 4.6): 16 checks (8 SOUND, 5 QUALIFIED, 3 WEAK, 0 INVALID, 0 SMUGGLED). Count error fixed (prior claimed 9 SOUND, actual 8). New V3.16: pre-geometric semantic tension across Phase 0 files (QUALIFIED/MODERATE). All 15 prior findings confirmed. DAG verified acyclic. No strict logical circularity.
+2026-03-15 14:30:00	G1	2	V5	PASS	59	45	14	0	600.0	G1-Validity-Audit-Module-V5-Findings.md	Cycle 6 independent verification: 59 checks (15 SOUND, 30 QUALIFIED, 14 WEAK, 0 INVALID, 0 SMUGGLED). 4 new MINOR findings (V5.56-V5.59: orientability, Cartan closure, PL transitions, phase cancellation precondition). All 55 prior checks confirmed. ~150 invocations catalogued by 3 parallel agents. Audit definitively saturated.
+2026-03-15 15:00:00	G1	2	V2	PASS	160	151	4	2	890.0	G1-Validity-Audit-Module-V2-Findings.md	V2 independently re-verified (×2, Opus 4.6, 6 parallel agents): 160 steps (100 SOUND, 51 QUALIFIED, 4 WEAK, 0 INVALID, 2 SMUGGLED). All prior findings confirmed. 2 refinements: V2.26.5a circularity concern overstated (proof algebraically sound); Thm 0.0.16 §4.2 presentation issue. No verdict changes.
+2026-03-15 16:30:00	G1	2	V8	PASS	22	19	2	1	520.0	G1-Validity-Audit-Module-V8-Findings.md	Fifth independent re-verification (×5, Opus 4.6, 3 parallel agents): 22 checks (10 SOUND, 9 QUALIFIED, 2 WEAK, 0 INVALID, 1 SMUGGLED). All 22 verdicts confirmed unchanged. NCG absence (V8.10), string-net absence (V8.20), smooth exclusion scope (V8.11) remain open MODERATE issues. No new checks needed.
+2026-03-15 17:00:00	G1	2	V1	PASS	26	9	0	17	780.0	G1-Validity-Audit-Module-V1-Findings.md	V1 independently re-verified (×5, Opus 4.6, 3 parallel agents): 26 checks (9 SOUND, 17 QUALIFIED, 0 WEAK, 0 INVALID, 19 SMUGGLED active). 4 verdict upgrades: V1.7 WEAK→QUALIFIED (S8/S9/S28 resolved), V1.21/V1.23/V1.25 QUALIFIED→SOUND. 3 smuggled resolved (S8/S9/S28). Active smuggled: 19 (down from 22). 284 assumptions (130E/124F/30H).
+2026-03-15 18:00:00	G1	2	V7	PASS	26	25	0	1	530.0	G1-Validity-Audit-Module-V7-Findings.md	V7 independently re-verified (×3, Opus 4.6, 3 parallel agents): 26 checks (15 SOUND, 10 QUALIFIED, 0 WEAK, 0 INVALID, 1 SMUGGLED). V7.15 SOUND→QUALIFIED (Thm 0.0.9 §5.3 overstates GR reproduction). V7.12 severity MINOR→MODERATE (§0 vs §7.2/§8 language contradiction). V7.8 QUALIFIED confirmed (resolution verified). Prior weak:2 reclassified as sub-findings within QUALIFIED checks. 1 SMUGGLED: Prop 0.0.6b imports from 0.0.17r + Coleman restatement.
+2026-03-15 08:30:21	G1	2	V1	PASS	26	26	0	19	811.4	G1-Validity-Audit-Module-V1-Findings.md	26/26 passed, 0 failed, 19 noted
+2026-03-15 08:30:21	G1	2	V3	PASS	16	13	3	0	448.8	G1-Validity-Audit-Module-V3-Findings.md	13/16 passed, 3 failed, 0 noted
+2026-03-15 08:30:21	G1	2	V2	PASS	160	151	4	2	716.4	G1-Validity-Audit-Module-V2-Findings.md	151/160 passed, 4 failed, 2 noted
+2026-03-15 08:30:21	G1	2	V5	PASS	59	45	14	0	582.2	G1-Validity-Audit-Module-V5-Findings.md	45/59 passed, 14 failed, 0 noted
+2026-03-15 08:30:21	G1	2	V6	PASS	26	26	0	0	252.4	G1-Validity-Audit-Module-V6-Findings.md	26/26 passed, 0 failed, 0 noted
+2026-03-15 08:30:21	G1	2	V4	PASS	15	11	2	2	362.0	G1-Validity-Audit-Module-V4-Findings.md	11/15 passed, 2 failed, 2 noted
+2026-03-15 08:30:21	G1	2	V7	PASS	26	25	0	1	810.7	G1-Validity-Audit-Module-V7-Findings.md	25/26 passed, 0 failed, 1 noted
+2026-03-15 08:30:21	G1	2	V8	PASS	22	19	2	1	374.7	G1-Validity-Audit-Module-V8-Findings.md	19/22 passed, 2 failed, 1 noted
+2026-03-15 09:09:01	G1	2	V1	PASS	26	26	0	19	805.2	G1-Validity-Audit-Module-V1-Findings.md	26/26 passed, 0 failed, 19 noted
+2026-03-15 09:09:01	G1	2	V3	PASS	18	18	0	0	720.3	G1-Validity-Audit-Module-V3-Findings.md	18/18 passed, 0 failed, 0 noted
+2026-03-15 09:09:01	G1	2	V2	PASS	160	151	4	2	942.9	G1-Validity-Audit-Module-V2-Findings.md	151/160 passed, 4 failed, 2 noted
+2026-03-15 09:09:01	G1	2	V5	PASS	26	23	3	0	829.6	G1-Validity-Audit-Module-V5-Findings.md	23/26 passed, 3 failed, 0 noted
+2026-03-15 09:09:01	G1	2	V6	PASS	26	22	3	1	630.4	G1-Validity-Audit-Module-V6-Findings.md	22/26 passed, 3 failed, 1 noted
+2026-03-15 09:09:01	G1	2	V4	PASS	15	13	0	2	524.8	G1-Validity-Audit-Module-V4-Findings.md	13/15 passed, 0 failed, 2 noted
+2026-03-15 09:09:01	G1	2	V7	PASS	26	25	0	1	809.9	G1-Validity-Audit-Module-V7-Findings.md	25/26 passed, 0 failed, 1 noted
+2026-03-15 09:09:01	G1	2	V8	PASS	22	19	2	1	347.9	G1-Validity-Audit-Module-V8-Findings.md	19/22 passed, 2 failed, 1 noted

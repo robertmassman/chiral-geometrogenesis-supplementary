@@ -1,0 +1,152 @@
+{
+  "theorem": "7.7.3",
+  "title": "Quantitative Mass Gap Lower Bound for SU(3) Yang-Mills",
+  "phase": "H.4",
+  "timestamp": "2026-02-15T07:05:45.650653",
+  "summary": {
+    "standard": "10/10",
+    "adversarial": "8/8",
+    "total": "18/18",
+    "overall": "PASS"
+  },
+  "key_values": {
+    "R_cont": 3.405,
+    "R_cont_err": 0.021,
+    "sqrt_sigma_MeV": 440.0,
+    "sqrt_sigma_err_MeV": 30.0,
+    "m_phys_MeV": 1498.1999999999998,
+    "m_phys_err_MeV": 103.0,
+    "Lambda_MSbar_Nf0_MeV": 243.0,
+    "Lambda_QCD_PDG_MeV": 210.0,
+    "c_central": 6.770406976744186,
+    "c_3sigma_lower": 5.75
+  },
+  "tests": [
+    {
+      "test_id": "C-1",
+      "name": "Dependency chain (13 results)",
+      "passed": true,
+      "details": "All 13 dependencies verified (framework + external)",
+      "severity": "standard"
+    },
+    {
+      "test_id": "C-2",
+      "name": "Mass gap formula consistency",
+      "passed": true,
+      "details": "m = R_cont * sqrt(sigma) = 3.405 * 440.0 = 1498.2 MeV; sqrt(sigma) = hbar_c/R_stella = 440.0 MeV",
+      "severity": "standard"
+    },
+    {
+      "test_id": "C-3",
+      "name": "Error propagation",
+      "passed": true,
+      "details": "dm = 102.6 MeV (stated: 103.0 MeV); dR/R = 0.62%, dsigma/sigma = 6.82% (sigma dominates: True); dc/c = 4.5%",
+      "severity": "standard"
+    },
+    {
+      "test_id": "C-4",
+      "name": "Dimensional analysis (8 equations)",
+      "passed": true,
+      "details": "All 8 equations dimensionally consistent",
+      "severity": "standard"
+    },
+    {
+      "test_id": "C-5",
+      "name": "Lambda_QCD definition",
+      "passed": true,
+      "details": "Lambda_MSbar(Nf=0) = 243.0 MeV, Lambda_PDG(Nf=5) = 210.0 MeV (distinct: True); b0 = 0.069658, b1 = 0.00409035",
+      "severity": "standard"
+    },
+    {
+      "test_id": "C-6",
+      "name": "Explicit constant c",
+      "passed": true,
+      "details": "c(Necco-Sommer) = 6.77 +/- 0.54; c(direct Nf=0) = 6.17; c(PDG Nf=5) = 7.13; reasonable range: True",
+      "severity": "standard"
+    },
+    {
+      "test_id": "C-7",
+      "name": "Conservative 3-sigma lower bound",
+      "passed": "True",
+      "details": "R_low(3sigma) = 3.342; (sigma/Lambda)_low = 1.51; c_low = 5.05; m_lower = 1228 MeV; positive: True, meaningful (>3): True",
+      "severity": "standard"
+    },
+    {
+      "test_id": "C-8",
+      "name": "Consistency with Thm 7.7.2",
+      "passed": true,
+      "details": "m(7.7.3) = c*Lambda = 1645 MeV; m(7.7.2) = 1498 MeV; ratio = 1.098; consistent (<15%): True",
+      "severity": "standard"
+    },
+    {
+      "test_id": "C-9",
+      "name": "Consistency with Thm 7.6.10 Part (d)",
+      "passed": true,
+      "details": "m(7.6.10) = 1498.2 MeV; m(7.7.3) = 1498.2 MeV; R_cont = 3.405; sqrt(sigma) = 440.0 MeV",
+      "severity": "standard"
+    },
+    {
+      "test_id": "C-10",
+      "name": "Physical reasonableness",
+      "passed": true,
+      "details": "MP1999: 1710.0 MeV (1.5sigma); AT2020: 1651.0 MeV (1.5sigma); in range [0.9, 3.0] GeV: True",
+      "severity": "standard"
+    },
+    {
+      "test_id": "APV-1",
+      "name": "Constant c is truly explicit",
+      "passed": "True",
+      "details": "c = 6.7704 +/- 0.5425 (explicit numerical value); finite: True, positive: True, error explicit: True",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-2",
+      "name": "Scheme dependence handled",
+      "passed": true,
+      "details": "c(MSbar) = 6.17, c(lattice) = 177.56 (scheme-dependent: True); scheme specified in theorem: True; m = c*Lambda invariant: True",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-3",
+      "name": "N_f dependence correctly treated",
+      "passed": true,
+      "details": "b0(Nf=0) = 0.069658, b0(Nf=3) = 0.056993, b0(Nf=5) = 0.048550 (all AF: True); c(Nf=0) = 6.17, c(Nf=5) = 7.13 (distinguished: True)",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-4",
+      "name": "String tension convention consistency",
+      "passed": true,
+      "details": "m(CG, sigma=440) = 1498 MeV; m(quenched, sigma=485) = 1651 MeV; R_cont same: True (CG: 3.405, Q: 3.405); rel_diff = 9.3% (convention-dependent)",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-5",
+      "name": "Lattice MC input transparency",
+      "passed": true,
+      "details": "MC inputs: 2 (all cited with uncertainties); Framework results: 4 (independent of MC); No circularity: True",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-6",
+      "name": "Lower bound survives parameter variation",
+      "passed": "True",
+      "details": "Monte Carlo (1000 samples): c = 6.80 +/- 0.55; min(c) = 5.16; 3sigma lower = 5.15; all positive: True; meaningful (>3): True",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-7",
+      "name": "Inherited caveats (6 items)",
+      "passed": true,
+      "details": "All 6 inherited caveats acknowledged in \u00a78.3 and \u00a78.2",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-8",
+      "name": "No circular reasoning",
+      "passed": true,
+      "details": "No back-edge from 7.7.3 to 7.7.2: True; Existence proof independent of quantitative inputs: True; Logic: existence (7.7.2) \u2192 quantification (7.7.3), not reverse",
+      "severity": "adversarial"
+    }
+  ]
+}

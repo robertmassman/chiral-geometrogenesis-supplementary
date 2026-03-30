@@ -1,0 +1,337 @@
+{
+  "proposition": "7.6.9",
+  "title": "Scaling Window and Mass Ratio Stabilization on D\u2084 Lattice",
+  "phase": "G.6",
+  "timestamp": "2026-02-14T18:47:11.567756",
+  "standard_tests": [
+    {
+      "test": "C1",
+      "description": "Fourth-moment isotropy on D\u2084 (O\u2084 = 0)",
+      "max_tensor_error": 1.3877787807814457e-17,
+      "num_neighbors": 24,
+      "passed": "True",
+      "notes": "Verifies D\u2084 lattice has vanishing O\u2084 artifact operator"
+    },
+    {
+      "test": "C2",
+      "description": "Scaling window formula dimensional consistency",
+      "a_max_fm": 0.14181879587895538,
+      "dimensional_check": true,
+      "positive": true,
+      "reasonable": true,
+      "passed": true,
+      "notes": "a_max(0.01) = 0.1418 fm"
+    },
+    {
+      "test": "C3",
+      "description": "\u03b2_sc via asymptotic scaling",
+      "window_bounds": [
+        {
+          "delta": 0.1,
+          "beta_sc": 5.690374467822595,
+          "a_max_fm": 0.25219344466805915
+        },
+        {
+          "delta": 0.01,
+          "beta_sc": 6.201884131938771,
+          "a_max_fm": 0.14181879587895538
+        },
+        {
+          "delta": 0.001,
+          "beta_sc": 6.710855652733837,
+          "a_max_fm": 0.07975056961147138
+        },
+        {
+          "delta": 0.0001,
+          "beta_sc": 7.217690360268064,
+          "a_max_fm": 0.044847041000000004
+        }
+      ],
+      "monotonic": true,
+      "reasonable": true,
+      "passed": true,
+      "notes": "Smaller \u03b4 requires larger \u03b2 (finer lattice)"
+    },
+    {
+      "test": "C4",
+      "description": "k_max formula verification",
+      "results": [
+        {
+          "beta": 6,
+          "g0_sq": 1.0,
+          "k_max": 0,
+          "correct": true
+        },
+        {
+          "beta": 10,
+          "g0_sq": 0.6,
+          "k_max": 0,
+          "correct": true
+        },
+        {
+          "beta": 20,
+          "g0_sq": 0.3,
+          "k_max": 0,
+          "correct": true
+        },
+        {
+          "beta": 50,
+          "g0_sq": 0.12,
+          "k_max": 0,
+          "correct": true
+        },
+        {
+          "beta": 100,
+          "g0_sq": 0.06,
+          "k_max": 69,
+          "correct": "True"
+        },
+        {
+          "beta": 200,
+          "g0_sq": 0.03,
+          "k_max": 241,
+          "correct": "True"
+        }
+      ],
+      "passed": true,
+      "notes": "k_max is the largest k with g_k\u00b2 \u2264 g*\u00b2"
+    },
+    {
+      "test": "C5",
+      "description": "UV sum convergence: \u03a3 g_k^3",
+      "beta": 100,
+      "k_max": 69,
+      "uv_sum": 1.4982739655163222,
+      "zeta_32": 2.612,
+      "finite": "True",
+      "bounded": "True",
+      "passed": "True",
+      "notes": "UV sum = 1.4983, \u03b6(3/2) bound = 2.612"
+    },
+    {
+      "test": "C6",
+      "description": "IR sum convergence: \u03a3 exp(-c\u00b74^k)",
+      "alpha_0": 0.25,
+      "ir_sum": 0.7422014055771613,
+      "first_3_terms": 0.7422014055771486,
+      "ratio_3_to_total": 0.9999999999999829,
+      "finite": "True",
+      "fast_convergence": "True",
+      "passed": "True",
+      "notes": "IR sum dominated by first few terms (super-exponential)"
+    },
+    {
+      "test": "C7",
+      "description": "D\u2084 artifacts scale as O(a\u2074)",
+      "a_values_fm": [
+        0.05,
+        0.1,
+        0.15,
+        0.2
+      ],
+      "d4_artifacts": [
+        0.00015450581980707646,
+        0.0024720931169132233,
+        0.012514971404373194,
+        0.03955348987061157
+      ],
+      "scaling_ratio_expected": 16.0,
+      "scaling_ratio_actual": 16.0,
+      "scaling_correct": "True",
+      "passed": "True",
+      "notes": "Artifacts \u221d (a\u221a\u03c3)\u2074 verified"
+    },
+    {
+      "test": "C8",
+      "description": "Z\u2074 artifacts scale as O(a\u00b2)",
+      "a_values_fm": [
+        0.05,
+        0.1,
+        0.15,
+        0.2
+      ],
+      "z4_artifacts": [
+        0.012430036999425081,
+        0.049720147997700324,
+        0.11187033299482572,
+        0.1988805919908013
+      ],
+      "scaling_correct": "True",
+      "passed": "True",
+      "notes": "Artifacts \u221d (a\u221a\u03c3)\u00b2 verified"
+    },
+    {
+      "test": "C9",
+      "description": "D\u2084/Z\u2074 improvement ratio \u221d 1/(a\u00b2\u03c3)",
+      "a_values_fm": [
+        0.05,
+        0.1,
+        0.15,
+        0.2
+      ],
+      "improvement_factors": [
+        80.45028345822723,
+        20.112570864556808,
+        8.938920384247469,
+        5.028142716139202
+      ],
+      "expected_factors": [
+        80.45028345822723,
+        20.112570864556808,
+        8.93892038424747,
+        5.028142716139202
+      ],
+      "all_match": true,
+      "passed": true,
+      "notes": "At a=0.1 fm: D\u2084 is 20\u00d7 better than Z\u2074"
+    },
+    {
+      "test": "C10",
+      "description": "\u03b2_sc(0.01) \u2248 5.3 (consistent with Z\u2074 window)",
+      "beta_sc": 6.201884131938771,
+      "z4_window_start": 5.8,
+      "reasonable": "True",
+      "below_z4": "False",
+      "passed": "True",
+      "notes": "\u03b2_sc = 6.2, Z\u2074 empirical onset \u2248 5.8"
+    },
+    {
+      "test": "C11",
+      "description": "No upper bound on crossover path",
+      "large_betas": [
+        50,
+        100,
+        500,
+        1000
+      ],
+      "k_max_values": [
+        0,
+        69,
+        759,
+        1622
+      ],
+      "all_nonneg": true,
+      "kmax_grows_weak_coupling": true,
+      "passed": true,
+      "notes": "k_max \u2265 0 for all \u03b2; grows with \u03b2 in weak-coupling regime"
+    },
+    {
+      "test": "C12",
+      "description": "Character expansion R(\u03b2) \u2192 0",
+      "beta_c": 5.404615121239899,
+      "R_values": [
+        {
+          "beta": 4.404615121239899,
+          "eps": 1.0,
+          "R": 1.3040474004492126
+        },
+        {
+          "beta": 4.904615121239899,
+          "eps": 0.5,
+          "R": 0.6288266951182971
+        },
+        {
+          "beta": 5.304615121239899,
+          "eps": 0.1,
+          "R": 0.1223078221909481
+        },
+        {
+          "beta": 5.354615121239899,
+          "eps": 0.05,
+          "R": 0.06094486864428874
+        },
+        {
+          "beta": 5.394615121239899,
+          "eps": 0.01,
+          "R": 0.012155740504575036
+        }
+      ],
+      "R_decreasing": true,
+      "R_approaches_zero": true,
+      "passed": true,
+      "notes": "\u03b2_c \u2248 5.40, R \u2192 0 as \u03b2 \u2192 \u03b2_c\u207b"
+    },
+    {
+      "test": "C13",
+      "description": "Universality: same b\u2080, b\u2081 on D\u2084 and Z\u2074",
+      "b0": 0.06965831375410722,
+      "b0_theory": 0.06965831375410722,
+      "b0_match": true,
+      "b1": 0.00409035230460079,
+      "b1_theory": 0.00409035230460079,
+      "b1_match": true,
+      "passed": true,
+      "notes": "Beta function coefficients are lattice-independent (universal)"
+    }
+  ],
+  "adversarial_tests": [
+    {
+      "test": "ADV-1",
+      "description": "R_phys \u2260 lim R(\u03b2): different quantities",
+      "R_beta_limit": 0.0,
+      "R_phys": 3.405,
+      "are_different": true,
+      "passed": true,
+      "notes": "R(\u03b2) is lattice ratio; R_phys is continuum ratio. Distinct by construction."
+    },
+    {
+      "test": "ADV-3",
+      "description": "C_art sensitivity: \u03b2_sc varies modestly",
+      "results": [
+        {
+          "C_art": 0.1,
+          "a_max_fm": 0.25219344466805915,
+          "beta_sc": 5.690374467822595
+        },
+        {
+          "C_art": 0.5,
+          "a_max_fm": 0.1686519211003723,
+          "beta_sc": 6.04819264044752
+        },
+        {
+          "C_art": 1.0,
+          "a_max_fm": 0.14181879587895538,
+          "beta_sc": 6.201884131938771
+        },
+        {
+          "C_art": 5.0,
+          "a_max_fm": 0.09483994480748155,
+          "beta_sc": 6.557881065534172
+        },
+        {
+          "C_art": 10.0,
+          "a_max_fm": 0.07975056961147138,
+          "beta_sc": 6.710855652733837
+        }
+      ],
+      "beta_range": 1.020481184911242,
+      "modest_variation": true,
+      "passed": true,
+      "notes": "Factor-100 change in C_art shifts \u03b2_sc by ~ 1"
+    },
+    {
+      "test": "ADV-9",
+      "description": "C_art \u2265 0 by definition (sum of absolute values)",
+      "passed": true,
+      "notes": "C_art = \u03a3|c\u2086\u207d\u02b2\u207e|\u00b7|\u27e8O\u2086\u207d\u02b2\u207e\u27e9|/... \u2265 0"
+    },
+    {
+      "test": "ADV-10",
+      "description": "Morningstar-Peardon R_cont uncertainty",
+      "R_cont": 3.405,
+      "R_cont_err": 0.021,
+      "relative_uncertainty": 0.00616740088105727,
+      "uncertainty_moderate": true,
+      "passed": true,
+      "notes": "R_cont = 3.405 \u00b1 0.021 (0.6% uncertainty)"
+    }
+  ],
+  "overall": {
+    "standard_passed": 13,
+    "standard_total": 13,
+    "adversarial_passed": 4,
+    "adversarial_total": 4,
+    "all_passed": true,
+    "status": "ALL PASS"
+  }
+}

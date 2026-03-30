@@ -1,0 +1,377 @@
+{
+  "proposition": "0.0.38",
+  "title": "Exact Partition Function of Stella Gauge Theory",
+  "verification_type": "adversarial_physics",
+  "timestamp": "2026-02-11T08:45:44.099017",
+  "overall_status": "PARTIAL",
+  "summary": "31/33 tests passed",
+  "tests": [
+    {
+      "name": "A1.1: a_1(0) = 1 (trivial rep at \u03b2=0)",
+      "passed": "True",
+      "details": "a_1(0) = 1.000000, expected 1.0, err = 3.33e-16",
+      "severity": "INFO",
+      "numerical_data": {
+        "a_1_at_0": "0.9999999999999997"
+      }
+    },
+    {
+      "name": "A1.2: a_3(0) = 0 (non-trivial rep at \u03b2=0)",
+      "passed": "True",
+      "details": "a_3(0) = -0.000000, expected 0.0, err = 3.03e-17",
+      "severity": "INFO",
+      "numerical_data": {
+        "a_3_at_0": "-3.0316490059097603e-17"
+      }
+    },
+    {
+      "name": "A1.3: a_8(0) = 0 (adjoint rep at \u03b2=0)",
+      "passed": "True",
+      "details": "a_8(0) = 0.000000, expected 0.0, err = 2.11e-17",
+      "severity": "INFO",
+      "numerical_data": {
+        "a_8_at_0": "2.1053118096595557e-17"
+      }
+    },
+    {
+      "name": "A1.4: Z_{K4}(0) = 1 (Haar normalization)",
+      "passed": "True",
+      "details": "Z(0) = 1.000000, expected 1.0, err = 1.33e-15",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_at_0": "0.9999999999999987"
+      }
+    },
+    {
+      "name": "A1.5: Z_{K4}(\u03b2) > 0 for all \u03b2 tested",
+      "passed": true,
+      "details": "Z values: ['1.000e+00', '1.029e+00', '1.125e+00', '1.644e+00', '9.268e+00', '2.308e+02', '3.823e+06']",
+      "severity": "INFO",
+      "numerical_data": {
+        "betas": [
+          0.0,
+          0.5,
+          1.0,
+          2.0,
+          4.0,
+          6.0,
+          10.0
+        ],
+        "Z_vals": [
+          0.9999999999999987,
+          1.0289723645769555,
+          1.1246511813916447,
+          1.644074381218643,
+          9.267622471873898,
+          230.80526481304705,
+          3823128.445510013
+        ]
+      }
+    },
+    {
+      "name": "A1.6: Z_{K4}(\u03b2) monotonically increasing",
+      "passed": true,
+      "details": "Z values monotone: True",
+      "severity": "INFO",
+      "numerical_data": {
+        "monotone": true
+      }
+    },
+    {
+      "name": "A2.1: Convergence at \u03b2=1.0 (last 5 reps < 1%)",
+      "passed": "True",
+      "details": "Last 5 reps contribute 3.37e-23 of total (\u03b2=1.0)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "last5_fraction": "3.373925609600881e-23",
+        "Z_total": "1.1246511813916455"
+      }
+    },
+    {
+      "name": "A2.2: Convergence at \u03b2=4.0 (last 5 reps < 1%)",
+      "passed": "True",
+      "details": "Last 5 reps contribute 1.16e-10 of total (\u03b2=4.0)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 4.0,
+        "last5_fraction": "1.1587487752814486e-10",
+        "Z_total": "9.26762308848805"
+      }
+    },
+    {
+      "name": "A2.3: Convergence at \u03b2=6.0 (last 5 reps < 1%)",
+      "passed": "True",
+      "details": "Last 5 reps contribute 2.43e-07 of total (\u03b2=6.0)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 6.0,
+        "last5_fraction": "2.4255435691719553e-07",
+        "Z_total": "230.81170091032226"
+      }
+    },
+    {
+      "name": "A2.4: Convergence at \u03b2=10.0 (last 5 reps < 1%)",
+      "passed": "True",
+      "details": "Last 5 reps contribute 3.61e-04 of total (\u03b2=10.0)",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 10.0,
+        "last5_fraction": "0.00036083504538738964",
+        "Z_total": "3848724.8827989674"
+      }
+    },
+    {
+      "name": "A3.a1: a_1 strong coupling at \u03b2=0.1",
+      "passed": "True",
+      "details": "a_1=1.000279, approx=1.000185, rel_err=0.0001",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.1,
+        "exact": "1.000279359893306",
+        "approx": 1.0001851851851853,
+        "rel_err": "9.41572715888999e-05"
+      }
+    },
+    {
+      "name": "A3.a3: a_3 strong coupling at \u03b2=0.1",
+      "passed": "True",
+      "details": "a_3=0.005603, approx=0.005556, rel_err=0.0086",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.1,
+        "exact": "0.005603411371342553",
+        "approx": 0.005555555555555556,
+        "rel_err": "0.00861404684165951"
+      }
+    },
+    {
+      "name": "A3.a8: a_8 strong coupling at \u03b2=0.1",
+      "passed": "True",
+      "details": "a_8=3.511778e-05, approx=3.086420e-05, rel_err=0.1378",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.1,
+        "exact": "3.511777831822571e-05",
+        "approx": 3.08641975308642e-05,
+        "rel_err": "0.13781601751051292"
+      }
+    },
+    {
+      "name": "A3.a1: a_1 strong coupling at \u03b2=0.3",
+      "passed": "True",
+      "details": "a_1=1.002545, approx=1.001667, rel_err=0.0009",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.3,
+        "exact": "1.0025448726863906",
+        "approx": 1.0016666666666667,
+        "rel_err": "0.0008767447784265042"
+      }
+    },
+    {
+      "name": "A3.a3: a_3 strong coupling at \u03b2=0.3",
+      "passed": "True",
+      "details": "a_3=0.017126, approx=0.016667, rel_err=0.0276",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.3,
+        "exact": "0.01712636022954666",
+        "approx": 0.016666666666666666,
+        "rel_err": "0.027581613772799593"
+      }
+    },
+    {
+      "name": "A3.a8: a_8 strong coupling at \u03b2=0.3",
+      "passed": "True",
+      "details": "a_8=3.237250e-04, approx=2.777778e-04, rel_err=0.1654",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 0.3,
+        "exact": "0.0003237249975929966",
+        "approx": 0.0002777777777777778,
+        "rel_err": "0.1654099913347878"
+      }
+    },
+    {
+      "name": "A4.1: u_3 weak coupling at \u03b2=20.0",
+      "passed": "False",
+      "details": "u_3=0.803194, approx=0.966667, err=0.1635",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 20.0,
+        "u3_exact": "0.803193676743892",
+        "u3_approx": 0.9666666666666667,
+        "error": "0.1634729899227747"
+      }
+    },
+    {
+      "name": "A5.1: Plaquette at \u03b2=1.0 (char vs MC)",
+      "passed": "True",
+      "details": "\u27e8P\u27e9_char=0.060380, \u27e8P\u27e9_MC=0.058209\u00b10.001411, diff=1.5\u03c3",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "plaq_char": "0.06038022059552977",
+        "plaq_mc": "0.05820866221712909",
+        "plaq_mc_err": "0.0014105086021284838"
+      }
+    },
+    {
+      "name": "A5.2: Plaquette at \u03b2=4.0 (char vs MC)",
+      "passed": "True",
+      "details": "\u27e8P\u27e9_char=0.307857, \u27e8P\u27e9_MC=0.313357\u00b10.001755, diff=3.1\u03c3",
+      "severity": "WARNING",
+      "numerical_data": {
+        "beta": 4.0,
+        "plaq_char": "0.3078565782593504",
+        "plaq_mc": "0.3133567304793438",
+        "plaq_mc_err": "0.001755415362493883"
+      }
+    },
+    {
+      "name": "A5.3: Plaquette at \u03b2=6.0 (char vs MC)",
+      "passed": "True",
+      "details": "\u27e8P\u27e9_char=0.489736, \u27e8P\u27e9_MC=0.489112\u00b10.001561, diff=0.4\u03c3",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 6.0,
+        "plaq_char": "0.4897357806260568",
+        "plaq_mc": "0.4891120318629484",
+        "plaq_mc_err": "0.001561209811344973"
+      }
+    },
+    {
+      "name": "A6.1: SU(2) Z(0) = 1",
+      "passed": "True",
+      "details": "Z_SU(2)(0) = 1.000000, expected 1.0",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_su2_0": "1.0"
+      }
+    },
+    {
+      "name": "A6.2: SU(2) u_{1/2} \u2248 \u03b2/8 at \u03b2=0.5",
+      "passed": "False",
+      "details": "u_{1/2} = 0.123718, expected \u2248 0.062500",
+      "severity": "INFO",
+      "numerical_data": {
+        "u_half": "0.12371792827832075",
+        "expected": 0.0625
+      }
+    },
+    {
+      "name": "A7.1: W\u2084 = H\u2081 H\u2083 H\u2082\u207b\u00b9 is SU(3)-valued",
+      "passed": "True",
+      "details": "Max unitarity violation of W\u2084: 1.33e-15",
+      "severity": "INFO",
+      "numerical_data": {
+        "max_violation": "1.3322676295501878e-15"
+      }
+    },
+    {
+      "name": "A7.2: Cycle rank \u03b2\u2081 = 3",
+      "passed": true,
+      "details": "\u03b2\u2081 = |E| - |V| + 1 = 6 - 4 + 1 = 3",
+      "severity": "INFO",
+      "numerical_data": {
+        "cycle_rank": 3
+      }
+    },
+    {
+      "name": "A7.3: Euler characteristic \u03c7(K\u2084) = 2 (S\u00b2)",
+      "passed": true,
+      "details": "\u03c7 = 4 - 6 + 4 = 2",
+      "severity": "INFO",
+      "numerical_data": {
+        "euler_char": 2
+      }
+    },
+    {
+      "name": "A8.1: F_stella = 2\u00b7F_{K4} (extensivity)",
+      "passed": "True",
+      "details": "Max deviation of F_stella/F_K4 from 2.0: 3.55e-15",
+      "severity": "INFO",
+      "numerical_data": {
+        "max_ratio_error": "3.552713678800501e-15",
+        "betas": [
+          0.5,
+          1.0,
+          2.0,
+          4.0,
+          6.0,
+          10.0
+        ],
+        "ratios": [
+          1.9999999999999964,
+          1.9999999999999998,
+          2.0,
+          2.0,
+          2.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "name": "A8.2: \u27e8P\u27e9_stella = \u27e8P\u27e9_{K4} (identical copies)",
+      "passed": true,
+      "details": "\u27e8P\u27e9 depends only on Z_{K4}, not on the square. Trivially true by factorization.",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "A9.1: Specific heat C(\u03b2) \u2265 0 (no negative fluctuations)",
+      "passed": "True",
+      "details": "Min specific heat = 0.0225 (should be \u2265 0)",
+      "severity": "INFO",
+      "numerical_data": {
+        "min_specific_heat": "0.0224784724743792"
+      }
+    },
+    {
+      "name": "A9.2: Free energy f(\u03b2) monotonically decreasing",
+      "passed": true,
+      "details": "Free energy monotonicity: True",
+      "severity": "INFO",
+      "numerical_data": {
+        "monotone": true
+      }
+    },
+    {
+      "name": "A9.3: No phase transition (smooth free energy)",
+      "passed": "True",
+      "details": "Max jump in d\u00b2f/d\u03b2\u00b2: 0.0166",
+      "severity": "INFO",
+      "numerical_data": {
+        "max_derivative_jump": "0.0166050425503343"
+      }
+    },
+    {
+      "name": "A10.1: Spectral gap positive at strong coupling (\u03b2=0.5)",
+      "passed": "True",
+      "details": "\u0394(0.5) = 8.6077",
+      "severity": "INFO",
+      "numerical_data": {
+        "gap_at_0.5": "8.607656681079783"
+      }
+    },
+    {
+      "name": "A10.2: Entropy domination crossover location",
+      "passed": true,
+      "details": "Gap crosses zero at \u03b2 \u2248 8.9 (expected: \u03b2 ~ ln(9)/4 \u2248 0.55 ... but actual crossover depends on u_3(\u03b2))",
+      "severity": "INFO",
+      "numerical_data": {
+        "crossover_beta": "8.91645569620253"
+      }
+    },
+    {
+      "name": "A10.3: Trivial rep dominates at strong coupling",
+      "passed": "True",
+      "details": "Trivial fraction at \u03b2=0.1: 1.0000",
+      "severity": "INFO",
+      "numerical_data": {
+        "trivial_frac_strong": "0.9999999822745489"
+      }
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "theorem": "0.1.3a",
+  "title": "Pressure Function Form-Independence - Mathematical Claims",
+  "timestamp": "2026-02-23T08:23:36.822400",
+  "verifications": [
+    {
+      "claim": "M1",
+      "description": "integral_0^inf 4*pi*r^2/(r^2+eps^2)^2 dr",
+      "symbolic_result": "pi**2/epsilon",
+      "numerical_result_eps1": 9.869604401089358,
+      "manuscript_claim": "pi^2/(2*eps)",
+      "report_claim": "pi^2/eps",
+      "manuscript_correct": false,
+      "report_correct": true,
+      "verdict": "VERIFICATION REPORT IS CORRECT",
+      "passed": true
+    },
+    {
+      "claim": "M2",
+      "description": "L^2 norm of Gaussian pressure function",
+      "symbolic_result": "sqrt(2)*pi**(3/2)*sigma**3/(4*epsilon**4)",
+      "numerical_result_sigma1_eps1": 1.9687012432153024,
+      "manuscript_claim": "pi^(3/2)*sigma^3/(2*eps^4)",
+      "report_claim": "pi^(3/2)*sigma^3/(2*sqrt(2)*eps^4)",
+      "manuscript_correct": false,
+      "report_correct": true,
+      "verdict": "VERIFICATION REPORT IS CORRECT",
+      "passed": true
+    },
+    {
+      "claim": "M3",
+      "description": "Counterexample smoothness and L^2 checks",
+      "part_a": {
+        "function": "1/(1+|x|)",
+        "smooth_at_origin": false,
+        "reason": "grad(|x|) = x/|x| undefined at origin",
+        "confirmed": true
+      },
+      "part_b": {
+        "function": "1/sqrt(r^2+eps^2)",
+        "smooth": true,
+        "L2_integrable": false,
+        "reason": "integral diverges as 4*pi*R^3/3",
+        "confirmed": true
+      },
+      "passed": true
+    },
+    {
+      "claim": "M4",
+      "description": "Power-law threshold analysis",
+      "form_C_always_L2": true,
+      "form_C_asymptotic": "1/r^2 for all alpha > 0",
+      "form_C_numerical": {
+        "0.25": 0.5983986006841016,
+        "0.5": 4.1887902047863905,
+        "0.75": 7.53982236860817,
+        "1.0": 9.869604401089358,
+        "1.5": 12.566370614359174,
+        "2.0": 13.957728399277757,
+        "5.0": 16.12340564114678
+      },
+      "alt_form_threshold": "alpha > 3/4",
+      "alt_form_explanation": "1/(r^2+eps^2)^alpha ~ 1/r^(2*alpha), need 4*alpha-2 > 1",
+      "threshold_misapplication_confirmed": true,
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED"
+}

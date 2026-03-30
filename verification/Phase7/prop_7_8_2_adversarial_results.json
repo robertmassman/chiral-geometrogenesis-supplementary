@@ -1,0 +1,142 @@
+{
+  "proposition": "7.8.2",
+  "title": "Framework-Internal Glueball Mass Ratio",
+  "verification_type": "adversarial_physics_multi_agent",
+  "date": "2026-02-22T12:27:49.255166",
+  "key_values": {
+    "M0_SC": 2.0,
+    "Delta": 0.14,
+    "Delta_err": 0.07,
+    "eta_SU3": 1.5,
+    "R_cont_FI": 3.4200000000000004,
+    "R_cont_FI_err": 0.21000000000000002,
+    "R_cont_lat": 3.405,
+    "R_cont_lat_err": 0.021,
+    "c_FI": 6.81948,
+    "c_FI_err": 0.5
+  },
+  "tests_total": 10,
+  "tests_passed": 10,
+  "tests_failed": 0,
+  "overall": "PASS",
+  "findings": [
+    {
+      "severity": "MODERATE",
+      "description": "N-ality interpretation incorrect: sigma_8/sigma_3=2 arises from character expansion order, not N-ality (adj has N-ality 0)",
+      "location": "Derivation \u00a75.2, paragraph after Eq. (5.8)"
+    },
+    {
+      "severity": "MODERATE",
+      "description": "Numerical table in \u00a75.4 uses incorrect formulas at large beta. At beta=100, table gives 1.996 but correct value is 2.2595",
+      "location": "Derivation \u00a75.4, numerical table"
+    },
+    {
+      "severity": "LOW",
+      "description": "Using only independent Deltas gives R_cont^FI = 3.288, tension = 0.56sigma (vs 0.07sigma adopted). Central value shifts by 0.132",
+      "location": "Statement \u00a73.4 circular reasoning table; Derivation \u00a77.5"
+    }
+  ],
+  "results": [
+    {
+      "test": "ADV-P1: N-ality vs character expansion",
+      "passed": true,
+      "details": "Ratio -> 2 confirmed from character expansion order, NOT N-ality",
+      "data": {
+        "origin": "character_expansion_order",
+        "nality_adj": 0
+      }
+    },
+    {
+      "test": "ADV-P2: Heat kernel crossover computation",
+      "passed": "True",
+      "details": "Weak-coupling LO converges to 9/4 = 2.25. Table values incorrect at large beta.",
+      "data": {
+        "target": 2.25,
+        "final_ratio_lo": 2.25093854291367
+      }
+    },
+    {
+      "test": "ADV-P3: Circularity stress test",
+      "passed": "True",
+      "details": "Independent Delta = 0.0960, R_FI = 3.288, tension = 0.56\u03c3",
+      "data": {
+        "Delta_1": 0.1257533885508079,
+        "Delta_2": 0.06620372194113631,
+        "Delta_3": 0.135,
+        "Delta_independent": 0.0959785552459721,
+        "R_FI_independent": 3.287935665737916,
+        "tension_independent": 0.5574492107718277
+      }
+    },
+    {
+      "test": "ADV-P4: Error budget expansion (M0^SC systematic)",
+      "passed": "True",
+      "details": "Expanded dR = 0.271 (vs standard 0.210). c_FI > 0 at 3sigma: 5.04",
+      "data": {
+        "dR_standard": 0.21000000000000002,
+        "dR_expanded": 0.27081543530604013,
+        "c_low_3sigma": 5.035186183272111
+      }
+    },
+    {
+      "test": "ADV-P5: SU(N) universality with proper errors",
+      "passed": "True",
+      "details": "chi^2/dof = 0.87 (fixed Delta). Delta(N) monotonic: True",
+      "data": {
+        "chi2_dof": 0.8700181630049294,
+        "monotonic": true
+      }
+    },
+    {
+      "test": "ADV-P6: Binding energy cancellation",
+      "passed": true,
+      "details": "Mean Delta_eff = 0.0556 \u00b1 0.0212, consistent with adopted 0.14 at 1.2\u03c3",
+      "data": {
+        "mean_Delta": 0.05562500000000001,
+        "std_Delta": 0.021225353353949136,
+        "tension": 1.15349566709961
+      }
+    },
+    {
+      "test": "ADV-P7: Strong-coupling expansion coefficients",
+      "passed": "True",
+      "details": "u_3 ~ beta/18, u_8 ~ beta^2/288 verified; ratio -> 1.995455 (logarithmic correction at finite beta)",
+      "data": {
+        "u3_coeff": 0.05555555555555555,
+        "u8_coeff": 0.003472222222222222,
+        "ratio": 1.9954552390957936
+      }
+    },
+    {
+      "test": "ADV-P8: Weak-coupling convergence to 9/4",
+      "passed": "True",
+      "details": "At beta=100000: deviation = 9.38e-06. Convergence ~ beta^-1.0",
+      "data": {
+        "final_deviation": 9.375087514307268e-06,
+        "convergence_power": -1.00009266610075
+      }
+    },
+    {
+      "test": "ADV-P9: Conservative lower bound",
+      "passed": "True",
+      "details": "Most conservative c_low = 4.34 > 0 (mass gap confirmed)",
+      "data": {
+        "Delta_conservative": 0.06620372194113631,
+        "R_conservative": 3.038680607532238,
+        "c_low": 4.338540130462661
+      }
+    },
+    {
+      "test": "ADV-P10: Monte Carlo bootstrap",
+      "passed": "True",
+      "details": "R = 3.420\u00b10.232, c = 6.820\u00b10.469, P(c>0) = 100.0%",
+      "data": {
+        "R_mean": 3.4202218282897947,
+        "R_std": 0.23243753840418946,
+        "c_mean": 6.820020507312238,
+        "c_std": 0.4693932595276187,
+        "c_5pct": 6.053473308721199
+      }
+    }
+  ]
+}

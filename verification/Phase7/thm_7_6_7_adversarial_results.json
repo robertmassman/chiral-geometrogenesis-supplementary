@@ -1,0 +1,99 @@
+{
+  "theorem": "7.6.7",
+  "title": "Infrared Coercivity via Exact Mass Gap",
+  "type": "adversarial_physics_verification",
+  "timestamp": "2026-02-14T14:59:04.211566",
+  "based_on": "Multi-Agent Peer Review 2026-02-14",
+  "tests": [
+    {
+      "test": "AF-1",
+      "name": "Running coupling sign (F1)",
+      "finding": "F1: Sign error in Eq. (5.1)-(5.2)",
+      "passed": true,
+      "diagnosis": "CONFIRMED \u2014 Eqs. (5.1)-(5.2) have wrong sign"
+    },
+    {
+      "test": "AF-2",
+      "name": "Combes-Thomas factor-of-2 (F2)",
+      "finding": "F2: Factor-of-2 error in Eq. (7.6)",
+      "passed": true,
+      "diagnosis": "CONFIRMED \u2014 derivation overestimates by factor 2.000"
+    },
+    {
+      "test": "AF-3",
+      "name": "Dimensional consistency sweep (F3)",
+      "finding": "F3: \u03bc_k should be [a\u207b\u00b9], not dimensionless",
+      "passed": true,
+      "diagnosis": "CONFIRMED \u2014 Symbol Table lists \u03bc_k as dimensionless, should be [a\u207b\u00b9]"
+    },
+    {
+      "test": "AF-4",
+      "name": "\u2113\u00b9-norm bound Eq. (8.8) (F4)",
+      "finding": "F4: \u03b7_k^4 factor in Eq. (8.8) inconsistent with (8.7)",
+      "passed": true,
+      "diagnosis": "\u03b3 grows as ln(\u03bc\u00b7\u03b7) \u2248 23.57, not as \u03bc\u00b7\u03b7 \u2248 524288.00. Ratio \u03b3/(c_\u03bc\u00b7\u03bc\u00b7\u03b7) = 0.0001. Linear approx INVALID at k=10."
+    },
+    {
+      "test": "AF-5",
+      "name": "k_max at various \u03b2 (F5)",
+      "finding": "F5: k_max(\u03b2=6) = 0, not ~21",
+      "passed": true,
+      "diagnosis": "\u03b2=6: exact k_max=0, asymptotic\u224820.7. Asymptotic valid only for \u03b2 >> 60"
+    },
+    {
+      "test": "AF-6",
+      "name": "Legendre transform convexity (F6)",
+      "finding": "F6: Legendre transform needs justification for gauge theories",
+      "passed": "True",
+      "diagnosis": "\u011c_c(\u03c9) > 0 for all \u03c9 (min = 0.644780). Gauge zero modes must be removed before Legendre transform."
+    },
+    {
+      "test": "AF-7",
+      "name": "Fourier-space bound validity range (F7)",
+      "finding": "F7: Bound valid only for small \u03c9",
+      "passed": "True",
+      "diagnosis": "Bound valid for |\u03c9| \u2264 0.931 (of \u03c0 = 3.142). At \u03c9=\u03c0: ratio = 0.420 (bound FAILS)."
+    },
+    {
+      "test": "AF-8",
+      "name": "Gauge-invariant vs gauge-fixed coercivity (F8)",
+      "finding": "F8: ||V_\u2113 - 1||\u00b2 is not gauge-invariant under different-site transforms",
+      "passed": true,
+      "diagnosis": "Same-site gauge transform preserves ||V-1||\u00b2; different-site transform changes it by 43.0%."
+    },
+    {
+      "test": "AF-9",
+      "name": "C_corr spectral upper bound (F9)",
+      "finding": "F9: C_corr bounded but not explicitly computed",
+      "passed": true,
+      "diagnosis": "C_corr \u2264 ||O||\u00b2/\u03bc_min\u00b2 \u2248 0.1111/\u03bc_min\u00b2. At \u03bc_min=0.5: C_corr \u2264 0.4444"
+    },
+    {
+      "test": "AF-10",
+      "name": "UV-IR matching precision (F10)",
+      "finding": "F10: Matching condition argued physically, not proven",
+      "passed": true,
+      "diagnosis": "Non-perturbative matching errors are small at weak coupling but the argument is not rigorous."
+    },
+    {
+      "test": "AF-11",
+      "name": "Decay rate coefficient 2k vs 4k (F11)",
+      "finding": "F11: Statement gives 2k\u00b7ln2, Derivation gives 4k\u00b7ln2",
+      "passed": true,
+      "diagnosis": "Fitted slope = 2.7726. Statement 2\u00b7ln2 = 1.3863 (error 50.0%). Derivation 4\u00b7ln2 = 2.7726 (error 0.0%)."
+    },
+    {
+      "test": "AF-12",
+      "name": "Gauge invariance of mass term (F12)",
+      "finding": "F12: Tr(A_\u03bc A^\u03bc) in Eq. (12.1) is gauge-non-invariant",
+      "passed": true,
+      "diagnosis": "Physical mass gap (spectral gap) is gauge-invariant. Eq. (12.1) mass term Tr(A_\u03bcA^\u03bc) is NOT gauge-invariant. Use spectral characterization instead."
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "confirmed": 12,
+    "errors_found": 5,
+    "warnings_found": 7
+  }
+}

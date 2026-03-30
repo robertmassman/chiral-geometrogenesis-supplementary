@@ -1,0 +1,179 @@
+{
+  "proposition": "7.8.1",
+  "title": "Glueball Mass Ratios for Exceptional Gauge Groups",
+  "verification_type": "standard",
+  "date": "2026-02-19T16:12:14.445746",
+  "tests_total": 12,
+  "tests_passed": 12,
+  "tests_failed": 0,
+  "overall": "PASS",
+  "results": [
+    {
+      "name": "C-1: Casimir invariants for exceptional groups",
+      "passed": true,
+      "details": "All Casimir values match standard tables",
+      "numerical_data": {
+        "groups": {
+          "G2": {
+            "C2_fund": 2.0,
+            "C2_adj": 4.0
+          },
+          "F4": {
+            "C2_fund": 6.0,
+            "C2_adj": 9.0
+          },
+          "E6": {
+            "C2_fund": 8.666666666666666,
+            "C2_adj": 12.0
+          },
+          "E7": {
+            "C2_fund": 14.25,
+            "C2_adj": 18.0
+          },
+          "E8": {
+            "C2_fund": 30.0,
+            "C2_adj": 30.0
+          }
+        }
+      }
+    },
+    {
+      "name": "C-2: Dynkin index consistency",
+      "passed": true,
+      "details": "T(R)*d_adj = C2(R)*d_R verified for all groups",
+      "numerical_data": {
+        "groups": {
+          "G2": {
+            "T_fund": 1.0,
+            "T_adj": 4.0
+          },
+          "F4": {
+            "T_fund": 3.0,
+            "T_adj": 9.0
+          },
+          "E6": {
+            "T_fund": 2.9999999999999996,
+            "T_adj": 12.0
+          },
+          "E7": {
+            "T_fund": 6.0,
+            "T_adj": 18.0
+          },
+          "E8": {
+            "T_fund": 30.0,
+            "T_adj": 30.0
+          }
+        }
+      }
+    },
+    {
+      "name": "C-3: M0 from SU(N) lattice data",
+      "passed": "True",
+      "details": "Weighted mean M0 = 2.2825 \u00b1 0.0133, adopted = 2.33, diff = 0.048, chi2/dof = 2.34",
+      "numerical_data": {
+        "M0_SU_wm": 2.282471728437182,
+        "M0_SU_wm_err": 0.013336023548633556,
+        "M0_adopted": 2.33,
+        "su3_weight_frac": 0.9073955310699423,
+        "chi2_per_dof": 2.339804491822047
+      }
+    },
+    {
+      "name": "C-4: M0 from Sp(2N) lattice data (corrected eta)",
+      "passed": "True",
+      "details": "M0 = 2.196 \u00b1 0.076, tension with SU = 1.13\u03c3, Sp(2)=SU(2) eta match: True",
+      "numerical_data": {
+        "M0_Sp": 2.196140534244595,
+        "M0_Sp_err": 0.07550046987659506,
+        "tension_SU_Sp": 1.1260214402264543,
+        "sp2_su2_eta_match": "True"
+      }
+    },
+    {
+      "name": "C-5: SU(2) = Sp(2) consistency",
+      "passed": true,
+      "details": "R_cont(SU2)=3.56, R_cont(Sp2)=3.56: match",
+      "numerical_data": {
+        "R_cont_SU2": 3.56,
+        "R_cont_Sp2": 3.56,
+        "eta_SU2": 1.632993161855452,
+        "eta_Sp2": 1.632993161855452
+      }
+    },
+    {
+      "name": "C-6: R_cont reproduces SU(N) lattice data",
+      "passed": true,
+      "details": "Max tension = 1.11\u03c3 (threshold 1.5\u03c3)",
+      "numerical_data": {
+        "max_tension": 1.1054765050953275
+      }
+    },
+    {
+      "name": "C-7: R_cont reproduces Sp(2N) lattice data",
+      "passed": true,
+      "details": "Max tension = 1.18\u03c3 (threshold 1.5\u03c3)",
+      "numerical_data": {
+        "max_tension": 1.180670085792367
+      }
+    },
+    {
+      "name": "C-8: G2 eta = sqrt(2) = large-N limit",
+      "passed": "True",
+      "details": "eta(G2)=1.414213562373095, sqrt(2)=1.414213562373095",
+      "numerical_data": {
+        "eta_G2": 1.4142135623730951,
+        "sqrt2": 1.4142135623730951,
+        "difference": 0.0
+      }
+    },
+    {
+      "name": "C-9: E8 eta = 1 (fundamental = adjoint)",
+      "passed": "True",
+      "details": "d_fund=d_adj=248, C2_fund=C2_adj=30.0, eta=1.0",
+      "numerical_data": {
+        "d_fund": 248,
+        "d_adj": 248,
+        "eta_E8": 1.0
+      }
+    },
+    {
+      "name": "C-10: All c(G) > 0 (mass gap existence)",
+      "passed": true,
+      "details": "All positive. Min c(E8) = 4.66",
+      "numerical_data": {
+        "c_values": {
+          "G2": 6.590235200658624,
+          "F4": 5.707311100684804,
+          "E6": 5.483407138463626,
+          "E7": 5.237387858364833,
+          "E8": 4.66
+        },
+        "c_min": 4.66,
+        "c_min_group": "E8"
+      }
+    },
+    {
+      "name": "C-11: Dimensional consistency",
+      "passed": true,
+      "details": "6/6 equations dimensionally consistent",
+      "numerical_data": {
+        "n_equations_checked": 6
+      }
+    },
+    {
+      "name": "C-12: Eta monotonicity (decreasing with rank)",
+      "passed": true,
+      "details": "eta ordering: G2(1.4142) > F4(1.2247) > E6(1.1767) > E7(1.1239) > E8(1.0000)",
+      "numerical_data": {
+        "etas": {
+          "G2": 1.4142135623730951,
+          "F4": 1.224744871391589,
+          "E6": 1.1766968108291043,
+          "E7": 1.1239029738980326,
+          "E8": 1.0
+        },
+        "is_monotonic": true
+      }
+    }
+  ]
+}

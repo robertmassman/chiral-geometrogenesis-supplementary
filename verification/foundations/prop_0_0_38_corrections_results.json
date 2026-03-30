@@ -1,0 +1,45 @@
+{
+  "correction_1_vandermonde": {
+    "max_vandermonde_sq": 26.99976322574771,
+    "max_at_theta1": 2.092300707290802,
+    "max_at_theta2": 4.1908845998887845,
+    "z3_symmetric_value": 27.000000000000004,
+    "normalization_integral": 236.87050562614462,
+    "expected_normalization": 236.8705056261446,
+    "coefficient_correct": 64,
+    "coefficient_incorrect": 8,
+    "pass": true
+  },
+  "correction_2_a1": {
+    "ReTr_moment1": -3.7496370320665727e-17,
+    "ReTr_moment2": 0.49999999999999994,
+    "absTr_moment2": 1.0,
+    "ReTr_moment4": 0.75,
+    "Z_coeff_numerical": 0.027777777777777776,
+    "expected_1_over_36": 0.027777777777777776,
+    "wrong_1_over_54": 0.018518518518518517,
+    "correct_coefficient": "1/36",
+    "wrong_coefficient": "1/54",
+    "pass": true
+  },
+  "correction_3_a8": {
+    "chi8_moment0": 3.915739846052342e-17,
+    "chi8_ReTr_moment": -7.138498310954998e-17,
+    "chi8_ReTr2_moment": 0.5,
+    "absTr4": 2.0,
+    "a8_beta_coefficient": 0.003472222222222222,
+    "expected_correct": 0.003472222222222222,
+    "expected_wrong": 0.0030864197530864196,
+    "closer_to_correct": true,
+    "pass": true
+  },
+  "correction_4_plaquette": {
+    "plaq_at_tiny_beta": 5.5560185185132755e-05,
+    "correct_at_tiny": 5.555555555555556e-05,
+    "wrong_at_tiny": 1.0000555555555555,
+    "plaq_vanishes_at_beta0": true,
+    "leading_order": "beta/18",
+    "pass": true
+  },
+  "all_pass": true
+}

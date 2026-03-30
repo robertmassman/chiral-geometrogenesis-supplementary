@@ -54,9 +54,9 @@ EPSILON_DEFAULT = 0.05
 OMEGA = np.exp(2j * np.pi / 3)
 
 # Vertices from Definition 0.1.3
-VERTEX_R = np.array([1, 1, 1]) / np.sqrt(3)
-VERTEX_G = np.array([1, -1, -1]) / np.sqrt(3)
-VERTEX_B = np.array([-1, 1, -1]) / np.sqrt(3)
+VERTEX_R = np.array([1, -1, -1]) / np.sqrt(3)
+VERTEX_G = np.array([-1, 1, -1]) / np.sqrt(3)
+VERTEX_B = np.array([-1, -1, 1]) / np.sqrt(3)
 
 VERTICES = {'R': VERTEX_R, 'G': VERTEX_G, 'B': VERTEX_B}
 
@@ -496,14 +496,14 @@ def verify_gradient_at_center() -> Dict[str, Any]:
     omega = np.exp(2j * np.pi / 3)
     omega_sq = np.exp(4j * np.pi / 3)
 
-    # For x_R = (1,1,1)/√3, x_G = (1,-1,-1)/√3, x_B = (-1,1,-1)/√3
-    # x-components: 1/√3, 1/√3, -1/√3
-    x_component_sum = (1 + 1*omega + (-1)*omega_sq) / np.sqrt(3)
+    # For x_R = (1,-1,-1)/√3, x_G = (-1,1,-1)/√3, x_B = (-1,-1,1)/√3
+    # x-components: 1/√3, -1/√3, -1/√3
+    x_component_sum = (1 + (-1)*omega + (-1)*omega_sq) / np.sqrt(3)
 
     results["explicit_x_component"] = {
         "calculated": x_component_sum,
-        "expected_from_proof": (1 + 1j*np.sqrt(3)) / np.sqrt(3),
-        "match": np.abs(x_component_sum - (1 + 1j*np.sqrt(3))/np.sqrt(3)) < TOL_NUMERICAL
+        "expected_from_proof": 2.0 / np.sqrt(3),
+        "match": np.abs(x_component_sum - 2.0/np.sqrt(3)) < TOL_NUMERICAL
     }
 
     return results

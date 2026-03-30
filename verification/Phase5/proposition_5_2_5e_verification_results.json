@@ -1,0 +1,70 @@
+{
+  "theorem": "5.2.5e",
+  "title": "Holographic Self-Encoding Scale Invariance",
+  "timestamp": "2026-03-29T11:04:04.435770",
+  "verifications": [
+    {
+      "claim": "Lemma 1: I_stella is homogeneous degree 0",
+      "max_error": 1.8353813648688187e-16,
+      "passed": "True"
+    },
+    {
+      "claim": "Lemma 2: I_gravity is homogeneous degree 0",
+      "max_error": 0,
+      "passed": true
+    },
+    {
+      "claim": "Lemma 3: \u03b3 = 2\u03c0/(8\u03c0) = 1/4, N_c-independent",
+      "gamma_computed": 0.25,
+      "gamma_expected": 0.25,
+      "error": 0.0,
+      "passed": true
+    },
+    {
+      "claim": "Lemma 4: \u03b1\u00b7ln(A/l_P\u00b2) is degree 0 for all \u03b1",
+      "alpha_values_tested": [
+        -1.5,
+        -2.0,
+        -0.5,
+        -7.3
+      ],
+      "max_error": 0,
+      "passed": true
+    },
+    {
+      "claim": "Main Theorem (a): I_stella = I_gravity preserved under R_\u03bb",
+      "max_error": 3.495347741126565e-16,
+      "passed": "True"
+    },
+    {
+      "claim": "Main Theorem (b): Solution set is a ray, ratio a/l_P preserved",
+      "expected_ratio_squared": 5.074272804780512,
+      "max_error": 1.7503560684860408e-16,
+      "passed": "True"
+    },
+    {
+      "claim": "Main Theorem (c): a/l_P = \u221a(8ln3/\u221a3) \u2248 2.2526",
+      "ratio_theory": 2.252614659630118,
+      "ratio_computed": 2.252614659630118,
+      "error": 0.0,
+      "passed": "True"
+    },
+    {
+      "claim": "Main Theorem (d): \u03b7 = I_stella/I_gravity = 1 is scale-invariant",
+      "max_deviation_from_1": 4.440892098500626e-16,
+      "passed": "True"
+    },
+    {
+      "claim": "Main Theorem (e): Any S = f(A/l_P\u00b2) is scale-invariant",
+      "max_error": 0,
+      "passed": true
+    },
+    {
+      "claim": "Corollary: Perturbation off the ray breaks the condition",
+      "eta_on_ray": 1.0,
+      "eta_off_ray": 0.9802960494069208,
+      "passed": "True"
+    }
+  ],
+  "overall_status": "PASSED"
+}

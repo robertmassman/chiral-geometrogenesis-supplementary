@@ -1,0 +1,394 @@
+{
+  "theorem": "7.4.7",
+  "title": "CG Yang-Mills Mass Gap",
+  "timestamp": "2026-02-14T05:31:55.635319",
+  "parameters": {
+    "R_stella_fm": 0.44847,
+    "sqrt_sigma_MeV": 440.00044596071086,
+    "glueball_ratio": 3.405,
+    "Lambda_MSbar_MeV": 257.7775,
+    "m_predicted_MeV": 1498.2015184962204
+  },
+  "summary": "10/10 tests passed",
+  "tests": [
+    {
+      "name": "C1: Subtracted Hamiltonian H = -ln(T/lambda_1) positive semi-definite",
+      "passed": true,
+      "details": {
+        "description": "H = -ln(T_hat/lambda_1) positive semi-definite: E_R >= 0, E_1 = 0",
+        "beta": 5.0,
+        "N_s": 1,
+        "a_1_beta": 2.3327709395191842,
+        "a_1_is_not_one": true,
+        "lambda_1": 876.953915695167,
+        "energies": [
+          {
+            "rep": "(0,0)",
+            "dim": 1,
+            "lambda_R": 876.953915695167,
+            "E_R_subtracted": -0.0,
+            "nonneg": true
+          },
+          {
+            "rep": "(1,0)",
+            "dim": 3,
+            "lambda_R": 5.833368596126758,
+            "E_R_subtracted": 5.012859806030121,
+            "nonneg": true
+          },
+          {
+            "rep": "(0,1)",
+            "dim": 3,
+            "lambda_R": 5.833368596126758,
+            "E_R_subtracted": 5.012859806030121,
+            "nonneg": true
+          },
+          {
+            "rep": "(1,1)",
+            "dim": 8,
+            "lambda_R": 0.014044223993323751,
+            "E_R_subtracted": 11.041998514730201,
+            "nonneg": true
+          },
+          {
+            "rep": "(2,0)",
+            "dim": 6,
+            "lambda_R": 0.001179469735675001,
+            "E_R_subtracted": 13.519144761374582,
+            "nonneg": true
+          },
+          {
+            "rep": "(0,2)",
+            "dim": 6,
+            "lambda_R": 0.001179469735675001,
+            "E_R_subtracted": 13.519144761374582,
+            "nonneg": true
+          },
+          {
+            "rep": "(3,0)",
+            "dim": 10,
+            "lambda_R": 2.2384444751401382e-08,
+            "E_R_subtracted": 24.391353993378647,
+            "nonneg": true
+          },
+          {
+            "rep": "(2,1)",
+            "dim": 15,
+            "lambda_R": 1.3463212900114911e-06,
+            "E_R_subtracted": 20.294589098689578,
+            "nonneg": true
+          }
+        ],
+        "all_nonneg": true,
+        "note": "Subtracted Hamiltonian: E_1 = 0 by construction; a_1(beta=5) != 1 (M2 fix)"
+      }
+    },
+    {
+      "name": "C2: Spectral gap = mass gap formula",
+      "passed": true,
+      "details": {
+        "description": "Spectral gap = -ln(lambda_3/lambda_1) = mu(beta)",
+        "betas_tested": 4,
+        "all_match": true,
+        "results": [
+          {
+            "beta": 2.0,
+            "mu_formula": 13.110822577747062,
+            "gap_from_eigenvalues": 13.110822577747062,
+            "relative_error": 0.0,
+            "match": true
+          },
+          {
+            "beta": 4.0,
+            "mu_formula": 6.898777393030569,
+            "gap_from_eigenvalues": 6.898777393030569,
+            "relative_error": 0.0,
+            "match": true
+          },
+          {
+            "beta": 6.0,
+            "mu_formula": 3.5960888265926227,
+            "gap_from_eigenvalues": 3.5960888265926223,
+            "relative_error": 1.2349228043703453e-16,
+            "match": true
+          },
+          {
+            "beta": 8.0,
+            "mu_formula": 1.6968047080281394,
+            "gap_from_eigenvalues": 1.6968047080281394,
+            "relative_error": 0.0,
+            "match": true
+          }
+        ],
+        "note": "mu = -3*ln(3) - 8*ln(u_3) from Thm 7.4.2"
+      }
+    },
+    {
+      "name": "C3: Mass gap positivity across confined phase",
+      "passed": true,
+      "details": {
+        "description": "Part (a): mu(beta) > 0 for all beta < beta_c",
+        "betas_tested": 40,
+        "beta_range": [
+          0.5,
+          8.8
+        ],
+        "all_positive": true,
+        "min_mu": 1.1726394157870965,
+        "max_mu": 25.046709848926035,
+        "note": "Rigorous Part (a) of Thm 7.4.7"
+      }
+    },
+    {
+      "name": "C4: Physical mass gap at CG lattice spacing",
+      "passed": true,
+      "details": {
+        "description": "Physical mass gap at accessible beta values",
+        "results": [
+          {
+            "beta": 5.0,
+            "mu": 5.0128598060301215,
+            "sigma_lat": 1.0385870840043063,
+            "R": 4.918855903956752,
+            "m_phys_MeV": 3748.6754693910098
+          },
+          {
+            "beta": 6.0,
+            "mu": 3.5960888265926227,
+            "sigma_lat": 0.861490711574619,
+            "R": 3.874405842901219,
+            "m_phys_MeV": 2952.696811074687
+          },
+          {
+            "beta": 7.0,
+            "mu": 2.520963757515675,
+            "sigma_lat": 0.7271000779400005,
+            "R": 2.956442974563628,
+            "m_phys_MeV": 2253.1144379498996
+          },
+          {
+            "beta": 8.0,
+            "mu": 1.6968047080281394,
+            "sigma_lat": 0.6240801967540586,
+            "R": 2.1478881382622514,
+            "m_phys_MeV": 1636.9122682416396
+          }
+        ],
+        "cg_prediction_MeV": 1498.2015184962204,
+        "cg_prediction_GeV": 1.4982015184962203,
+        "beta_star_CG": 41,
+        "all_positive": true,
+        "note": "CG prediction from universality: m ~ 3.4 * 440 MeV = 1500 MeV"
+      }
+    },
+    {
+      "name": "C5: Glueball prediction ~1.5 GeV",
+      "passed": true,
+      "details": {
+        "description": "CG glueball prediction: m \u2248 3.4 * 440 = 1500 MeV",
+        "sqrt_sigma_CG_MeV": 440.00044596071086,
+        "glueball_ratio": 3.405,
+        "m_predicted_MeV": 1498.2015184962204,
+        "m_predicted_err_MeV": 102.56705257083544,
+        "m_lattice_QCD_MeV": 1651.0,
+        "fractional_difference": 0.09254904997200461,
+        "C_gap": 5.811994912264338,
+        "Lambda_MSbar_MeV": 257.7775,
+        "reasonable": true,
+        "note": "10% difference from string tension convention (440 vs 485 MeV)"
+      }
+    },
+    {
+      "name": "C6: Full derivation chain consistency",
+      "passed": true,
+      "details": {
+        "description": "Derivation chain consistency: Phase 0 \u2192 E",
+        "beta_test": 5.0,
+        "checks": [
+          {
+            "phase": "A",
+            "check": "Z_K4 terms positive",
+            "passed": true,
+            "values": [
+              29.61340770149844,
+              4.183312776781134
+            ]
+          },
+          {
+            "phase": "B",
+            "check": "Z_FCC terms positive",
+            "passed": true,
+            "values": [
+              876.953915695167,
+              5.833368596126758
+            ]
+          },
+          {
+            "phase": "C",
+            "check": "Mass gap mu > 0",
+            "passed": true,
+            "mu": 5.0128598060301215,
+            "u3": 0.3539544367052705
+          },
+          {
+            "phase": "D",
+            "check": "m_phys > 0 at finite a",
+            "passed": true,
+            "R": 4.918855903956752,
+            "m_phys_MeV": 3748.6754693910098
+          },
+          {
+            "phase": "E",
+            "check": "Spectral gap from OS reconstruction = mu",
+            "passed": true,
+            "gap": 5.012859806030121,
+            "mu": 5.0128598060301215
+          }
+        ],
+        "all_consistent": true,
+        "note": "Every phase builds consistently on the previous one"
+      }
+    },
+    {
+      "name": "C7: Conjecture sensitivity analysis",
+      "passed": true,
+      "details": {
+        "description": "Conjecture sensitivity analysis",
+        "m_predicted_MeV": 1498.2015184962204,
+        "sensitivity": [
+          {
+            "conjecture": "C1 (continuum existence)",
+            "if_fails": "Parts (b)-(c) invalid; Part (a) still holds",
+            "part_a_survives": true,
+            "part_b_survives": false,
+            "part_c_survives": false,
+            "severity": "FATAL for continuum result; HARMLESS for lattice result"
+          },
+          {
+            "conjecture": "C2 (mass gap)",
+            "if_fails": "Theory could be conformal; m = 0 in continuum",
+            "part_a_survives": true,
+            "part_b_survives": false,
+            "part_c_survives": false,
+            "severity": "FATAL for mass gap; strongly disfavored by all evidence"
+          },
+          {
+            "conjecture": "C3 (universality)",
+            "if_fails": "FCC continuum limit differs from standard QCD",
+            "part_a_survives": true,
+            "part_b_survives": true,
+            "part_c_survives": false,
+            "severity": "MODERATE: m still exists but value may differ"
+          }
+        ],
+        "robust_result": "Part (a): m(beta) > 0 at every finite lattice spacing",
+        "note": "Part (a) is unconditional; Parts (b)-(c) depend on C1-C3"
+      }
+    },
+    {
+      "name": "C8: Comparison with Millennium Problem",
+      "passed": true,
+      "details": {
+        "description": "Comparison with Jaffe-Witten Millennium Problem",
+        "requirements": [
+          {
+            "requirement": "Gauge group is compact simple non-abelian",
+            "satisfied": true,
+            "by": "SU(3) \u2014 derived from stella octangula (Thm 0.0.3)",
+            "status": "ESTABLISHED"
+          },
+          {
+            "requirement": "QFT on R^4 satisfying Wightman axioms",
+            "satisfied": false,
+            "by": "OS axioms (Thm 7.4.6) \u2014 OS1 conditional on C1",
+            "status": "CONJECTURE"
+          },
+          {
+            "requirement": "Mass gap Delta > 0",
+            "satisfied": false,
+            "by": "Lattice: YES (Thm 7.4.7a). Continuum: conditional on C2",
+            "status": "PARTIAL (lattice proven; continuum conditional)"
+          },
+          {
+            "requirement": "Theory is non-trivial (interacting)",
+            "satisfied": true,
+            "by": "Asymptotic freedom with b_0 = 11/(16pi^2) (Prop 7.4.3)",
+            "status": "ESTABLISHED"
+          }
+        ],
+        "satisfied": "2/4",
+        "gap_to_millennium": "OS1 (continuum covariance) and C2 (continuum mass gap) remain open",
+        "cg_contribution": "Rigorous lattice mass gap + reduced to 3 explicit conjectures",
+        "note": "CG does NOT claim to solve the Millennium Problem"
+      }
+    },
+    {
+      "name": "C9: String tension ratio R(beta) behavior",
+      "passed": true,
+      "details": {
+        "description": "R(beta) = mu/sqrt(sigma_lat) monotonically decreases to 0",
+        "betas_tested": 30,
+        "R_range": [
+          1.5690246007048674,
+          11.447878692258527
+        ],
+        "monotonic": true,
+        "R_at_beta_c": 0.0,
+        "R_vanishes": true,
+        "note": "R\u21920 is exact (Prop 7.4.4a); continuum gap requires universality (C3)"
+      }
+    },
+    {
+      "name": "C10: Master assessment",
+      "passed": true,
+      "details": {
+        "description": "Master assessment of CG Yang-Mills Mass Gap Program",
+        "assessment": {
+          "proven_rigorous": [
+            "SU(3) gauge group derived from stella geometry",
+            "FCC lattice derived from phase coherence",
+            "Exact partition function Z_FCC = sum d_R^{3N} a_R^{8N}",
+            "Transfer matrix exactly diagonal",
+            "Mass gap mu(beta) > 0 for all beta < beta_c (e.g., mu(5) = 5.0129)",
+            "Reflection positivity on FCC (Thm 7.4.1)",
+            "Cluster property with exponential decay (Thm 7.4.2)",
+            "OS2 and OS4 survive continuum limit (Seiler compactness)"
+          ],
+          "conditional_on_C1_C3": [
+            "Continuum limit exists as Wightman QFT",
+            "Mass gap survives a \u2192 0",
+            "m_phys \u2248 1498 MeV \u2248 1.5 GeV",
+            "Full SO(4) Euclidean covariance restored"
+          ],
+          "not_claimed": [
+            "Solution to Clay Millennium Problem",
+            "Rigorous proof of continuum mass gap",
+            "Independent derivation of glueball ratio m/sqrt(sigma)"
+          ]
+        },
+        "test_counts": {
+          "Phase_A": 20,
+          "Phase_B": 64,
+          "Phase_C": 49,
+          "Phase_D": 67,
+          "Phase_E": 20
+        },
+        "total_verification_tests": 220,
+        "key_values": {
+          "sqrt_sigma_MeV": 440.00044596071086,
+          "R_stella_fm": 0.44847,
+          "m_glueball_CG_MeV": 1498.2015184962204,
+          "m_glueball_lattice_MeV": 1651.0,
+          "C_gap": 5.811994912264338,
+          "Lambda_MSbar_MeV": 257.7775
+        },
+        "status": {
+          "Part_a": "ESTABLISHED (rigorous)",
+          "Part_b": "CONJECTURE (conditional on C1-C3)",
+          "Part_c": "NOVEL (CG prediction)"
+        },
+        "note": "The culminating theorem of the Yang-Mills mass gap program (Phases 0-E)"
+      }
+    }
+  ]
+}

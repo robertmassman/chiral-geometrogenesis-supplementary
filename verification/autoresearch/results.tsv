@@ -1,0 +1,2 @@
+iteration	timestamp	theorem_id	theorem_name	phase	status_before	result	duration_s	issues_found	issues_resolved	tests_before	tests_after	git_commit	agent_summary
+1	2026-03-14 09:47:13	3.1.1	Phase-Gradient Mass Generation Mass Formula	PHASE_3	verified	skipped	0.0	0	0	0	0		Dry run — no changes made

@@ -1,0 +1,818 @@
+{
+  "theorem": "7.6.8",
+  "title": "Effective Action Convergence under Multi-Scale RG Flow on D\u2084 Lattice",
+  "timestamp": "2026-02-14T16:51:08.292720",
+  "standard_passed": 14,
+  "standard_total": 14,
+  "adversarial_passed": 12,
+  "adversarial_total": 12,
+  "overall_passed": 26,
+  "overall_total": 26,
+  "overall_status": "PASSED",
+  "results": [
+    {
+      "test": "C1",
+      "name": "UV sum convergence",
+      "passed": true,
+      "details": [
+        {
+          "beta": 80.0,
+          "k_max": 34,
+          "uv_sum": 0.8871045176285802,
+          "bound": 87.05566840830515,
+          "within_bound": "True"
+        },
+        {
+          "beta": 100.0,
+          "k_max": 69,
+          "uv_sum": 1.4982739655163224,
+          "bound": 87.05566840830515,
+          "within_bound": "True"
+        },
+        {
+          "beta": 200.0,
+          "k_max": 241,
+          "uv_sum": 2.9606600027471073,
+          "bound": 87.05566840830515,
+          "within_bound": "True"
+        },
+        {
+          "beta": 400.0,
+          "k_max": 586,
+          "uv_sum": 4.003872782047188,
+          "bound": 87.05566840830515,
+          "within_bound": "True"
+        }
+      ]
+    },
+    {
+      "test": "C2",
+      "name": "IR sum convergence",
+      "passed": true,
+      "details": [
+        {
+          "k_max": 0,
+          "ir_sum": 0.13567074586452788,
+          "first_term": 0.1353352832366127,
+          "sum/first_ratio": 1.00247875217676,
+          "super_exponential": "True"
+        },
+        {
+          "k_max": 1,
+          "ir_sum": 0.00033546262791517604,
+          "first_term": 0.00033546262790251185,
+          "sum/first_ratio": 1.0000000000377514,
+          "super_exponential": "True"
+        },
+        {
+          "k_max": 2,
+          "ir_sum": 1.2664165549094176e-14,
+          "first_term": 1.2664165549094176e-14,
+          "sum/first_ratio": 1.0,
+          "super_exponential": "True"
+        },
+        {
+          "k_max": 3,
+          "ir_sum": 2.572209372642415e-56,
+          "first_term": 2.572209372642415e-56,
+          "sum/first_ratio": 1.0,
+          "super_exponential": "True"
+        }
+      ]
+    },
+    {
+      "test": "C3",
+      "name": "Banach embedding norms",
+      "passed": true,
+      "details": [
+        {
+          "k": 0,
+          "norm_bound": 1.0,
+          "satisfies_bound": true
+        },
+        {
+          "k": 5,
+          "norm_bound": 1.0,
+          "satisfies_bound": true
+        },
+        {
+          "k": 10,
+          "norm_bound": 1.0,
+          "satisfies_bound": true
+        },
+        {
+          "k": 20,
+          "norm_bound": 1.0,
+          "satisfies_bound": true
+        },
+        {
+          "k": 50,
+          "norm_bound": 1.0,
+          "satisfies_bound": true
+        }
+      ]
+    },
+    {
+      "test": "C4",
+      "name": "Convergence rate",
+      "passed": true,
+      "details": {
+        "uv_tails": [
+          {
+            "K": 10,
+            "tail": 2.907658503526236,
+            "g_K": 0.17576982528321872,
+            "K_minus_half": 0.31622776601683794
+          },
+          {
+            "K": 20,
+            "tail": 2.852234287744169,
+            "g_K": 0.17845198429505865,
+            "K_minus_half": 0.22360679774997896
+          },
+          {
+            "K": 50,
+            "tail": 2.6694101400845254,
+            "g_K": 0.18730077600539347,
+            "K_minus_half": 0.1414213562373095
+          },
+          {
+            "K": 100,
+            "tail": 2.2932628065718434,
+            "g_K": 0.20551331248090823,
+            "K_minus_half": 0.1
+          }
+        ],
+        "ir_tails": [
+          {
+            "K": 241,
+            "j": 0,
+            "tail": 0.0,
+            "expected_order": "exp(-c\u00b74^241)"
+          },
+          {
+            "K": 242,
+            "j": 1,
+            "tail": 0.0,
+            "expected_order": "exp(-c\u00b74^242)"
+          },
+          {
+            "K": 243,
+            "j": 2,
+            "tail": 0.0,
+            "expected_order": "exp(-c\u00b74^243)"
+          },
+          {
+            "K": 244,
+            "j": 3,
+            "tail": 0.0,
+            "expected_order": "exp(-c\u00b74^244)"
+          }
+        ]
+      }
+    },
+    {
+      "test": "C5",
+      "name": "Wilson \u2192 continuum (O\u2084=0 on D\u2084)",
+      "passed": true,
+      "details": {
+        "n_vectors": 24,
+        "isotropy": true,
+        "delta_4_measure": 0.6666666666666666
+      }
+    },
+    {
+      "test": "C6",
+      "name": "Schwinger function uniform bound",
+      "passed": true,
+      "details": [
+        {
+          "mu_min": 0.1,
+          "coercivity": 0.0025000000000000005,
+          "fluct_bound": 199.99999999999997,
+          "2pt_bound": 9,
+          "4pt_bound": 81,
+          "finite": true
+        },
+        {
+          "mu_min": 0.3,
+          "coercivity": 0.0225,
+          "fluct_bound": 22.22222222222222,
+          "2pt_bound": 9,
+          "4pt_bound": 81,
+          "finite": true
+        },
+        {
+          "mu_min": 0.5,
+          "coercivity": 0.0625,
+          "fluct_bound": 8.0,
+          "2pt_bound": 9,
+          "4pt_bound": 81,
+          "finite": true
+        },
+        {
+          "mu_min": 1.0,
+          "coercivity": 0.25,
+          "fluct_bound": 2.0,
+          "2pt_bound": 9,
+          "4pt_bound": 81,
+          "finite": true
+        },
+        {
+          "mu_min": 2.0,
+          "coercivity": 1.0,
+          "fluct_bound": 0.5,
+          "2pt_bound": 9,
+          "4pt_bound": 81,
+          "finite": true
+        }
+      ]
+    },
+    {
+      "test": "C7",
+      "name": "Cluster bound (exponential decay)",
+      "passed": true,
+      "details": {
+        "bounds": [
+          {
+            "distance": 1.0,
+            "bound": 5.458775937413701,
+            "decaying": "True"
+          },
+          {
+            "distance": 2.0,
+            "bound": 3.310914970542981,
+            "decaying": "True"
+          },
+          {
+            "distance": 5.0,
+            "bound": 0.7387649876150892,
+            "decaying": "True"
+          },
+          {
+            "distance": 10.0,
+            "bound": 0.060641522991769205,
+            "decaying": "True"
+          },
+          {
+            "distance": 20.0,
+            "bound": 0.00040859936786236367,
+            "decaying": "True"
+          },
+          {
+            "distance": 50.0,
+            "bound": 1.249914947846762e-10,
+            "decaying": "True"
+          }
+        ],
+        "ratios": [
+          {
+            "delta_d": 1.0,
+            "ratio": 0.6065306597126334,
+            "expected": 0.6065306597126334,
+            "match": "True"
+          },
+          {
+            "delta_d": 3.0,
+            "ratio": 0.22313016014842985,
+            "expected": 0.22313016014842982,
+            "match": "True"
+          },
+          {
+            "delta_d": 5.0,
+            "ratio": 0.08208499862389879,
+            "expected": 0.0820849986238988,
+            "match": "True"
+          },
+          {
+            "delta_d": 10.0,
+            "ratio": 0.006737946999085467,
+            "expected": 0.006737946999085467,
+            "match": "True"
+          },
+          {
+            "delta_d": 30.0,
+            "ratio": 3.059023205018258e-07,
+            "expected": 3.059023205018258e-07,
+            "match": "True"
+          }
+        ]
+      }
+    },
+    {
+      "test": "C8",
+      "name": "OS positivity preservation",
+      "passed": "True",
+      "details": {
+        "min_eigenvalue_original": 0.2448365013455969,
+        "min_eigenvalue_coarsened": 0.23098106711201852,
+        "positive_definite_original": "True",
+        "positive_definite_coarsened": "True"
+      }
+    },
+    {
+      "test": "C9",
+      "name": "Mass gap RG invariance",
+      "passed": true,
+      "details": {
+        "m_phys": 0.5,
+        "scale_values": [
+          {
+            "k": 0,
+            "mu_k": 0.5,
+            "eta_k": 1.0,
+            "m_k_phys": 0.5,
+            "matches_m_phys": true
+          },
+          {
+            "k": 1,
+            "mu_k": 1.0,
+            "eta_k": 2.0,
+            "m_k_phys": 0.5,
+            "matches_m_phys": true
+          },
+          {
+            "k": 5,
+            "mu_k": 16.0,
+            "eta_k": 32.0,
+            "m_k_phys": 0.5,
+            "matches_m_phys": true
+          },
+          {
+            "k": 10,
+            "mu_k": 512.0,
+            "eta_k": 1024.0,
+            "m_k_phys": 0.5,
+            "matches_m_phys": true
+          },
+          {
+            "k": 20,
+            "mu_k": 524288.0,
+            "eta_k": 1048576.0,
+            "m_k_phys": 0.5,
+            "matches_m_phys": true
+          },
+          {
+            "k": 50,
+            "mu_k": 562949953421312.0,
+            "eta_k": 1125899906842624.0,
+            "m_k_phys": 0.5,
+            "matches_m_phys": true
+          },
+          {
+            "k": 100,
+            "mu_k": 6.338253001141147e+29,
+            "eta_k": 1.2676506002282294e+30,
+            "m_k_phys": 0.5,
+            "matches_m_phys": true
+          }
+        ]
+      }
+    },
+    {
+      "test": "C10",
+      "name": "Spectral gap from clustering",
+      "passed": "True",
+      "details": {
+        "m_phys": 0.5,
+        "min_effective_mass": 0.5,
+        "spectral_gap": 0.5
+      }
+    },
+    {
+      "test": "C11",
+      "name": "Cutoff independence",
+      "passed": "True",
+      "details": {
+        "extra_uv_steps": 1,
+        "extra_uv_contribution": 0.005196152422706632,
+        "np_difference": 1.9287498479639178e-22,
+        "total_difference": 0.005196152422706632
+      }
+    },
+    {
+      "test": "C12",
+      "name": "Coupling matching",
+      "passed": true,
+      "details": [
+        {
+          "k": 0,
+          "g_k_sq": 0.03,
+          "expected": 0.03,
+          "ratio": 1.0,
+          "matches": "True"
+        },
+        {
+          "k": 10,
+          "g_k_sq": 0.03089503148009323,
+          "expected": 0.030895031480093232,
+          "ratio": 0.9999999999999999,
+          "matches": "True"
+        },
+        {
+          "k": 20,
+          "g_k_sq": 0.03184511069884386,
+          "expected": 0.03184511069884386,
+          "ratio": 1.0,
+          "matches": "True"
+        },
+        {
+          "k": 50,
+          "g_k_sq": 0.03508158069222257,
+          "expected": 0.03508158069222257,
+          "ratio": 1.0,
+          "matches": "True"
+        },
+        {
+          "k": 100,
+          "g_k_sq": 0.04223572160687543,
+          "expected": 0.04223572160687543,
+          "ratio": 1.0,
+          "matches": "True"
+        }
+      ]
+    },
+    {
+      "test": "C13",
+      "name": "O(a\u2074) vs O(a\u00b2) artifacts",
+      "passed": true,
+      "details": [
+        {
+          "a": 0.5,
+          "d4_artifact": 0.0625,
+          "z4_artifact": 0.25,
+          "improvement_factor": 4.0,
+          "d4_better": true
+        },
+        {
+          "a": 0.2,
+          "d4_artifact": 0.0016000000000000003,
+          "z4_artifact": 0.04000000000000001,
+          "improvement_factor": 25.0,
+          "d4_better": true
+        },
+        {
+          "a": 0.1,
+          "d4_artifact": 0.00010000000000000002,
+          "z4_artifact": 0.010000000000000002,
+          "improvement_factor": 100.0,
+          "d4_better": true
+        },
+        {
+          "a": 0.05,
+          "d4_artifact": 6.250000000000001e-06,
+          "z4_artifact": 0.0025000000000000005,
+          "improvement_factor": 400.0,
+          "d4_better": true
+        },
+        {
+          "a": 0.02,
+          "d4_artifact": 1.6e-07,
+          "z4_artifact": 0.0004,
+          "improvement_factor": 2500.0,
+          "d4_better": true
+        },
+        {
+          "a": 0.01,
+          "d4_artifact": 1e-08,
+          "z4_artifact": 0.0001,
+          "improvement_factor": 10000.0,
+          "d4_better": true
+        }
+      ]
+    },
+    {
+      "test": "C14",
+      "name": "Dimensional consistency",
+      "passed": true,
+      "details": [
+        {
+          "equation": "m_phys = \u03bc_min/a",
+          "dimension": "[1/L] = [1]/[L]",
+          "consistent": true
+        },
+        {
+          "equation": "A_k dimensionless",
+          "dimension": "dimensionless",
+          "consistent": true
+        },
+        {
+          "equation": "\u03b5_k dimensionless",
+          "dimension": "dimensionless",
+          "consistent": true
+        },
+        {
+          "equation": "\u03b7_k = 2^k a",
+          "dimension": "[L] = [1]\u00b7[L]",
+          "consistent": true
+        },
+        {
+          "equation": "\u03bc_k dimensionless",
+          "dimension": "dimensionless",
+          "consistent": true
+        },
+        {
+          "equation": "S_n scaling dimension",
+          "dimension": "[L]^{-n\u0394}",
+          "consistent": true
+        },
+        {
+          "equation": "m\u00b7D dimensionless",
+          "dimension": "[1/L]\u00b7[L] = 1",
+          "consistent": true
+        },
+        {
+          "equation": "g_k\u00b2 dimensionless",
+          "dimension": "dimensionless",
+          "consistent": true
+        }
+      ]
+    },
+    {
+      "test": "ADV-1",
+      "name": "Projective limit nontriviality",
+      "passed": true,
+      "details": [
+        {
+          "k": 0,
+          "norm": 20.0,
+          "finite": "True"
+        },
+        {
+          "k": 1,
+          "norm": 19.90343307243756,
+          "finite": "True"
+        },
+        {
+          "k": 5,
+          "norm": 19.517165362187804,
+          "finite": "True"
+        },
+        {
+          "k": 10,
+          "norm": 19.034330724375607,
+          "finite": "True"
+        },
+        {
+          "k": 50,
+          "norm": 15.17165362187805,
+          "finite": "True"
+        }
+      ]
+    },
+    {
+      "test": "ADV-2",
+      "name": "UV sum at extreme \u03b2",
+      "passed": true,
+      "details": [
+        {
+          "beta": 1000.0,
+          "k_max": 1622,
+          "uv_sum": 0.29986758092527954,
+          "bounded": "True"
+        },
+        {
+          "beta": 5000.0,
+          "k_max": 8526,
+          "uv_sum": 0.021777265516365885,
+          "bounded": "True"
+        },
+        {
+          "beta": 10000.0,
+          "k_max": 17155,
+          "uv_sum": 0.007527116666347928,
+          "bounded": "True"
+        }
+      ]
+    },
+    {
+      "test": "ADV-3",
+      "name": "Splicing continuity at k_max",
+      "passed": "True",
+      "details": {
+        "k_max": 241,
+        "eps_UV": 0.0316227766016838,
+        "eps_IR": 0.0,
+        "matching_error": 1.9287498479639178e-22
+      }
+    },
+    {
+      "test": "ADV-4",
+      "name": "Order of limits (a\u21920 vs V\u2192\u221e)",
+      "passed": true,
+      "details": [
+        {
+          "Ns": 4,
+          "m_phys": 0.5
+        },
+        {
+          "Ns": 8,
+          "m_phys": 0.5
+        },
+        {
+          "Ns": 16,
+          "m_phys": 0.5
+        },
+        {
+          "Ns": 32,
+          "m_phys": 0.5
+        },
+        {
+          "Ns": 64,
+          "m_phys": 0.5
+        },
+        {
+          "Ns": 128,
+          "m_phys": 0.5
+        }
+      ]
+    },
+    {
+      "test": "ADV-5",
+      "name": "OS positivity under distributional limits",
+      "passed": true,
+      "details": {
+        "n_masses_tested": 20,
+        "mass_range": [
+          0.55,
+          0.5025
+        ],
+        "all_positive": true
+      }
+    },
+    {
+      "test": "ADV-6",
+      "name": "Mass gap no vanishing",
+      "passed": true,
+      "details": {
+        "n_tests": 20,
+        "all_positive": true
+      }
+    },
+    {
+      "test": "ADV-7",
+      "name": "\u03b5-independence (irrelevant operator)",
+      "passed": true,
+      "details": {
+        "n_tests": 25,
+        "small_a_all_negligible": true
+      }
+    },
+    {
+      "test": "ADV-8",
+      "name": "Gauge-fixing artifacts",
+      "passed": true,
+      "details": [
+        {
+          "gauge": "axial",
+          "m_phys": 0.5,
+          "gauge_independent": true
+        },
+        {
+          "gauge": "Coulomb",
+          "m_phys": 0.5,
+          "gauge_independent": true
+        },
+        {
+          "gauge": "Lorenz",
+          "m_phys": 0.5,
+          "gauge_independent": true
+        },
+        {
+          "gauge": "maximal_tree",
+          "m_phys": 0.5,
+          "gauge_independent": true
+        }
+      ]
+    },
+    {
+      "test": "ADV-9",
+      "name": "D\u2084\u2192SO(4) enhancement",
+      "passed": "True",
+      "details": {
+        "d4_order": 384,
+        "M2_diagonal": 0.5,
+        "M4_0000": 0.5,
+        "M4_0011": 0.16666666666666666,
+        "expected_0000": 0.5,
+        "isotropy_error": 0.0,
+        "off_diagonal_0123": 0.0
+      }
+    },
+    {
+      "test": "ADV-10",
+      "name": "Numerical convergence rate",
+      "passed": true,
+      "details": {
+        "results": [
+          {
+            "beta": 80.0,
+            "k_max": 34,
+            "uv_sum": 0.8871045176285802,
+            "ir_sum": 0.0,
+            "total": 0.8871045176285802,
+            "finite": "True"
+          },
+          {
+            "beta": 120.0,
+            "k_max": 103,
+            "uv_sum": 1.9220970761222225,
+            "ir_sum": 0.0,
+            "total": 1.9220970761222225,
+            "finite": "True"
+          },
+          {
+            "beta": 200.0,
+            "k_max": 241,
+            "uv_sum": 2.9606600027471073,
+            "ir_sum": 0.0,
+            "total": 2.9606600027471073,
+            "finite": "True"
+          }
+        ],
+        "bounded": true,
+        "all_finite": true
+      }
+    },
+    {
+      "test": "ADV-11",
+      "name": "Crossover path removal",
+      "passed": true,
+      "details": {
+        "epsilon_star": 0.001,
+        "values": [
+          {
+            "epsilon": 2.0,
+            "mu_min": 22.355088906108158,
+            "m_phys": 22.355088906108158,
+            "positive": true
+          },
+          {
+            "epsilon": 1.0,
+            "mu_min": 15.803480629279107,
+            "m_phys": 15.803480629279107,
+            "positive": true
+          },
+          {
+            "epsilon": 0.5,
+            "mu_min": 11.169153951844338,
+            "m_phys": 11.169153951844338,
+            "positive": true
+          },
+          {
+            "epsilon": 0.2,
+            "mu_min": 7.053367989832942,
+            "m_phys": 7.053367989832942,
+            "positive": true
+          },
+          {
+            "epsilon": 0.1,
+            "mu_min": 4.9749371855331,
+            "m_phys": 4.9749371855331,
+            "positive": true
+          },
+          {
+            "epsilon": 0.05,
+            "mu_min": 3.5,
+            "m_phys": 3.5,
+            "positive": true
+          },
+          {
+            "epsilon": 0.02,
+            "mu_min": 2.179449471770337,
+            "m_phys": 2.179449471770337,
+            "positive": true
+          },
+          {
+            "epsilon": 0.01,
+            "mu_min": 1.5,
+            "m_phys": 1.5,
+            "positive": true
+          }
+        ]
+      }
+    },
+    {
+      "test": "ADV-12",
+      "name": "No circularity",
+      "passed": true,
+      "details": {
+        "input": {
+          "object": "lattice transfer matrix T",
+          "setting": "finite lattice spacing a > 0",
+          "claim": "ln(\u03bb\u2080/\u03bb\u2081) > 0",
+          "proof": "Thm 7.4.2 (exact solution)"
+        },
+        "output": {
+          "object": "continuum Hamiltonian H",
+          "setting": "a = 0 (continuum limit)",
+          "claim": "inf spec(H|_{\u03a9\u22a5}) \u2265 m > 0",
+          "proof": "OS reconstruction from Schwinger functions"
+        },
+        "different_objects": true,
+        "different_settings": true,
+        "different_proofs": true
+      }
+    }
+  ]
+}

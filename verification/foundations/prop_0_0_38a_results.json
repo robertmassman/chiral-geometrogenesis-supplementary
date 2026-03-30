@@ -1,0 +1,122 @@
+{
+  "proposition": "0.0.38a",
+  "title": "Gauge-Invariant Spectrum on the Stella",
+  "timestamp": "2026-02-11T10:21:09.068732",
+  "verifications": [
+    {
+      "test": "1",
+      "name": "Spectral Weights",
+      "passed": true
+    },
+    {
+      "test": "2",
+      "name": "Spectral Gap vs \u03b2",
+      "betas": [
+        0.1,
+        0.2,
+        0.5,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        12.0,
+        15.0,
+        20.0
+      ],
+      "gaps": [
+        18.541411479213508,
+        15.735927856520886,
+        11.974048780128962,
+        9.04799018615525,
+        6.006105144539475,
+        4.179494077391343,
+        2.9000825521812295,
+        1.9571237586810049,
+        1.2487382689622555,
+        0.7111757344237826,
+        0.2990962096800156,
+        -0.020905150951332274,
+        -0.2732945985850055,
+        -0.6408572623043203,
+        -0.990671587507078,
+        -1.3205869667143122
+      ],
+      "u3_values": [
+        0.005601846440118732,
+        0.011296208862338647,
+        0.02893167279912287,
+        0.06012655483356473,
+        0.12862778532208338,
+        0.20307505003021883,
+        0.2796191494093043,
+        0.35395443670527055,
+        0.4225317396499834,
+        0.48330851688000054,
+        0.5357539902135647,
+        0.5803755664728747,
+        0.6181757389675137,
+        0.6776720373751355,
+        0.7396055706969671,
+        0.8031936767438921
+      ],
+      "passed": true
+    },
+    {
+      "test": "3",
+      "name": "Transfer Matrix Eigenvalues",
+      "beta": 4.0,
+      "mass_gap": 8.348818669121183,
+      "passed": true
+    },
+    {
+      "test": "4",
+      "name": "Plaquette Expectation Value",
+      "passed": true
+    },
+    {
+      "test": "5",
+      "name": "Excitation Energy Ordering",
+      "passed": true
+    },
+    {
+      "test": "6",
+      "name": "Strong Coupling Cross-Check",
+      "passed": true
+    },
+    {
+      "test": "7",
+      "name": "Gap Monotonicity",
+      "violations": 0,
+      "passed": true
+    },
+    {
+      "test": "8",
+      "name": "Z3 Center Symmetry Signal",
+      "nality_weights": {
+        "0": 3.1721858966480023,
+        "1": 0.04864874691430247,
+        "2": 0.04864874691430247
+      },
+      "passed": true
+    },
+    {
+      "test": "9",
+      "name": "Casimir Scaling",
+      "passed": true
+    },
+    {
+      "test": "10",
+      "name": "Dominance Crossover",
+      "beta_c": 8.926316032406675,
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED",
+  "summary": "10/10 tests passed"
+}

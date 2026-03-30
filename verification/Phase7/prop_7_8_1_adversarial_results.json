@@ -1,0 +1,274 @@
+{
+  "proposition": "7.8.1",
+  "title": "Glueball Mass Ratios for Exceptional Gauge Groups",
+  "verification_type": "adversarial_physics",
+  "date": "2026-02-19T16:12:19.690029",
+  "tests_total": 26,
+  "tests_passed": 24,
+  "tests_failed": 2,
+  "overall": "PARTIAL PASS",
+  "findings": [
+    {
+      "id": "ADV-2-F1",
+      "severity": "MAJOR",
+      "description": "Eq. (5.16) incorrectly states C2(adj)/C2(fund) = 2 for all Sp(2N). Correct formula: 4(N+1)/(2N+1). Ratio is 8/3 at N=1, approaching 2 only as N\u2192\u221e.",
+      "impact": "Limited impact on exceptional group predictions (uses SU calibration), but Sp cross-check M0 values in \u00a75.4 are wrong."
+    },
+    {
+      "id": "ADV-6-F1",
+      "severity": "HIGH",
+      "description": "c(E8) from Eq. (6.4) scaling = 1.47 vs paper's 4.66. The \u221a\u03c3/\u039b ~ 2.0 assumption may significantly overestimate c(G) for large-rank groups.",
+      "impact": "c(G) > 0 for mass gap existence is still satisfied, but numerical values are unreliable for E7, E8."
+    }
+  ],
+  "results": [
+    {
+      "test": "ADV-1.G2: Dynkin identity",
+      "passed": true,
+      "details": "T(f)*d_adj=14, C2(f)*d_R=14, T(adj)*d_adj=56, C2(adj)*d_adj=56, C2(adj)=4 vs h_dual=4",
+      "data": {
+        "group": "G2",
+        "fund_ok": true,
+        "adj_ok": true,
+        "h_ok": true
+      }
+    },
+    {
+      "test": "ADV-1.F4: Dynkin identity",
+      "passed": true,
+      "details": "T(f)*d_adj=156, C2(f)*d_R=156, T(adj)*d_adj=468, C2(adj)*d_adj=468, C2(adj)=9 vs h_dual=9",
+      "data": {
+        "group": "F4",
+        "fund_ok": true,
+        "adj_ok": true,
+        "h_ok": true
+      }
+    },
+    {
+      "test": "ADV-1.E6: Dynkin identity",
+      "passed": true,
+      "details": "T(f)*d_adj=234, C2(f)*d_R=233.99999999999997, T(adj)*d_adj=936, C2(adj)*d_adj=936, C2(adj)=12 vs h_dual=12",
+      "data": {
+        "group": "E6",
+        "fund_ok": true,
+        "adj_ok": true,
+        "h_ok": true
+      }
+    },
+    {
+      "test": "ADV-1.E7: Dynkin identity",
+      "passed": true,
+      "details": "T(f)*d_adj=798, C2(f)*d_R=798.0, T(adj)*d_adj=2394, C2(adj)*d_adj=2394, C2(adj)=18 vs h_dual=18",
+      "data": {
+        "group": "E7",
+        "fund_ok": true,
+        "adj_ok": true,
+        "h_ok": true
+      }
+    },
+    {
+      "test": "ADV-1.E8: Dynkin identity",
+      "passed": true,
+      "details": "T(f)*d_adj=7440, C2(f)*d_R=7440, T(adj)*d_adj=7440, C2(adj)*d_adj=7440, C2(adj)=30 vs h_dual=30",
+      "data": {
+        "group": "E8",
+        "fund_ok": true,
+        "adj_ok": true,
+        "h_ok": true
+      }
+    },
+    {
+      "test": "ADV-1.E7_notation: 24/19 = 168/133",
+      "passed": true,
+      "details": "24/19 = 1.263157894736842, 168/133 = 1.263157894736842",
+      "data": {
+        "ratio_a": 1.263157894736842,
+        "ratio_b": 1.263157894736842
+      }
+    },
+    {
+      "test": "ADV-2.a: Sp(2)=SU(2) Casimir ratio match",
+      "passed": true,
+      "details": "Sp(2) ratio = 2.666667 = SU(2) ratio = 2.666667",
+      "data": {
+        "sp2_ratio": 2.6666666666666665,
+        "su2_ratio": 2.6666666666666665
+      }
+    },
+    {
+      "test": "ADV-2.b: Eq. (5.16) correctness",
+      "passed": false,
+      "details": "Eq. (5.16) claims C2(adj)/C2(fund) = 2 for all N; actual ratio ranges from 2.6667 (N=1) to 2.000 (N\u2192\u221e)",
+      "data": {
+        "equation_correct": false
+      }
+    },
+    {
+      "test": "ADV-3.a: M0 claimed vs actual weighted mean",
+      "passed": "True",
+      "details": "Claimed 2.33 \u00b1 0.05, actual weighted mean 2.2825 \u00b1 0.0133, diff = 0.9\u03c3",
+      "data": {
+        "claimed": 2.33,
+        "actual_wm": 2.282471728437182,
+        "actual_err": 0.013336023548633556,
+        "sigma_diff": 0.9184572279222449,
+        "su3_weight_fraction": 0.9073955310699423
+      }
+    },
+    {
+      "test": "ADV-3.b: M0 constancy chi^2/dof",
+      "passed": "True",
+      "details": "chi^2/dof = 2.34 (acceptable if < 3)",
+      "data": {
+        "chi2": 14.038826950932283,
+        "ndof": 6,
+        "chi2_per_dof": 2.339804491822047
+      }
+    },
+    {
+      "test": "ADV-4: SU(N) M0 large-N extrapolation",
+      "passed": true,
+      "details": "M0(\u221e) = 2.4666 \u00b1 0.0573, 1/N^2 slope = -1.708 \u00b1 0.517 (3.3\u03c3 significance)",
+      "data": {
+        "M0_inf": 2.4666265591750993,
+        "M0_inf_err": 0.057309067156093026,
+        "slope": -1.7084103412183331,
+        "slope_err": 0.517062846439798,
+        "slope_significance_sigma": 3.30406710321865
+      }
+    },
+    {
+      "test": "ADV-5: All predictions within 2\u03c3 of lattice",
+      "passed": true,
+      "details": "Max tension = 1.13\u03c3",
+      "data": {
+        "max_tension": 1.1252483269925766,
+        "su_tensions": [
+          1.0450970510311162,
+          0.5942050480046001,
+          0.6280130290402068,
+          0.9110638938119179,
+          0.8869042757838685,
+          0.8594027510383518,
+          0.8746933891132936
+        ],
+        "sp_tensions": [
+          1.0450970510311162,
+          1.1252483269925766,
+          0.24635174862733072,
+          0.03508225590226041
+        ]
+      }
+    },
+    {
+      "test": "ADV-6.a: All c(G) positive (mass gap existence)",
+      "passed": true,
+      "details": "Minimum c(G) = 1.47 > 0",
+      "data": {
+        "min_cG": 1.4692005254695493,
+        "all_positive": true
+      }
+    },
+    {
+      "test": "ADV-6.b: c(E8) paper vs Eq.(6.4) scaling",
+      "passed": false,
+      "details": "c(E8) paper = 4.66, c(E8) Eq.(6.4) = 1.47, discrepancy = 68%",
+      "data": {
+        "cG_e8_paper": 4.66,
+        "cG_e8_eq64": 1.4692005254695493
+      }
+    },
+    {
+      "test": "ADV-7: Eta strictly decreasing with rank",
+      "passed": true,
+      "details": "Ranks: [2, 4, 6, 7, 8], etas: ['1.4142', '1.2247', '1.1767', '1.1239', '1.0000']",
+      "data": {
+        "monotonic": true,
+        "etas": {
+          "G2": 1.4142135623730951,
+          "F4": 1.224744871391589,
+          "E6": 1.1766968108291043,
+          "E7": 1.1239029738980326,
+          "E8": 1.0
+        }
+      }
+    },
+    {
+      "test": "ADV-8.a: d_fund = d_adj = 248",
+      "passed": true,
+      "details": "d_fund = 248, d_adj = 248",
+      "data": {}
+    },
+    {
+      "test": "ADV-8.b: C2(fund) = C2(adj) = 30",
+      "passed": true,
+      "details": "C2(fund) = 30, C2(adj) = 30",
+      "data": {}
+    },
+    {
+      "test": "ADV-8.c: T(fund) = T(adj) = 30",
+      "passed": true,
+      "details": "T(fund) = 30, T(adj) = 30",
+      "data": {}
+    },
+    {
+      "test": "ADV-8.d: eta(E8) = 1 exactly",
+      "passed": "True",
+      "details": "eta(E8) = 1.0",
+      "data": {}
+    },
+    {
+      "test": "ADV-8.e: E8 smallest faithful rep is 248-dim",
+      "passed": true,
+      "details": "E8 has no representation smaller than 248-dimensional (standard)",
+      "data": {}
+    },
+    {
+      "test": "ADV-9.a: eta(G2) = sqrt(2) exactly",
+      "passed": "True",
+      "details": "eta(G2) = 1.414213562373095, sqrt(2) = 1.414213562373095",
+      "data": {}
+    },
+    {
+      "test": "ADV-9.b: SU(N\u2192\u221e) \u2192 sqrt(2)",
+      "passed": "True",
+      "details": "eta_SU(1000) = 1.41421427 vs sqrt(2) = 1.41421356",
+      "data": {}
+    },
+    {
+      "test": "ADV-9.c: Sp(2N\u2192\u221e) \u2192 sqrt(2)",
+      "passed": "True",
+      "details": "eta_Sp(1000) = 1.41456689 vs sqrt(2) = 1.41421356",
+      "data": {}
+    },
+    {
+      "test": "ADV-10: Error \u00b10.15 is conservative",
+      "passed": "True",
+      "details": "Max actual error = \u00b10.122, claimed \u00b10.15 (conservative, OK)",
+      "data": {
+        "max_actual_error": 0.12247448713915891,
+        "claimed_error": 0.15
+      }
+    },
+    {
+      "test": "ADV-11: Casimir vs quasigluon within 5%",
+      "passed": "True",
+      "details": "Max discrepancy = 2.1%",
+      "data": {
+        "max_discrepancy_pct": 2.0820153845781
+      }
+    },
+    {
+      "test": "ADV-12: Center symmetry assignments correct",
+      "passed": true,
+      "details": "All centers match standard references: True",
+      "data": {
+        "center_trivial_groups": [
+          "G2",
+          "F4",
+          "E8"
+        ]
+      }
+    }
+  ]
+}

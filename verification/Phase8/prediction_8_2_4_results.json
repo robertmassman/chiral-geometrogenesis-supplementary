@@ -1,0 +1,140 @@
+{
+  "prediction": "8.2.4",
+  "title": "W-Sector Phase Transition Gravitational Waves (Revised)",
+  "timestamp": "2026-02-26T13:17:17.509482",
+  "parameters": {
+    "v_W": 123.0,
+    "lambda_W": 0.101,
+    "lambda_HPhi": 0.036,
+    "e_W": 4.5
+  },
+  "corrections_applied": [
+    "c_W with n_H=4 Higgs d.o.f.",
+    "kappa_v Jouguet (Espinosa Eq. A.8)",
+    "kappa_turb = epsilon * kappa_v",
+    "v_w-dependent bubble collision factor",
+    "Sound wave lifetime suppression (Caprini 2020)",
+    "Self-consistent T_c = 289 GeV",
+    "Temperature-dependent g_*"
+  ],
+  "verifications": [
+    {
+      "claim": "W-sector T_c \u2248 289 GeV (above EWPT, Scenario C)",
+      "c_W": 0.0625,
+      "E_W": 0.002408218761148814,
+      "T_c_analytic": 289.2749557082327,
+      "T_c_numerical": 289.2678535707141,
+      "v_over_T": 0.01589583340692286,
+      "above_EWPT": true,
+      "passed": true
+    },
+    {
+      "claim": "Two-tier prediction: crossover (minimal) vs detectable (enhanced)",
+      "alpha_min": 4.029756035787781e-07,
+      "n_for_alpha_001": 157.52903869451438,
+      "scenarios": [
+        {
+          "label": "Conservative",
+          "alpha": 0.005,
+          "beta_H": 1000,
+          "v_w": 0.6321406945525755,
+          "kappa_v": 0.1180118883705108,
+          "f_peak_mHz": 147.6281471909391,
+          "Omega_peak": 3.414384529833326e-14
+        },
+        {
+          "label": "Central",
+          "alpha": 0.01,
+          "beta_H": 500,
+          "v_w": 0.6530792281036102,
+          "kappa_v": 0.1554130512636503,
+          "f_peak_mHz": 71.42559285543126,
+          "Omega_peak": 2.995843282679408e-13
+        },
+        {
+          "label": "Optimistic",
+          "alpha": 0.03,
+          "beta_H": 200,
+          "v_w": 0.7008918370268304,
+          "kappa_v": 0.23931853267933345,
+          "f_peak_mHz": 26.207066964838525,
+          "Omega_peak": 7.77066041535189e-12
+        },
+        {
+          "label": "Strong",
+          "alpha": 0.05,
+          "beta_H": 100,
+          "v_w": 0.7301402038567952,
+          "kappa_v": 0.2913537074044807,
+          "f_peak_mHz": 12.534242654613994,
+          "Omega_peak": 4.565079630721593e-11
+        }
+      ],
+      "passed": true
+    },
+    {
+      "claim": "Turbulence dominates with corrected efficiency factors",
+      "kappa_v": 0.1554130512636503,
+      "kappa_turb": 0.007770652563182515,
+      "Upsilon": 0.09658312925472912,
+      "f_col_mHz": 6.802899512153471,
+      "f_sw_mHz": 41.81210445143429,
+      "f_turb_mHz": 59.41720106256451,
+      "peak_col": 1.6810630154760175e-16,
+      "peak_sw": 8.016934339098668e-16,
+      "peak_turb": 2.990735028047701e-13,
+      "dominant_source": "turbulence",
+      "passed": true
+    },
+    {
+      "claim": "GW spectrum compared with corrected detector sensitivity",
+      "scenarios": [
+        {
+          "label": "Central",
+          "alpha": 0.01,
+          "beta_H": 500,
+          "Omega_peak": 2.995843282679408e-13,
+          "snr_integrated": 0.1324715678782648,
+          "detectable": false
+        },
+        {
+          "label": "Optimistic",
+          "alpha": 0.03,
+          "beta_H": 200,
+          "Omega_peak": 7.77066041535189e-12,
+          "snr_integrated": 12.88823453779647,
+          "detectable": true
+        },
+        {
+          "label": "Strong",
+          "alpha": 0.05,
+          "beta_H": 100,
+          "Omega_peak": 4.565079630721593e-11,
+          "snr_integrated": 160.48457946053344,
+          "detectable": true
+        }
+      ],
+      "optimistic_lisa_detectable": true,
+      "central_decigo_detectable": true,
+      "passed": true
+    },
+    {
+      "claim": "GW signal scales correctly with parameters",
+      "alpha_scaling_ratio": 4.519797510225103,
+      "passed": true
+    },
+    {
+      "claim": "W-sector GW is distinct from pre-geometric GW (8.2.3)",
+      "frequency_ratio": 3000000.0,
+      "T_c_W_sector": 289.2749557082327,
+      "passed": true
+    },
+    {
+      "claim": "Dimensional analysis consistent",
+      "f_peak_Hz": 0.006802899512153471,
+      "in_mHz_band": true,
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED"
+}

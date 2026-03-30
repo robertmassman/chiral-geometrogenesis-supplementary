@@ -1,0 +1,260 @@
+{
+  "theorem": "7.7.5",
+  "title": "Adversarial Physics Verification",
+  "timestamp": "2026-02-15T09:37:54.403236",
+  "verifications": [
+    {
+      "test": "APV-1",
+      "name": "Strong-coupling mass gap divergence",
+      "passed": true,
+      "results": [
+        {
+          "group": "SU(2)",
+          "diverges": "True",
+          "mu_at_beta_0.001": 45.60541475725249
+        },
+        {
+          "group": "SU(3)",
+          "diverges": "True",
+          "mu_at_beta_0.001": 48.03820540590148
+        },
+        {
+          "group": "E8",
+          "diverges": "True",
+          "mu_at_beta_0.001": 74.5271041508827
+        }
+      ]
+    },
+    {
+      "test": "APV-2",
+      "name": "Weak-coupling Brascamp-Lieb bound",
+      "passed": true,
+      "checks": [
+        {
+          "group": "SU(2)",
+          "all_positive": true,
+          "decreasing": true
+        },
+        {
+          "group": "SU(3)",
+          "all_positive": true,
+          "decreasing": true
+        },
+        {
+          "group": "G2",
+          "all_positive": true,
+          "decreasing": true
+        }
+      ]
+    },
+    {
+      "test": "APV-3",
+      "name": "UV summability for all groups",
+      "passed": true,
+      "groups_tested": 14,
+      "all_converge": true
+    },
+    {
+      "test": "APV-4",
+      "name": "IR summability with uniform mass gap",
+      "passed": true,
+      "results": [
+        {
+          "mu_min": 0.01,
+          "sum": 6.3210933205943824,
+          "converges": true,
+          "first_negligible_k": 12
+        },
+        {
+          "mu_min": 0.1,
+          "sum": 3.0875402212931915,
+          "converges": true,
+          "first_negligible_k": 9
+        },
+        {
+          "mu_min": 0.5,
+          "sum": 1.1283965981725124,
+          "converges": true,
+          "first_negligible_k": 7
+        },
+        {
+          "mu_min": 1.0,
+          "sum": 0.5218659384598792,
+          "converges": true,
+          "first_negligible_k": 6
+        }
+      ]
+    },
+    {
+      "test": "APV-5",
+      "name": "Crossover path topology",
+      "passed": "True",
+      "starts_strong": true,
+      "ends_weak": true,
+      "ends_eps_zero": true,
+      "details": "Path exists in complement of compact phase boundary curve"
+    },
+    {
+      "test": "APV-6",
+      "name": "E8 fundamental=adjoint degeneracy",
+      "passed": true,
+      "fund_eq_adj": true,
+      "trivial_center": true,
+      "higher_rep_available": true,
+      "resolution": "Trivial center \u2192 no deconfinement transition to circumvent"
+    },
+    {
+      "test": "APV-7",
+      "name": "Center-trivial groups mass gap",
+      "passed": true,
+      "groups": [
+        "G2",
+        "F4",
+        "E8"
+      ],
+      "checks": [
+        {
+          "group": "G2",
+          "h_dual": 4,
+          "b0_positive": true,
+          "center_trivial": true,
+          "mass_gap_mechanism": "exponential decay of gauge-invariant correlations",
+          "no_center_transition": true
+        },
+        {
+          "group": "F4",
+          "h_dual": 9,
+          "b0_positive": true,
+          "center_trivial": true,
+          "mass_gap_mechanism": "exponential decay of gauge-invariant correlations",
+          "no_center_transition": true
+        },
+        {
+          "group": "E8",
+          "h_dual": 30,
+          "b0_positive": true,
+          "center_trivial": true,
+          "mass_gap_mechanism": "exponential decay of gauge-invariant correlations",
+          "no_center_transition": true
+        }
+      ]
+    },
+    {
+      "test": "APV-8",
+      "name": "Large-N glueball ratio scaling",
+      "passed": true,
+      "mean_R": 3.5975,
+      "std_R": 0.10722833891591668,
+      "relative_variation": 0.029806348552026872,
+      "R_infinity": 3.37,
+      "bounded": "True",
+      "consistent_with_large_N": true
+    },
+    {
+      "test": "APV-9",
+      "name": "Running coupling asymptotic form",
+      "passed": true,
+      "results": [
+        {
+          "group": "SU(2)",
+          "b0": 0.04643887583607148,
+          "g2_at_k50": 0.3106653670906365,
+          "goes_to_zero": true,
+          "subleading_small": true
+        },
+        {
+          "group": "SU(3)",
+          "b0": 0.06965831375410722,
+          "g2_at_k50": 0.207110244727091,
+          "goes_to_zero": true,
+          "subleading_small": true
+        },
+        {
+          "group": "SU(8)",
+          "b0": 0.18575550334428592,
+          "g2_at_k50": 0.07766634177265913,
+          "goes_to_zero": true,
+          "subleading_small": true
+        },
+        {
+          "group": "E8",
+          "b0": 0.6965831375410723,
+          "g2_at_k50": 0.020711024472709096,
+          "goes_to_zero": true,
+          "subleading_small": true
+        }
+      ]
+    },
+    {
+      "test": "APV-10",
+      "name": "OS \u2192 Wightman axiom mapping",
+      "passed": true,
+      "mappings": 8,
+      "wightman_axioms_covered": [
+        "W0",
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5"
+      ],
+      "complete": true
+    },
+    {
+      "test": "APV-11",
+      "name": "Spectral gap extraction validity",
+      "passed": "True",
+      "scenario_1_consistent": true,
+      "scenario_2_contradiction": true,
+      "ratio_at_tau10": 148.4131591025766,
+      "details": "Proof by contradiction valid: slower decay contradicts clustering"
+    },
+    {
+      "test": "APV-12",
+      "name": "String tension for center-trivial groups",
+      "passed": true,
+      "checks": [
+        {
+          "group": "G2",
+          "sigma_intermediate_defined": true,
+          "mass_gap_independent_of_sigma": true,
+          "center_trivial": true
+        },
+        {
+          "group": "F4",
+          "sigma_intermediate_defined": true,
+          "mass_gap_independent_of_sigma": true,
+          "center_trivial": true
+        },
+        {
+          "group": "E8",
+          "sigma_intermediate_defined": true,
+          "mass_gap_independent_of_sigma": true,
+          "center_trivial": true
+        }
+      ]
+    },
+    {
+      "test": "APV-13",
+      "name": "Pirogov-Sinai phase boundary termination",
+      "passed": true,
+      "endpoint_finite": "True",
+      "complement_connected": true,
+      "details": "First-order transition line terminates at critical endpoint; complement is path-connected"
+    },
+    {
+      "test": "APV-14",
+      "name": "Caveats honesty check",
+      "passed": true,
+      "caveats_stated": 5,
+      "all_present": true,
+      "overclaims": "None"
+    }
+  ],
+  "summary": {
+    "total": 14,
+    "passed": 14,
+    "failed": 0,
+    "overall_status": "PASSED"
+  }
+}

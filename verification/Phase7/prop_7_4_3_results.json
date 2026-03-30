@@ -1,0 +1,163 @@
+{
+  "proposition": "7.4.3",
+  "title": "FCC Lattice Perturbation Theory and Beta Function",
+  "timestamp": "2026-02-13T11:26:41.230700",
+  "summary": "11/11 tests passed",
+  "tests": [
+    {
+      "name": "T1: b_0 universality",
+      "passed": true,
+      "details": {
+        "b0_expected": 0.06965831375410722,
+        "b0_formula": 0.06965831375410722,
+        "relative_error": 0.0,
+        "b0_numeric": 0.06966,
+        "check": "11*3/(3*16*pi^2) = 11/(16*pi^2)"
+      }
+    },
+    {
+      "name": "T2: b_1 two-loop coefficient",
+      "passed": true,
+      "details": {
+        "b1_expected": 0.00409035230460079,
+        "b1_formula": 0.004090352304600791,
+        "relative_error": 2.1205061896815174e-16,
+        "b1_numeric": 0.00409,
+        "ratio_b1_over_b0_sq": 0.8429752066115703,
+        "note": "b_1 is universal (lattice-independent)"
+      }
+    },
+    {
+      "name": "T3: Asymptotic scaling monotonicity",
+      "passed": true,
+      "details": {
+        "beta_range": [
+          2,
+          20
+        ],
+        "a_min": 2.0748822354837374e-10,
+        "a_max": 0.17679307917964496,
+        "monotonically_decreasing": true
+      }
+    },
+    {
+      "name": "T4: Asymptotic scaling a->0",
+      "passed": "True",
+      "details": {
+        "a(100)": 1.115158492759867e-51,
+        "a(200)": 1.6553390009980002e-103,
+        "ratio_a200_a100": 1.4843979683114453e-52,
+        "approaches_zero": "True"
+      }
+    },
+    {
+      "name": "T5: Scaling ratio Lambda-independence",
+      "passed": "True",
+      "details": {
+        "ratio_Lambda=1": 9.692737974793904,
+        "ratio_Lambda=100": 9.692737974793905,
+        "relative_error": 1.8326677601516625e-16,
+        "Lambda_independent": "True"
+      }
+    },
+    {
+      "name": "T6: D_4 fourth-moment isotropy",
+      "passed": "True",
+      "details": {
+        "fcc_max_deviation": 4.440892098500626e-16,
+        "cubic_max_deviation": 1.0,
+        "fcc_is_isotropic": "True",
+        "cubic_is_anisotropic": "True",
+        "fcc_neighbors": 24,
+        "cubic_neighbors": 8
+      }
+    },
+    {
+      "name": "T7: Tadpole integral (Monte Carlo)",
+      "passed": "True",
+      "details": {
+        "fcc_tadpole_mc": 0.276164339779329,
+        "fcc_tadpole_std": 0.0001656952586492229,
+        "fcc_tadpole_expected": 0.276,
+        "fcc_consistent": "True",
+        "cubic_tadpole_mc": 0.15470018163701824,
+        "cubic_tadpole_std": 0.00012329181666737197,
+        "cubic_tadpole_exact": 0.15493,
+        "cubic_consistent": "True",
+        "note": "FCC tadpole > cubic due to 1/3 normalization (k_hat^2_FCC < k_hat^2_cubic)"
+      }
+    },
+    {
+      "name": "T8: Lambda ratio estimate",
+      "passed": true,
+      "details": {
+        "celmaster_bch_over_cubic_su2": 0.29,
+        "lambda_FCC_over_MSbar": 0.010069444444444443,
+        "lambda_FCC_MeV": 2.6180555555555554,
+        "dashen_gross_MSbar_over_cubic": 28.8,
+        "tadpole_I_FCC": 0.276,
+        "tadpole_I_cubic": 0.15493,
+        "tadpole_delta_I": 0.12107000000000001,
+        "tadpole_ln_contribution": -0.016509545454545457,
+        "within_range_0.003_0.03": true,
+        "note": "Lambda_FCC/Lambda_MSbar \u2248 0.010 from Celmaster (1982) BCH/D_4 result"
+      }
+    },
+    {
+      "name": "T9: Mass gap weak coupling",
+      "passed": true,
+      "details": {
+        "results": [
+          {
+            "beta": 15.0,
+            "mu_exact": -0.8827308863460459,
+            "mu_perturbative": -2.9402813104487735,
+            "u3": 0.7396055706969671,
+            "u3_pert": 0.9555555555555556
+          },
+          {
+            "beta": 20.0,
+            "mu_exact": -1.5425616447605142,
+            "mu_perturbative": -3.0291701993376625,
+            "u3": 0.8031936767438921,
+            "u3_pert": 0.9666666666666667
+          },
+          {
+            "beta": 30.0,
+            "mu_exact": -2.16300911088983,
+            "mu_perturbative": -3.1180590882265515,
+            "u3": 0.8679653630924865,
+            "u3_pert": 0.9777777777777777
+          }
+        ],
+        "note": "Perturbative expansion valid only for beta >> 1; mu becomes negative above beta_c"
+      }
+    },
+    {
+      "name": "T10: Scaling exponent b1/(2*b0^2)",
+      "passed": true,
+      "details": {
+        "exponent_computed": 0.4214876033057853,
+        "exponent_expected": 0.4214876033057851,
+        "relative_error": 3.9510878229307044e-16,
+        "note": "b_1/(2*b_0^2) = 102/(2*11^2) = 51/121"
+      }
+    },
+    {
+      "name": "T11: CG lattice spacing matching",
+      "passed": "True",
+      "details": {
+        "a_CG_m": 3.640799706700477e-35,
+        "a_CG_fm": 3.6407997067004766e-20,
+        "1_over_a_CG_GeV": 5.419880682720397e+18,
+        "Lambda_FCC_GeV": 0.0026000000000000003,
+        "Lambda_FCC_MeV": 2.6000000000000005,
+        "a_CG_times_Lambda": 4.797153576257299e-22,
+        "beta_star": 41.03335760376453,
+        "beta_star_expected": 41.0,
+        "deep_perturbative": "True",
+        "note": "CG lattice spacing is Planck-scale; Lambda_FCC \u2248 2.6 MeV gives beta_* \u2248 41"
+      }
+    }
+  ]
+}

@@ -8,12 +8,18 @@ structure |χ_total|. Instead of perfect spheres, the f(r) shells follow
 the isosurface contours - bulging toward R, G, B vertices where |χ_total|
 is high, and pinching toward W where |χ_total| is low (vortex tubes).
 
+The central octahedron (O = conv(T₊) ∩ conv(T₋)) from Prop 0.0.39 is shown
+as the color-neutral core where the baryon center resides — the geometric
+realization of color confinement.
+
 This demonstrates the interaction between:
 - Theorem 0.2.1: Total field superposition |χ_total|
 - Theorem 4.1.1: Hedgehog ansatz for skyrmions
+- Proposition 0.0.39: Stella adjoint decomposition (8 corner tets + 1 central oct)
 
 Reference:
 - Definition 0.1.1 (Stella Octangula Boundary Topology)
+- Proposition 0.0.39 (Stella Adjoint Decomposition)
 """
 
 import numpy as np
@@ -47,6 +53,37 @@ def create_tetrahedron_vertices(scale=1.0):
         [-1, -1, 1]     # W
     ]) * scale / np.sqrt(3)
     return vertices
+
+
+def compute_view_rotation():
+    """Rotation matrix: W → +z (toward camera), R → top (+y on screen).
+
+    Two-step rotation:
+    1. Rodrigues rotation mapping the W direction to the z-axis
+    2. In-plane rotation around z putting R at the top of the screen
+    """
+    w_dir = np.array([-1, -1, 1]) / np.sqrt(3)
+    z = np.array([0.0, 0.0, 1.0])
+
+    # Step 1: Rodrigues formula — rotate w_dir → z
+    v = np.cross(w_dir, z)
+    s = np.linalg.norm(v)          # sin(angle)
+    c = np.dot(w_dir, z)           # cos(angle)
+    vx = np.array([[0, -v[2], v[1]],
+                    [v[2], 0, -v[0]],
+                    [-v[1], v[0], 0]])
+    R1 = np.eye(3) + vx + vx @ vx * (1 - c) / (s * s)
+
+    # Step 2: After R1, project R vertex into xy-plane and rotate to +y
+    r_dir = np.array([1, 1, 1]) / np.sqrt(3)
+    r_rot = R1 @ r_dir
+    angle = np.arctan2(r_rot[0], r_rot[1])   # angle from +y toward +x
+    ca, sa = np.cos(angle), np.sin(angle)
+    R2 = np.array([[ca, -sa, 0],
+                    [sa,  ca, 0],
+                    [0,    0, 1]])
+
+    return R2 @ R1
 
 
 def pressure_function(x, y, z, vertex, epsilon=EPSILON):
@@ -149,8 +186,10 @@ def create_modulated_shell(base_radius, vertices, n_theta=40, n_phi=60,
 def main():
     fig = go.Figure()
 
+    rot = compute_view_rotation()
+
     scale = 2.0
-    t_plus = create_tetrahedron_vertices(scale)
+    t_plus = (rot @ create_tetrahedron_vertices(scale).T).T
     t_minus = -t_plus
 
     # =========================================================================
@@ -159,20 +198,22 @@ def main():
 
     edges = [[0,1], [0,2], [0,3], [1,2], [1,3], [2,3]]
 
-    for edge in edges:
+    for idx, edge in enumerate(edges):
         v = t_plus[edge]
         fig.add_trace(go.Scatter3d(
             x=v[:, 0], y=v[:, 1], z=v[:, 2],
-            mode='lines', line=dict(color='orange', width=4),
-            showlegend=False, hoverinfo='skip',
+            mode='lines', line=dict(color='cornflowerblue', width=4),
+            legendgroup='T+', name='T₊ tetrahedron',
+            showlegend=(idx == 0), hoverinfo='skip',
         ))
 
-    for edge in edges:
+    for idx, edge in enumerate(edges):
         v = t_minus[edge]
         fig.add_trace(go.Scatter3d(
             x=v[:, 0], y=v[:, 1], z=v[:, 2],
-            mode='lines', line=dict(color='cornflowerblue', width=4),
-            showlegend=False, hoverinfo='skip',
+            mode='lines', line=dict(color='salmon', width=4),
+            legendgroup='T-', name='T₋ tetrahedron',
+            showlegend=(idx == 0), hoverinfo='skip',
         ))
 
     # Vertex labels
@@ -199,6 +240,50 @@ def main():
             showlegend=False,
             hovertemplate=f'T₋: {label}<extra></extra>',
         ))
+
+    # =========================================================================
+    # CENTRAL OCTAHEDRON (Prop 0.0.39d)
+    # O = conv(T₊) ∩ conv(T₋) — the color-neutral core
+    # Vertices at face-centers of the inscribing cube
+    # =========================================================================
+
+    s = scale / np.sqrt(3)  # half-edge of inscribing cube
+    oct_verts_orig = np.array([
+        [ s, 0, 0],   # 0: +x
+        [-s, 0, 0],   # 1: -x
+        [0,  s, 0],   # 2: +y
+        [0, -s, 0],   # 3: -y
+        [0, 0,  s],   # 4: +z
+        [0, 0, -s],   # 5: -z
+    ])
+    oct_verts = (rot @ oct_verts_orig.T).T
+
+    # 12 edges: each vertex connects to the 4 non-opposite vertices
+    oct_edges = [
+        [0,2],[0,3],[0,4],[0,5],  # +x to ±y, ±z
+        [1,2],[1,3],[1,4],[1,5],  # -x to ±y, ±z
+        [2,4],[2,5],              # +y to ±z
+        [3,4],[3,5],              # -y to ±z
+    ]
+
+    for idx, edge in enumerate(oct_edges):
+        v = oct_verts[edge]
+        fig.add_trace(go.Scatter3d(
+            x=v[:, 0], y=v[:, 1], z=v[:, 2],
+            mode='lines', line=dict(color='gray', width=3, dash='dot'),
+            legendgroup='oct', name='Central octahedron (T₊∩T₋)',
+            showlegend=(idx == 0), hoverinfo='skip',
+        ))
+
+    # Label at one octahedron vertex
+    o_label = rot @ np.array([s * 1.12, 0, 0])
+    fig.add_trace(go.Scatter3d(
+        x=[o_label[0]], y=[o_label[1]], z=[o_label[2]],
+        mode='text',
+        text=['O'],
+        textfont=dict(size=12, color='gray', family='Arial Black'),
+        showlegend=False, hoverinfo='skip',
+    ))
 
     # =========================================================================
     # MODULATED HEDGEHOG SHELLS
@@ -235,9 +320,9 @@ def main():
     # HEDGEHOG CONES - pointing radially outward
     # =========================================================================
 
-    # W axis for cone distribution poles
-    w_axis = np.array([-1, -1, 1]) / np.sqrt(3)
-    e1 = np.array([1, -1, 0]) / np.sqrt(2)
+    # W axis for cone distribution poles (rotated frame)
+    w_axis = rot @ (np.array([-1, -1, 1]) / np.sqrt(3))
+    e1 = rot @ (np.array([1, -1, 0]) / np.sqrt(2))
     e2 = np.cross(w_axis, e1)
 
     n_theta, n_phi = 6, 10
@@ -300,7 +385,17 @@ def main():
             ticktext=['0', 'π/2', 'π'],
             len=0.4, y=0.8,
         ),
-        name='Hedgehog (n̂ = r̂)',
+        name='Hedgehog vectors (n̂ = r̂)',
+        showlegend=False,
+    ))
+
+    # Dummy trace for cone legend entry (Plotly Cone traces don't show in legend)
+    fig.add_trace(go.Scatter3d(
+        x=[None], y=[None], z=[None],
+        mode='markers',
+        marker=dict(size=8, color='royalblue', symbol='diamond'),
+        name='Hedgehog vectors (n̂ = r̂)',
+        showlegend=True,
     ))
 
     # =========================================================================
@@ -321,7 +416,7 @@ def main():
 
     fig.update_layout(
         title=dict(
-            text='Modulated Hedgehog: f(r) Shells Follow |χ_total| Contours',
+            text='Modulated Hedgehog with Central Octahedron (Prop 0.0.39)',
             font=dict(size=14),
             x=0.5,
         ),
@@ -332,7 +427,12 @@ def main():
                        zeroline=False, showbackground=False),
             zaxis=dict(title='', showticklabels=False, showgrid=False,
                        zeroline=False, showbackground=False),
-            camera=dict(eye=dict(x=1.6, y=1.6, z=1.2)),
+            camera=dict(
+                eye=dict(x=0, y=0, z=2.5),
+                up=dict(x=0, y=1, z=0),
+                center=dict(x=0, y=0, z=0),
+                projection=dict(type='perspective'),
+            ),
             aspectmode='cube',
             bgcolor='rgba(255,255,255,1)',
         ),
@@ -343,21 +443,6 @@ def main():
             font=dict(size=10),
         ),
         margin=dict(l=0, r=0, t=50, b=0),
-        annotations=[
-            dict(
-                text='<b>Modulated Hedgehog:</b><br>'
-                     'Shells bulge toward R,G,B (high |χ|)<br>'
-                     'Shells pinch toward W (low |χ|, vortex)<br>'
-                     'Color = local field magnitude',
-                x=0.98, y=0.98,
-                xref='paper', yref='paper',
-                showarrow=False,
-                font=dict(size=10),
-                bgcolor='rgba(255,255,255,0.95)',
-                bordercolor='gray', borderwidth=1, borderpad=6,
-                align='left', xanchor='right',
-            ),
-        ],
     )
 
     # Save

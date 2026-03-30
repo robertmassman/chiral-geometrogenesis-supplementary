@@ -1,0 +1,179 @@
+{
+  "theorem": "7.4.2",
+  "title": "Mass Gap Thermodynamic Limit",
+  "verification_type": "standard",
+  "date": "2026-02-13T06:56:34.516050",
+  "tests_total": 13,
+  "tests_passed": 13,
+  "tests_failed": 0,
+  "overall": "PASS",
+  "results": [
+    {
+      "name": "T1: mu(beta) is N_s-independent for N_s = 1,2,3,5,10",
+      "passed": "True",
+      "details": "mu(beta=3) = 9.457600. Max relative error across N_s values: 1.88e-16.",
+      "numerical_data": {
+        "mu_ref": "9.457600443450795",
+        "max_err": "1.878232063218893e-16"
+      }
+    },
+    {
+      "name": "T2: mu > 0 for all beta in confined phase",
+      "passed": true,
+      "details": "Tested 5 beta values. All gaps positive.",
+      "numerical_data": {
+        "beta=0.5": {
+          "mu": 25.046709848926028,
+          "u3": 0.02893167279912289
+        },
+        "beta=1.0": {
+          "mu": 19.19459266097861,
+          "u3": 0.06012655483356475
+        },
+        "beta=2.0": {
+          "mu": 13.110822577747062,
+          "u3": 0.12862778532208338
+        },
+        "beta=4.0": {
+          "mu": 6.898777393030569,
+          "u3": 0.2796191494093043
+        },
+        "beta=6.0": {
+          "mu": 3.5960888265926227,
+          "u3": 0.42253173964998336
+        }
+      }
+    },
+    {
+      "name": "T3: mu < 0 at beta=15 (deconfined)",
+      "passed": "True",
+      "details": "mu(beta=15) = -0.8827, u_3 = 0.739606. Fundamental rep dominates in deconfined phase.",
+      "numerical_data": {
+        "mu": "-0.8827308863460472",
+        "u3": "0.7396055706969672"
+      }
+    },
+    {
+      "name": "T4: mu = 0 at u_3 = 3^(-3/8) (critical coupling)",
+      "passed": "True",
+      "details": "beta_c ~ 11.42, u_3(beta_c) = 0.6624, u_3^crit = 0.6623, error = 0.0000.",
+      "numerical_data": {
+        "beta_c": "11.422055982675833",
+        "u3_at_bc": "0.6623510667027591",
+        "u3_crit": 0.662337782140526
+      }
+    },
+    {
+      "name": "T5: Decay rate -ln(lambda_3/lambda_1) = mu(beta)",
+      "passed": "True",
+      "details": "mu(beta=3.0) = 9.457600, -ln(ratio) = 9.457600, rel_err = 0.00e+00.",
+      "numerical_data": {
+        "mu": "9.457600443450795",
+        "mu_from_ratio": "9.457600443450795",
+        "err": "0.0"
+      }
+    },
+    {
+      "name": "T6: Effective mass m_eff(t) constant for t = 1..9",
+      "passed": "True",
+      "details": "m_eff values: ['6.89877739', '6.89877739', '6.89877739']... Max variation: 8.88e-16. Single exponential decay (no excited state contamination).",
+      "numerical_data": {
+        "m_effs": [
+          6.898777393030568,
+          6.898777393030568,
+          6.898777393030568,
+          6.898777393030568,
+          6.898777393030568
+        ],
+        "max_variation": "8.881784197001252e-16"
+      }
+    },
+    {
+      "name": "T7: Correlation length xi = 1/mu increases toward beta_c",
+      "passed": true,
+      "details": "xi values: ['0.052', '0.076', '0.145', '0.278', '0.589']. Monotonically increasing toward critical point.",
+      "numerical_data": {
+        "beta=1.0": {
+          "mu": 19.19459266097861,
+          "xi": 0.05209800581144588,
+          "u3": 0.06012655483356475
+        },
+        "beta=2.0": {
+          "mu": 13.110822577747062,
+          "xi": 0.07627286496098996,
+          "u3": 0.12862778532208338
+        },
+        "beta=4.0": {
+          "mu": 6.898777393030569,
+          "xi": 0.14495322040833516,
+          "u3": 0.2796191494093043
+        },
+        "beta=6.0": {
+          "mu": 3.5960888265926227,
+          "xi": 0.27807989407968076,
+          "u3": 0.42253173964998336
+        },
+        "beta=8.0": {
+          "mu": 1.6968047080281394,
+          "xi": 0.5893430135292954,
+          "u3": 0.5357539902135648
+        }
+      }
+    },
+    {
+      "name": "T8: xi -> infinity (mu -> 0) at beta_c",
+      "passed": "True",
+      "details": "beta_c ~ 11.42. Smallest positive mu near beta_c: 0.0050 (xi = 201.7). Correlation length diverges monotonically.",
+      "numerical_data": {
+        "min_positive_mu": "0.004958290223961992",
+        "beta_c": "11.421727526871386"
+      }
+    },
+    {
+      "name": "T9: mu -> infinity at strong coupling",
+      "passed": "True",
+      "details": "mu(beta=0.2) = 32.57 (u_3 = 1.129621e-02). Maximum confinement at strong coupling.",
+      "numerical_data": {
+        "mu": "32.570468001709884",
+        "u3": "0.011296208862338642"
+      }
+    },
+    {
+      "name": "T10: Gap ratios gap_8/gap_3 and gap_6/gap_3",
+      "passed": "True",
+      "details": "gap_8/gap_3 = 1.992, gap_6/gap_3 = 2.184. Higher reps have proportionally larger gaps.",
+      "numerical_data": {
+        "ratio_8_3": "1.9919499814620487",
+        "ratio_6_3": "2.184032759830412"
+      }
+    },
+    {
+      "name": "T11: Connected correlator ~ exp(-mu*t) -> 0 at large t",
+      "passed": "True",
+      "details": "At t = 2 (= 10*xi): decay factor = 6.098635e-09. Cluster property satisfied (factorization at large separation).",
+      "numerical_data": {
+        "xi": "0.10573506525034908",
+        "t_test": 2,
+        "decay_factor": "6.098634843861002e-09"
+      }
+    },
+    {
+      "name": "T12: <|P|> = 0 in confined phase (center symmetry)",
+      "passed": "True",
+      "details": "Polyakov loop suppression at L=10: 8.436516e-42. Center symmetry enforces <P> = 0 in confined phase.",
+      "numerical_data": {
+        "L": 10,
+        "suppression": "8.436516371767373e-42",
+        "mu": "9.457600443450794"
+      }
+    },
+    {
+      "name": "T13: dmu/dbeta != 0 at beta_c (first-order transition)",
+      "passed": "True",
+      "details": "Slope at transition: dmu/dbeta = -0.3317. Non-zero slope confirms first-order (not second-order) transition.",
+      "numerical_data": {
+        "slope": "-0.33170556066303203"
+      }
+    }
+  ]
+}

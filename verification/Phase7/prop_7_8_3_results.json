@@ -1,0 +1,222 @@
+{
+  "proposition": "7.8.3",
+  "title": "Bethe-Salpeter Glueball Mass Ratio",
+  "verification_type": "standard_and_adversarial",
+  "date": "2026-02-23T09:09:45.127407",
+  "key_values": {
+    "alpha_s": 0.38,
+    "alpha_s_err": 0.06,
+    "R_BS": 3.407345007480164,
+    "R_BS_err": 0.35658261706187766,
+    "R_cont_782": 3.38,
+    "R_cont_782_err": 0.27,
+    "R_combined": 3.3899647061156535,
+    "R_combined_err": 0.21525507139835726,
+    "c_FI_combined": 6.759589623994613,
+    "c_FI_combined_err": 0.4350822080663962,
+    "R_cont_lat": 3.405,
+    "R_cont_lat_err": 0.021
+  },
+  "tests_total": 20,
+  "tests_passed": 20,
+  "tests_failed": 0,
+  "standard_passed": 14,
+  "adversarial_passed": 6,
+  "overall": "PASS",
+  "results": [
+    {
+      "name": "C-1: Color factor <1|F1.F2|1> = -3 (singlet channel)",
+      "passed": true,
+      "details": "F1.F2 = -3.0, expected = -3.0",
+      "numerical_data": {
+        "F1_dot_F2": -3.0,
+        "expected": -3.0
+      }
+    },
+    {
+      "name": "C-2: Casimir scaling sigma_adj/sigma_fund = 9/4",
+      "passed": true,
+      "details": "Ratio = 2.25, C_A/C_F = 2.25, expected = 2.25",
+      "numerical_data": {
+        "ratio": 2.25,
+        "C_A_over_C_F": 2.25
+      }
+    },
+    {
+      "name": "C-3: AFM identity min_nu[p^2/(2nu)+nu/2] = |p|",
+      "passed": true,
+      "details": "Identity holds for all test momenta, minimum confirmed",
+      "numerical_data": {
+        "is_minimum": true
+      }
+    },
+    {
+      "name": "C-4: Variational matrix elements (exponential wavefunction)",
+      "passed": "True",
+      "details": "<p^2> err=2.4001e-07, <1/r> err=1.2000e-07, <r> err=1.1694e-14",
+      "numerical_data": {
+        "p2_numerical": 0.9999997599904342,
+        "inv_r_numerical": 0.9999998799952172,
+        "r_numerical": 1.5000000000000175
+      }
+    },
+    {
+      "name": "C-5: AFM optimization nu* = beta",
+      "passed": "True",
+      "details": "nu_min = 1.0000, beta = 1.0000, ratio = 1.0000",
+      "numerical_data": {
+        "nu_min": 1.0,
+        "beta": 1.0
+      }
+    },
+    {
+      "name": "C-6: Energy functional E = (2-3*alpha_s)*beta + 27*sigma/(8*beta)",
+      "passed": true,
+      "details": "E_full = 4.235000, E_simplified = 4.235000",
+      "numerical_data": {
+        "E_full": 4.234999999999999,
+        "E_simplified": 4.234999999999999
+      }
+    },
+    {
+      "name": "C-7: beta^2 = 27*sigma/(8*(2-3*alpha_s))",
+      "passed": "True",
+      "details": "beta_analytic=1.9810, beta_numerical=1.9810, E_opt=3.407345",
+      "numerical_data": {
+        "beta_analytic": 1.9810145392326537,
+        "beta_numerical": 1.981018810188102,
+        "E_opt": 3.407345007480164
+      }
+    },
+    {
+      "name": "C-8: Closed-form R_BS = 3*sqrt(3*(2-3*alpha_s)/2)",
+      "passed": "True",
+      "details": "Formula verified at 4 alpha_s values; algebraic identity confirmed",
+      "numerical_data": {
+        "lhs": 3.6742346141747673,
+        "rhs": 3.674234614174767
+      }
+    },
+    {
+      "name": "C-9: R_BS(0.38) = 3.407 consistent with lattice 3.405",
+      "passed": "True",
+      "details": "R_BS = 3.4073, lattice = 3.405, tension = 0.05 sigma",
+      "numerical_data": {
+        "R_BS": 3.407345007480164,
+        "R_lat": 3.405,
+        "tension": 0.048854322503418444
+      }
+    },
+    {
+      "name": "C-10: Uncertainty delta_R = 0.36 (10.5%)",
+      "passed": "True",
+      "details": "delta_R = 0.3566 (target ~0.36), rel = 10.5% (target ~10.5%)",
+      "numerical_data": {
+        "delta_R": 0.35658261706187766,
+        "rel_err": 0.1046511627906977,
+        "delta_R_check": 0.35857365876520775
+      }
+    },
+    {
+      "name": "C-11: Combined weighted average R = 3.39 +/- 0.22 (6.3%)",
+      "passed": "True",
+      "details": "R_combined = 3.3900 +/- 0.2153 (6.3%)",
+      "numerical_data": {
+        "R_combined": 3.3899647061156535,
+        "delta_combined": 0.21525507139835726,
+        "rel_err": 0.0634977322949785
+      }
+    },
+    {
+      "name": "C-12: Updated c_FI = 6.76 +/- 0.45",
+      "passed": "True",
+      "details": "c_FI = 6.7596 +/- 0.4351",
+      "numerical_data": {
+        "c_FI": 6.759589623994613,
+        "delta_c": 0.4350822080663962
+      }
+    },
+    {
+      "name": "C-13: Dimensional consistency",
+      "passed": true,
+      "details": "6/6 equations dimensionally consistent",
+      "numerical_data": {
+        "n_equations_checked": 6
+      }
+    },
+    {
+      "name": "C-14: Coupling consistent within scale uncertainty",
+      "passed": "True",
+      "details": "alpha_s(m_G/2)=0.467, alpha_s(<|p|>)=0.416, adopted=0.38+/-0.06",
+      "numerical_data": {
+        "alpha_a": 0.467337399416126,
+        "alpha_b": 0.41579466771208,
+        "alpha_central": 0.441566033564103
+      }
+    },
+    {
+      "name": "ADV-1: Variational bound E_var >= E_exact",
+      "passed": "True",
+      "details": "R_BS = 3.4073 >= R_corrected ~ 3.2370; all R >= 0",
+      "numerical_data": {
+        "R_BS": 3.407345007480164,
+        "R_corrected": 3.2369777571061555,
+        "afm_overestimate": 0.05
+      }
+    },
+    {
+      "name": "ADV-2: AFM systematic error estimate",
+      "passed": "True",
+      "details": "AFM overestimate ~ 7%, alpha_s error ~ 10.5%, corrected R consistent with lattice",
+      "numerical_data": {
+        "afm_overestimate": 0.07,
+        "alpha_error": 0.1046511627906977,
+        "R_corrected": 3.168830856956552
+      }
+    },
+    {
+      "name": "ADV-3: Casimir scaling corrections (beyond weak coupling)",
+      "passed": "True",
+      "details": "Bali tension: 0.17sigma, R correction: 0.22% << alpha_s: 10.5%",
+      "numerical_data": {
+        "bali_tension": 0.16666666666666313,
+        "R_correction": 0.002222222222222175
+      }
+    },
+    {
+      "name": "ADV-4: R_BS sensitivity to alpha_s",
+      "passed": true,
+      "details": "1sigma: [3.030, 3.747], lattice in band: True",
+      "numerical_data": {
+        "R_1sigma": [
+          3.0298514815086235,
+          3.746998799039039
+        ],
+        "R_2sigma": [
+          2.598076211353316,
+          4.058324777540605
+        ]
+      }
+    },
+    {
+      "name": "ADV-5: Independence from Prop 7.8.2",
+      "passed": true,
+      "details": "Shared input: Casimir scaling only. Different methods and dominant uncertainties.",
+      "numerical_data": {
+        "shared": [
+          "Casimir scaling"
+        ],
+        "n_unique_783": 3
+      }
+    },
+    {
+      "name": "ADV-6: Literature comparison",
+      "passed": "True",
+      "details": "R_BS = 3.407 +/- 0.357, all methods consistent within 2sigma",
+      "numerical_data": {
+        "our_value": 3.407345007480164,
+        "our_err": 0.35658261706187766
+      }
+    }
+  ]
+}

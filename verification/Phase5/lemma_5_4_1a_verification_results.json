@@ -1,0 +1,99 @@
+{
+  "tests": [
+    {
+      "name": "FCC NN vector count",
+      "expected": 12,
+      "actual": 12,
+      "passed": true
+    },
+    {
+      "name": "NN vector lengths",
+      "expected": 1.0,
+      "passed": true
+    },
+    {
+      "name": "Cosine sum factorization",
+      "max_error": 7.105427357601002e-15,
+      "passed": true
+    },
+    {
+      "name": "Spectral radius (high-symmetry points)",
+      "max_abs_lambda": 16.0,
+      "expected_paper": 24.0,
+      "expected_correct": 16.0,
+      "matches_paper": false,
+      "matches_correct": true,
+      "details": {
+        "Gamma": {
+          "lambda": 0.0,
+          "F": 1.0
+        },
+        "X": {
+          "lambda": -16.0,
+          "F": -0.3333333333333333
+        },
+        "W": {
+          "lambda": -16.0,
+          "F": -0.3333333333333335
+        },
+        "L": {
+          "lambda": -12.0,
+          "F": 0.0
+        },
+        "K": {
+          "lambda": -15.656854249492383,
+          "F": -0.304737854124365
+        },
+        "U": {
+          "lambda": -15.656854249492378,
+          "F": -0.30473785412436494
+        }
+      }
+    },
+    {
+      "name": "Spectral radius (brute force)",
+      "max_abs_lambda": 16.000000000000004,
+      "matches_16": true,
+      "matches_24": false
+    },
+    {
+      "name": "Spectral radius (scipy)",
+      "max_abs_lambda": 16.000000000000004,
+      "matches_16": true
+    },
+    {
+      "name": "Form factor range",
+      "F_at_zero": 1.0,
+      "F_min": -0.3333333333333335,
+      "paper_claims_F_min": -1.0,
+      "correct_F_min": -0.3333333333333333,
+      "F0_correct": true,
+      "Fmin_matches_paper": false,
+      "Fmin_matches_correct": true
+    },
+    {
+      "name": "Continuum limit normalization",
+      "moment_matrix_diagonal": true,
+      "moment_matrix_value": 3.9999999999999996,
+      "expected": 4.0,
+      "normalization_factor": 1.9999999999999998,
+      "laplacian_is_2x_continuum": true
+    },
+    {
+      "name": "R_max calculation",
+      "a_squared_over_lP2": 5.074272804780512,
+      "R_max_paper": 4.729741762679652,
+      "R_max_corrected_spectral_only": 3.153161175119768,
+      "R_max_corrected_with_normalization": 1.576580587559884
+    }
+  ],
+  "summary": {
+    "spectral_radius_paper": "24/a^2",
+    "spectral_radius_correct": "16/a^2",
+    "error_factor": 1.5,
+    "form_factor_min_paper": -1.0,
+    "form_factor_min_correct": -0.3333333333333333,
+    "normalization_issue": "paper's Laplacian = 2x continuum Laplacian",
+    "overall_verdict": "ERRORS CONFIRMED"
+  }
+}

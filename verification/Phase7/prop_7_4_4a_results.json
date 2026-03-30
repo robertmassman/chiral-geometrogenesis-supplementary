@@ -1,0 +1,120 @@
+{
+  "proposition": "7.4.4a",
+  "title": "Exact Wilson Loop on FCC Lattice",
+  "timestamp": "2026-02-13T12:56:59.776065",
+  "tests": {
+    "test_5": {
+      "test": "CG multiplicities",
+      "passed": true
+    },
+    "test_1": {
+      "test": "Partition function recovery",
+      "Z": 674420201.2595749,
+      "Num_trivial": 674420201.2595748,
+      "ratio": 0.9999999999999998,
+      "passed": "True"
+    },
+    "test_2": {
+      "test": "Thermodynamic limit",
+      "beta": 5.0,
+      "A": 4,
+      "u3": 0.35395443670527055,
+      "target": 0.047088048978227506,
+      "convergence": [
+        {
+          "N": 2,
+          "W": 0.04806949379182117,
+          "rel_err": 0.020842758085973394
+        },
+        {
+          "N": 5,
+          "W": 0.04708804926711476,
+          "rel_err": 6.1350440433324155e-09
+        },
+        {
+          "N": 10,
+          "W": 0.04708804897822753,
+          "rel_err": 4.420799367021315e-16
+        },
+        {
+          "N": 20,
+          "W": 0.04708804897822753,
+          "rel_err": 4.420799367021315e-16
+        },
+        {
+          "N": 50,
+          "W": 0.04708804897822753,
+          "rel_err": 4.420799367021315e-16
+        }
+      ],
+      "passed": true
+    },
+    "test_3": {
+      "test": "String tension vs coupling",
+      "N": 30,
+      "results": [
+        {
+          "beta": 3.0,
+          "u3": 0.20307505003021883,
+          "sigma_strong_coupling": 1.5941796636818908,
+          "sigma_exact": 1.5941796636818903,
+          "rel_err": 2.7856910984825986e-16,
+          "passed": "True"
+        },
+        {
+          "beta": 5.0,
+          "u3": 0.35395443670527055,
+          "sigma_strong_coupling": 1.038587084004306,
+          "sigma_exact": 1.0385870840043054,
+          "rel_err": 6.413846513542162e-16,
+          "passed": "True"
+        },
+        {
+          "beta": 7.0,
+          "u3": 0.48330851688000054,
+          "sigma_strong_coupling": 0.7271000779400005,
+          "sigma_exact": 0.7271000779400083,
+          "rel_err": 1.0688433969632165e-14,
+          "passed": "True"
+        },
+        {
+          "beta": 9.0,
+          "u3": 0.5803755664728747,
+          "sigma_strong_coupling": 0.5440798565962218,
+          "sigma_exact": 0.5440798565932834,
+          "rel_err": 5.40072793295139e-12,
+          "passed": "True"
+        },
+        {
+          "beta": 10.0,
+          "u3": 0.6181757389675137,
+          "sigma_strong_coupling": 0.4809824946878035,
+          "sigma_exact": 0.4809784403976436,
+          "rel_err": 8.429184439568348e-06,
+          "passed": "True"
+        }
+      ],
+      "passed": true
+    },
+    "test_4": {
+      "test": "R(beta_c) = 0 with exact sigma",
+      "beta_c": 11.421576418982282,
+      "u3_c": 0.6623377819672099,
+      "mu_c": 2.0933850208848526e-09,
+      "sigma_exact_c": 0.41197960851221427,
+      "sigma_expected": 0.41197960825054114,
+      "R_c": 3.2614539581814947e-09,
+      "passed": "True"
+    },
+    "test_6": {
+      "test": "Area law verification",
+      "passed": true
+    },
+    "test_7": {
+      "test": "Wilson loop near beta_c",
+      "passed": false
+    }
+  },
+  "overall_status": "PARTIAL",
+  "summary": "6/7 tests passed"
+}

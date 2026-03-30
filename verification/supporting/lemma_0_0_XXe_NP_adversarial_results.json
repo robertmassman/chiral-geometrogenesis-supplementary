@@ -1,0 +1,349 @@
+{
+  "theorem": "Lemma 0.0.XXe-NP",
+  "title": "Nucleation Probability \u2192 1 as N \u2192 \u221e",
+  "timestamp": "2026-03-11T05:53:43.505091",
+  "parameters": {
+    "L": 24,
+    "r": 120,
+    "mu": 0.001,
+    "N": 1666,
+    "T_emerge": 800000.0
+  },
+  "verifications": [
+    {
+      "test": "single_trit_mixing",
+      "subtests": [
+        {
+          "mu": 0.001,
+          "k": 1000,
+          "recursive": [
+            0.5784636165139536,
+            0.21076819174300876,
+            0.21076819174300876
+          ],
+          "closed_form": [
+            0.5784636165139758,
+            0.2107681917430121,
+            0.2107681917430121
+          ],
+          "max_error": 2.220446049250313e-14,
+          "passed": "True"
+        },
+        {
+          "mu": 0.01,
+          "k": 1000,
+          "recursive": [
+            0.3333621141649424,
+            0.3333189429175316,
+            0.3333189429175316
+          ],
+          "closed_form": [
+            0.33336211416494044,
+            0.3333189429175298,
+            0.3333189429175298
+          ],
+          "max_error": 1.942890293094024e-15,
+          "passed": "True"
+        },
+        {
+          "mu": 0.1,
+          "k": 1000,
+          "recursive": [
+            0.3333333333333336,
+            0.3333333333333331,
+            0.3333333333333331
+          ],
+          "closed_form": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "max_error": 2.7755575615628914e-16,
+          "passed": "True"
+        },
+        {
+          "mu": 0.5,
+          "k": 1000,
+          "recursive": [
+            0.33333333333333337,
+            0.33333333333333326,
+            0.33333333333333326
+          ],
+          "closed_form": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "max_error": 5.551115123125783e-17,
+          "passed": "True"
+        },
+        {
+          "mu": 0.9,
+          "k": 1000,
+          "recursive": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "closed_form": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "max_error": 0.0,
+          "passed": "True"
+        },
+        {
+          "mu": 0.999,
+          "k": 1000,
+          "recursive": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "closed_form": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "max_error": 0.0,
+          "passed": "True"
+        }
+      ],
+      "convergence_to_uniform": "True",
+      "passed": true
+    },
+    {
+      "test": "mixing_time_bound",
+      "subtests": [
+        {
+          "mu": 0.001,
+          "tau_mix": 3000,
+          "actual_deviation": 0.03314159599869077,
+          "claimed_bound_on_deviation": 0.03319137891190929,
+          "theoretical_bound_raw": 0.04971239399803616,
+          "exp_neg3": 0.049787068367863944,
+          "bound_valid": true,
+          "passed": true
+        },
+        {
+          "mu": 0.01,
+          "tau_mix": 300,
+          "actual_deviation": 0.03269392938085715,
+          "claimed_bound_on_deviation": 0.03319137891190929,
+          "theoretical_bound_raw": 0.04904089407128572,
+          "exp_neg3": 0.049787068367863944,
+          "bound_valid": true,
+          "passed": true
+        },
+        {
+          "mu": 0.1,
+          "tau_mix": 30,
+          "actual_deviation": 0.02826077218347749,
+          "claimed_bound_on_deviation": 0.03319137891190929,
+          "theoretical_bound_raw": 0.04239115827521624,
+          "exp_neg3": 0.049787068367863944,
+          "bound_valid": true,
+          "passed": true
+        },
+        {
+          "mu": 0.5,
+          "tau_mix": 6,
+          "actual_deviation": 0.010416666666666666,
+          "claimed_bound_on_deviation": 0.03319137891190929,
+          "theoretical_bound_raw": 0.015625,
+          "exp_neg3": 0.049787068367863944,
+          "bound_valid": true,
+          "passed": true
+        }
+      ],
+      "q_factor": 0.28354626496546936,
+      "q_min": 7.294144140159411e-14,
+      "r_q_min": 8.752972968191292e-12,
+      "q_min_matches": false,
+      "rq_matches": false,
+      "passed": false
+    },
+    {
+      "test": "static_nucleation",
+      "subtests": [
+        {
+          "epsilon": 0.01,
+          "N0": 10838634008.706144,
+          "exact": 0.009999994071201142,
+          "bound": 0.009999999999999995,
+          "target": 0.01,
+          "exact_valid": true,
+          "bound_valid": true
+        },
+        {
+          "epsilon": 0.05,
+          "N0": 7050693978.675216,
+          "exact": 0.04999998072072089,
+          "bound": 0.05000000000000001,
+          "target": 0.05,
+          "exact_valid": true,
+          "bound_valid": true
+        },
+        {
+          "epsilon": 0.1,
+          "N0": 5419317004.353072,
+          "exact": 0.09999997035600132,
+          "bound": 0.09999999999999998,
+          "target": 0.1,
+          "exact_valid": true,
+          "bound_valid": true
+        }
+      ],
+      "N0_factor_matches": true,
+      "passed": true
+    },
+    {
+      "test": "quantitative_bound",
+      "subtests": [
+        {
+          "N": 1666,
+          "T": 1000000.0,
+          "K": 333,
+          "KN": 554778,
+          "log_bound": -4.855970905403175e-06,
+          "P_no_nucleation_bound": 0.9999951440408849,
+          "N0_from_formula": 1579959169.0867317
+        },
+        {
+          "N": 10000,
+          "T": 1000000.0,
+          "K": 333,
+          "KN": 3330000,
+          "log_bound": -2.9147484426189528e-05,
+          "P_no_nucleation_bound": 0.9999708529403576,
+          "N0_from_formula": 1579959169.0867317
+        },
+        {
+          "N": 1000000,
+          "T": 1000000.0,
+          "K": 333,
+          "KN": 333000000,
+          "log_bound": -0.0029147484426189528,
+          "P_no_nucleation_bound": 0.9970894953124622,
+          "N0_from_formula": 1579959169.0867317
+        },
+        {
+          "N": 1000000000,
+          "T": 1000000.0,
+          "K": 333,
+          "KN": 333000000000,
+          "log_bound": -2.914748442618953,
+          "P_no_nucleation_bound": 0.05421766817225192,
+          "N0_from_formula": 1579959169.0867317
+        }
+      ],
+      "N0_estimate_match": false,
+      "T0_estimate_match": false,
+      "passed": false
+    },
+    {
+      "test": "statement_proof_consistency",
+      "inconsistency_detected": true,
+      "ratio": 48.5417630010636,
+      "severity": "MODERATE",
+      "note": "The theorem statement in \u00a71.2(C) uses 3^L/r denominators, but the proof derives bounds with q_min = (1/3 - e^{-3})^L. These differ by factor ~49. The simplified form in \u00a72.3 acknowledges this with the (1/0.86)^L correction factor.",
+      "passed": true
+    },
+    {
+      "test": "effective_search_rate",
+      "gamma_eff": 1.765890959390006,
+      "claimed": 1.76,
+      "error": 0.003347136017048896,
+      "physically_reasonable": true,
+      "passed": true
+    },
+    {
+      "test": "shadow_process_mc",
+      "L_small": 8,
+      "r_small": 5,
+      "N_mc": 100,
+      "mu": 0.1,
+      "n_trials": 200,
+      "mc_nucleation_rate": 0.98,
+      "analytical_bound": 0.6481901576203779,
+      "bound_conservative": "True",
+      "passed": "True"
+    },
+    {
+      "test": "limiting_cases",
+      "subtests": [
+        {
+          "limit": "mu_to_0",
+          "mu": 0.1,
+          "T0": 9474064885.460054
+        },
+        {
+          "limit": "mu_to_0",
+          "mu": 0.01,
+          "T0": 94740648854.60054
+        },
+        {
+          "limit": "mu_to_0",
+          "mu": 0.001,
+          "T0": 947406488546.0054
+        },
+        {
+          "limit": "mu_to_0",
+          "mu": 0.0001,
+          "T0": 9474064885460.053
+        },
+        {
+          "limit": "mu_to_0",
+          "mu": 1e-06,
+          "T0": 947406488546005.2
+        },
+        {
+          "limit": "mu_to_1",
+          "mu": 0.999,
+          "tau": 4,
+          "T0": 1263208651.3946738
+        },
+        {
+          "limit": "r_to_0",
+          "bound": 1.0,
+          "correct": true
+        }
+      ],
+      "mu_to_0_monotone": true,
+      "slope_matches": "True",
+      "passed": "True"
+    },
+    {
+      "test": "aperiodicity_adversarial",
+      "aperiodicity_holds": true,
+      "note": "Aperiodicity holds because even if VM modifies tiles, mutations can revert any changes with positive probability for \u03bc > 0.",
+      "passed": true
+    },
+    {
+      "test": "core_tail",
+      "r_decomposition_correct": true,
+      "p_proto": 1.1471887963169765e-09,
+      "E_proto": 1.9112165346640828e-06,
+      "proto_error": 0.002444524941759494,
+      "E_error": 0.005903439296885668,
+      "passed": true
+    },
+    {
+      "test": "larger_n_slowdown",
+      "nt_ratio_observed": 29.743547418967587,
+      "mutation_only_no_slowdown": true,
+      "passed": true
+    },
+    {
+      "test": "simplified_form",
+      "factor": 0.8506387948964081,
+      "correction": 48.54176300106344,
+      "correction_error": 0.7651550182204886,
+      "passed": false
+    }
+  ],
+  "overall_status": "FAILED",
+  "tests_passed": 9,
+  "tests_total": 12
+}

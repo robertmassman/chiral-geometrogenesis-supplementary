@@ -1,0 +1,712 @@
+{
+  "proposition": "0.0.40",
+  "title": "Embedding Dimension from Confinement \u2014 Adversarial Verification",
+  "date": "2026-02-22T13:37:41.516703",
+  "tests": [
+    {
+      "name": "Weight Space Affine Independence",
+      "description": "Verify N fundamental weights of SU(N) require d >= N-1",
+      "adversarial_question": "Can weights be embedded in fewer dimensions?",
+      "answer": "No \u2014 simplex volume is nonzero, confirming affine independence",
+      "results": [
+        {
+          "N": 2,
+          "simplex_volume": 1.0,
+          "volume_nonzero": 1,
+          "rank_of_diffs": 1,
+          "expected_rank": 1,
+          "distances_equal": 1,
+          "min_distance": 1.0,
+          "max_distance": 1.0,
+          "pass": 1
+        },
+        {
+          "N": 3,
+          "simplex_volume": 0.5,
+          "volume_nonzero": 1,
+          "rank_of_diffs": 2,
+          "expected_rank": 2,
+          "distances_equal": 0,
+          "min_distance": 1.0,
+          "max_distance": 1.4142135623730951,
+          "pass": 1
+        },
+        {
+          "N": 4,
+          "simplex_volume": 0.16666666666666666,
+          "volume_nonzero": 1,
+          "rank_of_diffs": 3,
+          "expected_rank": 3,
+          "distances_equal": 0,
+          "min_distance": 1.0,
+          "max_distance": 1.4142135623730951,
+          "pass": 1
+        },
+        {
+          "N": 5,
+          "simplex_volume": 0.041666666666666664,
+          "volume_nonzero": 1,
+          "rank_of_diffs": 4,
+          "expected_rank": 4,
+          "distances_equal": 0,
+          "min_distance": 1.0,
+          "max_distance": 1.4142135623730951,
+          "pass": 1
+        },
+        {
+          "N": 6,
+          "simplex_volume": 0.008333333333333333,
+          "volume_nonzero": 1,
+          "rank_of_diffs": 5,
+          "expected_rank": 5,
+          "distances_equal": 0,
+          "min_distance": 1.0,
+          "max_distance": 1.4142135623730951,
+          "pass": 1
+        },
+        {
+          "N": 7,
+          "simplex_volume": 0.001388888888888889,
+          "volume_nonzero": 1,
+          "rank_of_diffs": 6,
+          "expected_rank": 6,
+          "distances_equal": 0,
+          "min_distance": 1.0,
+          "max_distance": 1.4142135623730951,
+          "pass": 1
+        },
+        {
+          "N": 8,
+          "simplex_volume": 0.0001984126984126984,
+          "volume_nonzero": 1,
+          "rank_of_diffs": 7,
+          "expected_rank": 7,
+          "distances_equal": 0,
+          "min_distance": 1.0,
+          "max_distance": 1.4142135623730951,
+          "pass": 1
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Confinement Scale Uniqueness",
+      "description": "Verify confinement produces exactly one length scale",
+      "adversarial_question": "Could there be a second independent confinement scale?",
+      "answer": "No \u2014 all scales (sigma, T_c, m_0++) are related by fixed ratios from QCD",
+      "results": {
+        "R_conf_fm": 0.44847,
+        "R_conf_err_fm": 0.03058,
+        "R_lambda_fm": 0.93965,
+        "ratio_R_conf_R_lambda": 0.4773,
+        "T_c_sqrt_sigma": 0.614,
+        "m0_sqrt_sigma": 3.886,
+        "single_scale": true,
+        "pass": true
+      },
+      "pass": true
+    },
+    {
+      "name": "Squeeze Argument Robustness",
+      "description": "Test whether weakening either bound breaks uniqueness",
+      "adversarial_question": "What if Part B or Part C is off by 1?",
+      "answer": "Weakening either bound admits multiple solutions \u2014 both are essential",
+      "results": [
+        {
+          "N": 2,
+          "lower_A": 1,
+          "lower_B": 2,
+          "upper_C": 2,
+          "d_embed": 2,
+          "squeeze_valid": true,
+          "unique_result": true,
+          "if_B_weakened": "d_embed in [1, 2] = [1, 2]",
+          "if_C_weakened": "d_embed in [2, 3] = [2, 3]",
+          "pass": true
+        },
+        {
+          "N": 3,
+          "lower_A": 2,
+          "lower_B": 3,
+          "upper_C": 3,
+          "d_embed": 3,
+          "squeeze_valid": true,
+          "unique_result": true,
+          "if_B_weakened": "d_embed in [2, 3] = [2, 3]",
+          "if_C_weakened": "d_embed in [3, 4] = [3, 4]",
+          "pass": true
+        },
+        {
+          "N": 4,
+          "lower_A": 3,
+          "lower_B": 4,
+          "upper_C": 4,
+          "d_embed": 4,
+          "squeeze_valid": true,
+          "unique_result": true,
+          "if_B_weakened": "d_embed in [3, 4] = [3, 4]",
+          "if_C_weakened": "d_embed in [4, 5] = [4, 5]",
+          "pass": true
+        },
+        {
+          "N": 5,
+          "lower_A": 4,
+          "lower_B": 5,
+          "upper_C": 5,
+          "d_embed": 5,
+          "squeeze_valid": true,
+          "unique_result": true,
+          "if_B_weakened": "d_embed in [4, 5] = [4, 5]",
+          "if_C_weakened": "d_embed in [5, 6] = [5, 6]",
+          "pass": true
+        },
+        {
+          "N": 6,
+          "lower_A": 5,
+          "lower_B": 6,
+          "upper_C": 6,
+          "d_embed": 6,
+          "squeeze_valid": true,
+          "unique_result": true,
+          "if_B_weakened": "d_embed in [5, 6] = [5, 6]",
+          "if_C_weakened": "d_embed in [6, 7] = [6, 7]",
+          "pass": true
+        },
+        {
+          "N": 7,
+          "lower_A": 6,
+          "lower_B": 7,
+          "upper_C": 7,
+          "d_embed": 7,
+          "squeeze_valid": true,
+          "unique_result": true,
+          "if_B_weakened": "d_embed in [6, 7] = [6, 7]",
+          "if_C_weakened": "d_embed in [7, 8] = [7, 8]",
+          "pass": true
+        },
+        {
+          "N": 8,
+          "lower_A": 7,
+          "lower_B": 8,
+          "upper_C": 8,
+          "d_embed": 8,
+          "squeeze_valid": true,
+          "unique_result": true,
+          "if_B_weakened": "d_embed in [7, 8] = [7, 8]",
+          "if_C_weakened": "d_embed in [8, 9] = [8, 9]",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Beta Function Single ODE",
+      "description": "SU(N) has exactly 1 independent coupling (simple group)",
+      "adversarial_question": "Could there be hidden independent couplings?",
+      "answer": "No \u2014 SU(N) is simple, so exactly 1 coupling constant (1 beta function ODE)",
+      "results": [
+        {
+          "N": 2,
+          "n_generators": 3,
+          "n_casimirs": 1,
+          "n_couplings": 1,
+          "n_beta_odes": 1,
+          "is_simple_group": true,
+          "beta_0_pure_YM": 0.583568,
+          "AF_pure_YM": true,
+          "N_f_critical": 11.0,
+          "pass": true
+        },
+        {
+          "N": 3,
+          "n_generators": 8,
+          "n_casimirs": 2,
+          "n_couplings": 1,
+          "n_beta_odes": 1,
+          "is_simple_group": true,
+          "beta_0_pure_YM": 0.875352,
+          "AF_pure_YM": true,
+          "N_f_critical": 16.5,
+          "pass": true
+        },
+        {
+          "N": 4,
+          "n_generators": 15,
+          "n_casimirs": 3,
+          "n_couplings": 1,
+          "n_beta_odes": 1,
+          "is_simple_group": true,
+          "beta_0_pure_YM": 1.167136,
+          "AF_pure_YM": true,
+          "N_f_critical": 22.0,
+          "pass": true
+        },
+        {
+          "N": 5,
+          "n_generators": 24,
+          "n_casimirs": 4,
+          "n_couplings": 1,
+          "n_beta_odes": 1,
+          "is_simple_group": true,
+          "beta_0_pure_YM": 1.45892,
+          "AF_pure_YM": true,
+          "N_f_critical": 27.5,
+          "pass": true
+        },
+        {
+          "N": 6,
+          "n_generators": 35,
+          "n_casimirs": 5,
+          "n_couplings": 1,
+          "n_beta_odes": 1,
+          "is_simple_group": true,
+          "beta_0_pure_YM": 1.750704,
+          "AF_pure_YM": true,
+          "N_f_critical": 33.0,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "RG Running Scale Independence",
+      "description": "Lambda_QCD is the same regardless of starting mu",
+      "adversarial_question": "Could different starting scales yield different Lambda?",
+      "answer": "No \u2014 one-loop running gives identical Lambda from all mu (by construction)",
+      "results": {
+        "N": 3,
+        "N_f": 5,
+        "b_0": 7.6667,
+        "alpha_s_MZ": 0.118,
+        "lambdas_MeV": [
+          87.83,
+          87.83,
+          87.83,
+          87.83,
+          87.83,
+          87.83,
+          87.83,
+          87.83
+        ],
+        "spread_MeV": 0.0,
+        "relative_spread": 1.94e-15,
+        "unique": 1,
+        "pass": 1
+      },
+      "pass": 1
+    },
+    {
+      "name": "Radial Direction Necessity",
+      "description": "Confinement requires a dimension beyond weight space",
+      "adversarial_question": "Can confinement be modeled within weight space?",
+      "answer": "No \u2014 weight distances are fixed, but quark separation is dynamical",
+      "results": {
+        "N": 3,
+        "rank": 2,
+        "weight_distances_fixed": 1,
+        "extra_dimension_needed": true,
+        "d_embed_lower_bound": 3,
+        "expected_d_embed": 3,
+        "pass": true
+      },
+      "pass": true
+    },
+    {
+      "name": "Large-N Stress Test",
+      "description": "d_embed = N is well-defined for large N",
+      "adversarial_question": "Does the formula break for large N?",
+      "answer": "No \u2014 formula is well-defined, but large-N limit has tension with AdS/CFT",
+      "results": [
+        {
+          "N": 2,
+          "rank": 1,
+          "d_embed": 2,
+          "D_spacetime": 3,
+          "AF_pure_YM": true,
+          "stable_orbits": true,
+          "status": "(2+1)D QFT",
+          "pass": true
+        },
+        {
+          "N": 3,
+          "rank": 2,
+          "d_embed": 3,
+          "D_spacetime": 4,
+          "AF_pure_YM": true,
+          "stable_orbits": true,
+          "status": "OBSERVED",
+          "pass": true
+        },
+        {
+          "N": 4,
+          "rank": 3,
+          "d_embed": 4,
+          "D_spacetime": 5,
+          "AF_pure_YM": true,
+          "stable_orbits": false,
+          "status": "D=5 unstable",
+          "pass": true
+        },
+        {
+          "N": 5,
+          "rank": 4,
+          "d_embed": 5,
+          "D_spacetime": 6,
+          "AF_pure_YM": true,
+          "stable_orbits": false,
+          "status": "D=6 unstable",
+          "pass": true
+        },
+        {
+          "N": 6,
+          "rank": 5,
+          "d_embed": 6,
+          "D_spacetime": 7,
+          "AF_pure_YM": true,
+          "stable_orbits": false,
+          "status": "D=7 unstable",
+          "pass": true
+        },
+        {
+          "N": 7,
+          "rank": 6,
+          "d_embed": 7,
+          "D_spacetime": 8,
+          "AF_pure_YM": true,
+          "stable_orbits": false,
+          "status": "D=8 unstable",
+          "pass": true
+        },
+        {
+          "N": 8,
+          "rank": 7,
+          "d_embed": 8,
+          "D_spacetime": 9,
+          "AF_pure_YM": true,
+          "stable_orbits": false,
+          "status": "D=9 unstable",
+          "pass": true
+        },
+        {
+          "N": 9,
+          "rank": 8,
+          "d_embed": 9,
+          "D_spacetime": 10,
+          "AF_pure_YM": true,
+          "stable_orbits": false,
+          "status": "D=10 unstable",
+          "pass": true
+        },
+        {
+          "N": 10,
+          "rank": 9,
+          "d_embed": 10,
+          "D_spacetime": 11,
+          "AF_pure_YM": true,
+          "stable_orbits": false,
+          "status": "D=11 unstable",
+          "pass": true
+        },
+        {
+          "N": 20,
+          "rank": 19,
+          "d_embed": 20,
+          "D_spacetime": 21,
+          "AF_pure_YM": true,
+          "stable_orbits": false,
+          "status": "D=21 unstable",
+          "pass": true
+        },
+        {
+          "N": 50,
+          "rank": 49,
+          "d_embed": 50,
+          "D_spacetime": 51,
+          "AF_pure_YM": true,
+          "stable_orbits": false,
+          "status": "D=51 unstable",
+          "pass": true
+        },
+        {
+          "N": 100,
+          "rank": 99,
+          "d_embed": 100,
+          "D_spacetime": 101,
+          "AF_pure_YM": true,
+          "stable_orbits": false,
+          "status": "D=101 unstable",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Exceptional Group Predictions",
+      "description": "d_embed = rank(G) + 1 for exceptional Lie groups",
+      "adversarial_question": "Does the formula give sensible results for other groups?",
+      "answer": "Yes \u2014 only rank-2 groups give d=3, and SU(3) is uniquely selected by Z_3 center",
+      "results": [
+        {
+          "group": "SU(2)",
+          "rank": 1,
+          "dim_algebra": 3,
+          "center": "Z_2",
+          "d_embed": 2,
+          "D_spacetime": 3,
+          "confines": true,
+          "stable_orbits": true,
+          "notes": "Lattice: yes, confining",
+          "pass": true
+        },
+        {
+          "group": "SU(3)",
+          "rank": 2,
+          "dim_algebra": 8,
+          "center": "Z_3",
+          "d_embed": 3,
+          "D_spacetime": 4,
+          "confines": true,
+          "stable_orbits": true,
+          "notes": "QCD \u2014 observed confining",
+          "pass": true
+        },
+        {
+          "group": "SU(4)",
+          "rank": 3,
+          "dim_algebra": 15,
+          "center": "Z_4",
+          "d_embed": 4,
+          "D_spacetime": 5,
+          "confines": true,
+          "stable_orbits": false,
+          "notes": "Lattice: yes, confining",
+          "pass": true
+        },
+        {
+          "group": "G_2",
+          "rank": 2,
+          "dim_algebra": 14,
+          "center": "{e}",
+          "d_embed": 3,
+          "D_spacetime": 4,
+          "confines": true,
+          "stable_orbits": true,
+          "notes": "Lattice: exceptional confinement (Holland et al.)",
+          "pass": true
+        },
+        {
+          "group": "F_4",
+          "rank": 4,
+          "dim_algebra": 52,
+          "center": "{e}",
+          "d_embed": 5,
+          "D_spacetime": 6,
+          "confines": true,
+          "stable_orbits": false,
+          "notes": "Expected confining (simple, non-Abelian)",
+          "pass": true
+        },
+        {
+          "group": "E_6",
+          "rank": 6,
+          "dim_algebra": 78,
+          "center": "Z_3",
+          "d_embed": 7,
+          "D_spacetime": 8,
+          "confines": true,
+          "stable_orbits": false,
+          "notes": "Has Z_3 center like SU(3)",
+          "pass": true
+        },
+        {
+          "group": "E_7",
+          "rank": 7,
+          "dim_algebra": 133,
+          "center": "Z_2",
+          "d_embed": 8,
+          "D_spacetime": 9,
+          "confines": true,
+          "stable_orbits": false,
+          "notes": "Has Z_2 center",
+          "pass": true
+        },
+        {
+          "group": "E_8",
+          "rank": 8,
+          "dim_algebra": 248,
+          "center": "{e}",
+          "d_embed": 9,
+          "D_spacetime": 10,
+          "confines": true,
+          "stable_orbits": false,
+          "notes": "Trivial center, largest exceptional",
+          "pass": true
+        },
+        {
+          "group": "Sp(4)",
+          "rank": 2,
+          "dim_algebra": 10,
+          "center": "Z_2",
+          "d_embed": 3,
+          "D_spacetime": 4,
+          "confines": true,
+          "stable_orbits": true,
+          "notes": "Lattice: confining",
+          "pass": true
+        },
+        {
+          "group": "SO(5)",
+          "rank": 2,
+          "dim_algebra": 10,
+          "center": "Z_2",
+          "d_embed": 3,
+          "D_spacetime": 4,
+          "confines": true,
+          "stable_orbits": true,
+          "notes": "Locally isomorphic to Sp(4)",
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Theta Angle Dimension Check",
+      "description": "theta does not contribute an embedding dimension",
+      "adversarial_question": "Should theta add another embedding dimension?",
+      "answer": "No \u2014 theta doesn't undergo dimensional transmutation, so no new scale",
+      "results": {
+        "theta_dimensionless": true,
+        "theta_runs_under_RG": false,
+        "theta_transmutes": false,
+        "theta_experimental_bound": "< 1e-10",
+        "g_transmutes": true,
+        "theta_contributes_dimension": false,
+        "g_contributes_dimension": true,
+        "pass": true
+      },
+      "pass": true
+    },
+    {
+      "name": "Dimension Table Consistency",
+      "description": "Section 7.1 table matches Theorem 0.0.2b",
+      "results": [
+        {
+          "N": 2,
+          "computed": {
+            "rank": 1,
+            "d_weight": 1,
+            "d_radial": 1,
+            "d_embed": 2,
+            "D_spacetime": 3
+          },
+          "expected": {
+            "N": 2,
+            "rank": 1,
+            "d_weight": 1,
+            "d_radial": 1,
+            "d_embed": 2,
+            "D_st": 3
+          },
+          "checks": {
+            "rank": true,
+            "d_weight": true,
+            "d_radial": true,
+            "d_embed": true,
+            "D_st": true,
+            "consistent_with_2b": true
+          },
+          "D_st_from_2b": 3,
+          "pass": true
+        },
+        {
+          "N": 3,
+          "computed": {
+            "rank": 2,
+            "d_weight": 2,
+            "d_radial": 1,
+            "d_embed": 3,
+            "D_spacetime": 4
+          },
+          "expected": {
+            "N": 3,
+            "rank": 2,
+            "d_weight": 2,
+            "d_radial": 1,
+            "d_embed": 3,
+            "D_st": 4
+          },
+          "checks": {
+            "rank": true,
+            "d_weight": true,
+            "d_radial": true,
+            "d_embed": true,
+            "D_st": true,
+            "consistent_with_2b": true
+          },
+          "D_st_from_2b": 4,
+          "pass": true
+        },
+        {
+          "N": 4,
+          "computed": {
+            "rank": 3,
+            "d_weight": 3,
+            "d_radial": 1,
+            "d_embed": 4,
+            "D_spacetime": 5
+          },
+          "expected": {
+            "N": 4,
+            "rank": 3,
+            "d_weight": 3,
+            "d_radial": 1,
+            "d_embed": 4,
+            "D_st": 5
+          },
+          "checks": {
+            "rank": true,
+            "d_weight": true,
+            "d_radial": true,
+            "d_embed": true,
+            "D_st": true,
+            "consistent_with_2b": true
+          },
+          "D_st_from_2b": 5,
+          "pass": true
+        },
+        {
+          "N": 5,
+          "computed": {
+            "rank": 4,
+            "d_weight": 4,
+            "d_radial": 1,
+            "d_embed": 5,
+            "D_spacetime": 6
+          },
+          "expected": {
+            "N": 5,
+            "rank": 4,
+            "d_weight": 4,
+            "d_radial": 1,
+            "d_embed": 5,
+            "D_st": 6
+          },
+          "checks": {
+            "rank": true,
+            "d_weight": true,
+            "d_radial": true,
+            "d_embed": true,
+            "D_st": true,
+            "consistent_with_2b": true
+          },
+          "D_st_from_2b": 6,
+          "pass": true
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "overall_pass": true,
+  "tests_passed": 10,
+  "tests_total": 10
+}

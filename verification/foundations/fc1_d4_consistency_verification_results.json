@@ -1,0 +1,305 @@
+{
+  "falsification_condition": "FC1",
+  "claim": "D=4 is the unique spacetime dimension consistent with observer existence",
+  "timestamp": "2026-03-21T07:52:07.923345",
+  "related_documents": [
+    "docs/proofs/foundations/Theorem-0.0.1-D4-From-Observer-Existence.md",
+    "lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_1.lean"
+  ],
+  "tests": [
+    {
+      "test": "C1_orbital_stability",
+      "constraint": "V_eff''(r\u2080) > 0 at circular orbit radius",
+      "derivation": "Ehrenfest (1917): stable orbits only for n \u2264 3 spatial dims",
+      "dims_tested": [
+        {
+          "n_space": 2,
+          "D": 3,
+          "r0": 1.0,
+          "Veff_double_prime": 2.0,
+          "stable": true
+        },
+        {
+          "n_space": 3,
+          "D": 4,
+          "r0": 1.0,
+          "Veff_double_prime": 1.0,
+          "stable": true
+        },
+        {
+          "n_space": 4,
+          "D": 5,
+          "r0": 2.0,
+          "Veff_double_prime": 0.0,
+          "stable": false
+        },
+        {
+          "n_space": 5,
+          "D": 6,
+          "r0": 1.7320508075688772,
+          "Veff_double_prime": -0.19245008972987532,
+          "stable": false
+        },
+        {
+          "n_space": 6,
+          "D": 7,
+          "r0": 1.5874010519681994,
+          "Veff_double_prime": -0.5000000000000002,
+          "stable": false
+        }
+      ],
+      "stable_dims": [
+        2,
+        3
+      ],
+      "unstable_dims": [
+        4,
+        5,
+        6
+      ],
+      "passed": true
+    },
+    {
+      "test": "C2_atomic_stability",
+      "constraint": "Stable hydrogen-like bound states exist",
+      "derivation": "Fall-to-center for n \u2265 4: V ~ -1/r^{n-2} overwhelms L\u00b2/r\u00b2",
+      "dims_tested": [
+        {
+          "n_space": 2,
+          "D": 3,
+          "stable": true
+        },
+        {
+          "n_space": 3,
+          "D": 4,
+          "stable": true
+        },
+        {
+          "n_space": 4,
+          "D": 5,
+          "critical_coupling": "e\u00b2 > \u2113(\u2113+2)/2 causes collapse",
+          "stable": false
+        },
+        {
+          "n_space": 5,
+          "D": 6,
+          "stable": false
+        }
+      ],
+      "stable_dims": [
+        2,
+        3
+      ],
+      "unstable_dims": [
+        4,
+        5
+      ],
+      "passed": true
+    },
+    {
+      "test": "C3_huygens_principle",
+      "constraint": "Sharp wavefront propagation (no afterglow)",
+      "derivation": "Hadamard: Huygens principle holds iff n_space is odd and \u2265 3",
+      "dims_tested": [
+        {
+          "n_space": 1,
+          "D": 2,
+          "is_odd": true,
+          "huygens": false
+        },
+        {
+          "n_space": 2,
+          "D": 3,
+          "is_odd": false,
+          "huygens": false
+        },
+        {
+          "n_space": 3,
+          "D": 4,
+          "is_odd": true,
+          "huygens": true
+        },
+        {
+          "n_space": 4,
+          "D": 5,
+          "is_odd": false,
+          "huygens": false
+        },
+        {
+          "n_space": 5,
+          "D": 6,
+          "is_odd": true,
+          "huygens": true
+        },
+        {
+          "n_space": 6,
+          "D": 7,
+          "is_odd": false,
+          "huygens": false
+        }
+      ],
+      "huygens_dims": [
+        3,
+        5
+      ],
+      "non_huygens_dims": [
+        1,
+        2,
+        4,
+        6
+      ],
+      "passed": true
+    },
+    {
+      "test": "C4_knot_existence",
+      "constraint": "Non-trivial knots of 1-manifolds exist",
+      "derivation": "Schoenflies (n=2 trivial), Whitney trick (n\u22654 trivial), only n=3 non-trivial",
+      "dims_tested": [
+        {
+          "n_space": 2,
+          "D": 3,
+          "has_knots": false,
+          "theorem": "Schoenflies theorem"
+        },
+        {
+          "n_space": 3,
+          "D": 4,
+          "has_knots": true,
+          "theorem": "Knot theory (codim 2)"
+        },
+        {
+          "n_space": 4,
+          "D": 5,
+          "has_knots": false,
+          "theorem": "Whitney trick"
+        },
+        {
+          "n_space": 5,
+          "D": 6,
+          "has_knots": false,
+          "theorem": "Whitney trick (general)"
+        }
+      ],
+      "knot_dims": [
+        3
+      ],
+      "no_knot_dims": [
+        2,
+        4,
+        5
+      ],
+      "passed": true
+    },
+    {
+      "test": "C5_rydberg_degeneracy",
+      "constraint": "n\u00b2 degeneracy pattern matches observed periodic table",
+      "derivation": "Runge-Lenz vector \u2192 SO(4) symmetry \u2192 n\u00b2 degeneracy, only in 3D",
+      "checks": [
+        {
+          "name": "\u03a3(2\u2113+1) for \u2113=0..n-1 equals n\u00b2 (verified for n=1..19)",
+          "passed": true
+        },
+        {
+          "name": "2D and 3D degeneracy patterns differ for n > 1",
+          "passed": true
+        },
+        {
+          "name": "n\u00b2 degeneracy produces correct noble gas numbers",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "C6_combined_intersection",
+      "constraint": "All observer-existence constraints simultaneously",
+      "dims_tested": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "survivors": [
+        3
+      ],
+      "elimination_matrix": [
+        {
+          "n_space": 1,
+          "D": 2,
+          "C1_orbits": false,
+          "C2_atoms": false,
+          "C3_huygens": false,
+          "C4_knots": false,
+          "C5_rydberg": false,
+          "passes_all": false
+        },
+        {
+          "n_space": 2,
+          "D": 3,
+          "C1_orbits": true,
+          "C2_atoms": true,
+          "C3_huygens": false,
+          "C4_knots": false,
+          "C5_rydberg": false,
+          "passes_all": false
+        },
+        {
+          "n_space": 3,
+          "D": 4,
+          "C1_orbits": true,
+          "C2_atoms": true,
+          "C3_huygens": true,
+          "C4_knots": true,
+          "C5_rydberg": true,
+          "passes_all": true
+        },
+        {
+          "n_space": 4,
+          "D": 5,
+          "C1_orbits": false,
+          "C2_atoms": false,
+          "C3_huygens": false,
+          "C4_knots": false,
+          "C5_rydberg": false,
+          "passes_all": false
+        },
+        {
+          "n_space": 5,
+          "D": 6,
+          "C1_orbits": false,
+          "C2_atoms": false,
+          "C3_huygens": true,
+          "C4_knots": false,
+          "C5_rydberg": false,
+          "passes_all": false
+        },
+        {
+          "n_space": 6,
+          "D": 7,
+          "C1_orbits": false,
+          "C2_atoms": false,
+          "C3_huygens": false,
+          "C4_knots": false,
+          "C5_rydberg": false,
+          "passes_all": false
+        },
+        {
+          "n_space": 7,
+          "D": 8,
+          "C1_orbits": false,
+          "C2_atoms": false,
+          "C3_huygens": true,
+          "C4_knots": false,
+          "C5_rydberg": false,
+          "passes_all": false
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED",
+  "conclusion": "D=4 (3 spatial + 1 time) is the UNIQUE spacetime dimension consistent with observer existence. Verified via 5 independent constraints: orbital stability (Ehrenfest), atomic stability (no fall-to-center), Huygens principle (sharp signals), knot existence (molecular topology), and Rydberg degeneracy (n\u00b2 pattern \u2192 periodic table). All constraints intersect uniquely at n_space = 3, hence D = 4."
+}

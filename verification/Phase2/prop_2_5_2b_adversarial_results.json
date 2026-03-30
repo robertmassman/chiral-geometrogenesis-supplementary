@@ -1,0 +1,509 @@
+{
+  "proposition": "2.5.2b",
+  "title": "Inter-Stella Gauge Coupling on the FCC Lattice",
+  "verification_type": "adversarial_physics",
+  "date": "2026-02-12T10:16:46.641918",
+  "tests_total": 45,
+  "tests_passed": 45,
+  "tests_failed": 0,
+  "warnings": 0,
+  "critical": 0,
+  "overall": "PASS",
+  "categories": {
+    "C1_geometric_consistency": "FCC cell combinatorics and dihedral angles",
+    "C2_2d_formula": "Character expansion and Monte Carlo cross-checks",
+    "C3_coupling": "SU(3) tensor products and character integrals",
+    "C4_strong_coupling": "Plaquette, string tension, heat kernel positivity",
+    "C5_consistency": "Positivity, monotonicity, convexity, extensivity",
+    "C6_edge_cases": "beta=0, beta->inf, beta<0 limits",
+    "C7_fcc_specific": "Decoupling, exponents, critical coupling, free energy"
+  },
+  "results": [
+    {
+      "name": "C1.1: Dihedral angle sum 2*theta_T + 2*theta_O = 2*pi",
+      "passed": true,
+      "details": "theta_T = 70.528779 deg, theta_O = 109.471221 deg, sum = 360.0000000000 deg, deviation from 360 = 0.00e+00 rad",
+      "severity": "INFO",
+      "numerical_data": {
+        "theta_T_deg": 70.52877936550931,
+        "theta_O_deg": 109.47122063449069,
+        "deviation_rad": 0.0
+      }
+    },
+    {
+      "name": "C1.1a: Supplementary angles arccos(1/3) + arccos(-1/3) = pi",
+      "passed": true,
+      "details": "arccos(1/3) + arccos(-1/3) = 3.141592653589793, pi = 3.141592653589793, deviation = 0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "supp_deviation": 0.0
+      }
+    },
+    {
+      "name": "C1.2: Cell volume ratios (edge = sqrt(2))",
+      "passed": "True",
+      "details": "V_tet = 0.333333 (expected 1/3), V_oct = 1.333333 (expected 4/3), oct/tet = 4.000000 (expected 4), V_primitive = 2.000000 (expected 2), V_conventional = 8.000000 (expected 8)",
+      "severity": "INFO",
+      "numerical_data": {
+        "V_tet": "0.33333333333333337",
+        "V_oct": "1.3333333333333337",
+        "ratio": "4.000000000000001",
+        "V_primitive": "2.0000000000000004",
+        "V_conventional": "8.000000000000002"
+      }
+    },
+    {
+      "name": "C1.3: Face count: 16 incidences / 2 = 8 unique faces per cell",
+      "passed": true,
+      "details": "Face-cell incidences = 2*4 + 1*8 = 16, unique faces = 16/2 = 8",
+      "severity": "INFO",
+      "numerical_data": {
+        "face_incidences": 16,
+        "unique_faces": 8
+      }
+    },
+    {
+      "name": "C1.4: Edge count: 24 slots / 4 = 6 unique edges per cell",
+      "passed": true,
+      "details": "Edge-cell slots = 2*6 + 1*12 = 24, unique edges = 24/4 = 6",
+      "severity": "INFO",
+      "numerical_data": {
+        "edge_slots": 24,
+        "unique_edges": 6
+      }
+    },
+    {
+      "name": "C1.5: Vertex count: 14 slots / 14 = 1 unique vertex per cell",
+      "passed": true,
+      "details": "Vertex-cell slots = 2*4 + 1*6 = 14, unique vertices = 14/14 = 1",
+      "severity": "INFO",
+      "numerical_data": {
+        "vertex_slots": 14,
+        "unique_verts": 1
+      }
+    },
+    {
+      "name": "C1.5a: Euler characteristic chi=2 for both cell types",
+      "passed": true,
+      "details": "chi(tet) = 4-6+4 = 2, chi(oct) = 6-12+8 = 2",
+      "severity": "INFO",
+      "numerical_data": {
+        "chi_tet": 2,
+        "chi_oct": 2
+      }
+    },
+    {
+      "name": "C2.6: K4 plaquette at beta=1.0 (char vs MC)",
+      "passed": "True",
+      "details": "<P>_char = 0.060380, <P>_MC = 0.062424 +/- 0.001793, diff = 1.1 sigma",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 1.0,
+        "plaq_char": "0.06038022059552977",
+        "plaq_mc": "0.06242353443284926",
+        "plaq_mc_err": "0.00179319925093655"
+      }
+    },
+    {
+      "name": "C2.6: K4 plaquette at beta=2.0 (char vs MC)",
+      "passed": "True",
+      "details": "<P>_char = 0.131383, <P>_MC = 0.133028 +/- 0.001942, diff = 0.8 sigma",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 2.0,
+        "plaq_char": "0.13138315276638945",
+        "plaq_mc": "0.13302776212257983",
+        "plaq_mc_err": "0.001942427865118969"
+      }
+    },
+    {
+      "name": "C2.6: K4 plaquette at beta=4.0 (char vs MC)",
+      "passed": "True",
+      "details": "<P>_char = 0.307857, <P>_MC = 0.307662 +/- 0.002198, diff = 0.1 sigma",
+      "severity": "INFO",
+      "numerical_data": {
+        "beta": 4.0,
+        "plaq_char": "0.3078565782593504",
+        "plaq_mc": "0.30766163923094886",
+        "plaq_mc_err": "0.002198068284001856"
+      }
+    },
+    {
+      "name": "C2.7: Octahedral Z_oct vs K4 Z_{K4} at beta=1",
+      "passed": "True",
+      "details": "Z_K4 = 1.124651e+00, Z_oct = 1.264245e+00, ratio = 1.124122, approx a_1^4 = 1.124387",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_K4": "1.1246511813916455",
+        "Z_oct": "1.2642453297175549",
+        "ratio": "1.124122172844006"
+      }
+    },
+    {
+      "name": "C2.8: Bipyramid Euler characteristic chi=2",
+      "passed": true,
+      "details": "V=5, E=9, F=6, chi = 2 (expected 2)",
+      "severity": "INFO",
+      "numerical_data": {
+        "chi_bipyramid": 2
+      }
+    },
+    {
+      "name": "C2.8a: Bipyramid partition function Z_bipy > 0",
+      "passed": "True",
+      "details": "Z_bipy(beta=1) = 1.192268e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_bipy": "1.1922679973088446"
+      }
+    },
+    {
+      "name": "C2.9: Different F gives different Z at beta=1 (chi=2 for all)",
+      "passed": "True",
+      "details": "Z_K4(F=4) = 1.124651e+00, Z_bipy(F=6) = 1.192268e+00, Z_oct(F=8) = 1.264245e+00. All distinct: True",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_K4": "1.1246511813916455",
+        "Z_bipy": "1.1922679973088446",
+        "Z_oct": "1.2642453297175549"
+      }
+    },
+    {
+      "name": "C2.10: a_3(beta) = a_{3bar}(beta) (charge conjugation)",
+      "passed": "True",
+      "details": "a_3 = 0.14547245, a_3bar = 0.14547245, rel diff = 0.00e+00",
+      "severity": "INFO",
+      "numerical_data": {
+        "a_fund": "0.14547245390244004",
+        "a_antifund": "0.14547245390244004"
+      }
+    },
+    {
+      "name": "C2.10a: a_6(beta) = a_{6bar}(beta) (charge conjugation)",
+      "passed": "True",
+      "details": "a_6 = 0.01396149, a_6bar = 0.01396149, rel diff = 3.73e-16",
+      "severity": "INFO",
+      "numerical_data": {
+        "a_sextet": "0.013961492025996124",
+        "a_antisextet": "0.01396149202599613"
+      }
+    },
+    {
+      "name": "C3.11: SU(3) tensor product dimension sums",
+      "passed": true,
+      "details": "3 x 3 = 3bar + 6: 9 = 9 OK; 3 x 3bar = 1 + 8: 9 = 9 OK; 8 x 8 = 1+8+8+10+10bar+27: 64 = 64 OK; 3 x 8 = 3 + 6bar + 15: 24 = 24 OK; 6 x 6bar = 1 + 8 + 27: 36 = 36 OK",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "C3.12: 4-character integral I(3,3bar,3,3bar) by MC",
+      "passed": "True",
+      "details": "I_MC = 2.0176, expected = 2.0, rel err = 0.0088",
+      "severity": "INFO",
+      "numerical_data": {
+        "I_mc": "2.0175774392242376",
+        "I_expected": 2.0
+      }
+    },
+    {
+      "name": "C3.13: Trivial integral I(1,1,1,1) = 1",
+      "passed": true,
+      "details": "I(1,1,1,1) = int dU = 1 by Haar normalization (exact, no computation needed)",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "C3.14: Integral int dU Tr(U)^4 = 0 (no singlet in 3^4)",
+      "passed": "True",
+      "details": "int dU Tr(U)^4 = 0.0615, expected = 0 (no singlet in 3x3x3x3 = 3bar x 6 x 3bar x 6 decomposition)",
+      "severity": "INFO",
+      "numerical_data": {
+        "I_3333_mc": "0.06151081551350954"
+      }
+    },
+    {
+      "name": "C3.15: Face-cell incidence consistency (N=1)",
+      "passed": true,
+      "details": "Cell-face incidences = 16, 2 * distinct faces = 2 * 8 = 16",
+      "severity": "INFO",
+      "numerical_data": {
+        "total_incidences": 16,
+        "expected": 16
+      }
+    },
+    {
+      "name": "C4.16: Universal plaquette <P> ~ beta/18 at strong coupling (K4)",
+      "passed": "True",
+      "details": "<P>_K4 = 0.028958, beta/(2*Nc^2) = 0.027778, rel diff = 0.0425",
+      "severity": "INFO",
+      "numerical_data": {
+        "plaq_K4": "0.02895802537491636",
+        "expected": 0.027777777777777776
+      }
+    },
+    {
+      "name": "C4.16a: Universal plaquette <P> ~ beta/18 at strong coupling (octahedron)",
+      "passed": "True",
+      "details": "<P>_oct = 0.028932, beta/(2*Nc^2) = 0.027778, rel diff = 0.0415",
+      "severity": "INFO",
+      "numerical_data": {
+        "plaq_oct": "0.02893189117662674",
+        "expected": 0.027777777777777776
+      }
+    },
+    {
+      "name": "C4.17: String tension sigma*a^2 = -ln(beta/18) at beta=1",
+      "passed": "True",
+      "details": "sigma*a^2 = 2.890372, expected ln(18) = 2.890372",
+      "severity": "INFO",
+      "numerical_data": {
+        "sigma_a2": "2.890371757896165",
+        "sigma_a2_expected": "2.8903717578961645"
+      }
+    },
+    {
+      "name": "C4.17a: String tension universality at strong coupling",
+      "passed": true,
+      "details": "sigma*a^2 = -ln(beta/18) is the universal SU(3) strong coupling result, independent of lattice geometry (K4, oct, FCC, cubic all give same sigma).",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "C4.18: Strong coupling correction hierarchy",
+      "passed": true,
+      "details": "At beta=1.0: tet correction ~ (beta/18)^4 = 9.53e-06, oct correction ~ (beta/18)^8 = 9.07e-11. Ratio: tet/oct = 104976",
+      "severity": "INFO",
+      "numerical_data": {
+        "corr_tet": 9.525986892242035e-06,
+        "corr_oct": 9.074442627116704e-11
+      }
+    },
+    {
+      "name": "C4.19: Heat kernel positivity a_R(beta) > 0 for all R, beta > 0",
+      "passed": true,
+      "details": "All a_R > 0: True. Min a_R = 2.216000e-10 at (p,q)=(0,4), beta=0.1",
+      "severity": "INFO",
+      "numerical_data": {
+        "all_positive": true,
+        "min_a_R": "2.2160001738787594e-10"
+      }
+    },
+    {
+      "name": "C5.20: Z_FCC(beta, N=1) > 0 for all beta >= 0",
+      "passed": true,
+      "details": "Z values: ['1.0000e+00', '1.0022e+00', '1.0588e+00', '1.2642e+00', '2.6765e+00', '6.9503e+01', '2.0761e+04', '1.0710e+12']",
+      "severity": "INFO",
+      "numerical_data": {
+        "betas": [
+          0.0,
+          0.1,
+          0.5,
+          1.0,
+          2.0,
+          4.0,
+          6.0,
+          10.0
+        ],
+        "Z_vals": [
+          1.0,
+          1.0022370655423776,
+          1.0587574217689106,
+          1.2642453374919107,
+          2.6765141183320913,
+          69.5025716709474,
+          20760.58463688065,
+          1070984981818.0511
+        ]
+      }
+    },
+    {
+      "name": "C5.21: ln Z_FCC monotonically increasing with beta",
+      "passed": true,
+      "details": "ln Z values: ['0.0022', '0.0571', '0.2345', '0.9845', '4.2414', '9.9408', '27.6996']. Monotone: True",
+      "severity": "INFO",
+      "numerical_data": {
+        "ln_Z": [
+          0.0022345670367771597,
+          0.05709597689477427,
+          0.23447537300746937,
+          0.9845152457606413,
+          4.241363754345847,
+          9.940811498582745,
+          27.699599884716992
+        ],
+        "monotone": true
+      }
+    },
+    {
+      "name": "C5.22: Convexity d^2(ln Z)/d(beta^2) >= 0 at beta=2 (specific heat)",
+      "passed": "True",
+      "details": "d^2(ln Z)/d(beta^2) = 0.576216 (should be >= 0, = variance of action)",
+      "severity": "INFO",
+      "numerical_data": {
+        "d2_ln_Z": "0.5762162063509101",
+        "beta": 2.0
+      }
+    },
+    {
+      "name": "C5.23: Representation dominance at beta=4 (N=1 FCC)",
+      "passed": "True",
+      "details": "Trivial fraction = 0.997986, Fundamental (3+3bar) fraction = 2.013971e-03. Trivial dominates: True",
+      "severity": "INFO",
+      "numerical_data": {
+        "trivial_frac": "0.9979855317066294",
+        "fund_frac": "0.0020139713453168435",
+        "beta": 4.0
+      }
+    },
+    {
+      "name": "C5.24: Thermodynamic extensivity ln(Z)/N at beta=1",
+      "passed": "True",
+      "details": "ln(Z)/N for N=1,2,4: ['0.234475', '0.234475', '0.234475']. Spread/mean = 0.000000 (should be << 1 for extensivity)",
+      "severity": "INFO",
+      "numerical_data": {
+        "ln_Z_per_N": {
+          "1": 0.23447537300746937,
+          "2": 0.23447536378336253,
+          "4": 0.2344753637833625
+        },
+        "spread": "9.224106867211646e-09"
+      }
+    },
+    {
+      "name": "C6.25: a_1(0) = 1 (trivial rep at beta=0)",
+      "passed": "True",
+      "details": "a_1(0) = 1.000000, expected 1.0",
+      "severity": "INFO",
+      "numerical_data": {
+        "a_1_at_0": "1.0000000000000004"
+      }
+    },
+    {
+      "name": "C6.25a: a_3(0) = 0 (non-trivial rep at beta=0)",
+      "passed": "True",
+      "details": "a_3(0) = 0.000000, expected 0.0",
+      "severity": "INFO",
+      "numerical_data": {
+        "a_3_at_0": "9.473903143468002e-18"
+      }
+    },
+    {
+      "name": "C6.25b: Z_FCC(beta=0, N=1) = 1",
+      "passed": "True",
+      "details": "Z_FCC(0, 1) = 1.000000, expected 1.0",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_FCC_0": "1.0000000000000036"
+      }
+    },
+    {
+      "name": "C6.26: Weak coupling: u_3(beta) monotonically increases toward 1",
+      "passed": true,
+      "details": "u_3 values for beta=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0]: ['0.060127', '0.128628', '0.203075', '0.279619', '0.353954', '0.422532']. Monotone: True, all < 1: True. Confirms u_3 -> 1 as beta -> inf (asymptotic formula u_3 ~ 1 - C_2/(2*beta) cannot be tested precisely due to peaked Boltzmann weight at large beta).",
+      "severity": "INFO",
+      "numerical_data": {
+        "betas": [
+          1.0,
+          2.0,
+          3.0,
+          4.0,
+          5.0,
+          6.0
+        ],
+        "u3_values": [
+          0.06012655483356475,
+          0.12862778532208344,
+          0.20307505003021886,
+          0.2796191494093043,
+          0.3539544367052706,
+          0.4225317396499834
+        ],
+        "monotone": true,
+        "all_less_1": true
+      }
+    },
+    {
+      "name": "C6.26a: Fundamental vs trivial at beta=6.0 (N=1)",
+      "passed": true,
+      "details": "d_3^3 * u_3^8 = 3^3 * 0.422532^8 = 2.7431e-02. Trivial dominates. This is the entropy vs energy competition.",
+      "severity": "INFO",
+      "numerical_data": {
+        "ratio": "0.027430799525931315",
+        "beta": 6.0
+      }
+    },
+    {
+      "name": "C6.27: Z_FCC(beta=-1, N=1) is finite and positive",
+      "passed": "True",
+      "details": "Z_FCC(-1, 1) = 1.233623e+00. Finite: True, Positive: True",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_neg": "1.2336225309560795"
+      }
+    },
+    {
+      "name": "C7.28: Z_coupled <= Z_decoupled (constraints reduce entropy)",
+      "passed": "True",
+      "details": "Z_coupled = 2.676514e+00, Z_decoupled = 7.234546e+00, ratio = 0.36996296",
+      "severity": "INFO",
+      "numerical_data": {
+        "Z_coupled": "2.6765141183320913",
+        "Z_decoupled": "7.234546143749206",
+        "ratio": "0.3699629617601725"
+      }
+    },
+    {
+      "name": "C7.29: Exponent check N=1: d_R^{3} a_R^{8}",
+      "passed": true,
+      "details": "d_R exponent: chi_2 = V-E+F = 1-6+8 = 3 (expected 3), a_R exponent: F = 8 = 8 (expected 8)",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "C7.29: Exponent check N=2: d_R^{6} a_R^{16}",
+      "passed": true,
+      "details": "d_R exponent: chi_2 = V-E+F = 2-12+16 = 6 (expected 6), a_R exponent: F = 16 = 16 (expected 16)",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "C7.29: Exponent check N=5: d_R^{15} a_R^{40}",
+      "passed": true,
+      "details": "d_R exponent: chi_2 = V-E+F = 5-30+40 = 15 (expected 15), a_R exponent: F = 40 = 40 (expected 40)",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "C7.29: Exponent check N=10: d_R^{30} a_R^{80}",
+      "passed": true,
+      "details": "d_R exponent: chi_2 = V-E+F = 10-60+80 = 30 (expected 30), a_R exponent: F = 80 = 80 (expected 80)",
+      "severity": "INFO",
+      "numerical_data": {}
+    },
+    {
+      "name": "C7.30: Critical coupling estimate beta_c^FCC",
+      "passed": true,
+      "details": "u_3(beta_c) = 3^(-3/8) = 0.662338. beta_c^FCC ~ 11.42. Compare single-stella: u_3(beta_c^K4) = 3^(-1/2) = 0.577350",
+      "severity": "INFO",
+      "numerical_data": {
+        "u3_critical": 0.662337782140526,
+        "beta_c": "11.42217745547329"
+      }
+    },
+    {
+      "name": "C7.31: Free energy per cell converges with N",
+      "passed": "True",
+      "details": "f(beta=1) for N=1,2,4,8: ['-0.078158', '-0.078158', '-0.078158', '-0.078158']. Spread = 3.07e-09. Trivial-rep limit: -(8/3)*ln(a_1) = -0.078158",
+      "severity": "INFO",
+      "numerical_data": {
+        "f_vals": {
+          "1": -0.07815845766915645,
+          "2": -0.07815845459445418,
+          "4": -0.07815845459445417,
+          "8": -0.07815845459445417
+        },
+        "f_trivial": "-0.07815845459445417"
+      }
+    }
+  ]
+}

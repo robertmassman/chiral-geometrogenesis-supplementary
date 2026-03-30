@@ -1,0 +1,263 @@
+{
+  "proposition": "7.8.5",
+  "title": "Explicit Crossover Mass Gap \u2014 Adversarial Verification",
+  "timestamp": "2026-02-23T13:46:23.694663",
+  "constants": {
+    "U3_CRITICAL": 0.662337782140526,
+    "CASIMIR_RATIO": 2.25,
+    "CASIMIR_FUND": 1.3333333333333333,
+    "CASIMIR_ADJ": 3.0
+  },
+  "tests": [
+    {
+      "test": "APV-1",
+      "claim": "Crossover matching method robustness",
+      "results_hard": [
+        {
+          "eps": 2.295,
+          "mu_min": 1.6251714291204422e-05
+        },
+        {
+          "eps": 2.795,
+          "mu_min": 0.00015465171236783704
+        },
+        {
+          "eps": 3.0,
+          "mu_min": 0.0001260588968174936
+        },
+        {
+          "eps": 3.5,
+          "mu_min": 6.0299087593751466e-05
+        },
+        {
+          "eps": 4.0,
+          "mu_min": 7.025382378822442e-05
+        },
+        {
+          "eps": 5.0,
+          "mu_min": 3.840598742987922e-05
+        }
+      ],
+      "results_smooth": [
+        {
+          "eps": 2.295,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 2.795,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 3.0,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 3.5,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 4.0,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 5.0,
+          "mu_min": 0.004244584708946357
+        }
+      ],
+      "smooth_monotone": true,
+      "agree_at_eps_star": true,
+      "passed": true
+    },
+    {
+      "test": "APV-2",
+      "claim": "d\u03b2_c/d\u03b5 sign and magnitude",
+      "slope": -1.2603343248199617,
+      "slope_negative": "True",
+      "magnitude_reasonable": "True",
+      "bc_values": [
+        {
+          "eps": 0.0,
+          "bc": 11.421590517123205
+        },
+        {
+          "eps": 0.25,
+          "bc": 11.09947979251764
+        },
+        {
+          "eps": 0.5,
+          "bc": 10.779159146831224
+        },
+        {
+          "eps": 0.75,
+          "bc": 10.460701818293856
+        },
+        {
+          "eps": 1.0,
+          "bc": 10.144255041651451
+        },
+        {
+          "eps": 1.25,
+          "bc": 9.829969458271993
+        },
+        {
+          "eps": 1.5,
+          "bc": 9.51800705463731
+        },
+        {
+          "eps": 1.75,
+          "bc": 9.208530160310078
+        },
+        {
+          "eps": 2.0,
+          "bc": 8.901808159306446
+        }
+      ],
+      "note": "Negative slope consistent with physics; Thm 7.5.3 c_1>0 claim needs investigation",
+      "passed": "True"
+    },
+    {
+      "test": "APV-3",
+      "claim": "\u03b5 \u2192 \u221e limit: mass gap remains positive",
+      "u3_values": [
+        {
+          "eps": 5.0,
+          "u3": 0.5565927481010144
+        },
+        {
+          "eps": 10.0,
+          "u3": 0.7831990961399637
+        },
+        {
+          "eps": 20.0,
+          "u3": 0.8969711090451538
+        },
+        {
+          "eps": 50.0,
+          "u3": 0.9552938258106202
+        }
+      ],
+      "mu_values": [
+        {
+          "eps": 5.0,
+          "mu": 0.03322761859931534
+        },
+        {
+          "eps": 10.0,
+          "mu": 0.03322761859931534
+        },
+        {
+          "eps": 20.0,
+          "mu": 0.03322761859931534
+        },
+        {
+          "eps": 50.0,
+          "mu": 0.03322761859931534
+        }
+      ],
+      "all_bounded": true,
+      "all_positive": true,
+      "passed": true
+    },
+    {
+      "test": "APV-4",
+      "claim": "\u03bc_min > 0 for all \u03b5 > \u03b5* (smooth matching)",
+      "mu_mins": [
+        {
+          "eps": 2.295,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 2.540909090909091,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 2.7868181818181816,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 3.0327272727272727,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 3.2786363636363633,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 3.5245454545454544,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 3.7704545454545455,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 4.016363636363637,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 4.262272727272727,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 4.508181818181818,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 4.754090909090909,
+          "mu_min": 0.004244584708946357
+        },
+        {
+          "eps": 5.0,
+          "mu_min": 0.004244584708946357
+        }
+      ],
+      "all_positive": true,
+      "no_severe_drops": true,
+      "severe_drops": 0,
+      "passed": true
+    },
+    {
+      "test": "APV-5",
+      "claim": "U3_CRITICAL = 3^{-3/8} \u2248 0.6623, NOT 0.6874",
+      "exact_value": 0.662337782140526,
+      "incorrect_statement_value": 0.6874,
+      "correct_approximation": 0.6623,
+      "all_computations_agree": true,
+      "error_in_statement": 0.03783902796316197,
+      "passed": true
+    },
+    {
+      "test": "APV-6",
+      "claim": "Effective coupling 1/g\u00b2_eff = \u03b2/9 + 3\u03b5/32 independently verified",
+      "coeff_fund": 0.1111111111111111,
+      "coeff_adj": 0.09375,
+      "beta_eff_match": true,
+      "large_beta_rel_diff": 0.004871525384113502,
+      "passed": true
+    },
+    {
+      "test": "APV-7",
+      "claim": "Z\u2083 center symmetry: adjoint character invariant under Z\u2083",
+      "max_error_adj": 8.43769498715119e-15,
+      "max_error_boltz_adj": 8.43769498715119e-15,
+      "adj_invariant": true,
+      "passed": "True"
+    },
+    {
+      "test": "APV-8",
+      "claim": "Weyl integration normalization and character orthogonality",
+      "haar_norm": 0.9999999999999999,
+      "chi3_norm": 0.9999999999999999,
+      "chi3_avg": -1.1796119636642288e-16,
+      "chi8_avg": 1.038211532808027e-16,
+      "chi8_norm": 0.9999999999999999,
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "overall_status": "ALL PASS"
+  }
+}

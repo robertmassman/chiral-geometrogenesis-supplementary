@@ -1,0 +1,513 @@
+{
+  "proposition": "0.0.XXf",
+  "title": "Computational Classification of Stella Dynamics",
+  "timestamp": "2026-03-22T06:55:39.099268",
+  "tests": [
+    {
+      "test": "critical_path_scaling",
+      "passed": true,
+      "slope": 0.5595666666657061,
+      "slope_err": 0.014948381596003252,
+      "intercept": 0.5180666666656142,
+      "power_exponent": 0.14130185237143134,
+      "log_rss": 0.09385073333333331,
+      "power_rss": 0.6117371977958854,
+      "data": [
+        {
+          "N": 32,
+          "log2_N": 5.0,
+          "mean_cp": 3.1305,
+          "std_cp": 0.9697781962902652,
+          "ratio": 0.6261,
+          "parallelism": 5.111004631847948
+        },
+        {
+          "N": 64,
+          "log2_N": 6.0,
+          "mean_cp": 3.8595,
+          "std_cp": 1.020666326475014,
+          "ratio": 0.64325,
+          "parallelism": 8.29122943386449
+        },
+        {
+          "N": 128,
+          "log2_N": 7.0,
+          "mean_cp": 4.4995,
+          "std_cp": 1.0024967580994963,
+          "ratio": 0.6427857142857143,
+          "parallelism": 14.223802644738303
+        },
+        {
+          "N": 256,
+          "log2_N": 8.0,
+          "mean_cp": 5.095,
+          "std_cp": 1.0004873812297683,
+          "ratio": 0.636875,
+          "parallelism": 25.122669283611383
+        },
+        {
+          "N": 512,
+          "log2_N": 9.0,
+          "mean_cp": 5.6565,
+          "std_cp": 0.9552527152539269,
+          "ratio": 0.6285000000000001,
+          "parallelism": 45.25766816936268
+        },
+        {
+          "N": 1024,
+          "log2_N": 10.0,
+          "mean_cp": 6.1945,
+          "std_cp": 0.9330968599239845,
+          "ratio": 0.61945,
+          "parallelism": 82.65396722899347
+        },
+        {
+          "N": 2048,
+          "log2_N": 11.0,
+          "mean_cp": 6.715,
+          "std_cp": 0.9185722617192399,
+          "ratio": 0.6104545454545455,
+          "parallelism": 152.49441548771406
+        },
+        {
+          "N": 4096,
+          "log2_N": 12.0,
+          "mean_cp": 7.204,
+          "std_cp": 0.8940827702176124,
+          "ratio": 0.6003333333333333,
+          "parallelism": 284.2865074958357
+        },
+        {
+          "N": 8192,
+          "log2_N": 13.0,
+          "mean_cp": 7.633,
+          "std_cp": 0.8598319603271327,
+          "ratio": 0.5871538461538461,
+          "parallelism": 536.6173195336041
+        }
+      ]
+    },
+    {
+      "test": "z3_classical_interference",
+      "passed": true,
+      "z3_cancellation": true,
+      "sigma_results": [
+        {
+          "sigma": 0.2,
+          "visibility": 4.333311775110422e-08,
+          "hermitian_err": 4.462250443001235e-17,
+          "max_imag_eigenvalue": 0.0,
+          "matrix_rank": 8,
+          "classical": true
+        },
+        {
+          "sigma": 0.5,
+          "visibility": 0.057699530311871305,
+          "hermitian_err": 4.462250443001235e-17,
+          "max_imag_eigenvalue": 0.0,
+          "matrix_rank": 8,
+          "classical": true
+        },
+        {
+          "sigma": 1.0,
+          "visibility": 0.2552588996536683,
+          "hermitian_err": 5.551115123125783e-17,
+          "max_imag_eigenvalue": 0.0,
+          "matrix_rank": 8,
+          "classical": true
+        },
+        {
+          "sigma": 2.0,
+          "visibility": 0.02058788937682635,
+          "hermitian_err": 1.1102230246251565e-16,
+          "max_imag_eigenvalue": 0.0,
+          "matrix_rank": 8,
+          "classical": true
+        },
+        {
+          "sigma": 5.0,
+          "visibility": 0.0005331752363445251,
+          "hermitian_err": 1.1102230246251565e-16,
+          "max_imag_eigenvalue": 0.0,
+          "matrix_rank": 8,
+          "classical": true
+        }
+      ]
+    },
+    {
+      "test": "topological_braiding",
+      "passed": true,
+      "pi1_S2": 0,
+      "non_abelian_possible": false,
+      "same_surface_pairs": 12,
+      "cross_surface_pairs": 16,
+      "max_topology_advantage": 0.0,
+      "error_correction": [
+        {
+          "p": 0.05,
+          "chi4_err": 4e-05,
+          "chi2_err": 0.0005,
+          "generic8_err": 4e-05,
+          "topology_advantage": 0.0
+        },
+        {
+          "p": 0.1,
+          "chi4_err": 0.00038,
+          "chi2_err": 0.00326,
+          "generic8_err": 0.00038,
+          "topology_advantage": 0.0
+        },
+        {
+          "p": 0.15,
+          "chi4_err": 0.00316,
+          "chi2_err": 0.01264,
+          "generic8_err": 0.00316,
+          "topology_advantage": 0.0
+        },
+        {
+          "p": 0.2,
+          "chi4_err": 0.00998,
+          "chi2_err": 0.02734,
+          "generic8_err": 0.00998,
+          "topology_advantage": 0.0
+        },
+        {
+          "p": 0.25,
+          "chi4_err": 0.02778,
+          "chi2_err": 0.05062,
+          "generic8_err": 0.02778,
+          "topology_advantage": 0.0
+        },
+        {
+          "p": 0.3,
+          "chi4_err": 0.05912,
+          "chi2_err": 0.08338,
+          "generic8_err": 0.05912,
+          "topology_advantage": 0.0
+        },
+        {
+          "p": 0.35,
+          "chi4_err": 0.10494,
+          "chi2_err": 0.12614,
+          "generic8_err": 0.10494,
+          "topology_advantage": 0.0
+        },
+        {
+          "p": 0.4,
+          "chi4_err": 0.17364,
+          "chi2_err": 0.17676,
+          "generic8_err": 0.17364,
+          "topology_advantage": 0.0
+        }
+      ]
+    },
+    {
+      "test": "no_analog_advantage",
+      "passed": true,
+      "eigenvalues": [
+        -6.536721277639953e-16,
+        5.999999999999996,
+        5.999999999999998,
+        6.0,
+        6.0,
+        7.9999999999999964,
+        7.999999999999999,
+        8.0
+      ],
+      "algebraic_cost": 512,
+      "iterative_cost": 264492.0,
+      "decay_rate": 0.000831961014657136,
+      "fkpp_results": [
+        {
+          "D": 0.01,
+          "r": 0.1,
+          "steps": 91992,
+          "converged": true,
+          "Tplus_mean": 0.9999002488008791,
+          "Tminus_mean": 0.9999003822715261,
+          "type": "homogeneous"
+        },
+        {
+          "D": 0.01,
+          "r": 0.5,
+          "steps": 22231,
+          "converged": true,
+          "Tplus_mean": 0.9999828652940032,
+          "Tminus_mean": 0.9999824098722003,
+          "type": "homogeneous"
+        },
+        {
+          "D": 0.01,
+          "r": 1.0,
+          "steps": 12061,
+          "converged": true,
+          "Tplus_mean": 0.9999921097720017,
+          "Tminus_mean": 0.9999932558993041,
+          "type": "homogeneous"
+        },
+        {
+          "D": 0.01,
+          "r": 2.0,
+          "steps": 6251,
+          "converged": true,
+          "Tplus_mean": 0.9999967326107599,
+          "Tminus_mean": 0.9999960199668014,
+          "type": "homogeneous"
+        },
+        {
+          "D": 0.1,
+          "r": 0.1,
+          "steps": 94245,
+          "converged": true,
+          "Tplus_mean": 0.999900000373144,
+          "Tminus_mean": 0.999900000373144,
+          "type": "homogeneous"
+        },
+        {
+          "D": 0.1,
+          "r": 0.5,
+          "steps": 22161,
+          "converged": true,
+          "Tplus_mean": 0.9999800105729346,
+          "Tminus_mean": 0.9999800105684044,
+          "type": "homogeneous"
+        },
+        {
+          "D": 0.1,
+          "r": 1.0,
+          "steps": 11769,
+          "converged": true,
+          "Tplus_mean": 0.9999900254231275,
+          "Tminus_mean": 0.9999900261878679,
+          "type": "homogeneous"
+        },
+        {
+          "D": 0.1,
+          "r": 2.0,
+          "steps": 6134,
+          "converged": true,
+          "Tplus_mean": 0.9999950965280529,
+          "Tminus_mean": 0.9999950861103094,
+          "type": "homogeneous"
+        },
+        {
+          "D": 0.5,
+          "r": 0.1,
+          "steps": 91453,
+          "converged": true,
+          "Tplus_mean": 0.9999000027634998,
+          "Tminus_mean": 0.9999000027634998,
+          "type": "homogeneous"
+        },
+        {
+          "D": 0.5,
+          "r": 0.5,
+          "steps": 21838,
+          "converged": true,
+          "Tplus_mean": 0.9999800115128615,
+          "Tminus_mean": 0.9999800115128615,
+          "type": "homogeneous"
+        },
+        {
+          "D": 0.5,
+          "r": 1.0,
+          "steps": 11452,
+          "converged": true,
+          "Tplus_mean": 0.9999900162021944,
+          "Tminus_mean": 0.9999900162021944,
+          "type": "homogeneous"
+        },
+        {
+          "D": 0.5,
+          "r": 2.0,
+          "steps": 6159,
+          "converged": true,
+          "Tplus_mean": 0.9999950152578139,
+          "Tminus_mean": 0.999995015257802,
+          "type": "homogeneous"
+        },
+        {
+          "D": 1.0,
+          "r": 0.1,
+          "steps": 91781,
+          "converged": true,
+          "Tplus_mean": 0.999900006283096,
+          "Tminus_mean": 0.999900006283096,
+          "type": "homogeneous"
+        },
+        {
+          "D": 1.0,
+          "r": 0.5,
+          "steps": 21856,
+          "converged": true,
+          "Tplus_mean": 0.9999800099311822,
+          "Tminus_mean": 0.9999800099311822,
+          "type": "homogeneous"
+        },
+        {
+          "D": 1.0,
+          "r": 1.0,
+          "steps": 11558,
+          "converged": true,
+          "Tplus_mean": 0.9999900178915992,
+          "Tminus_mean": 0.9999900178915991,
+          "type": "homogeneous"
+        },
+        {
+          "D": 1.0,
+          "r": 2.0,
+          "steps": 6043,
+          "converged": true,
+          "Tplus_mean": 0.9999950142254654,
+          "Tminus_mean": 0.9999950142254654,
+          "type": "homogeneous"
+        }
+      ],
+      "residuals_sampled": [
+        0.00032999999999999696,
+        0.0003349721232676073,
+        0.00033781814702021906,
+        0.00033847099851203044,
+        0.0003369206952339443,
+        0.0003332147743783098,
+        0.00032745553809132577,
+        0.000319794378380589,
+        0.00031042370759271076,
+        0.0002995672096697266,
+        0.00028746922281008835,
+        0.00027438406148583283,
+        0.0002605659966978813,
+        0.0002462604612734065,
+        0.0002316968609578085,
+        0.00021708318073199173,
+        0.00020260240278757724,
+        0.0001884106137630681,
+        0.0001746365816941431,
+        0.00016138252787201157,
+        0.00014872580038516325,
+        0.0001367211664736745,
+        0.0001254034709050611,
+        0.0001147904488845164,
+        0.00010488552747267565,
+        9.568049388053446e-05,
+        8.715794893154882e-05,
+        7.929349760238402e-05,
+        7.2057655241764e-05,
+        6.541746806332238e-05,
+        5.9337860515151775e-05,
+        5.378273114908794e-05,
+        4.871582366183791e-05,
+        4.410140185828748e-05,
+        3.9904757238029553e-05,
+        3.609257644798802e-05,
+        3.263319352475591e-05,
+        2.9496749091695307e-05,
+        2.6655275769615905e-05,
+        2.408272621534646e-05,
+        2.17549575325382e-05,
+        1.9649683394518114e-05,
+        1.7746403090046492e-05,
+        1.602631487040984e-05,
+        1.4472219423966592e-05,
+        1.3068417999306803e-05,
+        1.1800608632595022e-05,
+        1.0655783061808144e-05,
+        9.622126205699466e-06,
+        8.688919534871609e-06
+      ]
+    },
+    {
+      "test": "stella_geometry",
+      "passed": true,
+      "checks": {
+        "vertices": true,
+        "edges": true,
+        "faces": true,
+        "euler_char": true,
+        "euler_is_4": true,
+        "components": true,
+        "each_component_S2": true
+      },
+      "not_octahedron": true
+    },
+    {
+      "test": "classification_consistency",
+      "passed": true,
+      "hierarchy": {
+        "0": {
+          "name": "Re-encoding",
+          "verdict": "CONFIRMED",
+          "evidence": "StellaLang exists (Prop 0.0.XXd)"
+        },
+        "1": {
+          "name": "Natural computation",
+          "verdict": "CONFIRMED",
+          "evidence": "Z\u2083 coloring, {2,3}-factorization from topology"
+        },
+        "2": {
+          "name": "Constant-factor advantage",
+          "verdict": "NOT FOUND",
+          "evidence": "No benchmarks show stella beating classical"
+        },
+        "3": {
+          "name": "P-completeness",
+          "verdict": "REFUTED",
+          "evidence": "C1: CP = O(log N), dynamics in NC"
+        },
+        "4": {
+          "name": "Analog advantage",
+          "verdict": "REFUTED",
+          "evidence": "C5: Fisher-KPP efficiently discretizable"
+        }
+      },
+      "checks": {
+        "P-completeness refuted": true,
+        "Analog advantage refuted": true,
+        "Levels 0-1 confirmed": true,
+        "NC \u2286 P consistency": true,
+        "Rule 110 comparison valid": true,
+        "Weaker than BQP": true
+      }
+    },
+    {
+      "test": "cross_verification",
+      "passed": true,
+      "checks": {
+        "C1 log slope \u2248 0.546": {
+          "passed": true,
+          "detail": "got 0.5458"
+        },
+        "C1 entropy divergence < 0.15": {
+          "passed": true,
+          "detail": "got 0.0922"
+        },
+        "C3 no quantum advantage": {
+          "passed": true,
+          "detail": ""
+        },
+        "C3 all sizes efficiently simulable": {
+          "passed": true,
+          "detail": ""
+        },
+        "C4 no non-abelian braiding": {
+          "passed": true,
+          "detail": ""
+        },
+        "C4 braiding group order = 2": {
+          "passed": true,
+          "detail": "got 2"
+        },
+        "C4 topology no EC advantage": {
+          "passed": true,
+          "detail": ""
+        },
+        "C5 no analog advantage": {
+          "passed": true,
+          "detail": "PDE relaxation matches algebraic"
+        }
+      }
+    }
+  ],
+  "plot": "/Users/robertmassman/Dropbox/Coding_Projects/eqalateralCube/verification/foundations/../plots/Prop_0_0_XXf_adversarial_verification.png",
+  "overall_status": "PASSED"
+}

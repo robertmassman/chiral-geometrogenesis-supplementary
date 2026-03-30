@@ -81,22 +81,22 @@ def get_stella_octangula_vertices() -> Dict[str, np.ndarray]:
     """
     Get the four vertices of the stella octangula tetrahedron.
     
-    From Definition 0.1.1:
-    - x_R = (1, 1, 1)/√3
-    - x_G = (1, -1, -1)/√3
-    - x_B = (-1, 1, -1)/√3
-    - x_W = (-1, -1, 1)/√3
-    
+    From Definition 0.1.1 (Convention A):
+    - x_R = (1, -1, -1)/√3
+    - x_G = (-1, 1, -1)/√3
+    - x_B = (-1, -1, 1)/√3
+    - x_W = (1, 1, 1)/√3
+
     Returns:
         Dictionary of vertex positions
     """
     sqrt3 = np.sqrt(3)
-    
+
     vertices = {
-        'R': np.array([1, 1, 1]) / sqrt3,
-        'G': np.array([1, -1, -1]) / sqrt3,
-        'B': np.array([-1, 1, -1]) / sqrt3,
-        'W': np.array([-1, -1, 1]) / sqrt3
+        'R': np.array([1, -1, -1]) / sqrt3,
+        'G': np.array([-1, 1, -1]) / sqrt3,
+        'B': np.array([-1, -1, 1]) / sqrt3,
+        'W': np.array([1, 1, 1]) / sqrt3
     }
     
     return vertices
@@ -259,25 +259,25 @@ def calculate_phi_W_from_geometry() -> Dict[str, Any]:
     
     print(f"\n  RGB vertex sum:")
     print(f"    x_R + x_G + x_B = ({x_RGB_sum[0]:.4f}, {x_RGB_sum[1]:.4f}, {x_RGB_sum[2]:.4f})")
-    print(f"    = (1, 1, -1)/√3")
-    
+    print(f"    = (-1, -1, -1)/√3 = -x_W")
+
     print(f"\n  W vertex:")
     print(f"    x_W = ({x_W[0]:.4f}, {x_W[1]:.4f}, {x_W[2]:.4f})")
-    print(f"    = (-1, -1, 1)/√3")
-    
+    print(f"    = (1, 1, 1)/√3")
+
     # Check antipodal relationship
-    # x_RGB_sum and x_W should be anti-parallel (opposite sign with permutation)
+    # x_RGB_sum and x_W should be anti-parallel: x_R + x_G + x_B = -x_W
     dot_product = np.dot(x_RGB_sum, x_W)
     cos_angle = dot_product / (np.linalg.norm(x_RGB_sum) * np.linalg.norm(x_W))
     angle_rad = np.arccos(cos_angle)
     angle_deg = np.degrees(angle_rad)
-    
+
     print(f"\n  Angle between RGB sum and W:")
     print(f"    cos(θ) = {cos_angle:.6f}")
     print(f"    θ = {angle_deg:.2f}°")
-    
+
     # Check component-wise relationship
-    # (1, 1, -1) vs (-1, -1, 1) → opposite signs!
+    # (-1, -1, -1) vs (1, 1, 1) → opposite signs (antipodal)!
     is_antipodal = np.allclose(x_RGB_sum / np.linalg.norm(x_RGB_sum), 
                                 -x_W / np.linalg.norm(x_W))
     

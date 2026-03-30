@@ -1,0 +1,113 @@
+{
+  "theorem": "7.7.3",
+  "title": "Quantitative Mass Gap Lower Bound \u2014 Adversarial Physics Verification",
+  "phase": "H.4",
+  "timestamp": "2026-02-15T07:15:35.349869",
+  "verification_type": "adversarial_physics",
+  "summary": {
+    "total_tests": 12,
+    "passed": 12,
+    "failed": 0,
+    "overall": "PASS"
+  },
+  "key_findings": {
+    "dc_discrepancy": "dc=0.38 is a conservative choice between Method 1 (0.30) and Method 2 (0.54)",
+    "string_tension_mixing": "Nf=0 vs Nf=2+1 offset (~10%) fully explained by convention",
+    "mc_robustness": "c > 5 in 99%+ of 50k Monte Carlo samples",
+    "sigma_deviations": "All lattice comparisons within 2sigma",
+    "dominant_uncertainty": "sqrt(sigma) dominates error budget (99.2%)"
+  },
+  "key_values": {
+    "c_central": 6.770406976744186,
+    "c_3sigma_lower_eq4_17": 5.75,
+    "c_3sigma_lower_eq4_16": 5.630406976744187,
+    "m_phys_MeV": 1498.1999999999998,
+    "m_phys_err_MeV": 103.0
+  },
+  "tests": [
+    {
+      "test_id": "APV-1",
+      "name": "Error propagation cross-check (dc discrepancy)",
+      "passed": true,
+      "details": "Method 1 (Eq 4.12, direct): sigma/Lambda = 1.996, dc = 0.295 (rel 4.3%); Method 2 (Eq 4.11, Sommer): sigma/Lambda = 1.988, dc = 0.543 (rel 8.0%); Eq (4.14) gives dc = 0.305; Theorem reports dc = 0.38 (conservative choice); FINDING: dc = 0.38 is between Method 1 (0.30) and Method 2 (0.54) \u2014 reasonable conservative choice but derivation should be clarified; 3sigma lower bounds: Method 1: 5.91, Method 2: 5.14",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-2",
+      "name": "String tension convention mixing (Nf=0 vs Nf=2+1)",
+      "passed": true,
+      "details": "CG: m = 1498 +/- 103 MeV (sqrt(sigma) = 440); Pure gauge: m = 1651 +/- 23 MeV (sqrt(sigma) = 485); Quenched match (AT2020 = 1651): 0.0sigma \u2014 OK; Offset: 9.3% (from sigma convention: 9.3%) \u2014 explained; Framework sqrt(sigma) = hbar*c/R_stella = 440.0 MeV: consistent",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-3",
+      "name": "Monte Carlo robustness (50k samples)",
+      "passed": "True",
+      "details": "MC (50000 samples): c = 6.81 +/- 0.56 (median: 6.77); 0.15th percentile (3sigma): 5.48; min(c) = 5.06; P(c > 5) = 100.0%; P(c > 0) = 100.0%; m = 1498 +/- 103 MeV",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-4",
+      "name": "Sigma-deviation recomputation",
+      "passed": true,
+      "details": "Morningstar-Peardon 1999: 1710 MeV, recomputed = 1.55sigma; Athenodorou-Teper 2020: 1651 MeV, recomputed = 1.46sigma; Chen et al. 2006: 1710 MeV, recomputed = 1.52sigma; Matches claimed values: MP=True (1.55 vs 1.7), AT=True (1.46 vs 1.5), Chen=True (1.52 vs 1.6)",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-5",
+      "name": "Running coupling & dim. transmutation",
+      "passed": "True",
+      "details": "Lambda(Nf=0)/Lambda(Nf=5) = 1.157 (expected O(1): OK); b0 = 11/(16pi^2) = 0.069658: OK; b1 = 102/(16pi^2)^2 = 0.00409035: OK; Asymptotic freedom (beta < 0): YES; Dim. transmutation (m->0 as alpha->0): YES",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-6",
+      "name": "Scale ratio self-consistency (two methods)",
+      "passed": "True",
+      "details": "Method A (Sommer): 1.988 +/- 0.159 (rel 8.0%); Method B (direct): 1.996 +/- 0.086 (rel 4.3%); Agreement: 0.04sigma (consistent); Adopted 1.99 +/- 0.09: within A = True, within B = True; Claimed 4.5% rel err matches Method B: True (actual B: 4.3%)",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-7",
+      "name": "Conservative vs central bound gap analysis",
+      "passed": true,
+      "details": "c_central = 6.770; Eq (4.16): c - 3*dc = 6.77 - 3*0.38 = 5.63 (claimed: 5.64, match: True); Eq (4.17): R_low * ratio_low = 3.342 * 1.72 = 5.75 (claimed: 5.75, match: True); (sigma/Lambda)_low(3sig) = 1.72 (match 1.72: True); Eq (4.17) more conservative: True",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-8",
+      "name": "Dimensional transmutation limit checks",
+      "passed": true,
+      "details": "Classical limit (hbar->0): m and Lambda both -> 0, ratio c finite: PASS; Weak coupling (g->0): Lambda ~ exp(-1/(b0*g^2)) -> 0 (monotonic: True, vanishes: True): PASS; Large-N: m ~ sqrt(sigma) ~ sqrt(N)*Lambda (bound remains positive): PASS",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-9",
+      "name": "Large-N scaling behavior",
+      "passed": "True",
+      "details": "R_cont by N: SU(2): 4.330, SU(3): 3.405, SU(4): 3.360, SU(5): 3.380, SU(6): 3.370; Large-N limit: 3.370 (converged: True); All positive: True; Bound strengthens with N (c ~ sqrt(N)): True",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-10",
+      "name": "Alternative lattice Lambda_MSbar determinations",
+      "passed": "True",
+      "details": "Lambda_MSbar(Nf=0) determinations: Ishikawa2017: 243+/-10, Necco-Sommer2002_derived: 247+/-20, Boucaud2001: 238+/-19, Capitani1999: 260+/-18; Weighted avg: 245.6 +/- 7.4 MeV; chi2/dof = 0.29 (consistent); Used value (243.0) consistent: True; c range from Lambda spread: [5.76, 6.29]",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-11",
+      "name": "Sensitivity analysis (tornado)",
+      "passed": true,
+      "details": "Dominant uncertainty source: sqrt_sigma; m sensitivity: R_cont=[-9, +9] MeV, sqrt(sigma)=[-102, +102] MeV; c sensitivity: Lambda=[-0.34, +-0.85], r0*Lambda=[0.59, +-0.50]",
+      "severity": "adversarial"
+    },
+    {
+      "test_id": "APV-12",
+      "name": "RG invariance of physical mass",
+      "passed": "True",
+      "details": "m_phys(beta) = R_cont * sqrt(sigma) = 1498 MeV for all beta: RG invariant = True; O(a^4) corrections at beta=6.0: 0.0000, beta=6.4: 0.000000 (small for beta>=6.2: True); Scaling window: beta in [5.8, 6.8]",
+      "severity": "adversarial"
+    }
+  ]
+}

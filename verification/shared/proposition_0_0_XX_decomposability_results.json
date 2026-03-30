@@ -1,0 +1,148 @@
+{
+  "proposition": "0.0.XX",
+  "title": "Composite-N Decomposability and Prime-N Irreducibility",
+  "verification_date": "2026-02-22",
+  "tests": [
+    {
+      "name": "N=4 decomposes via Z_2 cosets (2 cosets of size 2)",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 4.608148608579347e-16,
+      "tolerance": 1e-10,
+      "message": "Reconstruction error: 4.61e-16"
+    },
+    {
+      "name": "N=6 decomposes via Z_2 cosets (2 cosets of size 3)",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 1.0514598525634887e-15,
+      "tolerance": 1e-10,
+      "message": "Each coset forms a Z_3 sub-pattern"
+    },
+    {
+      "name": "N=6 decomposes via Z_3 cosets (3 cosets of size 2)",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 1.0514598525634887e-15,
+      "tolerance": 1e-10,
+      "message": "Each coset forms a Z_2 sub-pattern"
+    },
+    {
+      "name": "N=8 decomposes via Z_2 cosets (2 cosets of size 4)",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 7.484654833340643e-16,
+      "tolerance": 1e-10,
+      "message": "Reconstruction error: 7.48e-16"
+    },
+    {
+      "name": "N=9 decomposes via Z_3 cosets (3 cosets of size 3)",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 9.464457931750776e-16,
+      "tolerance": 1e-10,
+      "message": "Reconstruction error: 9.46e-16"
+    },
+    {
+      "name": "N=10 decomposes via Z_2 cosets (2 cosets of size 5)",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 1.1499676841088547e-15,
+      "tolerance": 1e-10,
+      "message": "Reconstruction error: 1.15e-15"
+    },
+    {
+      "name": "N=3 is prime \u2014 Z_3 has no proper non-trivial subgroups",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 0.0,
+      "message": "Proper divisors of 3: []"
+    },
+    {
+      "name": "N=5 is prime \u2014 Z_5 has no proper non-trivial subgroups",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 0.0,
+      "message": "Proper divisors of 5: []"
+    },
+    {
+      "name": "N=7 is prime \u2014 Z_7 has no proper non-trivial subgroups",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 0.0,
+      "message": "Proper divisors of 7: []"
+    },
+    {
+      "name": "N=3 interference pattern has non-zero cross terms for all partitions",
+      "passed": true,
+      "expected": 0.01,
+      "computed": 0.15766242415269469,
+      "tolerance": 0.01,
+      "message": "All 3 partitions have non-zero cross terms (min ratio: 0.1577)"
+    },
+    {
+      "name": "Analytical I_DOF = 1/(2N) is strictly monotonically decreasing for N=3..8",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "message": "1/(2N) is obviously strictly decreasing for increasing N"
+    },
+    {
+      "name": "N=3 has maximum I_DOF = 1/(2N) among primes {3,5,7,11,13,17,19}",
+      "passed": true,
+      "expected": 0.16666666666666666,
+      "computed": 0.16666666666666666,
+      "tolerance": 0.0,
+      "message": "Prime I_DOF values: N=3: 0.1667, N=5: 0.1000, N=7: 0.0714, N=11: 0.0455, N=13: 0.0385, N=17: 0.0294, N=19: 0.0263"
+    },
+    {
+      "name": "Fisher metric has full rank for all N=3..8 (cross-check with N4 investigation)",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "message": "Full rank confirms Lemma 0.0.17c: g^F non-degenerate for all N >= 3"
+    },
+    {
+      "name": "N=4: chi = (A_0 - A_2) + i*(A_1 - A_3) algebraic structure",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 1.2246437744328886e-16,
+      "tolerance": 1e-10,
+      "message": "chi = (A_0 - A_2) + i*(A_1 - A_3)"
+    },
+    {
+      "name": "N=6 admits both 2-coset and 3-coset decompositions",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 1.7763568394002505e-15,
+      "tolerance": 1e-10,
+      "message": "2x3 error: 1.78e-15, 3x2 error: 1.78e-15"
+    },
+    {
+      "name": "Primality classification correct for N=2..10",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "message": "Primes: {2,3,5,7}, Composites: {4,6,8,9,10}"
+    },
+    {
+      "name": "All composites have decompositions; all primes have none",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "message": "Composite decomps: {4: 1, 6: 2, 8: 2, 9: 1, 10: 2}, Prime decomps: {3: 0, 5: 0, 7: 0}"
+    }
+  ],
+  "summary": {
+    "total_tests": 17,
+    "passed": 17,
+    "failed": 0
+  }
+}

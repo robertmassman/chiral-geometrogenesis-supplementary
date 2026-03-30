@@ -1,0 +1,495 @@
+{
+  "definition": "0.1.1",
+  "title": "Stella Octangula Boundary Topology \u2014 Adversarial Verification",
+  "timestamp": "2026-02-21T17:26:11.953481",
+  "tests": [
+    {
+      "test": "Unit sphere |v_R|",
+      "status": "PASS",
+      "details": "|v| = 1.000000000000000, deviation = 0.00e+00",
+      "expected": 1.0,
+      "computed": 1.0
+    },
+    {
+      "test": "Unit sphere |v_G|",
+      "status": "PASS",
+      "details": "|v| = 1.000000000000000, deviation = 0.00e+00",
+      "expected": 1.0,
+      "computed": 1.0
+    },
+    {
+      "test": "Unit sphere |v_B|",
+      "status": "PASS",
+      "details": "|v| = 1.000000000000000, deviation = 0.00e+00",
+      "expected": 1.0,
+      "computed": 1.0
+    },
+    {
+      "test": "Unit sphere |v_W|",
+      "status": "PASS",
+      "details": "|v| = 1.000000000000000, deviation = 0.00e+00",
+      "expected": 1.0,
+      "computed": 1.0
+    },
+    {
+      "test": "Unit sphere |v_R\u0304|",
+      "status": "PASS",
+      "details": "|v| = 1.000000000000000, deviation = 0.00e+00",
+      "expected": 1.0,
+      "computed": 1.0
+    },
+    {
+      "test": "Unit sphere |v_\u1e20|",
+      "status": "PASS",
+      "details": "|v| = 1.000000000000000, deviation = 0.00e+00",
+      "expected": 1.0,
+      "computed": 1.0
+    },
+    {
+      "test": "Unit sphere |v_B\u0304|",
+      "status": "PASS",
+      "details": "|v| = 1.000000000000000, deviation = 0.00e+00",
+      "expected": 1.0,
+      "computed": 1.0
+    },
+    {
+      "test": "Unit sphere |v_W\u0304|",
+      "status": "PASS",
+      "details": "|v| = 1.000000000000000, deviation = 0.00e+00",
+      "expected": 1.0,
+      "computed": 1.0
+    },
+    {
+      "test": "Centroid T+",
+      "status": "PASS",
+      "details": "centroid = [0. 0. 0.], |centroid| = 0.00e+00"
+    },
+    {
+      "test": "Centroid T-",
+      "status": "PASS",
+      "details": "centroid = [0. 0. 0.], |centroid| = 0.00e+00"
+    },
+    {
+      "test": "Centroid all",
+      "status": "PASS",
+      "details": "centroid = [0. 0. 0.], |centroid| = 0.00e+00"
+    },
+    {
+      "test": "Antipodal R/R\u0304",
+      "status": "PASS",
+      "details": "|v_R\u0304 - (-v_R)| = 0.00e+00"
+    },
+    {
+      "test": "Antipodal G/\u1e20",
+      "status": "PASS",
+      "details": "|v_\u1e20 - (-v_G)| = 0.00e+00"
+    },
+    {
+      "test": "Antipodal B/B\u0304",
+      "status": "PASS",
+      "details": "|v_B\u0304 - (-v_B)| = 0.00e+00"
+    },
+    {
+      "test": "Antipodal W/W\u0304",
+      "status": "PASS",
+      "details": "|v_W\u0304 - (-v_W)| = 0.00e+00"
+    },
+    {
+      "test": "Euler char (VEF counting)",
+      "status": "PASS",
+      "details": "\u03c7 = 8 - 12 + 8 = 4",
+      "expected": 4,
+      "computed": 4
+    },
+    {
+      "test": "Euler char per component",
+      "status": "PASS",
+      "details": "\u03c7(T+) = 2, \u03c7(T-) = 2, sum = 4",
+      "expected": "2 + 2 = 4",
+      "computed": "2 + 2 = 4"
+    },
+    {
+      "test": "\u03c7(S\u00b2 \u2294 S\u00b2) = 2 + 2",
+      "status": "PASS",
+      "details": "Sum of Euler characteristics = 4"
+    },
+    {
+      "test": "Angular defect per vertex",
+      "status": "PASS",
+      "details": "\u03b4 = 2\u03c0 - 3(\u03c0/3) = 3.1415926536 \u2248 \u03c0 = 3.1415926536",
+      "expected": 3.141592653589793,
+      "computed": 3.141592653589793
+    },
+    {
+      "test": "Descartes' theorem",
+      "status": "PASS",
+      "details": "\u03a3\u03b4 = 8\u03c0 = 25.1327412287, 2\u03c0\u03c7 = 25.1327412287",
+      "expected": 25.132741228718345,
+      "computed": 25.132741228718345
+    },
+    {
+      "test": "Face angles = \u03c0/3 (computed from coords)",
+      "status": "PASS",
+      "details": "All face angles verified as 60\u00b0 from actual coordinates"
+    },
+    {
+      "test": "Cross product e1\u00d7e2",
+      "status": "PASS",
+      "details": "Computed: [1.33333333 1.33333333 1.33333333], Expected: [1.33333333 1.33333333 1.33333333]",
+      "expected": [
+        1.3333333333333333,
+        1.3333333333333333,
+        1.3333333333333333
+      ],
+      "computed": [
+        1.3333333333333337,
+        1.3333333333333337,
+        1.3333333333333337
+      ]
+    },
+    {
+      "test": "Cross product e1\u00d7e3",
+      "status": "PASS",
+      "details": "Computed: [ 1.33333333  1.33333333 -1.33333333], Expected: [ 1.33333333  1.33333333 -1.33333333]",
+      "expected": [
+        1.3333333333333333,
+        1.3333333333333333,
+        -1.3333333333333333
+      ],
+      "computed": [
+        1.3333333333333337,
+        1.3333333333333337,
+        -1.3333333333333337
+      ]
+    },
+    {
+      "test": "Outward normal n\u0302\u2081",
+      "status": "PASS",
+      "details": "Computed: [-0.57735027 -0.57735027 -0.57735027], Expected: [-0.57735027 -0.57735027 -0.57735027]",
+      "expected": [
+        -0.5773502691896258,
+        -0.5773502691896258,
+        -0.5773502691896258
+      ],
+      "computed": [
+        -0.5773502691896257,
+        -0.5773502691896257,
+        -0.5773502691896257
+      ]
+    },
+    {
+      "test": "Outward normal n\u0302\u2082",
+      "status": "PASS",
+      "details": "Computed: [ 0.57735027  0.57735027 -0.57735027], Expected: [ 0.57735027  0.57735027 -0.57735027]",
+      "expected": [
+        0.5773502691896258,
+        0.5773502691896258,
+        -0.5773502691896258
+      ],
+      "computed": [
+        0.5773502691896257,
+        0.5773502691896257,
+        -0.5773502691896257
+      ]
+    },
+    {
+      "test": "Normal dot product",
+      "status": "PASS",
+      "details": "n\u0302\u2081\u00b7n\u0302\u2082 = -0.333333333333333, expected = -0.333333333333333",
+      "expected": -0.3333333333333333,
+      "computed": -0.3333333333333333
+    },
+    {
+      "test": "Dihedral angle",
+      "status": "PASS",
+      "details": "arccos(1/3) = 70.5287793655\u00b0, expected \u2248 70.5287793655\u00b0",
+      "expected": 70.528779365509,
+      "computed": 70.52877936550931
+    },
+    {
+      "test": "Supplementary relation",
+      "status": "PASS",
+      "details": "\u03c0 - arccos(-1/3) = arccos(1/3): True"
+    },
+    {
+      "test": "Weight sum = 0",
+      "status": "PASS",
+      "details": "w_R + w_G + w_B = [0. 0.], |sum| = 0.00e+00"
+    },
+    {
+      "test": "Weight triangle RG distance",
+      "status": "PASS",
+      "details": "|w_R - w_G| = 1.0000000000"
+    },
+    {
+      "test": "Weight triangle GB distance",
+      "status": "PASS",
+      "details": "|w_G - w_B| = 1.1180339887"
+    },
+    {
+      "test": "Weight triangle BR distance",
+      "status": "PASS",
+      "details": "|w_B - w_R| = 1.1180339887"
+    },
+    {
+      "test": "Equilateral with Y\u00b7\u221a3/2 scaling",
+      "status": "PASS",
+      "details": "Distances: RG=1.0000000000, GB=1.0000000000, BR=1.0000000000"
+    },
+    {
+      "test": "ADVERSARIAL: Y\u00b7(2/\u221a3) gives equilateral?",
+      "status": "FAIL",
+      "details": "Distances: RG=1.0000000000, GB=1.2583057392, BR=1.2583057392 \u2014 NOT equilateral (document states 2/\u221a3 but \u221a3/2 is correct)"
+    },
+    {
+      "test": "Projected vertices form equilateral triangle",
+      "status": "PASS",
+      "details": "Projected distances: 1.6329931619, 1.6329931619, 1.6329931619"
+    },
+    {
+      "test": "Scale factor \u221a(3/8)",
+      "status": "PASS",
+      "details": "\u221a(3/8) = 0.6123724357"
+    },
+    {
+      "test": "Root closure e_RG + e_GB + e_BR = 0",
+      "status": "PASS",
+      "details": "Sum = [0. 0. 0.], |sum| = 0.00e+00"
+    },
+    {
+      "test": "Equal projected edge lengths",
+      "status": "PASS",
+      "details": "|p_RG|=1.6329931619, |p_GB|=1.6329931619, |p_BR|=1.6329931619"
+    },
+    {
+      "test": "120\u00b0 angles between projected edges",
+      "status": "PASS",
+      "details": "cos(angles) = -0.5000000000, -0.5000000000, -0.5000000000 (expected -0.5)"
+    },
+    {
+      "test": "T- edges = negatives of T+ edges",
+      "status": "PASS",
+      "details": "All three pairs verified: \u00b1roots"
+    },
+    {
+      "test": "A\u2082 root system (6 vectors at 60\u00b0 intervals)",
+      "status": "PASS",
+      "details": "Root system structure verified: 3 positive roots at 120\u00b0, 3 negative roots completing hexagon"
+    },
+    {
+      "test": "P1: P_R max at v_R",
+      "status": "PASS",
+      "details": "P_R(v_R) = 4.000000 > others: ['0.342857', '0.342857']"
+    },
+    {
+      "test": "P1: P_G max at v_G",
+      "status": "PASS",
+      "details": "P_G(v_G) = 4.000000 > others: ['0.342857', '0.342857']"
+    },
+    {
+      "test": "P1: P_B max at v_B",
+      "status": "PASS",
+      "details": "P_B(v_B) = 4.000000 > others: ['0.342857', '0.342857']"
+    },
+    {
+      "test": "P2: P_R min at v_R\u0304",
+      "status": "PASS",
+      "details": "P_R(v_R\u0304) = 0.235294, all others \u2265 this: True"
+    },
+    {
+      "test": "P2: P_G min at v_\u1e20",
+      "status": "PASS",
+      "details": "P_G(v_\u1e20) = 0.235294, all others \u2265 this: True"
+    },
+    {
+      "test": "P2: P_B min at v_B\u0304",
+      "status": "PASS",
+      "details": "P_B(v_B\u0304) = 0.235294, all others \u2265 this: True"
+    },
+    {
+      "test": "P3: S\u2083 symmetry at centroid",
+      "status": "PASS",
+      "details": "P_R(0) = 0.8000000000, P_G(0) = 0.8000000000, P_B(0) = 0.8000000000"
+    },
+    {
+      "test": "P4: Continuity (all finite, positive)",
+      "status": "PASS",
+      "details": "All 1000 samples finite: True, positive: True"
+    },
+    {
+      "test": "P5: Monotonicity v_R -> v_R_bar",
+      "status": "PASS",
+      "details": "Strictly decreasing along path: True, P range: [4.0000, 0.2353]"
+    },
+    {
+      "test": "P5: Monotonicity v_G -> v_G_bar",
+      "status": "PASS",
+      "details": "Strictly decreasing along path: True, P range: [4.0000, 0.2353]"
+    },
+    {
+      "test": "P5: Monotonicity v_B -> v_B_bar",
+      "status": "PASS",
+      "details": "Strictly decreasing along path: True, P range: [4.0000, 0.2353]"
+    },
+    {
+      "test": "Cube roots of unity sum = 0",
+      "status": "PASS",
+      "details": "|e^0 + e^(2pi*i/3) + e^(4pi*i/3)| = 4.00e-16"
+    },
+    {
+      "test": "Phase cancellation [1/(r\u00b2+\u03b5\u00b2)]",
+      "status": "PASS",
+      "details": "P values at centroid: ['0.800000', '0.800000', '0.800000'], |\u03c7_total| = 4.00e-16, symmetric: True"
+    },
+    {
+      "test": "Phase cancellation [Gaussian]",
+      "status": "PASS",
+      "details": "P values at centroid: ['0.135335', '0.135335', '0.135335'], |\u03c7_total| = 6.21e-17, symmetric: True"
+    },
+    {
+      "test": "Phase cancellation [Linear]",
+      "status": "PASS",
+      "details": "P values at centroid: ['0.010000', '0.010000', '0.010000'], |\u03c7_total| = 3.13e-18, symmetric: True"
+    },
+    {
+      "test": "Group order |S\u2084 \u00d7 Z\u2082|",
+      "status": "PASS",
+      "details": "24 \u00d7 2 = 48"
+    },
+    {
+      "test": "S\u2083 subgroup (color permutations)",
+      "status": "PASS",
+      "details": "|S\u2083| = 6 (expected 6)"
+    },
+    {
+      "test": "Z\u2082 charge conjugation (v \u2192 -v)",
+      "status": "PASS",
+      "details": "All v_['R\u0304', '\u1e20', 'B\u0304', 'W\u0304'] = -v_['R', 'G', 'B', 'W']: True"
+    },
+    {
+      "test": "O_h symmetries preserving stella",
+      "status": "PASS",
+      "details": "Found 48 symmetries (expected 48), generated 48 O_h candidates"
+    },
+    {
+      "test": "T+ all 6 edges equal",
+      "status": "PASS",
+      "details": "Edge lengths: ['1.6329931619', '1.6329931619', '1.6329931619', '1.6329931619', '1.6329931619', '1.6329931619']"
+    },
+    {
+      "test": "Edge length value",
+      "status": "PASS",
+      "details": "Computed: 1.6329931619, Expected 2\u221a(2/3) = 1.6329931619",
+      "expected": 1.632993161855452,
+      "computed": 1.6329931618554523
+    },
+    {
+      "test": "T+ and T- congruent",
+      "status": "PASS",
+      "details": "All corresponding edge lengths match: True"
+    },
+    {
+      "test": "Surface area = 2\u221a3\u00b7a\u00b2",
+      "status": "PASS",
+      "details": "Total area = 9.2376043070, expected 2\u221a3\u00b7a\u00b2 = 9.2376043070",
+      "expected": 9.237604307034013,
+      "computed": 9.237604307034013
+    },
+    {
+      "test": "Surface area (unit sphere)",
+      "status": "PASS",
+      "details": "a = 1.6329931619, total area = 9.2376043070 = 9.2376043070"
+    },
+    {
+      "test": "Barycentric [Vertex A]",
+      "status": "PASS",
+      "details": "Computed: (1.000000, 0.000000, 0.000000), Expected: (1, 0, 0)"
+    },
+    {
+      "test": "Barycentric [Vertex B]",
+      "status": "PASS",
+      "details": "Computed: (0.000000, 1.000000, 0.000000), Expected: (0, 1, 0)"
+    },
+    {
+      "test": "Barycentric [Vertex C]",
+      "status": "PASS",
+      "details": "Computed: (0.000000, 0.000000, 1.000000), Expected: (0, 0, 1)"
+    },
+    {
+      "test": "Barycentric [Centroid]",
+      "status": "PASS",
+      "details": "Computed: (0.333333, 0.333333, 0.333333), Expected: (0.3333333333333333, 0.3333333333333333, 0.3333333333333333)"
+    },
+    {
+      "test": "Barycentric [Midpoint AB]",
+      "status": "PASS",
+      "details": "Computed: (0.500000, 0.500000, 0.000000), Expected: (0.5, 0.5, 0)"
+    },
+    {
+      "test": "Transition function (affine on shared edge)",
+      "status": "PASS",
+      "details": "Midpoint of RG edge has consistent coords from both adjacent faces"
+    },
+    {
+      "test": "ADVERSARIAL: Octahedron \u03c7 \u2260 4",
+      "status": "PASS",
+      "details": "Octahedron: V=6, E=12, F=8, \u03c7=2 \u2260 4. Confirms stella \u2260 octahedron"
+    },
+    {
+      "test": "ADVERSARIAL: Fused surface has \u03c7 \u2260 4",
+      "status": "PASS",
+      "details": "Fusing at intersections changes topology; framework correctly uses disjoint union"
+    },
+    {
+      "test": "ADVERSARIAL: Exactly 3 faces per vertex (not 4+)",
+      "status": "PASS",
+      "details": "Disjoint union ensures each vertex belongs to one tetrahedron only \u2192 3 faces"
+    },
+    {
+      "test": "ADVERSARIAL: Killing form vs spacetime metric",
+      "status": "WARN",
+      "details": "Root system derivation uses metric properties (angles/lengths). Defense: Killing form is algebraic invariant of su(3), not a spacetime metric. This should be stated explicitly in the proof."
+    },
+    {
+      "test": "ADVERSARIAL: \u03b5=0 singularity",
+      "status": "PASS",
+      "details": "P(v_c, v_c) with \u03b5=0 correctly diverges (ZeroDivisionError)"
+    },
+    {
+      "test": "ADVERSARIAL: Apex-Cartan for SU(2)",
+      "status": "PASS",
+      "details": "SU(2): rank=1, apices=2, match=False. SU(3)-specific!"
+    },
+    {
+      "test": "ADVERSARIAL: Apex-Cartan for SU(3)",
+      "status": "PASS",
+      "details": "SU(3): rank=2, apices=2, match=True. Matches for N=3"
+    },
+    {
+      "test": "ADVERSARIAL: Apex-Cartan for SU(4)",
+      "status": "PASS",
+      "details": "SU(4): rank=3, apices=2, match=False. SU(3)-specific!"
+    },
+    {
+      "test": "ADVERSARIAL: Apex-Cartan for SU(5)",
+      "status": "PASS",
+      "details": "SU(5): rank=4, apices=2, match=False. SU(3)-specific!"
+    },
+    {
+      "test": "ADVERSARIAL: Phase cancellation for SU(2)",
+      "status": "PASS",
+      "details": "|e^0 + e^(i*pi)| = 1.22e-16 -> generalization works"
+    },
+    {
+      "test": "ADVERSARIAL: Phase cancellation for SU(4)",
+      "status": "PASS",
+      "details": "|Sum e^(2*pi*i*k/4)| = 2.88e-16 -> generalization works"
+    }
+  ],
+  "summary": {
+    "passed": 80,
+    "failed": 1,
+    "warnings": 1,
+    "overall": "FAILED"
+  }
+}

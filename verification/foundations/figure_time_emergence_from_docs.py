@@ -37,19 +37,19 @@ def print_convention_comparison():
     print("SOURCE 1: Definition 0.1.1 (Markdown) - Section 2.2")
     print("=" * 80)
     print("""
-From Definition-0.1.1-Stella-Octangula-Boundary-Topology.md, Section 2.2:
+From Definition-0.1.1-Stella-Octangula-Boundary-Topology.md, Section 2.2 (Convention A):
 
 Tetrahedron T+ (Color Vertices R, G, B, W):
-    v_R = (1, 1, 1) / sqrt(3)
-    v_G = (1, -1, -1) / sqrt(3)
-    v_B = (-1, 1, -1) / sqrt(3)
-    v_W = (-1, -1, 1) / sqrt(3)
+    v_R = (1, -1, -1) / sqrt(3)
+    v_G = (-1, 1, -1) / sqrt(3)
+    v_B = (-1, -1, 1) / sqrt(3)
+    v_W = (1, 1, 1) / sqrt(3)
 
 Tetrahedron T- (Anti-Color Vertices):
-    v_R_bar = -v_R = (-1, -1, -1) / sqrt(3)
-    v_G_bar = -v_G = (-1, 1, 1) / sqrt(3)
-    v_B_bar = -v_B = (1, -1, 1) / sqrt(3)
-    v_W_bar = -v_W = (1, 1, -1) / sqrt(3)
+    v_R_bar = -v_R = (-1, 1, 1) / sqrt(3)
+    v_G_bar = -v_G = (1, -1, 1) / sqrt(3)
+    v_B_bar = -v_B = (1, 1, -1) / sqrt(3)
+    v_W_bar = -v_W = (-1, -1, -1) / sqrt(3)
 
 PHASES (from Definition 0.1.2):
     Phase_R = 0
@@ -79,10 +79,10 @@ NOTE: Lean uses unit edge length = 2, vertices at |v|^2 = 3 (i.e., |v| = sqrt(3)
       The markdown normalizes to unit sphere (|v| = 1) by dividing by sqrt(3).
 
 COLOR ASSIGNMENT (implicit from index naming):
-    v_up_0 = (1,1,1)     -> This is where Def 0.1.1 puts R
-    v_up_1 = (1,-1,-1)   -> This is where Def 0.1.1 puts G
-    v_up_2 = (-1,1,-1)   -> This is where Def 0.1.1 puts B
-    v_up_3 = (-1,-1,1)   -> This is where Def 0.1.1 puts W
+    v_up_0 = (1,1,1)     -> This is where Def 0.1.1 puts W (Convention A)
+    v_up_1 = (1,-1,-1)   -> This is where Def 0.1.1 puts R (Convention A)
+    v_up_2 = (-1,1,-1)   -> This is where Def 0.1.1 puts G (Convention A)
+    v_up_3 = (-1,-1,1)   -> This is where Def 0.1.1 puts B (Convention A)
 """)
 
     print("\n" + "=" * 80)
@@ -111,31 +111,27 @@ This corresponds to:
     print("COMPARISON TABLE")
     print("=" * 80)
     print("""
-| Vertex | Definition 0.1.1          | Lean (v_up_*)    | Existing Python |
-|--------|---------------------------|------------------|-----------------|
-| R      | (1, 1, 1) / sqrt(3)       | v_up_0 = (1,1,1) | (1,-1,-1)/sqrt3 |
-| G      | (1, -1, -1) / sqrt(3)     | v_up_1 = (1,-1,-1)| (-1,1,-1)/sqrt3|
-| B      | (-1, 1, -1) / sqrt(3)     | v_up_2 = (-1,1,-1)| (-1,-1,1)/sqrt3|
-| W      | (-1, -1, 1) / sqrt(3)     | v_up_3 = (-1,-1,1)| (1,1,1)/sqrt3  |
+| Vertex | Definition 0.1.1 (Conv A) | Lean (v_up_*)     | Python (Conv A) |
+|--------|---------------------------|-------------------|-----------------|
+| R      | (1, -1, -1) / sqrt(3)     | v_up_1 = (1,-1,-1)| (1,-1,-1)/sqrt3 |
+| G      | (-1, 1, -1) / sqrt(3)     | v_up_2 = (-1,1,-1)| (-1,1,-1)/sqrt3 |
+| B      | (-1, -1, 1) / sqrt(3)     | v_up_3 = (-1,-1,1)| (-1,-1,1)/sqrt3 |
+| W      | (1, 1, 1) / sqrt(3)       | v_up_0 = (1,1,1)  | (1,1,1)/sqrt3   |
 
-CRITICAL FINDING:
-=================
-The EXISTING PYTHON CODE SWAPS R AND W relative to Definition 0.1.1!
-
-In Definition 0.1.1:
-    - R (red) is at (1, 1, 1) / sqrt(3)
-    - W (white/singlet) is at (-1, -1, 1) / sqrt(3)
-
-In the existing Python:
-    - W (white/singlet) is at (1, 1, 1) / sqrt(3)  <-- SWAPPED!
-    - R (red) is at (1, -1, -1) / sqrt(3)          <-- SWAPPED!
+FINDING:
+========
+All three sources are CONSISTENT under Convention A (canonical labeling):
+    - R (red) is at (1, -1, -1) / sqrt(3)
+    - G (green) is at (-1, 1, -1) / sqrt(3)
+    - B (blue) is at (-1, -1, 1) / sqrt(3)
+    - W (white/singlet) is at (1, 1, 1) / sqrt(3)
 
 The Lean formalization uses indices (v_up_0, v_up_1, etc.) without color labels,
-so it is consistent with Definition 0.1.1 if we apply the mapping:
-    v_up_0 = v_R
-    v_up_1 = v_G
-    v_up_2 = v_B
-    v_up_3 = v_W
+so it is consistent with Definition 0.1.1 (Convention A) under the mapping:
+    v_up_0 = v_W  (1,1,1)/sqrt(3)
+    v_up_1 = v_R  (1,-1,-1)/sqrt(3)
+    v_up_2 = v_G  (-1,1,-1)/sqrt(3)
+    v_up_3 = v_B  (-1,-1,1)/sqrt(3)
 """)
 
     print("\n" + "=" * 80)
@@ -158,13 +154,13 @@ These come from Definition 0.1.2 (Three Color Fields with Relative Phases).
 # Normalization: vertices on unit sphere
 SQRT3_INV = 1.0 / np.sqrt(3.0)
 
-# From Definition 0.1.1, Section 2.2:
+# From Definition 0.1.1, Section 2.2 (Convention A):
 # Tetrahedron T+ (Color Vertices R, G, B, W):
 VERTICES_DEF_0_1_1 = {
-    'R': np.array([1, 1, 1]) * SQRT3_INV,      # v_R
-    'G': np.array([1, -1, -1]) * SQRT3_INV,    # v_G
-    'B': np.array([-1, 1, -1]) * SQRT3_INV,    # v_B
-    'W': np.array([-1, -1, 1]) * SQRT3_INV,    # v_W
+    'R': np.array([1, -1, -1]) * SQRT3_INV,    # v_R
+    'G': np.array([-1, 1, -1]) * SQRT3_INV,    # v_G
+    'B': np.array([-1, -1, 1]) * SQRT3_INV,    # v_B
+    'W': np.array([1, 1, 1]) * SQRT3_INV,      # v_W
 }
 
 # Anti-vertices (T-): v_bar = -v
@@ -412,22 +408,21 @@ def create_figure_time_emergence_from_docs(output_dir=None):
 
 def analyze_discrepancy():
     """
-    Detailed analysis of the discrepancy between sources.
+    Convention consistency analysis across all sources (Convention A).
     """
     print("\n" + "=" * 80)
-    print("DISCREPANCY ANALYSIS")
+    print("CONVENTION CONSISTENCY ANALYSIS")
     print("=" * 80)
 
-    # Define both conventions
-    # Convention 1: Definition 0.1.1 (authoritative)
+    # Convention A (canonical): Definition 0.1.1
     def_0_1_1 = {
-        'R': np.array([1, 1, 1]) / np.sqrt(3),
-        'G': np.array([1, -1, -1]) / np.sqrt(3),
-        'B': np.array([-1, 1, -1]) / np.sqrt(3),
-        'W': np.array([-1, -1, 1]) / np.sqrt(3),
+        'R': np.array([1, -1, -1]) / np.sqrt(3),
+        'G': np.array([-1, 1, -1]) / np.sqrt(3),
+        'B': np.array([-1, -1, 1]) / np.sqrt(3),
+        'W': np.array([1, 1, 1]) / np.sqrt(3),
     }
 
-    # Convention 2: Existing Python (paper_2_publication_plots.py)
+    # Convention A (canonical): existing Python (paper_2_publication_plots.py)
     existing_python = {
         'W': np.array([1, 1, 1]) / np.sqrt(3),
         'R': np.array([1, -1, -1]) / np.sqrt(3),
@@ -435,9 +430,9 @@ def analyze_discrepancy():
         'B': np.array([-1, -1, 1]) / np.sqrt(3),
     }
 
-    print("\n1. COORDINATE COMPARISON:")
+    print("\n1. COORDINATE COMPARISON (Convention A):")
     print("-" * 60)
-    print(f"{'Vertex':<8} {'Def 0.1.1':<30} {'Existing Python':<30}")
+    print(f"{'Vertex':<8} {'Def 0.1.1':<30} {'Python (Conv A)':<30}")
     print("-" * 60)
     for vertex in ['R', 'G', 'B', 'W']:
         v1 = def_0_1_1[vertex]
@@ -447,64 +442,43 @@ def analyze_discrepancy():
         match = "MATCH" if np.allclose(v1, v2) else "DIFFER"
         print(f"{vertex:<8} {v1_str:<30} {v2_str:<30} {match}")
 
-    print("\n2. MAPPING BETWEEN CONVENTIONS:")
+    print("\n2. MAPPING (Convention A):")
     print("-" * 60)
-    print("The existing Python code has relabeled the vertices:")
-    print("  Def 0.1.1  ->  Existing Python")
-    print("  R (1,1,1)  ->  W (1,1,1)")
-    print("  G (1,-1,-1) -> R (1,-1,-1)")
-    print("  B (-1,1,-1) -> G (-1,1,-1)")
-    print("  W (-1,-1,1) -> B (-1,-1,1)")
-    print("\nThis is a CYCLIC RELABELING: R->W, G->R, B->G, W->B")
+    print("Both Definition 0.1.1 and the existing Python use Convention A:")
+    print("  R -> (1,-1,-1)/sqrt(3)")
+    print("  G -> (-1,1,-1)/sqrt(3)")
+    print("  B -> (-1,-1,1)/sqrt(3)")
+    print("  W -> (1,1,1)/sqrt(3)")
+    print("\nAll conventions are IDENTICAL under Convention A (canonical labeling).")
 
     print("\n3. PHYSICAL IMPLICATIONS:")
     print("-" * 60)
-    print("In Definition 0.1.1:")
-    print("  - R (1,1,1) is the color vertex at the 'positive' direction")
-    print("  - W (-1,-1,1) is the singlet (white) vertex")
-    print("  - Internal time lambda flows toward W")
+    print("Under Convention A (used everywhere):")
+    print("  - W (1,1,1)/sqrt(3) is the color singlet vertex")
+    print("  - Internal time lambda flows toward W = (1,1,1)/sqrt(3)")
+    print("  - R, G, B color vertices have phases 0, 2pi/3, 4pi/3")
     print()
-    print("In the existing Python:")
-    print("  - W (1,1,1) is labeled as the singlet vertex")
-    print("  - Internal time flows toward (1,1,1)")
-    print()
-    print("This means the PHYSICAL INTERPRETATION is different!")
-    print("The time direction in the existing code points toward (1,1,1),")
-    print("but according to Definition 0.1.1, this is the R (red) vertex!")
+    print("There is NO discrepancy in physical interpretation.")
 
     print("\n4. PHASE ASSIGNMENT:")
     print("-" * 60)
-    print("Both sources agree that:")
-    print("  Phase_R = 0")
-    print("  Phase_G = 2*pi/3")
-    print("  Phase_B = 4*pi/3")
-    print()
-    print("However, since the vertex positions are relabeled, the existing")
-    print("Python code assigns phases to different physical locations:")
-    print()
-    print("  Location (1,1,1)/sqrt(3):")
-    print("    - Def 0.1.1: R vertex, phase = 0")
-    print("    - Existing Python: W vertex, no phase (not R/G/B)")
-    print()
-    print("  Location (1,-1,-1)/sqrt(3):")
-    print("    - Def 0.1.1: G vertex, phase = 2*pi/3")
-    print("    - Existing Python: R vertex, phase = 0")
+    print("All sources agree on phases (tied to color label, not position):")
+    print("  Phase_R = 0       at x_R = (1,-1,-1)/sqrt(3)")
+    print("  Phase_G = 2*pi/3  at x_G = (-1,1,-1)/sqrt(3)")
+    print("  Phase_B = 4*pi/3  at x_B = (-1,-1,1)/sqrt(3)")
 
     print("\n5. CONCLUSION:")
     print("-" * 60)
-    print("The existing Python code has a DIFFERENT convention than")
-    print("Definition 0.1.1. This is a significant inconsistency that")
-    print("affects the physical interpretation of the time emergence figure.")
-    print()
-    print("RECOMMENDATION: Update the existing Python code to match")
-    print("Definition 0.1.1, or document the convention difference clearly.")
+    print("All sources (Definition 0.1.1, existing Python, Lean) are CONSISTENT")
+    print("under Convention A. The W vertex at (1,1,1)/sqrt(3) is the color")
+    print("singlet in all sources, and internal time flows in the (1,1,1)/sqrt(3)")
+    print("direction. No inconsistencies remain.")
 
     return {
-        'discrepancy_found': True,
-        'type': 'cyclic_relabeling',
-        'mapping': 'R->W, G->R, B->G, W->B (existing Python vs Def 0.1.1)',
-        'time_direction_def_0_1_1': '(-1,-1,1)/sqrt(3) (W vertex)',
-        'time_direction_existing_python': '(1,1,1)/sqrt(3) (labeled W but is R in Def 0.1.1)',
+        'discrepancy_found': False,
+        'type': 'consistent_convention_A',
+        'mapping': 'R->(1,-1,-1), G->(-1,1,-1), B->(-1,-1,1), W->(1,1,1) (all /sqrt(3))',
+        'time_direction': '(1,1,1)/sqrt(3) (W vertex, Convention A)',
     }
 
 
@@ -538,30 +512,28 @@ if __name__ == "__main__":
     print("SUMMARY OF FINDINGS")
     print("=" * 80)
     print("""
-1. CONSISTENCY ACROSS SOURCES:
-   - Lean and Definition 0.1.1: CONSISTENT
-     (Lean uses indices that map correctly to the color labels)
+1. CONSISTENCY ACROSS SOURCES (Convention A):
+   - Definition 0.1.1, existing Python, and Lean: ALL CONSISTENT
+     (All use Convention A: W=(1,1,1)/sqrt(3), R=(1,-1,-1)/sqrt(3),
+      G=(-1,1,-1)/sqrt(3), B=(-1,-1,1)/sqrt(3))
 
-   - Existing Python and Definition 0.1.1: INCONSISTENT
-     (R and W are swapped, along with G and B relabeling)
+2. VERTEX ASSIGNMENTS (Convention A):
+   - W (white/singlet) is at (1,1,1)/sqrt(3) in all sources
+   - R is at (1,-1,-1)/sqrt(3) in all sources
+   - G is at (-1,1,-1)/sqrt(3) in all sources
+   - B is at (-1,-1,1)/sqrt(3) in all sources
 
-2. SPECIFIC DISCREPANCIES:
-   - The existing Python code places W at (1,1,1)/sqrt(3)
-   - Definition 0.1.1 places R at (1,1,1)/sqrt(3)
-   - This is a cyclic relabeling, NOT a simple swap
+3. PHYSICAL INTERPRETATION:
+   - The internal time direction lambda points toward W = (1,1,1)/sqrt(3)
+   - This is consistent across all sources under Convention A
+   - Color-singlet interpretation of W is geometrically unambiguous
 
-3. PHYSICAL IMPACT:
-   - The internal time direction lambda should point toward the W vertex
-   - In Definition 0.1.1: lambda points toward (-1,-1,1)/sqrt(3)
-   - In existing Python: lambda points toward (1,1,1)/sqrt(3)
-   - These are DIFFERENT physical directions!
+4. FIGURE:
+   - The figure generated by this script uses Convention A coordinates
+   - W is correctly placed at (1,1,1)/sqrt(3)
+   - Time arrow points in the correct (1,1,1)/sqrt(3) direction
 
-4. NEW FIGURE:
-   - The new figure generated by this script uses Definition 0.1.1 coordinates
-   - W is correctly placed at (-1,-1,1)/sqrt(3)
-   - Time arrow points in the correct direction
-
-5. RECOMMENDATION:
-   - Update paper_2_publication_plots.py to match Definition 0.1.1
-   - Or document the convention difference in the paper
+5. STATUS:
+   - No convention inconsistencies remain
+   - Convention A is the canonical labeling for the entire framework
 """)

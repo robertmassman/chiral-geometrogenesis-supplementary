@@ -1,0 +1,697 @@
+{
+  "definition": "1.1.4",
+  "title": "Stella Diagram Rules",
+  "timestamp": "2026-03-06T05:55:20.751176",
+  "overall_status": "PASSED",
+  "total_tests": 107,
+  "passed": 107,
+  "failed": 0,
+  "results": [
+    {
+      "test_id": "T-1a",
+      "title": "Fundamental weights sum to zero",
+      "passed": true,
+      "details": "Sum = [0. 0.]",
+      "computed": [
+        0.0,
+        0.0
+      ],
+      "expected": [
+        0,
+        0
+      ]
+    },
+    {
+      "test_id": "T-1b",
+      "title": "Anti-fundamental weights sum to zero",
+      "passed": true,
+      "details": "Sum = [0. 0.]",
+      "computed": [
+        0.0,
+        0.0
+      ],
+      "expected": [
+        0,
+        0
+      ]
+    },
+    {
+      "test_id": "T-1c-R",
+      "title": "w_R + w_Rbar = 0",
+      "passed": true,
+      "details": "w_R + w_Rbar = [0. 0.]"
+    },
+    {
+      "test_id": "T-1c-G",
+      "title": "w_G + w_Gbar = 0",
+      "passed": true,
+      "details": "w_G + w_Gbar = [0. 0.]"
+    },
+    {
+      "test_id": "T-1c-B",
+      "title": "w_B + w_Bbar = 0",
+      "passed": true,
+      "details": "w_B + w_Bbar = [0. 0.]"
+    },
+    {
+      "test_id": "T-1d-R-T3",
+      "title": "T3 eigenvalue for R",
+      "passed": "True",
+      "details": "T3(R) = 0.5, expected 0.5",
+      "computed": 0.5,
+      "expected": 0.5
+    },
+    {
+      "test_id": "T-1d-R-Y",
+      "title": "Y eigenvalue for R",
+      "passed": "True",
+      "details": "Y(R) = 0.3333333333333334, expected 0.3333333333333333",
+      "computed": 0.3333333333333334,
+      "expected": 0.3333333333333333
+    },
+    {
+      "test_id": "T-1d-G-T3",
+      "title": "T3 eigenvalue for G",
+      "passed": "True",
+      "details": "T3(G) = -0.5, expected -0.5",
+      "computed": -0.5,
+      "expected": -0.5
+    },
+    {
+      "test_id": "T-1d-G-Y",
+      "title": "Y eigenvalue for G",
+      "passed": "True",
+      "details": "Y(G) = 0.3333333333333334, expected 0.3333333333333333",
+      "computed": 0.3333333333333334,
+      "expected": 0.3333333333333333
+    },
+    {
+      "test_id": "T-1d-B-T3",
+      "title": "T3 eigenvalue for B",
+      "passed": "True",
+      "details": "T3(B) = 0.0, expected 0.0",
+      "computed": 0.0,
+      "expected": 0.0
+    },
+    {
+      "test_id": "T-1d-B-Y",
+      "title": "Y eigenvalue for B",
+      "passed": "True",
+      "details": "Y(B) = -0.6666666666666669, expected -0.6666666666666666",
+      "computed": -0.6666666666666669,
+      "expected": -0.6666666666666666
+    },
+    {
+      "test_id": "T-1e",
+      "title": "Weights form equilateral triangle in (T3,T8) basis",
+      "passed": true,
+      "details": "(T3,Y) dists: ['1.0000', '1.1180', '1.1180'], (T3,T8) dists: ['1.0000', '1.0000', '1.0000']"
+    },
+    {
+      "test_id": "T-2a",
+      "title": "omega^3 = 1",
+      "passed": "True",
+      "details": "omega^3 = (0.9999999999999998-4.772891088663143e-16j)"
+    },
+    {
+      "test_id": "T-2b",
+      "title": "1 + omega + omega^2 = 0",
+      "passed": "True",
+      "details": "Sum = 3.3306690738754696e-16j"
+    },
+    {
+      "test_id": "T-2c-RG",
+      "title": "Phase factor R->G = omega",
+      "passed": "True",
+      "details": "omega^1.0 = (-0.49999999999999983+0.8660254037844387j), expected (-0.49999999999999983+0.8660254037844387j)"
+    },
+    {
+      "test_id": "T-2c-GB",
+      "title": "Phase factor G->B = omega",
+      "passed": "True",
+      "details": "omega^1.0 = (-0.49999999999999983+0.8660254037844387j), expected (-0.49999999999999983+0.8660254037844387j)"
+    },
+    {
+      "test_id": "T-2c-BR",
+      "title": "Phase factor B->R = omega",
+      "passed": "True",
+      "details": "omega^-2.0 = (-0.5000000000000002+0.8660254037844385j), expected (-0.49999999999999983+0.8660254037844387j)"
+    },
+    {
+      "test_id": "T-2d-RG",
+      "title": "Reverse G->R conjugates phase",
+      "passed": "True",
+      "details": "omega^(-Dc) = (-0.49999999999999983-0.8660254037844387j), conj(omega^Dc) = (-0.49999999999999983-0.8660254037844387j)"
+    },
+    {
+      "test_id": "T-2d-GB",
+      "title": "Reverse B->G conjugates phase",
+      "passed": "True",
+      "details": "omega^(-Dc) = (-0.49999999999999983-0.8660254037844387j), conj(omega^Dc) = (-0.49999999999999983-0.8660254037844387j)"
+    },
+    {
+      "test_id": "T-2d-BR",
+      "title": "Reverse R->B conjugates phase",
+      "passed": "True",
+      "details": "omega^(-Dc) = (-0.5000000000000002-0.8660254037844384j), conj(omega^Dc) = (-0.5000000000000002-0.8660254037844385j)"
+    },
+    {
+      "test_id": "T-2e",
+      "title": "omega = -1/2 + sqrt(3)/2 i",
+      "passed": "True",
+      "details": "omega = (-0.49999999999999983+0.8660254037844387j), expected (-0.5+0.8660254037844386j)"
+    },
+    {
+      "test_id": "T-3a-R",
+      "title": "Meson R-Rbar color neutral",
+      "passed": true,
+      "details": "Net weight = [0. 0.]"
+    },
+    {
+      "test_id": "T-3a-G",
+      "title": "Meson G-Gbar color neutral",
+      "passed": true,
+      "details": "Net weight = [0. 0.]"
+    },
+    {
+      "test_id": "T-3a-B",
+      "title": "Meson B-Bbar color neutral",
+      "passed": true,
+      "details": "Net weight = [0. 0.]"
+    },
+    {
+      "test_id": "T-3b",
+      "title": "Baryon RGB color neutral",
+      "passed": true,
+      "details": "Net weight = [0. 0.]"
+    },
+    {
+      "test_id": "T-3c",
+      "title": "Anti-baryon color neutral",
+      "passed": true,
+      "details": "Net weight = [0. 0.]"
+    },
+    {
+      "test_id": "T-3d",
+      "title": "Baryon phase cancellation",
+      "passed": "True",
+      "details": "Phase sum = (-2.220446049250313e-16+3.3306690738754696e-16j)"
+    },
+    {
+      "test_id": "T-3e",
+      "title": "Color cycle phase = 2pi",
+      "passed": "True",
+      "details": "Cycle phase = 6.283185307179586, expected 6.283185307179586"
+    },
+    {
+      "test_id": "T-4a",
+      "title": "Single R rejected",
+      "passed": true,
+      "details": "w_R = [0.5        0.33333333] != 0"
+    },
+    {
+      "test_id": "T-4b",
+      "title": "Open R->G rejected",
+      "passed": true,
+      "details": "w_G - w_R = [-1.  0.] != 0"
+    },
+    {
+      "test_id": "T-4c",
+      "title": "R+G (missing B) rejected",
+      "passed": true,
+      "details": "w_R + w_G = [0.         0.66666667] != 0"
+    },
+    {
+      "test_id": "T-4d",
+      "title": "Wrong pair R+Gbar rejected",
+      "passed": true,
+      "details": "w_R + w_Gbar = [1. 0.] != 0"
+    },
+    {
+      "test_id": "T-4e",
+      "title": "Exactly 6 singlet pairs (3 conjugate x 2 directions)",
+      "passed": true,
+      "details": "Singlet pairs = 6, non-singlet = 24",
+      "computed": 6,
+      "expected": 6
+    },
+    {
+      "test_id": "T-4f",
+      "title": "Exactly 2 singlet triples (RGB, RbarGbarBbar)",
+      "passed": true,
+      "details": "Singlet triples: [('R', 'G', 'B'), ('Rbar', 'Gbar', 'Bbar')]",
+      "computed": 2,
+      "expected": 2
+    },
+    {
+      "test_id": "T-5a-R",
+      "title": "I^2(R) = R",
+      "passed": true,
+      "details": "I(I(R)) = R"
+    },
+    {
+      "test_id": "T-5a-G",
+      "title": "I^2(G) = G",
+      "passed": true,
+      "details": "I(I(G)) = G"
+    },
+    {
+      "test_id": "T-5a-B",
+      "title": "I^2(B) = B",
+      "passed": true,
+      "details": "I(I(B)) = B"
+    },
+    {
+      "test_id": "T-5a-Rbar",
+      "title": "I^2(Rbar) = Rbar",
+      "passed": true,
+      "details": "I(I(Rbar)) = Rbar"
+    },
+    {
+      "test_id": "T-5a-Gbar",
+      "title": "I^2(Gbar) = Gbar",
+      "passed": true,
+      "details": "I(I(Gbar)) = Gbar"
+    },
+    {
+      "test_id": "T-5a-Bbar",
+      "title": "I^2(Bbar) = Bbar",
+      "passed": true,
+      "details": "I(I(Bbar)) = Bbar"
+    },
+    {
+      "test_id": "T-5b-R",
+      "title": "w_Rbar = -w_R",
+      "passed": true,
+      "details": "w_Rbar = [-0.5        -0.33333333], -w_R = [-0.5        -0.33333333]"
+    },
+    {
+      "test_id": "T-5b-G",
+      "title": "w_Gbar = -w_G",
+      "passed": true,
+      "details": "w_Gbar = [ 0.5        -0.33333333], -w_G = [ 0.5        -0.33333333]"
+    },
+    {
+      "test_id": "T-5b-B",
+      "title": "w_Bbar = -w_B",
+      "passed": true,
+      "details": "w_Bbar = [0.         0.66666667], -w_B = [-0.          0.66666667]"
+    },
+    {
+      "test_id": "T-5c-RG",
+      "title": "I preserves edge R->G",
+      "passed": "True",
+      "details": "Delta+ = 2.0943951023931953, Delta- = 2.0943951023931953"
+    },
+    {
+      "test_id": "T-5c-GB",
+      "title": "I preserves edge G->B",
+      "passed": "True",
+      "details": "Delta+ = 2.0943951023931953, Delta- = 2.0943951023931953"
+    },
+    {
+      "test_id": "T-5c-BR",
+      "title": "I preserves edge B->R",
+      "passed": "True",
+      "details": "Delta+ = -4.1887902047863905, Delta- = -4.1887902047863905"
+    },
+    {
+      "test_id": "T-6a",
+      "title": "SU(3) has 8 generators",
+      "passed": true,
+      "details": "Number of Gell-Mann matrices = 8"
+    },
+    {
+      "test_id": "T-6b-1",
+      "title": "lambda_1 traceless",
+      "passed": "True",
+      "details": "Tr(lambda_1) = 0j"
+    },
+    {
+      "test_id": "T-6b-2",
+      "title": "lambda_2 traceless",
+      "passed": "True",
+      "details": "Tr(lambda_2) = 0j"
+    },
+    {
+      "test_id": "T-6b-3",
+      "title": "lambda_3 traceless",
+      "passed": "True",
+      "details": "Tr(lambda_3) = 0j"
+    },
+    {
+      "test_id": "T-6b-4",
+      "title": "lambda_4 traceless",
+      "passed": "True",
+      "details": "Tr(lambda_4) = 0j"
+    },
+    {
+      "test_id": "T-6b-5",
+      "title": "lambda_5 traceless",
+      "passed": "True",
+      "details": "Tr(lambda_5) = 0j"
+    },
+    {
+      "test_id": "T-6b-6",
+      "title": "lambda_6 traceless",
+      "passed": "True",
+      "details": "Tr(lambda_6) = 0j"
+    },
+    {
+      "test_id": "T-6b-7",
+      "title": "lambda_7 traceless",
+      "passed": "True",
+      "details": "Tr(lambda_7) = 0j"
+    },
+    {
+      "test_id": "T-6b-8",
+      "title": "lambda_8 traceless",
+      "passed": "True",
+      "details": "Tr(lambda_8) = 0j"
+    },
+    {
+      "test_id": "T-6c-1",
+      "title": "lambda_1 Hermitian",
+      "passed": true,
+      "details": "lambda_1 - lambda_1^dag max diff = 0.0"
+    },
+    {
+      "test_id": "T-6c-2",
+      "title": "lambda_2 Hermitian",
+      "passed": true,
+      "details": "lambda_2 - lambda_2^dag max diff = 0.0"
+    },
+    {
+      "test_id": "T-6c-3",
+      "title": "lambda_3 Hermitian",
+      "passed": true,
+      "details": "lambda_3 - lambda_3^dag max diff = 0.0"
+    },
+    {
+      "test_id": "T-6c-4",
+      "title": "lambda_4 Hermitian",
+      "passed": true,
+      "details": "lambda_4 - lambda_4^dag max diff = 0.0"
+    },
+    {
+      "test_id": "T-6c-5",
+      "title": "lambda_5 Hermitian",
+      "passed": true,
+      "details": "lambda_5 - lambda_5^dag max diff = 0.0"
+    },
+    {
+      "test_id": "T-6c-6",
+      "title": "lambda_6 Hermitian",
+      "passed": true,
+      "details": "lambda_6 - lambda_6^dag max diff = 0.0"
+    },
+    {
+      "test_id": "T-6c-7",
+      "title": "lambda_7 Hermitian",
+      "passed": true,
+      "details": "lambda_7 - lambda_7^dag max diff = 0.0"
+    },
+    {
+      "test_id": "T-6c-8",
+      "title": "lambda_8 Hermitian",
+      "passed": true,
+      "details": "lambda_8 - lambda_8^dag max diff = 0.0"
+    },
+    {
+      "test_id": "T-6d",
+      "title": "Orthonormality Tr(T^a T^b) = (1/2) delta^{ab}",
+      "passed": "True",
+      "details": "All 64 products checked"
+    },
+    {
+      "test_id": "T-6e",
+      "title": "6 color-changing + 2 color-preserving gluons",
+      "passed": true,
+      "details": "Diagonal: 2, Off-diagonal: 6"
+    },
+    {
+      "test_id": "T-6f",
+      "title": "6 non-zero roots from weight differences",
+      "passed": true,
+      "details": "Found 6 non-zero roots"
+    },
+    {
+      "test_id": "T-7a",
+      "title": "sqrt(sigma) = 440 MeV",
+      "passed": true,
+      "details": "sqrt(sigma) = 440.0 MeV",
+      "computed": 440.00044596071086,
+      "expected": 440
+    },
+    {
+      "test_id": "T-7b",
+      "title": "sigma has dimension [energy]^2",
+      "passed": true,
+      "details": "sigma = 0.1936 GeV^2 = (440 MeV)^2"
+    },
+    {
+      "test_id": "T-7c",
+      "title": "Face area A = sqrt(3)/4 * a^2",
+      "passed": "True",
+      "details": "a = 0.73235 fm, A = 0.23224 fm^2"
+    },
+    {
+      "test_id": "T-7d",
+      "title": "Wilson loop exp(-sigma*A) is in (0,1)",
+      "passed": "True",
+      "details": "W(triangle) = 0.315152"
+    },
+    {
+      "test_id": "T-7e",
+      "title": "Linear potential V(R_stella) = sqrt(sigma)",
+      "passed": "True",
+      "details": "V(R_stella) = 440 MeV"
+    },
+    {
+      "test_id": "T-7f",
+      "title": "sqrt(sigma) within 1-sigma of lattice",
+      "passed": true,
+      "details": "|440 - 440.0| / 30 = 0.00 sigma"
+    },
+    {
+      "test_id": "T-8a",
+      "title": "Meson + anti-meson compose to identity phase",
+      "passed": "True",
+      "details": "Product phase = (1+0j)"
+    },
+    {
+      "test_id": "T-8b",
+      "title": "Baryon junction phase product = 1",
+      "passed": "True",
+      "details": "Product = (0.9999999999999999-6.993337137913456e-16j)"
+    },
+    {
+      "test_id": "T-8c",
+      "title": "Composed closed diagrams remain closed",
+      "passed": true,
+      "details": "Net weight = [0. 0.]"
+    },
+    {
+      "test_id": "T-9a",
+      "title": "R->G->B->R cycle phase = 2pi",
+      "passed": "True",
+      "details": "Phi = 6.283185, 2pi = 6.283185"
+    },
+    {
+      "test_id": "T-9b-k1",
+      "title": "1 cycles give phase 1*2pi",
+      "passed": "True",
+      "details": "1 * 2pi = 6.283185"
+    },
+    {
+      "test_id": "T-9b-k2",
+      "title": "2 cycles give phase 2*2pi",
+      "passed": "True",
+      "details": "2 * 2pi = 12.566371"
+    },
+    {
+      "test_id": "T-9b-k3",
+      "title": "3 cycles give phase 3*2pi",
+      "passed": "True",
+      "details": "3 * 2pi = 18.849556"
+    },
+    {
+      "test_id": "T-9b-k4",
+      "title": "4 cycles give phase 4*2pi",
+      "passed": "True",
+      "details": "4 * 2pi = 25.132741"
+    },
+    {
+      "test_id": "T-9c-R",
+      "title": "Meson R->Rbar phase = 0 mod 2pi",
+      "passed": "True",
+      "details": "Phase = 0"
+    },
+    {
+      "test_id": "T-9c-G",
+      "title": "Meson G->Gbar phase = 0 mod 2pi",
+      "passed": "True",
+      "details": "Phase = 0.0"
+    },
+    {
+      "test_id": "T-9c-B",
+      "title": "Meson B->Bbar phase = 0 mod 2pi",
+      "passed": "True",
+      "details": "Phase = 0.0"
+    },
+    {
+      "test_id": "T-9d",
+      "title": "Reverse cycle phase = -2pi",
+      "passed": "True",
+      "details": "Phi_reverse = -6.283185"
+    },
+    {
+      "test_id": "T-10a",
+      "title": "Diagram graph chi = V - E + F = -1",
+      "passed": true,
+      "details": "chi = 6 - 9 + 2 = -1",
+      "computed": -1,
+      "expected": -1
+    },
+    {
+      "test_id": "T-10b",
+      "title": "Full stella chi = 4 (two spheres)",
+      "passed": true,
+      "details": "chi(partial S) = chi(S^2) + chi(S^2) = 2 + 2 = 4"
+    },
+    {
+      "test_id": "T-10c",
+      "title": "Diagram graph != full stella (chi -1 vs 4)",
+      "passed": true,
+      "details": "Correctly distinguishes subgraph from full boundary"
+    },
+    {
+      "test_id": "T-11a",
+      "title": "3 intra-T+ edges",
+      "passed": true,
+      "details": "C(3,2) = 3"
+    },
+    {
+      "test_id": "T-11b",
+      "title": "3 intra-T- edges",
+      "passed": true,
+      "details": "C(3,2) = 3"
+    },
+    {
+      "test_id": "T-11c",
+      "title": "3 cross (conjugation) edges",
+      "passed": true,
+      "details": "Cross edges: [('R', 'Rbar'), ('G', 'Gbar'), ('B', 'Bbar')]"
+    },
+    {
+      "test_id": "T-11d",
+      "title": "Total 9 diagram edges",
+      "passed": true,
+      "details": "3 + 3 + 3 = 9"
+    },
+    {
+      "test_id": "T-11e",
+      "title": "Diagram graph is not K_6 (9 < 15 edges)",
+      "passed": true,
+      "details": "Diagram: 9, K_6: 15"
+    },
+    {
+      "test_id": "T-12a-step0",
+      "title": "Forward step 0 = +2pi/3",
+      "passed": "True",
+      "details": "Step = 2.094395, expected 2.094395"
+    },
+    {
+      "test_id": "T-12a-step1",
+      "title": "Forward step 1 = +2pi/3",
+      "passed": "True",
+      "details": "Step = 2.094395, expected 2.094395"
+    },
+    {
+      "test_id": "T-12a-step2",
+      "title": "Forward step 2 = +2pi/3",
+      "passed": "True",
+      "details": "Step = 2.094395, expected 2.094395"
+    },
+    {
+      "test_id": "T-12b",
+      "title": "Reverse first step = 4pi/3 (equiv -2pi/3)",
+      "passed": "True",
+      "details": "R->B step = 4.188790"
+    },
+    {
+      "test_id": "T-12c",
+      "title": "Forward and reverse cycle products both = 1",
+      "passed": "True",
+      "details": "Fwd: (0.9999999999999998-5.253631760259034e-16j), Rev: (0.9999999999999998+5.253631760259034e-16j)"
+    },
+    {
+      "test_id": "T-13a",
+      "title": "3 x 3bar = 1 + 8 (dim: 9 = 1 + 8)",
+      "passed": true,
+      "details": "3 * 3 = 9 = 1 + 8"
+    },
+    {
+      "test_id": "T-13b",
+      "title": "3 x 3 x 3 = 1 + 8 + 8 + 10 (dim: 27)",
+      "passed": true,
+      "details": "27 = 27"
+    },
+    {
+      "test_id": "T-13c",
+      "title": "Meson singlet: all components have zero weight",
+      "passed": true,
+      "details": "Component weights: [array([0., 0.]), array([0., 0.]), array([0., 0.])]"
+    },
+    {
+      "test_id": "T-13d",
+      "title": "Baryon epsilon_{RGB} has zero net weight",
+      "passed": true,
+      "details": "w_R + w_G + w_B = [0. 0.]"
+    },
+    {
+      "test_id": "T-13e",
+      "title": "R+Gbar has net weight (1,0) \u2014 in octet",
+      "passed": true,
+      "details": "w_R + w_Gbar = [1. 0.]",
+      "computed": [
+        1.0,
+        0.0
+      ],
+      "expected": [
+        1,
+        0
+      ]
+    },
+    {
+      "test_id": "T-14a",
+      "title": "Phase factors omega^k are dimensionless",
+      "passed": true,
+      "details": "omega = e^{2pi i/3} is a dimensionless complex number on S^1"
+    },
+    {
+      "test_id": "T-14b",
+      "title": "Weight vectors are dimensionless",
+      "passed": true,
+      "details": "Eigenvalues of T3 and Y operators \u2014 pure numbers"
+    },
+    {
+      "test_id": "T-14c",
+      "title": "sqrt(sigma) = hbar*c/R has dim [energy]",
+      "passed": true,
+      "details": "sqrt(sigma) = 0.4400 GeV (dimension: energy)"
+    },
+    {
+      "test_id": "T-14d",
+      "title": "Wilson loop exponent sigma*A is dimensionless",
+      "passed": true,
+      "details": "[sigma] = fm^{-2} * [A] = fm^2 => dimensionless"
+    },
+    {
+      "test_id": "T-14e",
+      "title": "Edge length a has dim [length]",
+      "passed": "True",
+      "details": "a = 0.73235 fm"
+    }
+  ]
+}

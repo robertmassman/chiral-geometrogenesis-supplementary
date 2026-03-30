@@ -380,12 +380,12 @@ def verify_symmetries() -> Dict[str, Any]:
     print(f"  VERIFICATION:")
 
     # SU(3)_c weight projection
-    # W vertex: x_W = (-1, -1, 1)/√3
+    # W vertex: x_W = (1, 1, 1)/√3
 
-    x_W = np.array([-1, -1, 1]) / np.sqrt(3)
-    x_R = np.array([1, 1, 1]) / np.sqrt(3)
-    x_G = np.array([1, -1, -1]) / np.sqrt(3)
-    x_B = np.array([-1, 1, -1]) / np.sqrt(3)
+    x_W = np.array([1, 1, 1]) / np.sqrt(3)
+    x_R = np.array([1, -1, -1]) / np.sqrt(3)
+    x_G = np.array([-1, 1, -1]) / np.sqrt(3)
+    x_B = np.array([-1, -1, 1]) / np.sqrt(3)
 
     print(f"  x_W = {x_W}")
 
@@ -436,9 +436,9 @@ def verify_symmetries() -> Dict[str, Any]:
     print(f"  GEOMETRIC ARGUMENT:")
 
     # RGB centroid
-    x_R = np.array([1, 1, 1]) / np.sqrt(3)
-    x_G = np.array([1, -1, -1]) / np.sqrt(3)
-    x_B = np.array([-1, 1, -1]) / np.sqrt(3)
+    x_R = np.array([1, -1, -1]) / np.sqrt(3)
+    x_G = np.array([-1, 1, -1]) / np.sqrt(3)
+    x_B = np.array([-1, -1, 1]) / np.sqrt(3)
 
     x_RGB_center = (x_R + x_G + x_B) / 3
 

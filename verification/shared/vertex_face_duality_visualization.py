@@ -381,9 +381,9 @@ def draw_summary_table(ax):
 
     table_data = [
         ['Color', 'Vertex\n(Source)', 'Face Center\n(Depression)', 'Duality'],
-        ['R', 'x_R = (1,1,1)/√3', '-x_R/3', 'D_R ↔ E_R'],
-        ['G', 'x_G = (1,-1,-1)/√3', '-x_G/3', 'D_G ↔ E_G'],
-        ['B', 'x_B = (-1,1,-1)/√3', '-x_B/3', 'D_B ↔ E_B'],
+        ['R', 'x_R = (1,-1,-1)/√3', '-x_R/3', 'D_R ↔ E_R'],
+        ['G', 'x_G = (-1,1,-1)/√3', '-x_G/3', 'D_G ↔ E_G'],
+        ['B', 'x_B = (-1,-1,1)/√3', '-x_B/3', 'D_B ↔ E_B'],
     ]
 
     colors_list = [['lightgray'] * 4,
