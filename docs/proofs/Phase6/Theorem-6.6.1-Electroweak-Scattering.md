@@ -5,6 +5,13 @@
 **Created:** 2026-01-24
 **Purpose:** Derive electroweak scattering amplitudes from the CG framework, demonstrating that electroweak processes (Drell-Yan, W/Z production, WW scattering) follow from the geometrically-derived SU(2)_L × U(1)_Y structure.
 
+**Dependencies:**
+- ✅ Theorem 6.7.1 (Electroweak Gauge Fields From 24-Cell)
+- ✅ Theorem 6.7.2 (Electroweak Symmetry Breaking Dynamics)
+- ✅ Theorem 6.2.2 (Helicity Amplitudes Spinor Helicity Formalism)
+- ✅ Proposition 0.0.21 (Unified Electroweak Scale Derivation)
+- ✅ Proposition 0.0.24 (SU(2) Gauge Coupling From Unification)
+
 ---
 
 ## 1. Formal Statement

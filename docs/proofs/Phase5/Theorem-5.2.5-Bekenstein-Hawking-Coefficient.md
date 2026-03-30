@@ -91,7 +91,7 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 - ✅ Theorem 1.1.1 (SU(3) Isomorphism) — Color degeneracy, adj⊗adj = 64 channels
 
 ### Dependent Theorems (will need re-verification if this changes)
-- None directly (this completes the gravitational sector)
+- [Proposition 5.2.5e](Proposition-5.2.5e-Holographic-Self-Encoding-Scale-Invariance.md) — Uses $\gamma = 1/4$ to prove holographic self-encoding is scale-invariant
 
 ### Related Derivations
 - ✅ **[Derivation-5.2.5a-Surface-Gravity.md](./Derivation-5.2.5a-Surface-Gravity.md)** — Surface gravity κ = c³/(4GM) from emergent metric

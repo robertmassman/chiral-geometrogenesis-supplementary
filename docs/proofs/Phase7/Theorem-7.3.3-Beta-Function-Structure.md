@@ -8,6 +8,13 @@
 **Created:** 2026-01-17
 **Last Updated:** 2026-01-17
 
+**Dependencies:**
+- ✅ Theorem 7.3.2 (Asymptotic Freedom)
+- ✅ Theorem 7.1.1 (Power Counting)
+- ✅ Theorem 2.5.1 (CG Lagrangian Derivation)
+- ✅ Theorem 2.5.2 (Dynamical Confinement)
+- ✅ Proposition 3.1.1b (RG Fixed Point Analysis)
+
 ---
 
 ## File Structure

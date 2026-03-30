@@ -10,6 +10,9 @@ where $\tilde{F}^{\mu\nu} = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}
 
 **Significance:** This anomaly links the chiral dynamics of the $\chi$ field to gauge field topology, providing the mechanism by which the rotating vacuum can influence particle physics.
 
+**Dependencies:**
+- ✅ ESTABLISHED (Standard QFT: Fujikawa method, ABJ anomaly)
+
 ---
 
 ## Part 1: Classical Chiral Symmetry

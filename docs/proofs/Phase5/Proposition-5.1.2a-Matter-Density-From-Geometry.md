@@ -13,8 +13,6 @@ $$\boxed{\text{Stella Octangula} \to \eta_B \to \Omega_b \to \Omega_m \to \Omega
 **Dependencies:**
 - ✅ Theorem 4.2.1 (Baryogenesis) — Derives η_B from CG chirality
 - ✅ Theorem 4.2.1 §18 (η_B → Ω_b) — Converts baryon asymmetry to density fraction
-- ✅ Prediction 8.3.1 (W-Condensate DM) — Derives Ω_DM from W-soliton asymmetry
-- ✅ Prediction 8.3.1 §6.4 (ε_W/η_B) — Geometric derivation of W-to-baryon ratio
 - ✅ Proposition 0.0.17u (Flatness) — Inflation predicts Ω_total = 1
 
 ---

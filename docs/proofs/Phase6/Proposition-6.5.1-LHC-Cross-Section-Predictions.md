@@ -34,6 +34,14 @@ Adversarial physics verification confirms **4 genuine predictions** and **8 cons
 
 **Falsification Criteria:** None triggered (no ℓ=2 violation, string tension consistent, no anomalous excess)
 
+**Dependencies:**
+- ✅ Theorem 6.1.1 (Complete Feynman Rules)
+- ✅ Theorem 6.2.1 (Tree Level Scattering Amplitudes)
+- ✅ Proposition 6.3.1 (One-Loop QCD Corrections)
+- ✅ Proposition 6.4.1 (Hadronization Framework)
+- ✅ Theorem 0.0.14 (Novel Lorentz Violation Pattern)
+- ✅ Theorem 0.0.7 (Lorentz Violation Bounds)
+
 ---
 
 ## 1. Formal Statement

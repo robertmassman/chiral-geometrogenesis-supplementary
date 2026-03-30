@@ -280,6 +280,14 @@ $$N_{\text{bulk}} \sim \left(\frac{R_{\text{stella}}}{a}\right)^3 \sim 10^{57}$$
 
 This is comparable to the number of Planck volumes in a stellar-mass black hole's entropy, providing a consistency check on the framework.
 
+### 6.4 Connection to Brazovskii Mechanism (Prop 0.0.3b)
+
+Proposition 0.0.3b derives lattice formation from a complementary direction: the Brazovskii instability of Z₃ fields with the pair potential $V(r) = V_0/(r^2 + R_\text{stella}^2)$ from Prop 0.0.3a. The resulting Brazovskii lattice spacing is:
+
+$$a_B = \frac{2\pi}{k_0} \approx (2\text{--}7) \times R_\text{stella} \approx 1\text{--}3 \text{ fm}$$
+
+This is a **QCD-scale modulation** — a Z₃ color-field superstructure on top of the Planck-scale FCC lattice derived here. The two periodic structures share FCC symmetry and Z₃ stacking (period 3 = $|Z(SU(3))|$), but operate at different scales. Their ratio $a_B/a_H \sim R_\text{stella}/\ell_P \sim 10^{19}$ is the same hierarchy explained in §6.1. See Prop 0.0.3b §7.2–7.3 for the derivation and `verification/foundations/proposition_0_0_3b_quantitative_spacing.py` for numerical verification.
+
 ---
 
 ## 7. Comparison with Loop Quantum Gravity
@@ -480,6 +488,7 @@ See `verification/foundations/prop_0_0_17r_physics_verification.py` — Tests ag
 | Theorem 3.0.4 (Planck length) | ✅ Uses $\ell_P$ from W-axis |
 | Proposition 0.0.17q (Path A) | ✅ Complementary scale derivation |
 | **Topological chain (0.0.17t→w→v)** | ✅ Independent ℓ_P derivation (91% agreement) |
+| [Proposition 5.2.5e](../Phase5/Proposition-5.2.5e-Holographic-Self-Encoding-Scale-Invariance.md) | ✅ Uses $a^2 = (8\ln 3/\sqrt{3})\,\ell_P^2$ to prove scale invariance of holographic self-encoding |
 
 ---
 

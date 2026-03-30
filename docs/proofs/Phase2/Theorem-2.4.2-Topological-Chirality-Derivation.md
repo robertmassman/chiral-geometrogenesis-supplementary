@@ -126,11 +126,11 @@ Similarly:
 
 The three color fields $\chi_R, \chi_G, \chi_B$ are assigned to three vertices of $T_+$:
 
-$$\chi_R \leftrightarrow v_R = (1, 1, 1)$$
-$$\chi_G \leftrightarrow v_G = (1, -1, -1)$$
-$$\chi_B \leftrightarrow v_B = (-1, 1, -1)$$
+$$\chi_R \leftrightarrow v_R = (1, -1, -1)$$
+$$\chi_G \leftrightarrow v_G = (-1, 1, -1)$$
+$$\chi_B \leftrightarrow v_B = (-1, -1, 1)$$
 
-The fourth vertex $v_4 = (-1, -1, 1)$ carries the composite state.
+The fourth vertex $v_W = (1, 1, 1)$ carries the composite (singlet) state.
 
 **Definition 2.1.2 (Phase Values):**
 

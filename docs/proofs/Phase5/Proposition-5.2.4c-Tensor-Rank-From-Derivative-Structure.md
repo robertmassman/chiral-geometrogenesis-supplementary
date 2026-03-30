@@ -530,7 +530,7 @@ The graviton is rank-2 (spin-2) because:
 ## 10. References
 
 ### Framework Documents
-1. [Theorem-0.0.15-Topological-Derivation-SU3.md](../foundations/Theorem-0.0.15-Topological-Derivation-SU3.md) — Z₃ phase structure
+1. [Theorem-0.0.15-Topological-Determination-SU3.md](../foundations/Theorem-0.0.15-Topological-Determination-SU3.md) — Z₃ phase structure
 2. [Definition-0.1.2-Three-Color-Fields-Relative-Phases.md](../Phase0/Definition-0.1.2-Three-Color-Fields-Relative-Phases.md) — Phase assignment
 3. [Theorem-5.1.1-Stress-Energy-Tensor.md](./Theorem-5.1.1-Stress-Energy-Tensor.md) — $T_{\mu\nu}$ derivation
 4. [Theorem-3.1.1-Chiral-Drag-Mass-Formula.md](../Phase3/Theorem-3.1.1-Chiral-Drag-Mass-Formula.md) — Rank-1 model

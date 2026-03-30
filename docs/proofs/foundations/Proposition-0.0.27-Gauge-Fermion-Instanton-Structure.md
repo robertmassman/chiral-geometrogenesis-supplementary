@@ -1,11 +1,15 @@
 # Proposition 0.0.27: Gauge, Fermion, and Instanton Structure on ∂S
 
-## Status: 🔶 NOVEL — Framework established
+## Status: 🔸 PARTIAL — Dependent on Lattice QFT file (under review). §10.3.15 instanton framing is correct (π₃ from gauge group, not surface). See [adversarial verification (2026-02-12)](../verification-records/Proposition-0.0.27-Lattice-QFT-Multi-Agent-Verification-2026-02-12.md).
 
 **Created:** 2026-02-02 (extracted from Proposition 0.0.27)
 **Last Updated:** 2026-02-08
 **Parent Document:** [Proposition-0.0.27-Higgs-Mass-From-Geometry.md](Proposition-0.0.27-Higgs-Mass-From-Geometry.md)
 **Purpose:** Establish that local gauge invariance, fermionic chirality, instantons, and the full renormalization group flow emerge naturally from the stella octangula structure ∂S = ∂T₊ ⊔ ∂T₋.
+
+**Dependencies:**
+- ✅ Proposition 0.0.27 (Higgs Mass From Geometry)
+- ✅ Theorem 0.0.4 (GUT Structure From Stella Octangula)
 
 ---
 
@@ -18,7 +22,7 @@
 
 **Related files:**
 - [Proposition-0.0.27-Higgs-Mass-From-Geometry.md](Proposition-0.0.27-Higgs-Mass-From-Geometry.md) — Main proposition (λ = 1/8, Higgs mass prediction)
-- [Proposition-0.0.27-Lattice-QFT-On-Stella.md](Proposition-0.0.27-Lattice-QFT-On-Stella.md) — Lattice QFT formalization: path integrals, propagators, coefficient matching, Symanzik improvement
+- [Proposition-0.0.27-Lattice-QFT-On-Stella.md](Proposition-0.0.27-Lattice-QFT-On-Stella.md) — Lattice QFT formalization: path integrals, propagators, Wilson action (🔸 PARTIAL — under adversarial review, continuum limit and Symanzik claims failed verification)
 
 ---
 

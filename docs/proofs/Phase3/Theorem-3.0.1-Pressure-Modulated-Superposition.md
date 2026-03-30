@@ -13,9 +13,17 @@
 - ✅ Theorem 0.2.3 (Stable Convergence Point)
 
 **Downstream Usage:**
+- Corollary 3.1.3 (Mass Ratio Predictions)
+- Prediction 8.3.1 (Experimental Tests)
+- Proposition 7.3.2a (Pressure Balance Origin of Asymptotic Freedom)
+- Theorem 3.0.2 (Non-Zero Phase Gradient)
+- Theorem 3.0.3 (Temporal Fiber Structure)
 - Theorem 3.1.1 (Chiral Drag Mass Formula)
 - Theorem 3.1.2 (Mass Hierarchy From Geometry)
-- Proposition 7.3.2a (Pressure Balance Origin of Asymptotic Freedom)
+- Theorem 3.2.1 (Low-Energy Equivalence)
+- Theorem 3.2.2 (High-Energy Deviations)
+- Theorem 5.1.1 (Stress-Energy Tensor)
+- Theorem 5.2.0 (Wick Rotation Validity)
 
 **Dimensional Conventions:** This theorem uses the rescaled $\lambda$ parameter where $\Phi = \Phi_{spatial} + \lambda$ (see §5.1). For framework-wide consistency, see [Unified-Dimension-Table.md](../verification-records/Unified-Dimension-Table.md).
 

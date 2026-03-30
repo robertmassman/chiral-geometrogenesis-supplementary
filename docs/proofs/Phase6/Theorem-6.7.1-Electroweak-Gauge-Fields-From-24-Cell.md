@@ -5,6 +5,15 @@
 **Created:** 2026-01-23
 **Purpose:** Derive the complete SU(2)_L × U(1)_Y electroweak gauge Lagrangian from the 24-cell root structure encoded in the stella octangula geometry.
 
+**Dependencies:**
+- ✅ Theorem 0.0.4 (GUT Structure From Stella Octangula)
+- ✅ Theorem 0.0.5 (Chirality Selection From Geometry)
+- ✅ Theorem 0.0.15 (Topological Derivation SU3)
+- ✅ Lemma 3.1.2a (24-Cell Two-Tetrahedra Connection)
+- ✅ Proposition 0.0.22 (SU(2) Substructure From Stella Octangula)
+- ✅ Proposition 0.0.23 (Hypercharge From Geometric Embedding)
+- ✅ Proposition 0.0.24 (SU(2) Gauge Coupling From Unification)
+
 ---
 
 ## 1. Formal Statement

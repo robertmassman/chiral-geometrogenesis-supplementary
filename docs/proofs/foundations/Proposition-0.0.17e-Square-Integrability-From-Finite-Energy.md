@@ -6,6 +6,10 @@
 
 **Goal:** Reduce the irreducible axiom count from 2 (A6, A7) to 1 (A7 only).
 
+**Dependencies:**
+- ✅ Theorem 0.0.17 (Information Geometric Unification)
+- ✅ Proposition 0.0.17d (EFT Cutoff From Confinement)
+
 ---
 
 ## 0. Summary

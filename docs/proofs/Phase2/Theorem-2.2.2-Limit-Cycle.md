@@ -11,6 +11,12 @@
 | Saddle point structure | ✅ ESTABLISHED | Fixed point classification §2.4 |
 | **Chirality selection** | ✅ DERIVED | **Theorem 2.2.4** |
 
+**Dependencies:**
+- ✅ Definition 0.1.2 (Three Color Fields Relative Phases)
+- ✅ Theorem 0.2.2 (Internal Time Emergence)
+- ✅ Theorem 0.2.3 (Stable Convergence Point)
+- ✅ Theorem 2.2.1 (Phase Locked Oscillation)
+
 ---
 
 ## Statement

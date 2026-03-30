@@ -12,6 +12,9 @@
 - Definition 0.1.1 (Stella Octangula Boundary Topology) — provides the pre-geometric structure
 - Theorem 0.2.1 (Total Field from Superposition) — establishes field configuration space
 
+**Dependencies:**
+- ✅ ESTABLISHED (Standard: Skyrme model, homotopy π₃(SU(2))=ℤ, Bogomolny bound)
+
 **Supporting Research Documents:**
 - [Lemma-A-CG-Energy-Decomposition-Proof.md](../supporting/Lemma-A-CG-Energy-Decomposition-Proof.md) — Global minimality proof
 - [Color-Constraints-Necessity-Conclusion.md](../supporting/Color-Constraints-Necessity-Conclusion.md) — Why the constraint is necessary

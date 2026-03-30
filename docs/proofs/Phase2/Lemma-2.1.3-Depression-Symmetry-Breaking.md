@@ -19,6 +19,10 @@ The R→G→B phase cycle corresponds to coordinated motion along these three Go
 
 **Significance:** This lemma connects the intuitive concept of "depression" in the pressure-depression mechanism to the rigorous mathematical framework of spontaneous symmetry breaking and Goldstone's theorem.
 
+**Dependencies:**
+- ✅ Theorem 2.1.1 (Bag Model Derivation)
+- ✅ Definition 0.1.3 (Pressure Functions)
+
 ---
 
 ## Part 1: Physical Motivation

@@ -20,8 +20,6 @@
 - ✅ Theorem 1.2.1 (Vacuum Expectation Value) — ESTABLISHED
 - ✅ Theorem 0.2.1 (Total Field from Superposition) — COMPLETE
 - ✅ Theorem 0.2.3 (Stable Convergence Point) — COMPLETE
-- ✅ Theorem 5.2.3 (Einstein Equations from δQ=TδS) — For thermodynamic gravity
-- ✅ Theorem 5.2.5 (Bekenstein-Hawking Coefficient) — For holographic entropy S = A/(4ℓ_P²)
 - 🔶 Theorem 5.2.6 (Planck Mass from QCD) — For M_P derivation (93% agreement)
 
 **Dimensional Conventions:** Natural units $\hbar = c = 1$; energy densities in GeV⁴; $M_P = 1.22 \times 10^{19}$ GeV

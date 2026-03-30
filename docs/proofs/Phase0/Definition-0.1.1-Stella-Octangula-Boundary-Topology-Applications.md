@@ -91,9 +91,9 @@ The relative phases $\phi_G - \phi_R = 2\pi/3$ and $\phi_B - \phi_G = 2\pi/3$ ar
 
 1. The phases $\phi_c^{(0)}$ are determined by SU(3) representation theory (Theorem 1.1.1).
 
-2. SU(3) is an exact symmetry of QCD (before electroweak effects).
+2. SU(3)$_{\text{color}}$ is an exact gauge symmetry of QCD — it is unbroken at all energy scales. (**Electroweak caveat:** The electroweak sector breaks the *flavor* SU(3), but color SU(3) remains exact. The superselection argument here applies specifically to color representations, not flavor.)
 
-3. Exact symmetries impose **superselection rules**: operators cannot mix states in different representations.
+3. Exact gauge symmetries impose **superselection rules**: operators cannot mix states in different color representations.
 
 4. The relative phases label the representation; changing them would require leaving the fundamental representation.
 
@@ -124,11 +124,15 @@ For any $N \geq 2$, there exists a "stella-N" structure: two dual $(N-1)$-simpli
 |----------|-------------|------------|
 | Fundamental rep dimension | $N$ | Definition of SU(N) |
 | Weight space dimension | $N - 1$ | Rank of $\mathfrak{su}(N)$ |
-| Simplex type | $(N-1)$-simplex | Embeds $N$ weights |
-| Vertices per simplex | $N$ | Definition of simplex |
-| Total stella vertices | $2N$ | Two dual simplices |
+| Weight-space simplex type | $(N-1)$-simplex | Embeds $N$ weights |
+| Weight vertices per simplex | $N$ | Definition of simplex |
+| Total weight vertices | $2N$ | Two dual simplices |
+| Apex vertices per simplex | $1$ | Embedding into $N$-dim space |
+| **Total geometric vertices** | $2(N+1)$ | Weight + apex vertices |
 | Phase relations | $\phi_k = 2\pi k/N$ | $N$-th roots of unity |
 | Phase sum | $\sum_{k=0}^{N-1} e^{2\pi i k/N} = 0$ | Root of unity identity |
+
+**Note on vertex counts:** The weight-space simplex (an $(N{-}1)$-simplex with $N$ vertices) encodes the fundamental representation weights. The geometric realization in $N$-dimensional space promotes this to an $N$-simplex by adding one **apex vertex** per tetrahedron, representing the singlet direction (§4.1). For SU(3): $2 \times 3 = 6$ weight vertices plus $2$ apex vertices (W, $\bar{W}$) yields the $8$ vertices of the stella octangula, consistent with Definition 0.1.1.
 
 ---
 
@@ -199,7 +203,7 @@ $\rho(x)$ is not constant on $\partial\mathcal{S}$.
 The gradient $\nabla\rho$ is linearly independent of the weight-space directions.
 
 **Proof of Lemma:**
-The weight-space directions are tangent to level sets $\{\rho = \text{const}\}$. By definition, $\nabla\rho$ is perpendicular to these level sets. Therefore $\nabla\rho$ is orthogonal to all weight-space directions and spans an independent direction. $\blacksquare$
+The weight-space directions are tangent to level sets $\{\rho = \text{const}\}$. The differential $d\rho$ annihilates these tangent directions by definition (it vanishes on vectors along which $\rho$ is constant). Since $\rho$ is non-constant (Lemma 12.3.3), $d\rho \neq 0$, so it defines a direction in the cotangent space that is linearly independent of the weight-space codirections. Equivalently, in the computational realization where the Killing form provides an inner product on $\mathfrak{h}^*$, $\nabla\rho$ is orthogonal to the weight-space level sets. In either formulation, $\nabla\rho$ spans an independent direction not contained in the weight-space tangent plane. $\blacksquare$
 
 **Physical interpretation:** The gradient direction points from low-energy regions (center) toward high-energy regions (vertices). This is the **radial** or **confinement** direction — it measures "how far from equilibrium" a configuration is. This contributes $+1$ spatial dimension. $\checkmark$
 
@@ -393,6 +397,8 @@ The dimension formula $D = N + 1$ is not merely a counting argument but a conseq
 
 $$\boxed{D = N + 1 \text{ is a theorem, not just a heuristic}}$$
 
+**Limitation (perturbative regime):** The non-degeneracy proof in Theorem 12.3.4 relies on the perturbative expansion $g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}$ with $|h_{\mu\nu}| \ll 1$. In the non-perturbative regime (strong gravitational fields, e.g., near singularities or at Planck-scale densities), the signature and non-degeneracy arguments require separate verification. The dimension formula $D = N + 1$ is rigorously established in the weak-field regime; its extension to the full non-perturbative theory remains an open question (see §12.3.6 for discussion of the mathematical components that are fully rigorous vs. those requiring the perturbative assumption).
+
 ---
 
 #### 12.3.6 What Makes This Derivation Rigorous
@@ -485,7 +491,7 @@ $$S_{max} \propto A$$
 
 **Proof (from Unitarity Argument):**
 
-This derivation follows Bekenstein's original logic, adapted to the Phase 0 framework.
+**Acknowledgment:** This derivation follows Bekenstein's original argument (1973) and is **standard physics** — it does not use any framework-specific input. The area scaling $S \propto A$ follows from unitarity of quantum mechanics combined with the existence of black holes (gravitational collapse). The framework-specific contribution enters later: (1) the emergent Einstein equations from Theorem 5.2.1 provide the gravitational dynamics needed for the exact coefficient $\gamma = 1/4$ (see §12.4.6), and (2) the SU(3) color structure determines the microscopic state counting (see §12.4.3).
 
 **Step 1: The Unitarity Constraint**
 
@@ -1546,7 +1552,7 @@ This section provides a complete comparison between Chiral Geometrogenesis predi
 | Quantity | CG Formula | CG Value | Lattice/Experiment | Agreement |
 |----------|------------|----------|-------------------|-----------|
 | Edge length | (4/√6)R_stella | 0.73 fm | Flux tube length ~0.7-1.0 fm | ✅ ~90% |
-| Surface area | 8√3R²_stella | 1.85 fm² | N/A (geometric) | — |
+| Surface area | (16√3/3)R²_stella | 1.85 fm² | N/A (geometric) | — |
 | Screening mass μ | 1/λ | 0.89 GeV | 0.8-0.9 GeV (Cea 2012) | ✅ 100% |
 | Deconfinement T_c | ∝ √σ | ~170 MeV | 155-175 MeV | ✅ ~95% |
 | Proton radius constraint | R_stella < r_p | 0.44847 < 0.84 fm | r_p = 0.84 fm | ✅ Satisfied |

@@ -5,6 +5,10 @@
 **Phase:** 7 — Mathematical Consistency Checks
 **Role:** Establishes that the CG theory preserves probability conservation (unitarity) and contains no ghost states (negative-norm states).
 
+**Dependencies:**
+- ✅ Theorem 3.1.1 (Chiral Drag Mass Formula)
+- ✅ Theorem 7.1.1 (Power Counting)
+
 ---
 
 ## 1. Statement
@@ -228,7 +232,7 @@ All tests pass ✓
 - ✅ Definition 0.1.1 (Stella Octangula) — UV completion source
 
 ### 8.2 Dependent Theorems
-- Theorem 7.1.2 (Anomaly Cancellation) — Uses unitarity result
+- Theorem 7.1.2 (Anomaly Cancellation, planned) — Will use unitarity result
 - Phase 8 predictions — Require consistent S-matrix
 
 ---

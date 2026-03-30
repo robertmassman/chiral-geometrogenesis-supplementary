@@ -376,6 +376,47 @@ The Fisher metric isn't an arbitrary choice — it's the **unique** metric compa
 **Objection 3:** "The S₃ symmetry is specific to SU(3)."
 **Response:** Yes, and SU(3) is derived from observer stability (Theorem 0.0.1). The full chain is: Observers → SU(3) → S₃ → unique metric.
 
+### 8.4 Distinction from Frieden's EPI Program
+
+> **V8 Audit Response (2026-02-23):** This section explicitly distinguishes the framework's use of Fisher information from B.R. Frieden's discredited "Extreme Physical Information" (EPI) program, as recommended by the [G1 Validity Audit Module V8](../reviews/G1/G1-Validity-Audit-Module-V8-Findings.md) §V8.6. Both programs use Fisher information but the methodology is fundamentally different.
+
+**Background:** B. Roy Frieden (1998, "Physics from Fisher Information") proposed that all fundamental physics equations can be derived by extremizing a functional called "physical information" — the difference between Fisher information $I$ and a "bound information" $J$:
+
+$$\delta(I - J) = 0$$
+
+Frieden's program attracted significant criticism:
+- **Shalizi (2005)** showed that the "bound information" term $J$ is reverse-engineered to reproduce known Lagrangians — it has no independent physical motivation
+- **Kibble (1999)** argued the program reduces to the standard action principle with extra steps
+- **No novel predictions** were produced by the EPI program
+- The "derivations" involve ad hoc choices disguised as uniqueness arguments
+
+**The framework's approach is fundamentally different:**
+
+| Feature | Frieden's EPI | This Framework |
+|---------|---------------|----------------|
+| **Scope** | All physics equations (Schrödinger, Maxwell, Einstein, etc.) | Gauge group structure only (SU(3) identification) |
+| **Method** | Extremize ad hoc functional $I - J$ | Chentsov uniqueness theorem (rigorous, no variational principle) |
+| **Key theorem** | None (ad hoc $J$) | Chentsov (1972): Fisher is UNIQUE under Markov invariance |
+| **Ad hoc elements** | "Bound information" $J$ (unjustified) | Interference form $p = \|\sum A_c e^{i\phi_c}\|^2$ (declared as A-IF) |
+| **Reversibility** | $J$ is tuned to match known results | Fisher metric is derived before any physics is assumed |
+| **Distinguishability** | Would reproduce ANY physics with appropriate $J$ | Selects SU(3) specifically from N = 3 constraint |
+| **Novel predictions** | None | Downstream: $f_\pi/\sqrt{\sigma} = 1/5$, mass ratios |
+| **Peer reception** | Discredited (Shalizi 2005, Kibble 1999) | Uses established mathematics (Chentsov, Ay-Jost-Lê-Schwachhöfer) |
+
+**The critical distinction** is that this framework uses Fisher information in a completely different way from Frieden:
+
+1. **Chentsov's theorem** (§3.2) establishes that the Fisher metric is the *unique* Riemannian metric invariant under sufficient statistics. This is a rigorous uniqueness result from mathematical statistics, not a variational principle. Frieden does not use Chentsov's theorem.
+
+2. **The Fisher-Killing equivalence** (Lemma 0.0.17c) connects the Fisher metric to the SU(3) Killing form via Weyl group symmetry. This is a specific algebraic result, not a general-purpose "derive everything" claim.
+
+3. **The Born rule assumption** (A-IF) is explicitly declared as an irreducible input (see V1.3, V8.6-F5). Frieden's "bound information" is presented as derived when it is actually reverse-engineered.
+
+4. **Independent validation:** Caticha's Entropic Dynamics program (2015, 2019) independently derives quantum mechanics from information geometry + entropy maximization, validating the general methodology without using Frieden's ad hoc functional. Caticha's success provides evidence that information geometry can ground quantum structure.
+
+**For publications:** Any paper presenting the information-geometric derivation of SU(3) (Path C) should include a footnote or remark clearly distinguishing the approach from Frieden's EPI, to preempt guilt-by-association criticism. Suggested language:
+
+> *Our use of Fisher information differs fundamentally from Frieden's (1998) "Extreme Physical Information" program. We invoke Chentsov's uniqueness theorem — the Fisher metric is the unique Riemannian metric invariant under sufficient statistics — combined with Weyl group symmetry to identify the gauge group structure. We do not extremize an ad hoc functional or claim to derive arbitrary physics equations from information theory.*
+
 ---
 
 ## 9. Computational Verification
@@ -456,11 +497,15 @@ $$\text{Observers} \xrightarrow{0.0.1} \text{SU(3)} \xrightarrow{0.0.17} T^2 \xr
 
 ### Additional Context
 
-9. **Frieden, B.R.** "Physics from Fisher Information: A Unification," Cambridge University Press (1998) — Fisher information in physics foundations
+9. **Frieden, B.R.** "Physics from Fisher Information: A Unification," Cambridge University Press (1998) — Fisher information in physics foundations. **Note:** The EPI program is discredited; see §8.4 for distinction from this framework.
 
-10. **Caticha, A.** "Entropic Inference and the Foundations of Physics," USP Press (2012) [arXiv:1107.0136] — Information-theoretic foundations
+10. **Shalizi, C.R.** "MLE in EPI" (2005), arXiv:physics/0009079 — Detailed critique of Frieden's EPI program; shows "bound information" is reverse-engineered
 
-11. **Nielsen, F.** "An Elementary Introduction to Information Geometry," *Entropy* **22**, 1100 (2020) — Accessible modern reference
+11. **Caticha, A.** "Entropic Inference and the Foundations of Physics," USP Press (2012) [arXiv:1107.0136] — Information-theoretic foundations; validates general information-geometric methodology independently of Frieden
+
+11a. **Caticha, A.** "The Entropic Dynamics approach to Quantum Mechanics," *Annalen der Physik* **531**, 1700408 (2019) — Derives QM from information geometry + entropy; complementary to this framework's approach
+
+12. **Nielsen, F.** "An Elementary Introduction to Information Geometry," *Entropy* **22**, 1100 (2020) — Accessible modern reference
 
 ### Framework Documents
 
@@ -484,7 +529,7 @@ $$\text{Observers} \xrightarrow{0.0.1} \text{SU(3)} \xrightarrow{0.0.17} T^2 \xr
 ---
 
 *Document created: January 3, 2026*
-*Last updated: January 3, 2026 — All verification issues resolved*
+*Last updated: February 23, 2026 (V8-R5: added §8.4 distinction from Frieden's EPI program)*
 *Status: ✅ DERIVED — Upgrades A0' from axiom to theorem*
 *Dependencies: Theorem 0.0.1 ✅, Theorem 0.0.17 ✅, Chentsov's theorem ✅*
 *Verification: Multi-agent peer review completed, 11/11 computational tests passed*

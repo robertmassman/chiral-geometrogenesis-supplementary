@@ -216,7 +216,7 @@ It's the "eye of the storm" in the chiral field dynamics.
 
 From Definition 0.1.1, the stella octangula boundary $\partial\mathcal{S}$ is the compound of two interpenetrating tetrahedra. We use one tetrahedron's vertices as color positions:
 
-$$x_R = \frac{1}{\sqrt{3}}(1,1,1), \quad x_G = \frac{1}{\sqrt{3}}(1,-1,-1), \quad x_B = \frac{1}{\sqrt{3}}(-1,1,-1)$$
+$$x_R = \frac{1}{\sqrt{3}}(1,-1,-1), \quad x_G = \frac{1}{\sqrt{3}}(-1,1,-1), \quad x_B = \frac{1}{\sqrt{3}}(-1,-1,1)$$
 
 These are normalized so $|x_c| = 1$ for all $c$.
 

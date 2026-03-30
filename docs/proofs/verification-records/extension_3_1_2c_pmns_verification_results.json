@@ -1,0 +1,114 @@
+{
+  "theorem": "Extension 3.1.2c",
+  "title": "Complete PMNS Parameter Derivation",
+  "timestamp": "2026-02-07T16:11:55.156432",
+  "lambda_wolfenstein": 0.22451398828979266,
+  "phi_golden_ratio": 1.618033988749895,
+  "verifications": [
+    {
+      "formula": "45\u00b0 - arcsin(\u03bb) + \u03bb\u00b2/2",
+      "base_45_minus_cabibbo": 32.025699419022715,
+      "lambda_squared_correction": 1.4440407413154652,
+      "predicted": 33.469740160338176,
+      "observed": 33.41,
+      "observed_error": 0.76,
+      "deviation_deg": 0.05974016033817975,
+      "deviation_sigma": 0.07860547412918388,
+      "test_name": "theta_12_solar_angle",
+      "passed": "True"
+    },
+    {
+      "formula": "45\u00b0 + \u03b4(A\u2084) + \u03b4(geo) + \u03b4(RG) + \u03b4(\u03bc\u03c4)",
+      "delta_A4_deg": 2.8880814826309305,
+      "delta_geo_deg": 3.796456203442642,
+      "delta_RG_deg": 0.5,
+      "delta_charged_deg": -3.3200771004984655,
+      "total_correction_deg": 3.8644605855751064,
+      "predicted": 48.86446058557511,
+      "observed": 49.1,
+      "observed_error": 1.0,
+      "deviation_deg": 0.2355394144248919,
+      "deviation_sigma": 0.2355394144248919,
+      "test_name": "theta_23_atmospheric_angle",
+      "passed": "True"
+    },
+    {
+      "formula": "arcsin[(\u03bb/\u03c6)(1 + \u03bb/5 + \u03bb\u00b2/2)]",
+      "lambda": 0.22451398828979266,
+      "phi": 1.618033988749895,
+      "leading_term": 0.13875727571288773,
+      "correction_factor": 1.070106063126853,
+      "sin_theta_13": 0.1484850020433256,
+      "predicted": 8.539140410723851,
+      "observed": 8.54,
+      "observed_error": 0.11,
+      "deviation_deg": 0.0008595892761480428,
+      "deviation_sigma": 0.007814447964982207,
+      "sin_sq_theta_13_predicted": 0.022047795831806407,
+      "sin_sq_theta_13_observed": 0.02206,
+      "test_name": "theta_13_reactor_angle",
+      "passed": "True"
+    },
+    {
+      "formula": "150\u00b0 + (\u03bb/\u03c6) \u00d7 360\u00b0",
+      "A4_base_phase_deg": 150.0,
+      "EW_correction_deg": 49.952619256639586,
+      "predicted": 199.9526192566396,
+      "alternative_270_minus_gamma": 204.4712206344907,
+      "observed": 197,
+      "observed_error": 24,
+      "deviation_deg": 2.9526192566395935,
+      "deviation_sigma": 0.12302580235998306,
+      "test_name": "delta_CP_phase",
+      "passed": "True"
+    },
+    {
+      "formula": "\u03bb\u00b2/\u221a3",
+      "lambda_squared": 0.05040653093778916,
+      "predicted": 0.029102224205847772,
+      "observed": 0.029514717581543354,
+      "observed_error": 0.0009207937141374322,
+      "relative_error_percent": 1.397585372639749,
+      "deviation_sigma": 0.4479758814187733,
+      "test_name": "mass_squared_ratio",
+      "passed": "True"
+    },
+    {
+      "theta_12_CKM": 13.04,
+      "theta_12_PMNS_predicted": 33.469740160338176,
+      "theta_12_PMNS_observed": 33.41,
+      "sum_with_predicted": 46.509740160338175,
+      "sum_with_observed": 46.449999999999996,
+      "target": 45.0,
+      "deviation_from_45_predicted": 1.5097401603381755,
+      "deviation_from_45_observed": 1.4499999999999957,
+      "passed": true,
+      "test_name": "quark_lepton_complementarity"
+    },
+    {
+      "m1_eV": 0.0,
+      "m2_eV": 0.008613942186943212,
+      "m3_eV": 0.0501398045468867,
+      "sum_nu_eV": 0.05875374673382991,
+      "holographic_bound_eV": 0.132,
+      "desi_bound_eV": 0.072,
+      "within_holographic": "True",
+      "within_desi": "True",
+      "passed": "True",
+      "test_name": "neutrino_mass_sum_bound"
+    },
+    {
+      "J_predicted": -0.011294618998863581,
+      "J_observed": -0.00965824973224669,
+      "relative_difference": 0.16942710242347833,
+      "note": "Sign of J not experimentally determined",
+      "test_name": "jarlskog_invariant",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "total": 8,
+    "overall_status": "PASSED"
+  }
+}

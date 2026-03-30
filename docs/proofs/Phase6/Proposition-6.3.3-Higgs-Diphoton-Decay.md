@@ -14,6 +14,7 @@
 - ✅ Theorem 3.1.2 (Fermion Mass Hierarchy: m_t derived)
 
 **Enables:**
+- [Proposition 6.3.4](./Proposition-6.3.4-Higgs-Z-Gamma-Decay.md) (Higgs Z-Gamma Decay) — Extends diphoton calculation to h → Zγ channel
 - Complete Higgs decay phenomenology
 - Signal strength μ_γγ prediction
 - FCC-ee precision Higgs tests

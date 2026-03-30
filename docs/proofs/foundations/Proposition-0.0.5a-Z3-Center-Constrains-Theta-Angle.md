@@ -22,6 +22,7 @@
 
 **Enables:**
 - Resolution of Strong CP problem
+- Theorem 1.2.2 (Chiral Anomaly)
 - Update to Theorem 0.0.5 §5.2 (Strong CP status)
 - Connection to recent literature (arXiv:2404.19400, 2512.24480, 2505.08358)
 
@@ -164,6 +165,8 @@ The center is important for:
 - Confinement (Z₃ symmetric → confined phase)
 - Finite temperature transitions
 - Topological charge quantization
+
+**Condensed matter precedent:** The mechanism by which Z₃ discrete symmetry from geometric frustration selects physical ground states has been experimentally observed in kagome-lattice metals AV₃Sb₅, where bond-order fluctuations on three geometrically frustrated sublattices produce Z₃ nematic order that naturally constrains charge-loop current configurations [Tazai, Yamakawa & Kontani, *Nat. Commun.* **14**, 7845 (2023)]. This demonstrates that Z₃ discretization from geometric constraints generically suppresses unwanted phases—the same principle applied here to θ.
 
 ### 3.4 Clarification: Two Manifestations of Z₃
 
@@ -835,7 +838,7 @@ $$\boxed{\theta_{physical} = 0 \text{ (Z₃ superselection + energy minimization
 
 ### Framework Documents
 1. [Theorem 0.0.5](./Theorem-0.0.5-Chirality-Selection-From-Geometry.md) — Chirality selection, Strong CP status
-2. [Theorem 0.0.15](./Theorem-0.0.15-Topological-Derivation-SU3.md) — Z₃ center → SU(3) uniqueness
+2. [Theorem 0.0.15](./Theorem-0.0.15-Topological-Determination-SU3.md) — Z₃ center → SU(3) uniqueness
 3. [Definition 0.1.2](../Phase0/Definition-0.1.2-Three-Color-Fields-Relative-Phases.md) — Z₃ center of SU(3)
 4. [Proposition 0.0.17g](./Proposition-0.0.17g-Objective-Collapse-From-Z3-Discretization.md) — Z₃ discretization
 5. [Proposition 0.0.17i](./Proposition-0.0.17i-Z3-Measurement-Extension.md) — Z₃ observable algebra

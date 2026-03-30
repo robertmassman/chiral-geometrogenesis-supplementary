@@ -9,6 +9,11 @@
 
 **Connection to Theorem 2.4.1:** This proposition extends the gauge embedding chain (stella → 16-cell → 24-cell → D₄ → SO(10) → SU(5) → SM) by asking: "What β-function governs running above M_GUT?" The answer connects to heterotic E₈ × E₈ string theory.
 
+**Dependencies:**
+- ✅ Theorem 2.4.1 (Gauge Unification)
+- ✅ Proposition 0.0.17j (String Tension From Casimir Energy)
+- ✅ Proposition 0.0.17s (Strong Coupling From Gauge Unification)
+
 ---
 
 ## 1. Statement of the Problem

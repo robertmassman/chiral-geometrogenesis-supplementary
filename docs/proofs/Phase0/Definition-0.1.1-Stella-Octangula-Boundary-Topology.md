@@ -1,6 +1,6 @@
 # Definition 0.1.1: Stella Octangula as Boundary Topology
 
-## Status: ✅ COMPLETE — FOUNDATIONAL (Verified December 11, 2025)
+## Status: 🔶 NOVEL ✅ VERIFIED — FOUNDATIONAL BOUNDARY TOPOLOGY
 
 **Phase -1 Foundation (December 2025):** The stella octangula structure is now **DERIVED**, not postulated. See [Phase-Minus-1/Theorem-0.0.3-Stella-Uniqueness.md](../foundations/Theorem-0.0.3-Stella-Uniqueness.md) which proves the stella octangula is the **unique minimal geometric realization of SU(3)**. The derivation chain is:
 - Observer existence → D = 4 (Theorem 0.0.1) → SU(3) via D = N + 1 → Stella octangula uniqueness (Theorem 0.0.3)
@@ -12,14 +12,42 @@
 **Dependencies:**
 - ✅ **Theorem 0.0.3 (Stella Octangula Uniqueness)** — Proves this structure is uniquely determined by SU(3) [Phase -1]
 - ✅ **Theorem 0.0.1 (D = 4 from Observer Existence)** — Derives SU(3) from spacetime dimension [Phase -1]
-- ✅ Theorem 1.1.1 (SU(3) ↔ Stella Octangula Isomorphism) — Establishes the geometric correspondence
 - Standard differential topology and manifold theory
 - SU(3) representation theory (Cartan subalgebra, weight diagrams)
 
 **What This Definition Enables:**
 - Definition 0.1.2 (Three Color Fields with Relative Phases)
 - Definition 0.1.3 (Pressure Functions from Geometric Opposition)
+- Definition 0.1.4 (Color Field Domains)
+- Theorem 0.0.6 (Spatial Extension From Octet Truss)
+- Theorem 0.0.7 (Lorentz Violation Bounds)
+- Theorem 0.0.14
 - Theorem 0.2.1 (Total Field from Superposition)
+- Theorem 0.2.4 (Pre-Geometric Energy Functional)
+- Theorem 0.3.1 (W-Direction Correspondence)
+- Theorem 1.1.1 (SU(3) ↔ Stella Octangula Isomorphism)
+- Theorem 1.1.2
+- Theorem 1.1.3
+- Theorem 1.2.1
+- Theorem 1.2.2
+- Theorem 2.2.1 (Phase-Locked Oscillation)
+- Theorem 4.1.1
+- Theorem 5.2.1 (Emergent Metric)
+- Theorem 5.2.2 (Pre-Geometric Cosmic Coherence)
+- Theorem 5.2.5
+- Theorem 6.1.1
+- Theorem 7.1.1
+- Theorem 7.2.1
+- Lemma 3.1.2a
+- Proposition 0.0.17ab
+- Proposition 0.0.17z2
+- Proposition 0.0.27
+- Proposition 0.0.27a
+- [Proposition 0.0.39](../foundations/Proposition-0.0.39-Stella-Adjoint-Decomposition.md) (Stella Adjoint Decomposition)
+- Proposition 8.5.1
+- Prediction 8.2.3
+- Prediction 8.3.1
+- Proof 8.1.3b
 - The entire Phase 0 pre-geometric foundation
 
 ---
@@ -56,7 +84,7 @@ The **stella octangula** — understood as **two interpenetrating regular tetrah
 
 $$\boxed{\text{The boundary } \partial\mathcal{S} \text{ exists independently of any bulk metric or spacetime.}}$$
 
-The vertices of $\partial\mathcal{S}$ correspond bijectively to the weight vectors of the fundamental (**3**) and anti-fundamental ($\bar{\mathbf{3}}$) representations of SU(3):
+The vertices of $\partial\mathcal{S}$ correspond bijectively to the weight vectors of the fundamental (**3**) and anti-fundamental ($\bar{\mathbf{3}}$) representations of SU(3) *(anticipatory — formally established in Theorem 1.1.1; see §4)*:
 - $T_+$ vertices → color charges (R, G, B) + singlet (W)
 - $T_-$ vertices → anti-color charges ($\bar{R}$, $\bar{G}$, $\bar{B}$) + anti-singlet ($\bar{W}$)
 
@@ -105,8 +133,11 @@ $$\mathcal{S} = T_+ \cup T_-$$
 We choose coordinates such that the centroid is at the origin and the vertices lie on the unit sphere $S^2$.
 
 **Tetrahedron $T_+$ (Color Vertices R, G, B, W):**
-$$v_R = \frac{1}{\sqrt{3}}\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \quad v_G = \frac{1}{\sqrt{3}}\begin{pmatrix} 1 \\ -1 \\ -1 \end{pmatrix}$$
-$$v_B = \frac{1}{\sqrt{3}}\begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix}, \quad v_W = \frac{1}{\sqrt{3}}\begin{pmatrix} -1 \\ -1 \\ 1 \end{pmatrix}$$
+
+> **Anticipatory labeling:** The vertex labels R, G, B (and their conjugates) are adopted here as **notational conventions** for convenience. The formal justification — that stella octangula vertices correspond bijectively to SU(3) weight vectors — is established in **Theorem 1.1.1** (Phase 1). At this stage, the labels carry no physics beyond naming; the geometric content of this definition (vertex positions, topology, Euler characteristic) is independent of the labeling choice. See §4 for the correspondence table.
+
+$$v_R = \frac{1}{\sqrt{3}}\begin{pmatrix} 1 \\ -1 \\ -1 \end{pmatrix}, \quad v_G = \frac{1}{\sqrt{3}}\begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix}$$
+$$v_B = \frac{1}{\sqrt{3}}\begin{pmatrix} -1 \\ -1 \\ 1 \end{pmatrix}, \quad v_W = \frac{1}{\sqrt{3}}\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$$
 
 **Tetrahedron $T_-$ (Anti-Color Vertices $\bar{R}$, $\bar{G}$, $\bar{B}$, $\bar{W}$):**
 $$v_{\bar{R}} = -v_R, \quad v_{\bar{G}} = -v_G, \quad v_{\bar{B}} = -v_B, \quad v_{\bar{W}} = -v_W$$
@@ -226,7 +257,9 @@ The claim that $\partial\mathcal{S}$ is "pre-geometric" requires careful interpr
 - The embedding ℝ³ is a **configuration space** (like phase space in mechanics), not a spacetime
 - Physical spacetime $(t, x, y, z)$ emerges from the dynamics ON this structure (Theorem 5.2.1)
 
-This is analogous to how a Hamiltonian in classical mechanics is defined on phase space $(q, p)$, which is not physical space. The stella octangula lives in an abstract "color configuration space," and physical space emerges from its dynamics.
+**Algebraic structure of the configuration space:** The ℝ³ in which the stella octangula is embedded carries a specific algebraic identification: it is the **dual of the Cartan subalgebra** $\mathfrak{h}^* \cong \mathbb{R}^2$ extended by one radial dimension. The inner product on this space is the **Killing form** of $\mathfrak{su}(3)$, which is algebraic (defined by the Lie bracket structure) rather than geometric (defined by a spacetime metric). The three coordinate axes correspond to the generators $T_3$, $Y$ (hypercharge), and a radial direction orthogonal to the weight plane. This identification gives the ℝ³ embedding a precise mathematical meaning beyond a mere analogy.
+
+This is analogous to how a Hamiltonian in classical mechanics is defined on phase space $(q, p)$, which is not physical space. The stella octangula lives in the abstract color weight space $\mathfrak{h}^* \oplus \mathbb{R}$, and physical space emerges from its dynamics.
 
 **What is truly pre-geometric:**
 - The combinatorial structure (8 vertices, 12 edges, 8 faces in two disjoint tetrahedra)
@@ -266,22 +299,24 @@ A common question arises: If there is no metric, how do we define expressions li
 
 ## 4. Connection to SU(3) Weight Space
 
+> **Logical status:** This section summarizes results from **Theorem 1.1.1** (Phase 1), which is where the SU(3) ↔ stella octangula correspondence is formally proven. The color labels (R, G, B, W) used in §§1–3 are anticipatory notational conventions adopted for readability; the geometric content of this definition does not depend on the labeling. This section documents the correspondence for cross-referencing convenience.
+
 ### 4.1 The Bijection: Vertices ↔ Color Charges
 
 **Theorem 1.1.1** (established separately) proves that the stella octangula vertices correspond to SU(3) weight vectors:
 
 | Vertex | Position | Weight $(T_3, Y)$* | Physical Meaning |
 |--------|----------|-------------------|------------------|
-| $v_R$ | $(1,1,1)/\sqrt{3}$ | $(+\frac{1}{2}, +\frac{1}{3})$ | Red quark |
-| $v_G$ | $(1,-1,-1)/\sqrt{3}$ | $(-\frac{1}{2}, +\frac{1}{3})$ | Green quark |
-| $v_B$ | $(-1,1,-1)/\sqrt{3}$ | $(0, -\frac{2}{3})$ | Blue quark |
-| $v_{\bar{R}}$ | $(-1,-1,-1)/\sqrt{3}$ | $(-\frac{1}{2}, -\frac{1}{3})$ | Anti-red antiquark |
-| $v_{\bar{G}}$ | $(-1,1,1)/\sqrt{3}$ | $(+\frac{1}{2}, -\frac{1}{3})$ | Anti-green antiquark |
-| $v_{\bar{B}}$ | $(1,-1,1)/\sqrt{3}$ | $(0, +\frac{2}{3})$ | Anti-blue antiquark |
-| $v_W$ | $(-1,-1,1)/\sqrt{3}$ | — | Singlet direction |
-| $v_{\bar{W}}$ | $(1,1,-1)/\sqrt{3}$ | — | Singlet direction |
+| $v_R$ | $(1,-1,-1)/\sqrt{3}$ | $(+\frac{1}{2}, +\frac{1}{3})$ | Red quark |
+| $v_G$ | $(-1,1,-1)/\sqrt{3}$ | $(-\frac{1}{2}, +\frac{1}{3})$ | Green quark |
+| $v_B$ | $(-1,-1,1)/\sqrt{3}$ | $(0, -\frac{2}{3})$ | Blue quark |
+| $v_{\bar{R}}$ | $(-1,1,1)/\sqrt{3}$ | $(-\frac{1}{2}, -\frac{1}{3})$ | Anti-red antiquark |
+| $v_{\bar{G}}$ | $(1,-1,1)/\sqrt{3}$ | $(+\frac{1}{2}, -\frac{1}{3})$ | Anti-green antiquark |
+| $v_{\bar{B}}$ | $(1,1,-1)/\sqrt{3}$ | $(0, +\frac{2}{3})$ | Anti-blue antiquark |
+| $v_W$ | $(1,1,1)/\sqrt{3}$ | — | Singlet direction |
+| $v_{\bar{W}}$ | $(-1,-1,-1)/\sqrt{3}$ | — | Singlet direction |
 
-**Normalization Convention:** Throughout this framework, we use the normalization where the three quark weight vectors form an equilateral triangle with unit side length in the $(T_3, Y)$ plane. This requires scaling hypercharge $Y$ by $2/\sqrt{3}$ relative to the standard Gell-Mann–Nishijima convention.
+**Normalization Convention:** Throughout this framework, we use the normalization where the three quark weight vectors form an equilateral triangle with unit side length in the $(T_3, Y)$ plane. This requires scaling hypercharge $Y$ by $\sqrt{3}/2$ relative to the standard Gell-Mann–Nishijima convention.
 
 *\*Note on Weight Normalization:* The **structural correspondence** (equilateral triangles, antipodal pairing, $S_3$ permutation symmetry) between stella octangula vertices and SU(3) weights is convention-independent; only numerical coordinate values change with normalization choice. See Theorem 1.1.1 for explicit conversion factors between conventions.
 
@@ -304,23 +339,29 @@ The vertices $v_W$ and $v_{\bar{W}}$ require careful interpretation:
    - The singlet direction along which $\chi_{total} = 0$ due to phase cancellation
 
 5. **Physical significance (beyond geometry):** While the W vertices are not color charges, they are **not mere artifacts**. They encode:
-   - The **confinement mechanism**: The radial direction from the color plane to W represents the "distance" to color neutrality
+   - The **confinement structure**: The radial direction from the color plane to W represents the "distance" to color neutrality. Note: the compact geometry provides **kinematic** confinement (fields cannot escape to infinity); **dynamical** confinement (linear potential, Wilson loop area law) is established separately in [Theorem 2.5.2](../Phase2/Theorem-2.5.2-Dynamical-Confinement.md) and [Proposition 2.5.2a](../Phase2/Proposition-2.5.2a-Wilson-Loop-Area-Law-From-Geometry.md)
    - The **emergent radial dimension**: In the D = N+1 formula, the +1 radial spatial dimension corresponds to motion toward/away from the W direction
-   - ✅ **Connection to gluon sector (RESOLVED):** The 2 apex vertices correspond to the **2 zero-weight states** of the adjoint representation (the neutral gluons $g_3, g_8$). This is proven as follows:
-     
-     **Theorem (Apex-Cartan Correspondence):** The number of apex vertices equals the rank of SU(3).
-     
-     *Proof:*
-     1. The adjoint representation of SU(N) has dimension $N^2 - 1$
-     2. Its weight diagram contains $(N^2 - N)$ non-zero weights (the roots) plus $(N-1)$ zero-weight states
-     3. For SU(3): $8 = 6$ (roots) $+ 2$ (zero weights in Cartan subalgebra)
-     4. The stella octangula has 6 weight vertices (quarks/antiquarks) + 2 apex vertices
-     5. Apex vertices project to weight $(0,0)$ — the same weight as the neutral gluons
-     6. Therefore: **2 apex vertices ↔ 2 Cartan generators ↔ 2 neutral gluons** ∎
-     
-     This resolves the former conjecture: the apex vertices ARE connected to the gluon sector, specifically encoding the Cartan (diagonal) part of the gauge group. The 6 root edges encode the 6 charged gluons, while the 2 apex directions encode the 2 neutral gluons.
+   - ✅ **Connection to gluon sector (structural correspondence):** The 2 apex vertices correspond to the **2 zero-weight states** of the adjoint representation (the neutral gluons $g_3, g_8$). This structural correspondence is established as follows:
 
-   Thus W and $\bar{W}$ are geometrically necessary AND physically meaningful—they encode the structure that allows color confinement, AND they correspond to the neutral gluon sector of QCD.
+     **Theorem (Apex-Cartan Correspondence for SU(3)):** For the specific case N = 3, the number of apex vertices equals the rank of SU(3).
+
+     *Proof:*
+     1. The adjoint representation of SU(3) has dimension $3^2 - 1 = 8$
+     2. Its weight diagram contains $6$ non-zero weights (the roots) plus $2$ zero-weight states (Cartan subalgebra)
+     3. The stella octangula has 6 weight vertices (quarks/antiquarks) + 2 apex vertices
+     4. Apex vertices project to weight $(0,0)$ — the same weight as the neutral gluons
+     5. Therefore: **2 apex vertices ↔ 2 Cartan generators ↔ 2 neutral gluons** ∎
+
+     **Scope limitation:** This numerical coincidence (2 apices = rank 2) is **specific to SU(3)**. For general SU(N), each stella-N has exactly 2 apex vertices (one per simplex), but rank(SU(N)) = N − 1. The match 2 = N − 1 holds only for N = 3. For SU(2) (rank 1) and SU(4) (rank 3), the apex count does not equal the rank. The correspondence is therefore a **structural feature of SU(3)**, not a general SU(N) pattern.
+
+     **Edge-gluon correspondence (clarified):** The stella octangula has 12 total edges (6 per tetrahedron), while SU(3) has 6 charged gluons (corresponding to the 6 roots of the $A_2$ root system). The correspondence is as follows:
+     - The 3 edges connecting color vertices within $T_+$ (RG, GB, BR) correspond to the 3 **positive roots** $\vec{\alpha}_1, \vec{\alpha}_2, \vec{\alpha}_1 + \vec{\alpha}_2$
+     - The 3 corresponding edges within $T_-$ ($\bar{R}\bar{G}$, $\bar{G}\bar{B}$, $\bar{B}\bar{R}$) correspond to the 3 **negative roots** $-\vec{\alpha}_1, -\vec{\alpha}_2, -(\vec{\alpha}_1 + \vec{\alpha}_2)$
+     - The remaining 6 edges (connecting W or $\bar{W}$ to color/anti-color vertices) do **not** directly correspond to gluons; they encode the geometric embedding of the weight triangle into 3D space
+
+     This is a **structural (counting) correspondence**, not a dynamical mechanism. Gluons are quantum gauge fields with propagators, self-interactions, and color charges; edges are static geometric objects. The dynamical content — how geometric structure gives rise to gauge field dynamics — requires the full gauge theory construction (Theorem 1.1.1) and the emergent Yang-Mills action (Theorem 7.1.1).
+
+   Thus W and $\bar{W}$ are geometrically necessary AND physically meaningful — they encode the structure that allows color confinement, AND they exhibit a structural correspondence with the neutral gluon sector of QCD.
 
 ### 4.2 The Projection to Weight Space
 
@@ -499,6 +540,13 @@ The stella octangula can be visualized in the interactive demonstrations:
 
 ---
 
+## Verification Records
+
+- **Multi-Agent Peer Review (2026-02-21):** [Definition-0.1.1-Multi-Agent-Verification-2026-02-21.md](../verification-records/Definition-0.1.1-Multi-Agent-Verification-2026-02-21.md) — Three-agent adversarial review (Literature, Mathematical, Physics). All core mathematics verified correct. **All identified issues resolved (2026-02-21):** L-1 (McMullen citation), M-1 (Y-scaling text), M-2 (Table 12.3.1 vertex count), M-3 (Apex-Cartan scope), P-L1 (confinement mechanism), P-S1 (Killing form), P-K2 (gluon correspondence language), P-H1 (standard physics acknowledgment), plus all moderate and minor warnings.
+- **Adversarial Physics Verification Script:** [`verification/Phase0/verify_definition_0_1_1.py`](../../../verification/Phase0/verify_definition_0_1_1.py) — Comprehensive Python script testing 14 categories: vertex coordinates, Euler characteristic, angular defects, dihedral angles, SU(3) weight correspondence, A₂ root system, pressure function axioms, realization independence, symmetry group, edge lengths, surface area, barycentric coordinates, and adversarial stress tests.
+
+---
+
 ## References
 
 ### Internal Documents
@@ -510,22 +558,26 @@ The stella octangula can be visualized in the interactive demonstrations:
 ### Geometry and Topology
 5. Coxeter, H.S.M. "Regular Polytopes" (1973) — Stella octangula geometry
 6. Nakahara, M. "Geometry, Topology and Physics" (2003) — Manifold theory
-7. McMullen, C.T. "The Gauss–Bonnet theorem for cone manifolds and volumes of moduli spaces" American Journal of Mathematics 120(1), 1-32 (1998) — Cone-manifold theory and Gauss-Bonnet generalization
+7. McMullen, C.T. "The Gauss–Bonnet theorem for cone manifolds and volumes of moduli spaces" American Journal of Mathematics 139(1), 261-291 (2017) — Cone-manifold theory and Gauss-Bonnet generalization
 8. Cooper, D., Hodgson, C.D. & Kerckhoff, S.P. "Three-dimensional Orbifolds and Cone-Manifolds" Mathematical Society of Japan Memoirs, Vol. 5 (2000) — Rigorous treatment of cone-manifold topology
 9. Richeson, D. "Euler's Gem: The Polyhedron Formula and the Birth of Topology" (2008) — Descartes' theorem and angular defect
 10. Guillemin, V. & Pollack, A. "Differential Topology" (1974) — Standard reference for smooth manifold theory
 11. Thurston, W.P. "The Geometry and Topology of Three-Manifolds" Princeton Lecture Notes (1979) — Foundational treatment of geometric structures on manifolds
 12. Polytope Wiki: Stella octangula — https://polytope.miraheze.org/wiki/Stella_octangula
 
+### Topology
+13. Munkres, J.R. "Topology" 2nd ed. (2000) — Classification of surfaces; homeomorphism between convex polyhedra and $S^2$
+14. Cromwell, P.R. "Polyhedra" (1997) — Comprehensive treatment of polyhedral geometry, compounds, and stellations
+
 ### Lie Algebras and Representation Theory
-13. Georgi, H. "Lie Algebras in Particle Physics" (1999) — SU(3) representation theory
-14. Humphreys, J.E. "Introduction to Lie Algebras and Representation Theory" (1972) — Cartan-Killing classification
+15. Georgi, H. "Lie Algebras in Particle Physics" (1999) — SU(3) representation theory
+16. Humphreys, J.E. "Introduction to Lie Algebras and Representation Theory" (1972) — Cartan-Killing classification
 
 ### Lattice QCD and Flux Tubes
-15. Cea, P., Cosmai, L. & Papa, A. "Chromoelectric flux tubes and coherence length in QCD" Phys. Rev. D 86, 054501 (2012) [arXiv:1208.1362]
-16. Cea, P., Cosmai, L., Cuteri, F. & Papa, A. "Flux tubes in the SU(3) vacuum" Phys. Rev. D 89, 094505 (2014) [arXiv:1404.1172]
-17. Cardoso, N., Cardoso, M. & Bicudo, P. "Inside the SU(3) quark-antiquark QCD flux tube" Phys. Rev. D 88, 054504 (2013) [arXiv:1302.3633]
-18. FLAG Collaboration (Aoki, Y. et al.) "FLAG Review 2024" CERN-TH-2024-192 [arXiv:2411.04268] — Lattice QCD averages for string tension and QCD parameters
+17. Cea, P., Cosmai, L. & Papa, A. "Chromoelectric flux tubes and coherence length in QCD" Phys. Rev. D 86, 054501 (2012) [arXiv:1208.1362]
+18. Cea, P., Cosmai, L., Cuteri, F. & Papa, A. "Flux tubes in the SU(3) vacuum" Phys. Rev. D 89, 094505 (2014) [arXiv:1404.1172]
+19. Cardoso, N., Cardoso, M. & Bicudo, P. "Inside the SU(3) quark-antiquark QCD flux tube" Phys. Rev. D 88, 054504 (2013) [arXiv:1302.3633]
+20. FLAG Collaboration (Aoki, Y. et al.) "FLAG Review 2024" CERN-TH-2024-192 [arXiv:2411.04268] — Lattice QCD averages for string tension and QCD parameters
 
 ---
 

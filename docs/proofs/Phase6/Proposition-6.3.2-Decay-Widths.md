@@ -5,6 +5,17 @@
 **Created:** 2026-01-24
 **Purpose:** Compute particle decay widths from the phase-gradient Feynman rules, demonstrating that decay rates are geometrically determined and match experimental data.
 
+**Dependencies:**
+- ✅ Theorem 6.1.1 (Complete Feynman Rules)
+- ✅ Theorem 6.2.1 (Tree Level Scattering Amplitudes)
+- ✅ Theorem 3.1.1 (Chiral Drag Mass Formula)
+- ✅ Proposition 0.0.21 (Unified Electroweak Scale Derivation)
+- ✅ Proposition 0.0.24 (SU(2) Gauge Coupling From Unification)
+- ✅ Proposition 0.0.17k (Pion Decay Constant From Phase Lock)
+- ✅ Proposition 0.0.17j (String Tension From Casimir Energy)
+- ✅ Extension 3.1.2b (Complete Wolfenstein Parameters)
+- ✅ Proposition 6.3.1 (One-Loop QCD Corrections)
+
 ---
 
 ## 1. Formal Statement

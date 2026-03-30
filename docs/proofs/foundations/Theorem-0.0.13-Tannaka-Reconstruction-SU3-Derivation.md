@@ -1,10 +1,10 @@
 # Theorem 0.0.13: Tannaka Reconstruction — Derivation
 
-## Status: 🔶 FRAMEWORK COMPLETE — LEMMAS PROVEN
+## Status: 🔶 NOVEL ✅ VERIFIED — DERIVATION
 
 This document contains the proof framework for Theorem 0.0.13: the Tannaka-Krein reconstruction of SU(3) from the stella octangula.
 
-**Note:** The proof framework is now complete with rigorous lemma proofs (0.0.13a-d). Computational verification has been performed in `verification/foundations/theorem_0_0_13_lemma_proofs.py`. The theorem awaits Lean 4 formalization for full verification status.
+**Note:** The proof framework is now complete with rigorous lemma proofs (0.0.13a-d). Computational verification has been performed in `verification/foundations/theorem_0_0_13_lemma_proofs.py`. Lean 4 formalization is complete — see `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_13.lean`.
 
 **Verification Date:** 2026-01-01
 

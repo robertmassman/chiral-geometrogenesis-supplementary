@@ -19,9 +19,14 @@
 - ✅ Props 0.0.18-0.0.21 (Electroweak VEV v_H = 246 GeV)
 
 **Enables:**
+- Proposition 0.0.24a
+- Proposition 4.2.4
+- Proposition 6.3.2
+- Proposition 6.3.3
+- Proposition 6.3.4
+- Theorem 6.6.1 (Electroweak Scattering)
 - Theorem 6.7.1 (Electroweak Gauge Fields)
 - Theorem 6.7.2 (W and Z Boson Masses)
-- Theorem 6.6.1 (Electroweak Scattering)
 
 ---
 

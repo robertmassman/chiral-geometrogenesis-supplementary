@@ -23,6 +23,11 @@
 10. ✅ §4.3: Crossing symmetry verified for χ-mediated amplitudes (CPT invariance, spinor transformations)
 11. ✅ §4.2.2: Complete loop calculation for $g^+g^+ \to g^+g^+$ via $\chi G\tilde{G}$ coupling ($\sigma/\sigma_{\rm tot} \sim 10^{-9}$)
 
+**Dependencies:**
+- ✅ Theorem 6.1.1 (Complete Feynman Rules)
+- ✅ Theorem 6.2.1 (Tree Level Scattering Amplitudes)
+- ✅ Theorem 0.0.14 (Novel Lorentz Violation Pattern)
+
 ---
 
 ## 1. Formal Statement

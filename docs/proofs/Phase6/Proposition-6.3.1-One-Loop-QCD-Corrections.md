@@ -6,6 +6,12 @@
 **Updated:** 2026-01-22 — Multi-Agent Verification corrections completed
 **Purpose:** Establish that one-loop QCD corrections in CG follow standard dimensional regularization with the β-function derived geometrically, and compute representative corrections to scattering processes.
 
+**Dependencies:**
+- ✅ Theorem 6.1.1 (Complete Feynman Rules)
+- ✅ Theorem 6.2.1 (Tree Level Scattering Amplitudes)
+- ✅ Theorem 3.1.1 (Chiral Drag Mass Formula)
+- ✅ Proposition 0.0.17s (Strong Coupling From Gauge Unification)
+
 ---
 
 ## 1. Formal Statement

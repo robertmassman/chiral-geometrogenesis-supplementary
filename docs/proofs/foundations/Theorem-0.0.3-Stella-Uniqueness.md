@@ -1,6 +1,6 @@
-# Theorem 0.0.3: Uniqueness of the Stella Octangula as Minimal Geometric Realization of SU(3)
+# Theorem 0.0.3: Uniqueness of the Stella Octangula as Minimal 3D Geometric Realization of SU(3)
 
-## Status: ✅ VERIFIED — CENTRAL UNIQUENESS THEOREM
+## Status: 🔶 NOVEL ✅ VERIFIED — CENTRAL UNIQUENESS THEOREM
 
 > **Peer Review Note (December 15, 2025; Re-verified January 19, 2026):** Multi-agent verification completed and all issues resolved. Re-verification (Jan 2026) enhanced documentation with explicit 2D alternative clarification, prominent Theorem 0.0.3b cross-references, and computational verification summaries.
 >
@@ -36,16 +36,19 @@
 > - ✅ Item 3: Added explicit tables distinguishing geometric vs dynamical content
 > - See `verification/foundations/theorem_0_0_3_adversarial_resolution.py` for computational verification
 
-**Purpose:** This theorem proves that the stella octangula is the unique minimal **3D** geometric realization of SU(3), eliminating it as an independent postulate.
+**Purpose:** This theorem proves that the stella octangula is the unique minimal **3D** geometric realization of SU(3), eliminating it as an independent postulate. The "3D" qualifier is essential: the 3D embedding requirement comes from [Proposition 0.0.40](Proposition-0.0.40-Embedding-Dimension-From-Confinement.md) (deriving $d_{\text{embed}} = \text{rank} + 1 = 3$ from confinement physics). Without this, the unique minimal realization would be a 2D hexagonal arrangement — essentially standard Lie theory. See §2.3 for the explicit conditional structure.
 
 **Dependencies:**
 - Definition 0.0.0 (Minimal Geometric Realization)
 - Theorem 0.0.1 (D = 4 from Observer Existence)
 - Theorem 0.0.2 (Euclidean Metric from SU(3))
-- Theorem 1.1.1 (Weight Diagram Isomorphism)
-- Physical Hypothesis 0.0.0f (3D Embedding from Confinement)
+- Physical Hypothesis 0.0.0f (3D Embedding from Confinement) — now **derived** in [Proposition 0.0.40](Proposition-0.0.40-Embedding-Dimension-From-Confinement.md)
 
 **Extended by:** [Theorem 0.0.3b](Theorem-0.0.3b-Geometric-Realization-Completeness.md) (Completeness of Geometric Realization Classification) — extends uniqueness to *all* topological spaces, including non-convex polyhedra, infinite structures, and fractals.
+
+**Computational companion:** [Proposition 0.0.3a](Proposition-0.0.3a-Computational-Crystallization-Stella-Octangula.md) (Computational Crystallization) — demonstrates the stella is the unique ground state of Z₃ field interactions via nine experimental phases (B–G, Z1–Z2), confirming algebraic uniqueness dynamically from only Hurwitz's theorem + coupling + minimality.
+
+**Enables:** [Proposition 0.0.39](Proposition-0.0.39-Stella-Adjoint-Decomposition.md) (Stella Adjoint Decomposition — face–adjoint bijection relies on vertex-weight correspondence from Thm 0.0.3)
 
 **Implications:** The stella octangula topology is derived, not assumed
 
@@ -69,6 +72,8 @@ Specifically:
 
 **(d)** No other polyhedron satisfies these conditions.
 
+> **Scope Note (V4.15):** This uniqueness result is conditional on the axiom package GR1–GR3 + MIN1–MIN3 from Definition 0.0.0. The derivations within this search space are mathematically rigorous, but the axiom package itself defines the space of candidates. Alternative axiom sets (e.g., adjoint representation, simplicial complexes instead of polyhedra) could in principle admit different solutions. See Definition 0.0.0 §1.1 "Epistemic Note: The Axiom Package as a Definition Space" for a detailed analysis of three concrete alternatives and why the framework's axiom choices are either derivable from core inputs or redundant with independent selection criteria.
+
 ### 1.1 Critical Clarification: Discrete vs. Continuous Symmetry
 
 **This section addresses a common source of confusion that has led to misconceptions about our claim.**
@@ -80,8 +85,7 @@ We emphasize the distinction between different mathematical objects:
 | **SU(3)** (Lie group) | Continuous manifold | 8-dimensional, infinitely many elements | The gauge group of QCD |
 | **𝔰𝔲(3)** (Lie algebra) | Vector space | 8-dimensional | Tangent space at identity |
 | **𝒲(SU(3)) ≅ S₃** (Weyl group) | Finite group | Order 6 | Permutes roots/weights |
-| **O_h** (stella symmetry) | Finite group | Order 48 | Full octahedral symmetry |
-| **S₄ × ℤ₂** (combinatorial) | Finite group | Order 48 | Stella as abstract graph |
+| **O_h ≅ S₄ × ℤ₂** (stella symmetry) | Finite group | Order 48 | Full octahedral symmetry (geometric O_h = combinatorial S₄ × ℤ₂) |
 
 **What we claim:**
 - The Weyl group S₃ is embedded as a subgroup: **S₃ ⊂ O_h** ✓
@@ -337,7 +341,7 @@ $\blacksquare$
 | Candidate | Vertices | Why It Fails |
 |-----------|----------|--------------|
 | **Two separate triangles** | 6 | (MIN2): Only 2D; no radial direction |
-| **Octahedron** | 6 | (GR1): Can't separate fund/anti-fund |
+| **Octahedron** | 6 | (GR2): O_h ⊃ S₄ incompatible with Weyl S₃ |
 | **Cube** | 8 | (GR2): Wrong symmetry (S₄ not S₃ × ℤ₂) |
 | **Triangular prism** | 6 | (GR3): No antipodal property |
 | **Two tetrahedra (separate)** | 8 | Not connected; not a single complex |
@@ -545,6 +549,48 @@ The stella octangula emerges as the unique answer to: "What is the simplest 3D g
 - **Interpenetration:** Quarks and antiquarks exist in the same space
 - **6 primary vertices:** 3 colors + 3 anticolors
 - **2 apex vertices:** Color-singlet directions (origin of weight space under projection)
+
+#### 5.1.1 Redundant Selection: Multiple Criteria Converge on the Stella
+
+> **V4-R3 Enhancement:** The stella octangula is selected by the minimality axioms (MIN1-MIN3) of Definition 0.0.0. A skeptic might ask: why should nature prefer minimal structures? This subsection shows that the stella is also selected by independent alternative criteria, providing redundant confirmation that is not contingent on minimality alone.
+
+The framework uses minimality (MIN1-MIN3) as its selection criterion. However, the stella octangula would also be selected by at least two other natural criteria:
+
+**Criterion 1: Maximal Symmetry.** Among all 8-vertex polyhedra in $\mathbb{R}^3$ satisfying (GR1)-(GR3), the stella octangula has the largest symmetry group:
+
+| 8-vertex polyhedron | Point symmetry group | Order |
+|--------------------|--------------------|-------|
+| **Stella octangula** | **$O_h$** | **48** |
+| Cube | $O_h$ | 48 |
+| Square antiprism | $D_{4d}$ | 16 |
+| Twisted prism | $D_4$ | 8 |
+| Generic 8-vertex | trivial | 1 |
+
+The cube shares $O_h$ symmetry but fails (GR1) — its vertices do not map to SU(3) weights (§2.5). Among polyhedra satisfying the geometric realization axioms, the stella is the unique $O_h$-symmetric solution. A "maximal symmetry" selection principle would therefore also uniquely select the stella.
+
+**Criterion 2: Maximal Regularity.** The stella octangula consists of two *regular* tetrahedra — the most symmetric 3-simplex. Any deformation breaking regularity would reduce the symmetry group from $O_h$ to a subgroup, violating the Weyl group requirement (GR2) that $S_3$ acts by geometric automorphisms (§2.4, Step 3e).
+
+**Criterion 3: Root Lattice Compatibility.** The stella's edge vectors encode exactly the $A_2$ root system (§4.3), with no spurious edges. The cube, octahedron, and other candidates either have wrong edge counts, wrong edge-root correspondences, or wrong symmetry structure (§2.5). This root-system compatibility is a structural criterion independent of minimality.
+
+**Significance:** The convergence of three independent selection principles — minimality, maximal symmetry, and root lattice compatibility — on the same structure provides evidence that the stella octangula is not merely a conventional choice but a structurally distinguished object. The minimality criterion (MIN1-MIN3) is a framework postulate, but the result it selects is robust: replacing it with alternative natural criteria yields the same answer.
+
+#### 5.1.2 Sensitivity Analysis: What If (GR3) Is Relaxed?
+
+> **V4.3(d) Enhancement:** A skeptic may ask: if the chirality axiom (GR3) is dropped, do other geometric realizations become available? This subsection shows that relaxing (GR3) destroys the ability to faithfully encode SU(3).
+
+**(GR3) states** that charge conjugation — the map $\mathbf{3} \leftrightarrow \bar{\mathbf{3}}$ — must be encoded as a geometric involution distinguishing two components $T_+$ and $T_-$.
+
+**Why (GR3) is physically necessary for SU(3).** Unlike SU(2), where the fundamental representation $\mathbf{2}$ is pseudo-real ($\mathbf{2} \cong \bar{\mathbf{2}}$ via the antisymmetric tensor $\epsilon_{ij}$), SU(3) has a *complex* fundamental representation: $\mathbf{3} \not\cong \bar{\mathbf{3}}$. Charge conjugation $C: q \mapsto \bar{q}$ is a non-trivial operation that exchanges quarks and antiquarks. Any faithful geometric encoding of SU(3) must distinguish these two inequivalent representations.
+
+**What happens without (GR3).** If (GR3) is dropped:
+
+1. **The two tetrahedra become interchangeable.** Without a geometric distinction between $T_+$ (fundamental) and $T_-$ (anti-fundamental), the 8 vertices lose their partition into two distinct representation spaces. The structure has enhanced $S_8$ permutation symmetry rather than $S_3 \times \mathbb{Z}_2$.
+
+2. **No faithful SU(3) embedding exists.** A faithful embedding requires that the weight map $\iota: \mathcal{V} \to \mathfrak{h}^*$ distinguish $\vec{w}_c$ from $-\vec{w}_c$. Without (GR3), one cannot assign opposite weights to geometrically distinguished components — the embedding degenerates to $\mathbf{3} \oplus \mathbf{3}$ (two copies of the fundamental) rather than $\mathbf{3} \oplus \bar{\mathbf{3}}$.
+
+3. **A single tetrahedron is insufficient.** One might attempt to use only 4 vertices (one tetrahedron + 1 apex) to encode $\mathbf{3}$ alone. But this cannot represent $\mathbf{3} \oplus \bar{\mathbf{3}}$, which is required for any self-consistent color theory (mesons are $q\bar{q}$ states, requiring both representations). Moreover, 4 vertices cannot encode the 6-element $A_2$ root system needed for (GR2).
+
+**Conclusion:** Relaxing (GR3) does not enlarge the space of valid realizations — it *empties* it. No polyhedral complex with fewer than 8 vertices and without chirality distinction can faithfully embed the $\mathbf{3} \oplus \bar{\mathbf{3}}$ structure of SU(3). The chirality axiom is not an arbitrary restriction but a necessary consequence of the complex nature of SU(3)'s fundamental representation.
 
 ### 5.2 Symmetry Structure (What This Theorem Captures)
 
@@ -818,6 +864,110 @@ The **existence** of pions as Goldstone bosons is topologically forced. Only the
 
 **Summary:** The stella octangula captures the **arena** for QCD dynamics — the symmetry structure that constrains what is possible — but not the specific numerical values or time-dependent phenomena that require solving field equations.
 
+### 5.4 Coleman-Mandula Theorem and the Gauge-Geometry Identification
+
+> **V8 Audit Response (2026-02-23):** This section addresses the most serious theoretical obstacle to the framework's core claim that gauge group structure is encoded in spatial geometry, as identified in the [G1 Validity Audit Module V8](../reviews/G1/G1-Validity-Audit-Module-V8-Findings.md) §V8.2.
+
+#### 5.4.1 The No-Go Theorem
+
+The **Coleman-Mandula theorem** (1967) states that the symmetry group of any quantum field theory satisfying certain assumptions is necessarily a **direct product** of the Poincaré group and an internal symmetry group:
+
+$$G_{symmetry} = \text{Poincaré} \times G_{internal}$$
+
+Internal symmetries (gauge transformations) and spacetime symmetries (Lorentz boosts, translations) **cannot mix**.
+
+**Required assumptions** (Coleman & Mandula 1967, Phys. Rev. 159, 1251):
+1. An S-matrix exists (scattering is well-defined)
+2. Poincaré invariance holds
+3. A mass gap exists (or a discrete spectrum of particle masses)
+4. Two-particle scattering occurs at almost all energies
+5. Elastic scattering amplitudes are analytic functions of angle
+
+**Known loopholes:**
+1. **Supersymmetry** (Haag-Łopuszański-Sohnius 1975) — Lie *super*algebras can mix spacetime and internal symmetries via fermionic generators
+2. **Pre-geometric phase** — If spacetime does not yet exist, there is no Poincaré group and no S-matrix, so the theorem's assumptions are not satisfied
+3. **Spontaneous symmetry breaking** — The theorem constrains only the *unbroken* symmetry group; the full group before breaking can have richer structure
+4. **Curved spacetime** — The proof specifically requires flat Minkowski spacetime
+
+#### 5.4.2 The Apparent Conflict
+
+This framework identifies gauge group structure with spatial geometry:
+- SU(3) weight space directions ↔ physical spatial directions
+- Weyl group ($S_3$) acting on weights ↔ discrete spatial symmetries
+- The stella octangula ↔ the pre-geometric seed of 3D space
+
+This appears to mix internal symmetries (color SU(3)) with spatial structure, in apparent violation of Coleman-Mandula.
+
+#### 5.4.3 Resolution: The Pre-Geometric Loophole
+
+The gauge-geometry identification in this framework holds **in the pre-geometric phase** — before spacetime has emerged. In this phase:
+
+| Coleman-Mandula Assumption | Status in Pre-Geometric Phase |
+|---------------------------|-------------------------------|
+| S-matrix exists | **NOT SATISFIED** — no scattering without spacetime |
+| Poincaré invariance | **NOT SATISFIED** — no spacetime, no Poincaré group |
+| Mass gap | **NOT APPLICABLE** — mass requires a Hamiltonian acting on a Hilbert space defined over spacetime |
+| Two-particle scattering | **NOT SATISFIED** — no particles, no scattering |
+| Analytic amplitudes | **NOT SATISFIED** — no amplitudes without an S-matrix |
+
+**None** of the five assumptions are satisfied in the pre-geometric phase. The Coleman-Mandula theorem therefore places no constraint on the gauge-geometry identification at this stage.
+
+**After spacetime emergence** (Phases 1–5 of the framework), the situation changes:
+
+1. Spacetime emerges from the geometric realization (Phase 5)
+2. The Poincaré group acts on the emergent spacetime
+3. SU(3) acts on internal color degrees of freedom
+4. The S-matrix is defined for scattering processes in the emergent spacetime
+
+At this stage, the **standard direct-product structure** $\text{Poincaré} \times \text{SU}(3)_{\text{color}}$ obtains. The gauge-geometry identification of the pre-geometric phase gives way to the conventional fiber-bundle description:
+- **Base manifold:** Emergent 4D spacetime $\mathcal{M}$
+- **Fiber:** Internal SU(3) color space
+- **Connection:** Gluon field $A_\mu^a(x)$
+
+The geometric realization (stella octangula) serves as the **origin** of both spatial structure and gauge structure — it explains *why* these structures exist and *why* SU(3) is the gauge group — but does not persist as a dynamical mixing of the two after emergence.
+
+**Analogy:** A common origin does not imply a persistent mixing. The electromagnetic and weak forces share a common origin in SU(2) × U(1) before electroweak symmetry breaking, but after breaking they appear as separate forces (electromagnetism and the weak interaction). Similarly, spacetime and gauge structure share a common geometric origin in the pre-geometric phase, but after emergence they separate into the standard direct-product structure.
+
+#### 5.4.4 The Weight Space ↔ Physical Space Distinction
+
+It is important to clearly distinguish two logically separable claims:
+
+| Claim | Status | Explanation |
+|-------|--------|-------------|
+| SU(3) weight vertices form an equilateral triangle in weight space $\mathfrak{h}^*$ | **(E) Standard mathematics** | Humphreys 1972, Georgi 1999. The $A_2$ root system is textbook Lie algebra. |
+| The $A_2$ weight space is identified with a 2D subspace of physical $\mathbb{R}^3$ | **(F) Novel framework claim** | This is the core premise of geometric realization (Def 0.0.0). Standard physics treats weight space and physical space as independent (fiber vs. base in fiber bundle language). |
+
+The first claim — that SU(3) weights form specific geometric patterns — is established mathematics requiring no defense. The second claim — that this abstract algebraic geometry **is** physical spatial geometry — is the novel, load-bearing step of the framework.
+
+**What the framework claims:** Weight space $\mathfrak{h}^*$ is not merely *isomorphic to* a subspace of physical space — it *is* that subspace, in the pre-geometric phase. The geometric realization (Def 0.0.0) instantiates this identification via the polyhedral complex $\mathcal{P}$.
+
+**What requires defense:** The identification of abstract (internal) space with physical (external) space. This is precisely where the pre-geometric loophole (§5.4.3) is invoked: in the pre-geometric phase, the distinction between "internal" and "external" has not yet been established, because there is no spacetime to serve as the "external" reference.
+
+**After emergence:** The abstract weight space and physical space *separate*. Weight space becomes the internal fiber; physical space becomes the base manifold. The Coleman-Mandula direct-product structure is recovered.
+
+#### 5.4.5 Precedents for the Pre-Geometric Loophole
+
+The pre-geometric loophole is not unique to this framework:
+
+1. **Garrett Lisi (2007)** invoked the same argument for E₈ theory: "There is no spacetime and thus no S-matrix until AFTER symmetry breaking, when gravitational and gauge fields separate." (arXiv:0711.0770)
+
+2. **Loop Quantum Gravity** (Rovelli 2004) derives spacetime from spin networks — gauge and spatial structure share a common origin in the pre-geometric spin network phase.
+
+3. **Causal Dynamical Triangulations** (Ambjorn, Jurkiewicz & Loll 2004) — spacetime dimension emerges from a pre-geometric path integral over simplicial geometries. No S-matrix or Poincaré invariance in the pre-geometric phase.
+
+4. **String theory** — spacetime is emergent in many formulations (e.g., Matrix theory, AdS/CFT). The pre-geometric phase of these theories is not constrained by Coleman-Mandula.
+
+The pre-geometric loophole is well-recognized in the quantum gravity literature. What distinguishes this framework is the specific mechanism (stella octangula geometry) and the specific gauge group derived (SU(3)).
+
+#### 5.4.6 Honest Assessment of the Defense
+
+| Aspect | Assessment |
+|--------|-----------|
+| **Is the pre-geometric loophole valid?** | Yes — widely accepted in quantum gravity literature. Coleman-Mandula requires an S-matrix, which requires spacetime. |
+| **Does the framework clearly invoke it?** | Yes, as of this section. The gauge-geometry identification holds pre-emergence; direct-product structure holds post-emergence. |
+| **Is the transition mechanism fully specified?** | Partially. Phases 1–5 describe emergence, but the precise point at which the direct-product structure appears (i.e., at which Coleman-Mandula begins to apply) is not pinpointed to a specific scale or phase transition. This remains an open question. |
+| **Does this weaken the framework?** | Not fatally. The same issue (when does the pre-geometric phase end?) faces every quantum gravity program. The framework's specific advantage is that it derives the gauge group from the pre-geometric structure, which other programs do not achieve. |
+
 ---
 
 ## 6. Implications for the Framework
@@ -871,16 +1021,22 @@ INPUT: "Complex observers can exist"
        ↓
 DERIVE: D = 4 (Theorem 0.0.1)
        ↓
-DERIVE: SU(3) (D = N + 1 formula)
+DERIVE: SU(3) (Theorem 0.0.15, topological)
        ↓
 DERIVE: Euclidean ℝ³ (Theorem 0.0.2)
-       ↓
-DERIVE: Stella Octangula (Theorem 0.0.3)
+       ↓                          ↓
+DERIVE: d_embed = 3         (Prop 0.0.40, from confinement)
+       ↓                          ↓
+       └──────────┬───────────────┘
+                  ↓
+DERIVE: Stella Octangula (Theorem 0.0.3, conditional on 3D)
        ↓
 DERIVE: Time, Metric, Gravity (Phases 0-5)
        ↓
 OUTPUT: Physics matching observation
 ```
+
+> **Note:** Without the 3D embedding (Prop 0.0.40), the unique minimal realization of SU(3) would be the 2D hexagonal arrangement (two coplanar equilateral triangles related by inversion) — standard Lie theory. The stella's 3D structure, and with it the apex vertices and confinement direction, depends on $d_{\text{embed}} = \text{rank} + 1$.
 
 **This closes the loop:** Field interactions (on the derived stella octangula structure) necessarily produce geometry, given that observers can exist.
 
@@ -895,7 +1051,7 @@ OUTPUT: Physics matching observation
 3. Theorem 0.0.2 (this framework) — Euclidean from SU(3)
 4. Theorem 1.1.1 (this framework) — Weight diagram isomorphism
 5. Theorem 12.3.2 (Definition-0.1.1-Applications §12.3.2) — D = N + 1 formula
-6. Physical Hypothesis 0.0.0f (Definition 0.0.0 §4.4) — 3D embedding from confinement
+6. Physical Hypothesis 0.0.0f (Definition 0.0.0 §4.4) — 3D embedding from confinement; **derived** in [Proposition 0.0.40](Proposition-0.0.40-Embedding-Dimension-From-Confinement.md)
 7. **[Proposition 0.0.17t](Proposition-0.0.17t-Topological-Origin-Of-Scale-Hierarchy.md)** — Uses stella uniqueness to establish topological origin of QCD-Planck hierarchy
 
 ### External References
@@ -904,6 +1060,13 @@ OUTPUT: Physics matching observation
 8. Humphreys, J.E. "Introduction to Lie Algebras and Representation Theory" (1972) — Root systems (§10.3), Weyl groups (§10.3), weight lattices (§13)
 9. Georgi, H. "Lie Algebras in Particle Physics" 2nd ed. (1999) — SU(3) weight conventions (Ch. 7-9), particle multiplets
 10. Fulton, W. & Harris, J. "Representation Theory: A First Course" (1991) — Completeness of weight classification (§15.1-15.3)
+
+### Coleman-Mandula and Pre-Geometric Precedents (§5.4)
+
+10b. Coleman, S. & Mandula, J. (1967). "All Possible Symmetries of the S Matrix." Phys. Rev. 159, 1251 — No-go theorem for mixing internal and spacetime symmetries
+10c. Haag, R., Łopuszański, J.T. & Sohnius, M. (1975). "All possible generators of supersymmetries of the S matrix." Nucl. Phys. B 88, 257 — Supersymmetric extension (known loophole)
+10d. Lisi, A.G. (2007). "An Exceptionally Simple Theory of Everything." arXiv:0711.0770 — Invokes pre-geometric loophole for E₈ gauge-geometry identification
+10e. Ambjorn, J., Jurkiewicz, J. & Loll, R. (2004). "Emergence of a 4D World from Causal Quantum Gravity." Phys. Rev. Lett. 93, 131301 — CDT: spacetime dimension emerges dynamically
 
 **Note on terminology:** The phrase "minimal geometric realization" is novel framework terminology introduced in Definition 0.0.0. It should not be confused with standard geometric representation theory.
 
@@ -943,6 +1106,12 @@ OUTPUT: Physics matching observation
 
 34. `docs/proofs/verification-records/Theorem-0.0.3-Multi-Agent-Re-Verification-2026-01-19.md` — Multi-agent peer review re-verification
 
+### Lean 4 Formalization
+
+35. `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_3_Main.lean` — Main uniqueness theorem formalization
+36. `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_3_Supplements.lean` — Supporting lemma formalizations
+37. `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_3b.lean` — Completeness extension formalization
+
 ### Upstream Dependency Verification
 
 All prerequisites have been independently verified:
@@ -957,5 +1126,5 @@ All prerequisites have been independently verified:
 ---
 
 *Document created: December 15, 2025*
-*Last updated: January 19, 2026*
+*Last updated: February 23, 2026 (V8-R2: added §5.4 Coleman-Mandula discussion and gauge-geometry identification defense)*
 *Status: ✅ FULLY VERIFIED — Multi-agent peer review completed (Dec 15, 2025), adversarial physics review completed (Dec 18, 2025), all remaining items resolved (Dec 21, 2025). Re-verification completed (Jan 19, 2026) with enhanced documentation: explicit 2D alternative clarification, prominent Theorem 0.0.3b cross-references, computational verification summaries for regularity proof and apex justification. Complete resolution of 12 original issues (C1-C4, M1-M4, m1-m4) plus 3 adversarial items.*

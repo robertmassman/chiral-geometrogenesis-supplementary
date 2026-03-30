@@ -40,12 +40,12 @@ The document states:
 3. Calculate d(W, center) and d(RGB, center) explicitly
 4. Show ratio equals 1/√3
 
-**Critical question:** The stella octangula vertices are:
+**Critical question:** The stella octangula vertices are (Convention A):
 ```
-x_R = (1, 1, 1)/√3
-x_G = (1, -1, -1)/√3
-x_B = (-1, 1, -1)/√3
-x_W = (-1, -1, 1)/√3
+x_R = (1, -1, -1)/√3
+x_G = (-1, 1, -1)/√3
+x_B = (-1, -1, 1)/√3
+x_W = (1, 1, 1)/√3
 ```
 
 In SU(3) weight space (2D), the fundamental weights are:

@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-02-05T10:22:46.412440",
+  "proposition": "0.0.30",
+  "tests": [
+    {
+      "name": "Exponent calculation",
+      "computed": 44.680428851054835,
+      "expected": 44.680428851054835,
+      "pass": "True"
+    },
+    {
+      "name": "Lattice spacing coefficient",
+      "computed": 5.074272804780512,
+      "expected": 5.07,
+      "pass": "True"
+    },
+    {
+      "name": "Saturation condition \u03b7 = 1",
+      "computed": 1.0,
+      "expected": 1.0,
+      "pass": "True"
+    },
+    {
+      "name": "Planck length derivation",
+      "computed": 1.7671364889783654e-35,
+      "expected": 1.61625502392855e-35,
+      "agreement_percent": 91.46181033605136,
+      "pass": "True"
+    },
+    {
+      "name": "Planck temperature",
+      "computed": 1.4167841617232972e+32,
+      "expected": 1.42e+32,
+      "pass": "True"
+    },
+    {
+      "name": "Thermal wavelength at T_P",
+      "computed": 1.6162550239285497e-35,
+      "expected": 1.61625502392855e-35,
+      "ratio": 0.9999999999999999,
+      "pass": "True"
+    },
+    {
+      "name": "Three arguments converge",
+      "pass": "True"
+    }
+  ],
+  "summary": {
+    "passed": "7",
+    "total": 7,
+    "all_pass": true
+  }
+}

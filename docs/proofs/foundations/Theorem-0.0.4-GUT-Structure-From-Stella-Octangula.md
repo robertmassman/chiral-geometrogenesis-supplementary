@@ -13,9 +13,18 @@
 
 **Enables:**
 - Theorem 0.0.5 (Chirality Selection from Geometry)
+- Theorem 0.0.9
 - Theorem 2.3.1 (Universal Chirality Origin) — removes GUT_occurred axiom
 - Theorem 2.4.1 (Gauge Unification from Geometric Symmetry)
 - Theorem 2.4.2 (Topological Chirality from Stella Orientation)
+- Theorem 3.1.5
+- Theorem 6.7.1
+- Proposition 0.0.22
+- Proposition 0.0.23
+- Proposition 0.0.24
+- Proposition 0.0.25
+- Proposition 0.0.27
+- Proposition 3.1.4
 
 ---
 

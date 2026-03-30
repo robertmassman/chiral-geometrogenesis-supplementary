@@ -54,7 +54,7 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 - ✅ Established: Einstein-Cartan theory (Hehl et al. 1976)
 
 ### Dependent Theorems (will need re-verification if this changes)
-- Theorem 5.3.3 (if it exists): May use spin-orbit coupling for gravitational phenomenology
+- Theorem 5.3.3 (not yet written): May use spin-orbit coupling for gravitational phenomenology
 - Phase 6 predictions: Uses torsion precession for experimental tests
 
 ### Related Theorems

@@ -499,7 +499,7 @@ $$\boxed{\theta = 0 \text{ is the unique Z₃-invariant minimum}}$$
 1. [Theorem 0.0.0](./Theorem-0.0.0-GR-Conditions-Derivation.md) — T₊ ↔ T₋ = charge conjugation
 2. [Theorem 0.0.5](./Theorem-0.0.5-Chirality-Selection-From-Geometry.md) — Chirality selection, Strong CP status
 3. **[Proposition 0.0.5a](./Proposition-0.0.5a-Z3-Center-Constrains-Theta-Angle.md) — Z₃ constraint on θ-angle (NEW)**
-4. [Theorem 0.0.15](./Theorem-0.0.15-Topological-Derivation-SU3.md) — Z₃ center → SU(3) uniqueness
+4. [Theorem 0.0.15](./Theorem-0.0.15-Topological-Determination-SU3.md) — Z₃ center → SU(3) uniqueness
 5. [Theorem 1.1.2](../Phase1/Theorem-1.1.2-Charge-Conjugation.md) — Geometric charge conjugation
 6. [Theorem 1.2.2](../Phase1/Theorem-1.2.2-Chiral-Anomaly.md) — Chiral anomaly, §6.5 neutron EDM
 7. [Theorem 2.2.3](../Phase2/Theorem-2.2.3-Time-Irreversibility.md) — C, P, T, CP, CPT transformations

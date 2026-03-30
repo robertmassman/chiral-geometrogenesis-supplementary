@@ -13,6 +13,8 @@
 
 **Enables:**
 - [Theorem 0.0.29](Theorem-0.0.29-Lawvere-Bootstrap-Uniqueness.md) — Completes the point-surjectivity condition
+- [Theorem 0.0.31](Theorem-0.0.31-Unconditional-Uniqueness-CG-Fixed-Point.md) — Unconditional uniqueness of CG fixed point
+- [Proposition 5.2.5e](../Phase5/Proposition-5.2.5e-Holographic-Self-Encoding-Scale-Invariance.md) — Proves saturation condition $\eta = 1$ is scale-invariant (no-go for absolute scale)
 - Closure of the holographic bootstrap
 
 **Resolves:** Open Item 1 in Theorem 0.0.29 §12.4

@@ -1,6 +1,6 @@
 # Theorem 0.0.2: Euclidean Metric from SU(3) Representation Theory
 
-## Status: 🔶 NOVEL — EUCLIDEAN ℝ³ UNIQUELY COMPATIBLE WITH SU(3)
+## Status: 🔶 NOVEL ✅ VERIFIED — EUCLIDEAN ℝ³ UNIQUELY COMPATIBLE WITH SU(3) WITHIN GEOMETRIC REALIZATION FRAMEWORK
 
 > **Peer Review Note (2026-01-01):** Multi-agent verification completed with all issues resolved:
 >
@@ -37,10 +37,12 @@
 
 **Dependencies:**
 - Theorem 0.0.1 (D = 4 from observer existence)
-- Theorem 12.3.2 (D = N + 1 formula)
 - Standard SU(3) Lie algebra theory
 
-**Implications:** The Euclidean structure of ℝ³ is uniquely compatible with SU(3); alternative geometries would be inconsistent
+**Cross-references (not logical prerequisites):**
+- Definition 0.1.1-Applications §12.3.2 (D = N + 1 formula; see Definition-0.1.1-Stella-Octangula-Boundary-Topology-Applications.md) — independently derivable from standard SU(N) representation theory: rank(su(N)) = N − 1 angular dimensions + 1 radial = N spatial. Now formally derived in Theorem 0.0.2b.
+
+**Implications:** Within the geometric realization framework (GR1–GR3), the Euclidean structure of ℝ³ is uniquely compatible with SU(3); alternative geometries would be inconsistent with the framework's axioms
 
 ---
 
@@ -200,7 +202,7 @@ $$\begin{pmatrix} T_3 \\ Y \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 2/\sqrt{
 | G | $(-1/2, 1/(2\sqrt{3}))$ | $(-1/2, 1/3)$ |
 | B | $(0, -1/\sqrt{3})$ | $(0, -2/3)$ |
 
-**Key Point:** The Killing metric is **diagonal** in the $(T_3, T_8)$ basis: $g = \frac{1}{12}\mathbb{I}_2$. In the $(T_3, Y)$ basis, the metric transforms and is no longer proportional to the identity.
+**Key Point:** The Killing metric is **diagonal** in the $(T_3, T_8)$ basis: $g^K = \frac{1}{3}\mathbb{I}_2$. In the $(T_3, Y)$ basis, the metric transforms and is no longer proportional to the identity.
 
 The weight triangle is **equilateral** in the Killing metric regardless of coordinate choice. In naive Euclidean coordinates, it appears equilateral in $(T_3, T_8)$ but isosceles in $(T_3, Y)$ — see Theorem 1.1.1 §1.6 for explicit verification.
 
@@ -227,15 +229,15 @@ $$\langle \lambda, \mu \rangle_K = B^{-1}(\lambda, \mu)$$
 **Proof:**
 
 The Killing form restricted to the Cartan subalgebra is:
-$$B|_{\mathfrak{h}} = -12 \cdot \mathbb{I}_2$$
+$$B|_{\mathfrak{h}} = -3 \cdot \mathbb{I}_2$$
 
-(where $\mathbb{I}_2$ is the 2×2 identity, in the orthonormal basis $\{T_3, T_8\}$).
+(where $\mathbb{I}_2$ is the 2×2 identity, in the basis $\{T_3, T_8\}$ with $T_a = \lambda_a/2$; note $B(T_a, T_b) = -3\delta_{ab}$, cf. Theorem 0.1.0 §3.3).
 
 The inverse is:
-$$B^{-1} = -\frac{1}{12} \mathbb{I}_2$$
+$$B^{-1} = -\frac{1}{3} \mathbb{I}_2$$
 
 On the dual space $\mathfrak{h}^*$, the induced metric is:
-$$\langle \cdot, \cdot \rangle_K = -B^{-1} = \frac{1}{12} \mathbb{I}_2$$
+$$\langle \cdot, \cdot \rangle_K = -B^{-1} = \frac{1}{3} \mathbb{I}_2$$
 
 This is **positive-definite** with signature $(+,+)$.
 
@@ -248,10 +250,10 @@ $$d(\vec{w}_i, \vec{w}_j) = \sqrt{\langle \vec{w}_i - \vec{w}_j, \vec{w}_i - \ve
 
 **Example:** Distance between $\vec{w}_R$ and $\vec{w}_G$:
 $$\vec{w}_R - \vec{w}_G = (1, 0)$$
-$$d(R, G) = \sqrt{\frac{1}{12}(1^2 + 0^2)} = \frac{1}{\sqrt{12}} = \frac{1}{2\sqrt{3}}$$
+$$d(R, G) = \sqrt{\frac{1}{3}(1^2 + 0^2)} = \frac{1}{\sqrt{3}}$$
 
 All pairwise distances are equal (equilateral triangle):
-$$d(R,G) = d(G,B) = d(B,R) = \frac{1}{2\sqrt{3}}$$
+$$d(R,G) = d(G,B) = d(B,R) = \frac{1}{\sqrt{3}}$$
 
 This confirms the Euclidean geometry of the weight triangle.
 
@@ -312,7 +314,7 @@ Let $(\theta_1, \theta_2)$ be coordinates on weight space (the 2D weight lattice
 The metric on weight space (from Killing form):
 $$d\Omega_K^2 = g_{ij}^K d\theta^i d\theta^j$$
 
-where $g^K = \frac{1}{12}\mathbb{I}_2$ in Cartesian weight coordinates.
+where $g^K = \frac{1}{3}\mathbb{I}_2$ in $(T_3, T_8)$ weight coordinates.
 
 The natural 3D extension:
 $$ds^2 = dr^2 + r^2 d\Omega_K^2$$
@@ -351,7 +353,7 @@ where $\theta^i$ are coordinates on weight space.
 For the metric to be S₃-invariant:
 - (a) $h_{ij}(\theta)$ must satisfy $h_{ij}(\sigma\cdot\theta) = h_{ij}(\theta)$ for all $\sigma \in S_3$
 - (b) The only S₃-invariant symmetric 2-tensor on $\mathbb{R}^2$ is proportional to $\delta_{ij}$
-- (c) Therefore: $h_{ij}(r, \theta) = h(r) \cdot g^K_{ij} = h(r) \cdot \frac{1}{12}\delta_{ij}$
+- (c) Therefore: $h_{ij}(r, \theta) = h(r) \cdot g^K_{ij} = h(r) \cdot \frac{1}{3}\delta_{ij}$
 
 **Step 3 (Radial Isotropy):** "Isotropic in the radial direction" means:
 - (a) No preferred radial direction: $g_i(r, \theta) = 0$ (cross terms vanish)
@@ -371,13 +373,13 @@ Therefore, $h(r) = r^2$ globally is required by the $C^\infty$ requirement at $r
 **Step 5 (Normalization):** We can always choose coordinates so $f(r) = 1$ (this defines the radial unit).
 
 **Conclusion:** The unique metric satisfying (1)-(4) is:
-$$ds^2 = dr^2 + r^2 \cdot \frac{1}{12}\delta_{ij}d\theta^i d\theta^j = dr^2 + r^2 d\Omega_K^2$$
+$$ds^2 = dr^2 + r^2 \cdot \frac{1}{3}\delta_{ij}d\theta^i d\theta^j = dr^2 + r^2 d\Omega_K^2$$
 
 In Cartesian coordinates $(x, y, z)$: $ds^2 = dx^2 + dy^2 + dz^2$ — the **Euclidean metric**.
 
 **Flatness Verification:** The Riemann tensor vanishes identically:
-- Christoffel symbols: $\Gamma^r_{\theta\theta} = -r/12$, $\Gamma^\theta_{r\theta} = 1/r$
-- Riemann: $R^r_{\theta r\theta} = \partial_r\Gamma^r_{\theta\theta} - \Gamma^r_{\theta\theta}\Gamma^\theta_{r\theta} = -1/12 + 1/12 = 0$
+- Christoffel symbols: $\Gamma^r_{\theta\theta} = -r/3$, $\Gamma^\theta_{r\theta} = 1/r$
+- Riemann: $R^r_{\theta r\theta} = \partial_r\Gamma^r_{\theta\theta} - \Gamma^r_{\theta\theta}\Gamma^\theta_{r\theta} = -1/3 + 1/3 = 0$
 
 $\blacksquare$
 
@@ -387,7 +389,7 @@ $\blacksquare$
 
 ### 5.1 What This Means
 
-The Euclidean structure of 3D space is not an independent axiom. It is **determined by** SU(3) gauge symmetry:
+The Euclidean structure of 3D space is not an independent axiom. Within the geometric realization framework (GR1–GR3, Definition 0.0.0), it is **determined by** SU(3) gauge symmetry:
 
 $$\text{SU(3)} \xrightarrow{\text{Cartan}} \mathfrak{h} \xrightarrow{\text{Killing}} g^K \xrightarrow{\text{extend}} \text{Euclidean } \mathbb{R}^3$$
 
@@ -396,19 +398,18 @@ $$\text{SU(3)} \xrightarrow{\text{Cartan}} \mathfrak{h} \xrightarrow{\text{Killi
 ```
 Theorem 0.0.1: D = 4 from observers
     │
-    ▼
-Theorem 12.3.2: D = N + 1
+    ▼  (D = N + 1, Theorem 12.3.2)
     │
-    ▼
+    ▼  SELECTS
 N = 3, hence SU(3)
     │
-    ▼
+    ▼  (derives)
 Killing form on 𝔰𝔲(3)
     │
-    ▼
+    ▼  (derives)
 Positive-definite metric on weight space
     │
-    ▼
+    ▼  (derives)
 Theorem 0.0.2 (this): Euclidean ℝ³
 ```
 
@@ -471,7 +472,7 @@ The formula works for SU(3) because SU(3) is **selected** to match D = 4, not be
 Definition 0.1.3 defines pressure functions:
 $$P_c(x) = \frac{1}{|x - x_c|^2 + \epsilon^2}$$
 
-The distance $|x - x_c|$ uses the Euclidean metric. This theorem shows that metric is determined by SU(3).
+The distance $|x - x_c|$ uses the Euclidean metric. This theorem shows that metric is determined by SU(3) within the geometric realization framework (GR1–GR3).
 
 ### 6.2 Updated Ontological Status
 
@@ -506,16 +507,16 @@ These form a regular hexagon in weight space.
 | Convention | Definition | Value for SU(3) |
 |------------|------------|-----------------|
 | Euclidean (naive) | $\|\alpha\|^2_{Eucl} = \alpha_i \alpha_i$ | 1 |
-| Killing metric | $\langle\alpha,\alpha\rangle_K = g^K_{ij}\alpha_i\alpha_j = \frac{1}{12}\alpha_i\alpha_i$ | 1/12 |
-| **Standard A₂** | $\|\alpha\|^2 = 2\langle\alpha,\alpha\rangle_K$ | **1/6** |
+| Killing metric | $\langle\alpha,\alpha\rangle_K = g^K_{ij}\alpha_i\alpha_j = \frac{1}{3}\alpha_i\alpha_i$ | 1/3 |
+| **Standard A₂** | $\|\alpha\|^2 = 2\langle\alpha,\alpha\rangle_K$ | **2/3** |
 
 The document uses the **standard A₂ normalization**:
-$$|\alpha|^2 = 2\langle\alpha,\alpha\rangle_K = 2 \times \frac{1}{12} = \frac{1}{6}$$
+$$|\alpha|^2 = 2\langle\alpha,\alpha\rangle_K = 2 \times \frac{1}{3} = \frac{2}{3}$$
 
 The factor of 2 arises from the Cartan matrix convention: for simply-laced root systems (A, D, E), roots are normalized so that $\langle\alpha,\alpha\rangle = 2$ in the standard inner product, which translates to $|\alpha|^2 = 2\langle\alpha,\alpha\rangle_K$ in the Killing normalization.
 
 **Verification:** All roots have equal length (SU(3) is simply-laced):
-$$|\alpha_1| = |\alpha_2| = |\alpha_3| = \frac{1}{\sqrt{6}}$$
+$$|\alpha_1| = |\alpha_2| = |\alpha_3| = \sqrt{\frac{2}{3}}$$
 
 ### 7.3 The Immirzi-like Parameter and LQG Comparison
 
@@ -530,8 +531,8 @@ In our framework, an analogous quantity emerges from SU(3) representation theory
 The fundamental weight triangle has area in Euclidean coordinates:
 $$A_{Eucl} = \frac{1}{2} \cdot \text{base} \cdot \text{height} = \frac{1}{2} \cdot 1 \cdot \frac{\sqrt{3}}{2} = \frac{\sqrt{3}}{4}$$
 
-In the Killing metric ($g^K = \frac{1}{12}\mathbb{I}_2$):
-$$A_K = \frac{1}{12} A_{Eucl} = \frac{\sqrt{3}}{48}$$
+In the Killing metric ($g^K = \frac{1}{3}\mathbb{I}_2$):
+$$A_K = \frac{1}{3} A_{Eucl} = \frac{\sqrt{3}}{12}$$
 
 **Step 2 — Entropy Factor:**
 The number of color states in the fundamental representation is 3. The entropy contribution per representation is $\ln(3)$ (from the SU(3) Haar measure normalization).
@@ -581,7 +582,7 @@ This suggests a deep connection between SU(3) color structure and black hole hor
 | Weight space metric $g_K$ | dimensionless | dimensionless (angles/ratios) |
 | 3D metric $ds^2$ | — | $[\text{length}]^2$ |
 
-The weight space metric $g_K = \frac{1}{12}\mathbb{I}_2$ is dimensionless because it measures ratios of weight vectors. Physical length scales enter only when connecting to QCD parameters like $\Lambda_{QCD}$.
+The weight space metric $g_K = \frac{1}{3}\mathbb{I}_2$ is dimensionless because it measures ratios of weight vectors. Physical length scales enter only when connecting to QCD parameters like $\Lambda_{QCD}$.
 
 ### 8.2 Symmetry Check
 
@@ -619,10 +620,10 @@ The weight space metric $g_K = \frac{1}{12}\mathbb{I}_2$ is dimensionless becaus
 | Test | Result |
 |------|--------|
 | Killing form is diagonal | ✅ PASS |
-| Killing form \|B_aa\| = 12 | ✅ PASS |
-| Cartan metric B\|_h = -12·I₂ | ✅ PASS |
+| Killing form \|B(T_a,T_b)\| = 3δ_{ab} | ✅ PASS |
+| Cartan metric B\|_h = -3·I₂ | ✅ PASS |
 | Weight metric positive definite | ✅ PASS |
-| Weight metric = (1/12)·I₂ | ✅ PASS |
+| Weight metric = (1/3)·I₂ | ✅ PASS |
 | Weights sum to zero | ✅ PASS |
 | Equilateral triangle | ✅ PASS |
 | Root α₁ correct | ✅ PASS |
@@ -655,6 +656,14 @@ The weight space metric $g_K = \frac{1}{12}\mathbb{I}_2$ is dimensionless becaus
 
 **Total: 29/29 tests pass** (10 core + 5 medium + 8 long-term + 6 optional)
 
+**FC2 Unified Gauge Group Uniqueness:** `verification/foundations/fc2_gauge_group_uniqueness_verification.py`
+- Systematic elimination of all 35 compact simple Lie groups (classical A_n–D_n through rank 8, plus all five exceptionals)
+- Four constraints: rank ≤ 2, Z₃ center, center-symmetry confinement, π₃ = ℤ
+- SU(3) is unique survivor; cross-validates this theorem's metric path against Theorem 0.0.15's topological path
+- Critical edge case: G₂ (rank 2) eliminated by trivial center (det A = 1)
+- Weight geometry: only SU(3) gives equilateral triangle matching stella octangula
+- **9/9 tests pass across 35 groups**
+
 ---
 
 ## 9. Limitations and Caveats
@@ -662,7 +671,7 @@ The weight space metric $g_K = \frac{1}{12}\mathbb{I}_2$ is dimensionless becaus
 ### 9.1 What This Proves
 
 1. ✅ The **signature** of the 3D metric is Euclidean $(+,+,+)$
-2. ✅ The **form** of the metric is determined by SU(3)
+2. ✅ The **form** of the metric is determined by SU(3) within the geometric realization framework
 3. ✅ The **dimension** 3 follows from rank(SU(3)) + 1
 
 ### 9.2 What This Doesn't Prove
@@ -716,7 +725,7 @@ Both give the same answer because the representation is faithful.
 
 **Argument 1 — Curvature:**
 The Killing metric on weight space is:
-$$g_{ij} = \frac{1}{12}\delta_{ij}$$
+$$g_{ij} = \frac{1}{3}\delta_{ij}$$
 
 This is proportional to the identity matrix, hence:
 - Christoffel symbols: $\Gamma^i_{jk} = 0$
@@ -812,10 +821,10 @@ Under S₃ × ℤ₂:
 The vertex partition is:
 | Role | Vertices | Count |
 |------|----------|-------|
-| Fundamental **3** | $(-1,1,1), (1,-1,1), (1,1,-1)$ | 3 |
-| Anti-fundamental **3̄** | $(1,-1,-1), (-1,1,-1), (-1,-1,1)$ | 3 |
-| Singlet (apex +) | $(1,1,1)$ | 1 |
-| Singlet (apex −) | $(-1,-1,-1)$ | 1 |
+| Fundamental **3** (T₊ base) | $(1,-1,-1), (-1,1,-1), (-1,-1,1)$ | 3 |
+| Anti-fundamental **3̄** (T₋ base) | $(-1,1,1), (1,-1,1), (1,1,-1)$ | 3 |
+| Singlet (apex +, T₊) | $(1,1,1)$ | 1 |
+| Singlet (apex −, T₋) | $(-1,-1,-1)$ | 1 |
 
 This is **exactly** the structure required by SU(3) representation theory.
 
@@ -861,7 +870,7 @@ Claim: SU(3) from stella structure
 | Step | Content | Theorem | Input → Output |
 |------|---------|---------|----------------|
 | 1 | Observers → D = 4 | 0.0.1 | Observers exist → D = 4 |
-| 2 | D = N + 1 selection | 0.0.2 §5.2a | D = 4 → SU(3) uniquely compatible |
+| 2 | D = N + 1 selection | 0.0.2 §5.2a | D = 4 **selects** SU(3) as uniquely compatible |
 | 3 | Abstract SU(3) algebra | 0.0.2 §2.3 | Structure constants → Killing form |
 | 4 | Weight space metric | 0.0.2 §3 | Killing form → Euclidean metric |
 | 5 | Radial extension | 0.0.2 §4.1 | QCD dynamics → 3D = 2 + 1 |
@@ -891,7 +900,7 @@ Claim: SU(3) from stella structure
 
 **Theorem 0.0.2** establishes that:
 
-$$\boxed{\text{The Euclidean metric on } \mathbb{R}^3 \text{ is determined by SU(3) via the Killing form}}$$
+$$\boxed{\text{Within GR1–GR3, the Euclidean metric on } \mathbb{R}^3 \text{ is determined by SU(3) via the Killing form}}$$
 
 **Key Results:**
 1. Killing form is negative-definite on $\mathfrak{su}(3)$
@@ -984,7 +993,7 @@ The Euclidean metric has **trivial holonomy**, confirming global flatness.
 
 **Proof of Trivial Holonomy:**
 
-1. The Killing metric $g_{ij} = \frac{1}{12}\delta_{ij}$ is constant in Cartesian coordinates
+1. The Killing metric $g_{ij} = \frac{1}{3}\delta_{ij}$ is constant in Cartesian coordinates
 2. Christoffel symbols: $\Gamma^i_{jk} = \frac{1}{2}g^{il}(\partial_j g_{kl} + \partial_k g_{jl} - \partial_l g_{jk}) = 0$
 3. Riemann tensor: $R^i_{jkl} = 0$ (all components vanish)
 4. Holonomy group: $\text{Hol}(g) = \{I\}$ (trivial)
@@ -998,7 +1007,7 @@ The Euclidean metric has **trivial holonomy**, confirming global flatness.
 The abstract weight space $\mathfrak{h}^*$ must be embedded into physical 3D space. This map is not arbitrary but is **uniquely determined** by the requirement of preserving the Killing metric structure.
 
 **Step 1 — Weight Space Coordinates:**
-Weight space $\mathfrak{h}^* \cong \mathbb{R}^2$ has coordinates $(w_1, w_2)$ with Killing metric $g^K = \frac{1}{12}\mathbb{I}_2$.
+Weight space $\mathfrak{h}^* \cong \mathbb{R}^2$ has coordinates $(w_1, w_2)$ with Killing metric $g^K = \frac{1}{3}\mathbb{I}_2$.
 
 **Step 2 — Embedding into the (1,1,1)-Perpendicular Plane:**
 The weight plane is embedded perpendicular to the color-singlet direction $\hat{n} = (1,1,1)/\sqrt{3}$.
@@ -1028,9 +1037,9 @@ This confirms $M$ is an isometric embedding (distances are preserved).
 The equilateral triangle is preserved: $d(R,G) = d(G,B) = d(B,R) = 1.0$ (in rescaled units).
 
 **Step 6 — Full 3D Metric:**
-Starting with Killing metric $g^K_{ij} = \frac{1}{12}\delta_{ij}$ on 2D weight space:
+Starting with Killing metric $g^K_{ij} = \frac{1}{3}\delta_{ij}$ on 2D weight space:
 
-$$ds^2 = dr^2 + r^2 d\Omega_K^2 = dr^2 + \frac{r^2}{12}(dw_1^2 + dw_2^2)$$
+$$ds^2 = dr^2 + r^2 d\Omega_K^2 = dr^2 + \frac{r^2}{3}(dw_1^2 + dw_2^2)$$
 
 In Cartesian coordinates via the embedding:
 $$ds^2 = dx^2 + dy^2 + dz^2$$

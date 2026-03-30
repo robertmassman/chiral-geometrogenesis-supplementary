@@ -26,6 +26,11 @@
 
 **Verification:** Multi-agent peer review complete. All 13 identified issues resolved. See [verification report](./Theorem-2.4.1-Multi-Agent-Verification-2025-12-26.md).
 
+**Dependencies:**
+- ✅ Theorem 0.0.1 (D=4 From Observer Existence)
+- ✅ Theorem 0.0.3 (Stella Uniqueness)
+- ✅ Theorem 0.0.4 (GUT Structure From Stella Octangula)
+
 ---
 
 ## 1. Formal Statement

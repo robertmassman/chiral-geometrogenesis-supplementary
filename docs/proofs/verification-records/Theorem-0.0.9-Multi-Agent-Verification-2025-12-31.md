@@ -240,7 +240,7 @@ Theorem 0.0.9 claims to close the logical loop in the D=4 derivation by showing 
 
 ## Files Reviewed
 
-- `/docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md`
+- `/docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Consistency-Check.md`
 - `/docs/proofs/foundations/Theorem-0.0.4-GUT-Structure-From-Stella-Octangula.md`
 - `/docs/proofs/Phase5/Theorem-5.2.4-Newtons-Constant-Chiral-Parameters.md`
 - `/docs/proofs/Phase5/Theorem-5.2.4-Newtons-Constant-Chiral-Parameters-Derivation.md`

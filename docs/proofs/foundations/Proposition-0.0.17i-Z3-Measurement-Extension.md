@@ -27,7 +27,6 @@
 **Dependencies:**
 - ✅ Lemma 5.2.3b.2 (Z₃ Discretization at Horizons)
 - ✅ Proposition 0.0.17h (Information Horizon Derivation)
-- ✅ Proposition 0.0.17g (Objective Collapse Framework)
 - ✅ Theorem 0.0.17 (Information-Geometric Unification)
 - ✅ Definition 0.1.2 (Three Color Fields)
 

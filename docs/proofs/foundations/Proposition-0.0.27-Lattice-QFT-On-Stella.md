@@ -1,13 +1,35 @@
 # Proposition 0.0.27: Lattice QFT Formalization on ∂S
 
-## Status: 🔶 NOVEL — Framework established, coefficient matching verified
+## Status: 🔸 PARTIAL — Adversarial verification (2026-02-12) found 15 critical errors
 
 **Created:** 2026-02-02 (extracted from Proposition 0.0.27)
-**Last Updated:** 2026-02-08
+**Last Updated:** 2026-02-12
 **Parent Document:** [Proposition-0.0.27-Higgs-Mass-From-Geometry.md](Proposition-0.0.27-Higgs-Mass-From-Geometry.md)
-**Purpose:** Establish that the loop expansion of quantum field theory emerges intrinsically from the path integral over field configurations on the stella octangula boundary ∂S. This includes simplicial path integral formulation, propagator derivation, loop integrals from closed paths, explicit coefficient matching (discrete ↔ continuum), and the Symanzik improvement program.
+**Purpose:** Explore the path integral formulation of quantum field theory on the stella octangula graph K₄ as a finite quantum system and fundamental cell of the FCC lattice (Prop 0.0.6b). This includes simplicial path integral formulation, propagator derivation from the graph Laplacian, Wilson action formalism, and character expansion. The K₄ graph is a well-defined finite system; the continuum limit requires assembly into the FCC lattice via Prop 0.0.6b.
 
-**Central Question:** Can the loop expansion itself emerge from boundary fluctuations on ∂S? This is distinct from the question of whether we can *compute* loop corrections using geometric inputs (answered in Prop 0.0.27 §5) — here we ask whether Feynman diagrams arise intrinsically from the discrete geometry.
+**Central Question:** What is the exact structure of the path integral on the K₄ graph (each tetrahedron of ∂S), and how does K₄ serve as the fundamental cell for lattice QFT on the FCC lattice? This is distinct from the question of whether we can *compute* loop corrections using geometric inputs (answered in Prop 0.0.27 §5) — here we characterize the finite quantum system on K₄ and its role in the FCC tiling.
+
+**Dependencies:**
+- ✅ Definition 0.1.1 (Stella Octangula Boundary Topology)
+- ✅ Proposition 0.0.27 (Higgs Mass From Geometry)
+
+### Adversarial Review Summary (2026-02-12)
+
+**Verification Report:** [Proposition-0.0.27-Lattice-QFT-Multi-Agent-Verification-2026-02-12.md](../verification-records/Proposition-0.0.27-Lattice-QFT-Multi-Agent-Verification-2026-02-12.md)
+
+An adversarial verification found 15 critical errors. The core issue: K₄ (4-vertex complete graph) was treated as a lattice QFT with a continuum limit, when it is actually a **finite quantum system** with no continuum limit. The correct framing: K₄ is a fundamental cell that tiles into the FCC lattice (Prop 0.0.6b), which DOES have a continuum limit.
+
+| Category | Finding |
+|----------|---------|
+| ✅ Valid | Path integral on K₄ well-defined as finite quantum system |
+| ✅ Valid | Graph Laplacian calculations (eigenvalues, propagators) |
+| ✅ Valid | Wilson action formalism on K₄ (used by Prop 0.0.38) |
+| ⚠️ Corrected | K₄ has no continuum limit — FCC lattice (Prop 0.0.6b) provides this |
+| ❌ Failed | Symanzik coefficients are numerical coincidences, not geometric derivations |
+| ❌ Failed | "Feynman diagrams emerge" overclaims (path integral on any graph produces path sums) |
+| ⚠️ Scope | Instanton physics requires 4D (FCC lattice), not 2D surface alone |
+
+**Note:** The main paper (`main.tex`) is unaffected — it only uses λ = 1/8 and correctly references FCC for continuum limits. Prop 0.0.38 is also unaffected as it only uses Wilson action formalism and character expansion (standard lattice gauge theory).
 
 ---
 
@@ -32,13 +54,13 @@
 
 ---
 
-### 10.3 Intrinsic Geometric Loop Structure
+### 10.3 Path Integral on the K₄ Graph
 
-**Central Question:** Can the loop expansion itself emerge from boundary fluctuations on ∂S?
+**Central Question:** What is the exact structure of the path integral on K₄, and how does it serve as the fundamental cell for FCC lattice QFT?
 
-This is distinct from §10.1 — the question is not whether we can *compute* loop corrections (we can), but whether Feynman diagrams arise intrinsically from the path integral over field configurations on the stella octangula boundary.
+K₄ is a finite quantum system with 4 vertices, 6 edges, and a well-defined path integral. The continuum limit requires tiling K₄ into the FCC lattice (Prop 0.0.6b). Claims in §10.3.6 and §10.3.12 about direct K₄ → continuum correspondence are overclaims — see the Adversarial Review Summary above.
 
-**Status:** 🔶 NOVEL — Framework established, coefficient matching verified (§10.3.12)
+**Status:** 🔸 PARTIAL — Valid as finite system; continuum limit claims under review (see adversarial verification 2026-02-12)
 
 ---
 
@@ -49,11 +71,11 @@ The stella octangula boundary ∂S provides a natural discrete structure for for
 | Structure | Stella Feature | QFT Analog |
 |-----------|---------------|------------|
 | 0-simplices (vertices) | 8 vertices | Field degrees of freedom |
-| 1-simplices (edges) | 12 edges (per tetrahedron) | Propagator connections |
+| 1-simplices (edges) | 12 edges total (6 per tetrahedron) | Propagator connections |
 | 2-simplices (faces) | 8 triangular faces | Minimal loops |
 | Graph Laplacian | Discrete differential operator | Inverse propagator |
 
-The key insight: **Feynman diagrams are not assumed but emerge** from the path integral over field configurations on this simplicial structure.
+The key insight: the path integral over field configurations on K₄ generates **closed-path sums analogous to loop diagrams** in continuum QFT. This is a standard property of path integrals on any graph, not unique to the stella.
 
 ---
 
@@ -129,48 +151,52 @@ $$G_{vw}(m^2) = \begin{cases}
 - Off-diagonal terms represent propagation along edges
 - In the massless limit $m^2 \to 0$, the propagator has a pole (zero mode)
 
-**Note on loop calculations:** The one-loop matching in §10.3.12 uses triangular paths with propagators G₁₂ × G₂₃ × G₃₁ (all off-diagonal). The diagonal propagator G_vv does not appear in these calculations, so the loop matching results are unaffected by the diagonal formula.
+**Note on self-energy vs vacuum diagrams:** The one-loop self-energy in φ⁴ theory is the **tadpole** $\delta m^2 = (\lambda/2) \cdot G_{vv}$ (uses diagonal propagator). The closed triangular paths contribute to the **vacuum effective action** at $O(\lambda^3)$ (uses off-diagonal propagators). See §10.3.4 and §10.3.7.
 
 ---
 
-#### 10.3.4 Loop Integrals from Closed Paths
+#### 10.3.4 Closed-Path Contributions to the Effective Action
 
-**Central result:** Loop diagrams in QFT correspond to sums over closed paths on the stella octangula graph.
+**Central result:** The path integral on K₄ generates closed-path sums analogous to loop diagrams in continuum QFT.
 
 **Definition 10.3.4.1 (Closed Path on ∂S):**
 
 A closed path of length $\ell$ is a sequence of vertices $\gamma = (v_0, v_1, \ldots, v_\ell = v_0)$ such that consecutive vertices are adjacent.
 
-**Theorem 10.3.4.2 (Loop Contributions from Closed Paths):**
+**Theorem 10.3.4.2 (Vacuum Contributions from Closed Paths):**
 
-The one-loop contribution to the effective action from a closed path $\gamma$ is:
+The contribution to the vacuum effective action from a closed path $\gamma$ with no external legs is:
 
-$$\Gamma^{(1)}_\gamma = \frac{(-\lambda)^{|\gamma|}}{|\text{Aut}(\gamma)|} \prod_{i=0}^{\ell-1} G_{v_i, v_{i+1}}(m^2)$$
+$$\Gamma^{(\text{vac})}_\gamma = \frac{(-\lambda)^{|\gamma|}}{|\text{Aut}(\gamma)|} \prod_{i=0}^{\ell-1} G_{v_i, v_{i+1}}(m^2)$$
 
 where:
-- $|\gamma| = \ell$ is the number of vertices in the loop
+- $|\gamma| = \ell$ is the number of vertices in the path
 - $|\text{Aut}(\gamma)|$ is the symmetry factor (automorphisms of the path)
 - The product of propagators traces around the closed path
 
-**Minimal loops on ∂S (triangles):**
+**Important:** Closed paths with no external legs are **vacuum diagrams**, not self-energy diagrams. The one-loop self-energy in φ⁴ theory is a tadpole (see §10.3.7).
 
-Each tetrahedron has 4 triangular faces. A triangle $(v_1, v_2, v_3)$ gives:
+**Minimal closed paths on ∂S (triangles):**
 
-$$\Gamma^{(1)}_\triangle = \frac{(-\lambda_3)^3}{6} \cdot G_{12} \cdot G_{23} \cdot G_{31}$$
+Each tetrahedron has 4 triangular faces. A triangle $(v_1, v_2, v_3)$ gives a vacuum contribution at O(λ³):
+
+$$\Gamma^{(\text{vac})}_\triangle = \frac{(-\lambda)^3}{6} \cdot G_{12} \cdot G_{23} \cdot G_{31}$$
 
 With the explicit propagator from §10.3.3:
 
-$$G_{v \neq w} = \frac{1}{m^2(4 + m^2)} \quad \Rightarrow \quad \Gamma^{(1)}_\triangle = \frac{(-\lambda_3)^3}{6} \cdot \frac{1}{m^6(4 + m^2)^3}$$
+$$G_{v \neq w} = \frac{1}{m^2(4 + m^2)} \quad \Rightarrow \quad \Gamma^{(\text{vac})}_\triangle = \frac{(-\lambda)^3}{6} \cdot \frac{1}{m^6(4 + m^2)^3}$$
 
 **Sum over all triangles:** The stella has 8 triangular faces (4 per tetrahedron), so:
 
-$$\Gamma^{(1)}_{\text{total}} = 8 \times \Gamma^{(1)}_\triangle = \frac{4(-\lambda_3)^3}{3} \cdot \frac{1}{m^6(4 + m^2)^3}$$
+$$\Gamma^{(\text{vac})}_{\text{total}} = 8 \times \Gamma^{(\text{vac})}_\triangle = \frac{4(-\lambda)^3}{3} \cdot \frac{1}{m^6(4 + m^2)^3}$$
+
+**Note:** These vacuum contributions are heavily suppressed relative to the one-loop self-energy (tadpole) — by a factor of ~73× at $m^2 = 0.258$ and ~2400× at $m^2 = 1$ — because they scale as $\lambda^3$ rather than $\lambda$.
 
 ---
 
 #### 10.3.5 Vertex Structure from Simplicial Geometry
 
-**The Feynman rules emerge from the simplicial structure:**
+**The path integral on K₄ generates the following diagrammatic structure:**
 
 **(a) Propagator:** $G_{vw}(m^2) = [(\Delta + m^2)^{-1}]_{vw}$ ← from graph Laplacian
 
@@ -178,9 +204,11 @@ $$\Gamma^{(1)}_{\text{total}} = 8 \times \Gamma^{(1)}_\triangle = \frac{4(-\lamb
 - **3-point vertex:** At triangle centers (girth = 3 on K₄)
 - **4-point vertex:** At vertex sites where 4 edges could meet
 
-**(c) Loop integrals → Path sums:** Continuum loop integrals $\int \frac{d^4k}{(2\pi)^4}$ are replaced by discrete sums over closed paths:
+**(c) Loop integrals → Finite sums:** Continuum loop integrals are replaced by finite sums over the 4 modes of K₄:
 
-$$\int \frac{d^4k}{(2\pi)^4} \to \frac{1}{|\mathcal{V}|} \sum_{\text{closed paths } \gamma}$$
+$$\int \frac{d^4k}{(2\pi)^4} \to \frac{1}{|\mathcal{V}|} \sum_{v \in \mathcal{V}}$$
+
+**Caveat:** This replacement equates a dimensionful quantity [mass]⁴ with a dimensionless sum. On a standard lattice, the Brillouin zone provides the correct dimensional factor $(1/a)^4$. K₄ has no Brillouin zone; the matching requires an ad hoc normalization (see §10.3.12.4).
 
 **(d) Coupling constants:** The normalization $\lambda = 1/n_{\text{modes}} = 1/8$ from §3.2 enters as the weight per vertex mode.
 
@@ -188,49 +216,57 @@ $$\int \frac{d^4k}{(2\pi)^4} \to \frac{1}{|\mathcal{V}|} \sum_{\text{closed path
 
 #### 10.3.6 Connection to Continuum QFT
 
-**Theorem 10.3.6.1 (Continuum Limit Recovery — from Prop 0.0.6b):**
+**⚠️ Important distinction:** K₄ is a **4-site finite quantum system**. It has no lattice spacing parameter $a$, no Brillouin zone, no spatial extent, and therefore **no continuum limit**. The continuum limit requires tiling K₄ into the FCC lattice via Prop 0.0.6b.
 
-In the limit where the lattice spacing $a \to 0$, the discrete path sums reproduce continuum Feynman integrals:
+**What K₄ provides:** A finite, exactly solvable quantum system where all path integrals reduce to finite-dimensional integrals. Results on K₄ are exact for this toy model.
 
-$$\frac{1}{|\mathcal{V}|} \sum_{\text{closed paths}} \prod G_{ij} \xrightarrow{a \to 0} \int \frac{d^4k}{(2\pi)^4} \prod \frac{i}{k^2 - m^2 + i\epsilon}$$
+**What K₄ does NOT provide:** A direct continuum limit. The claim that $\frac{1}{|\mathcal{V}|}\sum_{\text{paths}} \prod G_{ij} \xrightarrow{a \to 0} \int \frac{d^4k}{(2\pi)^4} \prod \frac{i}{k^2 - m^2 + i\epsilon}$ cannot be established on K₄ alone.
 
-**Key results from Prop 0.0.6b:**
+**The continuum limit pathway (from Prop 0.0.6b):**
 
-1. The discrete O symmetry (24 rotations) effectively enhances to SO(3) as $a/L \to 0$
-2. With $a \approx 2.25 \ell_P$ and observable scales $L \geq$ fm, corrections are $\sim 10^{-20}$
-3. The spectral measure on the discrete graph approaches the continuum measure
-
-**Mechanism:** The stella octangula encodes an FCC lattice (Theorem 0.0.6) with:
+The stella octangula encodes an FCC lattice (Theorem 0.0.6) with:
 - Coordination number 12
 - Well-defined thermodynamic limit
 - Z₃ center structure preserved (topological invariant)
+
+On this **FCC lattice** (not K₄ alone), Prop 0.0.6b establishes:
+
+1. The discrete O symmetry (24 rotations) effectively enhances to SO(3) as $a/L \to 0$
+2. With $a \approx 2.25 \ell_P$ and observable scales $L \geq$ fm, corrections are $\sim 10^{-20}$
+3. The spectral measure on the FCC lattice approaches the continuum measure
+
+**Role of K₄ in this paper:** K₄ serves as the **unit cell** whose combinatorial structure (8 vertices, 12 edges, 8 faces) determines discrete parameters like $\lambda = 1/8$. The physical continuum theory is obtained by tiling these unit cells into the FCC lattice.
 
 ---
 
 #### 10.3.7 Explicit One-Loop Calculation: Higgs Mass Correction
 
-**Application:** Compute the one-loop correction to $m_H$ intrinsically from ∂S fluctuations.
+**Application:** Compute the one-loop correction to $m_H$ from $\phi^4$ self-interaction on K₄.
 
 **Setup:** The Higgs field modes $\phi_v$ on the 8 vertices satisfy:
 $$\langle \phi_v \phi_w \rangle = G_{vw}(m_H^2)$$
 
-**One-loop self-energy (sum over triangular loops):**
+**One-loop self-energy (tadpole diagram):**
 
-$$\Sigma^{(1)} = 8 \times \text{(triangle contribution)} = 8 \times \frac{\lambda^3}{6} \sum_{\text{triangle edges}} G_{ij}G_{jk}G_{ki}$$
+In $\phi^4$ theory, the one-loop self-energy is a **tadpole** — one vertex with one internal propagator loop:
 
-With $\lambda = 1/8$ and the explicit propagator:
+$$\delta m_H^2 = \frac{\lambda}{2} \cdot G(v,v)$$
 
-$$\Sigma^{(1)} = 8 \times \frac{(1/8)^3}{6} \times \frac{1}{(m_H^2)^3(4 + m_H^2)^3} = \frac{1}{384 \cdot m_H^6 \cdot (4 + m_H^2)^3}$$
+where $G(v,v) = \frac{1}{4}\left[\frac{1}{m^2} + \frac{3}{4 + m^2}\right]$ is the correctly normalized coincident propagator on K₄ (with the $1/n_v = 1/4$ factor from the spectral decomposition).
+
+**Note on previous error:** Earlier versions of this section computed the triangle path $(v_1 \to v_2 \to v_3 \to v_1)$ and labeled it a "self-energy." A closed triangle with no external legs is a **vacuum diagram** at $O(\lambda^3)$, not a self-energy. The correct one-loop self-energy in $\phi^4$ theory is the tadpole at $O(\lambda)$. See §10.3.4 for the vacuum diagram calculation.
+
+**Numerical evaluation:** With $\lambda = 1/8$ and the dimensionless ratio $\tilde{m}^2 = m_H^2/v_H^2 \approx 0.258$:
+
+$$G(v,v)\big|_{\tilde{m}^2 = 0.258} = \frac{1}{4}\left[\frac{1}{0.258} + \frac{3}{4.258}\right] = 1.145$$
+
+$$\frac{\delta m_H^2}{m_H^2} = \frac{\lambda}{2} \cdot \frac{G(v,v)}{m^2} = \frac{1}{16} \cdot \frac{1.145}{0.258} \approx 27.7\%$$
 
 **Comparison with continuum result:**
 
-The continuum one-loop Higgs self-energy goes as $\sim \lambda^2 m_H^2 / (16\pi^2)$.
+The continuum one-loop $\phi^4$ tadpole gives $\delta m_H^2 = \frac{\lambda}{32\pi^2} \Lambda_{UV}^2$ (quadratically divergent). On K₄, the sum is **finite** because K₄ has only 4 modes — the maximum eigenvalue $\lambda_{\max} = 4$ acts as a natural UV cutoff. The large 27.7% shift reflects the extreme IR sensitivity ($1/m^2$ contribution from the zero mode) on a 4-site system.
 
-Converting discrete to continuum (using $m_H^2 \approx 0.258$ in units where $v = 1$):
-
-$$\delta m_H^2 \sim \frac{\lambda^2 m_H^2}{16\pi^2} \times (\text{log terms})$$
-
-The discrete calculation reproduces the correct **structure** (polynomial in $\lambda$, involves closed-path sums). The precise matching of coefficients requires careful treatment of the continuum limit (Prop 0.0.6b).
+**Caveat:** This is a calculation on a 4-site toy model. The result demonstrates that K₄ provides a natural UV regulator, but quantitative comparison with continuum physics requires the FCC lattice continuum limit (Prop 0.0.6b).
 
 ---
 
@@ -256,17 +292,19 @@ $$\Lambda_{\text{UV}} = \frac{\hbar c}{a} \approx \frac{M_P}{2.25} \approx 5 \ti
 
 | Aspect | Status | Evidence |
 |--------|--------|----------|
-| Path integral on ∂S | ✅ ESTABLISHED | Definition 10.3.2.1 |
+| Path integral on K₄ | ✅ ESTABLISHED | Definition 10.3.2.1 — finite, well-defined |
 | Graph Laplacian as propagator | ✅ ESTABLISHED | Explicit formula §10.3.3 |
-| Loops from closed paths | ✅ ESTABLISHED | Theorem 10.3.4.2 |
-| Vertex structure | ✅ ESTABLISHED | From simplicial geometry |
-| Continuum limit | ✅ ESTABLISHED | Prop 0.0.6b |
-| Explicit one-loop matching | ✅ VERIFIED | §10.3.12 — coefficients match within 40% |
-| **Local gauge invariance** | ✅ ESTABLISHED | §10.3.13 — lattice gauge theory on ∂S |
-| **Fermions/spinors** | ✅ ESTABLISHED | §10.3.14 — discrete Dirac on ∂T₊ ⊔ ∂T₋ |
+| Vacuum diagrams from closed paths | ✅ ESTABLISHED | Theorem 10.3.4.2 |
+| φ⁴ tadpole self-energy | ✅ ESTABLISHED | §10.3.7 — correct O(λ) calculation |
+| Continuum limit (**via FCC, not K₄**) | ✅ ESTABLISHED | Prop 0.0.6b (not from K₄ alone) |
+| Discrete-continuum quantitative matching | 🔸 PARTIAL | §10.3.12 — qualitative agreement only |
+| **Local gauge invariance** | ✅ ESTABLISHED | §10.3.13 — lattice gauge theory on K₄ |
+| **Fermions/spinors** | 🔸 PARTIAL | §10.3.14 — discrete Dirac defined; Nielsen-Ninomiya caveats |
 | **Chirality encoding** | ✅ ESTABLISHED | §10.3.14 — L on T₊, R on T₋ |
-| **Non-perturbative/instantons** | ✅ ESTABLISHED | §10.3.15 — discrete instantons from ∂S topology |
-| **Full RG flow from ∂S** | ✅ ESTABLISHED | §10.3.16 — all-orders renormalizability, beta function matching |
+| **Instantons from ∂S** | ⚠️ SCOPE ISSUE | Instantons require 4D gauge fields; ∂S is 2D |
+| **RG flow** | 🔸 PARTIAL | Beta function structure identified, not fully derived |
+
+**⚠️ Important caveat:** K₄ is a 4-site toy model. Results labeled ✅ ESTABLISHED are valid as statements about this finite quantum system. Quantitative comparison with continuum QFT requires the FCC lattice continuum limit (Prop 0.0.6b).
 
 ---
 
@@ -339,56 +377,54 @@ This extreme hierarchy ($10^{17}$ orders of magnitude) means we are deep in the 
 
 ---
 
-##### 10.3.12.2 Discrete One-Loop Calculation on ∂S
+##### 10.3.12.2 Discrete One-Loop Calculation on K₄
 
 **Step 1: Dimensionless variables**
 
-On the stella octangula, define dimensionless mass parameter:
+On K₄, define dimensionless mass parameter:
 $$\tilde{m}^2 = m^2 a^2 / (\hbar c)^2$$
 
 For the Higgs at the EW scale: $\tilde{m}^2 \approx (m_H a/\hbar c)^2 \approx (2.3 \times 10^{-17})^2 \approx 5 \times 10^{-34}$
 
-**Step 2: Discrete propagator in physical units**
+**Step 2: Discrete propagator**
 
-From §10.3.3, the K₄ propagator is:
-$$G_{vw}(\tilde{m}^2) = \begin{cases}
-\frac{1 + \tilde{m}^2}{\tilde{m}^2(4 + \tilde{m}^2)} & v = w \\
-\frac{1}{\tilde{m}^2(4 + \tilde{m}^2)} & v \neq w
-\end{cases}$$
+From §10.3.3, the K₄ propagator (correctly normalized with the $1/n_v$ factor from spectral decomposition) is:
+$$G(v,v) = \frac{1}{4}\left[\frac{1}{\tilde{m}^2} + \frac{3}{4 + \tilde{m}^2}\right], \qquad G(v \neq w) = \frac{1}{4}\left[\frac{1}{\tilde{m}^2} - \frac{1}{4 + \tilde{m}^2}\right]$$
 
-In the limit $\tilde{m}^2 \ll 1$ (deep IR):
-$$G_{v \neq w} \approx \frac{1}{4\tilde{m}^2} = \frac{(\hbar c)^2}{4 m^2 a^2}$$
+**Sum rule:** $G(v,v) + 3 \cdot G(v \neq w) = 1/\tilde{m}^2$ (zero-mode contribution).
 
-**Step 3: One-loop self-energy from triangular paths**
+**Step 3: One-loop self-energy (φ⁴ tadpole)**
 
-Each tetrahedron has 4 triangular faces. The one-loop contribution from a single triangle with cubic coupling $\lambda_3$ is:
+In $\phi^4$ theory with quartic coupling $\lambda$, the one-loop self-energy is a **tadpole** diagram (1 vertex, 1 internal propagator loop):
 
-$$\Sigma_\triangle^{(1)} = \frac{\lambda_3^2}{2} \times G_{12} \times G_{23} \times G_{31} \times (\text{symmetry factor})$$
+$$\delta m^2 = \frac{\lambda}{2} \cdot G(v,v)$$
 
-Using the IR limit propagator:
-$$\Sigma_\triangle^{(1)} = \frac{\lambda_3^2}{2} \times \left(\frac{(\hbar c)^2}{4m^2 a^2}\right)^3 \times \frac{1}{3!}$$
+This is the correct one-loop diagram for the Higgs self-coupling. **Note:** Previous versions incorrectly computed the triangle path (3 vertices, 3 propagators, $O(\lambda^3)$), which is a vacuum diagram, not a self-energy. See §10.3.4 for the distinction.
 
-The factor 1/3! is the symmetry factor for the triangle (cyclic permutations).
+**Step 4: Evaluation on K₄**
 
-**Step 4: Sum over all triangles**
+With $\lambda = 1/8$:
+$$\delta m^2 = \frac{1}{16} \cdot \frac{1}{4}\left[\frac{1}{\tilde{m}^2} + \frac{3}{4 + \tilde{m}^2}\right]$$
 
-The stella has 8 triangular faces (4 per tetrahedron). Total discrete self-energy:
-$$\Sigma_{\partial\mathcal{S}}^{(1)} = 8 \times \Sigma_\triangle^{(1)} = \frac{8\lambda_3^2}{12} \times \frac{(\hbar c)^6}{64 m^6 a^6}$$
+$$\boxed{\frac{\delta m^2}{m^2} = \frac{\lambda}{2} \cdot \frac{G(v,v)}{\tilde{m}^2} = \frac{1}{16} \left[\frac{1}{\tilde{m}^4} + \frac{3}{\tilde{m}^2(4 + \tilde{m}^2)}\right]}$$
 
-$$\boxed{\Sigma_{\partial\mathcal{S}}^{(1)} = \frac{\lambda_3^2 (\hbar c)^6}{96 m^6 a^6}}$$
+For $\tilde{m}^2 = 0.258$: $\delta m^2/m^2 \approx 27.7\%$. This large value reflects the extreme IR sensitivity of the 4-site system (the $1/\tilde{m}^4$ term from the zero mode dominates).
 
 ---
 
 ##### 10.3.12.3 Continuum One-Loop Calculation
 
-**Standard result:** The one-loop scalar self-energy in 4D continuum QFT with cubic coupling is:
+**Standard result:** The one-loop $\phi^4$ tadpole self-energy in 4D continuum QFT is:
 
-$$\Sigma_{\text{cont}}^{(1)}(p^2) = \frac{\lambda_3^2}{2} \int \frac{d^4k}{(2\pi)^4} \frac{1}{(k^2 - m^2)((k-p)^2 - m^2)}$$
+$$\delta m^2_{\text{cont}} = \frac{\lambda}{2} \int \frac{d^4k}{(2\pi)^4} \frac{1}{k^2 + m^2}$$
 
-At $p^2 = m^2$ (on-shell), using dimensional regularization:
-$$\Sigma_{\text{cont}}^{(1)} = \frac{\lambda_3^2}{32\pi^2 m^2} \left[ \ln\left(\frac{\Lambda_{UV}^2}{m^2}\right) + \text{finite} \right]$$
+With UV cutoff $\Lambda_{UV}$:
+$$\delta m^2_{\text{cont}} = \frac{\lambda}{32\pi^2} \left[ \Lambda_{UV}^2 - m^2 \ln\left(\frac{\Lambda_{UV}^2}{m^2}\right) + O(m^2) \right]$$
 
-where $\Lambda_{UV}$ is the UV cutoff.
+After mass renormalization (absorbing the $\Lambda_{UV}^2$ quadratic divergence):
+$$\left(\frac{\delta m^2}{m^2}\right)_{\text{ren}} = \frac{\lambda}{16\pi^2} \ln\left(\frac{\mu^2}{m^2}\right) + \text{finite}$$
+
+where $\mu$ is the renormalization scale and $\Lambda_{UV}$ is the UV cutoff.
 
 **In the CG framework:** The natural UV cutoff is the Planck scale:
 $$\Lambda_{UV} = \frac{\hbar c}{a} = \frac{M_P}{2.25} \approx 5.4 \times 10^{18} \text{ GeV}$$
@@ -411,24 +447,22 @@ $$\Sigma_{\partial\mathcal{S}}^{(1)} = \frac{\lambda_3^2 (\hbar c)^6}{96 m^6 a^6
 **Continuum result (§10.3.12.3):**
 $$\Sigma_{\text{cont}}^{(1)} = \frac{\lambda_3^2}{32\pi^2 m^2} \ln\left(\frac{\Lambda_{UV}^2}{m^2}\right)$$
 
-**Dimensional analysis:** The discrete result has dimension [mass]$^{-6}$ while continuum has [mass]$^{-2}$. This mismatch arises because:
-1. The discrete calculation is in **lattice units** (dimensionless on the graph)
-2. The continuum calculation is in **physical units**
+**Dimensional analysis:** The discrete result has dimension [mass]$^{-6}$ while the continuum has [mass]$^{-2}$.
 
-**Correct normalization:** The discrete-to-continuum map requires:
-$$\int \frac{d^4k}{(2\pi)^4} \to \frac{1}{a^4} \times \frac{1}{n_{\text{modes}}} \sum_{\text{paths}}$$
+**⚠️ Honest assessment of the matching:** On a standard periodic lattice, the Brillouin zone Fourier transform provides a first-principles map between discrete sums and continuum integrals:
+$$\int_{-\pi/a}^{\pi/a} \frac{d^dk}{(2\pi)^d} \longleftrightarrow \frac{1}{a^d \cdot N_{\text{sites}}} \sum_k$$
 
-The factor $1/a^4$ converts the discrete sum to a 4D integral measure, and $1/n_{\text{modes}} = 1/8$ is the mode normalization (consistent with λ = 1/8).
+K₄ has no Brillouin zone, no momentum modes, and no lattice spacing parameter. The normalization factor $1/a^4 \times 1/n_{\text{modes}}$ used below is an **ad hoc convention** chosen to make dimensions match, not a first-principles derivation.
+
+**Conventional normalization:** We adopt:
+$$\int \frac{d^4k}{(2\pi)^4} \to \frac{1}{a^4} \times \frac{1}{n_{\text{modes}}} \sum_{\text{modes}}$$
+
+with $1/n_{\text{modes}} = 1/8$. This has the correct dimensions but is not derived from the K₄ graph structure.
 
 **Applying the normalization:**
 $$\Sigma_{\partial\mathcal{S}}^{(1)} \times a^4 \times 8 = \frac{8\lambda_3^2 (\hbar c)^6}{96 m^6 a^2} = \frac{\lambda_3^2 (\hbar c)^6}{12 m^6 a^2}$$
 
-Now comparing dimensions: $[(\hbar c)^6 / (m^6 a^2)] = [(\hbar c)^4 / m^4] \times [(\hbar c)^2 / (m^2 a^2)]$
-
 Using $\Lambda_{UV} = \hbar c / a$:
-$$\frac{(\hbar c)^2}{m^2 a^2} = \frac{\Lambda_{UV}^2}{m^2}$$
-
-So:
 $$\Sigma_{\partial\mathcal{S}}^{(1)} \times a^4 \times 8 = \frac{\lambda_3^2}{12 m^2} \times \frac{\Lambda_{UV}^4}{m^4}$$
 
 ---
@@ -455,52 +489,46 @@ $$\boxed{\left(\frac{\delta m_H^2}{m_H^2}\right)_{\partial\mathcal{S}}^{\text{re
 
 ---
 
-##### 10.3.12.6 Numerical Verification
+##### 10.3.12.6 Numerical Comparison
 
-**For the Higgs with λ = 1/8:**
+**Continuum result (renormalized, pure Higgs self-coupling):**
 
-The one-loop fractional mass correction (continuum, renormalized) is:
-$$\frac{\delta m_H^2}{m_H^2} \sim \frac{\lambda}{16\pi^2} \times \ln\left(\frac{\mu^2}{m_H^2}\right)$$
+$$\frac{\delta m_H^2}{m_H^2}\bigg|_{\text{cont}} = \frac{\lambda}{16\pi^2} \times \ln\left(\frac{\mu^2}{m_H^2}\right) = \frac{1/8}{16\pi^2} \times \ln\left(\frac{(246.7)^2}{(123.4)^2}\right) = \frac{1.39}{128\pi^2} \approx 0.11\%$$
 
-At the electroweak scale with $\mu \sim v_H$:
-$$\frac{\delta m_H^2}{m_H^2} \sim \frac{1/8}{16\pi^2} \times \ln\left(\frac{(246.7)^2}{(123.4)^2}\right) = \frac{1}{128\pi^2} \times 1.39 \approx 0.0011$$
+**Comparison with §5:** The full radiative correction (including top, gauge, QCD) is +1.5%. The pure Higgs self-coupling contribution (0.11%) is subdominant, as expected — the top Yukawa ($y_t \sim 1$) dominates.
 
-This is a **0.11% one-loop correction** to the Higgs mass-squared, giving:
-$$\frac{\delta m_H}{m_H} \approx \frac{1}{2} \times 0.0011 = 0.055\%$$
+**K₄ result (exact, no renormalization needed):**
 
-**Comparison with §5:** The full radiative correction (including top, gauge, QCD) is +1.5%. The pure Higgs self-coupling contribution (0.055%) is subdominant, as expected — the top Yukawa ($y_t \sim 1$) dominates.
+From §10.3.12.2, with $\tilde{m}^2 = 0.258$:
+$$\frac{\delta m_H^2}{m_H^2}\bigg|_{K_4} = \frac{\lambda}{2} \cdot \frac{G(v,v)}{\tilde{m}^2} \approx 27.7\%$$
 
-**Discrete calculation check:** Using the mode-normalized discrete formula with renormalization:
-$$\frac{\delta m_H^2}{m_H^2}\bigg|_{\partial\mathcal{S}}^{\text{ren}} = \frac{n_\triangle \times \lambda^3}{n_{\text{modes}} \times 16\pi^2} \times \ln\left(\frac{\Lambda_{UV}}{m_H}\right)$$
+**⚠️ Honest assessment:** The K₄ and continuum results differ by **two orders of magnitude** (27.7% vs 0.11%). This is **not** a matching failure — it reflects fundamentally different physics:
 
-With $n_\triangle = 8$, $n_{\text{modes}} = 8$, $\lambda = 1/8$:
-$$= \frac{8 \times (1/8)^3}{8 \times 16\pi^2} \times 38.2 = \frac{(1/8)^2}{16\pi^2} \times 38.2 \approx 0.0015$$
+1. **K₄ is unrenormalized:** The exact 4-site result includes the full (finite) sum, dominated by the zero-mode $1/\tilde{m}^2$ contribution. There is no UV divergence to subtract.
+2. **Continuum is renormalized:** The continuum result subtracts the quadratic divergence $\Lambda_{UV}^2$, leaving only the logarithmic piece.
+3. **No meaningful quantitative comparison exists** between an exact 4-site calculation and a renormalized continuum result. The qualitative structure (both are proportional to $\lambda$, both involve summing propagator modes) agrees, but numerical matching requires the FCC lattice continuum limit (Prop 0.0.6b).
 
-This gives **0.15%** correction from the discrete calculation, compared to **0.11%** from the continuum (pure Higgs loop).
-
-**Agreement:** The discrete and continuum calculations agree to within **40%** — reasonable given the approximations (leading-log only, simplified vertex structure).
+**Previous arithmetic error (corrected):** Earlier versions used a triangle-based formula: $8 \times (1/8)^3 / (8 \times 16\pi^2) \times 38.2$, which was incorrectly simplified to $(1/8)^2/(16\pi^2) \times 38.2 = 0.15\%$ by silently dropping the $n_{\text{modes}} = 8$ denominator. The correct value was $1/(8192\pi^2) \times 38.2 \approx 0.047\%$. This calculation is now superseded by the correct tadpole computation above.
 
 ---
 
-##### 10.3.12.7 Summary: Coefficient Matching
+##### 10.3.12.7 Summary: Discrete vs Continuum Comparison
 
-| Quantity | Discrete (∂S) | Continuum (4D) | Agreement |
-|----------|---------------|----------------|-----------|
-| Loop structure | Path sums over triangles | $\int d^4k/(2\pi)^4$ | ✅ Matches |
-| UV behavior | Power-law ($\Lambda^4$) | Power-law (before ren.) | ✅ Matches |
-| Renormalized | Logarithmic | Logarithmic | ✅ Matches |
-| Numerical coefficient (leading-log) | 0.15% | 0.11% | ✅ 40% (acceptable) |
-| Numerical coefficient (improved) | 0.18% | 0.125% | ✅ ~40% (scheme-limited) |
-| Mode normalization | 1/8 = 1/n_modes | — | ✅ Consistent with λ = 1/8 |
+| Quantity | K₄ (4-site) | Continuum (4D) | Assessment |
+|----------|-------------|----------------|------------|
+| Self-energy topology | φ⁴ tadpole | φ⁴ tadpole | ✅ Same diagram |
+| Coupling dependence | $\propto \lambda$ | $\propto \lambda$ | ✅ Same power |
+| UV behavior | Finite (4 modes) | $\Lambda_{UV}^2$ divergent | Different (expected) |
+| Numerical value | 27.7% (unrenormalized) | 0.11% (renormalized) | ❌ Not comparable |
+| Mode normalization | 1/n_modes = 1/8 | — | Consistent with λ = 1/8 |
 
 **Key results:**
-1. The discrete path sums **reproduce** continuum loop structure
-2. Power-law divergences appear in both (absorbed by renormalization)
-3. The physical (renormalized) logarithms **match**
-4. The mode normalization factor 1/8 appears consistently in both λ and the discrete-to-continuum map
-5. The ~40% coefficient discrepancy is **scheme-dependent** (see §10.3.12.9.4), not a framework failure
+1. The correct one-loop diagram is the **φ⁴ tadpole** (proportional to $\lambda$), not a triangle (which is a vacuum diagram at $O(\lambda^3)$)
+2. K₄ provides a finite, exactly solvable quantum system — all sums converge with 4 modes
+3. **Quantitative matching** between K₄ and continuum requires the FCC lattice continuum limit (Prop 0.0.6b); direct numerical comparison is not meaningful for a 4-site toy model
+4. The qualitative structure (coupling dependence, diagram topology) agrees between K₄ and continuum
 
-**Status:** The coefficient matching is **verified** at the leading-log level. See §10.3.12.9 for improved precision including finite parts and complete topology.
+**Status:** 🔸 PARTIAL — Qualitative structure verified; quantitative matching requires continuum limit via FCC lattice.
 
 ---
 
@@ -572,38 +600,21 @@ $$\frac{\delta m_H^2}{m_H^2}\bigg|_{\partial S}^{\text{with finite}} = 0.15\% \t
 
 On the complete graph K₄, the 1PI one-loop diagrams correspond to:
 
-| Path type | Length | Count per tetrahedron | Contribution |
-|-----------|--------|----------------------|--------------|
-| **Triangles** | 3 | 4 | Primary (§10.3.12.2) |
-| **Squares** | 4 | 0 | K₄ has no 4-cycles |
+| Path type | Length | Count per K₄ | Note |
+|-----------|--------|--------------|------|
 | **Self-loops** | 1 | 0 | No self-edges on K₄ |
-| **Edge bubbles** | 2 | 6 | New contribution! |
+| **Edge bubbles** | 2 | 6 | v → w → v for each edge |
+| **Triangles** | 3 | 4 | C(4,3) = 4 triangular faces |
+| **4-cycles** | 4 | 3 | **3 Hamiltonian cycles** (see below) |
 
-**Key insight:** The 6 edge bubbles (paths v → w → v for each edge) contribute to the self-energy but were omitted in §10.3.12.2.
+**Correction (E1.6):** Previous versions claimed "K₄ has no 4-cycles." This is false. K₄ has $(4-1)!/2 = 3$ Hamiltonian cycles (length-4 closed paths visiting all vertices). For example: $(v_1, v_2, v_3, v_4, v_1)$, $(v_1, v_2, v_4, v_3, v_1)$, and $(v_1, v_3, v_2, v_4, v_1)$.
 
-**Edge bubble contribution:**
+**Relation to self-energy:** As corrected in §10.3.12.2, the one-loop self-energy in $\phi^4$ theory is the **tadpole** $\delta m^2 = (\lambda/2) \cdot G(v,v)$, which sums over the 4 propagator modes — not over closed paths. The closed paths (triangles, 4-cycles) contribute to the **vacuum effective action** (see §10.3.4), not to the self-energy.
 
-For edge (v, w), the bubble path contributes:
-
-$$\Sigma_{\text{bubble}}^{(v,w)} = \frac{\lambda^2}{2} \times G_{vw} \times G_{wv} = \frac{\lambda^2}{2} \times G_{vw}^2$$
-
-Using $G_{v \neq w} \approx 1/(4\tilde{m}^2)$:
-
-$$\Sigma_{\text{bubble}}^{(v,w)} = \frac{\lambda^2}{2} \times \frac{1}{16\tilde{m}^4}$$
-
-Sum over 6 edges per tetrahedron, 2 tetrahedra:
-
-$$\Sigma_{\text{bubbles}} = 12 \times \frac{\lambda^2}{32\tilde{m}^4}$$
-
-**Dimensional analysis:** The bubble has dimension $[\tilde{m}]^{-4}$, different from the triangle's $[\tilde{m}]^{-6}$. After proper renormalization:
-
-$$\frac{\delta m^2}{m^2}\bigg|_{\text{bubbles}} = \frac{12\lambda^2}{32 \times 8 \times 16\pi^2} \times \text{log} = \frac{12\lambda^2}{4096\pi^2} \times \ln(\Lambda/m)$$
-
-For $\lambda = 1/8$:
-
-$$= \frac{12 \times (1/64)}{4096\pi^2} \times 38.2 \approx 7 \times 10^{-5} = 0.007\%$$
-
-This is **subdominant** to the triangle contribution (0.15%), explaining why the leading-log result was reasonable.
+**Vacuum diagram hierarchy on K₄:**
+- Tadpole self-energy: $O(\lambda) \approx 0.125$ — **dominant** (see §10.3.7)
+- Triangle vacuum: $O(\lambda^3) \approx 2 \times 10^{-3}$ — suppressed
+- 4-cycle vacuum: $O(\lambda^4) \approx 2 \times 10^{-4}$ — further suppressed
 
 ---
 
@@ -816,7 +827,7 @@ The 40% coefficient matching is **already sufficient** for the framework's claim
 
 ---
 
-**10.3.12.10.7 The c₁ = 1/n_edges Relation — Geometric Derivation** 🔶 NOVEL ✅ DERIVED
+**10.3.12.10.7 The c₁ = 1/n_edges Relation — Numerical Coincidence** 🔮 CONJECTURED
 
 **Key Observation:** The tree-level Symanzik improvement coefficient is:
 
@@ -834,7 +845,7 @@ $$\boxed{c_1 = \frac{1}{n_{\text{edges}}} = \frac{1}{12}}$$
 | c₁ (Symanzik) | 1/12 | 1/n_edges | Kinetic terms (1-forms) |
 | ??? | 1/8 | 1/n_faces | Area modes (2-forms) |
 
-This would provide a new derivation principle: **improvement coefficients are geometrically fixed, not tuned**.
+**⚠️ Status: Numerical coincidence, not derivation.** The standard Symanzik c₁ = 1/12 is derived from Taylor-expanding the hypercubic dispersion relation $(4/a^2)\sin^2(pa/2)$. K₄ has no dispersion relation, no momentum variable, and no lattice spacing parameter. The coincidence Tr(L_{K₄}) = 12 = n_edges is a graph-theoretic identity that happens to match the hypercubic value. Alternative calculations on K₄ give c₁ = 1/4, 1/8, or 1/48 depending on method (see §10.3.12.10.7b), demonstrating that the "derivation" is convention-dependent.
 
 ---
 
@@ -864,7 +875,9 @@ $$\delta \omega^2 \sim \frac{1}{\text{Tr}(L)} \cdot p^4 a^2 = \frac{1}{12} p^4 a
 
 This gives:
 
-$$\boxed{c_1 = \frac{1}{\text{Tr}(L_{K_4})} = \frac{1}{12}}$$
+$$c_1 \stackrel{?}{=} \frac{1}{\text{Tr}(L_{K_4})} = \frac{1}{12}$$
+
+**⚠️ This is a conjectured identification, not a derivation.** The O(a²) error in a dispersion relation requires a momentum variable, which K₄ does not have. The expression $\delta\omega^2 \sim p^4 a^2/\text{Tr}(L)$ is suggestive but not rigorous.
 
 **Consistency with stella:** The stella ∂S = ∂T₊ ⊔ ∂T₋ has block-diagonal Laplacian L_{∂S} = L_{T₊} ⊕ L_{T₋}. Since the two tetrahedra are topologically disjoint, their Laplacians don't mix, and the O(a²) correction applies independently to each subsystem. The coefficient is c₁ = 1/Tr(L_{K₄}) = 1/12 (not 1/Tr(L_{stella}) = 1/24), which also equals 1/n_edges(∂S) = 1/12.
 
@@ -1245,7 +1258,9 @@ $$(-\Delta + m^2) G = \delta$$
 
 On K₄ with Laplacian eigenvalues {0, 4, 4, 4}:
 
-$$G(v, w) = \begin{cases} \frac{1}{m^2} + \frac{3}{4 + m^2} & \text{if } v = w \\ \frac{1}{m^2} - \frac{1}{4 + m^2} & \text{if } v \neq w \end{cases}$$
+$$G(v, w) = \begin{cases} \frac{1}{4m^2} + \frac{3}{4(4 + m^2)} = \frac{1+m^2}{m^2(4+m^2)} & \text{if } v = w \\ \frac{1}{4m^2} - \frac{1}{4(4 + m^2)} = \frac{1}{m^2(4+m^2)} & \text{if } v \neq w \end{cases}$$
+
+**Note on normalization (E2.4 correction):** The spectral decomposition includes eigenvector weights: $G(v,w) = \sum_k |\psi_k(v)|^2 / (\lambda_k + m^2)$. On K₄, $|\psi_0(v)|^2 = 1/4$ for the zero mode and the three degenerate modes contribute 3/4 total. Previous versions omitted these $1/4$ factors, giving values 4× too large.
 
 In the massless limit (m → 0), the propagator has an IR divergence from the zero mode, which we regulate by working at small but finite m.
 
@@ -1301,16 +1316,16 @@ $$f_1^{K_4} = \frac{4 \times 12 \times g_0}{4 \times 12} = g_0$$
 
 **Geometric interpretation of f₁:**
 
-In the regime m² << 4 (low mass):
-$$g_0 = G(v,v) \approx \frac{1}{m^2} + \frac{3}{4}$$
+In the regime m² << 4 (low mass), using the **correctly normalized** propagator (E2.4 fix):
+$$g_0 = G(v,v) = \frac{1}{4m^2} + \frac{3}{4(4 + m^2)} \approx \frac{1}{4m^2} + \frac{3}{16}$$
 
-The finite part is **3/4**, where:
-- 3 = degree of vertex = n_vertices - 1
-- 4 = non-zero Laplacian eigenvalue
+The finite part (subtracting the zero-mode divergence) is **3/16**, not 3/4:
+- 3/4 arises only from the unnormalized spectral sum $\sum_k 1/(\lambda_k + m^2)$, which is $n_v \times G(v,v)$
+- The correct propagator $G(v,v) = [(L+m^2)^{-1}]_{vv}$ has finite part 3/16
 
-$$\boxed{f_1^{K_4} = \frac{n_{\text{vertices}} - 1}{\lambda_{\text{Laplacian}}} = \frac{3}{4}}$$
+$$f_1^{K_4} = \frac{3}{16} \quad \text{(finite part of correctly normalized propagator)}$$
 
-**This is geometrically determined!**
+**⚠️ Correction (E2.4):** Previous versions used $g_0 = 1/m^2 + 3/(4+m^2)$ (omitting the $1/n_v = 1/4$ eigenvector normalization factor), which gave $f_1 = 3/4$. The correct value is $f_1 = 3/16$.
 
 ---
 
@@ -1347,36 +1362,22 @@ $$\frac{g_0^4 + 3 g_1^4}{g_0^2 + 3 g_1^2} \approx g_0^2 \cdot \frac{1 + 3(1 - 3m
 Therefore:
 $$f_2^{K_4} \approx \frac{g_0^2}{\lambda} = \frac{(3/4)^2}{\lambda} \cdot (\text{finite part})$$
 
-$$\boxed{f_2^{K_4} = \frac{(n_{\text{vertices}} - 1)^2}{\lambda_{\text{Laplacian}}^2} = \frac{9}{16}}$$
+$$f_2^{K_4} = (3/16)^2 / \lambda = \frac{9}{256} \times 8 = \frac{9}{32}$$
+
+**⚠️ Correction (E2.4):** Previous versions gave $f_2 = 9/16$ using the unnormalized propagator. With correct normalization, $f_2 = 9/32$.
 
 ---
 
 **10.3.12.10.9e The Geometric Pattern at One-Loop**
 
-Collecting results:
+Collecting corrected results:
 
-| Coefficient | Tree-level | One-loop correction factor | Geometric form |
-|-------------|------------|---------------------------|----------------|
-| c₁ | 1/12 | f₁ = 3/4 | (n_v - 1)/λ_Lap |
-| c₂ | 1/8 | f₂ = 9/16 | (n_v - 1)²/λ_Lap² |
+| Coefficient | Tree-level | One-loop correction factor | Status |
+|-------------|------------|---------------------------|--------|
+| c₁ | 1/12 (conjectured) | f₁ = 3/16 | 🔮 CONJECTURED |
+| c₂ | 1/8 (conjectured) | f₂ = 9/32 | 🔮 CONJECTURED |
 
-**Pattern:** The one-loop corrections involve powers of (n_vertices - 1)/λ_Laplacian = 3/4.
-
-**Key geometric ratio:**
-$$r = \frac{n_{\text{vertices}} - 1}{\lambda_{\text{Laplacian}}} = \frac{3}{4}$$
-
-For K₄:
-- n_vertices = 4
-- λ_Laplacian = 4 (non-zero eigenvalue)
-- r = 3/4
-
-**The one-loop corrections are:**
-$$f_1 = r = \frac{3}{4}, \quad f_2 = r^2 = \frac{9}{16}$$
-
-**This suggests a geometric series structure:**
-$$c_p^{(1-loop)} = c_p^{(tree)} \left(1 + \frac{\lambda}{16\pi^2} \cdot r^p + O(\lambda^2)\right)$$
-
-where p is the simplicial order (p=1 for edges, p=2 for faces).
+**⚠️ The geometric series pattern claimed in previous versions is invalid** with the correctly normalized propagator. The ratio $r = 3/4$ arose from a propagator normalization error (see E2.4 correction above). The corrected finite part of $G(v,v)$ is 3/16, not 3/4.
 
 ---
 
@@ -1415,59 +1416,52 @@ The ratio r = (n_v - 1)/λ_Lap = 3/4 has a deep geometric meaning:
 - n_edges/n_vertices = 6/4 = 3/2
 - r = (n_edges/n_vertices)/2 = 3/4
 
-**Interpretation 3: Euler characteristic**
-For K₄ (topologically a sphere):
-- χ = V - E + F = 4 - 6 + 4 = 2
-- r = 1 - χ/(2V) = 1 - 2/8 = 3/4
+**Interpretation 3: Euler characteristic (INVALID — E2.4)**
 
-$$\boxed{r = 1 - \frac{\chi}{2 n_{\text{vertices}}} = \frac{3}{4}}$$
+Previous versions claimed $r = 1 - \chi/(2n_v) = 1 - 2/8 = 3/4$. This relied on the **unnormalized** propagator ($g_0 = 1/m^2 + 3/(4+m^2)$, which is $4 \times G(v,v)$). With the correct propagator normalization, the finite part is 3/16, and the formula $r = 1 - \chi/(2n_v)$ **does not hold**.
 
-**This connects one-loop corrections to the Euler characteristic!**
+**Status:** ❌ INVALID — The Euler characteristic connection was based on a propagator normalization error.
 
 ---
 
-**10.3.12.10.9h Summary: Complete Geometric Structure**
+**10.3.12.10.9h Summary: Status of Geometric Structure Claims**
 
-**Tree-level (established):**
-$$\lambda = \frac{1}{n_v} = \frac{1}{8}, \quad c_1 = \frac{1}{n_e} = \frac{1}{12}, \quad c_2 = \frac{1}{n_f} = \frac{1}{8}$$
+**Tree-level (conjectured — numerical coincidences):**
+$$\lambda = \frac{1}{n_v} = \frac{1}{8}, \quad c_1 \stackrel{?}{=} \frac{1}{n_e} = \frac{1}{12}, \quad c_2 \stackrel{?}{=} \frac{1}{n_f} = \frac{1}{8}$$
 
-**One-loop corrections (new):**
-$$\delta c_p = c_p^{(tree)} \cdot \frac{\lambda}{16\pi^2} \cdot r^p$$
+The identifications $c_1 = 1/n_e$ and $c_2 = 1/n_f$ are observed numerical coincidences between simplex counts on K₄ and known hypercubic lattice improvement coefficients. They are not derived from first principles (see §10.3.12.10.7).
 
-where:
-$$r = 1 - \frac{\chi}{2 n_v} = \frac{3}{4}$$
+**One-loop corrections (corrected):**
 
-**The complete Geometric Improvement Principle:**
+With the correctly normalized propagator (E2.4 fix):
+- $f_1 = 3/16$ (not 3/4)
+- $f_2 = 9/32$ (not 9/16)
+- The claimed Euler characteristic connection $r = 1 - \chi/(2n_v) = 3/4$ is **INVALID**
 
-| Level | c₁ formula | c₂ formula | Geometric input |
-|-------|------------|------------|-----------------|
-| Tree | 1/n_edges | 1/n_faces | Simplex counts |
-| 1-loop | × (1 + λ·r/(16π²)) | × (1 + λ·r²/(16π²)) | Euler characteristic |
-| 2-loop | × (1 + O(λ²·r²)) | × (1 + O(λ²·r⁴)) | Higher topology? |
-
-**Key result:** One-loop corrections are determined by the **Euler characteristic** χ = 2 of each tetrahedron, via r = 1 - χ/(2n_v).
+**⚠️ The "Geometric Improvement Principle" claimed in previous versions is not supported by the calculations presented.** The tree-level coincidences ($c_p = 1/n_p$) are interesting patterns but not derivations, and the one-loop Euler characteristic connection fails with correct propagator normalization.
 
 ---
 
-**10.3.12.10.9i Status Assessment**
+**10.3.12.10.9i Status Assessment (Corrected)**
 
 | Result | Status |
 |--------|--------|
-| f₁ = 3/4 at one-loop | ✅ **DERIVED** |
-| f₂ = 9/16 at one-loop | ✅ **DERIVED** |
-| Geometric interpretation via r = (n_v-1)/λ | ✅ **ESTABLISHED** |
-| Connection to Euler characteristic | ✅ **ESTABLISHED** |
-| Corrections are ~0.05% (negligible) | ✅ **VERIFIED** |
+| f₁ = 3/16 at one-loop (corrected) | 🔸 COMPUTED (K₄ finite system) |
+| f₂ = 9/32 at one-loop (corrected) | 🔸 COMPUTED (K₄ finite system) |
+| ~~r = 3/4 from Euler characteristic~~ | ❌ **INVALID** (propagator normalization error) |
+| One-loop corrections small | ✅ **VERIFIED** (corrections ~O(λ/16π²) ≈ 0.05%) |
 
-**Conclusion:** The one-loop corrections to Symanzik improvement coefficients are **geometrically determined** by the ratio r = 3/4, which itself derives from the Euler characteristic of the tetrahedron. This extends the Geometric Improvement Principle to quantum corrections.
+**Conclusion:** One-loop corrections on K₄ are exactly computable and small. The claimed Euler characteristic connection ($r = 3/4$) was based on an unnormalized propagator (missing $1/n_v$ factor). With the correct propagator $G(v,v) = (1+m^2)/(m^2(4+m^2))$, the finite part is 3/16, and the Euler formula does not hold.
 
-**Verification:** [verify_prop_0_0_27_one_loop_corrections.py](../../../verification/foundations/verify_prop_0_0_27_one_loop_corrections.py) — 10 tests: propagator on K₄, Laplacian eigenstructure, one-loop self-energy, f₁ = 3/4, f₂ = 9/16, geometric ratio r from 3 interpretations, full one-loop coefficients, geometric series structure, L² diagonal elements, propagator ratio. All tests pass.
+**Verification script note:** The script `verify_prop_0_0_27_one_loop_corrections.py` uses the **unnormalized** propagator and will need updating to reflect the correct normalization.
 
 ---
 
-**10.3.12.10.10 Extension to Gauge Fields: The Clover Coefficient** 🔶 NOVEL
+**10.3.12.10.10 Extension to Gauge Fields: The Clover Coefficient** 🔮 CONJECTURED
 
-**Goal:** Extend the Geometric Improvement Principle to gauge fields by deriving the Sheikholeslami-Wohlert (clover) improvement coefficient from stella geometry.
+**⚠️ Status: Category error identified (E2.5).** The Sheikholeslami-Wohlert clover coefficient $c_{SW}$ is defined for Wilson fermions on **hypercubic lattices** through on-shell improvement matching conditions. The ratio $n_f/n_e = 2/3$ derived below is a correct combinatorial identity for any triangulated sphere (from $3n_f = 2n_e$), but it has **no mathematical connection** to the clover coefficient. The identification $c_{SW} = n_f/n_e$ is a numerical coincidence, not a derivation.
+
+**Goal (revised):** Document the observation that the face-to-edge ratio on K₄ numerically coincides with certain lattice QCD coefficients, while acknowledging this is not a derivation.
 
 ---
 
@@ -1575,22 +1569,21 @@ Wait — this gives 2/3, which equals $n_f/n_e$!
 
 ---
 
-**10.3.12.10.10e The Geometric Clover Coefficient**
+**10.3.12.10.10e The Face-to-Edge Ratio**
 
-**Result:** The tree-level clover coefficient on the stella is:
+**Observation:** The face-to-edge ratio on the stella is:
 
-$$\boxed{c_{SW}^{(0)} = \frac{n_{\text{faces}}}{n_{\text{edges}}} = \frac{8}{12} = \frac{2}{3}}$$
+$$\frac{n_{\text{faces}}}{n_{\text{edges}}} = \frac{8}{12} = \frac{2}{3}$$
 
-**Derivation:**
+**⚠️ This is NOT a derivation of $c_{SW}$.** The argument below is heuristic:
 
-**Step 1:** The clover term is a face-based operator (involves $F_{\mu\nu}$).
+**Step 1:** The clover term involves the field strength $F_{\mu\nu}$ (face-based).
 
-**Step 2:** The gauge connection is edge-based (involves $A_\mu$).
+**Step 2:** The gauge connection involves $A_\mu$ (edge-based).
 
-**Step 3:** The improvement bridges faces to edges, so the coefficient should involve their ratio.
+**Step 3:** The ratio $n_f/n_e = 2/3$ is a universal property of **any** triangulated sphere (from $3n_f = 2n_e$), not specific to K₄ or the stella.
 
-**Step 4:** On the stella:
-$$c_{SW} = \frac{n_f}{n_e} = \frac{8}{12} = \frac{2}{3}$$
+**Step 4:** The standard $c_{SW}$ is determined by on-shell improvement conditions on hypercubic lattices, not by simplex counting. The tree-level value is $c_{SW}^{(0)} = 1$, not 2/3. The identification $c_{SW} = n_f/n_e$ is a **conjectured numerical coincidence**.
 
 ---
 
@@ -2265,15 +2258,15 @@ These 3 additional modes are a property of the K4 graph spectrum ($n_v - 1 = 3$ 
 
 **10.3.12.10.12f Wilson Term Effectiveness on K₄**
 
-**With r = 3/2, the doubler masses are:**
+**With r = 3/2, the heavy mode masses are:**
 
-$$m_{\text{doubler}} = r \cdot \lambda_{\text{Lap}} / a = \frac{3}{2} \cdot \frac{4}{a} = \frac{6}{a}$$
+$$m_{\text{heavy}} = r \cdot \lambda_{\text{Lap}} / a = \frac{3}{2} \cdot \frac{4}{a} = \frac{6}{a}$$
 
 **Compared to standard Wilson (r = 1):**
 
-$$m_{\text{doubler}}^{\text{standard}} = 1 \cdot \frac{4}{a} = \frac{4}{a}$$
+$$m_{\text{heavy}}^{\text{standard}} = 1 \cdot \frac{4}{a} = \frac{4}{a}$$
 
-**The geometric r = 3/2 gives 50% heavier doublers**, providing stronger decoupling.
+**The geometric r = 3/2 gives 50% heavier non-trivial modes**, providing stronger decoupling and better overlap operator conditioning.
 
 ---
 
@@ -2507,13 +2500,15 @@ For consistency with the fundamental role of chirality in Chiral Geometrogenesis
 
 | Result | Status |
 |--------|--------|
-| Wilson parameter r = n_e/n_v = 3/2 | ✅ **DERIVED** |
-| Doubler count on K₄ = 3 | ✅ **COMPUTED** |
-| Doubler mass with geometric r | ✅ **COMPUTED** (6/a) |
-| Overlap construction on K₄ | ✅ **ESTABLISHED** |
-| Geometric preference for overlap | ✅ **IDENTIFIED** (chiral symmetry) |
+| Wilson parameter r = n_e/n_v = 3/2 | 🔮 **GRAPH-MOTIVATED** (ratio, not derived from Symanzik) |
+| Non-trivial mode count on K₄ = 3 | ✅ **COMPUTED** (graph Laplacian spectrum) |
+| Heavy mode mass with r = 3/2 | ✅ **COMPUTED** (6/a) |
+| Overlap construction on K₄ | ✅ **ESTABLISHED** (standard construction) |
+| Spectral gap improvement (~81%) | ✅ **VERIFIED** numerically |
 
-**Conclusion:** The Geometric Improvement Principle extends naturally to fermion discretization. The Wilson parameter r = 3/2 is geometrically determined by the edge-to-vertex ratio on the stella octangula. For the CG framework, overlap fermions are preferred due to their exact chiral symmetry, with the geometric r = 3/2 used in the overlap kernel.
+> **Terminology note:** The "3 non-trivial modes" are properties of the K₄ Laplacian spectrum, not "doublers" in the Nielsen-Ninomiya sense (which requires a periodic lattice with Brillouin zone).
+
+**Conclusion:** The ratio r = n_e/n_v = 3/2 is a graph-motivated choice for the Wilson parameter on K₄. It produces a genuine spectral improvement (~81% larger gap in H_W), improving overlap operator conditioning. Whether this specific value is optimal for continuum-limit physics on extended lattices remains open.
 
 **Verification:** [verify_prop_0_0_27_fermion_improvement.py](../../../verification/foundations/verify_prop_0_0_27_fermion_improvement.py) — 10 tests: Wilson parameter r = 3/2, vertex degree, Laplacian spectrum {0,4,4,4}, non-trivial mode mass 6/a (50% heavier than r = 1), complete improvement pattern, operator-simplex classification, edge-vertex interpretation, Wilson vs overlap comparison, spectral gap improvement (~81% in H_W spectrum per [verify_prop_0_0_27_overlap_operator.py](../../../verification/foundations/verify_prop_0_0_27_overlap_operator.py)), non-trivial mode count (3 on K4 vs 15 on 4D hypercubic). All tests pass.
 
@@ -2569,17 +2564,21 @@ The stella octangula boundary ∂S is a **2-dimensional** simplicial complex (tw
 Each vertex v has deficit angle:
 $$\varepsilon_v = 2\pi - \sum_{\text{faces } f \ni v} \theta_f^{(v)}$$
 
-For a regular tetrahedron with all dihedral angles equal:
-$$\theta = \arccos\left(\frac{1}{3}\right) \approx 70.53°$$
+**⚠️ Correction (E3.2):** For **2D** Regge calculus on triangulated surfaces, the relevant angles are the **face angles** at each vertex (interior angles of the triangles), NOT the 3D dihedral angles between faces.
 
-Each vertex touches 3 faces, so:
-$$\varepsilon_v = 2\pi - 3 \times \arccos(1/3) = 2\pi - 3 \times 1.231 \approx 2.58 \text{ rad} \approx 148°$$
+For an equilateral triangle, the face angle at each vertex is:
+$$\theta_f^{(v)} = \frac{\pi}{3} = 60°$$
+
+Each vertex of K₄ touches 3 triangular faces, so:
+$$\varepsilon_v = 2\pi - 3 \times \frac{\pi}{3} = 2\pi - \pi = \pi \approx 180°$$
+
+**Previous error:** Earlier versions used the 3D dihedral angle $\arccos(1/3) \approx 70.53°$, giving $\varepsilon_v \approx 148°$. This is incorrect for 2D Regge calculus — the dihedral angle describes how faces meet in the **embedding** 3D space, while the deficit angle in 2D Regge calculus depends only on the **intrinsic** face angles.
 
 **The 2D Regge action on K₄:**
 
-$$S_{\text{Regge}}^{K_4} = \frac{1}{8\pi G} \sum_{v=1}^{4} \varepsilon_v = \frac{4 \varepsilon}{8\pi G} = \frac{\varepsilon}{2\pi G}$$
+$$S_{\text{Regge}}^{K_4} = \frac{1}{8\pi G} \sum_{v=1}^{4} \varepsilon_v = \frac{4\pi}{8\pi G} = \frac{1}{2G}$$
 
-where ε ≈ 2.58 rad is the deficit angle (same at all vertices by symmetry).
+**Gauss-Bonnet check:** $\sum_v \varepsilon_v = 4\pi = 2\pi\chi$ with $\chi = 2$ for the sphere. ✅ Consistent.
 
 ---
 
@@ -2682,7 +2681,7 @@ $$c_{R,\Delta} = \frac{n_v}{n_e} = \frac{8}{12} = \frac{2}{3}$$
 - Matter: vertex → edge (r = n_e/n_v = 3/2)
 - Gravity: edge → vertex (c_{R,∆} = n_v/n_e = 2/3)
 
-**These are inverses!** This suggests a **gravity-matter duality** in the improvement structure.
+**⚠️ Note (E3.5):** The fact that $r \times c_{R,\Delta} = (n_e/n_v) \times (n_v/n_e) = 1$ is **algebraically trivial** — any ratio times its inverse equals 1. This is not a physical "duality" but an arithmetic identity. The table above documents an interesting pattern in how simplex ratios appear across sectors, but the "gravity-matter duality" label is misleading.
 
 ---
 
@@ -3005,44 +3004,33 @@ $$H^1(K; G) = \{\text{flat G-connections}\} / \{\text{gauge equivalence}\}$$
 - Gauge equivalence: $G^4$ acting on $G^6$
 - Moduli space: $\dim H^1(K_4; SU(3)) = 6 \cdot 8 - 4 \cdot 8 - 4 \cdot 8 = ?$
 
-**Careful counting:**
+**Careful counting (E3.6 correction):**
 
-- $\dim(G^6) = 6 \times 8 = 48$ (SU(3) has dim 8)
-- Flatness constraints: 4 faces × 8 = 32 (but not independent)
-- Gauge freedom: 4 vertices × 8 = 32 (but one global SU(3) is trivial)
+- Configuration space: $\dim(G^6) = 6 \times 8 = 48$ (SU(3) has dim 8)
+- Flatness constraints: 4 faces × 8 dim = 32, but the 4 face constraints are not independent — the Bianchi identity $\prod_{f \in \partial\sigma_3} W_f^{\pm 1} = 1$ (§10.3.12.10.14d) gives 8 relations among them, leaving $32 - 8 = 24$ independent constraints
+- Gauge freedom: 4 vertices × 8 dim = 32, but one global SU(3) acts trivially, leaving $32 - 8 = 24$ independent gauge parameters
 
 **Result:** $\dim H^1(K_4; SU(3)) = 48 - 24 - 24 = 0$ (only trivial flat connections)
 
-**This means K₄ has no non-trivial SU(3) instantons!** All topological charge is zero on a single tetrahedron.
+**⚠️ Note (E3.6):** Previous versions stated "48 − 24 − 24 = 0" without explaining where the 24s come from (the raw counts are 32 constraints and 32 gauge parameters). The correct derivation above accounts for the Bianchi identity (reducing 32 → 24 constraints) and the trivial global gauge action (reducing 32 → 24 parameters). The result $H^1 = 0$ is correct.
 
 ---
 
-**10.3.12.10.14j Instantons on the Stella**
+**10.3.12.10.14j Instantons on the Stella — ⚠️ SCOPE ISSUE (E3.3)**
 
-**The stella ∂S = ∂T₊ ⊔ ∂T₋:**
+**⚠️ Critical correction:** Instantons are classified by $\pi_3(G)$ and require **4-dimensional** gauge field configurations. The stella boundary ∂S is a **2-dimensional** surface ($\partial T_+ \sqcup \partial T_-$, topologically two copies of $S^2$). The relevant homotopy group for gauge bundles over $S^2$ is $\pi_1(G)$, which is **trivial** for SU(3). Therefore:
 
-Since the two tetrahedra are **disjoint**, we have:
-$$H^1(\partial\mathcal{S}; G) = H^1(K_+; G) \times H^1(K_-; G)$$
+**Instantons cannot exist on ∂S alone.** The formula $n_{\text{inst}} = Q/8$ presented in previous versions is physically meaningless on a 2D surface.
 
-**For SU(3):**
-$$H^1(\partial\mathcal{S}; SU(3)) = \{0\} \times \{0\} = \{0\}$$
+**What IS correct:**
+- $H^1(\partial\mathcal{S}; SU(3)) = \{0\}$ — no non-trivial flat connections (from §10.3.12.10.14i)
+- $\pi_3(SU(3)) = \mathbb{Z}$ — instantons exist in the full 4D theory
+- The stella encodes SU(3) (Theorem 0.0.3), and $\pi_3(SU(3)) = \mathbb{Z}$ is an automatic mathematical consequence
 
-**But instantons live in π₃(G), not H¹!**
-
-The relevant object for instantons is the **third homotopy group**:
-$$\pi_3(SU(3)) = \mathbb{Z}$$
-
-**On ∂S:** The stella boundary can support non-trivial maps S³ → SU(3), giving instanton number.
-
-**Geometric instanton coefficient:**
-
-The instanton action is:
-$$S_{\text{inst}} = \frac{8\pi^2}{g^2} |Q|$$
-
-where Q ∈ ℤ is the topological charge.
-
-**Geometric normalization:** The instanton density on ∂S is:
-$$n_{\text{inst}} = \frac{Q}{n_f} = \frac{Q}{8}$$
+**Where instantons enter the CG framework:**
+- On the **FCC lattice** (Prop 0.0.6b), which provides a 4D discretization where instantons are well-defined
+- NOT on the 2D boundary ∂S directly
+- The instanton action $S_{\text{inst}} = 8\pi^2|Q|/g^2$ applies on the 4D FCC lattice, with the gauge group SU(3) determined by the stella geometry
 
 ---
 
@@ -3050,16 +3038,14 @@ $$n_{\text{inst}} = \frac{Q}{n_f} = \frac{Q}{8}$$
 
 **Summary of non-abelian geometric coefficients:**
 
-| Quantity | Abelian | Non-Abelian | Geometric |
-|----------|---------|-------------|-----------|
-| Clover c_SW | n_f/n_e = 2/3 | **Same** | 2/3 |
-| Wilson β | 2N/g² | 2N/g² × n_f | 16N/g² (stella) |
-| Plaquette norm | 1/n_f | 1/n_f | 1/8 |
-| Instanton density | — | Q/n_f | Q/8 |
+| Quantity | Abelian | Non-Abelian | Status |
+|----------|---------|-------------|--------|
+| Clover c_SW | n_f/n_e = 2/3 | **Same** | 🔮 Conjectured (see E2.5) |
+| Wilson β | 2N/g² | 2N/g² × n_f | ✅ Standard lattice QCD |
+| Plaquette norm | 1/n_f | 1/n_f | ✅ Convention choice |
+| ~~Instanton density~~ | — | ~~Q/n_f~~ | ❌ **Removed** (requires 4D, see E3.3) |
 
-**Key result:** The non-abelian improvement coefficients are **identical** to the abelian case!
-
-This is because the Geometric Improvement Principle depends on **simplex counting**, not on the gauge group structure.
+**⚠️ Note:** The claim that "improvement coefficients are identical for abelian and non-abelian" is trivially true since the simplex ratios $n_f/n_e$, $n_e/n_v$ depend only on the graph, not the gauge group. This is a property of the graph, not a derivation of the physical improvement coefficients.
 
 ---
 
@@ -3316,17 +3302,20 @@ $$D_W = D_{\text{naive}} + D_{\text{Wilson}}$$
 **Block structure (16×16):**
 
 $$D_W = \frac{1}{2a}\begin{pmatrix}
--\frac{9}{2}I_4 & M_{01} + \frac{3}{2}I_4 & M_{02} + \frac{3}{2}I_4 & M_{03} + \frac{3}{2}I_4 \\
--M_{01} + \frac{3}{2}I_4 & -\frac{9}{2}I_4 & M_{12} + \frac{3}{2}I_4 & M_{13} + \frac{3}{2}I_4 \\
--M_{02} + \frac{3}{2}I_4 & -M_{12} + \frac{3}{2}I_4 & -\frac{9}{2}I_4 & M_{23} + \frac{3}{2}I_4 \\
--M_{03} + \frac{3}{2}I_4 & -M_{13} + \frac{3}{2}I_4 & -M_{23} + \frac{3}{2}I_4 & -\frac{9}{2}I_4
+-\frac{9}{4}I_4 & M_{01} + \frac{3}{2}I_4 & M_{02} + \frac{3}{2}I_4 & M_{03} + \frac{3}{2}I_4 \\
+-M_{01} + \frac{3}{2}I_4 & -\frac{9}{4}I_4 & M_{12} + \frac{3}{2}I_4 & M_{13} + \frac{3}{2}I_4 \\
+-M_{02} + \frac{3}{2}I_4 & -M_{12} + \frac{3}{2}I_4 & -\frac{9}{4}I_4 & M_{23} + \frac{3}{2}I_4 \\
+-M_{03} + \frac{3}{2}I_4 & -M_{13} + \frac{3}{2}I_4 & -M_{23} + \frac{3}{2}I_4 & -\frac{9}{4}I_4
 \end{pmatrix}$$
 
-**Note:** The diagonal blocks now contain $-rL_{vv}/2 = -\frac{3}{2} \cdot \frac{3}{2} = -\frac{9}{4}$ ... let me correct:
+**Derivation of diagonal blocks (E3.4 correction):**
 
-With $r = 3/2$:
-- Diagonal: $-\frac{r}{2a} \cdot 3I_4 = -\frac{9}{4a}I_4$
-- Off-diagonal: $\frac{1}{2a}M_{ij} + \frac{r}{2a}I_4 = \frac{1}{2a}(M_{ij} + \frac{3}{2}I_4)$
+With $r = 3/2$ and each vertex having degree 3 on K₄:
+- Wilson term diagonal: $-\frac{r}{2a} \cdot \deg(v) \cdot I_4 = -\frac{3}{2} \times \frac{3}{2a} I_4 = -\frac{9}{4a}I_4$
+- Naive Dirac diagonal: 0 (anti-symmetric hopping)
+- Combined: $-\frac{9}{4}I_4$ in units of $1/(2a)$
+
+**Note:** Previous versions displayed $-9/2 \cdot I_4$ in the matrix, which was a factor of 2 error (incorrectly computing $r \times \deg = 3/2 \times 3 = 9/2$ instead of the correct $(r/2) \times \deg = 3/4 \times 3 = 9/4$).
 
 ---
 
@@ -3426,28 +3415,31 @@ $$\{D_{\text{ov}}, \gamma_5\} = a \, D_{\text{ov}} \, \gamma_5 \, D_{\text{ov}}$
 Starting from the definition:
 $$D_{\text{ov}} = \frac{1}{a}(1 + \gamma_5 \, \text{sign}(H_W))$$
 
-**Step 1:** Compute the anticommutator:
-$$\{D_{\text{ov}}, \gamma_5\} = D_{\text{ov}} \gamma_5 + \gamma_5 D_{\text{ov}}$$
+**⚠️ Proof corrected (E3.1):** Previous versions used the false claim that $\gamma_5 S \gamma_5 = -S$ because "$H_W$ anti-commutes with $\gamma_5$." This is **incorrect** — $H_W = \gamma_5 D_W$ does NOT anti-commute with $\gamma_5$ when $D_W$ contains the Wilson term (which breaks chiral symmetry). The correct proof below uses only $S^2 = I$, which holds because the sign function satisfies $\text{sign}(x)^2 = 1$ for all non-zero $x$.
+
+**Correct proof (using $S^2 = I$ only):**
+
+Let $S = \text{sign}(H_W)$, so $S^2 = I$ and $D_{\text{ov}} = \frac{1}{a}(1 + \gamma_5 S)$.
+
+Note that $H_W = \gamma_5 D_W$ is Hermitian, and since $D_W$ is $\gamma_5$-Hermitian ($\gamma_5 D_W \gamma_5 = D_W^\dagger$), we have $\gamma_5 H_W \gamma_5 = \gamma_5(\gamma_5 D_W)\gamma_5 = D_W \gamma_5 = H_W^\dagger = H_W$. Therefore $[\gamma_5, H_W] = 0$ (they commute, not anti-commute!), which means $\gamma_5 S \gamma_5 = S$ (not $-S$).
+
+**Step 1: LHS** $\{D_{\text{ov}}, \gamma_5\}$:
 $$= \frac{1}{a}(1 + \gamma_5 S)\gamma_5 + \frac{1}{a}\gamma_5(1 + \gamma_5 S)$$
+$$= \frac{1}{a}(\gamma_5 + \gamma_5 S \gamma_5 + \gamma_5 + S) = \frac{1}{a}(2\gamma_5 + S + \gamma_5 S \gamma_5)$$
 
-where $S = \text{sign}(H_W)$.
+Using $\gamma_5 S \gamma_5 = S$:
+$$= \frac{1}{a}(2\gamma_5 + 2S) = \frac{2}{a}(\gamma_5 + S)$$
 
-$$= \frac{1}{a}(\gamma_5 + \gamma_5 S \gamma_5 + \gamma_5 + S)$$
-$$= \frac{2}{a}(\gamma_5 + \frac{1}{2}(S + \gamma_5 S \gamma_5))$$
-
-**Step 2:** Use the property $\gamma_5 S \gamma_5 = -S$ (since $H_W = \gamma_5 D_W$ anti-commutes with $\gamma_5$):
-
-$$\{D_{\text{ov}}, \gamma_5\} = \frac{2}{a}\gamma_5$$
-
-**Step 3:** Compute the RHS:
-$$a \, D_{\text{ov}} \gamma_5 D_{\text{ov}} = \frac{1}{a}(1 + \gamma_5 S)\gamma_5(1 + \gamma_5 S)$$
-$$= \frac{1}{a}(1 + \gamma_5 S)(\gamma_5 + S)$$
+**Step 2: RHS** $a \, D_{\text{ov}} \gamma_5 D_{\text{ov}}$:
+$$= \frac{1}{a}(1 + \gamma_5 S)\gamma_5(1 + \gamma_5 S) = \frac{1}{a}(1 + \gamma_5 S)(\gamma_5 + S)$$
 $$= \frac{1}{a}(\gamma_5 + S + \gamma_5 S \gamma_5 + \gamma_5 S^2)$$
 
-Using $S^2 = 1$ (sign function squares to identity):
-$$= \frac{1}{a}(\gamma_5 + S - S + \gamma_5) = \frac{2}{a}\gamma_5$$
+Using $S^2 = I$ and $\gamma_5 S \gamma_5 = S$:
+$$= \frac{1}{a}(\gamma_5 + S + S + \gamma_5) = \frac{2}{a}(\gamma_5 + S)$$
 
-**Conclusion:** $\{D_{\text{ov}}, \gamma_5\} = a \, D_{\text{ov}} \gamma_5 D_{\text{ov}}$ ✅
+**Conclusion:** LHS = RHS = $\frac{2}{a}(\gamma_5 + S)$, so $\{D_{\text{ov}}, \gamma_5\} = a \, D_{\text{ov}} \gamma_5 D_{\text{ov}}$ ✅
+
+The GW relation holds from $S^2 = I$ and $[\gamma_5, S] = 0$ alone.
 
 ---
 
@@ -3469,10 +3461,10 @@ $$M_{ij}^{(2D)} = (\hat{n}_{ij}^{(2D)})_1 \sigma_1 + (\hat{n}_{ij}^{(2D)})_2 \si
 **8×8 Wilson-Dirac matrix:**
 
 $$D_W^{(2D)} = \frac{1}{2a}\begin{pmatrix}
--\frac{9}{2}I_2 & M_{01}^{(2D)} + \frac{3}{2}I_2 & M_{02}^{(2D)} + \frac{3}{2}I_2 & M_{03}^{(2D)} + \frac{3}{2}I_2 \\
-\text{(h.c.)} & -\frac{9}{2}I_2 & M_{12}^{(2D)} + \frac{3}{2}I_2 & M_{13}^{(2D)} + \frac{3}{2}I_2 \\
-\text{(h.c.)} & \text{(h.c.)} & -\frac{9}{2}I_2 & M_{23}^{(2D)} + \frac{3}{2}I_2 \\
-\text{(h.c.)} & \text{(h.c.)} & \text{(h.c.)} & -\frac{9}{2}I_2
+-\frac{9}{4}I_2 & M_{01}^{(2D)} + \frac{3}{2}I_2 & M_{02}^{(2D)} + \frac{3}{2}I_2 & M_{03}^{(2D)} + \frac{3}{2}I_2 \\
+\text{(h.c.)} & -\frac{9}{4}I_2 & M_{12}^{(2D)} + \frac{3}{2}I_2 & M_{13}^{(2D)} + \frac{3}{2}I_2 \\
+\text{(h.c.)} & \text{(h.c.)} & -\frac{9}{4}I_2 & M_{23}^{(2D)} + \frac{3}{2}I_2 \\
+\text{(h.c.)} & \text{(h.c.)} & \text{(h.c.)} & -\frac{9}{4}I_2
 \end{pmatrix}$$
 
 This 8×8 matrix can be diagonalized numerically to verify the spectrum and construct $D_{\text{ov}}^{(2D)}$.
@@ -3589,9 +3581,9 @@ with the correct normalization and chiral properties.
 
 ---
 
-**10.3.12.10.16 Numerical Verification of Improvement Coefficients** 🔶 NOVEL
+**10.3.12.10.16 Numerical Verification of Graph-Motivated Coefficients** 🔮 CONJECTURED
 
-This section provides explicit numerical verification of all geometric improvement coefficients derived in the Symanzik Improvement Program.
+This section provides numerical checks of the simplex-ratio coefficients proposed in the preceding sections. These ratios are **graph-motivated observations**, not rigorous derivations from the Symanzik improvement program.
 
 ---
 
@@ -3679,6 +3671,8 @@ $$c_{0\to2} = c_{0\to1} \times c_{1\to2} = \frac{3}{2} \times \frac{2}{3} = 1$$ 
 
 **Setup:** 2D Euclidean spinors (8×8 matrix: 4 vertices × 2 spin components)
 
+> **Terminology note:** The Nielsen-Ninomiya theorem does not apply to K₄ (it requires a periodic lattice with a Brillouin zone). The concept of "fermion doublers" is not well-defined for a non-periodic finite graph. The 3 non-zero Laplacian modes of K₄ are simply the non-trivial spectral modes of a 4-vertex complete graph — they are not "doublers" in the lattice QCD sense. We refer to them as **heavy modes** below.
+
 **Direction matrices (computed from tetrahedron embedding):**
 
 For edge (0,1) with direction $\hat{n}_{01} = (0, -1, -1)/\sqrt{2}$:
@@ -3689,23 +3683,25 @@ $$M_{01} = \frac{-1}{\sqrt{2}}(\sigma_2 + \sigma_3) = \frac{-1}{\sqrt{2}}\begin{
 **Wilson term contribution:**
 
 With $r = 3/2$ and Laplacian eigenvalues $\{0, 4, 4, 4\}$:
-- Physical mode shift: $\Delta m = 0$
-- Doubler mode shift: $\Delta m = \frac{3}{2} \times \frac{4}{2a} = \frac{3}{a}$
+- Zero-mode shift: $\Delta m = 0$
+- Heavy-mode shift: $\Delta m = \frac{3}{2} \times \frac{4}{2a} = \frac{3}{a}$
 
 **Spectrum structure of D_W (schematic):**
 
-| Mode | Naive eigenvalue | Wilson shift | Total |
-|------|------------------|--------------|-------|
-| Physical | ~0 | 0 | O(1/a) small |
-| Doubler 1 | O(1/a) | +3/a | O(4/a) |
-| Doubler 2 | O(1/a) | +3/a | O(4/a) |
-| Doubler 3 | O(1/a) | +3/a | O(4/a) |
+| Mode | Laplacian eigenvalue | Wilson shift | Effective mass |
+|------|---------------------|--------------|----------------|
+| Zero mode | 0 | 0 | O(m) (physical) |
+| Heavy mode 1 | 4 | +3/a | O(3/a) |
+| Heavy mode 2 | 4 | +3/a | O(3/a) |
+| Heavy mode 3 | 4 | +3/a | O(3/a) |
 
-**Gap verification:**
-$$\text{Gap} = m_{\text{doubler}} - m_{\text{physical}} \approx \frac{3}{a}$$
+**Spectral gap:**
+$$\text{Gap} = m_{\text{heavy}} - m_{\text{zero}} \approx \frac{3}{a}$$
 
-With standard r = 1: Gap ≈ 2/a
-With geometric r = 3/2: Gap ≈ 3/a (**50% analytical mass-gap improvement**; actual H_W spectral gap improvement is **~81%** — see [verify_prop_0_0_27_overlap_operator.py](../../../verification/foundations/verify_prop_0_0_27_overlap_operator.py)) ✅
+With standard $r = 1$: Gap $\approx 2/a$
+With geometric $r = 3/2$: Gap $\approx 3/a$ (**50% analytical gap increase**; actual $H_W$ spectral gap improvement is **~81%** — see [verify_prop_0_0_27_overlap_operator.py](../../../verification/foundations/verify_prop_0_0_27_overlap_operator.py)) ✅
+
+**Interpretation:** The larger Wilson parameter $r = 3/2$ pushes the 3 heavy K₄ modes further from the physical zero mode, improving the condition number of $H_W$ and thus the overlap operator's convergence. This is a genuine spectral property of K₄, not a statement about Nielsen-Ninomiya doublers.
 
 ---
 
@@ -3719,17 +3715,14 @@ With geometric r = 3/2: Gap ≈ 3/a (**50% analytical mass-gap improvement**; ac
 | c_SW (tree) | 1 | 2/3 | 0.67 |
 | r (Wilson) | 1 | 3/2 | 1.50 |
 
-**Key observation:** The tree-level scalar kinetic coefficient c₁ = 1/12 is **universal** — it appears in both hypercubic and tetrahedral discretizations!
+**Observation:** The tree-level scalar kinetic coefficient c₁ = 1/12 appears in both hypercubic and tetrahedral discretizations.
 
-**Why c₁ = 1/12 is universal:**
+**Why both give 1/12:**
 
-The coefficient arises from the dimension of the gauge group times geometric factors:
-$$c_1 = \frac{1}{\text{dim}(\text{edges in unit cell})} = \frac{1}{12}$$
+- For hypercubic: 4 directions × 3 plaquette orientations = 12, so c₁ = 1/12
+- For stella: 12 edges directly, so 1/n_e = 1/12
 
-For hypercubic: 4 directions × 3 plaquette orientations = 12
-For stella: 12 edges directly
-
-**This is a non-trivial consistency check.** ✅
+> **Caveat:** Both lattices happen to have 12 edges (per unit cell or total). The numerical coincidence c₁ = 1/12 follows from this shared edge count. Whether this reflects a deeper principle or is accidental remains open. The tree-level Symanzik coefficient on a hypercubic lattice is derived from Taylor expansion of the lattice action; the K₄ value 1/n_e = 1/12 is simply the inverse edge count. These are different derivations that produce the same number. 🔮
 
 ---
 
@@ -3746,31 +3739,32 @@ $$c_{SW}^{(\text{geo})} = \frac{n_f}{n_e} = \frac{8}{12} = \frac{2}{3}$$
 - Hypercubic: 6 faces per vertex (cube faces)
 - Stella: 8 faces / 12 edges ratio
 
-**One-loop correction (from §10.3.12.10.9):**
-$$c_{SW}^{(1-\text{loop})} = c_{SW}^{(0)} \times \left(1 + \frac{g^2}{16\pi^2} \times \frac{3}{4}\right)$$
+**One-loop correction:**
 
-At $\alpha_s = 0.118$:
-$$c_{SW}^{(1-\text{loop})} = \frac{2}{3} \times \left(1 + \frac{0.118}{4\pi} \times \frac{3}{4}\right) = \frac{2}{3} \times 1.007 = 0.671$$
+> **⚠️ Note:** The one-loop geometric ratio $r_{\text{loop}} = 3/4$ from §10.3.12.10.9 was found to be based on an incorrect propagator normalization (see §10.3.12.10.9b-i, where the Euler characteristic connection was marked ❌ INVALID). The corrected propagator normalization gives $f_1 = 3/16$, not $3/4$. A reliable one-loop correction to $c_{SW}$ on K₄ has not been established.
 
-**The one-loop correction is < 1%.** ✅
+**Status:** 🔮 CONJECTURED — tree-level value $c_{SW} = n_f/n_e = 2/3$ is a graph-motivated ratio, not rigorously derived.
 
 ---
 
-**10.3.12.10.16h Verification 7: Regge Calculus Coefficients**
+**10.3.12.10.16h Verification 7: Regge Calculus Coefficients** 🔮 CONJECTURED
 
-**Deficit angle formula verification:**
+**Deficit angle on ∂S (2D Regge calculus):**
 
-For a regular tetrahedron, the dihedral angle is:
-$$\theta_{\text{dihedral}} = \arccos\left(\frac{1}{3}\right) \approx 70.53°$$
+For 2D Regge calculus on the triangulated surface $\partial\mathcal{S}$, the deficit angle at each vertex $v$ is:
+$$\epsilon_v = 2\pi - \sum_{\text{triangles at } v} \theta_v^{(f)}$$
 
-At each edge, 2 faces meet (in a single tetrahedron), giving deficit:
-$$\delta_e = 2\pi - 2\theta_{\text{dihedral}} = 2\pi - 2\arccos(1/3) \approx 218.9° = 3.82 \text{ rad}$$
+Each face of a regular tetrahedron is equilateral, so $\theta_v^{(f)} = \pi/3$. Each vertex of a tetrahedron has 3 adjacent faces, giving:
+$$\epsilon_v = 2\pi - 3 \times \frac{\pi}{3} = 2\pi - \pi = \pi \approx 180°$$
 
-**Regge action contribution per edge:**
-$$S_e = \frac{1}{8\pi G}\delta_e \cdot A_e$$
+**Gauss-Bonnet check:** $\sum_{v} \epsilon_v = 4\pi = 4 \times \pi = 2\pi\chi(S^2)$ ✅ (for one tetrahedron, $\chi = 2$)
 
-The coefficient 1/8 comes from:
-$$c_R = \frac{1}{n_f} = \frac{1}{8}$$ ✅
+**Regge action per vertex:**
+$$S_{\text{Regge}} = \frac{1}{8\pi G}\sum_v \epsilon_v \cdot A_v$$
+
+**Claimed connection:** $c_R = 1/n_f = 1/8$
+
+> **⚠️ Status: 🔮 CONJECTURED.** The identification of $c_R = 1/n_f$ with the Regge action normalization coefficient is **asserted without derivation**. In standard 2D Regge calculus, the coefficient $1/(8\pi G)$ comes from the Einstein-Hilbert action. The ratio $1/n_f = 1/8$ is simply the inverse face count of the stella. No rigorous derivation connecting these two quantities has been provided. The numerical coincidence may be suggestive but does not constitute a proof.
 
 ---
 
@@ -3782,7 +3776,7 @@ $$r \times c_{R,\Delta} = \frac{n_e}{n_v} \times \frac{n_f}{n_e} = \frac{n_f}{n_
 **Numerical verification:**
 $$\frac{3}{2} \times \frac{2}{3} = 1$$ ✅
 
-**Physical interpretation:** The matter (fermion) and gravity (Regge) improvement coefficients are dual — their product equals unity. This reflects the underlying vertex-face duality of the tetrahedron.
+**⚠️ Note:** The identity $r \times c_{R,\Delta} = (n_e/n_v) \times (n_f/n_e) = n_f/n_v = 1$ is **algebraically trivial** — the intermediate factor $n_e$ cancels. This holds for any lattice where $n_f = n_v$ (including the stella). It does not reflect a deep "gravity-matter duality" — it is a consequence of simple ratio cancellation. See §10.3.12.10.13g for further discussion.
 
 ---
 
@@ -3842,25 +3836,24 @@ $$\boxed{\textbf{Complete Numerical Verification of Geometric Improvement Coeffi
 
 **1. Higgs quartic coupling:**
 
-| Source | λ | Deviation |
-|--------|---|-----------|
-| **Geometric** | 0.125 | — |
-| PDG 2024 | 0.1293 | +3.4% |
-| Tree-level match | — | **Excellent** |
+| Source | λ | Deviation | Note |
+|--------|---|-----------|------|
+| **Geometric (1/n_v)** | 0.125 | — | Graph-motivated postulate |
+| PDG 2024 | 0.1293 | +3.4% | Extracted from $m_H$, $v$ |
+
+> **Caveat:** The 3.4% deviation is suggestive but λ = 1/n_v is a postulate, not a derivation. The PDG value is extracted from $\lambda = m_H^2/(2v^2)$, which is a definition rather than an independent measurement.
 
 **2. Standard Symanzik c₁:**
 
-The value c₁ = 1/12 is standard in lattice QCD literature (e.g., Lüscher-Weisz action). **Exact match.** ✅
+The value c₁ = 1/12 appears in both the Lüscher-Weisz action and as 1/n_e on the stella. As noted in §10.3.12.10.16f, this may reflect a shared edge count (12) rather than a deep principle. 🔮
 
-**3. Wilson parameter optimization:**
+**3. Wilson parameter:**
 
-Lattice QCD studies show optimal Wilson parameter is r ∈ [1, 2] for doubler suppression. The geometric value r = 3/2 falls **exactly in this optimal range**. ✅
+The value r = 3/2 falls within the commonly used range r ∈ [1, 2] in lattice QCD. This is consistent but not uniquely determined by the framework — r = 1, r = 1.5, and r = 2 are all viable choices on periodic lattices. The graph-motivated value happens to lie in this range. 🔮
 
 **4. Clover coefficient:**
 
-Non-perturbative determinations of c_SW in lattice QCD give c_SW ≈ 1.5-2.0 for typical couplings. The geometric tree-level value 2/3 is lower, but:
-- One-loop corrections increase it
-- The exact value depends on discretization choice
+Non-perturbative determinations of c_SW in lattice QCD give c_SW ≈ 1.5-2.0 for typical couplings at $g^2 \sim 1$. The geometric tree-level value 2/3 is significantly lower. This discrepancy is not resolved by one-loop corrections (see §10.3.12.10.16g). 🔮
 
 ---
 
@@ -3880,11 +3873,11 @@ The geometric improvement coefficients are **not arbitrary** — they emerge fro
 
 5. **r = 3/2:** The Wilson term connects vertices (8) to edges (12)
 
-**The Universal Pattern:**
+**The Simplex Ratio Pattern:**
 
-$$\boxed{c_{p \to q} = \frac{n_q}{n_p} = \frac{\text{target simplices}}{\text{source simplices}}}$$
+$$c_{p \to q} = \frac{n_q}{n_p} = \frac{\text{target simplices}}{\text{source simplices}}$$
 
-This is the **Geometric Improvement Principle** in its most concrete numerical form.
+> **Status: 🔮 CONJECTURED.** The identification of simplex ratios with lattice improvement coefficients is a **pattern observation**, not a derivation. Standard Symanzik coefficients are derived from Taylor-expanding the lattice action and matching to the continuum; the simplex ratios are simply combinatorial counts on the stella. The numerical coincidences (especially c₁ = 1/12) are suggestive and may point to a deeper connection, but no rigorous proof of this "Geometric Improvement Principle" has been provided.
 
 ---
 
@@ -3892,14 +3885,14 @@ This is the **Geometric Improvement Principle** in its most concrete numerical f
 
 | Verification | Status |
 |--------------|--------|
-| Laplacian eigenvalues | ✅ **COMPUTED** |
-| Trace formula | ✅ **VERIFIED** |
-| Euler characteristic | ✅ **VERIFIED** |
-| Simplex ratios | ✅ **VERIFIED** |
-| Wilson-Dirac spectrum | ✅ **ANALYZED** |
-| Lattice QCD comparison | ✅ **CONSISTENT** |
-| Clover coefficient | ✅ **COMPUTED** |
-| Regge coefficients | ✅ **VERIFIED** |
+| Laplacian eigenvalues | ✅ **COMPUTED** (graph identity) |
+| Trace formula | ✅ **VERIFIED** (graph identity) |
+| Euler characteristic | ✅ **VERIFIED** (topological identity) |
+| Simplex ratios | ✅ **COMPUTED** (arithmetic) |
+| Wilson-Dirac spectrum | ✅ **ANALYZED** (spectral gap improvement confirmed) |
+| Lattice QCD comparison | 🔮 **SUGGESTIVE** (c₁ matches, c_SW does not) |
+| Clover coefficient | 🔮 **CONJECTURED** (category error noted in §10.3.12.10.10) |
+| Regge coefficients | 🔮 **CONJECTURED** (asserted without derivation) |
 | Gravity-matter duality | ✅ **VERIFIED** |
 | Ginsparg-Wilson relation | ✅ **VERIFIED** |
 | Consistency relations | ✅ **ALL PASS** |
@@ -4152,18 +4145,18 @@ $$C(t) = \langle O(t) O(0) \rangle \sim e^{-m_G t}$$
 
 **10.3.12.10.17k Comparison with Standard Lattice QCD**
 
-| Feature | Standard Lattice QCD | Lattice CG | Difference |
-|---------|---------------------|------------|------------|
-| **Geometry** | Hypercubic | Stella octangula | Triangular vs square |
-| **Improvement** | Symanzik (tuned) | Geometric (fixed) | No tuning needed |
-| **c₁** | 1/12 (same) | 1/12 | **Identical** |
-| **c_SW** | ~1.5 (tuned) | 2/3 (geometric) | Different |
-| **Wilson r** | 1 (conventional) | 3/2 (geometric) | 50% larger |
-| **Fermions** | Wilson/staggered/overlap | Overlap (required) | Chiral symmetry |
-| **Doublers** | 15 (hypercubic) | 3 (K₄) | **5× fewer** |
-| **Parameters** | Multiple free | **Zero free** | Predictive |
+| Feature | Standard Lattice QCD | Lattice CG (K₄) | Notes |
+|---------|---------------------|------------------|-------|
+| **Geometry** | Hypercubic | Stella octangula (K₄) | Different graph structures |
+| **Improvement** | Symanzik (derived) | Graph-motivated (fixed) | CG values not proven optimal |
+| **c₁** | 1/12 (Taylor expansion) | 1/12 (= 1/n_e) | Same number, different derivations |
+| **c_SW** | ~1.5 (perturbative) | 2/3 (= n_f/n_e) | 🔮 CONJECTURED |
+| **Wilson r** | 1 (conventional) | 3/2 (= n_e/n_v) | 🔮 GRAPH-MOTIVATED |
+| **Fermions** | Wilson/staggered/overlap | Overlap (required) | Standard construction |
+| **Non-trivial modes** | 15 (BZ corners) | 3 (graph spectrum) | Not comparable (different origin) |
+| **Parameters** | Perturbatively determined | Graph-ratio choices | CG: fixed but unproven |
 
-**Key advantage:** Lattice CG has **no tunable improvement parameters** — everything is determined by the stella geometry.
+**Note:** The "zero free parameters" claim is misleading — the CG coefficients are *fixed by choice* (graph ratios), not *derived from first principles* (Symanzik matching). Whether these choices are optimal for physical predictions remains open.
 
 ---
 
@@ -4224,14 +4217,14 @@ On stella (8 vertices): Exact diagonalization of 32×32 matrix (for SU(3))
 **Cost ratio:**
 $$\frac{\text{Cost}_{\text{hypercubic}}}{\text{Cost}_{\text{stella}}} \sim \frac{N_{\text{iter}} \times V}{1} \sim 10^6 \text{ for typical volumes}$$
 
-**2. Reduced doubler problem:**
+**2. Smaller Dirac spectrum:**
 
-| Lattice | Doublers | Modes to handle |
-|---------|----------|-----------------|
-| 4D hypercubic | 15 | 16 |
-| Stella (K₄) | 3 | 4 |
+| Lattice | Non-trivial modes | Total modes | Origin |
+|---------|-------------------|-------------|--------|
+| 4D hypercubic | 15 (BZ doublers) | 16 | Nielsen-Ninomiya |
+| Stella (K₄) | 3 (graph spectrum) | 4 | K₄ Laplacian |
 
-**Ratio:** 4× fewer modes to manage
+**Note:** These are not comparable — hypercubic "doublers" arise from Brillouin zone periodicity, while K₄ modes are graph-spectral. The smaller count simply reflects having 4 vertices instead of 16.
 
 **3. Natural triangular structure:**
 
@@ -4362,9 +4355,9 @@ class HMC:
 
 ---
 
-**10.3.12.10.18 Monte Carlo Verification on Stella Lattice** 🔶 NOVEL
+**10.3.12.10.18 Monte Carlo Tests on K₄** 🔸 PARTIAL
 
-This section provides explicit Monte Carlo calculations and analytical predictions for verification of the geometric improvement coefficients on the stella octangula lattice.
+This section specifies Monte Carlo tests for the K₄ lattice. **Important:** K₄ is a 4-site finite graph with no continuum limit. Category I tests (structural) are exact graph identities. Category II tests (statistical) verify K₄ path integral mechanics. Category III tests (physical) are largely tautological or require periodic lattices not available in K₄ — see individual caveats.
 
 ---
 
@@ -4417,9 +4410,13 @@ $$\boxed{\langle \phi^T L \phi \rangle = 12.0 \pm 0.1 \text{ (after } N \gtrsim 
 
 **10.3.12.10.18c Test I.2: Plaquette Average (Pure Gauge)**
 
+> **Implementation note:** On K₄ (one tetrahedron), each face is a triangle with 3 edges. The plaquette variable $U_f$ is the ordered product of 3 link variables around a face: $U_f = U_{e_1} U_{e_2} U_{e_3}$. Existing verification scripts sample single links from the Haar measure rather than computing actual triangular plaquettes — this tests single-link statistics, not the Wilson gauge action. A correct implementation must compute $U_f = \prod_{e \in \partial f} U_e$ for each triangular face.
+
 **The Wilson action on stella:**
 
 $$S_W = \beta \sum_{f=1}^{8} \left[1 - \frac{1}{N_c}\text{Re}\,\text{Tr}(U_f)\right]$$
+
+where $U_f = U_{e_1} U_{e_2} U_{e_3}$ is the product of 3 SU($N_c$) link variables around triangular face $f$.
 
 **Monte Carlo observable:**
 
@@ -4437,15 +4434,15 @@ $$\langle P \rangle = 1 - \frac{N_c^2 - 1}{2N_c \beta} + O(1/\beta^2)$$
 
 For SU(3): $\langle P \rangle \approx 1 - \frac{4}{3\beta}$ at large $\beta$.
 
-**Numerical predictions:**
+**Numerical predictions (analytical, not yet verified by simulation):**
 
-| β | ⟨P⟩ (SU(3)) | Regime |
-|---|-------------|--------|
-| 0.1 | 0.006 | Strong |
-| 1.0 | 0.056 | Strong |
-| 3.0 | 0.35 | Crossover |
-| 6.0 | 0.78 | Weak |
-| 10.0 | 0.87 | Weak |
+| β | ⟨P⟩ (SU(3)) | Regime | Status |
+|---|-------------|--------|--------|
+| 0.1 | 0.006 | Strong | 🔸 Predicted |
+| 1.0 | 0.056 | Strong | 🔸 Predicted |
+| 3.0 | 0.35 | Crossover | 🔸 Predicted |
+| 6.0 | 0.78 | Weak | 🔸 Predicted |
+| 10.0 | 0.87 | Weak | 🔸 Predicted |
 
 ---
 
@@ -4644,23 +4641,21 @@ On stella, sum over the 16 eigenvalues (4 vertices × 4 spin).
 
 ---
 
-**10.3.12.10.18j Test III.2: Improvement Coefficient Verification**
+**10.3.12.10.18j Test III.2: Improvement Coefficient Scaling** ⚠️ STANDARD LATTICE TEST, NOT K₄
 
-**Direct measurement of c₁ = 1/12:**
+> **Critical caveat:** This test requires varying the lattice spacing $a$, which presupposes a family of lattices with $a \to 0$ continuum limit. K₄ has 4 fixed vertices and no lattice spacing parameter — this test **cannot be performed on K₄**. The procedure below describes the standard Symanzik improvement verification on a periodic lattice (e.g., hypercubic or FCC from Prop 0.0.6b).
+
+**Standard test procedure (periodic lattice with variable $a$):**
 
 Compute the discretization error in the scalar kinetic term:
 
 $$\epsilon_{\text{kin}} = \frac{\langle (\nabla\phi)^2 \rangle_{\text{lat}} - \langle (\partial\phi)^2 \rangle_{\text{cont}}}{\langle (\partial\phi)^2 \rangle_{\text{cont}}}$$
 
-**With Symanzik improvement:**
+**With Symanzik improvement ($c_1 = 1/12$):** $\epsilon_{\text{kin}} = O(a^2)$
 
-$$\epsilon_{\text{kin}} = O(a^2)$$
+**Without improvement ($c_1 = 0$):** $\epsilon_{\text{kin}} = O(a)$
 
-**Without improvement (c₁ = 0):**
-
-$$\epsilon_{\text{kin}} = O(a)$$
-
-**Verification procedure:**
+**Procedure (for future FCC lattice simulations):**
 
 1. Compute $\langle (\nabla\phi)^2 \rangle$ at lattice spacings $a$, $a/2$, $a/4$
 2. Extrapolate to $a \to 0$
@@ -4668,88 +4663,86 @@ $$\epsilon_{\text{kin}} = O(a)$$
    - With c₁ = 1/12: $\epsilon \propto a^2$
    - With c₁ = 0: $\epsilon \propto a$
 
-**Expected result:**
+**Expected result (on periodic lattice):**
 
-$$\boxed{\frac{\epsilon(a)}{\epsilon(a/2)} = 4.0 \pm 0.1 \text{ (O(a²) improvement confirmed)}}$$
+$$\frac{\epsilon(a)}{\epsilon(a/2)} = 4.0 \pm 0.1 \text{ (O(a²) improvement confirmed)}$$
+
+**Status:** 🔸 PROCEDURE SPECIFIED — not yet tested. Requires FCC lattice implementation (Prop 0.0.6b).
 
 ---
 
-**10.3.12.10.18k Test III.3: Clover Coefficient Verification**
+**10.3.12.10.18k Test III.3: Clover Coefficient Verification** ⚠️ NOT TESTABLE ON K₄
 
-**Direct measurement of c_SW = 2/3:**
+> **Critical caveat:** This test requires computing the pion mass at multiple lattice spacings and checking convergence rate — which requires a family of lattices with variable $a$. K₄ has 4 fixed vertices and no adjustable lattice spacing. The table below describes a **future test** on FCC lattices (Prop 0.0.6b), not a result from K₄.
 
-The clover term removes O(a) errors in the fermion action.
-
-**Test observable: Pion mass**
+**Test observable (for periodic lattice): Pion mass**
 
 $$m_\pi^2 = (m_q^{\text{bare}} - m_c) \times B + O(a^{1 \text{ or } 2})$$
 
 where $m_c$ is the critical mass (additive renormalization).
 
-**With correct c_SW:**
-- O(a) errors cancel
-- $m_c = 0$ for overlap fermions
+**With c_SW = 2/3:** O(a) errors should cancel (if this is the correct value)
 
-**Verification:**
+**Hypothetical verification (future work, NOT K₄ results):**
 
-Compare pion mass at different lattice spacings:
+| a | m_π (c_SW = 2/3) | m_π (c_SW = 0) | Source |
+|---|------------------|----------------|--------|
+| 0.1 fm | 140 MeV | 180 MeV | Projected |
+| 0.05 fm | 139 MeV | 160 MeV | Projected |
+| 0.025 fm | 138 MeV | 149 MeV | Projected |
+| Continuum | 138 MeV | 138 MeV | PDG |
 
-| a | m_π (c_SW = 2/3) | m_π (c_SW = 0) |
-|---|------------------|----------------|
-| 0.1 fm | 140 MeV | 180 MeV |
-| 0.05 fm | 139 MeV | 160 MeV |
-| 0.025 fm | 138 MeV | 149 MeV |
-| Continuum | 138 MeV | 138 MeV |
-
-**The geometric c_SW = 2/3 should show faster convergence.**
+**Status:** 🔸 PROCEDURE SPECIFIED — not yet tested. Requires FCC lattice implementation with variable $a$.
 
 ---
 
-**10.3.12.10.18l Test III.4: Higgs Mass Extraction**
+**10.3.12.10.18l Test III.4: Higgs Mass Extraction** ⚠️ TAUTOLOGICAL
 
-**Monte Carlo measurement of λ:**
+> **Critical caveat:** Since $\lambda = 1/8$ is an **input parameter** to the simulation (not dynamically generated), the Higgs mass $m_H = \sqrt{2\lambda}\,v = v/2$ is an algebraic consequence of the input, not an independent prediction. The Monte Carlo "measurement" of $\lambda$ simply recovers the input value.
+
+**Monte Carlo measurement of λ (consistency check only):**
 
 From the scalar 4-point function:
 
 $$\lambda = -\frac{G_4^{(c)}}{4! \times G^4} = -\frac{\langle \phi^4 \rangle_c}{24 \langle \phi^2 \rangle^2}$$
 
-**Expected result:**
+**Expected result:** $\lambda_{\text{MC}} = 0.125 \pm 0.005$ (recovers input value)
 
-$$\boxed{\lambda_{\text{MC}} = 0.125 \pm 0.005}$$
-
-**Higgs mass from correlator:**
+**Higgs mass from correlator (on K₄):**
 
 $$C(t) = \langle H(t) H(0) \rangle \sim e^{-m_H t}$$
 
 where $H = |\Phi|^2 - v^2$ is the Higgs field.
 
-**Effective mass:**
+> **Note:** On K₄ with 4 sites, "t" separations are limited to 0, 1, 2, 3. Extracting an effective mass from 4 time slices has large systematic uncertainty.
 
-$$m_{\text{eff}}(t) = \ln\frac{C(t)}{C(t+1)} \to m_H$$
+**With λ = 1/8 and v = 246.7 GeV (tree-level, algebraic):**
 
-**With λ = 1/8 and v = 246.7 GeV:**
+$$m_H = \sqrt{2\lambda} \times v = \frac{v}{2} = 123.35 \text{ GeV}$$
 
-$$m_H = \sqrt{2\lambda} \times v = \frac{v}{2} = 123.35 \text{ GeV (tree)}$$
+**Status:** The non-trivial claim is that $\lambda = 1/8$ follows from K₄ mode counting. The simulation does not test this — it only verifies self-consistency of the input.
 
 ---
 
 **10.3.12.10.18m Complete Monte Carlo Verification Table**
 
-$$\boxed{\textbf{Monte Carlo Verification Results}}$$
+$$\boxed{\textbf{Monte Carlo Test Specifications (K₄)}}$$
 
-| Test | Observable | Analytical Prediction | MC Target | Status |
-|------|------------|----------------------|-----------|--------|
-| I.1 | Tr(L) | 12 | 12.0 ± 0.1 | ✅ |
-| I.2 | ⟨P⟩ at β=6 | 0.78 | 0.78 ± 0.01 | ✅ |
-| I.3 | Q distribution | P(0) ≈ 0.6 | 0.6 ± 0.05 | ✅ |
-| II.1 | Free energy | See table | Match | ✅ |
-| II.2 | G_vv/G_vw | 2.0 (m²=1) | 2.0 ± 0.1 | ✅ |
-| II.3 | G₄^(c)/G² | -3.0 | -3.0 ± 0.2 | ✅ |
-| II.4 | ⟨W₃⟩ | Area law | Verify | ✅ |
-| III.1 | Overlap spectrum | GW circle | Verify | ✅ |
-| III.2 | c₁ scaling | O(a²) | ε(a)/ε(a/2)=4 | ✅ |
-| III.3 | c_SW effect | Faster conv. | Verify | ✅ |
-| III.4 | λ | 0.125 | 0.125 ± 0.005 | ✅ |
+> **Note:** Status reflects whether the test has been correctly specified and (where applicable) verified. Tests requiring variable lattice spacing cannot be performed on K₄.
+
+| Test | Observable | Prediction | MC Target | Status |
+|------|------------|-----------|-----------|--------|
+| I.1 | Tr(L) | 12 | 12.0 ± 0.1 | ✅ Graph identity |
+| I.2 | ⟨P⟩ at β=6 | 0.78 | 0.78 ± 0.01 | 🔸 Specified (script uses single links) |
+| I.3 | Q distribution | P(0) ≈ 0.6 | 0.6 ± 0.05 | 🔸 Specified |
+| II.1 | Free energy | See table | Match | ✅ Verified on K₄ |
+| II.2 | G_vv/G_vw | 2.0 (m²=1) | 2.0 ± 0.1 | ✅ Verified on K₄ |
+| II.3 | G₄^(c)/G² | -3.0 | -3.0 ± 0.2 | ✅ Verified on K₄ |
+| II.4 | ⟨W₃⟩ | Area law | Verify | 🔸 Specified |
+| III.1 | Overlap spectrum | GW circle | Verify | ✅ Verified |
+| III.2 | c₁ scaling | O(a²) | ε(a)/ε(a/2)=4 | ❌ Not testable on K₄ |
+| III.3 | c_SW effect | Faster conv. | Verify | ❌ Not testable on K₄ |
+| III.4 | λ | 0.125 | 0.125 ± 0.005 | ⚠️ Tautological (λ is input) |
 
 ---
 
@@ -4815,38 +4808,42 @@ Autocorrelation times are short:
 
 ---
 
-**10.3.12.10.18p Continuum Extrapolation**
+**10.3.12.10.18p Continuum Extrapolation** ⚠️ NOT APPLICABLE TO K₄
 
-**With Symanzik improvement:**
+> **Critical caveat:** K₄ has 4 fixed vertices and no lattice spacing parameter $a$. There is no continuum limit to take. The "extrapolation" below is **illustrative only** — it describes the standard Symanzik procedure that would apply to a family of FCC lattices (Prop 0.0.6b) with varying $a$, not to K₄ itself. The table entries below are **mock data** with hand-inserted $O(a^2)$ coefficients that circularly recover the known answer $\lambda = 1/8$.
 
-Observables approach continuum as:
+**Standard Symanzik extrapolation procedure (for periodic lattices with $a \to 0$ limit):**
+
+With $O(a)$ improvement, observables approach continuum as:
 
 $$O(a) = O(0) + c_2 a^2 + O(a^4)$$
 
-**Extrapolation procedure:**
+**Procedure (applicable to FCC lattice, NOT K₄):**
 
 1. Compute $O(a)$ at multiple lattice spacings: $a$, $a/\sqrt{2}$, $a/2$
 2. Fit to: $O(a) = O(0) + c_2 a^2$
 3. Extract $O(0)$ as the continuum value
 
-**Example: λ extraction**
+**Illustrative example (mock data, not K₄ simulation output):**
 
-| a (fm) | λ_lat |
-|--------|-------|
-| 0.1 | 0.128 |
-| 0.07 | 0.126 |
-| 0.05 | 0.1255 |
-| **0** (extrap.) | **0.125** |
+| a (fm) | λ_lat | Source |
+|--------|-------|--------|
+| 0.1 | 0.128 | Mock |
+| 0.07 | 0.126 | Mock |
+| 0.05 | 0.1255 | Mock |
+| **0** (extrap.) | **0.125** | Circular |
 
-**Verification:** Continuum extrapolation gives $\lambda = 1/8$ exactly.
+**Status:** ❌ This table does NOT verify $\lambda = 1/8$. The mock data was constructed to recover the known answer. Genuine verification requires simulation on a family of lattices with varying $a$ (e.g., FCC lattices from Prop 0.0.6b).
 
 ---
 
 **10.3.12.10.18q Benchmark Results Summary**
 
-$$\boxed{\textbf{Monte Carlo Benchmark: Geometric Coefficients Verified}}$$
+$$\boxed{\textbf{Monte Carlo Benchmark Results (K₄ Toy Model)}}$$
 
-**Category I: Structural Tests**
+> **Note:** These are K₄ results — a 4-site finite graph with no continuum limit. Category I tests are exact graph-theoretic identities. Category II tests verify K₄ path-integral mechanics. Category III results require careful interpretation (see caveats).
+
+**Category I: Structural Tests (Graph Identities)**
 
 | Test | Prediction | Result | Agreement |
 |------|------------|--------|-----------|
@@ -4854,7 +4851,7 @@ $$\boxed{\textbf{Monte Carlo Benchmark: Geometric Coefficients Verified}}$$
 | Eigenvalue ratio | 4:0 | 4.00 ± 0.01 : 0 | ✅ **Exact** |
 | Euler characteristic | 4 | 4 | ✅ **Exact** |
 
-**Category II: Statistical Tests**
+**Category II: Statistical Tests (K₄ Path Integral)**
 
 | Test | Prediction | Result | Agreement |
 |------|------------|--------|-----------|
@@ -4862,13 +4859,13 @@ $$\boxed{\textbf{Monte Carlo Benchmark: Geometric Coefficients Verified}}$$
 | Propagator ratio | 2.0 | 2.00 ± 0.02 | ✅ **1%** |
 | 4-point function | -3.0 | -3.02 ± 0.05 | ✅ **<2%** |
 
-**Category III: Physical Tests**
+**Category III: Physical Tests (⚠️ see caveats)**
 
-| Test | Prediction | Result | Agreement |
-|------|------------|--------|-----------|
-| λ (Higgs quartic) | 0.125 | 0.125 ± 0.003 | ✅ **<3%** |
-| c₁ scaling | O(a²) | Confirmed | ✅ |
-| Overlap index | Integer | Integer | ✅ **Exact** |
+| Test | Prediction | Result | Agreement | Caveat |
+|------|------------|--------|-----------|--------|
+| λ (Higgs quartic) | 0.125 | 0.125 (input) | ⚠️ Tautological | λ is an input parameter |
+| c₁ scaling | O(a²) | N/A | ⚠️ Not testable on K₄ | K₄ has no variable $a$ |
+| Overlap index | Integer | Integer | ✅ **Exact** | Valid for any Dirac operator |
 
 ---
 
@@ -4900,13 +4897,13 @@ Before production runs:
 
 | Verification | Status |
 |--------------|--------|
-| Structural tests (eigenvalues, trace) | ✅ **SPECIFIED & VERIFIED** |
-| Statistical tests (Z, correlators) | ✅ **SPECIFIED & VERIFIED** |
-| Physical tests (λ, masses) | ✅ **SPECIFIED & VERIFIED** |
-| Finite-size analysis | ✅ **ANALYZED** |
-| Continuum extrapolation | ✅ **PROCEDURE GIVEN** |
+| Structural tests (eigenvalues, trace) | ✅ **VERIFIED** (graph identities) |
+| Statistical tests (Z, correlators) | ✅ **VERIFIED** (K₄ path integral) |
+| Physical tests (λ, masses) | ⚠️ **PARTIALLY TAUTOLOGICAL** (λ is input, not output) |
+| Finite-size analysis | ⚠️ **ANALYZED** (but K₄ has O(1) finite-size effects) |
+| Continuum extrapolation | ❌ **NOT APPLICABLE** to K₄ (mock data only) |
 | Error estimation | ✅ **METHODS SPECIFIED** |
-| Benchmark table | ✅ **COMPLETE** |
+| Benchmark table | 🔸 **REVISED** with honest caveats |
 
 **Conclusion:** Monte Carlo verification of the geometric improvement coefficients has been fully specified. The analytical predictions for all structural, statistical, and physical observables are:
 
@@ -5221,9 +5218,9 @@ The direct comparison shows that:
 
 ---
 
-**10.3.12.10.21 Quantum Computing Implications** 🔶 NOVEL
+**10.3.12.10.21 Quantum Computing Implications** 🔸 SPECULATIVE
 
-The stella octangula lattice's compact structure makes it exceptionally well-suited for **near-term quantum computers**, potentially enabling quantum simulation of gauge theories years before hypercubic lattice approaches become feasible.
+K₄ is a minimal 4-site lattice, making it a natural benchmark target for near-term quantum computers. Most advantages described below are consequences of the small system size rather than the stella geometry specifically.
 
 ---
 
@@ -5445,40 +5442,44 @@ Where:
 | Concrete circuit implementation | 🔮 **FUTURE WORK** |
 | Hardware demonstration | 🔮 **FUTURE WORK** |
 
-**Conclusion:** The stella octangula lattice is not merely a theoretical simplification — it provides a **practical path to quantum simulation of gauge theories** on near-term hardware. The combination of:
-- Minimal qubit count (~32-48 for SU(2))
-- Optimal connectivity (complete graph)
-- Fixed geometric coefficients (no variational optimization)
-- Exact operator construction (no iterative methods)
+**Conclusion:** K₄ is the smallest non-trivial lattice for gauge theory simulations, making it a natural target for near-term quantum hardware. The combination of:
+- Minimal qubit count (~32-48 for SU(2)) — a consequence of having only 4 sites
+- Complete graph connectivity — maps well to trapped-ion hardware
+- Graph-motivated coefficients — fixed choices (optimality not proven)
+- Exact operator construction — trivially true for any 4-site system
 
-makes the CG framework uniquely suited for the NISQ era of quantum computing.
+makes K₄ a useful **benchmark system** for quantum simulation of lattice gauge theories, though the small size limits its physical relevance.
 
-**This represents a potential "quantum advantage" application where the stella's geometric structure provides benefits that cannot be replicated on hypercubic lattices.**
+**Honest assessment:** The quantum computing advantages are primarily consequences of K₄ being very small, not of the stella geometry per se. Any 4-site lattice would share most of these properties. The stella-specific contribution is the graph-motivated coefficient choices, whose optimality remains open.
 
 ---
 
 ##### 10.3.12.8 What This Establishes
 
-The explicit calculation demonstrates:
+The K₄ analysis demonstrates (with honest assessment):
 
-1. **Loop integrals emerge from path sums:** ✅ VERIFIED
-   - Triangular paths on ∂S → one-loop diagrams in QFT
+1. **Closed-path sums yield diagrammatic structure:** ✅ VERIFIED
+   - Triangle paths produce vacuum diagrams (O(λ³), heavily suppressed)
+   - The dominant one-loop self-energy is the φ⁴ tadpole (O(λ))
+   - K₄ path integral is exactly solvable as a finite system
 
-2. **UV structure is consistent:** ✅ VERIFIED
-   - Discrete lattice provides natural cutoff at $\Lambda_{UV} = M_P/2.25$
-   - Power divergences match continuum (before renormalization)
+2. **K₄ provides a UV-finite toy model:** ✅ VERIFIED
+   - 4-site graph has built-in cutoff (no UV divergences to regulate)
+   - Self-energy δm²/m² ≈ 27.7% at m̃² = 0.258 (unrenormalized, O(1) for finite system)
+   - Quantitative comparison with continuum (0.11% renormalized) fails — differs by orders of magnitude
 
-3. **Numerical coefficients match:** ✅ VERIFIED (within 40%)
-   - Mode normalization 1/n_modes = 1/8 is consistent
-   - Renormalized log structure agrees
+3. **Graph-motivated coefficients are suggestive:** 🔮 CONJECTURED
+   - Simplex ratios (1/n_v, 1/n_e, n_f/n_e) produce values that numerically coincide with some standard lattice QCD coefficients
+   - c₁ = 1/12 matches tree-level Symanzik (possibly universal for 12-edge structures)
+   - c_SW = 2/3, r = 3/2 differ from standard values (1 and 1) — no proof that these are optimal
+   - Euler characteristic connection (r_loop = 3/4) is ❌ INVALID after propagator normalization correction
 
-4. **λ = 1/8 is self-consistent:** ✅ VERIFIED
-   - Same factor appears in:
-     - Tree-level: λ = 1/n_modes = 1/8
-     - Loop level: discrete-to-continuum normalization
-     - Radiative corrections: δm_H/m_H ~ λ × log
+4. **λ = 1/8 is an input assumption:** 🔸 PARTIAL
+   - The identification λ = 1/n_v is a postulate, not a derivation
+   - Higgs mass prediction follows algebraically from λ = 1/8 and SM relations
+   - Self-consistency of the mode-counting argument is suggestive but not proven
 
-**Updated status for §10.3:** From 🔸 PARTIAL to **🔶 NOVEL** (coefficient matching verified)
+**Updated status for §10.3:** 🔸 PARTIAL — K₄ toy model works as expected; improvement coefficient claims are 🔮 CONJECTURED
 
 ---
 

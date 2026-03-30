@@ -1,6 +1,6 @@
 # Theorem 0.0.13: Tannaka Reconstruction — Applications
 
-## Status: 🔶 FRAMEWORK COMPLETE — VERIFICATION & APPLICATIONS
+## Status: 🔶 NOVEL ✅ VERIFIED — APPLICATIONS
 
 This document explores the physical interpretation, numerical verification, and implications of Theorem 0.0.13.
 
@@ -39,7 +39,7 @@ With Theorem 0.0.13, SU(3) gauge symmetry becomes **reconstructible from geometr
 
 | Standard Model | Chiral Geometrogenesis |
 |----------------|----------------------|
-| Postulate: "The strong force has SU(3) symmetry" | Derive: "SU(3) is reconstructible from the stella octangula via Tannaka duality" |
+| Postulate: "The strong force has SU(3) symmetry" | Reconstruct: "SU(3) is reconstructible from the stella octangula via Tannaka duality" |
 | Gauge fields are fundamental | Gauge structure is encoded in the geometric structure |
 | 8 gluons postulated | 8 gluons = 6 edges + 2 apexes |
 

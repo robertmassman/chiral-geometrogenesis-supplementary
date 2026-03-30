@@ -8,6 +8,12 @@
 
 **Created:** 2026-01-17
 
+**Dependencies:**
+- ✅ Theorem 7.3.2 (Asymptotic Freedom)
+- ✅ Proposition 3.1.1a (Lagrangian Form From Symmetry)
+- ✅ Proposition 3.1.1b (RG Fixed Point Analysis)
+- ✅ Proposition 3.1.1c (Geometric Coupling Formula)
+
 ---
 
 ## Contents

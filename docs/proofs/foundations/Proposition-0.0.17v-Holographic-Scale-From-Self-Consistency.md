@@ -413,7 +413,11 @@ $$f_\chi = 2.23 \times 10^{18} \text{ GeV}$$
 
 Agreement with observed value (2.44 × 10¹⁸ GeV) is 91%. The 9% discrepancy is within the uncertainty of the lattice QCD input √σ = 440 ± 30 MeV.
 
-### 8.3 For the Cosmological Constant
+### 8.3 Scale Invariance Limitation
+
+[Proposition 5.2.5e](../Phase5/Proposition-5.2.5e-Holographic-Self-Encoding-Scale-Invariance.md) proves that the self-encoding condition $I_{\text{stella}} = I_{\text{gravity}}$ defined here is homogeneous degree 0 — it determines only the dimensionless ratio $a/\ell_P$, not either quantity individually. This formalizes the observation that the holographic scale derivation requires $R_{\text{stella}}$ as an external anchor.
+
+### 8.4 For the Cosmological Constant
 
 The same self-consistency argument constrains the cosmological constant:
 

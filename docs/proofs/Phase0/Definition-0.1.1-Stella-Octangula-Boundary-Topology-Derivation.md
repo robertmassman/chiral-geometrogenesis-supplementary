@@ -28,9 +28,9 @@ The boundary $\partial\mathcal{S}$ has Euler characteristic $\chi = 4$, which di
 The boundary $\partial\mathcal{S} = \partial T_+ \sqcup \partial T_-$ is topologically equivalent to the **disjoint union of two 2-spheres**, each realized as a regular tetrahedron (a polyhedral approximation to $S^2$).
 
 Specifically:
-- $\partial T_+$ is **homotopy equivalent** to $S^2$ (with 4 conical singularities at vertices where the smooth structure fails)
-- $\partial T_-$ is **homotopy equivalent** to $S^2$ (with 4 conical singularities at vertices)
-- $\partial\mathcal{S} \simeq S^2 \sqcup S^2$ (two disjoint spheres, homotopy equivalence)
+- $\partial T_+$ is **homeomorphic** to $S^2$ as a topological space (with 4 conical singularities at vertices where the smooth/metric structure differs)
+- $\partial T_-$ is **homeomorphic** to $S^2$ as a topological space (with 4 conical singularities at vertices)
+- $\partial\mathcal{S} \cong S^2 \sqcup S^2$ (two disjoint spheres, homeomorphism)
 
 **Note on terminology:** As abstract **topological spaces**, a tetrahedron IS homeomorphic to $S^2$ (both are compact, connected, simply connected 2-manifolds without boundary). However, as **metric spaces** or **smooth manifolds**, they are not isometric/diffeomorphic due to the conical singularities at vertices. A smooth diffeomorphism cannot map the cone points (where exactly 3 faces meet at fixed angles) to smooth points of $S^2$. The tetrahedron is a **piecewise-linear** realization of the sphere, not a smooth one. For physical purposes, the distinction is important: the metric/smooth structure determines curvature concentration, while the topological structure ensures $\chi = 2$ per component.
 
@@ -191,32 +191,36 @@ For an equilateral triangle with vertices $A, B, C$, the outward normal is:
 $$\hat{n} = \frac{(B-A) \times (C-A)}{|(B-A) \times (C-A)|}$$
 
 For Face 1 $(v_R, v_G, v_B)$:
-- $v_R = \frac{1}{\sqrt{3}}(1,1,1)$
-- $v_G = \frac{1}{\sqrt{3}}(1,-1,-1)$
-- $v_B = \frac{1}{\sqrt{3}}(-1,1,-1)$
+- $v_R = \frac{1}{\sqrt{3}}(1,-1,-1)$
+- $v_G = \frac{1}{\sqrt{3}}(-1,1,-1)$
+- $v_B = \frac{1}{\sqrt{3}}(-1,-1,1)$
 
-Edge vector: $\vec{e}_1 = v_G - v_R = \frac{1}{\sqrt{3}}(0,-2,-2)$
+Edge vector: $\vec{e}_1 = v_G - v_R = \frac{1}{\sqrt{3}}(-2,2,0)$
 
-Vector to third vertex: $\vec{e}_2 = v_B - v_R = \frac{1}{\sqrt{3}}(-2,0,-2)$
+Vector to third vertex: $\vec{e}_2 = v_B - v_R = \frac{1}{\sqrt{3}}(-2,0,2)$
 
 Cross product:
-$$\vec{e}_1 \times \vec{e}_2 = \frac{1}{3}\begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ 0 & -2 & -2 \\ -2 & 0 & -2 \end{vmatrix} = \frac{1}{3}(4, 4, -4)$$
+$$\vec{e}_1 \times \vec{e}_2 = \frac{1}{3}\begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ -2 & 2 & 0 \\ -2 & 0 & 2 \end{vmatrix} = \frac{1}{3}(4, 4, 4)$$
 
-Normalizing: $\hat{n}_1 = \frac{1}{\sqrt{3}}(1, 1, -1)$
+This points toward $v_W = (1,1,1)/\sqrt{3}$ (inward). The outward normal is:
 
-For Face 2 $(v_R, v_G, v_W)$ with $v_W = \frac{1}{\sqrt{3}}(-1,-1,1)$:
+$$\hat{n}_1 = \frac{1}{\sqrt{3}}(-1, -1, -1)$$
 
-Vector to third vertex: $\vec{e}_3 = v_W - v_R = \frac{1}{\sqrt{3}}(-2,-2,0)$
+For Face 2 $(v_R, v_G, v_W)$ with $v_W = \frac{1}{\sqrt{3}}(1,1,1)$:
+
+Vector to third vertex: $\vec{e}_3 = v_W - v_R = \frac{1}{\sqrt{3}}(0,2,2)$
 
 Cross product (using same $\vec{e}_1$):
-$$\vec{e}_1 \times \vec{e}_3 = \frac{1}{3}\begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ 0 & -2 & -2 \\ -2 & -2 & 0 \end{vmatrix} = \frac{1}{3}(-4, -4, -4)$$
+$$\vec{e}_1 \times \vec{e}_3 = \frac{1}{3}\begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ -2 & 2 & 0 \\ 0 & 2 & 2 \end{vmatrix} = \frac{1}{3}(4, 4, -4)$$
 
-Normalizing: $\hat{n}_2 = \frac{1}{\sqrt{3}}(-1, -1, -1)$
+This points away from $v_B = (-1,-1,1)/\sqrt{3}$ (outward). Normalizing:
+
+$$\hat{n}_2 = \frac{1}{\sqrt{3}}(1, 1, -1)$$
 
 **Step 2: Dihedral angle calculation**
 
 The angle between the outward normal vectors is:
-$$\cos(\angle \hat{n}_1, \hat{n}_2) = \hat{n}_1 \cdot \hat{n}_2 = \frac{1}{3}[(1)(-1) + (1)(-1) + (-1)(-1)] = \frac{1}{3}(-1 - 1 + 1) = -\frac{1}{3}$$
+$$\cos(\angle \hat{n}_1, \hat{n}_2) = \hat{n}_1 \cdot \hat{n}_2 = \frac{1}{3}[(-1)(1) + (-1)(1) + (-1)(-1)] = \frac{1}{3}(-1 - 1 + 1) = -\frac{1}{3}$$
 
 The dihedral angle (interior angle between faces, measured from inside the solid) is supplementary to the angle between outward normals:
 $$\theta_{dihedral} = \pi - \arccos(-1/3) = \arccos(1/3) \approx 70.53°$$
@@ -338,6 +342,8 @@ The root system satisfies:
 
 These **metric properties** of the root system, not just its combinatorics, determine that the Lie algebra must be $\mathfrak{su}(3)$ and not some other algebra with Weyl group $S_3$.
 
+**Clarification on the nature of the metric used here:** The angles and lengths that identify the root system are measured with respect to the **Killing form** $\kappa(X, Y) = \text{Tr}(\text{ad}_X \circ \text{ad}_Y)$, which is an algebraic invariant intrinsic to the Lie algebra structure — it is defined entirely in terms of the commutation relations, without reference to any spacetime metric. The Killing form provides a natural inner product on the Cartan subalgebra $\mathfrak{h}^*$ (the root space), and it is this inner product that determines root angles and relative lengths. This is fully compatible with the pre-geometric claim: the "metric" used for root system identification is an **algebraic** structure (a bilinear form on an abstract vector space), not a **spacetime** metric. The ℝ³ embedding merely provides a convenient representation of these algebraic relationships — the root angles of 60° and equal root lengths are consequences of the Killing form of $\mathfrak{su}(3)$, not of any ambient spatial geometry.
+
 **The Key Insight:**
 
 The continuous SU(3) symmetry is not "added" to the stella octangula — it is **encoded in its geometry**. The discrete structure contains exactly the information needed to reconstruct the continuous group:
@@ -395,6 +401,12 @@ $$\boxed{\begin{aligned}
 
 **This definition requires NO metric, NO embedding, NO distance function** for the physics — the ℝ³ reference in (P5) is purely for specifying *which* paths must be monotonic.
 
+**Alternative combinatorial formulation of (P5):** For those who prefer a fully metric-free axiom set, (P5) can be equivalently replaced by:
+
+$$\textbf{(P5') Vertex ordering:} \quad P_c(v_c) > P_c(v_{c'}) > P_c(v_{\bar{c}}) \quad \text{for all } c' \neq c, \bar{c}$$
+
+combined with the requirement that $P_c$ has no local maxima other than $v_c$ on each face. This reformulation uses only the combinatorial vertex labels, with no reference to ℝ³ paths. The two formulations are equivalent for the class of functions considered here (Theorem 8.4.1 establishes that physical predictions depend only on (P1)-(P4) and the vertex ordering).
+
 The physics (phase cancellation, field localization, color confinement) depends ONLY on properties (P1)-(P5), not on any specific functional form.
 
 ### 8.2 Computational Realization via ℝ³ Embedding
@@ -421,6 +433,22 @@ The function $P_c(x) = 1/(|x - v_c|^2 + \epsilon^2)$ satisfies (P1)-(P5).
 - Computational convenience: closed-form expressions
 - Consistency with QCD bag model (Theorem 2.1.1)
 - Matches lattice QCD flux tube profiles
+
+**Important clarification on confinement (kinematic vs. dynamical):**
+
+The $1/r^2$ pressure falloff is **Coulomb-like**, not confining in the QCD sense. QCD confinement produces a **linear potential** $V(r) \sim \sigma r$ between color sources, resulting in an area law for Wilson loops and flux tube formation. The pressure functions defined here provide only **kinematic confinement**: quarks cannot separate on the compact boundary $\partial\mathcal{S}$ because the surface is finite and closed.
+
+| Confinement Type | Mechanism | Status in This Definition |
+|-----------------|-----------|--------------------------|
+| **Kinematic** | Compact surface prevents color separation at infinity | ✅ Established here |
+| **Dynamical** | Linear potential, area law for Wilson loops, Luscher term | Cross-reference below |
+
+The transition from kinematic to dynamical confinement — including the emergence of the linear potential, area law, and string tension $\sigma$ — is established in:
+- [Theorem 2.5.2 (Dynamical Confinement)](../Phase2/Theorem-2.5.2-Dynamical-Confinement.md): Derives $V(r) \sim \sigma r$ from the framework
+- [Proposition 2.5.2a (Wilson Loop Area Law)](../Phase2/Proposition-2.5.2a-Wilson-Loop-Area-Law-From-Geometry.md): Derives the area law from geometric structure
+- [Theorem 1.1.3 (Color Confinement Geometry)](../Phase1/Theorem-1.1.3-Color-Confinement-Geometry.md): Geometric foundations of confinement
+
+The $1/(r^2 + \epsilon^2)$ form is selected not because it produces confinement directly, but because it is the simplest realization satisfying axioms (P1)-(P5) and matching dual superconductor profiles from lattice QCD (Cea et al. 2012, 2014).
 
 ### 8.3 The Logical Structure (Resolving the Circularity)
 
@@ -488,6 +516,8 @@ $$\chi_{total}(x_0) = P_0 \chi_0 \sum_c e^{i\phi_c} = P_0 \chi_0 (e^{i \cdot 0} 
 
 This is the sum of cube roots of unity, which vanishes **regardless of $P_0$**. ✅
 
+**Note on $P_W$ (singlet vertex pressure):** The phase cancellation argument involves only the three color fields $\chi_R, \chi_G, \chi_B$ with their SU(3) phases $\phi_c = 2\pi c/3$. The W and $\bar{W}$ vertices have no associated color field or phase — they represent the color-singlet direction (§4.1 of the main file). The pressure at the W vertex affects the *amplitude* of the total field (via the energy density $\rho$) but does not enter the *phase cancellation* argument, which depends only on the relative phases of the three color contributions.
+
 **Step 3: Field Localization is Realization-Independent**
 
 At vertex $v_R$ (red vertex), axiom (P1) guarantees:
@@ -500,8 +530,10 @@ The **qualitative** localization (which color dominates at which vertex) is dete
 
 **Step 4: Topological Structure is Realization-Independent**
 
-The vacuum manifold for SU(3) color fields has topology determined by:
-$$\pi_1(\text{SU}(3)/Z_3) = \mathbb{Z}_3$$
+The total field $\chi_{total} = \sum_c e^{i\phi_c} P_c(x) \chi_0$ has a vacuum manifold determined by its symmetry structure. The three color phases $\phi_c = 2\pi c/3$ are $\mathbb{Z}_3$-valued (the center of SU(3)), and the total field vanishes when all three pressure functions are equal (the color-symmetric point). The set of field configurations with $|\chi_{total}| = \text{const} \neq 0$ forms a manifold with fundamental group:
+$$\pi_1(\text{SU}(3)/\mathbb{Z}_3) = \mathbb{Z}_3$$
+
+This identification follows from the fact that $\chi_{total}$ transforms under the center $\mathbb{Z}_3 \subset \text{SU}(3)$: global color rotations by $e^{2\pi i/3} \cdot \mathbb{I}$ leave the action invariant but shift $\chi_{total} \to e^{2\pi i/3}\chi_{total}$, giving rise to topologically distinct vacua labeled by $\mathbb{Z}_3$. (See Theorem 1.1.1 for the full SU(3) action on the color fields.)
 
 The winding number of $\chi_{total}$ around a closed loop $\gamma$ is:
 $$n(\gamma) = \frac{1}{2\pi i} \oint_\gamma d\ln(\chi_{total})$$
@@ -520,11 +552,12 @@ Different realizations may give different numerical values for:
 - The gradient $|\nabla P_c|$ at various points
 - The effective "width" of the localization peak
 
-These differences are absorbed into the phenomenological parameters $\epsilon$ and $R_{stella}$, which are **matched to QCD** in any case. The physical predictions (phase cancellation, localization, topology) are unchanged.
+These quantitative differences are not physically irrelevant — they affect the detailed shape of field profiles and energy densities. However, they are absorbed into the phenomenological parameters $\epsilon$ and $R_{stella}$, which are **matched to QCD** in any case. Among all realizations satisfying (P1)-(P5), the specific form $1/(r^2 + \epsilon^2)$ is **selected** by matching to dual superconductor / lattice QCD flux tube profiles (Cea et al. 2012, 2014). The other realizations give the same **qualitative** predictions (phase cancellation, localization, topology) but may differ in quantitative details that are fixed by the parameter matching.
 
 **Conclusion:**
 
-$$\boxed{\text{All realizations satisfying (P1)-(P5) are physically equivalent.}}$$
+$$\boxed{\text{All realizations satisfying (P1)-(P5) are qualitatively equivalent;}}$$
+$$\boxed{\text{the } 1/(r^2 + \epsilon^2) \text{ form is selected by matching to lattice QCD.}}$$
 
 $\blacksquare$
 
@@ -582,6 +615,8 @@ By establishing the stella octangula as a **pre-metric** structure:
 $$\boxed{\partial\mathcal{S} \to \chi_c \to P_c \to \chi_{total} \to \lambda \to t \to g_{\mu\nu}}$$
 
 The boundary is **logically prior** to everything else. This is the foundational insight of Definition 0.1.1.
+
+**Note on gravitational backreaction:** Once the metric $g_{\mu\nu}$ emerges (step 7), it could in principle modify the effective field dynamics on $\partial\mathcal{S}$ through backreaction. This does not reintroduce circularity: the logical priority chain above establishes the **initial** emergence sequence. Gravitational backreaction represents a **subsequent** self-consistency requirement — the emergent metric must be consistent with the field configuration that sources it. This is the standard requirement that Einstein's equations $G_{\mu\nu} = 8\pi G T_{\mu\nu}$ be satisfied self-consistently, which is addressed in Theorem 5.2.1 and the bootstrap analysis of Proposition 0.0.17z.
 
 ---
 

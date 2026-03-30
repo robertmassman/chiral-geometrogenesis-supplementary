@@ -1,6 +1,6 @@
 # Proposition 0.0.6b: Continuum Limit from Discrete Polyhedral Structure
 
-## Status: ✅ VERIFIED — Continuum Limit Procedure
+## Status: 🔶 NOVEL ✅ VERIFIED — CONTINUUM LIMIT PROCEDURE
 
 **Purpose:** This proposition explicitly constructs the continuum limit from the discrete polyhedral encoding of SU(3), addressing a key question: "π₃(SU(3)) = Z holds for the continuous group. How does this emerge from discrete polyhedral encoding?"
 
@@ -18,6 +18,7 @@ This proposition constructs the explicit limit procedure and shows which structu
 
 **Dependencies:**
 - ✅ Theorem 0.0.6 (Spatial Extension From Octet-Truss) — FCC lattice emergence
+- ✅ Proposition 0.0.5a (Z₃ Center Constrains Theta Angle) — θ = 0 from Z₃ superselection
 - ✅ Proposition 0.0.17r (Lattice Spacing From Holographic Self-Consistency)
 - ✅ Definition 0.0.0 (Minimal Geometric Realization) — Stella-SU(3) correspondence
 - ✅ Theorem 0.0.15 (Topological Derivation of SU(3)) — Z₃ center structure
@@ -38,7 +39,7 @@ The discrete stella octangula encoding requires three distinct limit procedures:
 
 ### Key Results
 
-1. The **Z₃ center structure survives all limits** — it's a topological invariant
+1. The **Z₃ center structure survives all limits** — it's an algebraic invariant of SU(3)
 2. The **discrete O symmetry effectively enhances to continuous SO(3)** in the spatial limit
 3. The **instanton classification π₃(SU(3)) = Z** emerges from the lattice of winding numbers
 4. The **continuum limit is well-defined** and recovers standard field theory
@@ -202,7 +203,27 @@ The stella encodes **representation theory** (weights, Weyl group, charge conjug
 | Z₃ center | Instanton configurations |
 | Fundamental rep | Path integral measure |
 
-**Key point:** The stella constrains the **kinematic structure** (which gauge group). The **dynamics** (field theory) requires additional input.
+**Key point:** The stella constrains the **kinematic structure** (which gauge group). The **dynamics** (field theory) requires additional input. [V2 Derivation Step Verification](../reviews/G1/G1-Validity-Audit-Module-V2-Findings.md) §V2.9 confirms the Serre chain (§3.2, steps 1–4) is standard mathematics correctly applied, and rates the overall step QUALIFIED (MINOR) solely as a reminder that π₃ = ℤ is topological existence, not dynamical relevance — a distinction this proposition maintains via the three-level structure (§3 kinematic → §4 thermodynamic → §5–§6 physical implications).
+
+**Remark 3.3.1 (Geometric vs. Dynamical Continuum Limits).**
+
+The topological classification $\pi_3(SU(3)) = \mathbb{Z}$ guarantees the existence of topological sectors (maps $S^3 \to SU(3)$ classified by winding number). Dynamical instantons — finite-action field configurations with non-trivial winding — additionally require a gauge action. This proposition constructs a *geometric* continuum limit, which is fundamentally different from Wilson's *dynamical* continuum limit:
+
+| Aspect | This Proposition (Geometric) | Wilson 1974 (Dynamical) |
+|--------|------------------------------|-------------------------|
+| **Starting point** | Stella octangula at each FCC vertex | Gauge fields on lattice links |
+| **Action** | None (kinematic structure only) | Wilson plaquette action $S = \beta \sum_\square (1 - \frac{1}{N}\text{Re Tr}\, U_\square)$ |
+| **Limit procedure** | Lattice spacing $a \to 0$ at fixed physical volume | Bare coupling $\beta \to \beta_c$ (critical point) |
+| **What emerges** | Spatial arena $\mathbb{R}^3$ + gauge group $SU(3)$ + topology $\pi_3 = \mathbb{Z}$ | Continuum $SU(3)$ Yang-Mills gauge field theory |
+| **Symmetry mechanism** | Discrete $O \to$ effective $SO(3)$ (lattice corrections vanish) | Universality (lattice details become irrelevant) |
+
+**Downstream requirements.** Bridging from the geometric continuum limit to full gauge dynamics requires three additional constructions, addressed in Phases 1–2:
+
+1. **Gauge action construction:** A gauge action must be defined on the FCC lattice (the geometric arena established here provides the spatial substrate on which link variables $U_\ell \in SU(3)$ can be placed)
+2. **Renormalization group flow:** The lattice action must flow to continuum $SU(3)$ Yang-Mills theory under RG
+3. **Asymptotic freedom:** Must be verified in this framework to guarantee the continuum limit exists at $\beta \to \beta_c$
+
+**Wilson citation clarification.** Wilson (1974) is cited in §8 for the established principle that lattice gauge theories admit continuum limits via asymptotic freedom, not as a claim that this specific construction uses a Wilson action at the G1 stage. The geometric continuum limit constructed here (§2) establishes the spatial arena ($\mathbb{R}^3$) and the gauge group ($SU(3)$); the dynamical continuum limit is a separate, downstream requirement.
 
 ### 3.4 Emergence of π₃(SU(3)) = Z
 
@@ -219,6 +240,8 @@ The stella encodes **representation theory** (weights, Weyl group, charge conjug
 4. SU(3) has π₃(SU(3)) = Z (homotopy theory)
 
 The stella determines WHICH group; homotopy theory determines its topological properties.
+
+**Note (topological vs. dynamical):** The classification π₃(SU(3)) = ℤ guarantees that topological sectors exist (maps S³ → SU(3) classified by winding number). Dynamical instantons — finite-action field configurations realizing these sectors — additionally require a gauge action, which is a downstream construction (see Remark 3.3.1 and the three requirements enumerated there).
 
 ---
 
@@ -297,9 +320,9 @@ $$\Delta E(\theta) = E(\theta) - E(0) = \chi_{top} \cdot V \cdot (1 - \cos\theta
 
 ### 5.2 Why Z₃ Survives
 
-**Theorem 5.2.1 (Z₃ Topological Invariance):**
+**Theorem 5.2.1 (Z₃ Algebraic Invariance):**
 
-The Z₃ structure is preserved under all limit procedures because it is a **topological invariant** of SU(3), not a metric or geometric property.
+The Z₃ structure is preserved under all limit procedures because it is an **algebraic invariant** of SU(3) — a discrete structural property of the gauge group, not a metric or geometric property.
 
 **Proof:**
 
@@ -363,7 +386,7 @@ For Z₃-invariant observables O ∈ $\mathcal{A}_{meas}$, cluster decomposition
 1. **Spatial continuum limit:** O → SO(3) (effective) as a → 0, with lattice → ℝ³
 2. **Gauge group continuum:** Stella weights → A₂ roots → su(3) → SU(3), with π₃(SU(3)) = Z automatic
 3. **Thermodynamic limit:** V → ∞ gives well-defined θ-vacua with orthogonal sectors
-4. **Z₃ preservation:** The center Z(SU(3)) = Z₃ survives all limits as a topological invariant
+4. **Z₃ preservation:** The center Z(SU(3)) = Z₃ survives all limits as an algebraic invariant
 5. **Cluster decomposition:** Holds for Z₃-invariant observables in the selected θ = 0 vacuum
 
 **Key equation:**
@@ -389,7 +412,7 @@ $$\boxed{\text{Discrete stella} \xrightarrow{\text{limits}} \text{Continuous SU(
 1. [Theorem 0.0.6](./Theorem-0.0.6-Spatial-Extension-From-Octet-Truss.md) — FCC lattice emergence
 2. [Proposition 0.0.17r](./Proposition-0.0.17r-Lattice-Spacing-From-Holographic-Self-Consistency.md) — Lattice spacing derivation
 3. [Definition 0.0.0](./Definition-0.0.0-Minimal-Geometric-Realization.md) — Stella-SU(3) correspondence
-4. [Theorem 0.0.15](./Theorem-0.0.15-Topological-Derivation-SU3.md) — Z₃ center structure
+4. [Theorem 0.0.15](./Theorem-0.0.15-Topological-Determination-SU3.md) — Z₃ center structure
 5. [Proposition 0.0.5a](./Proposition-0.0.5a-Z3-Center-Constrains-Theta-Angle.md) — θ = 0 from Z₃
 
 ### External Literature
@@ -408,6 +431,13 @@ $$\boxed{\text{Discrete stella} \xrightarrow{\text{limits}} \text{Continuous SU(
 
 12. Conway, J.H. & Smith, D.A. (2003). "On Quaternions and Octonions." A.K. Peters. [Finite subgroups of SO(3)]
 13. Mimura, M. & Toda, H. (1963). "Homotopy groups of SU(3), SU(4) and Sp(2)." J. Math. Kyoto Univ. 3, 217-250. [Explicit π₃ calculation]
+
+### Computational Verification
+
+14. `verification/foundations/continuum_limit_verification.py` — Original Prop 0.0.6b verification (A₂ roots, O_h groups, Z₃, FCC, lattice spacing, energy divergence, π₃ bijection)
+15. `verification/foundations/continuum_limit_corrections_analysis.py` — Corrections analysis (E1, E2, L2 issues)
+16. `verification/foundations/fc5_continuum_limit_verification.py` — **FC5 unified verification**: 10 tests covering kinematic (root system, symmetry enhancement, Z₃, π₃), phenomenological (Lorentz violation, θ-vacuum), dynamical (Wilson loop area law, universality class), and constructive (D₄ self-coarsening, Balaban RG compatibility) aspects. 10/10 tests pass.
+17. `verification/foundations/fc5_continuum_limit_expansion.py` — **FC5 MC expansion**: 4 Monte Carlo tests deepening Tests 7-10 with actual lattice simulations. EX-7: Wilson loop area law on FCC (plaquette vs exact, σ > 0, confined Polyakov loop). EX-8: FCC vs Z⁴ universality comparison at β = 3.0, 5.0. EX-9: D₄ self-coarsening with explicit blocking on thermalized gauge configurations. EX-10: Balaban RG compatibility with exact mass gap, finite correlation length, and RG flow verification. 4/4 tests pass.
 
 ---
 

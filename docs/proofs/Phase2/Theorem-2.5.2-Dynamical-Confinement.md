@@ -262,6 +262,7 @@ Pair production limits the flux tube length.
 |---------|------------|
 | **Thm 1.1.3** | Kinematic confinement — this provides dynamics |
 | **Prop 0.0.17j** | String tension derivation — key input |
+| **Prop 2.5.2a** | **Geometric area law** — three complementary geometric arguments (strong coupling, Z₃ center, Casimir energy) strengthening this phenomenological derivation with "from geometry" content |
 | **Thm 4.1.4** | Uses σ for soliton string tension |
 
 ### 6.3 Lattice QCD Evidence

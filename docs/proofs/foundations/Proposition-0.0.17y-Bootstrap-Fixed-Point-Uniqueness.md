@@ -600,6 +600,7 @@ All values determined by (N_c, N_f, |Z₃|) = (3, 3, 3). The overall scale ℓ_P
 - **[Proposition 0.0.17z1](Proposition-0.0.17z1-Geometric-Derivation-Non-Perturbative-Coefficients.md):** Derives c_G, c_inst, n, ⟨G²⟩, ⟨ρ⟩ from stella geometry
 - **[Proposition 0.0.17z2](Proposition-0.0.17z2-Scale-Dependent-Effective-Euler-Characteristic.md):** Scale-dependent χ_eff gives **0.02σ final agreement**
 - **[Proposition 0.0.25](Proposition-0.0.25-Alpha-GUT-Threshold-Formula.md):** The **8th bootstrap equation** — extends this 7-equation system to fix α_GUT from stella S₄ symmetry (<1% agreement with observation)
+- **[Theorem 0.0.41](Theorem-0.0.41-Dimensional-Incompleteness.md):** Dimensional Incompleteness — cites this bootstrap DAG (§10.4) as the explicit CG instance of a scale-homogeneous axiom system
 - Paper unified-arxiv §5.3: Fixed-point derivation of gravity
 - Paper unified-arxiv §7.3: UV completeness discussion
 - Theorem 5.2.6: Hierarchy explanation

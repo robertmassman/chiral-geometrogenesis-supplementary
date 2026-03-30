@@ -34,6 +34,7 @@ This conjecture breaks the circularity by deriving cosmic coherence from the **p
 - Holographic interpretation (§3.3-3.4 here ↔ §12.4 in Def 0.1.1)
 
 **Downstream Uses:**
+- ✅ [Prediction 8.2.3](../Phase8/Prediction-8.2.3-CMB-Signatures.md) (CMB Signatures) — Pre-geometric coherence predictions for CMB observables
 - ✅ [Theorem 5.2.7](./Theorem-5.2.7-Diffeomorphism-Emergence.md) (Diffeomorphism Emergence) — The cosmic coherence established here provides the global phase relations that ensure diffeomorphism invariance emerges consistently across all spacetime
 
 ---
@@ -542,7 +543,7 @@ $$\sum_c e^{i(\phi_c^{(0)} + \Phi(x))} = e^{i\Phi(x)} \sum_c e^{i\phi_c^{(0)}} =
 \begin{align}
 \sum_c e^{i(\phi_c^{(0)} + \Phi(x))} &= e^{i\phi_R^{(0)}}e^{i\Phi(x)} + e^{i\phi_G^{(0)}}e^{i\Phi(x)} + e^{i\phi_B^{(0)}}e^{i\Phi(x)} \\
 &= e^{i\Phi(x)}\left(e^{i\phi_R^{(0)}} + e^{i\phi_G^{(0)}} + e^{i\phi_B^{(0)}}\right) \\
-&= e^{i\Phi(x)} \cdot 0 \quad \text{(by Lemma 5.1.2)} \\
+&= e^{i\Phi(x)} \cdot 0 \quad \text{(by Theorem 5.1.2)} \\
 &= 0 \quad \blacksquare
 \end{align}
 

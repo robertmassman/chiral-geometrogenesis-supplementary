@@ -1,8 +1,8 @@
 # Theorem 0.0.15: Multi-Agent Peer Review Verification Record
 
 **Date:** 2026-01-20
-**Theorem:** Topological Derivation of SU(3) from Stella Octangula
-**File:** `docs/proofs/foundations/Theorem-0.0.15-Topological-Derivation-SU3.md`
+**Theorem:** Topological Determination of SU(3) from Stella Octangula
+**File:** `docs/proofs/foundations/Theorem-0.0.15-Topological-Determination-SU3.md`
 
 ---
 

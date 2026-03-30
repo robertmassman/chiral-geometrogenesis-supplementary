@@ -6,6 +6,10 @@
 
 **Abstract:** We prove that $R_{\text{stella}}$ is the unique dimensional input at the QCD level of the Chiral Geometrogenesis framework. All dimensionful QCD-sector quantities — string tension, pion decay constant, characteristic frequency, chiral VEV, EFT cutoff, regularization parameter, vector meson mass, and low-energy constants — are derived from $R_{\text{stella}}$ through closed-form expressions involving only topological integers ($N_c$, $N_f$, $\chi$) and transcendental constants ($\pi$, $e$). Cross-scale quantities ($M_P$, $G$, $v_H$, $m_H$) are similarly derived via dimensional transmutation and the $a$-theorem. The derivation graph is a directed acyclic graph (DAG) with $R_{\text{stella}}$ as the unique dimensional source, achieving a 50–80% reduction in free parameters compared to the Standard Model.
 
+**Dependencies:**
+- ✅ Theorem 0.0.3 (Stella Uniqueness)
+- ✅ Proposition 0.0.17j (String Tension From Casimir Energy)
+
 ---
 
 ## §1. Formal Statement
@@ -193,6 +197,8 @@ $^{\natural}$ **m_π hidden input:** The pion mass $m_\pi = 140$ MeV enters the 
 3. **Cross-scale connection:** The same input determines not just QCD scales but (via dimensional transmutation) Planck and electroweak scales, establishing a geometric hierarchy spanning 19 orders of magnitude.
 
 4. **Semi-closure:** The bootstrap (Prop 0.0.17q) derives $R_{\text{stella}}$ from $M_P$ to 91% accuracy, suggesting the framework approaches self-consistency with zero free dimensional inputs.
+
+5. **Metatheoretic optimality:** [Theorem 0.0.41](Theorem-0.0.41-Dimensional-Incompleteness.md) (Dimensional Incompleteness) proves that one dimensionful input is the *theoretical minimum* for any scale-homogeneous axiom system. This proposition's result — that $R_{\text{stella}}$ is the unique dimensional source in CG — is therefore not a gap but a saturation of the lower bound.
 
 ### 5.2 What This Proposition Does NOT Claim
 

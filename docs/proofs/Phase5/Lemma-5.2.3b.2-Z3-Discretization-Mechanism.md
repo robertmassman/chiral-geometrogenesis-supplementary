@@ -396,6 +396,8 @@ The discretization to 3 states is **essential** for finite entropy:
 - Discrete Z₃ → finite entropy ($\ln 3$ per site)
 - Total entropy: $S = N \cdot \ln 3 = \frac{A}{4\ell_P^2}$
 
+**Condensed matter precedent:** The emergence of exactly 3 discrete states from geometric and topological constraints is not unique to Planck-scale physics. In kagome-lattice metals AV₃Sb₅, geometric frustration with three sublattices produces exactly three distinct charge-loop current orders related by Z₃ symmetry [Tazai, Yamakawa & Kontani, *Nat. Commun.* **14**, 7845 (2023)]. This demonstrates that Z₃ discretization naturally arises from topological and geometric constraints across energy scales, from meV (condensed matter) to the Planck scale (black hole entropy).
+
 ### 9.3 Comparison with Loop Quantum Gravity
 
 Both LQG and Chiral Geometrogenesis derive black hole entropy from microscopic state counting, but through **fundamentally different mechanisms**:

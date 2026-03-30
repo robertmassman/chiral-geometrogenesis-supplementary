@@ -1,8 +1,8 @@
 # Theorem 0.0.0a: Polyhedral Necessity for Emergent Spacetime
 
-## Status: ✅ VERIFIED + FORMALIZED — FOUNDATIONAL NECESSITY THEOREM
+## Status: 🔶 NOVEL ✅ VERIFIED — FOUNDATIONAL NECESSITY THEOREM
 
-**Role in Framework:** This theorem establishes that polyhedral (discrete) encoding is not merely one option among many, but is **necessary** for gauge structure to produce emergent spacetime. It addresses the question: "Why polyhedra?" at the deepest conceptual level.
+**Role in Framework:** This theorem establishes that discrete encoding is **necessary** (given the non-circular emergence principle — see §4, Lemma 0.0.0a.3) for gauge structure to produce emergent spacetime, and that polyhedral complexes are a natural instantiation within the broader class of discrete structures (simplicial complexes, CW complexes) satisfying all four requirements. It addresses the question: "Why discrete structure, and why polyhedra specifically?" at the deepest conceptual level.
 
 **Lean 4 Formalization:** ✅ **COMPLETE** — `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_0a.lean`
 - All proofs compile without `sorry`
@@ -83,6 +83,7 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 - [x] Lorentz violation bounds properly cited with E_P units
 - [x] "Deterministic" claim clarified with quantum corrections note
 - [x] **Lean 4 formalization complete** (2026-01-01)
+- [x] Smooth manifold realizations addressed in §3.5, §5.2 item 6 (A1.5 adversarial finding, 2026-02-23)
 
 ## Direct Prerequisites (verify these first)
 
@@ -120,17 +121,17 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 
 **Theorem 0.0.0a (Polyhedral Necessity for Emergent Spacetime)**
 
-Among known mathematical frameworks, polyhedral (discrete) encoding is **necessary** for gauge structure to produce emergent spacetime—not merely one option among many. Specifically:
+Among known mathematical frameworks and given the non-circular emergence principle (Lemma 0.0.0a.3, §4), discrete encoding is **necessary** for gauge structure to produce emergent spacetime—not merely one option among many. Polyhedral complexes are a natural class of discrete structures satisfying all four requirements below; see the Conclusion for the relationship to other discrete structures (simplicial complexes, CW complexes). Specifically:
 
 **(a) Fiber Bundle Insufficiency:** Principal G-bundles P → M require the base manifold M as input; they cannot derive the spacetime they presuppose.
 
 **(b) Discrete Charge Classification:** The Z₃ center of SU(3) classifies color states by N-ality (triality); this discrete classification has no continuous analog and requires discrete encoding.
 
-**(c) Pre-Geometric Coordinates:** Topological manifolds presuppose $\mathbb{R}^n$ (via local charts), and $\mathbb{R}$ is constructed from discrete foundations via the hierarchy $\mathbb{N} \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{R}$ (Peano axioms → Grothendieck group → field of fractions → Dedekind completion). Only discrete structures provide coordinates that exist prior to any continuum construction. Integer coordinates (construction order 1) are 2 steps more primitive than real coordinates (construction order 3).
+**(c) Pre-Geometric Coordinates:** Topological manifolds presuppose $\mathbb{R}^n$ (via local charts). A substrate whose definition requires $\mathbb{R}^n$ cannot non-circularly produce $\mathbb{R}^n$ as emergent output. Discrete structures (finite combinatorial complexes, integer lattices) can be defined without reference to $\mathbb{R}^n$, making them suitable non-circular substrates for continuum emergence (see Derivation §6.3.1 for three independent operational arguments).
 
 **(d) Phase Coherence Without Connection:** Parallel transport on continuous manifolds requires a connection; face-sharing polyhedra enforce phase matching purely combinatorially through shared boundary identification, without presupposing differential structure.
 
-**Conclusion:** These four requirements—(a) avoiding presupposition, (b) discrete charge classification, (c) pre-continuum coordinates, (d) connection-free phase coherence—select polyhedral encoding as necessary among known mathematical frameworks for emergent spacetime from gauge structure.
+**Conclusion:** These four requirements—(a) avoiding presupposition, (b) discrete charge classification, (c) pre-continuum coordinates, (d) connection-free phase coherence—select **discrete** encoding as necessary among known mathematical frameworks for emergent spacetime from gauge structure, conditional on the non-circular emergence principle (§4, Lemma 0.0.0a.3). Any discrete structure with vertices (from gauge charge), faces (from phase coherence), and combinatorial coordinates satisfies all four requirements; this includes polyhedral complexes, abstract simplicial complexes, and CW complexes with appropriate cell structure. The stella octangula is itself a simplicial complex, so the polyhedral and simplicial descriptions are compatible. Causal sets and spin foams satisfy subsets of the four requirements but not all four in combination (see §3.3, §5.2 item 3). The framework selects polyhedral complexes as the specific instantiation via the geometric realization conditions GR1–GR3 (Definition 0.0.0), which is a separate step from the discrete necessity established here.
 
 ### 1.1 Symbol Table
 
@@ -169,7 +170,7 @@ If we seek to understand why spacetime has 4 dimensions, why it has Lorentzian s
 
 ### 2.2 The Emergence Requirement
 
-The Chiral Geometrogenesis framework aims to **derive** spacetime from more primitive structures. This requires:
+The Chiral Geometrogenesis framework aims to **derive** spacetime from a pre-geometric substrate. This requires:
 
 1. **No a priori spacetime:** The starting point must not presuppose a manifold
 2. **Emergent coordinates:** Spatial labels must arise from the structure itself
@@ -180,7 +181,7 @@ The Chiral Geometrogenesis framework aims to **derive** spacetime from more prim
 
 > **Question:** What mathematical structure can encode gauge symmetry without presupposing the spacetime manifold?
 
-This theorem proves that **polyhedral complexes** are the unique answer among known mathematical structures.
+This theorem proves that **discrete structures** (including polyhedral complexes, simplicial complexes, and similar combinatorial objects) are necessary among known mathematical structures, given the non-circular emergence principle.
 
 ---
 
@@ -206,7 +207,7 @@ This theorem proves that **polyhedral complexes** are the unique answer among kn
 | Emergent metric | ⚠️ Lattice spacing $a$ | Parameter, not emergent |
 | Discrete charge | ✅ Group elements on links | Well-suited for SU(3) |
 
-**Assessment:** Lattice gauge theory uses discrete structure and succeeds computationally, but treats the lattice as scaffolding to be removed, not as the physical structure.
+**Assessment:** Lattice gauge theory uses discrete structure and succeeds computationally. In standard lattice QCD, the lattice is treated as a computational regulator to be removed in the continuum limit — but this is a **choice of interpretation**, not a mathematical necessity. Nothing prevents reinterpreting the lattice as physically fundamental. The key difference from polyhedral encoding is that lattice QCD presupposes an ambient $\mathbb{Z}^4$ with a fixed lattice spacing $a$ as a parameter, whereas the polyhedral framework derives spatial structure from gauge-theoretic data (Theorem 0.0.6). This is a difference of degree rather than kind: both use discrete structures, with polyhedral encoding additionally deriving the lattice from the gauge group.
 
 ### 3.3 Loop Quantum Gravity (Different Goal)
 
@@ -228,7 +229,36 @@ This theorem proves that **polyhedral complexes** are the unique answer among kn
 | Emergent metric | ✅ From correlators | Theorem 5.2.1 derives $g_{\mu\nu}$ |
 | Discrete charge | ✅ Vertex labels | Weight correspondence (GR1) |
 
-### 3.5 Formal Framework Justifications (Lean 4)
+### 3.5 Smooth Manifold Realizations (Why They Don't Undermine Polyhedral Necessity)
+
+> **Adversarial finding A1.5 (DENTED):** The G1 adversarial stress-test constructed explicit smooth manifold realizations of SU(3), demonstrating that SU(3) gauge theory can be formulated on smooth manifolds. This is not in dispute — it is standard QCD.
+
+The following smooth manifolds carry natural SU(3) actions:
+
+| Manifold | Real Dim | SU(3) Action | Emergence Status |
+|----------|:--------:|--------------|------------------|
+| SU(3)/T² (flag manifold) | 4 | Transitive (left multiplication) | ❌ Presupposes smooth structure |
+| ℂP² | 4 | Non-transitive | ❌ Presupposes smooth structure |
+| Gr(3,3) | 18 | Transitive | ❌ Far too large; presupposes smooth structure |
+
+**Reformulated GR1–GR3 on smooth manifolds:** One can replace "vertex → weight" with "fixed point → weight" using the Borel fixed-point theorem. The flag manifold SU(3)/T² has 6 T²-fixed points corresponding to the 6 non-zero SU(3) weights. However:
+- No apex analog exists (no zero-weight fixed point)
+- This is standard algebraic geometry, not a polyhedral construction
+- The smooth manifold itself presupposes the continuum
+
+**Why this does not undermine Theorem 0.0.0a:**
+
+The polyhedral necessity claim is **not** that SU(3) gauge theory cannot be formulated on smooth manifolds — it obviously can, and this is how standard QCD works. The claim is that smooth manifolds cannot serve as the **pre-geometric substrate from which spacetime emerges**, because:
+
+1. **Circularity:** Smooth manifolds presuppose the continuum structure ($\mathbb{R}^n$ local charts) that the framework aims to derive (Lemma 0.0.0a.1, 0.0.0a.3)
+2. **No pre-geometric coordinates:** SU(3)/T² has no integer lattice structure; its coordinates are smooth functions, not combinatorial data
+3. **Connection-dependent phase coherence:** Gauge transport on SU(3)/T² requires a connection 1-form, which presupposes differential structure (Lemma 0.0.0a.4)
+
+**Scope clarification:** Polyhedral necessity is a statement about **what is required for emergence** — deriving spacetime from pre-geometric structure — not about what is mathematically possible for gauge theories in general.
+
+[→ Detailed argument in Derivation file §9.7](./Theorem-0.0.0a-Polyhedral-Necessity-Derivation.md#97-objection-smooth-manifolds-realize-su3-without-polyhedra)
+
+### 3.6 Formal Framework Justifications (Lean 4)
 
 Each framework assessment in the Lean formalization is backed by explicit justification theorems with literature citations:
 
@@ -266,21 +296,21 @@ The proof of Theorem 0.0.0a proceeds through four lemmas, each addressing one re
 
 ### Lemma 0.0.0a.3 (Pre-Geometric Coordinates Require Discreteness)
 
-**Statement:** Topological manifolds presuppose $\mathbb{R}^n$ for their definition (via local charts). Since $\mathbb{R}$ is constructed from discrete foundations via the hierarchy $\mathbb{N} \to \mathbb{Z} \to \mathbb{Q} \to \mathbb{R}$, only discrete structures provide coordinates that are truly primitive.
+**Statement:** Topological manifolds presuppose $\mathbb{R}^n$ for their definition (via local charts). A substrate whose definition requires $\mathbb{R}^n$ cannot non-circularly produce $\mathbb{R}^n$ as emergent output. Only discrete structures can serve as non-circular substrates for continuum emergence.
 
-**Key argument:** The construction hierarchy is formalized as an ordering:
-- $\mathbb{N}$: Peano axioms (primitive, discrete) — order 0
-- $\mathbb{Z}$: Grothendieck group of $(\mathbb{N}, +)$ — order 1
-- $\mathbb{Q}$: Field of fractions of $\mathbb{Z}$ — order 2
-- $\mathbb{R}$: Dedekind completion of $\mathbb{Q}$ — order 3
+**Key argument:** The core case rests on three independent operational arguments (see Derivation §6.3.1), not on interpreting the $\mathbb{N} \to \mathbb{R}$ construction hierarchy as ontological precedence:
 
-Integer coordinates (order 1) are 2 steps more primitive than real coordinates (order 3).
+1. **Specification problem (operational):** A substrate whose definition requires $\mathbb{R}^n$ cannot produce $\mathbb{R}^n$ as emergent output without circularity. Polyhedral complexes are specified by finite combinatorial data; manifolds require $\mathbb{R}^n$ in their definition.
+2. **Finite information content:** A discrete substrate with finitely many sites has finite total information; the continuum emerges as an effective description in the thermodynamic limit.
+3. **Definability without ambient space:** Polyhedral complexes can be defined as abstract combinatorial objects with no reference to $\mathbb{R}^n$; manifolds cannot.
+
+**Methodological note:** The "non-circular emergence" criterion is a **methodological principle** adopted by this framework, not a universally accepted mathematical requirement. Some physical theories successfully derive structures from substrates that formally contain those same structures (e.g., statistical mechanics derives thermodynamics from Hamiltonian mechanics on phase space). The non-circularity requirement is strongest when the goal is ontological emergence (deriving $\mathbb{R}^n$ as a new entity) rather than epistemic emergence (deriving effective descriptions). This framework adopts the stronger ontological reading as a design choice.
 
 **Lean formalization:** `lemma_0_0_0a_3_pregeometric_discrete` proves:
 1. FCC lattice coordinates exist without presupposing $\mathbb{R}^n$
-2. $\mathbb{Z}$ is more primitive than $\mathbb{R}$ in the construction hierarchy
+2. $\mathbb{Z}$ does not require $\mathbb{R}$ for its definition (definitional independence)
 
-[→ Full proof in Derivation file §6.3](./Theorem-0.0.0a-Polyhedral-Necessity-Derivation.md#63-lemma-00a3-pre-geometric-coordinates-require-discreteness)
+[→ Full proof in Derivation file §6.3](./Theorem-0.0.0a-Polyhedral-Necessity-Derivation.md#63-lemma-00a3-pre-geometric-coordinates-require-discreteness) | [→ Strengthened arguments §6.3.1](./Theorem-0.0.0a-Polyhedral-Necessity-Derivation.md#631-strengthened-argument-the-specification-problem)
 
 ### Lemma 0.0.0a.4 (Phase Coherence Without Metric)
 
@@ -290,13 +320,19 @@ Integer coordinates (order 1) are 2 steps more primitive than real coordinates (
 
 [→ Full proof in Derivation file §6.4](./Theorem-0.0.0a-Polyhedral-Necessity-Derivation.md#64-lemma-00a4-phase-coherence-without-metric)
 
+### Critical Clarification: Why Polyhedral Structure Requires the Combination of Lemmas
+
+Finiteness of geometric elements (from Lemma 0.0.0a.2) does not by itself require polyhedral structure — finitely many points could exist in a continuous space without that space being polyhedral. Conversely, face-sharing (from Lemma 0.0.0a.4) does not by itself require discreteness — continuous CW-complexes also have face-sharing cells.
+
+**Polyhedral necessity emerges from the conjunction:** finite vertices (from discrete charge classification) organized into cells with shared 2-dimensional faces (from connection-free phase coherence), using pre-continuum coordinates (from emergence requirements), independently of any base manifold (from fiber bundle insufficiency). No single lemma forces polyhedral structure; all four acting together do. [→ See Derivation §7.2 for detailed analysis](./Theorem-0.0.0a-Polyhedral-Necessity-Derivation.md#72-conclusion)
+
 ---
 
 ## 5. What This Theorem Does and Does Not Claim
 
 ### 5.1 What We Claim
 
-1. **Necessity among known frameworks:** Among known mathematical frameworks for encoding gauge structure, polyhedral encoding is **necessary** for emergent spacetime. We do not claim absolute necessity (which would require proving no other framework could ever work), but necessity given current mathematical knowledge.
+1. **Necessity among known frameworks:** Among known mathematical frameworks for encoding gauge structure, discrete encoding is **necessary** for emergent spacetime (given the non-circular emergence principle). Polyhedral complexes are a specific class of discrete structures satisfying all four requirements; other discrete structures with vertices and faces (simplicial complexes, CW complexes) also satisfy them. We do not claim absolute necessity (which would require proving no other framework could ever work), but necessity given current mathematical knowledge and the non-circularity methodological principle.
 
 2. **Conceptual, not dynamical:** We prove that the **conceptual structure** of emergent spacetime requires discreteness; we do not derive dynamical confinement.
 
@@ -316,9 +352,11 @@ Integer coordinates (order 1) are 2 steps more primitive than real coordinates (
 
 5. ~~No future mathematical framework could work~~ ✗ — Our claim is relative to known frameworks; future mathematics might reveal alternatives
 
+6. ~~SU(3) gauge theory requires polyhedral structure~~ ✗ — Standard QCD on smooth spacetime is well-formulated and correct; smooth manifolds like SU(3)/T² carry natural SU(3) actions. Polyhedral necessity applies specifically to the pre-geometric emergence context, not to gauge theory in general (see §3.5)
+
 ### 5.3 Relation to Theorem 0.0.0
 
-Theorem 0.0.0 establishes **what** conditions (GR1-GR3) a geometric realization must satisfy. Theorem 0.0.0a establishes **why** any realization must be polyhedral in nature.
+Theorem 0.0.0 establishes **what** conditions (GR1-GR3) a geometric realization must satisfy. Theorem 0.0.0a establishes **why** any realization must be discrete (and why polyhedral complexes are a natural class of discrete structures meeting all four requirements).
 
 The logical relationship:
 ```
@@ -392,7 +430,7 @@ The Lean formalization includes strengthened uniqueness theorems:
 
 ### Notation Conventions
 
-See [notation-glossary.md](../../papers/notation-glossary.md) for complete notation conventions used throughout this proof.
+See [notation-glossary.md](../reference/notation-glossary.md) for complete notation conventions used throughout this proof.
 
 ---
 

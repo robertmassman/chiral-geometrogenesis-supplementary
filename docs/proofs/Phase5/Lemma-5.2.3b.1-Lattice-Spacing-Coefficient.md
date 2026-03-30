@@ -344,7 +344,7 @@ Combined with Paths A and C, the Chiral Geometrogenesis framework now provides *
 
 ### Historical
 
-14. [Open-Question-1-Lattice-Spacing-Derivation-Plan.md](../supporting/Open-Question-1-Lattice-Spacing-Derivation-Plan.md) — Original research plan and resolution record
+14. [Research-Remaining-Gaps-Worksheet.md](../supporting/Research-Remaining-Gaps-Worksheet.md) §"Resolved Open Questions: OQ-2" — Original research plan and resolution record
 
 ---
 

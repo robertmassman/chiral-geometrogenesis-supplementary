@@ -2,7 +2,7 @@
 
 ## Status: 🔶 NOVEL — THE CULMINATION OF CHIRAL GEOMETROGENESIS
 
-**Role in Framework:** This theorem establishes that a classical spacetime metric emerges from the quantum correlations of the chiral field in the Phase 0 framework. This is the central claim of "geometrogenesis" — that spacetime is not fundamental but emerges from more primitive structures.
+**Role in Framework:** This theorem establishes that a classical spacetime metric emerges from the quantum correlations of the chiral field in the Phase 0 framework. This is the central claim of "geometrogenesis" — a term coined in the Quantum Graphity program (Konopka, Markopoulou & Smolin 2006) — that spacetime is not fundamental but emerges from a pre-geometric phase via a phase transition. While Quantum Graphity does not predict which lattice or dimensionality emerges, this framework provides a specific derivation chain (SU(3) → stella octangula → FCC lattice → Euclidean metric).
 
 ---
 
@@ -258,7 +258,8 @@ The motivation comes from several directions:
 2. **AdS/CFT correspondence:** The most concrete example of metric emergence from CFT correlators
 3. **Jacobson's derivation (1995):** Einstein equations as thermodynamic identity applied to local Rindler horizons
 4. **Verlinde's entropic gravity:** Gravity as emergent statistical force
-5. **Our innovation:** Direct emergence from chiral field structure without holography, building on Sakharov's program with explicit matter content (the chiral field $\chi$)
+5. **Quantum Graphity (Konopka, Markopoulou & Smolin 2006):** Coined the term "geometrogenesis" for geometry emerging from a non-geometric phase via a phase transition. Quantum Graphity starts from a complete graph with a local Hamiltonian — geometry emerges when the graph cools into a low-energy lattice phase. However, Quantum Graphity does not predict which lattice or dimensionality emerges; our framework provides the specific geometric answer (FCC lattice in 3D from SU(3) representation theory).
+6. **Our innovation:** Direct emergence from chiral field structure without holography, building on Sakharov's program with explicit matter content (the chiral field $\chi$)
 
 ### 2.4 Why 3+1 Dimensions?
 
@@ -713,6 +714,7 @@ where $T_{\mu\nu}[\chi]$ is determined by the chiral field configuration.
 8. **Burgess, C.P.** (2004): "Quantum Gravity in Everyday Life" — Living Rev. Rel. 7, 5
 9. **Guth, A.H.** (1981): "Inflationary universe: A possible solution to the horizon and flatness problems" — Phys. Rev. D 23, 347
 10. **Weinberg, S.** (1989): "The cosmological constant problem" — Rev. Mod. Phys. 61, 1
+11. **Konopka, T., Markopoulou, F. & Smolin, L.** (2006): "Quantum Graphity" — hep-th/0611197 *(Origin of "geometrogenesis" term; geometry emerges from graph phase transition)*
 
 ---
 

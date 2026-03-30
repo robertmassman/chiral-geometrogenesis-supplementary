@@ -44,6 +44,8 @@ In Chiral Geometrogenesis, the stella octangula is the arena where fields exist 
 **After Theorem 0.0.12:**
 > "The stella octangula IS SU(3) Cartan data. The geometric structure encodes the root system, weight lattice, and Weyl group."
 
+**Logical status:** This is an *equivalence*, not a derivation of SU(3) from geometry alone. The stella octangula is itself selected via the D=4 → N=3 → stella chain (Theorems 0.0.1, 0.0.2, 0.0.3). Theorem 0.0.12 shows that once we have the stella, its categorical structure *is* SU(3) Cartan data — confirming that no information is lost or added in passing between the geometric and algebraic descriptions. It does not remove the need for the selection arguments that identify the stella as the correct starting point. See Theorem 0.0.13 §0 for the full consistency-result framing.
+
 **Scope Clarification:**
 
 This theorem establishes equivalence at the **Cartan data level**, which includes:

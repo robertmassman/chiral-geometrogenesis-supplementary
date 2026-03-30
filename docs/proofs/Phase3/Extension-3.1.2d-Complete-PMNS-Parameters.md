@@ -6,6 +6,12 @@
 
 **Key Result:** The PMNS parameters emerge from A₄ tribimaximal structure with λ-suppressed corrections, achieving 0.3–1.7% agreement with NuFIT 6.0 experimental data. The formulas are semi-predictions: more constrained than free fits, with a net 2 predictions from 3 structural inputs.
 
+**Dependencies:**
+- ✅ Theorem 3.1.2 (Mass Hierarchy From Geometry)
+- ✅ Theorem 3.1.5 (Majorana Scale From Geometry)
+- ✅ Proposition 3.1.4 (Neutrino Mass Sum Bound)
+- ✅ Derivation 8.4.2 (Theta13 First Principles)
+
 ---
 
 ## Table of Contents

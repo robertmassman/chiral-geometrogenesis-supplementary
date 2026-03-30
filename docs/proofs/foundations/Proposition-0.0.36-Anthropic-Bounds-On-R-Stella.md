@@ -872,6 +872,8 @@ This proposition extends Theorem 0.0.1 (D=4 from observers) to constrain the **s
 
 $$\text{Observer existence} \implies \begin{cases} D = 4 & \text{(Theorem 0.0.1)} \\ 0.42 \lesssim R_{\text{stella}} \lesssim 0.48 \text{ fm} & \text{(This proposition)} \end{cases}$$
 
+**Relationship to Dimensional Incompleteness:** [Theorem 0.0.41](Theorem-0.0.41-Dimensional-Incompleteness.md) proves that one dimensionful input is irreducible for any scale-homogeneous theory. This proposition constrains $R_{\text{stella}}$ to a finite anthropic window but does not select a unique value — consistent with Theorem 0.0.41's conclusion that the remaining freedom cannot be eliminated by additional scale-homogeneous equations.
+
 ---
 
 ## 13. Verification

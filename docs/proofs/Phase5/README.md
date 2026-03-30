@@ -18,6 +18,8 @@ This phase establishes how spacetime and gravity emerge from the chiral field dy
 | 5.2.6 | Planck Mass Emergence | VERIFIED |
 | 5.3.1 | Torsion from Chiral Current | VERIFIED |
 | 5.3.2 | Spin-Orbit Coupling | VERIFIED |
+| **5.4.1** | **Singularity Resolution** | **NOVEL** |
+| 5.4.1a | Maximum Curvature Bound (Lemma) | NOVEL |
 
 ## Key Results
 

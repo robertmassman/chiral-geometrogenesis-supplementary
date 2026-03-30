@@ -16,8 +16,8 @@ This directory contains the mathematical proofs for the Chiral Geometrogenesis f
 | [Phase6/](Phase6/) | Scattering theory and collider phenomenology | 10 |
 | [Phase7/](Phase7/) | Renormalization, unitarity, consistency | 16 |
 | [Phase8/](Phase8/) | Testable predictions | 17 |
-| [reference/](reference/) | Reference documentation | 6 |
-| [supporting/](supporting/) | Supporting materials and research plans | 43 |
+| [reference/](reference/) | Reference documentation and physical constants | 11 |
+| [supporting/](supporting/) | Supporting materials, research plans, and calculations | 75 |
 | [verification-records/](verification-records/) | Verification session logs | 356 |
 
 ## File Naming Convention

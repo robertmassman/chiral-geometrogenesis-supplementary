@@ -1,16 +1,17 @@
-# Theorem 0.0.16: Adjacency Structure from SU(3) Representation Theory
+# Theorem 0.0.16: SU(3) Structure of FCC Adjacency
 
-## Status: ✅ VERIFIED — DERIVES AXIOM A0 FROM SU(3)
+## Status: 🔶 NOVEL ✅ VERIFIED — FCC ADJACENCY CONSISTENT WITH SU(3)
 
 > **Peer Review (2026-01-03):** Multi-agent verification completed. Combined with Proposition 0.0.16a, Axiom A0 is now FULLY DERIVED.
 
-**Purpose:** This theorem shows that the FCC lattice's combinatorial constraints (12-regularity, no intra-representation root triangles, 4-squares-per-edge) are **derived from** SU(3) representation theory combined with physical requirements, providing rigorous algebraic derivation of Axiom A0.
+**Purpose:** This theorem shows that the FCC lattice's combinatorial constraints (12-regularity, no intra-representation root triangles, 4-squares-per-edge) are **consistent with and motivated by** SU(3) representation theory combined with physical requirements, providing rigorous algebraic verification that the FCC adjacency structure encodes SU(3).
 
 **Dependencies:**
 - Theorem 0.0.2 (Euclidean Metric from SU(3))
 - Theorem 0.0.3 (Stella Octangula Uniqueness)
-- Theorem 0.0.6 (Spatial Extension from Octet Truss)
+- Theorem 0.0.6 (Spatial Extension From Octet Truss) — Phase coherence and honeycomb structure
 - Definition 0.0.0 (Minimal Geometric Realization)
+- Gap-Analysis-Pre-Geometric-Structure.md (informational — identifies A0 as originally irreducible)
 
 **Implications:**
 - Axiom A0 (adjacency) is now **fully derived** from SU(3) + physical requirements (see Proposition 0.0.16a)
@@ -38,7 +39,7 @@ This theorem shows that **all four combinatorial constraints are consistent with
 
 ## 1. Statement
 
-**Theorem 0.0.16 (Adjacency from SU(3))**
+**Theorem 0.0.16 (SU(3) Structure of FCC Adjacency)**
 
 Let $\Gamma$ be a vertex-transitive graph realizing SU(3) phase coherence in the sense of Theorem 0.0.6. Then the combinatorial structure of $\Gamma$ is uniquely determined:
 
@@ -52,7 +53,7 @@ Let $\Gamma$ be a vertex-transitive graph realizing SU(3) phase coherence in the
 
 **(d) O_h Symmetry:** The automorphism group contains O_h (order 48) as a subgroup.
 
-**Corollary 0.0.16.1:** The FCC lattice is the unique graph satisfying (a)-(d), hence adjacency constraints are **derived from** SU(3) representation theory.
+**Corollary 0.0.16.1:** The FCC lattice is the unique graph satisfying (a)-(d), hence its adjacency constraints are **consistent with** SU(3) representation theory.
 
 **Note on Full Derivation:** The 2D weight space of SU(3) must be embedded in 3D physical space. This embedding (via the A₂ ⊂ A₃ root lattice correspondence) is **uniquely forced** by physical requirements (confinement, stella uniqueness, space-filling). See §6.5 and Proposition 0.0.16a.
 
@@ -137,7 +138,7 @@ In the honeycomb geometry, these 6 inter-representation edges connect each verte
 
 ### 3.4 Total: 6 + 6 = 12
 
-$$\boxed{k = 12 \text{ (12-regularity derived from SU(3))}}$$
+$$\boxed{k = 12 \text{ (12-regularity consistent with SU(3))}}$$
 
 $\blacksquare$
 
@@ -422,7 +423,7 @@ The combinatorial constraints of the FCC lattice are derived from:
 
 **Theorem 0.0.16** establishes:
 
-$$\boxed{\text{Adjacency structure (A0) is DERIVED FROM SU(3) representation theory + physical requirements}}$$
+$$\boxed{\text{Adjacency structure (A0) is CONSISTENT WITH SU(3) representation theory + physical requirements}}$$
 
 **Key Results:**
 1. ✅ 12-regularity: 6 intra-representation + 6 inter-representation edges

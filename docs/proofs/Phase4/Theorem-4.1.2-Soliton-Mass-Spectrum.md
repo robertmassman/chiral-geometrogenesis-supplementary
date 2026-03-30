@@ -11,6 +11,11 @@
 **Verification:** Multi-agent peer review (Math + Physics + Computational); 8/8 tests pass.
 **Session Log:** `verification/shared/Theorem-4.1.2-Multi-Agent-Verification-Report.md`
 
+**Dependencies:**
+- ✅ Theorem 4.1.1 (Existence of Solitons)
+- ✅ Proposition 0.0.17k (Pion Decay Constant From Phase Lock)
+- ✅ Proposition 0.0.17m (Chiral VEV From Phase Lock Stiffness)
+
 ---
 
 ## 1. Statement

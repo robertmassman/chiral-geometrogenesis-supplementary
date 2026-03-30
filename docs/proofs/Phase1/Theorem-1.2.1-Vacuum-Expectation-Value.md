@@ -6,6 +6,9 @@
 
 > **Notation Note:** Throughout this theorem, $\lambda_\chi$ denotes the chiral self-coupling constant. This distinguishes it from the internal time parameter $\lambda$ used elsewhere in the Chiral Geometrogenesis framework (see Theorem 0.2.2).
 
+**Dependencies:**
+- ✅ Definition 0.1.2 (Three Color Fields Relative Phases)
+
 ---
 
 ## Part 1: The Chiral Scalar Field

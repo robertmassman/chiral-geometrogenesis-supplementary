@@ -14,7 +14,14 @@
 - ✅ Theorem 4.1.1-4.1.3 (Soliton Physics) — Topological stability
 - ✅ Corollary 3.1.3 (Sterile Right-Handed Neutrinos) — Gauge singlet decoupling
 - ✅ Theorem 4.2.1 (Baryogenesis) — CP violation and asymmetry generation
-- ✅ [Proposition 5.1.2b](../Phase5/Proposition-5.1.2b-Precision-Cosmological-Densities.md) — Self-consistent $v_W$, power-law overlap integral
+
+**Phase 4 Formal Treatment (2026-02-25):**
+- ✅ [Definition 4.3.1](../Phase4/Definition-4.3.1-W-Sector-Field-Theory.md) — W-sector field theory (formal definitions)
+- ✅ [Theorem 4.3.2](../Phase4/Theorem-4.3.2-W-Soliton-Existence-And-Properties.md) — W-soliton existence, mass, stability
+- ✅ [Proposition 4.3.3](../Phase4/Proposition-4.3.3-W-Soliton-Cosmological-Abundance.md) — Relic abundance via ADM
+- ✅ [Proposition 4.3.4](../Phase4/Proposition-4.3.4-W-Soliton-Structure-Formation.md) — Structure formation compatibility
+
+> **Note:** The theoretical foundations (field theory, soliton physics, relic abundance, structure formation) are now formally treated in Phase 4.3. This document retains the full observational predictions (§7–§9, §15–§16) and serves as the primary reference for experimental tests.
 
 **Key Cross-References:**
 - Verification: [W-Condensate-Verification-Executive-Summary.md](../../verification/Phase8/W-Condensate-Verification-Executive-Summary.md)
@@ -96,15 +103,17 @@ The W soliton abundance is determined by a **primordial asymmetry** $\epsilon_W$
 
 ## 2. Theoretical Foundation
 
+> **Phase 4 Reference:** The formal field-theoretic treatment of the W sector is in [Definition 4.3.1](../Phase4/Definition-4.3.1-W-Sector-Field-Theory.md). This section provides the physical motivation and context.
+
 ### 2.1 The W Vertex in SU(3) Geometry
 
 From Definition 0.1.1, the stella octangula has vertices at:
 
 $$\begin{aligned}
-x_R &= (1, 1, 1)/\sqrt{3} \quad &\text{(red)} \\
-x_G &= (1, -1, -1)/\sqrt{3} \quad &\text{(green)} \\
-x_B &= (-1, 1, -1)/\sqrt{3} \quad &\text{(blue)} \\
-x_W &= (-1, -1, 1)/\sqrt{3} \quad &\text{(white/singlet)}
+x_R &= (1, -1, -1)/\sqrt{3} \quad &\text{(red)} \\
+x_G &= (-1, 1, -1)/\sqrt{3} \quad &\text{(green)} \\
+x_B &= (-1, -1, 1)/\sqrt{3} \quad &\text{(blue)} \\
+x_W &= (1, 1, 1)/\sqrt{3} \quad &\text{(white/singlet)}
 \end{aligned}$$
 
 **SU(3) Weight Projection:**
@@ -167,9 +176,9 @@ This places W exactly opposite to the RGB average, creating maximum decoupling.
 ### 3.2 Geometric Argument for $\phi_W = \pi$
 
 The W vertex is **antipodal** to the RGB centroid:
-- RGB centroid: $(x_R + x_G + x_B)/3 = (1, 1, -1)/(3\sqrt{3})$
-- W vertex: $x_W = (-1, -1, 1)/\sqrt{3}$
-- These are opposite directions
+- RGB centroid: $(x_R + x_G + x_B)/3 = (-1, -1, -1)/(3\sqrt{3}) = -x_W/3$
+- W vertex: $x_W = (1, 1, 1)/\sqrt{3}$
+- These are exactly opposite directions
 
 This geometric opposition suggests:
 $$\boxed{\phi_W = \pi \quad \text{(anti-phase dark sector)}}$$
@@ -177,6 +186,8 @@ $$\boxed{\phi_W = \pi \quad \text{(anti-phase dark sector)}}$$
 ---
 
 ## 4. W Condensate Properties
+
+> **Phase 4 Reference:** W-soliton existence, mass, stability, and self-interaction are formally derived in [Theorem 4.3.2](../Phase4/Theorem-4.3.2-W-Soliton-Existence-And-Properties.md).
 
 ### 4.1 VEV Scale
 
@@ -256,6 +267,8 @@ This "geometric portal" is unique to CG.
 
 ## 6. Relic Abundance
 
+> **Phase 4 Reference:** The formal derivation of relic abundance via Asymmetric Dark Matter, including the five geometric suppression factors, is in [Proposition 4.3.3](../Phase4/Proposition-4.3.3-W-Soliton-Cosmological-Abundance.md). Structure formation compatibility is proven in [Proposition 4.3.4](../Phase4/Proposition-4.3.4-W-Soliton-Structure-Formation.md).
+
 ### 6.1 The Thermal Freeze-out Tension (RESOLVED)
 
 ⚠️ **Key Physics Insight — TENSION IDENTIFIED AND RESOLVED:**
@@ -330,9 +343,11 @@ During the electroweak phase transition, the same geometric chirality (R→G→B
 
 #### 6.4.2 Vertex Topology
 
-The stella octangula has two interpenetrating tetrahedra (T₁ and T₂):
-- **T₁ vertices (R, G, B):** Color triplet, hosts baryon solitons
-- **T₂ vertices (W, and three others):** Color singlet W at center, hosts W-solitons
+The stella octangula has two interpenetrating tetrahedra ($T_+$ and $T_-$), each with 4 vertices. The soliton sectors are:
+- **Color vertices (R, G, B on $T_+$):** Color triplet, hosts baryon solitons
+- **Singlet vertex (W on $T_+$):** Color singlet, hosts W-solitons (dark matter)
+- **Anti-color vertices ($\bar{R}$, $\bar{G}$, $\bar{B}$ on $T_-$):** Anti-triplet, hosts antibaryons (depleted by baryogenesis)
+- **Anti-singlet vertex ($\bar{W}$ on $T_-$):** Combined with W into a single gauge-singlet sector ([Theorem 4.3.2](../Phase4/Theorem-4.3.2-W-Soliton-Existence-And-Properties.md) §6.2)
 
 The baryon production rate is proportional to the overlap integral at color vertices:
 $$\Gamma_B \propto \int_{D_{RGB}} |\chi_{RGB}|^2 \cdot |j_Q^{(B)}|^2 \, d^3x$$
@@ -531,14 +546,16 @@ At LHC/FCC, W solitons could be produced via:
 | CG motivation | Natural (Corollary 3.1.3) | Natural (4th vertex) |
 | **Viability** | **MARGINAL** | **PROMISING** |
 
-### 8.2 T₂ Soliton DM
+### 8.2 Alternative Soliton DM Candidates
 
-| Property | T₂ Solitons | W Condensate |
-|----------|-------------|--------------|
-| Mass scale | ~1 GeV (fixed) | Tunable |
-| Production | Needs asymmetry mechanism | Multiple options |
-| Interactions | Gravitational only | Portal possible |
-| **Viability** | **POSSIBLE** | **PROMISING** |
+The exhaustive classification in [Theorem 4.3.2 §6.2–§6.5](../Phase4/Theorem-4.3.2-W-Soliton-Existence-And-Properties.md) establishes that the W-soliton is the **unique** viable DM candidate on $\partial\mathcal{S}$:
+
+| Sector | Candidate | Excluded by | DM Viable? |
+|--------|-----------|------------|:---:|
+| Anti-color ($\bar{R}, \bar{G}, \bar{B}$) | Antibaryons | Strong interactions + baryogenesis depletion | **No** |
+| Anti-W ($Q_W < 0$) | Anti-W-solitons | ADM symmetric annihilation ($\delta_{sym} \sim 10^{-6}$) | **No** |
+| Color (R, G, B) | Baryons | Visible (strongly interacting) | **No** |
+| **Singlet (W)** | **W-soliton** | — | **Yes (unique)** |
 
 ---
 
@@ -562,6 +579,10 @@ If $\epsilon_W \sim \eta_B$ (same baryogenesis-like mechanism): $\Omega_W \sim 5
 $$\boxed{\sigma_{SI} \sim 10^{-45} \text{ cm}^2 \times \lambda_{HW}^2 \times (5 \text{ GeV}/M_W)^2}$$
 
 Testable at LZ-G2/DARWIN for $\lambda_{HW} > 10^{-5}$.
+
+### 9.4 Gravitational Wave Signal
+
+The W-sector phase transition at $T \sim v_W$ produces a stochastic GW background in the mHz band, detectable by LISA and DECIGO. See [Prediction 8.2.4](Prediction-8.2.4-W-Sector-Gravitational-Waves.md) for the full derivation: $f_{peak} \sim 0.5$–$5$ mHz, $\Omega_{GW} h^2 \sim 10^{-13}$ to $10^{-11}$.
 
 ---
 
@@ -723,15 +744,9 @@ $$\boxed{\phi_W = \pi}$$
 
 The stella octangula has a natural **antipodal symmetry**. Under inversion $\mathbf{x} \to -\mathbf{x}$:
 
-$$x_R + x_G + x_B = \frac{1}{\sqrt{3}}(1, 1, -1) = -\frac{1}{\sqrt{3}}(-1, -1, 1) = -x_W/\sqrt{3}$$
+$$x_R + x_G + x_B = \frac{1}{\sqrt{3}}\left[(1,-1,-1) + (-1,1,-1) + (-1,-1,1)\right] = \frac{1}{\sqrt{3}}(-1, -1, -1) = -x_W$$
 
-Wait — let's compute this correctly:
-
-$$x_R + x_G + x_B = \frac{1}{\sqrt{3}}\left[(1,1,1) + (1,-1,-1) + (-1,1,-1)\right] = \frac{1}{\sqrt{3}}(1, 1, -1)$$
-
-while $x_W = (-1, -1, 1)/\sqrt{3}$.
-
-So: $x_R + x_G + x_B = -(x_W \cdot \text{permutation})$
+The sum of the three color vertices is exactly $-x_W$, confirming the geometric opposition between the color sector and the singlet direction.
 
 This geometric **opposition** implies:
 

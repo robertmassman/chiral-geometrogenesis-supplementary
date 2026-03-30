@@ -1,0 +1,62 @@
+================================================================================
+DEFINITION 4.1.5 CORRECTIONS SUMMARY
+Generated: 2025-12-27
+================================================================================
+
+
+CRITICAL FIXES:
+
+1. SECTION 4.3 (Stability): Replace phase-space eigenvalue reference
+   OLD: "From Theorem 0.2.3 Derivation Section 3.3.3, mu_1 = 3K/4, mu_2 = 9K/4"
+   NEW: Derive spatial Hessian K_ij directly:
+        - K_ij = K_0 * delta_ij (isotropic by T_d symmetry)
+        - K_0 = (lambda/3) * integral[nabla^2 rho_sol * P_total]
+        - All eigenvalues equal K_0 > 0 (positive definiteness from convolution)
+        - Reference Derivation Section 6.2 for detailed extension
+
+2. SECTION 3.4 (Topological Contribution): Add explicit I_P definition
+   ADD after line 144:
+   "The dimensionless pressure-density overlap integral is:
+    I_P(x_0) = integral[rho_tilde_B(x_tilde - x_tilde_0) * P_tilde_total(x_tilde)] d^3x_tilde
+    where x_tilde = x * (e * f_pi) and P_tilde = P / (e * f_pi)^2
+    are dimensionless quantities scaled by L_Skyrme = 1/(e * f_pi)."
+
+3. SECTION 6.2 (Potential Depth): Recalculate with physical epsilon
+   OLD: "P_total(0) ~ 400", V_eff ~ 73 GeV
+   NEW: Using physical epsilon = 0.50:
+        P_total(0) ~ 6.4 (dimensionless)
+        V_eff(0) ~ 1.2 GeV (order of magnitude with confinement scale)
+
+4. SECTION 3.4 (g_top): Mark as NOVEL
+   ADD: "**Note:** g_top = f_pi/e is a NOVEL CG-derived parameter, not a
+        standard quantity from the Skyrme model literature. It sets the
+        energy scale for the topological contribution to V_eff."
+
+IMPORTANT CLARIFICATIONS:
+
+5. SECTION 4.2 or 8.3 (Confinement): Add domain clarification
+   ADD: "The confining potential operates WITHIN the stella octangula
+        boundary. Moving toward vertices (|x_0| -> R_stella) increases V_eff,
+        providing confinement. At spatial infinity, P_total -> 0, but this
+        regime is outside the physical domain of the model."
+
+6. SECTION 3.2 (Soliton Density): Add multi-skyrmion caveat
+   ADD after line 108: "**Note:** For |Q| > 1, the minimal energy
+        configurations are NOT spherically symmetric. The hedgehog ansatz
+        and spherical symmetry assumption apply only to |Q| = 1. For higher
+        charges, see Battye & Sutcliffe (1997) for multi-skyrmion geometries."
+
+MINOR ADDITIONS:
+
+7. Add References section at end with:
+   - Holzwarth & Schwesinger (1986) Rep. Prog. Phys. 49:825
+   - PDG 2024 for f_pi and particle masses
+   - Chodos et al. (1974) Phys. Rev. D 9:3471 for MIT Bag Model
+   - Eichten et al. (1978, 1980) for Cornell Potential
+   - Battye & Sutcliffe (1997) for multi-skyrmion configurations
+
+8. Add uncertainty ranges to Section 6.1 parameters:
+   - e = 4.84 +/- 0.5 (range: 4.0-6.0 depending on fit)
+   - f_pi = 92.1 +/- 0.6 MeV (PDG 2024)
+   - Propagated: L_Skyrme = 0.44 +/- 0.05 fm
+   - Propagated: lambda = 0.20 +/- 0.05 fm^2

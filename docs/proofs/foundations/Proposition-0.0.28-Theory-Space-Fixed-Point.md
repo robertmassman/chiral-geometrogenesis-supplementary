@@ -9,9 +9,11 @@
 - ✅ [Proposition 0.0.17y](Proposition-0.0.17y-Bootstrap-Fixed-Point-Uniqueness.md) — Bootstrap fixed-point uniqueness (7 equations, DAG structure)
 - ✅ [Theorem 0.0.19](Theorem-0.0.19-Quantitative-Self-Reference-Uniqueness.md) — Quantitative vs logical self-reference distinction
 - ✅ [Research-D3-Category-Theoretic-Formalization.md](Research-D3-Category-Theoretic-Formalization.md) — Lawvere structure of bootstrap
-- 🔶 [Theorem 0.0.29](Theorem-0.0.29-Lawvere-Bootstrap-Uniqueness.md) — Lawvere + DAG → uniqueness (derived from this)
 
 **Enables:**
+- Proposition 0.0.34 (Observer Participation)
+- Theorem 0.0.29 (Lawvere Bootstrap Uniqueness)
+- Theorem 0.0.31 (Unconditional Uniqueness CG Fixed Point)
 - Rigorous foundation for "self-consistency as mathematical primitive" (Path B)
 - Wheeler's "It from Bit" made precise in categorical language
 - Framework for comparing CG to other physical theories

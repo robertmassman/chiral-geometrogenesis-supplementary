@@ -16,6 +16,7 @@
 
 **Downstream Uses:**
 - ✅ [Theorem 5.2.1](./Theorem-5.2.1-Emergent-Metric.md) (Emergent Metric) — Uses Wick rotation validity for correlation function computation
+- ✅ [Theorem 5.2.3](./Theorem-5.2.3-Gravitational-Coupling.md) (Gravitational Coupling) — Uses Euclidean path integral convergence for gravitational sector
 - ✅ [Theorem 5.2.7](./Theorem-5.2.7-Diffeomorphism-Emergence.md) (Diffeomorphism Emergence) — Relies on well-defined metric emergence enabled by valid Wick rotation
 
 ---

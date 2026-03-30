@@ -149,7 +149,7 @@ grep -r "0_0_13.*Categorical" docs/ papers/ lean/ChiralGeometrogenesis/ verifica
 #### Files to Update
 - [ ] `docs/Mathematical-Proof-Plan.md`
 - [ ] `papers/paper-1-foundations/main.tex`
-- [ ] `docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md` (will be renamed, references 0.0.12)
+- [ ] `docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Consistency-Check.md` (will be renamed, references 0.0.12)
 - [ ] `docs/proofs/foundations/Theorem-0.0.10-Framework-Internal-D4-Derivation.md` (references 0.0.12)
 - [ ] `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_11.lean` (after rename - update namespace)
 - [ ] `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_10.lean` (references 0.0.12)
@@ -201,7 +201,7 @@ grep -r "0_0_12.*Lorentz" docs/ papers/ lean/ChiralGeometrogenesis/ verification
 #### Files to Update
 - [ ] `docs/Mathematical-Proof-Plan.md`
 - [ ] `papers/paper-1-foundations/main.tex`
-- [ ] `docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md` (will be renamed, references 0.0.11)
+- [ ] `docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Consistency-Check.md` (will be renamed, references 0.0.11)
 - [ ] `docs/proofs/foundations/Theorem-0.0.10-Framework-Internal-D4-Derivation.md` (references 0.0.11)
 - [ ] `docs/proofs/verification-records/Theorem-0.0.10-Multi-Agent-Verification-2025-12-31.md` (will be renamed)
 - [ ] `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_10.lean` (after rename - update namespace and imports)
@@ -223,7 +223,7 @@ grep -r "0_0_11.*Quantum" docs/ papers/ lean/ChiralGeometrogenesis/ verification
 ### 5.1 Files to Rename
 
 #### Proof Documents
-- [ ] `docs/proofs/foundations/Theorem-0.0.10-Framework-Internal-D4-Derivation.md` → `Theorem-0.0.9-Framework-Internal-D4-Derivation.md`
+- [ ] `docs/proofs/foundations/Theorem-0.0.10-Framework-Internal-D4-Derivation.md` → `Theorem-0.0.9-Framework-Internal-D4-Consistency-Check.md`
 
 #### Verification Records
 - [ ] `docs/proofs/verification-records/Theorem-0.0.10-Multi-Agent-Verification-2025-12-31.md` → `Theorem-0.0.9-Multi-Agent-Verification-2025-12-31.md`
@@ -285,7 +285,7 @@ grep -r "0_0_10.*Framework" docs/ papers/ lean/ChiralGeometrogenesis/ verificati
 - [ ] `docs/Mathematical-Proof-Plan.md`
 - [ ] `papers/paper-1-foundations/main.tex`
 - [ ] `docs/proofs/foundations/Theorem-0.0.8-Lorentz-Violation-Bounds.md` (will be renamed to 0.0.7, references 0.0.9)
-- [ ] `docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Derivation.md` (now named, references 0.0.9)
+- [ ] `docs/proofs/foundations/Theorem-0.0.9-Framework-Internal-D4-Consistency-Check.md` (now named, references 0.0.9)
 - [ ] `docs/proofs/foundations/Theorem-0.0.11-Lorentz-Boost-Emergence.md` (now named, references 0.0.9)
 - [ ] `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_8.lean` (after rename - update namespace)
 - [ ] `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_9.lean` (now named, references 0.0.9)

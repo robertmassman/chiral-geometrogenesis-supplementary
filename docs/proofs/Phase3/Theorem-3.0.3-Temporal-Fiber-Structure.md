@@ -14,6 +14,7 @@
 - ✅ Theorem 3.0.2 (Non-Zero Phase Gradient) — Phase evolution ∂_λχ = iχ
 
 **Downstream Impact:**
+- → Theorem 3.0.4 (Planck Length from Quantum Phase Coherence) — Quantum extension of temporal fiber
 - → Theorem 5.2.1 (Emergent Metric) — Time component g₀₀ from fiber structure
 - → Phase 5 theorems — Spacetime emergence
 

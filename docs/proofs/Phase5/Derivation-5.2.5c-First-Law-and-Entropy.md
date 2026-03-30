@@ -370,6 +370,7 @@ $$\boxed{S = \frac{A}{4\ell_P^2} \quad \text{(DERIVED from Chiral Geometrogenesi
 2. Phase 2 — Hawking temperature derivation (Derivation-5.2.5b-Hawking-Temperature.md)
 3. Theorem 5.2.1 — Emergent metric (Theorem-5.2.1-Emergent-Metric.md)
 4. Definition 0.1.1 — Stella octangula boundary topology
+5. [Proposition 5.2.5e](Proposition-5.2.5e-Holographic-Self-Encoding-Scale-Invariance.md) — Uses $\gamma = 2\pi/(8\pi) = 1/4$ to prove BH coefficient is scale-invariant and $N_c$-independent
 
 ### External References
 5. Bardeen, J.M., Carter, B., & Hawking, S.W. (1973). "The Four Laws of Black Hole Mechanics". *Communications in Mathematical Physics*, **31**(2), 161-170. doi:10.1007/BF01645742

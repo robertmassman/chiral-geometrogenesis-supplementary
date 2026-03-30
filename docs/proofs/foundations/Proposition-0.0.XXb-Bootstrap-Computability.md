@@ -2358,7 +2358,7 @@ Where β = 36°/φ = 22.25° and γ = arccos(1/3) - 5° = 65.53°.
 |-----------|-----------|-----------|----------|--------|
 | θ₁₂ | Tribimaximal base | ~33° | 33.4° | ✅ |
 | θ₂₃ | Maximal (geometric) | 45° | 49.0° | ✅ (with correction) |
-| θ₁₃ | λ²×O(1) | ~6-9° | 8.5° | ✅ Prop 8.4.2 |
+| θ₁₃ | λ²×O(1) | ~6-9° | 8.5° | ✅ Derivation 8.4.2 |
 | Complementarity | θ₁₂^CKM + θ₁₂^PMNS ≈ 45° | 46.4° | 46.4° | ✅ |
 
 *Reference:* Analysis-PMNS-5-Copy-Structure-Connection.md

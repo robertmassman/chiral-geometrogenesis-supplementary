@@ -168,11 +168,11 @@ This index organizes the Phase -1 (foundations, 0.0.x) proofs into thematic cate
 
 ### C.4: Topological & Adjacency
 
-*Derives SU(3) from topology; derives spatial adjacency from root systems*
+*Determines SU(3) from topology; derives spatial adjacency from root systems*
 
 | File | Description | Status |
 |------|-------------|--------|
-| [Theorem-0.0.15-Topological-Derivation-SU3](Theorem-0.0.15-Topological-Derivation-SU3.md) | SU(3) from topological properties of stella | ✅ VERIFIED |
+| [Theorem-0.0.15-Topological-Determination-SU3](Theorem-0.0.15-Topological-Determination-SU3.md) | SU(3) from topological properties of stella | ✅ VERIFIED |
 | [Theorem-0.0.16-Adjacency-From-SU3](Theorem-0.0.16-Adjacency-From-SU3.md) | Spatial adjacency (A₂ root system) from SU(3) | ✅ VERIFIED |
 | [Proposition-0.0.16a-A3-From-Physical-Requirements](Proposition-0.0.16a-A3-From-Physical-Requirements.md) | A₃ root system from physical requirements | ✅ |
 
@@ -190,7 +190,7 @@ This index organizes the Phase -1 (foundations, 0.0.x) proofs into thematic cate
 | [Theorem-0.0.11-Lorentz-Boost-Emergence](Theorem-0.0.11-Lorentz-Boost-Emergence.md) | Lorentz transformations from chiral field dynamics | ✅ VERIFIED |
 | [Theorem-0.0.7-Lorentz-Violation-Bounds](Theorem-0.0.7-Lorentz-Violation-Bounds.md) | Bounds on Lorentz violation from lattice structure | ✅ |
 | [Theorem-0.0.8-Emergent-Rotational-Symmetry](Theorem-0.0.8-Emergent-Rotational-Symmetry.md) | Rotational symmetry emergence | ✅ |
-| [Theorem-0.0.9-Framework-Internal-D4-Derivation](Theorem-0.0.9-Framework-Internal-D4-Derivation.md) | Internal D=4 derivation | ✅ |
+| [Theorem-0.0.9-Framework-Internal-D4-Consistency-Check](Theorem-0.0.9-Framework-Internal-D4-Consistency-Check.md) | Internal D=4 consistency check | ✅ |
 | [Theorem-0.0.14-Novel-Lorentz-Violation-Pattern](Theorem-0.0.14-Novel-Lorentz-Violation-Pattern.md) | Testable Lorentz violation predictions | 🔶 NOVEL PREDICTION |
 
 **Key Result:** QM and special relativity are emergent, not fundamental.

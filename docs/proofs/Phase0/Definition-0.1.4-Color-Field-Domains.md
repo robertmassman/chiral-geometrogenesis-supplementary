@@ -1,6 +1,6 @@
 # Definition 0.1.4: Color Field Domains
 
-## Status: ✅ COMPLETE — FOUNDATIONAL (Multi-Agent Verified December 15, 2025)
+## Status: 🔶 NOVEL — COLOR FIELD DOMAIN PARTITION
 
 **Role in Framework:** This definition formalizes the **face-based representation** of color charge, complementing the vertex-based representation in Definitions 0.1.2-0.1.3. While vertices represent color charge eigenstates, domains represent regions of color field *dominance* and *suppression*. This dual perspective is essential for understanding the pressure-depression dynamics of matter formation.
 
@@ -12,6 +12,7 @@
 
 **What This Definition Enables:**
 - Theorem 0.2.3 (Stable Convergence Point) — Domain structure at equilibrium
+- Prediction 8.3.1
 - Visualization interpretation in `chiral-geometrogenesis.html`
 - Physical understanding of color confinement geometry
 
@@ -36,6 +37,8 @@ $$\boxed{E_c = \{x \in \mathbb{R}^3 : P_c(x) \leq P_{c'}(x) \text{ for all } c' 
 These domains satisfy the **vertex-face duality**:
 - Domain $D_c$ contains vertex $x_c$ (where color $c$ is sourced)
 - Depression domain $E_c$ is centered on the face opposite to $x_c$ (where color $c$ is suppressed)
+
+> **Domain vs. Boundary:** The domains $D_c$ and $E_c$ are defined in the embedding space $\mathbb{R}^3$ using the pressure functions from Definition 0.1.3. Since the stella octangula boundary $\partial\mathcal{S} \subset \mathbb{R}^3$, the $\mathbb{R}^3$ partition automatically induces a partition on $\partial\mathcal{S}$ by restriction: $D_c \cap \partial\mathcal{S}$ gives the region of $\partial\mathcal{S}$ where color $c$ dominates. The color fields $\chi_c$ are defined on $\partial\mathcal{S}$ (Definition 0.1.2), while the domains use the $\mathbb{R}^3$ embedding as computational scaffolding (see Definition 0.1.1, Derivation §8).
 
 ---
 
@@ -86,9 +89,9 @@ $$\{x : (x_{c'} - x_c) \cdot x = 0\}$$
 
 | Boundary | Normal Vector | Equation |
 |----------|--------------|----------|
-| $\partial D_R \cap \partial D_G$ | $(0, -1, -1)/\sqrt{2}$ | $y + z = 0$ |
-| $\partial D_G \cap \partial D_B$ | $(-1, 1, 0)/\sqrt{2}$ | $x - y = 0$ |
-| $\partial D_B \cap \partial D_R$ | $(1, 0, 1)/\sqrt{2}$ | $x + z = 0$ |
+| $\partial D_R \cap \partial D_G$ | $(-1, 1, 0)/\sqrt{2}$ | $-x + y = 0$ |
+| $\partial D_G \cap \partial D_B$ | $(0, -1, 1)/\sqrt{2}$ | $-y + z = 0$ |
+| $\partial D_B \cap \partial D_R$ | $(1, 0, -1)/\sqrt{2}$ | $x - z = 0$ |
 
 ### 3.3 Solid Angles
 
@@ -146,9 +149,9 @@ $$\text{center}(E_c) \approx x_{face}^c = -\frac{x_c}{3}$$
 
 | Depression Domain | Face Center | Depression Ratio $D_c$ |
 |-------------------|-------------|------------------------|
-| $E_R$ | $(-0.19, -0.19, -0.19)$ | 3.99 |
-| $E_G$ | $(-0.19, +0.19, +0.19)$ | 3.99 |
-| $E_B$ | $(+0.19, -0.19, +0.19)$ | 3.99 |
+| $E_R$ | $(-0.19, +0.19, +0.19)$ | 3.99 |
+| $E_G$ | $(+0.19, -0.19, +0.19)$ | 3.99 |
+| $E_B$ | $(+0.19, +0.19, -0.19)$ | 3.99 |
 
 ### 5.2 Vertex-Face Duality
 
@@ -156,9 +159,9 @@ $$\text{center}(E_c) \approx x_{face}^c = -\frac{x_c}{3}$$
 
 | Color $c$ | Domain $D_c$ contains | Depression $E_c$ centered at |
 |-----------|----------------------|------------------------------|
-| R | Vertex $x_R = (1,1,1)/\sqrt{3}$ | Face center $-x_R/3$ |
-| G | Vertex $x_G = (1,-1,-1)/\sqrt{3}$ | Face center $-x_G/3$ |
-| B | Vertex $x_B = (-1,1,-1)/\sqrt{3}$ | Face center $-x_B/3$ |
+| R | Vertex $x_R = (1,-1,-1)/\sqrt{3}$ | Face center $-x_R/3$ |
+| G | Vertex $x_G = (-1,1,-1)/\sqrt{3}$ | Face center $-x_G/3$ |
+| B | Vertex $x_B = (-1,-1,1)/\sqrt{3}$ | Face center $-x_B/3$ |
 
 **Geometric interpretation:**
 - Moving from vertex $x_c$ toward the center, pressure $P_c$ decreases
@@ -248,9 +251,9 @@ The SU(3) weight space is spanned by the Cartan generators $T_3$ and $T_8$ with 
 - $\vec{w}_B = (0, -1/\sqrt{3})$ for blue
 
 The 3D stella octangula vertices are:
-- $x_R = (1, 1, 1)/\sqrt{3}$
-- $x_G = (1, -1, -1)/\sqrt{3}$
-- $x_B = (-1, 1, -1)/\sqrt{3}$
+- $x_R = (1, -1, -1)/\sqrt{3}$
+- $x_G = (-1, 1, -1)/\sqrt{3}$
+- $x_B = (-1, -1, 1)/\sqrt{3}$
 
 The projection matrix $M: \mathbb{R}^3 \to \mathbb{R}^2$ must satisfy $M \cdot x_c = \vec{w}_c$ for all colors.
 
@@ -261,16 +264,16 @@ $$\vec{v}_{T_8} = \frac{1}{2\sqrt{3}|x_R + x_G - 2x_B|^2}(x_R + x_G - 2x_B)$$
 These are scaled so that $\vec{v}_{T_3} \cdot x_R = 1/2$ and $\vec{v}_{T_8} \cdot x_R = 1/(2\sqrt{3})$.
 
 The projection matrix is:
-$$M = \begin{pmatrix} \vec{v}_{T_3}^T \\ \vec{v}_{T_8}^T \end{pmatrix} = \begin{pmatrix} 0 & \frac{\sqrt{3}}{4} & \frac{\sqrt{3}}{4} \\ \frac{1}{2} & -\frac{1}{4} & \frac{1}{4} \end{pmatrix}$$
+$$M = \begin{pmatrix} \vec{v}_{T_3}^T \\ \vec{v}_{T_8}^T \end{pmatrix} = \begin{pmatrix} \frac{\sqrt{3}}{4} & -\frac{\sqrt{3}}{4} & 0 \\ \frac{1}{4} & \frac{1}{4} & -\frac{1}{2} \end{pmatrix}$$
 
-**Verification:** Direct computation confirms $M \cdot x_c = \vec{w}_c$ for $c \in \{R, G, B\}$. ✓
+**Verification:** Direct computation confirms $M \cdot x_c = \vec{w}_c$ for $c \in \{R, G, B\}$. The singlet direction $x_W = (1,1,1)/\sqrt{3}$ projects to the origin: $M \cdot x_W = (0, 0)$. ✓
 
 **Step 2: Compute 3D boundary normals and project them.**
 
 The boundary $\partial D_c \cap \partial D_{c'}$ has normal vector $\vec{n}_{cc'} = x_{c'} - x_c$ (from §3.2).
 
 For the R-G boundary:
-$$\vec{n}_{RG} = x_G - x_R = \frac{1}{\sqrt{3}}(0, -2, -2)$$
+$$\vec{n}_{RG} = x_G - x_R = \frac{1}{\sqrt{3}}(-2, 2, 0)$$
 $$M \cdot \vec{n}_{RG} = (-1, 0) \propto (-1, 0)$$
 
 **Step 3: Compare with root vectors.**
@@ -293,9 +296,9 @@ Perpendicularity check: $\vec{\alpha}_{RG} \cdot \vec{\ell}_{RG} = (1, 0) \cdot 
 
 | Boundary | 3D Normal | Proj. Normal | Root Vector | ⟂ Check |
 |----------|-----------|--------------|-------------|---------|
-| R-G | $(0, -2, -2)/\sqrt{3}$ | $(-1, 0)$ | $(1, 0)$ | ✓ |
-| G-B | $(-2, 2, 0)/\sqrt{3}$ | $(0.5, -\sqrt{3}/2)$ | $(-0.5, \sqrt{3}/2)$ | ✓ |
-| B-R | $(2, 0, 2)/\sqrt{3}$ | $(0.5, \sqrt{3}/2)$ | $(-0.5, -\sqrt{3}/2)$ | ✓ |
+| R-G | $(-2, 2, 0)/\sqrt{3}$ | $(-1, 0)$ | $(1, 0)$ | ✓ |
+| G-B | $(0, -2, 2)/\sqrt{3}$ | $(0.5, -\sqrt{3}/2)$ | $(-0.5, \sqrt{3}/2)$ | ✓ |
+| B-R | $(2, 0, -2)/\sqrt{3}$ | $(0.5, \sqrt{3}/2)$ | $(-0.5, -\sqrt{3}/2)$ | ✓ |
 
 All projected boundary lines are perpendicular to their corresponding root vectors. $\blacksquare$
 
@@ -389,7 +392,7 @@ Both encode the same SU(3) color structure; the choice depends on whether one em
 
 **Re-derived Equations:**
 - $(x_{c'} - x_c) \cdot x = 0$ for boundaries ✓
-- $y + z = 0$ for R-G boundary ✓
+- $-x + y = 0$ for R-G boundary ✓
 - Depression ratio $D_R = 3.99$ at face center ✓
 
 **Issues Fixed (2025-12-15):**

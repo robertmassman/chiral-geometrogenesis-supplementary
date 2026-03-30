@@ -16,6 +16,8 @@
 - Completion of Path B (Self-Consistency as Mathematical Primitive)
 - Categorical foundation for unique physical scales
 - Connection between topology and physics at the deepest level
+- Proposition 0.0.28 (Theory Space Fixed Point) — Lawvere-DAG uniqueness provides the categorical proof that the theory-space fixed point is unique
+- Theorem 0.0.31 — extends the Lawvere-DAG uniqueness result downstream
 
 ---
 

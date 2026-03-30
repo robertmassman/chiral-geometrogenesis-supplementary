@@ -7,7 +7,6 @@
 - Theorem 2.2.3 (Time Irreversibility): Establishes σ_micro = 3K/4 > 0
 - Theorem 2.2.4 (Anomaly-Driven Chirality): Derives α = 2π/3 from QCD topology
 - [Derivation: K from QCD](./Derivation-2.2.5a-Coupling-Constant-K.md): Provides K ~ Λ_QCD ~ 200 MeV
-- [Derivation: QCD Bath](./Derivation-2.2.5b-QCD-Bath-Degrees-Freedom.md): Identifies dissipation mechanism
 
 **Goal:** Prove that microscopic T-breaking (σ = 3K/4) propagates to macroscopic scales under coarse-graining
 
@@ -829,7 +828,7 @@ The color phase current $j = \dot{\Phi} = \omega$ is **never zero** — the phas
 
 A Python script is provided to numerically verify the key results:
 
-**Location:** `docs/supporting-research-calculations/theorem_2_2_5_numerical_verification.py`
+**Location:** `docs/proofs/supporting/theorem_2_2_5_numerical_verification.py`
 
 **Tests performed:**
 1. Fixed point locations and validity

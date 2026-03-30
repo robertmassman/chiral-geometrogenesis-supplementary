@@ -440,6 +440,7 @@ The problem shifts from "potentially fatal" to "quantitatively bounded with subs
 - `verification/foundations/theorem_0_0_7_cpt_derivation.py` — Rigorous CPT proof
 - `verification/foundations/theorem_0_0_7_uncertainty_analysis.py` — Parameter uncertainty analysis
 - `verification/foundations/theorem_0_0_7_adversarial_physics.py` — Adversarial physics verification with plots
+- `verification/foundations/fc5_continuum_limit_verification.py` — **FC5 unified verification**: Tests 2 and 5 verify O → SO(3) enhancement (K₄ invariance, no ℓ=2 quadrupole) and Lorentz violation bounds (δc/c ~ 10⁻³² at 1 TeV, all 4 experimental bounds satisfied with 4–6 orders margin)
 - `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_8.lean` — Lean 4 machine-verified proofs
 
 **Verification Plots:**

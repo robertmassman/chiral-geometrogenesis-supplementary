@@ -333,7 +333,7 @@ This is the physical content. The label "left" is our naming choice.
    - **Formula:** $\sin^2\theta_W^{GUT} = \frac{2\pi}{2\pi + 5\alpha} = \frac{3}{8}$
    - ⚠️ **Clarification:** This is NOT a causal derivation of θ_W from α
    - Rather, both arise from the **same underlying fact** (N_c = 3)
-   - See: `Open-Question-Quantitative-Predictions.md`
+   - See: [Research-Remaining-Gaps-Worksheet.md](../supporting/Research-Remaining-Gaps-Worksheet.md) §"Resolved Open Questions: OQ-1"
 
 4. ✅ **RG Running Verification** — 3/8 → 0.231 matches experiment to ~0.1%
    - Standard QFT calculation, not novel to this theory

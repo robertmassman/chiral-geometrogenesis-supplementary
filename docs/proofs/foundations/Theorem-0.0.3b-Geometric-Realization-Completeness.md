@@ -1,6 +1,6 @@
 # Theorem 0.0.3b: Completeness of Geometric Realization Classification
 
-## Status: ✅ VERIFIED — EXTENDS UNIQUENESS TO ALL TOPOLOGICAL SPACES
+## Status: 🔶 NOVEL ✅ VERIFIED — EXTENDS UNIQUENESS TO ALL TOPOLOGICAL SPACES
 
 **Purpose:** This theorem extends Theorem 0.0.3 to prove that the stella octangula is the unique minimal geometric realization of SU(3) not just among standard polyhedra, but among *all* possible topological spaces.
 
@@ -24,6 +24,8 @@ Let $\mathcal{X}$ be *any* topological space with a designated vertex set $\math
 **(b)** $\mathcal{X}$ has strictly greater complexity under the MIN1-MIN3 ordering (Definition 0.0.0).
 
 **Corollary 0.0.3b.1:** The stella octangula is the unique minimal geometric realization of SU(3) in the class of *all* topological spaces satisfying GR1-GR3.
+
+> **Scope Note (V4.15):** "All topological spaces" here means all topological spaces satisfying the GR1–GR3 conditions from Definition 0.0.0, which include the polyhedral structure requirement and the fundamental + conjugate representation choice. The uniqueness is conditional on this axiom package. See Definition 0.0.0 §1.1 "Epistemic Note: The Axiom Package as a Definition Space" for analysis of alternative axiom sets.
 
 **Corollary 0.0.3b.2:** The following classes of structures are excluded from consideration:
 - Infinite polyhedral complexes

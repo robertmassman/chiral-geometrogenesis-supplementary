@@ -280,7 +280,7 @@ Our prediction θ₂₃ = 48.9° strongly supports the **higher octant**. If fut
 
 ### 7.1 Analogy with θ₁₃
 
-The θ₁₃ derivation (Prediction 8.4.2) gives:
+The θ₁₃ derivation (Derivation 8.4.2) gives:
 
 $$\sin\theta_{13} = \frac{\lambda}{\varphi}\left(1 + \frac{\lambda}{5} + \frac{\lambda^2}{2}\right)$$
 
@@ -371,7 +371,7 @@ Current data suggests δ_CP ≈ 200° (near maximal CP violation). A precise mea
 
 ### 9.3 Three-Generation Necessity
 
-The existence of three generations (Prediction 8.1.3) is essential for this derivation:
+The existence of three generations (Derivation 8.1.3) is essential for this derivation:
 - A₄ symmetry requires a triplet representation
 - The μ-τ breaking pattern relies on three distinct masses
 - Two generations would predict θ₂₃ = 0 or 90°
@@ -492,7 +492,7 @@ Tension with experiment: -0.2σ
 5. Harrison, Perkins, Scott, "Tri-bimaximal mixing," PLB 530, 167 (2002)
 6. Altarelli, Feruglio, "Discrete flavor symmetries," Rev. Mod. Phys. 82, 2701 (2010)
 7. King, Luhn, "Neutrino mass and mixing with discrete symmetry," Rep. Prog. Phys. 76, 056201 (2013)
-8. King, S.F., "Neutrino Mass Models — Lecture 1: Lepton Mixing," INSS 2014, SUSSP70, St. Andrews, Scotland (2014). [PDF](../../../docs/resources/https::indico.cern.ch:event:300715:contributions:686782:attachments:566732:780663:king_lecture1.pdf)
+8. King, S.F., "Neutrino Mass Models — Lecture 1: Lepton Mixing," INSS 2014, SUSSP70, St. Andrews, Scotland (2014). [PDF](../supporting/king_lecture1.pdf)
 
 ---
 

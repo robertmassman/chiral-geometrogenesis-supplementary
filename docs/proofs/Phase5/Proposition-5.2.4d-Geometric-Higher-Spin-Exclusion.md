@@ -577,7 +577,7 @@ This is a genuine derivation from the framework's geometric foundations.
 
 ### Framework Documents
 1. [Proposition-5.2.4c-Tensor-Rank-From-Derivative-Structure.md](./Proposition-5.2.4c-Tensor-Rank-From-Derivative-Structure.md) — Companion proposition
-2. [Theorem-0.0.15-Topological-Derivation-SU3.md](../foundations/Theorem-0.0.15-Topological-Derivation-SU3.md) — Z₃ structure
+2. [Theorem-0.0.15-Topological-Determination-SU3.md](../foundations/Theorem-0.0.15-Topological-Determination-SU3.md) — Z₃ structure
 3. [Theorem-5.1.1-Stress-Energy-Tensor.md](./Theorem-5.1.1-Stress-Energy-Tensor.md) — $T_{\mu\nu}$ derivation
 4. [Theorem-0.0.11-Lorentz-Symmetry-Emergence.md](../foundations/Theorem-0.0.11-Lorentz-Symmetry-Emergence.md) — Lorentz representations
 5. [Proposition-5.2.4b-Spin-2-From-Stress-Energy-Conservation.md](./Proposition-5.2.4b-Spin-2-From-Stress-Energy-Conservation.md) — Weinberg derivation

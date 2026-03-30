@@ -5,6 +5,12 @@
 **Created:** 2026-01-20
 **Purpose:** Establish the complete set of Feynman rules in Chiral Geometrogenesis, showing that all interaction vertices are uniquely determined by geometric symmetry constraints.
 
+**Dependencies:**
+- ✅ Theorem 3.1.1 (Chiral Drag Mass Formula)
+- ✅ Proposition 3.1.1a (Lagrangian Form From Symmetry)
+- ✅ Theorem 0.0.15 (Topological Derivation SU3)
+- ✅ Proposition 0.0.17d (EFT Cutoff From Confinement)
+
 ---
 
 ## 1. Formal Statement

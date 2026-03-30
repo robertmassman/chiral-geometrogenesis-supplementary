@@ -1,6 +1,6 @@
 # Theorem 0.0.12: SU(3)-Stella Categorical Equivalence
 
-## Status: 🔶 NOVEL — CATEGORICAL IDENTITY
+## Status: 🔶 NOVEL ✅ VERIFIED — CATEGORICAL IDENTITY
 
 **Purpose:** This theorem establishes that SU(3) and the stella octangula are categorically equivalent, giving precise meaning to the claim "SU(3) IS the stella."
 
@@ -11,9 +11,10 @@
 - Theorem 1.1.1 (SU(3)-Stella Octangula Correspondence) ✅
 
 **Enables:**
+- Theorem 0.0.13
 - Strengthens all stella-SU(3) relationship claims
 - Resolves "Important distinctions" hedging in Paper 1
-- Foundation for Theorem 0.0.12 (Tannaka Reconstruction)
+- Foundation for Theorem 0.0.13 (Tannaka Reconstruction)
 
 ---
 
@@ -270,7 +271,7 @@ Our category W(A₂)-Mod encodes this data in a concrete, combinatorial form sui
 
 The representation category Rep(SU(3)) is much richer — it includes all finite-dimensional representations, not just **3** ⊕ **3̄**.
 
-**Future Work (Theorem 0.0.12):** A stronger result would show that the full group SU(3) can be reconstructed from the stella via Tannaka-Krein duality. This would require encoding the tensor product structure in the geometric data.
+**Future Work (Theorem 0.0.13):** A stronger result would show that the full group SU(3) can be reconstructed from the stella via Tannaka-Krein duality. This would require encoding the tensor product structure in the geometric data.
 
 ### 8.3 Initial Object vs. Equivalence
 
@@ -304,7 +305,7 @@ The equivalence means:
 2. Every geometric feature of the stella corresponds to algebraic data of SU(3)
 3. The encoding is natural — structure-preserving maps on one side correspond to structure-preserving maps on the other
 
-Recovery of the full Lie group SU(3) requires Theorem 0.0.12 (Tannaka Reconstruction), which is future work.
+Recovery of the full Lie group SU(3) requires Theorem 0.0.13 (Tannaka Reconstruction), which is future work.
 
 ### 9.2 Implications for Chiral Geometrogenesis
 
@@ -326,7 +327,7 @@ The stella is not merely a "model" of SU(3) Cartan data — it IS SU(3) Cartan d
 
 ## 10. Future Work
 
-### 10.1 Theorem 0.0.12 (Tannaka Reconstruction)
+### 10.1 Theorem 0.0.13 (Tannaka Reconstruction)
 
 A stronger result would establish that the full compact Lie group SU(3) — not just its Cartan data — can be reconstructed from the stella octangula via Tannaka-Krein duality.
 

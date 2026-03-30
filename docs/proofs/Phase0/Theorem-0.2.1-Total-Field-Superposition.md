@@ -299,28 +299,28 @@ This is generally **non-zero** because the vertices $x_c$ don't have the same ca
 
 **Explicit calculation (all three components):**
 
-Let $x_R = \frac{1}{\sqrt{3}}(1, 1, 1)$, $x_G = \frac{1}{\sqrt{3}}(1, -1, -1)$, $x_B = \frac{1}{\sqrt{3}}(-1, 1, -1)$.
+Let $x_R = \frac{1}{\sqrt{3}}(1, -1, -1)$, $x_G = \frac{1}{\sqrt{3}}(-1, 1, -1)$, $x_B = \frac{1}{\sqrt{3}}(-1, -1, 1)$.
 
 Using $\omega = e^{i2\pi/3} = -\frac{1}{2} + i\frac{\sqrt{3}}{2}$ and $\omega^2 = e^{i4\pi/3} = -\frac{1}{2} - i\frac{\sqrt{3}}{2}$:
 
 $$\sum_c x_c e^{i\phi_c} = x_R + x_G \omega + x_B \omega^2$$
 
 **x-component:**
-$$\frac{1}{\sqrt{3}}\left[1 + 1 \cdot \omega + (-1) \cdot \omega^2\right] = \frac{1}{\sqrt{3}}\left[1 + \omega - \omega^2\right]$$
-$$= \frac{1}{\sqrt{3}}\left[1 + \left(-\frac{1}{2} + i\frac{\sqrt{3}}{2}\right) - \left(-\frac{1}{2} - i\frac{\sqrt{3}}{2}\right)\right] = \frac{1}{\sqrt{3}}\left[1 + i\sqrt{3}\right]$$
-
-**y-component:**
-$$\frac{1}{\sqrt{3}}\left[1 + (-1) \cdot \omega + 1 \cdot \omega^2\right] = \frac{1}{\sqrt{3}}\left[1 - \omega + \omega^2\right]$$
-$$= \frac{1}{\sqrt{3}}\left[1 - \left(-\frac{1}{2} + i\frac{\sqrt{3}}{2}\right) + \left(-\frac{1}{2} - i\frac{\sqrt{3}}{2}\right)\right] = \frac{1}{\sqrt{3}}\left[1 - i\sqrt{3}\right]$$
-
-**z-component:**
 $$\frac{1}{\sqrt{3}}\left[1 + (-1) \cdot \omega + (-1) \cdot \omega^2\right] = \frac{1}{\sqrt{3}}\left[1 - \omega - \omega^2\right]$$
 $$= \frac{1}{\sqrt{3}}\left[1 - (-1)\right] = \frac{2}{\sqrt{3}}$$
 
 (using $\omega + \omega^2 = -1$)
 
+**y-component:**
+$$\frac{1}{\sqrt{3}}\left[-1 + 1 \cdot \omega + (-1) \cdot \omega^2\right] = \frac{1}{\sqrt{3}}\left[-1 + \omega - \omega^2\right]$$
+$$= \frac{1}{\sqrt{3}}\left[-1 + \left(-\frac{1}{2} + i\frac{\sqrt{3}}{2}\right) - \left(-\frac{1}{2} - i\frac{\sqrt{3}}{2}\right)\right] = \frac{1}{\sqrt{3}}\left[-1 + i\sqrt{3}\right]$$
+
+**z-component:**
+$$\frac{1}{\sqrt{3}}\left[-1 + (-1) \cdot \omega + 1 \cdot \omega^2\right] = \frac{1}{\sqrt{3}}\left[-1 - \omega + \omega^2\right]$$
+$$= \frac{1}{\sqrt{3}}\left[-1 - \left(-\frac{1}{2} + i\frac{\sqrt{3}}{2}\right) + \left(-\frac{1}{2} - i\frac{\sqrt{3}}{2}\right)\right] = \frac{1}{\sqrt{3}}\left[-1 - i\sqrt{3}\right]$$
+
 **Full gradient vector:**
-$$\sum_c x_c e^{i\phi_c} = \frac{1}{\sqrt{3}}\begin{pmatrix} 1 + i\sqrt{3} \\ 1 - i\sqrt{3} \\ 2 \end{pmatrix}$$
+$$\sum_c x_c e^{i\phi_c} = \frac{1}{\sqrt{3}}\begin{pmatrix} 2 \\ -1 + i\sqrt{3} \\ -1 - i\sqrt{3} \end{pmatrix}$$
 
 **Magnitude:**
 $$\left|\sum_c x_c e^{i\phi_c}\right|^2 = \frac{1}{3}\left[(1)^2 + (\sqrt{3})^2 + (1)^2 + (\sqrt{3})^2 + 4\right] = \frac{1}{3}(1 + 3 + 1 + 3 + 4) = 4$$
@@ -750,7 +750,7 @@ where $f_\pi = 92.1 \pm 0.6$ MeV is the pion decay constant in the Peskin-Schroe
    - **Euler characteristic:** $\chi = V - E + F = 8 - 12 + 8 = 4$ (two disjoint tetrahedra, each contributing $\chi = 2$)
 
 2. **Computational Level:** For explicit calculations, we embed in $\mathbb{R}^3$:
-   - Vertex positions: $v_R = \frac{1}{\sqrt{3}}(1,1,1)$, etc.
+   - Vertex positions: $v_R = \frac{1}{\sqrt{3}}(1,-1,-1)$, etc.
    - Distance function: $|x - x_c|$ computed in $\mathbb{R}^3$
    - This is **computational scaffolding**, not a physical assumption
 

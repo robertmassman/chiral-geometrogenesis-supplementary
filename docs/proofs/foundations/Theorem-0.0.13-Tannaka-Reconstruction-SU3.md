@@ -1,6 +1,6 @@
 # Theorem 0.0.13: Tannaka Reconstruction of SU(3) from Stella Octangula
 
-## Status: ✅ VERIFIED — Lean 4 Formalization Complete (Consistency Result)
+## Status: 🔶 NOVEL ✅ VERIFIED — TANNAKA RECONSTRUCTION (CONSISTENCY RESULT)
 
 **Purpose:** This theorem establishes that the stella octangula and SU(3) encode the **same categorical structure** — their representation theories are equivalent. Via Tannaka-Krein duality, this means they can be interchangeably used for gauge theory calculations.
 
@@ -121,8 +121,8 @@ A true "derivation of SU(3) from geometry" would require:
 > - The continuous group parameters
 > - The tensor product structure of representations
 
-**Corollary 0.0.13.2 (Geometric Gauge Origin)**
-> SU(3) gauge symmetry emerges from geometry, not from postulation. The full gauge group structure is encoded in the discrete polyhedral data of the stella octangula.
+**Corollary 0.0.13.2 (Geometric Gauge Encoding)**
+> SU(3) gauge symmetry is fully reconstructible from the discrete polyhedral data of the stella octangula, confirming the consistency of the geometric identification established in Theorem 0.0.2.
 
 ---
 
@@ -156,7 +156,7 @@ A true "derivation of SU(3) from geometry" would require:
 
 ### 3.1 The Gap Between Cartan Data and Full Group
 
-Theorem 0.0.13 established that the stella octangula is categorically equivalent to SU(3)'s Cartan data:
+Theorem 0.0.12 established that the stella octangula is categorically equivalent to SU(3)'s Cartan data:
 - Root system Φ(A₂)
 - Weight lattice
 - Weyl group W = S₃
@@ -225,7 +225,9 @@ The stella octangula should encode these decompositions geometrically:
 
 ## 5. Required Lemmas
 
-### Lemma 0.0.13a (Tensor Product Geometry)
+**All four core lemmas are proven in the [Derivation document](Theorem-0.0.13-Tannaka-Reconstruction-SU3-Derivation.md) §6, with computational verification in `verification/foundations/theorem_0_0_13_lemma_proofs.py`.**
+
+### Lemma 0.0.13a (Tensor Product Geometry) ✅ PROVEN
 
 > The tensor product **3** ⊗ **3** and its decomposition into **6** ⊕ **3̄** can be read from the face structure of the stella octangula.
 
@@ -234,7 +236,9 @@ The stella octangula should encode these decompositions geometrically:
 - This antisymmetric combination produces **3̄** (the anti-fundamental)
 - The remaining 6 symmetric combinations produce **6**
 
-### Lemma 0.0.13b (Adjoint Representation Encoding)
+*Proof:* See [Derivation §6, Lemma 0.0.13a](Theorem-0.0.13-Tannaka-Reconstruction-SU3-Derivation.md#lemma-00013a-tensor-product-geometry--proven).
+
+### Lemma 0.0.13b (Adjoint Representation Encoding) ✅ PROVEN
 
 > The adjoint representation **8** is encoded in the stella via:
 > - 6 root vectors (edges connecting weight vertices) → 6 charged gluons
@@ -242,26 +246,32 @@ The stella octangula should encode these decompositions geometrically:
 
 *This is the apex-gluon correspondence, now proven via the Apex-Cartan Theorem (Definition 0.1.1 §4.1.5).*
 
-### Lemma 0.0.13c (Higher Representations from Tensor Powers)
+*Proof:* See [Derivation §6, Lemma 0.0.13b](Theorem-0.0.13-Tannaka-Reconstruction-SU3-Derivation.md#lemma-00013b-adjoint-representation-encoding--proven).
+
+### Lemma 0.0.13c (Higher Representations from Tensor Powers) ✅ PROVEN
 
 > All irreducible representations of SU(3) can be obtained from tensor products of **3** and **3̄**:
 > - Young tableaux correspondence
 > - Every irrep labeled by (p, q) appears in (**3**)^⊗p ⊗ (**3̄**)^⊗q
 
-### Lemma 0.0.13d (Fiber Functor Uniqueness)
+*Proof:* See [Derivation §6, Lemma 0.0.13c](Theorem-0.0.13-Tannaka-Reconstruction-SU3-Derivation.md#lemma-00013c-higher-representations-from-tensor-powers--proven).
+
+### Lemma 0.0.13d (Fiber Functor Uniqueness) ✅ PROVEN
 
 > The forgetful functor ω: Rep(SU(3)) → Vec is uniquely determined by:
 > - The stella vertex structure (basis vectors)
 > - The weight labeling (eigenvalue decomposition)
 > - The edge/root correspondence (intertwiner structure)
 
+*Proof:* See [Derivation §6, Lemma 0.0.13d](Theorem-0.0.13-Tannaka-Reconstruction-SU3-Derivation.md#lemma-00013d-fiber-functor-uniqueness--proven).
+
 ---
 
 ## 6. Comparison with Standard Approaches
 
-### 6.1 Relation to Theorem 0.0.13
+### 6.1 Relation to Theorem 0.0.12
 
-| Theorem 0.0.13 | Theorem 0.0.13 |
+| Theorem 0.0.12 | Theorem 0.0.13 |
 |----------------|----------------|
 | Cartan data equivalence | Full group reconstruction |
 | A₂-Dec ≃ W(A₂)-Mod | Rep(SU(3)) recovered from stella |
@@ -269,7 +279,7 @@ The stella octangula should encode these decompositions geometrically:
 | Weyl group S₃ | Full SU(3) with 8 generators |
 
 The gap between them:
-- Theorem 0.0.13: Cartan data determines group up to isogeny
+- Theorem 0.0.12: Cartan data determines group up to isogeny
 - Theorem 0.0.13: Full group reconstruction (exact, not up to isogeny)
 
 ### 6.2 Standard Tannaka-Krein vs. This Approach
@@ -362,12 +372,12 @@ This proof requires:
 
 ## 9. Future Work
 
-### 9.1 Immediate Next Steps
+### 9.1 Completed Steps
 
-1. **Prove Lemma 0.0.13a:** Establish tensor product geometry rigorously
-2. **Prove Lemma 0.0.13b:** Complete the adjoint representation encoding (partially done via Apex-Cartan)
-3. **Prove Lemma 0.0.13c:** Higher representations from tensor powers
-4. **Prove Lemma 0.0.13d:** Fiber functor uniqueness
+1. **Lemma 0.0.13a:** ✅ Tensor product geometry proven — see [Derivation §6](Theorem-0.0.13-Tannaka-Reconstruction-SU3-Derivation.md)
+2. **Lemma 0.0.13b:** ✅ Adjoint representation encoding proven (via Apex-Cartan Theorem)
+3. **Lemma 0.0.13c:** ✅ Higher representations from tensor powers proven
+4. **Lemma 0.0.13d:** ✅ Fiber functor uniqueness proven (including Hermitian structure)
 
 ### 9.2 Long-Term Goals
 
@@ -391,15 +401,15 @@ The proof has been formalized in Lean 4:
 
 ## 10. Summary
 
-Theorem 0.0.13 would establish that:
+Theorem 0.0.13 establishes that:
 
 1. **Full Group Recovery:** The complete SU(3) Lie group — not just Cartan data — can be reconstructed from the stella octangula via Tannaka-Krein duality.
 
 2. **Geometric Gauge Origin:** SU(3) gauge symmetry is not postulated but emerges from polyhedral geometry.
 
-3. **Strengthens Framework:** Resolves the "Important distinctions" hedging in Theorem 0.0.13 by recovering the full continuous group.
+3. **Strengthens Framework:** Resolves the "Important distinctions" hedging in Theorem 0.0.12 by recovering the full continuous group.
 
-**Current Status:** ✅ Lean 4 formalization complete. All key structures formalized with proper mathematical content. See `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_13.lean`.
+**Current Status:** All four core lemmas (0.0.13a-d) proven in [Derivation document](Theorem-0.0.13-Tannaka-Reconstruction-SU3-Derivation.md) §6 with computational verification. ✅ Lean 4 formalization complete (sorry-free). See `lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_13.lean`.
 
 ---
 

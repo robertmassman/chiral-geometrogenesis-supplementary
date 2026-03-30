@@ -7,7 +7,6 @@
 **Dependencies:**
 - ✅ Theorem 0.0.2 (Euclidean Metric from SU(3))
 - ✅ Theorem 0.0.16 (Adjacency from SU(3))
-- ✅ Theorem 0.2.2 (Internal Time Emergence)
 - ✅ Definition 0.1.2 (Three Color Fields with Relative Phases)
 
 **Implications:**

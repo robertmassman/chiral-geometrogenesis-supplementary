@@ -38,6 +38,7 @@ This proposition derives the complete $\mathcal{O}(p^4)$ chiral effective action
 |------------|------|
 | Prop 0.0.17k3 | Uses $\ell_4$ derived here for first-principles $\bar{\ell}_4$ |
 | Prop 0.0.17k1 | Retroactive validation — compare derived $\bar{\ell}_4$ with empirical value used there |
+| Prop 4.3.5 §6.7 | GL-Skyrme matching uses $\ell_1$, $\ell_2$ to determine $\tilde{\epsilon}$ |
 
 ---
 

@@ -7,6 +7,10 @@
 
 **Role in Framework:** With P2 parameters (v_χ, ω, f_π) now fully derived from R_stella (Props 0.0.17j-m), this proposition performs the P4 comparison — verifying that the mass formula correctly reproduces observed fermion masses.
 
+**Dependencies:**
+- ✅ Proposition 0.0.17j (String Tension From Casimir Energy)
+- ✅ Proposition 0.0.17m (Chiral VEV From Phase Lock Stiffness)
+
 ---
 
 ## 0. Executive Summary

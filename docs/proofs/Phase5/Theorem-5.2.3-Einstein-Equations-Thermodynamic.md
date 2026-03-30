@@ -151,6 +151,7 @@ This theorem uses the **3-file academic structure** for verification efficiency:
 ### Dependent Theorems (will need re-verification if this changes)
 - Theorem 5.2.6 (Planck Mass Emergence): Uses BH entropy formula from §6.5
 - Theorem 5.3.1 (Gravitational Wave Speeds): Relies on Einstein equations
+- [Proposition 5.2.5e](Proposition-5.2.5e-Holographic-Self-Encoding-Scale-Invariance.md) (Holographic Self-Encoding Scale Invariance): Uses logarithmic correction structure
 - Physical Implications sections: Use thermodynamic interpretation
 
 ### Related Derivations (γ = 1/4 completion)

@@ -1,8 +1,8 @@
 # Theorem 0.1.0: Field Existence from Distinguishability
 
-## Status: ✅ VERIFIED — CLOSES THE GEOMETRY-FIELD GAP
+## Status: 🔶 NOVEL ✅ VERIFIED — REDUCES FIELD EXISTENCE TO A0'
 
-**Purpose:** This theorem derives the *existence* of the three color fields χ_R, χ_G, χ_B on the stella octangula boundary from information-theoretic necessity. It closes the conceptual gap between "geometry exists" (Theorem 0.0.3) and "fields exist on the geometry" (previously assumed in Definition 0.1.2).
+**Purpose:** This theorem shows that the existence of the three color fields χ_R, χ_G, χ_B on the stella octangula boundary follows from axiom A0' (information metric). It reduces the gap between "geometry exists" (Theorem 0.0.3) and "fields exist on the geometry" (previously assumed in Definition 0.1.2) to acceptance of A0'.
 
 **Dependencies:**
 - ✅ Theorem 0.0.3 (Stella Octangula Uniqueness) — Establishes the geometric arena
@@ -14,14 +14,18 @@
 - ✅ **Python:** [`verification/Phase0/theorem_0_1_0_field_existence.py`](../../../verification/Phase0/theorem_0_1_0_field_existence.py) — Computational verification (11 tests passing)
 
 **What This Theorem Provides:**
-- Derives field existence from the requirement of distinguishability
+- Shows field existence follows from A0' (information metric) plus distinguishability
 - Shows that the Fisher metric requires non-trivial probability distributions
 - Establishes that SU(3) representation theory uniquely determines three fields with Z₃ phases
-- **Promotes Definition 0.1.2 from POSTULATE to DERIVED**
+- **Reduces Definition 0.1.2 from independent postulate to consequence of A0'**
+
+**What This Theorem Enables:**
+- Definition 0.1.2 (Three Color Fields with Relative Phases)
+- Theorem 0.2.2 (Internal Time Parameter Emergence)
 
 **Implications:**
 - Axiom A0' (information metric) now implies field existence
-- The framework achieves 0 irreducible structural axioms (only phenomenological scales remain)
+- The framework reduces to 1 irreducible structural axiom (A0') plus phenomenological scales
 - Fields are not "added to" geometry—they are *necessary for geometry to be geometry*
 
 ---
@@ -38,8 +42,8 @@ This theorem answers **YES** via information geometry:
 |------------------|-----------------|-------------------|
 | **Stella octangula** | DERIVED (Theorem 0.0.3) | DERIVED |
 | **Information metric** | DERIVED (Theorem 0.0.17) | DERIVED |
-| **Field existence** | ASSUMED (Definition 0.1.2) | **DERIVED** |
-| **Phase structure** | ASSUMED (Definition 0.1.2) | DERIVED (from SU(3)) |
+| **Field existence** | ASSUMED (Definition 0.1.2) | **FOLLOWS FROM A0'** |
+| **Phase structure** | ASSUMED (Definition 0.1.2) | FOLLOWS FROM A0' + SU(3) |
 
 The key insight: **Distinguishability requires something to distinguish.** The Fisher metric is non-trivial only if configurations differ, and configurations can only differ if there exist fields whose values vary across them.
 
@@ -118,7 +122,7 @@ The key ingredients are:
 1. **Killing metric exists independently:** The configuration space $\mathcal{C} \cong T^2$ is the Cartan torus of SU(3). From Lie theory (Theorem 0.0.2), the Killing form induces:
 $$g^K_{ij} = \frac{1}{12}\delta_{ij}$$
 
-2. **Chentsov uniqueness:** The only reparametrization-invariant metric on a statistical manifold is the Fisher metric. By A0', such a metric exists.
+2. **Chentsov uniqueness:** The only reparametrization-invariant metric on a statistical manifold is the Fisher metric. By A0', such a metric exists. *(Note: this step presupposes statistical manifold structure — see §3.3 transparency note and §9.1.)*
 
 3. **Fisher = Killing:** On a compact Lie group quotient, the unique bi-invariant metric (Killing) equals the unique information-theoretic metric (Fisher). Therefore $g^F = g^K \neq 0$.
 
@@ -232,6 +236,8 @@ By Chentsov's theorem, the Fisher metric is the unique (up to scale) reparametri
 
 Therefore:
 $$g^F_{ij} = g^K_{ij} = \frac{1}{12}\delta_{ij} \neq 0$$
+
+> **Logical transparency note (V2.24.3):** Chentsov's theorem applies to *statistical manifolds* — manifolds whose points parametrize probability distributions. Invoking Chentsov therefore presupposes that $\mathcal{C}$ carries statistical manifold structure, which implicitly assumes distribution existence. This means A0' ("the configuration space admits a natural information metric") is not a purely geometric axiom — it implicitly presupposes that configurations correspond to probability distributions over $\partial\mathcal{S}$. The Fisher = Killing identification is therefore a **consistency identification** (given that statistical structure exists, the metric must be Killing), not a derivation of distribution existence from a weaker premise. See §9.1 for the full circularity analysis.
 
 By Lemma 3.2.1, this implies:
 $$\boxed{p_\phi(x) \text{ depends non-trivially on } \phi}$$
@@ -597,8 +603,10 @@ Phases uniquely determined: (0, 2π/3, 4π/3)
 - Field existence: POSTULATE (Definition 0.1.2)
 
 **After this theorem:**
-- A0' (Information metric): IRREDUCIBLE → Implies field existence
-- Field existence: **DERIVED** from A0'
+- A0' (Information metric): IRREDUCIBLE — implicitly presupposes statistical manifold structure (distribution existence); see §3.3 transparency note
+- Distribution existence: **PRESUPPOSED** by A0' (not independently derived)
+- Field interference form and count: **DERIVED** from A0' + Lemma 3.2.1 + Theorem 4.3.1
+- Phase structure: **DERIVED** from SU(3) Z₃ center symmetry
 
 **Corollary:** Definition 0.1.2 (Three Color Fields with Relative Phases) is no longer an independent postulate. Its content is derived from:
 - Theorem 0.0.3 (stella octangula)
@@ -690,12 +698,12 @@ This theorem **extends** 0.0.17 by showing that the non-triviality of the Fisher
 
 Definition 0.1.2 previously *assumed* the existence of three color fields with phases $(0, 2\pi/3, 4\pi/3)$.
 
-This theorem **derives** the same content:
+This theorem shows the same content follows from A0':
 - Field existence → Part (b)
 - Three fields → Part (b)
 - Phase values → Part (c)
 
-**Definition 0.1.2 is now a corollary, not an axiom.**
+**Definition 0.1.2 is now justified by A0' rather than independently postulated.**
 
 ### 8.3 Theorem 0.2.2 (Internal Time Emergence)
 
@@ -731,6 +739,8 @@ By **Chentsov's uniqueness theorem** (Chentsov 1982), the unique reparametrizati
 - $g^F$ must be the Fisher metric (by uniqueness)
 - $g^F$ must be non-trivial (otherwise $\mathcal{C}$ would be 0-dimensional)
 
+> **Honest acknowledgment:** Chentsov's theorem requires $\mathcal{C}$ to be a *statistical manifold* — i.e., its points must parametrize probability distributions. Therefore, A0' implicitly presupposes that distributions $\{p_\phi\}_{\phi \in \mathcal{C}}$ exist over $\partial\mathcal{S}$. This means the derivation does not establish distribution existence from a purely geometric premise. Rather, A0' bundles two claims: (i) distributions exist on $\partial\mathcal{S}$ parametrized by $\mathcal{C}$, and (ii) the resulting information metric is non-trivial. What *is* genuinely derived (in Steps 3-4) is the specific *form* of those distributions — that they must be interference patterns of exactly three field amplitudes with Z₃ phases.
+
 **Step 3: Non-Trivial Fisher Metric Requires Non-Trivial Distributions**
 
 From Lemma 3.2.1: $g^F_{ij} = 0$ iff $p_\phi$ is independent of $\phi$.
@@ -745,21 +755,25 @@ What mathematical structure can produce $\phi$-dependent probability distributio
 
 Theorem 0.0.17 then provides a **consistency verification**: computing the Fisher metric from the derived field structure confirms $g^F = g^K = \frac{1}{12}\mathbb{I}_2$. This is not circular—it's a self-consistency check showing the framework is coherent.
 
-**Summary of the Non-Circular Logic:**
+**Summary of the Logic (with honest scope):**
 
 ```
 Lie theory (0.0.2) → Killing metric g^K exists on T²
            ↓
 A0' + Chentsov → Fisher metric g^F exists and g^F = g^K (uniqueness)
+  [NOTE: A0' implicitly presupposes distribution existence — see above]
            ↓
 Lemma 3.2.1 → g^F ≠ 0 implies p_φ depends on φ
            ↓
-Theorem 4.3.1 → φ-dependent p requires field amplitudes
+Theorem 4.3.1 → φ-dependent p requires field amplitudes [GENUINELY DERIVED]
            ↓
 Theorem 0.0.17 → VERIFIES g^F = g^K (consistency check)
 ```
 
-The field existence derivation uses only Steps 1-4. Step 5 (Theorem 0.0.17) provides independent verification.
+**What is genuinely derived vs. presupposed:**
+- **Presupposed** (via A0'): probability distributions exist on $\partial\mathcal{S}$ parametrized by $\mathcal{C}$
+- **Derived** (Steps 3-4): distributions must take the interference form $|\sum_c A_c e^{i\phi_c}|^2$, requiring exactly three field amplitudes with Z₃ phases
+- **Consistency check** (Step 5): the Fisher metric computed from the derived field structure matches the Killing metric
 
 ### 9.2 "Why can't the distribution depend on φ without fields?"
 
@@ -844,7 +858,7 @@ OUTPUT: Physics matching observation
 ### 11.2 Cross-References
 
 1. **Theorem 0.0.17:** This theorem extends 0.0.17 by showing non-trivial metric implies fields
-2. **Definition 0.1.2:** This theorem derives the content of Definition 0.1.2
+2. **Definition 0.1.2:** This theorem shows the content of Definition 0.1.2 follows from A0'
 3. **Theorem 0.0.3:** Stella octangula provides the arena $\partial\mathcal{S}$
 4. **Theorem 0.2.2:** Time emergence now has field existence as prerequisite (derived)
 

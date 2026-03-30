@@ -15,8 +15,9 @@
 **Enables:**
 - Proposition 0.0.23 (U(1)_Y Hypercharge from Geometric Embedding)
 - Proposition 0.0.24 (SU(2) Gauge Coupling from Unification)
-- Theorem 6.7.1 (Electroweak Gauge Fields from 24-Cell Structure)
+- Proposition 4.2.4
 - Theorem 6.6.1 (Electroweak Scattering) — currently blocked on this
+- Theorem 6.7.1 (Electroweak Gauge Fields from 24-Cell Structure)
 
 ---
 

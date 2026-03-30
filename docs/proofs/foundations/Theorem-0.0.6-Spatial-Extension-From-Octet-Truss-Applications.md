@@ -250,7 +250,7 @@ The FCC structure affects:
 - Triangular faces (not square or hexagonal)
 - Alternating tetrahedra and octahedra
 
-**Distinguishing Feature:** The vertex figure is a cuboctahedron. Any detected "atom of space" should have 14 neighbors (8 tetrahedra + 6 octahedra), not some other number.
+**Distinguishing Feature:** The vertex figure is a cuboctahedron. At each vertex, **14 polyhedra meet (8 tetrahedra + 6 octahedra)** and the coordination number (nearest-neighbor vertices) is **12**.
 
 ---
 
@@ -401,21 +401,51 @@ The hexagonal close-packed (HCP) lattice also achieves the maximum packing fract
 
 This is experimentally excluded.
 
-### 18.4 Why Not Penrose Tiling (Quasicrystals)?
+### 18.4 Why Not Quasicrystals? Vertex-Transitivity vs Local Isomorphism
 
-Quasicrystalline tilings have:
+> **V4-R4 Enhancement:** This section explains why strict vertex-transitivity — not the weaker property of local isomorphism — is required, addressing the quasicrystal alternative.
+
+Quasicrystalline tilings (e.g., 3D Penrose tilings, icosahedral quasicrystals) have:
 - Non-periodic structure (no translational symmetry)
-- Icosahedral or decagonal point symmetry
-- 5-fold or 10-fold rotational symmetry
+- Icosahedral or decagonal point symmetry (5-fold or 10-fold rotational)
+- **Local isomorphism:** every finite patch that appears anywhere appears *everywhere* (with the same frequency)
 
-**Problems for the framework:**
-- Icosahedral symmetry is not subgroup of SU(3) structure
-- Non-periodicity breaks the phase matching mechanism
-- No natural stella octangula embedding
+A skeptic might argue that local isomorphism provides "enough" uniformity for a pre-geometric substrate: if every finite neighborhood looks the same, does it matter that the global structure lacks exact translational symmetry?
 
-**Conclusion:** Quasicrystals don't support SU(3) color structure.
+**Why strict vertex-transitivity is required, not just local isomorphism:**
 
-### 18.4 Comparison with Other Discrete Spacetime Models
+The distinction matters because SU(3) phase coherence is a *global* property, not merely a local one:
+
+**1. Phase coherence requires exact global symmetry.**
+Theorem 1.2.1 (§1.2) proves that vertex-transitivity is *necessary* for SU(3) phase coherence: if two vertices $v_1, v_2$ have inequivalent local environments, the phase-matching conditions at $v_1$ and $v_2$ impose different constraints on the color fields, producing physically distinguishable lattice sites. In a quasicrystal, while all vertices have "similar" environments (by local isomorphism), they are not related by any global automorphism. There is no symmetry transformation mapping $v_1$ to $v_2$ that preserves the entire structure — only approximate matches within finite patches.
+
+**2. Wilson loops detect global structure.**
+The Polyakov loop $P = \text{Tr} \, \mathcal{P} \exp(i \oint A_0 \, d\tau)$ and spatial Wilson loops $W(C) = \text{Tr} \, \mathcal{P} \exp(i \oint_C A_\mu \, dx^\mu)$ are *global* observables that probe the lattice structure along arbitrarily large closed paths. In a periodic lattice, all contractible loops of the same shape give identical Wilson loop values. In a quasicrystal, two loops of the same shape but at different positions traverse genuinely different environments (since the tiling is non-periodic), producing position-dependent Wilson loops. This would manifest as a breakdown of translational invariance in the gauge sector — effectively, the strong coupling constant would vary with position.
+
+**3. Center symmetry requires exact periodicity.**
+The $\mathbb{Z}_3$ center symmetry of SU(3) acts globally: center transformations multiply the Polyakov loop by $\omega = e^{2\pi i/3}$ at *every* spatial site simultaneously. For this global action to be a symmetry, the lattice must be invariant under it at every site — which requires that every site be equivalent (vertex-transitivity). A quasicrystal with inequivalent sites would break center symmetry at different sites differently, destroying the uniform confinement criterion $\langle P \rangle = 0$.
+
+**4. Local isomorphism is insufficient for gauge universality.**
+Local isomorphism guarantees that every finite-radius ball around any vertex looks the same (up to isometry). But gauge field dynamics involve correlations at *all* scales, including scales much larger than any finite patch. Two-point correlators $\langle A_\mu(x) A_\nu(y) \rangle$ at large separation $|x - y|$ depend on the global lattice structure, not just local patches. In a quasicrystal, these long-range correlators would be position-dependent, violating the universality of the strong force.
+
+**Summary:**
+
+| Property | Periodic lattice (FCC) | Quasicrystal |
+|----------|----------------------|--------------|
+| Local structure | Same at every vertex | Same at every vertex (local isomorphism) |
+| Global automorphisms | Transitive on vertices | No transitive action |
+| Wilson loops | Position-independent | Position-dependent |
+| Center symmetry | Uniform at all sites | Broken non-uniformly |
+| Gauge universality | Preserved | Violated |
+
+**Additional problems specific to known quasicrystals:**
+- Icosahedral symmetry ($I_h$) is incompatible with SU(3) structure: $I_h$ contains $A_5$ (the alternating group of order 60), which has no subgroup isomorphic to $S_3$ acting on 3 elements in the required way
+- No known quasicrystalline tiling embeds the stella octangula at every vertex
+- Non-periodicity prevents identification with any root lattice ($A_3$, etc.)
+
+**Conclusion:** Quasicrystals fail not because they lack local structure, but because they lack the global symmetry required for SU(3) phase coherence, uniform confinement, and gauge universality. Strict vertex-transitivity is the mathematical expression of the physical requirement that the strong force be the same everywhere.
+
+### 18.5 Comparison with Other Discrete Spacetime Models
 
 | Model | Structure | SU(3) Support | Phase Coherence |
 |-------|-----------|---------------|-----------------|
@@ -555,6 +585,26 @@ A Python script `theorem_0_0_6_verification.py` is provided in the `verification
 3. **Stella embedding** — 8 tetrahedra at each vertex form dual tetrahedra
 4. **Phase matching** — Fields on shared faces agree
 5. **Geometric properties** — Edge lengths, dihedral angles, cell volumes
+
+### B.1.1 FC4 Unified Lattice Uniqueness Verification
+
+**Script:** `verification/foundations/fc4_lattice_uniqueness_verification.py`
+
+Systematic verification that FCC is the unique SU(3)-compatible lattice, testing 28 structures against five constraints (12-regularity, triangle prohibition, 4 four-cycles per edge, O_h symmetry, vertex-transitivity):
+
+| Category | Structures Tested | Survivors |
+|----------|------------------|-----------|
+| Bravais lattices (all 14) | cP, cI, cF, tP, tI, oP, oC, oI, oF, hP, hR, mP, mC, aP | cF (FCC) only |
+| Non-Bravais periodic | Diamond, HCP, A₃*, D₃(=FCC), wurtzite, Laves, β-Mn | D₃ (= FCC alias) only |
+| Non-crystallographic | Icosahedral QC, decagonal QC, 3D Penrose, amorphous | None |
+| CJT continuous family | α = 0, 1/6, 1/3 | α = 0 (= FCC) only |
+
+Critical edge cases addressed:
+- **HCP** (coord 12, same packing fraction): eliminated by D₆h ⊄ O_h and ABAB stacking incompatible with Z₃ phases
+- **Face-centered orthorhombic** (coord 12): eliminated by D₂h ⊄ O_h (distorted FCC)
+- **Bravais completeness**: classification theorem ensures all periodic lattices are covered
+
+**8/8 tests pass.** Results: `fc4_lattice_uniqueness_verification_results.json`
 
 ### B.2 Visualization
 

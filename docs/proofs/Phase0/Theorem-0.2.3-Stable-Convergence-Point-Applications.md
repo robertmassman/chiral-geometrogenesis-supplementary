@@ -68,15 +68,15 @@ $$\nabla\chi_{total}|_0 = 2a_0 P_0^2 \sum_c x_c e^{i\phi_c} \neq 0$$
 **Physical meaning:** Although the field vanishes at the center, it has a definite **direction** of increase. This gradient enables the phase-gradient mass generation mechanism.
 
 **Explicit calculation:**
-Using $x_R = \frac{1}{\sqrt{3}}(1,1,1)$, $x_G = \frac{1}{\sqrt{3}}(1,-1,-1)$, $x_B = \frac{1}{\sqrt{3}}(-1,1,-1)$:
+Using $x_R = \frac{1}{\sqrt{3}}(1,-1,-1)$, $x_G = \frac{1}{\sqrt{3}}(-1,1,-1)$, $x_B = \frac{1}{\sqrt{3}}(-1,-1,1)$:
 
-$$\sum_c x_c e^{i\phi_c} = \frac{1}{\sqrt{3}}\left[(1,1,1) + (1,-1,-1)e^{i2\pi/3} + (-1,1,-1)e^{i4\pi/3}\right]$$
+$$\sum_c x_c e^{i\phi_c} = \frac{1}{\sqrt{3}}\left[(1,-1,-1) + (-1,1,-1)e^{i2\pi/3} + (-1,-1,1)e^{i4\pi/3}\right]$$
 
 With $e^{i2\pi/3} = -\frac{1}{2} + i\frac{\sqrt{3}}{2}$ and $e^{i4\pi/3} = -\frac{1}{2} - i\frac{\sqrt{3}}{2}$:
 
-$$\sum_c x_c e^{i\phi_c} = \frac{1}{\sqrt{3}}\left[1 - \frac{1}{2} - \frac{1}{2}, 1 + \frac{1}{2} - \frac{1}{2}, 1 + \frac{1}{2} + \frac{1}{2}\right] = \frac{1}{\sqrt{3}}(0, 1, 2) \neq 0$$
+$$\sum_c x_c e^{i\phi_c} = \frac{1}{\sqrt{3}}\begin{pmatrix} 2 \\ -1 + i\sqrt{3} \\ -1 - i\sqrt{3} \end{pmatrix} \neq 0$$
 
-(plus imaginary parts from the complex exponentials)
+The magnitude is $|\sum_c x_c e^{i\phi_c}|^2 = \frac{1}{3}(4 + 4 + 4) = 4$.
 
 **Result:** $|\nabla\chi_{total}|_0| \neq 0$ ✓
 
@@ -101,9 +101,9 @@ $$= a_0^2 \sum_c \left[P_0^2 - 4P_0^3 (x \cdot x_c) + O(|x|^2)\right]$$
 $$= 3a_0^2 P_0^2 - 4a_0^2 P_0^3 \sum_c (x \cdot x_c) + O(|x|^2)$$
 
 Now, $\sum_c x_c = x_R + x_G + x_B$. For our vertex positions:
-$$x_R + x_G + x_B = \frac{1}{\sqrt{3}}\left[(1,1,1) + (1,-1,-1) + (-1,1,-1)\right] = \frac{1}{\sqrt{3}}(1, 1, -1)$$
+$$x_R + x_G + x_B = \frac{1}{\sqrt{3}}\left[(1,-1,-1) + (-1,1,-1) + (-1,-1,1)\right] = \frac{1}{\sqrt{3}}(-1, -1, -1) = -x_W$$
 
-This is **not zero** — so there IS a linear gradient in $\rho$ at first order.
+This is **not zero** — so there IS a linear gradient in $\rho$ at first order. Note that $x_R + x_G + x_B = -x_W$: the centroid of the three color vertices points away from the singlet vertex, as expected from tetrahedral geometry.
 
 **Resolution:** This linear term arises from using only **three** of the four vertices of one tetrahedron. The full stella octangula includes both tetrahedra $T_+$ and $T_-$. When we include the anti-color contributions (which enter with opposite signs in the physical theory due to color-anticolor pairing), or when we consider the complete $T_d$ symmetry of the stella octangula structure:
 
@@ -116,7 +116,7 @@ For a single hadron (three quarks), the linear gradient exists but is **internal
 
 The energy density is **statistically isotropic** when averaged over macroscopic scales.
 
-> **Key Physical Insight:** The linear gradient $\nabla\rho|_0 \propto (1,1,-1)$ is a **microscopic feature internal to each hadron** — it defines an "internal direction" within the hadronic structure. This gradient is essential for the phase-gradient mass generation mechanism (Theorem 3.1.1) but does **not** break macroscopic isotropy. Just as individual molecules have oriented dipole moments while a gas remains isotropic, individual hadrons have internal gradients while bulk matter maintains rotational symmetry.
+> **Key Physical Insight:** The linear gradient $\nabla\rho|_0 \propto (-1,-1,-1) = -\hat{W}$ is a **microscopic feature internal to each hadron** — it defines an "internal direction" within the hadronic structure, pointing from the singlet vertex toward the color face. This gradient is essential for the phase-gradient mass generation mechanism (Theorem 3.1.1) but does **not** break macroscopic isotropy. Just as individual molecules have oriented dipole moments while a gas remains isotropic, individual hadrons have internal gradients while bulk matter maintains rotational symmetry.
 
 ### 4.4 Second-Order Expansion: The Effective Metric
 

@@ -16,8 +16,12 @@
 - Establishes uniqueness of the mass generation mechanism
 
 **Downstream Usage:**
+- **Proposition 0.0.17d** (Chiral Symmetry Breaking Scale) — uses $\Lambda = 4\pi f_\pi$ identification
 - **Theorem 2.5.1** (Complete CG Lagrangian) — uses uniqueness result for $\mathcal{L}_{drag}$ derivation
 - **Theorem 3.1.1** (Phase-Gradient Mass Formula) — uses derived Lagrangian form
+- **Theorem 3.1.2** (Mass Hierarchy from Geometry) — uses derived Lagrangian structure
+- **Theorem 6.1.1** (Scattering Amplitudes) — uses derived coupling form
+- **Theorem 7.3.2** (Renormalization Consistency) — uses EFT operator classification
 
 ---
 

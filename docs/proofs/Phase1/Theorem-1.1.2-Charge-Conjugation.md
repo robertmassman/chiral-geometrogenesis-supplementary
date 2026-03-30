@@ -1,5 +1,9 @@
 # Theorem 1.1.2: Geometric Opposition as Charge Conjugation
 
+**Dependencies:**
+- ✅ Theorem 1.1.1 (SU(3) Stella Octangula)
+- ✅ Definition 0.1.1 (Stella Octangula Boundary Topology)
+
 ## Statement
 
 **Theorem 1.1.2:** The geometric opposition of the two tetrahedra in the Stella Octangula corresponds exactly to the charge conjugation (C) symmetry operation in particle physics. Specifically, the point reflection that maps one tetrahedron to its dual is isomorphic to the C operator that transforms quarks into antiquarks.

@@ -78,6 +78,7 @@ While this theorem is kinematic, other theorems in the framework address dynamic
 | **Effective string tension** | Thm 4.1.4 | σ_eff ≈ 0.236 GeV² from soliton dynamics | ✅ DERIVED (30% above Cornell) |
 | **String tension from Casimir** | **Prop 0.0.17j** | **σ = (ℏc/R_stella)² = 0.19 GeV²** | ✅ **DERIVED (99.7% match)** |
 | **Wilson loop area law** | **Thm 2.5.2** | **⟨W(C)⟩ ∼ exp(−σ·Area) from pressure mechanism** | ✅ **DERIVED (7/7 tests pass)** |
+| **Wilson loop from geometry** | **Prop 2.5.2a** | **Three geometric arguments: strong coupling, Z₃ center, Casimir** | ✅ **DERIVED (7/7 tests pass)** |
 | **Phase locking** | Thm 2.2.1, 2.2.2 | 120° phase separation is stable limit cycle | ✅ DERIVED (Kuramoto dynamics) |
 | **Chirality selection** | Thm 2.2.4 | R→G→B direction from QCD instantons | ✅ DERIVED (CP violation) |
 
@@ -728,7 +729,7 @@ This completes the foundational Phase 1.1 proofs, establishing that the Stella O
 - **LOW FIX:** Added forward reference and bag constant value in §5.2
 
 *Revised: December 13, 2025 — Upgraded to Theorem, weight vector corrections*
-- **UPGRADE:** Promoted from Lemma 1.1.3 to Theorem 1.1.3 (standalone significant result)
+- **UPGRADE:** Promoted from former Lemma 1.1.3 to Theorem 1.1.3 (standalone significant result)
 - **CRITICAL FIX:** Corrected weight vectors to match Theorem 1.1.1 standard SU(3) values
 - Updated all references from "Lemma" to "Theorem"
 - Updated computational verification code and expected output

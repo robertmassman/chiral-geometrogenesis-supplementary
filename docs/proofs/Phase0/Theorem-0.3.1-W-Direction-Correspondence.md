@@ -46,12 +46,9 @@ The W-axis direction in 3D corresponds to the 4th dimension (w-coordinate) of th
 | R, G, B | Color vertices | Tetrahedron vertices at $(1,-1,-1)$, $(-1,1,-1)$, $(-1,-1,1)$ | Definition 0.1.1 |
 | W | White vertex | Fourth tetrahedron vertex at $(1,1,1)$, normalized to $(1,1,1)/\sqrt{3}$ | §4.2 |
 
-**Note on Coordinate Convention:** This theorem uses a vertex labeling that differs from Definition 0.1.1. The correspondence is:
-- Theorem's (R, G, B, W) = Definition 0.1.1's (v_G, v_B, v_W, v_R)
-
-Both describe the **same geometric tetrahedron**; only the labels differ. The key geometric property—that the W-direction is perpendicular to the plane through R, G, B—is independent of labeling choice. Specifically:
-- This theorem: W = (1,1,1)/√3 is ⊥ to the plane through R=(1,-1,-1), G=(-1,1,-1), B=(-1,-1,1)
-- Definition 0.1.1: v_R = (1,1,1)/√3 plays the analogous role relative to v_G, v_B, v_W
+**Coordinate Convention:** This theorem uses the standard vertex labeling consistent with Definition 0.1.1 §2.2:
+- R = (1,-1,-1)/√3, G = (-1,1,-1)/√3, B = (-1,-1,1)/√3 (color vertices)
+- W = (1,1,1)/√3 (singlet vertex, perpendicular to the color plane)
 
 **Note on Normalization Conventions:** Throughout this theorem, we use two normalizations:
 - *Unnormalized:* Vertices at (±1,±1,±1) with |v| = √3. Used when showing cube/stella structure and computing cross products.

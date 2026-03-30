@@ -536,7 +536,7 @@ However, this is consistent with Paths A and C, which derive the Einstein equati
 
 **Conclusion:** The FCC/SU(3) approach now has a theoretical advantage over LQG: the lattice spacing coefficient is fully decomposed into understood geometric and group-theoretic factors.
 
-See [Open-Question-1-Lattice-Spacing-Derivation-Plan.md](../supporting/Open-Question-1-Lattice-Spacing-Derivation-Plan.md) for the complete resolution documentation.
+See [Research-Remaining-Gaps-Worksheet.md](../supporting/Research-Remaining-Gaps-Worksheet.md) §"Resolved Open Questions: OQ-2" for the complete resolution documentation.
 
 ### 9.7 Consistency Note: N_eff and Proposition 5.2.4a
 

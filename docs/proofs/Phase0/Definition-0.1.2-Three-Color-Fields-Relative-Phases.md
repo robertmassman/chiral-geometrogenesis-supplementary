@@ -1,14 +1,14 @@
 # Definition 0.1.2: Three Color Fields with Relative Phases
 
-## Status: ✅ COMPLETE — DERIVED (All Questions Resolved)
+## Status: 🔶 NOVEL — THREE COLOR FIELDS AND RELATIVE PHASES
 
 **Role in Framework:** This definition specifies the mathematical structure of the three color fields that exist on the stella octangula boundary (Definition 0.1.1). The relative phases between these fields are not arbitrary—they are uniquely determined by SU(3) representation theory and encode the fundamental color charge structure of QCD. These phases are the mathematical origin of the $\mathbb{Z}_3$ cyclic symmetry that defines the color neutrality condition (which confinement dynamically enforces) and the emergence of chirality.
 
-**Derivation Status (January 2026):** The content of this definition is now **DERIVED** from more fundamental principles via two independent approaches:
-- **[Theorem 0.1.0](Theorem-0.1.0-Field-Existence-From-Distinguishability.md)** — Derives field existence from information geometry (Fisher metric non-triviality implies fields must exist)
-- **[Theorem 0.1.0'](Theorem-0.1.0-Prime-Fields-From-Gauge-Bundle-Structure.md)** — Derives field existence from gauge bundle structure (principal SU(3)-bundle representation theory)
+**Justification Status (January 2026):** The content of this definition is **SUPPORTED BY** two independent lines of reasoning from more fundamental premises:
+- **[Theorem 0.1.0](Theorem-0.1.0-Field-Existence-From-Distinguishability.md)** — Shows field existence follows from axiom A0' (distinguishability) via information geometry (Fisher metric non-triviality)
+- **[Theorem 0.1.0'](Theorem-0.1.0-Prime-Fields-From-Gauge-Bundle-Structure.md)** — Shows field existence follows from gauge bundle structure (principal SU(3)-bundle representation theory)
 
-Both theorems independently derive that exactly 3 color fields with phases $\{0, 2\pi/3, 4\pi/3\}$ must exist. This definition is retained for clarity and as the canonical reference for the field structure.
+Both theorems independently show that 3 color fields with phases $\{0, 2\pi/3, 4\pi/3\}$ follow from their respective premises. Note: these establish that the field structure is *consistent with and implied by* the framework's axioms, not that it is uniquely necessitated independent of those axioms. This definition is retained for clarity and as the canonical reference for the field structure.
 
 **Dependencies:**
 - ✅ Definition 0.1.1 (Stella Octangula as Boundary Topology) — Establishes the geometric arena
@@ -21,11 +21,23 @@ Both theorems independently derive that exactly 3 color fields with phases $\{0,
 
 **What This Definition Enables:**
 - Definition 0.1.3 (Pressure Functions from Geometric Opposition)
+- Definition 0.1.4 (Color Field Domains)
+- Theorem 0.0.6 (Spatial Extension From Octet Truss)
+- Theorem 0.0.10
+- Theorem 0.0.15
 - Theorem 0.2.1 (Total Field from Superposition)
 - Theorem 0.2.2 (Internal Time Parameter Emergence)
+- Theorem 0.2.4 (Pre-Geometric Energy Functional)
+- Theorem 1.2.1
 - Theorem 2.2.1 (Phase-Locked Oscillation)
+- Theorem 2.2.2
+- Theorem 5.2.2 (Pre-Geometric Cosmic Coherence)
+- Proposition 0.0.5a
+- Proposition 3.1.1a
+- Prediction 8.2.3
 - The color neutrality constraint for hadrons (confinement dynamics assumed from QCD)
 - **[Proposition 0.0.17r](../foundations/Proposition-0.0.17r-Lattice-Spacing-From-Holographic-Self-Consistency.md)** — Z₃ center gives 3 states/site → entropy ln(3)/site → determines lattice spacing
+- **[Definition 1.1.4](../Phase1/Definition-1.1.4-Stella-Diagram-Rules.md)** — Diagrammatic calculus: phase factors ω^Δc on directed edges
 
 ---
 
@@ -506,6 +518,8 @@ $$\chi_c \to \omega^k \chi_c$$
 
 All colors pick up the same phase—this is the $\mathbb{Z}_3$ triality.
 
+**Condensed matter analog:** The same three-fold phase structure with Z₃ symmetry is experimentally realized in kagome-lattice metals AV₃Sb₅ (A = K, Rb, Cs), where three geometrically frustrated sublattices (A, B, C) with inter-sublattice nesting vectors produce Z₃ nematic order and chiral charge-loop currents [Tazai, Yamakawa & Kontani, *Nat. Commun.* **14**, 7845 (2023)]. The structural parallel—three coupled fields with 120° phase separations on a frustrated geometry producing Z₃ symmetry and chirality—provides experimental evidence that this mathematical pattern is physically generic, not an artifact of the CG framework.
+
 ### 9.2 Gluon Color Structure
 
 Gluons transform in the adjoint representation **8** of SU(3). They carry both color and anti-color:
@@ -870,7 +884,7 @@ $$\boxed{\text{The phases } 0, \frac{2\pi}{3}, \frac{4\pi}{3} \text{ are the mat
 
 ---
 
-*Status: ✅ COMPLETE — DERIVED definition with all questions resolved (see [Theorem 0.1.0](Theorem-0.1.0-Field-Existence-From-Distinguishability.md) and [Theorem 0.1.0'](Theorem-0.1.0-Prime-Fields-From-Gauge-Bundle-Structure.md))*
+*Status: ✅ COMPLETE — Definition supported by independent justifications (see [Theorem 0.1.0](Theorem-0.1.0-Field-Existence-From-Distinguishability.md) and [Theorem 0.1.0'](Theorem-0.1.0-Prime-Fields-From-Gauge-Bundle-Structure.md))*
 
 *Created: December 2025*
 *Last Updated: January 25, 2026 — Added §2.1.1 Z₃ Visibility Criterion (SU(3) vs PSU(3)) formalizing how the stella distinguishes the full gauge group from its center quotient*

@@ -373,6 +373,7 @@ The emergence mechanism is now understood:
 
 **Verification Files:**
 - `verification/foundations/theorem_0_0_8_verification.py` — Python numerical verification
+- `verification/foundations/fc5_continuum_limit_verification.py` — **FC5 unified verification**: Test 2 verifies O → SO(3) enhancement (24 proper rotations, K₄ O_h-invariant, no ℓ=2 quadrupole, suppression ~10⁻³⁹ at nuclear scale); Test 9 verifies D₄ self-coarsening enabling multi-scale RG
 - `verification/plots/theorem_0_0_8_asymptotic_suppression.png` — Asymptotic behavior plot
 - `docs/proofs/verification-records/Theorem-0.0.9-Multi-Agent-Verification-2025-12-31.md` — Full verification report
 

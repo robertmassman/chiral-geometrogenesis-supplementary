@@ -26,6 +26,14 @@
 
 **Key Achievement:** Unifies the UV (geometric) and IR (dynamical) perspectives on chirality selection, showing that the winding number on the stella octangula boundary propagates through the GUT embedding chain to uniquely determine weak force handedness.
 
+**Dependencies:**
+- ✅ Theorem 0.0.1 (D=4 From Observer Existence)
+- ✅ Theorem 0.0.3 (Stella Uniqueness)
+- ✅ Theorem 0.0.4 (GUT Structure From Stella Octangula)
+- ✅ Theorem 0.0.5 (Chirality Selection From Geometry)
+- ✅ Theorem 2.2.4 (EFT Derivation)
+- ✅ Theorem 2.4.1 (Gauge Unification)
+
 ---
 
 ## 1. Formal Statement
@@ -228,6 +236,8 @@ The unified origin:
 $$\boxed{\text{Stella orientation} \to w = +1 \to \begin{cases} \text{Left-handed weak force} \\ \text{Matter dominates antimatter} \\ \text{Arrow of time} \end{cases}}$$
 
 All three fundamental asymmetries share a common geometric origin.
+
+**Condensed matter analog:** The emergence of chiral order from geometric frustration with three-fold structure has been experimentally observed in kagome-lattice metals, where time-reversal symmetry breaking via charge-loop currents arises from the interplay of three geometrically frustrated sublattices [Tazai, Yamakawa & Kontani, *Nat. Commun.* **14**, 7845 (2023)]. The kagome system demonstrates the same pattern: geometric frustration → Z₃ symmetry → chiral topological order, providing condensed matter validation that geometric frustration with three-fold structure generically selects chirality.
 
 ---
 

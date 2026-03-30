@@ -15,6 +15,10 @@
 - [Adversarial Physics Verification Script](../../../verification/foundations/prop_0_0_17ab_adversarial_verification.py)
 - [Lean 4 Formalization](../../../lean/ChiralGeometrogenesis/Foundations/Proposition_0_0_17ab.lean)
 
+**Dependencies:**
+- ✅ Proposition 0.0.17j (String Tension From Casimir Energy)
+- ✅ Theorem 0.0.6 (Spatial Extension From Octet Truss)
+
 ---
 
 ## §1. Formal Statement

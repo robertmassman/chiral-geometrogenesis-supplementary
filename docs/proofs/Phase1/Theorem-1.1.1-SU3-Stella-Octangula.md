@@ -1,14 +1,28 @@
 # Theorem 1.1.1: SU(3) Weight Diagram ↔ Stella Octangula Isomorphism
 
-## Status: ✅ VERIFIED (Multi-Agent Peer Review December 13, 2025)
+## Status: 🔶 NOVEL ✅ VERIFIED — SU(3)-STELLA BRIDGE THEOREM
 
-**Verification Notes:** All issues from multi-agent verification (Math + Physics + Literature) addressed December 13, 2025:
-1. Coordinate transformation corrected (§4.3): Explicit linear isomorphism derived, replacing incorrect rotation-only approach
-2. References added: Georgi, Fulton-Harris, Humphreys, Gell-Mann-Ne'eman, Coxeter
-3. Weyl group proof strengthened (Step 7): Full homomorphism proof with explicit calculations
-4. Killing form metric verified (§1.6): Explicit computation showing equilateral in proper basis
+**Verification Notes:** All 11 issues from multi-agent verification (2026-02-21) resolved:
+- **E-1:** §4.2 expected output corrected (Euclidean distances are isosceles, not equilateral)
+- **E-2:** §4.3 transformation matrix entry $d = \sqrt{6}/4$ corrected (was $1/(2\sqrt{6})$), factored form fixed
+- **E-3:** §1.6 half-root claim removed; weight differences are full root vectors
+- **E-4:** Step 7B basis label corrected to $(T_3, T_8)$ with explicit Killing metric; $s_2$ computation shown explicitly
+- **E-5:** Step 7C "rotation" corrected to "reflection" (Weyl generators are reflections)
+- **W-1:** §2.2 "Wait" interjection replaced with direct 6+2 presentation
+- **W-2:** Parameterization conversion note added between §2.1 and §3
+- **W-3:** Convention bridge $(T_3, Y) \leftrightarrow (T_3, T_8)$ added in Step 7B
+- **W-4:** Apex interpretations (2,3) labeled as heuristic/motivational
+- **W-5:** Killing metric qualification added to §1.5 Key Observation
+- **W-6:** "Isomorphism" clarified as $S_3$-equivariant bijection in theorem statement
 
-Previous: Critical 8↔6 bijection claim corrected to 6+2 structure (December 11, 2025).
+Previous revisions: December 13, 2025 (linear isomorphism, references, Weyl group); December 11, 2025 (6+2 structure).
+
+**Dependencies:**
+- ✅ Definition 0.1.1 (Stella Octangula Boundary Topology)
+
+**Verification Records:**
+- [Multi-Agent Verification Report (2026-02-21)](../verification-records/Theorem-1.1.1-Multi-Agent-Verification-2026-02-21.md) — 5 errors, 6 warnings identified; all 11 resolved (2026-02-21)
+- [Adversarial Physics Verification Script](../../../verification/Phase1/theorem_1_1_1_adversarial_verification.py) — 10/10 tests passed
 
 ## Statement
 
@@ -17,7 +31,7 @@ Previous: Critical 8↔6 bijection claim corrected to 6+2 structure (December 11
 - **Two apex vertices** (W, $\bar{W}$) represent the color-singlet direction orthogonal to weight space
 - The full **8-vertex structure** encodes both the fundamental weights AND the embedding dimension required for 3D realization
 
-This establishes a geometric isomorphism between the color charge space of QCD and the interpenetrating tetrahedra structure.
+More precisely, this establishes an **$S_3$-equivariant bijection** between the color vertices of the stella octangula and the weight vectors of $\mathbf{3} \oplus \bar{\mathbf{3}}$, where the equivariance is with respect to the Weyl group $W(\mathfrak{su}(3)) \cong S_3$ acting on weights and the vertex stabilizer $\text{Stab}_{S_4}(v_W) \cong S_3$ acting on the tetrahedron.
 
 ---
 
@@ -84,7 +98,7 @@ The anti-fundamental representation $\bar{\mathbf{3}}$ has weights that are the 
 
 ### 1.5 Geometric Structure in Weight Space
 
-**Key Observation:** The three quark weights form an **equilateral triangle** centered at the origin:
+**Key Observation:** The three quark weights form an **equilateral triangle** (in the Killing form metric; see §1.6) centered at the origin:
 
 $$\vec{w}_R + \vec{w}_G + \vec{w}_B = \left(\frac{1}{2} - \frac{1}{2} + 0, \frac{1}{3} + \frac{1}{3} - \frac{2}{3}\right) = (0, 0)$$
 
@@ -129,10 +143,10 @@ $$|\tilde{w}_B - \tilde{w}_R|^2_{Killing} = \frac{1}{12}\left[(1)^2 + \left(\fra
 
 **Alternative verification using root-weight geometry:**
 
-The SU(3) root system has 6 roots forming a regular hexagon. The fundamental weights satisfy:
-$$\vec{w}_c - \vec{w}_{c'} = \pm\frac{1}{2}(\text{root vector})$$
+The SU(3) root system has 6 roots forming a regular hexagon. The fundamental weight differences are **full root vectors**:
+$$\vec{w}_R - \vec{w}_G = \alpha_1, \quad \vec{w}_G - \vec{w}_B = \alpha_2, \quad \vec{w}_B - \vec{w}_R = -(\alpha_1 + \alpha_2)$$
 
-Since all roots of a simple Lie algebra have the **same Killing norm** (for SU(3), all roots are in the same Weyl orbit), the weight differences all have equal Killing length.
+Since all roots of SU(3) lie in a single Weyl orbit (the $A_2$ root system is simply laced), they all have the **same Killing norm**, so the weight differences all have equal Killing length.
 
 **Summary:** The triangle of quark weights is:
 - **Isosceles** in naive $(T_3, Y)$ Euclidean coordinates
@@ -166,13 +180,13 @@ $$P = I - \frac{1}{3}\vec{n}\vec{n}^T = \begin{pmatrix} 2/3 & -1/3 & -1/3 \\ -1/
 
 Applying this to the tetrahedron vertices and choosing appropriate basis vectors for the 2D subspace:
 
-**Tetrahedron 1 projects to:**
-- $(1,1,1) \to (0, 0)$ — center (color singlet)
+**Tetrahedron $T_+$ projects to:**
+- $(1,1,1) \to (0, 0)$ — apex maps to origin (color-singlet direction)
 - $(1,-1,-1) \to$ corresponds to Red weight
-- $(-1,1,-1) \to$ corresponds to Green weight  
+- $(-1,1,-1) \to$ corresponds to Green weight
 - $(-1,-1,1) \to$ corresponds to Blue weight
 
-Wait — one vertex maps to the center. This tells us something important: **we need to use the face centers or edge midpoints**, not vertices directly.
+This exhibits the **6+2 structure**: of the 4 vertices per tetrahedron, one (the apex along the projection axis) maps to the origin, while the remaining 3 map to the color weight positions. The 8 total vertices thus decompose as 6 color vertices + 2 singlet projections.
 
 ### 2.3 The Central Octahedral Region
 
@@ -226,12 +240,12 @@ A tetrahedron has 4 vertices, but the SU(3) fundamental representation has only 
 
 **Physical interpretation of the apex vertices:**
 
-The apex vertices W and $\bar{W}$ are NOT color charges in the fundamental representation. They represent:
+The apex vertices W and $\bar{W}$ are NOT color charges in the fundamental representation. Their roles are:
 
-1. **The singlet direction:** Orthogonal to the 2D weight space, corresponding to the trivial representation
-2. **The confinement scale:** The radial distance from the color plane encodes the "distance to color neutrality"
-3. **The gluon sector:** The adjoint representation (8 gluons) includes states at the origin of weight space
-4. **The embedding dimension:** Geometrically necessary to realize the equilateral triangle of weights in 3D
+1. **The singlet direction (proven):** Orthogonal to the 2D weight space, corresponding to the trivial representation
+2. **The embedding dimension (proven):** Geometrically necessary to realize the equilateral triangle of weights in 3D
+3. **The confinement scale (heuristic):** The radial distance from the color plane may encode the "distance to color neutrality" — this is a motivational interpretation, not a derived result
+4. **The gluon sector (heuristic):** The adjoint representation (8 gluons) includes states at the origin of weight space; the connection to apex vertices is suggestive but not rigorous (the two zero-weight gluon states form a 2D subspace, not two isolated points)
 
 When we project from 3D to the 2D weight space:
 $$\phi(v_W) = \phi(v_{\bar{W}}) = \vec{0}$$
@@ -264,6 +278,8 @@ Place $\Delta_+$ with vertices:
 $$v_0 = (0, 0, 1), \quad v_1 = \left(\frac{2\sqrt{2}}{3}, 0, -\frac{1}{3}\right), \quad v_2 = \left(-\frac{\sqrt{2}}{3}, \sqrt{\frac{2}{3}}, -\frac{1}{3}\right), \quad v_3 = \left(-\frac{\sqrt{2}}{3}, -\sqrt{\frac{2}{3}}, -\frac{1}{3}\right)$$
 
 The centroid is at the origin: $\frac{1}{4}(v_0 + v_1 + v_2 + v_3) = \vec{0}$.
+
+> **Parameterization note:** This tetrahedron is related to the $\{(\pm 1, \pm 1, \pm 1)\}$ parameterization used in §2.1 by a rotation and uniform scaling. Both are regular tetrahedra centered at the origin; the §2.1 form embeds naturally in the cube $[-1,1]^3$ with the [1,1,1] diagonal as the singlet axis, while the present form is chosen so that the apex $v_0$ lies along the $z$-axis, making the projection $\pi(x,y,z) = (x,y)$ particularly clean. The two are isometric up to scale: edge length $4\sqrt{2}/3$ here vs. $2\sqrt{2}$ in §2.1 (ratio $2/3$).
 
 **Step 2: Define the projection.**
 
@@ -323,33 +339,39 @@ The Weyl group is generated by two simple reflections:
 - $s_1$: reflection in hyperplane $H_{\alpha_1} = \{\vec{w} : \langle\vec{w}, \alpha_1\rangle = 0\}$
 - $s_2$: reflection in hyperplane $H_{\alpha_2} = \{\vec{w} : \langle\vec{w}, \alpha_2\rangle = 0\}$
 
-Using the simple roots $\alpha_1 = (1, 0)$ and $\alpha_2 = (-1/2, \sqrt{3}/2)$ in the $(T_3, Y\sqrt{3})$ basis where the Killing form is Euclidean:
+Using the simple roots $\alpha_1 = (1, 0)$ and $\alpha_2 = (-1/2, \sqrt{3}/2)$ in the $(T_3, T_8)$ basis where $T_8 = \lambda_8/2$. In this basis, the Killing metric is $B = 3 \cdot I_2$ (proportional to the identity), so the Weyl reflection formula with Euclidean inner product gives the same result as with the Killing form (the constant factor cancels in the ratio $\langle\vec{w}, \alpha\rangle / \langle\alpha, \alpha\rangle$).
+
+The weights in the $(T_3, T_8)$ basis are:
+$$\vec{w}_R = \left(\frac{1}{2}, \frac{1}{2\sqrt{3}}\right), \quad \vec{w}_G = \left(-\frac{1}{2}, \frac{1}{2\sqrt{3}}\right), \quad \vec{w}_B = \left(0, -\frac{1}{\sqrt{3}}\right)$$
+
+> **Convention note:** These are related to the $(T_3, Y)$ coordinates of §1.3 by $T_8 = Y \cdot \frac{\sqrt{3}}{2}$. The Lean 4 formalization uses this $(T_3, T_8)$ convention.
 
 The reflection formula is: $s_\alpha(\vec{w}) = \vec{w} - 2\frac{\langle\vec{w}, \alpha\rangle}{\langle\alpha, \alpha\rangle}\alpha$
 
 **Computation of $s_1$ on weights:**
-- $s_1(\vec{w}_R) = \vec{w}_R - 2\frac{1/2}{1}(1,0) = (1/2, 1/\sqrt{3}) - (1,0) = (-1/2, 1/\sqrt{3}) = \vec{w}_G$ ✓
+- $s_1(\vec{w}_R) = \vec{w}_R - 2\frac{1/2}{1}(1,0) = \left(\frac{1}{2}, \frac{1}{2\sqrt{3}}\right) - (1,0) = \left(-\frac{1}{2}, \frac{1}{2\sqrt{3}}\right) = \vec{w}_G$ ✓
 - $s_1(\vec{w}_G) = \vec{w}_G - 2\frac{-1/2}{1}(1,0) = \vec{w}_R$ ✓
 - $s_1(\vec{w}_B) = \vec{w}_B - 2\frac{0}{1}(1,0) = \vec{w}_B$ ✓
 
-**Computation of $s_2$ on weights:**
-- $s_2(\vec{w}_G) = \vec{w}_B$ ✓ (analogous calculation)
-- $s_2(\vec{w}_B) = \vec{w}_G$ ✓
-- $s_2(\vec{w}_R) = \vec{w}_R$ ✓
+**Computation of $s_2$ on weights (explicit):**
+- $\langle\vec{w}_G, \alpha_2\rangle = (-\frac{1}{2})(-\frac{1}{2}) + \frac{1}{2\sqrt{3}} \cdot \frac{\sqrt{3}}{2} = \frac{1}{4} + \frac{1}{4} = \frac{1}{2}$, $\;\langle\alpha_2, \alpha_2\rangle = \frac{1}{4} + \frac{3}{4} = 1$
+- $s_2(\vec{w}_G) = \left(-\frac{1}{2}, \frac{1}{2\sqrt{3}}\right) - 1 \cdot \left(-\frac{1}{2}, \frac{\sqrt{3}}{2}\right) = \left(0, \frac{1}{2\sqrt{3}} - \frac{\sqrt{3}}{2}\right) = \left(0, -\frac{1}{\sqrt{3}}\right) = \vec{w}_B$ ✓
+- $s_2(\vec{w}_B) = \vec{w}_G$ ✓ (analogous)
+- $s_2(\vec{w}_R) = \vec{w}_R$ ✓ ($\langle\vec{w}_R, \alpha_2\rangle = -\frac{1}{4} + \frac{1}{4} = 0$)
 
 **Part C: Tetrahedron Operations**
 
 On the tetrahedron (with apex $v_W$ fixed):
-- $\sigma_1$: rotation by $\pi$ about the axis through $v_W$ and midpoint of edge $v_R v_G$
-- $\sigma_2$: rotation by $\pi$ about the axis through $v_W$ and midpoint of edge $v_G v_B$
+- $\sigma_1$: reflection in the plane containing $v_W$, $v_B$, and the midpoint of edge $v_R v_G$
+- $\sigma_2$: reflection in the plane containing $v_W$, $v_R$, and the midpoint of edge $v_G v_B$
 
-These are well-defined isometries of the tetrahedron fixing $v_W$.
+These are well-defined isometries of the tetrahedron fixing $v_W$. Note that these are **reflections** (det = −1), consistent with the Weyl generators $s_1, s_2$ being reflections in weight space.
 
 **Verification that $\sigma_i$ induces $s_i$ under $\phi$:**
 
 The bijection $\phi$ (constructed in Steps 1-6) satisfies $\phi(v_c) = \vec{w}_c$ for $c \in \{R, G, B\}$.
 
-For $\sigma_1$: The rotation swaps $v_R \leftrightarrow v_G$ and fixes $v_B, v_W$.
+For $\sigma_1$: The reflection swaps $v_R \leftrightarrow v_G$ and fixes $v_B, v_W$.
 Under $\phi$: $\phi(\sigma_1(v_R)) = \phi(v_G) = \vec{w}_G = s_1(\vec{w}_R) = s_1(\phi(v_R))$ ✓
 
 This verifies the commutative diagram:
@@ -469,8 +491,8 @@ verifyMapping();
 ```
 Quark sum: (0, 0)
 Antiquark sum: (0, 0)
-Distances: RG=1.0000, GB=1.0000, BR=1.0000
-Equilateral: true
+Distances: RG=1.0000, GB=1.1180, BR=1.1180
+Equilateral: false
 Projected tetrahedron vertices:
 v1 -> (0.5774, 0.0000)
 v2 -> (-0.2887, 0.5000)
@@ -482,7 +504,7 @@ G  -> (-0.5000, 0.3333)
 B  -> (0.0000, -0.6667)
 ```
 
-**Note:** The projected tetrahedron gives an equilateral triangle, but with different orientation than the standard SU(3) convention. A rotation of the projection basis aligns them exactly.
+**Note on distances:** The `verifyEquilateral()` function computes **Euclidean** distances in the $(T_3, Y)$ coordinate system, which yields an **isosceles** triangle (RG = 1, GB = BR = $\sqrt{5}/2 \approx 1.118$). As explained in §1.6, the triangle is equilateral only in the **Killing form metric**. The projected tetrahedron gives an equilateral triangle in Euclidean metric, but with different orientation and scale than the SU(3) weights in $(T_3, Y)$ coordinates. The linear map $\mathbf{A}$ in §4.3 provides the exact transformation.
 
 ### 4.3 Explicit Coordinate Transformation to SU(3) Weight Space
 
@@ -522,10 +544,12 @@ Solving: $-\frac{\sqrt{2}}{3} \cdot \frac{3}{4\sqrt{2}} + b\sqrt{\frac{2}{3}} = 
 
 This gives $b = -\frac{1}{4}\sqrt{\frac{3}{2}} = -\frac{\sqrt{3}}{4\sqrt{2}}$
 
-Similarly: $d = \frac{1}{2\sqrt{6}}$
+For $d$: $-\frac{\sqrt{2}}{3} \cdot \frac{1}{2\sqrt{2}} + d\sqrt{\frac{2}{3}} = \frac{1}{3}$
+
+$$-\frac{1}{3} + d\sqrt{\frac{2}{3}} = \frac{1}{3} \implies d = \frac{2/3}{\sqrt{2/3}} = \frac{2}{3}\sqrt{\frac{3}{2}} = \frac{\sqrt{6}}{4} \approx 0.6124$$
 
 **The explicit transformation matrix:**
-$$\mathbf{A} = \begin{pmatrix} \frac{3}{4\sqrt{2}} & -\frac{\sqrt{3}}{4\sqrt{2}} \\ \frac{1}{2\sqrt{2}} & \frac{1}{2\sqrt{6}} \end{pmatrix} = \frac{1}{4\sqrt{2}} \begin{pmatrix} 3 & -\sqrt{3} \\ 2 & \frac{2}{\sqrt{3}} \end{pmatrix}$$
+$$\mathbf{A} = \begin{pmatrix} \frac{3}{4\sqrt{2}} & -\frac{\sqrt{3}}{4\sqrt{2}} \\ \frac{1}{2\sqrt{2}} & \frac{\sqrt{6}}{4} \end{pmatrix} = \frac{\sqrt{2}}{8} \begin{pmatrix} 3 & -\sqrt{3} \\ 2 & 2\sqrt{3} \end{pmatrix}$$
 
 **Step 4: Verification**
 
@@ -598,42 +622,27 @@ This completes the algebraic verification of Theorem 1.1.1. ∎
 
 ---
 
-*Revised: December 11, 2025 — Peer review fixes per verification prompts*
+*Revised: February 21, 2026 — All 11 issues from multi-agent adversarial verification resolved*
 
-**Changes from peer review:**
+**Changes (2026-02-21) — Multi-agent verification resolution:**
 
-1. **Issue 1 (Critical) — 6+2 structure clarified:**
-   - Revised theorem statement to distinguish 6 color vertices from 2 apex/singlet vertices
-   - Added Section 2.5 "The 6+2 Structure" explaining why 8 vertices map to 6 weights
-   - Updated formal claim to specify bijection is on color vertices only
-   - Added table with "In Fundamental Rep?" column
+| ID | Fix | Section |
+|----|-----|---------|
+| E-1 | Corrected §4.2 expected output: Euclidean distances are isosceles (RG=1, GB=BR≈1.118), not equilateral | §4.2 |
+| E-2 | Fixed transformation matrix entry $d = \sqrt{6}/4$ (was $1/(2\sqrt{6})$); corrected factored matrix | §4.3 |
+| E-3 | Weight differences are full root vectors, not half-roots | §1.6 |
+| E-4 | Basis label corrected to $(T_3, T_8)$ with $B = 3 \cdot I_2$; explicit $s_2$ computation added | Step 7B |
+| E-5 | Tetrahedron operations are reflections, not rotations | Step 7C |
+| W-1 | "Wait" interjection replaced with direct 6+2 presentation | §2.2 |
+| W-2 | Parameterization conversion note added | Step 1 |
+| W-3 | Convention bridge $(T_3, Y) \leftrightarrow (T_3, T_8)$ with $T_8 = Y \cdot \sqrt{3}/2$ | Step 7B |
+| W-4 | Speculative apex interpretations labeled "heuristic" | §2.5 |
+| W-5 | Killing metric qualification added to Key Observation | §1.5 |
+| W-6 | "Isomorphism" clarified as $S_3$-equivariant bijection | Statement |
 
-2. **Issue 2 (Warning) — Metric clarification:**
-   - Added Section 1.6 "Verification of Equilateral Structure"
-   - Clarified that equilateral property requires Killing form metric, not Euclidean
-   - Showed explicit calculation demonstrating isosceles in naive coordinates
-   - Explained that key properties (sum to zero, $S_3$ symmetry) hold regardless of metric
-
-3. **Issue 3 (Warning) — Weyl group generators:**
-   - Expanded Step 7 with explicit generator correspondence
-   - Listed $s_1, s_2$ actions on both weights and vertices
-   - Added verification table showing actions match
-
-4. **Issue 4 (Minor) — Rotation matrix:**
-   - Added Section 4.3 "Rotation to Align with SU(3) Convention"
-   - Provided explicit rotation matrix ($\theta = -\pi/6$)
-   - Added alignment table showing projected vertices match weights after rotation
-
-5. **Issue 5 (Critical) — Coordinate transformation corrected:**
-   - Replaced incorrect rotation-only approach with explicit linear isomorphism
-   - Derived transformation matrix $\mathbf{A}$ mapping projected vertices to SU(3) weights
-   - Verified all three vertices map exactly
-   - Explained why shearing (not just rotation) is required
+*Previous revision: December 13, 2025 — Peer review fixes per verification prompts*
 
 *Previous revision: December 11, 2025 — Stella octangula topology consistency fix*
-- Clarified that $\partial\mathcal{S} = \partial T_+ \sqcup \partial T_-$ is a disjoint union (two topologically separate components)
-- Replaced "intersection (Octahedron)" with "central octahedral region (geometric, not topological)"
-- Added clarification that $\partial T_+ \cap \partial T_- = \emptyset$ per Definition 0.1.1
 
 ---
 

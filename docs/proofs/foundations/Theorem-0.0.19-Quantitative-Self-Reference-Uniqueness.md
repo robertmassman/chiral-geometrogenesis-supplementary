@@ -14,6 +14,8 @@
 - Rigorous answer to "Why doesn't the bootstrap fall into Gödelian incompleteness?"
 - Foundation for understanding self-consistent physical laws
 - Mathematical distinction between constructive and paradoxical diagonal arguments
+- Proposition 0.0.28 (Theory Space Fixed Point) — provides the quantitative self-reference framework
+- Theorem 0.0.29 (Lawvere-DAG Uniqueness) — builds on quantitative vs. logical self-reference distinction
 
 ---
 

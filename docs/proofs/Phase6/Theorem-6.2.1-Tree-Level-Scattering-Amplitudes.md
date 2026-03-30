@@ -6,6 +6,12 @@
 **Last Updated:** 2026-01-31 — Additional documentation improvements
 **Purpose:** Derive tree-level scattering amplitudes for fundamental QCD processes from the CG Feynman rules, demonstrating that particle scattering is geometrically determined.
 
+**Dependencies:**
+- ✅ Theorem 6.1.1 (Complete Feynman Rules)
+- ✅ Theorem 3.1.1 (Chiral Drag Mass Formula)
+- ✅ Theorem 0.0.15 (Topological Derivation SU3)
+- ✅ Proposition 0.0.17s (Strong Coupling From Gauge Unification)
+
 ---
 
 ## 1. Formal Statement

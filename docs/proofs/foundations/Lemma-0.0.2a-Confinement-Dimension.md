@@ -1,6 +1,6 @@
 # Lemma 0.0.2a: Confinement and Physical Dimension Constraint
 
-## Status: ✅ VERIFIED — GEOMETRIC REALIZATION CONSTRAINT FOR SU(N)
+## Status: 🔶 NOVEL ✅ VERIFIED — GEOMETRIC REALIZATION CONSTRAINT FOR SU(N)
 
 > **Multi-Agent Peer Review (2026-01-02):** All issues from verification addressed:
 > - §3.1: Color superposition physics corrected (quarks ARE in superpositions)
@@ -19,6 +19,9 @@
 - ✅ Theorem 0.0.1 (D = 4 from observer existence)
 - ✅ Theorem 0.0.2 (Euclidean metric from SU(3))
 - ✅ QCD confinement (experimental fact)
+- ⚠️ **Physical Hypothesis 0.0.0f** (confinement requires d_embed = rank + 1) — now **derived** in [Proposition 0.0.40](Proposition-0.0.40-Embedding-Dimension-From-Confinement.md). This lemma operationalizes 0.0.0f by deriving the affine independence bound D_space ≥ N − 1 from the requirement that the Weyl group acts faithfully on a geometric realization. Note: Lemma 0.0.2a provides the lower bound (Part A) used in Prop 0.0.40's proof; the full derivation combines this with confinement (Part B) and single-coupling (Part C) to establish d_embed = rank + 1 exactly.
+
+> **Common Axiom Dependency (V3.9):** This lemma's dimensionality constraint (D_space ≥ N − 1) depends on the gauge↔geometry correspondence — the principle that gauge algebra structure determines spatial geometry — encoded in Definition 0.0.0's geometric realization axioms (GR1–GR3). Specifically, the affine independence requirement assumes that Weyl orbit vertices must embed in physical space. The same gauge↔geometry principle underlies the dimensionality results in [Theorem 0.0.2b](Theorem-0.0.2b-Dimension-Color-Correspondence.md) (D = N+1 via P5), [Proposition 0.0.40](Proposition-0.0.40-Embedding-Dimension-From-Confinement.md) (coupling→radial dimension), and [Theorem 0.0.6](Theorem-0.0.6-Spatial-Extension-From-Octet-Truss.md) (space-filling). These are valid consequences of a single common axiom, not convergent evidence from independent sources.
 
 ---
 
@@ -218,6 +221,7 @@ The constraint from this lemma is satisfied: D_space = N ≥ N - 1 ✓
 **Scripts:**
 - `verification/foundations/lemma_0_0_2a_verification.py` — Original verification (11/14 tests pass)
 - `verification/foundations/lemma_0_0_2a_derivations.py` — Comprehensive derivations and corrections
+- `verification/foundations/fc2_gauge_group_uniqueness_verification.py` — FC2 unified verification: tests this lemma's rank constraint (rank ≤ 2 from D_space = 3) as part of systematic elimination of all 35 compact simple Lie groups (9/9 tests pass)
 
 **Key Results:**
 1. ✅ Affine independence theorem verified for N = 2 to 6

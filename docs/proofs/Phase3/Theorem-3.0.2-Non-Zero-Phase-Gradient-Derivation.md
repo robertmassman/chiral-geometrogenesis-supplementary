@@ -204,38 +204,38 @@ Define the vector sum:
 $$\vec{S}(x) = \sum_c (x \cdot x_c)e^{i\phi_c}$$
 
 For the stella octangula vertices (with $|x_c| = 1$):
-$$x_R = \frac{1}{\sqrt{3}}(1, 1, 1), \quad x_G = \frac{1}{\sqrt{3}}(1, -1, -1), \quad x_B = \frac{1}{\sqrt{3}}(-1, 1, -1)$$
+$$x_R = \frac{1}{\sqrt{3}}(1, -1, -1), \quad x_G = \frac{1}{\sqrt{3}}(-1, 1, -1), \quad x_B = \frac{1}{\sqrt{3}}(-1, -1, 1)$$
 
 The inner products are:
-$$x \cdot x_R = \frac{x_1 + x_2 + x_3}{\sqrt{3}}, \quad x \cdot x_G = \frac{x_1 - x_2 - x_3}{\sqrt{3}}, \quad x \cdot x_B = \frac{-x_1 + x_2 - x_3}{\sqrt{3}}$$
+$$x \cdot x_R = \frac{x_1 - x_2 - x_3}{\sqrt{3}}, \quad x \cdot x_G = \frac{-x_1 + x_2 - x_3}{\sqrt{3}}, \quad x \cdot x_B = \frac{-x_1 - x_2 + x_3}{\sqrt{3}}$$
 
 With phases $e^{i\phi_R} = 1$, $e^{i\phi_G} = \omega = e^{i2\pi/3}$, $e^{i\phi_B} = \omega^2 = e^{i4\pi/3}$:
 
-$$\vec{S}(x) = \frac{1}{\sqrt{3}}\left[(x_1 + x_2 + x_3) + (x_1 - x_2 - x_3)\omega + (-x_1 + x_2 - x_3)\omega^2\right]$$
+$$\vec{S}(x) = \frac{1}{\sqrt{3}}\left[(x_1 - x_2 - x_3) + (-x_1 + x_2 - x_3)\omega + (-x_1 - x_2 + x_3)\omega^2\right]$$
 
 Grouping by components:
-$$\vec{S}(x) = \frac{1}{\sqrt{3}}\left[x_1(1 + \omega - \omega^2) + x_2(1 - \omega + \omega^2) + x_3(1 - \omega - \omega^2)\right]$$
+$$\vec{S}(x) = \frac{1}{\sqrt{3}}\left[x_1(1 - \omega - \omega^2) + x_2(-1 + \omega - \omega^2) + x_3(-1 - \omega + \omega^2)\right]$$
 
 Using $\omega = -\frac{1}{2} + i\frac{\sqrt{3}}{2}$ and $\omega^2 = -\frac{1}{2} - i\frac{\sqrt{3}}{2}$:
-$$1 + \omega - \omega^2 = 1 + (-\frac{1}{2} + i\frac{\sqrt{3}}{2}) - (-\frac{1}{2} - i\frac{\sqrt{3}}{2}) = 1 + i\sqrt{3}$$
-$$1 - \omega + \omega^2 = 1 - (-\frac{1}{2} + i\frac{\sqrt{3}}{2}) + (-\frac{1}{2} - i\frac{\sqrt{3}}{2}) = 1 - i\sqrt{3}$$
-$$1 - \omega - \omega^2 = 1 - (-\frac{1}{2} + i\frac{\sqrt{3}}{2}) - (-\frac{1}{2} - i\frac{\sqrt{3}}{2}) = 2$$
+$$1 - \omega - \omega^2 = 1 - (-1) = 2$$
+$$-1 + \omega - \omega^2 = -1 + (-\frac{1}{2} + i\frac{\sqrt{3}}{2}) - (-\frac{1}{2} - i\frac{\sqrt{3}}{2}) = -1 + i\sqrt{3}$$
+$$-1 - \omega + \omega^2 = -1 - (-\frac{1}{2} + i\frac{\sqrt{3}}{2}) + (-\frac{1}{2} - i\frac{\sqrt{3}}{2}) = -1 - i\sqrt{3}$$
 
 Therefore:
-$$\vec{S}(x) = \frac{1}{\sqrt{3}}\left[x_1(1 + i\sqrt{3}) + x_2(1 - i\sqrt{3}) + 2x_3\right]$$
+$$\vec{S}(x) = \frac{1}{\sqrt{3}}\left[2x_1 + (-1 + i\sqrt{3})x_2 + (-1 - i\sqrt{3})x_3\right]$$
 
 The magnitude squared:
-$$|\vec{S}(x)|^2 = \frac{1}{3}\left|x_1(1 + i\sqrt{3}) + x_2(1 - i\sqrt{3}) + 2x_3\right|^2$$
+$$|\vec{S}(x)|^2 = \frac{1}{3}\left|2x_1 + (-1 + i\sqrt{3})x_2 + (-1 - i\sqrt{3})x_3\right|^2$$
 
-Let $a = x_1(1 + i\sqrt{3}) + x_2(1 - i\sqrt{3}) + 2x_3$.
+Let $a = 2x_1 + (-1 + i\sqrt{3})x_2 + (-1 - i\sqrt{3})x_3$.
 
 Then:
 $$|a|^2 = \text{Re}[a]^2 + \text{Im}[a]^2$$
-$$\text{Re}[a] = x_1 + x_2 + 2x_3$$
-$$\text{Im}[a] = \sqrt{3}(x_1 - x_2)$$
+$$\text{Re}[a] = 2x_1 - x_2 - x_3$$
+$$\text{Im}[a] = \sqrt{3}(x_2 - x_3)$$
 
 So:
-$$|a|^2 = (x_1 + x_2 + 2x_3)^2 + 3(x_1 - x_2)^2$$
+$$|a|^2 = (2x_1 - x_2 - x_3)^2 + 3(x_2 - x_3)^2$$
 
 **Key observation:** This is quadratic in the components $x_i$, hence:
 $$|\vec{S}(x)|^2 = \frac{1}{3}|a|^2 = O(|x|^2)$$

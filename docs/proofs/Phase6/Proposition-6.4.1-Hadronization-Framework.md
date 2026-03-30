@@ -31,6 +31,13 @@ These are *not* fitted — they derive from the geometric origin R_stella = 0.44
 
 **Limitations:** Peterson fragmentation parameters and quantitative strangeness suppression are outside CG scope (see §10.1).
 
+**Dependencies:**
+- ✅ Theorem 3.1.1 (Chiral Drag Mass Formula)
+- ✅ Theorem 2.1.2 (Pressure Field Gradient)
+- ✅ Proposition 0.0.17j (String Tension From Casimir Energy)
+- ✅ Proposition 0.0.17m (Chiral VEV From Phase Lock Stiffness)
+- ✅ Proposition 6.3.1 (One-Loop QCD Corrections)
+
 ---
 
 ## 1. Formal Statement

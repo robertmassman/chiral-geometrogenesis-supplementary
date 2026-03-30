@@ -1,6 +1,6 @@
 # Definition 0.1.3: Pressure Functions from Geometric Opposition
 
-## Status: ✅ COMPLETE — FOUNDATIONAL (Verified December 11, 2025)
+## Status: 🔶 NOVEL — PRESSURE FUNCTIONS FROM GEOMETRIC OPPOSITION
 
 **Peer Review Notes (December 11, 2025):** Independent mathematical verification confirmed all geometric calculations, pressure function properties, and phase-lock behavior. All open questions resolved with cross-references to Definition 0.1.1 §12.6 for physical parameter determination.
 
@@ -12,9 +12,24 @@
 - Standard 3D Euclidean geometry and calculus
 
 **What This Definition Enables:**
+- Definition 0.1.4 (Color Field Domains)
+- Theorem 0.0.10
 - Theorem 0.2.1 (Total Field from Superposition)
+- Theorem 0.2.2 (Internal Time Parameter Emergence)
 - Theorem 0.2.3 (Stable Convergence Point)
+- Theorem 0.2.4 (Pre-Geometric Energy Functional)
 - Theorem 3.0.1 (Pressure-Modulated VEV)
+- Theorem 3.0.2
+- Theorem 3.1.2
+- Theorem 4.1.4
+- Theorem 5.1.1
+- Theorem 5.2.0
+- Corollary 3.1.3
+- Definition 4.1.5
+- Lemma 2.1.3
+- Proposition 0.0.5b
+- Proposition 8.5.1
+- **Proposition 0.1.3a** (Pressure Function Form-Independence) — Proves all 17 downstream files are form-independent under axioms (P1)–(P7)
 
 ---
 
@@ -52,16 +67,16 @@ The stella octangula consists of two **topologically separate** interpenetrating
 In a coordinate system centered at the origin with unit edge length $L = 1$:
 
 **Tetrahedron $T_+$ (Quark colors R, G, B + singlet W):**
-$$x_R = \frac{1}{\sqrt{3}}\left(1, 1, 1\right)$$
-$$x_G = \frac{1}{\sqrt{3}}\left(1, -1, -1\right)$$
-$$x_B = \frac{1}{\sqrt{3}}\left(-1, 1, -1\right)$$
-$$x_W = \frac{1}{\sqrt{3}}\left(-1, -1, 1\right)$$
+$$x_R = \frac{1}{\sqrt{3}}\left(1, -1, -1\right)$$
+$$x_G = \frac{1}{\sqrt{3}}\left(-1, 1, -1\right)$$
+$$x_B = \frac{1}{\sqrt{3}}\left(-1, -1, 1\right)$$
+$$x_W = \frac{1}{\sqrt{3}}\left(1, 1, 1\right)$$
 
 **Tetrahedron $T_-$ (Anti-quark colors $\bar{R}$, $\bar{G}$, $\bar{B}$ + anti-singlet $\bar{W}$):**
-$$x_{\bar{R}} = \frac{1}{\sqrt{3}}\left(-1, -1, -1\right) = -x_R$$
-$$x_{\bar{G}} = \frac{1}{\sqrt{3}}\left(-1, 1, 1\right) = -x_G$$
-$$x_{\bar{B}} = \frac{1}{\sqrt{3}}\left(1, -1, 1\right) = -x_B$$
-$$x_{\bar{W}} = \frac{1}{\sqrt{3}}\left(1, 1, -1\right) = -x_W$$
+$$x_{\bar{R}} = \frac{1}{\sqrt{3}}\left(-1, 1, 1\right) = -x_R$$
+$$x_{\bar{G}} = \frac{1}{\sqrt{3}}\left(1, -1, 1\right) = -x_G$$
+$$x_{\bar{B}} = \frac{1}{\sqrt{3}}\left(1, 1, -1\right) = -x_B$$
+$$x_{\bar{W}} = \frac{1}{\sqrt{3}}\left(-1, -1, -1\right) = -x_W$$
 
 ### 2.2 Geometric Properties
 
@@ -79,18 +94,31 @@ $$\cos\theta_{cc'} = x_c \cdot x_{c'} = -\frac{1}{3} \quad \Rightarrow \quad \th
 
 ---
 
-## 3. Derivation of the Pressure Function Form
+## 3. The Pressure Function Form
 
-### 3.1 Physical Motivation
+### 3.1 Axiomatic vs. Realized Pressure Functions
 
-The pressure function $P_c(x)$ represents the "influence" of the color field centered at vertex $x_c$ on a point $x$ in the interior. We require:
+> **Assumption A-PF (Pressure Function Realization):** The specific inverse-square form $P_c(x) = 1/(|x - x_c|^2 + \epsilon^2)$ is a **modeling choice** — one particular realization of the abstract pressure axioms (P1)–(P5) defined in Definition 0.1.1 §8. It is selected for computational convenience and consistency with lattice QCD dual superconductor profiles, but the physics depends only on the abstract axioms, not this specific form.
 
-1. **Locality:** Influence decreases with distance from the vertex
-2. **Regularity:** No singularities at finite points
-3. **Symmetry:** Respects the SU(3) structure of the stella octangula
-4. **Energy Boundedness:** Total energy remains finite
+The pressure function $P_c(x)$ represents the "influence" of the color field centered at vertex $x_c$ on a point $x$ in the interior. The *physical content* is captured by five abstract axioms (P1)–(P5) from Definition 0.1.1 §8:
 
-### 3.2 Why Inverse-Square?
+| Axiom | Statement |
+|-------|-----------|
+| **(P1)** Maximum at source | $P_c(v_c) = P_{max}$ (global maximum) |
+| **(P2)** Minimum at antipode | $P_c(v_{\bar{c}}) = P_{min}$ (global minimum) |
+| **(P3)** Symmetry | $P_c$ respects $S_3$ color permutation symmetry |
+| **(P4)** Smoothness | $P_c$ is continuous on $\partial\mathcal{S}$ |
+| **(P5)** Monotonicity | $P_c$ strictly decreases along paths from $v_c$ to $v_{\bar{c}}$ |
+
+**Theorem 8.4.1 (Realization Independence)** in Definition 0.1.1 §8.4 proves that all realizations satisfying (P1)–(P5) yield identical physical predictions for: phase cancellation at the centroid, field localization at vertices, topological winding numbers, and emergent spacetime geometry. Quantitative differences between realizations are absorbed into phenomenological parameters $\epsilon$ and $R_{stella}$.
+
+**[Proposition 0.1.3a](Proposition-0.1.3a-Pressure-Function-Form-Independence.md) (Form-Independence)** extends this result to all 17 downstream files, proving that the complete G1 prediction chain is form-independent under the extended axioms (P1)–(P7) (which add radial dependence and square-integrability to the original five axioms). The specific $1/r^2$ form is one member of an infinite realization equivalence class.
+
+**The specific form $P_c(x) = 1/(|x - x_c|^2 + \epsilon^2)$ is therefore not load-bearing** — it is selected as the simplest realization satisfying (P1)–(P7) that additionally matches lattice QCD profiles. Any alternative realization satisfying the same axioms would yield the same physics.
+
+### 3.2 Motivation for the Inverse-Square Realization
+
+The following arguments motivate *why* the $1/r^2$ form is a natural and well-motivated choice among the (infinitely many) valid realizations of (P1)–(P5). These are **reasons for selecting** this realization, not derivations that force it uniquely.
 
 **Argument 1: Geometric Spreading**
 
@@ -106,7 +134,7 @@ $$\nabla^2 G = -\delta^{(3)}(x - x_c)$$
 the fundamental solution in 3D is (see [Jackson, *Classical Electrodynamics*](https://en.wikipedia.org/wiki/Classical_Electrodynamics_(book)), §1.7; or [Wikipedia: Green's function for the three-variable Laplace equation](https://en.wikipedia.org/wiki/Green%27s_function_for_the_three-variable_Laplace_equation)):
 $$G(x) = \frac{1}{4\pi|x - x_c|}$$
 
-This is the **inverse-distance** (1/r) form—the same as the electrostatic potential of a point charge in 3D, since $\nabla^2 \phi = -\rho/\epsilon_0$ has the same structure. For pressure functions, we instead adopt an **inverse-square** (1/r²) form for two reasons:
+This is the **inverse-distance** (1/r) form. For pressure functions, we instead adopt an **inverse-square** (1/r²) form for two reasons:
 
 1. **Energy density consideration:** In field theory, energy density scales as $|\nabla\phi|^2$. For $\phi \sim 1/r$, we have $|\nabla\phi|^2 \sim 1/r^4$, which integrates to give finite energy. The pressure function $P \sim 1/r^2$ gives $P^2 \sim 1/r^4$, ensuring the same convergence properties.
 
@@ -117,7 +145,9 @@ $$P_c(x) = \frac{1}{|x - x_c|^2 + \epsilon^2}$$
 
 removes the singularity at $x = x_c$ while preserving the correct asymptotic behavior $P \sim 1/r^2$ for $r \gg \epsilon$.
 
-**Argument 3: Consistency with Cornell Potential**
+**Argument 3: Consistency with Cornell Potential** *(illustrative, not foundational)*
+
+> **Note:** This argument provides an *a posteriori* consistency check between the chosen realization and known QCD phenomenology. It is **not** part of the pre-geometric logical chain — the Cornell potential is an empirical result from QCD, not a first-principles input. The mathematical motivation for the $1/r^2$ form rests on Arguments 1–2 (geometric spreading and Green's function structure).
 
 The [Cornell potential](https://en.wikipedia.org/wiki/Cornell_potential) for quark-antiquark interactions combines a short-range Coulomb term with long-range linear confinement:
 $$V(r) = -\frac{\alpha_s}{r} + \sigma r$$
@@ -125,7 +155,7 @@ $$V(r) = -\frac{\alpha_s}{r} + \sigma r$$
 where $\alpha_s$ is the strong coupling and $\sigma \approx 0.18$ GeV² is the string tension. The force (negative gradient) is:
 $$F(r) = -\frac{dV}{dr} = -\frac{\alpha_s}{r^2} + \sigma$$
 
-At short distances ($r \lesssim 0.1$ fm), the Coulombic term dominates, giving an inverse-square force. This motivates our inverse-square pressure form for the short-range influence of color sources.
+At short distances ($r \lesssim 0.1$ fm), the Coulombic term dominates, giving an inverse-square force. This provides a consistency check: the chosen realization matches the short-range QCD force profile.
 
 > **Note:** The MIT Bag Model uses a *constant* bag pressure $B \approx (145-220 \text{ MeV})^4$ that does not vary with position. Our inverse-square form differs from the bag model but is consistent with the Coulombic component of the Cornell potential and the Green's function structure (Argument 2).
 
@@ -388,7 +418,7 @@ This implements exactly Definition 0.1.3 with:
 
 **Definition 0.1.3 establishes:**
 
-1. ✅ **Explicit form:** $P_c(x) = \frac{1}{|x - x_c|^2 + \epsilon^2}$
+1. ✅ **Explicit form:** $P_c(x) = \frac{1}{|x - x_c|^2 + \epsilon^2}$ (modeling choice — Assumption A-PF; physics depends on axioms (P1)–(P5) per Theorem 8.4.1)
 2. ✅ **Vertex positions:** Derived from stella octangula geometry
 3. ✅ **Equal center pressure:** $P_R(0) = P_G(0) = P_B(0)$
 4. ✅ **Antipodal minimum:** Pressure from $c$ is minimal at $\bar{c}$
@@ -465,7 +495,7 @@ The total system (stella octangula) includes both, but individual hadrons use on
 ### Cross-References
 
 1. **Vertex coordinates** (§2.1) use exactly the same positions as Definition 0.1.1 §2.2:
-   - $x_R = (1,1,1)/\sqrt{3}$, $x_G = (1,-1,-1)/\sqrt{3}$, $x_B = (-1,1,-1)/\sqrt{3}$, $x_W = (-1,-1,1)/\sqrt{3}$
+   - $x_R = (1,-1,-1)/\sqrt{3}$, $x_G = (-1,1,-1)/\sqrt{3}$, $x_B = (-1,-1,1)/\sqrt{3}$, $x_W = (1,1,1)/\sqrt{3}$
    - Anti-vertices are negatives: $x_{\bar{c}} = -x_c$
 
 2. **Tetrahedral angle** (§2.2, Property 3) matches Definition 0.1.1 §2.2:
@@ -485,7 +515,7 @@ The total system (stella octangula) includes both, but individual hadrons use on
 
 | Potential Issue | Risk | Resolution |
 |-----------------|------|------------|
-| **Pressure function form** | LOW | Inverse-square with regularization is physically motivated (§3.2) by geometric spreading and Cornell potential |
+| **Pressure function form** | LOW | Explicitly declared as modeling choice (Assumption A-PF, §3.1). Physics depends on axioms (P1)–(P5), not the $1/r^2$ form (Theorem 8.4.1 in Def. 0.1.1 §8.4) |
 | **ε value discrepancy** | LOW | Explicitly noted that visualization ($\epsilon=0.05$) differs from physical value ($\epsilon \approx 0.50$) |
 | **Anti-color treatment** | LOW | Now resolved: disjoint union topology naturally separates matter/antimatter |
 | **Energy density form** | LOW | §5 uses $\rho = \sum_c |a_c|^2$ consistent with Theorem 0.2.1 |
@@ -588,8 +618,9 @@ None. All mathematical claims verified.
 *Status: ✅ COMPLETE — Foundational definition with all questions resolved*
 
 *Created: December 2025*
-*Last Updated: December 15, 2025*
+*Last Updated: February 22, 2026*
 *Verified: December 11, 2025 — Independent mathematical verification passed; Consistency Verification (§11) and Verification Record (§12) added per CLAUDE.md requirements*
 *Peer Review: December 11, 2025 — Three-agent verification (Mathematical, Physics, Framework Consistency) completed; minor clarifications applied to §5.2 and §12*
 *Correction: December 13, 2025 — MIT Bag Model claim corrected; replaced with Cornell potential argument per multi-agent verification finding*
 *Addition: December 15, 2025 — Section 7 (Vertex-Face Pressure Duality) added, establishing mathematical foundation for face-based color domain interpretation*
+*V1 Audit Remediation: February 22, 2026 — S3 resolved: inverse-square form explicitly declared as modeling choice (Assumption A-PF); §3 restructured to separate axiomatic content from realization choice; cross-reference to Theorem 8.4.1 added. S5 resolved: Cornell potential argument flagged as illustrative, not foundational.*

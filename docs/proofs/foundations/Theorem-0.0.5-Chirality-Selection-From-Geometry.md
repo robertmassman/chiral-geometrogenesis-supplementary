@@ -20,9 +20,13 @@
 - Theorem 2.2.4 (Anomaly-Driven Chirality Selection) ✅
 
 **Enables:**
+- Proposition 0.0.5a (Z₃ Center Constrains θ-Angle) — Strong CP resolution via Z₃ superselection
+- Proposition 0.0.17z1
+- Proposition 0.0.22
 - Theorem 2.3.1 (Universal Chirality Origin) — provides geometric basis
+- Theorem 2.4.1 (Gauge Unification from Geometric Symmetry)
 - Theorem 2.4.2 (Topological Chirality from Stella Orientation)
-- **Proposition 0.0.5a (Z₃ Center Constrains θ-Angle)** — Strong CP resolution via Z₃ superselection
+- Theorem 6.7.1
 
 ---
 

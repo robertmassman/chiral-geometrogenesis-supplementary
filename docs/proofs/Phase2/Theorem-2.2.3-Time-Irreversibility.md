@@ -4,6 +4,11 @@
 
 **Purpose:** Prove that the three-phase color field system breaks time-reversal symmetry (T-symmetry), providing a rigorous mathematical derivation, stability analysis, entropy production framework, and physical interpretation.
 
+**Dependencies:**
+- ✅ Theorem 0.2.2 (Internal Time Emergence)
+- ✅ Theorem 2.2.1 (Phase Locked Oscillation)
+- ✅ Theorem 2.2.2 (Limit Cycle)
+
 **Key Result:** The arrow of time has a **QCD topological origin**:
 $$\boxed{\text{SU(3) topology} \to |\alpha| = \frac{2\pi}{3} \to \text{Explicit T-breaking} \to \text{Arrow of time}}$$
 
@@ -1011,7 +1016,7 @@ This establishes **microscopic irreversibility** in the three-oscillator system.
 The theorem provides a **foundation** for the thermodynamic arrow, not a complete derivation.
 
 **Research Roadmap:** For a detailed analysis of what is needed to complete the connection, including literature review and milestone planning, see:
-→ [`docs/research-roadmaps/Macroscopic-Arrow-of-Time-Roadmap.md`](../research-roadmaps/Macroscopic-Arrow-of-Time-Roadmap.md)
+→ [`docs/proofs/supporting/Macroscopic-Arrow-of-Time-Roadmap.md`](../supporting/Macroscopic-Arrow-of-Time-Roadmap.md)
 
 ---
 

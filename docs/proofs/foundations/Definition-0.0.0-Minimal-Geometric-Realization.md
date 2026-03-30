@@ -1,12 +1,12 @@
 # Definition 0.0.0: Minimal Geometric Realization of a Lie Group
 
-## Status: 🔶 NOVEL — FOUNDATIONAL FOR UNIQUENESS PROOFS
+## Status: 🔶 NOVEL ✅ VERIFIED — FOUNDATIONAL FOR UNIQUENESS PROOFS
 
 **Purpose:** This definition provides the formal mathematical framework for proving that the stella octangula is the unique minimal geometric realization of SU(3).
 
 **Dependencies:** None (foundational definition)
 
-**Used By:** Theorem 0.0.3 (Stella Octangula Uniqueness)
+**Used By:** Theorem 0.0.0a, Theorem 0.0.1, Theorem 0.0.3 (Stella Octangula Uniqueness), Theorem 0.0.4, Theorem 0.0.12, Theorem 0.0.13, Theorem 0.0.16, Theorem 0.1.0, Proposition 0.0.6b, Proposition 0.0.22, Proposition 3.1.2b
 
 **Peer Review:**
 - 2026-01-19 — Comprehensive revision addressing verification report findings:
@@ -41,23 +41,144 @@ Let $G$ be a compact simple Lie group with Lie algebra $\mathfrak{g}$. A **geome
 
 satisfying:
 
-**(GR1) Weight Correspondence:** The image $\iota(\mathcal{V}(\mathcal{P}))$ contains all weights of the fundamental representation of $G$ and its conjugate (anti-fundamental).
+**(GR1) Weight Correspondence:** The image $\iota(\mathcal{V}(\mathcal{P}))$ contains all weights of the fundamental representation of $G$ and its conjugate (anti-fundamental). *(Supporting input F2 — derivable from GR3 + CPT; see Proposition 0.0.0h in §1.1)*
 
 **(GR2) Symmetry Preservation:** For all $\sigma \in \text{Aut}(\mathcal{P})$ and $v \in \mathcal{V}(\mathcal{P})$:
 $$\iota(\sigma(v)) = \phi(\sigma) \cdot \iota(v)$$
 
 **(GR3) Conjugation Compatibility:** If $G$ has a charge conjugation automorphism $C$, there exists an involution $\tau \in \text{Aut}(\mathcal{P})$ such that:
 $$\iota(\tau(v)) = -\iota(v) \quad \forall v \in \mathcal{V}(\mathcal{P})$$
+*(Supporting input F3 — for SU(3), derivable from the fundamental representation being complex: $\mathbf{3} \ncong \bar{\mathbf{3}}$; see Proposition 0.0.0i in §1.1)*
 
 A geometric realization is **minimal** if (in lexicographic order):
 
-**(MIN1) Vertex Minimality:** $|\mathcal{V}(\mathcal{P})|$ is the smallest among all geometric realizations of $G$.
+**(MIN1) Vertex Minimality:** $|\mathcal{V}(\mathcal{P})|$ is the smallest among all geometric realizations of $G$. *(Supporting input F4 — fully redundant; the stella is independently selected by maximal symmetry, root lattice compatibility, and maximal regularity; see §1.1)*
 
 **(MIN2) Weight Space Dimension Minimality:** The weight space span $\dim(\text{span}(\iota(\mathcal{V})))$ equals $\text{rank}(G)$ (the theoretical minimum).
 
 **(MIN3) Edge Minimality:** Subject to (MIN1) and (MIN2), the number of edges $|\mathcal{E}(\mathcal{P})|$ is minimal.
 
 > **Clarification on Dimensions:** MIN2 refers to the dimension of the weight space span, which equals rank$(G)$. This is distinct from the **physical embedding dimension** (where the polyhedron $\mathcal{P}$ lives in $\mathbb{R}^n$), which may be larger. See Physical Hypothesis 0.0.0f for the relationship.
+
+---
+
+## 1.1 Axiom Hierarchy: Core vs Supporting Inputs
+
+> **Context:** The [G1 Adversarial Stress-Test](../reviews/G1/G1-Adversarial-Stress-Test-Findings.md) (2026-02-23) performed systematic removal cascade analysis on all 8 framework inputs. This section classifies them by logical necessity, implementing Recommendation 1 of the stress-test findings.
+
+The framework's geometric foundation rests on **2 irreducible physical axioms** (I1 and Simplicity). The table below retains FI and F5 in the "Core" section for historical and pedagogical reasons — they were the original irreducible set — while noting their current derived status. The remaining **6 supporting/derived inputs** provide alternative derivation paths and redundant confirmation but are not logically necessary.
+
+### Core Inputs (Irreducible)
+
+| Label | Input | Role | Removal Impact |
+|-------|-------|------|----------------|
+| **I1** | Physical consistency → D = 4 | Selects spacetime dimension via two independent streams: (A) observer existence — stable orbits + stable atoms, and (B) dynamical selection — CDT, Brandenberger-Vafa, Feng, Carlip | **Cascade depth 3** — rank constraint → SU(3) uniqueness lost. Over-determined: even if Stream A (anthropic) is rejected, Stream B (dynamical) independently establishes D = 4. See [Theorem 0.0.1](Theorem-0.0.1-D4-From-Observer-Existence.md). |
+| **FI** | Finite information content | The pre-geometric substrate is specifiable by finite information (Bekenstein bound, holographic principle, computational definability) | **Now derived** from I1 + PII$_{\text{op}}$ (or CD) — see [Theorem 0.0.0c](Theorem-0.0.0c-Finite-Information-From-Observer-Existence.md). Combined with A1–A4, derives F1 as a theorem ([Theorem 0.0.0b](Theorem-0.0.0b-Geometric-Realization-From-Finite-Information.md)). Retained in Core table as intermediate derivation step. |
+| **F5** | Compact simple gauge group | $G$ is compact and simple (Cartan restriction) | **Cascade depth 2** — without simplicity, product groups like SU(3)×SU(2)×U(1) become viable at the G1 level. **Compactness now derived** from I1 via FI → finite substrate → normalizable Haar measure ([Thm 0.0.0c, Prop 6.3.1](Theorem-0.0.0c-Finite-Information-From-Observer-Existence.md)). **Simplicity remains irreducible** (counterexample: SU(2)×SU(2) satisfies all I1-derived constraints; [Thm 0.0.0c, Prop 6.3.2](Theorem-0.0.0c-Finite-Information-From-Observer-Existence.md)). Justified by 3 experimental arguments: single confinement scale, single $N$-ality, uniform flux tube tension. **Relaxed in later phases:** the full SM gauge group emerges via the polytope embedding chain in [Thm 6.7.1](../Phase6/Theorem-6.7.1-Electroweak-Gauge-Fields-From-24-Cell.md), [Thm 6.7.2](../Phase6/Theorem-6.7.2-Electroweak-Symmetry-Breaking-Dynamics.md), and [Thm 0.0.4](Theorem-0.0.4-GUT-Structure-From-Stella-Octangula.md). |
+
+### Derived Inputs (Previously Irreducible)
+
+| Label | Input | Previous Status | Derivability | Reference |
+|-------|-------|----------------|-------------|-----------|
+| **F1** | Geometric realization postulate | **Was irreducible** | **Now derived:** FI (finite information) + A1–A4 (gauge invariance, CPT, confinement, faithfulness) → finite polyhedral complex satisfying GR1–GR3. The gauge group has a physical polyhedral realization not by fiat, but because finite-information substrates with gauge symmetry are necessarily polyhedral complexes. | [Theorem 0.0.0b](Theorem-0.0.0b-Geometric-Realization-From-Finite-Information.md) |
+
+### Supporting Inputs (Derivable or Redundant)
+
+| Label | Input | Formal Role | Derivability | Reference |
+|-------|-------|-------------|-------------|-----------|
+| **F2** | Fund + anti-fund representation (GR1) | Requires $\iota(\mathcal{V})$ to contain all weights of $\mathbf{N} \oplus \bar{\mathbf{N}}$ | **Derivable:** GR3 + fund weights present → GR1. Formally proven in Proposition 0.0.0h below. CPT theorem provides physical justification for GR3. | Proposition 0.0.0h; Stress-test §A4.4 |
+| **F3** | Chirality geometrically encoded (GR3) | Involution $\tau$ with $\iota(\tau(v)) = -\iota(v)$ | **Derivable (for SU(3)):** The fundamental representation is complex ($\mathbf{3} \ncong \bar{\mathbf{3}}$), so any compound-structured realization satisfying GR1+GR2 automatically satisfies GR3. Formally proven in Proposition 0.0.0i below. | Proposition 0.0.0i; Stress-test §A4.5 |
+| **F4** | Minimal vertex count (MIN1) | Selects stella over alternatives with >8 vertices | **Fully redundant:** The stella is over-determined by 3 independent selection criteria: (i) maximal symmetry ($O_h$, order 48), (ii) root lattice compatibility, (iii) maximal regularity. MIN1 is one of several equivalent routes to the same conclusion. | Stress-test §A4.6 |
+| **I3** | Fisher information metric (Axiom A0') | Provides Path C to SU(3) via information geometry; derives field existence from distinguishability | **Not redundant per se, but non-load-bearing:** Paths A (geometric) and B (topological) to SU(3) survive without I3. Field existence reverts to postulate status. See [Proposition 0.0.17b](Proposition-0.0.17b-Fisher-Information-Metric-Derivation.md). | Stress-test §A4.2 |
+| **F6** | Vertex-transitivity (FCC uniqueness) | Selects FCC lattice over HCP | **Fully redundant:** HCP is excluded by 3 independent SU(3)-based arguments: (i) $\mathbb{Z}_3$ center symmetry (FCC has $\mathbb{Z}_3 \subset O_h$; HCP has only $\mathbb{Z}_2$ in $D_{3h}$), (ii) phase coherence (FCC stacking ABC yields 3 distinct phases; HCP ABAB only 2), (iii) chiral distinction. See [Theorem 0.0.6](Theorem-0.0.6-FCC-Lattice-Construction.md). | Stress-test §A4.8 |
+
+### Interpretation
+
+The **true irreducible axiom count is 2**, not 8. The reduction chain: F1 is derived from FI + A1–A4 ([Thm 0.0.0b](Theorem-0.0.0b-Geometric-Realization-From-Finite-Information.md)); FI is derived from I1 + PII$_{\text{op}}$ ([Thm 0.0.0c](Theorem-0.0.0c-Finite-Information-From-Observer-Existence.md)); the compactness component of F5 is derived from I1 via FI → finite substrate → normalizable gauge theory ([Thm 0.0.0c, Prop 6.3.1](Theorem-0.0.0c-Finite-Information-From-Observer-Existence.md)). The irreducible *physical* axiom set is **{I1, S}**, where S (Simplicity) is the remaining content of F5: *the foundational gauge group is simple, not a direct product*. The remaining inputs are retained in the formal presentation because they:
+
+1. **Provide independent derivation paths** — Multiple routes to the same conclusion increase confidence and enable cross-checks
+2. **Make the logical structure transparent** — Stating GR1, GR3, MIN1 explicitly clarifies what the geometric realization entails, even though each can be derived
+3. **Serve as consistency checks** — If any supporting input were to conflict with the core inputs, this would signal an internal inconsistency
+
+The derivation chain for F1 is: FI (finite information) → finite discrete structure (Lemma 0.0.0b.1) → gauge-labeled vertices with Weyl equivariance (Lemma 0.0.0b.2, using A1+A4) → polyhedral complex (Lemma 0.0.0b.3) → GR1–GR3 satisfied (Theorem 0.0.0, using A1–A4). See [Theorem 0.0.0b](Theorem-0.0.0b-Geometric-Realization-From-Finite-Information.md) for the complete proof.
+
+The conditions GR1, GR2, GR3 in §1 above should be read as: **GR2 is the core geometric realization condition (derived from FI + A1–A4 via Theorem 0.0.0b)**, while **GR1 (F2) and GR3 (F3) are supporting conditions that can be derived** from the gauge group structure and CPT symmetry respectively. Similarly, **MIN1 (F4) is a supporting selection criterion** that is over-determined by independent arguments.
+
+### Epistemic Note: The Axiom Package as a Definition Space
+
+> **V4.15 Transparency Note:** The conditions GR1–GR3 + MIN1–MIN3 collectively define a *search space* within which the stella octangula is the unique solution (Theorems 0.0.3, 0.0.3b). The uniqueness results are conditional on this axiom package — alternative axiom sets could in principle select different objects. This is not circular reasoning (the derivations within the search space are mathematically rigorous), but the axiom selection does significant work that should not be conflated with the derivation itself. The following addresses three concrete alternative axiom sets:
+>
+> 1. **Adjoint representation instead of fundamental (GR1).** Replacing GR1 with "vertices correspond to weights of the adjoint **8**" would change the vertex count and potentially select a different polyhedron. However, GR1 is not an independent axiom — it is derivable from GR3 + CPT (Proposition 0.0.0h below). The fundamental + conjugate representation is forced by charge conjugation symmetry, not chosen by fiat.
+>
+> 2. **Drop minimality (MIN1–MIN3).** Without minimality, any polyhedron with ≥8 vertices satisfying GR1–GR3 would qualify. However, MIN1 is fully redundant: the stella is independently selected by maximal symmetry ($O_h$), root lattice compatibility, and maximal regularity (see Theorem 0.0.3 §5.1.1). Any natural selection criterion converges on the same object.
+>
+> 3. **Simplicial complexes instead of polyhedra.** The polyhedral restriction in F1 is the genuine irreducible choice. The stella octangula *is* a simplicial complex, so it would survive this generalization. Whether other simplicial complexes with the same vertex-weight structure could also satisfy GR1–GR3 is an open question — the combinatorial constraints (8 vertices, $S_3 \times \mathbb{Z}_2$ symmetry, weight equivariance) are highly restrictive, but an exhaustive classification of all finite simplicial complexes satisfying GR1–GR3 has not been performed.
+>
+> **Summary:** The irreducible content of the axiom package is the geometric realization postulate (F1) — that the gauge group has a physical polyhedral realization. The specific conditions GR1, GR3, and MIN1–MIN3 are either derivable from F1 + established physics, or redundant with independent selection criteria. The polyhedral (vs. simplicial) restriction and the representation choice are the two aspects where the framework's axioms most directly shape the conclusion. See §11 for falsifiability analysis of F1.
+
+### Derivability Proofs
+
+The following two propositions formally establish the derivability claims for F2 and F3 in the table above.
+
+#### Proposition 0.0.0h (GR1 Derivability: GR3 + CPT → GR1)
+
+**Claim:** Let $G = \text{SU}(N)$ with $N \geq 2$, and let $(\mathcal{P}, \iota, \phi)$ satisfy (GR2) and (GR3). Suppose the fundamental weights $\{w_1, \ldots, w_N\}$ of the representation $\mathbf{N}$ are in the image $\iota(\mathcal{V}(\mathcal{P}))$. Then $\iota(\mathcal{V}(\mathcal{P}))$ also contains all weights of the anti-fundamental representation $\bar{\mathbf{N}}$, and (GR1) is satisfied.
+
+**Proof:**
+
+1. **Fundamental weights present (premise).** By hypothesis, for each $i = 1, \ldots, N$, there exists $v_i \in \mathcal{V}(\mathcal{P})$ with $\iota(v_i) = w_i$.
+
+2. **GR3 involution.** By (GR3), there exists an involution $\tau \in \text{Aut}(\mathcal{P})$ satisfying $\iota(\tau(v)) = -\iota(v)$ for all $v \in \mathcal{V}(\mathcal{P})$.
+
+3. **Image under $\tau$.** Applying $\tau$ to each $v_i$:
+$$\iota(\tau(v_i)) = -\iota(v_i) = -w_i$$
+Since $\tau(v_i) \in \mathcal{V}(\mathcal{P})$, the weight $-w_i$ is in $\iota(\mathcal{V}(\mathcal{P}))$.
+
+4. **Anti-fundamental weights.** The weights of $\bar{\mathbf{N}}$ are $\{-w_1, \ldots, -w_N\}$ (in the Cartan–Weyl basis, the conjugate representation has negated weights). By step 3, all of these are in $\iota(\mathcal{V}(\mathcal{P}))$.
+
+5. **Conclusion.** $\iota(\mathcal{V}(\mathcal{P})) \supseteq \{w_1, \ldots, w_N\} \cup \{-w_1, \ldots, -w_N\}$, which is the content of (GR1). $\blacksquare$
+
+**Physical justification for the premises:**
+
+- *Why GR3 is physically required:* The CPT theorem (Lüders 1954, Pauli 1955) guarantees that any Lorentz-invariant, local, unitary quantum field theory possesses CPT symmetry. The charge conjugation component $C$ maps particle states in representation $R$ to antiparticle states in $\bar{R}$. For a geometric realization to encode a physically consistent gauge theory, this charge conjugation must have a geometric counterpart — which is exactly what (GR3) provides. Therefore, (GR3) is not an independent physical assumption but a consequence of requiring compatibility with CPT symmetry.
+
+- *Why fundamental weights must be present:* A geometric realization that encodes none of the fundamental weights fails to represent the gauge group's defining action. Encoding at least the fundamental weights is the minimal content of "geometric realization of $G$."
+
+**Consequence for axiom economy:** F2 (GR1) is derivable from F3 (GR3) + the minimal requirement that the geometric realization encodes the fundamental representation. The CPT theorem provides the physical justification for F3. Therefore F2 is not an independent axiom.
+
+---
+
+#### Proposition 0.0.0i (GR3 Derivability for Groups with Complex Representations)
+
+**Claim:** Let $G$ be a compact simple Lie group whose fundamental representation is complex ($\mathbf{N} \ncong \bar{\mathbf{N}}$). Let $(\mathcal{P}, \iota, \phi)$ be a geometric realization of $G$ satisfying (GR1) and (GR2), such that $\mathcal{P}$ is a compound of two isomorphic sub-complexes $\mathcal{P}_+ \sqcup \mathcal{P}_-$ carrying the fundamental and anti-fundamental weights respectively. Then (GR3) is automatically satisfied.
+
+**Proof:**
+
+1. **Weight partition.** By (GR1), the image $\iota(\mathcal{V}(\mathcal{P}))$ contains all weights of both $\mathbf{N}$ and $\bar{\mathbf{N}}$. Since $\mathbf{N} \ncong \bar{\mathbf{N}}$ (complex representation), the fundamental and anti-fundamental weight sets are disjoint:
+$$\{w_1, \ldots, w_N\} \cap \{-w_1, \ldots, -w_N\} = \emptyset$$
+(For $\text{SU}(N)$ with $N \geq 3$: no weight $w_i$ equals any $-w_j$, because the centroid constraint $\sum w_i = 0$ together with $w_i = -w_j$ would force a degeneracy incompatible with $\text{SU}(N)$'s regular weight diagram.)
+
+2. **Sub-complex structure.** By hypothesis, $\mathcal{P} = \mathcal{P}_+ \sqcup \mathcal{P}_-$ where $\mathcal{P}_+$ carries the fundamental weights and $\mathcal{P}_-$ carries the anti-fundamental weights, and the two sub-complexes are isomorphic as abstract polyhedral complexes.
+
+3. **Construction of $\tau$.** Define $\tau: \mathcal{V}(\mathcal{P}) \to \mathcal{V}(\mathcal{P})$ as the isomorphism $\mathcal{P}_+ \leftrightarrow \mathcal{P}_-$ that maps each vertex $v \in \mathcal{P}_+$ with $\iota(v) = w_i$ to the vertex $\tau(v) \in \mathcal{P}_-$ with $\iota(\tau(v)) = -w_i$, and vice versa. For apex vertices (weight $\vec{0}$), $\tau$ exchanges the apexes of $\mathcal{P}_+$ and $\mathcal{P}_-$.
+
+4. **$\tau$ is an involution.** $\tau^2 = \text{id}$ since $\tau$ swaps two isomorphic copies: applying it twice returns each vertex to its original sub-complex and original position.
+
+5. **$\tau$ is an automorphism.** Since $\mathcal{P}_+$ and $\mathcal{P}_-$ are isomorphic and $\tau$ is the isomorphism, it preserves the edge structure: $(v, w) \in \mathcal{E}(\mathcal{P})$ if and only if $(\tau(v), \tau(w)) \in \mathcal{E}(\mathcal{P})$.
+
+6. **$\tau$ satisfies GR3.** By construction, $\iota(\tau(v)) = -\iota(v)$ for all $v \in \mathcal{V}(\mathcal{P})$ (weight vertices map to their negatives; apex vertices with weight $\vec{0}$ satisfy $-\vec{0} = \vec{0}$).
+
+Therefore (GR3) holds with the constructed $\tau$. $\blacksquare$
+
+**Application to SU(3) and the stella octangula:**
+
+For $G = \text{SU}(3)$: the fundamental representation $\mathbf{3}$ is complex ($\mathbf{3} \ncong \bar{\mathbf{3}}$), since the Dynkin index of $\mathbf{3}$ labels it as a complex representation (equivalently, $\text{SU}(3)$ has non-trivial center $\mathbb{Z}_3$, and $\mathbf{3}$ has triality 1 while $\bar{\mathbf{3}}$ has triality 2). The stella octangula is precisely the compound $T_+ \sqcup T_-$ of two isomorphic tetrahedra, with $T_+$ carrying the fundamental weights $(w_R, w_G, w_B, \vec{0})$ and $T_-$ carrying the anti-fundamental weights $(-w_R, -w_G, -w_B, \vec{0})$. The involution $\tau: T_+ \leftrightarrow T_-$ satisfies all conditions of the proposition.
+
+**Consequence for axiom economy:** Once the gauge group $G = \text{SU}(3)$ is determined (by Paths A, B, or C from the core inputs $\{I1, F1, F5\}$), the fact that $\mathbf{3} \ncong \bar{\mathbf{3}}$ forces (GR3) for any compound-structured geometric realization. Combined with Proposition 0.0.0h, this shows:
+
+$$\{I1, F1, F5\} \xrightarrow{\text{SU(3) determination}} G = \text{SU}(3) \xrightarrow{\mathbf{3} \text{ complex}} \text{GR3 (F3)} \xrightarrow{\text{Prop 0.0.0h}} \text{GR1 (F2)}$$
+
+Both F2 and F3 are consequences of the core inputs, confirming the classification in the table above.
 
 ---
 
@@ -287,7 +408,7 @@ $\blacksquare$
 
 ### Physical Hypothesis 0.0.0f (Physical Embedding Dimension from Confinement)
 
-> **Status:** This is a **physical hypothesis**, not a mathematical lemma. It requires empirical input (QCD confinement phenomenology) and cannot be derived from pure Lie theory alone. The argument below provides physical motivation rather than mathematical proof.
+> **Status:** **DERIVED** in [Proposition 0.0.40](Proposition-0.0.40-Embedding-Dimension-From-Confinement.md). Originally a physical hypothesis (H), now derived from: (a) Lemma 0.0.2a (affine independence, established math), (b) QCD confinement with $\sigma > 0$ (experimental fact, FLAG 2024), (c) SU(N) single gauge coupling structure (established, Gross–Wilczek 1973), within the geometric realization framework (F). Classification upgraded from (H) to (E)+(F). The flux tube motivation below remains valid as supporting intuition.
 
 **Statement:** For a geometric realization to support field dynamics with a radial (confinement) direction, the **physical embedding dimension** must satisfy:
 $$d_{embed} = \text{rank}(G) + 1 = N \quad \text{for SU}(N)$$
@@ -572,10 +693,10 @@ With the physicist's normalization $\text{Tr}(T_a T_b) = \frac{1}{2}\delta_{ab}$
 
 **Induced Metric on Weight Space:**
 
-The Killing form induces a metric on $\mathfrak{h}^*$ (weight space). In the $(T_3, T_8)$ coordinate system, this metric is **Euclidean** (proportional to the identity):
+In the $(T_3, T_8)$ coordinate system, the standard coordinate metric on weight space is:
 $$g_{ij} = \delta_{ij}$$
 
-This justifies using standard Euclidean geometry in weight space.
+This is the conventional physicist's normalization (roots have unit length), not the Killing-form-induced metric (which is $g^K_{ij} = \frac{1}{3}\delta_{ij}$ in this basis; see Theorem 0.0.2 §3.2). Both metrics are Euclidean (proportional to the identity), so geometric properties such as equilateral symmetry and flatness are preserved.
 
 **Root and Coroot Relations:**
 
@@ -742,10 +863,85 @@ Results saved to: `verification/foundations/definition_0_0_0_verification_result
 | 0.0.0c | Weight labeling is non-injective for 3D |
 | 0.0.0d | Apex vertices necessary for 3D polyhedra |
 | 0.0.0e | Apex position uniquely determined by regularity |
-| 0.0.0f | Physical embedding dimension $= N$ (from confinement) — **Physical Hypothesis** |
+| 0.0.0f | Physical embedding dimension $= N$ (from confinement) — **Derived** in [Proposition 0.0.40](Proposition-0.0.40-Embedding-Dimension-From-Confinement.md) |
 | 0.0.0g | Connectivity follows from (GR2)+(GR3) |
 
 **Next Step:** Theorem 0.0.3 proves uniqueness rigorously.
+
+---
+
+## 11. Falsifiability and Risk Assessment
+
+> **Context:** The [V1 Validity Audit](../reviews/G1/G1-Validity-Audit-Module-V1-Findings.md) §Systemic Risk Analysis identifies the geometric realization axiom as the **single irreducible (F)-class assumption** of the framework. This section makes the axiom's status, predictions, and vulnerabilities explicit for peer review.
+
+### 11.1 Status of the Axiom
+
+The concept of "geometric realization of a Lie group" (Definition 0.0.0, §1) is **novel to this framework**. In standard gauge theory, the internal gauge space and physical spacetime are independent: SU(3) acts on an abstract color space with no geometric relationship to $\mathbb{R}^3$. The Chiral Geometrogenesis framework postulates that the gauge group has a *physical* geometric realization — that the weight structure of SU(3) is encoded in a polyhedral complex embedded in physical space.
+
+**Classification:** (F) — Framework-specific. This is a principled physical hypothesis, not an established result.
+
+**What it asserts:** There exists a polyhedral complex $\mathcal{P} \subset \mathbb{R}^{D_{space}}$ whose combinatorial symmetries encode the gauge group $G$, in the precise sense of GR1–GR3 above.
+
+**What it does NOT assert:** It does not claim that the stella octangula exists as a literal object in spacetime. The claim is that the *pre-geometric* structure from which spacetime and gauge fields emerge has the combinatorial properties of the stella octangula (see §3.3 for the pre-geometric → spacetime emergence chain).
+
+### 11.2 Consequences if Wrong
+
+If the geometric realization axiom is false — if internal gauge space is truly independent of physical space — the following results in the framework collapse:
+
+| Result | Depends on F1? | What Fails |
+|--------|---------------|------------|
+| Rank constraint: rank(G) ≤ D_space − 1 | **YES** | SU(6), SU(9), E₆ become viable; SU(3) uniqueness is lost |
+| Stella octangula as geometric arena | **YES** (via Thm 0.0.3) | No preferred geometry; Phases 0–5 lose their foundation |
+| FCC lattice from spatial extension | **YES** (via Thm 0.0.6) | Lattice structure unjustified |
+| String tension √σ = ℏc/R_stella | **YES** (via Prop 0.0.17j) | R_stella is undefined without geometric realization |
+| D = 4 from observer existence | NO | Thm 0.0.1 is independent of F1 |
+| SU(3) from Z₃ + rank ≤ 2 | **PARTIALLY** | Z₃ from stella survives; rank constraint requires F1 |
+| Phase-gradient mass generation | **PARTIALLY** | Mechanism survives; specific stella-based predictions fail |
+
+**Summary:** Without F1, the framework retains D = 4 and some structural results, but loses the rank constraint, the stella, and all downstream geometric predictions. It reduces to standard gauge theory with an anthropic D = 4 argument — valid but not novel.
+
+### 11.3 Distinctive Predictions (Testable Consequences of F1)
+
+The geometric realization axiom produces predictions that are **absent from standard QCD** and therefore constitute tests of the axiom itself:
+
+| Prediction | Standard QCD says | CG (via F1) predicts | Test |
+|-----------|------------------|---------------------|------|
+| **Rank bound** | Gauge groups can have arbitrary rank in any D | rank(G) ≤ D_space − 1 = 2 in 4D | No confining rank > 2 gauge group in nature |
+| **Geometric string tension** | σ is a free parameter fit to data | √σ = ℏc/R_stella (geometrically determined) | Compare with lattice QCD (FLAG 2024: √σ = 440 ± 30 MeV) |
+| **f_π/√σ ratio** | f_π is a separate free parameter | f_π = √σ/5 (geometric ratio) | PDG: f_π = 92.1 MeV vs. predicted 88.0 MeV (95.6%) |
+| **Glueball mass ratios** | Predicted from lattice simulations | Additional geometric constraints from stella symmetry | Compare with lattice glueball spectrum |
+| **12-fold coordination** | No prediction about vacuum geometry | QCD vacuum has FCC-like structure (12-coordination from O_h) | Lattice QCD vacuum structure studies |
+
+### 11.4 What Would Falsify the Axiom
+
+The geometric realization axiom would be challenged by:
+
+1. **Discovery of a confining gauge theory with rank > 2 in 4D** — This would directly violate the rank bound. (Note: no such theory is currently known in nature, though they can be constructed theoretically.)
+
+2. **Systematic failure of geometric predictions** — If glueball mass ratios, string tension, and f_π all disagree with experiment by more than framework uncertainties, the geometric origin is disfavored.
+
+3. **Discovery of extra spatial dimensions** — This would change D_space and hence the rank bound. Current experimental limits (LHC, astrophysics) constrain extra dimensions to < 52 μm (Lee et al. 2020).
+
+4. **Lattice QCD evidence against geometric vacuum structure** — If the QCD vacuum at the confinement scale shows no trace of the geometric symmetries (O_h, Z₃, FCC-like coordination) predicted by the framework.
+
+The axiom would be **supported** (not proven) by:
+- Continued agreement of geometric predictions with lattice QCD data
+- Discovery of additional geometric relationships between QCD parameters that the framework predicts but standard QCD does not explain
+- Successful predictions from the extended framework (Phases 2–5)
+
+### 11.5 Comparison with Analogous Axioms in Physics
+
+The geometric realization axiom is not without precedent in physics as a type of assumption:
+
+| Framework | Analogous Axiom | Status |
+|-----------|----------------|--------|
+| **General Relativity** | Spacetime *is* a pseudo-Riemannian manifold (not merely modeled by one) | Experimentally confirmed to high precision |
+| **String Theory** | Extra dimensions are compactified on a Calabi-Yau manifold | Unconfirmed; landscape problem |
+| **Kaluza-Klein** | The gauge group is the isometry group of the internal space | Established as mathematical fact; physical relevance debated |
+| **Loop Quantum Gravity** | Spacetime is fundamentally discrete (spin networks) | Unconfirmed |
+| **Chiral Geometrogenesis** | The gauge group has a physical geometric realization (Def 0.0.0) | Novel; testable via predictions above |
+
+The CG axiom is closest in spirit to **Kaluza-Klein theory**, which also identifies gauge structure with geometry. The key difference: KK derives gauge symmetry from isometries of *extra* dimensions, while CG derives it from a polyhedral structure in the *existing* spatial dimensions via a pre-geometric → spacetime emergence chain (§3.3).
 
 ---
 

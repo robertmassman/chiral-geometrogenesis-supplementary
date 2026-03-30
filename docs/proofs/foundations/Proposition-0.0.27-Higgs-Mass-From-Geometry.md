@@ -6,6 +6,10 @@
 **Last Updated:** 2026-02-08 (Round 2 verification fixes: E1 NNLO table corrected to sum to +1.5%; E2 §7.1 V=F=8 self-contradiction resolved; E3 one-loop entries included in NNLO column; W1 rigorous bound on mode-decomposition corrections; W2 §3.3a rewritten to address double-counting; W3 one-loop prediction prominently displayed; W4 λ₀=1 status clarified; W7 gauge boson formulas sourced; C1-C5 all citation errors fixed; missing references added)
 **Purpose:** Derive the Higgs boson mass m_H = 125 GeV from the geometric structure of the stella octangula, completing the electroweak sector derivation.
 
+**Dependencies:**
+- ✅ Proposition 0.0.21 (Unified Electroweak Scale Derivation)
+- ✅ Proposition 0.0.27a (Quartic Normalization From Equipartition)
+
 **Key Result:** The Higgs quartic coupling λ is determined by the discrete mode structure of the stella octangula boundary:
 
 $$\boxed{\lambda = \frac{1}{n_{\text{modes}}} = \frac{1}{8} = \frac{N_{\text{gen}}}{n_{\text{vertices}}(24\text{-cell})} = \frac{3}{24}}$$
@@ -557,7 +561,7 @@ $$D_{\text{div}} = D - E = 4 - E$$
 >
 > **This is why the renormalizable gauge-invariant potential has exactly two terms.**
 
-**This is established in [§10.3.16](Proposition-0.0.27-Gauge-Fermion-Instanton-Structure.md):** All-orders renormalizability on ∂S follows from power counting preserved in the continuum limit.
+**This is discussed in [§10.3.16](Proposition-0.0.27-Gauge-Fermion-Instanton-Structure.md):** All-orders renormalizability on ∂S follows from power counting. Note: §10.3.16 claims about the continuum limit on K₄ need review per the [adversarial verification (2026-02-12)](../verification-records/Proposition-0.0.27-Lattice-QFT-Multi-Agent-Verification-2026-02-12.md); the continuum limit properly requires the FCC lattice (Prop 0.0.6b).
 
 ---
 
@@ -1172,7 +1176,7 @@ With the geometrically-derived gauge couplings, the fixed point gives y_t* ≈ 1
 
 **Central Question:** Can the loop expansion itself emerge from boundary fluctuations on ∂S?
 
-**Status:** 🔶 NOVEL — Framework established, coefficient matching verified
+**Status:** 🔸 PARTIAL — See [adversarial verification report (2026-02-12)](../verification-records/Proposition-0.0.27-Lattice-QFT-Multi-Agent-Verification-2026-02-12.md)
 
 This section has been extracted into two separate documents for readability:
 
@@ -1188,14 +1192,36 @@ This section has been extracted into two separate documents for readability:
 
 **Note:** All §10.3.x references elsewhere in this document (including verification records and revision logs) refer to sections in these extracted files.
 
-**Key results established in these documents:**
-- Loop expansion emerges from closed paths on ∂S (not imported from continuum QFT)
-- Discrete ↔ continuum coefficient matching verified to 40% (expected for pre-Symanzik improvement)
-- Symanzik improvement coefficients geometrically determined (not free parameters)
-- Local gauge invariance via lattice gauge theory on ∂S
+**Key results — updated per [adversarial verification (2026-02-12)](../verification-records/Proposition-0.0.27-Lattice-QFT-Multi-Agent-Verification-2026-02-12.md) and systematic fixes (24 errors, 22 warnings addressed):**
+
+**✅ Valid (established):**
+- Path integral on K₄ well-defined as finite quantum system
+- Graph Laplacian calculations (eigenvalues {0,4,4,4}, propagators with correct 1/n_v normalization)
+- Wilson action formalism on K₄ (used by Prop 0.0.38)
+- Local gauge invariance via lattice gauge theory on K₄
 - Fermion chirality from two-tetrahedron structure (∂T₊ ⊔ ∂T₋)
-- Instanton physics from topologically non-trivial paths
-- Full RG flow established with BPHZ renormalization
+- φ⁴ tadpole self-energy: δm²/m² ≈ 27.7% at m̃² = 0.258 (correct one-loop on K₄)
+- Ginsparg-Wilson relation proven from S² = I and [γ₅, S] = 0
+- Wilson-Dirac spectral gap improvement (~81% with r = 3/2 vs r = 1)
+- Overlap operator construction on K₄
+
+**🔮 Conjectured (graph-motivated but unproven):**
+- Symanzik coefficients (c₁ = 1/12, c_SW = 2/3, r = 3/2) — simplex ratios, not Symanzik derivations
+- λ = 1/8 from mode counting — postulate, not derivation
+- Regge calculus coefficient c_R = 1/8 — asserted without proof
+- "Geometric Improvement Principle" — pattern observation, not theorem
+
+**❌ Corrected/Invalidated:**
+- Triangle paths are vacuum diagrams (O(λ³)), NOT self-energy; self-energy is φ⁴ tadpole (O(λ))
+- K₄ has no continuum limit — FCC lattice (Prop 0.0.6b) provides this
+- Continuum extrapolation table was mock data (circular) — marked as illustrative only
+- Euler characteristic connection r_loop = 3/4 invalidated by propagator normalization correction
+- Instantons require 4D manifold, not 2D surface ∂S
+- "Fermion doublers" terminology inapplicable to K₄ (Nielsen-Ninomiya requires periodic lattice)
+- Deficit angle corrected from arccos(1/3) to π/3 for 2D Regge calculus
+- Wilson-Dirac diagonal corrected from -9/2·I₄ to -9/4·I₄
+- Monte Carlo plaquette test sampled single links, not triangular plaquettes
+- K₄ vs continuum self-energy differ by orders of magnitude (27.7% vs 0.11%) — not comparable
 
 ---
 

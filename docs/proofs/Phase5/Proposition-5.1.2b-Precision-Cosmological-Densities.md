@@ -21,8 +21,6 @@
 **Dependencies:**
 - ✅ Proposition 5.1.2a (Matter Density from Geometry) — Baseline predictions
 - ✅ Theorem 4.2.1 (Baryogenesis) — η_B derivation
-- ✅ Prediction 8.3.1 (W-Condensate DM) — κ_W^geom derivation
-- ✅ This proposition (precision improvements)
 
 ### Resolved Issues (from initial verification)
 
@@ -550,6 +548,8 @@ $$M_W = \frac{6\pi^2 v_W}{e_W} \approx 11.8 \cdot v_W$$
 with e_W ~ 5.0 (Skyrme parameter) having ±20% uncertainty.
 
 ### 5.2 Skyrme Parameter from Stella Geometry
+
+> **Note:** The semi-numerical determination below is now formally derived from first principles in [Proposition 4.3.5](../Phase4/Proposition-4.3.5-Skyrme-Parameter-First-Principles-Derivation.md), which provides the gradient expansion derivation, analytical evaluation of $I_4 = 2.09$, and a rigorous error budget. The result $e_W = 4.5 \pm 0.3$ is confirmed.
 
 The Skyrme term arises from the fourth-order chiral Lagrangian:
 $$\mathcal{L}_4 = \frac{1}{32 e^2} \text{Tr}[L_\mu, L_\nu]^2$$

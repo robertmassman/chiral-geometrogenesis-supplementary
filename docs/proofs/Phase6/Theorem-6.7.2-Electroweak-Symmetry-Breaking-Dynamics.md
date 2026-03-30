@@ -5,6 +5,12 @@
 **Created:** 2026-01-23
 **Purpose:** Derive the complete electroweak symmetry breaking mechanism from Chiral Geometrogenesis, showing how the Higgs mechanism emerges from the geometric framework with the VEV $v_H = 246$ GeV derived in Propositions 0.0.18-21.
 
+**Dependencies:**
+- ✅ Theorem 6.7.1 (Electroweak Gauge Fields From 24-Cell)
+- ✅ Proposition 0.0.18 (Electroweak Scale From Chi Field)
+- ✅ Proposition 0.0.21 (Unified Electroweak Scale Derivation)
+- ✅ Proposition 0.0.24 (SU(2) Gauge Coupling From Unification)
+
 ---
 
 ## 1. Formal Statement

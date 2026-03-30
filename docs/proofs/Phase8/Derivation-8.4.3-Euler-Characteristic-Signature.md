@@ -119,7 +119,7 @@ Stella Octangula (two tetrahedra)
 
 **Conclusion:** χ = 4 and N_gen = 3 are **CORRELATED** through their common geometric origin, not directly causal.
 
-### 3.2 The Derivation (From Prediction 8.1.3)
+### 3.2 The Derivation (From Derivation 8.1.3)
 
 **Step 1:** Spherical harmonics decompose under T_d symmetry
 

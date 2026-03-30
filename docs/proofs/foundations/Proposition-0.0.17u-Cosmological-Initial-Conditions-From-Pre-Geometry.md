@@ -15,6 +15,11 @@
 - Inflation: Natural from Mexican hat, GUT scale ($H \sim 10^{13}$ GeV), $N_{eff} = 57 \pm 3$ e-folds
 - Reheating: $T_{reh} \sim 10^{10} - 10^{14}$ GeV via chiral field decay (inflaton mass $\sim 10^{13}$ GeV)
 
+**Dependencies:**
+- ✅ Proposition 0.0.17j (String Tension From Casimir Energy)
+- ✅ Proposition 0.0.17t (Topological Origin Of Scale Hierarchy)
+- ✅ Theorem 0.2.4 (Pre-Geometric Energy Functional)
+
 ---
 
 ## 1. Executive Summary
@@ -281,7 +286,7 @@ In Phase 0, before the metric emerges:
 - Field values $\chi_c(n)$ are defined at lattice vertices
 - No physical distances — only graph adjacency
 
-**The pre-geometric action (Definition 0.2.4):**
+**The pre-geometric action (Theorem 0.2.4):**
 $$S_{pre} = \sum_{n \in FCC} \left[ \frac{1}{2}|\partial_\lambda \chi|^2 - V(\chi) \right] \Delta\lambda$$
 
 where $\lambda$ is internal time and $\partial_\lambda$ is the internal time derivative.

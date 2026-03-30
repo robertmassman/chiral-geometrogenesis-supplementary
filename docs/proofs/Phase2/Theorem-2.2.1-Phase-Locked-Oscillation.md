@@ -679,6 +679,10 @@ The phase-locked state with $\alpha \neq 0$ breaks time-reversal symmetry:
 - This maps $\alpha \to -\alpha$, changing the preferred rotation direction
 - The dynamics are not T-invariant, giving rise to the arrow of time
 
+### 7.4 Condensed Matter Analog: Kagome Metals
+
+The 120° phase-locked configuration is not unique to the CG framework—it is experimentally realized in kagome-lattice metals AV₃Sb₅ (A = K, Rb, Cs), where three geometrically frustrated sublattices lock into charge-loop current orders separated by 120° rotations, producing Z₃ nematic ground states [Tazai, Yamakawa & Kontani, *Nat. Commun.* **14**, 7845 (2023)]. In the kagome system, bond-order fluctuations mediate the phase locking (analogous to the Sakaguchi-Kuramoto coupling here), and the resulting chiral charge-loop currents spontaneously break time-reversal symmetry (cf. §7.3 above). This provides experimental evidence that 120° phase locking with T-symmetry breaking is a generic consequence of three-fold geometric frustration, not a model-dependent artifact.
+
 ---
 
 ## Conclusion

@@ -1,29 +1,65 @@
 # Proposition 0.0.XX: SU(3) from Distinguishability and Dimensionality Constraints
 
-## Status: 🔶 NOVEL ✅ VERIFIED — Pure info-theoretic derivation complete via First Stable Principle
+## Status: 🔶 NOVEL — SU(3) RETRODICTION FROM DISTINGUISHABILITY + QUANTUM INTERFERENCE (A-IF) + COLOR NEUTRALITY
 
 **Created:** 2026-02-01
-**Purpose:** Derive SU(3) as the UNIQUE gauge symmetry that emerges from observer distinguishability requirements combined with the dimensionality constraint D = 4 from Theorem 0.0.1.
+**Purpose:** Provide a novel retrodiction of SU(3) — the known QCD gauge group since ~1973 — by showing it is uniquely selected by observer distinguishability requirements combined with the dimensionality constraint D = 4 from Theorem 0.0.1. This is a novel *explanation* of a known fact, not a prediction: the conclusion (SU(3)) is already established experimentally, and the lower bound (N ≥ 3) relies on the framework-specific Assumption A-IF.
 
-**Important Limitation:** This derivation is NOT purely information-theoretic. The lower bound (N ≥ 3) comes from Fisher metric non-degeneracy, but the upper bound (N ≤ 4) requires the geometric input D_space = 3 from observer existence.
+**Important Limitation:** This derivation is NOT purely information-theoretic. (1) The lower bound (N ≥ 3) depends on the **quantum interference form** for probability distributions (Assumption A-IF below) — a framework-specific input that presupposes coherent superposition and the Born rule. Without it, the Fisher metric is generically non-degenerate for all N ≥ 2 and the N = 2 elimination fails. (2) The upper bound (N ≤ 4) requires the geometric input D_space = 3 from observer existence.
 
 **Research Path:** This addresses Path A from [Research-Meta-Foundational-Directions.md](../supporting/Research-Meta-Foundational-Directions.md), identified as **top priority** for 2026 Q1-Q2.
 
 **Dependencies:**
 - ✅ Theorem 0.0.1 (Observer Existence → D = 4)
+- ✅ Lemma 0.0.2a (Confinement-Dimension Constraint) — Affine independence bound N ≤ 4
+- ✅ Proposition 0.0.XXa (First Stable Principle) — Pure info-theoretic bound N = 3
 - ✅ Proposition 0.0.17b (Fisher Metric Uniqueness)
 - ✅ Theorem 0.1.0 (Field Existence from Distinguishability)
 - ✅ Theorem 0.0.17 (Information-Geometric Unification)
+- ✅ Lemma 0.0.17c (Fisher-Killing Equivalence) — Used in Approach C (Theorem 3.2.1)
 - 📚 Standard results: Cartan classification, Fisher information geometry (Amari & Nagaoka)
 
-**Goal:** Reverse the current derivation direction:
+**Explicit Assumptions (framework-specific inputs not derived within this proposition):**
 
-| Current Flow | Desired Flow (This Proposition) |
-|--------------|--------------------------------|
-| Stella geometry → Z₃ phases → SU(3) | Distinguishability → Fisher constraints → SU(3) |
-| Geometry first, then symmetry | Information first, then geometry |
+> **Assumption A-IF (Quantum Interference Form):** The probability distribution for $N$ distinguishable components takes the coherent superposition form:
+>
+> $$p_\phi(x) = \left|\sum_c A_c(x)\, e^{i\phi_c}\right|^2$$
+>
+> This presupposes: (i) complex-valued amplitudes, (ii) coherent superposition (amplitudes add before squaring), and (iii) the Born rule (probability = |amplitude|²). These are substantial physical assumptions that encode quantum-mechanical structure at the pre-geometric level.
+>
+> **Why this matters:** A classical probability mixture $p(x) = \sum_c w_c P_c(x)$ with positive weights would yield a generically non-degenerate Fisher metric for **all** $N \geq 2$. The $N = 2$ elimination (§3.1.2) — and hence the lower bound $N \geq 3$ — depends entirely on the cross-terms that arise from the interference form. This is the single most consequential assumption in this proposition.
+>
+> **Partial derivation:** Theorem 0.1.0 derives the interference form from Fisher metric structure on the stella octangula. However, that derivation takes SU(3) as input, so using it here to derive SU(3) would be circular. Within this proposition, A-IF is an independent framework assumption.
+>
+> **Classification:** (F) — Framework-specific. Identified as SMUGGLED by [V1 Validity Audit](../reviews/G1/G1-Validity-Audit-Module-V1-Findings.md) §V1.3, now explicitly declared. [V2 Derivation Step Verification](../reviews/G1/G1-Validity-Audit-Module-V2-Findings.md) §V2.6 confirms the Fisher non-degeneracy derivation (§3.1) is mathematically correct given A-IF; rated QUALIFIED (MODERATE) solely due to this assumption's (F)-class status.
 
-**Significance:** This derivation shows that SU(3) emerges from the intersection of information-theoretic constraints (Fisher non-degeneracy → N ≥ 3) and dimensionality constraints (D_space = 3 → N ≤ 4, plus Z₃ from color neutrality → N = 3). While not purely information-theoretic, it provides an independent derivation path that complements the geometric derivation in Theorem 0.0.15.
+> **Assumption A-CS (Compact Simple Gauge Group):** The gauge group is restricted to **compact simple** Lie groups. This excludes product groups (e.g., SU(2)×U(1)), non-compact groups, and abelian groups.
+>
+> **Why this matters:** The Standard Model gauge group SU(3)×SU(2)×U(1) is *not* simple. The restriction to simple groups is essential for the uniqueness argument in §4.3–4.4: without it, the Weyl group / Cartan analysis does not uniquely select SU(3).
+>
+> **Motivation:** At this stage of the framework, we seek only the **color gauge factor** — the strong interaction group responsible for confinement. The full SM product group structure is addressed in Phases 2–3, where electroweak SU(2)×U(1) emerges separately. Compactness follows from unitarity (established physics); simplicity is a framework choice to isolate the confining sector.
+>
+> **Classification:** (F) — Framework-specific. Identified as SMUGGLED by [V1 Validity Audit](../reviews/G1/G1-Validity-Audit-Module-V1-Findings.md) §V1.3 finding F4, now explicitly declared.
+
+> **Assumption A-SN ($S_N$ Permutation Symmetry / "Color Democracy"):** All $N$ field components are treated as physically indistinguishable — there is no preferred labeling or hierarchy among colors. Formally, the configuration space and Fisher metric are required to be invariant under the symmetric group $S_N$ acting by permutation of component indices.
+>
+> **Why this matters:** The $S_N$ symmetry is what identifies the Weyl group of the gauge group (§4.4). For $N = 3$, $S_3$ is the Weyl group of SU(3) and no other rank-2 simple group. Without this assumption, the Weyl group argument for selecting SU(3) among rank-2 groups does not work.
+>
+> **Motivation:** In QCD, all three color charges couple identically to gluons — there is no physical distinction between red, green, and blue. This is "color democracy." The assumption is physically well-motivated but is an input, not a consequence of distinguishability alone.
+>
+> **Classification:** (F) — Framework-specific. Identified as QUALIFIED by [V1 Validity Audit](../reviews/G1/G1-Validity-Audit-Module-V1-Findings.md) §V1.3 finding F8, now explicitly declared.
+
+**Goal:** Provide a complementary retrodiction of SU(3) via information geometry, arriving at the same (experimentally known) conclusion as the geometric path (Theorem 0.0.15) through a different mechanism:
+
+| Geometric Path (Thm 0.0.15) | Information Path (This Proposition) |
+|------------------------------|-------------------------------------|
+| Stella geometry → Z₃ phases → SU(3) | Fisher non-degeneracy → N ≥ 3 → SU(3) |
+| Assumes stella, derives SU(3) | Assumes A-IF, derives N = 3 |
+| Both paths share: D = 4 (Thm 0.0.1) | Both paths share: D = 4 (Thm 0.0.1) |
+
+**Significance:** This proposition does NOT replace the geometric derivation — both paths require D = 4 for the upper bound. Its value is showing that SU(3) is special from an information-geometric perspective: it is the unique gauge group compatible with stable observer-distinguishability, given the quantum interference form. This provides a complementary perspective that does not depend on assuming the stella octangula first.
+
+**Epistemic status:** This is a **retrodiction** — a novel explanatory pathway to a known result (SU(3) as the color gauge group). The conclusion is not falsifiable via this route because: (1) SU(3) is already experimentally established, and (2) the key framework axiom A-IF is not independently testable within this proposition. The scientific value lies in the explanatory coherence of the framework, not in predictive content.
 
 ---
 
@@ -40,54 +76,63 @@ The current CG framework derives SU(3) via:
 
 ### 0.2 The Approach
 
-We aim to prove:
+We aim to show:
 
-$$\boxed{\text{Observer distinguishability} \xRightarrow{\text{constraints}} \text{SU}(3)}$$
+$$\boxed{\text{Observer distinguishability} + \text{A-IF} + \text{D = 4} + \text{color neutrality} \xRightarrow{\text{constraints}} \text{SU}(3)}$$
 
-Two independent attack vectors:
+Two complementary arguments:
 
-**Approach 1 (Dimensionality):** Show the configuration space must be exactly 3-dimensional
-**Approach 2 (Symmetry):** Show SU(3) is the unique symmetry group satisfying distinguishability constraints
+**Approach 1 (Dimensionality, §3):** The lower bound N ≥ 3 from Fisher non-degeneracy (the genuinely novel contribution, given A-IF), combined with the upper bound N ≤ 4 from D = 4 + affine independence + Z₃ from color neutrality, uniquely gives N = 3.
 
-### 0.3 What This Would Achieve
+**Approach 2 (Symmetry, §4):** Given N = 3, SU(3) is the unique compact simple Lie group with Weyl group S₃ (standard Lie theory, given A-CS and A-SN).
 
-| Before | After (if proven) |
-|--------|------------------|
-| Stella geometry assumed first | Configuration space dimension DERIVED |
-| Z₃ from stella symmetry | Z₃ from information requirements |
-| SU(3) from Z₃ + D = 4 | SU(3) from Fisher constraints alone |
+### 0.3 What This Achieves
+
+| Geometric Path (existing) | Information Path (this proposition) |
+|--------|----------------------|
+| Stella geometry assumed first | Configuration space dimension constrained via A-IF (framework assumption) |
+| Z₃ from stella symmetry | Z₃ from color neutrality (framework assumption) |
+| SU(3) from Z₃ + D = 4 | SU(3) retrodicted from Fisher constraints + A-IF + D = 4 + color neutrality |
+
+> **Note:** This proposition does NOT reduce the input count. It provides an **alternative retrodiction pathway** that replaces geometric inputs (stella geometry) with information-theoretic inputs (Fisher non-degeneracy + A-IF), while still requiring D = 4 for the upper bound. The value is complementarity of explanation, not predictive economy. Both paths reconstruct the known result SU(3).
 
 ---
 
 ## 1. Statement of Results
 
-### Result A.1 (Configuration Space Dimensionality) ✅ PROVEN
+### Result A.1 (Configuration Space Dimensionality) ✅ PROVEN (constrained selection)
 
-*The minimal configuration space that supports:*
+*Given the quantum interference form (A-IF) and D = 4 (Thm 0.0.1), the unique configuration space that supports:*
 1. *Non-trivial distinguishability (dim > 1)*
 2. *Bounded information per measurement (Fisher metric regular)*
 3. *Observer stability (no runaway configurations)*
+4. *Geometric realizability in $D_{space} = 3$*
 
-*is 3-dimensional.*
+*has $\dim(\mathcal{C}) = 2$, corresponding to $N = 3$ components.*
 
 **Formal Statement:**
 
-Let $\mathcal{C}$ be the configuration space of distinguishable states for an observer. Require:
+Let $\mathcal{C}$ be the configuration space of distinguishable states for an observer, with probability distributions taking the interference form $p_\phi(x) = |\sum_c A_c(x) e^{i\phi_c}|^2$ (Assumption A-IF). Require:
 - **(C1)** $\dim(\mathcal{C}) > 1$ (non-trivial distinguishability)
 - **(C2)** The Fisher metric $g^F_{ij}$ is non-degenerate and bounded
 - **(C3)** Geodesic completeness (observer can explore all configurations)
 - **(C4)** Compact configuration space (bounded, finite total information)
+- **(C5)** $N \leq D_{space} + 1 = 4$ (geometric realizability, Lemma 0.0.2a)
+- **(C6)** Color neutrality: $\sum_c e^{i\phi_c} = 0$ at equilibrium
 
 Then $\dim(\mathcal{C}) = 2$, corresponding to $N = 3$ components.
 
-### Result A.2 (SU(3) from Information Geometry Axioms) ✅ PROVEN
+> **Note on prior statement:** The original formal statement listed only (C1)–(C4), omitting the dependence on A-IF, D = 4, and color neutrality. The result is proven, but only under all six conditions.
 
-*Given a configuration space $\mathcal{M}$ with:*
+### Result A.2 (SU(3) from Information Geometry Axioms) ✅ PROVEN (given A-CS, A-SN)
+
+*Given $N = 3$ (from Result A.1) and a configuration space $\mathcal{M}$ with:*
 1. *Fisher metric $g^F$ satisfying Markov invariance (Chentsov uniqueness)*
-2. *$S_N$ permutation symmetry among components*
+2. *$S_N$ permutation symmetry among components (Assumption A-SN)*
 3. *Color neutrality: $\sum_c e^{i\phi_c} = 0$ at equilibrium*
+4. *Gauge group restricted to compact simple Lie groups (Assumption A-CS)*
 
-*the isometry group of $(M, g^F)$ is necessarily SU(N), and the constraints (1)-(3) uniquely select $N = 3$.*
+*then SU(3) is the unique group whose Killing form reproduces $g^F$ on the Cartan torus.*
 
 ---
 
@@ -99,7 +144,7 @@ For a family of probability distributions $\{p_\theta\}_{\theta \in \Theta}$, th
 
 $$g^F_{ij}(\theta) = \mathbb{E}\left[\frac{\partial \log p_\theta}{\partial \theta^i} \cdot \frac{\partial \log p_\theta}{\partial \theta^j}\right]$$
 
-**Chentsov's Theorem (1972):** The Fisher metric is the **unique** Riemannian metric on statistical manifolds (up to constant scaling) invariant under sufficient statistics (Markov morphisms).
+**Chentsov's Theorem (1972; modern generalization: Lê 2017):** The Fisher metric is the **unique** Riemannian metric on statistical manifolds (up to constant scaling) invariant under sufficient statistics (Markov morphisms). *Note:* The original theorem applies to finite sample spaces; the modern extension by Lê (2017) establishes uniqueness for the more general settings used here (see §9, Refs 8–11).
 
 ### 2.2 From Prop 0.0.17b: Fisher Metric Uniqueness
 
@@ -115,6 +160,8 @@ The result: $g^F = \frac{1}{12}\mathbb{I}_2$ on the SU(3) Cartan torus.
 Theorem 0.1.0 proves that non-trivial Fisher metric requires fields with the interference form:
 
 $$p_\phi(x) = \left|\sum_c A_c(x) e^{i\phi_c}\right|^2$$
+
+> **Assumption Declaration (A-IF):** The interference form above is an **explicit framework assumption** within this proposition, not a consequence of observer distinguishability alone. Theorem 0.1.0 derives this form but takes SU(3) structure as input; using it here would be circular. A classical probability model $p(x) = \sum_c w_c P_c(x)$ would yield a generically non-degenerate Fisher metric for all $N \geq 2$, eliminating the $N = 2$ degeneracy that is central to this argument. The coherent superposition form — implying complex amplitudes and the Born rule — is what makes the $N = 2$ Fisher metric degenerate. See the Explicit Assumptions box above for full discussion.
 
 **Key insight:** The number of terms $N$ in the sum is constrained by distinguishability requirements.
 
@@ -321,11 +368,13 @@ $$\lambda_1, \lambda_2 > 0$$
 - Non-degenerate Fisher metric ✓
 - Stable equilibrium ✓
 
-### 3.2 Why N ≤ 3 (Upper Bound) — The Key Novel Contribution
+### 3.2 Why N ≤ 3 (Upper Bound)
 
 **Claim 3.2:** The dimensionality of observer-compatible configuration spaces is bounded by $N \leq D_{space} = 3$.
 
-**Approach A: Affine Independence (from Lemma 0.0.2a)**
+> **Note on novelty:** The genuinely novel contribution of this proposition is the **lower bound** (§3.1: N ≥ 3 from Fisher non-degeneracy under A-IF). The upper bound uses the same geometric input (D = 4) as the standard path in Theorem 0.0.15. What differs is the *mechanism* by which SU(3) is selected from the allowed range.
+
+**Primary Argument: Affine Independence (from Lemma 0.0.2a)**
 
 For the configuration space to embed in $D_{space} = 3$ dimensional physical space:
 - The $N$ fundamental weights of SU(N) must be geometrically realized
@@ -333,35 +382,120 @@ For the configuration space to embed in $D_{space} = 3$ dimensional physical spa
 - In $D_{space} = 3$: at most $4$ affinely independent points
 - Therefore $N \leq 4$
 
-Combined with Z₃ center requirement (from distinguishability): $3 | N$, so $N \in \{3\}$.
+Combined with Z₃ center requirement (from color neutrality): $3 | N$, so $N \in \{3\}$.
 
-**Approach B: Information-Theoretic Bound (Novel)**
+> **Shared input (V3 §V3.3):** The Z₃ constraint enters here via the same physical input as in Theorem 0.0.15 §3.0 (stella 3-fold rotational symmetry). The general neutrality condition $\sum_c e^{i\phi_c} = 0$ holds for any $N \geq 2$ with equally-spaced phases ($N$-th roots of unity), giving $Z_N$. The specific $Z_3 \subseteq Z_N$ requirement — i.e., $3 | N$ — shares its origin with the stella's 3-fold symmetry, not an independent input. The information-geometric path shares this constraint with the geometric path; the genuinely independent contributions of this proposition are the **lower bound** $N \geq 3$ from Fisher non-degeneracy (§3.1) and **Approach C** (Theorem 3.2.1, which selects $N = 3$ without using $D = 4$ or $Z_3$).
 
-**Conjecture 3.2.1 (Information Capacity Bound):**
+This is a **well-justified, rigorous** upper bound using the established result D = 4 from Theorem 0.0.1.
+
+**Supplementary Perspective: First Stable Principle**
+
+An alternative route to N = 3 that does not use D = 4 is the First Stable Principle ([Proposition 0.0.XXa](Proposition-0.0.XXa-First-Stable-Principle.md)), which selects N = 3 as the minimal stable configuration. However, this is a **minimality postulate** (formalized Occam's razor), not a derivation from physical law. The geometric upper bound above is the primary argument. See §6.1.1 for the investigation that motivated this distinction.
+
+**Failed Approach: Pure Information-Theoretic Upper Bound (Unresolved)**
+
+We investigated whether information geometry alone could bound N without geometric input:
+
+**Conjecture 3.2.1 (Information Capacity Bound — UNRESOLVED):**
 *The maximum number of distinguishable components in $D_{space}$ dimensions is:*
 
 $$N_{max} = D_{space}$$
 
-**Heuristic Argument:**
+Two heuristic arguments were attempted:
 
-1. **Measurement channels:** An observer in $D_{space}$ dimensions can perform measurements along $D_{space}$ independent spatial directions
+1. **Measurement channels:** $\log_2(N) \leq D_{space}$ gives $N \leq 8$ — too weak.
 
-2. **Independent information:** Each direction carries at most one bit of "which component" information
+2. **Phase space matching:** $2(N-1) \leq 6$ gives $N \leq 4$ — correct bound but the phase-space matching argument is heuristic, not rigorous.
 
-3. **Distinguishability bound:** To distinguish $N$ components requires $\log_2(N)$ bits. With $D_{space}$ independent channels: $\log_2(N) \leq D_{space}$.
+**The investigation in §6.1.1 confirmed that Fisher metric rank does not bound N** (full rank for all N ≥ 3). A rigorous pure information-theoretic upper bound on N remains an open problem.
 
-4. **For $D_{space} = 3$:** $N \leq 2^3 = 8$... but this is too weak.
+**Approach C: Irreducibility and Information Density** 🔶 NOVEL
 
-**Refined Argument (Phase Space):**
+While Fisher metric rank alone does not bound N from above, the **algebraic structure** of composite-N interference systems provides a physically motivated selection criterion. The key insight: composite-N systems are algebraically reducible (they decompose into subsystems), while prime-N systems are irreducible. Among irreducible systems, per-DOF Fisher information selects N = 3 uniquely.
 
-The configuration space dimension is $\dim(\mathcal{C}) = N - 1$ (after quotienting by U(1)).
+**Lemma 3.2.1a (Composite-N Decomposition):**
+*For composite $N = a \cdot b$ with $a, b \geq 2$, the interference pattern decomposes into $a$ sub-interference terms, each involving only $b$ phases.*
 
-For the configuration space to support stable dynamics:
-- Phase space dimension: $2(N-1)$
-- Observer requires: position (3D) + momentum (3D) = 6D phase space
-- Matching: $2(N-1) \leq 6$ → $N \leq 4$
+**Proof:**
 
-Combined with stability requirement $N \geq 3$ and Z₃: $N = 3$.
+The $N$-th roots of unity $\{\omega^k\}_{k=0}^{N-1}$ (where $\omega = e^{2\pi i/N}$) can be grouped into $Z_a$ cosets:
+
+$$\text{Coset } j = \{\omega^{a k + j} : k = 0, \ldots, b-1\}, \quad j = 0, \ldots, a-1$$
+
+Each coset contains $b$ elements whose phases differ by $2\pi a/N = 2\pi/b$, so each coset forms a $Z_b$ sub-pattern. The total field amplitude decomposes:
+
+$$\chi(x) = \sum_{c=0}^{N-1} A_c(x) e^{i\phi_c} = \sum_{j=0}^{a-1} \underbrace{\sum_{k=0}^{b-1} A_{ak+j}(x) e^{i\phi_{ak+j}}}_{\chi_j(x) \text{ (coset sub-amplitude)}}$$
+
+Each sub-amplitude $\chi_j(x)$ involves only $b$ components — the interference pattern is a superposition of $a$ terms of reduced complexity. This is an **algebraic decomposition**: the $N$-component system factors into $a$ subsystems of $b$ components each. □
+
+**Examples:**
+- **$N = 4$:** $Z_2$ cosets $\{0,2\}$ and $\{1,3\}$ give $\chi = (A_0 - A_2) + i(A_1 - A_3)$, a sum of two 2-component sub-amplitudes.
+- **$N = 6$:** Admits two decompositions: (i) $a=2, b=3$: two $Z_3$ sub-patterns $\{0,2,4\}$ and $\{1,3,5\}$; (ii) $a=3, b=2$: three $Z_2$ sub-patterns $\{0,3\}$, $\{1,4\}$, $\{2,5\}$.
+- **$N = 9$:** $Z_3$ cosets give three $Z_3$ sub-patterns.
+
+**Computational verification:** See `verification/foundations/proposition_0_0_XX_decomposability.py` (Tests 1–6: reconstruction errors $< 10^{-10}$ for all composite $N = 4, 6, 8, 9, 10$).
+
+---
+
+**Lemma 3.2.1b (Prime-N Irreducibility):**
+*For prime $N$, the interference pattern does NOT decompose into independent subsystems via coset structure.*
+
+**Proof:**
+
+When $N$ is prime, the cyclic group $Z_N$ has **no proper non-trivial subgroups** (Lagrange's theorem: subgroup orders must divide $N$, and the only divisors of a prime are $1$ and $N$ itself). Therefore:
+
+1. No non-trivial coset decomposition of $\{\omega^k\}_{k=0}^{N-1}$ exists.
+2. The $N$-th roots of unity cannot be partitioned into subsets that independently form sub-interference patterns via the $Z_a$ coset mechanism of Lemma 3.2.1a.
+3. The interference pattern $p(x) = |\sum_{c=0}^{N-1} A_c(x) e^{i\phi_c}|^2$ contains genuine $N$-way cross-terms that cannot be decomposed into products or sums of lower-order interference terms.
+
+The system is **algebraically irreducible**: all $N$ components participate jointly in the interference, with no intermediate factorization. □
+
+**Computational verification:** See `verification/foundations/proposition_0_0_XX_decomposability.py` (Tests 7–10: $Z_3, Z_5, Z_7$ have zero proper non-trivial subgroups; numerical cross-term analysis confirms irreducibility).
+
+---
+
+**Theorem 3.2.1 (Irreducible Information Density Bound):** 🔶 NOVEL
+*Among irreducible (prime) $N \geq 3$, the per-degree-of-freedom Fisher information $I_{\text{DOF}}(N) = 1/(2N)$ is uniquely maximized at $N = 3$.*
+
+**Proof:**
+
+**Step 1 (Per-DOF Fisher information):**
+From [Lemma 0.0.17c](Lemma-0.0.17c-Fisher-Killing-Equivalence.md), for $S_N$-symmetric interference with color neutrality, the Fisher metric on the Cartan torus takes the form:
+
+$$g^F = \frac{1}{2N} \cdot \mathbb{I}_{N-1}$$
+
+The per-DOF Fisher information is:
+
+$$I_{\text{DOF}}(N) = \frac{\text{Tr}(g^F)}{N-1} = \frac{(N-1) \cdot \frac{1}{2N}}{N-1} = \frac{1}{2N}$$
+
+**Step 2 (Monotonicity):** Since $1/(2N)$ is a strictly decreasing function of $N$, we have $I_{\text{DOF}}(N_1) > I_{\text{DOF}}(N_2)$ whenever $N_1 < N_2$.
+
+**Step 3 (Restriction to irreducible systems):** By Lemma 3.2.1a, composite $N$ systems are algebraically reducible — they decompose into lower-order subsystems. A physically fundamental configuration should be irreducible: it should not factor into simpler sub-configurations. By Lemma 3.2.1b, irreducibility requires $N$ to be prime.
+
+**Step 4 (Selection):** Among prime $N \geq 3$ (the set $\{3, 5, 7, 11, 13, \ldots\}$), the per-DOF Fisher information is:
+
+| $N$ (prime) | $I_{\text{DOF}} = 1/(2N)$ |
+|-------------|--------------------------|
+| **3** | **1/6 ≈ 0.1667** |
+| 5 | 1/10 = 0.1000 |
+| 7 | 1/14 ≈ 0.0714 |
+| 11 | 1/22 ≈ 0.0455 |
+| $\vdots$ | $\to 0$ |
+
+The unique maximum is at $N = 3$. □
+
+**Physical interpretation:** Each degree of freedom in an $N = 3$ irreducible system carries more Fisher information (distinguishing power) per DOF than any larger prime system. The $N = 3$ system is maximally "information-dense" among irreducible configurations.
+
+**Honest status:** This argument replaces the bare minimality postulate (First Stable Principle) with a **quantitative information-theoretic criterion**: maximize per-DOF Fisher information among irreducible systems. The criterion is physically motivated (information efficiency), but the *selection of this criterion* (rather than, say, total information or some other functional) is still a methodological choice. It is more principled than bare Occam's razor because:
+1. It provides a **quantitative** measure ($1/(2N)$), not just "pick the smallest"
+2. It is **physically grounded** in Fisher information geometry (Cramér-Rao sensitivity)
+3. The irreducibility filter ($N$ prime) has **algebraic content** (Lemma 3.2.1a/b), not just minimality
+
+**What remains:** The statement "nature selects configurations that maximize per-DOF information among irreducible systems" is a well-motivated selection principle, not a theorem derivable from more basic axioms.
+
+**Computational verification:** See `verification/foundations/proposition_0_0_XX_decomposability.py` (17/17 tests pass; Tests 11–13 verify the $1/(2N)$ scaling and $N = 3$ maximality).
+
+---
 
 ### 3.3 Synthesis: N = 3 Uniquely
 
@@ -370,9 +504,12 @@ Combined with stability requirement $N \geq 3$ and Z₃: $N = 3$.
 | Non-trivial distinguishability | §3.1(i) | N ≥ 2 |
 | Stable equilibrium | §3.1(ii)-(iii) | N ≥ 3 |
 | Affine independence in 3D | Lemma 0.0.2a | N ≤ 4 |
-| Z₃ phase structure | Color neutrality | 3 \| N |
+| Z₃ phase structure | Color neutrality (*shared with geometric path — see §3.2 note*) | 3 \| N |
+| Irreducible info density (Approach C) | Theorem 3.2.1 | N = 3 among primes ≥ 3 |
 
 **Intersection:** $N = 3$ is unique.
+
+> **Note on Approach C:** Theorem 3.2.1 provides an alternative route to N = 3 that does not use D = 4. It selects N = 3 as the unique prime ≥ 3 that maximizes per-DOF Fisher information. This replaces the bare minimality postulate of the First Stable Principle with a quantitative information-theoretic criterion, though the selection principle itself ("maximize per-DOF info among irreducibles") remains a methodological choice.
 
 ---
 
@@ -381,6 +518,8 @@ Combined with stability requirement $N \geq 3$ and Z₃: $N = 3$.
 ### 4.1 The Question
 
 Given that $N = 3$, why is the gauge group SU(3) and not some other group?
+
+> **Assumptions used in this section:** The argument below relies on Assumption **A-CS** (compact simple gauge group) to restrict the search space, and Assumption **A-SN** ($S_N$ permutation symmetry) to identify the Weyl group. Both are declared in the Explicit Assumptions section above.
 
 **Claim 4.1:** SU(3) is the unique compact simple Lie group whose isometry group on the configuration space matches the Fisher metric structure.
 
@@ -456,29 +595,70 @@ Then the isometry group of $(\mathcal{C}, g^F)$ is SU(3).
 
 With both results now established (A.1 via the First Stable Principle, A.2 via Weyl group uniqueness):
 
+**Primary derivation chain (using geometric upper bound):**
+
 ```
-INPUT: "Observer can distinguish configurations"
+INPUTS: "Observer can distinguish configurations"     [axiom]
+        + Quantum interference form (A-IF)             [assumption (F)]
+        + Color neutrality at equilibrium              [assumption (F)]
+        + D = 4 from observer existence (Thm 0.0.1)   [established (E)]
+        + Compact simple gauge group (A-CS)            [assumption (F)]
+        + S_N permutation symmetry (A-SN)             [assumption (F)]
        ↓
 DERIVE: Non-trivial Fisher metric exists (Chentsov uniqueness)
        ↓
-DERIVE: N ≥ 3 components (stability argument, §3.1)
+DERIVE: N ≥ 3 components (Fisher non-degeneracy, §3.1; requires A-IF)  ← NOVEL
        ↓
-DERIVE: N ≤ 3 (affine independence + D = 4, §3.2)
+DERIVE: N ≤ 4 (D=4 + affine independence, Lemma 0.0.2a)               ← ESTABLISHED
        ↓
-DERIVE: N = 3 exactly
+DERIVE: 3 | N (color neutrality → Z₃; shared with geometric path, see §3.2 note)
        ↓
-DERIVE: S₃ symmetry (permutation of indistinguishable components)
+DERIVE: N = 3 uniquely (intersection of above)
        ↓
-DERIVE: SU(3) isometry group (unique rank-2 group with S₃ Weyl, §4.4)
+DERIVE: S₃ Weyl symmetry (from A-SN with N = 3)
+       ↓
+DERIVE: SU(3) (unique rank-2 compact simple group with S₃ Weyl, §4.4; requires A-CS)
        ↓
 DERIVE: Stella octangula (unique geometric realization, Theorem 0.0.3)
        ↓
 DERIVE: Physics (masses, couplings, gravity)
 ```
 
-**The framework reduces to a single irreducible primitive:**
+**Honest input count:** The primary derivation uses **1 axiom** (observer distinguishability), **1 established result** (D = 4), and **4 framework-specific assumptions** (A-IF, color neutrality, A-CS, A-SN). This is a valid **constrained selection** — not a pure derivation from a single axiom, but a well-motivated argument from clearly declared inputs.
 
-> **"An observer exists who can distinguish configurations."**
+> **Supplementary perspective:** The First Stable Principle (Prop 0.0.XXa) offers an alternative to the D = 4 upper bound by postulating minimality. This replaces one input (D = 4, established physics) with another (minimality, a methodological preference). The primary chain above is preferred because D = 4 is better justified.
+
+**Alternative derivation chain (Approach C — no D = 4 needed):**
+
+```
+INPUTS: "Observer can distinguish configurations"     [axiom]
+        + Quantum interference form (A-IF)             [assumption (F)]
+        + Color neutrality at equilibrium              [assumption (F)]
+        + Compact simple gauge group (A-CS)            [assumption (F)]
+        + S_N permutation symmetry (A-SN)             [assumption (F)]
+       ↓
+DERIVE: Non-trivial Fisher metric exists (Chentsov uniqueness)
+       ↓
+DERIVE: N ≥ 3 components (Fisher non-degeneracy, §3.1; requires A-IF)   ← NOVEL
+       ↓
+DERIVE: Composite N decomposes (Lemma 3.2.1a — algebraic reducibility)  ← NOVEL
+       ↓
+DERIVE: Irreducibility requires N prime (Lemma 3.2.1b)                  ← NOVEL
+       ↓
+DERIVE: Per-DOF Fisher info I_DOF = 1/(2N) from Lemma 0.0.17c           ← PROVEN
+       ↓
+DERIVE: N = 3 maximizes I_DOF among primes ≥ 3 (Theorem 3.2.1)         ← NOVEL
+       ↓
+DERIVE: S₃ Weyl symmetry (from A-SN with N = 3)
+       ↓
+DERIVE: SU(3) (unique rank-2 compact simple group with S₃ Weyl, §4.4)
+       ↓
+DERIVE: Stella octangula (unique geometric realization, Theorem 0.0.3)
+       ↓
+DERIVE: Physics (masses, couplings, gravity)
+```
+
+**Approach C input count:** **1 axiom** (observer distinguishability) and **4 framework-specific assumptions** (A-IF, color neutrality, A-CS, A-SN) — **no D = 4 needed**. The trade-off: D = 4 (established physics) is replaced by a selection principle ("maximize per-DOF Fisher info among irreducible systems"), which is physically motivated but still a methodological choice. This is more principled than the bare minimality postulate of the First Stable Principle because it provides a quantitative criterion grounded in information geometry.
 
 ---
 
@@ -492,7 +672,12 @@ DERIVE: Physics (masses, couplings, gravity)
 | N = 2 Fisher degeneracy | ✅ **PROVEN** (Lemma 3.1.2) | Complete |
 | N = 2 Hessian stability | ✅ **PROVEN** (§3.1.2 Step 5) | Complete |
 | N = 3 positive-definiteness | ✅ **PROVEN** (§3.1.3) | Complete |
-| Information capacity bound | ✅ **RESOLVED** via First Stable Principle | Complete |
+| Upper bound N ≤ 4 | ✅ **PROVEN** via D = 4 + affine independence (Lemma 0.0.2a) — **primary** | Complete |
+| Upper bound (alternative 1) | 🔶 **POSTULATED** via First Stable Principle — supplementary | Complete |
+| Upper bound (alternative 2) | 🔶 **NOVEL** via irreducible info density (Theorem 3.2.1, Approach C) | Complete |
+| Composite-N decomposition | 🔶 **PROVEN** — Lemma 3.2.1a (coset structure) | Complete |
+| Prime-N irreducibility | 🔶 **PROVEN** — Lemma 3.2.1b (no subgroups) | Complete |
+| Pure info-theoretic upper bound (rank-based) | ❌ **UNRESOLVED** — Fisher rank does not bound N (§6.1.1) | Open problem |
 | Rigorous affine independence | ✅ Via Lemma 0.0.2a | Complete |
 
 **N = 2 instability** is **rigorously proven** via three independent arguments:
@@ -500,7 +685,7 @@ DERIVE: Physics (masses, couplings, gravity)
 2. Hessian has zero eigenvalue (§3.1.2 Step 5)
 3. Chentsov conditions violated (§3.1.2 Step 4)
 
-**Upper bound resolution:** The pure information-theoretic bound N = 3 is achieved via the First Stable Principle (see §6.1.1), eliminating the need for geometric input.
+**Upper bound resolution:** Three routes to the upper bound now exist: (a) the geometric bound N ≤ 4 from D = 4 + affine independence (Lemma 0.0.2a), combined with Z₃ from color neutrality, giving N = 3 — this is the **primary, well-justified route**; (b) the First Stable Principle (see §6.1.1), which selects N = 3 as the minimal stable configuration — a well-motivated minimality postulate (see [V1.3 §Q3](../reviews/G1/V1.3-F07-Prop-0.0.XX-Hidden-Inputs-Analysis.md)); (c) **Approach C** (Theorem 3.2.1), which selects N = 3 as the unique prime ≥ 3 maximizing per-DOF Fisher information — a physically motivated information-theoretic criterion that does not require D = 4.
 
 ### 6.1.1 Critical Finding: Fisher Metric for N ≥ 4 (Investigation Complete)
 
@@ -525,20 +710,17 @@ We computed the Fisher metric for N = 2 through N = 8 to check for information-t
 - ❌ There is no obvious "information saturation" for N > 3
 - ✅ The bound N ≤ 4 (or N ≤ 3) requires geometric input (Lemma 0.0.2a) OR a different information-theoretic argument
 
-**Resolution: The First Stable Principle**
+**Resolution of the Upper Bound**
 
-The pure information-theoretic bound is achieved via the **First Stable Principle** ([Proposition 0.0.XXa](Proposition-0.0.XXa-First-Stable-Principle.md)):
+The investigation above shows that **information geometry alone does not bound N from above**. The Fisher metric has full rank for all N ≥ 3, so there is no information-theoretic pathology at N = 4, 5, 6, ... This is an important negative result.
 
-$$N^* = \min\{N \in \mathbb{N} : S(N) = 1\} = 3$$
+**Primary upper bound:** The geometric constraint N ≤ 4 from D = 4 + affine independence (Lemma 0.0.2a), combined with 3 | N from color neutrality, gives N = 3. This uses the well-established input D = 4 from Theorem 0.0.1.
 
-where $S(N) = 1$ iff the Fisher metric is non-degenerate (positive-definite).
+**Supplementary perspective 1 (First Stable Principle):** [Proposition 0.0.XXa](Proposition-0.0.XXa-First-Stable-Principle.md) offers an alternative: select $N^* = \min\{N : S(N) = 1\} = 3$. This is a well-motivated minimality postulate but not a derivation from physical law (see [V1.3 §Q3](../reviews/G1/V1.3-F07-Prop-0.0.XX-Hidden-Inputs-Analysis.md)).
 
-**Key insight:** Fisher metric rank cannot bound N (it has full rank for all N ≥ 3), but the **First Stable Principle** selects N = 3 as the minimal configuration with stable distinguishability. This is a rigorous information-theoretic selection criterion:
-- N = 1, 2: Unstable (Fisher degenerate)
-- N = 3: First stable point
-- N ≥ 4: Stable but NOT minimal
+**Supplementary perspective 2 (Approach C — Irreducible Information Density):** Theorem 3.2.1 provides a more principled alternative. Composite-$N$ systems are algebraically reducible (Lemma 3.2.1a), so a physically fundamental configuration must have prime $N$ (Lemma 3.2.1b). Among prime $N \geq 3$, per-DOF Fisher information $I_{\text{DOF}} = 1/(2N)$ is uniquely maximized at $N = 3$. This replaces bare minimality with a quantitative information-theoretic criterion and does not require D = 4, though the selection principle itself ("maximize per-DOF info among irreducibles") remains a methodological choice.
 
-See [Research-Pure-Information-Bound-On-N.md](../supporting/Research-Pure-Information-Bound-On-N.md) for the complete investigation that led to this resolution.
+**Open problem (refined):** A rigorous pure information-theoretic upper bound on N from Fisher metric rank alone remains unresolved (full rank for all N ≥ 3). However, Approach C provides a **physically motivated** alternative that goes beyond rank analysis: it combines algebraic reducibility (a structural property of composite systems) with information density optimization. This partially resolves the open problem — not by bounding N through information pathology, but by selecting N = 3 through a combination of algebraic irreducibility and information efficiency. See [Research-Pure-Information-Bound-On-N.md](../supporting/Research-Pure-Information-Bound-On-N.md) for the full investigation.
 
 ### 6.2 Approach 2 (Symmetry) — All Steps Verified
 
@@ -561,6 +743,7 @@ Both metrics are the unique S_N-invariant metric on the Cartan torus (up to scal
 3. ✅ **Investigate Fisher metric for N ≥ 4** — Complete (§6.1.1) — Finding: No pathology, full rank
 4. ✅ **Computational verification of N = 2 degeneracy** — Complete (9/9 tests pass)
 5. ✅ **Develop pure info-theoretic bound** — Complete via **First Stable Principle** ([Proposition 0.0.XXa](Proposition-0.0.XXa-First-Stable-Principle.md))
+6. ✅ **Develop decomposability/irreducibility argument** — Complete via **Approach C** (Theorem 3.2.1, Lemmas 3.2.1a/b)
 
 ### 6.4 Summary of Proof Status
 
@@ -577,41 +760,40 @@ Both metrics are the unique S_N-invariant metric on the Cartan torus (up to scal
 | SU(3) from S₃ Weyl group | ✅ PROVEN | §4.4, Cartan classification |
 | Fisher = Killing general theorem | ✅ **PROVEN** | [Lemma 0.0.17c](Lemma-0.0.17c-Fisher-Killing-Equivalence.md) |
 | N ≥ 4 Fisher metric non-degenerate | ✅ **COMPUTED** | §6.1.1 |
-| Pure information bound N = 3 | ✅ **PROVEN** | [Proposition 0.0.XXa](Proposition-0.0.XXa-First-Stable-Principle.md) (First Stable Principle) |
+| Composite-N decomposes via cosets | 🔶 **PROVEN** | Lemma 3.2.1a (Approach C) |
+| Prime-N is irreducible | 🔶 **PROVEN** | Lemma 3.2.1b (Approach C) |
+| N = 3 max per-DOF info among primes | 🔶 **PROVEN** | Theorem 3.2.1 (Approach C) |
+| Pure information bound N = 3 (minimality) | 🔶 **POSTULATED** | [Proposition 0.0.XXa](Proposition-0.0.XXa-First-Stable-Principle.md) (First Stable Principle — selection criterion, not derivation; see V1.3 §Q3) |
+| Pure information bound N = 3 (info density) | 🔶 **NOVEL** | Theorem 3.2.1 (Approach C — quantitative criterion, no D=4 needed) |
 
 ---
 
 ## 7. Connection to Existing Framework
 
-### 7.1 Relationship to Theorem 0.0.15 (Fragmentation Resolution)
+### 7.1 Relationship to Theorem 0.0.15
 
-Theorem 0.0.15 derives SU(3) from Z₃ + D = 4 + Cartan. This proposition provides an **alternative derivation** via information geometry.
+Theorem 0.0.15 derives SU(3) from Z₃ + D = 4 + Cartan classification. This proposition provides a **complementary derivation** via information geometry.
 
-**Fragmentation Risk Assessment:** The Physics verification agent identified a MEDIUM fragmentation risk from having two paths to SU(3). We address this by showing the paths are **compatible and complementary**, not conflicting:
+**Shared vs. path-specific inputs (V3 §V3.1, §V3.3):**
 
-| Derivation Path | Key Inputs | Mechanism | Result |
-|-----------------|------------|-----------|--------|
-| **Geometry-first** (Thm 0.0.15) | Stella geometry → Z₃ phases → D = 4 | Cartan classification | SU(3) |
-| **Information-first** (This Prop) | Distinguishability → Fisher → D = 4 | Weyl group uniqueness | SU(3) |
+| Input | Geometry-First (Thm 0.0.15) | Information-First (This Prop) | Status |
+|-------|------------------------------|-------------------------------|--------|
+| **D = 4** (Thm 0.0.1) | ✅ rank ≤ 2 via $D_{\text{space}} - 1$ | ✅ $N \leq 4$ via affine independence | **SHARED** |
+| **Z₃ phase structure** | ✅ stella 3-fold rotational symmetry | ✅ "color neutrality" $\sum e^{i\phi_c} = 0$ | **SHARED** (same origin — [V3 §V3.3](../reviews/G1/G1-Validity-Audit-Module-V3-Findings.md#v33--does-color-neutrality-independently-constrain-or-restate-su3)) |
+| **Compact simple group** (A-CS) | ✅ Cartan classification search space | ✅ Weyl group uniqueness argument | **SHARED** |
+| Stella geometry + GR1–GR3 + MIN1 | ✅ geometric arena → Z₃ + rank | — | Geometry-only |
+| A-IF (quantum interference form) | — | ✅ Fisher non-degeneracy → $N \geq 3$ | **Information-only** |
+| A-SN ($S_N$ permutation symmetry) | — | ✅ Weyl group = $S_3$ | **Information-only** |
 
-**Why They Are Compatible:**
+**Summary:** 3 inputs are shared (D = 4, Z₃, A-CS), 4 are geometry-only (stella, GR1–GR3, MIN1), and 2 are information-only (A-IF, A-SN). The paths are **not independent confirmations** — they share their most load-bearing inputs and differ only in the intermediate machinery used to reach SU(3).
 
-1. **Common D = 4 Input:** Both paths require D_space = 3 (from D = 4). The geometry path uses it for embedding; the information path uses it for the upper bound N ≤ 4.
+**Key honesty point (V1.3 finding F6, V3 §V3.1):** A peer reviewer should not be told these are "independent derivations" — they are **complementary perspectives** that use different intermediate machinery to reach the same conclusion from overlapping inputs. The Z₃ constraint, in particular, enters both paths from the same geometric origin (the stella's 3-fold symmetry), even though it appears under the name "color neutrality" in this proposition (see §3.2 note).
 
-2. **Common N = 3 Conclusion:** Both derive N = 3:
-   - Geometry: Z₃ from stella symmetry
-   - Information: Z₃ from color neutrality + Fisher stability
-
-3. **Common SU(3) Output:** Both select SU(3) among rank-2 groups:
-   - Geometry: SU(3) from Cartan classification with Z₃ center
-   - Information: SU(3) from S₃ Weyl group uniqueness
-
-**Resolution:** The two paths are **not independent axiom systems** but rather two perspectives on the same underlying structure. They share the fundamental input (D = 4 from observer existence) and arrive at SU(3) through compatible mechanisms. This is analogous to deriving group properties via generators vs. representations—different approaches, same mathematical object.
-
-**Value of Having Both Paths:**
-- **Cross-validation:** Each path verifies the other
-- **Deeper understanding:** Reveals SU(3) as both geometrically and information-theoretically special
-- **Falsifiability:** If the paths contradicted, it would indicate an error
+**What this proposition genuinely adds:**
+- A novel **lower bound** (N ≥ 3) from Fisher metric non-degeneracy under the interference form — this argument does not appear in Thm 0.0.15
+- A different **selection mechanism** (S₃ Weyl uniqueness vs. Cartan + Z₃ center) for identifying SU(3) among rank-2 groups
+- The insight that SU(3) is special from an information-geometric perspective, not just a geometric one
+- Evidence that the framework's conclusions are **robust**: changing the intermediate derivation path does not change the result
 
 ### 7.2 Relationship to Theorem 0.1.0
 
@@ -619,13 +801,40 @@ Theorem 0.1.0 proves fields exist from Fisher metric. This proposition goes furt
 
 ### 7.3 How This Affects the Axiom Count
 
-| Current | After This Proposition |
-|---------|----------------------|
-| Observer existence → D = 4 | Observer distinguishability → SU(3) directly |
-| Stella geometry assumed | Stella derived from SU(3) (Theorem 0.0.3) |
-| SU(3) from stella + D = 4 | SU(3) from Fisher constraints + D = 4 |
+| | Geometry-First Path (Thm 0.0.15) | Information Path (This Prop) |
+|---|---|---|
+| **Shared inputs** | D = 4 (Thm 0.0.1) | D = 4 (Thm 0.0.1) |
+| **Path-specific inputs** | Stella geometry (Thm 0.0.3), GR1–GR3, MIN1 | A-IF (interference form), color neutrality, compact simplicity |
+| **Selection mechanism** | Z₃ from stella + Cartan classification | Fisher non-degeneracy + (affine independence or First Stable) |
+| **Output** | SU(3) | SU(3) |
 
-> **Note:** The axiom count is NOT reduced—both paths require D = 4 as input. What changes is the **logical structure**: the information path makes SU(3) appear more natural (it's the unique stable configuration) rather than contingent on specific geometry.
+> **Note:** The axiom count is NOT reduced — the information path trades geometric inputs for information-theoretic ones. What changes is the **logical structure**: the information path derives SU(3) without assuming the stella octangula, showing that SU(3) is special from an information-geometric perspective (unique stable configuration with S₃ Weyl symmetry). The stella then follows from SU(3) via Theorem 0.0.3, rather than being assumed first.
+
+### 7.4 Decoherence Robustness of the Three Paths to SU(3)
+
+The [G1 Adversarial Stress-Test](../reviews/G1/G1-Adversarial-Stress-Test-Findings.md) §A5.2 tested what happens when the quantum interference form (Assumption A-IF) is degraded by partial decoherence. This analysis reveals an important asymmetry in robustness among the three derivation paths.
+
+**Decoherence model.** Replace the pure quantum interference form with a partially decohered mixture:
+
+$$p_\delta(x) = (1 - \delta)\left|\sum_c A_c(x)\, e^{i\phi_c}\right|^2 + \delta \sum_c |A_c(x)|^2$$
+
+where $\delta \in [0,1]$ interpolates between pure quantum ($\delta = 0$) and fully classical ($\delta = 1$).
+
+**Impact on Path C (this proposition):** For any $\delta > 0$, the Fisher metric becomes generically non-degenerate for **all** $N \geq 2$. The cross-term cancellation that eliminates $N = 2$ in §3.1.2 is spoiled by the classical admixture. Consequently, **the lower bound $N \geq 3$ is fragile under decoherence** — it requires exact quantum coherence ($\delta = 0$) of the interference form.
+
+**Impact on Paths A and B (unaffected):**
+
+| Path | Mechanism | Decoherence sensitivity |
+|------|-----------|------------------------|
+| **A** (Geometric, Thm 0.0.15) | Stella → Z₃ phases → rank ≤ 2 + Cartan → SU(3) | **None.** Z₃ is a discrete symmetry of the stella octangula. Geometric symmetries are topological invariants, insensitive to continuous perturbation. |
+| **B** (Topological, Thm 0.0.15 §3.5) | Z₃ center + rank ≤ 2 + compact simple → SU(3) | **None.** The Z₃ center of SU(3) is an algebraic invariant of the group. The Cartan classification enumeration is exact. |
+| **C** (Information, this Prop) | Fisher non-degeneracy → N ≥ 3 | **Fragile.** Any $\delta > 0$ breaks the $N = 2$ elimination. |
+
+**Why this matters:** The primary derivation of SU(3) (Paths A and B) depends on exact discrete/topological properties — integer dimension ($D = 4$), discrete center ($\mathbb{Z}_3$), integer rank ($\leq 2$). These cannot be continuously deformed. Path C provides a complementary perspective but its lower bound is the most fragile component of the framework's SU(3) determination.
+
+**Physical context:** Born rule deviations have been experimentally constrained to $\lesssim 10^{-10}$ (Sinha et al. 2010). Within these bounds, Path C's conclusions hold. But as a matter of logical structure, the framework does not *need* Path C — Paths A and B alone uniquely determine SU(3) without invoking the interference form.
+
+> **Assessment (from [G1 Stress-Test](../reviews/G1/G1-Adversarial-Stress-Test-Findings.md) §A5.2):** DENTED — Path C's N ≥ 3 bound is fragile under decoherence, but Paths A and B are completely unaffected. The framework's primary derivation route is robust.
 
 ---
 
@@ -633,19 +842,19 @@ Theorem 0.1.0 proves fields exist from Fisher metric. This proposition goes furt
 
 **Proposition 0.0.XX establishes:**
 
-$$\boxed{\text{SU(3) is uniquely determined by observer distinguishability requirements}}$$
+$$\boxed{\text{SU(3) is the unique gauge group consistent with observer distinguishability + A-IF + color neutrality (retrodiction)}}$$
 
 **Two Results (Both Proven):**
-1. **A.1 (Dimensionality):** N = 3 is uniquely selected by the **First Stable Principle** ✅
+1. **A.1 (Dimensionality):** N = 3 is uniquely selected by Fisher non-degeneracy (requires A-IF) + upper bound (D = 4 + affine independence, or First Stable Principle, or Approach C irreducible info density) ✅
 2. **A.2 (Symmetry):** SU(3) is the unique rank-2 Lie group with Weyl group S₃ ✅
 
-**The complete derivation chain:**
+**The complete derivation chain (with all inputs shown):**
 
-$$\text{Distinguishability} \xrightarrow{\text{First Stable}} N=3 \xrightarrow{S_3} SU(3) \xrightarrow{\text{Thm 0.0.3}} \text{Stella} \xrightarrow{} \text{Physics}$$
+$$\text{Distinguishability} + \text{A-IF} + \text{Color neutrality} \xrightarrow{N \geq 3} \xrightarrow{N \leq 3} N=3 \xrightarrow{S_3} \text{SU(3)} \xrightarrow{\text{Thm 0.0.3}} \text{Stella} \to \text{Physics}$$
 
-**Current Status:** 🔶 NOVEL ✅ VERIFIED — Pure information-theoretic derivation complete
+**Current Status:** 🔶 NOVEL — Constrained selection retrodiction complete (lower bound N ≥ 3 conditional on A-IF)
 
-**Key Achievement:** The First Stable Principle ([Proposition 0.0.XXa](Proposition-0.0.XXa-First-Stable-Principle.md)) provides a purely information-theoretic derivation of N = 3, requiring no geometric input (D = 4). The geometric constraints (affine independence, Z₃) provide independent confirmation.
+**Key Achievement:** SU(3) emerges as the unique gauge group from the intersection of information-theoretic constraints (Fisher non-degeneracy under quantum interference → N ≥ 3) and one of three upper-bound mechanisms: (a) geometric constraints (D = 4 + affine independence + Z₃ → N = 3), (b) the First Stable Principle (minimality → N = 3), or (c) **Approach C** (irreducible info density: composite N decomposes, prime N is irreducible, N = 3 maximizes per-DOF Fisher info among primes ≥ 3). Approach C is the most principled alternative to D = 4: it provides a quantitative information-theoretic criterion without requiring spacetime dimension. The quantum interference form (Assumption A-IF) is the critical framework input that makes the Fisher degeneracy argument work.
 
 ---
 
@@ -657,10 +866,10 @@ $$\text{Distinguishability} \xrightarrow{\text{First Stable}} N=3 \xrightarrow{S
 3. [Proposition-0.0.17b](Proposition-0.0.17b-Fisher-Metric-Uniqueness.md) — Fisher metric uniqueness
 4. [Theorem-0.1.0](../Phase0/Theorem-0.1.0-Field-Existence-From-Distinguishability.md) — Field existence from distinguishability
 5. [Theorem-0.0.17](Theorem-0.0.17-Information-Geometric-Unification.md) — Fisher-Killing equivalence (numerical)
-6. [Theorem-0.0.15](Theorem-0.0.15-Topological-Derivation-SU3.md) — Topological derivation of SU(3)
+6. [Theorem-0.0.15](Theorem-0.0.15-Topological-Determination-SU3.md) — Topological determination of SU(3)
 7. [Lemma-0.0.2a](Lemma-0.0.2a-Confinement-Dimension-Constraint.md) — Affine independence constraint
 8. [Lemma-0.0.17c](Lemma-0.0.17c-Fisher-Killing-Equivalence.md) — Fisher-Killing equivalence (formal proof)
-9. [**Proposition-0.0.XXa**](Proposition-0.0.XXa-First-Stable-Principle.md) — **First Stable Principle** (pure info-theoretic N = 3)
+9. [**Proposition-0.0.XXa**](Proposition-0.0.XXa-First-Stable-Principle.md) — **First Stable Principle** (minimality postulate for N = 3; supplementary to geometric bound)
 10. [Research-Pure-Information-Bound-On-N.md](../supporting/Research-Pure-Information-Bound-On-N.md) — Investigation leading to First Stable
 
 ### Lean Formalization
@@ -670,6 +879,7 @@ $$\text{Distinguishability} \xrightarrow{\text{First Stable}} N=3 \xrightarrow{S
 - [`verification/foundations/proposition_0_0_XX_N2_fisher_degeneracy.py`](../../../verification/foundations/proposition_0_0_XX_N2_fisher_degeneracy.py) — 9/9 tests passing
 - [`verification/foundations/proposition_0_0_XX_adversarial_verification.py`](../../../verification/foundations/proposition_0_0_XX_adversarial_verification.py) — Adversarial physics verification (2026-02-01)
 - [`verification/foundations/proposition_0_0_XX_amplitude_inequality.py`](../../../verification/foundations/proposition_0_0_XX_amplitude_inequality.py) — 9/9 tests passing (Lemma 3.1.3a, added 2026-02-01)
+- [`verification/foundations/proposition_0_0_XX_decomposability.py`](../../../verification/foundations/proposition_0_0_XX_decomposability.py) — 17/17 tests passing (Lemmas 3.2.1a/b, Theorem 3.2.1 — Approach C, added 2026-02-22)
 
 ### Multi-Agent Verification
 - [**Proposition-0.0.XX Multi-Agent Verification Report (2026-02-01)**](../verification-records/Proposition-0.0.XX-SU3-Distinguishability-Multi-Agent-Verification-2026-02-01.md) — Literature, Mathematical, Physics agents
@@ -708,11 +918,11 @@ $$\text{Distinguishability} \xrightarrow{\text{First Stable}} N=3 \xrightarrow{S
 ---
 
 *Document created: 2026-02-01*
-*Status: 🔶 NOVEL ✅ VERIFIED — Pure info-theoretic derivation complete*
-*Last updated: 2026-02-03*
-*Multi-Agent Verification: 2026-02-01 (Literature ✅, Math ✅, Physics ✅)*
+*Status: 🔶 NOVEL — Constrained selection derivation (not pure info-theoretic)*
+*Last updated: 2026-02-22*
+*Multi-Agent Verification: 2026-02-01 (Literature ✅, Math ✅, Physics ✅ PARTIAL)*
 *Verification Follow-up: 2026-02-01 — All 8 findings from multi-agent verification addressed*
-*Pure Information-Theoretic Bound: ✅ RESOLVED via First Stable Principle ([Proposition 0.0.XXa](Proposition-0.0.XXa-First-Stable-Principle.md))*
+*V1 Validity Audit: 2026-02-22 — Assumption A-IF (quantum interference form) declared per [V1.3 findings](../reviews/G1/V1.3-F07-Prop-0.0.XX-Hidden-Inputs-Analysis.md)*
 
-**Complete Derivation Chain:**
-$$\text{Observer distinguishability} \xrightarrow{\text{First Stable}} N = 3 \xrightarrow{S_3} \text{SU(3)} \xrightarrow{\text{Thm 0.0.3}} \text{Stella} \to \text{Physics}$$
+**Complete Derivation Chain (all inputs shown):**
+$$\text{Distinguishability} + \text{A-IF} + \text{Color neutrality} \xrightarrow{N \geq 3} \xrightarrow{N \leq 3} N = 3 \xrightarrow{S_3} \text{SU(3)} \xrightarrow{\text{Thm 0.0.3}} \text{Stella} \to \text{Physics}$$

@@ -8,6 +8,11 @@
 **Created:** 2026-01-17
 **Last Updated:** 2026-01-17
 
+**Dependencies:**
+- ✅ Theorem 3.0.1 (Pressure Modulated Superposition)
+- ✅ Proposition 0.0.17ac (Edge Mode Decomposition UV Coupling)
+- ✅ Proposition 3.1.1a (Lagrangian Form From Symmetry)
+
 ---
 
 ## File Structure
