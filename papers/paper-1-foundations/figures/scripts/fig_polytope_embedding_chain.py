@@ -1,0 +1,1 @@
+../../../paper-chiral-geometrogenesis/figures/scripts/fig_polytope_embedding_chain.py

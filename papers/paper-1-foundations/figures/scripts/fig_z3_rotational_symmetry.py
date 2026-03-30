@@ -1,0 +1,1 @@
+../../../paper-chiral-geometrogenesis/figures/scripts/fig_z3_rotational_symmetry.py
