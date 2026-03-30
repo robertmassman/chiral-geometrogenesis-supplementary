@@ -1,0 +1,274 @@
+{
+  "proposition": "0.0.XXd",
+  "title": "Computational Universality of CG Primitives",
+  "claim_verified": "Claim 2 (Self-Replicator Construction)",
+  "timestamp": "2026-03-07T07:12:50.714809",
+  "replicator": [
+    1,
+    2,
+    1,
+    2,
+    2,
+    1,
+    0,
+    2,
+    1,
+    1,
+    2,
+    0,
+    2,
+    1,
+    1,
+    1,
+    0,
+    2,
+    2,
+    0
+  ],
+  "tests": [
+    {
+      "test": "decode_20_trit_core",
+      "expected": [
+        "[",
+        "[",
+        "CPY+",
+        "FWD0",
+        "FWD1",
+        "]",
+        "CPY+",
+        "FWD1",
+        "FWD0",
+        "]"
+      ],
+      "decoded": [
+        "[",
+        "[",
+        "CPY+",
+        "FWD0",
+        "FWD1",
+        "]",
+        "CPY+",
+        "FWD1",
+        "FWD0",
+        "]"
+      ],
+      "passed": true
+    },
+    {
+      "test": "self_replication_zero_food",
+      "source": [
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        2,
+        1,
+        1,
+        1,
+        0,
+        2,
+        2,
+        0
+      ],
+      "first_half": [
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        2,
+        1,
+        1,
+        1,
+        0,
+        2,
+        2,
+        0
+      ],
+      "second_half": [
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        2,
+        1,
+        1,
+        1,
+        0,
+        2,
+        2,
+        0
+      ],
+      "source_preserved": true,
+      "copy_made": true,
+      "passed": true
+    },
+    {
+      "test": "self_replication_random_food",
+      "n_trials": 50,
+      "successes": 50,
+      "passed": true
+    },
+    {
+      "test": "perfect_replication_random_food",
+      "n_trials": 50,
+      "perfect_count": 50,
+      "perfect_rate": 1.0,
+      "passed": true
+    },
+    {
+      "test": "cg_primitives_only",
+      "all_instructions": [
+        "CPY+",
+        "FWD0",
+        "FWD1",
+        "[",
+        "]"
+      ],
+      "allowed": [
+        "CPY+",
+        "FWD0",
+        "FWD1",
+        "[",
+        "]"
+      ],
+      "disallowed_found": [],
+      "passed": true
+    },
+    {
+      "test": "reachable_code_cg_only",
+      "reachable_instructions": [
+        "[",
+        "[",
+        "CPY+",
+        "FWD0",
+        "FWD1",
+        "]",
+        "CPY+",
+        "FWD1",
+        "FWD0",
+        "]"
+      ],
+      "non_cg_instructions": [],
+      "passed": true
+    },
+    {
+      "test": "execution_trace_verification",
+      "source_intact": true,
+      "exact_copy_in_food_region": true,
+      "passed": true
+    },
+    {
+      "test": "cg_decomposition",
+      "instructions": [
+        {
+          "instruction": "[",
+          "trits": [
+            1,
+            2
+          ],
+          "cg_origin": "Prop 0.0.17h (Z_3 superselection gate)"
+        },
+        {
+          "instruction": "[",
+          "trits": [
+            1,
+            2
+          ],
+          "cg_origin": "Prop 0.0.17h (Z_3 superselection gate)"
+        },
+        {
+          "instruction": "CPY+",
+          "trits": [
+            2,
+            1
+          ],
+          "cg_origin": "Thm 0.2.1 (Total Field Superposition: T+ -> T- transfer)"
+        },
+        {
+          "instruction": "FWD0",
+          "trits": [
+            0,
+            2
+          ],
+          "cg_origin": "Computational primitive (pointer advance, h0)"
+        },
+        {
+          "instruction": "FWD1",
+          "trits": [
+            1,
+            1
+          ],
+          "cg_origin": "Computational primitive (pointer advance, h1)"
+        },
+        {
+          "instruction": "]",
+          "trits": [
+            2,
+            0
+          ],
+          "cg_origin": "Prop 0.0.17h (Z_3 superselection gate)"
+        },
+        {
+          "instruction": "CPY+",
+          "trits": [
+            2,
+            1
+          ],
+          "cg_origin": "Thm 0.2.1 (Total Field Superposition: T+ -> T- transfer)"
+        },
+        {
+          "instruction": "FWD1",
+          "trits": [
+            1,
+            1
+          ],
+          "cg_origin": "Computational primitive (pointer advance, h1)"
+        },
+        {
+          "instruction": "FWD0",
+          "trits": [
+            0,
+            2
+          ],
+          "cg_origin": "Computational primitive (pointer advance, h0)"
+        },
+        {
+          "instruction": "]",
+          "trits": [
+            2,
+            0
+          ],
+          "cg_origin": "Prop 0.0.17h (Z_3 superselection gate)"
+        }
+      ],
+      "all_mapped": true,
+      "passed": true
+    }
+  ],
+  "overall_status": "PASSED",
+  "summary": "8/8 tests passed"
+}

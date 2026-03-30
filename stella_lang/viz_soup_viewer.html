@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stella Soup — Recording Viewer</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #08080e;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+header {
+  padding: 8px 16px;
+  background: #10101a;
+  border-bottom: 1px solid #222;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  z-index: 10;
+}
+header h1 { font-size: 14px; color: #e0e0e8; white-space: nowrap; }
+
+.controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+button {
+  background: #1a1a28;
+  color: #bbb;
+  border: 1px solid #333;
+  padding: 4px 12px;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+button:hover { background: #252538; color: #ddd; }
+button.active { background: #2a4a6a; border-color: #4a7aaa; color: #ddd; }
+
+select, label { font-size: 11px; color: #888; }
+select {
+  background: #1a1a28;
+  color: #bbb;
+  border: 1px solid #333;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: inherit;
+}
+
+.stats {
+  font-size: 11px;
+  color: #777;
+  display: flex;
+  gap: 14px;
+  margin-left: auto;
+}
+.stats .val { color: #ddd; font-weight: 600; }
+
+.phase-badge { font-size: 10px; padding: 2px 8px; border-radius: 3px; }
+.phase-random { background: #2a1a1a; color: #c88; }
+.phase-transition { background: #2a2a1a; color: #cc8; }
+.phase-dominated { background: #1a2a1a; color: #8c8; }
+
+/* Timeline bar */
+.timeline-bar {
+  padding: 6px 16px;
+  background: #0c0c14;
+  border-bottom: 1px solid #1a1a24;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.timeline-bar label { font-size: 10px; color: #666; white-space: nowrap; }
+.timeline-bar input[type="range"] {
+  flex: 1;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #1a1a2a;
+  border-radius: 3px;
+  outline: none;
+}
+.timeline-bar input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #4a9aff;
+  cursor: pointer;
+  border: 2px solid #2a6acc;
+}
+.timeline-epoch {
+  font-size: 12px;
+  color: #ddd;
+  font-weight: 600;
+  min-width: 120px;
+  text-align: right;
+}
+.playback-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.main-area { flex: 1; display: flex; overflow: hidden; }
+
+.view-3d { flex: 1; position: relative; }
+#mainCanvas { width: 100%; height: 100%; display: block; }
+
+.side-panel {
+  width: 260px;
+  background: #0e0e16;
+  border-left: 1px solid #222;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.panel-section {
+  padding: 10px 12px;
+  border-bottom: 1px solid #1a1a24;
+}
+.panel-section h3 {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+canvas.chart { width: 100%; height: 100px; background: #08080e; border-radius: 3px; }
+
+.legend { font-size: 10px; }
+.legend-row { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+.legend-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+.inspect-content { font-size: 11px; line-height: 1.5; color: #999; }
+
+footer {
+  padding: 4px 16px;
+  background: #10101a;
+  border-top: 1px solid #222;
+  font-size: 9px;
+  color: #444;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Stella Soup Viewer</h1>
+  <div class="controls">
+    <label>Color
+      <select id="colorMode" onchange="renderCurrentFrame()">
+        <option value="z3" selected>Z&#x2083; phase</option>
+        <option value="diff">Changes (diff)</option>
+        <option value="replicator">Replicator distance</option>
+        <option value="replicator_inst">Replicator instances</option>
+        <option value="entropy">Local entropy</option>
+        <option value="field_amplitude">Superposition |Φ|</option>
+        <option value="field_gradient">Phase gradient |∇φ|</option>
+        <option value="field_chirality">Chirality</option>
+        <option value="conservation">Conservation map</option>
+        <option value="frozen_chirality">Frozen chirality</option>
+      </select>
+    </label>
+    <label>View
+      <select id="viewMode" onchange="renderCurrentFrame()">
+        <option value="flat">Flat grid</option>
+        <option value="tetra3d">3D tetrahedra</option>
+      </select>
+    </label>
+  </div>
+  <div class="stats">
+    <span id="loadStatus" style="color:#aa6">Loading...</span>
+    <span>Epoch: <span class="val" id="sEpoch">0</span></span>
+    <span>H: <span class="val" id="sEntropy">&mdash;</span></span>
+    <span>Repl: <span class="val" id="sRepl">&mdash;</span></span>
+    <span>Unique: <span class="val" id="sUnique">&mdash;</span></span>
+    <span id="phaseBadge" class="phase-badge phase-random">Random</span>
+  </div>
+</header>
+
+<div class="timeline-bar">
+  <div class="playback-controls">
+    <button onclick="stepFrame(-1)" title="Step back one frame">&#9198;</button>
+    <button id="btnPlayBack" onclick="startPlayback(-1)" title="Play backward">&#9664;</button>
+    <button id="btnPause" onclick="stopPlayback()" title="Pause">&#10074;&#10074;</button>
+    <button id="btnPlayFwd" onclick="startPlayback(1)" title="Play forward">&#9654;</button>
+    <button onclick="stepFrame(1)" title="Step forward one frame">&#9197;</button>
+  </div>
+  <label>Epoch</label>
+  <input type="range" id="timeSlider" min="0" max="100" value="0"
+         oninput="onSliderInput()" onchange="onSliderChange()">
+  <div class="timeline-epoch" id="sliderEpoch">0</div>
+</div>
+
+<div class="main-area">
+  <div class="view-3d">
+    <canvas id="mainCanvas"></canvas>
+  </div>
+  <div class="side-panel">
+    <div class="panel-section">
+      <h3>Entropy H(trit)</h3>
+      <canvas class="chart" id="chartEntropy"></canvas>
+    </div>
+    <div class="panel-section">
+      <h3>Replicator fraction</h3>
+      <canvas class="chart" id="chartRepl"></canvas>
+    </div>
+    <div class="panel-section">
+      <h3>Unique patches / 200</h3>
+      <canvas class="chart" id="chartUnique"></canvas>
+    </div>
+    <div class="panel-section">
+      <h3>Hovered site</h3>
+      <div class="inspect-content" id="inspectBox">
+        Hover over the grid to inspect a site
+      </div>
+    </div>
+    <div class="panel-section">
+      <h3>Legend</h3>
+      <div class="legend" id="legendBox"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Prop 0.0.XXd &mdash; Recording Viewer |
+  Z&#x2083; cells &bull; T&#x208A;/T&#x208B; two-head &bull; CPY01 coupling &bull; Superselection gates
+</footer>
+
+<script>
+// ============================================================
+// State
+// ============================================================
+// Hardcoded fallback — overridden by server-detected dominant pattern
+let REPLICATOR = [1,2,1,2,2,1,0,2,1,1,2,0,2,1,1,1,0,2,2,0];
+
+let mesh = null;
+let stats = null;
+let currentSnap = null;
+let prevSnap = null;
+let nSites = 0;
+let progSize = 24;
+let snapshotEpochs = [];
+let currentSnapIdx = 0;
+
+// Server-side replicator data (fetched on demand)
+let serverRepl = null;  // {tp: Int16Array, tm: Int16Array, tpCount, tmCount, epoch}
+
+const mainCanvas = document.getElementById('mainCanvas');
+const ctx = mainCanvas.getContext('2d');
+let rotX = -0.4, rotY = 0.5;
+let dragging = false, lastMX = 0, lastMY = 0;
+
+// Playback
+let playInterval = null;
+let playDirection = 0;
+
+// Z3 colors matching CG color fields (Def 0.1.2)
+const Z3_COLORS = [
+  [230, 60, 50],   // phase 0: red   — chi_R identity
+  [50, 210, 70],   // phase 1: green — chi_G (2pi/3)
+  [30, 80, 220],   // phase 2: blue  — chi_B (4pi/3)
+];
+
+// ============================================================
+// Loading
+// ============================================================
+async function init() {
+  const status = document.getElementById('loadStatus');
+
+  status.textContent = 'Loading mesh...';
+  const infoResp = await fetch('/api/info');
+  const info = await infoResp.json();
+  nSites = info.n_sites;
+  progSize = info.prog_size || 24;
+
+  // Decode positions
+  if (info.positions_b64) {
+    const bin = atob(info.positions_b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    const floats = new Float32Array(bytes.buffer);
+    const positions = [];
+    for (let i = 0; i < floats.length; i += 3) {
+      positions.push([floats[i], floats[i+1], floats[i+2]]);
+    }
+    mesh = { n_sites: nSites, positions };
+  }
+
+  status.textContent = 'Loading stats...';
+  const statsResp = await fetch('/api/stats');
+  stats = await statsResp.json();
+  snapshotEpochs = stats.snapshot_epochs;
+
+  // Configure slider
+  const slider = document.getElementById('timeSlider');
+  slider.min = 0;
+  slider.max = snapshotEpochs.length - 1;
+  slider.value = 0;
+
+  status.textContent = `${stats.n_records.toLocaleString()} records, ${stats.n_snapshots.toLocaleString()} snapshots`;
+  status.style.color = '#6a6';
+
+  // Load first snapshot
+  await loadSnapshot(0);
+  drawAllCharts();
+  updateLegend();
+}
+
+async function loadSnapshot(snapIdx) {
+  if (snapIdx < 0 || snapIdx >= snapshotEpochs.length) return;
+
+  const epoch = snapshotEpochs[snapIdx];
+  const resp = await fetch(`/api/snapshot/${epoch}`);
+  const data = await resp.json();
+
+  prevSnap = currentSnap;
+  currentSnap = {
+    epoch: data.snap_epoch,
+    entropy: data.entropy,
+    repl_count: data.repl_count,
+    unique_count: data.unique_count,
+    repl_sample: data.repl_sample,
+    tpArr: base64ToUint8(data.tp),
+    tmArr: base64ToUint8(data.tm),
+  };
+  currentSnapIdx = snapIdx;
+
+  updateStatsDisplay();
+  renderCurrentFrame();
+  drawAllCharts();
+
+  // Fetch server-side analysis for modes that need it
+  const mode = document.getElementById('colorMode').value;
+  if (mode === 'replicator_inst' || mode === 'replicator') {
+    fetchReplicatorData(currentSnap.epoch);
+  }
+  if (mode.startsWith('field_')) {
+    fetchFieldData(currentSnap.epoch);
+  }
+  if ((mode === 'conservation' || mode === 'frozen_chirality') && !serverConservation) {
+    fetchConservation();
+  }
+}
+
+function base64ToUint8(b64) {
+  const bin = atob(b64);
+  const arr = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+  return arr;
+}
+
+// ============================================================
+// Slider
+// ============================================================
+let sliderDebounce = null;
+
+function onSliderInput() {
+  const idx = parseInt(document.getElementById('timeSlider').value);
+  const epoch = snapshotEpochs[idx] || 0;
+  document.getElementById('sliderEpoch').textContent = epoch.toLocaleString();
+}
+
+function onSliderChange() {
+  const idx = parseInt(document.getElementById('timeSlider').value);
+  clearTimeout(sliderDebounce);
+  sliderDebounce = setTimeout(() => loadSnapshot(idx), 50);
+}
+
+// ============================================================
+// Playback
+// ============================================================
+function startPlayback(dir) {
+  stopPlayback();
+  playDirection = dir;
+  document.getElementById(dir > 0 ? 'btnPlayFwd' : 'btnPlayBack').classList.add('active');
+  playInterval = setInterval(() => {
+    const next = currentSnapIdx + playDirection;
+    if (next < 0 || next >= snapshotEpochs.length) {
+      stopPlayback();
+      return;
+    }
+    document.getElementById('timeSlider').value = next;
+    onSliderInput();
+    loadSnapshot(next);
+  }, 100);
+}
+
+function stopPlayback() {
+  if (playInterval) clearInterval(playInterval);
+  playInterval = null;
+  playDirection = 0;
+  document.getElementById('btnPlayFwd').classList.remove('active');
+  document.getElementById('btnPlayBack').classList.remove('active');
+}
+
+function stepFrame(dir) {
+  stopPlayback();
+  const next = currentSnapIdx + dir;
+  if (next < 0 || next >= snapshotEpochs.length) return;
+  document.getElementById('timeSlider').value = next;
+  onSliderInput();
+  loadSnapshot(next);
+}
+
+// ============================================================
+// Stats display
+// ============================================================
+function updateStatsDisplay() {
+  if (!currentSnap) return;
+  document.getElementById('sEpoch').textContent = currentSnap.epoch.toLocaleString();
+  document.getElementById('sEntropy').textContent = currentSnap.entropy.toFixed(4);
+  document.getElementById('sRepl').textContent =
+    `${currentSnap.repl_count}/${currentSnap.repl_sample}`;
+  document.getElementById('sUnique').textContent =
+    `${currentSnap.unique_count}/${currentSnap.repl_sample}`;
+  document.getElementById('sliderEpoch').textContent = currentSnap.epoch.toLocaleString();
+
+  const badge = document.getElementById('phaseBadge');
+  const rf = currentSnap.repl_count / currentSnap.repl_sample;
+  if (rf > 0.4) {
+    badge.textContent = 'Dominated'; badge.className = 'phase-badge phase-dominated';
+  } else if (rf > 0.02) {
+    badge.textContent = 'Transition'; badge.className = 'phase-badge phase-transition';
+  } else {
+    badge.textContent = 'Random'; badge.className = 'phase-badge phase-random';
+  }
+}
+
+// ============================================================
+// Charts
+// ============================================================
+function drawAllCharts() {
+  if (!stats) return;
+  drawChart('chartEntropy', stats.entropy, '#4a9aff', 0, Math.log2(3),
+            currentSnap ? currentSnap.epoch : 0);
+  drawChart('chartRepl', stats.repl_frac, '#4aff9a', 0, 1,
+            currentSnap ? currentSnap.epoch : 0);
+  drawChart('chartUnique', stats.unique_frac, '#ffa04a', 0, 1,
+            currentSnap ? currentSnap.epoch : 0);
+}
+
+function drawChart(id, data, color, lo, hi, currentEpoch) {
+  const c = document.getElementById(id);
+  const dpr = window.devicePixelRatio || 1;
+  const w = c.clientWidth, h = c.clientHeight;
+  if (c.width !== w*dpr || c.height !== h*dpr) { c.width = w*dpr; c.height = h*dpr; }
+  const cx = c.getContext('2d');
+  cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  cx.clearRect(0, 0, w, h);
+  if (!data || data.length < 2) return;
+
+  const totalEpoch = stats.total_epochs;
+
+  // Grid
+  cx.strokeStyle = '#181828'; cx.lineWidth = 0.5;
+  for (let i = 0; i <= 4; i++) {
+    const y = h * i / 4;
+    cx.beginPath(); cx.moveTo(0, y); cx.lineTo(w, y); cx.stroke();
+  }
+
+  // Line
+  cx.strokeStyle = color; cx.lineWidth = 1.2;
+  cx.beginPath();
+  for (let i = 0; i < data.length; i++) {
+    const x = (stats.epochs[i] / totalEpoch) * w;
+    const t = (data[i] - lo) / (hi - lo);
+    const y = h - t * (h - 4) - 2;
+    i === 0 ? cx.moveTo(x, y) : cx.lineTo(x, y);
+  }
+  cx.stroke();
+
+  // Current epoch marker
+  if (currentEpoch > 0) {
+    const mx = (currentEpoch / totalEpoch) * w;
+    cx.strokeStyle = '#ff4a4a'; cx.lineWidth = 1.5;
+    cx.beginPath(); cx.moveTo(mx, 0); cx.lineTo(mx, h); cx.stroke();
+  }
+
+  // Value label
+  // Find value at current epoch
+  let valIdx = 0;
+  for (let i = 0; i < stats.epochs.length; i++) {
+    if (stats.epochs[i] <= currentEpoch) valIdx = i;
+    else break;
+  }
+  const val = data[valIdx].toFixed(3);
+  cx.font = '11px monospace';
+  const textW = cx.measureText(val).width;
+  const labelX = w - textW - 10, labelY = h - 6;
+  cx.fillStyle = 'rgba(8, 8, 14, 0.85)';
+  cx.fillRect(labelX - 3, labelY - 12, textW + 6, 15);
+  cx.fillStyle = '#e0e0e8';
+  cx.fillText(val, labelX, labelY);
+}
+
+// ============================================================
+// Replicator instance detection
+// ============================================================
+// Distinct hues for coloring individual replicator instances
+const INSTANCE_COLORS = [
+  [255, 100, 60],   // orange
+  [60, 200, 255],   // cyan
+  [255, 60, 200],   // magenta
+  [100, 255, 100],  // lime
+  [255, 220, 40],   // yellow
+  [180, 100, 255],  // purple
+  [60, 255, 180],   // teal
+  [255, 140, 140],  // salmon
+  [140, 180, 255],  // periwinkle
+  [200, 255, 60],   // chartreuse
+  [255, 160, 60],   // amber
+  [60, 160, 200],   // steel blue
+];
+
+/**
+ * Fetch replicator instance data from the server.
+ * The server runs the actual VM to test which tiles self-replicate.
+ * Returns {tp: {membership, count}, tm: {membership, count}} or nulls.
+ */
+let replFetchInFlight = false;
+
+async function fetchReplicatorData(epoch) {
+  if (replFetchInFlight) return;
+  replFetchInFlight = true;
+  try {
+    const resp = await fetch(`/api/replicators/${epoch}`);
+    if (!resp.ok) { replFetchInFlight = false; return; }
+    const data = await resp.json();
+
+    // Decode Int16 arrays
+    function decodeInt16(b64, n) {
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new Int16Array(bytes.buffer);
+    }
+
+    serverRepl = {
+      epoch: data.snap_epoch,
+      tpMembership: decodeInt16(data.tp_repl_b64, nSites),
+      tmMembership: decodeInt16(data.tm_repl_b64, nSites),
+      tpSim: base64ToUint8(data.tp_sim_b64),
+      tmSim: base64ToUint8(data.tm_sim_b64),
+      tpCount: data.tp_count,
+      tmCount: data.tm_count,
+      dominantPattern: data.dominant_pattern,
+      nDistinct: data.n_distinct_replicators,
+    };
+
+    // Update REPLICATOR reference if server found a dominant pattern
+    if (data.dominant_pattern) {
+      REPLICATOR = data.dominant_pattern;
+    }
+
+    renderCurrentFrame();
+  } catch (e) {
+    console.warn('Replicator fetch failed:', e);
+  }
+  replFetchInFlight = false;
+}
+
+// ============================================================
+// CG Color Field data (server-computed using mesh adjacency)
+// ============================================================
+let serverField = null;  // {epoch, tpAmp, tmAmp, tpGrad, tmGrad, tpChir, tmChir, stats}
+let fieldFetchInFlight = false;
+
+async function fetchFieldData(epoch) {
+  if (fieldFetchInFlight) return;
+  fieldFetchInFlight = true;
+  try {
+    const resp = await fetch(`/api/field/${epoch}`);
+    if (!resp.ok) { fieldFetchInFlight = false; return; }
+    const data = await resp.json();
+
+    serverField = {
+      epoch: data.snap_epoch,
+      tpAmp: base64ToUint8(data.tp_amp_b64),
+      tmAmp: base64ToUint8(data.tm_amp_b64),
+      tpGrad: base64ToUint8(data.tp_grad_b64),
+      tmGrad: base64ToUint8(data.tm_grad_b64),
+      tpChir: base64ToUint8(data.tp_chir_b64),
+      tmChir: base64ToUint8(data.tm_chir_b64),
+      stats: {
+        tpChiralityMean: data.tp_chirality_mean,
+        tmChiralityMean: data.tm_chirality_mean,
+        tpAmplitudeMean: data.tp_amplitude_mean,
+        tmAmplitudeMean: data.tm_amplitude_mean,
+        tpGradientMean: data.tp_gradient_mean,
+        tmGradientMean: data.tm_gradient_mean,
+      }
+    };
+    renderCurrentFrame();
+  } catch (e) {
+    console.warn('Field fetch failed:', e);
+  }
+  fieldFetchInFlight = false;
+}
+
+// ============================================================
+// Conservation map (computed once, spans all post-transition)
+// ============================================================
+let serverConservation = null;
+let conservationFetchInFlight = false;
+
+async function fetchConservation() {
+  if (conservationFetchInFlight || serverConservation) return;
+  conservationFetchInFlight = true;
+  try {
+    const resp = await fetch('/api/conservation');
+    if (!resp.ok) { conservationFetchInFlight = false; return; }
+    const data = await resp.json();
+
+    serverConservation = {
+      tpTritStab: base64ToUint8(data.tp_trit_stab_b64),
+      tmTritStab: base64ToUint8(data.tm_trit_stab_b64),
+      tpChirBias: base64ToUint8(data.tp_chir_bias_b64),
+      tmChirBias: base64ToUint8(data.tm_chir_bias_b64),
+      tpChirSign: base64ToUint8(data.tp_chir_sign_b64),
+      tmChirSign: base64ToUint8(data.tm_chir_sign_b64),
+      tilePos: base64ToUint8(data.tile_pos_b64),
+      progSize: data.prog_size,
+      posConservation: data.pos_conservation,
+      nSamples: data.n_samples,
+      epochRange: data.epoch_range,
+      tpFrozenCount: data.tp_frozen_count,
+      tmFrozenCount: data.tm_frozen_count,
+      tpConservedCount: data.tp_conserved_count,
+      tmConservedCount: data.tm_conserved_count,
+    };
+    renderCurrentFrame();
+  } catch (e) {
+    console.warn('Conservation fetch failed:', e);
+  }
+  conservationFetchInFlight = false;
+}
+
+function getInstances() {
+  if (!currentSnap) return { tp: null, tm: null };
+  // Trigger fetch if needed, but always return best available data (stale is fine)
+  if (!serverRepl || serverRepl.epoch !== currentSnap.epoch) {
+    fetchReplicatorData(currentSnap.epoch);
+  }
+  // Return whatever we have — stale data from a nearby epoch is better than nothing
+  if (serverRepl) {
+    return {
+      tp: { membership: serverRepl.tpMembership, count: serverRepl.tpCount },
+      tm: { membership: serverRepl.tmMembership, count: serverRepl.tmCount },
+    };
+  }
+  return { tp: null, tm: null };
+}
+
+// ============================================================
+// Rendering
+// ============================================================
+function resizeCanvas() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = mainCanvas.parentElement.getBoundingClientRect();
+  mainCanvas.width = rect.width * dpr;
+  mainCanvas.height = rect.height * dpr;
+  mainCanvas.style.width = rect.width + 'px';
+  mainCanvas.style.height = rect.height + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+let siteScreenPos = [];
+
+function siteColor(idx, isTP) {
+  if (!currentSnap) return [20, 20, 25];
+  const data = isTP ? currentSnap.tpArr : currentSnap.tmArr;
+  const mode = document.getElementById('colorMode').value;
+  const val = data[idx];
+
+  if (mode === 'z3') return Z3_COLORS[val];
+
+  if (mode === 'diff') {
+    if (!prevSnap) return Z3_COLORS[val];
+    const prev = isTP ? prevSnap.tpArr : prevSnap.tmArr;
+    if (val !== prev[idx]) return [255, 255, 100];
+    const c = Z3_COLORS[val];
+    return [Math.floor(c[0]*0.25), Math.floor(c[1]*0.25), Math.floor(c[2]*0.25)];
+  }
+
+  if (mode === 'entropy') {
+    const counts = [0, 0, 0];
+    counts[val]++;
+    let total = 1;
+    for (let d = -3; d <= 3; d++) {
+      if (d === 0) continue;
+      const j = idx + d;
+      if (j >= 0 && j < nSites) { counts[data[j]]++; total++; }
+    }
+    let H = 0;
+    for (let c = 0; c < 3; c++) {
+      if (counts[c] > 0) { const p = counts[c]/total; H -= p*Math.log2(p); }
+    }
+    const t = H / 1.585;
+    return [
+      Math.floor(40 + 100*t),
+      Math.floor(220*(1-t) + 20),
+      Math.floor(240*(1-t) + 40*t)
+    ];
+  }
+
+  if (mode === 'replicator') {
+    // Use server-computed tile-aligned similarity when available
+    // Values are baseline-corrected: 0 = random noise, 1.0 = perfect match
+    if (serverRepl) {
+      const simArr = isTP ? serverRepl.tpSim : serverRepl.tmSim;
+      if (simArr) {
+        const sim = simArr[idx] / 255.0;
+        if (sim >= 0.85) return [200, 240, 255];  // near-perfect: bright white-cyan
+        if (sim >= 0.65) return [80, 200, 255];    // strong match: cyan
+        if (sim >= 0.45) return [60, 120, 220];    // partial: blue
+        if (sim >= 0.25) return [100, 60, 180];    // fragment: purple
+        if (sim >= 0.10) return [60, 30, 100];     // weak hint: dark purple
+        return [20, 12, 20];                        // noise: near black
+      }
+    }
+    // Fallback: client-side sliding window (before server data arrives)
+    const patLen = REPLICATOR.length;
+    const windowSize = Math.min(patLen, nSites - idx);
+    let matches = 0;
+    for (let j = 0; j < windowSize; j++) {
+      if (data[(idx+j) % nSites] === REPLICATOR[j % patLen]) matches++;
+    }
+    const sim = matches / windowSize;
+    if (sim > 0.8) return [100, 200, 255];
+    if (sim > 0.6) return [60, 120, 200];
+    if (sim > 0.4) return [80, 60, 140];
+    return [40 + Math.floor(30*sim), 20, 30];
+  }
+
+  if (mode === 'replicator_inst') {
+    const inst = getInstances();
+    const info = isTP ? inst.tp : inst.tm;
+    if (!info) return [30, 20, 30];
+    const id = info.membership[idx];
+    if (id === -1) {
+      // Not part of a replicator — dim Z3 color
+      const c = Z3_COLORS[val];
+      return [Math.floor(c[0]*0.15), Math.floor(c[1]*0.15), Math.floor(c[2]*0.15)];
+    }
+    // Part of a replicator instance — bright distinct color
+    return INSTANCE_COLORS[id % INSTANCE_COLORS.length];
+  }
+
+  // --- Conservation / Frozen chirality modes ---
+
+  if (mode === 'conservation') {
+    // Trit stability: how conserved is this site's trit value?
+    // Bright = highly conserved (structurally essential)
+    // Dark = variable (tolerates mutation)
+    if (!serverConservation) return [30, 25, 35];
+    const stab = (isTP ? serverConservation.tpTritStab : serverConservation.tmTritStab)[idx] / 255.0;
+    const tileP = serverConservation.tilePos[idx];
+
+    if (stab >= 0.85) {
+      // Highly conserved: bright white-gold, tint by tile position
+      const posHue = (tileP / serverConservation.progSize);
+      return [
+        Math.floor(255 - 40 * posHue),
+        Math.floor(230 - 80 * posHue),
+        Math.floor(180 - 130 * posHue)
+      ];
+    }
+    if (stab >= 0.6) return [200, 150, 50];   // conserved: gold
+    if (stab >= 0.3) return [120, 80, 40];     // moderate: brown
+    if (stab >= 0.1) return [60, 40, 50];      // low: dim purple
+    return [18, 14, 22];                        // variable: near-black
+  }
+
+  if (mode === 'frozen_chirality') {
+    // Shows chirality frozen sites with their sign
+    // Right-handed frozen = red, Left-handed frozen = blue
+    // Non-frozen = dim gray, current chirality shown as tint
+    if (!serverConservation) return [30, 30, 35];
+    const bias = (isTP ? serverConservation.tpChirBias : serverConservation.tmChirBias)[idx] / 255.0;
+    const sign = (isTP ? serverConservation.tpChirSign : serverConservation.tmChirSign)[idx]; // 0=R, 255=L
+    const isRight = sign === 0;
+
+    if (bias >= 0.8) {
+      // Strongly frozen: saturated color
+      if (isRight) return [220, 50 + Math.floor(80 * (1-bias)), 20];   // red
+      return [20, 50 + Math.floor(80 * (1-bias)), 220];                // blue
+    }
+    if (bias >= 0.5) {
+      // Moderately frozen: muted color
+      const t = (bias - 0.5) / 0.3;
+      if (isRight) return [Math.floor(80 + 90*t), 40, 30];
+      return [30, 40, Math.floor(80 + 90*t)];
+    }
+    // Not frozen: dim gray with slight tint from current trit
+    const c = Z3_COLORS[val];
+    return [Math.floor(c[0]*0.12), Math.floor(c[1]*0.12), Math.floor(c[2]*0.12)];
+  }
+
+  // --- CG Color Field modes (Def 0.1.2 / Thm 0.2.1 / Thm 3.1.1) ---
+
+  if (mode === 'field_amplitude') {
+    // Superposition |Φ|: color neutrality vs. monochromatic dominance
+    // 0 = destructive interference (1 + ω + ω² = 0), 1 = single phase
+    if (!serverField) return [40, 30, 50];
+    const arr = isTP ? serverField.tpAmp : serverField.tmAmp;
+    const t = arr[idx] / 255.0;
+    // Dark indigo (neutral/node) → gold (monochromatic)
+    const t2 = t * t; // emphasize high values
+    return [
+      Math.floor(15 + 240 * t2),
+      Math.floor(12 + 200 * t2 * t),
+      Math.floor(50 * (1 - t) + 30 * t)
+    ];
+  }
+
+  if (mode === 'field_gradient') {
+    // Phase gradient |∇φ|: phase boundary density
+    // Connected to phase-gradient mass generation (Thm 3.1.1)
+    // 0 = uniform patch, 1 = all neighbors have different phase
+    if (!serverField) return [20, 20, 40];
+    const arr = isTP ? serverField.tpGrad : serverField.tmGrad;
+    const t = arr[idx] / 255.0;
+    // Dark (ordered/low gradient) → bright yellow-white (high gradient = mass)
+    if (t >= 0.9) return [255, 255, 230]; // very high: near-white
+    if (t >= 0.7) return [255, 220, 80];  // high: yellow
+    if (t >= 0.5) return [200, 140, 40];  // moderate: amber
+    if (t >= 0.3) return [120, 70, 30];   // low: brown
+    return [30, 20, 40];                   // minimal: dark
+  }
+
+  if (mode === 'field_chirality') {
+    // Chirality: right-handed (CW) vs left-handed (CCW) phase winding
+    // CG framework predicts right-handed pressure driving
+    // 0 = strong CW/right, 128 = neutral, 255 = strong CCW/left
+    if (!serverField) return [50, 50, 50];
+    const arr = isTP ? serverField.tpChir : serverField.tmChir;
+    const raw = arr[idx]; // 0..255
+    if (raw > 145) {
+      // Counterclockwise (left-handed): blue/cyan
+      const t = (raw - 128) / 127;
+      return [
+        Math.floor(50 * (1 - t)),
+        Math.floor(60 + 120 * t),
+        Math.floor(80 + 175 * t)
+      ];
+    } else if (raw < 111) {
+      // Clockwise (right-handed): red/orange — CG pressure direction
+      const t = (128 - raw) / 128;
+      return [
+        Math.floor(80 + 175 * t),
+        Math.floor(50 * (1 - t) + 40 * t),
+        Math.floor(40 * (1 - t))
+      ];
+    }
+    // Near neutral: gray
+    return [55, 55, 60];
+  }
+
+  return Z3_COLORS[val];
+}
+
+function renderCurrentFrame() {
+  if (!currentSnap) return;
+  const mode = document.getElementById('colorMode').value;
+  const viewMode = document.getElementById('viewMode').value;
+
+  // Trigger server fetch for modes that need server-side computation
+  if ((mode === 'replicator_inst' || mode === 'replicator') && currentSnap &&
+      (!serverRepl || serverRepl.epoch !== currentSnap.epoch)) {
+    fetchReplicatorData(currentSnap.epoch);
+  }
+  if (mode.startsWith('field_') && currentSnap &&
+      (!serverField || serverField.epoch !== currentSnap.epoch)) {
+    fetchFieldData(currentSnap.epoch);
+  }
+  if ((mode === 'conservation' || mode === 'frozen_chirality') && !serverConservation) {
+    fetchConservation();
+  }
+
+  resizeCanvas();
+  const W = mainCanvas.clientWidth, H = mainCanvas.clientHeight;
+  ctx.clearRect(0, 0, W, H);
+  siteScreenPos = [];
+  if (viewMode === 'flat') renderFlat(W, H);
+  else renderTetra3D(W, H);
+  updateLegend();
+}
+
+function renderFlat(W, H) {
+  const n = nSites;
+  const cols = Math.ceil(Math.sqrt(n));
+  const rows = Math.ceil(n / cols);
+  const gap = 20;
+  const availW = (W - gap*3) / 2;
+  const availH = H - gap*2;
+  const cs = Math.max(2, Math.min(Math.floor(availW/cols), Math.floor(availH/rows)));
+  const gridW = cols*cs, gridH = rows*cs;
+  const totalW = gridW*2 + gap;
+  const offX = (W - totalW)/2, offY = (H - gridH)/2;
+
+  const isInstMode = document.getElementById('colorMode').value === 'replicator_inst';
+  let instInfo = null;
+  if (isInstMode) instInfo = getInstances();
+
+  ctx.fillStyle = '#555'; ctx.font = '11px monospace';
+  ctx.fillText('T+ (read head)', offX, offY - 6);
+  ctx.fillText('T\u2212 (write head)', offX + gridW + gap, offY - 6);
+
+  // Helper to draw a grid with optional replicator borders
+  function drawGrid(baseX, isTP) {
+    const info = isInstMode && instInfo ? (isTP ? instInfo.tp : instInfo.tm) : null;
+    for (let i = 0; i < n; i++) {
+      const col = i % cols, row = Math.floor(i / cols);
+      const x = baseX + col*cs, y = offY + row*cs;
+      const [r,g,b] = siteColor(i, isTP);
+      ctx.fillStyle = `rgb(${r},${g},${b})`;
+      ctx.fillRect(x, y, cs-(cs>4?1:0), cs-(cs>4?1:0));
+      siteScreenPos.push({x:x+cs/2, y:y+cs/2, idx:i, isTP, cs});
+
+      // Draw replicator boundary outlines in instance mode
+      if (info && info.membership[i] >= 0 && cs >= 4) {
+        const id = info.membership[i];
+        const ic = INSTANCE_COLORS[id % INSTANCE_COLORS.length];
+        ctx.strokeStyle = `rgb(${ic[0]},${ic[1]},${ic[2]})`;
+        ctx.lineWidth = 1.5;
+        // Draw border on edges where neighbor has different instance id
+        const left = (col > 0) ? i - 1 : -1;
+        const right = (col < cols-1 && i+1 < n) ? i + 1 : -1;
+        const top = (row > 0) ? i - cols : -1;
+        const bottom = (i + cols < n) ? i + cols : -1;
+        ctx.beginPath();
+        if (left < 0 || info.membership[left] !== id) { ctx.moveTo(x, y); ctx.lineTo(x, y+cs); }
+        if (right < 0 || info.membership[right] !== id) { ctx.moveTo(x+cs, y); ctx.lineTo(x+cs, y+cs); }
+        if (top < 0 || info.membership[top] !== id) { ctx.moveTo(x, y); ctx.lineTo(x+cs, y); }
+        if (bottom < 0 || info.membership[bottom] !== id) { ctx.moveTo(x, y+cs); ctx.lineTo(x+cs, y+cs); }
+        ctx.stroke();
+      }
+    }
+  }
+
+  drawGrid(offX, true);
+  drawGrid(offX + gridW + gap, false);
+}
+
+function renderTetra3D(W, H) {
+  if (!mesh || !mesh.positions) {
+    ctx.fillStyle = '#555'; ctx.font = '13px monospace';
+    ctx.fillText('Waiting for mesh data...', W/2-100, H/2);
+    return;
+  }
+  const cxP = W/2, cyP = H/2;
+  const scale = Math.min(W, H)*0.28;
+  const cosX=Math.cos(rotX), sinX=Math.sin(rotX);
+  const cosY=Math.cos(rotY), sinY=Math.sin(rotY);
+
+  function project(x,y,z) {
+    let x1=x*cosY-z*sinY, z1=x*sinY+z*cosY;
+    let y1=y*cosX-z1*sinX, z2=y*sinX+z1*cosX;
+    return {sx:cxP+x1*scale, sy:cyP+y1*scale, z:z2};
+  }
+
+  const points = [];
+  const n = mesh.n_sites, spread = 1.2;
+  for (let i = 0; i < n; i++) {
+    const [px,py,pz] = mesh.positions[i];
+    const p = project(px-spread, py, pz);
+    points.push({sx:p.sx, sy:p.sy, z:p.z, idx:i, isTP:true, color:siteColor(i,true)});
+  }
+  for (let i = 0; i < n; i++) {
+    const [px,py,pz] = mesh.positions[i];
+    const p = project(px+spread, py, pz);
+    points.push({sx:p.sx, sy:p.sy, z:p.z, idx:i, isTP:false, color:siteColor(i,false)});
+  }
+  points.sort((a,b) => a.z - b.z);
+  const r = Math.max(2, Math.min(6, scale/(Math.sqrt(n)*0.8)));
+
+  // Pre-compute instance info for glow rendering
+  const isInstMode = document.getElementById('colorMode').value === 'replicator_inst';
+  let instInfo = null;
+  if (isInstMode) instInfo = getInstances();
+
+  siteScreenPos = [];
+  for (const p of points) {
+    const br = 0.5 + 0.5*((p.z+2)/4);
+    const [cr,cg,cb] = p.color;
+
+    // Draw glow ring for replicator instance sites
+    if (isInstMode && instInfo) {
+      const info = p.isTP ? instInfo.tp : instInfo.tm;
+      if (info && info.membership[p.idx] >= 0) {
+        const ic = INSTANCE_COLORS[info.membership[p.idx] % INSTANCE_COLORS.length];
+        ctx.globalAlpha = 0.25;
+        ctx.fillStyle = `rgb(${ic[0]},${ic[1]},${ic[2]})`;
+        ctx.beginPath(); ctx.arc(p.sx, p.sy, r*2.2, 0, Math.PI*2); ctx.fill();
+        ctx.globalAlpha = 1.0;
+      }
+    }
+
+    ctx.fillStyle = `rgb(${Math.floor(cr*br)},${Math.floor(cg*br)},${Math.floor(cb*br)})`;
+    ctx.beginPath(); ctx.arc(p.sx, p.sy, r, 0, Math.PI*2); ctx.fill();
+    siteScreenPos.push({x:p.sx, y:p.sy, idx:p.idx, isTP:p.isTP, cs:r*2});
+  }
+
+  ctx.fillStyle = '#555'; ctx.font = '11px monospace';
+  const tpL = project(-spread, -1.8, 0), tmL = project(spread, -1.8, 0);
+  ctx.fillText('T+', tpL.sx-8, tpL.sy);
+  ctx.fillText('T\u2212', tmL.sx-8, tmL.sy);
+}
+
+// ============================================================
+// Interaction
+// ============================================================
+mainCanvas.addEventListener('mousedown', (e) => {
+  dragging = true; lastMX = e.clientX; lastMY = e.clientY;
+});
+
+window.addEventListener('mousemove', (e) => {
+  if (dragging) {
+    rotY += (e.clientX - lastMX)*0.005;
+    rotX += (e.clientY - lastMY)*0.005;
+    lastMX = e.clientX; lastMY = e.clientY;
+    renderCurrentFrame();
+    return;
+  }
+  const rect = mainCanvas.getBoundingClientRect();
+  const mx = e.clientX-rect.left, my = e.clientY-rect.top;
+  let closest = null, closestDist = Infinity;
+  for (const p of siteScreenPos) {
+    const dx = mx-p.x, dy = my-p.y, d = dx*dx+dy*dy;
+    if (d < closestDist && d < p.cs*p.cs) { closest = p; closestDist = d; }
+  }
+  if (closest) showInspect(closest.idx, closest.isTP);
+});
+
+window.addEventListener('mouseup', () => { dragging = false; });
+
+// Keyboard shortcuts
+window.addEventListener('keydown', (e) => {
+  const slider = document.getElementById('timeSlider');
+  if (e.key === 'ArrowLeft') {
+    slider.value = Math.max(0, parseInt(slider.value) - 1);
+    onSliderInput(); onSliderChange();
+  } else if (e.key === 'ArrowRight') {
+    slider.value = Math.min(snapshotEpochs.length-1, parseInt(slider.value) + 1);
+    onSliderInput(); onSliderChange();
+  } else if (e.key === ' ') {
+    e.preventDefault();
+    if (playInterval) stopPlayback();
+    else startPlayback(1);
+  } else if (e.key === 'Home') {
+    slider.value = 0; onSliderInput(); onSliderChange();
+  } else if (e.key === 'End') {
+    slider.value = snapshotEpochs.length-1; onSliderInput(); onSliderChange();
+  }
+});
+
+function showInspect(idx, isTP) {
+  if (!currentSnap) return;
+  const data = isTP ? currentSnap.tpArr : currentSnap.tmArr;
+  const val = data[idx];
+  let html = `<div>Site ${idx} on ${isTP ? 'T+' : 'T\u2212'}</div>`;
+  html += `<div>Trit value: <b style="color:${['#e44','#4c4','#44f'][val]}">${val}</b></div>`;
+  if (mesh && mesh.positions) {
+    const p = mesh.positions[idx];
+    html += `<div style="margin-top:4px;color:#666">Pos: (${p[0].toFixed(2)}, ${p[1].toFixed(2)}, ${p[2].toFixed(2)})</div>`;
+  }
+  // Show conservation info
+  const mode = document.getElementById('colorMode').value;
+  if ((mode === 'conservation' || mode === 'frozen_chirality') && serverConservation) {
+    const sc = serverConservation;
+    const tritStab = (isTP ? sc.tpTritStab : sc.tmTritStab)[idx] / 255.0;
+    const chirBias = (isTP ? sc.tpChirBias : sc.tmChirBias)[idx] / 255.0;
+    const chirSign = (isTP ? sc.tpChirSign : sc.tmChirSign)[idx] === 0 ? 'right' : 'left';
+    const tileP = sc.tilePos[idx];
+    const posLabel = tileP < sc.progSize ? tileP : 'overflow';
+
+    html += '<div style="margin-top:4px">Tile pos: <b>' + posLabel + '</b> / ' + (sc.progSize-1) + '</div>';
+    html += '<div>Trit stability: <b>' + (tritStab*100).toFixed(0) + '%</b></div>';
+    html += '<div>Chirality bias: <b>' + (chirBias*100).toFixed(0) + '%</b> (' + chirSign + ')</div>';
+
+    if (tileP < sc.progSize) {
+      const posAvg = sc.posConservation[tileP];
+      html += '<div style="color:#666">Avg at this position: ' + (posAvg*100).toFixed(0) + '%</div>';
+    }
+
+    // Show the opcode at this position
+    const OPCODES = ['NOP','ROT','FWD0','BCK0','FWD1','[',']','CPY01','CPY10'];
+    if (currentSnap && tileP < sc.progSize && tileP % 2 === 0 && tileP + 1 < sc.progSize) {
+      // Find the other site in this opcode pair (next BFS position in same tile)
+      // We can show the trit pair
+      html += '<div style="color:#666;margin-top:2px">Opcode pair starts here</div>';
+    }
+  }
+  if (mode.startsWith('field_') && serverField) {
+    const amp = (isTP ? serverField.tpAmp : serverField.tmAmp)[idx] / 255.0;
+    const grad = (isTP ? serverField.tpGrad : serverField.tmGrad)[idx] / 255.0;
+    const chir = (isTP ? serverField.tpChir : serverField.tmChir)[idx] / 255.0;
+    const chirLabel = chir < 0.45 ? ' (right-handed)' : chir > 0.55 ? ' (left-handed)' : ' (neutral)';
+    const phaseNames = ['χ<sub>R</sub> (0)', 'χ<sub>G</sub> (2π/3)', 'χ<sub>B</sub> (4π/3)'];
+    html += `<div style="margin-top:4px">Color field: <b>${phaseNames[val]}</b></div>`;
+    html += `<div>|Φ| = ${amp.toFixed(3)}</div>`;
+    html += `<div>|∇φ| = ${grad.toFixed(3)}</div>`;
+    html += `<div>Chirality = ${chir.toFixed(3)}${chirLabel}</div>`;
+  }
+  if (mode === 'replicator_inst' || mode === 'replicator') {
+    const inst = getInstances();
+    const info = isTP ? inst.tp : inst.tm;
+    if (info) {
+      const id = info.membership[idx];
+      if (id >= 0) {
+        const c = INSTANCE_COLORS[id % INSTANCE_COLORS.length];
+        html += `<div style="margin-top:4px">Replicator <b style="color:rgb(${c[0]},${c[1]},${c[2]})">#${id+1}</b></div>`;
+        // Show position within the replicator
+        let startIdx = idx;
+        while (startIdx > 0 && info.membership[startIdx-1] === id) startIdx--;
+        html += `<div style="color:#666">Position ${idx - startIdx} of ${progSize}</div>`;
+      } else {
+        html += `<div style="margin-top:4px;color:#666">Not part of a replicator</div>`;
+      }
+    }
+  }
+  document.getElementById('inspectBox').innerHTML = html;
+}
+
+// ============================================================
+// Legend
+// ============================================================
+function updateLegend() {
+  const mode = document.getElementById('colorMode').value;
+  const el = document.getElementById('legendBox');
+  if (mode === 'z3') {
+    el.innerHTML = `
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(230,60,50)"></div>Phase 0 &mdash; &chi;<sub>R</sub> identity (red)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(50,210,70)"></div>Phase 1 &mdash; &chi;<sub>G</sub> 2&pi;/3 (green)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(30,80,220)"></div>Phase 2 &mdash; &chi;<sub>B</sub> 4&pi;/3 (blue)</div>
+      <div style="margin-top:6px;color:#555;font-size:9px">
+        Trits as VM opcodes. Use<br>
+        Superposition/Gradient/Chirality<br>
+        for CG field interpretation.</div>`;
+  } else if (mode === 'entropy') {
+    el.innerHTML = `
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(40,220,240)"></div>Low entropy (uniform)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(140,20,40)"></div>High entropy (random)</div>`;
+  } else if (mode === 'replicator') {
+    let html = '';
+    if (serverRepl && serverRepl.nDistinct) {
+      html += `<div class="legend-row" style="color:#888;margin-bottom:4px">Matching against ${serverRepl.nDistinct} known pattern(s), all rotations</div>`;
+    }
+    html += `
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(200,240,255)"></div>Near-perfect (&ge;85%)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(80,200,255)"></div>Strong match (&ge;65%)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(60,120,220)"></div>Partial (&ge;45%)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(100,60,180)"></div>Fragment (&ge;25%)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(60,30,100)"></div>Weak hint (&ge;10%)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(20,12,20)"></div>Noise</div>`;
+    html += `<div class="legend-row" style="color:#555;margin-top:4px;font-size:9px">Baseline-corrected (random = 0%)</div>`;
+    el.innerHTML = html;
+  } else if (mode === 'replicator_inst') {
+    const inst = getInstances();
+    const tpCount = inst.tp ? inst.tp.count : '...';
+    const tmCount = inst.tm ? inst.tm.count : '...';
+    let html = '';
+    if (!inst.tp && !inst.tm) {
+      html += `<div class="legend-row" style="color:#aa6">Analyzing tiles (running VM)...</div>`;
+    }
+    html += `<div class="legend-row" style="color:#aaa;margin-bottom:4px">T+ replicators: <b>${tpCount}</b> &nbsp; T\u2212: <b>${tmCount}</b></div>`;
+    if (serverRepl && serverRepl.nDistinct) {
+      html += `<div class="legend-row" style="color:#888;margin-bottom:4px">${serverRepl.nDistinct} distinct pattern(s)</div>`;
+    }
+    const maxShow = Math.max(typeof tpCount === 'number' ? tpCount : 0, typeof tmCount === 'number' ? tmCount : 0, 1);
+    for (let i = 0; i < Math.min(maxShow, INSTANCE_COLORS.length); i++) {
+      const c = INSTANCE_COLORS[i];
+      html += `<div class="legend-row"><div class="legend-swatch" style="background:rgb(${c[0]},${c[1]},${c[2]})"></div>Replicator #${i+1}</div>`;
+    }
+    if (maxShow > INSTANCE_COLORS.length) {
+      html += `<div class="legend-row" style="color:#666">... and ${maxShow - INSTANCE_COLORS.length} more</div>`;
+    }
+    html += `<div class="legend-row"><div class="legend-swatch" style="background:rgb(10,8,12)"></div>Non-replicator (dim)</div>`;
+    el.innerHTML = html;
+  } else if (mode === 'field_amplitude') {
+    let html = `
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(255,212,30)"></div>Monochromatic (|&Phi;|&asymp;1)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(120,60,35)"></div>Partial interference</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(15,12,50)"></div>Color neutral (|&Phi;|&asymp;0)</div>`;
+    html += `<div style="margin-top:6px;color:#666;font-size:9px">
+      Maps trit &rarr; &chi;<sub>c</sub> phase (Def 0.1.2)<br>
+      &Phi; = &Sigma; e<sup>i&middot;2&pi;k/3</sup> over site + neighbors<br>
+      Node at |&Phi;|=0: perfect 1+&omega;+&omega;&sup2;=0</div>`;
+    if (serverField && serverField.stats) {
+      const s = serverField.stats;
+      html += `<div style="margin-top:6px;color:#888;font-size:9px">
+        Mean |&Phi;|: T+ ${s.tpAmplitudeMean.toFixed(3)} &nbsp; T&minus; ${s.tmAmplitudeMean.toFixed(3)}</div>`;
+    }
+    el.innerHTML = html;
+  } else if (mode === 'field_gradient') {
+    let html = `
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(255,255,230)"></div>Max gradient (&ge;90%)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(255,220,80)"></div>High gradient (&ge;70%)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(200,140,40)"></div>Moderate (&ge;50%)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(120,70,30)"></div>Low gradient</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(30,20,40)"></div>Uniform (no gradient)</div>`;
+    html += `<div style="margin-top:6px;color:#666;font-size:9px">
+      Phase boundary density<br>
+      |&nabla;&phi;| &prop; mass generation (Thm 3.1.1)<br>
+      High gradient = phase-gradient coupling</div>`;
+    if (serverField && serverField.stats) {
+      const s = serverField.stats;
+      html += `<div style="margin-top:6px;color:#888;font-size:9px">
+        Mean |&nabla;&phi;|: T+ ${s.tpGradientMean.toFixed(3)} &nbsp; T&minus; ${s.tmGradientMean.toFixed(3)}</div>`;
+    }
+    el.innerHTML = html;
+  } else if (mode === 'field_chirality') {
+    let html = `
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(255,90,0)"></div>Right-handed (CW)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(55,55,60)"></div>Neutral</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(0,180,255)"></div>Left-handed (CCW)</div>`;
+    html += `<div style="margin-top:6px;color:#666;font-size:9px">
+      Local phase winding direction<br>
+      CG predicts right-handed pressure<br>
+      driving on &part;S</div>`;
+    if (serverField && serverField.stats) {
+      const s = serverField.stats;
+      const tpBias = s.tpChiralityMean < 0.5 ? 'right' : s.tpChiralityMean > 0.5 ? 'left' : 'neutral';
+      const tmBias = s.tmChiralityMean < 0.5 ? 'right' : s.tmChiralityMean > 0.5 ? 'left' : 'neutral';
+      html += `<div style="margin-top:6px;color:#888;font-size:9px">
+        Net chirality:<br>
+        T+ ${s.tpChiralityMean.toFixed(4)} (${tpBias})<br>
+        T&minus; ${s.tmChiralityMean.toFixed(4)} (${tmBias})</div>`;
+    }
+    el.innerHTML = html;
+  } else if (mode === 'conservation') {
+    let html = '';
+    if (!serverConservation) {
+      html += '<div class="legend-row" style="color:#aa6">Computing conservation map...</div>';
+      html += '<div class="legend-row" style="color:#666;font-size:9px">Sampling ~80 post-transition snapshots</div>';
+    } else {
+      const sc = serverConservation;
+      html += '<div class="legend-row"><div class="legend-swatch" style="background:rgb(255,230,180)"></div>Highly conserved (&ge;85%)</div>';
+      html += '<div class="legend-row"><div class="legend-swatch" style="background:rgb(200,150,50)"></div>Conserved (&ge;60%)</div>';
+      html += '<div class="legend-row"><div class="legend-swatch" style="background:rgb(120,80,40)"></div>Moderate (&ge;30%)</div>';
+      html += '<div class="legend-row"><div class="legend-swatch" style="background:rgb(60,40,50)"></div>Low conservation</div>';
+      html += '<div class="legend-row"><div class="legend-swatch" style="background:rgb(18,14,22)"></div>Variable (tolerates mutation)</div>';
+      html += '<div style="margin-top:6px;color:#666;font-size:9px">';
+      html += 'Trit stability across ' + sc.nSamples + ' snapshots<br>';
+      html += 'Epochs ' + sc.epochRange[0].toLocaleString() + '&ndash;' + sc.epochRange[1].toLocaleString() + '<br>';
+      html += 'Bright = structurally essential<br>';
+      html += 'Dark = variable region</div>';
+      html += '<div style="margin-top:6px;color:#888;font-size:9px">';
+      html += 'T+ conserved: ' + sc.tpConservedCount.toLocaleString() + '<br>';
+      html += 'T&minus; conserved: ' + sc.tmConservedCount.toLocaleString() + '</div>';
+      // Per-position bar chart
+      html += '<div style="margin-top:8px;color:#666;font-size:9px">BFS position conservation:</div>';
+      html += '<div style="display:flex;gap:1px;margin-top:2px;height:30px;align-items:flex-end">';
+      for (let p = 0; p < sc.posConservation.length; p++) {
+        const v = sc.posConservation[p];
+        const h = Math.max(2, Math.floor(v * 28));
+        const r = Math.floor(50 + 200 * v);
+        const g = Math.floor(40 + 160 * v * v);
+        const b = Math.floor(30 + 20 * (1-v));
+        html += '<div style="width:8px;height:' + h + 'px;background:rgb(' + r + ',' + g + ',' + b + ');border-radius:1px" title="pos ' + p + ': ' + (v*100).toFixed(0) + '%"></div>';
+      }
+      html += '</div>';
+      html += '<div style="color:#555;font-size:8px;margin-top:2px">pos 0 &rarr; ' + (sc.progSize-1) + ' (BFS order in tile)</div>';
+    }
+    el.innerHTML = html;
+  } else if (mode === 'frozen_chirality') {
+    let html = '';
+    if (!serverConservation) {
+      html += '<div class="legend-row" style="color:#aa6">Computing conservation map...</div>';
+    } else {
+      const sc = serverConservation;
+      html += '<div class="legend-row"><div class="legend-swatch" style="background:rgb(220,50,20)"></div>Frozen right-handed (CW)</div>';
+      html += '<div class="legend-row"><div class="legend-swatch" style="background:rgb(20,50,220)"></div>Frozen left-handed (CCW)</div>';
+      html += '<div class="legend-row"><div class="legend-swatch" style="background:rgb(100,40,30)"></div>Weakly right-biased</div>';
+      html += '<div class="legend-row"><div class="legend-swatch" style="background:rgb(30,40,100)"></div>Weakly left-biased</div>';
+      html += '<div class="legend-row"><div class="legend-swatch" style="background:rgb(12,12,14)"></div>Not frozen (flickering)</div>';
+      html += '<div style="margin-top:6px;color:#666;font-size:9px">';
+      html += 'Chirality stability over ' + sc.nSamples + ' snapshots<br>';
+      html += 'Antiferromagnetic: R&harr;L neighbors<br>';
+      html += 'enriched 1.27&times; vs random</div>';
+      html += '<div style="margin-top:6px;color:#888;font-size:9px">';
+      html += 'T+ frozen: ' + sc.tpFrozenCount.toLocaleString() + '<br>';
+      html += 'T&minus; frozen: ' + sc.tmFrozenCount.toLocaleString() + '</div>';
+    }
+    el.innerHTML = html;
+  } else if (mode === 'diff') {
+    el.innerHTML = `
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(255,255,100)"></div>Changed</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(8,20,55)"></div>Unchanged</div>`;
+  }
+}
+
+// ============================================================
+// Init
+// ============================================================
+window.addEventListener('resize', () => renderCurrentFrame());
+updateLegend();
+init();
+</script>
+</body>
+</html>

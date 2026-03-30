@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Thm 0.3.1 — W-Direction Correspondence: 4D → 3D Geometric Bridge</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a14;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 8px 16px;
+  background: rgba(6,6,16,0.95);
+  border-bottom: 1px solid #1a1a2e;
+  z-index: 10;
+}
+header h1 { font-size: 13px; font-weight: 600; color: #e0e0e8; }
+header .subtitle { font-size: 11px; color: #777; margin-top: 2px; }
+
+.main-area {
+  flex: 1; display: flex; overflow: hidden;
+}
+
+/* Canvas grid */
+.canvas-grid {
+  flex: 1; display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  background: #111;
+  padding: 1px;
+}
+.canvas-cell {
+  position: relative;
+  background: #0a0a14;
+  overflow: hidden;
+}
+.canvas-cell canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+.canvas-label {
+  position: absolute;
+  top: 6px; left: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #e0e0e8;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+.canvas-sublabel {
+  position: absolute;
+  top: 22px; left: 8px;
+  font-size: 9px;
+  color: #888;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+.canvas-eq {
+  position: absolute;
+  bottom: 6px; left: 8px;
+  font-size: 10px;
+  color: #aab;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Side panel */
+.side-panel {
+  width: 280px;
+  background: rgba(8,8,18,0.95);
+  border-left: 1px solid #1a1a2e;
+  overflow-y: auto;
+  padding: 12px;
+  flex-shrink: 0;
+}
+.panel-section {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(30,30,50,0.5);
+}
+.panel-section h3 {
+  font-size: 10px; text-transform: uppercase; color: #555;
+  margin-bottom: 5px; letter-spacing: 1px;
+}
+.ctrl-row {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; margin: 4px 0;
+}
+.ctrl-row label { color: #888; min-width: 20px; }
+.ctrl-row input[type="range"] { flex: 1; accent-color: #4a7aaa; }
+.ctrl-row .val { color: #e0e0e8; font-weight: 600; min-width: 40px; text-align: right; }
+
+.info-box {
+  background: rgba(12,12,24,0.7); border: 1px solid rgba(30,30,50,0.5); border-radius: 4px;
+  padding: 7px; margin: 5px 0; font-size: 10px; line-height: 1.6;
+}
+.info-box em { color: #999; font-style: normal; }
+
+.legend-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin: 3px 0; }
+.legend-swatch { width: 10px; height: 10px; border-radius: 50%; }
+
+.readout {
+  font-size: 10px; color: #aab; margin: 2px 0;
+}
+.readout .val { color: #e0e0e8; font-weight: 600; }
+
+button {
+  background: #1a1a2e; color: #c8c8d0; border: 1px solid #2e2e44;
+  padding: 3px 10px; border-radius: 4px; font-family: inherit;
+  font-size: 11px; cursor: pointer; transition: all 0.15s;
+  margin: 2px;
+}
+button:hover { background: #24243a; }
+button.active { background: #2a3a5a; border-color: #4a6a9a; color: #88bbff; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>W-Direction Correspondence</h1>
+  <div class="subtitle">Thm 0.3.1: The 4th dimension of the 24-cell maps to W = (1,1,1)/√3 in the stella — precursor to internal time</div>
+</header>
+
+<div class="main-area">
+  <div class="canvas-grid">
+    <!-- Panel A: Stella octangula with W-axis -->
+    <div class="canvas-cell">
+      <canvas id="cvA"></canvas>
+      <div class="canvas-label">(a) Stella octangula with W-axis</div>
+      <div class="canvas-sublabel">§4.2 — Two tetrahedra T₊, T₋ with body diagonal Ŵ</div>
+      <div class="canvas-eq">Ŵ = (1,1,1)/√3 ⊥ R-G-B plane  |  χ = 4 (two S²)</div>
+    </div>
+
+    <!-- Panel B: 24-cell projection -->
+    <div class="canvas-cell">
+      <canvas id="cvB"></canvas>
+      <div class="canvas-label">(b) 24-cell → 3D projection</div>
+      <div class="canvas-sublabel">§3–4 — Type A (16-cell) + Type B (tesseract) vertices</div>
+      <div class="canvas-eq">S ⊂ C₁₆ ⊂ C₂₄  |  24 vertices on unit 3-sphere</div>
+    </div>
+
+    <!-- Panel C: Perpendicularity proof -->
+    <div class="canvas-cell">
+      <canvas id="cvC"></canvas>
+      <div class="canvas-label">(c) W ⊥ R-G-B color plane</div>
+      <div class="canvas-sublabel">§5.3 — Normal to color plane = (1,1,1) ∝ Ŵ</div>
+      <div class="canvas-eq">n = (G−R) × (B−R) = (4,4,4) ∝ Ŵ  |  W equidistant from R,G,B</div>
+    </div>
+
+    <!-- Panel D: W(F₄) rotation mapping -->
+    <div class="canvas-cell">
+      <canvas id="cvD"></canvas>
+      <div class="canvas-label">(d) W(F₄) rotation: ê_w → Ŵ</div>
+      <div class="canvas-sublabel">§5.4 — R·(0,0,0,1) = ½(1,1,1,1) → π = ½(1,1,1) ∝ Ŵ</div>
+      <div class="canvas-eq">|W(F₄)| = 1152 = 48 × 24  |  48 = stella sym, 24 = temporal</div>
+    </div>
+  </div>
+
+  <div class="side-panel">
+
+    <div class="panel-section">
+      <h3>Rotation</h3>
+      <div class="ctrl-row">
+        <label>θ</label>
+        <input type="range" id="sliderTheta" min="0" max="6.283" step="0.02" value="0.55">
+        <span class="val" id="valTheta">0.55</span>
+      </div>
+      <div class="readout">Azimuth — drag on panels to rotate</div>
+
+      <div class="ctrl-row" style="margin-top:8px;">
+        <label>φ</label>
+        <input type="range" id="sliderPhi" min="-1.5" max="1.5" step="0.02" value="0.45">
+        <span class="val" id="valPhi">0.45</span>
+      </div>
+      <div class="readout">Elevation</div>
+
+      <div class="ctrl-row" style="margin-top:8px;">
+        <label>4D</label>
+        <input type="range" id="sliderW4" min="0" max="6.283" step="0.02" value="0.0">
+        <span class="val" id="valW4">0.00</span>
+      </div>
+      <div class="readout">4D rotation angle (xw-plane)</div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Display</h3>
+      <div class="ctrl-row">
+        <button id="btnAntiT" class="active">T₋</button>
+        <button id="btnShowW" class="active">W-axis</button>
+        <button id="btnShowPlane" class="active">RGB-plane</button>
+        <button id="btnStella24" class="active">Stella(b)</button>
+      </div>
+      <div class="ctrl-row">
+        <button id="btnAnim">Animate</button>
+        <button id="btnReset">Reset view</button>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Vertex Coordinates</h3>
+      <div class="info-box" id="vertexInfo" style="font-size:9px; line-height:1.5; color:#88aacc;">
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Panel (a) — Stella Octangula</h3>
+      <div class="info-box">
+        <em>Def 0.1.1:</em> Two interpenetrating tetrahedra<br>
+        <span style="color:#ff6666;">T₊</span>: R(1,−1,−1), G(−1,1,−1), B(−1,−1,1), <span style="color:#ffffff;">W(1,1,1)</span><br>
+        <span style="color:#6666ff;">T₋</span>: R̄(−1,1,1), Ḡ(1,−1,1), B̄(1,1,−1), W̄(−1,−1,−1)<br><br>
+        <em>8 vertices, 12 edges, 8 faces</em><br>
+        <em>χ = 4</em> (two disjoint S², NOT an octahedron)
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Panel (b) — Embedding Chain</h3>
+      <div class="info-box">
+        <em>§3–4:</em> S ⊂ C₁₆ ⊂ C₂₄<br><br>
+        <span style="color:#ff8844;">● Type A</span> = 8 cross-polytope verts<br>
+        (±1,0,0,0) permutations<br><br>
+        <span style="color:#44aaff;">● Type B</span> = 16 tesseract verts<br>
+        (±½,±½,±½,±½)<br><br>
+        <em>Type B projects to stella in 3D</em><br>
+        π(Type B) = scaled stella octangula
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Panel (c) — Perpendicularity</h3>
+      <div class="info-box">
+        <em>§5.3 Proof:</em><br>
+        v₁ = G − R = (−2, 2, 0)<br>
+        v₂ = B − R = (−2, 0, 2)<br>
+        <span style="color:#ffcc66;">n = v₁ × v₂ = (4,4,4) ∝ Ŵ</span><br><br>
+        <em>§6.1 Equidistance:</em><br>
+        |Ŵ − R̂| = |Ŵ − Ĝ| = |Ŵ − B̂| = √(8/3)<br>
+        W is color singlet direction
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Panel (d) — W(F₄) Rotation</h3>
+      <div class="info-box">
+        <em>§5.4 — Explicit rotation R ∈ W(F₄):</em><br>
+        R = ½ [[1,1,1,1],[−1,−1,1,1],<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[−1,1,−1,1],[1,−1,−1,1]]<br><br>
+        <span style="color:#ff8844;">ê_w = (0,0,0,1)</span><br>
+        → <span style="color:#44ff88;">R·ê_w = ½(1,1,1,1)</span><br>
+        → <span style="color:#ffffff;">π = ½(1,1,1) ∝ Ŵ</span><br><br>
+        <em>4th dimension is NOT lost</em> — it<br>
+        reappears as the W-axis direction,<br>
+        precursor to internal time λ (Thm 3.0.3)
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>The Bridge (§7)</h3>
+      <div class="info-box">
+        <em>Phase 0 (pre-geometric):</em><br>
+        Fields on ∂S, energy E[χ] (Thm 0.2.4)<br><br>
+        <span style="color:#ffcc66;">→ Thm 0.3.1: W-axis = 4th dim</span><br><br>
+        <em>Phase 1 (SU(3) geometry):</em><br>
+        Thm 1.1.1 — SU(3) from stella<br>
+        Thm 3.0.3 — W-axis → internal time λ<br>
+        Thm 5.2.1 — emergent Lorentzian metric
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ============================================================
+// EXACT MATHEMATICS FROM THE PROOFS
+// ============================================================
+
+// Stella octangula vertices — Def 0.1.1 §2.2
+// Unnormalized (cube vertices at ±1,±1,±1)
+const VERTS_RAW = {
+  R:  [ 1, -1, -1],
+  G:  [-1,  1, -1],
+  B:  [-1, -1,  1],
+  W:  [ 1,  1,  1],
+  Rb: [-1,  1,  1],
+  Gb: [ 1, -1,  1],
+  Bb: [ 1,  1, -1],
+  Wb: [-1, -1, -1],
+};
+
+// Normalized (on unit sphere)
+const S3 = 1 / Math.sqrt(3);
+const VERTS = {};
+for (const [k, v] of Object.entries(VERTS_RAW)) {
+  VERTS[k] = [v[0] * S3, v[1] * S3, v[2] * S3];
+}
+
+// T₊ edges (tetrahedron 1: R,G,B,W)
+const EDGES_PLUS = [
+  ['R','G'], ['R','B'], ['R','W'], ['G','B'], ['G','W'], ['B','W']
+];
+// T₋ edges (tetrahedron 2: Rb,Gb,Bb,Wb)
+const EDGES_MINUS = [
+  ['Rb','Gb'], ['Rb','Bb'], ['Rb','Wb'], ['Gb','Bb'], ['Gb','Wb'], ['Bb','Wb']
+];
+
+// T₊ faces
+const FACES_PLUS = [
+  ['R','G','B'], ['R','G','W'], ['R','B','W'], ['G','B','W']
+];
+// T₋ faces
+const FACES_MINUS = [
+  ['Rb','Gb','Bb'], ['Rb','Gb','Wb'], ['Rb','Bb','Wb'], ['Gb','Bb','Wb']
+];
+
+// 24-cell vertices — Thm 0.3.1 §3.1
+// Type A: 8 cross-polytope (16-cell) vertices
+const VERTS_24_A = [
+  [ 1, 0, 0, 0], [-1, 0, 0, 0],
+  [ 0, 1, 0, 0], [ 0,-1, 0, 0],
+  [ 0, 0, 1, 0], [ 0, 0,-1, 0],
+  [ 0, 0, 0, 1], [ 0, 0, 0,-1],
+];
+// Type B: 16 tesseract (hypercube) vertices
+const VERTS_24_B = [];
+for (let sx = -1; sx <= 1; sx += 2)
+  for (let sy = -1; sy <= 1; sy += 2)
+    for (let sz = -1; sz <= 1; sz += 2)
+      for (let sw = -1; sw <= 1; sw += 2)
+        VERTS_24_B.push([sx*0.5, sy*0.5, sz*0.5, sw*0.5]);
+
+// W(F₄) rotation matrix — Thm 0.3.1 §5.4
+// R · ê_w = ½(1,1,1,1)
+const R_F4 = [
+  [ 0.5,  0.5,  0.5,  0.5],
+  [-0.5, -0.5,  0.5,  0.5],
+  [-0.5,  0.5, -0.5,  0.5],
+  [ 0.5, -0.5, -0.5,  0.5],
+];
+
+// Vertex colors
+const VCOL = {
+  R: '#ff3333', G: '#33ff33', B: '#3377ff',
+  W: '#ffffff', Rb: '#00cccc', Gb: '#cc00cc', Bb: '#cccc00', Wb: '#666666'
+};
+
+// ============================================================
+// STATE
+// ============================================================
+let theta = 0.55;   // azimuth
+let phi = 0.45;     // elevation
+let w4angle = 0.0;  // 4D rotation angle
+let showAntiT = true;
+let showWAxis = true;
+let showRGBPlane = true;
+let showStella24 = true;
+let animating = false;
+let animId = null;
+let dragging = false;
+let dragStartX, dragStartY, dragStartTheta, dragStartPhi;
+
+// ============================================================
+// 3D PROJECTION
+// ============================================================
+function rotateY(v, a) {
+  const c = Math.cos(a), s = Math.sin(a);
+  return [c*v[0] + s*v[2], v[1], -s*v[0] + c*v[2]];
+}
+function rotateX(v, a) {
+  const c = Math.cos(a), s = Math.sin(a);
+  return [v[0], c*v[1] - s*v[2], s*v[1] + c*v[2]];
+}
+
+function project3D(v3) {
+  // Apply rotation then orthographic projection
+  let p = rotateY(v3, theta);
+  p = rotateX(p, phi);
+  return [p[0], p[1], p[2]]; // keep z for depth sorting
+}
+
+function project4Dto3D(v4) {
+  // Apply 4D rotation in xw-plane, then drop w
+  const c = Math.cos(w4angle), s = Math.sin(w4angle);
+  const x = c * v4[0] + s * v4[3];
+  const y = v4[1];
+  const z = v4[2];
+  // const w = -s * v4[0] + c * v4[3]; // dropped
+  return [x, y, z];
+}
+
+// ============================================================
+// RENDERING UTILITIES
+// ============================================================
+function getCanvasAndCtx(id) {
+  const cv = document.getElementById(id);
+  const rect = cv.parentElement.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio, 2);
+  cv.width = rect.width * dpr;
+  cv.height = rect.height * dpr;
+  cv.style.width = rect.width + 'px';
+  cv.style.height = rect.height + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { cv, ctx, w: rect.width, h: rect.height };
+}
+
+function worldToPx(v3, w, h, scale) {
+  const s = Math.min(w, h) * scale;
+  return [w/2 + v3[0] * s, h/2 - v3[1] * s];
+}
+
+function drawVertex(ctx, px, py, color, label, radius) {
+  radius = radius || 5;
+  ctx.beginPath();
+  ctx.arc(px, py, radius, 0, 2*Math.PI);
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.strokeStyle = '#ffffff';
+  ctx.lineWidth = 1.2;
+  ctx.stroke();
+  if (label) {
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '10px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText(label, px + radius + 3, py + 3);
+  }
+}
+
+function drawEdge(ctx, p1, p2, color, width, dash) {
+  ctx.beginPath();
+  ctx.moveTo(p1[0], p1[1]);
+  ctx.lineTo(p2[0], p2[1]);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width || 1.5;
+  if (dash) ctx.setLineDash(dash);
+  ctx.stroke();
+  if (dash) ctx.setLineDash([]);
+}
+
+function drawArrow(ctx, from, to, color, width) {
+  const dx = to[0] - from[0], dy = to[1] - from[1];
+  const len = Math.sqrt(dx*dx + dy*dy);
+  const ux = dx/len, uy = dy/len;
+  const headLen = 10;
+
+  ctx.beginPath();
+  ctx.moveTo(from[0], from[1]);
+  ctx.lineTo(to[0], to[1]);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width || 2;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(to[0], to[1]);
+  ctx.lineTo(to[0] - headLen*ux + headLen*0.4*uy, to[1] - headLen*uy - headLen*0.4*ux);
+  ctx.lineTo(to[0] - headLen*ux - headLen*0.4*uy, to[1] - headLen*uy + headLen*0.4*ux);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+function fillTriangle(ctx, p1, p2, p3, color) {
+  ctx.beginPath();
+  ctx.moveTo(p1[0], p1[1]);
+  ctx.lineTo(p2[0], p2[1]);
+  ctx.lineTo(p3[0], p3[1]);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+// ============================================================
+// PANEL A: Stella octangula with W-axis
+// ============================================================
+function renderA() {
+  const { ctx, w, h } = getCanvasAndCtx('cvA');
+  ctx.clearRect(0, 0, w, h);
+
+  const scale = 0.32;
+
+  // Project all vertices
+  const proj = {};
+  const depth = {};
+  for (const [k, v] of Object.entries(VERTS)) {
+    const p3 = project3D(v);
+    proj[k] = worldToPx(p3, w, h, scale);
+    depth[k] = p3[2];
+  }
+
+  // Draw R-G-B plane if enabled
+  if (showRGBPlane) {
+    const planeVerts = ['R', 'G', 'B'];
+    // Extend the plane slightly beyond the triangle
+    const cx = (proj.R[0] + proj.G[0] + proj.B[0]) / 3;
+    const cy = (proj.R[1] + proj.G[1] + proj.B[1]) / 3;
+    const extScale = 1.6;
+    const ext = planeVerts.map(k => [
+      cx + (proj[k][0] - cx) * extScale,
+      cy + (proj[k][1] - cy) * extScale
+    ]);
+    fillTriangle(ctx, ext[0], ext[1], ext[2], 'rgba(100,100,200,0.08)');
+
+    // Draw the R-G-B triangle outline
+    ctx.beginPath();
+    ctx.moveTo(proj.R[0], proj.R[1]);
+    ctx.lineTo(proj.G[0], proj.G[1]);
+    ctx.lineTo(proj.B[0], proj.B[1]);
+    ctx.closePath();
+    ctx.strokeStyle = 'rgba(100,100,200,0.3)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // Draw T₋ faces (transparent) — back faces first
+  if (showAntiT) {
+    for (const face of FACES_MINUS) {
+      const ps = face.map(k => proj[k]);
+      fillTriangle(ctx, ps[0], ps[1], ps[2], 'rgba(60,60,180,0.06)');
+    }
+  }
+
+  // Draw T₊ faces (transparent)
+  for (const face of FACES_PLUS) {
+    const ps = face.map(k => proj[k]);
+    fillTriangle(ctx, ps[0], ps[1], ps[2], 'rgba(180,60,60,0.06)');
+  }
+
+  // Draw T₋ edges
+  if (showAntiT) {
+    for (const [a, b] of EDGES_MINUS) {
+      drawEdge(ctx, proj[a], proj[b], 'rgba(100,100,255,0.4)', 1.2);
+    }
+  }
+
+  // Draw T₊ edges
+  for (const [a, b] of EDGES_PLUS) {
+    drawEdge(ctx, proj[a], proj[b], 'rgba(255,100,100,0.6)', 1.8);
+  }
+
+  // Draw W-axis arrow (origin → W direction, extended)
+  if (showWAxis) {
+    const origin3 = project3D([0, 0, 0]);
+    const wDir3 = project3D([S3 * 1.8, S3 * 1.8, S3 * 1.8]);
+    const wDirNeg3 = project3D([-S3 * 1.2, -S3 * 1.2, -S3 * 1.2]);
+    const oP = worldToPx(origin3, w, h, scale);
+    const wP = worldToPx(wDir3, w, h, scale);
+    const wNP = worldToPx(wDirNeg3, w, h, scale);
+
+    // Dashed line for negative extension
+    drawEdge(ctx, wNP, oP, 'rgba(255,204,0,0.3)', 1.5, [4, 4]);
+    // Solid arrow for positive direction
+    drawArrow(ctx, oP, wP, '#ffcc00', 2.5);
+
+    // Label
+    ctx.fillStyle = '#ffcc00';
+    ctx.font = 'bold 11px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('Ŵ = (1,1,1)/√3', wP[0] + 6, wP[1] - 4);
+  }
+
+  // Draw origin
+  const o3 = project3D([0, 0, 0]);
+  const oP = worldToPx(o3, w, h, scale);
+  ctx.beginPath();
+  ctx.arc(oP[0], oP[1], 3, 0, 2*Math.PI);
+  ctx.fillStyle = '#444';
+  ctx.fill();
+
+  // Draw vertices — T₊
+  for (const k of ['R', 'G', 'B', 'W']) {
+    drawVertex(ctx, proj[k][0], proj[k][1], VCOL[k], k, 5);
+  }
+  // Draw vertices — T₋
+  if (showAntiT) {
+    for (const k of ['Rb', 'Gb', 'Bb', 'Wb']) {
+      const label = k.replace('b', '̄');
+      drawVertex(ctx, proj[k][0], proj[k][1], VCOL[k], label, 4);
+    }
+  }
+}
+
+// ============================================================
+// PANEL B: 24-cell projected to 3D
+// ============================================================
+function renderB() {
+  const { ctx, w, h } = getCanvasAndCtx('cvB');
+  ctx.clearRect(0, 0, w, h);
+
+  const scale = 0.30;
+
+  // Project 24-cell vertices
+  const projA = VERTS_24_A.map(v4 => {
+    const v3 = project4Dto3D(v4);
+    const p3 = project3D(v3);
+    return { px: worldToPx(p3, w, h, scale), depth: p3[2], v4: v4, v3: v3 };
+  });
+
+  const projB = VERTS_24_B.map(v4 => {
+    const v3 = project4Dto3D(v4);
+    const p3 = project3D(v3);
+    return { px: worldToPx(p3, w, h, scale), depth: p3[2], v4: v4, v3: v3 };
+  });
+
+  // Draw edges between nearest neighbors (distance = 1 in 4D for 24-cell)
+  const allVerts = [...VERTS_24_A, ...VERTS_24_B];
+  const allProj = [...projA, ...projB];
+
+  // For 24-cell, edges connect vertices at distance 1
+  for (let i = 0; i < allVerts.length; i++) {
+    for (let j = i + 1; j < allVerts.length; j++) {
+      let d2 = 0;
+      for (let k = 0; k < 4; k++) {
+        const dk = allVerts[i][k] - allVerts[j][k];
+        d2 += dk * dk;
+      }
+      // Edge if distance = 1 (d² = 1)
+      if (Math.abs(d2 - 1.0) < 0.01) {
+        const avgDepth = (allProj[i].depth + allProj[j].depth) / 2;
+        const alpha = 0.08 + 0.12 * (avgDepth + 1) / 2;
+        const isAA = i < 8 && j < 8;
+        const isBB = i >= 8 && j >= 8;
+        const color = isAA ? `rgba(255,136,68,${alpha})` :
+                      isBB ? `rgba(68,170,255,${alpha})` :
+                             `rgba(150,150,150,${alpha})`;
+        drawEdge(ctx, allProj[i].px, allProj[j].px, color, 0.7);
+      }
+    }
+  }
+
+  // === Stella wireframe overlay ===
+  // Type B verts (±½,±½,±½,±½) project to cube vertices (±½,±½,±½) in 3D.
+  // Stella = cube split by xyz sign parity:
+  //   T₊ (even # negatives in xyz): indices where sgn(x)*sgn(y)*sgn(z) > 0
+  //   T₋ (odd # negatives in xyz): sgn(x)*sgn(y)*sgn(z) < 0
+  // We pick w=+½ representatives (indices 0..7 have specific pattern).
+  if (showStella24) {
+    // Classify Type B vertices by xyz parity (use w=+½ set for labeling)
+    // Group by projected 3D position — pick one representative per cube vertex
+    const stellaT = { plus: [], minus: [] }; // indices into VERTS_24_B
+    const seen3D = new Map(); // "x,y,z" → first index
+
+    for (let i = 0; i < VERTS_24_B.length; i++) {
+      const v = VERTS_24_B[i];
+      const v3 = project4Dto3D(v);
+      const key = v3.map(c => c.toFixed(3)).join(',');
+      if (!seen3D.has(key)) {
+        seen3D.set(key, i);
+      }
+    }
+
+    // Use w=+½ vertices for classification (first 8 with w > 0)
+    const wPlusIndices = [];
+    const wMinusIndices = [];
+    for (let i = 0; i < VERTS_24_B.length; i++) {
+      if (VERTS_24_B[i][3] > 0) wPlusIndices.push(i);
+      else wMinusIndices.push(i);
+    }
+
+    // Classify by xyz parity of the 4D vertex
+    function xyzParity(v4) {
+      const neg = (v4[0] < 0 ? 1 : 0) + (v4[1] < 0 ? 1 : 0) + (v4[2] < 0 ? 1 : 0);
+      return neg % 2 === 0; // true = T₊ (even negatives), false = T₋
+    }
+
+    const tPlusIdx = wPlusIndices.filter(i => xyzParity(VERTS_24_B[i]));
+    const tMinusIdx = wPlusIndices.filter(i => !xyzParity(VERTS_24_B[i]));
+
+    // Draw T₊ tetrahedron edges (warm red-gold)
+    for (let a = 0; a < tPlusIdx.length; a++) {
+      for (let b = a + 1; b < tPlusIdx.length; b++) {
+        drawEdge(ctx, projB[tPlusIdx[a]].px, projB[tPlusIdx[b]].px,
+                 'rgba(255,100,80,0.7)', 2.2);
+      }
+    }
+    // Draw T₋ tetrahedron edges (cool blue)
+    for (let a = 0; a < tMinusIdx.length; a++) {
+      for (let b = a + 1; b < tMinusIdx.length; b++) {
+        drawEdge(ctx, projB[tMinusIdx[a]].px, projB[tMinusIdx[b]].px,
+                 'rgba(80,130,255,0.7)', 2.2);
+      }
+    }
+
+    // Also draw the w=-½ mirror (dimmer, dashed) — visible when 4D rotation spreads them
+    const tPlusIdxM = wMinusIndices.filter(i => xyzParity(VERTS_24_B[i]));
+    const tMinusIdxM = wMinusIndices.filter(i => !xyzParity(VERTS_24_B[i]));
+
+    for (let a = 0; a < tPlusIdxM.length; a++) {
+      for (let b = a + 1; b < tPlusIdxM.length; b++) {
+        drawEdge(ctx, projB[tPlusIdxM[a]].px, projB[tPlusIdxM[b]].px,
+                 'rgba(255,100,80,0.3)', 1.2, [3, 4]);
+      }
+    }
+    for (let a = 0; a < tMinusIdxM.length; a++) {
+      for (let b = a + 1; b < tMinusIdxM.length; b++) {
+        drawEdge(ctx, projB[tMinusIdxM[a]].px, projB[tMinusIdxM[b]].px,
+                 'rgba(80,130,255,0.3)', 1.2, [3, 4]);
+      }
+    }
+
+    // Label stella vertices with color names at w=+½ positions
+    const stellaLabels = [
+      { idx: tPlusIdx, names: ['W','R','G','B'], colors: ['#ffffff','#ff3333','#33ff33','#3377ff'] },
+    ];
+    // Sort T₊ by xyz to assign: (½,½,½)=W, (½,-½,-½)=R, (-½,½,-½)=G, (-½,-½,½)=B
+    const sorted = [...tPlusIdx].sort((a, b) => {
+      const va = VERTS_24_B[a], vb = VERTS_24_B[b];
+      const sa = va[0] + va[1] + va[2], sb = vb[0] + vb[1] + vb[2];
+      return sb - sa; // highest sum first = W
+    });
+    const stellaNames = ['W', 'R', 'G', 'B']; // W=(+,+,+), then others by convention
+    const stellaCols = ['#ffffff', '#ff3333', '#33ff33', '#3377ff'];
+    for (let i = 0; i < sorted.length && i < 4; i++) {
+      const p = projB[sorted[i]];
+      ctx.fillStyle = stellaCols[i];
+      ctx.font = 'bold 9px monospace';
+      ctx.textAlign = 'left';
+      ctx.fillText(stellaNames[i], p.px[0] + 8, p.px[1] - 6);
+    }
+  }
+
+  // Draw Type A vertices (cross-polytope)
+  for (const p of projA) {
+    const alpha = 0.4 + 0.5 * (p.depth + 1) / 2;
+    const r = 3 + 2 * (p.depth + 1) / 2;
+    ctx.beginPath();
+    ctx.arc(p.px[0], p.px[1], r, 0, 2*Math.PI);
+    ctx.fillStyle = `rgba(255,136,68,${alpha})`;
+    ctx.fill();
+    ctx.strokeStyle = `rgba(255,200,150,${alpha * 0.6})`;
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+  }
+
+  // Draw Type B vertices (tesseract → stella)
+  for (const p of projB) {
+    const alpha = 0.4 + 0.5 * (p.depth + 1) / 2;
+    const r = 3 + 2 * (p.depth + 1) / 2;
+    ctx.beginPath();
+    ctx.arc(p.px[0], p.px[1], r, 0, 2*Math.PI);
+    ctx.fillStyle = `rgba(68,170,255,${alpha})`;
+    ctx.fill();
+    ctx.strokeStyle = `rgba(150,200,255,${alpha * 0.6})`;
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+  }
+
+  // Mark the ê_w vertices (0,0,0,±1) — these collapse to origin in 3D
+  const ewPlus = project3D(project4Dto3D([0, 0, 0, 1]));
+  const ewMinus = project3D(project4Dto3D([0, 0, 0, -1]));
+  const ewPlusPx = worldToPx(ewPlus, w, h, scale);
+  const ewMinusPx = worldToPx(ewMinus, w, h, scale);
+
+  // Highlight ê_w with special marker
+  ctx.beginPath();
+  ctx.arc(ewPlusPx[0], ewPlusPx[1], 8, 0, 2*Math.PI);
+  ctx.strokeStyle = '#ffcc00';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.fillStyle = '#ffcc00';
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('+ê_w', ewPlusPx[0] + 10, ewPlusPx[1] + 3);
+
+  ctx.beginPath();
+  ctx.arc(ewMinusPx[0], ewMinusPx[1], 8, 0, 2*Math.PI);
+  ctx.strokeStyle = '#cc8800';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([3, 3]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#cc8800';
+  ctx.fillText('−ê_w', ewMinusPx[0] + 10, ewMinusPx[1] + 3);
+
+  // Legend
+  ctx.fillStyle = 'rgba(255,136,68,0.8)';
+  ctx.font = '10px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('● Type A (16-cell): 8 verts', 10, h - 42);
+  ctx.fillStyle = 'rgba(68,170,255,0.8)';
+  ctx.fillText('● Type B (tesseract): 16 verts → stella', 10, h - 28);
+  if (showStella24) {
+    ctx.fillStyle = 'rgba(255,100,80,0.9)';
+    ctx.fillText('— T₊ wireframe', 10, h - 14);
+    ctx.fillStyle = 'rgba(80,130,255,0.9)';
+    ctx.fillText('— T₋ wireframe', 140, h - 14);
+  }
+}
+
+// ============================================================
+// PANEL C: Perpendicularity + equidistance
+// ============================================================
+function renderC() {
+  const { ctx, w, h } = getCanvasAndCtx('cvC');
+  ctx.clearRect(0, 0, w, h);
+
+  const scale = 0.30;
+
+  // Project stella vertices
+  const proj = {};
+  for (const [k, v] of Object.entries(VERTS)) {
+    const p3 = project3D(v);
+    proj[k] = worldToPx(p3, w, h, scale);
+  }
+
+  const origin3 = project3D([0, 0, 0]);
+  const oP = worldToPx(origin3, w, h, scale);
+
+  // Draw the R-G-B plane (filled triangle, extended)
+  const cx = (proj.R[0] + proj.G[0] + proj.B[0]) / 3;
+  const cy = (proj.R[1] + proj.G[1] + proj.B[1]) / 3;
+  const extScale = 2.0;
+  const ext = ['R', 'G', 'B'].map(k => [
+    cx + (proj[k][0] - cx) * extScale,
+    cy + (proj[k][1] - cy) * extScale
+  ]);
+  fillTriangle(ctx, ext[0], ext[1], ext[2], 'rgba(80,80,200,0.12)');
+
+  // R-G-B triangle
+  ctx.beginPath();
+  ctx.moveTo(proj.R[0], proj.R[1]);
+  ctx.lineTo(proj.G[0], proj.G[1]);
+  ctx.lineTo(proj.B[0], proj.B[1]);
+  ctx.closePath();
+  ctx.strokeStyle = 'rgba(100,100,255,0.5)';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  // Draw the spanning vectors v₁ = G-R, v₂ = B-R
+  // Arrow from R to G
+  drawArrow(ctx, proj.R, proj.G, 'rgba(200,200,100,0.7)', 1.8);
+  ctx.fillStyle = 'rgba(200,200,100,0.8)';
+  ctx.font = '10px monospace';
+  ctx.textAlign = 'center';
+  const midRG = [(proj.R[0]+proj.G[0])/2, (proj.R[1]+proj.G[1])/2];
+  ctx.fillText('v₁=G−R', midRG[0], midRG[1] - 8);
+
+  // Arrow from R to B
+  drawArrow(ctx, proj.R, proj.B, 'rgba(200,200,100,0.7)', 1.8);
+  const midRB = [(proj.R[0]+proj.B[0])/2, (proj.R[1]+proj.B[1])/2];
+  ctx.fillText('v₂=B−R', midRB[0] - 20, midRB[1] + 5);
+
+  // Draw W-axis (normal) through centroid of R-G-B triangle
+  // Centroid of R,G,B is at origin (since R+G+B = (-1,-1,-1) for unnormalized...
+  // actually for normalized: centroid = ((1-1-1)/3, (-1+1-1)/3, (-1-1+1)/3)/√3 = (-1/3, -1/3, -1/3)/√3
+  // The normal still goes through origin in direction (1,1,1)/√3
+  const wUp = project3D([S3*1.8, S3*1.8, S3*1.8]);
+  const wDown = project3D([-S3*1.2, -S3*1.2, -S3*1.2]);
+  const wUpPx = worldToPx(wUp, w, h, scale);
+  const wDownPx = worldToPx(wDown, w, h, scale);
+
+  drawEdge(ctx, wDownPx, oP, '#ffcc00', 1.5, [4, 4]);
+  drawArrow(ctx, oP, wUpPx, '#ffcc00', 2.5);
+
+  // Right angle marker at origin
+  // Compute perpendicular direction in screen space
+  const wDx = wUpPx[0] - oP[0], wDy = wUpPx[1] - oP[1];
+  const wLen = Math.sqrt(wDx*wDx + wDy*wDy);
+  const perpX = -wDy / wLen * 12;
+  const perpY = wDx / wLen * 12;
+  const wX = wDx / wLen * 12;
+  const wY = wDy / wLen * 12;
+  ctx.beginPath();
+  ctx.moveTo(oP[0] + perpX, oP[1] + perpY);
+  ctx.lineTo(oP[0] + perpX + wX, oP[1] + perpY + wY);
+  ctx.lineTo(oP[0] + wX, oP[1] + wY);
+  ctx.strokeStyle = '#ffcc00';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  // Equidistance arcs: W to R, W to G, W to B
+  const colors = ['#ff3333', '#33ff33', '#3377ff'];
+  const keys = ['R', 'G', 'B'];
+  for (let i = 0; i < 3; i++) {
+    ctx.beginPath();
+    ctx.moveTo(proj.W[0], proj.W[1]);
+    ctx.lineTo(proj[keys[i]][0], proj[keys[i]][1]);
+    ctx.strokeStyle = colors[i];
+    ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.5;
+    ctx.setLineDash([3, 3]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.globalAlpha = 1.0;
+
+    // Distance label
+    const mx = (proj.W[0] + proj[keys[i]][0]) / 2;
+    const my = (proj.W[1] + proj[keys[i]][1]) / 2;
+    ctx.fillStyle = colors[i];
+    ctx.font = '8px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('√(8/3)', mx + 8, my);
+  }
+
+  // Label W-axis
+  ctx.fillStyle = '#ffcc00';
+  ctx.font = 'bold 11px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('Ŵ ⊥ plane', wUpPx[0] + 6, wUpPx[1] - 4);
+
+  // Draw color vertices
+  for (const k of ['R', 'G', 'B', 'W']) {
+    drawVertex(ctx, proj[k][0], proj[k][1], VCOL[k], k, 5);
+  }
+
+  // Normal equation
+  ctx.fillStyle = '#aab';
+  ctx.font = '10px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('n = v₁ × v₂ = (4,4,4) ∝ (1,1,1)', w/2, h - 10);
+}
+
+// ============================================================
+// PANEL D: W(F₄) rotation visualization
+// ============================================================
+function renderD() {
+  const { ctx, w, h } = getCanvasAndCtx('cvD');
+  ctx.clearRect(0, 0, w, h);
+
+  // Show the mapping ê_w → ½(1,1,1,1) → π = ½(1,1,1) ∝ Ŵ
+  // Visualize as a schematic with 4D→3D transformation
+
+  const scale = 0.28;
+  const yOff = 0; // vertical offset
+
+  // Left half: 4D representation (schematic axes)
+  const hw = w / 2;
+
+  // === LEFT: 4D space ===
+  // Draw 4 axis vectors from origin
+  const axes4D = [
+    { v: [1, 0, 0, 0], label: 'x', color: '#ff6666' },
+    { v: [0, 1, 0, 0], label: 'y', color: '#66ff66' },
+    { v: [0, 0, 1, 0], label: 'z', color: '#6688ff' },
+    { v: [0, 0, 0, 1], label: 'w', color: '#ff8844' },
+  ];
+
+  // Project 4D axes to 2D using a fixed nice angle
+  function proj4DtoScreen(v4, cx, cy, s) {
+    // Isometric-ish projection of 4D
+    const x2D = v4[0] * 0.7 - v4[1] * 0.3 + v4[3] * 0.5;
+    const y2D = -v4[0] * 0.2 - v4[1] * 0.65 - v4[2] * 0.55 + v4[3] * 0.3;
+    return [cx + x2D * s, cy + y2D * s];
+  }
+
+  const leftCx = hw * 0.5;
+  const leftCy = h * 0.42;
+  const s4 = Math.min(hw, h) * 0.28;
+
+  // Draw axes
+  const oL = proj4DtoScreen([0,0,0,0], leftCx, leftCy, s4);
+  for (const ax of axes4D) {
+    const end = proj4DtoScreen(ax.v, leftCx, leftCy, s4);
+    drawArrow(ctx, oL, end, ax.color, 1.8);
+    ctx.fillStyle = ax.color;
+    ctx.font = 'bold 10px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('ê_' + ax.label, end[0] + (end[0] > oL[0] ? 12 : -12), end[1] + (end[1] > oL[1] ? 14 : -6));
+  }
+
+  // Highlight ê_w with circle
+  const ewEnd = proj4DtoScreen([0,0,0,1], leftCx, leftCy, s4);
+  ctx.beginPath();
+  ctx.arc(ewEnd[0], ewEnd[1], 10, 0, 2*Math.PI);
+  ctx.strokeStyle = '#ff8844';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Show R·ê_w = ½(1,1,1,1) as intermediate
+  const rEw = [0.5, 0.5, 0.5, 0.5];
+  const rEwPx = proj4DtoScreen(rEw, leftCx, leftCy, s4);
+  drawVertex(ctx, rEwPx[0], rEwPx[1], '#44ff88', '', 6);
+  ctx.fillStyle = '#44ff88';
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('R·ê_w = ½(1,1,1,1)', rEwPx[0] + 10, rEwPx[1] + 3);
+
+  // Arrow from ê_w to R·ê_w
+  ctx.beginPath();
+  ctx.setLineDash([4, 3]);
+  ctx.moveTo(ewEnd[0], ewEnd[1]);
+  ctx.lineTo(rEwPx[0], rEwPx[1]);
+  ctx.strokeStyle = '#ffcc00';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Label "R ∈ W(F₄)" on the arrow
+  const midArrow = [(ewEnd[0] + rEwPx[0])/2, (ewEnd[1] + rEwPx[1])/2];
+  ctx.fillStyle = '#ffcc00';
+  ctx.font = 'bold 10px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('R ∈ W(F₄)', midArrow[0], midArrow[1] - 8);
+
+  // "4D" label
+  ctx.fillStyle = '#666';
+  ctx.font = 'bold 12px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('4D (ℝ⁴)', hw * 0.5, 40);
+
+  // === RIGHT: 3D projection ===
+  const rightCx = hw + hw * 0.5;
+  const rightCy = h * 0.42;
+  const s3 = Math.min(hw, h) * 0.24;
+
+  // Draw 3D axes
+  const axes3D = [
+    { v: [1, 0, 0], label: 'x', color: 'rgba(255,100,100,0.5)' },
+    { v: [0, 1, 0], label: 'y', color: 'rgba(100,255,100,0.5)' },
+    { v: [0, 0, 1], label: 'z', color: 'rgba(100,100,255,0.5)' },
+  ];
+
+  for (const ax of axes3D) {
+    const p3 = project3D(ax.v);
+    const end = worldToPx(p3, 0, 0, 1); // relative offset
+    const endPx = [rightCx + end[0] * s3, rightCy - end[1] * s3];
+    const oPx = [rightCx, rightCy];
+    drawArrow(ctx, oPx, endPx, ax.color, 1.2);
+  }
+
+  // Draw the projected W direction
+  const wDir = [S3, S3, S3];
+  const wDirScaled = [wDir[0] * 1.6, wDir[1] * 1.6, wDir[2] * 1.6];
+  const wProj3 = project3D(wDirScaled);
+  const wProjPx = [rightCx + wProj3[0] * s3, rightCy - wProj3[1] * s3];
+  drawArrow(ctx, [rightCx, rightCy], wProjPx, '#ffffff', 2.5);
+
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 10px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('Ŵ = (1,1,1)/√3', wProjPx[0] + 6, wProjPx[1] - 6);
+
+  // Show π(½(1,1,1,1)) = ½(1,1,1) at appropriate position
+  const halfW = [0.5 * S3 * Math.sqrt(3), 0.5 * S3 * Math.sqrt(3), 0.5 * S3 * Math.sqrt(3)]; // = [0.5, 0.5, 0.5] then normalize display
+  const halfWProj = project3D([0.5, 0.5, 0.5]);
+  const halfWPx = [rightCx + halfWProj[0] * s3, rightCy - halfWProj[1] * s3];
+  drawVertex(ctx, halfWPx[0], halfWPx[1], '#44ff88', '', 6);
+  ctx.fillStyle = '#44ff88';
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('π = ½(1,1,1)', halfWPx[0] + 10, halfWPx[1] + 3);
+
+  // "3D" label
+  ctx.fillStyle = '#666';
+  ctx.font = 'bold 12px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('3D (ℝ³)', rightCx, 40);
+
+  // Big arrow between left and right: "π: drop w"
+  const arrowFromX = hw - 20;
+  const arrowToX = hw + 20;
+  const arrowY = h * 0.42;
+  drawArrow(ctx, [arrowFromX, arrowY], [arrowToX, arrowY], '#888', 2);
+  ctx.fillStyle = '#aab';
+  ctx.font = '10px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('π: drop w', hw, arrowY - 12);
+
+  // Dividing line
+  ctx.beginPath();
+  ctx.moveTo(hw, 55);
+  ctx.lineTo(hw, h - 40);
+  ctx.strokeStyle = 'rgba(50,50,80,0.5)';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([4, 6]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Bottom: symmetry factorization
+  ctx.fillStyle = '#aab';
+  ctx.font = '10px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('|W(F₄)| = 1152 = 48 (stella S₄×Z₂) × 24 (temporal S₄)', w/2, h - 22);
+
+  ctx.fillStyle = '#888';
+  ctx.font = '9px monospace';
+  ctx.fillText('4th dimension is NOT lost — it becomes Ŵ, precursor to time λ', w/2, h - 8);
+}
+
+// ============================================================
+// RENDER ALL
+// ============================================================
+function renderAll() {
+  renderA();
+  renderB();
+  renderC();
+  renderD();
+  updateVertexInfo();
+}
+
+function updateVertexInfo() {
+  const info = document.getElementById('vertexInfo');
+  const lines = [];
+  lines.push('<b>T₊ (color + singlet):</b>');
+  for (const k of ['R', 'G', 'B', 'W']) {
+    const v = VERTS_RAW[k];
+    lines.push(`&nbsp;${k}: (${v[0]},${v[1]},${v[2]})/√3`);
+  }
+  lines.push('<b>T₋ (anti-color):</b>');
+  for (const k of ['Rb', 'Gb', 'Bb', 'Wb']) {
+    const v = VERTS_RAW[k];
+    const label = k.replace('b', '̄');
+    lines.push(`&nbsp;${label}: (${v[0]},${v[1]},${v[2]})/√3`);
+  }
+  lines.push('');
+  lines.push(`<b>W-axis:</b> (1,1,1)/√3`);
+  lines.push(`|Ŵ−R̂| = |Ŵ−Ĝ| = |Ŵ−B̂| = √(8/3) ≈ ${Math.sqrt(8/3).toFixed(4)}`);
+  info.innerHTML = lines.join('<br>');
+}
+
+// ============================================================
+// INTERACTION
+// ============================================================
+function setupSlider(id, valId, setter) {
+  const slider = document.getElementById(id);
+  const val = document.getElementById(valId);
+  slider.addEventListener('input', () => {
+    const v = parseFloat(slider.value);
+    val.textContent = v.toFixed(2);
+    setter(v);
+    renderAll();
+  });
+}
+
+setupSlider('sliderTheta', 'valTheta', v => { theta = v; });
+setupSlider('sliderPhi', 'valPhi', v => { phi = v; });
+setupSlider('sliderW4', 'valW4', v => { w4angle = v; });
+
+function toggleButton(id, getter, setter) {
+  const btn = document.getElementById(id);
+  btn.addEventListener('click', () => {
+    setter(!getter());
+    btn.classList.toggle('active', getter());
+    renderAll();
+  });
+}
+
+toggleButton('btnAntiT', () => showAntiT, v => { showAntiT = v; });
+toggleButton('btnShowW', () => showWAxis, v => { showWAxis = v; });
+toggleButton('btnShowPlane', () => showRGBPlane, v => { showRGBPlane = v; });
+toggleButton('btnStella24', () => showStella24, v => { showStella24 = v; });
+
+document.getElementById('btnReset').addEventListener('click', () => {
+  theta = 0.55; phi = 0.45; w4angle = 0;
+  document.getElementById('sliderTheta').value = theta;
+  document.getElementById('sliderPhi').value = phi;
+  document.getElementById('sliderW4').value = w4angle;
+  document.getElementById('valTheta').textContent = theta.toFixed(2);
+  document.getElementById('valPhi').textContent = phi.toFixed(2);
+  document.getElementById('valW4').textContent = w4angle.toFixed(2);
+  renderAll();
+});
+
+document.getElementById('btnAnim').addEventListener('click', function() {
+  animating = !animating;
+  this.classList.toggle('active', animating);
+  if (animating) animate();
+  else if (animId) { cancelAnimationFrame(animId); animId = null; }
+});
+
+function animate() {
+  if (!animating) return;
+  theta += 0.008;
+  w4angle += 0.005;
+  if (theta > Math.PI * 2) theta -= Math.PI * 2;
+  if (w4angle > Math.PI * 2) w4angle -= Math.PI * 2;
+  document.getElementById('sliderTheta').value = theta;
+  document.getElementById('sliderW4').value = w4angle;
+  document.getElementById('valTheta').textContent = theta.toFixed(2);
+  document.getElementById('valW4').textContent = w4angle.toFixed(2);
+  renderAll();
+  animId = requestAnimationFrame(animate);
+}
+
+// Mouse drag rotation on all canvas cells
+document.querySelectorAll('.canvas-cell').forEach(cell => {
+  cell.addEventListener('mousedown', e => {
+    dragging = true;
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    dragStartTheta = theta;
+    dragStartPhi = phi;
+  });
+});
+
+document.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  const dx = e.clientX - dragStartX;
+  const dy = e.clientY - dragStartY;
+  theta = dragStartTheta + dx * 0.005;
+  phi = Math.max(-1.5, Math.min(1.5, dragStartPhi + dy * 0.005));
+  document.getElementById('sliderTheta').value = theta;
+  document.getElementById('sliderPhi').value = phi;
+  document.getElementById('valTheta').textContent = theta.toFixed(2);
+  document.getElementById('valPhi').textContent = phi.toFixed(2);
+  renderAll();
+});
+
+document.addEventListener('mouseup', () => { dragging = false; });
+
+// ============================================================
+// INIT
+// ============================================================
+window.addEventListener('resize', renderAll);
+renderAll();
+</script>
+</body>
+</html>

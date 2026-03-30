@@ -1,0 +1,42 @@
+{
+  "test": "G5",
+  "description": "Double-Buffer Validation at Production Scale",
+  "parameters": {
+    "lattice_size": 2,
+    "n_sub": 15,
+    "epochs": 500000,
+    "seed": 42,
+    "cross_rate": 0.0,
+    "total_tiles": 144,
+    "tiles_per_stella": 36
+  },
+  "entropy": {
+    "cpu_mean_full": 1.4491,
+    "gpu_mean_full": 1.5774,
+    "cpu_mean_late": 1.4206,
+    "gpu_mean_late": 1.5775,
+    "cpu_std_late": 0.0567,
+    "gpu_std_late": 0.0037,
+    "gap_full": 0.1283,
+    "gap_late": 0.1569,
+    "c1b_prediction": 0.14,
+    "ratio_to_c1b": 1.12
+  },
+  "unique_programs": {
+    "cpu_mean_late": 79.7,
+    "gpu_mean_late": 90.4
+  },
+  "top_count": {
+    "cpu_mean_late": 14.2,
+    "gpu_mean_late": 4.3
+  },
+  "replicators": {
+    "cpu": "none",
+    "gpu": "none"
+  },
+  "pass_criteria": {
+    "low": 0.1,
+    "high": 0.18
+  },
+  "passed": true
+}

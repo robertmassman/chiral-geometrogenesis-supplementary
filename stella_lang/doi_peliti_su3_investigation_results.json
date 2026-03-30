@@ -1,0 +1,352 @@
+{
+  "title": "Q9: H_DP \u2192 SU(3) Yang-Mills Investigation",
+  "reference": "Prop 0.0.XXe Workplan Q9",
+  "timestamp": "2026-03-10T05:38:24.574559",
+  "sub_questions": {
+    "1_similarity_transform": {
+      "n_real_eigenvalues": 65,
+      "n_total_eigenvalues": 81,
+      "fraction_real": 0.8024691358024691,
+      "max_imag": 0.0008016198878962881,
+      "mean_imag": 0.00010057728487155177,
+      "mean_imag_to_real_ratio": 0.004634503934868729,
+      "db_violation_relative": 0.30398580957164195,
+      "db_violation_direct": 0.001357423312780798,
+      "h_sym_n_real": 65,
+      "h_sym_max_imag": 0.0008016198878961271,
+      "eigvec_condition_number": 2589712.386163365,
+      "hermitian_part_norm": 6.271187044136681,
+      "anti_hermitian_part_norm": 2.6967527348989955,
+      "anti_to_hermitian_ratio": 0.430022692022933,
+      "hermitian_part_gap": 0.050431115786532865
+    },
+    "2_pt_symmetry": {
+      "pt_commutators": {
+        "P_swap*T_neg": {
+          "commutator_norm": 7.697507795200498,
+          "relative_norm": 1.1276023102180677,
+          "commutes": false
+        },
+        "P_swap*I": {
+          "commutator_norm": 2.0028022503806483e-22,
+          "relative_norm": 2.933890428597273e-23,
+          "commutes": true
+        },
+        "P_rev*T_neg": {
+          "commutator_norm": 8.4017196417828,
+          "relative_norm": 1.2307617906909876,
+          "commutes": false
+        },
+        "P_rev*I": {
+          "commutator_norm": 7.943970972935278,
+          "relative_norm": 1.1637065216059024,
+          "commutes": false
+        },
+        "R_Z3": {
+          "relative_norm": 1.1452037214867812
+        },
+        "P_swap*R_Z3": {
+          "relative_norm": 1.1452037214867814
+        }
+      },
+      "n_complex_eigenvalues": 16,
+      "n_conjugate_paired": 16,
+      "eigenvalue_pairing_complete": true
+    },
+    "3_physical_subspace": {
+      "preserves_tangent_space": true,
+      "projected_n_real": 64,
+      "projected_max_imag": 0.0008016198878957794,
+      "ness_symmetrized_n_real": 81,
+      "ness_symmetrized_max_imag": 0.0,
+      "ness_detailed_balance_violation": 0.026308632492682123,
+      "hermitian_part_min_eigval": -0.33429995474767304,
+      "hermitian_part_n_negative": 22,
+      "hermitian_part_positive_semidefinite": false
+    },
+    "4_imaginary_scaling": {
+      "scaling_data": [
+        {
+          "L": 2,
+          "mu": 0.01,
+          "n_cfg": 81,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691,
+          "max_imag": 0.0008016198878962881,
+          "mean_imag": 0.00010057728487155177,
+          "mean_imag_to_real": 0.004634503934868729,
+          "per_site_imag": 2.5144321217887943e-05,
+          "spectral_gap_re": 0.009214004488024053
+        },
+        {
+          "L": 3,
+          "mu": 0.01,
+          "n_cfg": 729,
+          "n_real": 287,
+          "frac_real": 0.3936899862825789,
+          "max_imag": 0.4131150445963804,
+          "mean_imag": 0.014180896016617919,
+          "mean_imag_to_real": 0.027490882675727628,
+          "per_site_imag": 0.00236348266943632,
+          "spectral_gap_re": 0.010300310394817498
+        },
+        {
+          "L": 4,
+          "mu": 0.01,
+          "n_cfg": 6561,
+          "n_real": 2627,
+          "frac_real": 0.40039628105471725,
+          "max_imag": 0.5577555177118816,
+          "mean_imag": 0.020658871187031334,
+          "mean_imag_to_real": 0.026659635930545537,
+          "per_site_imag": 0.0025823588983789167,
+          "spectral_gap_re": 0.01082789186549494
+        },
+        {
+          "L": 2,
+          "mu": 0.05,
+          "n_cfg": 81,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691,
+          "max_imag": 0.0036856683558055274,
+          "mean_imag": 0.0004249792769191503,
+          "mean_imag_to_real": 0.004050718423315512,
+          "per_site_imag": 0.00010624481922978757,
+          "spectral_gap_re": 0.04642477337212411
+        },
+        {
+          "L": 3,
+          "mu": 0.05,
+          "n_cfg": 729,
+          "n_real": 277,
+          "frac_real": 0.37997256515775035,
+          "max_imag": 0.3395148606011871,
+          "mean_imag": 0.01868631360203885,
+          "mean_imag_to_real": 0.03304994376643999,
+          "per_site_imag": 0.003114385600339808,
+          "spectral_gap_re": 0.05054152932841284
+        },
+        {
+          "L": 4,
+          "mu": 0.05,
+          "n_cfg": 6561,
+          "n_real": 2509,
+          "frac_real": 0.3824112178021643,
+          "max_imag": 0.4516940514879204,
+          "mean_imag": 0.021952570994591226,
+          "mean_imag_to_real": 0.027910589753765706,
+          "per_site_imag": 0.0027440713743239033,
+          "spectral_gap_re": 0.05356451902295392
+        }
+      ]
+    },
+    "5_gauge_comparison": {
+      "gap_dp": 0.009214004488023855,
+      "gap_gauge": 0.280646979318254,
+      "gap_ratio": 0.03283129756253376,
+      "r_statistic_dp": 0.2883252018370543,
+      "r_statistic_gauge": 0.4529867060541898,
+      "degeneracy_dp": [
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "degeneracy_gauge": [
+        1,
+        2,
+        1,
+        4,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        1,
+        2,
+        2,
+        4,
+        1,
+        2,
+        2,
+        1,
+        4
+      ]
+    },
+    "bonus_spectral_flow": {
+      "L": 2,
+      "flow": [
+        {
+          "mu": 0.001,
+          "gap_Re": 0.0009196902910247309,
+          "max_imag": 8.163125311792596e-05,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.0032500000000000003,
+          "gap_Re": 0.0029903970254654107,
+          "max_imag": 0.00026410599282458,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.0055000000000000005,
+          "gap_Re": 0.005063031129977388,
+          "max_imag": 0.0004449273199835457,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.007750000000000001,
+          "gap_Re": 0.007137573264508606,
+          "max_imag": 0.0006240977553383592,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.01,
+          "gap_Re": 0.009214004488024053,
+          "max_imag": 0.0008016198878962881,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.02,
+          "gap_Re": 0.018464969227974387,
+          "max_imag": 0.0015707352534231566,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.03,
+          "gap_Re": 0.02775134861701787,
+          "max_imag": 0.002307595083309762,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.04,
+          "gap_Re": 0.03707172139889851,
+          "max_imag": 0.0030124734314475312,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.05,
+          "gap_Re": 0.04642477337212411,
+          "max_imag": 0.0036856683558055274,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.1125,
+          "gap_Re": 0.10555163034592652,
+          "max_imag": 0.0071970334436183515,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.175,
+          "gap_Re": 0.16567277113510778,
+          "max_imag": 0.009581523094897276,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.2375,
+          "gap_Re": 0.22660962334132426,
+          "max_imag": 0.010959118814057252,
+          "n_real": 65,
+          "frac_real": 0.8024691358024691
+        },
+        {
+          "mu": 0.3,
+          "gap_Re": 0.28822100503306436,
+          "max_imag": 0.011466349309887196,
+          "n_real": 63,
+          "frac_real": 0.7777777777777778
+        }
+      ]
+    },
+    "1_similarity_transform_L4": {
+      "n_real_eigenvalues": 2627,
+      "n_total_eigenvalues": 6561,
+      "fraction_real": 0.40039628105471725,
+      "max_imag": 0.5577555177118816,
+      "mean_imag": 0.020658871187031334,
+      "mean_imag_to_real_ratio": 0.026659635930545537,
+      "db_violation_relative": 0.47733988417719947,
+      "db_violation_direct": 0.0017551815280458724,
+      "h_sym_n_real": 2631,
+      "h_sym_max_imag": 0.5577555177118902,
+      "eigvec_condition_number": "near_defective",
+      "hermitian_part_norm": 69.00066363654659,
+      "anti_hermitian_part_norm": 29.912448776908583,
+      "anti_to_hermitian_ratio": 0.4335095809290925,
+      "hermitian_part_gap": 0.04600933167349042
+    },
+    "2_pt_symmetry_L4": {
+      "pt_commutators": {
+        "P_swap*T_neg": {
+          "commutator_norm": 72.33615765608,
+          "relative_norm": 0.9618484327077305,
+          "commutes": false
+        },
+        "P_swap*I": {
+          "commutator_norm": 7.9113145530922195e-19,
+          "relative_norm": 1.0519615293541953e-20,
+          "commutes": true
+        },
+        "P_rev*T_neg": {
+          "commutator_norm": 78.02475767879014,
+          "relative_norm": 1.0374893181713918,
+          "commutes": false
+        },
+        "P_rev*I": {
+          "commutator_norm": 77.43765582913505,
+          "relative_norm": 1.0296826691561731,
+          "commutes": false
+        },
+        "R_Z3": {
+          "relative_norm": 0.9716795730120551
+        },
+        "P_swap*R_Z3": {
+          "relative_norm": 0.9716795730120555
+        }
+      },
+      "n_complex_eigenvalues": 3934,
+      "n_conjugate_paired": 3934,
+      "eigenvalue_pairing_complete": true
+    },
+    "3_physical_subspace_L4": {
+      "preserves_tangent_space": true,
+      "projected_n_real": 2626,
+      "projected_max_imag": 0.5577555177118618,
+      "ness_symmetrized_n_real": 6561,
+      "ness_symmetrized_max_imag": 0.0,
+      "ness_detailed_balance_violation": 0.0005192919074746363,
+      "hermitian_part_min_eigval": -0.6025351214713963,
+      "hermitian_part_n_negative": 1134,
+      "hermitian_part_positive_semidefinite": false
+    }
+  }
+}

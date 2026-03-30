@@ -1,0 +1,194 @@
+{
+  "investigation": "Path 1: Critical Mesh Resolution",
+  "timestamp": "2026-03-19T21:15:13.358644",
+  "question": "Does N* encode a dimensionless number constraining R_stella?",
+  "status": "COMPLETED - No sharp threshold found",
+  "scan_params": {
+    "nsub_values": [
+      40,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80
+    ],
+    "seeds": [
+      42,
+      123,
+      456,
+      789,
+      1024
+    ],
+    "epochs": 5000000,
+    "pairing": "global",
+    "long_run": {
+      "nsub": 40,
+      "seed": 42,
+      "epochs": 20000000,
+      "result": "no_replicators"
+    }
+  },
+  "scan_results": [
+    {
+      "n_sub": 16,
+      "N_total": 42,
+      "emerged": 0,
+      "total": 5,
+      "P_nuc": 0.0,
+      "source": "known"
+    },
+    {
+      "n_sub": 32,
+      "N_total": 170,
+      "emerged": 0,
+      "total": 5,
+      "P_nuc": 0.0,
+      "source": "known"
+    },
+    {
+      "n_sub": 40,
+      "N_total": 266,
+      "emerged": 1,
+      "total": 4,
+      "P_nuc": 0.25,
+      "source": "scan",
+      "seeds": {
+        "42": "not_run",
+        "123": false,
+        "456": false,
+        "789": false,
+        "1024": true
+      }
+    },
+    {
+      "n_sub": 50,
+      "N_total": 416,
+      "emerged": 1,
+      "total": 4,
+      "P_nuc": 0.25,
+      "source": "scan",
+      "seeds": {
+        "42": "not_run",
+        "123": true,
+        "456": false,
+        "789": false,
+        "1024": false
+      }
+    },
+    {
+      "n_sub": 55,
+      "N_total": 504,
+      "emerged": 3,
+      "total": 5,
+      "P_nuc": 0.6,
+      "source": "scan",
+      "seeds": {
+        "42": true,
+        "123": false,
+        "456": false,
+        "789": true,
+        "1024": true
+      }
+    },
+    {
+      "n_sub": 60,
+      "N_total": 600,
+      "emerged": 1,
+      "total": 4,
+      "P_nuc": 0.25,
+      "source": "scan",
+      "seeds": {
+        "42": "not_run",
+        "123": false,
+        "456": false,
+        "789": false,
+        "1024": true
+      }
+    },
+    {
+      "n_sub": 65,
+      "N_total": 704,
+      "emerged": 1,
+      "total": 5,
+      "P_nuc": 0.2,
+      "source": "scan",
+      "seeds": {
+        "42": false,
+        "123": false,
+        "456": false,
+        "789": true,
+        "1024": false
+      }
+    },
+    {
+      "n_sub": 70,
+      "N_total": 816,
+      "emerged": 2,
+      "total": 5,
+      "P_nuc": 0.4,
+      "source": "scan",
+      "seeds": {
+        "42": false,
+        "123": false,
+        "456": true,
+        "789": false,
+        "1024": true
+      }
+    },
+    {
+      "n_sub": 75,
+      "N_total": 936,
+      "emerged": 3,
+      "total": 4,
+      "P_nuc": 0.75,
+      "source": "scan",
+      "seeds": {
+        "42": "not_run",
+        "123": false,
+        "456": true,
+        "789": true,
+        "1024": true
+      }
+    },
+    {
+      "n_sub": 80,
+      "N_total": 1066,
+      "emerged": 1,
+      "total": 5,
+      "P_nuc": 0.2,
+      "source": "scan",
+      "seeds": {
+        "42": false,
+        "123": false,
+        "456": true,
+        "789": false,
+        "1024": false
+      }
+    },
+    {
+      "n_sub": 100,
+      "N_total": 1666,
+      "emerged": 15,
+      "total": 20,
+      "P_nuc": 0.75,
+      "source": "known"
+    },
+    {
+      "n_sub": 157,
+      "N_total": 4108,
+      "emerged": 18,
+      "total": 20,
+      "P_nuc": 0.9,
+      "source": "known"
+    }
+  ],
+  "findings": {
+    "sharp_threshold": false,
+    "sigmoid_character": "P_nuc rises gradually from ~0 (N<170) through ~25% (N~300-600) to 75% (N=1666)",
+    "floor": "N=170 is hard floor (0/5). N=266 is near-floor (1/4 at 5M, 0/1 at 20M).",
+    "3_to_6_hypothesis": "FALSIFIED as sharp cutoff. May still hold as sigmoid midpoint but needs 50+ seeds to test."
+  },
+  "verdict": "No sharp N* exists. P_nuc(N) is a gradual sigmoid. Cannot extract a clean dimensionless number from the threshold."
+}

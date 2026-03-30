@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prop 0.0.3a — Gaussian Field Crystallization on S²</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #060610;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 10px 20px;
+  background: #0c0c18;
+  border-bottom: 1px solid #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+header h1 { font-size: 14px; font-weight: 600; color: #e0e0e8; }
+header .subtitle { font-size: 11px; color: #888; }
+.controls {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin-left: auto;
+}
+button {
+  background: #1a1a2e; color: #c8c8d0; border: 1px solid #2e2e44;
+  padding: 5px 14px; border-radius: 4px; font-family: inherit;
+  font-size: 12px; cursor: pointer; transition: all 0.15s;
+}
+button:hover { background: #24243a; }
+button.primary { background: #1a4a3a; border-color: #2a6a4a; }
+button.primary:hover { background: #2a5a4a; }
+label { font-size: 11px; color: #888; display: flex; align-items: center; gap: 5px; }
+input[type="range"] { accent-color: #4a7aaa; width: 90px; }
+
+.main-area { flex: 1; display: flex; overflow: hidden; }
+#scene-container { flex: 1; position: relative; }
+
+.side-panel {
+  width: 300px;
+  background: #0c0c18;
+  border-left: 1px solid #1a1a2e;
+  overflow-y: auto;
+  padding: 12px;
+}
+.panel-section {
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #151528;
+}
+.panel-section h3 {
+  font-size: 11px; text-transform: uppercase; color: #555;
+  margin-bottom: 6px; letter-spacing: 1px;
+}
+.stat-row { display: flex; justify-content: space-between; font-size: 11px; margin: 2px 0; }
+.stat-val { color: #e0e0e8; font-weight: 600; }
+.stat-val.good { color: #4ae68a; }
+.stat-val.warn { color: #ffcc00; }
+.stat-val.bad { color: #ff6666; }
+
+.meter-bar {
+  height: 6px; background: #111122; border-radius: 3px; overflow: hidden; margin: 4px 0;
+}
+.meter-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+
+.phase-indicator {
+  font-size: 10px; padding: 2px 8px; border-radius: 3px;
+  font-weight: 600; letter-spacing: 0.5px;
+}
+.phase-random { background: #2a1020; color: #ff6666; }
+.phase-annealing { background: #2a2a10; color: #ffcc00; }
+.phase-crystallized { background: #102a10; color: #4ae68a; }
+
+.info-box {
+  background: #10101e; border: 1px solid #1a1a30; border-radius: 4px;
+  padding: 8px; margin: 6px 0; font-size: 10px; line-height: 1.6;
+}
+.info-box em { color: #aaa; font-style: normal; }
+.info-box .eq { color: #88aacc; font-family: 'Times New Roman', serif; font-size: 12px; }
+
+.legend-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin: 3px 0; }
+.legend-swatch { width: 12px; height: 12px; border-radius: 50%; }
+
+.timeline-bar {
+  padding: 8px 20px;
+  background: #0c0c18;
+  border-top: 1px solid #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#timeSlider { flex: 1; accent-color: #ffcc00; }
+#stepLabel {
+  font-size: 12px; font-weight: 600; color: #ffcc00;
+  min-width: 260px; text-align: right;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Prop 0.0.3a — Gaussian Field Crystallization on S²</h1>
+    <div class="subtitle">Phase S2: Continuous density blobs ρ(x) = Σ exp(−|x−μ|²/2σ²) → stella octangula</div>
+  </div>
+  <div class="controls">
+    <label>α/β:
+      <input type="range" id="ratioSlider" min="0.5" max="5.0" step="0.1" value="2.0">
+      <span id="ratioVal">2.0</span>
+    </label>
+    <label>σ:
+      <input type="range" id="sigmaSlider" min="0.05" max="0.8" step="0.01" value="0.30">
+      <span id="sigmaVal">0.30</span>
+    </label>
+    <label>Speed:
+      <input type="range" id="speedSlider" min="1" max="100" step="1" value="20">
+    </label>
+    <button id="btnStart" class="primary">▶ Start</button>
+    <button id="btnReset">↺ Reset</button>
+  </div>
+</header>
+
+<div class="main-area">
+  <div id="scene-container"></div>
+  <div class="side-panel">
+
+    <div class="panel-section">
+      <h3>Phase</h3>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span id="phaseIndicator" class="phase-indicator phase-random">RANDOM</span>
+        <span id="tempDisplay" style="font-size:11px;color:#e0e0e8;">T = 2.000</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Convergence (rotation-aligned)</h3>
+      <div class="stat-row">
+        <span>RMSD to ideal stella</span>
+        <span id="rmsdVal" class="stat-val bad">—</span>
+      </div>
+      <div class="meter-bar">
+        <div id="rmsdMeter" class="meter-fill" style="width:0%;background:#ff6666;"></div>
+      </div>
+      <div class="stat-row">
+        <span>Energy</span>
+        <span id="energyVal" class="stat-val">—</span>
+      </div>
+      <div class="stat-row">
+        <span>Ideal energy</span>
+        <span id="idealEnergyVal" class="stat-val" style="color:#4ae68a">—</span>
+      </div>
+      <div class="stat-row">
+        <span>Accept rate</span>
+        <span id="acceptVal" class="stat-val">—</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Geometry</h3>
+      <div class="stat-row">
+        <span>T₊ regularity</span>
+        <span id="regAVal" class="stat-val">—</span>
+      </div>
+      <div class="stat-row">
+        <span>T₋ regularity</span>
+        <span id="regBVal" class="stat-val">—</span>
+      </div>
+      <div class="stat-row">
+        <span>Max vertex error</span>
+        <span id="maxVertErr" class="stat-val">—</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Display</h3>
+      <label style="margin:3px 0;"><input type="checkbox" id="chkWireframe"> Wireframe sphere</label><br>
+      <label style="margin:3px 0;"><input type="checkbox" id="chkEdges" checked> Tetrahedra edges</label><br>
+      <label style="margin:3px 0;"><input type="checkbox" id="chkIdeal" checked> Ideal stella ghost</label><br>
+      <label style="margin:3px 0;"><input type="checkbox" id="chkDiff" checked> Difference connectors</label><br>
+      <label style="margin:3px 0;"><input type="checkbox" id="chkCenters" checked> Blob centers</label><br>
+      <label style="margin:3px 0;">
+        Density gain:
+        <input type="range" id="gainSlider" min="0.5" max="5.0" step="0.1" value="1.5">
+        <span id="gainVal">1.5</span>
+      </label>
+    </div>
+
+    <div class="panel-section">
+      <h3>Legend</h3>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#ff2244;"></div>
+        <span>ρ_A — Z₃ charge ω¹ density</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#2266ff;"></div>
+        <span>ρ_B — Z₃ charge ω² density</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#aa44ff;"></div>
+        <span>Overlap ρ_A · ρ_B</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:rgba(255,255,255,0.15);border:1px dashed #444;"></div>
+        <span>Ideal stella (dashed)</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Phase S2 — From the Paper</h3>
+      <div class="info-box">
+        <em>Gaussian density on S²:</em><br>
+        <span class="eq">ρ(x) = ¼ Σ exp(−|x−μₖ|²/2σ²) / Z</span><br><br>
+        <em>Interaction energy:</em><br>
+        <span class="eq">E = α Σ_same ∫∫ ρᵢρⱼ/|x−y|² dΩ²</span><br>
+        <span class="eq">&nbsp;&nbsp;+ β Σ_cross ∫∫ ρᵢρⱼ/|x−y|² dΩ²</span><br><br>
+        <em>Results:</em> 100% stella for σ ∈ [0.05, 0.5]<br>
+        and α/β ≥ 2.0 (20/20 seeds).<br><br>
+        <em>The shader renders ρ(x) directly on</em><br>
+        <em>each fragment of the sphere surface.</em>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="timeline-bar">
+  <button id="btnPlayPause" style="width:30px;text-align:center;">▶</button>
+  <input type="range" id="timeSlider" min="0" max="1000" value="0">
+  <span id="stepLabel">Step 0 / 0</span>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ============================================================
+// GLSL SHADERS — Gaussian density on S²
+// ============================================================
+
+const vertexShader = `
+varying vec3 vWorldPos;
+varying vec3 vNormal;
+
+void main() {
+  vWorldPos = (modelMatrix * vec4(position, 1.0)).xyz;
+  vNormal = normalize(normalMatrix * normal);
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+`;
+
+// Fragment shader: compute Gaussian density at each surface point
+// centersA[0..3] = ω¹ charge blob centers
+// centersB[0..3] = ω² charge blob centers
+const fragmentShader = `
+precision highp float;
+
+varying vec3 vWorldPos;
+varying vec3 vNormal;
+
+uniform vec3 centersA[4];
+uniform vec3 centersB[4];
+uniform float sigma;
+uniform float gain;
+uniform float time;
+
+// Gaussian on S² using chord distance: exp(-|x - mu|² / 2sigma²)
+float gaussian(vec3 x, vec3 mu, float s) {
+  vec3 d = x - mu;
+  float dist2 = dot(d, d);
+  return exp(-dist2 / (2.0 * s * s));
+}
+
+void main() {
+  vec3 p = normalize(vWorldPos);
+  float s = sigma;
+
+  // Compute density for each charge type
+  float rhoA = 0.0;
+  float rhoB = 0.0;
+  for (int i = 0; i < 4; i++) {
+    rhoA += gaussian(p, normalize(centersA[i]), s);
+    rhoB += gaussian(p, normalize(centersB[i]), s);
+  }
+
+  // Normalize densities
+  rhoA *= 0.25;
+  rhoB *= 0.25;
+
+  // Apply gain
+  rhoA *= gain;
+  rhoB *= gain;
+
+  // Color mapping:
+  //   ω¹ density → warm red/orange
+  //   ω² density → cool blue/cyan
+  //   overlap    → violet/white
+  vec3 colA = vec3(1.0, 0.15, 0.2);   // warm red
+  vec3 colB = vec3(0.15, 0.35, 1.0);  // cool blue
+
+  // Build color with density-driven brightness
+  // Use smoothstep for nice gradient falloff
+  float intensA = smoothstep(0.0, 0.3, rhoA);
+  float intensB = smoothstep(0.0, 0.3, rhoB);
+
+  // Glow at high density
+  float hotA = smoothstep(0.5, 1.2, rhoA);
+  float hotB = smoothstep(0.5, 1.2, rhoB);
+
+  // Base dark color (deep space)
+  vec3 base = vec3(0.02, 0.02, 0.05);
+
+  // Add density contributions
+  vec3 color = base;
+  color += colA * intensA * 0.8;
+  color += colB * intensB * 0.8;
+
+  // Hot cores glow white-ish
+  color += vec3(1.0, 0.6, 0.3) * hotA * 0.6;
+  color += vec3(0.3, 0.6, 1.0) * hotB * 0.6;
+
+  // Overlap region → violet/magenta glow
+  float overlap = min(intensA, intensB);
+  color += vec3(0.7, 0.2, 1.0) * overlap * 0.5;
+
+  // Subtle rim lighting using view direction
+  float rim = 1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0)));
+  rim = smoothstep(0.4, 1.0, rim);
+  color += vec3(0.05, 0.05, 0.12) * rim;
+
+  // Subtle subsurface scattering effect
+  float totalDensity = rhoA + rhoB;
+  float subsurface = smoothstep(0.0, 0.6, totalDensity) * 0.1;
+  color += vec3(0.15, 0.1, 0.2) * subsurface;
+
+  // Tone mapping
+  color = color / (color + vec3(1.0));
+
+  gl_FragColor = vec4(color, 1.0);
+}
+`;
+
+// ============================================================
+// SIMULATION STATE (same physics as viz_crystallization_3d.html)
+// ============================================================
+const SIM = {
+  N: 8,
+  positions: [],
+  labels: [],
+  alphaOverBeta: 2.0,
+  sigma: 0.30,
+  temperature: 2.0,
+  step: 0,
+  maxSteps: 50000,
+  running: false,
+  history: [],
+  energy: 0,
+  rmsd: 1,
+  accepted: 0,
+  attempted: 0,
+  alignedIdeal: [],
+  vertexDists: [],
+};
+
+const IDEAL_STELLA = {
+  A: [
+    new THREE.Vector3( 1,  1,  1).normalize(),
+    new THREE.Vector3( 1, -1, -1).normalize(),
+    new THREE.Vector3(-1,  1, -1).normalize(),
+    new THREE.Vector3(-1, -1,  1).normalize(),
+  ],
+  B: [
+    new THREE.Vector3(-1, -1, -1).normalize(),
+    new THREE.Vector3(-1,  1,  1).normalize(),
+    new THREE.Vector3( 1, -1,  1).normalize(),
+    new THREE.Vector3( 1,  1, -1).normalize(),
+  ]
+};
+
+// ============================================================
+// LINEAR ALGEBRA — Kabsch SVD alignment (3x3)
+// ============================================================
+function mat3mult(A, B) {
+  const C = [[0,0,0],[0,0,0],[0,0,0]];
+  for (let i = 0; i < 3; i++)
+    for (let j = 0; j < 3; j++)
+      for (let k = 0; k < 3; k++)
+        C[i][j] += A[i][k] * B[k][j];
+  return C;
+}
+function mat3transpose(A) {
+  return [[A[0][0],A[1][0],A[2][0]],[A[0][1],A[1][1],A[2][1]],[A[0][2],A[1][2],A[2][2]]];
+}
+function mat3det(A) {
+  return A[0][0]*(A[1][1]*A[2][2]-A[1][2]*A[2][1])
+       - A[0][1]*(A[1][0]*A[2][2]-A[1][2]*A[2][0])
+       + A[0][2]*(A[1][0]*A[2][1]-A[1][1]*A[2][0]);
+}
+function eigendecompose3x3(M) {
+  let A = M.map(r => [...r]);
+  let V = [[1,0,0],[0,1,0],[0,0,1]];
+  for (let iter = 0; iter < 50; iter++) {
+    let maxVal = 0, p = 0, q = 1;
+    for (let i = 0; i < 3; i++)
+      for (let j = i+1; j < 3; j++)
+        if (Math.abs(A[i][j]) > maxVal) { maxVal = Math.abs(A[i][j]); p = i; q = j; }
+    if (maxVal < 1e-12) break;
+    const theta = 0.5 * Math.atan2(2*A[p][q], A[q][q]-A[p][p]);
+    const c = Math.cos(theta), s = Math.sin(theta);
+    const Ap = [...A[p]], Aq = [...A[q]];
+    for (let k = 0; k < 3; k++) { A[p][k] = c*Ap[k]-s*Aq[k]; A[q][k] = s*Ap[k]+c*Aq[k]; }
+    const Cp = [A[0][p],A[1][p],A[2][p]], Cq = [A[0][q],A[1][q],A[2][q]];
+    for (let k = 0; k < 3; k++) { A[k][p] = c*Cp[k]-s*Cq[k]; A[k][q] = s*Cp[k]+c*Cq[k]; }
+    const Vp = [V[0][p],V[1][p],V[2][p]], Vq = [V[0][q],V[1][q],V[2][q]];
+    for (let k = 0; k < 3; k++) { V[k][p] = c*Vp[k]-s*Vq[k]; V[k][q] = s*Vp[k]+c*Vq[k]; }
+  }
+  let vals = [A[0][0],A[1][1],A[2][2]];
+  let vecs = mat3transpose(V);
+  const idx = [0,1,2].sort((a,b) => vals[b]-vals[a]);
+  return {
+    values: idx.map(i => vals[i]),
+    vectors: mat3transpose(idx.map(i => vecs[i]))
+  };
+}
+function svd3x3(M) {
+  const MtM = mat3mult(mat3transpose(M), M);
+  const eigen = eigendecompose3x3(MtM);
+  const V = eigen.vectors;
+  const S = eigen.values.map(v => Math.sqrt(Math.max(0, v)));
+  const MV = mat3mult(M, V);
+  const U = [[0,0,0],[0,0,0],[0,0,0]];
+  for (let i = 0; i < 3; i++)
+    for (let j = 0; j < 3; j++)
+      U[i][j] = S[j] > 1e-10 ? MV[i][j]/S[j] : 0;
+  return { U, S, V };
+}
+function kabschAlign(simPts, idealPts) {
+  const n = simPts.length;
+  const H = [[0,0,0],[0,0,0],[0,0,0]];
+  for (let k = 0; k < n; k++) {
+    const p = idealPts[k], q = simPts[k];
+    H[0][0]+=p.x*q.x; H[0][1]+=p.x*q.y; H[0][2]+=p.x*q.z;
+    H[1][0]+=p.y*q.x; H[1][1]+=p.y*q.y; H[1][2]+=p.y*q.z;
+    H[2][0]+=p.z*q.x; H[2][1]+=p.z*q.y; H[2][2]+=p.z*q.z;
+  }
+  const { U, S, V } = svd3x3(H);
+  const d = mat3det(mat3mult(V, mat3transpose(U)));
+  const D = [[1,0,0],[0,1,0],[0,0,d<0?-1:1]];
+  return mat3mult(mat3mult(V, D), mat3transpose(U));
+}
+function applyRotation(R, v) {
+  return new THREE.Vector3(
+    R[0][0]*v.x+R[0][1]*v.y+R[0][2]*v.z,
+    R[1][0]*v.x+R[1][1]*v.y+R[1][2]*v.z,
+    R[2][0]*v.x+R[2][1]*v.y+R[2][2]*v.z
+  );
+}
+
+// All 24 permutations of [0,1,2,3]
+const PERMS4 = [];
+(function() {
+  function p(a, l, r) {
+    if (l === r) { PERMS4.push([...a]); return; }
+    for (let i = l; i <= r; i++) {
+      [a[l],a[i]]=[a[i],a[l]]; p(a,l+1,r); [a[l],a[i]]=[a[i],a[l]];
+    }
+  }
+  p([0,1,2,3], 0, 3);
+})();
+
+function computeAlignedRMSD() {
+  const posA = SIM.positions.filter((_,i) => SIM.labels[i]===0);
+  const posB = SIM.positions.filter((_,i) => SIM.labels[i]===1);
+  const idxA = [], idxB = [];
+  for (let i = 0; i < SIM.N; i++) { if (SIM.labels[i]===0) idxA.push(i); else idxB.push(i); }
+
+  let bestRMSD = Infinity, bestRotIdeal = null;
+
+  for (const flip of [false, true]) {
+    const idealA = flip ? IDEAL_STELLA.B : IDEAL_STELLA.A;
+    const idealB = flip ? IDEAL_STELLA.A : IDEAL_STELLA.B;
+    for (const pA of PERMS4) {
+      for (const pB of PERMS4) {
+        const simPts = [], idlPts = [];
+        for (let i = 0; i < 4; i++) { simPts.push(posA[i]); idlPts.push(idealA[pA[i]]); }
+        for (let i = 0; i < 4; i++) { simPts.push(posB[i]); idlPts.push(idealB[pB[i]]); }
+        const R = kabschAlign(simPts, idlPts);
+        let sumSq = 0;
+        const rotated = [];
+        for (let i = 0; i < 8; i++) {
+          const ri = applyRotation(R, idlPts[i]);
+          rotated.push(ri);
+          sumSq += ri.distanceToSquared(simPts[i]);
+        }
+        const rmsd = Math.sqrt(sumSq/8);
+        if (rmsd < bestRMSD) { bestRMSD = rmsd; bestRotIdeal = rotated; }
+      }
+    }
+  }
+
+  SIM.alignedIdeal = new Array(8);
+  SIM.vertexDists = new Array(8);
+  for (let i = 0; i < 4; i++) {
+    SIM.alignedIdeal[idxA[i]] = bestRotIdeal[i];
+    SIM.vertexDists[idxA[i]] = posA[i].distanceTo(bestRotIdeal[i]);
+  }
+  for (let i = 0; i < 4; i++) {
+    SIM.alignedIdeal[idxB[i]] = bestRotIdeal[4+i];
+    SIM.vertexDists[idxB[i]] = posB[i].distanceTo(bestRotIdeal[4+i]);
+  }
+  return bestRMSD;
+}
+
+// ============================================================
+// PHYSICS — energy uses Gaussian overlap integral (approximated)
+// ============================================================
+function computeEnergy(positions, labels, alphaOverBeta) {
+  // For the visualization we use the same point-charge energy as Phase B
+  // (Phase S2 confirms identical threshold α/β = 2)
+  const alpha = alphaOverBeta, beta = 1.0;
+  let E = 0;
+  for (let i = 0; i < positions.length; i++) {
+    for (let j = i+1; j < positions.length; j++) {
+      const d2 = positions[i].distanceToSquared(positions[j]);
+      if (d2 < 1e-10) { E += 1e6; continue; }
+      const coeff = (labels[i] === labels[j]) ? alpha : beta;
+      E += coeff / d2;
+    }
+  }
+  return E;
+}
+
+function computeIdealEnergy() {
+  return computeEnergy([...IDEAL_STELLA.A, ...IDEAL_STELLA.B], [0,0,0,0,1,1,1,1], SIM.alphaOverBeta);
+}
+
+function randomPointOnSphere() {
+  const u = Math.random()*2-1;
+  const theta = Math.random()*2*Math.PI;
+  const r = Math.sqrt(1-u*u);
+  return new THREE.Vector3(r*Math.cos(theta), r*Math.sin(theta), u);
+}
+
+function initRandom() {
+  SIM.positions = [];
+  SIM.labels = [];
+  for (let i = 0; i < SIM.N; i++) {
+    SIM.positions.push(randomPointOnSphere());
+    SIM.labels.push(i < 4 ? 0 : 1);
+  }
+  SIM.energy = computeEnergy(SIM.positions, SIM.labels, SIM.alphaOverBeta);
+  SIM.temperature = 2.0;
+  SIM.step = 0;
+  SIM.history = [];
+  SIM.accepted = 0;
+  SIM.attempted = 0;
+  SIM.alignedIdeal = [];
+  SIM.vertexDists = [];
+  saveSnapshot();
+}
+
+function annealStep() {
+  const progress = SIM.step / SIM.maxSteps;
+  if (progress < 0.15) {
+    SIM.temperature = 2.0*(1-progress/0.15) + 0.5*(progress/0.15);
+  } else if (progress < 0.7) {
+    SIM.temperature = 0.5 * Math.exp(-4*(progress-0.15)/0.55);
+  } else {
+    SIM.temperature = 0.5*Math.exp(-4)*(1-(progress-0.7)/0.3) + 0.0001;
+  }
+
+  const idx = Math.floor(Math.random() * SIM.N);
+  const old = SIM.positions[idx].clone();
+  const pertSize = 0.4 * Math.sqrt(SIM.temperature);
+  SIM.positions[idx].add(new THREE.Vector3(
+    (Math.random()-0.5)*pertSize,
+    (Math.random()-0.5)*pertSize,
+    (Math.random()-0.5)*pertSize
+  ));
+  SIM.positions[idx].normalize();
+
+  const newE = computeEnergy(SIM.positions, SIM.labels, SIM.alphaOverBeta);
+  const dE = newE - SIM.energy;
+  SIM.attempted++;
+  if (dE < 0 || Math.random() < Math.exp(-dE/SIM.temperature)) {
+    SIM.energy = newE;
+    SIM.accepted++;
+  } else {
+    SIM.positions[idx].copy(old);
+  }
+  SIM.step++;
+}
+
+function computeRegularity(pts) {
+  if (pts.length < 2) return 0;
+  const dists = [];
+  for (let i = 0; i < pts.length; i++)
+    for (let j = i+1; j < pts.length; j++)
+      dists.push(pts[i].distanceTo(pts[j]));
+  const mean = dists.reduce((a,b) => a+b)/dists.length;
+  if (mean < 1e-10) return 0;
+  const std = Math.sqrt(dists.reduce((a,d) => a+(d-mean)**2, 0)/dists.length);
+  return Math.max(0, 1 - std/mean);
+}
+
+function saveSnapshot() {
+  SIM.history.push({
+    positions: SIM.positions.map(p => p.clone()),
+    labels: [...SIM.labels],
+    energy: SIM.energy,
+    temperature: SIM.temperature,
+    step: SIM.step,
+  });
+}
+
+// ============================================================
+// THREE.JS SCENE
+// ============================================================
+const container = document.getElementById('scene-container');
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x060610);
+
+const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+camera.position.set(2.8, 2.0, 2.8);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.4;
+
+// Lights (mostly for overlays, shader does its own lighting)
+scene.add(new THREE.AmbientLight(0x404060, 0.4));
+const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
+dirLight.position.set(3, 5, 4);
+scene.add(dirLight);
+
+// ---- Gaussian density sphere (custom shader) ----
+const densitySphereGeo = new THREE.SphereGeometry(1.0, 128, 96);
+const densityUniforms = {
+  centersA: { value: [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()] },
+  centersB: { value: [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()] },
+  sigma: { value: 0.3 },
+  gain: { value: 1.5 },
+  time: { value: 0 },
+};
+const densityMat = new THREE.ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: densityUniforms,
+});
+const densitySphere = new THREE.Mesh(densitySphereGeo, densityMat);
+scene.add(densitySphere);
+
+// ---- Wireframe overlay ----
+const wireGeo = new THREE.SphereGeometry(1.005, 32, 24);
+const wireMat = new THREE.MeshBasicMaterial({
+  color: 0x222244, wireframe: true, transparent: true, opacity: 0.08
+});
+const wireMesh = new THREE.Mesh(wireGeo, wireMat);
+wireMesh.visible = false;
+scene.add(wireMesh);
+
+// ---- Blob center markers ----
+const centerGroup = new THREE.Group();
+scene.add(centerGroup);
+const centerMeshes = [];
+
+function createCenters() {
+  centerGroup.clear();
+  centerMeshes.length = 0;
+  for (let i = 0; i < SIM.N; i++) {
+    const color = SIM.labels[i] === 0 ? 0xff4466 : 0x4488ff;
+    const geo = new THREE.SphereGeometry(0.035, 12, 8);
+    const mat = new THREE.MeshPhongMaterial({
+      color, emissive: new THREE.Color(color), emissiveIntensity: 0.8,
+      shininess: 100, transparent: true, opacity: 0.9,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    centerGroup.add(mesh);
+    centerMeshes.push(mesh);
+  }
+}
+
+// ---- Tetrahedra edges ----
+const edgeGroupA = new THREE.Group();
+const edgeGroupB = new THREE.Group();
+scene.add(edgeGroupA);
+scene.add(edgeGroupB);
+
+function drawTetraEdges(verts, group, color, opacity, dashed) {
+  group.clear();
+  const pairs = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]];
+  for (const [a,b] of pairs) {
+    const geo = new THREE.BufferGeometry().setFromPoints([verts[a], verts[b]]);
+    let mat;
+    if (dashed) {
+      mat = new THREE.LineDashedMaterial({ color, transparent: true, opacity, dashSize: 0.04, gapSize: 0.03 });
+    } else {
+      mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity });
+    }
+    const line = new THREE.Line(geo, mat);
+    if (dashed) line.computeLineDistances();
+    group.add(line);
+  }
+}
+
+// ---- Ideal stella ghost ----
+const idealGroupA = new THREE.Group();
+const idealGroupB = new THREE.Group();
+scene.add(idealGroupA);
+scene.add(idealGroupB);
+
+// ---- Difference connectors ----
+const diffGroup = new THREE.Group();
+scene.add(diffGroup);
+
+function distToColor(d) {
+  const t = Math.min(1, d/0.5);
+  return new THREE.Color(
+    t < 0.5 ? t*2 : 1,
+    t < 0.5 ? 1 : 1-(t-0.5)*2,
+    0.2
+  );
+}
+
+function drawDifferences() {
+  diffGroup.clear();
+  if (!document.getElementById('chkDiff').checked) return;
+  if (SIM.alignedIdeal.length !== SIM.N) return;
+
+  for (let i = 0; i < SIM.N; i++) {
+    const sim = SIM.positions[i];
+    const ideal = SIM.alignedIdeal[i];
+    if (!ideal) continue;
+    const dist = SIM.vertexDists[i];
+    const color = distToColor(dist);
+
+    // Offset slightly outward so lines don't clip into sphere
+    const s = sim.clone().multiplyScalar(1.01);
+    const id = ideal.clone().multiplyScalar(1.01);
+
+    const geo = new THREE.BufferGeometry().setFromPoints([s, id]);
+    const mat = new THREE.LineDashedMaterial({
+      color, dashSize: 0.025, gapSize: 0.015,
+      transparent: true, opacity: 0.9, linewidth: 2
+    });
+    const line = new THREE.Line(geo, mat);
+    line.computeLineDistances();
+    diffGroup.add(line);
+
+    // Ghost vertex at ideal
+    const ghostGeo = new THREE.SphereGeometry(0.025, 8, 6);
+    const ghostColor = SIM.labels[i] === 0 ? 0xff4466 : 0x4488ff;
+    const ghostMat = new THREE.MeshBasicMaterial({
+      color: ghostColor, transparent: true, opacity: 0.3, wireframe: true
+    });
+    const ghost = new THREE.Mesh(ghostGeo, ghostMat);
+    ghost.position.copy(ideal).multiplyScalar(1.01);
+    diffGroup.add(ghost);
+  }
+}
+
+// ============================================================
+// UPDATE LOOP
+// ============================================================
+function updateShaderUniforms() {
+  const cA = densityUniforms.centersA.value;
+  const cB = densityUniforms.centersB.value;
+  let ia = 0, ib = 0;
+  for (let i = 0; i < SIM.N; i++) {
+    if (SIM.labels[i] === 0 && ia < 4) { cA[ia].copy(SIM.positions[i]); ia++; }
+    else if (ib < 4) { cB[ib].copy(SIM.positions[i]); ib++; }
+  }
+  densityUniforms.sigma.value = SIM.sigma;
+  densityUniforms.gain.value = parseFloat(document.getElementById('gainSlider').value);
+}
+
+function updateScene() {
+  updateShaderUniforms();
+
+  // Center markers
+  if (document.getElementById('chkCenters').checked) {
+    centerGroup.visible = true;
+    for (let i = 0; i < SIM.N; i++) {
+      centerMeshes[i].position.copy(SIM.positions[i]).multiplyScalar(1.02);
+    }
+  } else {
+    centerGroup.visible = false;
+  }
+
+  // Current tetrahedra edges
+  edgeGroupA.clear();
+  edgeGroupB.clear();
+  if (document.getElementById('chkEdges').checked) {
+    const posA = SIM.positions.filter((_,i) => SIM.labels[i]===0);
+    const posB = SIM.positions.filter((_,i) => SIM.labels[i]===1);
+    drawTetraEdges(posA.map(p => p.clone().multiplyScalar(1.015)), edgeGroupA, 0xff4466, 0.4, false);
+    drawTetraEdges(posB.map(p => p.clone().multiplyScalar(1.015)), edgeGroupB, 0x4488ff, 0.4, false);
+  }
+
+  // Wireframe
+  wireMesh.visible = document.getElementById('chkWireframe').checked;
+
+  // Compute alignment
+  SIM.rmsd = computeAlignedRMSD();
+
+  // Ideal stella ghost (aligned)
+  idealGroupA.clear();
+  idealGroupB.clear();
+  if (document.getElementById('chkIdeal').checked && SIM.alignedIdeal.length === SIM.N) {
+    const iA = [], iB = [];
+    for (let i = 0; i < SIM.N; i++) {
+      if (!SIM.alignedIdeal[i]) continue;
+      if (SIM.labels[i]===0) iA.push(SIM.alignedIdeal[i].clone().multiplyScalar(1.015));
+      else iB.push(SIM.alignedIdeal[i].clone().multiplyScalar(1.015));
+    }
+    if (iA.length === 4) drawTetraEdges(iA, idealGroupA, 0xff4466, 0.2, true);
+    if (iB.length === 4) drawTetraEdges(iB, idealGroupB, 0x4488ff, 0.2, true);
+  }
+
+  // Difference connectors
+  drawDifferences();
+
+  // --- Side panel ---
+  document.getElementById('rmsdVal').textContent = SIM.rmsd.toFixed(4);
+  document.getElementById('rmsdVal').className = 'stat-val ' +
+    (SIM.rmsd < 0.02 ? 'good' : SIM.rmsd < 0.1 ? 'warn' : 'bad');
+
+  const pct = Math.max(0, Math.min(100, (1-SIM.rmsd/0.5)*100));
+  document.getElementById('rmsdMeter').style.width = pct+'%';
+  document.getElementById('rmsdMeter').style.background =
+    SIM.rmsd < 0.02 ? '#4ae68a' : SIM.rmsd < 0.1 ? '#ffcc00' : '#ff6666';
+
+  document.getElementById('energyVal').textContent = SIM.energy.toFixed(2);
+  document.getElementById('idealEnergyVal').textContent = computeIdealEnergy().toFixed(2);
+  document.getElementById('tempDisplay').textContent = `T = ${SIM.temperature.toFixed(4)}`;
+
+  const rate = SIM.attempted > 0 ? SIM.accepted/SIM.attempted : 0;
+  document.getElementById('acceptVal').textContent = (rate*100).toFixed(1)+'%';
+
+  const posA = SIM.positions.filter((_,i) => SIM.labels[i]===0);
+  const posB = SIM.positions.filter((_,i) => SIM.labels[i]===1);
+  document.getElementById('regAVal').textContent = computeRegularity(posA).toFixed(4);
+  document.getElementById('regBVal').textContent = computeRegularity(posB).toFixed(4);
+
+  const maxD = SIM.vertexDists.length === SIM.N ? Math.max(...SIM.vertexDists) : 0;
+  document.getElementById('maxVertErr').textContent = SIM.vertexDists.length === SIM.N ? maxD.toFixed(4) : '—';
+  document.getElementById('maxVertErr').className = 'stat-val ' +
+    (maxD < 0.03 ? 'good' : maxD < 0.1 ? 'warn' : 'bad');
+
+  // Phase indicator
+  const ind = document.getElementById('phaseIndicator');
+  if (SIM.step === 0) { ind.textContent = 'RANDOM'; ind.className = 'phase-indicator phase-random'; }
+  else if (SIM.rmsd < 0.02) { ind.textContent = 'CRYSTALLIZED'; ind.className = 'phase-indicator phase-crystallized'; }
+  else if (SIM.rmsd < 0.08) { ind.textContent = 'NEAR STELLA'; ind.className = 'phase-indicator phase-annealing'; }
+  else { ind.textContent = 'ANNEALING'; ind.className = 'phase-indicator phase-annealing'; }
+
+  document.getElementById('stepLabel').textContent =
+    `Step ${SIM.step.toLocaleString()} / ${SIM.maxSteps.toLocaleString()}  |  RMSD = ${SIM.rmsd.toFixed(4)}  |  σ = ${SIM.sigma.toFixed(2)}`;
+  document.getElementById('timeSlider').max = Math.max(SIM.history.length-1, 1);
+  document.getElementById('timeSlider').value = SIM.history.length-1;
+}
+
+// ============================================================
+// ANIMATION
+// ============================================================
+function simLoop() {
+  if (!SIM.running) return;
+  const speed = parseInt(document.getElementById('speedSlider').value);
+  for (let i = 0; i < speed; i++) {
+    if (SIM.step >= SIM.maxSteps) {
+      SIM.running = false;
+      document.getElementById('btnPlayPause').textContent = '▶';
+      break;
+    }
+    annealStep();
+    if (SIM.step % 50 === 0) saveSnapshot();
+  }
+  updateScene();
+  requestAnimationFrame(simLoop);
+}
+
+function renderLoop() {
+  controls.update();
+  densityUniforms.time.value = performance.now() * 0.001;
+  renderer.render(scene, camera);
+  requestAnimationFrame(renderLoop);
+}
+
+// ============================================================
+// CONTROLS
+// ============================================================
+document.getElementById('btnStart').addEventListener('click', () => {
+  SIM.alphaOverBeta = parseFloat(document.getElementById('ratioSlider').value);
+  SIM.sigma = parseFloat(document.getElementById('sigmaSlider').value);
+  initRandom();
+  createCenters();
+  updateScene();
+  SIM.running = true;
+  document.getElementById('btnPlayPause').textContent = '⏸';
+  simLoop();
+});
+
+document.getElementById('btnReset').addEventListener('click', () => {
+  SIM.running = false;
+  initRandom();
+  createCenters();
+  updateScene();
+});
+
+document.getElementById('btnPlayPause').addEventListener('click', () => {
+  SIM.running = !SIM.running;
+  document.getElementById('btnPlayPause').textContent = SIM.running ? '⏸' : '▶';
+  if (SIM.running) simLoop();
+});
+
+document.getElementById('ratioSlider').addEventListener('input', e => {
+  SIM.alphaOverBeta = parseFloat(e.target.value);
+  document.getElementById('ratioVal').textContent = SIM.alphaOverBeta.toFixed(1);
+});
+document.getElementById('sigmaSlider').addEventListener('input', e => {
+  SIM.sigma = parseFloat(e.target.value);
+  document.getElementById('sigmaVal').textContent = SIM.sigma.toFixed(2);
+  densityUniforms.sigma.value = SIM.sigma;
+});
+document.getElementById('gainSlider').addEventListener('input', e => {
+  document.getElementById('gainVal').textContent = parseFloat(e.target.value).toFixed(1);
+  densityUniforms.gain.value = parseFloat(e.target.value);
+});
+
+document.getElementById('timeSlider').addEventListener('input', e => {
+  const idx = parseInt(e.target.value);
+  if (idx < SIM.history.length) {
+    const snap = SIM.history[idx];
+    for (let i = 0; i < SIM.N; i++) {
+      SIM.positions[i].copy(snap.positions[i]);
+      SIM.labels[i] = snap.labels[i];
+    }
+    SIM.energy = snap.energy;
+    SIM.temperature = snap.temperature;
+    SIM.step = snap.step;
+    SIM.running = false;
+    document.getElementById('btnPlayPause').textContent = '▶';
+    updateScene();
+  }
+});
+
+['chkWireframe','chkEdges','chkIdeal','chkDiff','chkCenters'].forEach(id => {
+  document.getElementById(id).addEventListener('change', updateScene);
+});
+
+// ============================================================
+// RESIZE
+// ============================================================
+function onResize() {
+  const rect = container.getBoundingClientRect();
+  camera.aspect = rect.width / rect.height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(rect.width, rect.height);
+}
+window.addEventListener('resize', onResize);
+
+// ============================================================
+// INIT
+// ============================================================
+onResize();
+initRandom();
+createCenters();
+updateScene();
+renderLoop();
+</script>
+</body>
+</html>

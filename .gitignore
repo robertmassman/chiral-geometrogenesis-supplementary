@@ -47,7 +47,46 @@ build/
 
 # OS
 Thumbs.db
+
+# Large HTML plots
 verification/plots/stella_topology_vs_geometry.html
 verification/plots/stella_pregeometric_emergence.html
 verification/plots/stella_emergence_animated.html
 verification/plots/stella_emergence_3d.html
+
+# Compiled binaries (Mach-O executables built from .c sources)
+stella_genesis/phase_*
+stella_genesis/genesis_soup
+stella_genesis/genesis_soup_metal
+stella_genesis/crystallization
+stella_genesis/soup_g1g2
+stella_genesis/**/q2_fisher_mesh_convergence
+stella_lang/soup_*
+stella_lang/stella_soup
+stella_lang/analyze_*
+stella_lang/check_*
+stella_lang/conditional_spectrum
+stella_lang/correlation_2d_soup
+stella_lang/critical_*
+stella_lang/density_*
+stella_lang/diagnose_seed
+stella_lang/effective_action_coarsegrain
+stella_lang/error_threshold_confinement
+stella_lang/parisi_wu_investigation
+stella_lang/priority6_analysis
+stella_lang/quantitative_bootstrap
+stella_lang/rg_map_construction
+stella_lang/spectral_*
+stella_lang/test_*
+stella_lang/tile_size_diagnostic
+stella_lang/tiling_improvement
+stella_lang/universality_class*
+stella_lang/verify_replicator
+stella_lang/wilson_loop_2d
+stella_lang/z3_*
+verification/**/adversarial_prop_XXg
+verification/**/proposition_0_0_3a_adversarial
+verification/**/nucleation_2d_geometry
+
+# dSYM debug symbol directories
+**/*.dSYM/

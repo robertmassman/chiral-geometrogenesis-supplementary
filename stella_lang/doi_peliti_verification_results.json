@@ -1,0 +1,216 @@
+{
+  "title": "Doi-Peliti Verification",
+  "reference": "Prop 0.0.XXe Phase 4 \u00a74.2.5d",
+  "timestamp": "2026-03-10T04:13:13.662195",
+  "tests": [
+    {
+      "params": "L=2, \u03bc=0",
+      "L": 2,
+      "mu": 0.0,
+      "n_configs": 81,
+      "tests": {
+        "stochastic_matrix": {
+          "passed": "True"
+        },
+        "ness_found": {
+          "passed": true,
+          "n_stationary": 44,
+          "support_size": 1,
+          "entropy": -0.0,
+          "max_prob": 1.0
+        },
+        "hamiltonian": {
+          "is_hermitian": false,
+          "n_zero_eigenvalues": 44,
+          "ground_state_eigenvalue": 0.0,
+          "max_imaginary": 0.0
+        },
+        "core_doi_peliti": {
+          "passed": true,
+          "residual_l2": 0.0,
+          "residual_max": 0.0
+        },
+        "monte_carlo": {
+          "passed": true,
+          "l1_distance": 0.0,
+          "expected_noise": 0.007071067811865475,
+          "mc_support": 1,
+          "n_runs": 5
+        },
+        "z3_symmetry": {
+          "dynamics_symmetric": false,
+          "commutator_norm": 8.06225774829855
+        },
+        "spectral": {
+          "spectral_gap": 0.5,
+          "n_ergodic_classes": 44,
+          "n_absorbing_states": 44,
+          "is_hermitian": false
+        },
+        "structure": {
+          "n_transitions": 118,
+          "n_fixed_points": 48,
+          "n_order_dependent": 37
+        }
+      },
+      "overall_passed": true
+    },
+    {
+      "params": "L=2, \u03bc=0.01",
+      "L": 2,
+      "mu": 0.01,
+      "n_configs": 81,
+      "tests": {
+        "stochastic_matrix": {
+          "passed": "True"
+        },
+        "ness_found": {
+          "passed": true,
+          "n_stationary": 1,
+          "support_size": 81,
+          "entropy": 3.7159095284836097,
+          "max_prob": 0.06002537076721519
+        },
+        "hamiltonian": {
+          "is_hermitian": false,
+          "n_zero_eigenvalues": 1,
+          "ground_state_eigenvalue": 1.976535762101579e-16,
+          "max_imaginary": 0.0008016198878962881
+        },
+        "core_doi_peliti": {
+          "passed": true,
+          "residual_l2": 4.306616900246836e-16,
+          "residual_max": 2.0621525320674294e-16
+        },
+        "monte_carlo": {
+          "passed": true,
+          "l1_distance": 0.08040782994036617,
+          "expected_noise": 0.0232379000772445,
+          "mc_support": 81,
+          "n_runs": 1
+        },
+        "z3_symmetry": {
+          "dynamics_symmetric": false,
+          "commutator_norm": 7.817662746303117
+        },
+        "spectral": {
+          "spectral_gap": 0.009214004488024053,
+          "n_ergodic_classes": 1,
+          "n_absorbing_states": 0,
+          "is_hermitian": false
+        },
+        "structure": {
+          "n_transitions": 6561,
+          "n_fixed_points": 48,
+          "n_order_dependent": 37
+        }
+      },
+      "overall_passed": true
+    },
+    {
+      "params": "L=2, \u03bc=0.05",
+      "L": 2,
+      "mu": 0.05,
+      "n_configs": 81,
+      "tests": {
+        "stochastic_matrix": {
+          "passed": "True"
+        },
+        "ness_found": {
+          "passed": true,
+          "n_stationary": 1,
+          "support_size": 81,
+          "entropy": 3.889701212157375,
+          "max_prob": 0.05272815238785358
+        },
+        "hamiltonian": {
+          "is_hermitian": false,
+          "n_zero_eigenvalues": 1,
+          "ground_state_eigenvalue": 2.9831721802662706e-16,
+          "max_imaginary": 0.0036856683558055274
+        },
+        "core_doi_peliti": {
+          "passed": true,
+          "residual_l2": 2.2561230350116296e-16,
+          "residual_max": 1.20346441145891e-16
+        },
+        "monte_carlo": {
+          "passed": true,
+          "l1_distance": 0.04329197379126831,
+          "expected_noise": 0.0232379000772445,
+          "mc_support": 81,
+          "n_runs": 1
+        },
+        "z3_symmetry": {
+          "dynamics_symmetric": false,
+          "commutator_norm": 6.898678129178082
+        },
+        "spectral": {
+          "spectral_gap": 0.04642477337212411,
+          "n_ergodic_classes": 1,
+          "n_absorbing_states": 0,
+          "is_hermitian": false
+        },
+        "structure": {
+          "n_transitions": 6561,
+          "n_fixed_points": 48,
+          "n_order_dependent": 37
+        }
+      },
+      "overall_passed": true
+    },
+    {
+      "params": "L=4, \u03bc=0",
+      "L": 4,
+      "mu": 0.0,
+      "n_configs": 6561,
+      "tests": {
+        "stochastic_matrix": {
+          "passed": "True"
+        },
+        "ness_found": {
+          "passed": true,
+          "n_stationary": 1852,
+          "support_size": 1,
+          "entropy": -0.0,
+          "max_prob": 1.0
+        },
+        "hamiltonian": {
+          "is_hermitian": false,
+          "n_zero_eigenvalues": 1852,
+          "ground_state_eigenvalue": 0.0,
+          "max_imaginary": 0.5873450523063821
+        },
+        "core_doi_peliti": {
+          "passed": true,
+          "residual_l2": 0.0,
+          "residual_max": 0.0
+        },
+        "monte_carlo": {
+          "passed": true,
+          "l1_distance": 0.0,
+          "expected_noise": 0.00447213595499958,
+          "mc_support": 1,
+          "n_runs": 5
+        },
+        "z3_symmetry": {
+          "dynamics_symmetric": false,
+          "commutator_norm": 77.28518616138541
+        },
+        "spectral": {
+          "spectral_gap": 0.010394926180047052,
+          "n_ergodic_classes": 1852,
+          "n_absorbing_states": 1821,
+          "is_hermitian": false
+        },
+        "structure": {
+          "n_transitions": 11170,
+          "n_fixed_points": 2486,
+          "n_order_dependent": 4609
+        }
+      },
+      "overall_passed": true
+    }
+  ],
+  "overall_status": "PASSED"
+}

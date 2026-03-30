@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stella Genesis — COUPLE Geography Visualizer</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a0f;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 10px 20px;
+  background: #12121a;
+  border-bottom: 1px solid #2a2a3a;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+header h1 { font-size: 15px; font-weight: 600; color: #e0e0e8; }
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+button {
+  background: #1e1e2e;
+  color: #c8c8d0;
+  border: 1px solid #3a3a4a;
+  padding: 5px 14px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+button:hover { background: #2a2a3e; }
+button.active { background: #2a4a6a; border-color: #4a7aaa; }
+label { font-size: 11px; color: #888; display: flex; align-items: center; gap: 5px; }
+input[type="range"] { width: 100px; accent-color: #4a7aaa; }
+select {
+  background: #1e1e2e; color: #c8c8d0; border: 1px solid #3a3a4a;
+  padding: 3px 6px; border-radius: 3px; font-family: inherit; font-size: 11px;
+}
+.main-area { flex: 1; display: flex; overflow: hidden; }
+#scene-container { flex: 1; position: relative; }
+canvas { display: block; }
+.side-panel {
+  width: 300px;
+  background: #12121a;
+  border-left: 1px solid #2a2a3a;
+  overflow-y: auto;
+  padding: 12px;
+}
+.panel-section {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #1e1e2e;
+}
+.panel-section h3 {
+  font-size: 11px; text-transform: uppercase; color: #666;
+  margin-bottom: 8px; letter-spacing: 1px;
+}
+.stat-row { display: flex; justify-content: space-between; font-size: 11px; margin: 3px 0; }
+.stat-val { color: #e0e0e8; font-weight: 600; }
+.legend { margin-top: 8px; }
+.legend-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin: 3px 0; }
+.legend-swatch { width: 14px; height: 14px; border-radius: 2px; }
+#colorbar {
+  width: 100%; height: 20px; border-radius: 3px;
+  background: linear-gradient(to right, #000033, #0000ff, #00ffff, #ffff00, #ff0000);
+  margin: 4px 0;
+}
+.colorbar-labels { display: flex; justify-content: space-between; font-size: 9px; color: #888; }
+#tooltip {
+  position: absolute; top: 10px; left: 10px;
+  background: rgba(18,18,26,0.92); border: 1px solid #3a3a4a;
+  padding: 8px 12px; border-radius: 4px; font-size: 11px;
+  pointer-events: none; display: none; z-index: 10;
+  line-height: 1.6;
+}
+#load-overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: #0a0a0f; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: #666; z-index: 100;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Stella Genesis — COUPLE Geography</h1>
+  <div class="controls">
+    <label>View:
+      <select id="viewMode">
+        <option value="both">Both surfaces</option>
+        <option value="tp">T+ only</option>
+        <option value="tm">T- only</option>
+        <option value="overlay">Overlay (superimposed)</option>
+      </select>
+    </label>
+    <label>Color:
+      <select id="colorMode">
+        <option value="couple_rate">COUPLE rate</option>
+        <option value="pressure_ratio">Pressure ratio</option>
+        <option value="pressure_diff">Pressure differential</option>
+        <option value="dominance">Own/Other dominant</option>
+      </select>
+    </label>
+    <label>Point size: <input type="range" id="pointSize" min="1" max="12" value="5"></label>
+    <label>Opacity: <input type="range" id="opacity" min="10" max="100" value="85"></label>
+    <button id="toggleEdges">Edges</button>
+    <button id="toggleChannels" class="active">Channels</button>
+    <button id="toggleSpin">Auto-spin</button>
+    <button id="resetView">Reset</button>
+  </div>
+</header>
+
+<div class="main-area">
+  <div id="scene-container">
+    <div id="load-overlay">Drop couple_geography.json here or click to load...</div>
+    <div id="tooltip"></div>
+  </div>
+  <div class="side-panel">
+    <div class="panel-section">
+      <h3>Color Scale</h3>
+      <div id="colorbar"></div>
+      <div class="colorbar-labels"><span id="cmin">0.000</span><span id="cmax">0.045</span></div>
+    </div>
+    <div class="panel-section">
+      <h3>Legend</h3>
+      <div class="legend">
+        <div class="legend-row"><div class="legend-swatch" style="background:#00cc44"></div> T+ vertices (s₁s₂s₃ = +1)</div>
+        <div class="legend-row"><div class="legend-swatch" style="background:#cc4400"></div> T- vertices (s₁s₂s₃ = -1)</div>
+        <div class="legend-row"><div class="legend-swatch" style="background:#ffffff; opacity:0.3"></div> Tetrahedron edges</div>
+        <div class="legend-row"><div class="legend-swatch" style="background:#ffcc00"></div> Antipodal COUPLE channels</div>
+      </div>
+    </div>
+    <div class="panel-section" id="statsPanel">
+      <h3>Statistics</h3>
+      <div id="statsContent"><em>Load data to see statistics</em></div>
+    </div>
+    <div class="panel-section">
+      <h3>Antipodal Pairs</h3>
+      <div id="pairsContent"><em>Load data to see pairs</em></div>
+    </div>
+    <div class="panel-section">
+      <h3>About</h3>
+      <div style="font-size:10px; color:#666; line-height:1.5">
+        Programs evolve to preferentially COUPLE near their own-tetrahedron
+        vertices, where pressure dominance is strongest. The antipodal
+        channels (yellow lines) show bidirectional information flow between
+        T+ and T- vertices at opposite cube corners — the same 8-vertex
+        parity-split geometry that connects the stella to SU(3).
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+let scene, camera, renderer, controls;
+let data = null;
+let pointsTp, pointsTm;
+let edgesTp, edgesTm;
+let channelLines;
+let vertexMarkersTp, vertexMarkersTm;
+let autoSpin = false;
+let showEdges = false;
+let showChannels = true;
+
+const container = document.getElementById('scene-container');
+const overlay = document.getElementById('load-overlay');
+const tooltip = document.getElementById('tooltip');
+
+// ── Init Three.js ──
+function initScene() {
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0a0a0f);
+
+  camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 100);
+  camera.position.set(3.5, 2.5, 3.5);
+
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer.domElement);
+
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.08;
+  controls.target.set(0, 0, 0);
+
+  // Lights
+  scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+  const dirLight = new THREE.DirectionalLight(0xffffff, 0.4);
+  dirLight.position.set(5, 5, 5);
+  scene.add(dirLight);
+
+  // Axes helper (subtle)
+  const axes = new THREE.AxesHelper(0.3);
+  axes.position.set(-1.8, -1.8, -1.8);
+  scene.add(axes);
+
+  window.addEventListener('resize', () => {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  });
+}
+
+// ── Color mapping ──
+function heatColor(t) {
+  // 0=dark blue → 0.25=blue → 0.5=cyan → 0.75=yellow → 1.0=red
+  t = Math.max(0, Math.min(1, t));
+  let r, g, b;
+  if (t < 0.25) {
+    r = 0; g = 0; b = 0.2 + 3.2 * t;
+  } else if (t < 0.5) {
+    const s = (t - 0.25) * 4;
+    r = 0; g = s; b = 1;
+  } else if (t < 0.75) {
+    const s = (t - 0.5) * 4;
+    r = s; g = 1; b = 1 - s;
+  } else {
+    const s = (t - 0.75) * 4;
+    r = 1; g = 1 - s; b = 0;
+  }
+  return new THREE.Color(r, g, b);
+}
+
+function dominanceColor(isOwn) {
+  return isOwn ? new THREE.Color(0.2, 0.7, 0.3) : new THREE.Color(0.7, 0.2, 0.3);
+}
+
+// ── Build visualization ──
+function buildScene() {
+  if (!data) return;
+  // Clear old objects
+  [pointsTp, pointsTm, edgesTp, edgesTm, channelLines, vertexMarkersTp, vertexMarkersTm]
+    .forEach(obj => { if (obj) scene.remove(obj); });
+
+  const n = data.n_sites;
+  const tp = data.tp_pos;
+  const tm = data.tm_pos;
+  const visit = data.visit_hist;
+
+  // Compute rates
+  const rateTp = [], rateTm = [];
+  for (let i = 0; i < n; i++) {
+    const v = Math.max(visit[i], 1);
+    rateTp.push(data.couple_hist_tp[i] / v);
+    rateTm.push(data.couple_hist_tm[i] / v);
+  }
+  data._rateTp = rateTp;
+  data._rateTm = rateTm;
+
+  // Pressure ratios
+  const prTp = [], prTm = [], pdTp = [], pdTm = [];
+  const domTp = [], domTm = [];
+  for (let i = 0; i < n; i++) {
+    const stp = data.pp_at_tp[i] + data.pm_at_tp[i];
+    const stm = data.pp_at_tm[i] + data.pm_at_tm[i];
+    prTp.push(stp > 1e-10 ? data.pp_at_tp[i] / stp : 0.5);
+    prTm.push(stm > 1e-10 ? data.pm_at_tm[i] / stm : 0.5);
+    pdTp.push(stp > 1e-10 ? Math.abs(data.pp_at_tp[i] - data.pm_at_tp[i]) / stp : 0);
+    pdTm.push(stm > 1e-10 ? Math.abs(data.pm_at_tm[i] - data.pp_at_tm[i]) / stm : 0);
+    domTp.push(data.pp_at_tp[i] > data.pm_at_tp[i]);
+    domTm.push(data.pm_at_tm[i] > data.pp_at_tm[i]);
+  }
+  data._prTp = prTp; data._prTm = prTm;
+  data._pdTp = pdTp; data._pdTm = pdTm;
+  data._domTp = domTp; data._domTm = domTm;
+
+  // Build point clouds
+  pointsTp = makePoints(tp, rateTp, prTp, pdTp, domTp, 'tp');
+  pointsTm = makePoints(tm, rateTm, prTm, pdTm, domTm, 'tm');
+  scene.add(pointsTp);
+  scene.add(pointsTm);
+
+  // Tetrahedron edges
+  edgesTp = makeTetraEdges(data.tv_plus, 0x00cc44);
+  edgesTm = makeTetraEdges(data.tv_minus, 0xcc4400);
+  edgesTp.visible = showEdges;
+  edgesTm.visible = showEdges;
+  scene.add(edgesTp);
+  scene.add(edgesTm);
+
+  // Vertex markers
+  vertexMarkersTp = makeVertexMarkers(data.tv_plus, 0x00cc44);
+  vertexMarkersTm = makeVertexMarkers(data.tv_minus, 0xcc4400);
+  scene.add(vertexMarkersTp);
+  scene.add(vertexMarkersTm);
+
+  // Antipodal channels (vertex-to-vertex lines with glow)
+  channelLines = makeChannels(data.tv_plus, data.tv_minus, rateTp, tp);
+  channelLines.visible = showChannels;
+  scene.add(channelLines);
+
+  updateColors();
+  updateStats();
+  updatePairs();
+}
+
+function makePoints(positions, rates, pr, pd, dom, surfaceId) {
+  const n = positions.length;
+  const geo = new THREE.BufferGeometry();
+  const posArr = new Float32Array(n * 3);
+  const colArr = new Float32Array(n * 3);
+
+  for (let i = 0; i < n; i++) {
+    posArr[i*3] = positions[i][0];
+    posArr[i*3+1] = positions[i][1];
+    posArr[i*3+2] = positions[i][2];
+  }
+
+  geo.setAttribute('position', new THREE.BufferAttribute(posArr, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(colArr, 3));
+
+  const mat = new THREE.PointsMaterial({
+    size: parseFloat(document.getElementById('pointSize').value) * 0.01,
+    vertexColors: true,
+    transparent: true,
+    opacity: parseInt(document.getElementById('opacity').value) / 100,
+    sizeAttenuation: true,
+  });
+
+  const points = new THREE.Points(geo, mat);
+  points.userData = { surfaceId, rates, pr, pd, dom };
+  return points;
+}
+
+function makeTetraEdges(verts, color) {
+  const edges = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]];
+  const geo = new THREE.BufferGeometry();
+  const posArr = new Float32Array(edges.length * 6);
+  edges.forEach((e, i) => {
+    posArr[i*6]   = verts[e[0]][0]; posArr[i*6+1] = verts[e[0]][1]; posArr[i*6+2] = verts[e[0]][2];
+    posArr[i*6+3] = verts[e[1]][0]; posArr[i*6+4] = verts[e[1]][1]; posArr[i*6+5] = verts[e[1]][2];
+  });
+  geo.setAttribute('position', new THREE.BufferAttribute(posArr, 3));
+  return new THREE.LineSegments(geo, new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.3 }));
+}
+
+function makeVertexMarkers(verts, color) {
+  const group = new THREE.Group();
+  verts.forEach((v, i) => {
+    const geo = new THREE.OctahedronGeometry(0.06, 1);
+    const mat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.9 });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(v[0], v[1], v[2]);
+    group.add(mesh);
+
+    // Label
+    const canvas = document.createElement('canvas');
+    canvas.width = 128; canvas.height = 48;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = color === 0x00cc44 ? '#00cc44' : '#cc4400';
+    ctx.font = 'bold 28px monospace';
+    ctx.textAlign = 'center';
+    const sign = v.map(x => x > 0 ? '+' : '-').join('');
+    ctx.fillText(sign, 64, 32);
+    const tex = new THREE.CanvasTexture(canvas);
+    const spriteMat = new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0.8 });
+    const sprite = new THREE.Sprite(spriteMat);
+    sprite.position.set(v[0] * 1.15, v[1] * 1.15, v[2] * 1.15);
+    sprite.scale.set(0.4, 0.15, 1);
+    group.add(sprite);
+  });
+  return group;
+}
+
+function makeChannels(tvp, tvm, rateTp, tpPos) {
+  const group = new THREE.Group();
+
+  // For each T+ vertex, find its antipodal T- vertex
+  for (let i = 0; i < 4; i++) {
+    const vp = tvp[i];
+    // Antipodal = -vp, find matching T- vertex
+    let bestJ = 0, bestDist = Infinity;
+    for (let j = 0; j < 4; j++) {
+      const d = Math.sqrt(
+        (vp[0]+tvm[j][0])**2 + (vp[1]+tvm[j][1])**2 + (vp[2]+tvm[j][2])**2
+      );
+      if (d < bestDist) { bestDist = d; bestJ = j; }
+    }
+    const vm = tvm[bestJ];
+
+    // Compute mean COUPLE rate near this T+ vertex (within dist 0.5)
+    let sumRate = 0, cnt = 0;
+    for (let k = 0; k < tpPos.length; k++) {
+      const d = Math.sqrt(
+        (tpPos[k][0]-vp[0])**2 + (tpPos[k][1]-vp[1])**2 + (tpPos[k][2]-vp[2])**2
+      );
+      if (d < 0.5) { sumRate += rateTp[k]; cnt++; }
+    }
+    const avgRate = cnt > 0 ? sumRate / cnt : 0;
+
+    // Line thickness/brightness scales with COUPLE rate
+    const intensity = Math.min(1, avgRate / 0.04);
+
+    // Create tube-like channel
+    const curve = new THREE.LineCurve3(
+      new THREE.Vector3(vp[0], vp[1], vp[2]),
+      new THREE.Vector3(vm[0], vm[1], vm[2])
+    );
+    const tubeGeo = new THREE.TubeGeometry(curve, 8, 0.015 + 0.03 * intensity, 6, false);
+    const tubeMat = new THREE.MeshBasicMaterial({
+      color: new THREE.Color(1, 0.8 * intensity + 0.2, 0),
+      transparent: true,
+      opacity: 0.4 + 0.4 * intensity,
+    });
+    group.add(new THREE.Mesh(tubeGeo, tubeMat));
+
+    // Arrow indicators (small cones at midpoints)
+    const mid = [(vp[0]+vm[0])/2, (vp[1]+vm[1])/2, (vp[2]+vm[2])/2];
+    const arrowGeo = new THREE.ConeGeometry(0.03, 0.08, 6);
+    const arrowMat = new THREE.MeshBasicMaterial({ color: 0xffcc00, transparent: true, opacity: 0.7 });
+
+    // Arrow pointing T+ → T-
+    const arrow1 = new THREE.Mesh(arrowGeo, arrowMat);
+    const qtr = [vp[0]*0.75 + vm[0]*0.25, vp[1]*0.75 + vm[1]*0.25, vp[2]*0.75 + vm[2]*0.25];
+    arrow1.position.set(qtr[0], qtr[1], qtr[2]);
+    arrow1.lookAt(vm[0], vm[1], vm[2]);
+    arrow1.rotateX(Math.PI/2);
+    group.add(arrow1);
+
+    // Arrow pointing T- → T+
+    const arrow2 = new THREE.Mesh(arrowGeo, arrowMat);
+    const tqtr = [vp[0]*0.25 + vm[0]*0.75, vp[1]*0.25 + vm[1]*0.75, vp[2]*0.25 + vm[2]*0.75];
+    arrow2.position.set(tqtr[0], tqtr[1], tqtr[2]);
+    arrow2.lookAt(vp[0], vp[1], vp[2]);
+    arrow2.rotateX(Math.PI/2);
+    group.add(arrow2);
+  }
+
+  return group;
+}
+
+function updateColors() {
+  const mode = document.getElementById('colorMode').value;
+  [pointsTp, pointsTm].forEach(points => {
+    if (!points) return;
+    const ud = points.userData;
+    const colors = points.geometry.attributes.color.array;
+    const n = colors.length / 3;
+
+    let vals, cmin = 0, cmax = 1;
+    if (mode === 'couple_rate') {
+      vals = ud.rates;
+      cmin = 0; cmax = Math.max(...data._rateTp, ...data._rateTm);
+    } else if (mode === 'pressure_ratio') {
+      vals = ud.pr;
+      cmin = 0.3; cmax = 1.0;
+    } else if (mode === 'pressure_diff') {
+      vals = ud.pd;
+      cmin = 0; cmax = 1;
+    } else {
+      // dominance
+      for (let i = 0; i < n; i++) {
+        const c = dominanceColor(ud.dom[i]);
+        colors[i*3] = c.r; colors[i*3+1] = c.g; colors[i*3+2] = c.b;
+      }
+      points.geometry.attributes.color.needsUpdate = true;
+      document.getElementById('cmin').textContent = 'Other';
+      document.getElementById('cmax').textContent = 'Own';
+      return;
+    }
+
+    for (let i = 0; i < n; i++) {
+      const t = (vals[i] - cmin) / (cmax - cmin);
+      const c = heatColor(t);
+      colors[i*3] = c.r; colors[i*3+1] = c.g; colors[i*3+2] = c.b;
+    }
+    points.geometry.attributes.color.needsUpdate = true;
+    document.getElementById('cmin').textContent = cmin.toFixed(3);
+    document.getElementById('cmax').textContent = cmax.toFixed(3);
+  });
+}
+
+function updateVisibility() {
+  const mode = document.getElementById('viewMode').value;
+  if (!pointsTp || !pointsTm) return;
+
+  if (mode === 'both') {
+    pointsTp.visible = true; pointsTm.visible = true;
+    // Offset surfaces for clarity
+    pointsTp.position.set(-0.05, 0, 0);
+    pointsTm.position.set(0.05, 0, 0);
+    vertexMarkersTp.position.copy(pointsTp.position);
+    vertexMarkersTm.position.copy(pointsTm.position);
+    if (edgesTp) { edgesTp.position.copy(pointsTp.position); edgesTm.position.copy(pointsTm.position); }
+  } else if (mode === 'tp') {
+    pointsTp.visible = true; pointsTm.visible = false;
+    pointsTp.position.set(0, 0, 0);
+    vertexMarkersTp.position.set(0, 0, 0);
+    vertexMarkersTm.visible = false;
+    if (edgesTp) edgesTp.position.set(0, 0, 0);
+  } else if (mode === 'tm') {
+    pointsTp.visible = false; pointsTm.visible = true;
+    pointsTm.position.set(0, 0, 0);
+    vertexMarkersTm.position.set(0, 0, 0);
+    vertexMarkersTp.visible = false;
+    if (edgesTm) edgesTm.position.set(0, 0, 0);
+  } else {
+    // overlay — both at same position
+    pointsTp.visible = true; pointsTm.visible = true;
+    pointsTp.position.set(0, 0, 0);
+    pointsTm.position.set(0, 0, 0);
+    vertexMarkersTp.position.set(0, 0, 0);
+    vertexMarkersTm.position.set(0, 0, 0);
+    if (edgesTp) { edgesTp.position.set(0, 0, 0); edgesTm.position.set(0, 0, 0); }
+  }
+
+  // Reset vertex marker visibility
+  if (mode !== 'tp') vertexMarkersTm.visible = true;
+  if (mode !== 'tm') vertexMarkersTp.visible = true;
+
+  // Channels only visible in overlay or both
+  if (channelLines) channelLines.visible = showChannels;
+}
+
+function updateStats() {
+  if (!data) return;
+  const n = data.n_sites;
+  const rateTp = data._rateTp;
+  const rateTm = data._rateTm;
+  const meanTp = rateTp.reduce((a,b) => a+b, 0) / n;
+  const meanTm = rateTm.reduce((a,b) => a+b, 0) / n;
+  const maxRate = Math.max(...rateTp, ...rateTm);
+  const minRate = Math.min(...rateTp, ...rateTm);
+
+  const ownMeanTp = rateTp.filter((_,i) => data._domTp[i]).reduce((a,b) => a+b, 0) /
+    data._domTp.filter(x => x).length;
+  const otherMeanTp = rateTp.filter((_,i) => !data._domTp[i]).reduce((a,b) => a+b, 0) /
+    data._domTp.filter(x => !x).length;
+
+  document.getElementById('statsContent').innerHTML = `
+    <div class="stat-row"><span>Sites</span><span class="stat-val">${n}</span></div>
+    <div class="stat-row"><span>Epochs</span><span class="stat-val">${(data.total_epochs/1e6).toFixed(1)}M</span></div>
+    <div class="stat-row"><span>Total COUPLE flags</span><span class="stat-val">${((data.couple_hist_tp.reduce((a,b)=>a+b,0) + data.couple_hist_tm.reduce((a,b)=>a+b,0))/1e6).toFixed(1)}M</span></div>
+    <div class="stat-row" style="margin-top:8px"><span>Mean rate (T+)</span><span class="stat-val">${meanTp.toFixed(4)}</span></div>
+    <div class="stat-row"><span>Mean rate (T-)</span><span class="stat-val">${meanTm.toFixed(4)}</span></div>
+    <div class="stat-row"><span>Max rate</span><span class="stat-val">${maxRate.toFixed(4)}</span></div>
+    <div class="stat-row"><span>Min rate</span><span class="stat-val">${minRate.toFixed(4)}</span></div>
+    <div class="stat-row"><span>Max/Min ratio</span><span class="stat-val">${(maxRate/Math.max(minRate,1e-6)).toFixed(1)}x</span></div>
+    <div class="stat-row" style="margin-top:8px"><span>Own-dominant mean</span><span class="stat-val">${ownMeanTp.toFixed(4)}</span></div>
+    <div class="stat-row"><span>Other-dominant mean</span><span class="stat-val">${otherMeanTp.toFixed(4)}</span></div>
+    <div class="stat-row"><span>Own/Other ratio</span><span class="stat-val">${(ownMeanTp/otherMeanTp).toFixed(2)}x</span></div>
+  `;
+}
+
+function updatePairs() {
+  if (!data) return;
+  const tvp = data.tv_plus;
+  const tvm = data.tv_minus;
+  const rateTp = data._rateTp;
+  const tpPos = data.tp_pos;
+
+  let html = '';
+  for (let i = 0; i < 4; i++) {
+    const vp = tvp[i];
+    let bestJ = 0, bestD = Infinity;
+    for (let j = 0; j < 4; j++) {
+      const d = Math.sqrt((vp[0]+tvm[j][0])**2 + (vp[1]+tvm[j][1])**2 + (vp[2]+tvm[j][2])**2);
+      if (d < bestD) { bestD = d; bestJ = j; }
+    }
+    const vm = tvm[bestJ];
+
+    // Count nearby high-COUPLE sites
+    let sumRate = 0, cnt = 0;
+    for (let k = 0; k < tpPos.length; k++) {
+      const d = Math.sqrt((tpPos[k][0]-vp[0])**2 + (tpPos[k][1]-vp[1])**2 + (tpPos[k][2]-vp[2])**2);
+      if (d < 0.5) { sumRate += rateTp[k]; cnt++; }
+    }
+    const avgRate = cnt > 0 ? sumRate / cnt : 0;
+
+    const signP = vp.map(x => x > 0 ? '+' : '-').join('');
+    const signM = vm.map(x => x > 0 ? '+' : '-').join('');
+    html += `<div style="font-size:10px; margin:4px 0; padding:4px; background:#1a1a2a; border-radius:3px">
+      <span style="color:#00cc44">(${signP})</span> ↔
+      <span style="color:#cc4400">(${signM})</span>
+      <span style="color:#888; margin-left:8px">rate=${avgRate.toFixed(4)}, ${cnt} sites</span>
+    </div>`;
+  }
+  document.getElementById('pairsContent').innerHTML = html;
+}
+
+// ── Animation loop ──
+function animate() {
+  requestAnimationFrame(animate);
+  if (autoSpin && pointsTp) {
+    const group = scene;
+    scene.rotation.y += 0.003;
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+// ── Data loading ──
+function loadData(json) {
+  data = json;
+  overlay.style.display = 'none';
+  buildScene();
+  updateVisibility();
+}
+
+// ── File input ──
+overlay.addEventListener('click', () => {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => loadData(JSON.parse(ev.target.result));
+    reader.readAsText(file);
+  };
+  input.click();
+});
+
+container.addEventListener('dragover', (e) => { e.preventDefault(); });
+container.addEventListener('drop', (e) => {
+  e.preventDefault();
+  const file = e.dataTransfer.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => loadData(JSON.parse(ev.target.result));
+  reader.readAsText(file);
+});
+
+// ── Controls ──
+document.getElementById('viewMode').addEventListener('change', updateVisibility);
+document.getElementById('colorMode').addEventListener('change', updateColors);
+
+document.getElementById('pointSize').addEventListener('input', (e) => {
+  const sz = parseFloat(e.target.value) * 0.01;
+  [pointsTp, pointsTm].forEach(p => { if (p) p.material.size = sz; });
+});
+
+document.getElementById('opacity').addEventListener('input', (e) => {
+  const op = parseInt(e.target.value) / 100;
+  [pointsTp, pointsTm].forEach(p => { if (p) p.material.opacity = op; });
+});
+
+document.getElementById('toggleEdges').addEventListener('click', (e) => {
+  showEdges = !showEdges;
+  e.target.classList.toggle('active', showEdges);
+  if (edgesTp) { edgesTp.visible = showEdges; edgesTm.visible = showEdges; }
+});
+
+document.getElementById('toggleChannels').addEventListener('click', (e) => {
+  showChannels = !showChannels;
+  e.target.classList.toggle('active', showChannels);
+  if (channelLines) channelLines.visible = showChannels;
+});
+
+document.getElementById('toggleSpin').addEventListener('click', (e) => {
+  autoSpin = !autoSpin;
+  e.target.classList.toggle('active', autoSpin);
+});
+
+document.getElementById('resetView').addEventListener('click', () => {
+  camera.position.set(3.5, 2.5, 3.5);
+  controls.target.set(0, 0, 0);
+  scene.rotation.set(0, 0, 0);
+  controls.update();
+});
+
+// ── Init and auto-load embedded data ──
+initScene();
+animate();
+
+// Try fetch first (works when served via HTTP), fall back to embedded data
+fetch('couple_geography.json')
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(loadData)
+  .catch(() => {
+    // Load embedded data (for file:// protocol)
+    if (typeof EMBEDDED_DATA !== 'undefined') loadData(EMBEDDED_DATA);
+  });
+
+</script>
+<script>
+// Embedded data for file:// protocol compatibility
+const EMBEDDED_DATA = {"n_sites":514,"total_epochs":5000000,"tp_pos":[[1.0,-1.0,-1.0],[0.875,-1.0,-0.875],[0.75,-1.0,-0.75],[0.625,-1.0,-0.625],[0.5,-1.0,-0.5],[0.375,-1.0,-0.375],[0.25,-1.0,-0.25],[0.125,-1.0,-0.125],[0.0,-1.0,0.0],[-0.125,-1.0,0.125],[-0.25,-1.0,0.25],[-0.375,-1.0,0.375],[-0.5,-1.0,0.5],[-0.625,-1.0,0.625],[-0.75,-1.0,0.75],[-0.875,-1.0,0.875],[-1.0,-1.0,1.0],[0.875,-0.875,-1.0],[0.75,-0.875,-0.875],[0.625,-0.875,-0.75],[0.5,-0.875,-0.625],[0.375,-0.875,-0.5],[0.25,-0.875,-0.375],[0.125,-0.875,-0.25],[0.0,-0.875,-0.125],[-0.125,-0.875,0.0],[-0.25,-0.875,0.125],[-0.375,-0.875,0.25],[-0.5,-0.875,0.375],[-0.625,-0.875,0.5],[-0.75,-0.875,0.625],[-0.875,-0.875,0.75],[-1.0,-0.875,0.875],[0.75,-0.75,-1.0],[0.625,-0.75,-0.875],[0.5,-0.75,-0.75],[0.375,-0.75,-0.625],[0.25,-0.75,-0.5],[0.125,-0.75,-0.375],[0.0,-0.75,-0.25],[-0.125,-0.75,-0.125],[-0.25,-0.75,0.0],[-0.375,-0.75,0.125],[-0.5,-0.75,0.25],[-0.625,-0.75,0.375],[-0.75,-0.75,0.5],[-0.875,-0.75,0.625],[-1.0,-0.75,0.75],[0.625,-0.625,-1.0],[0.5,-0.625,-0.875],[0.375,-0.625,-0.75],[0.25,-0.625,-0.625],[0.125,-0.625,-0.5],[0.0,-0.625,-0.375],[-0.125,-0.625,-0.25],[-0.25,-0.625,-0.125],[-0.375,-0.625,0.0],[-0.5,-0.625,0.125],[-0.625,-0.625,0.25],[-0.75,-0.625,0.375],[-0.875,-0.625,0.5],[-1.0,-0.625,0.625],[0.5,-0.5,-1.0],[0.375,-0.5,-0.875],[0.25,-0.5,-0.75],[0.125,-0.5,-0.625],[0.0,-0.5,-0.5],[-0.125,-0.5,-0.375],[-0.25,-0.5,-0.25],[-0.375,-0.5,-0.125],[-0.5,-0.5,0.0],[-0.625,-0.5,0.125],[-0.75,-0.5,0.25],[-0.875,-0.5,0.375],[-1.0,-0.5,0.5],[0.375,-0.375,-1.0],[0.25,-0.375,-0.875],[0.125,-0.375,-0.75],[0.0,-0.375,-0.625],[-0.125,-0.375,-0.5],[-0.25,-0.375,-0.375],[-0.375,-0.375,-0.25],[-0.5,-0.375,-0.125],[-0.625,-0.375,0.0],[-0.75,-0.375,0.125],[-0.875,-0.375,0.25],[-1.0,-0.375,0.375],[0.25,-0.25,-1.0],[0.125,-0.25,-0.875],[0.0,-0.25,-0.75],[-0.125,-0.25,-0.625],[-0.25,-0.25,-0.5],[-0.375,-0.25,-0.375],[-0.5,-0.25,-0.25],[-0.625,-0.25,-0.125],[-0.75,-0.25,0.0],[-0.875,-0.25,0.125],[-1.0,-0.25,0.25],[0.125,-0.125,-1.0],[0.0,-0.125,-0.875],[-0.125,-0.125,-0.75],[-0.25,-0.125,-0.625],[-0.375,-0.125,-0.5],[-0.5,-0.125,-0.375],[-0.625,-0.125,-0.25],[-0.75,-0.125,-0.125],[-0.875,-0.125,0.0],[-1.0,-0.125,0.125],[0.0,0.0,-1.0],[-0.125,0.0,-0.875],[-0.25,0.0,-0.75],[-0.375,0.0,-0.625],[-0.5,0.0,-0.5],[-0.625,0.0,-0.375],[-0.75,0.0,-0.25],[-0.875,0.0,-0.125],[-1.0,0.0,0.0],[-0.125,0.125,-1.0],[-0.25,0.125,-0.875],[-0.375,0.125,-0.75],[-0.5,0.125,-0.625],[-0.625,0.125,-0.5],[-0.75,0.125,-0.375],[-0.875,0.125,-0.25],[-1.0,0.125,-0.125],[-0.25,0.25,-1.0],[-0.375,0.25,-0.875],[-0.5,0.25,-0.75],[-0.625,0.25,-0.625],[-0.75,0.25,-0.5],[-0.875,0.25,-0.375],[-1.0,0.25,-0.25],[-0.375,0.375,-1.0],[-0.5,0.375,-0.875],[-0.625,0.375,-0.75],[-0.75,0.375,-0.625],[-0.875,0.375,-0.5],[-1.0,0.375,-0.375],[-0.5,0.5,-1.0],[-0.625,0.5,-0.875],[-0.75,0.5,-0.75],[-0.875,0.5,-0.625],[-1.0,0.5,-0.5],[-0.625,0.625,-1.0],[-0.75,0.625,-0.875],[-0.875,0.625,-0.75],[-1.0,0.625,-0.625],[-0.75,0.75,-1.0],[-0.875,0.75,-0.875],[-1.0,0.75,-0.75],[-0.875,0.875,-1.0],[-1.0,0.875,-0.875],[-1.0,1.0,-1.0],[1.0,1.0,1.0],[0.875,1.0,0.875],[0.75,1.0,0.75],[0.625,1.0,0.625],[0.5,1.0,0.5],[0.375,1.0,0.375],[0.25,1.0,0.25],[0.125,1.0,0.125],[0.0,1.0,0.0],[-0.125,1.0,-0.125],[-0.25,1.0,-0.25],[-0.375,1.0,-0.375],[-0.5,1.0,-0.5],[-0.625,1.0,-0.625],[-0.75,1.0,-0.75],[-0.875,1.0,-0.875],[0.875,0.875,1.0],[0.75,0.875,0.875],[0.625,0.875,0.75],[0.5,0.875,0.625],[0.375,0.875,0.5],[0.25,0.875,0.375],[0.125,0.875,0.25],[0.0,0.875,0.125],[-0.125,0.875,0.0],[-0.25,0.875,-0.125],[-0.375,0.875,-0.25],[-0.5,0.875,-0.375],[-0.625,0.875,-0.5],[-0.75,0.875,-0.625],[-0.875,0.875,-0.75],[0.75,0.75,1.0],[0.625,0.75,0.875],[0.5,0.75,0.75],[0.375,0.75,0.625],[0.25,0.75,0.5],[0.125,0.75,0.375],[0.0,0.75,0.25],[-0.125,0.75,0.125],[-0.25,0.75,0.0],[-0.375,0.75,-0.125],[-0.5,0.75,-0.25],[-0.625,0.75,-0.375],[-0.75,0.75,-0.5],[-0.875,0.75,-0.625],[0.625,0.625,1.0],[0.5,0.625,0.875],[0.375,0.625,0.75],[0.25,0.625,0.625],[0.125,0.625,0.5],[0.0,0.625,0.375],[-0.125,0.625,0.25],[-0.25,0.625,0.125],[-0.375,0.625,0.0],[-0.5,0.625,-0.125],[-0.625,0.625,-0.25],[-0.75,0.625,-0.375],[-0.875,0.625,-0.5],[0.5,0.5,1.0],[0.375,0.5,0.875],[0.25,0.5,0.75],[0.125,0.5,0.625],[0.0,0.5,0.5],[-0.125,0.5,0.375],[-0.25,0.5,0.25],[-0.375,0.5,0.125],[-0.5,0.5,0.0],[-0.625,0.5,-0.125],[-0.75,0.5,-0.25],[-0.875,0.5,-0.375],[0.375,0.375,1.0],[0.25,0.375,0.875],[0.125,0.375,0.75],[0.0,0.375,0.625],[-0.125,0.375,0.5],[-0.25,0.375,0.375],[-0.375,0.375,0.25],[-0.5,0.375,0.125],[-0.625,0.375,0.0],[-0.75,0.375,-0.125],[-0.875,0.375,-0.25],[0.25,0.25,1.0],[0.125,0.25,0.875],[0.0,0.25,0.75],[-0.125,0.25,0.625],[-0.25,0.25,0.5],[-0.375,0.25,0.375],[-0.5,0.25,0.25],[-0.625,0.25,0.125],[-0.75,0.25,0.0],[-0.875,0.25,-0.125],[0.125,0.125,1.0],[0.0,0.125,0.875],[-0.125,0.125,0.75],[-0.25,0.125,0.625],[-0.375,0.125,0.5],[-0.5,0.125,0.375],[-0.625,0.125,0.25],[-0.75,0.125,0.125],[-0.875,0.125,0.0],[0.0,0.0,1.0],[-0.125,0.0,0.875],[-0.25,0.0,0.75],[-0.375,0.0,0.625],[-0.5,0.0,0.5],[-0.625,0.0,0.375],[-0.75,0.0,0.25],[-0.875,0.0,0.125],[-0.125,-0.125,1.0],[-0.25,-0.125,0.875],[-0.375,-0.125,0.75],[-0.5,-0.125,0.625],[-0.625,-0.125,0.5],[-0.75,-0.125,0.375],[-0.875,-0.125,0.25],[-0.25,-0.25,1.0],[-0.375,-0.25,0.875],[-0.5,-0.25,0.75],[-0.625,-0.25,0.625],[-0.75,-0.25,0.5],[-0.875,-0.25,0.375],[-0.375,-0.375,1.0],[-0.5,-0.375,0.875],[-0.625,-0.375,0.75],[-0.75,-0.375,0.625],[-0.875,-0.375,0.5],[-0.5,-0.5,1.0],[-0.625,-0.5,0.875],[-0.75,-0.5,0.75],[-0.875,-0.5,0.625],[-0.625,-0.625,1.0],[-0.75,-0.625,0.875],[-0.875,-0.625,0.75],[-0.75,-0.75,1.0],[-0.875,-0.75,0.875],[-0.875,-0.875,1.0],[1.0,0.875,0.875],[0.875,0.75,0.875],[0.75,0.625,0.875],[0.625,0.5,0.875],[0.5,0.375,0.875],[0.375,0.25,0.875],[0.25,0.125,0.875],[0.125,0.0,0.875],[0.0,-0.125,0.875],[-0.125,-0.25,0.875],[-0.25,-0.375,0.875],[-0.375,-0.5,0.875],[-0.5,-0.625,0.875],[-0.625,-0.75,0.875],[-0.75,-0.875,0.875],[1.0,0.75,0.75],[0.875,0.625,0.75],[0.75,0.5,0.75],[0.625,0.375,0.75],[0.5,0.25,0.75],[0.375,0.125,0.75],[0.25,0.0,0.75],[0.125,-0.125,0.75],[0.0,-0.25,0.75],[-0.125,-0.375,0.75],[-0.25,-0.5,0.75],[-0.375,-0.625,0.75],[-0.5,-0.75,0.75],[-0.625,-0.875,0.75],[1.0,0.625,0.625],[0.875,0.5,0.625],[0.75,0.375,0.625],[0.625,0.25,0.625],[0.5,0.125,0.625],[0.375,0.0,0.625],[0.25,-0.125,0.625],[0.125,-0.25,0.625],[0.0,-0.375,0.625],[-0.125,-0.5,0.625],[-0.25,-0.625,0.625],[-0.375,-0.75,0.625],[-0.5,-0.875,0.625],[1.0,0.5,0.5],[0.875,0.375,0.5],[0.75,0.25,0.5],[0.625,0.125,0.5],[0.5,0.0,0.5],[0.375,-0.125,0.5],[0.25,-0.25,0.5],[0.125,-0.375,0.5],[0.0,-0.5,0.5],[-0.125,-0.625,0.5],[-0.25,-0.75,0.5],[-0.375,-0.875,0.5],[1.0,0.375,0.375],[0.875,0.25,0.375],[0.75,0.125,0.375],[0.625,0.0,0.375],[0.5,-0.125,0.375],[0.375,-0.25,0.375],[0.25,-0.375,0.375],[0.125,-0.5,0.375],[0.0,-0.625,0.375],[-0.125,-0.75,0.375],[-0.25,-0.875,0.375],[1.0,0.25,0.25],[0.875,0.125,0.25],[0.75,0.0,0.25],[0.625,-0.125,0.25],[0.5,-0.25,0.25],[0.375,-0.375,0.25],[0.25,-0.5,0.25],[0.125,-0.625,0.25],[0.0,-0.75,0.25],[-0.125,-0.875,0.25],[1.0,0.125,0.125],[0.875,0.0,0.125],[0.75,-0.125,0.125],[0.625,-0.25,0.125],[0.5,-0.375,0.125],[0.375,-0.5,0.125],[0.25,-0.625,0.125],[0.125,-0.75,0.125],[0.0,-0.875,0.125],[1.0,0.0,0.0],[0.875,-0.125,0.0],[0.75,-0.25,0.0],[0.625,-0.375,0.0],[0.5,-0.5,0.0],[0.375,-0.625,0.0],[0.25,-0.75,0.0],[0.125,-0.875,0.0],[1.0,-0.125,-0.125],[0.875,-0.25,-0.125],[0.75,-0.375,-0.125],[0.625,-0.5,-0.125],[0.5,-0.625,-0.125],[0.375,-0.75,-0.125],[0.25,-0.875,-0.125],[1.0,-0.25,-0.25],[0.875,-0.375,-0.25],[0.75,-0.5,-0.25],[0.625,-0.625,-0.25],[0.5,-0.75,-0.25],[0.375,-0.875,-0.25],[1.0,-0.375,-0.375],[0.875,-0.5,-0.375],[0.75,-0.625,-0.375],[0.625,-0.75,-0.375],[0.5,-0.875,-0.375],[1.0,-0.5,-0.5],[0.875,-0.625,-0.5],[0.75,-0.75,-0.5],[0.625,-0.875,-0.5],[1.0,-0.625,-0.625],[0.875,-0.75,-0.625],[0.75,-0.875,-0.625],[1.0,-0.75,-0.75],[0.875,-0.875,-0.75],[1.0,-0.875,-0.875],[0.875,0.875,0.75],[0.875,0.75,0.625],[0.875,0.625,0.5],[0.875,0.5,0.375],[0.875,0.375,0.25],[0.875,0.25,0.125],[0.875,0.125,0.0],[0.875,0.0,-0.125],[0.875,-0.125,-0.25],[0.875,-0.25,-0.375],[0.875,-0.375,-0.5],[0.875,-0.5,-0.625],[0.875,-0.625,-0.75],[0.875,-0.75,-0.875],[0.75,0.875,0.625],[0.75,0.75,0.5],[0.75,0.625,0.375],[0.75,0.5,0.25],[0.75,0.375,0.125],[0.75,0.25,0.0],[0.75,0.125,-0.125],[0.75,0.0,-0.25],[0.75,-0.125,-0.375],[0.75,-0.25,-0.5],[0.75,-0.375,-0.625],[0.75,-0.5,-0.75],[0.75,-0.625,-0.875],[0.625,0.875,0.5],[0.625,0.75,0.375],[0.625,0.625,0.25],[0.625,0.5,0.125],[0.625,0.375,0.0],[0.625,0.25,-0.125],[0.625,0.125,-0.25],[0.625,0.0,-0.375],[0.625,-0.125,-0.5],[0.625,-0.25,-0.625],[0.625,-0.375,-0.75],[0.625,-0.5,-0.875],[0.5,0.875,0.375],[0.5,0.75,0.25],[0.5,0.625,0.125],[0.5,0.5,0.0],[0.5,0.375,-0.125],[0.5,0.25,-0.25],[0.5,0.125,-0.375],[0.5,0.0,-0.5],[0.5,-0.125,-0.625],[0.5,-0.25,-0.75],[0.5,-0.375,-0.875],[0.375,0.875,0.25],[0.375,0.75,0.125],[0.375,0.625,0.0],[0.375,0.5,-0.125],[0.375,0.375,-0.25],[0.375,0.25,-0.375],[0.375,0.125,-0.5],[0.375,0.0,-0.625],[0.375,-0.125,-0.75],[0.375,-0.25,-0.875],[0.25,0.875,0.125],[0.25,0.75,0.0],[0.25,0.625,-0.125],[0.25,0.5,-0.25],[0.25,0.375,-0.375],[0.25,0.25,-0.5],[0.25,0.125,-0.625],[0.25,0.0,-0.75],[0.25,-0.125,-0.875],[0.125,0.875,0.0],[0.125,0.75,-0.125],[0.125,0.625,-0.25],[0.125,0.5,-0.375],[0.125,0.375,-0.5],[0.125,0.25,-0.625],[0.125,0.125,-0.75],[0.125,0.0,-0.875],[0.0,0.875,-0.125],[0.0,0.75,-0.25],[0.0,0.625,-0.375],[0.0,0.5,-0.5],[0.0,0.375,-0.625],[0.0,0.25,-0.75],[0.0,0.125,-0.875],[-0.125,0.875,-0.25],[-0.125,0.75,-0.375],[-0.125,0.625,-0.5],[-0.125,0.5,-0.625],[-0.125,0.375,-0.75],[-0.125,0.25,-0.875],[-0.25,0.875,-0.375],[-0.25,0.75,-0.5],[-0.25,0.625,-0.625],[-0.25,0.5,-0.75],[-0.25,0.375,-0.875],[-0.375,0.875,-0.5],[-0.375,0.75,-0.625],[-0.375,0.625,-0.75],[-0.375,0.5,-0.875],[-0.5,0.875,-0.625],[-0.5,0.75,-0.75],[-0.5,0.625,-0.875],[-0.625,0.875,-0.75],[-0.625,0.75,-0.875],[-0.75,0.875,-0.875]],"tm_pos":[[-1.0,1.0,1.0],[-0.875,1.0,0.875],[-0.75,1.0,0.75],[-0.625,1.0,0.625],[-0.5,1.0,0.5],[-0.375,1.0,0.375],[-0.25,1.0,0.25],[-0.125,1.0,0.125],[0.0,1.0,0.0],[0.125,1.0,-0.125],[0.25,1.0,-0.25],[0.375,1.0,-0.375],[0.5,1.0,-0.5],[0.625,1.0,-0.625],[0.75,1.0,-0.75],[0.875,1.0,-0.875],[1.0,1.0,-1.0],[-0.875,0.875,1.0],[-0.75,0.875,0.875],[-0.625,0.875,0.75],[-0.5,0.875,0.625],[-0.375,0.875,0.5],[-0.25,0.875,0.375],[-0.125,0.875,0.25],[0.0,0.875,0.125],[0.125,0.875,0.0],[0.25,0.875,-0.125],[0.375,0.875,-0.25],[0.5,0.875,-0.375],[0.625,0.875,-0.5],[0.75,0.875,-0.625],[0.875,0.875,-0.75],[1.0,0.875,-0.875],[-0.75,0.75,1.0],[-0.625,0.75,0.875],[-0.5,0.75,0.75],[-0.375,0.75,0.625],[-0.25,0.75,0.5],[-0.125,0.75,0.375],[0.0,0.75,0.25],[0.125,0.75,0.125],[0.25,0.75,0.0],[0.375,0.75,-0.125],[0.5,0.75,-0.25],[0.625,0.75,-0.375],[0.75,0.75,-0.5],[0.875,0.75,-0.625],[1.0,0.75,-0.75],[-0.625,0.625,1.0],[-0.5,0.625,0.875],[-0.375,0.625,0.75],[-0.25,0.625,0.625],[-0.125,0.625,0.5],[0.0,0.625,0.375],[0.125,0.625,0.25],[0.25,0.625,0.125],[0.375,0.625,0.0],[0.5,0.625,-0.125],[0.625,0.625,-0.25],[0.75,0.625,-0.375],[0.875,0.625,-0.5],[1.0,0.625,-0.625],[-0.5,0.5,1.0],[-0.375,0.5,0.875],[-0.25,0.5,0.75],[-0.125,0.5,0.625],[0.0,0.5,0.5],[0.125,0.5,0.375],[0.25,0.5,0.25],[0.375,0.5,0.125],[0.5,0.5,0.0],[0.625,0.5,-0.125],[0.75,0.5,-0.25],[0.875,0.5,-0.375],[1.0,0.5,-0.5],[-0.375,0.375,1.0],[-0.25,0.375,0.875],[-0.125,0.375,0.75],[0.0,0.375,0.625],[0.125,0.375,0.5],[0.25,0.375,0.375],[0.375,0.375,0.25],[0.5,0.375,0.125],[0.625,0.375,0.0],[0.75,0.375,-0.125],[0.875,0.375,-0.25],[1.0,0.375,-0.375],[-0.25,0.25,1.0],[-0.125,0.25,0.875],[0.0,0.25,0.75],[0.125,0.25,0.625],[0.25,0.25,0.5],[0.375,0.25,0.375],[0.5,0.25,0.25],[0.625,0.25,0.125],[0.75,0.25,0.0],[0.875,0.25,-0.125],[1.0,0.25,-0.25],[-0.125,0.125,1.0],[0.0,0.125,0.875],[0.125,0.125,0.75],[0.25,0.125,0.625],[0.375,0.125,0.5],[0.5,0.125,0.375],[0.625,0.125,0.25],[0.75,0.125,0.125],[0.875,0.125,0.0],[1.0,0.125,-0.125],[0.0,0.0,1.0],[0.125,0.0,0.875],[0.25,0.0,0.75],[0.375,0.0,0.625],[0.5,0.0,0.5],[0.625,0.0,0.375],[0.75,0.0,0.25],[0.875,0.0,0.125],[1.0,0.0,0.0],[0.125,-0.125,1.0],[0.25,-0.125,0.875],[0.375,-0.125,0.75],[0.5,-0.125,0.625],[0.625,-0.125,0.5],[0.75,-0.125,0.375],[0.875,-0.125,0.25],[1.0,-0.125,0.125],[0.25,-0.25,1.0],[0.375,-0.25,0.875],[0.5,-0.25,0.75],[0.625,-0.25,0.625],[0.75,-0.25,0.5],[0.875,-0.25,0.375],[1.0,-0.25,0.25],[0.375,-0.375,1.0],[0.5,-0.375,0.875],[0.625,-0.375,0.75],[0.75,-0.375,0.625],[0.875,-0.375,0.5],[1.0,-0.375,0.375],[0.5,-0.5,1.0],[0.625,-0.5,0.875],[0.75,-0.5,0.75],[0.875,-0.5,0.625],[1.0,-0.5,0.5],[0.625,-0.625,1.0],[0.75,-0.625,0.875],[0.875,-0.625,0.75],[1.0,-0.625,0.625],[0.75,-0.75,1.0],[0.875,-0.75,0.875],[1.0,-0.75,0.75],[0.875,-0.875,1.0],[1.0,-0.875,0.875],[1.0,-1.0,1.0],[-1.0,-1.0,-1.0],[-0.875,-1.0,-0.875],[-0.75,-1.0,-0.75],[-0.625,-1.0,-0.625],[-0.5,-1.0,-0.5],[-0.375,-1.0,-0.375],[-0.25,-1.0,-0.25],[-0.125,-1.0,-0.125],[0.0,-1.0,0.0],[0.125,-1.0,0.125],[0.25,-1.0,0.25],[0.375,-1.0,0.375],[0.5,-1.0,0.5],[0.625,-1.0,0.625],[0.75,-1.0,0.75],[0.875,-1.0,0.875],[-0.875,-0.875,-1.0],[-0.75,-0.875,-0.875],[-0.625,-0.875,-0.75],[-0.5,-0.875,-0.625],[-0.375,-0.875,-0.5],[-0.25,-0.875,-0.375],[-0.125,-0.875,-0.25],[0.0,-0.875,-0.125],[0.125,-0.875,0.0],[0.25,-0.875,0.125],[0.375,-0.875,0.25],[0.5,-0.875,0.375],[0.625,-0.875,0.5],[0.75,-0.875,0.625],[0.875,-0.875,0.75],[-0.75,-0.75,-1.0],[-0.625,-0.75,-0.875],[-0.5,-0.75,-0.75],[-0.375,-0.75,-0.625],[-0.25,-0.75,-0.5],[-0.125,-0.75,-0.375],[0.0,-0.75,-0.25],[0.125,-0.75,-0.125],[0.25,-0.75,0.0],[0.375,-0.75,0.125],[0.5,-0.75,0.25],[0.625,-0.75,0.375],[0.75,-0.75,0.5],[0.875,-0.75,0.625],[-0.625,-0.625,-1.0],[-0.5,-0.625,-0.875],[-0.375,-0.625,-0.75],[-0.25,-0.625,-0.625],[-0.125,-0.625,-0.5],[0.0,-0.625,-0.375],[0.125,-0.625,-0.25],[0.25,-0.625,-0.125],[0.375,-0.625,0.0],[0.5,-0.625,0.125],[0.625,-0.625,0.25],[0.75,-0.625,0.375],[0.875,-0.625,0.5],[-0.5,-0.5,-1.0],[-0.375,-0.5,-0.875],[-0.25,-0.5,-0.75],[-0.125,-0.5,-0.625],[0.0,-0.5,-0.5],[0.125,-0.5,-0.375],[0.25,-0.5,-0.25],[0.375,-0.5,-0.125],[0.5,-0.5,0.0],[0.625,-0.5,0.125],[0.75,-0.5,0.25],[0.875,-0.5,0.375],[-0.375,-0.375,-1.0],[-0.25,-0.375,-0.875],[-0.125,-0.375,-0.75],[0.0,-0.375,-0.625],[0.125,-0.375,-0.5],[0.25,-0.375,-0.375],[0.375,-0.375,-0.25],[0.5,-0.375,-0.125],[0.625,-0.375,0.0],[0.75,-0.375,0.125],[0.875,-0.375,0.25],[-0.25,-0.25,-1.0],[-0.125,-0.25,-0.875],[0.0,-0.25,-0.75],[0.125,-0.25,-0.625],[0.25,-0.25,-0.5],[0.375,-0.25,-0.375],[0.5,-0.25,-0.25],[0.625,-0.25,-0.125],[0.75,-0.25,0.0],[0.875,-0.25,0.125],[-0.125,-0.125,-1.0],[0.0,-0.125,-0.875],[0.125,-0.125,-0.75],[0.25,-0.125,-0.625],[0.375,-0.125,-0.5],[0.5,-0.125,-0.375],[0.625,-0.125,-0.25],[0.75,-0.125,-0.125],[0.875,-0.125,0.0],[0.0,0.0,-1.0],[0.125,0.0,-0.875],[0.25,0.0,-0.75],[0.375,0.0,-0.625],[0.5,0.0,-0.5],[0.625,0.0,-0.375],[0.75,0.0,-0.25],[0.875,0.0,-0.125],[0.125,0.125,-1.0],[0.25,0.125,-0.875],[0.375,0.125,-0.75],[0.5,0.125,-0.625],[0.625,0.125,-0.5],[0.75,0.125,-0.375],[0.875,0.125,-0.25],[0.25,0.25,-1.0],[0.375,0.25,-0.875],[0.5,0.25,-0.75],[0.625,0.25,-0.625],[0.75,0.25,-0.5],[0.875,0.25,-0.375],[0.375,0.375,-1.0],[0.5,0.375,-0.875],[0.625,0.375,-0.75],[0.75,0.375,-0.625],[0.875,0.375,-0.5],[0.5,0.5,-1.0],[0.625,0.5,-0.875],[0.75,0.5,-0.75],[0.875,0.5,-0.625],[0.625,0.625,-1.0],[0.75,0.625,-0.875],[0.875,0.625,-0.75],[0.75,0.75,-1.0],[0.875,0.75,-0.875],[0.875,0.875,-1.0],[-1.0,-0.875,-0.875],[-0.875,-0.75,-0.875],[-0.75,-0.625,-0.875],[-0.625,-0.5,-0.875],[-0.5,-0.375,-0.875],[-0.375,-0.25,-0.875],[-0.25,-0.125,-0.875],[-0.125,0.0,-0.875],[0.0,0.125,-0.875],[0.125,0.25,-0.875],[0.25,0.375,-0.875],[0.375,0.5,-0.875],[0.5,0.625,-0.875],[0.625,0.75,-0.875],[0.75,0.875,-0.875],[-1.0,-0.75,-0.75],[-0.875,-0.625,-0.75],[-0.75,-0.5,-0.75],[-0.625,-0.375,-0.75],[-0.5,-0.25,-0.75],[-0.375,-0.125,-0.75],[-0.25,0.0,-0.75],[-0.125,0.125,-0.75],[0.0,0.25,-0.75],[0.125,0.375,-0.75],[0.25,0.5,-0.75],[0.375,0.625,-0.75],[0.5,0.75,-0.75],[0.625,0.875,-0.75],[-1.0,-0.625,-0.625],[-0.875,-0.5,-0.625],[-0.75,-0.375,-0.625],[-0.625,-0.25,-0.625],[-0.5,-0.125,-0.625],[-0.375,0.0,-0.625],[-0.25,0.125,-0.625],[-0.125,0.25,-0.625],[0.0,0.375,-0.625],[0.125,0.5,-0.625],[0.25,0.625,-0.625],[0.375,0.75,-0.625],[0.5,0.875,-0.625],[-1.0,-0.5,-0.5],[-0.875,-0.375,-0.5],[-0.75,-0.25,-0.5],[-0.625,-0.125,-0.5],[-0.5,0.0,-0.5],[-0.375,0.125,-0.5],[-0.25,0.25,-0.5],[-0.125,0.375,-0.5],[0.0,0.5,-0.5],[0.125,0.625,-0.5],[0.25,0.75,-0.5],[0.375,0.875,-0.5],[-1.0,-0.375,-0.375],[-0.875,-0.25,-0.375],[-0.75,-0.125,-0.375],[-0.625,0.0,-0.375],[-0.5,0.125,-0.375],[-0.375,0.25,-0.375],[-0.25,0.375,-0.375],[-0.125,0.5,-0.375],[0.0,0.625,-0.375],[0.125,0.75,-0.375],[0.25,0.875,-0.375],[-1.0,-0.25,-0.25],[-0.875,-0.125,-0.25],[-0.75,0.0,-0.25],[-0.625,0.125,-0.25],[-0.5,0.25,-0.25],[-0.375,0.375,-0.25],[-0.25,0.5,-0.25],[-0.125,0.625,-0.25],[0.0,0.75,-0.25],[0.125,0.875,-0.25],[-1.0,-0.125,-0.125],[-0.875,0.0,-0.125],[-0.75,0.125,-0.125],[-0.625,0.25,-0.125],[-0.5,0.375,-0.125],[-0.375,0.5,-0.125],[-0.25,0.625,-0.125],[-0.125,0.75,-0.125],[0.0,0.875,-0.125],[-1.0,0.0,0.0],[-0.875,0.125,0.0],[-0.75,0.25,0.0],[-0.625,0.375,0.0],[-0.5,0.5,0.0],[-0.375,0.625,0.0],[-0.25,0.75,0.0],[-0.125,0.875,0.0],[-1.0,0.125,0.125],[-0.875,0.25,0.125],[-0.75,0.375,0.125],[-0.625,0.5,0.125],[-0.5,0.625,0.125],[-0.375,0.75,0.125],[-0.25,0.875,0.125],[-1.0,0.25,0.25],[-0.875,0.375,0.25],[-0.75,0.5,0.25],[-0.625,0.625,0.25],[-0.5,0.75,0.25],[-0.375,0.875,0.25],[-1.0,0.375,0.375],[-0.875,0.5,0.375],[-0.75,0.625,0.375],[-0.625,0.75,0.375],[-0.5,0.875,0.375],[-1.0,0.5,0.5],[-0.875,0.625,0.5],[-0.75,0.75,0.5],[-0.625,0.875,0.5],[-1.0,0.625,0.625],[-0.875,0.75,0.625],[-0.75,0.875,0.625],[-1.0,0.75,0.75],[-0.875,0.875,0.75],[-1.0,0.875,0.875],[-0.875,-0.875,-0.75],[-0.875,-0.75,-0.625],[-0.875,-0.625,-0.5],[-0.875,-0.5,-0.375],[-0.875,-0.375,-0.25],[-0.875,-0.25,-0.125],[-0.875,-0.125,0.0],[-0.875,0.0,0.125],[-0.875,0.125,0.25],[-0.875,0.25,0.375],[-0.875,0.375,0.5],[-0.875,0.5,0.625],[-0.875,0.625,0.75],[-0.875,0.75,0.875],[-0.75,-0.875,-0.625],[-0.75,-0.75,-0.5],[-0.75,-0.625,-0.375],[-0.75,-0.5,-0.25],[-0.75,-0.375,-0.125],[-0.75,-0.25,0.0],[-0.75,-0.125,0.125],[-0.75,0.0,0.25],[-0.75,0.125,0.375],[-0.75,0.25,0.5],[-0.75,0.375,0.625],[-0.75,0.5,0.75],[-0.75,0.625,0.875],[-0.625,-0.875,-0.5],[-0.625,-0.75,-0.375],[-0.625,-0.625,-0.25],[-0.625,-0.5,-0.125],[-0.625,-0.375,0.0],[-0.625,-0.25,0.125],[-0.625,-0.125,0.25],[-0.625,0.0,0.375],[-0.625,0.125,0.5],[-0.625,0.25,0.625],[-0.625,0.375,0.75],[-0.625,0.5,0.875],[-0.5,-0.875,-0.375],[-0.5,-0.75,-0.25],[-0.5,-0.625,-0.125],[-0.5,-0.5,0.0],[-0.5,-0.375,0.125],[-0.5,-0.25,0.25],[-0.5,-0.125,0.375],[-0.5,0.0,0.5],[-0.5,0.125,0.625],[-0.5,0.25,0.75],[-0.5,0.375,0.875],[-0.375,-0.875,-0.25],[-0.375,-0.75,-0.125],[-0.375,-0.625,0.0],[-0.375,-0.5,0.125],[-0.375,-0.375,0.25],[-0.375,-0.25,0.375],[-0.375,-0.125,0.5],[-0.375,0.0,0.625],[-0.375,0.125,0.75],[-0.375,0.25,0.875],[-0.25,-0.875,-0.125],[-0.25,-0.75,0.0],[-0.25,-0.625,0.125],[-0.25,-0.5,0.25],[-0.25,-0.375,0.375],[-0.25,-0.25,0.5],[-0.25,-0.125,0.625],[-0.25,0.0,0.75],[-0.25,0.125,0.875],[-0.125,-0.875,0.0],[-0.125,-0.75,0.125],[-0.125,-0.625,0.25],[-0.125,-0.5,0.375],[-0.125,-0.375,0.5],[-0.125,-0.25,0.625],[-0.125,-0.125,0.75],[-0.125,0.0,0.875],[0.0,-0.875,0.125],[0.0,-0.75,0.25],[0.0,-0.625,0.375],[0.0,-0.5,0.5],[0.0,-0.375,0.625],[0.0,-0.25,0.75],[0.0,-0.125,0.875],[0.125,-0.875,0.25],[0.125,-0.75,0.375],[0.125,-0.625,0.5],[0.125,-0.5,0.625],[0.125,-0.375,0.75],[0.125,-0.25,0.875],[0.25,-0.875,0.375],[0.25,-0.75,0.5],[0.25,-0.625,0.625],[0.25,-0.5,0.75],[0.25,-0.375,0.875],[0.375,-0.875,0.5],[0.375,-0.75,0.625],[0.375,-0.625,0.75],[0.375,-0.5,0.875],[0.5,-0.875,0.625],[0.5,-0.75,0.75],[0.5,-0.625,0.875],[0.625,-0.875,0.75],[0.625,-0.75,0.875],[0.75,-0.875,0.875]],"pp_at_tp":[99.999992,24.242424,7.407407,3.433476,1.960784,1.263823,0.881057,0.648824,0.497512,0.648824,0.881057,1.263823,1.960784,3.433476,7.407407,24.242424,99.999992,24.242424,9.638555,4.371584,2.402402,1.500938,1.021711,0.738689,0.558269,0.558269,0.738689,1.021711,1.500938,2.402402,4.371584,9.638555,24.242424,7.407407,4.371584,2.597403,1.656315,1.129943,0.813835,0.611621,0.475342,0.611621,0.813835,1.129943,1.656315,2.597403,4.371584,7.407407,3.433476,2.402402,1.656315,1.171303,0.857449,0.648824,0.50537,0.50537,0.648824,0.857449,1.171303,1.656315,2.402402,3.433476,1.960784,1.500938,1.129943,0.857449,0.662252,0.521853,0.419287,0.521853,0.662252,0.857449,1.129943,1.500938,1.960784,1.263823,1.021711,0.813835,0.648824,0.521853,0.424854,0.424854,0.521853,0.648824,0.813835,1.021711,1.263823,0.881057,0.738689,0.611621,0.50537,0.419287,0.424854,0.419287,0.50537,0.611621,0.738689,0.881057,0.648824,0.558269,0.475342,0.50537,0.521853,0.521853,0.50537,0.475342,0.558269,0.648824,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.497512,0.648824,0.738689,0.813835,0.857449,0.857449,0.813835,0.738689,0.648824,0.881057,1.021711,1.129943,1.171303,1.129943,1.021711,0.881057,1.263823,1.500938,1.656315,1.656315,1.500938,1.263823,1.960784,2.402402,2.597403,2.402402,1.960784,3.433476,4.371584,4.371584,3.433476,7.407407,9.638555,7.407407,24.242424,24.242424,99.999992,99.999992,24.242424,7.407407,3.433476,1.960784,1.263823,0.881057,0.648824,0.497512,0.648824,0.881057,1.263823,1.960784,3.433476,7.407407,24.242424,24.242424,9.638555,4.371584,2.402402,1.500938,1.021711,0.738689,0.558269,0.558269,0.738689,1.021711,1.500938,2.402402,4.371584,9.638555,7.407407,4.371584,2.597403,1.656315,1.129943,0.813835,0.611621,0.475342,0.611621,0.813835,1.129943,1.656315,2.597403,4.371584,3.433476,2.402402,1.656315,1.171303,0.857449,0.648824,0.50537,0.50537,0.648824,0.857449,1.171303,1.656315,2.402402,1.960784,1.500938,1.129943,0.857449,0.662252,0.521853,0.419287,0.521853,0.662252,0.857449,1.129943,1.500938,1.263823,1.021711,0.813835,0.648824,0.521853,0.424854,0.424854,0.521853,0.648824,0.813835,1.021711,0.881057,0.738689,0.611621,0.50537,0.419287,0.424854,0.419287,0.50537,0.611621,0.738689,0.648824,0.558269,0.475342,0.50537,0.521853,0.521853,0.50537,0.475342,0.558269,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.648824,0.738689,0.813835,0.857449,0.857449,0.813835,0.738689,0.881057,1.021711,1.129943,1.171303,1.129943,1.021711,1.263823,1.500938,1.656315,1.656315,1.500938,1.960784,2.402402,2.597403,2.402402,3.433476,4.371584,4.371584,7.407407,9.638555,24.242424,24.242424,9.638555,4.371584,2.402402,1.500938,1.021711,0.738689,0.558269,0.558269,0.738689,1.021711,1.500938,2.402402,4.371584,9.638555,7.407407,4.371584,2.597403,1.656315,1.129943,0.813835,0.611621,0.475342,0.611621,0.813835,1.129943,1.656315,2.597403,4.371584,3.433476,2.402402,1.656315,1.171303,0.857449,0.648824,0.50537,0.50537,0.648824,0.857449,1.171303,1.656315,2.402402,1.960784,1.500938,1.129943,0.857449,0.662252,0.521853,0.419287,0.521853,0.662252,0.857449,1.129943,1.500938,1.263823,1.021711,0.813835,0.648824,0.521853,0.424854,0.424854,0.521853,0.648824,0.813835,1.021711,0.881057,0.738689,0.611621,0.50537,0.419287,0.424854,0.419287,0.50537,0.611621,0.738689,0.648824,0.558269,0.475342,0.50537,0.521853,0.521853,0.50537,0.475342,0.558269,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.648824,0.738689,0.813835,0.857449,0.857449,0.813835,0.738689,0.881057,1.021711,1.129943,1.171303,1.129943,1.021711,1.263823,1.500938,1.656315,1.656315,1.500938,1.960784,2.402402,2.597403,2.402402,3.433476,4.371584,4.371584,7.407407,9.638555,24.242424,9.638555,4.371584,2.402402,1.500938,1.021711,0.738689,0.558269,0.558269,0.738689,1.021711,1.500938,2.402402,4.371584,9.638555,4.371584,2.597403,1.656315,1.129943,0.813835,0.611621,0.475342,0.611621,0.813835,1.129943,1.656315,2.597403,4.371584,2.402402,1.656315,1.171303,0.857449,0.648824,0.50537,0.50537,0.648824,0.857449,1.171303,1.656315,2.402402,1.500938,1.129943,0.857449,0.662252,0.521853,0.419287,0.521853,0.662252,0.857449,1.129943,1.500938,1.021711,0.813835,0.648824,0.521853,0.424854,0.424854,0.521853,0.648824,0.813835,1.021711,0.738689,0.611621,0.50537,0.419287,0.424854,0.419287,0.50537,0.611621,0.738689,0.558269,0.475342,0.50537,0.521853,0.521853,0.50537,0.475342,0.558269,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.738689,0.813835,0.857449,0.857449,0.813835,0.738689,1.021711,1.129943,1.171303,1.129943,1.021711,1.500938,1.656315,1.656315,1.500938,2.402402,2.597403,2.402402,4.371584,4.371584,9.638555],"pm_at_tp":[0.249377,0.282386,0.318979,0.358262,0.398406,0.436443,0.468384,0.489896,0.497512,0.489896,0.468384,0.436443,0.398406,0.358262,0.318979,0.282386,0.249377,0.282386,0.322191,0.366468,0.413864,0.461627,0.50537,0.539447,0.558269,0.558269,0.539447,0.50537,0.461627,0.413864,0.366468,0.322191,0.282386,0.318979,0.366468,0.419287,0.475342,0.530504,0.578453,0.611621,0.623539,0.611621,0.578453,0.530504,0.475342,0.419287,0.366468,0.318979,0.358262,0.413864,0.475342,0.539447,0.60015,0.648824,0.676247,0.676247,0.648824,0.60015,0.539447,0.475342,0.413864,0.358262,0.398406,0.461627,0.530504,0.60015,0.662252,0.70609,0.722022,0.70609,0.662252,0.60015,0.530504,0.461627,0.398406,0.436443,0.50537,0.578453,0.648824,0.70609,0.738689,0.738689,0.70609,0.648824,0.578453,0.50537,0.436443,0.468384,0.539447,0.611621,0.676247,0.722022,0.738689,0.722022,0.676247,0.611621,0.539447,0.468384,0.489896,0.558269,0.623539,0.676247,0.70609,0.70609,0.676247,0.623539,0.558269,0.489896,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.497512,0.489896,0.539447,0.578453,0.60015,0.60015,0.578453,0.539447,0.489896,0.468384,0.50537,0.530504,0.539447,0.530504,0.50537,0.468384,0.436443,0.461627,0.475342,0.475342,0.461627,0.436443,0.398406,0.413864,0.419287,0.413864,0.398406,0.358262,0.366468,0.366468,0.358262,0.318979,0.322191,0.318979,0.282386,0.282386,0.249377,0.249377,0.282386,0.318979,0.358262,0.398406,0.436443,0.468384,0.489896,0.497512,0.489896,0.468384,0.436443,0.398406,0.358262,0.318979,0.282386,0.282386,0.322191,0.366468,0.413864,0.461627,0.50537,0.539447,0.558269,0.558269,0.539447,0.50537,0.461627,0.413864,0.366468,0.322191,0.318979,0.366468,0.419287,0.475342,0.530504,0.578453,0.611621,0.623539,0.611621,0.578453,0.530504,0.475342,0.419287,0.366468,0.358262,0.413864,0.475342,0.539447,0.60015,0.648824,0.676247,0.676247,0.648824,0.60015,0.539447,0.475342,0.413864,0.398406,0.461627,0.530504,0.60015,0.662252,0.70609,0.722022,0.70609,0.662252,0.60015,0.530504,0.461627,0.436443,0.50537,0.578453,0.648824,0.70609,0.738689,0.738689,0.70609,0.648824,0.578453,0.50537,0.468384,0.539447,0.611621,0.676247,0.722022,0.738689,0.722022,0.676247,0.611621,0.539447,0.489896,0.558269,0.623539,0.676247,0.70609,0.70609,0.676247,0.623539,0.558269,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.489896,0.539447,0.578453,0.60015,0.60015,0.578453,0.539447,0.468384,0.50537,0.530504,0.539447,0.530504,0.50537,0.436443,0.461627,0.475342,0.475342,0.461627,0.398406,0.413864,0.419287,0.413864,0.358262,0.366468,0.366468,0.318979,0.322191,0.282386,0.282386,0.322191,0.366468,0.413864,0.461627,0.50537,0.539447,0.558269,0.558269,0.539447,0.50537,0.461627,0.413864,0.366468,0.322191,0.318979,0.366468,0.419287,0.475342,0.530504,0.578453,0.611621,0.623539,0.611621,0.578453,0.530504,0.475342,0.419287,0.366468,0.358262,0.413864,0.475342,0.539447,0.60015,0.648824,0.676247,0.676247,0.648824,0.60015,0.539447,0.475342,0.413864,0.398406,0.461627,0.530504,0.60015,0.662252,0.70609,0.722022,0.70609,0.662252,0.60015,0.530504,0.461627,0.436443,0.50537,0.578453,0.648824,0.70609,0.738689,0.738689,0.70609,0.648824,0.578453,0.50537,0.468384,0.539447,0.611621,0.676247,0.722022,0.738689,0.722022,0.676247,0.611621,0.539447,0.489896,0.558269,0.623539,0.676247,0.70609,0.70609,0.676247,0.623539,0.558269,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.489896,0.539447,0.578453,0.60015,0.60015,0.578453,0.539447,0.468384,0.50537,0.530504,0.539447,0.530504,0.50537,0.436443,0.461627,0.475342,0.475342,0.461627,0.398406,0.413864,0.419287,0.413864,0.358262,0.366468,0.366468,0.318979,0.322191,0.282386,0.322191,0.366468,0.413864,0.461627,0.50537,0.539447,0.558269,0.558269,0.539447,0.50537,0.461627,0.413864,0.366468,0.322191,0.366468,0.419287,0.475342,0.530504,0.578453,0.611621,0.623539,0.611621,0.578453,0.530504,0.475342,0.419287,0.366468,0.413864,0.475342,0.539447,0.60015,0.648824,0.676247,0.676247,0.648824,0.60015,0.539447,0.475342,0.413864,0.461627,0.530504,0.60015,0.662252,0.70609,0.722022,0.70609,0.662252,0.60015,0.530504,0.461627,0.50537,0.578453,0.648824,0.70609,0.738689,0.738689,0.70609,0.648824,0.578453,0.50537,0.539447,0.611621,0.676247,0.722022,0.738689,0.722022,0.676247,0.611621,0.539447,0.558269,0.623539,0.676247,0.70609,0.70609,0.676247,0.623539,0.558269,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.539447,0.578453,0.60015,0.60015,0.578453,0.539447,0.50537,0.530504,0.539447,0.530504,0.50537,0.461627,0.475342,0.475342,0.461627,0.413864,0.419287,0.413864,0.366468,0.366468,0.322191],"pp_at_tm":[0.249377,0.282386,0.318979,0.358262,0.398406,0.436443,0.468384,0.489896,0.497512,0.489896,0.468384,0.436443,0.398406,0.358262,0.318979,0.282386,0.249377,0.282386,0.322191,0.366468,0.413864,0.461627,0.50537,0.539447,0.558269,0.558269,0.539447,0.50537,0.461627,0.413864,0.366468,0.322191,0.282386,0.318979,0.366468,0.419287,0.475342,0.530504,0.578453,0.611621,0.623539,0.611621,0.578453,0.530504,0.475342,0.419287,0.366468,0.318979,0.358262,0.413864,0.475342,0.539447,0.60015,0.648824,0.676247,0.676247,0.648824,0.60015,0.539447,0.475342,0.413864,0.358262,0.398406,0.461627,0.530504,0.60015,0.662252,0.70609,0.722022,0.70609,0.662252,0.60015,0.530504,0.461627,0.398406,0.436443,0.50537,0.578453,0.648824,0.70609,0.738689,0.738689,0.70609,0.648824,0.578453,0.50537,0.436443,0.468384,0.539447,0.611621,0.676247,0.722022,0.738689,0.722022,0.676247,0.611621,0.539447,0.468384,0.489896,0.558269,0.623539,0.676247,0.70609,0.70609,0.676247,0.623539,0.558269,0.489896,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.497512,0.489896,0.539447,0.578453,0.60015,0.60015,0.578453,0.539447,0.489896,0.468384,0.50537,0.530504,0.539447,0.530504,0.50537,0.468384,0.436443,0.461627,0.475342,0.475342,0.461627,0.436443,0.398406,0.413864,0.419287,0.413864,0.398406,0.358262,0.366468,0.366468,0.358262,0.318979,0.322191,0.318979,0.282386,0.282386,0.249377,0.249377,0.282386,0.318979,0.358262,0.398406,0.436443,0.468384,0.489896,0.497512,0.489896,0.468384,0.436443,0.398406,0.358262,0.318979,0.282386,0.282386,0.322191,0.366468,0.413864,0.461627,0.50537,0.539447,0.558269,0.558269,0.539447,0.50537,0.461627,0.413864,0.366468,0.322191,0.318979,0.366468,0.419287,0.475342,0.530504,0.578453,0.611621,0.623539,0.611621,0.578453,0.530504,0.475342,0.419287,0.366468,0.358262,0.413864,0.475342,0.539447,0.60015,0.648824,0.676247,0.676247,0.648824,0.60015,0.539447,0.475342,0.413864,0.398406,0.461627,0.530504,0.60015,0.662252,0.70609,0.722022,0.70609,0.662252,0.60015,0.530504,0.461627,0.436443,0.50537,0.578453,0.648824,0.70609,0.738689,0.738689,0.70609,0.648824,0.578453,0.50537,0.468384,0.539447,0.611621,0.676247,0.722022,0.738689,0.722022,0.676247,0.611621,0.539447,0.489896,0.558269,0.623539,0.676247,0.70609,0.70609,0.676247,0.623539,0.558269,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.489896,0.539447,0.578453,0.60015,0.60015,0.578453,0.539447,0.468384,0.50537,0.530504,0.539447,0.530504,0.50537,0.436443,0.461627,0.475342,0.475342,0.461627,0.398406,0.413864,0.419287,0.413864,0.358262,0.366468,0.366468,0.318979,0.322191,0.282386,0.282386,0.322191,0.366468,0.413864,0.461627,0.50537,0.539447,0.558269,0.558269,0.539447,0.50537,0.461627,0.413864,0.366468,0.322191,0.318979,0.366468,0.419287,0.475342,0.530504,0.578453,0.611621,0.623539,0.611621,0.578453,0.530504,0.475342,0.419287,0.366468,0.358262,0.413864,0.475342,0.539447,0.60015,0.648824,0.676247,0.676247,0.648824,0.60015,0.539447,0.475342,0.413864,0.398406,0.461627,0.530504,0.60015,0.662252,0.70609,0.722022,0.70609,0.662252,0.60015,0.530504,0.461627,0.436443,0.50537,0.578453,0.648824,0.70609,0.738689,0.738689,0.70609,0.648824,0.578453,0.50537,0.468384,0.539447,0.611621,0.676247,0.722022,0.738689,0.722022,0.676247,0.611621,0.539447,0.489896,0.558269,0.623539,0.676247,0.70609,0.70609,0.676247,0.623539,0.558269,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.489896,0.539447,0.578453,0.60015,0.60015,0.578453,0.539447,0.468384,0.50537,0.530504,0.539447,0.530504,0.50537,0.436443,0.461627,0.475342,0.475342,0.461627,0.398406,0.413864,0.419287,0.413864,0.358262,0.366468,0.366468,0.318979,0.322191,0.282386,0.322191,0.366468,0.413864,0.461627,0.50537,0.539447,0.558269,0.558269,0.539447,0.50537,0.461627,0.413864,0.366468,0.322191,0.366468,0.419287,0.475342,0.530504,0.578453,0.611621,0.623539,0.611621,0.578453,0.530504,0.475342,0.419287,0.366468,0.413864,0.475342,0.539447,0.60015,0.648824,0.676247,0.676247,0.648824,0.60015,0.539447,0.475342,0.413864,0.461627,0.530504,0.60015,0.662252,0.70609,0.722022,0.70609,0.662252,0.60015,0.530504,0.461627,0.50537,0.578453,0.648824,0.70609,0.738689,0.738689,0.70609,0.648824,0.578453,0.50537,0.539447,0.611621,0.676247,0.722022,0.738689,0.722022,0.676247,0.611621,0.539447,0.558269,0.623539,0.676247,0.70609,0.70609,0.676247,0.623539,0.558269,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.539447,0.578453,0.60015,0.60015,0.578453,0.539447,0.50537,0.530504,0.539447,0.530504,0.50537,0.461627,0.475342,0.475342,0.461627,0.413864,0.419287,0.413864,0.366468,0.366468,0.322191],"pm_at_tm":[99.999992,24.242424,7.407407,3.433476,1.960784,1.263823,0.881057,0.648824,0.497512,0.648824,0.881057,1.263823,1.960784,3.433476,7.407407,24.242424,99.999992,24.242424,9.638555,4.371584,2.402402,1.500938,1.021711,0.738689,0.558269,0.558269,0.738689,1.021711,1.500938,2.402402,4.371584,9.638555,24.242424,7.407407,4.371584,2.597403,1.656315,1.129943,0.813835,0.611621,0.475342,0.611621,0.813835,1.129943,1.656315,2.597403,4.371584,7.407407,3.433476,2.402402,1.656315,1.171303,0.857449,0.648824,0.50537,0.50537,0.648824,0.857449,1.171303,1.656315,2.402402,3.433476,1.960784,1.500938,1.129943,0.857449,0.662252,0.521853,0.419287,0.521853,0.662252,0.857449,1.129943,1.500938,1.960784,1.263823,1.021711,0.813835,0.648824,0.521853,0.424854,0.424854,0.521853,0.648824,0.813835,1.021711,1.263823,0.881057,0.738689,0.611621,0.50537,0.419287,0.424854,0.419287,0.50537,0.611621,0.738689,0.881057,0.648824,0.558269,0.475342,0.50537,0.521853,0.521853,0.50537,0.475342,0.558269,0.648824,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.497512,0.648824,0.738689,0.813835,0.857449,0.857449,0.813835,0.738689,0.648824,0.881057,1.021711,1.129943,1.171303,1.129943,1.021711,0.881057,1.263823,1.500938,1.656315,1.656315,1.500938,1.263823,1.960784,2.402402,2.597403,2.402402,1.960784,3.433476,4.371584,4.371584,3.433476,7.407407,9.638555,7.407407,24.242424,24.242424,99.999992,99.999992,24.242424,7.407407,3.433476,1.960784,1.263823,0.881057,0.648824,0.497512,0.648824,0.881057,1.263823,1.960784,3.433476,7.407407,24.242424,24.242424,9.638555,4.371584,2.402402,1.500938,1.021711,0.738689,0.558269,0.558269,0.738689,1.021711,1.500938,2.402402,4.371584,9.638555,7.407407,4.371584,2.597403,1.656315,1.129943,0.813835,0.611621,0.475342,0.611621,0.813835,1.129943,1.656315,2.597403,4.371584,3.433476,2.402402,1.656315,1.171303,0.857449,0.648824,0.50537,0.50537,0.648824,0.857449,1.171303,1.656315,2.402402,1.960784,1.500938,1.129943,0.857449,0.662252,0.521853,0.419287,0.521853,0.662252,0.857449,1.129943,1.500938,1.263823,1.021711,0.813835,0.648824,0.521853,0.424854,0.424854,0.521853,0.648824,0.813835,1.021711,0.881057,0.738689,0.611621,0.50537,0.419287,0.424854,0.419287,0.50537,0.611621,0.738689,0.648824,0.558269,0.475342,0.50537,0.521853,0.521853,0.50537,0.475342,0.558269,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.648824,0.738689,0.813835,0.857449,0.857449,0.813835,0.738689,0.881057,1.021711,1.129943,1.171303,1.129943,1.021711,1.263823,1.500938,1.656315,1.656315,1.500938,1.960784,2.402402,2.597403,2.402402,3.433476,4.371584,4.371584,7.407407,9.638555,24.242424,24.242424,9.638555,4.371584,2.402402,1.500938,1.021711,0.738689,0.558269,0.558269,0.738689,1.021711,1.500938,2.402402,4.371584,9.638555,7.407407,4.371584,2.597403,1.656315,1.129943,0.813835,0.611621,0.475342,0.611621,0.813835,1.129943,1.656315,2.597403,4.371584,3.433476,2.402402,1.656315,1.171303,0.857449,0.648824,0.50537,0.50537,0.648824,0.857449,1.171303,1.656315,2.402402,1.960784,1.500938,1.129943,0.857449,0.662252,0.521853,0.419287,0.521853,0.662252,0.857449,1.129943,1.500938,1.263823,1.021711,0.813835,0.648824,0.521853,0.424854,0.424854,0.521853,0.648824,0.813835,1.021711,0.881057,0.738689,0.611621,0.50537,0.419287,0.424854,0.419287,0.50537,0.611621,0.738689,0.648824,0.558269,0.475342,0.50537,0.521853,0.521853,0.50537,0.475342,0.558269,0.497512,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.648824,0.738689,0.813835,0.857449,0.857449,0.813835,0.738689,0.881057,1.021711,1.129943,1.171303,1.129943,1.021711,1.263823,1.500938,1.656315,1.656315,1.500938,1.960784,2.402402,2.597403,2.402402,3.433476,4.371584,4.371584,7.407407,9.638555,24.242424,9.638555,4.371584,2.402402,1.500938,1.021711,0.738689,0.558269,0.558269,0.738689,1.021711,1.500938,2.402402,4.371584,9.638555,4.371584,2.597403,1.656315,1.129943,0.813835,0.611621,0.475342,0.611621,0.813835,1.129943,1.656315,2.597403,4.371584,2.402402,1.656315,1.171303,0.857449,0.648824,0.50537,0.50537,0.648824,0.857449,1.171303,1.656315,2.402402,1.500938,1.129943,0.857449,0.662252,0.521853,0.419287,0.521853,0.662252,0.857449,1.129943,1.500938,1.021711,0.813835,0.648824,0.521853,0.424854,0.424854,0.521853,0.648824,0.813835,1.021711,0.738689,0.611621,0.50537,0.419287,0.424854,0.419287,0.50537,0.611621,0.738689,0.558269,0.475342,0.50537,0.521853,0.521853,0.50537,0.475342,0.558269,0.558269,0.611621,0.648824,0.662252,0.648824,0.611621,0.558269,0.738689,0.813835,0.857449,0.857449,0.813835,0.738689,1.021711,1.129943,1.171303,1.129943,1.021711,1.500938,1.656315,1.656315,1.500938,2.402402,2.597403,2.402402,4.371584,4.371584,9.638555],"couple_hist_tp":[6204,8109,8386,8468,9558,7948,6599,4984,3996,3568,4175,5979,7142,7219,7278,7283,3912,7139,5998,7017,7415,7429,6958,6312,5484,5097,4476,5150,6985,5775,5096,4756,4979,7479,6765,10823,11227,9368,8615,7708,7747,7568,7169,7897,9274,8407,6188,5507,7002,7537,8231,6130,5125,4386,4352,4934,5054,4973,5666,6404,5415,5316,7256,6341,8132,4914,4204,3943,4244,4669,4707,4909,6033,4510,5331,6410,5819,7228,4248,4064,4034,4231,4462,4607,4613,3328,3250,4948,4643,6694,3980,3871,3947,4091,3918,3922,2216,2268,3968,3864,6085,3827,3651,3715,3658,3527,2216,1851,3478,3385,6039,3773,3581,3228,3403,1948,1995,3433,3453,6018,3993,3748,3612,2228,1929,3846,4178,6522,4939,4824,3192,2392,4848,5065,7000,5147,5047,3396,5687,5316,7144,4047,4226,6105,5204,5430,4656,5523,4094,4940,4802,3769,2387,6707,10034,10829,9572,10817,9790,7799,6233,5034,4605,5453,7196,9087,7049,3875,3007,7731,6660,7102,7240,7535,7395,6429,5340,4951,4683,5277,4607,4853,4276,2666,8383,7607,10805,11088,8997,8671,7897,7802,7433,7245,5916,6005,5320,4111,8172,9276,8357,6270,4922,3885,3655,4256,4515,2609,2911,2408,2767,8342,7288,8031,4957,3874,3323,3421,3600,1902,1687,1818,2179,8067,7400,7499,4168,3519,3453,3407,1980,1282,1200,1614,7029,6506,7011,3832,3558,3603,2418,1665,1316,1405,5807,5724,6649,3715,3650,2402,2108,1744,1531,5083,5047,6212,3771,2125,1860,1818,1488,4887,5123,6359,2742,2239,1906,1413,5248,5820,5639,3335,2306,2250,6575,6225,6035,2629,2601,6816,4722,6261,3183,5594,4589,4208,3237,2561,2613,5915,7284,9176,8350,8094,7682,7156,6463,6437,6129,6521,5994,4960,3592,3095,8788,8725,10127,8848,7351,6318,5564,6194,6481,6131,5183,5569,6543,3268,7499,6939,8326,6269,5062,4163,4100,4757,4978,2976,3405,5383,3512,8131,7147,8187,5051,4077,3559,3913,4434,2389,2156,5368,3552,8035,7276,7441,4385,3826,3776,3990,2413,1678,5349,3415,6941,6389,6976,3875,3911,4032,2528,1968,5635,3308,5766,5897,6651,3857,3924,2394,2090,5421,4031,5112,5169,6308,3998,2089,1913,4742,4567,5022,5153,6331,2689,2281,4296,4863,5097,5711,5725,3642,5084,5122,6367,6042,5841,5079,4929,6835,4725,9143,4365,5569,5943,4822,6352,3087,3286,5684,7930,8333,8160,7683,7055,6414,6396,6006,6448,5830,5002,5736,3961,7192,10485,7101,7143,6079,5567,5977,6408,6109,4950,5463,6248,4094,5511,7817,5379,5025,3876,3782,4514,5131,2841,3241,3408,4476,6338,7660,4167,4007,3348,3821,4488,2194,1999,2993,3985,6062,6839,3325,3659,3641,3966,2185,1629,2161,3630,5920,6629,3001,3752,3860,2413,1750,1980,3187,5737,6805,3061,3840,2283,2005,2596,3098,5177,7042,3333,2050,1845,2873,3105,4876,7071,2426,2304,2837,3074,4923,6048,3063,3458,3447,3941,6009,3746,3751,3576,6357,3170,4134,3719,2454],"couple_hist_tm":[6189,8137,8363,8480,9574,7876,6597,5017,4046,3672,4150,5948,7115,7286,7286,7303,3903,7111,5969,6940,7403,7433,6970,6450,5516,5079,4621,5179,6900,5813,5081,4752,4973,7470,6751,10794,11325,9320,8547,7535,7911,7794,7070,7813,9226,8451,6177,5468,7025,7555,8354,6052,5101,4526,4385,4846,4941,4946,5766,6487,5432,5305,7282,6364,8054,4946,4184,3996,4307,4766,4864,4988,6093,4489,5390,6307,5839,7147,4282,4156,4141,4276,4587,4547,4689,3332,3296,4906,4570,6686,3911,3819,3983,4086,3982,3970,2202,2297,3915,3911,6018,3711,3740,3694,3637,3442,2293,1866,3527,3415,5859,3794,3522,3341,3466,2044,1954,3362,3290,6004,4008,3743,3624,2297,1907,3739,4103,6497,4943,4836,3180,2440,4822,5017,6941,5158,5071,3425,5645,5335,7209,3994,4274,6074,5253,5433,4694,5524,4082,4937,4806,3777,2371,6732,10035,10868,9536,10854,9831,7745,6328,4777,4720,5484,7307,9093,7082,3893,3004,7789,6660,7163,7218,7521,7325,6373,5325,4982,4646,5193,4629,4878,4258,2654,8382,7575,10766,11279,8910,8514,7664,7611,7415,7314,5803,6038,5368,4114,8118,9276,8296,6072,4854,3797,3643,4238,4449,2516,2842,2414,2807,8497,7260,7953,4797,3853,3321,3285,3542,1843,1669,1850,2175,8097,7568,7315,4149,3443,3370,3183,2013,1354,1229,1635,6982,6503,6982,3878,3550,3525,2369,1708,1374,1354,5764,5731,6446,3719,3492,2326,2092,1724,1497,5086,5071,6112,3556,2064,1838,1738,1414,5011,5195,6304,2716,2241,1828,1432,5264,5684,5662,3369,2244,2167,6671,6221,5920,2597,2572,6784,4752,6259,3154,5576,4600,4222,3238,2581,2615,5867,7336,9126,8446,8143,7906,7122,6333,6446,5995,6644,5948,4997,3598,3101,8867,8750,10227,8909,7197,6054,5486,6062,6427,6282,5115,5636,6551,3269,7540,6873,8313,6141,5022,3979,4126,4767,4906,2989,3428,5421,3566,8098,7085,8111,4885,3968,3565,3965,4345,2219,2220,5444,3558,8131,7376,7458,4169,3825,3863,4060,2298,1622,5303,3489,7046,6436,7182,3817,3856,4019,2505,1889,5456,3365,5964,5694,6431,3820,3759,2391,2170,5409,4116,4970,5209,6461,3835,1949,1955,4728,4721,4893,5135,6403,2659,2267,4368,4709,5185,5820,5811,3544,5054,5027,6364,5986,5802,5080,4926,6802,4719,9187,4321,5534,5948,4830,6359,3089,3322,5666,7924,8251,8063,7812,7219,6460,6367,5853,6474,5868,5000,5727,3973,7232,10534,7123,7292,6219,5451,5887,6393,6172,4947,5452,6250,4045,5519,7853,5444,5116,4076,3884,4663,5024,2868,3250,3471,4434,6310,7681,4192,4018,3385,3818,4431,2181,1975,3004,3946,6181,6745,3530,3568,3557,3855,2133,1555,2163,3669,5889,6830,3112,3723,3876,2572,1799,2006,3172,5605,6655,3086,3774,2267,1988,2540,2985,5096,7000,3282,2044,1795,2728,3110,4764,6871,2298,2173,2880,3022,5023,5969,3095,3536,3401,3917,6126,3795,3812,3549,6347,3171,4138,3696,2434],"visit_hist":[155710,214101,272955,292799,302497,262623,252873,252366,252822,252662,252792,252493,262598,252927,224071,165391,107110,204205,243669,302596,302449,262910,252939,252487,252732,252980,252888,252857,262359,272128,252789,194429,155500,252972,292334,350696,292234,272778,272668,272237,272649,272106,272146,272303,281696,301577,243299,204647,253074,263083,263074,233960,234066,233660,233665,233681,233553,233301,233290,233155,233493,223900,243008,233420,262626,233763,233687,233367,233698,233950,233612,233279,233143,203889,214034,223252,233424,262710,233784,233750,233895,233994,233965,233617,233004,203756,194457,222902,233140,262412,233623,234145,234155,234129,233557,233466,203655,194310,223129,232920,262128,233653,234094,234294,233715,233589,204476,194555,223095,233104,262595,233741,233481,233873,233764,204627,194882,223342,233491,262593,233344,233339,234130,204687,194960,223560,233316,262711,233121,233412,204843,194749,223023,233039,262267,233191,214005,194851,232687,242679,271746,213488,204103,223112,223200,222723,213382,193538,174359,193870,145071,145335,96692,184891,243231,291862,301285,311498,272022,262653,262078,261924,262221,262243,262434,233026,203827,184053,145341,243333,272644,301795,301312,262420,252587,252700,252154,252711,252674,252850,223527,204079,203956,174808,301520,330611,350651,292193,272702,272629,272299,272197,272328,272559,243195,233589,223698,213996,301783,302014,263535,233597,233821,233713,233516,233659,233883,204479,195159,185210,194600,282314,263101,262868,233843,233950,234235,233745,234055,204587,195170,185508,185248,262702,262217,262556,233441,234098,234131,233682,204846,195289,185547,185217,262482,262518,262460,233221,233160,233410,204608,195369,185436,185435,263039,263254,262295,232854,233380,204104,194500,185097,185392,262612,262380,261532,232679,203674,194089,184482,184687,262016,262211,262214,203969,194578,184762,184648,262310,262193,232899,194302,184453,184416,262678,243108,223859,184890,184797,223710,214225,224314,194808,204929,214526,214801,195111,175625,146010,233680,262753,301367,281813,252887,253058,253261,253509,252620,252577,253023,223566,204292,223974,194632,281552,291691,291386,253072,243581,243470,243703,243415,243025,243111,214054,203868,243248,233777,261736,271743,262367,233341,233209,233362,233753,233684,233285,203879,193693,222991,242881,271518,262219,262343,233219,233568,233774,234287,233424,203948,193753,223165,233035,262452,262192,262515,233656,233649,234214,233904,204152,194146,223133,232975,262572,262558,263073,233254,233754,233727,204409,194439,223728,233191,262819,263045,263139,233403,233811,204519,194786,223981,233352,262681,262999,262366,233263,204627,195022,224234,233752,262938,262800,262512,204279,195016,224171,233578,262949,262520,233311,194500,224286,233909,262157,242990,223768,223908,243147,223692,214426,282523,262786,204573,253196,272471,224060,223727,184768,262746,291339,252250,252778,252734,253079,253186,252852,253690,253595,223756,204185,223963,204092,301623,291355,233799,243282,243125,243603,243636,243618,244076,214880,204402,213785,223651,282079,252946,223990,233461,233725,234080,234096,233933,204912,195325,194525,213911,262452,253141,223706,233627,233631,233909,233926,204609,195160,194248,204082,252620,252776,224055,233357,233446,233260,204628,195005,194550,203755,252201,252894,223897,233313,233068,204287,195092,194801,203972,252158,252639,224025,233105,203996,194353,194276,204155,252361,252713,223546,203987,194409,193943,203502,252837,252616,194159,194371,194275,204090,252628,223646,184459,194337,204209,233607,223918,193986,203878,213848,232963,213401,213403,213454,174229],"tv_plus":[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]],"tv_minus":[[-1,-1,-1],[-1,1,1],[1,-1,1],[1,1,-1]]};
+</script>
+</body>
+</html>

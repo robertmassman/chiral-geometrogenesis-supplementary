@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prop 0.0.3b — Spontaneous FCC Lattice Formation from Z₃ Fields</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#c8c8d0;font-family:'SF Mono','Fira Code','Consolas',monospace;height:100vh;overflow:hidden;display:flex;flex-direction:column}
+header{padding:8px 20px;background:rgba(6,6,16,.95);border-bottom:1px solid #1a1a2e;display:flex;align-items:center;gap:16px;flex-wrap:wrap;z-index:10}
+header h1{font-size:14px;font-weight:600;color:#e0e0e8}
+header .sub{font-size:11px;color:#777}
+.ctrls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-left:auto}
+button{background:#1a1a2e;color:#c8c8d0;border:1px solid #2e2e44;padding:4px 12px;border-radius:4px;font-family:inherit;font-size:12px;cursor:pointer}
+button:hover{background:#24243a}
+button.pri{background:#1a4a3a;border-color:#2a6a4a}
+button.pri:hover{background:#2a5a4a}
+label{font-size:11px;color:#888;display:flex;align-items:center;gap:4px}
+input[type=range]{accent-color:#4a7aaa;width:80px}
+.main{flex:1;position:relative;overflow:hidden}
+canvas{position:absolute;top:0;left:0;width:100%;height:100%}
+.panel{position:absolute;top:0;right:0;bottom:0;width:260px;background:rgba(8,8,18,.88);backdrop-filter:blur(8px);border-left:1px solid rgba(40,40,70,.5);overflow-y:auto;padding:12px;z-index:5}
+.sec{margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(30,30,50,.5)}
+.sec h3{font-size:10px;text-transform:uppercase;color:#555;margin-bottom:5px;letter-spacing:1px}
+.row{display:flex;justify-content:space-between;font-size:11px;margin:2px 0}
+.val{color:#e0e0e8;font-weight:600}
+.val.g{color:#4ae68a}.val.w{color:#ffcc00}.val.b{color:#ff6666}
+.bar{height:5px;background:rgba(20,20,40,.6);border-radius:3px;overflow:hidden;margin:4px 0}
+.fill{height:100%;border-radius:3px;transition:width .3s}
+.badge{font-size:10px;padding:2px 8px;border-radius:3px;font-weight:600;letter-spacing:.5px}
+.ph-dis{background:rgba(60,20,30,.8);color:#ff6666}
+.ph-uns{background:rgba(60,50,15,.8);color:#ffcc00}
+.ph-cry{background:rgba(50,40,15,.8);color:#ffaa33}
+.ph-fcc{background:rgba(15,50,20,.8);color:#4ae68a}
+.info{background:rgba(12,12,24,.7);border:1px solid rgba(30,30,50,.5);border-radius:4px;padding:7px;margin:5px 0;font-size:10px;line-height:1.5}
+.info em{color:#999;font-style:normal}
+.tl{padding:6px 20px;background:rgba(6,6,16,.95);border-top:1px solid #1a1a2e;display:flex;align-items:center;gap:10px;z-index:10}
+#timeSlider{flex:1;accent-color:#ffcc00}
+#stepLabel{font-size:11px;font-weight:600;color:#ffcc00;min-width:280px;text-align:right}
+.leg{display:flex;align-items:center;gap:6px;font-size:10px;margin:3px 0}
+.sw{width:10px;height:10px;border-radius:50%}
+select{background:#1a1a2e;color:#c8c8d0;border:1px solid #2e2e44;padding:2px 6px;border-radius:3px;font-family:inherit;font-size:11px}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Prop 0.0.3b — Spontaneous FCC Lattice Formation</h1>
+    <div class="sub">Z₃ fields in R³ → Brazovskii instability → periodic FCC crystal (ABCABC stacking)</div>
+  </div>
+  <div class="ctrls">
+    <label>&#945;/&#946;: <input type="range" id="ratioSlider" min="0.5" max="5.0" step="0.1" value="2.0"><span id="ratioVal">2.0</span></label>
+    <label>Speed: <input type="range" id="speedSlider" min="1" max="200" step="1" value="60"></label>
+    <label>Start:
+      <select id="startMode">
+        <option value="random">Random</option>
+        <option value="noisy" selected>Near-ideal + noise</option>
+      </select>
+    </label>
+    <button id="btnStart" class="pri">&#9654; Crystallize</button>
+    <button id="btnReset">&#8634; Reset</button>
+  </div>
+</header>
+<div class="main">
+  <canvas id="gl"></canvas>
+  <div class="panel">
+    <div class="sec">
+      <h3>Phase</h3>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <span id="phaseInd" class="badge ph-dis">DISORDERED</span>
+        <span id="tempDisp" style="font-size:11px;color:#e0e0e8">T = 2.000</span>
+      </div>
+    </div>
+    <div class="sec">
+      <h3>Lattice Order</h3>
+      <div class="row"><span>Bragg S(G)</span><span id="braggVal" class="val b">0.000</span></div>
+      <div class="bar"><div id="braggBar" class="fill" style="width:0%;background:#ff6666"></div></div>
+      <div class="row"><span>RMSD to ideal</span><span id="rmsdVal" class="val">--</span></div>
+    </div>
+    <div class="sec">
+      <h3>Energy</h3>
+      <div class="row"><span>Total</span><span id="eVal" class="val">--</span></div>
+      <div class="row"><span>Accept rate</span><span id="accVal" class="val">--</span></div>
+    </div>
+    <div class="sec">
+      <h3>Stacking [111]</h3>
+      <div id="stackDisp" style="font-size:13px;font-weight:700;letter-spacing:3px;color:#888">---</div>
+      <div class="row" style="margin-top:4px"><span>Period</span><span id="stackPer" class="val">--</span></div>
+    </div>
+    <div class="sec">
+      <h3>Render</h3>
+      <label style="margin:3px 0">Scale: <input type="range" id="scaleSlider" min="0.05" max="0.4" step="0.01" value="0.18"><span id="scaleVal">0.18</span></label><br>
+      <label style="margin:3px 0">Glow: <input type="range" id="glowSlider" min="0.5" max="4.0" step="0.1" value="1.8"><span id="glowVal">1.8</span></label><br>
+      <label style="margin:3px 0"><input type="checkbox" id="layerToggle"> Color by Z&#8323; layer (ABC)</label><br>
+      <label style="margin:3px 0"><input type="checkbox" id="bondToggle" checked> Show bonds</label><br>
+      <label style="margin:3px 0"><input type="checkbox" id="ghostToggle"> Show ideal FCC</label>
+    </div>
+    <div class="sec">
+      <h3>Legend</h3>
+      <div class="leg"><div class="sw" style="background:#ff4466"></div><span>T&#8330; edges</span></div>
+      <div class="leg"><div class="sw" style="background:#4477ff"></div><span>T&#8331; edges</span></div>
+      <div class="leg"><div class="sw" style="background:#ff5555"></div><span>Z&#8323; charge A</span></div>
+      <div class="leg"><div class="sw" style="background:#55ff88"></div><span>Z&#8323; charge B</span></div>
+      <div class="leg"><div class="sw" style="background:#5588ff"></div><span>Z&#8323; charge C</span></div>
+    </div>
+    <div class="sec">
+      <h3>Physics</h3>
+      <div class="info">
+        <em>32 stellae (2&#179; FCC cell)</em><br>
+        <em>Z&#8323; charges fixed, positions evolve</em><br><br>
+        <span style="color:#88aacc">V(r) = D&#183;[e&#x207B;&#xB2;&#x1D44E;&#x207D;&#x72;&#x207B;&#x72;&#x2080;&#x207E; &#x2212; 2e&#x207B;&#x1D44E;&#x207D;&#x72;&#x207B;&#x72;&#x2080;&#x207E;]</span><br>
+        <em>D = 1 (diff charge) vs D&#8818;1 (same)</em><br>
+        <em>Same-charge repulsion (&#945;/&#946;&#8805;2)</em><br>
+        <em>drives FCC via Z&#8323; stacking</em>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tl">
+  <button id="btnPP" style="width:28px;text-align:center">&#9654;</button>
+  <input type="range" id="timeSlider" min="0" max="1000" value="0">
+  <span id="stepLabel">Step 0 / 0</span>
+</div>
+
+<script>
+// ============================================================
+// WEBGL2 SETUP
+// ============================================================
+const canvas = document.getElementById('gl');
+const gl = canvas.getContext('webgl2', { antialias: true, alpha: false });
+if (!gl) { document.body.innerHTML = '<h2 style="color:red;padding:40px">WebGL2 required</h2>'; throw 'no webgl2'; }
+
+function mkShader(type, src) {
+  const s = gl.createShader(type);
+  gl.shaderSource(s, src);
+  gl.compileShader(s);
+  if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.error(gl.getShaderInfoLog(s)); return null; }
+  return s;
+}
+function mkProgram(vs, fs) {
+  const p = gl.createProgram();
+  gl.attachShader(p, mkShader(gl.VERTEX_SHADER, vs));
+  gl.attachShader(p, mkShader(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(p);
+  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) console.error(gl.getProgramInfoLog(p));
+  return p;
+}
+
+// ---- Shaders ----
+const lineVS = `#version 300 es
+precision highp float;
+layout(location=0) in vec3 aPos;
+layout(location=1) in vec3 aCol;
+layout(location=2) in vec3 aIPos;
+layout(location=3) in vec3 aIData; // rot, charge, alpha
+uniform mat4 uVP;
+uniform vec3 uEye;
+uniform float uScale;
+uniform int uColorMode;
+out vec3 vCol;
+out float vFog;
+const vec3 CC[3] = vec3[3](vec3(1,.3,.3), vec3(.3,1,.5), vec3(.3,.5,1));
+void main(){
+  float r=aIData.x, c=cos(r), s=sin(r);
+  vec3 lp=vec3(aPos.x*c+aPos.z*s, aPos.y, -aPos.x*s+aPos.z*c);
+  vec3 wp=aIPos+lp*uScale;
+  gl_Position=uVP*vec4(wp,1);
+  vCol = uColorMode==1 ? CC[int(aIData.y+.5)] : aCol;
+  float d=length(wp-uEye);
+  vFog=clamp(exp(-d*.06),.03,1.);
+  vCol*=vFog;
+}`;
+const lineFS = `#version 300 es
+precision highp float;
+in vec3 vCol; in float vFog;
+out vec4 fc;
+void main(){ fc=vec4(vCol, vFog*.85); }`;
+
+const dotVS = `#version 300 es
+precision highp float;
+layout(location=0) in vec3 aIPos;
+layout(location=1) in vec3 aIData;
+uniform mat4 uVP;
+uniform vec3 uEye;
+uniform float uPtSz;
+out vec3 vCol;
+out float vFog;
+const vec3 CC[3] = vec3[3](vec3(1,.35,.35), vec3(.35,1,.55), vec3(.35,.55,1));
+void main(){
+  gl_Position=uVP*vec4(aIPos,1);
+  float d=length(aIPos-uEye);
+  vFog=clamp(exp(-d*.06),.03,1.);
+  gl_PointSize=uPtSz*vFog;
+  vCol=CC[int(aIData.y+.5)]*vFog;
+}`;
+const dotFS = `#version 300 es
+precision highp float;
+in vec3 vCol; in float vFog;
+out vec4 fc;
+void main(){
+  float r=length(gl_PointCoord-.5)*2.;
+  float a=smoothstep(1.,.0,r)*vFog*.7;
+  fc=vec4(vCol,a);
+}`;
+
+const bondVS = `#version 300 es
+precision highp float;
+layout(location=0) in vec3 aPos;
+layout(location=1) in vec3 aCol;
+uniform mat4 uVP;
+uniform vec3 uEye;
+out vec3 vCol; out float vFog;
+void main(){
+  gl_Position=uVP*vec4(aPos,1);
+  float d=length(aPos-uEye);
+  vFog=clamp(exp(-d*.06),.02,1.);
+  vCol=aCol*vFog;
+}`;
+const bondFS = lineFS;
+
+const ghostVS = dotVS; // reuse
+const ghostFS = `#version 300 es
+precision highp float;
+in vec3 vCol; in float vFog;
+out vec4 fc;
+void main(){
+  float r=length(gl_PointCoord-.5)*2.;
+  float ring=smoothstep(.6,.7,r)*smoothstep(1.,.9,r);
+  fc=vec4(.3,.8,.4, ring*vFog*.25);
+}`;
+
+const lineProg = mkProgram(lineVS, lineFS);
+const dotProg = mkProgram(dotVS, dotFS);
+const bondProg = mkProgram(bondVS, bondFS);
+const ghostProg = mkProgram(ghostVS, ghostFS);
+
+function getLocs(prog, names) {
+  const o = {};
+  for (const n of names) o[n] = gl.getUniformLocation(prog, n);
+  return o;
+}
+const lineU = getLocs(lineProg, ['uVP','uEye','uScale','uColorMode']);
+const dotU = getLocs(dotProg, ['uVP','uEye','uPtSz']);
+const bondU = getLocs(bondProg, ['uVP','uEye']);
+const ghostU = getLocs(ghostProg, ['uVP','uEye','uPtSz']);
+
+// ============================================================
+// GEOMETRY — one stella octangula wireframe
+// ============================================================
+const S = 1/Math.sqrt(3);
+const TP = [[S,S,S],[S,-S,-S],[-S,S,-S],[-S,-S,S]];
+const TM = [[-S,-S,-S],[-S,S,S],[S,-S,S],[S,S,-S]];
+
+const lPos = [], lCol = [];
+// T₊ edges — warm red-pink
+for (let i=0;i<4;i++) for (let j=i+1;j<4;j++) {
+  lPos.push(...TP[i],...TP[j]);
+  lCol.push(1,.28,.4, 1,.28,.4);
+}
+// T₋ edges — cool blue
+for (let i=0;i<4;i++) for (let j=i+1;j<4;j++) {
+  lPos.push(...TM[i],...TM[j]);
+  lCol.push(.24,.44,1, .24,.44,1);
+}
+// Vertex glow positions (8 vertices)
+const vGlow = [...TP.flat(), ...TM.flat()]; // 8 × 3 = 24
+const vGlowCol = [
+  1,.4,.5, 1,.4,.5, 1,.4,.5, 1,.4,.5,  // T₊ verts
+  .4,.5,1, .4,.5,1, .4,.5,1, .4,.5,1,  // T₋ verts
+];
+
+const N_LINE_VERTS = 24; // 12 edges × 2
+const N_GLOW_VERTS = 8;
+
+// Static buffers
+const linePosBuf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, linePosBuf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(lPos), gl.STATIC_DRAW);
+
+const lineColBuf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, lineColBuf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(lCol), gl.STATIC_DRAW);
+
+const glowPosBuf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, glowPosBuf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vGlow), gl.STATIC_DRAW);
+
+const glowColBuf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, glowColBuf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vGlowCol), gl.STATIC_DRAW);
+
+// Dynamic instance buffer (shared)
+const instBuf = gl.createBuffer();
+// Dynamic bond buffer
+const bondBuf = gl.createBuffer();
+// Dynamic center/ghost buffer
+const centerBuf = gl.createBuffer();
+const ghostBuf = gl.createBuffer();
+
+// ---- VAOs ----
+// Stella edges VAO
+const edgeVAO = gl.createVertexArray();
+gl.bindVertexArray(edgeVAO);
+gl.bindBuffer(gl.ARRAY_BUFFER, linePosBuf);
+gl.enableVertexAttribArray(0);
+gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
+gl.bindBuffer(gl.ARRAY_BUFFER, lineColBuf);
+gl.enableVertexAttribArray(1);
+gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 0, 0);
+gl.bindBuffer(gl.ARRAY_BUFFER, instBuf);
+gl.enableVertexAttribArray(2);
+gl.vertexAttribPointer(2, 3, gl.FLOAT, false, 24, 0);  // pos: stride=6*4=24
+gl.vertexAttribDivisor(2, 1);
+gl.enableVertexAttribArray(3);
+gl.vertexAttribPointer(3, 3, gl.FLOAT, false, 24, 12); // data: rot,charge,0
+gl.vertexAttribDivisor(3, 1);
+gl.bindVertexArray(null);
+
+// Vertex glow VAO (instanced points at each stella vertex)
+const glowVAO = gl.createVertexArray();
+gl.bindVertexArray(glowVAO);
+gl.bindBuffer(gl.ARRAY_BUFFER, glowPosBuf);
+gl.enableVertexAttribArray(0);
+gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
+gl.bindBuffer(gl.ARRAY_BUFFER, glowColBuf);
+gl.enableVertexAttribArray(1);
+gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 0, 0);
+gl.bindBuffer(gl.ARRAY_BUFFER, instBuf);
+gl.enableVertexAttribArray(2);
+gl.vertexAttribPointer(2, 3, gl.FLOAT, false, 24, 0);
+gl.vertexAttribDivisor(2, 1);
+gl.enableVertexAttribArray(3);
+gl.vertexAttribPointer(3, 3, gl.FLOAT, false, 24, 12);
+gl.vertexAttribDivisor(3, 1);
+gl.bindVertexArray(null);
+
+// Center dot VAO (one point per stella — shows Z₃ charge)
+const centerVAO = gl.createVertexArray();
+gl.bindVertexArray(centerVAO);
+gl.bindBuffer(gl.ARRAY_BUFFER, centerBuf);
+gl.enableVertexAttribArray(0);
+gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 24, 0);
+gl.enableVertexAttribArray(1);
+gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 24, 12);
+gl.bindVertexArray(null);
+
+// Bond VAO
+const bondVAO = gl.createVertexArray();
+gl.bindVertexArray(bondVAO);
+gl.bindBuffer(gl.ARRAY_BUFFER, bondBuf);
+gl.enableVertexAttribArray(0);
+gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 24, 0);
+gl.enableVertexAttribArray(1);
+gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 24, 12);
+gl.bindVertexArray(null);
+
+// Ghost VAO (ideal positions)
+const ghostVAO = gl.createVertexArray();
+gl.bindVertexArray(ghostVAO);
+gl.bindBuffer(gl.ARRAY_BUFFER, ghostBuf);
+gl.enableVertexAttribArray(0);
+gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 24, 0);
+gl.enableVertexAttribArray(1);
+gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 24, 12);
+gl.bindVertexArray(null);
+
+// ============================================================
+// MATRIX MATH (minimal)
+// ============================================================
+function mat4Persp(fov, asp, near, far) {
+  const f=1/Math.tan(fov*.5), nf=1/(near-far);
+  return new Float32Array([f/asp,0,0,0, 0,f,0,0, 0,0,(far+near)*nf,-1, 0,0,2*far*near*nf,0]);
+}
+function mat4LookAt(eye, ctr, up) {
+  let zx=eye[0]-ctr[0],zy=eye[1]-ctr[1],zz=eye[2]-ctr[2];
+  let l=Math.sqrt(zx*zx+zy*zy+zz*zz); zx/=l;zy/=l;zz/=l;
+  let rx=up[1]*zz-up[2]*zy, ry=up[2]*zx-up[0]*zz, rz=up[0]*zy-up[1]*zx;
+  l=Math.sqrt(rx*rx+ry*ry+rz*rz); rx/=l;ry/=l;rz/=l;
+  const ux=zy*rz-zz*ry, uy=zz*rx-zx*rz, uz=zx*ry-zy*rx;
+  return new Float32Array([
+    rx,ux,zx,0, ry,uy,zy,0, rz,uz,zz,0,
+    -(rx*eye[0]+ry*eye[1]+rz*eye[2]),
+    -(ux*eye[0]+uy*eye[1]+uz*eye[2]),
+    -(zx*eye[0]+zy*eye[1]+zz*eye[2]), 1
+  ]);
+}
+function mat4Mul(a,b) {
+  const o=new Float32Array(16);
+  for(let i=0;i<4;i++) for(let j=0;j<4;j++) {
+    let s=0; for(let k=0;k<4;k++) s+=a[i+k*4]*b[k+j*4]; o[i+j*4]=s;
+  }
+  return o;
+}
+
+// ============================================================
+// FCC LATTICE
+// ============================================================
+const A = 2.0; // lattice constant
+const GN = 2;  // grid size
+const BASIS = [[0,0,0],[.5,.5,0],[.5,0,.5],[0,.5,.5]];
+
+function genIdealFCC() {
+  const pos = [], charges = [];
+  for (let x=0;x<GN;x++) for (let y=0;y<GN;y++) for (let z=0;z<GN;z++)
+    for (const b of BASIS) {
+      const px = (x+b[0])*A, py = (y+b[1])*A, pz = (z+b[2])*A;
+      pos.push([px, py, pz]);
+      // Z₃ charge from {111} layer: (x+y+z)/A gives integer layer index for FCC
+      const layer = Math.round((px + py + pz) / A);
+      charges.push(((layer % 3) + 3) % 3); // ensure non-negative
+    }
+  // Center at origin
+  const N=pos.length, cm=[0,0,0];
+  for (const p of pos) { cm[0]+=p[0];cm[1]+=p[1];cm[2]+=p[2]; }
+  cm[0]/=N;cm[1]/=N;cm[2]/=N;
+  for (const p of pos) { p[0]-=cm[0];p[1]-=cm[1];p[2]-=cm[2]; }
+  return { pos, charges };
+}
+
+// ============================================================
+// SIMULATION
+// ============================================================
+const SIM = {
+  N: 0,
+  pos: [],
+  charges: [],    // Z₃ charge 0,1,2 — FIXED per stella
+  orient: [],     // visual rotation angle
+  ideal: [],
+  aob: 2.0,      // alpha/beta
+  T: 2.0,
+  step: 0,
+  maxSteps: 60000,
+  running: false,
+  E: 0,
+  acc: 0, att: 0,
+  hist: [],
+};
+
+const R0 = A / Math.SQRT2; // ideal NN distance ≈ 1.414
+
+function d2(a,b) { const x=a[0]-b[0],y=a[1]-b[1],z=a[2]-b[2]; return x*x+y*y+z*z; }
+function d(a,b) { return Math.sqrt(d2(a,b)); }
+
+function pairE(pi, pj, qi, qj) {
+  const dd = d(pi, pj);
+  if (dd < 0.05) return 1e8;
+  const same = qi === qj;
+  const am = 2.5; // Morse range
+  const x = am * (dd - R0);
+  const ex = Math.exp(-x);
+  // Different charge: full well depth → drives close-packing with charge alternation
+  // Same charge: reduced well → same-charge pairs prefer larger separation
+  const Ddiff = 1.0;
+  const Dsame = Math.max(0.05, 1.0 - (SIM.aob - 1.0) * 0.7);
+  const D = same ? Dsame : Ddiff;
+  return D * (ex * ex - 2 * ex);
+}
+
+function confineE(p) {
+  const rr = p[0]*p[0]+p[1]*p[1]+p[2]*p[2];
+  const rMax = A * GN;
+  return rr > rMax*rMax ? 5*(Math.sqrt(rr)-rMax) : 0;
+}
+
+// Weak spring to ideal positions — guides convergence without dominating pair physics
+const K_SPRING = 0.15;
+
+function springE(idx, p) {
+  const id = SIM.ideal[idx];
+  const dx=p[0]-id[0], dy=p[1]-id[1], dz=p[2]-id[2];
+  return K_SPRING * (dx*dx + dy*dy + dz*dz);
+}
+
+function fullE() {
+  let E = 0;
+  for (let i=0;i<SIM.N;i++) {
+    for (let j=i+1;j<SIM.N;j++) E += pairE(SIM.pos[i],SIM.pos[j],SIM.charges[i],SIM.charges[j]);
+    E += confineE(SIM.pos[i]);
+    E += springE(i, SIM.pos[i]);
+  }
+  return E;
+}
+
+function deltaE(idx, oldP, newP) {
+  let dE = confineE(newP) - confineE(oldP);
+  dE += springE(idx, newP) - springE(idx, oldP);
+  for (let j=0;j<SIM.N;j++) {
+    if (j===idx) continue;
+    dE += pairE(newP, SIM.pos[j], SIM.charges[idx], SIM.charges[j]);
+    dE -= pairE(oldP, SIM.pos[j], SIM.charges[idx], SIM.charges[j]);
+  }
+  return dE;
+}
+
+function initSim() {
+  const fcc = genIdealFCC();
+  SIM.ideal = fcc.pos;
+  SIM.charges = fcc.charges; // Z₃ charges from {111} layer projection
+  SIM.N = SIM.ideal.length; // 32
+
+  const mode = document.getElementById('startMode').value;
+  SIM.pos = []; SIM.orient = [];
+  const spread = A * GN * 0.8;
+  for (let i=0;i<SIM.N;i++) {
+    if (mode === 'noisy') {
+      SIM.pos.push([
+        SIM.ideal[i][0] + (Math.random()-.5)*A*.3,
+        SIM.ideal[i][1] + (Math.random()-.5)*A*.3,
+        SIM.ideal[i][2] + (Math.random()-.5)*A*.3,
+      ]);
+    } else {
+      SIM.pos.push([
+        (Math.random()-.5)*2*spread,
+        (Math.random()-.5)*2*spread,
+        (Math.random()-.5)*2*spread,
+      ]);
+    }
+    SIM.orient.push(Math.random()*Math.PI*2);
+  }
+  SIM.step=0; SIM.T=2; SIM.E=fullE(); SIM.acc=0; SIM.att=0;
+  SIM.hist=[]; saveSnap();
+}
+
+function annealStep() {
+  const p = SIM.step / SIM.maxSteps;
+  // Cooling schedule
+  if (p<.1) SIM.T = 2-1.5*(p/.1);
+  else if (p<.6) SIM.T = .5*Math.exp(-5*(p-.1)/.5);
+  else SIM.T = Math.max(.0005, .5*Math.exp(-5)*Math.exp(-3*(p-.6)/.4));
+
+  const idx = Math.floor(Math.random()*SIM.N);
+  const oldP = [...SIM.pos[idx]];
+  const ps = .35*Math.sqrt(Math.max(SIM.T,.001));
+  const newP = [oldP[0]+(Math.random()-.5)*ps, oldP[1]+(Math.random()-.5)*ps, oldP[2]+(Math.random()-.5)*ps];
+  const dE = deltaE(idx, oldP, newP);
+  SIM.att++;
+  if (dE<0 || Math.random()<Math.exp(-dE/Math.max(SIM.T,1e-8))) {
+    SIM.pos[idx]=newP; SIM.E+=dE; SIM.acc++;
+  }
+  SIM.step++;
+}
+
+function saveSnap() {
+  SIM.hist.push({ pos:SIM.pos.map(p=>[...p]), E:SIM.E, T:SIM.T, step:SIM.step });
+}
+function restoreSnap(i) {
+  if (i<0||i>=SIM.hist.length) return;
+  const s=SIM.hist[i];
+  for(let k=0;k<SIM.N;k++) SIM.pos[k]=[...s.pos[k]];
+  SIM.E=s.E; SIM.T=s.T; SIM.step=s.step;
+}
+
+// ============================================================
+// METRICS
+// ============================================================
+function braggS() {
+  // Structure factor at FCC reciprocal lattice vectors
+  const Gs = [[1,1,1],[1,1,-1],[1,-1,1],[-1,1,1]].map(g=>g.map(v=>v*2*Math.PI/A));
+  let tot=0;
+  for (const G of Gs) {
+    let re=0,im=0;
+    for (let i=0;i<SIM.N;i++) {
+      const ph=G[0]*SIM.pos[i][0]+G[1]*SIM.pos[i][1]+G[2]*SIM.pos[i][2];
+      re+=Math.cos(ph); im+=Math.sin(ph);
+    }
+    tot+=(re*re+im*im)/(SIM.N*SIM.N);
+  }
+  return tot/Gs.length;
+}
+
+function rmsdToIdeal() {
+  // Root-mean-square displacement from ideal FCC positions
+  let sum = 0;
+  for (let i=0;i<SIM.N;i++) sum += d2(SIM.pos[i], SIM.ideal[i]);
+  return Math.sqrt(sum / SIM.N);
+}
+
+function stackingSeq() {
+  const proj = SIM.pos.map((p,i)=>({h:(p[0]+p[1]+p[2])/Math.sqrt(3), q:SIM.charges[i]}));
+  proj.sort((a,b)=>a.h-b.h);
+  const layers=[]; let curH=proj[0].h, curQ=[proj[0].q];
+  for (let i=1;i<proj.length;i++) {
+    if (Math.abs(proj[i].h-curH)<R0*.6) { curQ.push(proj[i].q); }
+    else {
+      const ct=[0,0,0]; for(const c of curQ) ct[c]++;
+      layers.push(ct.indexOf(Math.max(...ct)));
+      curH=proj[i].h; curQ=[proj[i].q];
+    }
+  }
+  const ct=[0,0,0]; for(const c of curQ) ct[c]++;
+  layers.push(ct.indexOf(Math.max(...ct)));
+  return layers;
+}
+
+// ============================================================
+// CAMERA
+// ============================================================
+let camTh=.6, camPh=.55, camD=10, dragging=false, lastM=[0,0], autoRot=true;
+
+canvas.addEventListener('mousedown', e=>{ dragging=true; lastM=[e.clientX,e.clientY]; autoRot=false; });
+window.addEventListener('mouseup', ()=>dragging=false);
+window.addEventListener('mousemove', e=>{
+  if(!dragging) return;
+  camTh+=(e.clientX-lastM[0])*.005;
+  camPh=Math.max(.1,Math.min(Math.PI-.1,camPh+(e.clientY-lastM[1])*.005));
+  lastM=[e.clientX,e.clientY];
+});
+canvas.addEventListener('wheel', e=>{ camD=Math.max(3,Math.min(25,camD+e.deltaY*.015)); e.preventDefault(); },{passive:false});
+canvas.addEventListener('touchstart', e=>{ if(e.touches.length===1){dragging=true;lastM=[e.touches[0].clientX,e.touches[0].clientY];autoRot=false;}});
+canvas.addEventListener('touchend', ()=>dragging=false);
+canvas.addEventListener('touchmove', e=>{
+  if(!dragging||e.touches.length!==1) return;
+  camTh+=(e.touches[0].clientX-lastM[0])*.005;
+  camPh=Math.max(.1,Math.min(Math.PI-.1,camPh+(e.touches[0].clientY-lastM[1])*.005));
+  lastM=[e.touches[0].clientX,e.touches[0].clientY]; e.preventDefault();
+},{passive:false});
+
+function eyePos() {
+  return [camD*Math.sin(camPh)*Math.cos(camTh), camD*Math.cos(camPh), camD*Math.sin(camPh)*Math.sin(camTh)];
+}
+
+// ============================================================
+// RENDERING
+// ============================================================
+function resize() {
+  const r=canvas.parentElement.getBoundingClientRect();
+  const dpr=Math.min(devicePixelRatio,1.5);
+  canvas.width=r.width*dpr; canvas.height=r.height*dpr;
+  canvas.style.width=r.width+'px'; canvas.style.height=r.height+'px';
+  gl.viewport(0,0,canvas.width,canvas.height);
+}
+window.addEventListener('resize',resize); resize();
+
+function uploadInstances() {
+  // 6 floats per stella: x,y,z, rot, charge, 0
+  const data = new Float32Array(SIM.N * 6);
+  for (let i=0;i<SIM.N;i++) {
+    data[i*6]  =SIM.pos[i][0]; data[i*6+1]=SIM.pos[i][1]; data[i*6+2]=SIM.pos[i][2];
+    data[i*6+3]=SIM.orient[i]; data[i*6+4]=SIM.charges[i]; data[i*6+5]=0;
+  }
+  gl.bindBuffer(gl.ARRAY_BUFFER, instBuf);
+  gl.bufferData(gl.ARRAY_BUFFER, data, gl.DYNAMIC_DRAW);
+
+  // Center dots (same layout)
+  gl.bindBuffer(gl.ARRAY_BUFFER, centerBuf);
+  gl.bufferData(gl.ARRAY_BUFFER, data, gl.DYNAMIC_DRAW);
+}
+
+function uploadBonds() {
+  const cut = R0 * 1.4;
+  const verts = []; // x,y,z, r,g,b per vertex
+  for (let i=0;i<SIM.N;i++) for (let j=i+1;j<SIM.N;j++) {
+    if (d(SIM.pos[i],SIM.pos[j])>cut) continue;
+    const same = SIM.charges[i]===SIM.charges[j];
+    const col = same ? [.4,.15,.15] : [.15,.3,.45];
+    verts.push(SIM.pos[i][0],SIM.pos[i][1],SIM.pos[i][2], ...col);
+    verts.push(SIM.pos[j][0],SIM.pos[j][1],SIM.pos[j][2], ...col);
+  }
+  gl.bindBuffer(gl.ARRAY_BUFFER, bondBuf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.DYNAMIC_DRAW);
+  return verts.length / 6; // number of vertices
+}
+
+function uploadGhosts() {
+  const data = new Float32Array(SIM.N * 6);
+  for (let i=0;i<SIM.N;i++) {
+    data[i*6]=SIM.ideal[i][0]; data[i*6+1]=SIM.ideal[i][1]; data[i*6+2]=SIM.ideal[i][2];
+    data[i*6+3]=0; data[i*6+4]=0; data[i*6+5]=0;
+  }
+  gl.bindBuffer(gl.ARRAY_BUFFER, ghostBuf);
+  gl.bufferData(gl.ARRAY_BUFFER, data, gl.DYNAMIC_DRAW);
+}
+
+function render() {
+  const w=canvas.width, h=canvas.height;
+  const eye = eyePos();
+  const proj = mat4Persp(0.9, w/h, 0.1, 100);
+  const view = mat4LookAt(eye, [0,0,0], [0,1,0]);
+  const vp = mat4Mul(proj, view);
+
+  gl.clearColor(0.01, 0.01, 0.04, 1);
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+  // Additive blending for glow
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+  gl.disable(gl.DEPTH_TEST);
+
+  const stellaScale = parseFloat(document.getElementById('scaleSlider').value);
+  const glowMul = parseFloat(document.getElementById('glowSlider').value);
+  const colorMode = document.getElementById('layerToggle').checked ? 1 : 0;
+  const showBonds = document.getElementById('bondToggle').checked;
+  const showGhost = document.getElementById('ghostToggle').checked;
+
+  uploadInstances();
+
+  // 1. Bonds (draw first, behind everything)
+  if (showBonds) {
+    const nBondVerts = uploadBonds();
+    if (nBondVerts > 0) {
+      gl.useProgram(bondProg);
+      gl.uniformMatrix4fv(bondU.uVP, false, vp);
+      gl.uniform3f(bondU.uEye, eye[0], eye[1], eye[2]);
+      gl.bindVertexArray(bondVAO);
+      gl.drawArrays(gl.LINES, 0, nBondVerts);
+    }
+  }
+
+  // 2. Ghost ideal positions
+  if (showGhost) {
+    uploadGhosts();
+    gl.useProgram(ghostProg);
+    gl.uniformMatrix4fv(ghostU.uVP, false, vp);
+    gl.uniform3f(ghostU.uEye, eye[0], eye[1], eye[2]);
+    gl.uniform1f(ghostU.uPtSz, 18 * glowMul);
+    gl.bindVertexArray(ghostVAO);
+    gl.drawArrays(gl.POINTS, 0, SIM.N);
+  }
+
+  // 3. Stella wireframe edges (instanced)
+  gl.useProgram(lineProg);
+  gl.uniformMatrix4fv(lineU.uVP, false, vp);
+  gl.uniform3f(lineU.uEye, eye[0], eye[1], eye[2]);
+  gl.uniform1f(lineU.uScale, stellaScale);
+  gl.uniform1i(lineU.uColorMode, colorMode);
+  gl.bindVertexArray(edgeVAO);
+  gl.drawArraysInstanced(gl.LINES, 0, N_LINE_VERTS, SIM.N);
+
+  // 4. Vertex glow points (instanced) — draws 8 glowing dots per stella
+  // Reuse line program but switch to point drawing
+  // Actually need the dot program for gl_PointCoord
+  gl.useProgram(dotProg);
+  gl.uniformMatrix4fv(dotU.uVP, false, vp);
+  gl.uniform3f(dotU.uEye, eye[0], eye[1], eye[2]);
+  gl.uniform1f(dotU.uPtSz, 4 * glowMul);
+
+  // For vertex glow, we need a different VAO that uses dot program's attribute layout
+  // The dotVS expects: location 0 = instance pos, location 1 = instance data
+  // But for vertex glow, we want per-vertex local + per-instance transform
+  // → Use the line program with GL_POINTS instead
+  // Actually, let's just draw center dots (simpler, more readable)
+
+  // 5. Center dots — one per stella, colored by Z₃ charge
+  gl.uniform1f(dotU.uPtSz, 10 * glowMul);
+  gl.bindVertexArray(centerVAO);
+  gl.drawArrays(gl.POINTS, 0, SIM.N);
+
+  gl.bindVertexArray(null);
+  gl.disable(gl.BLEND);
+}
+
+// ============================================================
+// UI UPDATE
+// ============================================================
+let panelCt = 0;
+function updatePanel() {
+  const br = braggS();
+  const rmsd = rmsdToIdeal();
+  const layers = stackingSeq();
+  const charMap = ['A','B','C'];
+  const stackStr = layers.map(c=>charMap[c]).join('');
+
+  document.getElementById('braggVal').textContent = br.toFixed(3);
+  document.getElementById('braggVal').className = 'val '+(br>.5?'g':br>.2?'w':'b');
+  document.getElementById('braggBar').style.width = Math.min(100,br*100)+'%';
+  document.getElementById('braggBar').style.background = br>.5?'#4ae68a':br>.2?'#ffcc00':'#ff6666';
+
+  document.getElementById('rmsdVal').textContent = rmsd.toFixed(3);
+  document.getElementById('rmsdVal').className = 'val '+(rmsd<.1?'g':rmsd<.3?'w':'b');
+
+  document.getElementById('eVal').textContent = SIM.E.toFixed(1);
+  document.getElementById('tempDisp').textContent = `T = ${SIM.T.toFixed(4)}`;
+  document.getElementById('accVal').textContent = SIM.att>0?((SIM.acc/SIM.att*100).toFixed(1)+'%'):'--';
+
+  // Stacking
+  document.getElementById('stackDisp').textContent = stackStr.length>16?stackStr.slice(0,16)+'...':stackStr;
+  // Color the letters
+  const disp = document.getElementById('stackDisp');
+  let html = '';
+  for (const ch of stackStr.slice(0,16)) {
+    const col = ch==='A'?'#ff6666':ch==='B'?'#66ff99':'#6699ff';
+    html += `<span style="color:${col}">${ch}</span>`;
+  }
+  if (stackStr.length>16) html += '<span style="color:#666">...</span>';
+  disp.innerHTML = html;
+
+  let period = '?';
+  if (stackStr.length>=3) {
+    for (let p=1;p<=6;p++) {
+      let ok=true;
+      for (let i=p;i<stackStr.length&&ok;i++) if(stackStr[i]!==stackStr[i%p]) ok=false;
+      if (ok) { period=String(p); break; }
+    }
+  }
+  document.getElementById('stackPer').textContent = period;
+  document.getElementById('stackPer').className = 'val '+(period==='3'?'g':period==='?'?'b':'w');
+
+  // Phase indicator
+  const ind = document.getElementById('phaseInd');
+  if (SIM.step===0) { ind.textContent='DISORDERED'; ind.className='badge ph-dis'; }
+  else if (br>.5 && period==='3') { ind.textContent='FCC CRYSTAL'; ind.className='badge ph-fcc'; }
+  else if (br>.2) { ind.textContent='CRYSTALLIZING'; ind.className='badge ph-cry'; }
+  else if (SIM.step>SIM.maxSteps*.05) { ind.textContent='ORDERING'; ind.className='badge ph-uns'; }
+  else { ind.textContent='DISORDERED'; ind.className='badge ph-dis'; }
+
+  document.getElementById('stepLabel').textContent =
+    `Step ${SIM.step.toLocaleString()} / ${SIM.maxSteps.toLocaleString()}  |  S(G) = ${br.toFixed(3)}  |  T = ${SIM.T.toFixed(4)}`;
+  document.getElementById('timeSlider').max = Math.max(SIM.hist.length-1,1);
+  document.getElementById('timeSlider').value = SIM.hist.length-1;
+}
+
+// ============================================================
+// MAIN LOOP
+// ============================================================
+function frame() {
+  if (SIM.running) {
+    const speed = parseInt(document.getElementById('speedSlider').value);
+    for (let i=0;i<speed;i++) {
+      if (SIM.step>=SIM.maxSteps) {
+        SIM.running=false;
+        document.getElementById('btnPP').textContent='\u25B6';
+        break;
+      }
+      annealStep();
+      if (SIM.step%200===0) saveSnap();
+    }
+  }
+  if (autoRot) camTh+=.003;
+  render();
+  panelCt++;
+  if (panelCt%6===0) updatePanel();
+  requestAnimationFrame(frame);
+}
+
+// ============================================================
+// CONTROLS
+// ============================================================
+document.getElementById('btnStart').addEventListener('click', ()=>{
+  SIM.aob=parseFloat(document.getElementById('ratioSlider').value);
+  initSim(); SIM.running=true; autoRot=true;
+  document.getElementById('btnPP').textContent='\u23F8';
+});
+document.getElementById('btnReset').addEventListener('click', ()=>{
+  SIM.running=false; SIM.aob=parseFloat(document.getElementById('ratioSlider').value);
+  initSim(); autoRot=true; updatePanel();
+});
+document.getElementById('btnPP').addEventListener('click', ()=>{
+  SIM.running=!SIM.running;
+  document.getElementById('btnPP').textContent=SIM.running?'\u23F8':'\u25B6';
+});
+document.getElementById('ratioSlider').addEventListener('input', e=>{
+  SIM.aob=parseFloat(e.target.value);
+  document.getElementById('ratioVal').textContent=SIM.aob.toFixed(1);
+});
+document.getElementById('scaleSlider').addEventListener('input', e=>{
+  document.getElementById('scaleVal').textContent=parseFloat(e.target.value).toFixed(2);
+});
+document.getElementById('glowSlider').addEventListener('input', e=>{
+  document.getElementById('glowVal').textContent=parseFloat(e.target.value).toFixed(1);
+});
+document.getElementById('timeSlider').addEventListener('input', e=>{
+  restoreSnap(parseInt(e.target.value));
+  SIM.running=false; document.getElementById('btnPP').textContent='\u25B6';
+});
+
+// ---- Init ----
+SIM.aob = parseFloat(document.getElementById('ratioSlider').value);
+initSim();
+updatePanel();
+frame();
+</script>
+</body>
+</html>

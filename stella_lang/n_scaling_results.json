@@ -1,0 +1,2868 @@
+{
+  "timestamp": "2026-03-27T23:44:04.248748",
+  "campaign": {
+    "n_logs": 80,
+    "n_complete": 80,
+    "n_stellae": 320,
+    "n_emerged": 279,
+    "n_censored": 41
+  },
+  "summary": [
+    {
+      "N": 1666,
+      "pairing": "global",
+      "n_total": 20,
+      "n_censored": 5,
+      "n_emerged": 15,
+      "median_T": 1800000.0,
+      "mean_T": 2133333.3333333335,
+      "std_T": 1529124.6588235449,
+      "min_T": 100000.0,
+      "max_T": 4600000.0,
+      "IQR_low": 850000.0,
+      "IQR_high": 3300000.0
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "n_total": 20,
+      "n_censored": 8,
+      "n_emerged": 12,
+      "median_T": 1000000.0,
+      "mean_T": 1575000.0,
+      "std_T": 1396498.5976839839,
+      "min_T": 300000.0,
+      "max_T": 4700000.0,
+      "IQR_low": 650000.0,
+      "IQR_high": 1775000.0
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "n_total": 20,
+      "n_censored": 3,
+      "n_emerged": 17,
+      "median_T": 2600000.0,
+      "mean_T": 2047058.8235294118,
+      "std_T": 1580066.1367613042,
+      "min_T": 100000.0,
+      "max_T": 4900000.0,
+      "IQR_low": 400000.0,
+      "IQR_high": 3000000.0
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "n_total": 20,
+      "n_censored": 6,
+      "n_emerged": 14,
+      "median_T": 2050000.0,
+      "mean_T": 2271428.5714285714,
+      "std_T": 1362994.901692892,
+      "min_T": 100000.0,
+      "max_T": 4600000.0,
+      "IQR_low": 1475000.0,
+      "IQR_high": 3000000.0
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "n_total": 20,
+      "n_censored": 5,
+      "n_emerged": 15,
+      "median_T": 1200000.0,
+      "mean_T": 1420000.0,
+      "std_T": 1017971.8398200742,
+      "min_T": 200000.0,
+      "max_T": 3600000.0,
+      "IQR_low": 650000.0,
+      "IQR_high": 1650000.0
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "n_total": 20,
+      "n_censored": 4,
+      "n_emerged": 16,
+      "median_T": 1400000.0,
+      "mean_T": 1687500.0,
+      "std_T": 1228756.993876332,
+      "min_T": 100000.0,
+      "max_T": 4200000.0,
+      "IQR_low": 800000.0,
+      "IQR_high": 2325000.0
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "n_total": 20,
+      "n_censored": 2,
+      "n_emerged": 18,
+      "median_T": 1750000.0,
+      "mean_T": 1727777.7777777778,
+      "std_T": 1213262.6149517284,
+      "min_T": 200000.0,
+      "max_T": 4400000.0,
+      "IQR_low": 575000.0,
+      "IQR_high": 2675000.0
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "n_total": 20,
+      "n_censored": 6,
+      "n_emerged": 14,
+      "median_T": 1150000.0,
+      "mean_T": 1278571.4285714286,
+      "std_T": 846993.4823737864,
+      "min_T": 100000.0,
+      "max_T": 2900000.0,
+      "IQR_low": 850000.0,
+      "IQR_high": 1775000.0
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "n_total": 20,
+      "n_censored": 1,
+      "n_emerged": 19,
+      "median_T": 500000.0,
+      "mean_T": 736842.1052631579,
+      "std_T": 530352.9374172889,
+      "min_T": 100000.0,
+      "max_T": 1800000.0,
+      "IQR_low": 350000.0,
+      "IQR_high": 1100000.0
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "n_total": 20,
+      "n_censored": 1,
+      "n_emerged": 19,
+      "median_T": 900000.0,
+      "mean_T": 1131578.9473684211,
+      "std_T": 907890.9229515621,
+      "min_T": 100000.0,
+      "max_T": 3800000.0,
+      "IQR_low": 450000.0,
+      "IQR_high": 1700000.0
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "n_total": 20,
+      "n_censored": 0,
+      "n_emerged": 20,
+      "median_T": 600000.0,
+      "mean_T": 585000.0,
+      "std_T": 407768.3165720456,
+      "min_T": 100000.0,
+      "max_T": 1500000.0,
+      "IQR_low": 175000.0,
+      "IQR_high": 850000.0
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "n_total": 20,
+      "n_censored": 0,
+      "n_emerged": 20,
+      "median_T": 400000.0,
+      "mean_T": 815000.0,
+      "std_T": 771540.6664590014,
+      "min_T": 100000.0,
+      "max_T": 3000000.0,
+      "IQR_low": 275000.0,
+      "IQR_high": 1225000.0
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "n_total": 20,
+      "n_censored": 0,
+      "n_emerged": 20,
+      "median_T": 200000.0,
+      "mean_T": 320000.0,
+      "std_T": 256124.96949731396,
+      "min_T": 100000.0,
+      "max_T": 1000000.0,
+      "IQR_low": 175000.0,
+      "IQR_high": 400000.0
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "n_total": 20,
+      "n_censored": 0,
+      "n_emerged": 20,
+      "median_T": 500000.0,
+      "mean_T": 480000.0,
+      "std_T": 350142.82800023194,
+      "min_T": 100000.0,
+      "max_T": 1700000.0,
+      "IQR_low": 200000.0,
+      "IQR_high": 600000.0
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "n_total": 20,
+      "n_censored": 0,
+      "n_emerged": 20,
+      "median_T": 200000.0,
+      "mean_T": 205000.0,
+      "std_T": 111691.53951844339,
+      "min_T": 100000.0,
+      "max_T": 500000.0,
+      "IQR_low": 100000.0,
+      "IQR_high": 300000.0
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "n_total": 20,
+      "n_censored": 0,
+      "n_emerged": 20,
+      "median_T": 150000.0,
+      "mean_T": 280000.0,
+      "std_T": 220454.07685048602,
+      "min_T": 100000.0,
+      "max_T": 700000.0,
+      "IQR_low": 100000.0,
+      "IQR_high": 425000.0
+    }
+  ],
+  "fits": {
+    "local": [
+      {
+        "model": "A (Poisson: T = C/N)",
+        "C": 93817729.00072749,
+        "exponent": -0.552824894306402,
+        "expected_exponent": -1.0,
+        "R2": 0.3005561533911565,
+        "AIC": -9.610402969170242,
+        "BIC": -3.7998534122933822,
+        "n_uncensored": 135,
+        "n_censored": 25
+      },
+      {
+        "model": "B (Cooperative: T = C * N^(\u03b7-1))",
+        "C": 93817729.00072749,
+        "eta": 0.447175105693598,
+        "exponent": -0.552824894306402,
+        "R2": 0.3005561533911565,
+        "AIC": -9.610402969170242,
+        "BIC": -3.7998534122933822,
+        "n_uncensored": 135,
+        "n_censored": 25
+      },
+      {
+        "model": "C (Rate-limited: T = const)",
+        "C": 632850.1994127384,
+        "exponent": 0.0,
+        "R2": 0.0,
+        "AIC": 36.64801524771079,
+        "BIC": 39.55329002614922,
+        "n_uncensored": 135,
+        "n_censored": 25
+      }
+    ],
+    "global": [
+      {
+        "model": "A (Poisson: T = C/N)",
+        "C": 188441973.59247333,
+        "exponent": -0.6465020813082085,
+        "expected_exponent": -1.0,
+        "R2": 0.38216015104446044,
+        "AIC": -17.00360021160862,
+        "BIC": -11.06397361245662,
+        "n_uncensored": 144,
+        "n_censored": 16
+      },
+      {
+        "model": "B (Cooperative: T = C * N^(\u03b7-1))",
+        "C": 188441973.59247333,
+        "eta": 0.3534979186917915,
+        "exponent": -0.6465020813082085,
+        "R2": 0.38216015104446044,
+        "AIC": -17.00360021160862,
+        "BIC": -11.06397361245662,
+        "n_uncensored": 144,
+        "n_censored": 16
+      },
+      {
+        "model": "C (Rate-limited: T = const)",
+        "C": 570822.5479660521,
+        "exponent": 0.0,
+        "R2": 0.0,
+        "AIC": 50.33614367217824,
+        "BIC": 53.30595697175424,
+        "n_uncensored": 144,
+        "n_censored": 16
+      }
+    ]
+  },
+  "raw_data": [
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 4500000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 4600000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 1500000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 4000000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 1800000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 2600000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 2000000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 1000000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 1600000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 2200000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 4500000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 800000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 2300000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 1400000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 4200000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 4700000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 1000000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 1000000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 1600000,
+      "censored": false
+    },
+    {
+      "N": 1666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 2900000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 2700000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 4900000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 1200000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 3000000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 2800000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 4400000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 1400000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 2600000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 4100000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 3200000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 1900000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 4600000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 600000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 1900000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 3000000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 4100000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 2500000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 4300000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 3000000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 2200000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 1700000,
+      "censored": false
+    },
+    {
+      "N": 2520,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 1400000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 600000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 1500000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 1200000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 1800000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 1500000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 900000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 1400000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 2900000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 3600000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 1000000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 3200000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 2200000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 900000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 4200000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 1100000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 1300000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 2000000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 1900000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 4100000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 2700000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 1500000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 1100000,
+      "censored": false
+    },
+    {
+      "N": 2992,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 2800000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 800000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 1300000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 900000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 4400000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 2600000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 2800000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 1700000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 2300000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 2000000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 1800000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 3000000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 3300000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 2700000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 1000000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 2200000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 1200000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 1800000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 1200000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 1000000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 1700000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 2600000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 800000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 1100000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 2900000,
+      "censored": false
+    },
+    {
+      "N": 4108,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 900000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 1800000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 1400000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 1000000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 600000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 1700000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 1500000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 1200000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 2100000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 1300000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 1100000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 1600000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 1800000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 900000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 600000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 3800000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 1900000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 2200000,
+      "censored": false
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 5000000,
+      "censored": true
+    },
+    {
+      "N": 6666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 1200000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 1100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 1100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 600000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 800000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 600000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 1000000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 1500000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 1100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 600000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 800000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 1300000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 1100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 1200000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 1400000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 2100000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 900000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 3000000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 13348,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 1800000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 1000000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 900000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 600000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 600000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 600000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 800000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 1700000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 600000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 26666,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "global",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 0,
+      "T_emerge": 400000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 1,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 2,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 1024,
+      "stella_id": 3,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 0,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 1,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 2,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 123,
+      "stella_id": 3,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 1,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 2,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 42,
+      "stella_id": 3,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 1,
+      "T_emerge": 700000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 2,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 456,
+      "stella_id": 3,
+      "T_emerge": 200000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 0,
+      "T_emerge": 100000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 1,
+      "T_emerge": 500000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 2,
+      "T_emerge": 300000,
+      "censored": false
+    },
+    {
+      "N": 50050,
+      "pairing": "local",
+      "seed": 789,
+      "stella_id": 3,
+      "T_emerge": 100000,
+      "censored": false
+    }
+  ]
+}

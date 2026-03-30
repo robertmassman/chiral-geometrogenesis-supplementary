@@ -1,0 +1,114 @@
+{
+  "test": "GG1",
+  "description": "Snapshot vs Sequential \u2014 Genesis Dynamics GPU Readiness",
+  "timestamp": "2026-03-23T15:18:42.271731",
+  "config": {
+    "epochs": 2000000,
+    "seed": 42,
+    "coupling_strength": 0.7,
+    "mutation_rate": 0.001,
+    "epsilon": 0.1,
+    "chirality": 0.15,
+    "instr_mode": 2,
+    "color_pressure": 1,
+    "phase_lock": 0.1,
+    "kuramoto_mode": 1
+  },
+  "comparisons": [
+    {
+      "n_sub": 16,
+      "sequential": {
+        "correlation": 0.8794,
+        "chi2": 0.1189,
+        "deep_blocked_rate": 0.75,
+        "write_success_rate": 92.8,
+        "phase_lock_nudges": 93955,
+        "auto_tp": 0.4811,
+        "auto_tm": 0.5078,
+        "wall_clock_s": 3.6
+      },
+      "snapshot": {
+        "correlation": 0.8891,
+        "chi2": 0.2029,
+        "deep_blocked_rate": 0.9167,
+        "write_success_rate": 96.4,
+        "phase_lock_nudges": 697849,
+        "auto_tp": 0.541,
+        "auto_tm": 0.5645,
+        "wall_clock_s": 3.1
+      },
+      "delta": {
+        "correlation_abs": 0.0097,
+        "correlation_pct": 1.1,
+        "chi2_abs": 0.084,
+        "deep_blocked_delta": 0.1667,
+        "write_rate_delta": 3.6
+      },
+      "pass": true
+    },
+    {
+      "n_sub": 32,
+      "sequential": {
+        "correlation": 0.9146,
+        "chi2": 0.1834,
+        "deep_blocked_rate": 0.8125,
+        "write_success_rate": 97.0,
+        "phase_lock_nudges": 73504,
+        "auto_tp": 0.542,
+        "auto_tm": 0.542,
+        "wall_clock_s": 3.1
+      },
+      "snapshot": {
+        "correlation": 0.878,
+        "chi2": 0.2061,
+        "deep_blocked_rate": 0.9792,
+        "write_success_rate": 98.6,
+        "phase_lock_nudges": 337412,
+        "auto_tp": 0.5553,
+        "auto_tm": 0.5854,
+        "wall_clock_s": 3.5
+      },
+      "delta": {
+        "correlation_abs": 0.0366,
+        "correlation_pct": 4.0,
+        "chi2_abs": 0.0227,
+        "deep_blocked_delta": 0.1667,
+        "write_rate_delta": 1.6
+      },
+      "pass": true
+    },
+    {
+      "n_sub": 64,
+      "sequential": {
+        "correlation": 0.9342,
+        "chi2": 0.1921,
+        "deep_blocked_rate": 0.7143,
+        "write_success_rate": 98.0,
+        "phase_lock_nudges": 52225,
+        "auto_tp": 0.5656,
+        "auto_tm": 0.5692,
+        "wall_clock_s": 3.1
+      },
+      "snapshot": {
+        "correlation": 0.907,
+        "chi2": 0.2142,
+        "deep_blocked_rate": 0.994,
+        "write_success_rate": 94.1,
+        "phase_lock_nudges": 310350,
+        "auto_tp": 0.5778,
+        "auto_tm": 0.6098,
+        "wall_clock_s": 5.3
+      },
+      "delta": {
+        "correlation_abs": 0.0272,
+        "correlation_pct": 2.91,
+        "chi2_abs": 0.0221,
+        "deep_blocked_delta": 0.2797,
+        "write_rate_delta": 3.9
+      },
+      "pass": true
+    }
+  ],
+  "pass_criterion": "GPU correlation within 5% of CPU at each resolution",
+  "overall_pass": true
+}

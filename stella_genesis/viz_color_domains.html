@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Def 0.1.4 + Thm 0.2.3 — Color Field Domains & Stable Convergence Point</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a14;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 8px 16px;
+  background: rgba(6,6,16,0.95);
+  border-bottom: 1px solid #1a1a2e;
+  z-index: 10;
+}
+header h1 { font-size: 13px; font-weight: 600; color: #e0e0e8; }
+header .subtitle { font-size: 11px; color: #777; margin-top: 2px; }
+
+.main-area {
+  flex: 1; display: flex; overflow: hidden;
+}
+
+/* Canvas grid */
+.canvas-grid {
+  flex: 1; display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  background: #111;
+  padding: 1px;
+}
+.canvas-cell {
+  position: relative;
+  background: #0a0a14;
+  overflow: hidden;
+}
+.canvas-cell canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+.canvas-label {
+  position: absolute;
+  top: 6px; left: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #e0e0e8;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+.canvas-sublabel {
+  position: absolute;
+  top: 22px; left: 8px;
+  font-size: 9px;
+  color: #888;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+.canvas-eq {
+  position: absolute;
+  bottom: 6px; left: 8px;
+  font-size: 10px;
+  color: #aab;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Side panel */
+.side-panel {
+  width: 280px;
+  background: rgba(8,8,18,0.95);
+  border-left: 1px solid #1a1a2e;
+  overflow-y: auto;
+  padding: 12px;
+  flex-shrink: 0;
+}
+.panel-section {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(30,30,50,0.5);
+}
+.panel-section h3 {
+  font-size: 10px; text-transform: uppercase; color: #555;
+  margin-bottom: 5px; letter-spacing: 1px;
+}
+.ctrl-row {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; margin: 4px 0;
+}
+.ctrl-row label { color: #888; min-width: 20px; }
+.ctrl-row input[type="range"] { flex: 1; accent-color: #4a7aaa; }
+.ctrl-row .val { color: #e0e0e8; font-weight: 600; min-width: 40px; text-align: right; }
+
+.info-box {
+  background: rgba(12,12,24,0.7); border: 1px solid rgba(30,30,50,0.5); border-radius: 4px;
+  padding: 7px; margin: 5px 0; font-size: 10px; line-height: 1.6;
+}
+.info-box em { color: #999; font-style: normal; }
+
+.legend-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin: 3px 0; }
+.legend-swatch { width: 10px; height: 10px; border-radius: 50%; }
+
+.readout {
+  font-size: 10px; color: #aab; margin: 2px 0;
+}
+.readout .val { color: #e0e0e8; font-weight: 600; }
+
+button {
+  background: #1a1a2e; color: #c8c8d0; border: 1px solid #2e2e44;
+  padding: 3px 10px; border-radius: 4px; font-family: inherit;
+  font-size: 11px; cursor: pointer; transition: all 0.15s;
+  margin: 2px;
+}
+button:hover { background: #24243a; }
+button.active { background: #2a3a5a; border-color: #4a6a9a; color: #88bbff; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Color Field Domains & Stable Convergence Point</h1>
+  <div class="subtitle">Def 0.1.4: D_c = {x : P_c(x) >= P_c'(x)} (Voronoi) | Thm 0.2.3: Center is unique stable equilibrium</div>
+</header>
+
+<div class="main-area">
+  <div class="canvas-grid">
+    <!-- Panel A: Color dominance / Voronoi tessellation -->
+    <div class="canvas-cell">
+      <canvas id="cvA"></canvas>
+      <div class="canvas-label">(a) Color dominance domains D_c</div>
+      <div class="canvas-sublabel">Def 0.1.4 §3.1 — Voronoi tessellation by nearest T+ vertex</div>
+      <div class="canvas-eq">D_c = {x : |x - x_c| <= |x - x_c'| for all c'}</div>
+    </div>
+
+    <!-- Panel B: Depression domains -->
+    <div class="canvas-cell">
+      <canvas id="cvB"></canvas>
+      <div class="canvas-label">(b) Depression domains E_c</div>
+      <div class="canvas-sublabel">Def 0.1.4 §5 — Where each color is weakest (vertex-face duality)</div>
+      <div class="canvas-eq">E_c = {x : P_c(x) <= P_c'(x) for all c' in {R,G,B}}</div>
+    </div>
+
+    <!-- Panel C: SU(3) weight plane projection -->
+    <div class="canvas-cell">
+      <canvas id="cvC"></canvas>
+      <div class="canvas-label">(c) SU(3) weight plane projection</div>
+      <div class="canvas-sublabel">Def 0.1.4 §8 — Domain boundaries perpendicular to root vectors</div>
+      <div class="canvas-eq">M: R^3 -> R^2,  boundary lines perp. to alpha_{cc'}</div>
+    </div>
+
+    <!-- Panel D: Convergence landscape -->
+    <div class="canvas-cell">
+      <canvas id="cvD"></canvas>
+      <div class="canvas-label">(d) Convergence: |chi_total|^2 vs rho(x)</div>
+      <div class="canvas-sublabel">Thm 0.2.3 §4 — Field vanishes at center, energy persists</div>
+      <div class="canvas-eq">|chi(0)|^2 = 0 (destructive Z_3 interference)  |  rho(0) = 3*a0^2*P0^2 != 0</div>
+    </div>
+  </div>
+
+  <div class="side-panel">
+
+    <div class="panel-section">
+      <h3>Parameters</h3>
+      <div class="ctrl-row">
+        <label>e</label>
+        <input type="range" id="sliderEps" min="0.05" max="1.0" step="0.01" value="0.50">
+        <span class="val" id="valEps">0.50</span>
+      </div>
+      <div class="readout">Regularization — Thm 0.2.3: physical value e ~ 0.50</div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Geometry</h3>
+      <div class="ctrl-row">
+        <label>Cut</label>
+        <button id="btnXY" class="active">xy</button>
+        <button id="btnXZ">xz</button>
+        <button id="btnYZ">yz</button>
+      </div>
+      <div class="readout" style="margin-top:4px;">
+        T+ vertices (Def 0.1.1):
+      </div>
+      <div class="readout" id="vertexInfo" style="font-size:9px; line-height:1.5; color:#88aacc;">
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Probe (hover over panels)</h3>
+      <div class="readout">Position: <span class="val" id="probePos">-</span></div>
+      <div class="readout" style="margin-top:4px; color:#666;">- Pressures -</div>
+      <div class="readout">P_R(x): <span class="val" id="probePR">-</span></div>
+      <div class="readout">P_G(x): <span class="val" id="probePG">-</span></div>
+      <div class="readout">P_B(x): <span class="val" id="probePB">-</span></div>
+      <div class="readout">P_W(x): <span class="val" id="probePW">-</span></div>
+      <div class="readout" style="margin-top:4px; color:#666;">- Domains -</div>
+      <div class="readout">Dominant: <span class="val" id="probeDom">-</span></div>
+      <div class="readout">Depressed: <span class="val" id="probeDep">-</span></div>
+      <div class="readout" style="margin-top:4px; color:#666;">- Convergence -</div>
+      <div class="readout">|chi_total|^2: <span class="val" id="probeCoh">-</span></div>
+      <div class="readout">rho(x): <span class="val" id="probeRho">-</span></div>
+      <div class="readout">Ratio rho/rho_0: <span class="val" id="probeRatio">-</span></div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Panel (a) — Voronoi Domains</h3>
+      <div class="readout" style="margin-bottom:4px;">Hue = dominant color, brightness = dominance strength</div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#ff3333;"></div>
+        <span>D_R — nearest to x_R</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#33ff33;"></div>
+        <span>D_G — nearest to x_G</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#3377ff;"></div>
+        <span>D_B — nearest to x_B</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#dddddd;"></div>
+        <span>D_W — nearest to x_W</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#333; border:1px solid #555;"></div>
+        <span>Boundaries — equidistant planes</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Panel (b) — Depression Domains</h3>
+      <div class="info-box">
+        <em>Vertex-face duality (Def 0.1.4 §5.2):</em><br>
+        D_c contains vertex x_c (source)<br>
+        E_c centered at face opp. x_c (shadow)<br>
+        <span style="color:#ffcc66;">Face center: x_face^c = -x_c/3</span><br><br>
+        <em>Depression ratio D_c ~ 3.99</em><br>
+        (max_other / P_c at face center)
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Panel (c) — Weight Plane</h3>
+      <div class="info-box">
+        <em>Projection M: R^3 -> R^2 (Def 0.1.4 §8.2):</em><br>
+        <span style="color:#ff6666;">w_R = (1/2, 1/(2sqrt(3)))</span><br>
+        <span style="color:#66ff66;">w_G = (-1/2, 1/(2sqrt(3)))</span><br>
+        <span style="color:#6688ff;">w_B = (0, -1/sqrt(3))</span><br><br>
+        <em>Boundary lines perp. to root vectors</em><br>
+        <span style="color:#ffcc66;">120 degree sector separation</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Panel (d) — Convergence Point</h3>
+      <div class="info-box">
+        <em>Thm 0.2.3 — At center x = 0:</em><br>
+        P_R = P_G = P_B = P_0 = 1/(1+e^2)<br>
+        <span style="color:#ffcc66;">|chi_total(0)|^2 = 0 (Z_3 interference)</span><br>
+        <span style="color:#66ffcc;">rho(0) = 3*a0^2*P0^2 != 0</span><br><br>
+        <em>Stable convergence (4 proofs):</em><br>
+        1. Geometric — circumcenter<br>
+        2. Symmetry — T_d fixed point<br>
+        3. Energetic — |chi|^2 minimized<br>
+        4. Dynamical — global attractor
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Stability Metrics</h3>
+      <div class="readout">P_0 = 1/(1+e^2): <span class="val" id="metP0">-</span></div>
+      <div class="readout">rho(0) = 3*P0^2: <span class="val" id="metRho0">-</span></div>
+      <div class="readout">alpha: <span class="val" id="metAlpha">-</span></div>
+      <div class="readout">R_obs/R_stella: <span class="val" id="metRobs">-</span></div>
+      <div class="readout" id="solidAngles" style="font-size:9px; line-height:1.5; color:#88aacc; margin-top:4px;"></div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Proof References</h3>
+      <div class="info-box">
+        <em>Def 0.1.1</em> — Stella octangula boundary<br>
+        <em>Def 0.1.3</em> — Pressure functions P_c(x)<br>
+        <em>Def 0.1.4</em> — Color field domains<br>
+        <em>Thm 0.2.1</em> — Total field superposition<br>
+        <em>Thm 0.2.3</em> — Stable convergence point<br><br>
+        <em>Key properties:</em><br>
+        Voronoi = e-independent (§3.1)<br>
+        Equal solid angle = pi sr each (§3.3)<br>
+        Center on all boundaries (§4.3)<br>
+        Unique stable equilibrium (§4.5)
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ============================================================
+// EXACT MATHEMATICS FROM THE PROOFS
+// ============================================================
+
+// Vertex positions — Def 0.1.1 / Def 0.1.3 §2.1
+const S3 = 1 / Math.sqrt(3);
+const VERTICES = {
+  // T+ (quark colors R, G, B + singlet W)
+  R:  [ S3, -S3, -S3],
+  G:  [-S3,  S3, -S3],
+  B:  [-S3, -S3,  S3],
+  W:  [ S3,  S3,  S3],
+  // T- (anti-colors, antipodal)
+  Rb: [-S3,  S3,  S3],
+  Gb: [ S3, -S3,  S3],
+  Bb: [ S3,  S3, -S3],
+  Wb: [-S3, -S3, -S3],
+};
+
+// Face centers opposite each color vertex — Def 0.1.4 §5.1
+// x_face^c = -x_c/3 (centroid of opposite face)
+const FACE_CENTERS = {
+  R: [-S3/3,  S3/3,  S3/3],
+  G: [ S3/3, -S3/3,  S3/3],
+  B: [ S3/3,  S3/3, -S3/3],
+};
+
+// Phases — Def 0.1.2
+const PHASES = { R: 0, G: 2*Math.PI/3, B: 4*Math.PI/3 };
+
+// SU(3) weight vectors — Def 0.1.4 §8.1
+const WEIGHTS = {
+  R: [ 0.5,  1/(2*Math.sqrt(3))],
+  G: [-0.5,  1/(2*Math.sqrt(3))],
+  B: [ 0.0, -1/Math.sqrt(3)],
+};
+
+// SU(3) root vectors — Def 0.1.4 §8.2
+const ROOTS = {
+  RG: [ 1.0,  0.0],                       // w_R - w_G
+  GB: [-0.5,  Math.sqrt(3)/2],             // w_G - w_B
+  BR: [-0.5, -Math.sqrt(3)/2],             // w_B - w_R
+};
+
+// Projection matrix M: R^3 -> R^2 — Def 0.1.4 §8.2
+// Row 1: [sqrt(3)/4, -sqrt(3)/4, 0]
+// Row 2: [1/4, 1/4, -1/2]
+const M_PROJ = [
+  [Math.sqrt(3)/4, -Math.sqrt(3)/4, 0],
+  [1/4, 1/4, -1/2],
+];
+
+// Pressure function — Def 0.1.3 §1
+function pressure(x, y, z, vertex, eps2) {
+  const dx = x - vertex[0];
+  const dy = y - vertex[1];
+  const dz = z - vertex[2];
+  return 1.0 / (dx*dx + dy*dy + dz*dz + eps2);
+}
+
+// Distance squared
+function dist2(x, y, z, vertex) {
+  const dx = x - vertex[0];
+  const dy = y - vertex[1];
+  const dz = z - vertex[2];
+  return dx*dx + dy*dy + dz*dz;
+}
+
+// Project 3D point to SU(3) weight plane
+function projectToWeight(x, y, z) {
+  return [
+    M_PROJ[0][0]*x + M_PROJ[0][1]*y + M_PROJ[0][2]*z,
+    M_PROJ[1][0]*x + M_PROJ[1][1]*y + M_PROJ[1][2]*z,
+  ];
+}
+
+// ============================================================
+// STATE
+// ============================================================
+let eps = 0.50;
+let a0 = 1.0;
+let cutPlane = 'xy';
+let probeX = NaN, probeY = NaN;
+
+// ============================================================
+// PLANE CUTS
+// ============================================================
+function projectVertex(v, plane) {
+  if (plane === 'xy') return [v[0], v[1]];
+  if (plane === 'xz') return [v[0], v[2]];
+  if (plane === 'yz') return [v[1], v[2]];
+}
+
+function to3D(u, v, plane) {
+  if (plane === 'xy') return [u, v, 0];
+  if (plane === 'xz') return [u, 0, v];
+  if (plane === 'yz') return [0, u, v];
+}
+
+// ============================================================
+// RENDERING
+// ============================================================
+const EXTENT = 1.4;
+
+function getCanvasAndCtx(id) {
+  const cv = document.getElementById(id);
+  const rect = cv.parentElement.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio, 2);
+  cv.width = rect.width * dpr;
+  cv.height = rect.height * dpr;
+  cv.style.width = rect.width + 'px';
+  cv.style.height = rect.height + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { cv, ctx, w: rect.width, h: rect.height };
+}
+
+// Uniform scaling: use the smaller dimension so 1 unit in x = 1 unit in y
+// The larger dimension simply shows more of the coordinate space
+function pxToCoord(px, py, w, h) {
+  const s = Math.min(w, h);
+  const u = (px - w/2) / s * 2 * EXTENT;
+  const v = -(py - h/2) / s * 2 * EXTENT;
+  return [u, v];
+}
+
+function coordToPx(u, v, w, h) {
+  const s = Math.min(w, h);
+  const px = u / (2 * EXTENT) * s + w/2;
+  const py = -v / (2 * EXTENT) * s + h/2;
+  return [px, py];
+}
+
+// ============================================================
+// COLOR DEFINITIONS
+// ============================================================
+const DOMAIN_COLORS = {
+  R: [220, 50, 40],
+  G: [40, 200, 50],
+  B: [50, 80, 220],
+  W: [180, 180, 190],
+};
+
+const DEPRESSION_COLORS = {
+  R: [0, 180, 180],   // Cyan = anti-red
+  G: [180, 0, 180],   // Magenta = anti-green
+  B: [180, 180, 0],   // Yellow = anti-blue
+};
+
+const VERTEX_COLORS = {
+  R: '#ff3333', G: '#33ff33', B: '#3377ff',
+  W: '#ffffff', Rb: '#00cccc', Gb: '#cc00cc', Bb: '#cccc00', Wb: '#666666'
+};
+
+// ============================================================
+// PANEL A: Color dominance / Voronoi tessellation
+// Def 0.1.4 §3.1: D_c = Voronoi cell of vertex x_c
+// ============================================================
+function renderA() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvA');
+  const eps2 = eps * eps;
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  const verts = [VERTICES.R, VERTICES.G, VERTICES.B, VERTICES.W];
+  const colors = ['R', 'G', 'B', 'W'];
+
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const [u, v] = pxToCoord(px, py, w, h);
+      const [x, y, z] = to3D(u, v, cutPlane);
+
+      // Find nearest vertex (Voronoi) — Def 0.1.4 §3.1
+      // Domain is epsilon-independent
+      let minDist = Infinity;
+      let secondDist = Infinity;
+      let domIdx = 0;
+      for (let i = 0; i < 4; i++) {
+        const d = dist2(x, y, z, verts[i]);
+        if (d < minDist) {
+          secondDist = minDist;
+          minDist = d;
+          domIdx = i;
+        } else if (d < secondDist) {
+          secondDist = d;
+        }
+      }
+
+      // Dominance strength: how much closer to nearest vs second nearest
+      // Ranges from 0 (on boundary) to 1 (far from boundary)
+      const dMin = Math.sqrt(minDist);
+      const dSec = Math.sqrt(secondDist);
+      const dominance = Math.min(1.0, (dSec - dMin) / (dSec + dMin + 0.001) * 4.0);
+
+      const col = DOMAIN_COLORS[colors[domIdx]];
+      const idx = (py * w + px) * 4;
+
+      // Blend: dark at boundaries, saturated in domain interiors
+      const base = 0.15;
+      const bright = base + dominance * (1.0 - base);
+      data[idx]     = Math.floor(col[0] * bright);
+      data[idx + 1] = Math.floor(col[1] * bright);
+      data[idx + 2] = Math.floor(col[2] * bright);
+      data[idx + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  // Draw boundary lines (equidistant planes)
+  drawBoundaryLines(ctx, w, h);
+  drawVertexMarkers(ctx, w, h, ['R', 'G', 'B', 'W']);
+  drawCenterMarker(ctx, w, h, 'rgba(255,255,255,0.7)', 'All D_c meet');
+}
+
+// ============================================================
+// PANEL B: Depression domains E_c
+// Def 0.1.4 §5: where each color is WEAKEST among {R,G,B}
+// ============================================================
+function renderB() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvB');
+  const eps2 = eps * eps;
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  const vR = VERTICES.R, vG = VERTICES.G, vB = VERTICES.B;
+
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const [u, v] = pxToCoord(px, py, w, h);
+      const [x, y, z] = to3D(u, v, cutPlane);
+
+      const pR = pressure(x, y, z, vR, eps2);
+      const pG = pressure(x, y, z, vG, eps2);
+      const pB = pressure(x, y, z, vB, eps2);
+
+      // Find which color is WEAKEST (depression domain)
+      // E_c = {x : P_c <= P_c' for all c' in {R,G,B}, c' != c}
+      const pressures = [pR, pG, pB];
+      const names = ['R', 'G', 'B'];
+      let minP = Infinity;
+      let maxP = -Infinity;
+      let depIdx = 0;
+      for (let i = 0; i < 3; i++) {
+        if (pressures[i] < minP) { minP = pressures[i]; depIdx = i; }
+        if (pressures[i] > maxP) { maxP = pressures[i]; }
+      }
+
+      // Depression strength: how much weaker vs strongest
+      const depStrength = Math.min(1.0, (maxP - minP) / (maxP + 0.001) * 2.0);
+
+      const col = DEPRESSION_COLORS[names[depIdx]];
+      const idx = (py * w + px) * 4;
+
+      const base = 0.1;
+      const bright = base + depStrength * (1.0 - base);
+      data[idx]     = Math.floor(col[0] * bright);
+      data[idx + 1] = Math.floor(col[1] * bright);
+      data[idx + 2] = Math.floor(col[2] * bright);
+      data[idx + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  // Draw face center markers — Def 0.1.4 §5.1
+  drawFaceCenterMarkers(ctx, w, h);
+  drawVertexMarkers(ctx, w, h, ['R', 'G', 'B']);
+  drawCenterMarker(ctx, w, h, 'rgba(255,255,255,0.5)', 'All E_c meet');
+}
+
+// ============================================================
+// PANEL C: SU(3) weight plane projection
+// Def 0.1.4 §8: domains projected onto T_3 x T_8 plane
+// ============================================================
+function renderC() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvC');
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  // Weight plane extent
+  const WE = 1.0;
+
+  // For each pixel in weight plane, find which domain it belongs to
+  // We need to invert: for a given weight plane point, sample
+  // many 3D points that project there, or use the sector structure.
+  //
+  // Since boundary lines pass through origin and are perp to root vectors,
+  // the domain is determined purely by angle in weight plane.
+  //
+  // Sector angles:
+  //   w_R at angle atan2(1/(2sqrt3), 1/2) = 30 deg
+  //   w_G at angle atan2(1/(2sqrt3), -1/2) = 150 deg
+  //   w_B at angle atan2(-1/sqrt3, 0) = -90 deg = 270 deg
+  //
+  // Boundary lines (perp to roots) pass through origin:
+  //   R-G boundary: perp to (1,0) => vertical line (T_3 = 0 axis)
+  //   G-B boundary: perp to (-1/2, sqrt3/2) => line at 30 deg from horizontal
+  //   B-R boundary: perp to (-1/2, -sqrt3/2) => line at -30 deg from horizontal
+
+  const sC = Math.min(w, h); // uniform scaling for panel C
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const u = (px - w/2) / sC * 2 * WE;  // T_3
+      const v = -(py - h/2) / sC * 2 * WE; // T_8
+
+      const r = Math.sqrt(u*u + v*v);
+      const theta = Math.atan2(v, u); // angle in weight plane
+
+      // Determine sector: which weight vector is this angle closest to?
+      // w_R at 30 deg, w_G at 150 deg, w_B at -90 deg (270 deg)
+      const angleR = Math.PI / 6;      // 30 deg
+      const angleG = 5 * Math.PI / 6;  // 150 deg
+      const angleB = -Math.PI / 2;     // -90 deg
+
+      function angleDiff(a, b) {
+        let d = a - b;
+        while (d > Math.PI) d -= 2*Math.PI;
+        while (d < -Math.PI) d += 2*Math.PI;
+        return Math.abs(d);
+      }
+
+      const dR = angleDiff(theta, angleR);
+      const dG = angleDiff(theta, angleG);
+      const dB = angleDiff(theta, angleB);
+
+      let col, secondDist;
+      if (dR <= dG && dR <= dB) {
+        col = DOMAIN_COLORS.R;
+        secondDist = Math.min(dG, dB);
+      } else if (dG <= dR && dG <= dB) {
+        col = DOMAIN_COLORS.G;
+        secondDist = Math.min(dR, dB);
+      } else {
+        col = DOMAIN_COLORS.B;
+        secondDist = Math.min(dR, dG);
+      }
+
+      // Fade near boundaries and near origin
+      const minD = Math.min(dR, dG, dB);
+      const boundaryProx = Math.min(1.0, (secondDist - minD) * 6.0);
+      const radialFade = Math.min(1.0, r * 8.0);
+
+      const idx = (py * w + px) * 4;
+      const bright = 0.08 + boundaryProx * radialFade * 0.7;
+      data[idx]     = Math.floor(col[0] * bright);
+      data[idx + 1] = Math.floor(col[1] * bright);
+      data[idx + 2] = Math.floor(col[2] * bright);
+      data[idx + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  // Draw weight vectors, root vectors, boundary lines
+  drawWeightDiagram(ctx, w, h, WE);
+}
+
+// ============================================================
+// PANEL D: Convergence landscape
+// Thm 0.2.3: |chi_total|^2 = 0 at center, rho != 0
+// Split view: left = |chi|^2, right = rho
+// ============================================================
+function renderD() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvD');
+  const eps2 = eps * eps;
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  const vR = VERTICES.R, vG = VERTICES.G, vB = VERTICES.B;
+
+  // Normalization maxima
+  const pMax = 1.0 / eps2;
+  const pOther = 1.0 / (4.0/3 + eps2);
+  const cohMax = a0*a0 * 0.5 * 3 * (pMax - pOther) * (pMax - pOther);
+  const rhoMax = a0*a0 * pMax*pMax;
+  const logCohMax = Math.log(1 + cohMax);
+  const logRhoMax = Math.log(1 + rhoMax);
+
+  const halfW = Math.floor(w / 2);
+
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const [u, v] = pxToCoord(px, py, w, h);
+      const [x, y, z] = to3D(u, v, cutPlane);
+
+      const pR = pressure(x, y, z, vR, eps2);
+      const pG = pressure(x, y, z, vG, eps2);
+      const pB = pressure(x, y, z, vB, eps2);
+
+      // Thm 0.2.1 §4.2: |chi_total|^2
+      const coh = a0*a0 * 0.5 * (
+        (pR - pG)*(pR - pG) +
+        (pG - pB)*(pG - pB) +
+        (pB - pR)*(pB - pR)
+      );
+
+      // Thm 0.2.1 §3.2: rho(x)
+      const rho = a0*a0 * (pR*pR + pG*pG + pB*pB);
+
+      const idx = (py * w + px) * 4;
+
+      if (px < halfW) {
+        // LEFT: |chi_total|^2 — coherent magnitude
+        // Purple-gold colormap: zero = black (center), high = bright gold
+        const norm = Math.log(1 + coh) / logCohMax;
+        const t = norm;
+        if (t < 0.3) {
+          const s = t / 0.3;
+          data[idx]     = Math.floor(s * 60);
+          data[idx + 1] = Math.floor(s * 10);
+          data[idx + 2] = Math.floor(s * 80);
+        } else if (t < 0.6) {
+          const s = (t - 0.3) / 0.3;
+          data[idx]     = Math.floor(60 + s * 140);
+          data[idx + 1] = Math.floor(10 + s * 80);
+          data[idx + 2] = Math.floor(80 - s * 40);
+        } else {
+          const s = (t - 0.6) / 0.4;
+          data[idx]     = Math.floor(200 + s * 55);
+          data[idx + 1] = Math.floor(90 + s * 165);
+          data[idx + 2] = Math.floor(40 + s * 60);
+        }
+      } else {
+        // RIGHT: rho(x) — energy density (always > 0)
+        // Teal-white colormap: low = dark teal, high = bright white
+        const norm = Math.log(1 + rho) / logRhoMax;
+        const t = norm;
+        if (t < 0.3) {
+          const s = t / 0.3;
+          data[idx]     = Math.floor(s * 10);
+          data[idx + 1] = Math.floor(s * 80);
+          data[idx + 2] = Math.floor(s * 70);
+        } else if (t < 0.6) {
+          const s = (t - 0.3) / 0.3;
+          data[idx]     = Math.floor(10 + s * 60);
+          data[idx + 1] = Math.floor(80 + s * 100);
+          data[idx + 2] = Math.floor(70 + s * 80);
+        } else {
+          const s = (t - 0.6) / 0.4;
+          data[idx]     = Math.floor(70 + s * 185);
+          data[idx + 1] = Math.floor(180 + s * 75);
+          data[idx + 2] = Math.floor(150 + s * 105);
+        }
+      }
+      data[idx + 3] = 255;
+    }
+  }
+
+  // Draw dividing line
+  for (let py = 0; py < h; py++) {
+    const idx = (py * w + halfW) * 4;
+    data[idx] = 60; data[idx+1] = 60; data[idx+2] = 80; data[idx+3] = 255;
+  }
+
+  ctx.putImageData(img, 0, 0);
+
+  // Labels
+  ctx.fillStyle = 'rgba(255,220,100,0.8)';
+  ctx.font = 'bold 10px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('|chi|^2', halfW / 2, h - 24);
+  ctx.fillText('(vanishes at center)', halfW / 2, h - 12);
+
+  ctx.fillStyle = 'rgba(100,255,200,0.8)';
+  ctx.fillText('rho(x)', halfW + (w - halfW) / 2, h - 24);
+  ctx.fillText('(persists everywhere)', halfW + (w - halfW) / 2, h - 12);
+
+  drawVertexMarkers(ctx, w, h, ['R', 'G', 'B']);
+
+  // Center markers
+  const [cx, cy] = coordToPx(0, 0, w, h);
+  // Left side: zero marker
+  if (cx > 10 && cx < halfW - 10) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, 10, 0, 2*Math.PI);
+    ctx.strokeStyle = '#ffcc00';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.fillStyle = '#ffcc00';
+    ctx.font = 'bold 9px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('= 0', cx + 13, cy + 3);
+  }
+  // Right side: non-zero marker
+  const cx2 = cx + (cx < halfW ? halfW : 0);
+  if (cx > 10) {
+    ctx.beginPath();
+    ctx.arc(Math.max(cx, halfW + 10), cy, 10, 0, 2*Math.PI);
+    ctx.strokeStyle = '#66ffcc';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.fillStyle = '#66ffcc';
+    ctx.font = 'bold 9px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('!= 0', Math.max(cx, halfW + 10) + 13, cy + 3);
+  }
+}
+
+// ============================================================
+// DRAWING HELPERS
+// ============================================================
+function drawVertexMarkers(ctx, w, h, which) {
+  for (const name of which) {
+    const v = VERTICES[name];
+    const [pu, pv] = projectVertex(v, cutPlane);
+    const [px, py] = coordToPx(pu, pv, w, h);
+
+    if (Math.abs(pu) > EXTENT || Math.abs(pv) > EXTENT) continue;
+
+    ctx.beginPath();
+    ctx.arc(px, py, 5, 0, 2 * Math.PI);
+    ctx.fillStyle = VERTEX_COLORS[name];
+    ctx.fill();
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '10px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('x_' + name, px + 8, py + 3);
+  }
+}
+
+function drawFaceCenterMarkers(ctx, w, h) {
+  const fcColors = { R: '#00cccc', G: '#cc00cc', B: '#cccc00' };
+  const fcLabels = { R: 'E_R center', G: 'E_G center', B: 'E_B center' };
+  for (const name of ['R', 'G', 'B']) {
+    const fc = FACE_CENTERS[name];
+    const [pu, pv] = projectVertex(fc, cutPlane);
+    const [px, py] = coordToPx(pu, pv, w, h);
+
+    if (Math.abs(pu) > EXTENT || Math.abs(pv) > EXTENT) continue;
+
+    // Diamond marker
+    ctx.beginPath();
+    ctx.moveTo(px, py - 6);
+    ctx.lineTo(px + 6, py);
+    ctx.lineTo(px, py + 6);
+    ctx.lineTo(px - 6, py);
+    ctx.closePath();
+    ctx.fillStyle = fcColors[name];
+    ctx.fill();
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.fillStyle = fcColors[name];
+    ctx.font = '9px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText(fcLabels[name], px + 9, py + 3);
+  }
+}
+
+function drawCenterMarker(ctx, w, h, color, label) {
+  const [cx, cy] = coordToPx(0, 0, w, h);
+  ctx.beginPath();
+  ctx.arc(cx, cy, 8, 0, 2 * Math.PI);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Crosshair
+  ctx.beginPath();
+  ctx.moveTo(cx - 5, cy); ctx.lineTo(cx + 5, cy);
+  ctx.moveTo(cx, cy - 5); ctx.lineTo(cx, cy + 5);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  ctx.fillStyle = color;
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText(label, cx + 11, cy + 3);
+}
+
+function drawBoundaryLines(ctx, w, h) {
+  // Domain boundaries are planes: (x_c' - x_c) . x = 0
+  // In 2D cut, these become lines through origin
+  // Def 0.1.4 §3.2
+
+  const boundaries = [
+    { n: 'R-G', normal3D: [-2*S3, 2*S3, 0], color: 'rgba(255,255,100,0.3)' },
+    { n: 'G-B', normal3D: [0, -2*S3, 2*S3], color: 'rgba(255,255,100,0.3)' },
+    { n: 'B-R', normal3D: [2*S3, 0, -2*S3], color: 'rgba(255,255,100,0.3)' },
+    // R-W, G-W, B-W boundaries
+    { n: 'R-W', normal3D: [0, 2*S3, 2*S3], color: 'rgba(200,200,200,0.2)' },
+    { n: 'G-W', normal3D: [2*S3, 0, 2*S3], color: 'rgba(200,200,200,0.2)' },
+    { n: 'B-W', normal3D: [2*S3, 2*S3, 0], color: 'rgba(200,200,200,0.2)' },
+  ];
+
+  for (const b of boundaries) {
+    // Project normal to 2D
+    const [n0, n1] = projectVertex(b.normal3D, cutPlane);
+    const len = Math.sqrt(n0*n0 + n1*n1);
+    if (len < 0.001) continue; // boundary parallel to cut plane
+
+    // Line perpendicular to projected normal, through origin
+    const dir = [-n1/len, n0/len]; // perpendicular direction
+    const scale = EXTENT * 2;
+
+    const [px0, py0] = coordToPx(-dir[0]*scale, -dir[1]*scale, w, h);
+    const [px1, py1] = coordToPx(dir[0]*scale, dir[1]*scale, w, h);
+
+    ctx.beginPath();
+    ctx.moveTo(px0, py0);
+    ctx.lineTo(px1, py1);
+    ctx.strokeStyle = b.color;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+}
+
+function drawWeightDiagram(ctx, w, h, WE) {
+  const sW = Math.min(w, h); // uniform scaling
+  function wToPx(t3, t8) {
+    const px = t3 / (2*WE) * sW + w/2;
+    const py = -t8 / (2*WE) * sW + h/2;
+    return [px, py];
+  }
+
+  // Draw axes
+  ctx.strokeStyle = 'rgba(100,100,120,0.3)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  const [ax0, ay0] = wToPx(-WE, 0);
+  const [ax1, ay1] = wToPx(WE, 0);
+  ctx.moveTo(ax0, ay0); ctx.lineTo(ax1, ay1);
+  const [ay2, ay3] = wToPx(0, -WE);
+  const [ay4, ay5] = wToPx(0, WE);
+  ctx.moveTo(ay2, ay3); ctx.lineTo(ay4, ay5);
+  ctx.stroke();
+
+  // Axis labels
+  ctx.fillStyle = 'rgba(120,120,140,0.6)';
+  ctx.font = '10px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('T_3', w - 20, h/2 - 8);
+  ctx.fillText('T_8', w/2 + 15, 15);
+
+  // Draw boundary lines (through origin, perp to root vectors)
+  const boundaryDefs = [
+    { root: ROOTS.RG, color: 'rgba(255,255,100,0.5)' },
+    { root: ROOTS.GB, color: 'rgba(255,255,100,0.5)' },
+    { root: ROOTS.BR, color: 'rgba(255,255,100,0.5)' },
+  ];
+
+  for (const bd of boundaryDefs) {
+    // Line direction = perpendicular to root
+    const dir = [-bd.root[1], bd.root[0]];
+    const len = Math.sqrt(dir[0]*dir[0] + dir[1]*dir[1]);
+    const scale = WE * 1.5;
+    const d0 = dir[0]/len * scale;
+    const d1 = dir[1]/len * scale;
+
+    const [px0, py0] = wToPx(-d0, -d1);
+    const [px1, py1] = wToPx(d0, d1);
+
+    ctx.beginPath();
+    ctx.moveTo(px0, py0);
+    ctx.lineTo(px1, py1);
+    ctx.strokeStyle = bd.color;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // Draw root vectors as arrows
+  const rootDefs = [
+    { name: 'alpha_RG', vec: ROOTS.RG, color: '#ffaa44' },
+    { name: 'alpha_GB', vec: ROOTS.GB, color: '#ffaa44' },
+    { name: 'alpha_BR', vec: ROOTS.BR, color: '#ffaa44' },
+  ];
+
+  for (const rd of rootDefs) {
+    const scale = 0.4;
+    const [px0, py0] = wToPx(0, 0);
+    const [px1, py1] = wToPx(rd.vec[0]*scale, rd.vec[1]*scale);
+
+    ctx.beginPath();
+    ctx.moveTo(px0, py0);
+    ctx.lineTo(px1, py1);
+    ctx.strokeStyle = rd.color;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Arrowhead
+    const dx = px1 - px0, dy = py1 - py0;
+    const dl = Math.sqrt(dx*dx + dy*dy);
+    const ax = dx/dl, ay = dy/dl;
+    ctx.beginPath();
+    ctx.moveTo(px1, py1);
+    ctx.lineTo(px1 - ax*6 + ay*3, py1 - ay*6 - ax*3);
+    ctx.lineTo(px1 - ax*6 - ay*3, py1 - ay*6 + ax*3);
+    ctx.closePath();
+    ctx.fillStyle = rd.color;
+    ctx.fill();
+  }
+
+  // Draw weight vectors as points
+  const weightDefs = [
+    { name: 'R', w: WEIGHTS.R, color: '#ff3333' },
+    { name: 'G', w: WEIGHTS.G, color: '#33ff33' },
+    { name: 'B', w: WEIGHTS.B, color: '#3377ff' },
+  ];
+
+  for (const wd of weightDefs) {
+    const [px, py] = wToPx(wd.w[0], wd.w[1]);
+    ctx.beginPath();
+    ctx.arc(px, py, 7, 0, 2*Math.PI);
+    ctx.fillStyle = wd.color;
+    ctx.fill();
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 10px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('w_' + wd.name, px + 10, py + 4);
+  }
+
+  // Draw fundamental triangle connecting weights
+  ctx.beginPath();
+  const [pR0, pR1] = wToPx(WEIGHTS.R[0], WEIGHTS.R[1]);
+  const [pG0, pG1] = wToPx(WEIGHTS.G[0], WEIGHTS.G[1]);
+  const [pB0, pB1] = wToPx(WEIGHTS.B[0], WEIGHTS.B[1]);
+  ctx.moveTo(pR0, pR1);
+  ctx.lineTo(pG0, pG1);
+  ctx.lineTo(pB0, pB1);
+  ctx.closePath();
+  ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  // Origin marker
+  const [ox, oy] = wToPx(0, 0);
+  ctx.beginPath();
+  ctx.arc(ox, oy, 4, 0, 2*Math.PI);
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.fill();
+
+  // Label: "120 deg" between root vectors
+  ctx.fillStyle = 'rgba(255,170,68,0.7)';
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'center';
+  const labelR = 0.25;
+  const [lx, ly] = wToPx(labelR * Math.cos(Math.PI/6), labelR * Math.sin(Math.PI/6));
+  ctx.fillText('120 deg', lx + 25, ly - 5);
+}
+
+// ============================================================
+// RENDER ALL
+// ============================================================
+function renderAll() {
+  renderA();
+  renderB();
+  renderC();
+  renderD();
+  updateVertexInfo();
+  updateMetrics();
+}
+
+function updateVertexInfo() {
+  const info = document.getElementById('vertexInfo');
+  const lines = [];
+  for (const n of ['R', 'G', 'B', 'W']) {
+    const v = VERTICES[n];
+    const [pu, pv] = projectVertex(v, cutPlane);
+    lines.push(`x_${n} = (${v[0].toFixed(3)}, ${v[1].toFixed(3)}, ${v[2].toFixed(3)})`);
+  }
+  lines.push('');
+  for (const n of ['R', 'G', 'B']) {
+    const fc = FACE_CENTERS[n];
+    lines.push(`face_${n} = (${fc[0].toFixed(3)}, ${fc[1].toFixed(3)}, ${fc[2].toFixed(3)})`);
+  }
+  info.innerHTML = lines.join('<br>');
+}
+
+function updateMetrics() {
+  const eps2 = eps * eps;
+  const P0 = 1 / (1 + eps2);
+  const rho0 = 3 * a0*a0 * P0*P0;
+  const alpha = 2 * a0*a0 * (1 - 3*eps2) / Math.pow(1 + eps2, 4);
+
+  document.getElementById('metP0').textContent = P0.toFixed(4);
+  document.getElementById('metRho0').textContent = rho0.toFixed(4);
+  document.getElementById('metAlpha').textContent = alpha.toFixed(4) + (alpha > 0 ? ' > 0 (stable)' : ' <= 0');
+  document.getElementById('metRobs').textContent = eps.toFixed(2) + ' (= e)';
+
+  const sa = document.getElementById('solidAngles');
+  sa.innerHTML = `Each domain: pi sr = ${Math.PI.toFixed(4)} sr (25%)<br>Total: 4*pi = ${(4*Math.PI).toFixed(4)} sr`;
+}
+
+// ============================================================
+// PROBE (mouse hover)
+// ============================================================
+function setupProbe(canvasId) {
+  const cv = document.getElementById(canvasId);
+  cv.addEventListener('mousemove', (e) => {
+    const rect = cv.getBoundingClientRect();
+    const px = e.clientX - rect.left;
+    const py = e.clientY - rect.top;
+    const [u, v] = pxToCoord(px, py, rect.width, rect.height);
+    probeX = u; probeY = v;
+    updateProbe();
+  });
+  cv.addEventListener('mouseleave', () => {
+    probeX = NaN;
+    const ids = ['probePos','probePR','probePG','probePB','probePW',
+                 'probeDom','probeDep','probeCoh','probeRho','probeRatio'];
+    ids.forEach(id => document.getElementById(id).textContent = '-');
+  });
+}
+
+function updateProbe() {
+  if (isNaN(probeX)) return;
+  const [x, y, z] = to3D(probeX, probeY, cutPlane);
+  const eps2 = eps * eps;
+
+  const pR = pressure(x, y, z, VERTICES.R, eps2);
+  const pG = pressure(x, y, z, VERTICES.G, eps2);
+  const pB = pressure(x, y, z, VERTICES.B, eps2);
+  const pW = pressure(x, y, z, VERTICES.W, eps2);
+
+  // Dominant color
+  const pressures = { R: pR, G: pG, B: pB, W: pW };
+  let domName = 'R', maxP = pR;
+  for (const [name, val] of Object.entries(pressures)) {
+    if (val > maxP) { maxP = val; domName = name; }
+  }
+
+  // Depressed color (among R,G,B only)
+  const colorPressures = { R: pR, G: pG, B: pB };
+  let depName = 'R', minP = pR;
+  for (const [name, val] of Object.entries(colorPressures)) {
+    if (val < minP) { minP = val; depName = name; }
+  }
+
+  // Coherent and incoherent
+  const coh = a0*a0 * 0.5 * (
+    (pR - pG)*(pR - pG) +
+    (pG - pB)*(pG - pB) +
+    (pB - pR)*(pB - pR)
+  );
+  const rho = a0*a0 * (pR*pR + pG*pG + pB*pB);
+  const P0 = 1 / (1 + eps2);
+  const rho0 = 3 * a0*a0 * P0*P0;
+
+  document.getElementById('probePos').textContent = `(${probeX.toFixed(3)}, ${probeY.toFixed(3)})`;
+  document.getElementById('probePR').textContent = pR.toFixed(4);
+  document.getElementById('probePG').textContent = pG.toFixed(4);
+  document.getElementById('probePB').textContent = pB.toFixed(4);
+  document.getElementById('probePW').textContent = pW.toFixed(4);
+  document.getElementById('probeDom').textContent = `D_${domName} (P_${domName} = ${maxP.toFixed(4)})`;
+  document.getElementById('probeDep').textContent = `E_${depName} (P_${depName} = ${minP.toFixed(4)})`;
+  document.getElementById('probeCoh').textContent = coh.toFixed(4);
+  document.getElementById('probeRho').textContent = rho.toFixed(4);
+  document.getElementById('probeRatio').textContent = (rho / rho0).toFixed(4);
+}
+
+// ============================================================
+// CONTROLS
+// ============================================================
+document.getElementById('sliderEps').addEventListener('input', e => {
+  eps = parseFloat(e.target.value);
+  document.getElementById('valEps').textContent = eps.toFixed(2);
+  renderAll();
+});
+
+['btnXY', 'btnXZ', 'btnYZ'].forEach(id => {
+  document.getElementById(id).addEventListener('click', () => {
+    cutPlane = id.replace('btn', '').toLowerCase();
+    document.querySelectorAll('.ctrl-row button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    renderAll();
+  });
+});
+
+['cvA', 'cvB', 'cvC', 'cvD'].forEach(setupProbe);
+
+window.addEventListener('resize', renderAll);
+
+// ============================================================
+// INIT
+// ============================================================
+renderAll();
+
+</script>
+</body>
+</html>

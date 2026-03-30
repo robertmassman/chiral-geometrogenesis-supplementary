@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Def 0.1.3 → Thm 0.2.1 — Pressure Functions & Color Field Superposition</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a14;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 8px 16px;
+  background: rgba(6,6,16,0.95);
+  border-bottom: 1px solid #1a1a2e;
+  z-index: 10;
+}
+header h1 { font-size: 13px; font-weight: 600; color: #e0e0e8; }
+header .subtitle { font-size: 11px; color: #777; margin-top: 2px; }
+
+.main-area {
+  flex: 1; display: flex; overflow: hidden;
+}
+
+/* Canvas grid */
+.canvas-grid {
+  flex: 1; display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  background: #111;
+  padding: 1px;
+}
+.canvas-cell {
+  position: relative;
+  background: #0a0a14;
+  overflow: hidden;
+}
+.canvas-cell canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+.canvas-label {
+  position: absolute;
+  top: 6px; left: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #e0e0e8;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+.canvas-sublabel {
+  position: absolute;
+  top: 22px; left: 8px;
+  font-size: 9px;
+  color: #888;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+.canvas-eq {
+  position: absolute;
+  bottom: 6px; left: 8px;
+  font-size: 10px;
+  color: #aab;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Side panel */
+.side-panel {
+  width: 280px;
+  background: rgba(8,8,18,0.95);
+  border-left: 1px solid #1a1a2e;
+  overflow-y: auto;
+  padding: 12px;
+  flex-shrink: 0;
+}
+.panel-section {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(30,30,50,0.5);
+}
+.panel-section h3 {
+  font-size: 10px; text-transform: uppercase; color: #555;
+  margin-bottom: 5px; letter-spacing: 1px;
+}
+.ctrl-row {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; margin: 4px 0;
+}
+.ctrl-row label { color: #888; min-width: 20px; }
+.ctrl-row input[type="range"] { flex: 1; accent-color: #4a7aaa; }
+.ctrl-row .val { color: #e0e0e8; font-weight: 600; min-width: 40px; text-align: right; }
+
+.info-box {
+  background: rgba(12,12,24,0.7); border: 1px solid rgba(30,30,50,0.5); border-radius: 4px;
+  padding: 7px; margin: 5px 0; font-size: 10px; line-height: 1.6;
+}
+.info-box em { color: #999; font-style: normal; }
+
+.legend-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin: 3px 0; }
+.legend-swatch { width: 10px; height: 10px; border-radius: 50%; }
+
+.readout {
+  font-size: 10px; color: #aab; margin: 2px 0;
+}
+.readout .val { color: #e0e0e8; font-weight: 600; }
+
+button {
+  background: #1a1a2e; color: #c8c8d0; border: 1px solid #2e2e44;
+  padding: 3px 10px; border-radius: 4px; font-family: inherit;
+  font-size: 11px; cursor: pointer; transition: all 0.15s;
+  margin: 2px;
+}
+button:hover { background: #24243a; }
+button.active { background: #2a3a5a; border-color: #4a6a9a; color: #88bbff; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Pressure Functions & Color Field Superposition</h1>
+  <div class="subtitle">Def 0.1.3: P_c(x) = 1/(|x − x_c|² + ε²) → Def 0.1.2: χ_c(x) = a₀·P_c(x)·e^{iφ_c} → Thm 0.2.1: χ_total = Σ χ_c</div>
+</header>
+
+<div class="main-area">
+  <div class="canvas-grid">
+    <!-- Panel A: Single pressure function -->
+    <div class="canvas-cell">
+      <canvas id="cvA"></canvas>
+      <div class="canvas-label">(a) Single pressure function P_R(x)</div>
+      <div class="canvas-sublabel">Def 0.1.3 — Inverse-square from vertex x_R</div>
+      <div class="canvas-eq">P_R(x) = 1 / (|x − x_R|² + ε²)</div>
+    </div>
+
+    <!-- Panel B: χ_total as complex field -->
+    <div class="canvas-cell">
+      <canvas id="cvB"></canvas>
+      <div class="canvas-label">(b) Total field χ_total(x) ∈ ℂ</div>
+      <div class="canvas-sublabel">Thm 0.2.1 §2.2 — Hue = phase arg(χ), brightness = |χ|</div>
+      <div class="canvas-eq">χ_total = a₀ [P_R + ω·P_G + ω²·P_B],  ω = e^{2πi/3}</div>
+    </div>
+
+    <!-- Panel C: |χ_total|² coherent -->
+    <div class="canvas-cell">
+      <canvas id="cvC"></canvas>
+      <div class="canvas-label">(c) Coherent magnitude |χ_total|²</div>
+      <div class="canvas-sublabel">Thm 0.2.1 §4.2 — Vanishes at center</div>
+      <div class="canvas-eq">|χ_total|² = ½ Σ (P_c − P_c')²  →  |χ_total(0)|² = 0</div>
+    </div>
+
+    <!-- Panel D: ρ(x) energy density -->
+    <div class="canvas-cell">
+      <canvas id="cvD"></canvas>
+      <div class="canvas-label">(d) Energy density ρ(x)</div>
+      <div class="canvas-sublabel">Thm 0.2.1 §3 — Positive definite, peaks at vertices</div>
+      <div class="canvas-eq">ρ(x) = a₀² Σ P_c(x)²  →  ρ(0) = 3a₀²P₀² ≠ 0</div>
+    </div>
+  </div>
+
+  <div class="side-panel">
+
+    <div class="panel-section">
+      <h3>Parameters</h3>
+      <div class="ctrl-row">
+        <label>ε</label>
+        <input type="range" id="sliderEps" min="0.05" max="1.0" step="0.01" value="0.30">
+        <span class="val" id="valEps">0.30</span>
+      </div>
+      <div class="readout">Regularization — controls vertex sharpness</div>
+
+      <div class="ctrl-row" style="margin-top:8px;">
+        <label>a₀</label>
+        <input type="range" id="sliderA0" min="0.1" max="2.0" step="0.05" value="1.0">
+        <span class="val" id="valA0">1.00</span>
+      </div>
+      <div class="readout">Amplitude scale (dimensionless in Phase 0)</div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Geometry</h3>
+      <div class="readout">Plane cut through stella octangula</div>
+      <div class="ctrl-row">
+        <label>Cut</label>
+        <button id="btnXY" class="active">xy</button>
+        <button id="btnXZ">xz</button>
+        <button id="btnYZ">yz</button>
+      </div>
+      <div class="readout" style="margin-top:4px;">
+        Vertex positions (Def 0.1.3 §2.1):
+      </div>
+      <div class="readout" id="vertexInfo" style="font-size:9px; line-height:1.5; color:#88aacc;">
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Probe (hover over panels)</h3>
+      <div class="readout">Position: <span class="val" id="probePos">—</span></div>
+      <div class="readout">P_R(x): <span class="val" id="probePR">—</span></div>
+      <div class="readout">P_G(x): <span class="val" id="probePG">—</span></div>
+      <div class="readout">P_B(x): <span class="val" id="probePB">—</span></div>
+      <div class="readout" style="margin-top:4px; color:#666;">— χ_total(x) —</div>
+      <div class="readout">Re[χ]: <span class="val" id="probeRe">—</span></div>
+      <div class="readout">Im[χ]: <span class="val" id="probeIm">—</span></div>
+      <div class="readout">|χ_total|: <span class="val" id="probeMag">—</span></div>
+      <div class="readout">arg(χ): <span class="val" id="probeArg">—</span></div>
+      <div class="readout" style="margin-top:4px; color:#666;">— Intensities —</div>
+      <div class="readout">|χ_total|²: <span class="val" id="probeCoh">—</span></div>
+      <div class="readout">ρ(x): <span class="val" id="probeRho">—</span></div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Panel (b) — Complex Phase Colorwheel</h3>
+      <div class="readout" style="margin-bottom:4px;">Hue = arg(χ_total), Brightness = |χ_total|</div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#ff3333;"></div>
+        <span>arg = 0 — near x_R (φ_R = 0)</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#33ff33;"></div>
+        <span>arg = 2π/3 — near x_G (φ_G = 2π/3)</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#3366ff;"></div>
+        <span>arg = 4π/3 — near x_B (φ_B = 4π/3)</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#000; border:1px solid #444;"></div>
+        <span>Dark = |χ_total| → 0 (center node)</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Key Properties (Thm 0.2.1)</h3>
+      <div class="info-box">
+        <em>At center x = 0:</em><br>
+        P_R = P_G = P_B = P₀ = 1/(1+ε²)<br>
+        <span style="color:#ffcc66;">χ_total(0) = a₀P₀(1 + ω + ω²) = 0</span><br>
+        <span style="color:#66ffcc;">ρ(0) = 3a₀²P₀² ≠ 0</span><br><br>
+        <em>At vertex x = x_R:</em><br>
+        P_R(x_R) = 1/ε² (maximum)<br>
+        P_G(x_R), P_B(x_R) ≈ 1/(4/3+ε²)<br>
+        <span style="color:#ffcc66;">|χ_total|² ≫ 0 (fields unequal)</span><br>
+        <span style="color:#66ffcc;">ρ(x_R) ≈ a₀²/ε⁴ (energy peak)</span><br><br>
+        <em>Physical interpretation:</em><br>
+        • Coherent sum vanishes at center<br>
+        &nbsp;&nbsp;(destructive Z₃ interference)<br>
+        • Energy density is always > 0<br>
+        &nbsp;&nbsp;(energy redistributed, not destroyed)<br>
+        • Vertices are "hot spots"
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Proof References</h3>
+      <div class="info-box">
+        <em>Def 0.1.1</em> — Stella octangula boundary<br>
+        <em>Def 0.1.2</em> — Color fields & Z₃ phases<br>
+        <em>Def 0.1.3</em> — Pressure functions P_c(x)<br>
+        <em>Thm 0.2.1</em> — Total field superposition<br>
+        <em>Prop 0.1.3a</em> — Form-independence<br><br>
+        <em>Axioms (P1)–(P5):</em><br>
+        (P1) Max at source vertex<br>
+        (P2) Min at antipodal vertex<br>
+        (P3) S₃ color permutation symmetry<br>
+        (P4) Continuous on ∂S<br>
+        (P5) Monotone decrease source→antipode
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ============================================================
+// EXACT MATHEMATICS FROM THE PROOFS
+// ============================================================
+
+// Vertex positions — Def 0.1.3 §2.1
+// T₊ (quark colors R, G, B + singlet W)
+const S3 = 1 / Math.sqrt(3);
+const VERTICES = {
+  // T₊
+  R:  [ S3, -S3, -S3],
+  G:  [-S3,  S3, -S3],
+  B:  [-S3, -S3,  S3],
+  W:  [ S3,  S3,  S3],
+  // T₋ (anti-colors, antipodal: x_c̄ = -x_c)
+  Rb: [-S3,  S3,  S3],
+  Gb: [ S3, -S3,  S3],
+  Bb: [ S3,  S3, -S3],
+  Wb: [-S3, -S3, -S3],
+};
+
+// Phases — Def 0.1.2
+// φ_R = 0, φ_G = 2π/3, φ_B = 4π/3
+const PHASES = {
+  R: 0,
+  G: 2 * Math.PI / 3,
+  B: 4 * Math.PI / 3,
+};
+
+// Pressure function — Def 0.1.3 §1
+// P_c(x) = 1 / (|x - x_c|² + ε²)
+function pressureFunc(x, y, z, vertex, eps2) {
+  const dx = x - vertex[0];
+  const dy = y - vertex[1];
+  const dz = z - vertex[2];
+  return 1.0 / (dx*dx + dy*dy + dz*dz + eps2);
+}
+
+// ============================================================
+// STATE
+// ============================================================
+let eps = 0.30;
+let a0 = 1.0;
+let cutPlane = 'xy'; // which 2D slice
+let probeX = NaN, probeY = NaN;
+
+// ============================================================
+// PLANE CUTS
+// ============================================================
+// Project 3D vertex onto 2D plane
+function projectVertex(v, plane) {
+  if (plane === 'xy') return [v[0], v[1]];
+  if (plane === 'xz') return [v[0], v[2]];
+  if (plane === 'yz') return [v[1], v[2]];
+}
+
+// Reconstruct 3D point from 2D plane coordinates
+function to3D(u, v, plane) {
+  if (plane === 'xy') return [u, v, 0];
+  if (plane === 'xz') return [u, 0, v];
+  if (plane === 'yz') return [0, u, v];
+}
+
+// ============================================================
+// RENDERING
+// ============================================================
+const EXTENT = 1.4; // coordinate range [-EXTENT, EXTENT]
+
+function getCanvasAndCtx(id) {
+  const cv = document.getElementById(id);
+  const rect = cv.parentElement.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio, 2);
+  cv.width = rect.width * dpr;
+  cv.height = rect.height * dpr;
+  cv.style.width = rect.width + 'px';
+  cv.style.height = rect.height + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { cv, ctx, w: rect.width, h: rect.height };
+}
+
+// Convert pixel to coordinate
+function pxToCoord(px, py, w, h) {
+  const u = (px / w - 0.5) * 2 * EXTENT;
+  const v = -(py / h - 0.5) * 2 * EXTENT; // y-up
+  return [u, v];
+}
+
+// ============================================================
+// PANEL A: Single pressure function P_R
+// ============================================================
+function renderA() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvA');
+  const eps2 = eps * eps;
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  // Find max for normalization
+  const vR = VERTICES.R;
+  const maxP = 1.0 / eps2; // P_R at x_R
+
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const [u, v] = pxToCoord(px, py, w, h);
+      const [x, y, z] = to3D(u, v, cutPlane);
+
+      const pR = pressureFunc(x, y, z, vR, eps2);
+
+      // Normalize to [0,1] with log scaling for visibility
+      // Use log(1 + P/P_ref) to show the full dynamic range
+      const pRef = 1.0 / (1 + eps2); // P at center
+      const norm = Math.log(1 + pR / pRef) / Math.log(1 + maxP / pRef);
+
+      // Red colormap: black → dark red → bright red → white at peak
+      const idx = (py * w + px) * 4;
+      if (norm < 0.5) {
+        const t = norm * 2;
+        data[idx]     = Math.floor(t * 220);
+        data[idx + 1] = Math.floor(t * 30);
+        data[idx + 2] = Math.floor(t * 20);
+      } else {
+        const t = (norm - 0.5) * 2;
+        data[idx]     = Math.floor(220 + t * 35);
+        data[idx + 1] = Math.floor(30 + t * 225);
+        data[idx + 2] = Math.floor(20 + t * 235);
+      }
+      data[idx + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  // Draw vertex marker
+  drawVertexMarkers(ctx, w, h, ['R']);
+  drawCenterCross(ctx, w, h);
+}
+
+// ============================================================
+// PANEL B: χ_total(x) as complex field — phase→hue, |χ|→brightness
+// ============================================================
+
+// HSL to RGB (standard conversion for phase colorwheel)
+function hslToRgb(h, s, l) {
+  // h in [0,1], s in [0,1], l in [0,1]
+  if (s === 0) return [l, l, l];
+  function hue2rgb(p, q, t) {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1/6) return p + (q - p) * 6 * t;
+    if (t < 1/2) return q;
+    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+    return p;
+  }
+  const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+  const p = 2 * l - q;
+  return [hue2rgb(p, q, h + 1/3), hue2rgb(p, q, h), hue2rgb(p, q, h - 1/3)];
+}
+
+function renderB() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvB');
+  const eps2 = eps * eps;
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  const vR = VERTICES.R, vG = VERTICES.G, vB = VERTICES.B;
+
+  // Phase factors — Def 0.1.2
+  // e^{iφ_R} = 1,  e^{iφ_G} = ω = e^{2πi/3},  e^{iφ_B} = ω² = e^{4πi/3}
+  const cosG = Math.cos(2 * Math.PI / 3); // -1/2
+  const sinG = Math.sin(2 * Math.PI / 3); //  √3/2
+  const cosB = Math.cos(4 * Math.PI / 3); // -1/2
+  const sinB = Math.sin(4 * Math.PI / 3); // -√3/2
+
+  // Find max |χ_total| for normalization (occurs near a vertex)
+  // At x_R: χ ≈ a₀/ε² + small complex corrections
+  const pMax = 1.0 / eps2;
+  const pOther = 1.0 / (4.0/3 + eps2);
+  // Re = P_R - ½(P_G + P_B), Im = (√3/2)(P_G - P_B)
+  const reMax = pMax - 0.5 * (pOther + pOther);
+  const imMax = 0; // P_G ≈ P_B at x_R by symmetry
+  const magMax = Math.sqrt(reMax * reMax + imMax * imMax) * a0;
+
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const [u, v] = pxToCoord(px, py, w, h);
+      const [x, y, z] = to3D(u, v, cutPlane);
+
+      const pR = pressureFunc(x, y, z, vR, eps2);
+      const pG = pressureFunc(x, y, z, vG, eps2);
+      const pB = pressureFunc(x, y, z, vB, eps2);
+
+      // Thm 0.2.1 §2.2 — exact complex total field
+      // χ_total = a₀ [P_R·1 + P_G·ω + P_B·ω²]
+      // Re[χ] = a₀ [P_R - ½(P_G + P_B)]          (§2.3)
+      // Im[χ] = a₀ · (√3/2)(P_G - P_B)            (§2.3)
+      const re = a0 * (pR + pG * cosG + pB * cosB);
+      const im = a0 * (pG * sinG + pB * sinB);
+
+      const mag = Math.sqrt(re * re + im * im);
+      const phase = Math.atan2(im, re); // in [-π, π]
+
+      // Map phase to hue: arg(χ) → color wheel
+      // Phase 0 (near x_R) → red, 2π/3 (near x_G) → green, 4π/3 (near x_B) → blue
+      // atan2 gives [-π, π], convert to [0, 1] for hue
+      let hue = phase / (2 * Math.PI);
+      if (hue < 0) hue += 1.0;
+
+      // Map magnitude to lightness (log scale for dynamic range)
+      // 0 → black (center node), max → full saturation
+      const normMag = Math.log(1 + mag) / Math.log(1 + magMax);
+      const lightness = normMag * 0.5; // 0 = black, 0.5 = full color
+      const saturation = mag > 1e-10 ? 1.0 : 0.0;
+
+      const [r, g, b] = hslToRgb(hue, saturation, lightness);
+
+      const idx = (py * w + px) * 4;
+      data[idx]     = Math.min(255, Math.floor(r * 255));
+      data[idx + 1] = Math.min(255, Math.floor(g * 255));
+      data[idx + 2] = Math.min(255, Math.floor(b * 255));
+      data[idx + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  drawVertexMarkers(ctx, w, h, ['R', 'G', 'B']);
+  drawCenterZeroB(ctx, w, h);
+}
+
+// ============================================================
+// PANEL C: |χ_total|² — coherent field magnitude
+// ============================================================
+function renderC() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvC');
+  const eps2 = eps * eps;
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  const vR = VERTICES.R, vG = VERTICES.G, vB = VERTICES.B;
+
+  // Thm 0.2.1 §4.2:
+  // |χ_total|² = (a₀²/2) [(P_R - P_G)² + (P_G - P_B)² + (P_B - P_R)²]
+
+  // Find max for normalization (at a vertex)
+  const pMax = 1.0 / eps2;
+  const pOther = 1.0 / (4.0/3 + eps2); // P of other colors at one vertex
+  const cohMax = a0*a0 * 0.5 * (3 * (pMax - pOther) * (pMax - pOther));
+  const logCohMax = Math.log(1 + cohMax);
+
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const [u, v] = pxToCoord(px, py, w, h);
+      const [x, y, z] = to3D(u, v, cutPlane);
+
+      const pR = pressureFunc(x, y, z, vR, eps2);
+      const pG = pressureFunc(x, y, z, vG, eps2);
+      const pB = pressureFunc(x, y, z, vB, eps2);
+
+      // Exact formula from Thm 0.2.1 §4.2
+      const coh = a0*a0 * 0.5 * (
+        (pR - pG)*(pR - pG) +
+        (pG - pB)*(pG - pB) +
+        (pB - pR)*(pB - pR)
+      );
+
+      const norm = Math.log(1 + coh) / logCohMax;
+
+      // Which color dominates? Use for hue tinting
+      const maxP = Math.max(pR, pG, pB);
+      const rFrac = pR / (pR + pG + pB);
+      const gFrac = pG / (pR + pG + pB);
+      const bFrac = pB / (pR + pG + pB);
+
+      // Tint by dominant color, intensity by coherent magnitude
+      const idx = (py * w + px) * 4;
+      const bright = norm * 0.9;
+      // Mix: mostly white-gold where coherent is high, tinted by dominant color
+      data[idx]     = Math.min(255, Math.floor((0.3 + rFrac * 0.7) * bright * 255));
+      data[idx + 1] = Math.min(255, Math.floor((0.3 + gFrac * 0.7) * bright * 255 * 0.85));
+      data[idx + 2] = Math.min(255, Math.floor((0.3 + bFrac * 0.7) * bright * 255 * 0.7));
+      data[idx + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  // Mark the center where |χ_total|² = 0
+  drawVertexMarkers(ctx, w, h, ['R', 'G', 'B']);
+  drawCenterZero(ctx, w, h);
+}
+
+// ============================================================
+// PANEL D: ρ(x) = a₀² Σ P_c² — energy density
+// ============================================================
+function renderD() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvD');
+  const eps2 = eps * eps;
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  const vR = VERTICES.R, vG = VERTICES.G, vB = VERTICES.B;
+
+  // Thm 0.2.1 §3.2: ρ(x) = a₀² Σ_c P_c(x)²
+  const pMax = 1.0 / eps2;
+  const rhoMax = a0*a0 * pMax*pMax; // dominated by single vertex term
+  const logRhoMax = Math.log(1 + rhoMax);
+
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const [u, v] = pxToCoord(px, py, w, h);
+      const [x, y, z] = to3D(u, v, cutPlane);
+
+      const pR = pressureFunc(x, y, z, vR, eps2);
+      const pG = pressureFunc(x, y, z, vG, eps2);
+      const pB = pressureFunc(x, y, z, vB, eps2);
+
+      // Exact formula from Thm 0.2.1 §3.2
+      const rho = a0*a0 * (pR*pR + pG*pG + pB*pB);
+
+      const norm = Math.log(1 + rho) / logRhoMax;
+
+      // Warm colormap: black → deep blue → teal → green → yellow → white
+      const idx = (py * w + px) * 4;
+      const t = norm;
+      if (t < 0.2) {
+        const s = t / 0.2;
+        data[idx]     = Math.floor(s * 10);
+        data[idx + 1] = Math.floor(s * 20);
+        data[idx + 2] = Math.floor(s * 60);
+      } else if (t < 0.4) {
+        const s = (t - 0.2) / 0.2;
+        data[idx]     = Math.floor(10 + s * 10);
+        data[idx + 1] = Math.floor(20 + s * 100);
+        data[idx + 2] = Math.floor(60 + s * 80);
+      } else if (t < 0.6) {
+        const s = (t - 0.4) / 0.2;
+        data[idx]     = Math.floor(20 + s * 80);
+        data[idx + 1] = Math.floor(120 + s * 80);
+        data[idx + 2] = Math.floor(140 - s * 100);
+      } else if (t < 0.8) {
+        const s = (t - 0.6) / 0.2;
+        data[idx]     = Math.floor(100 + s * 155);
+        data[idx + 1] = Math.floor(200 + s * 40);
+        data[idx + 2] = Math.floor(40 + s * 10);
+      } else {
+        const s = (t - 0.8) / 0.2;
+        data[idx]     = 255;
+        data[idx + 1] = Math.floor(240 + s * 15);
+        data[idx + 2] = Math.floor(50 + s * 205);
+      }
+      data[idx + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  drawVertexMarkers(ctx, w, h, ['R', 'G', 'B']);
+  drawCenterNonzero(ctx, w, h);
+}
+
+// ============================================================
+// DRAWING HELPERS
+// ============================================================
+function coordToPx(u, v, w, h) {
+  const px = (u / (2 * EXTENT) + 0.5) * w;
+  const py = (-v / (2 * EXTENT) + 0.5) * h;
+  return [px, py];
+}
+
+const VERTEX_COLORS = {
+  R: '#ff3333', G: '#33ff33', B: '#3377ff',
+  W: '#ffffff', Rb: '#00cccc', Gb: '#cc00cc', Bb: '#cccc00', Wb: '#666666'
+};
+
+function drawVertexMarkers(ctx, w, h, which) {
+  for (const name of which) {
+    const v = VERTICES[name];
+    const [pu, pv] = projectVertex(v, cutPlane);
+    const [px, py] = coordToPx(pu, pv, w, h);
+
+    // Only draw if the vertex is in the visible range
+    if (Math.abs(pu) > EXTENT || Math.abs(pv) > EXTENT) continue;
+
+    ctx.beginPath();
+    ctx.arc(px, py, 5, 0, 2 * Math.PI);
+    ctx.fillStyle = VERTEX_COLORS[name];
+    ctx.fill();
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '10px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('x_' + name, px + 8, py + 3);
+  }
+}
+
+function drawCenterCross(ctx, w, h) {
+  const [cx, cy] = coordToPx(0, 0, w, h);
+  ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(cx - 6, cy); ctx.lineTo(cx + 6, cy);
+  ctx.moveTo(cx, cy - 6); ctx.lineTo(cx, cy + 6);
+  ctx.stroke();
+}
+
+function drawCenterZeroB(ctx, w, h) {
+  // Mark center node where χ_total = 0 (panel B)
+  const [cx, cy] = coordToPx(0, 0, w, h);
+  ctx.beginPath();
+  ctx.arc(cx, cy, 8, 0, 2 * Math.PI);
+  ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.font = 'bold 10px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('χ = 0', cx + 11, cy + 4);
+}
+
+function drawCenterZero(ctx, w, h) {
+  const [cx, cy] = coordToPx(0, 0, w, h);
+  // Highlight the zero at center
+  ctx.beginPath();
+  ctx.arc(cx, cy, 8, 0, 2 * Math.PI);
+  ctx.strokeStyle = '#ffcc00';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  ctx.fillStyle = '#ffcc00';
+  ctx.font = 'bold 10px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('= 0', cx + 11, cy + 4);
+}
+
+function drawCenterNonzero(ctx, w, h) {
+  const [cx, cy] = coordToPx(0, 0, w, h);
+  ctx.beginPath();
+  ctx.arc(cx, cy, 8, 0, 2 * Math.PI);
+  ctx.strokeStyle = '#66ffcc';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  ctx.fillStyle = '#66ffcc';
+  ctx.font = 'bold 10px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('≠ 0', cx + 11, cy + 4);
+}
+
+// ============================================================
+// RENDER ALL
+// ============================================================
+function renderAll() {
+  renderA();
+  renderB();
+  renderC();
+  renderD();
+  updateVertexInfo();
+}
+
+function updateVertexInfo() {
+  const info = document.getElementById('vertexInfo');
+  const names = ['R', 'G', 'B', 'W'];
+  const lines = [];
+  for (const n of names) {
+    const v = VERTICES[n];
+    const [pu, pv] = projectVertex(v, cutPlane);
+    lines.push(`x_${n} = (${v[0].toFixed(3)}, ${v[1].toFixed(3)}, ${v[2].toFixed(3)}) → (${pu.toFixed(3)}, ${pv.toFixed(3)})`);
+  }
+  lines.push('');
+  lines.push(`P₀ = P_c(0) = 1/(1+ε²) = ${(1/(1+eps*eps)).toFixed(4)}`);
+  lines.push(`P_max = 1/ε² = ${(1/(eps*eps)).toFixed(2)}`);
+  info.innerHTML = lines.join('<br>');
+}
+
+// ============================================================
+// PROBE (mouse hover)
+// ============================================================
+function setupProbe(canvasId) {
+  const cv = document.getElementById(canvasId);
+  cv.addEventListener('mousemove', (e) => {
+    const rect = cv.getBoundingClientRect();
+    const px = e.clientX - rect.left;
+    const py = e.clientY - rect.top;
+    const [u, v] = pxToCoord(px, py, rect.width, rect.height);
+    probeX = u; probeY = v;
+    updateProbe();
+  });
+  cv.addEventListener('mouseleave', () => {
+    probeX = NaN;
+    document.getElementById('probePos').textContent = '—';
+    document.getElementById('probePR').textContent = '—';
+    document.getElementById('probePG').textContent = '—';
+    document.getElementById('probePB').textContent = '—';
+    document.getElementById('probeRe').textContent = '—';
+    document.getElementById('probeIm').textContent = '—';
+    document.getElementById('probeMag').textContent = '—';
+    document.getElementById('probeArg').textContent = '—';
+    document.getElementById('probeCoh').textContent = '—';
+    document.getElementById('probeRho').textContent = '—';
+  });
+}
+
+function updateProbe() {
+  if (isNaN(probeX)) return;
+  const [x, y, z] = to3D(probeX, probeY, cutPlane);
+  const eps2 = eps * eps;
+
+  const pR = pressureFunc(x, y, z, VERTICES.R, eps2);
+  const pG = pressureFunc(x, y, z, VERTICES.G, eps2);
+  const pB = pressureFunc(x, y, z, VERTICES.B, eps2);
+
+  // Thm 0.2.1 §2.3 — complex total field
+  const cosG = Math.cos(2 * Math.PI / 3);
+  const sinG = Math.sin(2 * Math.PI / 3);
+  const cosB = Math.cos(4 * Math.PI / 3);
+  const sinB = Math.sin(4 * Math.PI / 3);
+  const re = a0 * (pR + pG * cosG + pB * cosB);
+  const im = a0 * (pG * sinG + pB * sinB);
+  const mag = Math.sqrt(re * re + im * im);
+  const arg = Math.atan2(im, re);
+
+  // Thm 0.2.1 §4.2 — coherent magnitude
+  const coh = a0*a0 * 0.5 * (
+    (pR - pG)*(pR - pG) +
+    (pG - pB)*(pG - pB) +
+    (pB - pR)*(pB - pR)
+  );
+  // Thm 0.2.1 §3.2 — energy density
+  const rho = a0*a0 * (pR*pR + pG*pG + pB*pB);
+
+  document.getElementById('probePos').textContent = `(${probeX.toFixed(3)}, ${probeY.toFixed(3)})`;
+  document.getElementById('probePR').textContent = pR.toFixed(4);
+  document.getElementById('probePG').textContent = pG.toFixed(4);
+  document.getElementById('probePB').textContent = pB.toFixed(4);
+  document.getElementById('probeRe').textContent = re.toFixed(4);
+  document.getElementById('probeIm').textContent = im.toFixed(4);
+  document.getElementById('probeMag').textContent = mag.toFixed(4);
+  document.getElementById('probeArg').textContent = `${arg.toFixed(4)} (${(arg * 180 / Math.PI).toFixed(1)}°)`;
+  document.getElementById('probeCoh').textContent = coh.toFixed(4);
+  document.getElementById('probeRho').textContent = rho.toFixed(4);
+}
+
+// ============================================================
+// CONTROLS
+// ============================================================
+document.getElementById('sliderEps').addEventListener('input', e => {
+  eps = parseFloat(e.target.value);
+  document.getElementById('valEps').textContent = eps.toFixed(2);
+  renderAll();
+});
+
+document.getElementById('sliderA0').addEventListener('input', e => {
+  a0 = parseFloat(e.target.value);
+  document.getElementById('valA0').textContent = a0.toFixed(2);
+  renderAll();
+});
+
+['btnXY', 'btnXZ', 'btnYZ'].forEach(id => {
+  document.getElementById(id).addEventListener('click', () => {
+    cutPlane = id.replace('btn', '').toLowerCase();
+    document.querySelectorAll('.ctrl-row button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    renderAll();
+  });
+});
+
+['cvA', 'cvB', 'cvC', 'cvD'].forEach(setupProbe);
+
+window.addEventListener('resize', renderAll);
+
+// ============================================================
+// INIT
+// ============================================================
+renderAll();
+
+</script>
+</body>
+</html>

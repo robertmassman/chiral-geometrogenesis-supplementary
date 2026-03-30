@@ -1,0 +1,94 @@
+{
+  "n_sites": 514,
+  "total_epochs": 5000000,
+  "visit_stats": {
+    "total": 120000000.0,
+    "mean": 233463.03501945524,
+    "std": 31924.789223542968,
+    "cv": 0.13674451384084238
+  },
+  "couple_stats": {
+    "total_tp": 2607803.0,
+    "total_tm": 2603725.0,
+    "mean_rate_tp": 0.021262160812717916,
+    "mean_rate_tm": 0.02122661108474309,
+    "cv_tp": 0.32407150680797564,
+    "cv_tm": 0.32588324162057375
+  },
+  "chi_squared": {
+    "tp": {
+      "chi2": 253105.2385833237,
+      "p_value": 0.0
+    },
+    "tm": {
+      "chi2": 255612.55259760833,
+      "p_value": 0.0
+    }
+  },
+  "correlations": {
+    "tp": {
+      "dist_own_vertex": {
+        "spearman_rho": -0.4933981229614327,
+        "p_value": 6.83850828542509e-33,
+        "significant": true
+      },
+      "dist_other_vertex": {
+        "spearman_rho": 0.5069328958295672,
+        "p_value": 6.542113561286191e-35,
+        "significant": true
+      },
+      "pressure_ratio": {
+        "spearman_rho": 0.5125406954804591,
+        "p_value": 8.958915658389274e-36,
+        "significant": true
+      },
+      "pressure_differential": {
+        "spearman_rho": 0.4517020932133592,
+        "p_value": 3.2952781313549406e-27,
+        "significant": true
+      }
+    },
+    "tm": {
+      "dist_own_vertex": {
+        "spearman_rho": -0.4974529648644463,
+        "p_value": 1.735657434917164e-33,
+        "significant": true
+      },
+      "dist_other_vertex": {
+        "spearman_rho": 0.5109882684247417,
+        "p_value": 1.5591857635337907e-35,
+        "significant": true
+      },
+      "pressure_ratio": {
+        "spearman_rho": 0.5165066802803356,
+        "p_value": 2.1470157529402445e-36,
+        "significant": true
+      },
+      "pressure_differential": {
+        "spearman_rho": 0.45582075570488995,
+        "p_value": 9.78822521055674e-28,
+        "significant": true
+      }
+    }
+  },
+  "dominance": {
+    "tp": {
+      "own_dominant_mean": 0.023317643331564383,
+      "other_dominant_mean": 0.01724570071842022,
+      "n_own": 340,
+      "n_other": 174,
+      "ratio": 1.352084424534788,
+      "t_statistic": 10.381137835922697,
+      "p_value": 4.8470850731419404e-23
+    },
+    "tm": {
+      "own_dominant_mean": 0.0233124645442917,
+      "other_dominant_mean": 0.01715080547413087,
+      "n_own": 340,
+      "n_other": 174,
+      "ratio": 1.3592635389314318,
+      "t_statistic": 10.517623268870189,
+      "p_value": 1.48045055564053e-23
+    }
+  }
+}

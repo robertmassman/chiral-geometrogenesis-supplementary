@@ -1,0 +1,539 @@
+Multi-Stella FCC Lattice Soup
+============================================================
+Geometry:       dS = T+ u T- at each FCC vertex (Thm 0.0.6)
+FCC lattice: L=4, 32 stellae
+Building shared mesh (n_sub=100)...
+  20002 sites per tetrahedron (expected 20002)
+Building shared tiling (833 tiles per tetra)...
+Building 192 octahedral interstitials (Mode B)...
+Seeded replicator into stella 0 (1666/1666 tiles, 100.0%)
+FCC distances from stella 0: 0 2 1 1 2 2 1 1 1 1 1 2 2 2 1 2 2 2 2 2 2 3 2 2 1 1 1 2 2 2 1 2
+Stellae:        32 (FCC lattice L=4)
+Sites/tetra:    20002
+Tiles/stella:   1666 (833 per tetra)
+Total tiles:    53312 (across all stellae)
+Prog size:      24 trits (12 instructions)
+Max steps:      729
+Mutation rate:  0.0010
+Cross rate:     0.0050 (0.16 inter-stella interactions/epoch)
+Coupling mode:  octahedral (Mode B: stella-oct-stella relay, Prop 0.0.39 §5.2)
+Oct interstitials: 192 (one per FCC edge, 24 trits each)
+Pairing:        local neighbors (within stella)
+Census interval: 100 (per-stella replicator count)
+Epochs:         15000
+Seed:           456
+Threads:        16 (pthreads)
+============================================================
+
+     Epoch |  Uniq* |  Top* | H(trit) |  Progs | Notes
+------------------------------------------------------------------
+  * Uniq/Top from sample of min(2000, total)
+
+       100 |   1911 |    23 |  1.5840 |  53312 | 
+  CENSUS epoch 100: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+       200 |   1922 |    16 |  1.5794 |  53312 | 
+  CENSUS epoch 200: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+       300 |   1920 |     9 |  1.5725 |  53312 | 
+  CENSUS epoch 300: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+       400 |   1884 |    14 |  1.5691 |  53312 | 
+  CENSUS epoch 400: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+       500 |   1919 |     9 |  1.5655 |  53312 | 
+  CENSUS epoch 500: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+       600 |   1921 |     9 |  1.5688 |  53312 | 
+  CENSUS epoch 600: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+       700 |   1916 |    10 |  1.5659 |  53312 | 
+  CENSUS epoch 700: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+       800 |   1918 |     6 |  1.5616 |  53312 | 
+  CENSUS epoch 800: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+       900 |   1893 |    10 |  1.5663 |  53312 | 
+  CENSUS epoch 900: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      1000 |   1907 |    10 |  1.5625 |  53312 | 
+  CENSUS epoch 1000: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      1100 |   1901 |    11 |  1.5600 |  53312 | 
+  CENSUS epoch 1100: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      1200 |   1905 |    10 |  1.5646 |  53312 | 
+  CENSUS epoch 1200: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      1300 |   1913 |     7 |  1.5610 |  53312 | 
+  CENSUS epoch 1300: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      1400 |   1904 |    12 |  1.5674 |  53312 | 
+  CENSUS epoch 1400: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      1500 |   1918 |    10 |  1.5589 |  53312 | 
+  CENSUS epoch 1500: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      1600 |   1913 |    12 |  1.5590 |  53312 | 
+  CENSUS epoch 1600: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      1700 |   1908 |    12 |  1.5599 |  53312 | 
+  CENSUS epoch 1700: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      1800 |   1902 |    10 |  1.5632 |  53312 | 
+  CENSUS epoch 1800: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      1900 |   1918 |     7 |  1.5592 |  53312 | 
+  CENSUS epoch 1900: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      2000 |   1900 |    10 |  1.5570 |  53312 | 
+  CENSUS epoch 2000: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      2100 |   1906 |    14 |  1.5587 |  53312 | 
+  CENSUS epoch 2100: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      2200 |   1918 |    11 |  1.5612 |  53312 | 
+  CENSUS epoch 2200: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      2300 |   1884 |    13 |  1.5603 |  53312 | 
+  CENSUS epoch 2300: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      2400 |   1899 |    11 |  1.5567 |  53312 | 
+  CENSUS epoch 2400: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      2500 |   1905 |    13 |  1.5635 |  53312 | 
+  CENSUS epoch 2500: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      2600 |   1918 |     9 |  1.5594 |  53312 | 
+  CENSUS epoch 2600: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      2700 |   1902 |     7 |  1.5616 |  53312 | 
+  CENSUS epoch 2700: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      2800 |   1895 |    13 |  1.5575 |  53312 | 
+  CENSUS epoch 2800: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      2900 |   1922 |     6 |  1.5606 |  53312 | 
+  CENSUS epoch 2900: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      3000 |   1900 |    10 |  1.5647 |  53312 | 
+  CENSUS epoch 3000: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      3100 |   1914 |     7 |  1.5651 |  53312 | 
+  CENSUS epoch 3100: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      3200 |   1908 |    10 |  1.5574 |  53312 | 
+  CENSUS epoch 3200: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      3300 |   1906 |    15 |  1.5621 |  53312 | 
+  CENSUS epoch 3300: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      3400 |   1892 |    15 |  1.5574 |  53312 | 
+  CENSUS epoch 3400: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      3500 |   1899 |     8 |  1.5611 |  53312 | 
+  CENSUS epoch 3500: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      3600 |   1912 |    11 |  1.5640 |  53312 | 
+  CENSUS epoch 3600: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      3700 |   1913 |    10 |  1.5618 |  53312 | 
+  CENSUS epoch 3700: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      3800 |   1888 |    11 |  1.5665 |  53312 | 
+  CENSUS epoch 3800: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      3900 |   1880 |    11 |  1.5612 |  53312 | 
+  CENSUS epoch 3900: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      4000 |   1912 |    11 |  1.5618 |  53312 | 
+  CENSUS epoch 4000: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      4100 |   1906 |    13 |  1.5597 |  53312 | 
+  CENSUS epoch 4100: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      4200 |   1908 |    12 |  1.5629 |  53312 | 
+  CENSUS epoch 4200: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      4300 |   1895 |    10 |  1.5547 |  53312 | 
+  CENSUS epoch 4300: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      4400 |   1900 |     9 |  1.5644 |  53312 | 
+  CENSUS epoch 4400: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      4500 |   1910 |    10 |  1.5610 |  53312 | 
+  CENSUS epoch 4500: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      4600 |   1901 |     9 |  1.5668 |  53312 | 
+  CENSUS epoch 4600: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      4700 |   1915 |    13 |  1.5610 |  53312 | 
+  CENSUS epoch 4700: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      4800 |   1902 |    15 |  1.5552 |  53312 | 
+  CENSUS epoch 4800: 1/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=0/12 d2=0/18 d3=0/1
+      4900 |   1892 |     9 |  1.5585 |  53312 | 
+  CENSUS epoch 4900: 2/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=1/12 d2=0/18 d3=0/1
+      5000 |   1883 |    15 |  1.5616 |  53312 | 
+  CENSUS epoch 5000: 2/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=1/12 d2=0/18 d3=0/1
+      5100 |   1878 |    11 |  1.5624 |  53312 | 
+  CENSUS epoch 5100: 2/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=1/12 d2=0/18 d3=0/1
+      5200 |   1847 |    18 |  1.5574 |  53312 | 
+  CENSUS epoch 5200: 3/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=2/12 d2=0/18 d3=0/1
+      5300 |   1838 |    25 |  1.5593 |  53312 | 
+  CENSUS epoch 5300: 3/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=2/12 d2=0/18 d3=0/1
+      5400 |   1839 |    18 |  1.5613 |  53312 | 
+  CENSUS epoch 5400: 3/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=2/12 d2=0/18 d3=0/1
+      5500 |   1832 |    16 |  1.5635 |  53312 | 
+  CENSUS epoch 5500: 3/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=2/12 d2=0/18 d3=0/1
+      5600 |   1835 |    31 |  1.5639 |  53312 | 
+  CENSUS epoch 5600: 4/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=3/12 d2=0/18 d3=0/1
+      5700 |   1822 |    20 |  1.5628 |  53312 | 
+  CENSUS epoch 5700: 4/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=3/12 d2=0/18 d3=0/1
+      5800 |   1812 |    25 |  1.5628 |  53312 | 
+  CENSUS epoch 5800: 5/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=3/12 d2=1/18 d3=0/1
+      5900 |   1810 |    23 |  1.5676 |  53312 | 
+  CENSUS epoch 5900: 4/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=3/12 d2=0/18 d3=0/1
+      6000 |   1830 |    38 |  1.5654 |  53312 | 
+  CENSUS epoch 6000: 4/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=3/12 d2=0/18 d3=0/1
+      6100 |   1799 |    29 |  1.5648 |  53312 | 
+  CENSUS epoch 6100: 5/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=4/12 d2=0/18 d3=0/1
+      6200 |   1773 |    33 |  1.5658 |  53312 | 
+  CENSUS epoch 6200: 5/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=4/12 d2=0/18 d3=0/1
+      6300 |   1770 |    41 |  1.5642 |  53312 | 
+  CENSUS epoch 6300: 6/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=5/12 d2=0/18 d3=0/1
+      6400 |   1755 |    52 |  1.5675 |  53312 | 
+  CENSUS epoch 6400: 7/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=0/18 d3=0/1
+      6500 |   1734 |    46 |  1.5679 |  53312 | 
+  CENSUS epoch 6500: 7/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=0/18 d3=0/1
+      6600 |   1729 |    38 |  1.5655 |  53312 | 
+  CENSUS epoch 6600: 7/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=0/18 d3=0/1
+      6700 |   1701 |    64 |  1.5666 |  53312 | 
+  CENSUS epoch 6700: 7/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=0/18 d3=0/1
+      6800 |   1709 |    46 |  1.5650 |  53312 | 
+  CENSUS epoch 6800: 7/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=0/18 d3=0/1
+      6900 |   1725 |    46 |  1.5678 |  53312 | 
+  CENSUS epoch 6900: 7/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=0/18 d3=0/1
+      7000 |   1727 |    54 |  1.5675 |  53312 | 
+  CENSUS epoch 7000: 7/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=0/18 d3=0/1
+      7100 |   1708 |    49 |  1.5669 |  53312 | 
+  CENSUS epoch 7100: 8/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=1/18 d3=0/1
+      7200 |   1717 |    40 |  1.5660 |  53312 | 
+  CENSUS epoch 7200: 8/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=1/18 d3=0/1
+      7300 |   1723 |    48 |  1.5699 |  53312 | 
+  CENSUS epoch 7300: 8/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=1/18 d3=0/1
+      7400 |   1686 |    67 |  1.5727 |  53312 | 
+  CENSUS epoch 7400: 8/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=1/18 d3=0/1
+      7500 |   1702 |    49 |  1.5750 |  53312 | 
+  CENSUS epoch 7500: 8/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=1/18 d3=0/1
+      7600 |   1686 |    49 |  1.5731 |  53312 | 
+  CENSUS epoch 7600: 8/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=6/12 d2=1/18 d3=0/1
+      7700 |   1705 |    47 |  1.5718 |  53312 | 
+  CENSUS epoch 7700: 9/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=7/12 d2=1/18 d3=0/1
+      7800 |   1672 |    61 |  1.5701 |  53312 | 
+  CENSUS epoch 7800: 9/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=7/12 d2=1/18 d3=0/1
+      7900 |   1638 |    77 |  1.5718 |  53312 | 
+  CENSUS epoch 7900: 10/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=7/12 d2=2/18 d3=0/1
+      8000 |   1627 |    69 |  1.5744 |  53312 | 
+  CENSUS epoch 8000: 10/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=7/12 d2=2/18 d3=0/1
+      8100 |   1621 |    60 |  1.5726 |  53312 | 
+  CENSUS epoch 8100: 11/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=7/12 d2=3/18 d3=0/1
+      8200 |   1579 |    65 |  1.5736 |  53312 | 
+  CENSUS epoch 8200: 12/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=7/12 d2=4/18 d3=0/1
+      8300 |   1549 |    97 |  1.5742 |  53312 | 
+  CENSUS epoch 8300: 13/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=7/12 d2=5/18 d3=0/1
+      8400 |   1517 |    92 |  1.5742 |  53312 | 
+  CENSUS epoch 8400: 14/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=7/12 d2=6/18 d3=0/1
+      8500 |   1482 |    99 |  1.5723 |  53312 | 
+  CENSUS epoch 8500: 14/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=7/12 d2=6/18 d3=0/1
+      8600 |   1483 |   108 |  1.5763 |  53312 | 
+  CENSUS epoch 8600: 17/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=8/12 d2=8/18 d3=0/1
+      8700 |   1429 |    94 |  1.5774 |  53312 | 
+  CENSUS epoch 8700: 17/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=8/12 d2=8/18 d3=0/1
+      8800 |   1388 |    97 |  1.5792 |  53312 | 
+  CENSUS epoch 8800: 18/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=8/12 d2=9/18 d3=0/1
+      8900 |   1336 |   109 |  1.5765 |  53312 | 
+  CENSUS epoch 8900: 19/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=8/12 d2=10/18 d3=0/1
+      9000 |   1286 |   122 |  1.5781 |  53312 | 
+  CENSUS epoch 9000: 19/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=8/12 d2=10/18 d3=0/1
+      9100 |   1290 |   133 |  1.5813 |  53312 | 
+  CENSUS epoch 9100: 20/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=10/18 d3=0/1
+      9200 |   1264 |   137 |  1.5806 |  53312 | 
+  CENSUS epoch 9200: 20/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=10/18 d3=0/1
+      9300 |   1275 |   116 |  1.5791 |  53312 | 
+  CENSUS epoch 9300: 20/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=10/18 d3=0/1
+      9400 |   1267 |   131 |  1.5794 |  53312 | 
+  CENSUS epoch 9400: 20/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=10/18 d3=0/1
+      9500 |   1264 |   118 |  1.5806 |  53312 | 
+  CENSUS epoch 9500: 21/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=11/18 d3=0/1
+      9600 |   1269 |   108 |  1.5800 |  53312 | 
+  CENSUS epoch 9600: 23/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=11/18 d3=1/1
+      9700 |   1184 |   130 |  1.5805 |  53312 | 
+  CENSUS epoch 9700: 22/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=11/18 d3=1/1
+      9800 |   1211 |   153 |  1.5783 |  53312 | 
+  CENSUS epoch 9800: 22/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=11/18 d3=1/1
+      9900 |   1190 |   131 |  1.5804 |  53312 | 
+  CENSUS epoch 9900: 22/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=11/18 d3=1/1
+     10000 |   1152 |   143 |  1.5815 |  53312 | 
+  CENSUS epoch 10000: 22/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=11/18 d3=1/1
+     10100 |   1199 |   109 |  1.5819 |  53312 | 
+  CENSUS epoch 10100: 22/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=11/18 d3=1/1
+     10200 |   1181 |   144 |  1.5811 |  53312 | 
+  CENSUS epoch 10200: 23/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=12/18 d3=1/1
+     10300 |   1152 |   165 |  1.5804 |  53312 | 
+  CENSUS epoch 10300: 24/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=13/18 d3=1/1
+     10400 |   1111 |   160 |  1.5807 |  53312 | 
+  CENSUS epoch 10400: 25/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=14/18 d3=1/1
+     10500 |   1070 |   179 |  1.5813 |  53312 | 
+  CENSUS epoch 10500: 25/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=14/18 d3=1/1
+     10600 |   1034 |   204 |  1.5806 |  53312 | 
+  CENSUS epoch 10600: 25/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=14/18 d3=1/1
+     10700 |   1061 |   182 |  1.5799 |  53312 | 
+  CENSUS epoch 10700: 25/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=14/18 d3=1/1
+     10800 |   1030 |   176 |  1.5818 |  53312 | 
+  CENSUS epoch 10800: 25/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=14/18 d3=1/1
+     10900 |   1036 |   167 |  1.5829 |  53312 | 
+  CENSUS epoch 10900: 25/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=14/18 d3=1/1
+     11000 |   1030 |   167 |  1.5810 |  53312 | 
+  CENSUS epoch 11000: 26/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=15/18 d3=1/1
+     11100 |   1047 |   170 |  1.5795 |  53312 | 
+  CENSUS epoch 11100: 26/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=15/18 d3=1/1
+     11200 |   1000 |   184 |  1.5809 |  53312 | 
+  CENSUS epoch 11200: 26/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=15/18 d3=1/1
+     11300 |   1028 |   151 |  1.5834 |  53312 | 
+  CENSUS epoch 11300: 27/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=16/18 d3=1/1
+     11400 |    993 |   183 |  1.5821 |  53312 | 
+  CENSUS epoch 11400: 27/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=16/18 d3=1/1
+     11500 |    924 |   198 |  1.5826 |  53312 | 
+  CENSUS epoch 11500: 27/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=16/18 d3=1/1
+     11600 |    936 |   178 |  1.5820 |  53312 | 
+  CENSUS epoch 11600: 27/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=16/18 d3=1/1
+     11700 |    949 |   195 |  1.5821 |  53312 | 
+  CENSUS epoch 11700: 27/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=16/18 d3=1/1
+     11800 |    956 |   179 |  1.5818 |  53312 | 
+  CENSUS epoch 11800: 27/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=16/18 d3=1/1
+     11900 |    949 |   210 |  1.5815 |  53312 | 
+  CENSUS epoch 11900: 27/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=16/18 d3=1/1
+     12000 |    977 |   225 |  1.5810 |  53312 | 
+  CENSUS epoch 12000: 27/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=16/18 d3=1/1
+     12100 |    962 |   237 |  1.5818 |  53312 | 
+  CENSUS epoch 12100: 28/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=17/18 d3=1/1
+     12200 |    956 |   209 |  1.5824 |  53312 | 
+  CENSUS epoch 12200: 28/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=17/18 d3=1/1
+     12300 |    921 |   222 |  1.5811 |  53312 | 
+  CENSUS epoch 12300: 28/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=17/18 d3=1/1
+     12400 |    969 |   217 |  1.5806 |  53312 | 
+  CENSUS epoch 12400: 28/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=17/18 d3=1/1
+     12500 |    911 |   199 |  1.5827 |  53312 | 
+  CENSUS epoch 12500: 29/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=17/18 d3=1/1
+     12600 |    907 |   210 |  1.5820 |  53312 | 
+  CENSUS epoch 12600: 28/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=9/12 d2=17/18 d3=1/1
+     12700 |    937 |   200 |  1.5826 |  53312 | 
+  CENSUS epoch 12700: 29/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=17/18 d3=1/1
+     12800 |    896 |   193 |  1.5811 |  53312 | 
+  CENSUS epoch 12800: 30/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=17/18 d3=1/1
+     12900 |    895 |   212 |  1.5810 |  53312 | 
+  CENSUS epoch 12900: 29/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=17/18 d3=1/1
+     13000 |    904 |   217 |  1.5807 |  53312 | 
+  CENSUS epoch 13000: 29/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=17/18 d3=1/1
+     13100 |    875 |   211 |  1.5805 |  53312 | 
+  CENSUS epoch 13100: 29/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=17/18 d3=1/1
+     13200 |    893 |   214 |  1.5820 |  53312 | 
+  CENSUS epoch 13200: 29/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=17/18 d3=1/1
+     13300 |    908 |   231 |  1.5809 |  53312 | 
+  CENSUS epoch 13300: 29/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=17/18 d3=1/1
+     13400 |    883 |   260 |  1.5823 |  53312 | 
+  CENSUS epoch 13400: 30/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=18/18 d3=1/1
+     13500 |    896 |   202 |  1.5818 |  53312 | 
+  CENSUS epoch 13500: 30/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=18/18 d3=1/1
+     13600 |    877 |   223 |  1.5819 |  53312 | 
+  CENSUS epoch 13600: 30/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=18/18 d3=1/1
+     13700 |    877 |   187 |  1.5810 |  53312 | 
+  CENSUS epoch 13700: 30/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=18/18 d3=1/1
+     13800 |    832 |   177 |  1.5815 |  53312 | 
+  CENSUS epoch 13800: 30/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=18/18 d3=1/1
+     13900 |    844 |   175 |  1.5822 |  53312 | 
+  CENSUS epoch 13900: 30/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=10/12 d2=18/18 d3=1/1
+     14000 |    846 |   219 |  1.5819 |  53312 | 
+  CENSUS epoch 14000: 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+     14100 |    848 |   188 |  1.5816 |  53312 | 
+  CENSUS epoch 14100: 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+     14200 |    786 |   242 |  1.5824 |  53312 | 
+  CENSUS epoch 14200: 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+     14300 |    779 |   242 |  1.5817 |  53312 | 
+  CENSUS epoch 14300: 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+     14400 |    824 |   230 |  1.5819 |  53312 | 
+  CENSUS epoch 14400: 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+     14500 |    767 |   211 |  1.5829 |  53312 | 
+  CENSUS epoch 14500: 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+     14600 |    838 |   204 |  1.5816 |  53312 | 
+  CENSUS epoch 14600: 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+     14700 |    810 |   206 |  1.5813 |  53312 | 
+  CENSUS epoch 14700: 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+     14800 |    813 |   226 |  1.5814 |  53312 | 
+  CENSUS epoch 14800: 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+     14900 |    780 |   258 |  1.5813 |  53312 | 
+  CENSUS epoch 14900: 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+     15000 |    845 |   264 |  1.5817 |  53312 | 
+  CENSUS epoch 15000: 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+
+Completed 15000 epochs in 164.6s (91 epochs/sec)
+
+============================================================
+Final Report
+============================================================
+Stellae:          32
+Total tiles:      53312
+Sample unique:    781 / 2000
+Sample top count: 262
+Trit entropy:     1.5825 (max = 1.5850)
+
+No nontrivial self-replicators detected.
+
+Per-stella replicator census:
+  CENSUS epoch 15000:  Stella   0 (d=0): 940 / 1666 (56.4%)
+  Stella   1 (d=2): 947 / 1666 (56.8%)
+  Stella   2 (d=1): 919 / 1666 (55.2%)
+  Stella   3 (d=1): 847 / 1666 (50.8%)
+  Stella   4 (d=2): 956 / 1666 (57.4%)
+  Stella   5 (d=2): 914 / 1666 (54.9%)
+  Stella   6 (d=1): 967 / 1666 (58.0%)
+  Stella   7 (d=1): 876 / 1666 (52.6%)
+  Stella   8 (d=1): 913 / 1666 (54.8%)
+  Stella   9 (d=1): 933 / 1666 (56.0%)
+  Stella  10 (d=1): 0 / 1666 (0.0%)
+  Stella  11 (d=2): 907 / 1666 (54.4%)
+  Stella  12 (d=2): 922 / 1666 (55.3%)
+  Stella  13 (d=2): 926 / 1666 (55.6%)
+  Stella  14 (d=1): 917 / 1666 (55.0%)
+  Stella  15 (d=2): 934 / 1666 (56.1%)
+  Stella  16 (d=2): 761 / 1666 (45.7%)
+  Stella  17 (d=2): 925 / 1666 (55.5%)
+  Stella  18 (d=2): 910 / 1666 (54.6%)
+  Stella  19 (d=2): 950 / 1666 (57.0%)
+  Stella  20 (d=2): 927 / 1666 (55.6%)
+  Stella  21 (d=3): 963 / 1666 (57.8%)
+  Stella  22 (d=2): 871 / 1666 (52.3%)
+  Stella  23 (d=2): 940 / 1666 (56.4%)
+  Stella  24 (d=1): 657 / 1666 (39.4%)
+  Stella  25 (d=1): 905 / 1666 (54.3%)
+  Stella  26 (d=1): 929 / 1666 (55.8%)
+  Stella  27 (d=2): 964 / 1666 (57.9%)
+  Stella  28 (d=2): 909 / 1666 (54.6%)
+  Stella  29 (d=2): 914 / 1666 (54.9%)
+  Stella  30 (d=1): 948 / 1666 (56.9%)
+  Stella  31 (d=2): 967 / 1666 (58.0%)
+ 31/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=11/12 d2=18/18 d3=1/1
+
+Octahedral interstitials: 106/192 contain replicators (55.2%)
+
+============================================================
+CG: Multi-stella FCC lattice soup
+  32 stellae on FCC lattice (Thm 0.0.6)
+  Z_3 trits (Def 0.1.2), same VM (Prop 0.0.XXd)
+  Inter-stella coupling: octahedral (Mode B), rate: 0.01
+============================================================

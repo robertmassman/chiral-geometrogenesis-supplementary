@@ -1,0 +1,132 @@
+Multi-Stella FCC Lattice Soup
+============================================================
+Geometry:       dS = T+ u T- at each FCC vertex (Thm 0.0.6)
+FCC lattice: L=4, 32 stellae
+Building shared mesh (n_sub=100)...
+  20002 sites per tetrahedron (expected 20002)
+Building shared tiling (833 tiles per tetra)...
+  Tiling: 833/833 tiles built, 16 undersized (<24), 329 unowned sites
+  Tiling: 833/833 tiles built, 16 undersized (<24), 329 unowned sites
+Seeded replicator into stella 0 (1666/1666 tiles, 100.0%)
+FCC distances from stella 0: 0 2 1 1 2 2 1 1 1 1 1 2 2 2 1 2 2 2 2 2 2 3 2 2 1 1 1 2 2 2 1 2
+Stellae:        32 (FCC lattice L=4)
+Sites/tetra:    20002
+Tiles/stella:   1666 (833 per tetra)
+Total tiles:    53312 (across all stellae)
+Prog size:      24 trits (12 instructions)
+Max steps:      729
+Mutation rate:  0.0010
+Cross rate:     1.0000 (32.00 inter-stella interactions/epoch)
+Coupling mode:  direct (Mode A: stella-stella)
+Pairing:        local neighbors (within stella)
+Census interval: 100 (per-stella replicator count)
+Epochs:         15000
+Seed:           456
+Threads:        4 (pthreads)
+============================================================
+
+     Epoch |  Uniq* |  Top* | H(trit) |  Progs | Notes
+------------------------------------------------------------------
+  * Uniq/Top from sample of min(2000, total)
+
+      1000 |    364 |   307 |  1.5519 |  53312 | 
+  CENSUS epoch 1000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+      2000 |    347 |   227 |  1.5480 |  53312 | 
+  CENSUS epoch 2000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+      3000 |    360 |   173 |  1.5502 |  53312 | 
+  CENSUS epoch 3000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+      4000 |    316 |   158 |  1.5472 |  53312 | 
+  CENSUS epoch 4000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+      5000 |    339 |   163 |  1.5518 |  53312 | 
+  CENSUS epoch 5000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+      6000 |    363 |   203 |  1.5550 |  53312 | 
+  CENSUS epoch 6000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+      7000 |    338 |   192 |  1.5507 |  53312 | 
+  CENSUS epoch 7000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+      8000 |    354 |   149 |  1.5501 |  53312 | 
+  CENSUS epoch 8000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+      9000 |    339 |   165 |  1.5464 |  53312 | 
+  CENSUS epoch 9000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+     10000 |    322 |   142 |  1.5498 |  53312 | 
+  CENSUS epoch 10000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+     11000 |    363 |   157 |  1.5493 |  53312 | 
+  CENSUS epoch 11000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+     12000 |    348 |   141 |  1.5502 |  53312 | 
+  CENSUS epoch 12000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+     13000 |    368 |   147 |  1.5494 |  53312 | 
+  CENSUS epoch 13000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+     14000 |    333 |   164 |  1.5506 |  53312 | 
+  CENSUS epoch 14000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+     15000 |    373 |   177 |  1.5534 |  53312 | 
+  CENSUS epoch 15000: 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+
+Completed 15000 epochs in 100.0s (150 epochs/sec)
+
+============================================================
+Final Report
+============================================================
+Stellae:          32
+Total tiles:      53312
+Sample unique:    364 / 2000
+Sample top count: 185
+Trit entropy:     1.5512 (max = 1.5850)
+
+No nontrivial self-replicators detected.
+
+Per-stella replicator census:
+  CENSUS epoch 15000:  Stella   0 (d=0): 1404 / 1666 (84.3%)
+  Stella   1 (d=2): 1417 / 1666 (85.1%)
+  Stella   2 (d=1): 1375 / 1666 (82.5%)
+  Stella   3 (d=1): 1396 / 1666 (83.8%)
+  Stella   4 (d=2): 1350 / 1666 (81.0%)
+  Stella   5 (d=2): 1360 / 1666 (81.6%)
+  Stella   6 (d=1): 1413 / 1666 (84.8%)
+  Stella   7 (d=1): 1372 / 1666 (82.4%)
+  Stella   8 (d=1): 1433 / 1666 (86.0%)
+  Stella   9 (d=1): 1396 / 1666 (83.8%)
+  Stella  10 (d=1): 1412 / 1666 (84.8%)
+  Stella  11 (d=2): 1411 / 1666 (84.7%)
+  Stella  12 (d=2): 1455 / 1666 (87.3%)
+  Stella  13 (d=2): 1453 / 1666 (87.2%)
+  Stella  14 (d=1): 1409 / 1666 (84.6%)
+  Stella  15 (d=2): 1411 / 1666 (84.7%)
+  Stella  16 (d=2): 1407 / 1666 (84.5%)
+  Stella  17 (d=2): 1411 / 1666 (84.7%)
+  Stella  18 (d=2): 1429 / 1666 (85.8%)
+  Stella  19 (d=2): 1418 / 1666 (85.1%)
+  Stella  20 (d=2): 1447 / 1666 (86.9%)
+  Stella  21 (d=3): 1347 / 1666 (80.9%)
+  Stella  22 (d=2): 1344 / 1666 (80.7%)
+  Stella  23 (d=2): 1369 / 1666 (82.2%)
+  Stella  24 (d=1): 1397 / 1666 (83.9%)
+  Stella  25 (d=1): 1375 / 1666 (82.5%)
+  Stella  26 (d=1): 1336 / 1666 (80.2%)
+  Stella  27 (d=2): 1393 / 1666 (83.6%)
+  Stella  28 (d=2): 1355 / 1666 (81.3%)
+  Stella  29 (d=2): 1403 / 1666 (84.2%)
+  Stella  30 (d=1): 1431 / 1666 (85.9%)
+  Stella  31 (d=2): 1357 / 1666 (81.5%)
+ 32/32 stellae colonized
+  WAVEFRONT: d0=1/1 d1=12/12 d2=18/18 d3=1/1
+
+============================================================
+CG: Multi-stella FCC lattice soup
+  32 stellae on FCC lattice (Thm 0.0.6)
+  Z_3 trits (Def 0.1.2), same VM (Prop 0.0.XXd)
+  Inter-stella coupling: direct (Mode A), rate: 1.00
+============================================================

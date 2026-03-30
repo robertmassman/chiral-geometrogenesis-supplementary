@@ -1,0 +1,109 @@
+{
+  "investigation": "Priority 2: Theoretical Framework for \u03b7",
+  "timestamp": "2026-03-20T05:08:35.609491",
+  "theoretical_predictions": {
+    "CNT": {
+      "eta_global": 1.0,
+      "eta_local": 1.0
+    },
+    "random_search_B": {
+      "eta_global": 1.0,
+      "eta_local": 0.5
+    },
+    "CDP": {
+      "eta_global": 1.0,
+      "eta_local": 0.5
+    },
+    "DP_2d": {
+      "eta_global": 1.0,
+      "eta_local": 0.633
+    },
+    "SU3_1minus1overNc": {
+      "eta_global": 0.6667,
+      "eta_local": 0.6667
+    }
+  },
+  "measured_eta": {
+    "global": {
+      "km_medians": 0.9293433892295043,
+      "raw_uncensored": 0.6750865597313576,
+      "R2_raw": 0.25671025029941363
+    },
+    "local": {
+      "km_medians": 0.7993563466329692,
+      "raw_uncensored": 0.48723545891298004,
+      "R2_raw": 0.15611538814825024
+    }
+  },
+  "two_regime_fits": {
+    "global": {
+      "A": 3379896789.8207793,
+      "B": 421765.76468157885,
+      "R2": 0.21664480591541968,
+      "N_crossover": 8013.682173498613,
+      "description": "T = 3.38e+09/N + 421766; crossover at N = 8014"
+    },
+    "local": {
+      "A": 2454483007.7194424,
+      "B": 683310.3526867585,
+      "R2": 0.13303423642819978,
+      "N_crossover": 3592.0471540764443,
+      "description": "T = 2.45e+09/N + 683310; crossover at N = 3592"
+    }
+  },
+  "power_law_floor_fits": {
+    "global": {
+      "A": 461418566.45147043,
+      "eta": 0.6974263861672046,
+      "eta_err": 0.7513677937734434,
+      "B_floor": 6.409815476795885e-10,
+      "R2": 0.7875242583263279
+    },
+    "local": {
+      "A": 526220628.382223,
+      "eta": 0.7041778592355202,
+      "eta_err": 0.781273355855104,
+      "B_floor": 1.3122556703067e-09,
+      "R2": 0.7698535514791821
+    }
+  },
+  "theory_comparison": [
+    {
+      "theory": "SU(3): 1 - 1/N_c",
+      "predicted_global": 0.6666666666666666,
+      "predicted_local": 0.6666666666666666,
+      "chi2_raw": 0.03226645291516747,
+      "chi2_median": 0.0866056117459138
+    },
+    {
+      "theory": "Random search (Model B)",
+      "predicted_global": 1.0,
+      "predicted_local": 0.5,
+      "chi2_raw": 0.10573167717636689,
+      "chi2_median": 0.09460657891501172
+    },
+    {
+      "theory": "CDP (compact DP)",
+      "predicted_global": 1.0,
+      "predicted_local": 0.5,
+      "chi2_raw": 0.10573167717636689,
+      "chi2_median": 0.09460657891501172
+    },
+    {
+      "theory": "2D DP",
+      "predicted_global": 1.0,
+      "predicted_local": 0.6325110689437066,
+      "chi2_raw": 0.12667374653700442,
+      "chi2_median": 0.03282970333278048
+    },
+    {
+      "theory": "CNT (Poisson)",
+      "predicted_global": 1.0,
+      "predicted_local": 1.0,
+      "chi2_raw": 0.36849621826338685,
+      "chi2_median": 0.04525023228204255
+    }
+  ],
+  "best_theory": "SU(3): 1 - 1/N_c",
+  "verdict": "Best match: SU(3): 1 - 1/N_c with \u03c7\u00b2 = 0.0323. Local pairing \u03b7 \u2248 0.49 matches CDP/diffusive-search prediction \u03b7 = 1/2. Global pairing \u03b7 \u2248 0.68 is intermediate (mean-field with finite-size corrections). SU(3) prediction \u03b7 = 2/3 is falsified for local pairing."
+}

@@ -1,0 +1,102 @@
+{
+  "investigation": "Path 3: Transition Dynamics",
+  "timestamp": "2026-03-19T15:55:08.208859",
+  "question": "Does the transition probability encode \u03b1_s?",
+  "nucleation_rates": {
+    "N=1666_global": {
+      "P_nuc": 0.75,
+      "Gamma": 5.555555555555555e-07,
+      "Gamma_N": 0.0009255555555555554
+    },
+    "N=1666_local": {
+      "P_nuc": 0.6,
+      "Gamma": 1e-06,
+      "Gamma_N": 0.001666
+    },
+    "N=2520_global": {
+      "P_nuc": 0.85,
+      "Gamma": 3.8461538461538463e-07,
+      "Gamma_N": 0.0009692307692307692
+    },
+    "N=2520_local": {
+      "P_nuc": 0.7,
+      "Gamma": 4.878048780487804e-07,
+      "Gamma_N": 0.0012292682926829267
+    },
+    "N=2992_global": {
+      "P_nuc": 0.75,
+      "Gamma": 8.333333333333333e-07,
+      "Gamma_N": 0.0024933333333333335
+    },
+    "N=2992_local": {
+      "P_nuc": 0.8,
+      "Gamma": 7.142857142857143e-07,
+      "Gamma_N": 0.0021371428571428574
+    },
+    "N=4108_global": {
+      "P_nuc": 0.9,
+      "Gamma": 5.714285714285714e-07,
+      "Gamma_N": 0.002347428571428571
+    },
+    "N=4108_local": {
+      "P_nuc": 0.7,
+      "Gamma": 8.695652173913044e-07,
+      "Gamma_N": 0.0035721739130434786
+    },
+    "N=6666_global": {
+      "P_nuc": 0.9166666666666666,
+      "Gamma": 1.6666666666666667e-06,
+      "Gamma_N": 0.01111
+    },
+    "N=6666_local": {
+      "P_nuc": 1.0,
+      "Gamma": 1.3333333333333334e-06,
+      "Gamma_N": 0.008888
+    },
+    "N=13348_global": {
+      "P_nuc": 1.0,
+      "Gamma": 1.818181818181818e-06,
+      "Gamma_N": 0.024269090909090907
+    },
+    "N=13348_local": {
+      "P_nuc": 1.0,
+      "Gamma": 2.8571428571428573e-06,
+      "Gamma_N": 0.038137142857142856
+    },
+    "N=26666_global": {
+      "P_nuc": 1.0,
+      "Gamma": 5e-06,
+      "Gamma_N": 0.13333
+    },
+    "N=26666_local": {
+      "P_nuc": 1.0,
+      "Gamma": 2e-06,
+      "Gamma_N": 0.053332
+    }
+  },
+  "scaling_fits": {
+    "eta_global": 0.8456468367999489,
+    "eta_local": 0.5021373485837555
+  },
+  "transition_character": "intermediate",
+  "mean_CV": 0.7463287306697957,
+  "comparisons": [
+    {
+      "quantity": "\u03b7 (global scaling exponent)",
+      "value": 0.8456468367999489
+    },
+    {
+      "quantity": "P_nuc(N=1666, 5M epochs)",
+      "value": 0.75
+    },
+    {
+      "quantity": "\u0393 \u00d7 N (dimensionless nucleation rate)",
+      "value": 0.0009255555555555554
+    },
+    {
+      "quantity": "T_emerge / N",
+      "value": 1080.4321728691477
+    }
+  ],
+  "verdict": "Scaling exponent \u03b7 is the most interesting extracted number. If \u03b7 = 2/3 = 1 - 1/N_c, it would connect to SU(3) color structure. Cannot independently fix R_stella without theoretical framework for \u03b7."
+}

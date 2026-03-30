@@ -1,0 +1,86 @@
+{
+  "test": "GG5",
+  "description": "Metal GPU validation \u2014 physics properties + CPU comparison",
+  "timestamp": "2026-03-24T09:14:37.874697",
+  "config": {
+    "cpu_epochs": 2000000,
+    "gpu_epochs": 500000,
+    "seeds": [
+      42,
+      137,
+      271
+    ],
+    "n_subs": [
+      16,
+      32
+    ],
+    "phase_lock": 1.0,
+    "kuramoto_sub_steps": 8,
+    "note": "GPU does ~n_tiles_per more tile ops per epoch than CPU"
+  },
+  "comparisons": [
+    {
+      "n_sub": 16,
+      "cpu": {
+        "epochs": 2000000,
+        "correlation": 0.8599,
+        "open_zone": 0.84159,
+        "blocked_zone": 0.99537,
+        "entropy_tp": 1.4063,
+        "chi2": 0.16333,
+        "wall_clock_s": 7.4
+      },
+      "gpu": {
+        "epochs": 500000,
+        "correlation": 0.7659,
+        "open_zone": 0.84181,
+        "blocked_zone": 0.40508,
+        "entropy_tp": 1.5703,
+        "chi2": 0.0165,
+        "wall_clock_s": 349.2
+      },
+      "criteria": {
+        "A_open_zone_above_085": "False",
+        "B_overall_above_070": "True",
+        "C_blocked_above_random": "True",
+        "D_within_15pct_of_cpu": "True"
+      },
+      "rel_diff": 0.10932,
+      "pass": "False"
+    },
+    {
+      "n_sub": 32,
+      "cpu": {
+        "epochs": 2000000,
+        "correlation": 0.8974,
+        "open_zone": 0.87911,
+        "blocked_zone": 0.998,
+        "entropy_tp": 1.3205,
+        "chi2": 0.20873,
+        "wall_clock_s": 10.7
+      },
+      "gpu": {
+        "epochs": 500000,
+        "correlation": 0.8148,
+        "open_zone": 0.87989,
+        "blocked_zone": 0.62402,
+        "entropy_tp": 1.55107,
+        "chi2": 0.04107,
+        "wall_clock_s": 474.5
+      },
+      "criteria": {
+        "A_open_zone_above_085": "True",
+        "B_overall_above_070": "True",
+        "C_blocked_above_random": "True",
+        "D_within_15pct_of_cpu": "True"
+      },
+      "rel_diff": 0.09204,
+      "pass": "True"
+    }
+  ],
+  "monotonicity": {
+    "cpu_monotonic": true,
+    "gpu_monotonic": true
+  },
+  "overall_pass": false
+}

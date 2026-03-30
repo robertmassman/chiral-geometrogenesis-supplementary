@@ -1,0 +1,75 @@
+{
+  "description": "Priority 6: eta precision analysis",
+  "data_file": "n_scaling_results.json",
+  "n_global_uncensored": 144,
+  "n_local_uncensored": 135,
+  "power_law_fits": {
+    "global": {
+      "eta": 0.6465020813,
+      "eta_se": 0.0689828309,
+      "C": 1.884420e+08,
+      "R2": 0.3821601510,
+      "SSR": 124.4563391416,
+      "n_points": 144
+    },
+    "local": {
+      "eta": 0.5528248943,
+      "eta_se": 0.0731266008,
+      "C": 9.381773e+07,
+      "R2": 0.3005561534,
+      "SSR": 122.0531955339,
+      "n_points": 135
+    }
+  },
+  "bootstrap": {
+    "n_resamples": 10000,
+    "global": {
+      "eta_mean": 0.6478134257,
+      "eta_median": 0.6484444745,
+      "eta_std": 0.0636388547,
+      "ci_lo_2.5": 0.5217909078,
+      "ci_hi_97.5": 0.7697944458
+    },
+    "local": {
+      "eta_mean": 0.5537383423,
+      "eta_median": 0.5540952327,
+      "eta_std": 0.0693776053,
+      "ci_lo_2.5": 0.4174584382,
+      "ci_hi_97.5": 0.6885069793
+    }
+  },
+  "model_comparison": {
+    "global": {
+      "eta_predicted": 0.6666666667,
+      "SSR_free": 124.4563391416,
+      "SSR_fixed": 124.5312293853,
+      "dBIC": -4.8831889313,
+      "F_stat": 0.0854469502,
+      "pred_in_95CI": true
+    },
+    "local": {
+      "eta_predicted": 0.5000000000,
+      "SSR_free": 122.0531955339,
+      "SSR_fixed": 122.5320725737,
+      "dBIC": -4.3766371914,
+      "F_stat": 0.5218269461,
+      "pred_in_95CI": true
+    }
+  },
+  "log_corrections": {
+    "global": {
+      "eta": 0.7952372937,
+      "c_corr": -12.1349895041,
+      "SSR": 124.4139517371,
+      "R2": 0.3823705753,
+      "dAIC": 1.9509480517
+    },
+    "local": {
+      "eta": 1.3004426316,
+      "c_corr": -61.3318690194,
+      "SSR": 121.0657203244,
+      "R2": 0.3062150258,
+      "dAIC": 0.9033359589
+    }
+  }
+}

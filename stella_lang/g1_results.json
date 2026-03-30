@@ -1,0 +1,133 @@
+{
+  "test": "G1",
+  "description": "Scale-Dependent Emergence",
+  "timestamp": "2026-03-22T09:32:14.104909",
+  "parameters": {
+    "lattice_size": 2,
+    "stellae": 4,
+    "epochs": 1000000,
+    "seed": 42,
+    "scales_nsub": [
+      25,
+      100,
+      150
+    ]
+  },
+  "scales": [
+    {
+      "nsub": 25,
+      "status": "complete",
+      "total_tiles": 416,
+      "tiles_per_stella": 104,
+      "num_data_points": 200,
+      "entropy": {
+        "gpu_mean_late": 1.5837,
+        "cpu_mean_late": 1.5191,
+        "gpu_std_late": 0.001,
+        "cpu_std_late": 0.0165,
+        "gap_late": 0.0646,
+        "gpu_final": 1.5841,
+        "cpu_final": 1.5234
+      },
+      "unique_programs": {
+        "gpu_mean_late": 255.9,
+        "cpu_mean_late": 253.5
+      },
+      "top_count": {
+        "gpu_mean_late": 8.2,
+        "cpu_mean_late": 9.0
+      },
+      "replicators": {
+        "gpu_first_epoch": null,
+        "cpu_first_epoch": null
+      },
+      "performance": {
+        "gpu_epochs_per_sec": 2203.0,
+        "cpu_epochs_per_sec": 11199.0,
+        "gpu_speedup": 0.2
+      }
+    },
+    {
+      "nsub": 100,
+      "status": "complete",
+      "total_tiles": 6664,
+      "tiles_per_stella": 1666,
+      "num_data_points": 200,
+      "entropy": {
+        "gpu_mean_late": 1.5847,
+        "cpu_mean_late": 1.4896,
+        "gpu_std_late": 0.0002,
+        "cpu_std_late": 0.0077,
+        "gap_late": 0.0951,
+        "gpu_final": 1.5848,
+        "cpu_final": 1.4932
+      },
+      "unique_programs": {
+        "gpu_mean_late": 1707.5,
+        "cpu_mean_late": 1655.0
+      },
+      "top_count": {
+        "gpu_mean_late": 11.0,
+        "cpu_mean_late": 16.8
+      },
+      "replicators": {
+        "gpu_first_epoch": null,
+        "cpu_first_epoch": null
+      },
+      "performance": {
+        "gpu_epochs_per_sec": 568.0,
+        "cpu_epochs_per_sec": 1006.0,
+        "gpu_speedup": 0.56
+      }
+    },
+    {
+      "nsub": 150,
+      "status": "complete",
+      "total_tiles": 15000,
+      "tiles_per_stella": 3750,
+      "num_data_points": 200,
+      "entropy": {
+        "gpu_mean_late": 1.5846,
+        "cpu_mean_late": 1.485,
+        "gpu_std_late": 0.0002,
+        "cpu_std_late": 0.0064,
+        "gap_late": 0.0997,
+        "gpu_final": 1.5848,
+        "cpu_final": 1.4751
+      },
+      "unique_programs": {
+        "gpu_mean_late": 1862.4,
+        "cpu_mean_late": 1800.4
+      },
+      "top_count": {
+        "gpu_mean_late": 6.9,
+        "cpu_mean_late": 16.3
+      },
+      "replicators": {
+        "gpu_first_epoch": null,
+        "cpu_first_epoch": null
+      },
+      "performance": {
+        "gpu_epochs_per_sec": 269.0,
+        "cpu_epochs_per_sec": 571.0,
+        "gpu_speedup": 0.47
+      }
+    }
+  ],
+  "cross_scale": {
+    "tiles": [
+      416,
+      6664,
+      15000
+    ],
+    "entropy_gaps": [
+      0.0646,
+      0.0951,
+      0.0997
+    ],
+    "gap_mean": 0.0865,
+    "gap_range": 0.0351,
+    "gap_stable": true
+  },
+  "passed": true
+}

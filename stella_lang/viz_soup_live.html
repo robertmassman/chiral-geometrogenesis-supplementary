@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stella Soup — Live Visualization</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #08080e;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+header {
+  padding: 8px 16px;
+  background: #10101a;
+  border-bottom: 1px solid #222;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  z-index: 10;
+}
+
+header h1 { font-size: 14px; color: #e0e0e8; white-space: nowrap; }
+
+.controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+button {
+  background: #1a1a28;
+  color: #bbb;
+  border: 1px solid #333;
+  padding: 4px 12px;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+button:hover { background: #252538; color: #ddd; }
+button.active { background: #2a4a6a; border-color: #4a7aaa; color: #ddd; }
+
+select, label {
+  font-size: 11px;
+  color: #888;
+}
+select {
+  background: #1a1a28;
+  color: #bbb;
+  border: 1px solid #333;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: inherit;
+}
+
+.stats {
+  font-size: 11px;
+  color: #777;
+  display: flex;
+  gap: 14px;
+  margin-left: auto;
+}
+.stats .val { color: #ddd; font-weight: 600; }
+
+.phase-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.phase-random { background: #2a1a1a; color: #c88; }
+.phase-transition { background: #2a2a1a; color: #cc8; }
+.phase-dominated { background: #1a2a1a; color: #8c8; }
+
+.main-area {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.view-3d {
+  flex: 1;
+  position: relative;
+}
+
+#mainCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.side-panel {
+  width: 260px;
+  background: #0e0e16;
+  border-left: 1px solid #222;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.panel-section {
+  padding: 10px 12px;
+  border-bottom: 1px solid #1a1a24;
+}
+.panel-section h3 {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+canvas.chart {
+  width: 100%;
+  height: 100px;
+  background: #08080e;
+  border-radius: 3px;
+}
+
+.legend { font-size: 10px; }
+.legend-row { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+.legend-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+.inspect-content { font-size: 11px; line-height: 1.5; color: #999; }
+
+.trit-bar {
+  display: flex;
+  gap: 1px;
+  margin: 4px 0;
+}
+.trit-cell {
+  width: 10px;
+  height: 10px;
+  border-radius: 1px;
+  font-size: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+.tc0 { background: #1a1a2e; }
+.tc1 { background: #2a4a2a; }
+.tc2 { background: #4a2a2a; }
+
+.conn-status {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.conn-ok { background: #1a2a1a; color: #6a6; }
+.conn-err { background: #2a1a1a; color: #a66; }
+.conn-wait { background: #2a2a1a; color: #aa6; }
+
+footer {
+  padding: 4px 16px;
+  background: #10101a;
+  border-top: 1px solid #222;
+  font-size: 9px;
+  color: #444;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Stella Soup Live</h1>
+  <div class="controls">
+    <button id="btnPause" onclick="sendCmd('pause')">&#10074;&#10074; Pause</button>
+    <button onclick="sendCmd('faster')">&#9654;&#9654; More frames</button>
+    <button onclick="sendCmd('slower')">&#9664;&#9664; Fewer frames</button>
+    <label>Color
+      <select id="colorMode" onchange="renderFrame()">
+        <option value="z3" selected>Z&#x2083; phase</option>
+        <option value="diff">Changes (diff)</option>
+        <option value="replicator">Replicator distance</option>
+        <option value="entropy">Local entropy</option>
+      </select>
+    </label>
+    <label>View
+      <select id="viewMode" onchange="renderFrame()">
+        <option value="flat">Flat grid</option>
+        <option value="tetra3d">3D tetrahedra</option>
+      </select>
+    </label>
+  </div>
+  <div class="stats">
+    <span id="connStatus" class="conn-status conn-wait">Connecting...</span>
+    <span>Epoch: <span class="val" id="sEpoch">0</span></span>
+    <span>H: <span class="val" id="sEntropy">—</span></span>
+    <span>Repl: <span class="val" id="sRepl">—</span></span>
+    <span>Unique: <span class="val" id="sUnique">—</span></span>
+    <span id="phaseBadge" class="phase-badge phase-random">Random</span>
+  </div>
+</header>
+
+<div class="main-area">
+  <div class="view-3d">
+    <canvas id="mainCanvas"></canvas>
+  </div>
+  <div class="side-panel">
+    <div class="panel-section">
+      <h3>Entropy H(trit)</h3>
+      <canvas class="chart" id="chartEntropy"></canvas>
+    </div>
+    <div class="panel-section">
+      <h3>Replicator fraction</h3>
+      <canvas class="chart" id="chartRepl"></canvas>
+    </div>
+    <div class="panel-section">
+      <h3>Unique patches / 200</h3>
+      <canvas class="chart" id="chartUnique"></canvas>
+    </div>
+    <div class="panel-section">
+      <h3>Hovered site</h3>
+      <div class="inspect-content" id="inspectBox">
+        Hover over the grid to inspect a site
+      </div>
+    </div>
+    <div class="panel-section">
+      <h3>Legend</h3>
+      <div class="legend" id="legendBox"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Prop 0.0.XXd — C engine (full speed) &#8594; SSE &#8594; browser |
+  Z&#x2083; cells &bull; T&#x208A;/T&#x208B; two-head &bull; CPY01 coupling &bull; Superselection gates
+</footer>
+
+<script>
+// ============================================================
+// State
+// ============================================================
+const REPLICATOR = [1,2,1,2,2,1,0,2,1,1,2,0,2,1,1,1,0,2,2,0];
+const INSTR = ['NOP','ROT','FWD0','BCK0','FWD1','[',']','CPY+','CPY-'];
+
+let mesh = null;       // {n_sites, positions}
+let frame = null;      // {epoch, n_sites, entropy, tp[], tm[], ...}
+let nSites = 0;
+
+// History
+const MAX_HIST = 500;
+let histEntropy = [], histRepl = [], histUnique = [];
+
+// Canvas
+const mainCanvas = document.getElementById('mainCanvas');
+const ctx = mainCanvas.getContext('2d');
+
+// 3D rotation
+let rotX = -0.4, rotY = 0.5;
+let dragging = false, lastMX = 0, lastMY = 0;
+
+// ============================================================
+// SSE connection
+// ============================================================
+let evtSource = null;
+let paused = false;
+
+function connect() {
+  const status = document.getElementById('connStatus');
+  status.textContent = 'Connecting...';
+  status.className = 'conn-status conn-wait';
+
+  evtSource = new EventSource('/stream');
+
+  evtSource.addEventListener('mesh', (e) => {
+    const raw = JSON.parse(e.data);
+    // Decode base64 packed floats into positions array
+    if (raw.positions_b64) {
+      const bin = atob(raw.positions_b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      const floats = new Float32Array(bytes.buffer);
+      raw.positions = [];
+      for (let i = 0; i < floats.length; i += 3) {
+        raw.positions.push([floats[i], floats[i+1], floats[i+2]]);
+      }
+    }
+    mesh = raw;
+    nSites = mesh.n_sites;
+    neighborCache = null; // reset
+    console.log(`Mesh: ${nSites} sites`);
+  });
+
+  evtSource.onmessage = (e) => {
+    const f = JSON.parse(e.data);
+    if (f.type === 'frame') {
+      // Save previous frame for diff mode
+      if (frame) {
+        prevTp = frame.tpArr;
+        prevTm = frame.tmArr;
+      }
+      // Decode base64 trit data
+      f.tpArr = base64ToUint8(f.tp);
+      f.tmArr = base64ToUint8(f.tm);
+      frame = f;
+      nSites = f.n_sites;
+      updateStats();
+      renderFrame();
+    }
+  };
+
+  evtSource.onopen = () => {
+    status.textContent = 'Connected';
+    status.className = 'conn-status conn-ok';
+  };
+
+  evtSource.onerror = () => {
+    status.textContent = 'Disconnected';
+    status.className = 'conn-status conn-err';
+    evtSource.close();
+    setTimeout(connect, 2000);
+  };
+}
+
+function base64ToUint8(b64) {
+  const bin = atob(b64);
+  const arr = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+  return arr;
+}
+
+function sendCmd(action) {
+  if (action === 'pause') {
+    paused = !paused;
+    document.getElementById('btnPause').textContent =
+      paused ? '\u25B6 Resume' : '\u275A\u275A Pause';
+  }
+  fetch('/control', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({action})
+  }).catch(() => {});
+}
+
+// ============================================================
+// Stats
+// ============================================================
+function updateStats() {
+  if (!frame) return;
+  document.getElementById('sEpoch').textContent = frame.epoch.toLocaleString();
+  document.getElementById('sEntropy').textContent = frame.entropy.toFixed(4);
+  document.getElementById('sRepl').textContent =
+    `${frame.repl_count}/${frame.repl_sample}`;
+  document.getElementById('sUnique').textContent =
+    `${frame.unique_count}/${frame.unique_sample}`;
+
+  histEntropy.push(frame.entropy);
+  histRepl.push(frame.repl_count / frame.repl_sample);
+  histUnique.push(frame.unique_count / frame.unique_sample);
+  if (histEntropy.length > MAX_HIST) {
+    histEntropy.shift(); histRepl.shift(); histUnique.shift();
+  }
+
+  // Phase badge
+  const badge = document.getElementById('phaseBadge');
+  const rf = frame.repl_count / frame.repl_sample;
+  if (rf > 0.4) {
+    badge.textContent = 'Dominated';
+    badge.className = 'phase-badge phase-dominated';
+  } else if (rf > 0.02) {
+    badge.textContent = 'Transition';
+    badge.className = 'phase-badge phase-transition';
+  } else {
+    badge.textContent = 'Random';
+    badge.className = 'phase-badge phase-random';
+  }
+
+  drawChart('chartEntropy', histEntropy, '#4a9aff', 0, Math.log2(3));
+  drawChart('chartRepl', histRepl, '#4aff9a', 0, 1);
+  drawChart('chartUnique', histUnique, '#ffa04a', 0, 1);
+}
+
+function drawChart(id, data, color, lo, hi) {
+  const c = document.getElementById(id);
+  const dpr = window.devicePixelRatio || 1;
+  const w = c.clientWidth;
+  const h = c.clientHeight;
+  if (c.width !== w * dpr || c.height !== h * dpr) {
+    c.width = w * dpr;
+    c.height = h * dpr;
+  }
+  const cx = c.getContext('2d');
+  cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  cx.clearRect(0, 0, w, h);
+
+  if (data.length < 2) return;
+
+  // Grid
+  cx.strokeStyle = '#181828';
+  cx.lineWidth = 0.5;
+  for (let i = 0; i <= 4; i++) {
+    const y = h * i / 4;
+    cx.beginPath(); cx.moveTo(0, y); cx.lineTo(w, y); cx.stroke();
+  }
+
+  // Line
+  cx.strokeStyle = color;
+  cx.lineWidth = 1.2;
+  cx.beginPath();
+  for (let i = 0; i < data.length; i++) {
+    const x = (i / (MAX_HIST - 1)) * w;
+    const t = (data[i] - lo) / (hi - lo);
+    const y = h - t * (h - 4) - 2;
+    i === 0 ? cx.moveTo(x, y) : cx.lineTo(x, y);
+  }
+  cx.stroke();
+
+  // Value label at bottom-right with dark background
+  const lastVal = data[data.length - 1].toFixed(3);
+  cx.font = '11px monospace';
+  const textW = cx.measureText(lastVal).width;
+  const labelX = w - textW - 10;
+  const labelY = h - 6;
+  cx.fillStyle = 'rgba(8, 8, 14, 0.85)';
+  cx.fillRect(labelX - 3, labelY - 12, textW + 6, 15);
+  cx.fillStyle = '#e0e0e8';
+  cx.fillText(lastVal, labelX, labelY);
+}
+
+// ============================================================
+// Rendering
+// ============================================================
+function resizeCanvas() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = mainCanvas.parentElement.getBoundingClientRect();
+  mainCanvas.width = rect.width * dpr;
+  mainCanvas.height = rect.height * dpr;
+  mainCanvas.style.width = rect.width + 'px';
+  mainCanvas.style.height = rect.height + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+// Previous frame data for diff mode
+let prevTp = null, prevTm = null;
+
+// Z3 colors matching CG color fields (Def 0.1.2)
+const Z3_COLORS = [
+  [230, 60, 50],   // phase 0: red   — χ_R identity
+  [50, 210, 70],   // phase 1: green — χ_G (2π/3)
+  [30, 80, 220],   // phase 2: blue  — χ_B (4π/3)
+];
+
+// Build neighbor lookup from mesh data for entropy mode
+let neighborCache = null;
+function getNeighbors() {
+  if (neighborCache || !mesh || !mesh.positions) return neighborCache;
+  const n = mesh.n_sites;
+  // Skip O(n²) neighbor search for large meshes — too slow in browser
+  if (n > 2000) {
+    // Use index-based approximate neighbors (nearby indices on same tetrahedron face)
+    neighborCache = new Array(n);
+    for (let i = 0; i < n; i++) {
+      neighborCache[i] = [];
+      for (let d = -3; d <= 3; d++) {
+        if (d === 0) continue;
+        const j = i + d;
+        if (j >= 0 && j < n) neighborCache[i].push(j);
+      }
+    }
+    return neighborCache;
+  }
+  // Small mesh: use exact distance-based neighbors
+  const pos = mesh.positions;
+  neighborCache = new Array(n);
+  let minDist = Infinity;
+  for (let i = 0; i < Math.min(n, 20); i++) {
+    for (let j = i + 1; j < Math.min(n, 20); j++) {
+      const dx = pos[i][0]-pos[j][0], dy = pos[i][1]-pos[j][1], dz = pos[i][2]-pos[j][2];
+      const d = dx*dx + dy*dy + dz*dz;
+      if (d > 0.001 && d < minDist) minDist = d;
+    }
+  }
+  const thresh = minDist * 2.5;
+  for (let i = 0; i < n; i++) {
+    neighborCache[i] = [];
+    for (let j = 0; j < n; j++) {
+      if (i === j) continue;
+      const dx = pos[i][0]-pos[j][0], dy = pos[i][1]-pos[j][1], dz = pos[i][2]-pos[j][2];
+      if (dx*dx + dy*dy + dz*dz < thresh) neighborCache[i].push(j);
+    }
+  }
+  return neighborCache;
+}
+
+function siteColor(idx, isTP) {
+  if (!frame) return [20, 20, 25];
+  const data = isTP ? frame.tpArr : frame.tmArr;
+  const mode = document.getElementById('colorMode').value;
+  const val = data[idx];
+
+  if (mode === 'z3') {
+    return Z3_COLORS[val];
+  }
+
+  if (mode === 'diff') {
+    const prev = isTP ? prevTp : prevTm;
+    if (!prev) return Z3_COLORS[val];
+    const oldVal = prev[idx];
+    if (val !== oldVal) {
+      return [255, 255, 100]; // changed: bright yellow
+    }
+    const c = Z3_COLORS[val];
+    return [Math.floor(c[0]*0.25), Math.floor(c[1]*0.25), Math.floor(c[2]*0.25)];
+  }
+
+  if (mode === 'entropy') {
+    // Local entropy: count Z3 distribution among site + neighbors
+    const nbrs = getNeighbors();
+    const counts = [0, 0, 0];
+    counts[val]++;
+    let total = 1;
+    if (nbrs && nbrs[idx]) {
+      for (const ni of nbrs[idx]) {
+        counts[data[ni]]++;
+        total++;
+      }
+    }
+    let H = 0;
+    for (let c = 0; c < 3; c++) {
+      if (counts[c] > 0) {
+        const p = counts[c] / total;
+        H -= p * Math.log2(p);
+      }
+    }
+    // H ranges 0 (uniform) to log2(3)=1.585 (equal mix)
+    const t = H / 1.585; // 0..1
+    // Low entropy (ordered) = bright cyan, high entropy (random) = dark purple
+    return [
+      Math.floor(40 + 100 * t),
+      Math.floor(220 * (1 - t) + 20),
+      Math.floor(240 * (1 - t) + 40 * t)
+    ];
+  }
+
+  if (mode === 'replicator') {
+    // Color by how "replicator-like" the local region looks
+    // Compare a window of trits around this site to the replicator sequence
+    // Use the site + next few sites as a sliding window
+    const windowSize = Math.min(20, nSites - idx);
+    let matches = 0;
+    for (let j = 0; j < windowSize; j++) {
+      const si = (idx + j) % nSites;
+      if (data[si] === REPLICATOR[j % 20]) matches++;
+    }
+    const similarity = matches / windowSize; // 0..1
+    // High similarity = bright blue/white, low = dark
+    if (similarity > 0.8) return [100, 200, 255]; // near-match: bright cyan
+    if (similarity > 0.6) return [60, 120, 200];  // partial: blue
+    if (similarity > 0.4) return [80, 60, 140];   // some: purple
+    // Low: dim warm
+    return [40 + Math.floor(30 * similarity), 20, 30];
+  }
+
+  return Z3_COLORS[val];
+}
+
+let siteScreenPos = [];  // [{x, y, idx, isTP}]
+
+function renderFrame() {
+  if (!frame) return;
+
+  const viewMode = document.getElementById('viewMode').value;
+  resizeCanvas();
+
+  const W = mainCanvas.clientWidth;
+  const H = mainCanvas.clientHeight;
+  ctx.clearRect(0, 0, W, H);
+
+  siteScreenPos = [];
+
+  if (viewMode === 'flat') {
+    renderFlat(W, H);
+  } else {
+    renderTetra3D(W, H);
+  }
+
+  updateLegend();
+}
+
+function renderFlat(W, H) {
+  // Lay out T+ and T- side by side as square-ish grids
+  const n = nSites;
+  const cols = Math.ceil(Math.sqrt(n));
+  const rows = Math.ceil(n / cols);
+
+  // Two grids: T+ on left, T- on right
+  const gap = 20;
+  const availW = (W - gap * 3) / 2;
+  const availH = H - gap * 2;
+  const cellW = Math.floor(Math.min(availW / cols, availH / rows));
+  const cellH = cellW;
+  const cs = Math.max(2, Math.min(cellW, cellH));
+
+  const gridW = cols * cs;
+  const gridH = rows * cs;
+
+  // Center
+  const totalW = gridW * 2 + gap;
+  const offX = (W - totalW) / 2;
+  const offY = (H - gridH) / 2;
+
+  // Labels
+  ctx.fillStyle = '#555';
+  ctx.font = '11px monospace';
+  ctx.fillText('T+ (read head)', offX, offY - 6);
+  ctx.fillText('T\u2212 (write head)', offX + gridW + gap, offY - 6);
+
+  // Draw T+
+  for (let i = 0; i < n; i++) {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = offX + col * cs;
+    const y = offY + row * cs;
+    const [r, g, b] = siteColor(i, true);
+    ctx.fillStyle = `rgb(${r},${g},${b})`;
+    ctx.fillRect(x, y, cs - (cs > 4 ? 1 : 0), cs - (cs > 4 ? 1 : 0));
+    siteScreenPos.push({x: x + cs/2, y: y + cs/2, idx: i, isTP: true, cs});
+  }
+
+  // Draw T-
+  const ox2 = offX + gridW + gap;
+  for (let i = 0; i < n; i++) {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = ox2 + col * cs;
+    const y = offY + row * cs;
+    const [r, g, b] = siteColor(i, false);
+    ctx.fillStyle = `rgb(${r},${g},${b})`;
+    ctx.fillRect(x, y, cs - (cs > 4 ? 1 : 0), cs - (cs > 4 ? 1 : 0));
+    siteScreenPos.push({x: x + cs/2, y: y + cs/2, idx: i, isTP: false, cs});
+  }
+}
+
+function renderTetra3D(W, H) {
+  if (!mesh || !mesh.positions) {
+    ctx.fillStyle = '#555';
+    ctx.font = '13px monospace';
+    ctx.fillText('Waiting for mesh data...', W/2 - 100, H/2);
+    return;
+  }
+
+  const cx = W / 2, cy = H / 2;
+  const scale = Math.min(W, H) * 0.28;
+
+  // 3D rotation
+  const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+  const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+
+  function project(x, y, z) {
+    // Rotate Y
+    let x1 = x * cosY - z * sinY;
+    let z1 = x * sinY + z * cosY;
+    // Rotate X
+    let y1 = y * cosX - z1 * sinX;
+    let z2 = y * sinX + z1 * cosX;
+    return {
+      sx: cx + x1 * scale,
+      sy: cy + y1 * scale,
+      z: z2
+    };
+  }
+
+  // Collect all points to render
+  const points = [];
+  const n = mesh.n_sites;
+
+  // T+ offset left, T- offset right
+  const spread = 1.2;
+
+  for (let i = 0; i < n; i++) {
+    const [px, py, pz] = mesh.positions[i];
+    const p = project(px - spread, py, pz);
+    points.push({
+      sx: p.sx, sy: p.sy, z: p.z,
+      idx: i, isTP: true,
+      color: siteColor(i, true)
+    });
+  }
+
+  for (let i = 0; i < n; i++) {
+    const [px, py, pz] = mesh.positions[i];
+    const p = project(px + spread, py, pz);
+    points.push({
+      sx: p.sx, sy: p.sy, z: p.z,
+      idx: i, isTP: false,
+      color: siteColor(i, false)
+    });
+  }
+
+  // Sort by Z (painter's algorithm)
+  points.sort((a, b) => a.z - b.z);
+
+  const r = Math.max(2, Math.min(6, scale / (Math.sqrt(n) * 0.8)));
+
+  siteScreenPos = [];
+  for (const p of points) {
+    const brightness = 0.5 + 0.5 * ((p.z + 2) / 4);
+    const [cr, cg, cb] = p.color;
+    ctx.fillStyle = `rgb(${Math.floor(cr*brightness)},${Math.floor(cg*brightness)},${Math.floor(cb*brightness)})`;
+    ctx.beginPath();
+    ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+    ctx.fill();
+    siteScreenPos.push({x: p.sx, y: p.sy, idx: p.idx, isTP: p.isTP, cs: r * 2});
+  }
+
+  // Labels
+  ctx.fillStyle = '#555';
+  ctx.font = '11px monospace';
+  const tpLabel = project(-spread, -1.8, 0);
+  const tmLabel = project(spread, -1.8, 0);
+  ctx.fillText('T+', tpLabel.sx - 8, tpLabel.sy);
+  ctx.fillText('T\u2212', tmLabel.sx - 8, tmLabel.sy);
+}
+
+// ============================================================
+// Interaction: drag to rotate (3D mode), hover to inspect
+// ============================================================
+
+mainCanvas.addEventListener('mousedown', (e) => {
+  dragging = true;
+  lastMX = e.clientX;
+  lastMY = e.clientY;
+});
+
+window.addEventListener('mousemove', (e) => {
+  if (dragging) {
+    rotY += (e.clientX - lastMX) * 0.005;
+    rotX += (e.clientY - lastMY) * 0.005;
+    lastMX = e.clientX;
+    lastMY = e.clientY;
+    renderFrame();
+    return;
+  }
+
+  // Hover inspect
+  const rect = mainCanvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+
+  let closest = null, closestDist = Infinity;
+  for (const p of siteScreenPos) {
+    const dx = mx - p.x, dy = my - p.y;
+    const d = dx*dx + dy*dy;
+    if (d < closestDist && d < (p.cs * p.cs)) {
+      closest = p;
+      closestDist = d;
+    }
+  }
+
+  if (closest) {
+    showInspect(closest.idx, closest.isTP);
+  }
+});
+
+window.addEventListener('mouseup', () => { dragging = false; });
+
+function showInspect(idx, isTP) {
+  if (!frame) return;
+  const data = isTP ? frame.tpArr : frame.tmArr;
+  const val = data[idx];
+
+  let html = `<div>Site ${idx} on ${isTP ? 'T+' : 'T\u2212'}</div>`;
+  html += `<div>Trit value: <b style="color:${['#44f','#4c4','#c44'][val]}">${val}</b></div>`;
+
+  // Show nearby values as a mini bar (if we have mesh data)
+  if (mesh && mesh.positions) {
+    html += `<div style="margin-top:4px;color:#666">Position: (${mesh.positions[idx].join(', ')})</div>`;
+  }
+
+  document.getElementById('inspectBox').innerHTML = html;
+}
+
+// ============================================================
+// Legend
+// ============================================================
+function updateLegend() {
+  const mode = document.getElementById('colorMode').value;
+  const el = document.getElementById('legendBox');
+  if (mode === 'z3') {
+    el.innerHTML = `
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(230,60,50)"></div>Phase 0 — &chi;<sub>R</sub> identity (red)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(50,210,70)"></div>Phase 1 — &chi;<sub>G</sub> 2&pi;/3 (green)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(30,80,220)"></div>Phase 2 — &chi;<sub>B</sub> 4&pi;/3 (blue)</div>
+    `;
+  } else if (mode === 'entropy') {
+    el.innerHTML = `
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(40,220,240)"></div>Low entropy (uniform neighborhood)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(90,120,130)"></div>Medium entropy</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(140,20,40)"></div>High entropy (random mix)</div>
+      <div style="margin-top:4px;color:#555;font-size:9px">
+        Entropy of Z&#x2083; distribution<br>among each site + its neighbors
+      </div>
+    `;
+  } else if (mode === 'replicator') {
+    el.innerHTML = `
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(100,200,255)"></div>High similarity (&gt;80%)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(60,120,200)"></div>Partial match (&gt;60%)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(80,60,140)"></div>Some match (&gt;40%)</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(40,20,30)"></div>No match (random)</div>
+      <div style="margin-top:4px;color:#555;font-size:9px">
+        Sliding window comparison to<br>known 20-trit replicator core
+      </div>
+    `;
+  } else if (mode === 'diff') {
+    el.innerHTML = `
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(255,255,100)"></div>Changed this frame</div>
+      <div class="legend-row"><div class="legend-swatch" style="background:rgb(8,20,55)"></div>Unchanged (dim)</div>
+      <div style="margin-top:4px;color:#555;font-size:9px">
+        Shows which sites were modified<br>
+        between consecutive snapshots
+      </div>
+    `;
+  }
+}
+
+// ============================================================
+// Init
+// ============================================================
+window.addEventListener('resize', () => renderFrame());
+updateLegend();
+connect();
+</script>
+</body>
+</html>

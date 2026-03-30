@@ -1,0 +1,2375 @@
+{
+  "test": "GG2b",
+  "description": "Kuramoto sub-iteration mitigation for high-res snapshot",
+  "timestamp": "2026-03-23T17:41:00.922515",
+  "phase1_coarse": [
+    {
+      "correlation": 0.8932,
+      "chi2": 0.2173,
+      "entropy_tp": 1.2852,
+      "entropy_tm": 1.3035,
+      "write_success_rate": 85.1,
+      "phase_lock_nudges": 1225627,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.805,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.8393,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9074,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8695,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8958,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9265,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9328,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.805,
+      "wall_clock_s": 30.4,
+      "n_sub": 128,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 1,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.8034,
+      "chi2": 0.1248,
+      "entropy_tp": 1.3703,
+      "entropy_tm": 1.4548,
+      "write_success_rate": 80.6,
+      "phase_lock_nudges": 2017472,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.5024,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.4498,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.7893,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8857,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8911,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9212,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9335,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.5024,
+      "wall_clock_s": 56.9,
+      "n_sub": 192,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 1,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.7538,
+      "chi2": 0.091,
+      "entropy_tp": 1.408,
+      "entropy_tm": 1.5052,
+      "write_success_rate": 77.9,
+      "phase_lock_nudges": 2430440,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.2681,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.3391,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.6496,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.8996,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8938,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.922,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9311,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.2681,
+      "wall_clock_s": 94.1,
+      "n_sub": 256,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 1,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9245,
+      "chi2": 0.2422,
+      "entropy_tp": 1.275,
+      "entropy_tm": 1.2468,
+      "write_success_rate": 94.2,
+      "phase_lock_nudges": 579022,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9972,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9209,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8741,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8885,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9274,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9387,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 85.0,
+      "n_sub": 128,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 4,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.857,
+      "chi2": 0.1826,
+      "entropy_tp": 1.2948,
+      "entropy_tm": 1.381,
+      "write_success_rate": 86.1,
+      "phase_lock_nudges": 1101495,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.2729,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.6057,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9341,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8903,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8915,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9208,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9333,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.2729,
+      "wall_clock_s": 171.3,
+      "n_sub": 192,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 4,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.8002,
+      "chi2": 0.1339,
+      "entropy_tp": 1.3618,
+      "entropy_tm": 1.4426,
+      "write_success_rate": 83.8,
+      "phase_lock_nudges": 1575383,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.2323,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.3918,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.8246,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.8998,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8891,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9192,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9317,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.2323,
+      "wall_clock_s": 292.2,
+      "n_sub": 256,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 4,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9256,
+      "chi2": 0.236,
+      "entropy_tp": 1.2813,
+      "entropy_tm": 1.2559,
+      "write_success_rate": 96.5,
+      "phase_lock_nudges": 387895,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9976,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9258,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8784,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8877,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9259,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9349,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 157.9,
+      "n_sub": 128,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9183,
+      "chi2": 0.2353,
+      "entropy_tp": 1.279,
+      "entropy_tm": 1.2601,
+      "write_success_rate": 90.4,
+      "phase_lock_nudges": 808205,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.7967,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.9346,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9495,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8855,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8943,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9227,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9262,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.7967,
+      "wall_clock_s": 321.8,
+      "n_sub": 192,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.8298,
+      "chi2": 0.1625,
+      "entropy_tp": 1.3355,
+      "entropy_tm": 1.396,
+      "write_success_rate": 85.7,
+      "phase_lock_nudges": 1291054,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.2817,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.4889,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.8816,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.9008,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.892,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9228,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9311,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.2817,
+      "wall_clock_s": 554.5,
+      "n_sub": 256,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9232,
+      "chi2": 0.2451,
+      "entropy_tp": 1.2742,
+      "entropy_tm": 1.239,
+      "write_success_rate": 97.6,
+      "phase_lock_nudges": 340516,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9988,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9227,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8708,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8809,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9299,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9343,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 301.1,
+      "n_sub": 128,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 16,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9215,
+      "chi2": 0.24,
+      "entropy_tp": 1.2792,
+      "entropy_tm": 1.2475,
+      "write_success_rate": 92.5,
+      "phase_lock_nudges": 639003,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.7223,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.9485,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9519,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8912,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8883,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9256,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9354,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.7223,
+      "wall_clock_s": 621.8,
+      "n_sub": 192,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 16,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.8568,
+      "chi2": 0.1826,
+      "entropy_tp": 1.3081,
+      "entropy_tm": 1.3694,
+      "write_success_rate": 87.5,
+      "phase_lock_nudges": 1050861,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.3976,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.5907,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.9222,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.9013,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8933,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9226,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9316,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.3976,
+      "wall_clock_s": 1075.7,
+      "n_sub": 256,
+      "phase_lock": 0.1,
+      "kuramoto_sub_steps": 16,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.929,
+      "chi2": 0.237,
+      "entropy_tp": 1.2785,
+      "entropy_tm": 1.2572,
+      "write_success_rate": 95.4,
+      "phase_lock_nudges": 470184,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9972,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9318,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8856,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8954,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9232,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9355,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 30.0,
+      "n_sub": 128,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 1,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.8703,
+      "chi2": 0.1895,
+      "entropy_tp": 1.3012,
+      "entropy_tm": 1.3572,
+      "write_success_rate": 88.2,
+      "phase_lock_nudges": 980826,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.4454,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.6771,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9348,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.886,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8885,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9253,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9324,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.4454,
+      "wall_clock_s": 56.1,
+      "n_sub": 192,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 1,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.817,
+      "chi2": 0.1486,
+      "entropy_tp": 1.3492,
+      "entropy_tm": 1.4177,
+      "write_success_rate": 84.7,
+      "phase_lock_nudges": 1458079,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.2455,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.4433,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.8608,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.8985,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8924,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.922,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9306,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.2455,
+      "wall_clock_s": 94.0,
+      "n_sub": 256,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 1,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.928,
+      "chi2": 0.2372,
+      "entropy_tp": 1.2818,
+      "entropy_tm": 1.2527,
+      "write_success_rate": 97.9,
+      "phase_lock_nudges": 325105,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9988,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9306,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8782,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.896,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9241,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9362,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 85.3,
+      "n_sub": 128,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 4,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9285,
+      "chi2": 0.244,
+      "entropy_tp": 1.2719,
+      "entropy_tm": 1.2441,
+      "write_success_rate": 93.8,
+      "phase_lock_nudges": 587370,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.9375,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.9979,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9451,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8844,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8881,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9179,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.933,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9375,
+      "wall_clock_s": 171.3,
+      "n_sub": 192,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 4,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.8753,
+      "chi2": 0.205,
+      "entropy_tp": 1.2888,
+      "entropy_tm": 1.3309,
+      "write_success_rate": 88.3,
+      "phase_lock_nudges": 948592,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.4008,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.701,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.9288,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.9034,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8908,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9258,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9309,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.4008,
+      "wall_clock_s": 291.5,
+      "n_sub": 256,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 4,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9239,
+      "chi2": 0.239,
+      "entropy_tp": 1.2797,
+      "entropy_tm": 1.2485,
+      "write_success_rate": 98.7,
+      "phase_lock_nudges": 291037,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9986,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9213,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8782,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8906,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9187,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9334,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 158.7,
+      "n_sub": 128,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9324,
+      "chi2": 0.2463,
+      "entropy_tp": 1.2659,
+      "entropy_tm": 1.2438,
+      "write_success_rate": 93.9,
+      "phase_lock_nudges": 482130,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.9976,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.9986,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9463,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8896,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8902,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9253,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9345,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9976,
+      "wall_clock_s": 321.5,
+      "n_sub": 192,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.897,
+      "chi2": 0.2235,
+      "entropy_tp": 1.266,
+      "entropy_tm": 1.3049,
+      "write_success_rate": 90.2,
+      "phase_lock_nudges": 736971,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.5471,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.8211,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.9366,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.8992,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8935,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9214,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9327,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.5471,
+      "wall_clock_s": 554.4,
+      "n_sub": 256,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9254,
+      "chi2": 0.2447,
+      "entropy_tp": 1.2693,
+      "entropy_tm": 1.2447,
+      "write_success_rate": 99.2,
+      "phase_lock_nudges": 265623,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9988,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9278,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8798,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8865,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9164,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9377,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 301.2,
+      "n_sub": 128,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 16,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9318,
+      "chi2": 0.2514,
+      "entropy_tp": 1.2589,
+      "entropy_tm": 1.2368,
+      "write_success_rate": 95.9,
+      "phase_lock_nudges": 416383,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.9976,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.9985,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9502,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8866,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8866,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.92,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.937,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9976,
+      "wall_clock_s": 624.5,
+      "n_sub": 192,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 16,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9133,
+      "chi2": 0.2334,
+      "entropy_tp": 1.2645,
+      "entropy_tm": 1.279,
+      "write_success_rate": 93.2,
+      "phase_lock_nudges": 614463,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.8533,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.8772,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.947,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.8985,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8931,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9247,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9327,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.8533,
+      "wall_clock_s": 1080.2,
+      "n_sub": 256,
+      "phase_lock": 0.5,
+      "kuramoto_sub_steps": 16,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9256,
+      "chi2": 0.2394,
+      "entropy_tp": 1.2807,
+      "entropy_tm": 1.2482,
+      "write_success_rate": 96.7,
+      "phase_lock_nudges": 371445,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9974,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9174,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8886,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8935,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.925,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9311,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 30.2,
+      "n_sub": 128,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 1,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.8985,
+      "chi2": 0.2246,
+      "entropy_tp": 1.2746,
+      "entropy_tm": 1.2947,
+      "write_success_rate": 89.8,
+      "phase_lock_nudges": 766875,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.3552,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.8515,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9429,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8951,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8912,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9209,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9326,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.3552,
+      "wall_clock_s": 56.8,
+      "n_sub": 192,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 1,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.8563,
+      "chi2": 0.1887,
+      "entropy_tp": 1.3095,
+      "entropy_tm": 1.354,
+      "write_success_rate": 87.1,
+      "phase_lock_nudges": 1117545,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.2726,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.6167,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.9145,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.9,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8895,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9207,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9353,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.2726,
+      "wall_clock_s": 94.8,
+      "n_sub": 256,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 1,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9251,
+      "chi2": 0.2446,
+      "entropy_tp": 1.2727,
+      "entropy_tm": 1.2422,
+      "write_success_rate": 98.7,
+      "phase_lock_nudges": 283321,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9984,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9293,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8672,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8844,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9295,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9389,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 86.0,
+      "n_sub": 128,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 4,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9312,
+      "chi2": 0.2482,
+      "entropy_tp": 1.2652,
+      "entropy_tm": 1.2397,
+      "write_success_rate": 94.4,
+      "phase_lock_nudges": 494467,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.9976,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.9986,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9453,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8841,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8953,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9241,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9303,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9976,
+      "wall_clock_s": 171.9,
+      "n_sub": 192,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 4,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.8817,
+      "chi2": 0.2126,
+      "entropy_tp": 1.2627,
+      "entropy_tm": 1.3357,
+      "write_success_rate": 90.8,
+      "phase_lock_nudges": 761619,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.5181,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.73,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.9357,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.8997,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8901,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9221,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9291,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.5181,
+      "wall_clock_s": 293.4,
+      "n_sub": 256,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 4,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9262,
+      "chi2": 0.2341,
+      "entropy_tp": 1.2869,
+      "entropy_tm": 1.2562,
+      "write_success_rate": 99.2,
+      "phase_lock_nudges": 263480,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9984,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9227,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.878,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8883,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9265,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9423,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 158.9,
+      "n_sub": 128,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9341,
+      "chi2": 0.2495,
+      "entropy_tp": 1.2606,
+      "entropy_tm": 1.2404,
+      "write_success_rate": 95.9,
+      "phase_lock_nudges": 428907,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.9976,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.9986,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9521,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8881,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8944,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9239,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9359,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9976,
+      "wall_clock_s": 323.5,
+      "n_sub": 192,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9295,
+      "chi2": 0.2509,
+      "entropy_tp": 1.2596,
+      "entropy_tm": 1.2377,
+      "write_success_rate": 93.0,
+      "phase_lock_nudges": 602486,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.9792,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.9825,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.9408,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.9009,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8887,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9233,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.933,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9792,
+      "wall_clock_s": 557.3,
+      "n_sub": 256,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9228,
+      "chi2": 0.2414,
+      "entropy_tp": 1.2781,
+      "entropy_tm": 1.2452,
+      "write_success_rate": 99.4,
+      "phase_lock_nudges": 263244,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9988,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9211,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8738,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8863,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9225,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9317,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 298.6,
+      "n_sub": 128,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 16,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9301,
+      "chi2": 0.2474,
+      "entropy_tp": 1.2662,
+      "entropy_tm": 1.2406,
+      "write_success_rate": 97.6,
+      "phase_lock_nudges": 372299,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.9976,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.9986,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9457,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8824,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8917,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9212,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9309,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9976,
+      "wall_clock_s": 616.4,
+      "n_sub": 192,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 16,
+      "seed": 42,
+      "epochs": 5000000
+    },
+    {
+      "correlation": 0.9255,
+      "chi2": 0.2495,
+      "entropy_tp": 1.2555,
+      "entropy_tm": 1.2456,
+      "write_success_rate": 93.5,
+      "phase_lock_nudges": 569102,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.9814,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.9516,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.9439,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.9019,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8895,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9221,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9309,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9814,
+      "wall_clock_s": 1068.3,
+      "n_sub": 256,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 16,
+      "seed": 42,
+      "epochs": 5000000
+    }
+  ],
+  "phase2_confirm": [
+    {
+      "correlation": 0.9258,
+      "chi2": 0.2364,
+      "entropy_tp": 1.2839,
+      "entropy_tm": 1.2525,
+      "write_success_rate": 99.8,
+      "phase_lock_nudges": 791930,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9996,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9223,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8755,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8966,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9263,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9336,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 625.3,
+      "n_sub": 128,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 20000000
+    },
+    {
+      "correlation": 0.9316,
+      "chi2": 0.247,
+      "entropy_tp": 1.2652,
+      "entropy_tm": 1.2433,
+      "write_success_rate": 98.9,
+      "phase_lock_nudges": 857956,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.9984,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.9986,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9494,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8866,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8919,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9199,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9312,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9984,
+      "wall_clock_s": 1277.2,
+      "n_sub": 192,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 20000000
+    },
+    {
+      "correlation": 0.9331,
+      "chi2": 0.249,
+      "entropy_tp": 1.2631,
+      "entropy_tm": 1.2394,
+      "write_success_rate": 98.0,
+      "phase_lock_nudges": 1019924,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.9986,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.9988,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.9454,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.9,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8895,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9232,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9314,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9986,
+      "wall_clock_s": 2199.0,
+      "n_sub": 256,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 42,
+      "epochs": 20000000
+    },
+    {
+      "correlation": 0.9247,
+      "chi2": 0.2377,
+      "entropy_tp": 1.2783,
+      "entropy_tm": 1.2547,
+      "write_success_rate": 99.8,
+      "phase_lock_nudges": 796948,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 1.0,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9988,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9262,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8787,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8856,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9209,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9332,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 1.0,
+      "wall_clock_s": 625.7,
+      "n_sub": 128,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 137,
+      "epochs": 20000000
+    },
+    {
+      "correlation": 0.9283,
+      "chi2": 0.2479,
+      "entropy_tp": 1.2679,
+      "entropy_tm": 1.2377,
+      "write_success_rate": 98.9,
+      "phase_lock_nudges": 854265,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 1.0,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9328,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8881,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8888,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9228,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9329,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 1.0,
+      "wall_clock_s": 1277.8,
+      "n_sub": 192,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 137,
+      "epochs": 20000000
+    },
+    {
+      "correlation": 0.9312,
+      "chi2": 0.2528,
+      "entropy_tp": 1.2601,
+      "entropy_tm": 1.2323,
+      "write_success_rate": 97.0,
+      "phase_lock_nudges": 1264564,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.9977,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.9988,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.9394,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.8954,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8896,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9234,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9335,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9977,
+      "wall_clock_s": 2197.1,
+      "n_sub": 256,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 137,
+      "epochs": 20000000
+    },
+    {
+      "correlation": 0.9281,
+      "chi2": 0.2422,
+      "entropy_tp": 1.2719,
+      "entropy_tm": 1.2496,
+      "write_success_rate": 99.8,
+      "phase_lock_nudges": 784586,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.9983,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9998,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9371,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.8817,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8865,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9221,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9328,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9983,
+      "wall_clock_s": 625.4,
+      "n_sub": 128,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 271,
+      "epochs": 20000000
+    },
+    {
+      "correlation": 0.9308,
+      "chi2": 0.2513,
+      "entropy_tp": 1.262,
+      "entropy_tm": 1.2342,
+      "write_success_rate": 98.8,
+      "phase_lock_nudges": 829594,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 1.0,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.9986,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9398,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8979,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8856,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9183,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.935,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 1.0,
+      "wall_clock_s": 1277.8,
+      "n_sub": 192,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 271,
+      "epochs": 20000000
+    },
+    {
+      "correlation": 0.9312,
+      "chi2": 0.2518,
+      "entropy_tp": 1.2596,
+      "entropy_tm": 1.2352,
+      "write_success_rate": 97.5,
+      "phase_lock_nudges": 1064925,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.9995,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.9984,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.9414,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.8939,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8934,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.9192,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9318,
+          "gate": "open"
+        }
+      },
+      "deep_blocked_match": 0.9995,
+      "wall_clock_s": 2200.2,
+      "n_sub": 256,
+      "phase_lock": 1.0,
+      "kuramoto_sub_steps": 8,
+      "seed": 271,
+      "epochs": 20000000
+    }
+  ],
+  "best_config": {
+    "phase_lock": 1.0,
+    "kuramoto_sub_steps": 8
+  },
+  "confirmation": {
+    "mean_correlations": {
+      "128": 0.9262,
+      "192": 0.93023,
+      "256": 0.93183
+    },
+    "mean_deep_blocked": {
+      "128": 0.9989,
+      "192": 0.9995,
+      "256": 0.9986
+    },
+    "richardson_inf": 0.9136,
+    "richardson_A": -6.7603,
+    "richardson_inf_historical": 0.90847,
+    "shift": 0.00513
+  },
+  "pass_criteria": {
+    "richardson_in_range": "False",
+    "monotonic": "True",
+    "deep_blocked_256_above_090": "True"
+  },
+  "overall_pass": "False"
+}

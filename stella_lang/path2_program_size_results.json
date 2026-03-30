@@ -1,0 +1,187 @@
+{
+  "investigation": "Path 2: Emergent Program Size",
+  "timestamp": "2026-03-19T15:55:07.422001",
+  "question": "Does replicator complexity encode SU(3)/stella geometry?",
+  "information_content": {
+    "program_size": {
+      "total_trits": 24,
+      "functional_trits": 20,
+      "junk_trits": 4,
+      "instruction_pairs": 12,
+      "functional_pairs": 10
+    },
+    "information_content": {
+      "total_bits": 38.039100017307746,
+      "functional_bits": 31.69925001442312,
+      "kernel_bits": 9.509775004326936,
+      "total_nats": 26.366694928034633,
+      "functional_nats": 21.972245773362197
+    },
+    "program_space": {
+      "total_programs_3^24": 282429536481,
+      "functional_programs_3^20": 3486784401,
+      "kernel_programs_3^6": 729,
+      "log10_total": 11.450910113271899,
+      "log10_functional": 9.542425094393248
+    }
+  },
+  "opcode_usage": {
+    "used_opcodes": [
+      "CPY+",
+      "FWD0",
+      "FWD1",
+      "[",
+      "]"
+    ],
+    "unused_opcodes": [
+      "BCK0",
+      "CPY-",
+      "NOP",
+      "ROT"
+    ],
+    "used_count": 5,
+    "total_opcodes": 9,
+    "usage_fraction": 0.5555555555555556,
+    "frequency": {
+      "]": 3,
+      "[": 1,
+      "CPY+": 2,
+      "FWD0": 2,
+      "FWD1": 2
+    },
+    "copy_kernel_fraction": 0.2
+  },
+  "geometric_ratios": {
+    "L / vertices": 3.0,
+    "L / faces": 3.0,
+    "L / edges": 2.0,
+    "L / chi": 6.0,
+    "L / components": 12.0,
+    "L_func / vertices": 2.5,
+    "L_func / faces": 2.5,
+    "pairs / vertices": 1.5,
+    "pairs / edges": 1.0,
+    "pairs / faces": 1.5,
+    "pairs / chi": 3.0,
+    "used_opcodes / opcodes": 0.4444444444444444,
+    "Z3 / used_opcodes": 0.75,
+    "instructions / opcodes": 1.1111111111111112,
+    "L / T_symmetry": 2.0,
+    "L / rotation_order": 1.0,
+    "L / symmetry_order": 0.5,
+    "L / beta_0_coeff (=9)": 2.6666666666666665,
+    "L_func / beta_0_coeff": 2.2222222222222223,
+    "L \u00d7 b_0": 17.188733853924695,
+    "4/9 (used/total opcodes)": 0.4444444444444444,
+    "functional_bits / (128\u03c0/9)": 0.7094661092017417,
+    "L_func \u00d7 ln(3) / (128\u03c0/9)": 0.49176443329602165,
+    "L \u00d7 ln(3) / (128\u03c0/9)": 0.5901173199552259
+  },
+  "copy_mechanism": {
+    "structure": {
+      "copy_direction": "T+ \u2192 T- only (CPY+ used, CPY- absent)",
+      "chirality": "right-handed (forward-only copy + forward-only movement)",
+      "loop_structure": "nested ] [ ... ] with outer ] for repeat",
+      "head_movement": "forward only (FWD0, FWD1; no BCK0)",
+      "mutation": "no ROT instruction (no trit rotation/mutation)"
+    },
+    "min_core_trits": 10,
+    "actual_functional_trits": 20,
+    "overhead_ratio": 2.0,
+    "core_instructions": 5,
+    "actual_instructions": 10,
+    "opcode_diversity": 4,
+    "chirality_broken": true,
+    "copy_asymmetry": "CPY+ only (no CPY-)"
+  },
+  "integer_relations": {
+    "L = V \u00d7 N_c": {
+      "lhs": 24,
+      "rhs": 24,
+      "holds": true
+    },
+    "L = E \u00d7 comp": {
+      "lhs": 24,
+      "rhs": 24,
+      "holds": true
+    },
+    "L = F \u00d7 N_c": {
+      "lhs": 24,
+      "rhs": 24,
+      "holds": true
+    },
+    "L = chi \u00d7 (N_c + N_c)": {
+      "lhs": 24,
+      "rhs": 24,
+      "holds": true
+    },
+    "L/2 = E": {
+      "lhs": 12,
+      "rhs": 12,
+      "holds": true
+    },
+    "L/2 = |T|": {
+      "lhs": 12,
+      "rhs": 12,
+      "holds": true
+    },
+    "L = |O|": {
+      "lhs": 24,
+      "rhs": 24,
+      "holds": true
+    },
+    "n_ops = N_c^2": {
+      "lhs": 9,
+      "rhs": 9,
+      "holds": true
+    },
+    "n_used + n_unused = N_c^2": {
+      "lhs": 9,
+      "rhs": 9,
+      "holds": true
+    },
+    "L_junk = chi": {
+      "lhs": 4,
+      "rhs": 4,
+      "holds": true
+    },
+    "L_func = L - chi": {
+      "lhs": 20,
+      "rhs": 20,
+      "holds": true
+    },
+    "n_used = chi": {
+      "lhs": 4,
+      "rhs": 4,
+      "holds": true
+    },
+    "n_unused = n_used + 1": {
+      "lhs": 5,
+      "rhs": 5,
+      "holds": true
+    }
+  },
+  "capacity_ratios": {
+    "N_crit": 1666.0,
+    "total_capacity_trits": 39984.0,
+    "total_capacity_bits": 63373.140628834706,
+    "replicator_bits": 31.69925001442312,
+    "replicators_per_stella": 1666.0,
+    "info_fraction": 0.0005002000800320128,
+    "N_crit / L": 69.41666666666667,
+    "N_crit / L_func": 83.3,
+    "log_3(N_crit)": 6.752319175056867,
+    "N_crit^(1/3)": 11.854729962672497,
+    "N_crit \u00d7 L / 3^L": 1.4157159516030245e-07
+  },
+  "key_findings": [
+    "L=24 = |O| (rotation group order)",
+    "L = vertices \u00d7 colors = 8\u00d73",
+    "9 opcodes = N_c\u00b2 (adjoint dimension)",
+    "Junk DNA = \u03c7 = 4 (Euler characteristic)",
+    "Used opcodes = \u03c7 = 4",
+    "Replicator is chiral (CPY+ only)",
+    "L_func = L - \u03c7 = 20"
+  ],
+  "verdict": "Structural connections confirmed but all dimensionless. Cannot fix R_stella independently."
+}

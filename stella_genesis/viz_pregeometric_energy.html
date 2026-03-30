@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Thm 0.2.4 — Pre-Lorentzian Energy Functional</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a14;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 8px 16px;
+  background: rgba(6,6,16,0.95);
+  border-bottom: 1px solid #1a1a2e;
+  z-index: 10;
+}
+header h1 { font-size: 13px; font-weight: 600; color: #e0e0e8; }
+header .subtitle { font-size: 11px; color: #777; margin-top: 2px; }
+
+.main-area {
+  flex: 1; display: flex; overflow: hidden;
+}
+
+/* Canvas grid */
+.canvas-grid {
+  flex: 1; display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  background: #111;
+  padding: 1px;
+}
+.canvas-cell {
+  position: relative;
+  background: #0a0a14;
+  overflow: hidden;
+}
+.canvas-cell canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+.canvas-label {
+  position: absolute;
+  top: 6px; left: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #e0e0e8;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+.canvas-sublabel {
+  position: absolute;
+  top: 22px; left: 8px;
+  font-size: 9px;
+  color: #888;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+.canvas-eq {
+  position: absolute;
+  bottom: 6px; left: 8px;
+  font-size: 10px;
+  color: #aab;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Side panel */
+.side-panel {
+  width: 280px;
+  background: rgba(8,8,18,0.95);
+  border-left: 1px solid #1a1a2e;
+  overflow-y: auto;
+  padding: 12px;
+  flex-shrink: 0;
+}
+.panel-section {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(30,30,50,0.5);
+}
+.panel-section h3 {
+  font-size: 10px; text-transform: uppercase; color: #555;
+  margin-bottom: 5px; letter-spacing: 1px;
+}
+.ctrl-row {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; margin: 4px 0;
+}
+.ctrl-row label { color: #888; min-width: 20px; }
+.ctrl-row input[type="range"] { flex: 1; accent-color: #4a7aaa; }
+.ctrl-row .val { color: #e0e0e8; font-weight: 600; min-width: 40px; text-align: right; }
+
+.info-box {
+  background: rgba(12,12,24,0.7); border: 1px solid rgba(30,30,50,0.5); border-radius: 4px;
+  padding: 7px; margin: 5px 0; font-size: 10px; line-height: 1.6;
+}
+.info-box em { color: #999; font-style: normal; }
+
+.legend-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin: 3px 0; }
+.legend-swatch { width: 10px; height: 10px; border-radius: 50%; }
+
+.readout {
+  font-size: 10px; color: #aab; margin: 2px 0;
+}
+.readout .val { color: #e0e0e8; font-weight: 600; }
+
+button {
+  background: #1a1a2e; color: #c8c8d0; border: 1px solid #2e2e44;
+  padding: 3px 10px; border-radius: 4px; font-family: inherit;
+  font-size: 11px; cursor: pointer; transition: all 0.15s;
+  margin: 2px;
+}
+button:hover { background: #24243a; }
+button.active { background: #2a3a5a; border-color: #4a6a9a; color: #88bbff; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Pre-Lorentzian Energy Functional</h1>
+  <div class="subtitle">Thm 0.2.4: E[χ] = Σ|a_c|² + λ_χ(|χ_total|² − v₀²)² — Energy without Noether, breaking the circularity</div>
+</header>
+
+<div class="main-area">
+  <div class="canvas-grid">
+    <!-- Panel A: Mexican hat with Z₃ constraint -->
+    <div class="canvas-cell">
+      <canvas id="cvA"></canvas>
+      <div class="canvas-label">(a) Mexican hat V(|χ|) with Z₃ constraint</div>
+      <div class="canvas-sublabel">§4.2 — Phase-locked path on potential surface</div>
+      <div class="canvas-eq">V = λ_χ(|χ_total|² − v₀²)²  |  equal amplitudes → |χ_total| = 0</div>
+    </div>
+
+    <!-- Panel B: Spatial energy density E(x) -->
+    <div class="canvas-cell">
+      <canvas id="cvB"></canvas>
+      <div class="canvas-label">(b) Total energy density E(x)</div>
+      <div class="canvas-sublabel">§5.2 — Level 2: kinetic + potential on ℝ³ slice</div>
+      <div class="canvas-eq">E(x) = Σ|a_c(x)|² + λ_χ(|χ_total(x)|² − v₀²)²</div>
+    </div>
+
+    <!-- Panel C: |∇χ|² gradient energy -->
+    <div class="canvas-cell">
+      <canvas id="cvC"></canvas>
+      <div class="canvas-label">(c) Gradient energy |∇χ_total|²</div>
+      <div class="canvas-sublabel">§5.3 — From pressure function spatial dependence</div>
+      <div class="canvas-eq">∇a_c(x) = −2a₀(x−x_c)/(|x−x_c|²+ε²)²</div>
+    </div>
+
+    <!-- Panel D: Configuration space energy landscape -->
+    <div class="canvas-cell">
+      <canvas id="cvD"></canvas>
+      <div class="canvas-label">(d) Configuration space: E(a_R, a_G) at a_B = 1</div>
+      <div class="canvas-sublabel">§4.2.3 — Symmetric point vs VEV minimum</div>
+      <div class="canvas-eq">E_sym = 3a₀² + λ_χv₀⁴  |  E_VEV: |χ_total|² = v₀² (broken symmetry)</div>
+    </div>
+  </div>
+
+  <div class="side-panel">
+
+    <div class="panel-section">
+      <h3>Parameters</h3>
+      <div class="ctrl-row">
+        <label>ε</label>
+        <input type="range" id="sliderEps" min="0.05" max="1.0" step="0.01" value="0.30">
+        <span class="val" id="valEps">0.30</span>
+      </div>
+      <div class="readout">Regularization — vertex sharpness</div>
+
+      <div class="ctrl-row" style="margin-top:8px;">
+        <label>λ_χ</label>
+        <input type="range" id="sliderLam" min="0.1" max="5.0" step="0.1" value="1.0">
+        <span class="val" id="valLam">1.00</span>
+      </div>
+      <div class="readout">Quartic coupling (must be > 0 for stability)</div>
+
+      <div class="ctrl-row" style="margin-top:8px;">
+        <label>v₀</label>
+        <input type="range" id="sliderV0" min="0.1" max="3.0" step="0.05" value="1.0">
+        <span class="val" id="valV0">1.00</span>
+      </div>
+      <div class="readout">VEV scale — Mexican hat minimum radius</div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Geometry</h3>
+      <div class="ctrl-row">
+        <label>Cut</label>
+        <button id="btnXY" class="active">xy</button>
+        <button id="btnXZ">xz</button>
+        <button id="btnYZ">yz</button>
+      </div>
+      <div class="readout" id="vertexInfo" style="font-size:9px; line-height:1.5; color:#88aacc; margin-top:4px;">
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Probe (hover over panels b,c)</h3>
+      <div class="readout">Position: <span class="val" id="probePos">—</span></div>
+      <div class="readout" style="margin-top:4px; color:#666;">— Energy components —</div>
+      <div class="readout">Σ|a_c|²: <span class="val" id="probeKin">—</span></div>
+      <div class="readout">V(χ): <span class="val" id="probePot">—</span></div>
+      <div class="readout">E_total: <span class="val" id="probeE">—</span></div>
+      <div class="readout">|∇χ|²: <span class="val" id="probeGrad">—</span></div>
+      <div class="readout" style="margin-top:4px; color:#666;">— Field state —</div>
+      <div class="readout">|χ_total|²: <span class="val" id="probeChi2">—</span></div>
+      <div class="readout">Dominant: <span class="val" id="probeDom">—</span></div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Panel (a) — Mexican Hat</h3>
+      <div class="info-box">
+        <em>Radial slice through V(|χ|²):</em><br>
+        <span style="color:#ffcc66;">Gold ring</span> = V=0 minimum at |χ|²=v₀²<br>
+        <span style="color:#ff6666;">Red dot</span> = symmetric point |χ|²=0<br>
+        <span style="color:#66ccff;">Blue path</span> = Z₃ constraint trajectory<br><br>
+        <em>Key insight (§4.2.6):</em><br>
+        Symmetric point is a <em>potential maximum</em><br>
+        but <em>stable under phase constraint</em><br>
+        (phases locked at 120° by SU(3))
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Panel (d) — Config Space</h3>
+      <div class="info-box">
+        <em>§4.2.3 — Two equilibria:</em><br>
+        <span style="color:#66ffcc;">Type A (symmetric):</span><br>
+        a_R = a_G = a_B → |χ|² = 0<br>
+        E = 3a₀² + λv₀⁴ (phase-stable)<br><br>
+        <span style="color:#ffcc66;">Type B (VEV):</span><br>
+        a_c unequal → |χ|² = v₀²<br>
+        V = 0 but color symmetry broken
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>The Circularity Break (§1)</h3>
+      <div class="info-box">
+        <em>OLD (circular):</em><br>
+        Energy ← Noether ← Time ← Spacetime<br>
+        ← Fields ← Energy ...<br><br>
+        <em>NEW (Thm 0.2.4):</em><br>
+        <span style="color:#66ffcc;">Energy ← algebraic (no spacetime)</span><br>
+        → Time emerges (Thm 0.2.2)<br>
+        → Spacetime emerges (Thm 5.2.1)<br>
+        → Noether = consistency check
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Proof References</h3>
+      <div class="info-box">
+        <em>Thm 0.2.4</em> — Pre-Lorentzian energy<br>
+        <em>Thm 0.2.3</em> — Stable convergence point<br>
+        <em>Thm 0.2.2</em> — Internal time emergence<br>
+        <em>Thm 0.2.1</em> — Total field superposition<br>
+        <em>Def 0.1.3</em> — Pressure functions<br>
+        <em>Def 0.1.2</em> — Color fields & Z₃ phases
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ============================================================
+// EXACT MATHEMATICS FROM THE PROOFS
+// ============================================================
+
+// Vertex positions — Def 0.1.3 §2.1
+const S3 = 1 / Math.sqrt(3);
+const VERTICES = {
+  R:  [ S3, -S3, -S3],
+  G:  [-S3,  S3, -S3],
+  B:  [-S3, -S3,  S3],
+  W:  [ S3,  S3,  S3],
+  Rb: [-S3,  S3,  S3],
+  Gb: [ S3, -S3,  S3],
+  Bb: [ S3,  S3, -S3],
+  Wb: [-S3, -S3, -S3],
+};
+
+// Phases — Def 0.1.2
+const PHASES = { R: 0, G: 2 * Math.PI / 3, B: 4 * Math.PI / 3 };
+const cosG = Math.cos(PHASES.G); // -1/2
+const sinG = Math.sin(PHASES.G); //  √3/2
+const cosB = Math.cos(PHASES.B); // -1/2
+const sinB = Math.sin(PHASES.B); // -√3/2
+
+// Pressure function — Def 0.1.3
+function pressureFunc(x, y, z, vertex, eps2) {
+  const dx = x - vertex[0], dy = y - vertex[1], dz = z - vertex[2];
+  return 1.0 / (dx*dx + dy*dy + dz*dz + eps2);
+}
+
+// Gradient of pressure function — Thm 0.2.4 §5.3
+// ∇P_c(x) = -2(x - x_c) / (|x - x_c|² + ε²)²
+function pressureGrad(x, y, z, vertex, eps2) {
+  const dx = x - vertex[0], dy = y - vertex[1], dz = z - vertex[2];
+  const denom = dx*dx + dy*dy + dz*dz + eps2;
+  const factor = -2.0 / (denom * denom);
+  return [factor * dx, factor * dy, factor * dz];
+}
+
+// ============================================================
+// STATE
+// ============================================================
+let eps = 0.30;
+let lam = 1.0;   // λ_χ
+let v0 = 1.0;    // VEV scale
+let a0 = 1.0;    // amplitude (fixed for spatial panels)
+let cutPlane = 'xy';
+let probeX = NaN, probeY = NaN;
+
+// ============================================================
+// PLANE CUTS
+// ============================================================
+function projectVertex(v, plane) {
+  if (plane === 'xy') return [v[0], v[1]];
+  if (plane === 'xz') return [v[0], v[2]];
+  if (plane === 'yz') return [v[1], v[2]];
+}
+
+function to3D(u, v, plane) {
+  if (plane === 'xy') return [u, v, 0];
+  if (plane === 'xz') return [u, 0, v];
+  if (plane === 'yz') return [0, u, v];
+}
+
+// ============================================================
+// RENDERING UTILITIES
+// ============================================================
+const EXTENT = 1.4;
+
+function getCanvasAndCtx(id) {
+  const cv = document.getElementById(id);
+  const rect = cv.parentElement.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio, 2);
+  cv.width = rect.width * dpr;
+  cv.height = rect.height * dpr;
+  cv.style.width = rect.width + 'px';
+  cv.style.height = rect.height + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { cv, ctx, w: rect.width, h: rect.height };
+}
+
+// Uniform scaling: use min(w,h) so circles stay circular
+function pxToCoord(px, py, w, h) {
+  const s = Math.min(w, h);
+  const u = ((px - w / 2) / s) * 2 * EXTENT;
+  const v = -((py - h / 2) / s) * 2 * EXTENT;
+  return [u, v];
+}
+
+function coordToPx(u, v, w, h) {
+  const s = Math.min(w, h);
+  return [w / 2 + (u / (2 * EXTENT)) * s, h / 2 - (v / (2 * EXTENT)) * s];
+}
+
+const VERTEX_COLORS = {
+  R: '#ff3333', G: '#33ff33', B: '#3377ff',
+  W: '#ffffff', Rb: '#00cccc', Gb: '#cc00cc', Bb: '#cccc00', Wb: '#666666'
+};
+
+function drawVertexMarkers(ctx, w, h, which) {
+  for (const name of which) {
+    const v = VERTICES[name];
+    const [pu, pv] = projectVertex(v, cutPlane);
+    const [px, py] = coordToPx(pu, pv, w, h);
+    if (Math.abs(pu) > EXTENT || Math.abs(pv) > EXTENT) continue;
+    ctx.beginPath();
+    ctx.arc(px, py, 5, 0, 2 * Math.PI);
+    ctx.fillStyle = VERTEX_COLORS[name];
+    ctx.fill();
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '10px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('x_' + name, px + 8, py + 3);
+  }
+}
+
+function hslToRgb(h, s, l) {
+  if (s === 0) return [l, l, l];
+  function hue2rgb(p, q, t) {
+    if (t < 0) t += 1; if (t > 1) t -= 1;
+    if (t < 1/6) return p + (q - p) * 6 * t;
+    if (t < 1/2) return q;
+    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+    return p;
+  }
+  const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+  const p = 2 * l - q;
+  return [hue2rgb(p, q, h + 1/3), hue2rgb(p, q, h), hue2rgb(p, q, h - 1/3)];
+}
+
+// ============================================================
+// PANEL A: Mexican Hat with Z₃ constraint path
+// ============================================================
+function renderA() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvA');
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  // Render V(Re χ, Im χ) as a 2D heat map
+  // Mexican hat: V = λ(|χ|² - v₀²)²
+  const chiMax = v0 * 2.5; // coordinate range
+  const sA = Math.min(w, h); // uniform scale base
+
+  // Find V_max for normalization
+  const vMax = lam * v0 * v0 * v0 * v0; // V at origin
+
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const reX = ((px - w / 2) / sA) * 2 * chiMax;
+      const imX = -((py - h / 2) / sA) * 2 * chiMax;
+      const chi2 = reX * reX + imX * imX;
+      const V = lam * (chi2 - v0 * v0) * (chi2 - v0 * v0);
+
+      // Log normalization for visibility
+      const norm = Math.log(1 + V) / Math.log(1 + vMax * 2);
+      const t = Math.min(1, norm);
+
+      const idx = (py * w + px) * 4;
+      // Deep purple → magenta → gold colormap
+      if (t < 0.15) {
+        const s = t / 0.15;
+        data[idx]     = Math.floor(8 + s * 30);
+        data[idx + 1] = Math.floor(4 + s * 8);
+        data[idx + 2] = Math.floor(20 + s * 40);
+      } else if (t < 0.4) {
+        const s = (t - 0.15) / 0.25;
+        data[idx]     = Math.floor(38 + s * 60);
+        data[idx + 1] = Math.floor(12 + s * 15);
+        data[idx + 2] = Math.floor(60 + s * 40);
+      } else if (t < 0.7) {
+        const s = (t - 0.4) / 0.3;
+        data[idx]     = Math.floor(98 + s * 80);
+        data[idx + 1] = Math.floor(27 + s * 40);
+        data[idx + 2] = Math.floor(100 - s * 30);
+      } else {
+        const s = (t - 0.7) / 0.3;
+        data[idx]     = Math.floor(178 + s * 77);
+        data[idx + 1] = Math.floor(67 + s * 130);
+        data[idx + 2] = Math.floor(70 - s * 40);
+      }
+      data[idx + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  // Helper: chi-space coord to pixel (uniform)
+  function chiToPx(re, im) {
+    return [w / 2 + (re / chiMax) * (sA / 2), h / 2 - (im / chiMax) * (sA / 2)];
+  }
+
+  // Draw V=0 ring (|χ|² = v₀²)
+  const [cx, cy] = chiToPx(0, 0);
+  const ringRadius = (v0 / chiMax) * (sA / 2);
+  ctx.beginPath();
+  ctx.arc(cx, cy, ringRadius, 0, 2 * Math.PI);
+  ctx.strokeStyle = '#ffcc00';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([4, 3]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Label the ring
+  ctx.fillStyle = '#ffcc00';
+  ctx.font = '10px monospace';
+  ctx.textAlign = 'left';
+  const [rlx, rly] = chiToPx(v0 * 0.7, v0 * 0.7);
+  ctx.fillText('V=0: |χ|²=v₀²', rlx + 4, rly - 4);
+
+  // Draw Z₃ constraint paths from origin toward each phase direction
+  const phaseAngles = [0, 2*Math.PI/3, 4*Math.PI/3];
+  const colors = ['#ff3333', '#33ff33', '#3377ff'];
+  for (let i = 0; i < 3; i++) {
+    const angle = phaseAngles[i];
+    const cosA = Math.cos(angle), sinA = Math.sin(angle);
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    const endR = chiMax * 0.9;
+    const steps = 60;
+    for (let s = 0; s <= steps; s++) {
+      const r = (s / steps) * endR;
+      const [lpx, lpy] = chiToPx(r * cosA, r * sinA);
+      ctx.lineTo(lpx, lpy);
+    }
+    ctx.strokeStyle = colors[i];
+    ctx.lineWidth = 1.5;
+    ctx.globalAlpha = 0.7;
+    ctx.stroke();
+    ctx.globalAlpha = 1.0;
+
+    // Label
+    const labelR = v0 * 1.8;
+    const [lx, ly] = chiToPx(labelR * cosA, labelR * sinA);
+    ctx.fillStyle = colors[i];
+    ctx.font = '9px monospace';
+    ctx.textAlign = 'center';
+    const labels = ['φ_R=0', 'φ_G=2π/3', 'φ_B=4π/3'];
+    ctx.fillText(labels[i], lx, ly);
+  }
+
+  // Mark origin = symmetric point
+  ctx.beginPath();
+  ctx.arc(cx, cy, 6, 0, 2 * Math.PI);
+  ctx.fillStyle = '#ff4444';
+  ctx.fill();
+  ctx.strokeStyle = '#ffffff';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 10px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('|χ|=0', cx + 9, cy - 4);
+  ctx.font = '9px monospace';
+  ctx.fillStyle = '#ff9999';
+  ctx.fillText('(stable under Z₃)', cx + 9, cy + 8);
+
+  // Axes labels
+  ctx.fillStyle = '#666';
+  ctx.font = '10px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('Re[χ_total]', w - 50, cy + 14);
+  ctx.save();
+  ctx.translate(14, cy);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Im[χ_total]', 0, 0);
+  ctx.restore();
+}
+
+// ============================================================
+// PANEL B: Total energy density E(x) on spatial slice
+// ============================================================
+function renderB() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvB');
+  const eps2 = eps * eps;
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  const vR = VERTICES.R, vG = VERTICES.G, vB = VERTICES.B;
+
+  // E(x) = a₀²Σ P_c² + λ(|χ_total(x)|² - v₀²)²
+  // Find max for normalization
+  const pMax = 1.0 / eps2;
+  const kinMax = a0 * a0 * pMax * pMax;
+  const eMax = kinMax + lam * v0 * v0 * v0 * v0;
+  const logEMax = Math.log(1 + eMax);
+
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const [u, v] = pxToCoord(px, py, w, h);
+      const [x, y, z] = to3D(u, v, cutPlane);
+
+      const pR = pressureFunc(x, y, z, vR, eps2);
+      const pG = pressureFunc(x, y, z, vG, eps2);
+      const pB = pressureFunc(x, y, z, vB, eps2);
+
+      // Kinetic-like: Σ|a_c(x)|² = a₀² Σ P_c²
+      const kin = a0 * a0 * (pR*pR + pG*pG + pB*pB);
+
+      // |χ_total(x)|² with Z₃ phases — Thm 0.2.1 §4.2
+      const chi2 = a0*a0 * 0.5 * (
+        (pR - pG)*(pR - pG) +
+        (pG - pB)*(pG - pB) +
+        (pB - pR)*(pB - pR)
+      );
+
+      // Potential: V = λ(|χ|² - v₀²)²
+      const pot = lam * (chi2 - v0*v0) * (chi2 - v0*v0);
+
+      const E = kin + pot;
+
+      const norm = Math.log(1 + E) / logEMax;
+      const t = Math.min(1, norm);
+
+      // Warm energy colormap: black → deep red → orange → yellow → white
+      const idx = (py * w + px) * 4;
+      if (t < 0.2) {
+        const s = t / 0.2;
+        data[idx]     = Math.floor(s * 80);
+        data[idx + 1] = Math.floor(s * 10);
+        data[idx + 2] = Math.floor(s * 5);
+      } else if (t < 0.45) {
+        const s = (t - 0.2) / 0.25;
+        data[idx]     = Math.floor(80 + s * 120);
+        data[idx + 1] = Math.floor(10 + s * 40);
+        data[idx + 2] = Math.floor(5 + s * 5);
+      } else if (t < 0.7) {
+        const s = (t - 0.45) / 0.25;
+        data[idx]     = Math.floor(200 + s * 55);
+        data[idx + 1] = Math.floor(50 + s * 130);
+        data[idx + 2] = Math.floor(10 + s * 15);
+      } else {
+        const s = (t - 0.7) / 0.3;
+        data[idx]     = 255;
+        data[idx + 1] = Math.floor(180 + s * 75);
+        data[idx + 2] = Math.floor(25 + s * 230);
+      }
+      data[idx + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  drawVertexMarkers(ctx, w, h, ['R', 'G', 'B']);
+
+  // Mark center with energy info
+  const [cx, cy] = coordToPx(0, 0, w, h);
+  const p0 = 1 / (1 + eps2);
+  const kinCenter = a0*a0 * 3 * p0*p0;
+  const potCenter = lam * v0*v0*v0*v0; // |χ|² = 0 at center
+  ctx.beginPath();
+  ctx.arc(cx, cy, 8, 0, 2 * Math.PI);
+  ctx.strokeStyle = '#ffaa44';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.fillStyle = '#ffaa44';
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText(`E₀=${(kinCenter+potCenter).toFixed(2)}`, cx + 11, cy + 4);
+}
+
+// ============================================================
+// PANEL C: Gradient energy |∇χ_total|²
+// ============================================================
+function renderC() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvC');
+  const eps2 = eps * eps;
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  const vR = VERTICES.R, vG = VERTICES.G, vB = VERTICES.B;
+
+  // Compute ∇χ_total = a₀ Σ_c ∇P_c · e^{iφ_c}
+  // |∇χ_total|² = |Σ_c ∇P_c · e^{iφ_c}|²
+  // This is a vector in 3D for each spatial component, then sum Re²+Im²
+
+  // Find max for normalization (near a vertex)
+  let gradMax = 0;
+  // Sample near vertex R to estimate max
+  const testR = 0.05;
+  for (let angle = 0; angle < Math.PI * 2; angle += 0.5) {
+    const tx = VERTICES.R[0] + testR * Math.cos(angle);
+    const ty = VERTICES.R[1] + testR * Math.sin(angle);
+    const tz = VERTICES.R[2];
+    const g = computeGradChi2(tx, ty, tz, eps2);
+    if (g > gradMax) gradMax = g;
+  }
+  if (gradMax === 0) gradMax = 1;
+  const logGradMax = Math.log(1 + gradMax);
+
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const [u, v] = pxToCoord(px, py, w, h);
+      const [x, y, z] = to3D(u, v, cutPlane);
+
+      const g2 = computeGradChi2(x, y, z, eps2);
+
+      const norm = Math.log(1 + g2) / logGradMax;
+      const t = Math.min(1, norm);
+
+      // Cyan-teal colormap for gradient energy
+      const idx = (py * w + px) * 4;
+      if (t < 0.2) {
+        const s = t / 0.2;
+        data[idx]     = Math.floor(s * 5);
+        data[idx + 1] = Math.floor(s * 20);
+        data[idx + 2] = Math.floor(s * 40);
+      } else if (t < 0.5) {
+        const s = (t - 0.2) / 0.3;
+        data[idx]     = Math.floor(5 + s * 15);
+        data[idx + 1] = Math.floor(20 + s * 100);
+        data[idx + 2] = Math.floor(40 + s * 100);
+      } else if (t < 0.8) {
+        const s = (t - 0.5) / 0.3;
+        data[idx]     = Math.floor(20 + s * 80);
+        data[idx + 1] = Math.floor(120 + s * 100);
+        data[idx + 2] = Math.floor(140 + s * 60);
+      } else {
+        const s = (t - 0.8) / 0.2;
+        data[idx]     = Math.floor(100 + s * 155);
+        data[idx + 1] = Math.floor(220 + s * 35);
+        data[idx + 2] = Math.floor(200 + s * 55);
+      }
+      data[idx + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  drawVertexMarkers(ctx, w, h, ['R', 'G', 'B']);
+
+  // Mark center where gradient is minimal
+  const [cx, cy] = coordToPx(0, 0, w, h);
+  ctx.beginPath();
+  ctx.arc(cx, cy, 8, 0, 2 * Math.PI);
+  ctx.strokeStyle = '#44ddcc';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.fillStyle = '#44ddcc';
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('∇χ≈0', cx + 11, cy + 4);
+}
+
+function computeGradChi2(x, y, z, eps2) {
+  const vR = VERTICES.R, vG = VERTICES.G, vB = VERTICES.B;
+
+  // ∇χ_total = a₀ Σ_c (∇P_c) · e^{iφ_c}
+  // For each spatial direction d ∈ {x,y,z}:
+  //   (∇χ)_d = a₀ [∂P_R/∂d · 1 + ∂P_G/∂d · ω + ∂P_B/∂d · ω²]
+  // |∇χ|² = Σ_d |( ∇χ)_d|²
+
+  const gR = pressureGrad(x, y, z, vR, eps2);
+  const gG = pressureGrad(x, y, z, vG, eps2);
+  const gB = pressureGrad(x, y, z, vB, eps2);
+
+  let grad2 = 0;
+  for (let d = 0; d < 3; d++) {
+    // Re part: gR[d] + gG[d]*cos(2π/3) + gB[d]*cos(4π/3)
+    const re = a0 * (gR[d] + gG[d] * cosG + gB[d] * cosB);
+    // Im part: gG[d]*sin(2π/3) + gB[d]*sin(4π/3)
+    const im = a0 * (gG[d] * sinG + gB[d] * sinB);
+    grad2 += re * re + im * im;
+  }
+  return grad2;
+}
+
+// ============================================================
+// PANEL D: Configuration space energy E(a_R, a_G) with a_B = a₀
+// ============================================================
+function renderD() {
+  const { cv, ctx, w, h } = getCanvasAndCtx('cvD');
+  const img = ctx.createImageData(w, h);
+  const data = img.data;
+
+  // Plot E(a_R, a_G) with a_B = 1 (fixed)
+  // E = a_R² + a_G² + a_B² + λ(|χ_total|² − v₀²)²
+  // |χ_total|² = a_R² + a_G² + a_B² − a_R·a_G − a_G·a_B − a_B·a_R
+
+  const aMax = 2.8;  // visible range — enough to see VEV contour + margin
+  const aB = 1.0;
+  const sD = Math.min(w, h);
+  const margin = 0.15; // fraction of sD reserved for labels on each side
+  const usable = sD * (1 - 2 * margin); // pixel extent for the data region
+  const padL = (w - sD) / 2 + sD * margin; // left pixel edge of data
+  const padT = (h - sD) / 2 + sD * margin; // top pixel edge of data
+
+  // Config-space [0, aMax]² mapped into the usable region, centered
+  function pxToA(px, py) {
+    const aR = ((px - padL) / usable) * aMax;
+    const aG = (1 - (py - padT) / usable) * aMax;
+    return [aR, aG];
+  }
+  function aToPx(aR, aG) {
+    const px = padL + (aR / aMax) * usable;
+    const py = padT + (1 - aG / aMax) * usable;
+    return [px, py];
+  }
+
+  // Energy function
+  function energyAt(aR, aG) {
+    const norm2 = aR*aR + aG*aG + aB*aB;
+    const chi2 = aR*aR + aG*aG + aB*aB - aR*aG - aG*aB - aB*aR;
+    return norm2 + lam * (chi2 - v0*v0) * (chi2 - v0*v0);
+  }
+
+  // Pre-scan for normalization
+  let eMin = Infinity, eMaxVal = 0;
+  for (let py = 0; py < h; py += 4) {
+    for (let px = 0; px < w; px += 4) {
+      const [aR, aG] = pxToA(px, py);
+      if (aR < 0 || aG < 0 || aR > aMax || aG > aMax) continue;
+      const E = energyAt(aR, aG);
+      if (E < eMin) eMin = E;
+      if (E > eMaxVal) eMaxVal = E;
+    }
+  }
+  const logRange = Math.log(1 + eMaxVal - eMin) || 1;
+
+  // --- Pixel fill ---
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      const [aR, aG] = pxToA(px, py);
+      const idx = (py * w + px) * 4;
+
+      if (aR < 0 || aG < 0 || aR > aMax || aG > aMax) {
+        data[idx] = 5; data[idx+1] = 5; data[idx+2] = 10; data[idx+3] = 255;
+        continue;
+      }
+
+      const E = energyAt(aR, aG);
+      const t = Math.log(1 + E - eMin) / logRange;
+
+      // Purple-gold energy landscape
+      if (t < 0.15) {
+        const s = t / 0.15;
+        data[idx]     = Math.floor(5 + s * 15);
+        data[idx + 1] = Math.floor(8 + s * 20);
+        data[idx + 2] = Math.floor(20 + s * 35);
+      } else if (t < 0.35) {
+        const s = (t - 0.15) / 0.2;
+        data[idx]     = Math.floor(20 + s * 30);
+        data[idx + 1] = Math.floor(28 + s * 20);
+        data[idx + 2] = Math.floor(55 + s * 45);
+      } else if (t < 0.6) {
+        const s = (t - 0.35) / 0.25;
+        data[idx]     = Math.floor(50 + s * 80);
+        data[idx + 1] = Math.floor(48 + s * 30);
+        data[idx + 2] = Math.floor(100 - s * 20);
+      } else if (t < 0.85) {
+        const s = (t - 0.6) / 0.25;
+        data[idx]     = Math.floor(130 + s * 80);
+        data[idx + 1] = Math.floor(78 + s * 70);
+        data[idx + 2] = Math.floor(80 - s * 40);
+      } else {
+        const s = (t - 0.85) / 0.15;
+        data[idx]     = Math.floor(210 + s * 45);
+        data[idx + 1] = Math.floor(148 + s * 90);
+        data[idx + 2] = Math.floor(40 + s * 60);
+      }
+      data[idx + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  // --- Iso-energy contours (thin, subtle) ---
+  const nContours = 8;
+  ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+  ctx.lineWidth = 0.7;
+  for (let c = 1; c <= nContours; c++) {
+    const target = eMin + (eMaxVal - eMin) * (c / (nContours + 1));
+    // March rows, find crossings
+    for (let py = 0; py < h - 1; py += 2) {
+      for (let px = 0; px < w - 1; px += 2) {
+        const [aR, aG] = pxToA(px, py);
+        const [aR1, aG1] = pxToA(px + 2, py);
+        if (aR < 0 || aG < 0 || aR1 > aMax || aG > aMax) continue;
+        const e0 = energyAt(aR, aG);
+        const e1 = energyAt(aR1, aG1);
+        if ((e0 - target) * (e1 - target) < 0) {
+          ctx.fillStyle = 'rgba(255,255,255,0.12)';
+          ctx.fillRect(px, py, 1.5, 1.5);
+        }
+      }
+    }
+  }
+
+  // --- VEV contour |χ_total|² = v₀² (parametric ellipse) ---
+  // chi2 = aR² + aG² + aB² - aR*aG - aG*aB - aB*aR = v0²
+  // Trace parametrically: for each angle θ, solve along the ellipse
+  ctx.strokeStyle = '#ffcc00';
+  ctx.lineWidth = 1.8;
+  ctx.setLineDash([4, 3]);
+
+  // Upper branch
+  ctx.beginPath();
+  let hasPath = false;
+  const N = 300;
+  for (let i = 0; i <= N; i++) {
+    const aR = (i / N) * aMax;
+    const disc = (aR + aB)*(aR + aB) - 4*(aR*aR + aB*aB - aR*aB - v0*v0);
+    if (disc < 0) continue;
+    const aG = ((aR + aB) + Math.sqrt(disc)) / 2;
+    if (aG < 0 || aG > aMax) continue;
+    const [px, py] = aToPx(aR, aG);
+    if (!hasPath) { ctx.moveTo(px, py); hasPath = true; }
+    else ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+
+  // Lower branch
+  ctx.beginPath();
+  hasPath = false;
+  for (let i = 0; i <= N; i++) {
+    const aR = (i / N) * aMax;
+    const disc = (aR + aB)*(aR + aB) - 4*(aR*aR + aB*aB - aR*aB - v0*v0);
+    if (disc < 0) continue;
+    const aG = ((aR + aB) - Math.sqrt(disc)) / 2;
+    if (aG < 0 || aG > aMax) continue;
+    const [px, py] = aToPx(aR, aG);
+    if (!hasPath) { ctx.moveTo(px, py); hasPath = true; }
+    else ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // --- |χ_total|² = 0 line (Z₃ cancellation locus) ---
+  // chi2 = 0: aR² + aG² + aB² - aR*aG - aG*aB - aB*aR = 0
+  // Only solution with aR,aG >= 0: aR = aG = aB (single point on diagonal)
+  // But let's draw the full locus (it's a degenerate ellipse, just the point)
+  // Actually this quadratic form is positive semi-definite and equals 0 only at aR=aG=aB
+
+  // --- Symmetry diagonal a_R = a_G ---
+  ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([2, 4]);
+  ctx.beginPath();
+  const [d0x, d0y] = aToPx(0, 0);
+  const [d1x, d1y] = aToPx(aMax, aMax);
+  ctx.moveTo(d0x, d0y);
+  ctx.lineTo(d1x, d1y);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Label diagonal
+  const [dlx, dly] = aToPx(aMax * 0.72, aMax * 0.72);
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.font = '8px monospace';
+  ctx.textAlign = 'right';
+  ctx.fillText('a_R = a_G', dlx - 4, dly - 4);
+
+  // --- Find and mark VEV energy minimum on the contour ---
+  // On VEV contour (V=0), E = aR² + aG² + aB². Minimize subject to chi2 = v0².
+  // Use Lagrange multiplier or just sample:
+  let bestE = Infinity, bestAR = 0, bestAG = 0;
+  for (let i = 0; i <= N; i++) {
+    const aR = (i / N) * aMax;
+    const disc = (aR + aB)*(aR + aB) - 4*(aR*aR + aB*aB - aR*aB - v0*v0);
+    if (disc < 0) continue;
+    for (const sign of [1, -1]) {
+      const aG = ((aR + aB) + sign * Math.sqrt(disc)) / 2;
+      if (aG < 0 || aG > aMax) continue;
+      const E = energyAt(aR, aG);
+      if (E < bestE) { bestE = E; bestAR = aR; bestAG = aG; }
+    }
+  }
+  // Mark VEV minimum
+  const [vevPx, vevPy] = aToPx(bestAR, bestAG);
+  ctx.beginPath();
+  ctx.arc(vevPx, vevPy, 5, 0, 2 * Math.PI);
+  ctx.fillStyle = '#ffcc00';
+  ctx.fill();
+  ctx.strokeStyle = '#ffffff';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+  ctx.fillStyle = '#ffcc00';
+  ctx.font = '8px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('VEV min', vevPx + 8, vevPy - 2);
+  ctx.fillText(`E=${bestE.toFixed(2)}`, vevPx + 8, vevPy + 9);
+
+  // --- Mark symmetric point: a_R = a_G = a_B = 1 ---
+  const [symPx, symPy] = aToPx(aB, aB);
+  const eSym = energyAt(aB, aB);
+  ctx.beginPath();
+  ctx.arc(symPx, symPy, 6, 0, 2 * Math.PI);
+  ctx.fillStyle = '#66ffcc';
+  ctx.fill();
+  ctx.strokeStyle = '#ffffff';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('symmetric', symPx + 10, symPy - 4);
+  ctx.fillStyle = '#66ffcc';
+  ctx.font = '8px monospace';
+  ctx.fillText(`|χ|²=0, E=${eSym.toFixed(2)}`, symPx + 10, symPy + 7);
+
+  // --- Axes lines ---
+  const [axOrgX, axOrgY] = aToPx(0, 0);
+  const [axEndRX, axEndRY] = aToPx(aMax, 0);
+  const [axEndGX, axEndGY] = aToPx(0, aMax);
+  ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(axOrgX, axOrgY); ctx.lineTo(axEndRX, axEndRY);
+  ctx.moveTo(axOrgX, axOrgY); ctx.lineTo(axEndGX, axEndGY);
+  ctx.stroke();
+
+  // Tick marks at integer values
+  ctx.fillStyle = 'rgba(255,255,255,0.3)';
+  ctx.font = '8px monospace';
+  ctx.textAlign = 'center';
+  for (let a = 1; a < aMax; a++) {
+    const [tx, ty] = aToPx(a, 0);
+    ctx.fillRect(tx - 0.5, ty - 3, 1, 6);
+    ctx.fillText(a, tx, ty + 12);
+    const [gx, gy] = aToPx(0, a);
+    ctx.fillRect(gx - 3, gy - 0.5, 6, 1);
+    ctx.textAlign = 'right';
+    ctx.fillText(a, gx - 6, gy + 3);
+    ctx.textAlign = 'center';
+  }
+
+  // Axes labels
+  ctx.fillStyle = '#888';
+  ctx.font = '10px monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('a_R', (axOrgX + axEndRX) / 2, axOrgY + 24);
+  ctx.save();
+  ctx.translate(axOrgX - 22, (axOrgY + axEndGY) / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('a_G', 0, 0);
+  ctx.restore();
+
+  // VEV contour label
+  ctx.fillStyle = '#ffcc00';
+  ctx.font = '9px monospace';
+  ctx.textAlign = 'left';
+  // Place label near upper branch
+  const [vlx, vly] = aToPx(aMax * 0.55, aMax * 0.88);
+  ctx.fillText('|χ|²=v₀² (V=0)', vlx, vly);
+}
+
+// ============================================================
+// RENDER ALL
+// ============================================================
+function renderAll() {
+  renderA();
+  renderB();
+  renderC();
+  renderD();
+  updateVertexInfo();
+}
+
+function updateVertexInfo() {
+  const info = document.getElementById('vertexInfo');
+  const names = ['R', 'G', 'B'];
+  const lines = [];
+  for (const n of names) {
+    const v = VERTICES[n];
+    const [pu, pv] = projectVertex(v, cutPlane);
+    lines.push(`x_${n} = (${v[0].toFixed(3)}, ${v[1].toFixed(3)}, ${v[2].toFixed(3)})`);
+  }
+  const p0 = 1 / (1 + eps*eps);
+  lines.push('');
+  lines.push(`P₀ = 1/(1+ε²) = ${p0.toFixed(4)}`);
+  lines.push(`E_sym = 3 + λv₀⁴ = ${(3 + lam*v0*v0*v0*v0).toFixed(3)}`);
+  lines.push(`V_max = λv₀⁴ = ${(lam*v0*v0*v0*v0).toFixed(3)}`);
+  info.innerHTML = lines.join('<br>');
+}
+
+// ============================================================
+// PROBE (mouse hover on panels B and C)
+// ============================================================
+function setupProbe(canvasId) {
+  const cv = document.getElementById(canvasId);
+  cv.addEventListener('mousemove', (e) => {
+    const rect = cv.getBoundingClientRect();
+    const px = e.clientX - rect.left;
+    const py = e.clientY - rect.top;
+    const [u, v] = pxToCoord(px, py, rect.width, rect.height);
+    probeX = u; probeY = v;
+    updateProbe();
+  });
+  cv.addEventListener('mouseleave', () => {
+    probeX = NaN;
+    ['probePos','probeKin','probePot','probeE','probeGrad','probeChi2','probeDom']
+      .forEach(id => document.getElementById(id).textContent = '—');
+  });
+}
+
+function updateProbe() {
+  if (isNaN(probeX)) return;
+  const [x, y, z] = to3D(probeX, probeY, cutPlane);
+  const eps2 = eps * eps;
+
+  const pR = pressureFunc(x, y, z, VERTICES.R, eps2);
+  const pG = pressureFunc(x, y, z, VERTICES.G, eps2);
+  const pB = pressureFunc(x, y, z, VERTICES.B, eps2);
+
+  const kin = a0*a0 * (pR*pR + pG*pG + pB*pB);
+  const chi2 = a0*a0 * 0.5 * (
+    (pR - pG)*(pR - pG) + (pG - pB)*(pG - pB) + (pB - pR)*(pB - pR)
+  );
+  const pot = lam * (chi2 - v0*v0) * (chi2 - v0*v0);
+  const E = kin + pot;
+  const g2 = computeGradChi2(x, y, z, eps2);
+
+  // Dominant color
+  const maxP = Math.max(pR, pG, pB);
+  const dom = maxP === pR ? 'R' : maxP === pG ? 'G' : 'B';
+
+  document.getElementById('probePos').textContent = `(${probeX.toFixed(3)}, ${probeY.toFixed(3)})`;
+  document.getElementById('probeKin').textContent = kin.toFixed(4);
+  document.getElementById('probePot').textContent = pot.toFixed(4);
+  document.getElementById('probeE').textContent = E.toFixed(4);
+  document.getElementById('probeGrad').textContent = g2.toFixed(4);
+  document.getElementById('probeChi2').textContent = chi2.toFixed(4);
+  document.getElementById('probeDom').textContent = dom;
+}
+
+// ============================================================
+// CONTROLS
+// ============================================================
+document.getElementById('sliderEps').addEventListener('input', e => {
+  eps = parseFloat(e.target.value);
+  document.getElementById('valEps').textContent = eps.toFixed(2);
+  renderAll();
+});
+
+document.getElementById('sliderLam').addEventListener('input', e => {
+  lam = parseFloat(e.target.value);
+  document.getElementById('valLam').textContent = lam.toFixed(2);
+  renderAll();
+});
+
+document.getElementById('sliderV0').addEventListener('input', e => {
+  v0 = parseFloat(e.target.value);
+  document.getElementById('valV0').textContent = v0.toFixed(2);
+  renderAll();
+});
+
+['btnXY', 'btnXZ', 'btnYZ'].forEach(id => {
+  document.getElementById(id).addEventListener('click', () => {
+    cutPlane = id.replace('btn', '').toLowerCase();
+    document.querySelectorAll('.ctrl-row button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    renderAll();
+  });
+});
+
+['cvB', 'cvC'].forEach(setupProbe);
+
+window.addEventListener('resize', renderAll);
+
+// ============================================================
+// INIT
+// ============================================================
+renderAll();
+
+</script>
+</body>
+</html>

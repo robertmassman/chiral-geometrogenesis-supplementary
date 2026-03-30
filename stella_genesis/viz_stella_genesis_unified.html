@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stella Genesis — Unified Field Crystallization</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #000;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 8px 20px;
+  background: rgba(6,6,16,0.95);
+  border-bottom: 1px solid #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  z-index: 10;
+}
+header h1 { font-size: 14px; font-weight: 600; color: #e0e0e8; }
+header .subtitle { font-size: 11px; color: #777; }
+.controls {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-left: auto;
+}
+button {
+  background: #1a1a2e; color: #c8c8d0; border: 1px solid #2e2e44;
+  padding: 4px 12px; border-radius: 4px; font-family: inherit;
+  font-size: 12px; cursor: pointer; transition: all 0.15s;
+}
+button:hover { background: #24243a; }
+button.primary { background: #1a4a3a; border-color: #2a6a4a; }
+button.primary:hover { background: #2a5a4a; }
+label { font-size: 11px; color: #888; display: flex; align-items: center; gap: 4px; }
+input[type="range"] { accent-color: #4a7aaa; width: 80px; }
+select {
+  background: #1a1a2e; color: #c8c8d0; border: 1px solid #2e2e44;
+  padding: 2px 6px; border-radius: 3px; font-family: inherit; font-size: 11px;
+}
+
+.main-area { flex: 1; position: relative; overflow: hidden; }
+#glCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.side-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 280px;
+  background: rgba(8,8,18,0.88);
+  backdrop-filter: blur(8px);
+  border-left: 1px solid rgba(40,40,70,0.5);
+  overflow-y: auto;
+  padding: 12px;
+  z-index: 5;
+}
+.panel-section {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(30,30,50,0.5);
+}
+.panel-section h3 {
+  font-size: 10px; text-transform: uppercase; color: #555;
+  margin-bottom: 5px; letter-spacing: 1px;
+}
+.stat-row { display: flex; justify-content: space-between; font-size: 11px; margin: 2px 0; }
+.stat-val { color: #e0e0e8; font-weight: 600; }
+.stat-val.good { color: #4ae68a; }
+.stat-val.warn { color: #ffcc00; }
+.stat-val.bad { color: #ff6666; }
+
+.meter-bar {
+  height: 5px; background: rgba(20,20,40,0.6); border-radius: 3px; overflow: hidden; margin: 4px 0;
+}
+.meter-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+
+.phase-indicator {
+  font-size: 10px; padding: 2px 8px; border-radius: 3px;
+  font-weight: 600; letter-spacing: 0.5px;
+}
+.ph-scat { background: rgba(60,20,30,0.8); color: #ff6666; }
+.ph-gd { background: rgba(50,50,15,0.8); color: #ffcc00; }
+.ph-kick { background: rgba(60,40,15,0.8); color: #ffaa44; }
+.ph-stella { background: rgba(15,50,20,0.8); color: #4ae68a; }
+
+.legend-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin: 3px 0; }
+.legend-swatch { width: 10px; height: 10px; border-radius: 50%; }
+
+.info-box {
+  background: rgba(12,12,24,0.7); border: 1px solid rgba(30,30,50,0.5); border-radius: 4px;
+  padding: 7px; margin: 5px 0; font-size: 10px; line-height: 1.5;
+}
+.info-box em { color: #999; font-style: normal; }
+
+/* Proof chain timeline */
+.chain-step {
+  display: flex; align-items: flex-start; gap: 8px; margin: 4px 0;
+  font-size: 10px; line-height: 1.4; opacity: 0.35;
+  transition: opacity 0.5s;
+}
+.chain-step.active { opacity: 1.0; }
+.chain-step.done { opacity: 0.65; }
+.chain-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1px solid #555; flex-shrink: 0; margin-top: 2px;
+  transition: all 0.5s;
+}
+.chain-step.active .chain-dot { border-color: #4ae68a; background: #4ae68a; box-shadow: 0 0 6px #4ae68a; }
+.chain-step.done .chain-dot { border-color: #336644; background: #224433; }
+.chain-label { color: #aab; }
+.chain-step.active .chain-label { color: #e0e0e8; }
+.chain-ref { color: #556; font-size: 9px; }
+.chain-step.active .chain-ref { color: #4ae68a; }
+
+.timeline-bar {
+  padding: 6px 20px;
+  background: rgba(6,6,16,0.95);
+  border-top: 1px solid #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+}
+#timeSlider { flex: 1; accent-color: #ffcc00; }
+#stepLabel {
+  font-size: 11px; font-weight: 600; color: #ffcc00;
+  min-width: 320px; text-align: right;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Stella Genesis &mdash; Unified Field Crystallization</h1>
+    <div class="subtitle">Def 0.1.2 &rarr; Def 0.1.3 &rarr; Thm 0.2.1 &rarr; Thm 0.2.3 &rarr; Prop 0.0.3a: Z&#8323; fields crystallize to stella octangula</div>
+  </div>
+  <div class="controls">
+    <label>&alpha;/&beta;:
+      <input type="range" id="ratioSlider" min="0.5" max="5.0" step="0.1" value="2.0">
+      <span id="ratioVal">2.0</span>
+    </label>
+    <label>&epsilon;:
+      <input type="range" id="epsSlider" min="0.1" max="1.0" step="0.01" value="0.50">
+      <span id="epsVal">0.50</span>
+    </label>
+    <label>Speed:
+      <input type="range" id="speedSlider" min="1" max="40" step="1" value="8">
+    </label>
+    <label>Color:
+      <select id="colorMode">
+        <option value="0">Density clouds (evolving σ)</option>
+        <option value="1">Z&#8323; phase (Thm 0.2.1)</option>
+        <option value="2">Color domain (Def 0.1.4)</option>
+      </select>
+    </label>
+    <button id="btnStart" class="primary">&#9654; Crystallize</button>
+    <button id="btnReset">&#8634; Reset</button>
+  </div>
+</header>
+
+<div class="main-area">
+  <canvas id="glCanvas"></canvas>
+  <div class="side-panel">
+
+    <div class="panel-section">
+      <h3>Phase</h3>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span id="phaseInd" class="phase-indicator ph-scat">SCATTERED</span>
+        <span id="cycleDisp" style="font-size:11px;color:#e0e0e8;">Cycle 0/10</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Convergence</h3>
+      <div class="stat-row"><span>RMSD to ideal</span><span id="rmsdVal" class="stat-val bad">&mdash;</span></div>
+      <div class="meter-bar"><div id="rmsdBar" class="meter-fill" style="width:0%;background:#ff6666"></div></div>
+      <div class="stat-row"><span>Best RMSD</span><span id="bestRmsdVal" class="stat-val">&mdash;</span></div>
+      <div class="stat-row"><span>Energy</span><span id="energyVal" class="stat-val">&mdash;</span></div>
+      <div class="stat-row"><span>T&#8330; regularity</span><span id="regAVal" class="stat-val">&mdash;</span></div>
+      <div class="stat-row"><span>T&#8331; regularity</span><span id="regBVal" class="stat-val">&mdash;</span></div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Rendering</h3>
+      <label style="margin:3px 0">Density: <input type="range" id="densitySlider" min="0.5" max="8.0" step="0.1" value="3.0"><span id="densityDisp">3.0</span></label><br>
+      <label style="margin:3px 0">Absorption: <input type="range" id="absorbSlider" min="0.5" max="6.0" step="0.1" value="2.5"><span id="absorbDisp">2.5</span></label><br>
+      <label style="margin:3px 0">Steps: <input type="range" id="stepsSlider" min="32" max="128" step="8" value="64"><span id="stepsDisp">64</span></label>
+    </div>
+
+    <div class="panel-section">
+      <h3>Proof Chain</h3>
+      <div id="chain">
+        <div class="chain-step active" id="cs0"><div class="chain-dot"></div><div><span class="chain-label">Z&#8323; color fields on sphere</span><br><span class="chain-ref">Def 0.1.2 &mdash; &phi;_R=0, &phi;_G=2&pi;/3, &phi;_B=4&pi;/3</span></div></div>
+        <div class="chain-step" id="cs1"><div class="chain-dot"></div><div><span class="chain-label">Pressure functions P<sub>c</sub>(x)</span><br><span class="chain-ref">Def 0.1.3 &mdash; 1/(|x&minus;x<sub>c</sub>|&sup2;+&epsilon;&sup2;)</span></div></div>
+        <div class="chain-step" id="cs2"><div class="chain-dot"></div><div><span class="chain-label">Z&#8323; repulsion orders vertices</span><br><span class="chain-ref">Prop 0.0.3a &mdash; E=&alpha;&Sigma;<sub>same</sub>/d&sup2;+&beta;&Sigma;<sub>cross</sub>/d&sup2;</span></div></div>
+        <div class="chain-step" id="cs3"><div class="chain-dot"></div><div><span class="chain-label">Color domains crystallize</span><br><span class="chain-ref">Thm 0.2.3 &mdash; Voronoi tessellation emerges</span></div></div>
+        <div class="chain-step" id="cs4"><div class="chain-dot"></div><div><span class="chain-label">Stella octangula</span><br><span class="chain-ref">Prop 0.0.3a &mdash; &alpha;/&beta;=C<sub>F</sub>(6)/C<sub>F</sub>(8)=2 ground state</span></div></div>
+        <div class="chain-step" id="cs5"><div class="chain-dot"></div><div><span class="chain-label">&chi;<sub>total</sub> on &part;S</span><br><span class="chain-ref">Thm 0.2.1 &mdash; &chi;=P<sub>R</sub>+&omega;P<sub>G</sub>+&omega;&sup2;P<sub>B</sub>, &chi;(0)=0</span></div></div>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Legend</h3>
+      <div class="legend-row"><div class="legend-swatch" style="background:#ff0000"></div><span>R &mdash; (1,&minus;1,&minus;1)/&radic;3, &phi;=0</span></div>
+      <div class="legend-row"><div class="legend-swatch" style="background:#00ff00"></div><span>G &mdash; (&minus;1,1,&minus;1)/&radic;3, &phi;=2&pi;/3</span></div>
+      <div class="legend-row"><div class="legend-swatch" style="background:#0000ff"></div><span>B &mdash; (&minus;1,&minus;1,1)/&radic;3, &phi;=4&pi;/3</span></div>
+      <div class="legend-row"><div class="legend-swatch" style="background:#808080"></div><span>W &mdash; (1,1,1)/&radic;3 singlet</span></div>
+      <div class="legend-row"><div class="legend-swatch" style="background:#ffff00"></div><span>R+G overlap &rarr; yellow</span></div>
+      <div class="legend-row"><div class="legend-swatch" style="background:#ff00ff"></div><span>R+B overlap &rarr; magenta</span></div>
+      <div class="legend-row"><div class="legend-swatch" style="background:#00ffff"></div><span>G+B overlap &rarr; cyan</span></div>
+      <div class="legend-row"><div class="legend-swatch" style="background:#ffffff"></div><span>R+G+B overlap &rarr; white</span></div>
+      <div class="legend-row"><div class="legend-swatch" style="background:#ff4466"></div><span>T&#8330; edges</span></div>
+      <div class="legend-row"><div class="legend-swatch" style="background:#4477ff"></div><span>T&#8331; edges</span></div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Physics (from building blocks)</h3>
+      <div class="info-box">
+        <em>Pressure functions (viz_pressure_field):</em><br>
+        <span style="color:#88aacc">P<sub>c</sub>(x) = 1/(|x&minus;x<sub>c</sub>|&sup2; + &epsilon;&sup2;)</span><br>
+        <em>&epsilon; = 0.50 (Def 0.1.1 &sect;12.6)</em><br><br>
+        <em>Z&#8323; repulsion (viz_z3_crystallization):</em><br>
+        <span style="color:#88aacc">E = &alpha;&middot;&Sigma;<sub>same</sub>/(d&sup2;+&delta;&sup2;) + &beta;&middot;&Sigma;<sub>cross</sub>/(d&sup2;+&delta;&sup2;)</span><br>
+        <em>&delta;&sup2; = 0.02 (softening), GD+kicks on S&sup2;</em><br><br>
+        <em>Complex field (viz_pressure_field):</em><br>
+        <span style="color:#88aacc">&chi; = P<sub>R</sub> + &omega;P<sub>G</sub> + &omega;&sup2;P<sub>B</sub></span><br>
+        <em>&chi;(0) = 0 (destructive Z&#8323; interference)</em><br><br>
+        <em>Domains (viz_color_domains):</em><br>
+        <span style="color:#88aacc">D<sub>c</sub> = {x : |x&minus;x<sub>c</sub>| &le; |x&minus;x<sub>c'</sub>|}</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="timeline-bar">
+  <button id="btnPP" style="width:28px;text-align:center">&#9654;</button>
+  <input type="range" id="timeSlider" min="0" max="1000" value="0">
+  <span id="stepLabel">Step 0 / 0</span>
+</div>
+
+<script>
+// ============================================================
+// WEBGL2 SETUP
+// ============================================================
+const canvas = document.getElementById('glCanvas');
+const gl = canvas.getContext('webgl2', { antialias: false, alpha: false });
+if (!gl) { alert('WebGL2 required'); }
+
+// ---- Vertex Shader ----
+const vsSource = `#version 300 es
+in vec2 aPos;
+out vec2 vUV;
+void main() {
+  vUV = aPos * 0.5 + 0.5;
+  gl_Position = vec4(aPos, 0.0, 1.0);
+}`;
+
+// ---- Fragment Shader ----
+// Physics from: viz_pressure_field (Def 0.1.3, Thm 0.2.1),
+//               viz_color_domains (Def 0.1.4, Thm 0.2.3),
+//               viz_crystallization_volume (raymarching structure)
+const fsSource = `#version 300 es
+precision highp float;
+
+in vec2 vUV;
+out vec4 fragColor;
+
+uniform vec2 uRes;
+uniform float uTime;
+uniform vec3 uCamPos;
+uniform vec3 uCamTarget;
+uniform float uFOV;
+
+// 8 field centers: [0]=R, [1]=G, [2]=B, [3]=W, [4]=Rb, [5]=Gb, [6]=Bb, [7]=Wb
+// Ordering matches Def 0.1.3 canonical vertices
+uniform vec3 uC[8];
+uniform float uEps2;         // epsilon^2 from Def 0.1.1 §12.6
+uniform float uDensityGain;
+uniform float uAbsorption;
+uniform int uMaxSteps;
+uniform float uEdgeOpacity;  // 0-1: edge tube visibility
+uniform int uColorMode;      // 0=field density, 1=Z3 phase, 2=color domain
+uniform float uSigma;        // rendering sigma (evolves: diffuse → sharp)
+
+// Vertex colors: pure RGB channels (Def 0.1.2)
+// Additive blending IS the physics: R+G→yellow, R+B→magenta,
+// G+B→cyan, R+G+B→white. Z3 destructive interference → darkness.
+const vec3 VCOL[4] = vec3[4](
+  vec3(1.0, 0.0, 0.0),     // R — pure red
+  vec3(0.0, 1.0, 0.0),     // G — pure green
+  vec3(0.0, 0.0, 1.0),     // B — pure blue
+  vec3(0.3, 0.3, 0.3)      // W — singlet (faint white)
+);
+// Anti-vertex colors (T-): same color charges, slightly dimmer
+const vec3 ACOL[4] = vec3[4](
+  vec3(0.7, 0.0, 0.0),     // Rb — red (T-)
+  vec3(0.0, 0.7, 0.0),     // Gb — green (T-)
+  vec3(0.0, 0.0, 0.7),     // Bb — blue (T-)
+  vec3(0.15, 0.15, 0.15)   // Wb — singlet (T-)
+);
+
+const float PI = 3.14159265;
+// Z3 phases: cos/sin of 0, 2pi/3, 4pi/3 (Def 0.1.2)
+const float COS_G = -0.5;
+const float SIN_G =  0.8660254;  // sqrt(3)/2
+const float COS_B = -0.5;
+const float SIN_B = -0.8660254;
+
+// -------------------------------------------------------
+// Def 0.1.3: Pressure function P_c(x) = 1/(|x - x_c|^2 + eps^2)
+// -------------------------------------------------------
+float pressure(vec3 p, vec3 vertex) {
+  vec3 d = p - vertex;
+  return 1.0 / (dot(d,d) + uEps2);
+}
+
+// Normalized pressure for rendering: peak = 1 at vertex
+// P_norm = eps^2 / (|x - x_c|^2 + eps^2)
+float fieldDensity(vec3 p, vec3 vertex) {
+  vec3 d = p - vertex;
+  return uEps2 / (dot(d,d) + uEps2);
+}
+
+// -------------------------------------------------------
+// Gaussian density for visual rendering (evolving σ)
+// σ shrinks during crystallization: diffuse cloud → sharp vertex peaks
+// -------------------------------------------------------
+float gaussian(vec3 p, vec3 mu) {
+  vec3 d = p - mu;
+  float invSig2 = 0.5 / (uSigma * uSigma);
+  return exp(-dot(d,d) * invSig2);
+}
+
+// -------------------------------------------------------
+// Edge tube: distance from point to line segment
+// -------------------------------------------------------
+float distSeg(vec3 p, vec3 a, vec3 b) {
+  vec3 ab = b - a;
+  float t = clamp(dot(p-a, ab) / dot(ab,ab), 0.0, 1.0);
+  return length(p - a - ab*t);
+}
+
+vec2 sampleEdges(vec3 p, float r) {
+  float eP = 0.0, eM = 0.0;
+  float invR2 = 1.0/(r*r);
+  for (int i=0; i<4; i++) for (int j=i+1; j<4; j++) {
+    float dP = distSeg(p, uC[i], uC[j]);
+    eP += exp(-dP*dP*invR2);
+    float dM = distSeg(p, uC[4+i], uC[4+j]);
+    eM += exp(-dM*dM*invR2);
+  }
+  return vec2(eP, eM) / 6.0;
+}
+
+// -------------------------------------------------------
+// Shell: membrane at r=1 (particles constrained to unit sphere)
+// Visible early as confining boundary, fades as fields sharpen
+// -------------------------------------------------------
+float sampleShell(vec3 p) {
+  float r = length(p);
+  float dist = r - 1.0;
+  // Shell thickness varies: thicker when σ is large (amorphous), thin when sharp
+  float sharpness = mix(100.0, 600.0, clamp(1.0 - uSigma * 3.0, 0.0, 1.0));
+  // Shell opacity: prominent at start, fades as fields crystallize
+  float shellOpacity = mix(0.5, 0.15, clamp(1.0 - uSigma * 3.0, 0.0, 1.0));
+  return exp(-dist*dist * sharpness) * shellOpacity;
+}
+
+vec3 shellColor(vec3 p, vec3 rd) {
+  vec3 dir = normalize(p);
+  float fresnel = 1.0 - abs(dot(dir, -rd));
+  fresnel = fresnel * fresnel * fresnel;
+  vec3 pearl = mix(vec3(0.2, 0.25, 0.4), vec3(0.35, 0.3, 0.45), dot(dir,vec3(.3,.6,.7))*.5+.5);
+  return pearl*0.3 + vec3(.3,.5,.8)*fresnel*0.6;
+}
+
+// -------------------------------------------------------
+// HSL to RGB (from viz_pressure_field)
+// -------------------------------------------------------
+vec3 hsl2rgb(float h, float s, float l) {
+  float c = (1.0-abs(2.0*l-1.0))*s;
+  float x = c*(1.0-abs(mod(h*6.0,2.0)-1.0));
+  float m = l - c*0.5;
+  vec3 rgb;
+  float hh = h*6.0;
+  if      (hh<1.0) rgb = vec3(c,x,0);
+  else if (hh<2.0) rgb = vec3(x,c,0);
+  else if (hh<3.0) rgb = vec3(0,c,x);
+  else if (hh<4.0) rgb = vec3(0,x,c);
+  else if (hh<5.0) rgb = vec3(x,0,c);
+  else             rgb = vec3(c,0,x);
+  return rgb + m;
+}
+
+vec2 raySphere(vec3 ro, vec3 rd, float radius) {
+  float b = dot(ro,rd);
+  float c = dot(ro,ro) - radius*radius;
+  float h = b*b - c;
+  if (h<0.0) return vec2(-1.0);
+  h = sqrt(h);
+  return vec2(-b-h, -b+h);
+}
+
+mat3 lookAt(vec3 ro, vec3 ta) {
+  vec3 f = normalize(ta-ro);
+  vec3 r = normalize(cross(f, vec3(0,1,0)));
+  vec3 u = cross(r,f);
+  return mat3(r,u,f);
+}
+
+void main() {
+  vec2 uv = (gl_FragCoord.xy - 0.5*uRes) / uRes.y;
+  mat3 cam = lookAt(uCamPos, uCamTarget);
+  vec3 rd = cam * normalize(vec3(uv, uFOV));
+  vec3 ro = uCamPos;
+
+  vec2 tB = raySphere(ro, rd, 2.5);
+  float bgG = length(uv)*0.3;
+  vec3 bg = mix(vec3(.02,.02,.06), vec3(0), bgG);
+  if (tB.x < 0.0) { fragColor = vec4(bg,1); return; }
+
+  float tN = max(tB.x, 0.0), tF = tB.y;
+  float dt = (tF-tN)/float(uMaxSteps);
+
+  vec3 acc = vec3(0);
+  float trans = 1.0;
+
+  for (int i=0; i<128; i++) {
+    if (i>=uMaxSteps) break;
+    if (trans < 0.01) break;
+    float t = tN + (float(i)+0.5)*dt;
+    vec3 p = ro + rd*t;
+
+    // ---- Compute pressure functions at this point (Def 0.1.3) ----
+    float pV[8];  // pressure from each vertex
+    float fV[8];  // normalized field density from each vertex
+    float totalF = 0.0;
+    for (int k=0; k<8; k++) {
+      pV[k] = pressure(p, uC[k]);
+      fV[k] = fieldDensity(p, uC[k]);
+      totalF += fV[k];
+    }
+    totalF *= 0.125; // normalize by vertex count
+
+    vec3 col = vec3(0);
+    float density = 0.0;
+
+    // ---- Color mode 0: Pure RGB additive blending with evolving σ ----
+    // Each color field maps to its RGB channel. Additive mixing IS the
+    // physics: where R+G overlap → yellow, R+G+B → white.
+    // Z₃ destructive interference at center → darkness (all cancel).
+    // σ evolves: broad diffuse clouds → sharp vertex peaks.
+    if (uColorMode == 0) {
+      float totalRho = 0.0;
+      // T₊ vertices: R→red, G→green, B→blue, W→white
+      for (int k=0; k<4; k++) {
+        float g = gaussian(p, uC[k]) * uDensityGain;
+        col += VCOL[k] * g;
+        totalRho += g;
+      }
+      // T₋ vertices: same color charges, slightly dimmer
+      for (int k=0; k<4; k++) {
+        float g = gaussian(p, uC[4+k]) * uDensityGain;
+        col += ACOL[k] * g;
+        totalRho += g;
+      }
+      // Hot white cores at high density (any vertex)
+      for (int k=0; k<8; k++) {
+        float hot = smoothstep(0.5, 1.0, gaussian(p, uC[k]) * uDensityGain);
+        col += vec3(0.5) * hot;
+      }
+      density = totalRho * 0.125;
+    }
+
+    // ---- Color mode 1: Z3 phase (from viz_pressure_field panel B / Thm 0.2.1) ----
+    else if (uColorMode == 1) {
+      // chi_total = P_R * e^{i*0} + P_G * e^{i*2pi/3} + P_B * e^{i*4pi/3}
+      // Only R,G,B of T+ contribute (W is singlet, excluded from Z3 superposition)
+      // Thm 0.2.1 §2.3:
+      //   Re[chi] = P_R + P_G*cos(2pi/3) + P_B*cos(4pi/3)
+      //           = P_R - 0.5*(P_G + P_B)
+      //   Im[chi] = P_G*sin(2pi/3) + P_B*sin(4pi/3)
+      //           = sqrt(3)/2 * (P_G - P_B)
+      float pR = pV[0], pG = pV[1], pB = pV[2];
+      float re = pR + pG*COS_G + pB*COS_B;
+      float im = pG*SIN_G + pB*SIN_B;
+
+      float mag = sqrt(re*re + im*im);
+      float phase = atan(im, re);
+
+      // Map phase to hue (from viz_pressure_field renderB)
+      // Phase 0 (near R) -> red, 2pi/3 (near G) -> green, 4pi/3 (near B) -> blue
+      float hue = fract(phase/(2.0*PI) + 1.0);
+
+      // P_max = 1/eps^2, compute normalization
+      float pMax = 1.0/uEps2;
+      float pOther = 1.0/(4.0/3.0 + uEps2);
+      float magMax = pMax - 0.5*(pOther + pOther); // approx max |chi| at a vertex
+
+      float normMag = min(mag / max(magMax, 0.001), 1.0);
+      float lightness = normMag * 0.5;
+
+      col = hsl2rgb(hue, 0.9, lightness) * (1.0 + uDensityGain * 0.3);
+
+      // Also show W and T- as faint gray
+      float wDens = fV[3] * 0.15 + (fV[4]+fV[5]+fV[6]+fV[7]) * 0.05;
+      col += vec3(0.3, 0.3, 0.35) * smoothstep(0.0, 0.3, wDens);
+
+      density = totalF * uDensityGain;
+    }
+
+    // ---- Color mode 2: Color domain Voronoi (from viz_color_domains panel A / Def 0.1.4) ----
+    else {
+      // Find nearest vertex (Voronoi tessellation) — Def 0.1.4 §3.1
+      float minD = 1e10;
+      float secD = 1e10;
+      int nearest = 0;
+      for (int k=0; k<8; k++) {
+        vec3 d = p - uC[k];
+        float d2 = dot(d,d);
+        if (d2 < minD) { secD = minD; minD = d2; nearest = k; }
+        else if (d2 < secD) { secD = d2; }
+      }
+
+      // Dominance strength: how much closer to nearest vs second nearest
+      // (from viz_color_domains renderA)
+      float dMin = sqrt(minD);
+      float dSec = sqrt(secD);
+      float dominance = min(1.0, (dSec - dMin) / (dSec + dMin + 0.001) * 4.0);
+
+      vec3 domCol = nearest < 4 ? VCOL[nearest] : ACOL[nearest - 4];
+      float bright = 0.15 + dominance * 0.85;
+      col = domCol * bright;
+
+      density = totalF * uDensityGain;
+    }
+
+    // ---- Edge tubes (from viz_crystallization_volume) ----
+    if (uEdgeOpacity > 0.01) {
+      float edgeR = max(0.015, uSigma * 0.15);
+      vec2 eRho = sampleEdges(p, edgeR) * uEdgeOpacity;
+      float eP = smoothstep(0.0, 0.15, eRho.x * uDensityGain * 0.6);
+      float eM = smoothstep(0.0, 0.15, eRho.y * uDensityGain * 0.6);
+      col += vec3(1.0, 0.3, 0.4) * eP * 1.5;
+      col += vec3(0.3, 0.5, 1.0) * eM * 1.5;
+      col += vec3(1,.85,.9) * smoothstep(0.3, 0.8, eRho.x*uDensityGain*0.6) * 0.5;
+      col += vec3(.85,.9,1) * smoothstep(0.3, 0.8, eRho.y*uDensityGain*0.6) * 0.5;
+      density += (eRho.x + eRho.y) * uDensityGain * 0.6;
+    }
+
+    // ---- Shell membrane at r=1 ----
+    float shellD = sampleShell(p);
+    if (shellD > 0.001) {
+      float sI = smoothstep(0.0, 0.2, shellD);
+      col = mix(col, col + shellColor(p, rd), sI);
+      density += shellD * 2.0;
+    }
+
+    if (density > 0.001) {
+      float alpha = 1.0 - exp(-density * uAbsorption * dt);
+      acc += col * alpha * trans;
+      trans *= (1.0 - alpha);
+    }
+  }
+
+  vec3 fin = acc + bg*trans;
+  fin *= 1.0 - dot(uv,uv)*0.4;
+  fin = fin/(fin + vec3(1));
+  fin = pow(fin, vec3(1.0/2.2));
+  fragColor = vec4(fin, 1);
+}`;
+
+// ---- Compile ----
+function mkShader(type, src) {
+  const s = gl.createShader(type);
+  gl.shaderSource(s, src);
+  gl.compileShader(s);
+  if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.error(gl.getShaderInfoLog(s)); return null; }
+  return s;
+}
+const prog = gl.createProgram();
+gl.attachShader(prog, mkShader(gl.VERTEX_SHADER, vsSource));
+gl.attachShader(prog, mkShader(gl.FRAGMENT_SHADER, fsSource));
+gl.linkProgram(prog);
+if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) console.error(gl.getProgramInfoLog(prog));
+gl.useProgram(prog);
+
+// ---- Quad ----
+const qvb = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, qvb);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+const aP = gl.getAttribLocation(prog, 'aPos');
+gl.enableVertexAttribArray(aP);
+gl.vertexAttribPointer(aP, 2, gl.FLOAT, false, 0, 0);
+
+// ---- Uniforms ----
+const loc = {};
+['uRes','uTime','uCamPos','uCamTarget','uFOV','uEps2','uDensityGain','uAbsorption',
+ 'uMaxSteps','uEdgeOpacity','uColorMode','uSigma'].forEach(n => loc[n] = gl.getUniformLocation(prog, n));
+for (let i=0;i<8;i++) loc['uC'+i] = gl.getUniformLocation(prog, 'uC['+i+']');
+
+// ============================================================
+// SIMULATION — GD + kicks from viz_z3_crystallization
+// Physics: Prop 0.0.3a (Z3 repulsion on S^2)
+// ============================================================
+const SQ3 = 1/Math.sqrt(3);
+
+// Ideal stella vertices — Def 0.1.3 canonical order
+// Shader order: [0]=R, [1]=G, [2]=B, [3]=W, [4]=Rb, [5]=Gb, [6]=Bb, [7]=Wb
+const IDEAL_P = [[SQ3,-SQ3,-SQ3],[-SQ3,SQ3,-SQ3],[-SQ3,-SQ3,SQ3],[SQ3,SQ3,SQ3]];
+const IDEAL_M = [[-SQ3,SQ3,SQ3],[SQ3,-SQ3,SQ3],[SQ3,SQ3,-SQ3],[-SQ3,-SQ3,-SQ3]];
+
+// Simulation parameters — from viz_z3_crystallization
+const N = 8;
+const SOFT2 = 0.02;          // potential softening (viz_z3_crystallization line 293)
+const LR = 0.01;             // learning rate (viz_z3_crystallization line 292)
+const GRAD_CLIP = 20.0;      // max gradient per particle (viz_z3_crystallization line 294)
+const GD_PER_CYCLE = 400;    // GD steps per restart cycle (viz_z3_crystallization line 289)
+const MAX_CYCLES = 10;       // max restart cycles (viz_z3_crystallization line 290)
+
+const SIM = {
+  pos: new Float64Array(N*3),
+  bestPos: new Float64Array(N*3),
+  charges: [0,0,0,0,1,1,1,1],
+  aob: 2.0,
+  bestRMSD: 999,
+  step: 0, cycle: 0, stepInCycle: 0,
+  running: false, crystallized: false,
+  hist: [], rmsd: 1, energy: 0,
+  // Rendering sigma: evolves from diffuse (0.5) to sharp (0.06)
+  // Mirrors viz_crystallization_volume's visual narrative
+  sigma: 0.5, sigmaMax: 0.5, sigmaMin: 0.06,
+};
+
+// Sorted vertex index: maps shader slot -> SIM.pos index
+// Shader expects: uC[0]=R, [1]=G, [2]=B, [3]=W, [4]=Rb, [5]=Gb, [6]=Bb, [7]=Wb
+// Computed by Kabsch alignment (Def 0.1.2/0.1.3: color IS determined by position)
+let sortedIdx = [0,1,2,3,4,5,6,7];
+
+// ---- Random on unit sphere (from viz_z3_crystallization line 339) ----
+function randomOnSphere() {
+  let x, y, s;
+  do { x = Math.random()*2-1; y = Math.random()*2-1; s = x*x+y*y; } while (s >= 1);
+  const z = 1-2*s, r = 2*Math.sqrt(1-s);
+  return [x*r, y*r, z];
+}
+
+function initPositions() {
+  for (let i = 0; i < N; i++) {
+    const p = randomOnSphere();
+    SIM.pos[i*3]=p[0]; SIM.pos[i*3+1]=p[1]; SIM.pos[i*3+2]=p[2];
+  }
+  SIM.bestPos.set(SIM.pos);
+  SIM.bestRMSD = 999;
+  SIM.step=0; SIM.cycle=0; SIM.stepInCycle=0;
+  SIM.running=false; SIM.crystallized=false;
+  SIM.hist=[]; SIM.energy=computeEnergy();
+  SIM.sigma = SIM.sigmaMax;
+  saveSnap();
+}
+
+// ---- Energy: E = Σ (same?α:β) / (d² + SOFT2) — Prop 0.0.3a ----
+function computeEnergy() {
+  const a=SIM.aob, b=1.0;
+  let E=0;
+  for (let i=0;i<N;i++) for (let j=i+1;j<N;j++) {
+    const dx=SIM.pos[i*3]-SIM.pos[j*3], dy=SIM.pos[i*3+1]-SIM.pos[j*3+1], dz=SIM.pos[i*3+2]-SIM.pos[j*3+2];
+    const d2=dx*dx+dy*dy+dz*dz+SOFT2;
+    E += ((SIM.charges[i]===SIM.charges[j])?a:b)/d2;
+  }
+  return E;
+}
+
+// ---- GD step with tangent projection on S² (from viz_z3_crystallization line 401) ----
+function doGDStep() {
+  const a=SIM.aob, b=1.0;
+  const grad = new Float64Array(N*3);
+  for (let i=0;i<N;i++) for (let j=0;j<N;j++) {
+    if (i===j) continue;
+    const dx=SIM.pos[i*3]-SIM.pos[j*3], dy=SIM.pos[i*3+1]-SIM.pos[j*3+1], dz=SIM.pos[i*3+2]-SIM.pos[j*3+2];
+    const d2=dx*dx+dy*dy+dz*dz+SOFT2;
+    const c=(SIM.charges[i]===SIM.charges[j])?a:b;
+    const f=-2*c/(d2*d2);
+    grad[i*3]+=f*dx; grad[i*3+1]+=f*dy; grad[i*3+2]+=f*dz;
+  }
+  for (let i=0;i<N;i++) {
+    const x=SIM.pos[i*3], y=SIM.pos[i*3+1], z=SIM.pos[i*3+2];
+    // Project gradient to tangent plane of sphere
+    const gd=x*grad[i*3]+y*grad[i*3+1]+z*grad[i*3+2];
+    grad[i*3]-=gd*x; grad[i*3+1]-=gd*y; grad[i*3+2]-=gd*z;
+    // Clip gradient magnitude
+    const gm=Math.sqrt(grad[i*3]*grad[i*3]+grad[i*3+1]*grad[i*3+1]+grad[i*3+2]*grad[i*3+2]);
+    if (gm>GRAD_CLIP) { const sc=GRAD_CLIP/gm; grad[i*3]*=sc; grad[i*3+1]*=sc; grad[i*3+2]*=sc; }
+    // Step
+    SIM.pos[i*3]-=LR*grad[i*3]; SIM.pos[i*3+1]-=LR*grad[i*3+1]; SIM.pos[i*3+2]-=LR*grad[i*3+2];
+  }
+  // Re-normalize to unit sphere
+  for (let i=0;i<N;i++) {
+    const x=SIM.pos[i*3], y=SIM.pos[i*3+1], z=SIM.pos[i*3+2];
+    const r=Math.sqrt(x*x+y*y+z*z);
+    if (r>1e-10) { SIM.pos[i*3]/=r; SIM.pos[i*3+1]/=r; SIM.pos[i*3+2]/=r; }
+  }
+}
+
+// ---- Gaussian random (from viz_z3_crystallization line 503) ----
+let _spare = null;
+function gaussRand() {
+  if (_spare!==null) { const v=_spare; _spare=null; return v; }
+  let u,v,s;
+  do { u=Math.random()*2-1; v=Math.random()*2-1; s=u*u+v*v; } while (s>=1||s===0);
+  const m=Math.sqrt(-2*Math.log(s)/s);
+  _spare=v*m; return u*m;
+}
+
+// ---- Kick from best position (from viz_z3_crystallization line 438) ----
+function applyKick(kickSize) {
+  for (let i=0;i<N;i++) {
+    const x=SIM.pos[i*3], y=SIM.pos[i*3+1], z=SIM.pos[i*3+2];
+    let kx=gaussRand()*kickSize, ky=gaussRand()*kickSize, kz=gaussRand()*kickSize;
+    const kd=x*kx+y*ky+z*kz;
+    kx-=kd*x; ky-=kd*y; kz-=kd*z;
+    SIM.pos[i*3]+=kx; SIM.pos[i*3+1]+=ky; SIM.pos[i*3+2]+=kz;
+  }
+  for (let i=0;i<N;i++) {
+    const x=SIM.pos[i*3], y=SIM.pos[i*3+1], z=SIM.pos[i*3+2];
+    const r=Math.sqrt(x*x+y*y+z*z);
+    if (r>1e-10) { SIM.pos[i*3]/=r; SIM.pos[i*3+1]/=r; SIM.pos[i*3+2]/=r; }
+  }
+}
+
+// ---- Simulation step: GD within cycle, kick between cycles ----
+function simStep() {
+  if (SIM.crystallized) return;
+  // Evolve rendering sigma: exponential decay from sigmaMax to sigmaMin
+  const totalSteps = GD_PER_CYCLE * MAX_CYCLES;
+  const prog = Math.min(1, SIM.step / totalSteps);
+  const sigRatio = SIM.sigmaMin / SIM.sigmaMax;
+  SIM.sigma = SIM.sigmaMax * Math.pow(sigRatio, prog);
+
+  if (SIM.stepInCycle < GD_PER_CYCLE) {
+    doGDStep();
+    SIM.stepInCycle++;
+    SIM.step++;
+  } else {
+    // End of cycle: check RMSD, maybe kick
+    const rmsd = computeRMSD();
+    if (rmsd < SIM.bestRMSD) { SIM.bestRMSD = rmsd; SIM.bestPos.set(SIM.pos); }
+    if (rmsd < 0.025) { SIM.crystallized = true; return; }
+    SIM.cycle++;
+    if (SIM.cycle >= MAX_CYCLES) { SIM.running=false; return; }
+    // Restore best and kick
+    SIM.pos.set(SIM.bestPos);
+    const ks = 0.5*(1-SIM.cycle/MAX_CYCLES)+0.1;
+    applyKick(ks);
+    SIM.stepInCycle = 0;
+  }
+}
+
+function saveSnap() {
+  const positions = [];
+  for (let i=0;i<N;i++) positions.push([SIM.pos[i*3],SIM.pos[i*3+1],SIM.pos[i*3+2]]);
+  SIM.hist.push({ positions, step:SIM.step, cycle:SIM.cycle, sigma:SIM.sigma });
+}
+
+// ============================================================
+// KABSCH RMSD — from viz_z3_crystallization / viz_crystallization_volume
+// Determines vertex-to-color assignment (Def 0.1.2/0.1.3)
+// ============================================================
+function mat3m(A,B){const C=[[0,0,0],[0,0,0],[0,0,0]];for(let i=0;i<3;i++)for(let j=0;j<3;j++)for(let k=0;k<3;k++)C[i][j]+=A[i][k]*B[k][j];return C;}
+function mat3t(A){return[[A[0][0],A[1][0],A[2][0]],[A[0][1],A[1][1],A[2][1]],[A[0][2],A[1][2],A[2][2]]];}
+function mat3d(A){return A[0][0]*(A[1][1]*A[2][2]-A[1][2]*A[2][1])-A[0][1]*(A[1][0]*A[2][2]-A[1][2]*A[2][0])+A[0][2]*(A[1][0]*A[2][1]-A[1][1]*A[2][0]);}
+function eigen3(M){let A=M.map(r=>[...r]),V=[[1,0,0],[0,1,0],[0,0,1]];for(let it=0;it<50;it++){let mx=0,p=0,q=1;for(let i=0;i<3;i++)for(let j=i+1;j<3;j++)if(Math.abs(A[i][j])>mx){mx=Math.abs(A[i][j]);p=i;q=j;}if(mx<1e-12)break;const th=.5*Math.atan2(2*A[p][q],A[q][q]-A[p][p]),c=Math.cos(th),s=Math.sin(th);const Ap=[...A[p]],Aq=[...A[q]];for(let k=0;k<3;k++){A[p][k]=c*Ap[k]-s*Aq[k];A[q][k]=s*Ap[k]+c*Aq[k];}const Cp=[A[0][p],A[1][p],A[2][p]],Cq=[A[0][q],A[1][q],A[2][q]];for(let k=0;k<3;k++){A[k][p]=c*Cp[k]-s*Cq[k];A[k][q]=s*Cp[k]+c*Cq[k];}const Vp=[V[0][p],V[1][p],V[2][p]],Vq=[V[0][q],V[1][q],V[2][q]];for(let k=0;k<3;k++){V[k][p]=c*Vp[k]-s*Vq[k];V[k][q]=s*Vp[k]+c*Vq[k];}}return{values:[A[0][0],A[1][1],A[2][2]],vectors:mat3t(mat3t(V))};}
+function svd3(M){const e=eigen3(mat3m(mat3t(M),M));const V=e.vectors,S=e.values.map(v=>Math.sqrt(Math.max(0,v)));const MV=mat3m(M,V);const U=[[0,0,0],[0,0,0],[0,0,0]];for(let i=0;i<3;i++)for(let j=0;j<3;j++)U[i][j]=S[j]>1e-10?MV[i][j]/S[j]:0;return{U,S,V};}
+function kabsch(sim,idl){const H=[[0,0,0],[0,0,0],[0,0,0]];for(let k=0;k<sim.length;k++){const p=idl[k],q=sim[k];for(let i=0;i<3;i++)for(let j=0;j<3;j++)H[i][j]+=p[i]*q[j];}const{U,S,V}=svd3(H);const d=mat3d(mat3m(V,mat3t(U)));const D=[[1,0,0],[0,1,0],[0,0,d<0?-1:1]];return mat3m(mat3m(V,D),mat3t(U));}
+function applyR(R,v){return[R[0][0]*v[0]+R[0][1]*v[1]+R[0][2]*v[2],R[1][0]*v[0]+R[1][1]*v[1]+R[1][2]*v[2],R[2][0]*v[0]+R[2][1]*v[1]+R[2][2]*v[2]];}
+
+const PERMS4=[];(function(){function p(a,l,r){if(l===r){PERMS4.push([...a]);return;}for(let i=l;i<=r;i++){[a[l],a[i]]=[a[i],a[l]];p(a,l+1,r);[a[l],a[i]]=[a[i],a[l]];}}p([0,1,2,3],0,3);})();
+
+function computeRMSD() {
+  const idxA=[],idxB=[];
+  for(let i=0;i<N;i++){if(SIM.charges[i]===0)idxA.push(i);else idxB.push(i);}
+  const pA=idxA.map(i=>[SIM.pos[i*3],SIM.pos[i*3+1],SIM.pos[i*3+2]]);
+  const pB=idxB.map(i=>[SIM.pos[i*3],SIM.pos[i*3+1],SIM.pos[i*3+2]]);
+
+  let best=Infinity, bestPermA=null, bestPermB=null, bestFlip=false;
+  for(const flip of[false,true]){
+    const idA=flip?IDEAL_M:IDEAL_P, idB=flip?IDEAL_P:IDEAL_M;
+    for(const pAp of PERMS4)for(const pBp of PERMS4){
+      const sim=[],idl=[];
+      for(let i=0;i<4;i++){sim.push(pA[i]);idl.push(idA[pAp[i]]);}
+      for(let i=0;i<4;i++){sim.push(pB[i]);idl.push(idB[pBp[i]]);}
+      const R=kabsch(sim,idl);
+      let ss=0;for(let i=0;i<8;i++){const ri=applyR(R,idl[i]);const d0=ri[0]-sim[i][0],d1=ri[1]-sim[i][1],d2=ri[2]-sim[i][2];ss+=d0*d0+d1*d1+d2*d2;}
+      const rmsd=Math.sqrt(ss/8);
+      if(rmsd<best){best=rmsd;bestPermA=pAp;bestPermB=pBp;bestFlip=flip;}
+    }
+  }
+
+  // Build sortedIdx: shader slot j -> SIM.pos index
+  // IDEAL_P = [R, G, B, W] positions, IDEAL_M = [Rb, Gb, Bb, Wb]
+  // Shader slot 0=R, 1=G, 2=B, 3=W, 4=Rb, 5=Gb, 6=Bb, 7=Wb
+  if (bestPermA && bestPermB) {
+    const newS = new Array(8);
+    const invA=new Array(4), invB=new Array(4);
+    for(let k=0;k<4;k++){invA[bestPermA[k]]=k;invB[bestPermB[k]]=k;}
+    if (bestFlip) {
+      for(let j=0;j<4;j++){newS[j]=idxB[invB[j]];newS[4+j]=idxA[invA[j]];}
+    } else {
+      for(let j=0;j<4;j++){newS[j]=idxA[invA[j]];newS[4+j]=idxB[invB[j]];}
+    }
+    sortedIdx = newS;
+  }
+  return best;
+}
+
+// Regularity: CV of pairwise distances within a group
+function regularity(indices) {
+  if (indices.length<2) return 0;
+  const d=[];
+  for(let a=0;a<indices.length;a++) for(let b=a+1;b<indices.length;b++) {
+    const i=indices[a],j=indices[b];
+    const dx=SIM.pos[i*3]-SIM.pos[j*3],dy=SIM.pos[i*3+1]-SIM.pos[j*3+1],dz=SIM.pos[i*3+2]-SIM.pos[j*3+2];
+    d.push(Math.sqrt(dx*dx+dy*dy+dz*dz));
+  }
+  const mu=d.reduce((a,b)=>a+b)/d.length;
+  const v=d.reduce((a,x)=>a+(x-mu)*(x-mu),0)/d.length;
+  return mu>0 ? Math.max(0,1-Math.sqrt(v)/mu) : 0;
+}
+
+// ============================================================
+// CAMERA
+// ============================================================
+let camTh=0.5, camPh=0.4, camD=4.0, dragging=false, lastM=[0,0], autoRot=true;
+function camPos(){return[camD*Math.sin(camPh)*Math.cos(camTh),camD*Math.cos(camPh),camD*Math.sin(camPh)*Math.sin(camTh)];}
+canvas.addEventListener('mousedown',e=>{dragging=true;lastM=[e.clientX,e.clientY];autoRot=false;});
+window.addEventListener('mouseup',()=>dragging=false);
+window.addEventListener('mousemove',e=>{if(!dragging)return;camTh+=(e.clientX-lastM[0])*.005;camPh=Math.max(.1,Math.min(Math.PI-.1,camPh+(e.clientY-lastM[1])*.005));lastM=[e.clientX,e.clientY];});
+canvas.addEventListener('wheel',e=>{camD=Math.max(2,Math.min(10,camD+e.deltaY*.005));e.preventDefault();},{passive:false});
+canvas.addEventListener('touchstart',e=>{if(e.touches.length===1){dragging=true;lastM=[e.touches[0].clientX,e.touches[0].clientY];autoRot=false;}});
+canvas.addEventListener('touchend',()=>dragging=false);
+canvas.addEventListener('touchmove',e=>{if(!dragging||e.touches.length!==1)return;camTh+=(e.touches[0].clientX-lastM[0])*.005;camPh=Math.max(.1,Math.min(Math.PI-.1,camPh+(e.touches[0].clientY-lastM[1])*.005));lastM=[e.touches[0].clientX,e.touches[0].clientY];e.preventDefault();},{passive:false});
+
+// ============================================================
+// RENDER LOOP
+// ============================================================
+function resize(){const r=canvas.parentElement.getBoundingClientRect();const dpr=Math.min(window.devicePixelRatio,1.5);canvas.width=r.width*dpr;canvas.height=r.height*dpr;gl.viewport(0,0,canvas.width,canvas.height);}
+window.addEventListener('resize',resize); resize();
+
+function updateUniforms() {
+  gl.uniform2f(loc.uRes, canvas.width, canvas.height);
+  gl.uniform1f(loc.uTime, performance.now()*.001);
+  if (autoRot) camTh += .003;
+  const cp=camPos();
+  gl.uniform3f(loc.uCamPos,cp[0],cp[1],cp[2]);
+  gl.uniform3f(loc.uCamTarget,0,0,0);
+  gl.uniform1f(loc.uFOV, 1.2);
+
+  // Pass 8 field centers in canonical color order via Kabsch-derived sortedIdx
+  // sortedIdx[k] = index into SIM.pos for shader slot k
+  // This IS the physics: color identity is determined by position (Def 0.1.2/0.1.3)
+  for (let k=0;k<8;k++) {
+    const si=sortedIdx[k];
+    gl.uniform3f(loc['uC'+k], SIM.pos[si*3], SIM.pos[si*3+1], SIM.pos[si*3+2]);
+  }
+
+  const eps = parseFloat(document.getElementById('epsSlider').value);
+  gl.uniform1f(loc.uEps2, eps*eps);
+  gl.uniform1f(loc.uSigma, SIM.sigma);
+  gl.uniform1f(loc.uDensityGain, parseFloat(document.getElementById('densitySlider').value));
+  gl.uniform1f(loc.uAbsorption, parseFloat(document.getElementById('absorbSlider').value));
+  gl.uniform1i(loc.uMaxSteps, parseInt(document.getElementById('stepsSlider').value));
+
+  // Edge opacity: fade in as σ shrinks AND RMSD decreases
+  // Edges become visible when fields are sharp enough to see structure
+  const sigFrac = Math.max(0, 1 - SIM.sigma / SIM.sigmaMax); // 0 at start, 1 at end
+  const rmsdFrac = SIM.rmsd < 0.2 ? Math.min(1, (0.2-SIM.rmsd)/0.17) : 0;
+  const edgeOp = Math.min(1, sigFrac * 1.5) * Math.max(0.1, rmsdFrac);
+  gl.uniform1f(loc.uEdgeOpacity, edgeOp);
+  gl.uniform1i(loc.uColorMode, parseInt(document.getElementById('colorMode').value));
+}
+
+let panelCt = 0;
+function updatePanel() {
+  // Full RMSD with 1152 permutations is expensive — only compute every ~10 panel updates
+  if (panelCt % 30 === 0 || SIM.crystallized) {
+    SIM.rmsd = computeRMSD();
+  }
+  SIM.energy = computeEnergy();
+
+  document.getElementById('rmsdVal').textContent = SIM.rmsd.toFixed(4);
+  document.getElementById('rmsdVal').className = 'stat-val '+(SIM.rmsd<.025?'good':SIM.rmsd<.1?'warn':'bad');
+  const rPct = Math.max(0,Math.min(100,(1-SIM.rmsd/.5)*100));
+  document.getElementById('rmsdBar').style.width = rPct+'%';
+  document.getElementById('rmsdBar').style.background = SIM.rmsd<.025?'#4ae68a':SIM.rmsd<.1?'#ffcc00':'#ff6666';
+
+  document.getElementById('bestRmsdVal').textContent = SIM.bestRMSD < 900 ? SIM.bestRMSD.toFixed(4) : '\u2014';
+  document.getElementById('energyVal').textContent = SIM.energy.toFixed(3);
+
+  const grpA=[], grpB=[];
+  for(let i=0;i<N;i++){if(SIM.charges[i]===0)grpA.push(i);else grpB.push(i);}
+  document.getElementById('regAVal').textContent = regularity(grpA).toFixed(4);
+  document.getElementById('regBVal').textContent = regularity(grpB).toFixed(4);
+
+  document.getElementById('cycleDisp').textContent = `Cycle ${SIM.cycle+1}/${MAX_CYCLES}, step ${SIM.stepInCycle}/${GD_PER_CYCLE}`;
+
+  // Phase indicator
+  const ind = document.getElementById('phaseInd');
+  let stage = 0;
+  if (SIM.step===0) { ind.textContent='SCATTERED'; ind.className='phase-indicator ph-scat'; stage=0; }
+  else if (SIM.crystallized || SIM.rmsd<0.025) { ind.textContent='STELLA CRYSTALLIZED'; ind.className='phase-indicator ph-stella'; stage=5; }
+  else if (SIM.stepInCycle===0 && SIM.cycle>0) { ind.textContent='KICK + RESTART'; ind.className='phase-indicator ph-kick'; stage=2; }
+  else if (SIM.rmsd<0.1) { ind.textContent='DOMAINS ORDERING'; ind.className='phase-indicator ph-gd'; stage=3; }
+  else if (SIM.rmsd<0.2) { ind.textContent='STELLA FORMING'; ind.className='phase-indicator ph-gd'; stage=3; }
+  else { ind.textContent='GD OPTIMIZING'; ind.className='phase-indicator ph-gd'; stage=1; }
+
+  // Proof chain stages
+  if (SIM.rmsd < 0.025) stage = 5;
+  else if (SIM.rmsd < 0.05) stage = 4;
+  else if (SIM.rmsd < 0.15) stage = 3;
+  else if (SIM.step > 0) stage = Math.min(2, stage);
+
+  for (let i=0;i<6;i++) {
+    const el = document.getElementById('cs'+i);
+    if (i < stage) el.className = 'chain-step done';
+    else if (i === stage) el.className = 'chain-step active';
+    else el.className = 'chain-step';
+  }
+
+  const totalSteps = GD_PER_CYCLE * MAX_CYCLES;
+  document.getElementById('stepLabel').textContent =
+    `Step ${SIM.step.toLocaleString()} / ${totalSteps.toLocaleString()}  |  RMSD ${SIM.rmsd.toFixed(4)}  |  σ ${SIM.sigma.toFixed(3)}  |  Best ${SIM.bestRMSD<900?SIM.bestRMSD.toFixed(4):'\u2014'}`;
+  document.getElementById('timeSlider').max = Math.max(SIM.hist.length-1,1);
+  document.getElementById('timeSlider').value = SIM.hist.length-1;
+}
+
+function frame() {
+  if (SIM.running && !SIM.crystallized) {
+    const speed = parseInt(document.getElementById('speedSlider').value);
+    for (let i=0; i<speed; i++) {
+      if (SIM.cycle>=MAX_CYCLES || SIM.crystallized) { SIM.running=false; document.getElementById('btnPP').textContent='\u25B6'; break; }
+      simStep();
+      if (SIM.step%20===0) saveSnap();
+    }
+  }
+  updateUniforms();
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  panelCt++;
+  if (panelCt%3===0) updatePanel();
+  requestAnimationFrame(frame);
+}
+
+// ============================================================
+// CONTROLS
+// ============================================================
+document.getElementById('btnStart').addEventListener('click', () => {
+  SIM.aob = parseFloat(document.getElementById('ratioSlider').value);
+  initPositions(); SIM.running=true; autoRot=true;
+  document.getElementById('btnPP').textContent='\u23F8';
+});
+document.getElementById('btnReset').addEventListener('click', () => {
+  SIM.running=false; initPositions(); autoRot=true; updatePanel();
+});
+document.getElementById('btnPP').addEventListener('click', () => {
+  if (SIM.crystallized) return;
+  SIM.running=!SIM.running;
+  document.getElementById('btnPP').textContent=SIM.running?'\u23F8':'\u25B6';
+});
+document.getElementById('ratioSlider').addEventListener('input',e=>{SIM.aob=parseFloat(e.target.value);document.getElementById('ratioVal').textContent=SIM.aob.toFixed(1);});
+document.getElementById('epsSlider').addEventListener('input',e=>{document.getElementById('epsVal').textContent=parseFloat(e.target.value).toFixed(2);});
+document.getElementById('densitySlider').addEventListener('input',e=>document.getElementById('densityDisp').textContent=parseFloat(e.target.value).toFixed(1));
+document.getElementById('absorbSlider').addEventListener('input',e=>document.getElementById('absorbDisp').textContent=parseFloat(e.target.value).toFixed(1));
+document.getElementById('stepsSlider').addEventListener('input',e=>document.getElementById('stepsDisp').textContent=e.target.value);
+
+document.getElementById('timeSlider').addEventListener('input',e=>{
+  const idx=parseInt(e.target.value);
+  if(idx<SIM.hist.length){
+    const s=SIM.hist[idx];
+    for(let i=0;i<N;i++){SIM.pos[i*3]=s.positions[i][0];SIM.pos[i*3+1]=s.positions[i][1];SIM.pos[i*3+2]=s.positions[i][2];}
+    SIM.step=s.step; SIM.cycle=s.cycle; SIM.sigma=s.sigma||SIM.sigmaMax;
+    SIM.running=false; document.getElementById('btnPP').textContent='\u25B6';
+    updatePanel();
+  }
+});
+
+// ============================================================
+// INIT
+// ============================================================
+initPositions();
+updatePanel();
+frame();
+
+</script>
+</body>
+</html>

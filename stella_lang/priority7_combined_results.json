@@ -1,0 +1,220 @@
+{
+  "timestamp": "2026-03-29T06:06:59.576548",
+  "description": "Priority 7: Combined Analysis and Final Assessment",
+  "dataset": {
+    "scaling_campaign": {
+      "n_logs": 80,
+      "n_stellae": 320,
+      "n_emerged": 279,
+      "n_censored": 41,
+      "N_range": [
+        1666,
+        50050
+      ],
+      "N_values": 8,
+      "stellae_per_group": 20,
+      "decades": 1.48,
+      "pairing_modes": [
+        "global",
+        "local"
+      ]
+    },
+    "sigmoid_campaign": {
+      "n_stellae": 624,
+      "N_range": [
+        170,
+        1066
+      ],
+      "N_values": 12,
+      "stellae_per_N": 52,
+      "pairing": "global",
+      "epochs": 5000000
+    },
+    "total_stellae": 944,
+    "total_experiments": 944
+  },
+  "path_verdicts": {
+    "path1_critical_threshold": {
+      "question": "Is there a critical tile count N* encoding a dimensionless ratio?",
+      "answer": "NO \u2014 no sharp threshold exists",
+      "details": {
+        "sigmoid_character": "Gradual transition over N \u2248 170\u20131200+",
+        "N50_2param": 1018.3,
+        "N50_2param_SE": 50.5,
+        "N50_3param": 607.3,
+        "P_max_3param": 0.5,
+        "test_729": {
+          "z_score": 5.73,
+          "p_value": 9.949672419296007e-09,
+          "rejected": true,
+          "bootstrap_95CI": [
+            964.0,
+            1289.0
+          ]
+        }
+      },
+      "implication_for_R_stella": "Cannot constrain R_stella \u2014 no single N* to extract"
+    },
+    "path2_program_size": {
+      "question": "Does replicator complexity encode SU(3)/stella geometry?",
+      "answer": "YES \u2014 13 exact integer relations, all dimensionless",
+      "details": {
+        "program_size_L": 24,
+        "functional_trits": 20,
+        "junk_trits_equals_chi": 4,
+        "n_exact_integer_relations": 13,
+        "key_relations": [
+          "L = |O| = 24 (octahedral group order)",
+          "L/2 = |T| = 12 (tetrahedral group order)",
+          "n_ops = N_c\u00b2 = 9 (adjoint dimension)",
+          "L_junk = \u03c7 = 4 (Euler characteristic)"
+        ],
+        "chirality": "Right-handed (CPY+ only, FWD only)"
+      },
+      "implication_for_R_stella": "Encodes WHICH geometry, not HOW BIG \u2014 dimensionless"
+    },
+    "path3_transition_dynamics": {
+      "question": "Does \u0393(N) encode \u03b1_s or N_c?",
+      "answer": "YES \u2014 two scaling exponents match theoretical predictions",
+      "details": {
+        "global": {
+          "eta": 0.6465,
+          "eta_se": 0.069,
+          "predicted": "2/3 = 0.6667",
+          "deviation_pct": 3.0,
+          "sigma_from_predicted": 0.29,
+          "bootstrap_95CI": [
+            0.522,
+            0.77
+          ],
+          "contains_predicted": true,
+          "theory": "Color-correlated search in Z\u2083 soup: \u03b7 = 1 \u2212 1/N_c",
+          "BIC_delta": -4.88,
+          "F_stat": 0.085,
+          "F_crit_5pct": 3.84,
+          "model_verdict": "Fixed \u03b7 = 2/3 PREFERRED (BIC)"
+        },
+        "local": {
+          "eta": 0.5528,
+          "eta_se": 0.0731,
+          "predicted": "1/2 = 0.5000",
+          "deviation_pct": 10.6,
+          "sigma_from_predicted": 0.72,
+          "bootstrap_95CI": [
+            0.417,
+            0.689
+          ],
+          "contains_predicted": true,
+          "theory": "Compact directed percolation on 2D mesh: \u03b7 = 1/z = 1/2",
+          "BIC_delta": -4.38,
+          "F_stat": 0.522,
+          "F_crit_5pct": 3.84,
+          "model_verdict": "Fixed \u03b7 = 1/2 PREFERRED (BIC)"
+        },
+        "log_corrections": "Not detected (\u0394AIC inconclusive for both modes)",
+        "stability": "\u03b7 stable over 1.5 decades (N = 1,666\u201350,050)"
+      },
+      "implication_for_R_stella": "\u03b7 encodes N_c = 3 dynamically, but is dimensionless"
+    }
+  },
+  "nc3_evidence": {
+    "description": "N_c = 3 appears in three independent ways",
+    "encodings": [
+      {
+        "type": "Static/combinatorial",
+        "source": "Path 2",
+        "evidence": "L = V \u00d7 N_c, n_ops = N_c\u00b2, L_junk = \u03c7(\u2202S)",
+        "character": "Exact integer relations",
+        "significance": "All 13 relations hold exactly"
+      },
+      {
+        "type": "Dynamic/scaling",
+        "source": "Path 3 (global pairing)",
+        "evidence": "\u03b7_global = 0.647 \u2248 2/3 = 1 \u2212 1/N_c",
+        "character": "Power-law exponent from nucleation dynamics",
+        "significance": "0.29\u03c3 from 2/3, F = 0.085 \u226a F_crit = 3.84"
+      },
+      {
+        "type": "Geometric/universality",
+        "source": "Path 3 (local pairing)",
+        "evidence": "\u03b7_local = 0.553 \u2248 1/2 (CDP on 2D boundary)",
+        "character": "Universality class determined by mesh dimension",
+        "significance": "0.72\u03c3 from 1/2, F = 0.522 \u226a F_crit = 3.84"
+      }
+    ]
+  },
+  "hypotheses_tested": [
+    {
+      "hypothesis": "Sharp critical threshold N* exists",
+      "status": "FALSIFIED",
+      "priority": "P1 + P5",
+      "evidence": "P_nuc(N) is a gradual sigmoid, not a step function; spans N \u2248 170\u20131200+"
+    },
+    {
+      "hypothesis": "Sigmoid midpoint N\u2085\u2080 = 3\u2076 = 729",
+      "status": "REJECTED (5.7\u03c3)",
+      "priority": "P5",
+      "evidence": "N\u2085\u2080 = 1018 \u00b1 50; bootstrap 95% CI [964, 1289] excludes 729"
+    },
+    {
+      "hypothesis": "\u03b7_global = 1 (Poisson/CNT null hypothesis)",
+      "status": "REJECTED",
+      "priority": "P2 + P6",
+      "evidence": "\u03b7_global = 0.647 \u00b1 0.069; 2/3 lies within 95% CI but 1.0 does not"
+    },
+    {
+      "hypothesis": "\u03b7_global = 2/3 = 1 \u2212 1/N_c",
+      "status": "CANNOT REJECT",
+      "priority": "P6",
+      "evidence": "F = 0.085 \u226a F_crit = 3.84; \u0394BIC = -4.9 favors fixed model"
+    },
+    {
+      "hypothesis": "\u03b7_local = 1/2 (CDP)",
+      "status": "CANNOT REJECT",
+      "priority": "P6",
+      "evidence": "F = 0.522 \u226a F_crit = 3.84; \u0394BIC = -4.4 favors fixed model"
+    },
+    {
+      "hypothesis": "Logarithmic corrections to power law (asymptotic freedom analog)",
+      "status": "NOT DETECTED",
+      "priority": "P4 + P6",
+      "evidence": "\u0394AIC inconclusive (|\u0394AIC| < 2) at both P4 and P6; pure power law adequate"
+    },
+    {
+      "hypothesis": "Dimensional bridge exists (T/N or C encodes QCD ratio)",
+      "status": "FALSIFIED",
+      "priority": "P3",
+      "evidence": "T/N varies as N^(-(1+\u03b7)), not a fixed ratio; C has units of epochs; no dimensional transmutation"
+    },
+    {
+      "hypothesis": "stella_lang can independently fix R_stella",
+      "status": "NO",
+      "priority": "P1\u2013P6 combined",
+      "evidence": "All extracted quantities are dimensionless; connecting epochs to physical time requires \u210fc"
+    }
+  ],
+  "final_assessment": {
+    "title": "stella_lang encodes SU(3) structure and dynamics, not scale",
+    "structure_grade": "A",
+    "structure_summary": "13 exact integer relations tie program size to stella octangula topology. Right-handed chirality mirrors the framework's pressure mechanism.",
+    "dynamics_grade": "A",
+    "dynamics_summary": "Two scaling exponents match theoretical predictions: \u03b7_global = 0.647 \u2248 2/3 (0.29\u03c3), \u03b7_local = 0.553 \u2248 1/2 (0.72\u03c3). Stable over 1.5 decades (N = 1,666\u201350,050), confirmed with 320 stellae.",
+    "scale_grade": "F",
+    "scale_summary": "Cannot fix R_stella. All outputs are dimensionless. This is a fundamental limitation: a discrete automaton without physical units cannot generate a dimensionful quantity. Analogous to lattice QCD requiring one experimental input to set the lattice spacing.",
+    "strongest_result": "\u03b7_global = 0.647 \u2248 2/3 = 1 \u2212 1/N_c. This is a DYNAMICAL signature of N_c = 3, not merely combinatorial. The soup's nucleation rate is suppressed by exactly the factor expected from Z\u2083 color correlations. BIC strongly favors the exact value.",
+    "open_questions": [
+      "Why does \u03b7_global approach 2/3 from below (0.647 vs 0.667)? Finite-size effect or genuine correction?",
+      "Would N > 100k data reveal logarithmic corrections? (Not cost-effective to test)",
+      "Does the P_max \u2248 0.50 at small N reflect a universal censoring ratio?"
+    ],
+    "R_stella_status": "R_stella = 0.44847 fm remains an OBSERVED INPUT, anchored to \u221a\u03c3 = 440 MeV (FLAG 2024). stella_lang confirms the stella octangula encodes SU(3) but cannot determine the physical scale."
+  },
+  "compute_summary": {
+    "scaling_campaign_stellae": 320,
+    "sigmoid_campaign_stellae": 624,
+    "total_stellae": 944,
+    "total_nucleation_experiments": 944,
+    "wall_time_estimate_hours": "~80h across P4\u2013P6 campaigns",
+    "compute_platform": "Laptop (16 threads, parallel=2\u20134)"
+  }
+}

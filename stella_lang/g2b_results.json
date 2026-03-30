@@ -1,0 +1,169 @@
+{
+  "test": "G2b",
+  "description": "Replicator Survival Threshold: mutation rate sweep vs sub-epoch ordering",
+  "timestamp": "2026-03-22T17:39:27.263552",
+  "parameters": {
+    "lattice_size": 2,
+    "stellae": 4,
+    "n_sub": 50,
+    "tiles_per_stella": 416,
+    "epochs": 50000,
+    "seed": 12345,
+    "mutation_rate_default": 0.001,
+    "cross_rate": 1.0
+  },
+  "approach_a": {
+    "description": "Mutation rate sweep on GPU (K=1 snapshot)",
+    "rates": [
+      {
+        "mutation_rate": 0.001,
+        "stella0_frac": 0.0,
+        "colonized": 0,
+        "total_stellae": 4,
+        "entropy": 1.5847,
+        "epochs_per_sec": 1447.0,
+        "replicator_alive": false,
+        "mutations_per_epoch": 9
+      },
+      {
+        "mutation_rate": 0.0005,
+        "stella0_frac": 0.0,
+        "colonized": 0,
+        "total_stellae": 4,
+        "entropy": 1.5816,
+        "epochs_per_sec": 1753.0,
+        "replicator_alive": false,
+        "mutations_per_epoch": 4
+      },
+      {
+        "mutation_rate": 0.0003,
+        "stella0_frac": 0.0,
+        "colonized": 0,
+        "total_stellae": 4,
+        "entropy": 1.5781,
+        "epochs_per_sec": 1899.0,
+        "replicator_alive": false,
+        "mutations_per_epoch": 2
+      },
+      {
+        "mutation_rate": 0.0002,
+        "stella0_frac": 0.0,
+        "colonized": 0,
+        "total_stellae": 4,
+        "entropy": 1.5731,
+        "epochs_per_sec": 1985.0,
+        "replicator_alive": false,
+        "mutations_per_epoch": 1
+      },
+      {
+        "mutation_rate": 0.00015,
+        "stella0_frac": 0.0,
+        "colonized": 0,
+        "total_stellae": 4,
+        "entropy": 1.5729,
+        "epochs_per_sec": 1979.0,
+        "replicator_alive": false,
+        "mutations_per_epoch": 1
+      },
+      {
+        "mutation_rate": 0.00011,
+        "stella0_frac": 0.0,
+        "colonized": 0,
+        "total_stellae": 4,
+        "entropy": 1.5718,
+        "epochs_per_sec": 1996.0,
+        "replicator_alive": false,
+        "mutations_per_epoch": 1
+      },
+      {
+        "mutation_rate": 0.0001,
+        "stella0_frac": 0.93,
+        "colonized": 4,
+        "total_stellae": 4,
+        "entropy": 1.542,
+        "epochs_per_sec": 2463.0,
+        "replicator_alive": true,
+        "mutations_per_epoch": 0
+      }
+    ],
+    "threshold_range": [
+      0.0001,
+      0.00011
+    ],
+    "conclusion": "Replicator cannot survive any nonzero mutation rate on pure snapshot. Survival at mut=0.0001 is artifact of integer truncation (0 mutations/epoch)."
+  },
+  "approach_b": {
+    "description": "Sub-epoch ordering rounds sweep (GPU)",
+    "n_interactions_total": 208,
+    "k_sweep": [
+      {
+        "sub_rounds": 1,
+        "interactions_per_sub_round": 208,
+        "stella0_frac": 0.0,
+        "colonized": 0,
+        "total_stellae": 4,
+        "entropy": 1.5849,
+        "epochs_per_sec": 1448.0,
+        "replicator_alive": false
+      },
+      {
+        "sub_rounds": 2,
+        "interactions_per_sub_round": 104,
+        "stella0_frac": 0.853,
+        "colonized": 4,
+        "total_stellae": 4,
+        "entropy": 1.5384,
+        "epochs_per_sec": 600.0,
+        "replicator_alive": true
+      },
+      {
+        "sub_rounds": 4,
+        "interactions_per_sub_round": 52,
+        "stella0_frac": 0.784,
+        "colonized": 4,
+        "total_stellae": 4,
+        "entropy": 1.5318,
+        "epochs_per_sec": 347.0,
+        "replicator_alive": true
+      },
+      {
+        "sub_rounds": 8,
+        "interactions_per_sub_round": 26,
+        "stella0_frac": 0.743,
+        "colonized": 4,
+        "total_stellae": 4,
+        "entropy": 1.5288,
+        "epochs_per_sec": 194.0,
+        "replicator_alive": true
+      },
+      {
+        "sub_rounds": 16,
+        "interactions_per_sub_round": 13,
+        "stella0_frac": 0.88,
+        "colonized": 4,
+        "total_stellae": 4,
+        "entropy": 1.5532,
+        "epochs_per_sec": 137.0,
+        "replicator_alive": true
+      }
+    ],
+    "cpu_reference": {
+      "stella0_frac": 0.8340000000000001,
+      "colonized": 4,
+      "total_stellae": 4,
+      "entropy": 1.5507,
+      "epochs_per_sec": 3407.0,
+      "replicator_alive": true,
+      "sub_rounds": "sequential",
+      "interactions_per_sub_round": 1
+    },
+    "critical_k": 2,
+    "conclusion": "K=2 sub-rounds (splitting each epoch into 2 phases with snapshot refresh) is sufficient for replicator survival. This provides 104 parallel interactions per sub-round with ordering between sub-rounds."
+  },
+  "overall": {
+    "approach_a_verdict": "ARTIFACT \u2014 replicator survival requires zero mutations, not a meaningful threshold",
+    "approach_b_verdict": "GENUINE \u2014 K=2 sub-rounds (minimal ordering depth) enables replicator survival at full mutation rate 0.001",
+    "winner": "approach_b",
+    "implication": "Replicator survival does not require full sequential ordering. Just 2 ordering phases per epoch (each with 104 parallel interactions) provides enough causal structure for selection to overcome mutation."
+  }
+}

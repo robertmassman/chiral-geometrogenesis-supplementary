@@ -1,0 +1,706 @@
+{
+  "test": "G2",
+  "description": "Multi-Stella Coupling Fidelity",
+  "timestamp": "2026-03-22T10:42:12.521239",
+  "parameters": {
+    "n_sub": 50,
+    "epochs": 2000000,
+    "seed": 12345,
+    "cross_rate": 1.0,
+    "seed_replicator": true,
+    "census_interval": 50000,
+    "log_interval": 10000
+  },
+  "configs": [
+    {
+      "label": "L2",
+      "status": "complete",
+      "lattice_size": 2,
+      "stellae": 4,
+      "total_tiles": 1664,
+      "tiles_per_stella": 416,
+      "num_epochs_gpu": 200,
+      "num_epochs_cpu": 200,
+      "num_censuses_gpu": 41,
+      "num_censuses_cpu": 41,
+      "entropy": {
+        "status": "complete",
+        "num_points": 200,
+        "cpu_mean_late": 1.5439,
+        "gpu_mean_late": 1.5844,
+        "cpu_std_late": 0.0084,
+        "gpu_std_late": 0.0003,
+        "entropy_gap": 0.0405,
+        "cpu_final": 1.5467,
+        "gpu_final": 1.5846
+      },
+      "kl_divergence": {
+        "kl_cpu_gpu": 0.007623,
+        "kl_gpu_cpu": 0.007542,
+        "symmetric_kl": 0.007582
+      },
+      "replicator_comparison": {
+        "status": "complete",
+        "num_common_epochs": 40,
+        "overall_mean_abs_diff": 0.84,
+        "overall_max_abs_diff": 0.918,
+        "per_epoch": [
+          {
+            "epoch": 50000,
+            "mean_abs_diff": 0.85575,
+            "max_abs_diff": 0.868,
+            "cpu_mean_frac": 0.85575,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 100000,
+            "mean_abs_diff": 0.80375,
+            "max_abs_diff": 0.863,
+            "cpu_mean_frac": 0.80375,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 150000,
+            "mean_abs_diff": 0.8464999999999999,
+            "max_abs_diff": 0.9009999999999999,
+            "cpu_mean_frac": 0.8464999999999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 200000,
+            "mean_abs_diff": 0.8387500000000001,
+            "max_abs_diff": 0.892,
+            "cpu_mean_frac": 0.8387500000000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 250000,
+            "mean_abs_diff": 0.8587500000000001,
+            "max_abs_diff": 0.9179999999999999,
+            "cpu_mean_frac": 0.8587500000000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 300000,
+            "mean_abs_diff": 0.8045,
+            "max_abs_diff": 0.853,
+            "cpu_mean_frac": 0.8045,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 350000,
+            "mean_abs_diff": 0.8142499999999999,
+            "max_abs_diff": 0.865,
+            "cpu_mean_frac": 0.8142499999999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 400000,
+            "mean_abs_diff": 0.8347500000000001,
+            "max_abs_diff": 0.858,
+            "cpu_mean_frac": 0.8347500000000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 450000,
+            "mean_abs_diff": 0.857,
+            "max_abs_diff": 0.885,
+            "cpu_mean_frac": 0.857,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 500000,
+            "mean_abs_diff": 0.8715,
+            "max_abs_diff": 0.899,
+            "cpu_mean_frac": 0.8715,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 550000,
+            "mean_abs_diff": 0.8642500000000001,
+            "max_abs_diff": 0.894,
+            "cpu_mean_frac": 0.8642500000000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 600000,
+            "mean_abs_diff": 0.8615,
+            "max_abs_diff": 0.892,
+            "cpu_mean_frac": 0.8615,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 650000,
+            "mean_abs_diff": 0.8287500000000001,
+            "max_abs_diff": 0.856,
+            "cpu_mean_frac": 0.8287500000000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 700000,
+            "mean_abs_diff": 0.8475000000000001,
+            "max_abs_diff": 0.873,
+            "cpu_mean_frac": 0.8475000000000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 750000,
+            "mean_abs_diff": 0.834,
+            "max_abs_diff": 0.9009999999999999,
+            "cpu_mean_frac": 0.834,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 800000,
+            "mean_abs_diff": 0.81825,
+            "max_abs_diff": 0.87,
+            "cpu_mean_frac": 0.81825,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 850000,
+            "mean_abs_diff": 0.848,
+            "max_abs_diff": 0.87,
+            "cpu_mean_frac": 0.848,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 900000,
+            "mean_abs_diff": 0.8472500000000001,
+            "max_abs_diff": 0.863,
+            "cpu_mean_frac": 0.8472500000000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 950000,
+            "mean_abs_diff": 0.8445,
+            "max_abs_diff": 0.887,
+            "cpu_mean_frac": 0.8445,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1000000,
+            "mean_abs_diff": 0.87375,
+            "max_abs_diff": 0.9179999999999999,
+            "cpu_mean_frac": 0.87375,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1050000,
+            "mean_abs_diff": 0.84425,
+            "max_abs_diff": 0.88,
+            "cpu_mean_frac": 0.84425,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1100000,
+            "mean_abs_diff": 0.8322499999999999,
+            "max_abs_diff": 0.873,
+            "cpu_mean_frac": 0.8322499999999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1150000,
+            "mean_abs_diff": 0.8005,
+            "max_abs_diff": 0.853,
+            "cpu_mean_frac": 0.8005,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1200000,
+            "mean_abs_diff": 0.8604999999999999,
+            "max_abs_diff": 0.9109999999999999,
+            "cpu_mean_frac": 0.8604999999999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1250000,
+            "mean_abs_diff": 0.84975,
+            "max_abs_diff": 0.887,
+            "cpu_mean_frac": 0.84975,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1300000,
+            "mean_abs_diff": 0.8535,
+            "max_abs_diff": 0.88,
+            "cpu_mean_frac": 0.8535,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1350000,
+            "mean_abs_diff": 0.8385,
+            "max_abs_diff": 0.861,
+            "cpu_mean_frac": 0.8385,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1400000,
+            "mean_abs_diff": 0.8085000000000002,
+            "max_abs_diff": 0.8440000000000001,
+            "cpu_mean_frac": 0.8085000000000002,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1450000,
+            "mean_abs_diff": 0.8565,
+            "max_abs_diff": 0.899,
+            "cpu_mean_frac": 0.8565,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1500000,
+            "mean_abs_diff": 0.8545,
+            "max_abs_diff": 0.909,
+            "cpu_mean_frac": 0.8545,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1550000,
+            "mean_abs_diff": 0.83025,
+            "max_abs_diff": 0.889,
+            "cpu_mean_frac": 0.83025,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1600000,
+            "mean_abs_diff": 0.834,
+            "max_abs_diff": 0.9159999999999999,
+            "cpu_mean_frac": 0.834,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1650000,
+            "mean_abs_diff": 0.86825,
+            "max_abs_diff": 0.894,
+            "cpu_mean_frac": 0.86825,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1700000,
+            "mean_abs_diff": 0.8270000000000001,
+            "max_abs_diff": 0.861,
+            "cpu_mean_frac": 0.8270000000000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1750000,
+            "mean_abs_diff": 0.8234999999999999,
+            "max_abs_diff": 0.868,
+            "cpu_mean_frac": 0.8234999999999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1800000,
+            "mean_abs_diff": 0.86525,
+            "max_abs_diff": 0.9009999999999999,
+            "cpu_mean_frac": 0.86525,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1850000,
+            "mean_abs_diff": 0.8025,
+            "max_abs_diff": 0.851,
+            "cpu_mean_frac": 0.8025,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1900000,
+            "mean_abs_diff": 0.8399999999999999,
+            "max_abs_diff": 0.865,
+            "cpu_mean_frac": 0.8399999999999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1950000,
+            "mean_abs_diff": 0.855,
+            "max_abs_diff": 0.9109999999999999,
+            "cpu_mean_frac": 0.855,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 2000000,
+            "mean_abs_diff": 0.8037500000000001,
+            "max_abs_diff": 0.87,
+            "cpu_mean_frac": 0.8037500000000001,
+            "gpu_mean_frac": 0.0
+          }
+        ]
+      },
+      "unique_programs": {
+        "gpu_mean_late": 1044.3,
+        "cpu_mean_late": 174.1
+      },
+      "top_count": {
+        "gpu_mean_late": 8.7,
+        "cpu_mean_late": 322.3
+      },
+      "performance": {
+        "gpu_epochs_per_sec": 1433.0,
+        "cpu_epochs_per_sec": 1662.0
+      },
+      "spread_by_distance": {
+        "d0": {
+          "cpu_mean_fraction": 0.8452,
+          "gpu_mean_fraction": 0.0
+        },
+        "d1": {
+          "cpu_mean_fraction": 0.8327,
+          "gpu_mean_fraction": 0.0
+        }
+      }
+    },
+    {
+      "label": "L4",
+      "status": "complete",
+      "lattice_size": 4,
+      "stellae": 32,
+      "total_tiles": 13312,
+      "tiles_per_stella": 416,
+      "num_epochs_gpu": 200,
+      "num_epochs_cpu": 200,
+      "num_censuses_gpu": 41,
+      "num_censuses_cpu": 41,
+      "entropy": {
+        "status": "complete",
+        "num_points": 200,
+        "cpu_mean_late": 1.5505,
+        "gpu_mean_late": 1.5845,
+        "cpu_std_late": 0.0026,
+        "gpu_std_late": 0.0003,
+        "entropy_gap": 0.034,
+        "cpu_final": 1.5512,
+        "gpu_final": 1.5842
+      },
+      "kl_divergence": {
+        "kl_cpu_gpu": 0.002593,
+        "kl_gpu_cpu": 0.002585,
+        "symmetric_kl": 0.002589
+      },
+      "replicator_comparison": {
+        "status": "complete",
+        "num_common_epochs": 40,
+        "overall_mean_abs_diff": 0.8599,
+        "overall_max_abs_diff": 0.94,
+        "per_epoch": [
+          {
+            "epoch": 50000,
+            "mean_abs_diff": 0.84278125,
+            "max_abs_diff": 0.9159999999999999,
+            "cpu_mean_frac": 0.84278125,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 100000,
+            "mean_abs_diff": 0.8385625000000001,
+            "max_abs_diff": 0.9129999999999999,
+            "cpu_mean_frac": 0.8385625000000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 150000,
+            "mean_abs_diff": 0.8570000000000001,
+            "max_abs_diff": 0.9129999999999999,
+            "cpu_mean_frac": 0.8570000000000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 200000,
+            "mean_abs_diff": 0.8639375,
+            "max_abs_diff": 0.9229999999999999,
+            "cpu_mean_frac": 0.8639375,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 250000,
+            "mean_abs_diff": 0.8694375,
+            "max_abs_diff": 0.9279999999999999,
+            "cpu_mean_frac": 0.8694375,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 300000,
+            "mean_abs_diff": 0.8728125,
+            "max_abs_diff": 0.938,
+            "cpu_mean_frac": 0.8728125,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 350000,
+            "mean_abs_diff": 0.86421875,
+            "max_abs_diff": 0.9109999999999999,
+            "cpu_mean_frac": 0.86421875,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 400000,
+            "mean_abs_diff": 0.8605,
+            "max_abs_diff": 0.9229999999999999,
+            "cpu_mean_frac": 0.8605,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 450000,
+            "mean_abs_diff": 0.8574062499999999,
+            "max_abs_diff": 0.925,
+            "cpu_mean_frac": 0.8574062499999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 500000,
+            "mean_abs_diff": 0.8679375,
+            "max_abs_diff": 0.9129999999999999,
+            "cpu_mean_frac": 0.8679375,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 550000,
+            "mean_abs_diff": 0.85228125,
+            "max_abs_diff": 0.94,
+            "cpu_mean_frac": 0.85228125,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 600000,
+            "mean_abs_diff": 0.86803125,
+            "max_abs_diff": 0.9109999999999999,
+            "cpu_mean_frac": 0.86803125,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 650000,
+            "mean_abs_diff": 0.8595312500000001,
+            "max_abs_diff": 0.9209999999999999,
+            "cpu_mean_frac": 0.8595312500000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 700000,
+            "mean_abs_diff": 0.8619687500000001,
+            "max_abs_diff": 0.9329999999999999,
+            "cpu_mean_frac": 0.8619687500000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 750000,
+            "mean_abs_diff": 0.8706562499999999,
+            "max_abs_diff": 0.9179999999999999,
+            "cpu_mean_frac": 0.8706562499999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 800000,
+            "mean_abs_diff": 0.85675,
+            "max_abs_diff": 0.9329999999999999,
+            "cpu_mean_frac": 0.85675,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 850000,
+            "mean_abs_diff": 0.84603125,
+            "max_abs_diff": 0.9109999999999999,
+            "cpu_mean_frac": 0.84603125,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 900000,
+            "mean_abs_diff": 0.8573124999999999,
+            "max_abs_diff": 0.93,
+            "cpu_mean_frac": 0.8573124999999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 950000,
+            "mean_abs_diff": 0.86721875,
+            "max_abs_diff": 0.9329999999999999,
+            "cpu_mean_frac": 0.86721875,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1000000,
+            "mean_abs_diff": 0.8568437499999999,
+            "max_abs_diff": 0.904,
+            "cpu_mean_frac": 0.8568437499999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1050000,
+            "mean_abs_diff": 0.86690625,
+            "max_abs_diff": 0.9059999999999999,
+            "cpu_mean_frac": 0.86690625,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1100000,
+            "mean_abs_diff": 0.850625,
+            "max_abs_diff": 0.9129999999999999,
+            "cpu_mean_frac": 0.850625,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1150000,
+            "mean_abs_diff": 0.86340625,
+            "max_abs_diff": 0.9209999999999999,
+            "cpu_mean_frac": 0.86340625,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1200000,
+            "mean_abs_diff": 0.84003125,
+            "max_abs_diff": 0.9179999999999999,
+            "cpu_mean_frac": 0.84003125,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1250000,
+            "mean_abs_diff": 0.865375,
+            "max_abs_diff": 0.9209999999999999,
+            "cpu_mean_frac": 0.865375,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1300000,
+            "mean_abs_diff": 0.861625,
+            "max_abs_diff": 0.9179999999999999,
+            "cpu_mean_frac": 0.861625,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1350000,
+            "mean_abs_diff": 0.8679375,
+            "max_abs_diff": 0.9209999999999999,
+            "cpu_mean_frac": 0.8679375,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1400000,
+            "mean_abs_diff": 0.8613124999999999,
+            "max_abs_diff": 0.9159999999999999,
+            "cpu_mean_frac": 0.8613124999999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1450000,
+            "mean_abs_diff": 0.86890625,
+            "max_abs_diff": 0.9129999999999999,
+            "cpu_mean_frac": 0.86890625,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1500000,
+            "mean_abs_diff": 0.85678125,
+            "max_abs_diff": 0.899,
+            "cpu_mean_frac": 0.85678125,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1550000,
+            "mean_abs_diff": 0.8641875,
+            "max_abs_diff": 0.925,
+            "cpu_mean_frac": 0.8641875,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1600000,
+            "mean_abs_diff": 0.8574999999999999,
+            "max_abs_diff": 0.9329999999999999,
+            "cpu_mean_frac": 0.8574999999999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1650000,
+            "mean_abs_diff": 0.8616250000000001,
+            "max_abs_diff": 0.9329999999999999,
+            "cpu_mean_frac": 0.8616250000000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1700000,
+            "mean_abs_diff": 0.8617812499999999,
+            "max_abs_diff": 0.93,
+            "cpu_mean_frac": 0.8617812499999999,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1750000,
+            "mean_abs_diff": 0.85828125,
+            "max_abs_diff": 0.9179999999999999,
+            "cpu_mean_frac": 0.85828125,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1800000,
+            "mean_abs_diff": 0.85184375,
+            "max_abs_diff": 0.925,
+            "cpu_mean_frac": 0.85184375,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1850000,
+            "mean_abs_diff": 0.8572187500000001,
+            "max_abs_diff": 0.9109999999999999,
+            "cpu_mean_frac": 0.8572187500000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1900000,
+            "mean_abs_diff": 0.85978125,
+            "max_abs_diff": 0.9179999999999999,
+            "cpu_mean_frac": 0.85978125,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 1950000,
+            "mean_abs_diff": 0.8555312500000001,
+            "max_abs_diff": 0.935,
+            "cpu_mean_frac": 0.8555312500000001,
+            "gpu_mean_frac": 0.0
+          },
+          {
+            "epoch": 2000000,
+            "mean_abs_diff": 0.8725937500000001,
+            "max_abs_diff": 0.9329999999999999,
+            "cpu_mean_frac": 0.8725937500000001,
+            "gpu_mean_frac": 0.0
+          }
+        ]
+      },
+      "unique_programs": {
+        "gpu_mean_late": 1840.0,
+        "cpu_mean_late": 238.8
+      },
+      "top_count": {
+        "gpu_mean_late": 8.8,
+        "cpu_mean_late": 438.6
+      },
+      "performance": {
+        "gpu_epochs_per_sec": 1133.0,
+        "cpu_epochs_per_sec": 811.0
+      },
+      "spread_by_distance": {
+        "d0": {
+          "cpu_mean_fraction": 0.8604,
+          "gpu_mean_fraction": 0.0
+        },
+        "d1": {
+          "cpu_mean_fraction": 0.8587,
+          "gpu_mean_fraction": 0.0
+        },
+        "d2": {
+          "cpu_mean_fraction": 0.8619,
+          "gpu_mean_fraction": 0.0
+        },
+        "d3": {
+          "cpu_mean_fraction": 0.8655,
+          "gpu_mean_fraction": 0.0
+        }
+      }
+    }
+  ],
+  "notes": [
+    "L2: REPLICATOR WASHOUT on GPU \u2014 CPU maintains ~80% colonization, GPU has 0%. Consistent with C1b/C1c prediction: snapshot execution eliminates within-epoch ordering cascades needed for replicator survival at this mutation rate.",
+    "L4: REPLICATOR WASHOUT on GPU \u2014 CPU maintains ~87% colonization, GPU has 0%. Consistent with C1b/C1c prediction: snapshot execution eliminates within-epoch ordering cascades needed for replicator survival at this mutation rate."
+  ],
+  "passed": true,
+  "pass_details": "All checks passed"
+}

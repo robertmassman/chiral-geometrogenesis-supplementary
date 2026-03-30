@@ -1,0 +1,166 @@
+{
+  "test": "GG6",
+  "description": "Metal GPU performance scaling \u2014 throughput and convergence vs n_sub",
+  "timestamp": "2026-03-24T13:49:35.947322",
+  "config": {
+    "n_subs": [
+      64,
+      128,
+      256,
+      512
+    ],
+    "seeds": [
+      42,
+      137,
+      271
+    ],
+    "epoch_table": {
+      "64": [
+        100000,
+        1000000
+      ],
+      "128": [
+        30000,
+        300000
+      ],
+      "256": [
+        10000,
+        100000
+      ],
+      "512": [
+        3000,
+        30000
+      ]
+    },
+    "phase_lock": 1.0,
+    "kuramoto_sub_steps": 8
+  },
+  "scaling": [
+    {
+      "n_sub": 64,
+      "sites_per_tet": 8194,
+      "tiles_per_epoch": 341,
+      "gpu": {
+        "epochs": 100000,
+        "epochs_per_sec": 935.0,
+        "wall_clock_s": 107.23,
+        "tile_ops_per_sec": 318835.0,
+        "correlation": 0.83517,
+        "open_zone_corr": 0.87847,
+        "entropy_tp": 1.53733,
+        "chi2": 0.0536,
+        "corr_std": 0.0178
+      },
+      "cpu": {
+        "epochs": 1000000,
+        "epochs_per_sec": 89766.6,
+        "wall_clock_s": 11.14,
+        "tile_ops_per_sec": 89767.0,
+        "correlation": 0.9174,
+        "open_zone_corr": 0.90144,
+        "entropy_tp": 1.2968,
+        "chi2": 0.22637,
+        "corr_std": 0.00492
+      },
+      "effective_speedup": 3.6,
+      "gpu_corr_per_sec": 0.00779,
+      "cpu_corr_per_sec": 0.08235
+    },
+    {
+      "n_sub": 128,
+      "sites_per_tet": 32770,
+      "tiles_per_epoch": 1365,
+      "gpu": {
+        "epochs": 30000,
+        "epochs_per_sec": 597.7,
+        "wall_clock_s": 50.32,
+        "tile_ops_per_sec": 815815.0,
+        "correlation": 0.82387,
+        "open_zone_corr": 0.8686,
+        "entropy_tp": 1.52453,
+        "chi2": 0.0554,
+        "corr_std": 0.00731
+      },
+      "cpu": {
+        "epochs": 300000,
+        "epochs_per_sec": 31712.5,
+        "wall_clock_s": 9.46,
+        "tile_ops_per_sec": 31712.0,
+        "correlation": 0.9059,
+        "open_zone_corr": 0.90925,
+        "entropy_tp": 1.28837,
+        "chi2": 0.2265,
+        "corr_std": 0.00622
+      },
+      "effective_speedup": 25.7,
+      "gpu_corr_per_sec": 0.01637,
+      "cpu_corr_per_sec": 0.09576
+    },
+    {
+      "n_sub": 256,
+      "sites_per_tet": 131074,
+      "tiles_per_epoch": 5461,
+      "gpu": {
+        "epochs": 10000,
+        "epochs_per_sec": 532.7,
+        "wall_clock_s": 18.9,
+        "tile_ops_per_sec": 2908893.0,
+        "correlation": 0.84903,
+        "open_zone_corr": 0.87059,
+        "entropy_tp": 1.5324,
+        "chi2": 0.0737,
+        "corr_std": 0.00498
+      },
+      "cpu": {
+        "epochs": 100000,
+        "epochs_per_sec": 8965.9,
+        "wall_clock_s": 11.15,
+        "tile_ops_per_sec": 8966.0,
+        "correlation": 0.70213,
+        "open_zone_corr": 0.81217,
+        "entropy_tp": 1.54843,
+        "chi2": 0.0177,
+        "corr_std": 0.00261
+      },
+      "effective_speedup": 324.4,
+      "gpu_corr_per_sec": 0.04491,
+      "cpu_corr_per_sec": 0.06295
+    },
+    {
+      "n_sub": 512,
+      "sites_per_tet": 524290,
+      "tiles_per_epoch": 21845,
+      "gpu": {
+        "epochs": 3000,
+        "epochs_per_sec": 569.3,
+        "wall_clock_s": 5.45,
+        "tile_ops_per_sec": 12437087.0,
+        "correlation": 0.78827,
+        "open_zone_corr": 0.85169,
+        "entropy_tp": 1.51197,
+        "chi2": 0.06927,
+        "corr_std": 0.01788
+      },
+      "cpu": {
+        "epochs": 30000,
+        "epochs_per_sec": 8746.4,
+        "wall_clock_s": 3.43,
+        "tile_ops_per_sec": 8746.0,
+        "correlation": 0.6514,
+        "open_zone_corr": 0.75351,
+        "entropy_tp": 1.58073,
+        "chi2": 0.00193,
+        "corr_std": 0.00085
+      },
+      "effective_speedup": 1422.0,
+      "gpu_corr_per_sec": 0.14464,
+      "cpu_corr_per_sec": 0.18991
+    }
+  ],
+  "scaling_analysis": {
+    "gpu_throughput_exponent": -0.231,
+    "cpu_throughput_exponent": -1.19,
+    "speedup_exponent": 2.954,
+    "note": "Exponents from log-log fit: eps ~ n_sub^\u03b1. GPU degrades slower \u2192 speedup grows with n_sub."
+  }
+}

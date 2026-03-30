@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prop 0.0.3a — Volumetric Z₃ Field Crystallization</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #000;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 8px 20px;
+  background: rgba(6,6,16,0.95);
+  border-bottom: 1px solid #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  z-index: 10;
+}
+header h1 { font-size: 14px; font-weight: 600; color: #e0e0e8; }
+header .subtitle { font-size: 11px; color: #777; }
+.controls {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-left: auto;
+}
+button {
+  background: #1a1a2e; color: #c8c8d0; border: 1px solid #2e2e44;
+  padding: 4px 12px; border-radius: 4px; font-family: inherit;
+  font-size: 12px; cursor: pointer; transition: all 0.15s;
+}
+button:hover { background: #24243a; }
+button.primary { background: #1a4a3a; border-color: #2a6a4a; }
+button.primary:hover { background: #2a5a4a; }
+label { font-size: 11px; color: #888; display: flex; align-items: center; gap: 4px; }
+input[type="range"] { accent-color: #4a7aaa; width: 80px; }
+
+.main-area { flex: 1; position: relative; overflow: hidden; }
+#glCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* Floating side panel */
+.side-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 280px;
+  background: rgba(8,8,18,0.88);
+  backdrop-filter: blur(8px);
+  border-left: 1px solid rgba(40,40,70,0.5);
+  overflow-y: auto;
+  padding: 12px;
+  z-index: 5;
+}
+.panel-section {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(30,30,50,0.5);
+}
+.panel-section h3 {
+  font-size: 10px; text-transform: uppercase; color: #555;
+  margin-bottom: 5px; letter-spacing: 1px;
+}
+.stat-row { display: flex; justify-content: space-between; font-size: 11px; margin: 2px 0; }
+.stat-val { color: #e0e0e8; font-weight: 600; }
+.stat-val.good { color: #4ae68a; }
+.stat-val.warn { color: #ffcc00; }
+.stat-val.bad { color: #ff6666; }
+
+.meter-bar {
+  height: 5px; background: rgba(20,20,40,0.6); border-radius: 3px; overflow: hidden; margin: 4px 0;
+}
+.meter-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+
+.phase-indicator {
+  font-size: 10px; padding: 2px 8px; border-radius: 3px;
+  font-weight: 600; letter-spacing: 0.5px;
+}
+.phase-random { background: rgba(60,20,30,0.8); color: #ff6666; }
+.phase-annealing { background: rgba(50,50,15,0.8); color: #ffcc00; }
+.phase-crystallized { background: rgba(15,50,20,0.8); color: #4ae68a; }
+
+.legend-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin: 3px 0; }
+.legend-swatch { width: 10px; height: 10px; border-radius: 50%; }
+
+.info-box {
+  background: rgba(12,12,24,0.7); border: 1px solid rgba(30,30,50,0.5); border-radius: 4px;
+  padding: 7px; margin: 5px 0; font-size: 10px; line-height: 1.5;
+}
+.info-box em { color: #999; font-style: normal; }
+
+/* Bottom timeline */
+.timeline-bar {
+  padding: 6px 20px;
+  background: rgba(6,6,16,0.95);
+  border-top: 1px solid #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+}
+#timeSlider { flex: 1; accent-color: #ffcc00; }
+#stepLabel {
+  font-size: 11px; font-weight: 600; color: #ffcc00;
+  min-width: 240px; text-align: right;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Prop 0.0.3a — Volumetric Field Crystallization</h1>
+    <div class="subtitle">Phase D: scattered fields in 3D → sphere emergence + stella crystallization (no imposed constraints)</div>
+  </div>
+  <div class="controls">
+    <label>α/β:
+      <input type="range" id="ratioSlider" min="0.5" max="5.0" step="0.1" value="2.0">
+      <span id="ratioVal">2.0</span>
+    </label>
+    <label>γ:
+      <input type="range" id="gammaSlider" min="1" max="30" step="1" value="8">
+      <span id="gammaVal">8</span>
+    </label>
+    <label>σ₀:
+      <input type="range" id="sigmaSlider" min="0.3" max="1.5" step="0.05" value="0.80">
+      <span id="sigmaVal">0.80</span>
+    </label>
+    <label>σ_min:
+      <input type="range" id="sigmaMinSlider" min="0.02" max="0.2" step="0.01" value="0.06">
+      <span id="sigmaMinVal">0.06</span>
+    </label>
+    <label>Speed:
+      <input type="range" id="speedSlider" min="1" max="100" step="1" value="25">
+    </label>
+    <button id="btnStart" class="primary">▶ Crystallize</button>
+    <button id="btnReset">↺ Reset</button>
+  </div>
+</header>
+
+<div class="main-area">
+  <canvas id="glCanvas"></canvas>
+  <div class="side-panel">
+
+    <div class="panel-section">
+      <h3>Phase</h3>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span id="phaseIndicator" class="phase-indicator phase-random">DIFFUSE</span>
+        <span id="tempDisplay" style="font-size:11px;color:#e0e0e8;">T = 2.000</span>
+        <span id="sigmaDisplay" style="font-size:11px;color:#88aacc;">σ = 0.800</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Convergence</h3>
+      <div class="stat-row">
+        <span>RMSD to ideal</span>
+        <span id="rmsdVal" class="stat-val bad">—</span>
+      </div>
+      <div class="meter-bar">
+        <div id="rmsdMeter" class="meter-fill" style="width:0%;background:#ff6666;"></div>
+      </div>
+      <div class="stat-row">
+        <span>Energy</span>
+        <span id="energyVal" class="stat-val">—</span>
+      </div>
+      <div class="stat-row">
+        <span>Ideal energy</span>
+        <span id="idealEnergyVal" class="stat-val" style="color:#4ae68a">—</span>
+      </div>
+      <div class="stat-row">
+        <span>Accept rate</span>
+        <span id="acceptVal" class="stat-val">—</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Shell Emergence</h3>
+      <div class="stat-row">
+        <span>Shell quality</span>
+        <span id="shellQual" class="stat-val">—</span>
+      </div>
+      <div class="meter-bar">
+        <div id="shellMeter" class="meter-fill" style="width:0%;background:#ff6666;"></div>
+      </div>
+      <div class="stat-row">
+        <span>Mean radius</span>
+        <span id="meanRadius" class="stat-val">—</span>
+      </div>
+      <div class="stat-row">
+        <span>Radial spread (σ_r)</span>
+        <span id="radialSpread" class="stat-val">—</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Stella Geometry</h3>
+      <div class="stat-row">
+        <span>T₊ regularity</span>
+        <span id="regAVal" class="stat-val">—</span>
+      </div>
+      <div class="stat-row">
+        <span>T₋ regularity</span>
+        <span id="regBVal" class="stat-val">—</span>
+      </div>
+      <div class="stat-row">
+        <span>Max vertex error</span>
+        <span id="maxVertErr" class="stat-val">—</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Rendering</h3>
+      <label style="margin:3px 0;">Density:
+        <input type="range" id="densitySlider" min="0.5" max="8.0" step="0.1" value="3.0">
+        <span id="densityVal">3.0</span>
+      </label><br>
+      <label style="margin:3px 0;">Absorption:
+        <input type="range" id="absorbSlider" min="0.5" max="6.0" step="0.1" value="2.5">
+        <span id="absorbVal">2.5</span>
+      </label><br>
+      <label style="margin:3px 0;">Steps:
+        <input type="range" id="stepsSlider" min="32" max="128" step="8" value="64">
+        <span id="stepsVal">64</span>
+      </label><br>
+      <label style="margin:3px 0;">
+        <input type="checkbox" id="shellOnlyToggle"> Shell only
+      </label>
+    </div>
+
+    <div class="panel-section">
+      <h3>Legend</h3>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#ff3355;"></div>
+        <span>ω¹ field density (T₊)</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#3366ff;"></div>
+        <span>ω² field density (T₋)</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#bb44ff;"></div>
+        <span>Overlap / interference</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Physics</h3>
+      <div class="info-box">
+        <em>Each ray accumulates field density:</em><br>
+        <span style="color:#88aacc;">C += ρ(x) · color · (1−α)</span><br>
+        <span style="color:#88aacc;">α += ρ(x) · absorption · (1−α)</span><br><br>
+        <em>Two independent emergences:</em><br><br>
+        <em>1. Shell (γ):</em><br>
+        <span style="color:#88aacc;">E_shell = γ·Σ(|rᵢ|−1)²</span><br>
+        <em>Soft normalization → spherical shell</em><br><br>
+        <em>2. Stella (α/β):</em><br>
+        <span style="color:#88aacc;">E_Z₃ = α·Σ_same/d² + β·Σ_cross/d²</span><br>
+        <em>Z₃ repulsion → tetrahedral order</em><br><br>
+        <em>Fields start scattered in a cube.</em><br>
+        <em>Both structures emerge together.</em>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="timeline-bar">
+  <button id="btnPlayPause" style="width:28px;text-align:center;">▶</button>
+  <input type="range" id="timeSlider" min="0" max="1000" value="0">
+  <span id="stepLabel">Step 0 / 0</span>
+</div>
+
+<script>
+// ============================================================
+// RAW WEBGL — full-screen quad + raymarching fragment shader
+// ============================================================
+
+const canvas = document.getElementById('glCanvas');
+const gl = canvas.getContext('webgl2', { antialias: false, alpha: false });
+if (!gl) { alert('WebGL2 required'); }
+
+// ---- Shaders ----
+
+const vsSource = `#version 300 es
+in vec2 aPos;
+out vec2 vUV;
+void main() {
+  vUV = aPos * 0.5 + 0.5;
+  gl_Position = vec4(aPos, 0.0, 1.0);
+}`;
+
+const fsSource = `#version 300 es
+precision highp float;
+
+in vec2 vUV;
+out vec4 fragColor;
+
+uniform vec2 uResolution;
+uniform float uTime;
+
+// Camera
+uniform vec3 uCamPos;
+uniform vec3 uCamTarget;
+uniform float uFOV;
+
+// Field centers (world space)
+uniform vec3 uCentersA[4];
+uniform vec3 uCentersB[4];
+
+// Parameters
+uniform float uSigma;
+uniform float uDensityGain;
+uniform float uAbsorption;
+uniform int uMaxSteps;
+uniform float uEdgeOpacity;  // 0 = invisible, 1 = fully formed
+uniform float uEdgeRadius;   // tube thickness
+uniform float uShellOpacity; // 0 = invisible, 1 = full
+uniform float uShellThickness; // how thick/diffuse the shell membrane is
+uniform float uShellSigma;  // angular smoothness of deformation kernel
+uniform float uShellMeanR; // mean vertex radius (the base sphere)
+uniform float uShowFields; // 1.0 = show fields+edges, 0.0 = shell only
+
+// -------------------------------------------------------
+// Distance from point p to line segment a→b
+// -------------------------------------------------------
+float distToSegment(vec3 p, vec3 a, vec3 b) {
+  vec3 ab = b - a;
+  float t = clamp(dot(p - a, ab) / dot(ab, ab), 0.0, 1.0);
+  return length(p - a - ab * t);
+}
+
+// -------------------------------------------------------
+// Sample edge density: glowing tubes along tetrahedra edges
+// Returns vec2(edgeA, edgeB) density contributions
+// -------------------------------------------------------
+vec2 sampleEdges(vec3 p, float radius) {
+  float eA = 0.0, eB = 0.0;
+  float invR2 = 1.0 / (radius * radius);
+
+  // T₊ edges: all 6 pairs of centersA
+  for (int i = 0; i < 4; i++) {
+    for (int j = i + 1; j < 4; j++) {
+      float d = distToSegment(p, uCentersA[i], uCentersA[j]);
+      eA += exp(-d * d * invR2);
+    }
+  }
+  // T₋ edges: all 6 pairs of centersB
+  for (int i = 0; i < 4; i++) {
+    for (int j = i + 1; j < 4; j++) {
+      float d = distToSegment(p, uCentersB[i], uCentersB[j]);
+      eB += exp(-d * d * invR2);
+    }
+  }
+  return vec2(eA, eB) / 6.0;  // normalize by edge count
+}
+
+// -------------------------------------------------------
+// Gaussian density: exp(-|x - mu|^2 / 2 sigma^2)
+// -------------------------------------------------------
+float gaussian(vec3 x, vec3 mu, float invSig2) {
+  vec3 d = x - mu;
+  return exp(-dot(d, d) * invSig2);
+}
+
+// -------------------------------------------------------
+// Shell: isosurface of combined Gaussian field density
+// Uses a separate (wider) sigma so the shell wraps the clouds
+// When fields are scattered + broad σ → smooth amorphous blob
+// When fields crystallize + narrow σ → tight spherical membrane
+// -------------------------------------------------------
+float sampleShell(vec3 p) {
+  if (uShellOpacity < 0.01) return 0.0;
+
+  float r = length(p);
+  if (r < 0.01) return 0.0;
+  vec3 dir = p / r;
+
+  // START WITH A SPHERE, then deform it.
+  // Base shape: perfect sphere at the mean vertex radius.
+  // Deformation: each vertex pulls the sphere toward its own radius,
+  // weighted by angular proximity. When all radii match → zero
+  // deformation → perfect sphere. When radii vary → amorphous.
+  //
+  // localR = meanR + Σ wᵢ·(rᵢ - meanR) / Σ wᵢ
+  //        = meanR when all rᵢ = meanR (sphere)
+  //        = rᵢ near vertex i (tracks vertex position)
+
+  float shellInvSig2 = 0.5 / (uShellSigma * uShellSigma);
+  float totalW = 0.0;
+  float weightedDelta = 0.0;
+
+  for (int i = 0; i < 4; i++) {
+    float cR = length(uCentersA[i]);
+    if (cR < 0.01) continue;
+    vec3 cDir = uCentersA[i] / cR;
+    float angDist = length(dir - cDir);
+    float w = exp(-angDist * angDist * shellInvSig2);
+    totalW += w;
+    weightedDelta += w * (cR - uShellMeanR);
+  }
+  for (int i = 0; i < 4; i++) {
+    float cR = length(uCentersB[i]);
+    if (cR < 0.01) continue;
+    vec3 cDir = uCentersB[i] / cR;
+    float angDist = length(dir - cDir);
+    float w = exp(-angDist * angDist * shellInvSig2);
+    totalW += w;
+    weightedDelta += w * (cR - uShellMeanR);
+  }
+
+  // Sphere + perturbation: when deltas are zero (all same radius), localR = meanR
+  float deformation = totalW > 0.001 ? weightedDelta / totalW : 0.0;
+  float localR = uShellMeanR + deformation;
+
+  // Thin membrane at the local shell radius
+  float sharpness = 1.0 / max(uShellThickness, 0.001);
+  float dist = r - localR;
+  float shell = exp(-dist * dist * sharpness * sharpness);
+
+  return shell * uShellOpacity;
+}
+
+// Shell color with iridescence based on viewing angle and position
+vec3 shellColor(vec3 p, vec3 rd) {
+  vec3 dir = normalize(p);
+
+  // Fresnel: brighter at grazing angles (rim glow)
+  float fresnel = 1.0 - abs(dot(dir, -rd));
+  fresnel = fresnel * fresnel * fresnel;
+
+  // Base pearlescent color — shifts with direction
+  float hueShift = dot(dir, vec3(0.3, 0.6, 0.7)) * 0.5 + 0.5;
+  vec3 pearl = mix(
+    vec3(0.25, 0.3, 0.45),   // cool blue-grey
+    vec3(0.4, 0.35, 0.5),    // warm lavender
+    hueShift
+  );
+
+  // Iridescent highlight at rim
+  vec3 iridescent = mix(
+    vec3(0.3, 0.5, 0.8),     // blue
+    vec3(0.7, 0.4, 0.9),     // violet
+    fresnel
+  );
+
+  vec3 col = pearl * 0.3 + iridescent * fresnel * 0.8;
+
+  // Subtle warm highlight from above
+  float topLight = max(0.0, dir.y) * 0.3;
+  col += vec3(0.4, 0.35, 0.3) * topLight;
+
+  return col;
+}
+
+// -------------------------------------------------------
+// Ray-sphere intersection: returns (tNear, tFar) or (-1,-1)
+// -------------------------------------------------------
+vec2 raySphere(vec3 ro, vec3 rd, float radius) {
+  float b = dot(ro, rd);
+  float c = dot(ro, ro) - radius * radius;
+  float h = b * b - c;
+  if (h < 0.0) return vec2(-1.0);
+  h = sqrt(h);
+  return vec2(-b - h, -b + h);
+}
+
+// -------------------------------------------------------
+// Sample total field density at point p
+// Returns vec2(rhoA, rhoB)
+// -------------------------------------------------------
+vec2 sampleDensity(vec3 p, float invSig2) {
+  float rA = 0.0, rB = 0.0;
+  for (int i = 0; i < 4; i++) {
+    rA += gaussian(p, uCentersA[i], invSig2);
+    rB += gaussian(p, uCentersB[i], invSig2);
+  }
+  return vec2(rA, rB) * 0.25;
+}
+
+// -------------------------------------------------------
+// Color from density
+// -------------------------------------------------------
+vec3 densityColor(float rA, float rB) {
+  // Base colors
+  vec3 colA = vec3(1.0, 0.18, 0.28);   // warm red-pink
+  vec3 colB = vec3(0.18, 0.38, 1.0);   // cool blue
+
+  vec3 col = vec3(0.0);
+
+  // Smooth intensity mapping
+  float iA = smoothstep(0.0, 0.25, rA);
+  float iB = smoothstep(0.0, 0.25, rB);
+
+  col += colA * iA;
+  col += colB * iB;
+
+  // Hot cores — glow brighter at high density
+  float hotA = smoothstep(0.4, 1.0, rA);
+  float hotB = smoothstep(0.4, 1.0, rB);
+  col += vec3(1.0, 0.7, 0.4) * hotA * 0.8;
+  col += vec3(0.4, 0.7, 1.0) * hotB * 0.8;
+
+  // Overlap → violet/magenta
+  float overlap = min(iA, iB);
+  col += vec3(0.6, 0.15, 0.9) * overlap * 1.2;
+
+  // Very hot overlap → white
+  float hotOverlap = min(hotA, hotB);
+  col += vec3(1.0, 0.9, 1.0) * hotOverlap * 0.5;
+
+  return col;
+}
+
+// -------------------------------------------------------
+// Build camera basis
+// -------------------------------------------------------
+mat3 lookAt(vec3 ro, vec3 ta) {
+  vec3 fwd = normalize(ta - ro);
+  vec3 right = normalize(cross(fwd, vec3(0.0, 1.0, 0.0)));
+  vec3 up = cross(right, fwd);
+  return mat3(right, up, fwd);
+}
+
+// -------------------------------------------------------
+// Main raymarch
+// -------------------------------------------------------
+void main() {
+  vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution) / uResolution.y;
+
+  // Camera
+  mat3 cam = lookAt(uCamPos, uCamTarget);
+  vec3 rd = cam * normalize(vec3(uv, uFOV));
+  vec3 ro = uCamPos;
+
+  // March through a bounding sphere (radius 2.5 — generous)
+  vec2 tBounds = raySphere(ro, rd, 2.5);
+
+  // Background — deep space gradient
+  float bgGrad = length(uv) * 0.3;
+  vec3 bg = mix(vec3(0.02, 0.02, 0.06), vec3(0.0), bgGrad);
+
+  if (tBounds.x < 0.0) {
+    fragColor = vec4(bg, 1.0);
+    return;
+  }
+
+  float tNear = max(tBounds.x, 0.0);
+  float tFar = tBounds.y;
+  float dt = (tFar - tNear) / float(uMaxSteps);
+
+  float invSig2 = 0.5 / (uSigma * uSigma);
+
+  // Volumetric integration (emission-absorption model)
+  vec3 accumulated = vec3(0.0);
+  float transmittance = 1.0;
+
+  for (int i = 0; i < 128; i++) {
+    if (i >= uMaxSteps) break;
+    if (transmittance < 0.01) break;
+
+    float t = tNear + (float(i) + 0.5) * dt;
+    vec3 p = ro + rd * t;
+
+    vec2 rho = sampleDensity(p, invSig2) * uShowFields;
+
+    // Edge tubes — emerge as σ shrinks (fields crystallize)
+    vec2 edgeRho = vec2(0.0);
+    if (uEdgeOpacity > 0.01 && uShowFields > 0.5) {
+      edgeRho = sampleEdges(p, uEdgeRadius) * uEdgeOpacity;
+    }
+
+    // Shell membrane — amorphous blob → sphere
+    float shellRho = sampleShell(p);
+
+    // Combine field density + edge density + shell
+    float fieldA = rho.x * uDensityGain;
+    float fieldB = rho.y * uDensityGain;
+    float edgeA = edgeRho.x * uDensityGain * 0.6;
+    float edgeB = edgeRho.y * uDensityGain * 0.6;
+    float totalRho = fieldA + fieldB + edgeA + edgeB + shellRho * 2.0;
+
+    if (totalRho > 0.001) {
+      // Field cloud color
+      vec3 col = densityColor(fieldA, fieldB);
+
+      // Edge glow — brighter, more saturated color for the structural connections
+      vec3 edgeColA = vec3(1.0, 0.3, 0.4) * 1.5;
+      vec3 edgeColB = vec3(0.3, 0.5, 1.0) * 1.5;
+      float eIntA = smoothstep(0.0, 0.15, edgeA);
+      float eIntB = smoothstep(0.0, 0.15, edgeB);
+      col += edgeColA * eIntA;
+      col += edgeColB * eIntB;
+
+      // Edge cores glow white at high intensity
+      col += vec3(1.0, 0.85, 0.9) * smoothstep(0.3, 0.8, edgeA) * 0.5;
+      col += vec3(0.85, 0.9, 1.0) * smoothstep(0.3, 0.8, edgeB) * 0.5;
+
+      // Shell membrane: pearlescent surface
+      float shellInt = smoothstep(0.0, 0.3, shellRho);
+      vec3 sCol = shellColor(p, rd);
+      col = mix(col, col + sCol, shellInt);
+
+      // Emission-absorption
+      float alpha = 1.0 - exp(-totalRho * uAbsorption * dt);
+      accumulated += col * alpha * transmittance;
+      transmittance *= (1.0 - alpha);
+    }
+  }
+
+  // Composite over background
+  vec3 finalColor = accumulated + bg * transmittance;
+
+  // Subtle vignette
+  float vig = 1.0 - dot(uv, uv) * 0.4;
+  finalColor *= vig;
+
+  // Tone map
+  finalColor = finalColor / (finalColor + vec3(1.0));
+
+  // Gamma
+  finalColor = pow(finalColor, vec3(1.0 / 2.2));
+
+  fragColor = vec4(finalColor, 1.0);
+}`;
+
+// ---- Compile shaders ----
+function createShader(type, source) {
+  const s = gl.createShader(type);
+  gl.shaderSource(s, source);
+  gl.compileShader(s);
+  if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+    console.error(gl.getShaderInfoLog(s));
+    gl.deleteShader(s);
+    return null;
+  }
+  return s;
+}
+
+const vs = createShader(gl.VERTEX_SHADER, vsSource);
+const fs = createShader(gl.FRAGMENT_SHADER, fsSource);
+const program = gl.createProgram();
+gl.attachShader(program, vs);
+gl.attachShader(program, fs);
+gl.linkProgram(program);
+if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+  console.error(gl.getProgramInfoLog(program));
+}
+gl.useProgram(program);
+
+// ---- Full-screen quad ----
+const quadVerts = new Float32Array([-1,-1, 1,-1, -1,1, 1,1]);
+const vbo = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+gl.bufferData(gl.ARRAY_BUFFER, quadVerts, gl.STATIC_DRAW);
+const aPos = gl.getAttribLocation(program, 'aPos');
+gl.enableVertexAttribArray(aPos);
+gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+// ---- Uniforms ----
+const loc = {};
+['uResolution','uTime','uCamPos','uCamTarget','uFOV',
+ 'uSigma','uDensityGain','uAbsorption','uMaxSteps','uEdgeOpacity','uEdgeRadius',
+ 'uShellOpacity','uShellThickness','uShellSigma','uShellMeanR','uShowFields'].forEach(name => {
+  loc[name] = gl.getUniformLocation(program, name);
+});
+for (let i = 0; i < 4; i++) {
+  loc[`uCentersA${i}`] = gl.getUniformLocation(program, `uCentersA[${i}]`);
+  loc[`uCentersB${i}`] = gl.getUniformLocation(program, `uCentersB[${i}]`);
+}
+
+// ============================================================
+// SIMULATION (same physics engine)
+// ============================================================
+const SIM = {
+  N: 8,
+  positions: [],     // {x,y,z} arrays
+  labels: [],
+  alphaOverBeta: 2.0,
+  sigma: 0.8,         // current (evolves during annealing)
+  sigmaMax: 0.8,      // starting width (diffuse)
+  sigmaMin: 0.06,     // final width (sharp peaks)
+  edgeOpacity: 0.0,   // 0→1 as edges crystallize
+  shellOpacity: 0.6,  // visible from beginning — amorphous blob
+  shellThickness: 0.15, // membrane sharpness (high=diffuse skin, low=crisp)
+  shellSigma: 0.7,    // angular kernel width — constant, blob comes from radii variance
+  shellMeanR: 1.0,    // mean vertex radius (base sphere)
+  gamma: 8.0,         // soft normalization strength γ·Σ(|r|-1)²
+  temperature: 2.0,
+  step: 0,
+  maxSteps: 50000,
+  running: false,
+  history: [],
+  energy: 0,
+  rmsd: 1,
+  accepted: 0,
+  attempted: 0,
+  alignedIdeal: [],
+  vertexDists: [],
+};
+
+const IDEAL = {
+  A: [
+    [1/Math.sqrt(3), 1/Math.sqrt(3), 1/Math.sqrt(3)],
+    [1/Math.sqrt(3), -1/Math.sqrt(3), -1/Math.sqrt(3)],
+    [-1/Math.sqrt(3), 1/Math.sqrt(3), -1/Math.sqrt(3)],
+    [-1/Math.sqrt(3), -1/Math.sqrt(3), 1/Math.sqrt(3)],
+  ],
+  B: [
+    [-1/Math.sqrt(3), -1/Math.sqrt(3), -1/Math.sqrt(3)],
+    [-1/Math.sqrt(3), 1/Math.sqrt(3), 1/Math.sqrt(3)],
+    [1/Math.sqrt(3), -1/Math.sqrt(3), 1/Math.sqrt(3)],
+    [1/Math.sqrt(3), 1/Math.sqrt(3), -1/Math.sqrt(3)],
+  ]
+};
+
+// Simple vec3 helpers
+const v3 = {
+  sub: (a,b) => [a[0]-b[0], a[1]-b[1], a[2]-b[2]],
+  dot: (a,b) => a[0]*b[0]+a[1]*b[1]+a[2]*b[2],
+  len: a => Math.sqrt(a[0]*a[0]+a[1]*a[1]+a[2]*a[2]),
+  norm: a => { const l=v3.len(a); return l>0?[a[0]/l,a[1]/l,a[2]/l]:[0,0,0]; },
+  dist2: (a,b) => { const d=v3.sub(a,b); return v3.dot(d,d); },
+  dist: (a,b) => Math.sqrt(v3.dist2(a,b)),
+};
+
+function randomCube(radius) {
+  // Random position in a cube — no sphere constraint
+  return [
+    (Math.random() - 0.5) * 2 * radius,
+    (Math.random() - 0.5) * 2 * radius,
+    (Math.random() - 0.5) * 2 * radius,
+  ];
+}
+
+function initRandom() {
+  SIM.positions = [];
+  SIM.labels = [];
+  for (let i = 0; i < SIM.N; i++) {
+    // Start scattered in a cube — sphere must EMERGE
+    SIM.positions.push(randomCube(1.2));
+    SIM.labels.push(i < 4 ? 0 : 1);
+  }
+  SIM.energy = calcEnergy();
+  SIM.temperature = 2.0;
+  SIM.sigma = SIM.sigmaMax;
+  SIM.edgeOpacity = 0.0;
+  SIM.shellOpacity = 0.6;
+  SIM.shellThickness = 0.15;
+  SIM.shellSigma = 0.7;
+  let mr = 0;
+  for (let i = 0; i < SIM.N; i++) mr += v3.len(SIM.positions[i]);
+  SIM.shellMeanR = mr / SIM.N;
+  SIM.step = 0;
+  SIM.history = [];
+  SIM.accepted = 0;
+  SIM.attempted = 0;
+  SIM.alignedIdeal = [];
+  SIM.vertexDists = [];
+  saveSnap();
+}
+
+function calcEnergy() {
+  const a = SIM.alphaOverBeta, b = 1.0;
+  let E = 0;
+  // Z₃ repulsion
+  for (let i = 0; i < SIM.N; i++)
+    for (let j = i+1; j < SIM.N; j++) {
+      const d2 = v3.dist2(SIM.positions[i], SIM.positions[j]);
+      if (d2 < 1e-10) { E += 1e6; continue; }
+      E += ((SIM.labels[i]===SIM.labels[j]) ? a : b) / d2;
+    }
+  // Soft normalization: γ·Σ(|rᵢ| − 1)² — drives toward unit shell
+  for (let i = 0; i < SIM.N; i++) {
+    const r = v3.len(SIM.positions[i]);
+    E += SIM.gamma * (r - 1) * (r - 1);
+  }
+  return E;
+}
+
+function idealEnergy() {
+  const pts = [...IDEAL.A, ...IDEAL.B];
+  const lbl = [0,0,0,0,1,1,1,1];
+  const a = SIM.alphaOverBeta, b = 1.0;
+  let E = 0;
+  for (let i = 0; i < 8; i++)
+    for (let j = i+1; j < 8; j++) {
+      const d2 = v3.dist2(pts[i], pts[j]);
+      E += ((lbl[i]===lbl[j]) ? a : b) / d2;
+    }
+  return E;
+}
+
+function annealStep() {
+  const prog = SIM.step / SIM.maxSteps;
+  if (prog < 0.15) SIM.temperature = 2.0*(1-prog/0.15)+0.5*(prog/0.15);
+  else if (prog < 0.7) SIM.temperature = 0.5*Math.exp(-4*(prog-0.15)/0.55);
+  else SIM.temperature = 0.5*Math.exp(-4)*(1-(prog-0.7)/0.3)+0.0001;
+
+  // σ tracks temperature: broad fields → sharp peaks as system cools
+  // Use log interpolation so it narrows visually smoothly
+  const sigRatio = SIM.sigmaMin / SIM.sigmaMax;
+  SIM.sigma = SIM.sigmaMax * Math.pow(sigRatio, prog);
+
+  // Shell: visible from beginning as amorphous blob wrapping the field density
+  // Opacity: starts visible, brightens as it tightens
+  SIM.shellOpacity = 0.6 + 0.3 * prog;
+  // Shell sigma: CONSTANT angular kernel width.
+  // The amorphous→sphere transition comes from vertex radii converging,
+  // NOT from changing the kernel. σ=0.7 is the sweet spot:
+  // - Wide enough that the surface is smooth (no sharp lumps)
+  // - Narrow enough that local radial differences show through as bumps
+  // - A wide kernel (>1.5) would average all 8 deviations to zero → always sphere
+  SIM.shellSigma = 0.7;
+  // Membrane sharpness: starts diffuse (soft skin), sharpens to crisp surface
+  SIM.shellThickness = 0.15 * (1 - prog) + 0.03 * prog;
+  // Mean vertex radius: the base sphere that gets deformed
+  let meanR = 0;
+  for (let i = 0; i < SIM.N; i++) meanR += v3.len(SIM.positions[i]);
+  SIM.shellMeanR = meanR / SIM.N;
+
+  // Edges fade in during the second half of crystallization
+  // Delayed onset: no edges while still diffuse, then smoothly appear
+  SIM.edgeOpacity = Math.max(0, Math.min(1, (prog - 0.3) / 0.5));
+  // Ease-in curve for smoother appearance
+  SIM.edgeOpacity = SIM.edgeOpacity * SIM.edgeOpacity * (3 - 2 * SIM.edgeOpacity);
+
+  const idx = Math.floor(Math.random()*SIM.N);
+  const old = [...SIM.positions[idx]];
+  const ps = 0.4*Math.sqrt(SIM.temperature);
+  SIM.positions[idx][0] += (Math.random()-0.5)*ps;
+  SIM.positions[idx][1] += (Math.random()-0.5)*ps;
+  SIM.positions[idx][2] += (Math.random()-0.5)*ps;
+  // NO hard sphere projection — soft normalization in energy drives shell emergence
+
+  const newE = calcEnergy();
+  const dE = newE - SIM.energy;
+  SIM.attempted++;
+  if (dE < 0 || Math.random() < Math.exp(-dE/SIM.temperature)) {
+    SIM.energy = newE;
+    SIM.accepted++;
+  } else {
+    SIM.positions[idx] = old;
+  }
+  SIM.step++;
+}
+
+function saveSnap() {
+  SIM.history.push({
+    positions: SIM.positions.map(p => [...p]),
+    labels: [...SIM.labels],
+    energy: SIM.energy,
+    temperature: SIM.temperature,
+    sigma: SIM.sigma,
+    edgeOpacity: SIM.edgeOpacity,
+    shellOpacity: SIM.shellOpacity,
+    shellThickness: SIM.shellThickness,
+    shellSigma: SIM.shellSigma,
+    shellMeanR: SIM.shellMeanR,
+    step: SIM.step,
+  });
+}
+
+// ---- Kabsch RMSD (compact) ----
+function mat3mult(A,B){const C=[[0,0,0],[0,0,0],[0,0,0]];for(let i=0;i<3;i++)for(let j=0;j<3;j++)for(let k=0;k<3;k++)C[i][j]+=A[i][k]*B[k][j];return C;}
+function mat3t(A){return[[A[0][0],A[1][0],A[2][0]],[A[0][1],A[1][1],A[2][1]],[A[0][2],A[1][2],A[2][2]]];}
+function mat3det(A){return A[0][0]*(A[1][1]*A[2][2]-A[1][2]*A[2][1])-A[0][1]*(A[1][0]*A[2][2]-A[1][2]*A[2][0])+A[0][2]*(A[1][0]*A[2][1]-A[1][1]*A[2][0]);}
+function eigen3(M){let A=M.map(r=>[...r]),V=[[1,0,0],[0,1,0],[0,0,1]];for(let it=0;it<50;it++){let mx=0,p=0,q=1;for(let i=0;i<3;i++)for(let j=i+1;j<3;j++)if(Math.abs(A[i][j])>mx){mx=Math.abs(A[i][j]);p=i;q=j;}if(mx<1e-12)break;const th=0.5*Math.atan2(2*A[p][q],A[q][q]-A[p][p]),c=Math.cos(th),s=Math.sin(th);const Ap=[...A[p]],Aq=[...A[q]];for(let k=0;k<3;k++){A[p][k]=c*Ap[k]-s*Aq[k];A[q][k]=s*Ap[k]+c*Aq[k];}const Cp=[A[0][p],A[1][p],A[2][p]],Cq=[A[0][q],A[1][q],A[2][q]];for(let k=0;k<3;k++){A[k][p]=c*Cp[k]-s*Cq[k];A[k][q]=s*Cp[k]+c*Cq[k];}const Vp=[V[0][p],V[1][p],V[2][p]],Vq=[V[0][q],V[1][q],V[2][q]];for(let k=0;k<3;k++){V[k][p]=c*Vp[k]-s*Vq[k];V[k][q]=s*Vp[k]+c*Vq[k];}}const vals=[A[0][0],A[1][1],A[2][2]],vecs=mat3t(V);const idx=[0,1,2].sort((a,b)=>vals[b]-vals[a]);return{values:idx.map(i=>vals[i]),vectors:mat3t(idx.map(i=>vecs[i]))};}
+function svd3(M){const e=eigen3(mat3mult(mat3t(M),M));const V=e.vectors,S=e.values.map(v=>Math.sqrt(Math.max(0,v)));const MV=mat3mult(M,V);const U=[[0,0,0],[0,0,0],[0,0,0]];for(let i=0;i<3;i++)for(let j=0;j<3;j++)U[i][j]=S[j]>1e-10?MV[i][j]/S[j]:0;return{U,S,V};}
+function kabsch(sim,idl){const n=sim.length;const H=[[0,0,0],[0,0,0],[0,0,0]];for(let k=0;k<n;k++){const p=idl[k],q=sim[k];for(let i=0;i<3;i++)for(let j=0;j<3;j++)H[i][j]+=p[i]*q[j];}const{U,S,V}=svd3(H);const d=mat3det(mat3mult(V,mat3t(U)));const D=[[1,0,0],[0,1,0],[0,0,d<0?-1:1]];return mat3mult(mat3mult(V,D),mat3t(U));}
+function applyR(R,v){return[R[0][0]*v[0]+R[0][1]*v[1]+R[0][2]*v[2],R[1][0]*v[0]+R[1][1]*v[1]+R[1][2]*v[2],R[2][0]*v[0]+R[2][1]*v[1]+R[2][2]*v[2]];}
+
+const PERMS4=[];
+(function(){function p(a,l,r){if(l===r){PERMS4.push([...a]);return;}for(let i=l;i<=r;i++){[a[l],a[i]]=[a[i],a[l]];p(a,l+1,r);[a[l],a[i]]=[a[i],a[l]];}}p([0,1,2,3],0,3);})();
+
+function computeRMSD(){
+  const pA=[],pB=[],iA=[],iB=[];
+  for(let i=0;i<SIM.N;i++){if(SIM.labels[i]===0){pA.push(SIM.positions[i]);iA.push(i);}else{pB.push(SIM.positions[i]);iB.push(i);}}
+
+  // Scale the IDEAL to match sim's mean radius (Procrustes scale removal)
+  // This measures shape quality only, not radial mismatch from soft normalization
+  let meanR=0;
+  for(let i=0;i<SIM.N;i++) meanR+=v3.len(SIM.positions[i]);
+  meanR/=SIM.N;
+  const s = meanR>1e-6 ? meanR : 1.0; // ideal is on unit sphere, scale up to sim radius
+  const scaleIdeal = (pts) => pts.map(p=>[p[0]*s,p[1]*s,p[2]*s]);
+
+  let best=Infinity,bestRot=null;
+  for(const flip of[false,true]){
+    const idA=scaleIdeal(flip?IDEAL.B:IDEAL.A);
+    const idB=scaleIdeal(flip?IDEAL.A:IDEAL.B);
+    for(const pAp of PERMS4)for(const pBp of PERMS4){
+      const sim=[],idl=[];
+      for(let i=0;i<4;i++){sim.push(pA[i]);idl.push(idA[pAp[i]]);}
+      for(let i=0;i<4;i++){sim.push(pB[i]);idl.push(idB[pBp[i]]);}
+      const R=kabsch(sim,idl);
+      let ss=0;const rot=[];
+      for(let i=0;i<8;i++){const ri=applyR(R,idl[i]);rot.push(ri);ss+=v3.dist2(ri,sim[i]);}
+      const rmsd=Math.sqrt(ss/8);
+      if(rmsd<best){best=rmsd;bestRot=rot;}
+    }
+  }
+  SIM.alignedIdeal=new Array(8);SIM.vertexDists=new Array(8);
+  for(let i=0;i<4;i++){SIM.alignedIdeal[iA[i]]=bestRot[i];SIM.vertexDists[iA[i]]=v3.dist(pA[i],bestRot[i]);}
+  for(let i=0;i<4;i++){SIM.alignedIdeal[iB[i]]=bestRot[4+i];SIM.vertexDists[iB[i]]=v3.dist(pB[i],bestRot[4+i]);}
+  return best;
+}
+
+function regularity(pts){
+  if(pts.length<2)return 0;
+  const d=[];for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++)d.push(v3.dist(pts[i],pts[j]));
+  const m=d.reduce((a,b)=>a+b)/d.length;if(m<1e-10)return 0;
+  const s=Math.sqrt(d.reduce((a,x)=>a+(x-m)**2,0)/d.length);
+  return Math.max(0,1-s/m);
+}
+
+// ============================================================
+// CAMERA — simple orbit
+// ============================================================
+let camTheta = 0.5;
+let camPhi = 0.4;
+let camDist = 4.0;
+let camTarget = [0, 0, 0];
+let isDragging = false;
+let lastMouse = [0, 0];
+let autoRotate = true;
+
+function getCamPos() {
+  const x = camDist * Math.sin(camPhi) * Math.cos(camTheta);
+  const y = camDist * Math.cos(camPhi);
+  const z = camDist * Math.sin(camPhi) * Math.sin(camTheta);
+  return [x, y, z];
+}
+
+canvas.addEventListener('mousedown', e => {
+  isDragging = true;
+  lastMouse = [e.clientX, e.clientY];
+  autoRotate = false;
+});
+window.addEventListener('mouseup', () => isDragging = false);
+window.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  const dx = e.clientX - lastMouse[0];
+  const dy = e.clientY - lastMouse[1];
+  camTheta += dx * 0.005;
+  camPhi = Math.max(0.1, Math.min(Math.PI - 0.1, camPhi + dy * 0.005));
+  lastMouse = [e.clientX, e.clientY];
+});
+canvas.addEventListener('wheel', e => {
+  camDist = Math.max(2.0, Math.min(10.0, camDist + e.deltaY * 0.005));
+  e.preventDefault();
+}, { passive: false });
+
+// Touch support
+canvas.addEventListener('touchstart', e => {
+  if (e.touches.length === 1) {
+    isDragging = true;
+    lastMouse = [e.touches[0].clientX, e.touches[0].clientY];
+    autoRotate = false;
+  }
+});
+canvas.addEventListener('touchend', () => isDragging = false);
+canvas.addEventListener('touchmove', e => {
+  if (!isDragging || e.touches.length !== 1) return;
+  const dx = e.touches[0].clientX - lastMouse[0];
+  const dy = e.touches[0].clientY - lastMouse[1];
+  camTheta += dx * 0.005;
+  camPhi = Math.max(0.1, Math.min(Math.PI - 0.1, camPhi + dy * 0.005));
+  lastMouse = [e.touches[0].clientX, e.touches[0].clientY];
+  e.preventDefault();
+}, { passive: false });
+
+// ============================================================
+// RENDER + SIM LOOP
+// ============================================================
+function resize() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio, 1.5); // cap for perf
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  canvas.style.width = rect.width + 'px';
+  canvas.style.height = rect.height + 'px';
+  gl.viewport(0, 0, canvas.width, canvas.height);
+}
+window.addEventListener('resize', resize);
+resize();
+
+function updateUniforms() {
+  gl.uniform2f(loc.uResolution, canvas.width, canvas.height);
+  gl.uniform1f(loc.uTime, performance.now() * 0.001);
+
+  if (autoRotate) camTheta += 0.003;
+  const cp = getCamPos();
+  gl.uniform3f(loc.uCamPos, cp[0], cp[1], cp[2]);
+  gl.uniform3f(loc.uCamTarget, 0, 0, 0);
+  gl.uniform1f(loc.uFOV, 1.2);
+
+  // Field centers
+  let ia = 0, ib = 0;
+  for (let i = 0; i < SIM.N; i++) {
+    const p = SIM.positions[i];
+    if (SIM.labels[i] === 0 && ia < 4) {
+      gl.uniform3f(loc[`uCentersA${ia}`], p[0], p[1], p[2]);
+      ia++;
+    } else if (ib < 4) {
+      gl.uniform3f(loc[`uCentersB${ib}`], p[0], p[1], p[2]);
+      ib++;
+    }
+  }
+
+  gl.uniform1f(loc.uSigma, SIM.sigma);
+  gl.uniform1f(loc.uDensityGain, parseFloat(document.getElementById('densitySlider').value));
+  gl.uniform1f(loc.uAbsorption, parseFloat(document.getElementById('absorbSlider').value));
+  gl.uniform1i(loc.uMaxSteps, parseInt(document.getElementById('stepsSlider').value));
+  gl.uniform1f(loc.uEdgeOpacity, SIM.edgeOpacity);
+  // Edge tube radius: thins as σ shrinks (proportional to σ but clamped)
+  gl.uniform1f(loc.uEdgeRadius, Math.max(0.015, SIM.sigma * 0.15));
+  // Shell membrane
+  gl.uniform1f(loc.uShellOpacity, SIM.shellOpacity);
+  gl.uniform1f(loc.uShellThickness, SIM.shellThickness);
+  gl.uniform1f(loc.uShellSigma, SIM.shellSigma);
+  gl.uniform1f(loc.uShellMeanR, SIM.shellMeanR);
+  gl.uniform1f(loc.uShowFields, document.getElementById('shellOnlyToggle').checked ? 0.0 : 1.0);
+}
+
+function updatePanel() {
+  SIM.rmsd = computeRMSD();
+
+  document.getElementById('rmsdVal').textContent = SIM.rmsd.toFixed(4);
+  document.getElementById('rmsdVal').className = 'stat-val ' +
+    (SIM.rmsd<0.02?'good':SIM.rmsd<0.1?'warn':'bad');
+  const pct = Math.max(0,Math.min(100,(1-SIM.rmsd/0.5)*100));
+  document.getElementById('rmsdMeter').style.width = pct+'%';
+  document.getElementById('rmsdMeter').style.background =
+    SIM.rmsd<0.02?'#4ae68a':SIM.rmsd<0.1?'#ffcc00':'#ff6666';
+
+  document.getElementById('energyVal').textContent = SIM.energy.toFixed(2);
+  document.getElementById('idealEnergyVal').textContent = idealEnergy().toFixed(2);
+  document.getElementById('tempDisplay').textContent = `T = ${SIM.temperature.toFixed(4)}`;
+  document.getElementById('sigmaDisplay').textContent = `σ = ${SIM.sigma.toFixed(3)}`;
+
+  const rate = SIM.attempted>0 ? SIM.accepted/SIM.attempted : 0;
+  document.getElementById('acceptVal').textContent = (rate*100).toFixed(1)+'%';
+
+  // Shell emergence metrics
+  const radii = SIM.positions.map(p => v3.len(p));
+  const meanR = radii.reduce((a,b) => a+b) / radii.length;
+  const sigmaR = Math.sqrt(radii.reduce((a,r) => a + (r-meanR)**2, 0) / radii.length);
+  // Shell quality: 1 = perfect shell (all at same radius), 0 = scattered
+  const shellQ = Math.max(0, 1 - sigmaR / 0.5);
+
+  document.getElementById('meanRadius').textContent = meanR.toFixed(3);
+  document.getElementById('radialSpread').textContent = sigmaR.toFixed(4);
+  document.getElementById('shellQual').textContent = shellQ.toFixed(3);
+  document.getElementById('shellQual').className = 'stat-val ' +
+    (shellQ > 0.98 ? 'good' : shellQ > 0.9 ? 'warn' : 'bad');
+  const shellPct = Math.max(0, Math.min(100, shellQ * 100));
+  document.getElementById('shellMeter').style.width = shellPct + '%';
+  document.getElementById('shellMeter').style.background =
+    shellQ > 0.98 ? '#4ae68a' : shellQ > 0.9 ? '#ffcc00' : '#ff6666';
+
+  const pA=SIM.positions.filter((_,i)=>SIM.labels[i]===0);
+  const pB=SIM.positions.filter((_,i)=>SIM.labels[i]===1);
+  document.getElementById('regAVal').textContent = regularity(pA).toFixed(4);
+  document.getElementById('regBVal').textContent = regularity(pB).toFixed(4);
+
+  const maxD=SIM.vertexDists.length===SIM.N?Math.max(...SIM.vertexDists):0;
+  document.getElementById('maxVertErr').textContent = SIM.vertexDists.length===SIM.N?maxD.toFixed(4):'—';
+  document.getElementById('maxVertErr').className = 'stat-val '+(maxD<0.03?'good':maxD<0.1?'warn':'bad');
+
+  const ind=document.getElementById('phaseIndicator');
+  if(SIM.step===0){ind.textContent='SCATTERED';ind.className='phase-indicator phase-random';}
+  else if(SIM.rmsd<0.02 && shellQ>0.98){ind.textContent='CRYSTALLIZED';ind.className='phase-indicator phase-crystallized';}
+  else if(shellQ<0.9){ind.textContent='COALESCING';ind.className='phase-indicator phase-random';}
+  else if(SIM.rmsd<0.08){ind.textContent='ORDERING';ind.className='phase-indicator phase-annealing';}
+  else{ind.textContent='SHELL FORMED';ind.className='phase-indicator phase-annealing';}
+
+  document.getElementById('stepLabel').textContent =
+    `Step ${SIM.step.toLocaleString()} / ${SIM.maxSteps.toLocaleString()}  |  RMSD ${SIM.rmsd.toFixed(4)}  |  σ ${SIM.sigma.toFixed(2)}`;
+  document.getElementById('timeSlider').max = Math.max(SIM.history.length-1,1);
+  document.getElementById('timeSlider').value = SIM.history.length-1;
+}
+
+let panelCounter = 0;
+
+function frame() {
+  // Simulation steps
+  if (SIM.running) {
+    const speed = parseInt(document.getElementById('speedSlider').value);
+    for (let i = 0; i < speed; i++) {
+      if (SIM.step >= SIM.maxSteps) {
+        SIM.running = false;
+        document.getElementById('btnPlayPause').textContent = '▶';
+        break;
+      }
+      annealStep();
+      if (SIM.step % 50 === 0) saveSnap();
+    }
+  }
+
+  // GL render
+  updateUniforms();
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+  // Update panel less frequently (every 3 frames) to avoid perf hit from RMSD calc
+  panelCounter++;
+  if (panelCounter % 3 === 0) updatePanel();
+
+  requestAnimationFrame(frame);
+}
+
+// ============================================================
+// CONTROLS
+// ============================================================
+document.getElementById('btnStart').addEventListener('click', () => {
+  SIM.alphaOverBeta = parseFloat(document.getElementById('ratioSlider').value);
+  SIM.gamma = parseFloat(document.getElementById('gammaSlider').value);
+  SIM.sigmaMax = parseFloat(document.getElementById('sigmaSlider').value);
+  SIM.sigmaMin = parseFloat(document.getElementById('sigmaMinSlider').value);
+  initRandom();
+  SIM.running = true;
+  autoRotate = true;
+  document.getElementById('btnPlayPause').textContent = '⏸';
+});
+
+document.getElementById('btnReset').addEventListener('click', () => {
+  SIM.running = false;
+  initRandom();
+  autoRotate = true;
+  updatePanel();
+});
+
+document.getElementById('btnPlayPause').addEventListener('click', () => {
+  SIM.running = !SIM.running;
+  document.getElementById('btnPlayPause').textContent = SIM.running ? '⏸' : '▶';
+});
+
+document.getElementById('ratioSlider').addEventListener('input', e => {
+  SIM.alphaOverBeta = parseFloat(e.target.value);
+  document.getElementById('ratioVal').textContent = SIM.alphaOverBeta.toFixed(1);
+});
+document.getElementById('gammaSlider').addEventListener('input', e => {
+  SIM.gamma = parseFloat(e.target.value);
+  document.getElementById('gammaVal').textContent = SIM.gamma.toFixed(0);
+});
+document.getElementById('sigmaSlider').addEventListener('input', e => {
+  SIM.sigmaMax = parseFloat(e.target.value);
+  document.getElementById('sigmaVal').textContent = SIM.sigmaMax.toFixed(2);
+  if (!SIM.running) { SIM.sigma = SIM.sigmaMax; }
+});
+document.getElementById('sigmaMinSlider').addEventListener('input', e => {
+  SIM.sigmaMin = parseFloat(e.target.value);
+  document.getElementById('sigmaMinVal').textContent = SIM.sigmaMin.toFixed(2);
+});
+document.getElementById('densitySlider').addEventListener('input', e => {
+  document.getElementById('densityVal').textContent = parseFloat(e.target.value).toFixed(1);
+});
+document.getElementById('absorbSlider').addEventListener('input', e => {
+  document.getElementById('absorbVal').textContent = parseFloat(e.target.value).toFixed(1);
+});
+document.getElementById('stepsSlider').addEventListener('input', e => {
+  document.getElementById('stepsVal').textContent = e.target.value;
+});
+
+document.getElementById('timeSlider').addEventListener('input', e => {
+  const idx = parseInt(e.target.value);
+  if (idx < SIM.history.length) {
+    const snap = SIM.history[idx];
+    for (let i = 0; i < SIM.N; i++) {
+      SIM.positions[i] = [...snap.positions[i]];
+      SIM.labels[i] = snap.labels[i];
+    }
+    SIM.energy = snap.energy;
+    SIM.temperature = snap.temperature;
+    SIM.sigma = snap.sigma;
+    SIM.edgeOpacity = snap.edgeOpacity || 0;
+    SIM.shellOpacity = snap.shellOpacity || 0.6;
+    SIM.shellThickness = snap.shellThickness || 0.15;
+    SIM.shellSigma = snap.shellSigma || 0.7;
+    SIM.shellMeanR = snap.shellMeanR || 1.0;
+    SIM.step = snap.step;
+    SIM.running = false;
+    document.getElementById('btnPlayPause').textContent = '▶';
+    updatePanel();
+  }
+});
+
+// ============================================================
+// INIT
+// ============================================================
+initRandom();
+updatePanel();
+frame();
+
+</script>
+</body>
+</html>

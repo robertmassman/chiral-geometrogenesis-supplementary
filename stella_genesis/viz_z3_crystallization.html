@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prop 0.0.3a — Z₃ Crystallization: 8 Charges → Stella Octangula</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a14;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  padding: 8px 16px;
+  background: rgba(6,6,16,0.95);
+  border-bottom: 1px solid #1a1a2e;
+  z-index: 10;
+}
+header h1 { font-size: 13px; font-weight: 600; color: #e0e0e8; }
+header .subtitle { font-size: 11px; color: #777; margin-top: 2px; }
+
+.main-area {
+  flex: 1; display: flex; overflow: hidden;
+}
+
+/* Canvas grid */
+.canvas-grid {
+  flex: 1; display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  background: #111;
+  padding: 1px;
+}
+.canvas-cell {
+  position: relative;
+  background: #0a0a14;
+  overflow: hidden;
+}
+.canvas-cell canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+.canvas-label {
+  position: absolute;
+  top: 6px; left: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #e0e0e8;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+.canvas-sublabel {
+  position: absolute;
+  top: 22px; left: 8px;
+  font-size: 9px;
+  color: #888;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+.canvas-eq {
+  position: absolute;
+  bottom: 6px; left: 8px;
+  font-size: 10px;
+  color: #aab;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Side panel */
+.side-panel {
+  width: 280px;
+  background: rgba(8,8,18,0.95);
+  border-left: 1px solid #1a1a2e;
+  overflow-y: auto;
+  padding: 12px;
+  flex-shrink: 0;
+}
+.panel-section {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(30,30,50,0.5);
+}
+.panel-section h3 {
+  font-size: 10px; text-transform: uppercase; color: #555;
+  margin-bottom: 5px; letter-spacing: 1px;
+}
+.ctrl-row {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; margin: 4px 0;
+}
+.ctrl-row label { color: #888; min-width: 28px; }
+.ctrl-row input[type="range"] { flex: 1; accent-color: #4a7aaa; }
+.ctrl-row .val { color: #e0e0e8; font-weight: 600; min-width: 40px; text-align: right; }
+
+.info-box {
+  background: rgba(12,12,24,0.7); border: 1px solid rgba(30,30,50,0.5); border-radius: 4px;
+  padding: 7px; margin: 5px 0; font-size: 10px; line-height: 1.6;
+}
+.info-box em { color: #999; font-style: normal; }
+
+.legend-row { display: flex; align-items: center; gap: 6px; font-size: 10px; margin: 3px 0; }
+.legend-swatch { width: 10px; height: 10px; border-radius: 50%; }
+
+.readout {
+  font-size: 10px; color: #aab; margin: 2px 0;
+}
+.readout .val { color: #e0e0e8; font-weight: 600; }
+
+button {
+  background: #1a1a2e; color: #c8c8d0; border: 1px solid #2e2e44;
+  padding: 3px 10px; border-radius: 4px; font-family: inherit;
+  font-size: 11px; cursor: pointer; transition: all 0.15s;
+  margin: 2px;
+}
+button:hover { background: #24243a; }
+button.active { background: #2a3a5a; border-color: #4a6a9a; color: #88bbff; }
+button.pri { background: #1a3a2e; border-color: #2a5a3e; color: #66ddaa; }
+button.pri:hover { background: #2a4a3e; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Z₃ Crystallization → Stella Octangula</h1>
+  <div class="subtitle">Prop 0.0.3a Phases B–D: E = α·Σ_same 1/d² + β·Σ_cross 1/d² | α/β ≥ 2 (SU(3) Casimir) → stella ground state (100%)</div>
+</header>
+
+<div class="main-area">
+  <div class="canvas-grid">
+    <div class="canvas-cell" id="cellA">
+      <canvas id="cvA"></canvas>
+      <div class="canvas-label">(a) Z₃ crystallization on S²</div>
+      <div class="canvas-sublabel">8 particles: 4 charge-A (red) + 4 charge-B (blue)</div>
+    </div>
+    <div class="canvas-cell" id="cellB">
+      <canvas id="cvB"></canvas>
+      <div class="canvas-label">(b) Phase transition: RMSD vs α/β</div>
+      <div class="canvas-sublabel">Sharp drop at α/β = 2 — SU(3) Casimir ratio C_F(6)/C_F(8)</div>
+    </div>
+    <div class="canvas-cell" id="cellC">
+      <canvas id="cvC"></canvas>
+      <div class="canvas-label">(c) Energy convergence</div>
+      <div class="canvas-sublabel">E(step) via gradient descent + restarts</div>
+    </div>
+    <div class="canvas-cell" id="cellD">
+      <canvas id="cvD"></canvas>
+      <div class="canvas-label">(d) Order metrics</div>
+      <div class="canvas-sublabel">RMSD to ideal stella + tetrahedron regularity</div>
+    </div>
+  </div>
+
+  <div class="side-panel">
+    <div class="panel-section">
+      <h3>Controls</h3>
+      <div class="ctrl-row">
+        <label>α/β</label>
+        <input type="range" id="sliderRatio" min="0.5" max="5.0" step="0.1" value="2.0">
+        <span class="val" id="valRatio">2.0</span>
+      </div>
+      <div class="readout">Same-charge / cross-charge coupling ratio</div>
+
+      <div class="ctrl-row" style="margin-top:6px;">
+        <label>Speed</label>
+        <input type="range" id="sliderSpeed" min="1" max="30" step="1" value="8">
+        <span class="val" id="valSpeed">8</span>
+      </div>
+      <div class="readout">Annealing steps per frame</div>
+
+      <div style="margin-top:8px; display:flex; gap:4px;">
+        <button id="btnPlay" class="pri">&#9654; Crystallize</button>
+        <button id="btnReset">&#8634; Reset</button>
+        <button id="btnSweep">Sweep</button>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Simulation</h3>
+      <div class="readout">Step: <span class="val" id="rdStep">0</span> / <span id="rdTotal">4000</span></div>
+      <div class="readout">Cycle: <span class="val" id="rdTemp">—</span></div>
+      <div class="readout">Energy: <span class="val" id="rdEnergy">—</span></div>
+      <div class="readout" style="margin-top:4px; color:#666;">— Status —</div>
+      <div class="readout"><span class="val" id="rdStatus" style="color:#888;">Ready</span></div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Stella Metrics</h3>
+      <div class="readout">RMSD to ideal: <span class="val" id="rdRMSD">—</span></div>
+      <div class="readout">Regularity A (σ/μ): <span class="val" id="rdRegA">—</span></div>
+      <div class="readout">Regularity B (σ/μ): <span class="val" id="rdRegB">—</span></div>
+      <div class="readout">Stella quality: <span class="val" id="rdQuality">—</span></div>
+      <div class="readout" style="margin-top:4px; font-size:9px; color:#666;">
+        RMSD &lt; 0.025 = stella (Prop 0.0.3a §4)
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Legend</h3>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#ff4466;"></div>
+        <span>Charge A — 4 particles (→ T₊)</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:#4488ff;"></div>
+        <span>Charge B — 4 particles (→ T₋)</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:rgba(255,100,120,0.4);"></div>
+        <span>T₊ edges (same-charge α bonds)</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:rgba(80,140,255,0.4);"></div>
+        <span>T₋ edges (same-charge α bonds)</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-swatch" style="background:rgba(180,180,180,0.15); border:1px solid #333;"></div>
+        <span>Unit sphere S²</span>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Physics</h3>
+      <div class="info-box">
+        <em>Prop 0.0.3a — Z₃ product-rule repulsion</em><br><br>
+        <span style="color:#88aacc;">E = α·Σ<sub>same</sub> 1/d² + β·Σ<sub>cross</sub> 1/d²</span><br><br>
+        <span style="color:#ffcc66;">α/β = C<sub>F</sub>(6)/C<sub>F</sub>(8) = 2</span><br>
+        <em>from SU(3) Casimir invariants (§7.1)</em><br><br>
+        <em>Mechanism:</em><br>
+        1. Same-charge repulsion (α) → each<br>
+        &nbsp;&nbsp;&nbsp;group of 4 → regular tetrahedron<br>
+        2. Cross repulsion (β) → dual orientation<br>
+        3. Combined → stella octangula<br><br>
+        <em>Result: 100% convergence, 20/20 seeds,<br>
+        RMSD &lt; 0.025 for α/β ≥ 2</em>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <h3>Proof References</h3>
+      <div class="info-box">
+        <em>Prop 0.0.3a</em> — Computational Crystallization<br>
+        <em>Thm 0.0.3</em> — Stella Uniqueness (algebraic)<br>
+        <em>Def 0.1.1</em> — Stella octangula boundary<br>
+        <em>Def 0.1.2</em> — Color fields & Z₃ phases<br><br>
+        <em>Phase B:</em> α/β ≥ 2 → stella (100%)<br>
+        <em>Phase C:</em> N=8, 4+4 partition selected<br>
+        <em>Phase D:</em> Sphere from soft normalization<br>
+        <em>Phase E:</em> Z₃ product rule = same result
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// IDEAL STELLA OCTANGULA ON UNIT SPHERE
+// ============================================================
+const S3 = 1 / Math.sqrt(3);
+const IDEAL_TP = [
+  [ S3,  S3,  S3], [ S3, -S3, -S3], [-S3,  S3, -S3], [-S3, -S3,  S3]
+];
+const IDEAL_TM = [
+  [-S3, -S3, -S3], [-S3,  S3,  S3], [ S3, -S3,  S3], [ S3,  S3, -S3]
+];
+
+// Sorted ideal pairwise distances (28 total)
+// Within each tet: 6 pairs at sqrt(8/3) ≈ 1.633, × 2 tets = 12
+// Cross: 12 at 2/sqrt(3) ≈ 1.155, 4 antipodal at 2.0
+const D_WITHIN = Math.sqrt(8 / 3);     // ≈ 1.6330
+const D_CROSS_N = 2 / Math.sqrt(3);    // ≈ 1.1547
+const D_CROSS_F = 2.0;
+const IDEAL_DISTS = [];
+for (let i = 0; i < 12; i++) IDEAL_DISTS.push(D_CROSS_N);
+for (let i = 0; i < 12; i++) IDEAL_DISTS.push(D_WITHIN);
+for (let i = 0; i < 4; i++)  IDEAL_DISTS.push(D_CROSS_F);
+
+// ============================================================
+// SIMULATION STATE
+// ============================================================
+const N_PARTICLES = 8;
+const GD_STEPS_PER_CYCLE = 400;  // gradient descent steps per restart cycle
+const MAX_CYCLES = 10;           // max restart cycles
+const TOTAL_STEPS = GD_STEPS_PER_CYCLE * MAX_CYCLES; // 4000
+const LR = 0.01;
+const SOFT2 = 0.02;       // potential softening: use 1/(d² + SOFT2)
+const GRAD_CLIP = 20.0;   // max gradient magnitude per particle
+
+let pos = new Float64Array(N_PARTICLES * 3);
+let bestPos = new Float64Array(N_PARTICLES * 3);
+let bestRMSD = 999;
+const charges = [0, 0, 0, 0, 1, 1, 1, 1];
+let step = 0;
+let cycle = 0;
+let stepInCycle = 0;
+let running = false;
+let crystallized = false;
+let alphaOverBeta = 2.0;
+let stepsPerFrame = 8;
+
+let energyHist = [];
+let rmsdHist = [];
+let regAHist = [];
+let regBHist = [];
+
+// Phase sweep
+let sweepData = null;
+let sweepRunning = false;
+
+// Camera for 3D view
+let camYaw = 0.5;
+let camPitch = 0.35;
+let autoRotate = true;
+let dragStart = null;
+let lastDragTime = 0;
+
+// ============================================================
+// PRNG (mulberry32) for reproducible phase sweep
+// ============================================================
+function mulberry32(a) {
+  return function() {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+// ============================================================
+// INITIALIZATION
+// ============================================================
+function randomOnSphere() {
+  let x, y, s;
+  do { x = Math.random() * 2 - 1; y = Math.random() * 2 - 1; s = x * x + y * y; } while (s >= 1);
+  const z = 1 - 2 * s;
+  const r = 2 * Math.sqrt(1 - s);
+  return [x * r, y * r, z];
+}
+
+function randomOnSphereSeeded(rng) {
+  let x, y, s;
+  do { x = rng() * 2 - 1; y = rng() * 2 - 1; s = x * x + y * y; } while (s >= 1);
+  const z = 1 - 2 * s;
+  const r = 2 * Math.sqrt(1 - s);
+  return [x * r, y * r, z];
+}
+
+function initPositions() {
+  for (let i = 0; i < N_PARTICLES; i++) {
+    const p = randomOnSphere();
+    pos[i * 3] = p[0]; pos[i * 3 + 1] = p[1]; pos[i * 3 + 2] = p[2];
+  }
+}
+
+function resetSim() {
+  initPositions();
+  bestPos.set(pos);
+  bestRMSD = 999;
+  bestEnergyTrack = Infinity;
+  bestRMSDTrack = Infinity;
+  bestRegATrack = Infinity;
+  bestRegBTrack = Infinity;
+  step = 0;
+  cycle = 0;
+  stepInCycle = 0;
+  running = false;
+  crystallized = false;
+  energyHist = [];
+  rmsdHist = [];
+  regAHist = [];
+  regBHist = [];
+  document.getElementById('btnPlay').textContent = '\u25B6 Crystallize';
+  document.getElementById('rdStatus').textContent = 'Ready';
+  document.getElementById('rdStatus').style.color = '#888';
+  updateMetrics();
+  renderAll();
+}
+
+// ============================================================
+// ENERGY & ANNEALING
+// ============================================================
+function computeEnergy(p, ch, alpha, beta) {
+  let E = 0;
+  for (let i = 0; i < N_PARTICLES; i++) {
+    for (let j = i + 1; j < N_PARTICLES; j++) {
+      const dx = p[i*3] - p[j*3], dy = p[i*3+1] - p[j*3+1], dz = p[i*3+2] - p[j*3+2];
+      const d2 = dx*dx + dy*dy + dz*dz + SOFT2;
+      E += ((ch[i] === ch[j]) ? alpha : beta) / d2;
+    }
+  }
+  return E;
+}
+
+function doGDStep(p, ch, alpha, beta, lr) {
+  const grad = new Float64Array(N_PARTICLES * 3);
+  for (let i = 0; i < N_PARTICLES; i++) {
+    for (let j = 0; j < N_PARTICLES; j++) {
+      if (i === j) continue;
+      const dx = p[i*3]-p[j*3], dy = p[i*3+1]-p[j*3+1], dz = p[i*3+2]-p[j*3+2];
+      const d2 = dx*dx + dy*dy + dz*dz + SOFT2;
+      const c = (ch[i] === ch[j]) ? alpha : beta;
+      const f = -2 * c / (d2 * d2);
+      grad[i*3] += f * dx; grad[i*3+1] += f * dy; grad[i*3+2] += f * dz;
+    }
+  }
+  for (let i = 0; i < N_PARTICLES; i++) {
+    const x = p[i*3], y = p[i*3+1], z = p[i*3+2];
+    // Project gradient to tangent plane
+    const gd = x * grad[i*3] + y * grad[i*3+1] + z * grad[i*3+2];
+    grad[i*3] -= gd * x; grad[i*3+1] -= gd * y; grad[i*3+2] -= gd * z;
+    // Clip gradient magnitude per particle
+    const gm = Math.sqrt(grad[i*3]*grad[i*3] + grad[i*3+1]*grad[i*3+1] + grad[i*3+2]*grad[i*3+2]);
+    if (gm > GRAD_CLIP) {
+      const sc = GRAD_CLIP / gm;
+      grad[i*3] *= sc; grad[i*3+1] *= sc; grad[i*3+2] *= sc;
+    }
+    // Pure gradient descent step (no noise)
+    p[i*3]   -= lr * grad[i*3];
+    p[i*3+1] -= lr * grad[i*3+1];
+    p[i*3+2] -= lr * grad[i*3+2];
+  }
+  // Re-normalize to sphere
+  for (let i = 0; i < N_PARTICLES; i++) {
+    const x = p[i*3], y = p[i*3+1], z = p[i*3+2];
+    const r = Math.sqrt(x*x + y*y + z*z);
+    if (r > 1e-10) { p[i*3] /= r; p[i*3+1] /= r; p[i*3+2] /= r; }
+  }
+}
+
+// Apply a random kick (perturbation) projected onto sphere
+function applyKick(p, kickSize) {
+  for (let i = 0; i < N_PARTICLES; i++) {
+    const x = p[i*3], y = p[i*3+1], z = p[i*3+2];
+    let kx = gaussRand() * kickSize, ky = gaussRand() * kickSize, kz = gaussRand() * kickSize;
+    const kd = x * kx + y * ky + z * kz;
+    kx -= kd * x; ky -= kd * y; kz -= kd * z;
+    p[i*3] += kx; p[i*3+1] += ky; p[i*3+2] += kz;
+  }
+  for (let i = 0; i < N_PARTICLES; i++) {
+    const x = p[i*3], y = p[i*3+1], z = p[i*3+2];
+    const r = Math.sqrt(x*x + y*y + z*z);
+    if (r > 1e-10) { p[i*3] /= r; p[i*3+1] /= r; p[i*3+2] /= r; }
+  }
+}
+
+// Seeded GD step for phase sweep
+function doGDStepSeeded(p, ch, alpha, beta, lr) {
+  const grad = new Float64Array(N_PARTICLES * 3);
+  for (let i = 0; i < N_PARTICLES; i++) {
+    for (let j = 0; j < N_PARTICLES; j++) {
+      if (i === j) continue;
+      const dx = p[i*3]-p[j*3], dy = p[i*3+1]-p[j*3+1], dz = p[i*3+2]-p[j*3+2];
+      const d2 = dx*dx + dy*dy + dz*dz + SOFT2;
+      const c = (ch[i] === ch[j]) ? alpha : beta;
+      const f = -2 * c / (d2 * d2);
+      grad[i*3] += f * dx; grad[i*3+1] += f * dy; grad[i*3+2] += f * dz;
+    }
+  }
+  for (let i = 0; i < N_PARTICLES; i++) {
+    const x = p[i*3], y = p[i*3+1], z = p[i*3+2];
+    const gd = x * grad[i*3] + y * grad[i*3+1] + z * grad[i*3+2];
+    grad[i*3] -= gd * x; grad[i*3+1] -= gd * y; grad[i*3+2] -= gd * z;
+    const gm = Math.sqrt(grad[i*3]*grad[i*3] + grad[i*3+1]*grad[i*3+1] + grad[i*3+2]*grad[i*3+2]);
+    if (gm > GRAD_CLIP) {
+      const sc = GRAD_CLIP / gm;
+      grad[i*3] *= sc; grad[i*3+1] *= sc; grad[i*3+2] *= sc;
+    }
+    p[i*3]   -= lr * grad[i*3];
+    p[i*3+1] -= lr * grad[i*3+1];
+    p[i*3+2] -= lr * grad[i*3+2];
+  }
+  for (let i = 0; i < N_PARTICLES; i++) {
+    const x = p[i*3], y = p[i*3+1], z = p[i*3+2];
+    const r = Math.sqrt(x*x + y*y + z*z);
+    if (r > 1e-10) { p[i*3] /= r; p[i*3+1] /= r; p[i*3+2] /= r; }
+  }
+}
+
+// Seeded kick for sweep
+function applyKickSeeded(p, kickSize, rng) {
+  for (let i = 0; i < N_PARTICLES; i++) {
+    const x = p[i*3], y = p[i*3+1], z = p[i*3+2];
+    let kx = gaussRandSeeded(rng)*kickSize, ky = gaussRandSeeded(rng)*kickSize, kz = gaussRandSeeded(rng)*kickSize;
+    const kd = x*kx + y*ky + z*kz;
+    kx -= kd*x; ky -= kd*y; kz -= kd*z;
+    p[i*3] += kx; p[i*3+1] += ky; p[i*3+2] += kz;
+  }
+  for (let i = 0; i < N_PARTICLES; i++) {
+    const x = p[i*3], y = p[i*3+1], z = p[i*3+2];
+    const r = Math.sqrt(x*x + y*y + z*z);
+    if (r > 1e-10) { p[i*3] /= r; p[i*3+1] /= r; p[i*3+2] /= r; }
+  }
+}
+
+let _spareGauss = null;
+function gaussRand() {
+  if (_spareGauss !== null) { const v = _spareGauss; _spareGauss = null; return v; }
+  let u, v, s;
+  do { u = Math.random() * 2 - 1; v = Math.random() * 2 - 1; s = u*u + v*v; } while (s >= 1 || s === 0);
+  const m = Math.sqrt(-2 * Math.log(s) / s);
+  _spareGauss = v * m;
+  return u * m;
+}
+
+function gaussRandSeeded(rng) {
+  let u, v, s;
+  do { u = rng() * 2 - 1; v = rng() * 2 - 1; s = u*u + v*v; } while (s >= 1 || s === 0);
+  return u * Math.sqrt(-2 * Math.log(s) / s);
+}
+
+function getCycleInfo() {
+  return { cycle, stepInCycle, kickSize: 0.5 * (1 - cycle / MAX_CYCLES) + 0.1 };
+}
+
+// ============================================================
+// METRICS
+// ============================================================
+function pDist(p, i, j) {
+  const dx = p[i*3]-p[j*3], dy = p[i*3+1]-p[j*3+1], dz = p[i*3+2]-p[j*3+2];
+  return Math.sqrt(dx*dx + dy*dy + dz*dz);
+}
+
+function computeRMSD(p) {
+  const dists = [];
+  for (let i = 0; i < N_PARTICLES; i++)
+    for (let j = i + 1; j < N_PARTICLES; j++)
+      dists.push(pDist(p, i, j));
+  dists.sort((a, b) => a - b);
+  let sq = 0;
+  for (let k = 0; k < 28; k++) { const d = dists[k] - IDEAL_DISTS[k]; sq += d * d; }
+  return Math.sqrt(sq / 28);
+}
+
+function groupReg(p, indices) {
+  const dists = [];
+  for (let a = 0; a < indices.length; a++)
+    for (let b = a + 1; b < indices.length; b++)
+      dists.push(pDist(p, indices[a], indices[b]));
+  const mu = dists.reduce((s, d) => s + d, 0) / dists.length;
+  const v = dists.reduce((s, d) => s + (d - mu) * (d - mu), 0) / dists.length;
+  return mu > 0 ? Math.sqrt(v) / mu : 1;
+}
+
+// Best-so-far trackers for smooth chart lines
+let bestEnergyTrack = Infinity;
+let bestRMSDTrack = Infinity;
+let bestRegATrack = Infinity;
+let bestRegBTrack = Infinity;
+
+function updateMetrics() {
+  const alpha = alphaOverBeta, beta = 1.0;
+  const E = computeEnergy(pos, charges, alpha, beta);
+  const rmsd = computeRMSD(pos);
+  const rA = groupReg(pos, [0, 1, 2, 3]);
+  const rB = groupReg(pos, [4, 5, 6, 7]);
+
+  // Track best position
+  if (rmsd < bestRMSD) {
+    bestRMSD = rmsd;
+    bestPos.set(pos);
+  }
+
+  // Track best-so-far for charts (monotonically improving, no kick spikes)
+  if (E < bestEnergyTrack) bestEnergyTrack = E;
+  if (rmsd < bestRMSDTrack) bestRMSDTrack = rmsd;
+  if (rA < bestRegATrack) bestRegATrack = rA;
+  if (rB < bestRegBTrack) bestRegBTrack = rB;
+
+  const quality = Math.max(0, 1 - bestRMSD / 0.25);
+
+  document.getElementById('rdStep').textContent = step;
+  document.getElementById('rdTemp').textContent = `cycle ${cycle + 1}/${MAX_CYCLES}`;
+  document.getElementById('rdEnergy').textContent = bestEnergyTrack.toFixed(3);
+  document.getElementById('rdRMSD').textContent = bestRMSD.toFixed(4);
+  document.getElementById('rdRegA').textContent = bestRegATrack.toFixed(4);
+  document.getElementById('rdRegB').textContent = bestRegBTrack.toFixed(4);
+  document.getElementById('rdQuality').textContent = (quality * 100).toFixed(1) + '%';
+
+  // Color RMSD readout — use bestRMSD for consistent display
+  const rmsdEl = document.getElementById('rdRMSD');
+  rmsdEl.style.color = bestRMSD < 0.025 ? '#4ae68a' : bestRMSD < 0.06 ? '#ffcc00' : '#ff6666';
+
+  // Record best-so-far values for smooth charts
+  if (step > 0) {
+    energyHist.push(bestEnergyTrack);
+    rmsdHist.push(bestRMSDTrack);
+    regAHist.push(bestRegATrack);
+    regBHist.push(bestRegBTrack);
+  }
+
+  if (bestRMSD < 0.025 && running) {
+    crystallized = true;
+    document.getElementById('rdStatus').textContent = 'STELLA CRYSTALLIZED';
+    document.getElementById('rdStatus').style.color = '#4ae68a';
+  } else if (running) {
+    document.getElementById('rdStatus').textContent = `GD cycle ${cycle + 1} (step ${stepInCycle}/${GD_STEPS_PER_CYCLE})`;
+    document.getElementById('rdStatus').style.color = '#ffcc00';
+  }
+}
+
+// ============================================================
+// PHASE SWEEP (pre-computed on load)
+// ============================================================
+function runPhaseSweep() {
+  sweepData = [];
+  const nSeeds = 3;
+  for (let ratio = 0.5; ratio <= 5.05; ratio += 0.15) {
+    let bestSweepRMSD = 999;
+    for (let seed = 0; seed < nSeeds; seed++) {
+      const rng = mulberry32(seed * 1000 + Math.round(ratio * 100));
+      const sp = new Float64Array(N_PARTICLES * 3);
+      for (let i = 0; i < N_PARTICLES; i++) {
+        const pt = randomOnSphereSeeded(rng);
+        sp[i*3] = pt[0]; sp[i*3+1] = pt[1]; sp[i*3+2] = pt[2];
+      }
+      const bp = new Float64Array(sp);
+      let bRMSD = 999;
+      const alpha = ratio, beta = 1.0;
+      // GD + kicks (same as strategy 5)
+      for (let cyc = 0; cyc < MAX_CYCLES; cyc++) {
+        for (let s = 0; s < GD_STEPS_PER_CYCLE; s++) {
+          doGDStepSeeded(sp, charges, alpha, beta, LR);
+        }
+        const r = computeRMSD(sp);
+        if (r < bRMSD) { bRMSD = r; bp.set(sp); }
+        if (r < 0.025) break;
+        // Kick from best
+        sp.set(bp);
+        const ks = 0.5 * (1 - cyc / MAX_CYCLES) + 0.1;
+        applyKickSeeded(sp, ks, rng);
+      }
+      if (bRMSD < bestSweepRMSD) bestSweepRMSD = bRMSD;
+    }
+    sweepData.push({ ratio, rmsd: bestSweepRMSD });
+  }
+}
+
+// ============================================================
+// 3D PROJECTION
+// ============================================================
+function project3D(x, y, z) {
+  // Rotate by yaw (around Y)
+  const cy = Math.cos(camYaw), sy = Math.sin(camYaw);
+  let rx = x * cy + z * sy, ry = y, rz = -x * sy + z * cy;
+  // Rotate by pitch (around X)
+  const cp = Math.cos(camPitch), sp = Math.sin(camPitch);
+  let fy = ry * cp - rz * sp, fz = ry * sp + rz * cp;
+  // Perspective
+  const d = 4.5;
+  const scale = d / (d + fz);
+  return { sx: rx * scale, sy: fy * scale, z: fz, scale };
+}
+
+// ============================================================
+// RENDERING — PANEL A: 3D SPHERE VIEW
+// ============================================================
+function getCtx(id) {
+  const cv = document.getElementById(id);
+  const rect = cv.parentElement.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio, 2);
+  cv.width = rect.width * dpr; cv.height = rect.height * dpr;
+  cv.style.width = rect.width + 'px'; cv.style.height = rect.height + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { ctx, w: rect.width, h: rect.height };
+}
+
+function renderA() {
+  const { ctx, w, h } = getCtx('cvA');
+  ctx.clearRect(0, 0, w, h);
+  const cx = w / 2, cy = h / 2;
+  const S = Math.min(w, h) * 0.36;
+
+  // Draw sphere wireframe — 3 great circles
+  ctx.strokeStyle = 'rgba(60,60,100,0.25)';
+  ctx.lineWidth = 0.8;
+  const circles = [
+    { a1: [1,0,0], a2: [0,1,0] }, // xy
+    { a1: [1,0,0], a2: [0,0,1] }, // xz
+    { a1: [0,1,0], a2: [0,0,1] }, // yz
+  ];
+  for (const gc of circles) {
+    ctx.beginPath();
+    for (let t = 0; t <= 64; t++) {
+      const ang = t / 64 * Math.PI * 2;
+      const px = gc.a1[0]*Math.cos(ang) + gc.a2[0]*Math.sin(ang);
+      const py = gc.a1[1]*Math.cos(ang) + gc.a2[1]*Math.sin(ang);
+      const pz = gc.a1[2]*Math.cos(ang) + gc.a2[2]*Math.sin(ang);
+      const pr = project3D(px, py, pz);
+      const sx = cx + pr.sx * S, sy = cy - pr.sy * S;
+      t === 0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
+    }
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+  // Draw sphere outline
+  ctx.strokeStyle = 'rgba(80,80,130,0.35)';
+  ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.arc(cx, cy, S * project3D(0,0,0).scale, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Collect particles for depth sorting
+  const particles = [];
+  for (let i = 0; i < N_PARTICLES; i++) {
+    const pr = project3D(pos[i*3], pos[i*3+1], pos[i*3+2]);
+    particles.push({ i, sx: cx + pr.sx * S, sy: cy - pr.sy * S, z: pr.z, scale: pr.scale });
+  }
+  particles.sort((a, b) => b.z - a.z); // back to front
+
+  // Draw edges (same-charge connections = tetrahedron edges)
+  const groupA = [0,1,2,3], groupB = [4,5,6,7];
+  function drawEdges(group, color) {
+    for (let a = 0; a < group.length; a++) {
+      for (let b = a + 1; b < group.length; b++) {
+        const i = group[a], j = group[b];
+        const pi = project3D(pos[i*3], pos[i*3+1], pos[i*3+2]);
+        const pj = project3D(pos[j*3], pos[j*3+1], pos[j*3+2]);
+        const avgZ = (pi.z + pj.z) / 2;
+        const alpha = 0.15 + 0.35 * Math.max(0, Math.min(1, (1 - avgZ) / 2));
+        ctx.strokeStyle = color.replace('ALPHA', alpha.toFixed(2));
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(cx + pi.sx * S, cy - pi.sy * S);
+        ctx.lineTo(cx + pj.sx * S, cy - pj.sy * S);
+        ctx.stroke();
+      }
+    }
+  }
+  drawEdges(groupA, 'rgba(255,80,110,ALPHA)');
+  drawEdges(groupB, 'rgba(70,130,255,ALPHA)');
+
+  // Draw particles
+  for (const p of particles) {
+    const isA = charges[p.i] === 0;
+    const baseR = 5 + 4 * p.scale;
+    const alpha = 0.4 + 0.6 * Math.max(0, Math.min(1, (1 - p.z) / 2));
+
+    // Glow
+    const glow = ctx.createRadialGradient(p.sx, p.sy, 0, p.sx, p.sy, baseR * 2.5);
+    if (isA) {
+      glow.addColorStop(0, `rgba(255,80,110,${(alpha*0.6).toFixed(2)})`);
+      glow.addColorStop(1, 'rgba(255,80,110,0)');
+    } else {
+      glow.addColorStop(0, `rgba(70,130,255,${(alpha*0.6).toFixed(2)})`);
+      glow.addColorStop(1, 'rgba(70,130,255,0)');
+    }
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(p.sx, p.sy, baseR * 2.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Core
+    const core = ctx.createRadialGradient(p.sx - baseR*0.2, p.sy - baseR*0.2, 0, p.sx, p.sy, baseR);
+    if (isA) {
+      core.addColorStop(0, `rgba(255,200,210,${alpha.toFixed(2)})`);
+      core.addColorStop(0.5, `rgba(255,80,110,${alpha.toFixed(2)})`);
+      core.addColorStop(1, `rgba(180,30,60,${(alpha*0.7).toFixed(2)})`);
+    } else {
+      core.addColorStop(0, `rgba(200,210,255,${alpha.toFixed(2)})`);
+      core.addColorStop(0.5, `rgba(70,130,255,${alpha.toFixed(2)})`);
+      core.addColorStop(1, `rgba(30,60,180,${(alpha*0.7).toFixed(2)})`);
+    }
+    ctx.fillStyle = core;
+    ctx.beginPath();
+    ctx.arc(p.sx, p.sy, baseR, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Annotation: show α/β and status
+  const rmsd = rmsdHist.length > 0 ? rmsdHist[rmsdHist.length - 1] : computeRMSD(pos);
+  if (rmsd < 0.025) {
+    ctx.fillStyle = 'rgba(74,230,138,0.15)';
+    ctx.fillRect(0, 0, w, h);
+    ctx.font = '11px monospace';
+    ctx.fillStyle = '#4ae68a';
+    ctx.fillText('STELLA', w - 60, h - 8);
+  }
+}
+
+// ============================================================
+// RENDERING — PANEL B: PHASE DIAGRAM
+// ============================================================
+function renderB() {
+  const { ctx, w, h } = getCtx('cvB');
+  ctx.clearRect(0, 0, w, h);
+
+  const pad = { t: 36, b: 28, l: 42, r: 16 };
+  const pw = w - pad.l - pad.r, ph = h - pad.t - pad.b;
+
+  // Axes
+  ctx.strokeStyle = 'rgba(80,80,130,0.4)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(pad.l, pad.t);
+  ctx.lineTo(pad.l, pad.t + ph);
+  ctx.lineTo(pad.l + pw, pad.t + ph);
+  ctx.stroke();
+
+  // Axis labels
+  ctx.font = '9px monospace';
+  ctx.fillStyle = '#666';
+  ctx.textAlign = 'center';
+  for (let r = 1; r <= 5; r++) {
+    const x = pad.l + (r - 0.5) / 4.5 * pw;
+    ctx.fillText(r.toString(), x, pad.t + ph + 14);
+    ctx.strokeStyle = 'rgba(40,40,60,0.3)';
+    ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, pad.t + ph); ctx.stroke();
+  }
+  ctx.fillText('α/β', pad.l + pw / 2, pad.t + ph + 25);
+
+  ctx.textAlign = 'right';
+  for (let v = 0; v <= 0.2; v += 0.05) {
+    const y = pad.t + ph - (v / 0.22) * ph;
+    ctx.fillStyle = '#666';
+    ctx.fillText(v.toFixed(2), pad.l - 4, y + 3);
+    ctx.strokeStyle = 'rgba(40,40,60,0.3)';
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + pw, y); ctx.stroke();
+  }
+  ctx.save();
+  ctx.translate(10, pad.t + ph / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#666';
+  ctx.fillText('RMSD', 0, 0);
+  ctx.restore();
+
+  // Threshold line at RMSD = 0.025
+  const threshY = pad.t + ph - (0.025 / 0.22) * ph;
+  ctx.setLineDash([4, 3]);
+  ctx.strokeStyle = 'rgba(74,230,138,0.4)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(pad.l, threshY); ctx.lineTo(pad.l + pw, threshY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.font = '8px monospace';
+  ctx.fillStyle = '#4ae68a';
+  ctx.textAlign = 'left';
+  ctx.fillText('stella threshold', pad.l + pw - 80, threshY - 4);
+
+  // Phase sweep data
+  if (sweepData && sweepData.length > 0) {
+    ctx.strokeStyle = '#88aadd';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (let k = 0; k < sweepData.length; k++) {
+      const x = pad.l + (sweepData[k].ratio - 0.5) / 4.5 * pw;
+      const y = pad.t + ph - Math.min(sweepData[k].rmsd, 0.22) / 0.22 * ph;
+      k === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Dot at each data point
+    ctx.fillStyle = '#88aadd';
+    for (const d of sweepData) {
+      const x = pad.l + (d.ratio - 0.5) / 4.5 * pw;
+      const y = pad.t + ph - Math.min(d.rmsd, 0.22) / 0.22 * ph;
+      ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+
+  // Mark α/β = 2 (SU(3) Casimir)
+  const x2 = pad.l + (2.0 - 0.5) / 4.5 * pw;
+  ctx.setLineDash([2, 2]);
+  ctx.strokeStyle = 'rgba(255,204,102,0.5)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x2, pad.t); ctx.lineTo(x2, pad.t + ph); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.font = '8px monospace';
+  ctx.fillStyle = '#ffcc66';
+  ctx.textAlign = 'center';
+  ctx.fillText('SU(3)', x2, pad.t + ph + 25);
+
+  // Mark current α/β
+  const xCur = pad.l + (alphaOverBeta - 0.5) / 4.5 * pw;
+  ctx.strokeStyle = '#ff6688';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(xCur, pad.t); ctx.lineTo(xCur, pad.t + ph); ctx.stroke();
+  ctx.fillStyle = '#ff6688';
+  ctx.beginPath(); ctx.moveTo(xCur, pad.t); ctx.lineTo(xCur - 4, pad.t - 6); ctx.lineTo(xCur + 4, pad.t - 6); ctx.fill();
+}
+
+// ============================================================
+// RENDERING — PANEL C: ENERGY TRACE
+// ============================================================
+function renderChart(canvasId, data, color, ylabel, thresholdVal, thresholdLabel) {
+  const { ctx, w, h } = getCtx(canvasId);
+  ctx.clearRect(0, 0, w, h);
+
+  const pad = { t: 36, b: 24, l: 48, r: 16 };
+  const pw = w - pad.l - pad.r, ph = h - pad.t - pad.b;
+
+  // Axes
+  ctx.strokeStyle = 'rgba(80,80,130,0.4)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, pad.t + ph); ctx.lineTo(pad.l + pw, pad.t + ph);
+  ctx.stroke();
+
+  if (data.length < 2) {
+    ctx.font = '10px monospace';
+    ctx.fillStyle = '#555';
+    ctx.textAlign = 'center';
+    ctx.fillText('Waiting for data...', w / 2, h / 2);
+    return;
+  }
+
+  let yMin = Infinity, yMax = -Infinity;
+  for (const v of data) { if (v < yMin) yMin = v; if (v > yMax) yMax = v; }
+  const yRange = yMax - yMin || 1;
+  yMin -= yRange * 0.05;
+  yMax += yRange * 0.05;
+  const yr = yMax - yMin;
+
+  // Grid
+  ctx.font = '8px monospace';
+  ctx.fillStyle = '#555';
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 4; i++) {
+    const v = yMin + yr * i / 4;
+    const y = pad.t + ph - (i / 4) * ph;
+    ctx.fillText(v.toFixed(v >= 10 ? 1 : 3), pad.l - 4, y + 3);
+    ctx.strokeStyle = 'rgba(40,40,60,0.2)';
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + pw, y); ctx.stroke();
+  }
+
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#555';
+  ctx.fillText('step', pad.l + pw / 2, pad.t + ph + 18);
+
+  // Data line
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  for (let k = 0; k < data.length; k++) {
+    const x = pad.l + (k / (data.length - 1)) * pw;
+    const y = pad.t + ph - ((data[k] - yMin) / yr) * ph;
+    k === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+
+  // Threshold
+  if (thresholdVal !== undefined && thresholdVal >= yMin && thresholdVal <= yMax) {
+    const ty = pad.t + ph - ((thresholdVal - yMin) / yr) * ph;
+    ctx.setLineDash([4, 3]);
+    ctx.strokeStyle = 'rgba(74,230,138,0.5)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pad.l, ty); ctx.lineTo(pad.l + pw, ty); ctx.stroke();
+    ctx.setLineDash([]);
+    if (thresholdLabel) {
+      ctx.font = '8px monospace'; ctx.fillStyle = '#4ae68a'; ctx.textAlign = 'left';
+      ctx.fillText(thresholdLabel, pad.l + 4, ty - 4);
+    }
+  }
+}
+
+function renderC() {
+  renderChart('cvC', energyHist, '#ffaa44', 'E');
+}
+
+// ============================================================
+// RENDERING — PANEL D: ORDER METRICS
+// ============================================================
+function renderD() {
+  const { ctx, w, h } = getCtx('cvD');
+  ctx.clearRect(0, 0, w, h);
+
+  const pad = { t: 36, b: 24, l: 48, r: 16 };
+  const pw = w - pad.l - pad.r, ph = h - pad.t - pad.b;
+
+  ctx.strokeStyle = 'rgba(80,80,130,0.4)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, pad.t + ph); ctx.lineTo(pad.l + pw, pad.t + ph);
+  ctx.stroke();
+
+  if (rmsdHist.length < 2) {
+    ctx.font = '10px monospace';
+    ctx.fillStyle = '#555';
+    ctx.textAlign = 'center';
+    ctx.fillText('Waiting for data...', w / 2, h / 2);
+    return;
+  }
+
+  // Y range: max of all three traces
+  let yMax = 0;
+  for (const v of rmsdHist) if (v > yMax) yMax = v;
+  for (const v of regAHist) if (v > yMax) yMax = v;
+  for (const v of regBHist) if (v > yMax) yMax = v;
+  yMax = Math.max(yMax * 1.1, 0.05);
+
+  // Grid
+  ctx.font = '8px monospace';
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 4; i++) {
+    const v = yMax * i / 4;
+    const y = pad.t + ph - (i / 4) * ph;
+    ctx.fillStyle = '#555';
+    ctx.fillText(v.toFixed(3), pad.l - 4, y + 3);
+    ctx.strokeStyle = 'rgba(40,40,60,0.2)';
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + pw, y); ctx.stroke();
+  }
+
+  function drawTrace(data, color) {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for (let k = 0; k < data.length; k++) {
+      const x = pad.l + (k / (data.length - 1)) * pw;
+      const y = pad.t + ph - (Math.min(data[k], yMax) / yMax) * ph;
+      k === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+
+  drawTrace(rmsdHist, '#88ccff');
+  drawTrace(regAHist, 'rgba(255,80,110,0.7)');
+  drawTrace(regBHist, 'rgba(70,130,255,0.7)');
+
+  // Threshold at 0.025
+  if (0.025 <= yMax) {
+    const ty = pad.t + ph - (0.025 / yMax) * ph;
+    ctx.setLineDash([4, 3]);
+    ctx.strokeStyle = 'rgba(74,230,138,0.5)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pad.l, ty); ctx.lineTo(pad.l + pw, ty); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.font = '8px monospace'; ctx.fillStyle = '#4ae68a'; ctx.textAlign = 'left';
+    ctx.fillText('stella threshold', pad.l + 4, ty - 4);
+  }
+
+  // Legend
+  ctx.font = '9px monospace';
+  const lx = pad.l + pw - 100, ly = pad.t + 8;
+  ctx.fillStyle = '#88ccff'; ctx.fillText('RMSD to ideal', lx + 14, ly);
+  ctx.fillStyle = 'rgba(255,80,110,0.8)'; ctx.fillText('Reg A (σ/μ)', lx + 14, ly + 12);
+  ctx.fillStyle = 'rgba(70,130,255,0.8)'; ctx.fillText('Reg B (σ/μ)', lx + 14, ly + 24);
+
+  ctx.fillStyle = '#88ccff';
+  ctx.fillRect(lx, ly - 4, 10, 2);
+  ctx.fillStyle = 'rgba(255,80,110,0.8)';
+  ctx.fillRect(lx, ly + 8, 10, 2);
+  ctx.fillStyle = 'rgba(70,130,255,0.8)';
+  ctx.fillRect(lx, ly + 20, 10, 2);
+
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#555';
+  ctx.fillText('step', pad.l + pw / 2, pad.t + ph + 18);
+}
+
+// ============================================================
+// RENDER ALL
+// ============================================================
+function renderAll() {
+  renderA();
+  renderB();
+  renderC();
+  renderD();
+}
+
+// ============================================================
+// ANIMATION LOOP
+// ============================================================
+function animate() {
+  if (running && !crystallized && cycle < MAX_CYCLES) {
+    const alpha = alphaOverBeta, beta = 1.0;
+    for (let i = 0; i < stepsPerFrame; i++) {
+      if (crystallized || cycle >= MAX_CYCLES) break;
+
+      // Gradient descent step
+      doGDStep(pos, charges, alpha, beta, LR);
+      step++;
+      stepInCycle++;
+      updateMetrics();
+
+      // End of GD cycle?
+      if (stepInCycle >= GD_STEPS_PER_CYCLE) {
+        if (bestRMSD < 0.025) {
+          crystallized = true;
+          break;
+        }
+        // Kick from best position, start new cycle
+        cycle++;
+        stepInCycle = 0;
+        if (cycle < MAX_CYCLES) {
+          pos.set(bestPos);
+          const kickSize = 0.5 * (1 - cycle / MAX_CYCLES) + 0.1;
+          applyKick(pos, kickSize);
+        }
+      }
+    }
+
+    // Check termination
+    if (crystallized) {
+      running = false;
+      document.getElementById('btnPlay').textContent = '\u25B6 Crystallize';
+      document.getElementById('rdStatus').textContent = 'STELLA CRYSTALLIZED';
+      document.getElementById('rdStatus').style.color = '#4ae68a';
+      // Snap to best so 3D view and readouts are consistent
+      pos.set(bestPos);
+      updateMetrics();
+    } else if (cycle >= MAX_CYCLES) {
+      running = false;
+      document.getElementById('btnPlay').textContent = '\u25B6 Crystallize';
+      pos.set(bestPos);
+      updateMetrics();
+      if (bestRMSD < 0.025) {
+        document.getElementById('rdStatus').textContent = 'STELLA CRYSTALLIZED';
+        document.getElementById('rdStatus').style.color = '#4ae68a';
+      } else {
+        document.getElementById('rdStatus').textContent = 'Converged (RMSD=' + bestRMSD.toFixed(4) + ')';
+        document.getElementById('rdStatus').style.color = '#ff6666';
+      }
+    }
+  }
+
+  if (autoRotate && !dragStart) {
+    camYaw += 0.003;
+  }
+
+  renderAll();
+  requestAnimationFrame(animate);
+}
+
+// ============================================================
+// EVENT HANDLERS
+// ============================================================
+document.getElementById('sliderRatio').addEventListener('input', function() {
+  alphaOverBeta = parseFloat(this.value);
+  document.getElementById('valRatio').textContent = alphaOverBeta.toFixed(1);
+});
+
+document.getElementById('sliderSpeed').addEventListener('input', function() {
+  stepsPerFrame = parseInt(this.value);
+  document.getElementById('valSpeed').textContent = stepsPerFrame;
+});
+
+document.getElementById('btnPlay').addEventListener('click', function() {
+  if (running) {
+    running = false;
+    this.textContent = '\u25B6 Crystallize';
+    document.getElementById('rdStatus').textContent = 'Paused';
+    document.getElementById('rdStatus').style.color = '#888';
+  } else {
+    if (crystallized || cycle >= MAX_CYCLES) resetSim();
+    running = true;
+    this.textContent = '\u23F8 Pause';
+    document.getElementById('rdStatus').textContent = 'Optimizing...';
+    document.getElementById('rdStatus').style.color = '#ffcc00';
+  }
+});
+
+document.getElementById('btnReset').addEventListener('click', resetSim);
+
+document.getElementById('btnSweep').addEventListener('click', function() {
+  this.textContent = '...';
+  setTimeout(() => {
+    runPhaseSweep();
+    this.textContent = 'Sweep';
+    renderB();
+  }, 10);
+});
+
+// Mouse drag for 3D rotation on panel A
+const cvA = document.getElementById('cvA');
+cvA.addEventListener('mousedown', function(e) {
+  dragStart = { x: e.clientX, y: e.clientY, yaw: camYaw, pitch: camPitch };
+  autoRotate = false;
+});
+window.addEventListener('mousemove', function(e) {
+  if (!dragStart) return;
+  camYaw = dragStart.yaw + (e.clientX - dragStart.x) * 0.01;
+  camPitch = dragStart.pitch + (e.clientY - dragStart.y) * 0.01;
+  camPitch = Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, camPitch));
+  lastDragTime = Date.now();
+});
+window.addEventListener('mouseup', function() {
+  if (dragStart) {
+    dragStart = null;
+    lastDragTime = Date.now();
+    setTimeout(() => {
+      if (Date.now() - lastDragTime >= 1500) autoRotate = true;
+    }, 1600);
+  }
+});
+
+// Handle resize
+window.addEventListener('resize', renderAll);
+
+// ============================================================
+// INIT
+// ============================================================
+initPositions();
+updateMetrics();
+// Pre-compute phase sweep
+runPhaseSweep();
+// Start animation loop
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>

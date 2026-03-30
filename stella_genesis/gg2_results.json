@@ -1,0 +1,208 @@
+{
+  "test": "GG2",
+  "description": "GPU Scale Advantage \u2014 High-Resolution Continuum Limit",
+  "timestamp": "2026-03-23T15:56:37.664840",
+  "config": {
+    "epochs": 20000000,
+    "seed": 42,
+    "coupling_strength": 0.7,
+    "mutation_rate": 0.001,
+    "epsilon": 0.1,
+    "chirality": 0.15,
+    "instr_mode": 2,
+    "color_pressure": 1,
+    "phase_lock": 0.1,
+    "kuramoto_mode": 1,
+    "energy_lambda": 0,
+    "snapshot_mode": 1
+  },
+  "runs": [
+    {
+      "correlation": 0.9256,
+      "chi2": 0.2442,
+      "auto_tp": 0.6175,
+      "auto_tm": 0.6348,
+      "entropy_tp": 1.2706,
+      "entropy_tm": 1.2446,
+      "write_success_rate": 94.6,
+      "write_count": 75737885,
+      "phase_lock_nudges": 2143772,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 600,
+          "match_rate": 0.985,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 4992,
+          "match_rate": 0.9848,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 7494,
+          "match_rate": 0.9205,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 5664,
+          "match_rate": 0.89,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 4836,
+          "match_rate": 0.8964,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 4452,
+          "match_rate": 0.9274,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 4732,
+          "match_rate": 0.9343,
+          "gate": "open"
+        }
+      },
+      "trajectory": [],
+      "wall_clock_s": 122.4,
+      "n_sub": 128,
+      "sites_per_tet": 8385
+    },
+    {
+      "correlation": 0.8768,
+      "chi2": 0.1974,
+      "auto_tp": 0.6218,
+      "auto_tm": 0.6335,
+      "entropy_tp": 1.303,
+      "entropy_tm": 1.3361,
+      "write_success_rate": 88.6,
+      "write_count": 86703527,
+      "phase_lock_nudges": 4310186,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 1264,
+          "match_rate": 0.5253,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 11196,
+          "match_rate": 0.7228,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 16878,
+          "match_rate": 0.9311,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 12960,
+          "match_rate": 0.8839,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 10800,
+          "match_rate": 0.8928,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 9972,
+          "match_rate": 0.9194,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 10660,
+          "match_rate": 0.9294,
+          "gate": "open"
+        }
+      },
+      "trajectory": [],
+      "wall_clock_s": 229.6,
+      "n_sub": 192,
+      "sites_per_tet": 18721
+    },
+    {
+      "correlation": 0.7951,
+      "chi2": 0.1332,
+      "auto_tp": 0.6199,
+      "auto_tm": 0.6304,
+      "entropy_tp": 1.3553,
+      "entropy_tm": 1.4485,
+      "write_success_rate": 83.4,
+      "write_count": 100227543,
+      "phase_lock_nudges": 6227648,
+      "pratio_bins": {
+        "[0.30,0.40)": {
+          "n_sites": 2208,
+          "match_rate": 0.2894,
+          "gate": "blocked"
+        },
+        "[0.40,0.50)": {
+          "n_sites": 19800,
+          "match_rate": 0.3672,
+          "gate": "blocked"
+        },
+        "[0.50,0.60)": {
+          "n_sites": 30018,
+          "match_rate": 0.8157,
+          "gate": "open"
+        },
+        "[0.60,0.70)": {
+          "n_sites": 23064,
+          "match_rate": 0.8977,
+          "gate": "open"
+        },
+        "[0.70,0.80)": {
+          "n_sites": 19332,
+          "match_rate": 0.8896,
+          "gate": "open"
+        },
+        "[0.80,0.90)": {
+          "n_sites": 17700,
+          "match_rate": 0.918,
+          "gate": "open"
+        },
+        "[0.90,1.00)": {
+          "n_sites": 18952,
+          "match_rate": 0.9325,
+          "gate": "open"
+        }
+      },
+      "trajectory": [],
+      "wall_clock_s": 381.1,
+      "n_sub": 256,
+      "sites_per_tet": 33153
+    }
+  ],
+  "richardson": {
+    "historical": {
+      "corr_inf": 0.90847,
+      "A": -6.26823
+    },
+    "updated": {
+      "corr_inf": 0.89009,
+      "A": -4.50403
+    },
+    "shift": -0.01839,
+    "data_points": {
+      "8": 0.828,
+      "12": 0.842,
+      "16": 0.863,
+      "24": 0.88,
+      "32": 0.893,
+      "48": 0.911,
+      "64": 0.919,
+      "96": 0.922,
+      "128": 0.9256,
+      "192": 0.8768,
+      "256": 0.7951
+    }
+  },
+  "monotonic": false,
+  "pass_criteria": {
+    "richardson_in_range": "False",
+    "richardson_stable": "False",
+    "monotonic": false
+  },
+  "overall_pass": "False"
+}

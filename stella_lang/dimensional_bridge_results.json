@@ -1,0 +1,250 @@
+{
+  "investigation": "Priority 3: Dimensional Bridge",
+  "timestamp": "2026-03-20T05:21:25.605075",
+  "automaton_quantities": {
+    "prefactor_global": {
+      "C_median": 1332716783.5795524,
+      "eta_median": 0.8456468367999482,
+      "R2_median": 0.8664512366159204,
+      "C_mean": 700841513.295755,
+      "eta_mean": 0.7600255442842649,
+      "R2_mean": 0.9525391051773947
+    },
+    "prefactor_local": {
+      "C_median": 65990967.55761273,
+      "eta_median": 0.5021373485837552,
+      "R2_median": 0.6606851599768548,
+      "C_mean": 75214888.8001476,
+      "eta_mean": 0.48450978628519253,
+      "R2_mean": 0.8772207872479049
+    },
+    "C_ratio": 20.19544239014283,
+    "T_ratio_mean": 1.174086177419006
+  },
+  "matches_within_5pct": [
+    {
+      "automaton_quantity": "C_global/C_local",
+      "automaton_value": 20.19544239014283,
+      "qcd_quantity": "log_3(3^L_func)",
+      "qcd_value": 20.0,
+      "qcd_description": "log\u2083(program space) = L_func = 20",
+      "relative_difference": 0.009772119507141496,
+      "percent_difference": 0.9772119507141497
+    },
+    {
+      "automaton_quantity": "log\u2081\u2080(C_global)",
+      "automaton_value": 9.124737867045525,
+      "qcd_quantity": "beta_0",
+      "qcd_value": 9.0,
+      "qcd_description": "1-loop \u03b2\u2080 = 11 - 2n_f/3 (n_f=3)",
+      "relative_difference": 0.013859763005058312,
+      "percent_difference": 1.3859763005058312
+    },
+    {
+      "automaton_quantity": "log\u2081\u2080(C_global)",
+      "automaton_value": 9.124737867045525,
+      "qcd_quantity": "N_c^2",
+      "qcd_value": 9.0,
+      "qcd_description": "Adjoint dimension",
+      "relative_difference": 0.013859763005058312,
+      "percent_difference": 1.3859763005058312
+    },
+    {
+      "automaton_quantity": "log\u2081\u2080(C_local)",
+      "automaton_value": 7.819484496021641,
+      "qcd_quantity": "N_c^2 - 1",
+      "qcd_value": 8.0,
+      "qcd_description": "Number of gluons",
+      "relative_difference": 0.022564437997294906,
+      "percent_difference": 2.2564437997294906
+    },
+    {
+      "automaton_quantity": "C_local/3^14",
+      "automaton_value": 13.797071977178344,
+      "qcd_quantity": "8pi^2/g^2",
+      "qcd_value": 13.368479376977845,
+      "qcd_description": "Instanton action S_inst = 8\u03c0\u00b2/g\u00b2",
+      "relative_difference": 0.0320599365204234,
+      "percent_difference": 3.2059936520423404
+    },
+    {
+      "automaton_quantity": "C_local/3^14",
+      "automaton_value": 13.797071977178344,
+      "qcd_quantity": "2pi/alpha_s(sqrt_sigma)",
+      "qcd_value": 13.368479376977843,
+      "qcd_description": "2\u03c0/\u03b1_s",
+      "relative_difference": 0.03205993652042354,
+      "percent_difference": 3.205993652042354
+    },
+    {
+      "automaton_quantity": "C_local/3^15",
+      "automaton_value": 4.599023992392782,
+      "qcd_quantity": "sqrt_sigma/f_pi",
+      "qcd_value": 4.7774158523344195,
+      "qcd_description": "\u221a\u03c3/f_\u03c0 \u2248 4.78 (framework: 5.0)",
+      "relative_difference": 0.037340659774147286,
+      "percent_difference": 3.7340659774147285
+    },
+    {
+      "automaton_quantity": "C_local/3^15",
+      "automaton_value": 4.599023992392782,
+      "qcd_quantity": "exp(2pi/(beta_0*alpha_s))",
+      "qcd_value": 4.416672557081148,
+      "qcd_description": "exp(2\u03c0/(\u03b2\u2080\u03b1_s)): dimensional transmutation factor",
+      "relative_difference": 0.041287062365371566,
+      "percent_difference": 4.128706236537156
+    },
+    {
+      "automaton_quantity": "log\u2083(C_global)",
+      "automaton_value": 19.12456797257305,
+      "qcd_quantity": "log_3(3^L_func)",
+      "qcd_value": 20.0,
+      "qcd_description": "log\u2083(program space) = L_func = 20",
+      "relative_difference": 0.04377160137134748,
+      "percent_difference": 4.377160137134748
+    }
+  ],
+  "matches_within_15pct": [
+    {
+      "automaton_quantity": "log\u2083(C_global)",
+      "automaton_value": 19.12456797257305,
+      "qcd_quantity": "2*beta_0",
+      "qcd_value": 18.0,
+      "qcd_description": "2\u03b2\u2080 = 18",
+      "relative_difference": 0.062475998476280575,
+      "percent_difference": 6.247599847628058
+    },
+    {
+      "automaton_quantity": "C_local/3^16",
+      "automaton_value": 1.5330079974642605,
+      "qcd_quantity": "beta_0/(2pi)",
+      "qcd_value": 1.432394487827058,
+      "qcd_description": "\u03b2\u2080/(2\u03c0)",
+      "relative_difference": 0.07024148060624917,
+      "percent_difference": 7.024148060624917
+    },
+    {
+      "automaton_quantity": "C_local/3^17",
+      "automaton_value": 0.5110026658214202,
+      "qcd_quantity": "alpha_s(sqrt_sigma)",
+      "qcd_value": 0.47,
+      "qcd_description": "QCD coupling at \u221a\u03c3 scale",
+      "relative_difference": 0.08723971451366001,
+      "percent_difference": 8.723971451366001
+    },
+    {
+      "automaton_quantity": "log\u2083(C_local)",
+      "automaton_value": 16.388883158466832,
+      "qcd_quantity": "2*beta_0",
+      "qcd_value": 18.0,
+      "qcd_description": "2\u03b2\u2080 = 18",
+      "relative_difference": 0.08950649119628709,
+      "percent_difference": 8.950649119628709
+    },
+    {
+      "automaton_quantity": "mean(T_global/T_local)",
+      "automaton_value": 1.174086177419006,
+      "qcd_quantity": "C_F",
+      "qcd_value": 1.3333333333333333,
+      "qcd_description": "Fundamental Casimir = 4/3",
+      "relative_difference": 0.11943536693574552,
+      "percent_difference": 11.943536693574552
+    },
+    {
+      "automaton_quantity": "C_global/C_local",
+      "automaton_value": 20.19544239014283,
+      "qcd_quantity": "2*beta_0",
+      "qcd_value": 18.0,
+      "qcd_description": "2\u03b2\u2080 = 18",
+      "relative_difference": 0.12196902167460166,
+      "percent_difference": 12.196902167460166
+    },
+    {
+      "automaton_quantity": "T/(N\u00d7L_func) (N=1666, local)",
+      "automaton_value": 30.012004801920767,
+      "qcd_quantity": "4pi/alpha_s(sqrt_sigma)",
+      "qcd_value": 26.736958753955687,
+      "qcd_description": "4\u03c0/\u03b1_s \u2248 instanton suppression",
+      "relative_difference": 0.1224913453359965,
+      "percent_difference": 12.24913453359965
+    },
+    {
+      "automaton_quantity": "log\u2081\u2080(C_local)",
+      "automaton_value": 7.819484496021641,
+      "qcd_quantity": "(4pi*f_pi)^2/sigma",
+      "qcd_value": 6.9188455427970545,
+      "qcd_description": "(4\u03c0f_\u03c0)\u00b2/\u03c3 \u2248 chiral scale\u00b2/string tension",
+      "relative_difference": 0.13017185419931898,
+      "percent_difference": 13.017185419931899
+    },
+    {
+      "automaton_quantity": "log\u2081\u2080(C_local)",
+      "automaton_value": 7.819484496021641,
+      "qcd_quantity": "beta_0",
+      "qcd_value": 9.0,
+      "qcd_description": "1-loop \u03b2\u2080 = 11 - 2n_f/3 (n_f=3)",
+      "relative_difference": 0.1311683893309288,
+      "percent_difference": 13.11683893309288
+    },
+    {
+      "automaton_quantity": "log\u2081\u2080(C_local)",
+      "automaton_value": 7.819484496021641,
+      "qcd_quantity": "N_c^2",
+      "qcd_value": 9.0,
+      "qcd_description": "Adjoint dimension",
+      "relative_difference": 0.1311683893309288,
+      "percent_difference": 13.11683893309288
+    },
+    {
+      "automaton_quantity": "log\u2081\u2080(C_global)",
+      "automaton_value": 9.124737867045525,
+      "qcd_quantity": "N_c^2 - 1",
+      "qcd_value": 8.0,
+      "qcd_description": "Number of gluons",
+      "relative_difference": 0.1405922333806906,
+      "percent_difference": 14.05922333806906
+    }
+  ],
+  "transmutation": {
+    "running_global": {
+      "slope": 1.760025544284265,
+      "eta_implied": 2.760025544284265,
+      "R2": 0.9907943372622355,
+      "p_value": 2.7698081895119366e-06,
+      "behavior": "running"
+    },
+    "running_local": {
+      "slope": 1.4845097862851921,
+      "eta_implied": 2.484509786285192,
+      "R2": 0.985309799970958,
+      "p_value": 8.927714916893115e-06,
+      "behavior": "running"
+    },
+    "N_50_estimate": 600,
+    "log_transmutation": 15.575316118146047,
+    "qcd_transmutation": 1.4853865974419826,
+    "C_predicted_random": 29056536.675,
+    "enhancement_global": 0.021802484243469093,
+    "enhancement_local": 0.44031081450097687
+  },
+  "prefactor_analysis": {
+    "global": {
+      "C": 1332716783.5795524,
+      "log3_C": 19.12456797257305,
+      "C_over_C_random": 45.86633288358178
+    },
+    "local": {
+      "C": 65990967.55761273,
+      "log3_C": 16.388883158466832,
+      "C_over_C_random": 2.271122959206312
+    }
+  },
+  "synthesis": {
+    "total_matches_20pct": 25,
+    "matches_5pct": 9,
+    "matches_15pct": 11,
+    "structural_matches": 5,
+    "verdict": "NO_DIMENSIONAL_BRIDGE",
+    "explanation": "The automaton encodes N_c=3 structure and dynamics (\u03b7_global=2/3=1-1/N_c, \u03b7_local=1/2=CDP) but cannot fix R_stella. T/N varies with N (not a fixed dimensionless number). The prefactor C encodes nucleation difficulty but has units of epochs. No automaton ratio matches a QCD number that would set the scale. R_stella remains an observed input, as expected for a discrete automaton without inherent dimensional parameters."
+  }
+}

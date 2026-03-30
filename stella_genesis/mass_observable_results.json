@@ -1,0 +1,99 @@
+{
+  "theorem": "3.1.1",
+  "title": "Phase-Gradient Mass Observable (Genesis Soup)",
+  "timestamp": "2026-03-23T15:11:32.038245",
+  "data": [
+    {
+      "epoch": 0,
+      "mean_mass": 1.442484,
+      "std_mass": 0.578644,
+      "max_mass": 3.282366,
+      "grad_phi": 7.9349,
+      "v_chi": 0.6526,
+      "corr_ratio": 1.1
+    },
+    {
+      "epoch": 100000,
+      "mean_mass": 1.293711,
+      "std_mass": 0.616406,
+      "max_mass": 3.282366,
+      "grad_phi": 7.1082,
+      "v_chi": 0.6526,
+      "corr_ratio": 1.124
+    },
+    {
+      "epoch": 200000,
+      "mean_mass": 1.285426,
+      "std_mass": 0.647491,
+      "max_mass": 3.282366,
+      "grad_phi": 7.0031,
+      "v_chi": 0.6526,
+      "corr_ratio": 1.151
+    },
+    {
+      "epoch": 300000,
+      "mean_mass": 1.361887,
+      "std_mass": 0.593086,
+      "max_mass": 3.282366,
+      "grad_phi": 7.4836,
+      "v_chi": 0.6526,
+      "corr_ratio": 1.101
+    },
+    {
+      "epoch": 400000,
+      "mean_mass": 1.30791,
+      "std_mass": 0.643268,
+      "max_mass": 3.252662,
+      "grad_phi": 7.1437,
+      "v_chi": 0.6526,
+      "corr_ratio": 1.132
+    },
+    {
+      "epoch": 500000,
+      "mean_mass": 1.379688,
+      "std_mass": 0.606076,
+      "max_mass": 3.282366,
+      "grad_phi": 7.5146,
+      "v_chi": 0.6526,
+      "corr_ratio": 1.097
+    },
+    {
+      "epoch": 500000,
+      "mean_mass": 1.379688,
+      "std_mass": 0.606076,
+      "max_mass": 3.282366,
+      "grad_phi": 7.5146,
+      "v_chi": 0.6526,
+      "corr_ratio": 1.097
+    },
+    {
+      "epoch": 500000,
+      "mean_mass": 1.379688,
+      "std_mass": 0.606076,
+      "max_mass": 3.282366,
+      "grad_phi": 7.5146,
+      "v_chi": 0.6526,
+      "corr_ratio": 1.097
+    }
+  ],
+  "analysis": {
+    "n_points": 8,
+    "epochs_total": 500000,
+    "initial_mean_mass": 1.442484,
+    "final_mean_mass": 1.379688,
+    "mass_trend_slope": 1.1880093023255468e-08,
+    "mass_trend_direction": "increasing",
+    "grad_phi_decrease_pct": 5.296853142446661,
+    "initial_grad_phi": 7.9349,
+    "final_grad_phi": 7.5146,
+    "initial_corr_ratio": 1.1,
+    "final_corr_ratio": 1.097,
+    "corr_ratio_change": -0.0030000000000001137,
+    "v_chi": 0.6526,
+    "mass_scale_estimate_mev": 121.412544,
+    "interpretation": {
+      "grad_decrease": "Phase gradients decreased \u2014 Kuramoto sync reducing \u2207\u03c6. This is the expected behavior: synchronization \u2192 less mass.",
+      "corr_ratio": "Mass is spatially clustered (corr_ratio > 1) \u2014 mass-like structure has spatial organization."
+    }
+  }
+}

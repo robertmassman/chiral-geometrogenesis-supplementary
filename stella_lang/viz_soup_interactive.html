@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stella Soup — Interactive Emergence Visualizer</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a0f;
+  color: #c8c8d0;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+header {
+  padding: 10px 20px;
+  background: #12121a;
+  border-bottom: 1px solid #2a2a3a;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e0e0e8;
+  white-space: nowrap;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+button {
+  background: #1e1e2e;
+  color: #c8c8d0;
+  border: 1px solid #3a3a4a;
+  padding: 5px 14px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+button:hover { background: #2a2a3e; }
+button.active { background: #2a4a6a; border-color: #4a7aaa; }
+
+label {
+  font-size: 11px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+input[type="range"] {
+  width: 80px;
+  accent-color: #4a7aaa;
+}
+
+select {
+  background: #1e1e2e;
+  color: #c8c8d0;
+  border: 1px solid #3a3a4a;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.stats {
+  font-size: 11px;
+  color: #aaa;
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+.stats span { white-space: nowrap; }
+.stats .val { color: #e0e0e8; font-weight: 600; }
+
+.main-area {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.grid-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#gridCanvas {
+  image-rendering: pixelated;
+  cursor: crosshair;
+}
+
+.side-panel {
+  width: 280px;
+  background: #12121a;
+  border-left: 1px solid #2a2a3a;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.panel-section {
+  padding: 12px;
+  border-bottom: 1px solid #1e1e2e;
+}
+
+.panel-section h3 {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+#entropyCanvas {
+  width: 100%;
+  height: 120px;
+  background: #0a0a0f;
+  border-radius: 4px;
+}
+
+#inspectPanel {
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.trit-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin: 6px 0;
+}
+
+.trit {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: bold;
+}
+
+.trit-0 { background: #1a1a2e; color: #555; }
+.trit-1 { background: #2a4a2a; color: #6c6; }
+.trit-2 { background: #4a2a2a; color: #c66; }
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 10px;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.phase-marker {
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 3px;
+  margin-top: 4px;
+  display: inline-block;
+}
+.phase-random { background: #2a1a1a; color: #c88; }
+.phase-transition { background: #2a2a1a; color: #cc8; }
+.phase-dominated { background: #1a2a1a; color: #8c8; }
+
+footer {
+  padding: 6px 20px;
+  background: #12121a;
+  border-top: 1px solid #2a2a3a;
+  font-size: 10px;
+  color: #555;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Stella Soup</h1>
+  <div class="controls">
+    <button id="btnPlay" class="active" onclick="togglePlay()">&#9654; Play</button>
+    <button id="btnStep" onclick="stepOnce()">Step</button>
+    <button id="btnReset" onclick="resetSoup()">Reset</button>
+    <label>Speed
+      <input type="range" id="speedSlider" min="1" max="8" value="4"
+             oninput="updateSpeed()">
+      <span id="speedLabel">1k</span>
+    </label>
+    <label>Color
+      <select id="colorMode" onchange="draw()">
+        <option value="replicator">Replicator similarity</option>
+        <option value="z3avg">Z&#x2083; average phase</option>
+        <option value="entropy">Local entropy</option>
+        <option value="activity">Activity (changes)</option>
+      </select>
+    </label>
+    <label>Grid
+      <select id="gridSize" onchange="resetSoup()">
+        <option value="24">24 &times; 24 (576)</option>
+        <option value="32" selected>32 &times; 32 (1024)</option>
+        <option value="48">48 &times; 48 (2304)</option>
+      </select>
+    </label>
+    <label>Mutation
+      <input type="range" id="mutSlider" min="0" max="10" value="3"
+             oninput="updateMutLabel()">
+      <span id="mutLabel">0.001</span>
+    </label>
+  </div>
+  <div class="stats">
+    <span>Epoch: <span class="val" id="statEpoch">0</span></span>
+    <span>H: <span class="val" id="statEntropy">1.585</span></span>
+    <span>Unique: <span class="val" id="statUnique">—</span></span>
+    <span>Repl%: <span class="val" id="statRepl">0.0%</span></span>
+    <span id="phaseLabel" class="phase-marker phase-random">Random</span>
+  </div>
+</header>
+
+<div class="main-area">
+  <div class="grid-panel">
+    <canvas id="gridCanvas"></canvas>
+  </div>
+  <div class="side-panel">
+    <div class="panel-section">
+      <h3>Entropy over time</h3>
+      <canvas id="entropyCanvas"></canvas>
+    </div>
+    <div class="panel-section">
+      <h3>Replicator fraction</h3>
+      <canvas id="replCanvas" style="width:100%;height:80px;background:#0a0a0f;border-radius:4px;"></canvas>
+    </div>
+    <div class="panel-section">
+      <h3>Inspected Cell</h3>
+      <div id="inspectPanel">
+        <div style="color:#555">Hover over a cell to inspect</div>
+      </div>
+    </div>
+    <div class="panel-section">
+      <h3>Color Legend</h3>
+      <div class="legend" id="legendContent"></div>
+    </div>
+    <div class="panel-section">
+      <h3>Known Replicator (20-trit core)</h3>
+      <div class="trit-display" id="replDisplay"></div>
+      <div style="font-size:10px;color:#666;margin-top:4px;">
+        [[ CPY01 FWD0 FWD1 ] CPY01 FWD1 FWD0 ]
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Prop 0.0.XXd — Computational Universality of CG Primitives |
+  Z&#x2083; cells (Def 0.1.2) &bull; Two heads T&#x208A;/T&#x208B; (Def 0.1.1) &bull;
+  Copy = inter-component coupling (Thm 0.2.1) &bull; Gates = superselection (Prop 0.0.17h)
+</footer>
+
+<script>
+// ============================================================
+// Stella Soup VM — JavaScript implementation
+// ============================================================
+
+const REPLICATOR = [1,2,1,2,2,1,0,2,1,1,2,0,2,1,1,1,0,2,2,0];
+const PROG_SIZE = 24;
+const MAX_STEPS = 729;
+
+// Instruction opcodes (trit-pair index: 3*a + b)
+const OP_NOP=0, OP_ROT=1, OP_FWD0=2, OP_BCK0=3, OP_FWD1=4;
+const OP_OPEN=5, OP_CLOSE=6, OP_CPY01=7, OP_CPY10=8;
+
+const INSTR_NAMES = ['NOP','ROT','FWD0','BCK0','FWD1','[',']','CPY01','CPY10'];
+
+function decode(a, b) { return a * 3 + b; }
+
+function executeTape(tape, tapeLen, maxSteps) {
+  let ip = 0, h0 = 0, h1 = tapeLen >> 1, steps = 0;
+
+  while (steps < maxSteps && ip + 1 < tapeLen) {
+    const op = tape[ip] * 3 + tape[ip + 1];
+    ip += 2;
+    steps++;
+
+    switch (op) {
+      case OP_NOP: break;
+      case OP_ROT: tape[h0] = (tape[h0] + 1) % 3; break;
+      case OP_FWD0: h0 = (h0 + 1) % tapeLen; break;
+      case OP_BCK0: h0 = (h0 + tapeLen - 1) % tapeLen; break;
+      case OP_FWD1: h1 = (h1 + 1) % tapeLen; break;
+      case OP_CPY01: tape[h1] = tape[h0]; break;
+      case OP_CPY10: tape[h0] = tape[h1]; break;
+      case OP_OPEN:
+        if (tape[h0] === 0) {
+          let depth = 1;
+          while (depth > 0 && ip + 1 < tapeLen) {
+            const inner = tape[ip] * 3 + tape[ip + 1];
+            ip += 2;
+            if (inner === OP_OPEN) depth++;
+            else if (inner === OP_CLOSE) depth--;
+          }
+        }
+        break;
+      case OP_CLOSE:
+        if (tape[h0] !== 0) {
+          ip -= 2; // back up past this CLOSE
+          let depth = 1;
+          while (depth > 0 && ip >= 2) {
+            ip -= 2;
+            const inner = tape[ip] * 3 + tape[ip + 1];
+            if (inner === OP_CLOSE) depth++;
+            else if (inner === OP_OPEN) depth--;
+          }
+          if (depth === 0) ip += 2; // step past the matching OPEN so the loop re-tests
+        }
+        break;
+    }
+  }
+}
+
+// ============================================================
+// Soup state
+// ============================================================
+
+let N = 32;               // grid side
+let soup = null;           // Uint8Array[N*N*PROG_SIZE]
+let prevSoup = null;       // for activity tracking
+let running = false;
+let epoch = 0;
+let mutRate = 0.001;
+let epochsPerFrame = 1000;
+
+// History for charts
+const maxHistory = 400;
+let entropyHistory = [];
+let replHistory = [];
+
+// PRNG (xorshift128+)
+let rngA = 1, rngB = 2;
+function rngSeed(s) {
+  rngA = s ^ 0xdeadbeef;
+  rngB = (s * 0x12345678) ^ 0xcafebabe;
+  if (rngA === 0) rngA = 1;
+  if (rngB === 0) rngB = 1;
+}
+function rngNext() {
+  let a = rngA, b = rngB;
+  rngA = b;
+  a ^= a << 23;
+  a ^= a >>> 17;
+  a ^= b;
+  a ^= b >>> 26;
+  rngB = a;
+  return (b + a) >>> 0;
+}
+function rngInt(n) { return rngNext() % n; }
+function rngFloat() { return (rngNext() >>> 0) / 4294967296; }
+
+function getProgram(i) {
+  const offset = i * PROG_SIZE;
+  return soup.slice(offset, offset + PROG_SIZE);
+}
+
+function setProgram(i, prog) {
+  const offset = i * PROG_SIZE;
+  for (let j = 0; j < PROG_SIZE; j++) soup[offset + j] = prog[j];
+}
+
+function hammingToReplicator(prog) {
+  let dist = 0;
+  for (let j = 0; j < 20; j++) {
+    if (prog[j] !== REPLICATOR[j]) dist++;
+  }
+  return dist;
+}
+
+function isReplicator(prog) {
+  return hammingToReplicator(prog) <= 2; // allow 2-trit tolerance
+}
+
+function initSoup() {
+  const total = N * N;
+  soup = new Uint8Array(total * PROG_SIZE);
+  prevSoup = new Uint8Array(total * PROG_SIZE);
+  for (let i = 0; i < soup.length; i++) {
+    soup[i] = rngInt(3);
+  }
+  prevSoup.set(soup);
+  epoch = 0;
+  entropyHistory = [];
+  replHistory = [];
+}
+
+function interact(iA, iB) {
+  const offA = iA * PROG_SIZE;
+  const offB = iB * PROG_SIZE;
+  const tapeLen = PROG_SIZE * 2;
+  const tape = new Uint8Array(tapeLen);
+
+  // Concatenate A || B
+  for (let j = 0; j < PROG_SIZE; j++) {
+    tape[j] = soup[offA + j];
+    tape[PROG_SIZE + j] = soup[offB + j];
+  }
+
+  // Execute
+  executeTape(tape, tapeLen, MAX_STEPS);
+
+  // Split back
+  for (let j = 0; j < PROG_SIZE; j++) {
+    soup[offA + j] = tape[j];
+    soup[offB + j] = tape[PROG_SIZE + j];
+  }
+}
+
+function mutate() {
+  const total = soup.length;
+  // Expected mutations per epoch
+  const expected = total * mutRate;
+  // Poisson-approximate: do floor(expected) + maybe 1 more
+  const count = Math.floor(expected) + (rngFloat() < (expected % 1) ? 1 : 0);
+  for (let i = 0; i < count; i++) {
+    const pos = rngInt(total);
+    soup[pos] = rngInt(3);
+  }
+}
+
+function getNeighbor(idx) {
+  const x = idx % N;
+  const y = (idx / N) | 0;
+  const dir = rngInt(4);
+  let nx = x, ny = y;
+  switch (dir) {
+    case 0: nx = (x + 1) % N; break;
+    case 1: nx = (x + N - 1) % N; break;
+    case 2: ny = (y + 1) % N; break;
+    case 3: ny = (y + N - 1) % N; break;
+  }
+  return ny * N + nx;
+}
+
+function runEpoch() {
+  const total = N * N;
+  // Each epoch: total/2 random interactions (each program interacts ~once)
+  const nInteractions = total >> 1;
+  for (let i = 0; i < nInteractions; i++) {
+    const a = rngInt(total);
+    const b = getNeighbor(a);
+    if (a !== b) interact(a, b);
+  }
+  mutate();
+  epoch++;
+}
+
+// ============================================================
+// Statistics
+// ============================================================
+
+function computeStats() {
+  const total = N * N;
+  // Trit entropy
+  const counts = [0, 0, 0];
+  for (let i = 0; i < soup.length; i++) counts[soup[i]]++;
+  const len = soup.length;
+  let H = 0;
+  for (let c = 0; c < 3; c++) {
+    if (counts[c] > 0) {
+      const p = counts[c] / len;
+      H -= p * Math.log2(p);
+    }
+  }
+
+  // Replicator count
+  let replCount = 0;
+  for (let i = 0; i < total; i++) {
+    if (isReplicator(getProgram(i))) replCount++;
+  }
+
+  // Unique programs (hash-based approximation)
+  const seen = new Set();
+  for (let i = 0; i < total; i++) {
+    const off = i * PROG_SIZE;
+    let hash = 0;
+    for (let j = 0; j < PROG_SIZE; j++) {
+      hash = (hash * 31 + soup[off + j]) | 0;
+    }
+    seen.add(hash);
+  }
+
+  return { entropy: H, replFrac: replCount / total, unique: seen.size };
+}
+
+// ============================================================
+// Rendering
+// ============================================================
+
+const gridCanvas = document.getElementById('gridCanvas');
+const gridCtx = gridCanvas.getContext('2d');
+const entropyCanvas = document.getElementById('entropyCanvas');
+const entCtx = entropyCanvas.getContext('2d');
+const replCanvas = document.getElementById('replCanvas');
+const replCtx = replCanvas.getContext('2d');
+
+let cellSize = 12;
+
+function resizeCanvases() {
+  const panel = document.querySelector('.grid-panel');
+  const maxW = panel.clientWidth - 40;
+  const maxH = panel.clientHeight - 40;
+  cellSize = Math.max(2, Math.min(Math.floor(maxW / N), Math.floor(maxH / N)));
+  gridCanvas.width = N * cellSize;
+  gridCanvas.height = N * cellSize;
+
+  const dpr = window.devicePixelRatio || 1;
+  entropyCanvas.width = entropyCanvas.clientWidth * dpr;
+  entropyCanvas.height = entropyCanvas.clientHeight * dpr;
+  entCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  replCanvas.width = replCanvas.clientWidth * dpr;
+  replCanvas.height = replCanvas.clientHeight * dpr;
+  replCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function colorForCell(idx) {
+  const mode = document.getElementById('colorMode').value;
+  const prog = getProgram(idx);
+
+  switch (mode) {
+    case 'replicator': {
+      const d = hammingToReplicator(prog);
+      if (d === 0) return [40, 180, 255];       // exact match: bright blue
+      if (d <= 2) return [30, 140, 200];         // near match: blue
+      if (d <= 5) return [80, 60, 160];          // getting close: purple
+      const t = Math.min(d, 20) / 20;
+      const r = Math.floor(30 + 60 * t);
+      const g = Math.floor(20 + 20 * (1 - t));
+      const b = Math.floor(40 + 40 * (1 - t));
+      return [r, g, b];                          // far: dark warm
+    }
+    case 'z3avg': {
+      let sum = 0;
+      for (let j = 0; j < PROG_SIZE; j++) sum += prog[j];
+      const avg = sum / PROG_SIZE; // 0 to 2
+      // Map Z3 phases to RGB: 0=blue, 1=green, 2=red
+      if (avg < 1) {
+        const t = avg;
+        return [Math.floor(30 * t), Math.floor(50 + 150 * t), Math.floor(180 * (1 - t) + 50)];
+      } else {
+        const t = avg - 1;
+        return [Math.floor(50 + 170 * t), Math.floor(200 * (1 - t) + 30), Math.floor(50 * (1 - t))];
+      }
+    }
+    case 'entropy': {
+      const counts = [0, 0, 0];
+      for (let j = 0; j < PROG_SIZE; j++) counts[prog[j]]++;
+      let h = 0;
+      for (let c = 0; c < 3; c++) {
+        if (counts[c] > 0) {
+          const p = counts[c] / PROG_SIZE;
+          h -= p * Math.log2(p);
+        }
+      }
+      const t = h / Math.log2(3); // normalize to [0,1]
+      // Low entropy = ordered = cyan, high = random = dark
+      return [
+        Math.floor(20 + 20 * t),
+        Math.floor(200 * (1 - t) + 30),
+        Math.floor(220 * (1 - t) + 30)
+      ];
+    }
+    case 'activity': {
+      const off = idx * PROG_SIZE;
+      let diff = 0;
+      for (let j = 0; j < PROG_SIZE; j++) {
+        if (soup[off + j] !== prevSoup[off + j]) diff++;
+      }
+      const t = Math.min(diff, PROG_SIZE) / PROG_SIZE;
+      return [
+        Math.floor(255 * t),
+        Math.floor(60 * (1 - t) + 30),
+        Math.floor(40)
+      ];
+    }
+  }
+  return [40, 40, 40];
+}
+
+function draw() {
+  // Grid
+  const imgData = gridCtx.createImageData(N * cellSize, N * cellSize);
+  const total = N * N;
+
+  for (let i = 0; i < total; i++) {
+    const [r, g, b] = colorForCell(i);
+    const gx = i % N;
+    const gy = (i / N) | 0;
+    const px = gx * cellSize;
+    const py = gy * cellSize;
+
+    for (let dy = 0; dy < cellSize; dy++) {
+      for (let dx = 0; dx < cellSize; dx++) {
+        // Subtle grid lines
+        const edge = (dx === 0 || dy === 0) && cellSize > 4;
+        const idx = ((py + dy) * N * cellSize + (px + dx)) * 4;
+        if (edge) {
+          imgData.data[idx] = Math.floor(r * 0.6);
+          imgData.data[idx+1] = Math.floor(g * 0.6);
+          imgData.data[idx+2] = Math.floor(b * 0.6);
+        } else {
+          imgData.data[idx] = r;
+          imgData.data[idx+1] = g;
+          imgData.data[idx+2] = b;
+        }
+        imgData.data[idx+3] = 255;
+      }
+    }
+  }
+  gridCtx.putImageData(imgData, 0, 0);
+
+  // Entropy chart
+  drawChart(entCtx, entropyCanvas, entropyHistory, '#4a9aff', 0, Math.log2(3), 'H(trit)');
+  // Replicator chart
+  drawChart(replCtx, replCanvas, replHistory, '#4aff9a', 0, 1, 'Repl%');
+}
+
+function drawChart(ctx, canvas, data, color, minVal, maxVal, label) {
+  const w = canvas.clientWidth;
+  const h = canvas.clientHeight;
+  ctx.clearRect(0, 0, w, h);
+
+  if (data.length < 2) return;
+
+  // Grid lines
+  ctx.strokeStyle = '#1e1e2e';
+  ctx.lineWidth = 0.5;
+  for (let i = 0; i <= 4; i++) {
+    const y = h * i / 4;
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(w, y);
+    ctx.stroke();
+  }
+
+  // Data
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  const len = data.length;
+  for (let i = 0; i < len; i++) {
+    const x = (i / (maxHistory - 1)) * w;
+    const t = (data[i] - minVal) / (maxVal - minVal);
+    const y = h - t * h;
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+
+  // Current value label
+  if (data.length > 0) {
+    const last = data[data.length - 1];
+    ctx.fillStyle = color;
+    ctx.font = '10px monospace';
+    ctx.fillText(`${label}: ${last.toFixed(3)}`, 4, 12);
+  }
+}
+
+// ============================================================
+// Inspect on hover
+// ============================================================
+
+let hoveredCell = -1;
+
+gridCanvas.addEventListener('mousemove', (e) => {
+  const rect = gridCanvas.getBoundingClientRect();
+  const scaleX = gridCanvas.width / rect.width;
+  const scaleY = gridCanvas.height / rect.height;
+  const mx = (e.clientX - rect.left) * scaleX;
+  const my = (e.clientY - rect.top) * scaleY;
+  const gx = Math.floor(mx / cellSize);
+  const gy = Math.floor(my / cellSize);
+  if (gx >= 0 && gx < N && gy >= 0 && gy < N) {
+    const idx = gy * N + gx;
+    if (idx !== hoveredCell) {
+      hoveredCell = idx;
+      showInspect(idx);
+    }
+  }
+});
+
+gridCanvas.addEventListener('mouseleave', () => {
+  hoveredCell = -1;
+});
+
+function showInspect(idx) {
+  const prog = getProgram(idx);
+  const ham = hammingToReplicator(prog);
+  const x = idx % N;
+  const y = (idx / N) | 0;
+
+  // Decode instructions
+  const instrs = [];
+  for (let j = 0; j + 1 < PROG_SIZE; j += 2) {
+    instrs.push(INSTR_NAMES[prog[j] * 3 + prog[j+1]]);
+  }
+
+  // Local entropy
+  const counts = [0, 0, 0];
+  for (let j = 0; j < PROG_SIZE; j++) counts[prog[j]]++;
+
+  const panel = document.getElementById('inspectPanel');
+  panel.innerHTML = `
+    <div style="color:#888">Cell (${x}, ${y}) — index ${idx}</div>
+    <div class="trit-display">
+      ${Array.from(prog).map(t => `<div class="trit trit-${t}">${t}</div>`).join('')}
+    </div>
+    <div style="color:#888;font-size:10px;margin:4px 0">
+      ${instrs.join(' ')}
+    </div>
+    <div>Hamming to replicator: <span style="color:${ham<=2?'#4aff9a':ham<=5?'#ffa04a':'#ff6a6a'}">${ham}/20</span></div>
+    <div>Trits: 0:${counts[0]} 1:${counts[1]} 2:${counts[2]}</div>
+    <div>${ham <= 2 ? '<span style="color:#4aff9a">&#10003; REPLICATOR</span>' : ''}</div>
+  `;
+}
+
+// ============================================================
+// Legend
+// ============================================================
+
+function updateLegend() {
+  const mode = document.getElementById('colorMode').value;
+  const el = document.getElementById('legendContent');
+  switch (mode) {
+    case 'replicator':
+      el.innerHTML = `
+        <div class="legend-row"><div class="legend-swatch" style="background:rgb(40,180,255)"></div>Exact replicator (0)</div>
+        <div class="legend-row"><div class="legend-swatch" style="background:rgb(30,140,200)"></div>Near match (&le;2)</div>
+        <div class="legend-row"><div class="legend-swatch" style="background:rgb(80,60,160)"></div>Partial (&le;5)</div>
+        <div class="legend-row"><div class="legend-swatch" style="background:rgb(70,30,50)"></div>Random (&gt;10)</div>
+      `;
+      break;
+    case 'z3avg':
+      el.innerHTML = `
+        <div class="legend-row"><div class="legend-swatch" style="background:rgb(0,50,180)"></div>Phase 0 dominant</div>
+        <div class="legend-row"><div class="legend-swatch" style="background:rgb(30,200,50)"></div>Phase 1 dominant</div>
+        <div class="legend-row"><div class="legend-swatch" style="background:rgb(220,30,0)"></div>Phase 2 dominant</div>
+      `;
+      break;
+    case 'entropy':
+      el.innerHTML = `
+        <div class="legend-row"><div class="legend-swatch" style="background:rgb(20,200,220)"></div>Low entropy (ordered)</div>
+        <div class="legend-row"><div class="legend-swatch" style="background:rgb(40,30,30)"></div>High entropy (random)</div>
+      `;
+      break;
+    case 'activity':
+      el.innerHTML = `
+        <div class="legend-row"><div class="legend-swatch" style="background:rgb(255,60,40)"></div>High activity</div>
+        <div class="legend-row"><div class="legend-swatch" style="background:rgb(0,60,40)"></div>No change</div>
+      `;
+      break;
+  }
+}
+
+document.getElementById('colorMode').addEventListener('change', updateLegend);
+
+// ============================================================
+// Controls
+// ============================================================
+
+const speedSteps = [100, 250, 500, 1000, 2000, 5000, 10000, 25000];
+const speedLabels = ['100','250','500','1k','2k','5k','10k','25k'];
+
+function updateSpeed() {
+  const idx = parseInt(document.getElementById('speedSlider').value) - 1;
+  epochsPerFrame = speedSteps[idx];
+  document.getElementById('speedLabel').textContent = speedLabels[idx];
+}
+
+function updateMutLabel() {
+  const v = parseInt(document.getElementById('mutSlider').value);
+  if (v === 0) { mutRate = 0; document.getElementById('mutLabel').textContent = '0'; }
+  else {
+    mutRate = Math.pow(10, -4 + (v - 1) * 0.33);
+    document.getElementById('mutLabel').textContent = mutRate.toExponential(1);
+  }
+}
+
+function togglePlay() {
+  running = !running;
+  const btn = document.getElementById('btnPlay');
+  btn.textContent = running ? '\u275A\u275A Pause' : '\u25B6 Play';
+  btn.classList.toggle('active', running);
+}
+
+function stepOnce() {
+  running = false;
+  document.getElementById('btnPlay').textContent = '\u25B6 Play';
+  document.getElementById('btnPlay').classList.remove('active');
+  prevSoup.set(soup);
+  runEpoch();
+  const stats = computeStats();
+  updateUI(stats);
+  draw();
+}
+
+function resetSoup() {
+  N = parseInt(document.getElementById('gridSize').value);
+  rngSeed(42);
+  initSoup();
+  resizeCanvases();
+  updateLegend();
+  const stats = computeStats();
+  updateUI(stats);
+  draw();
+}
+
+function updateUI(stats) {
+  document.getElementById('statEpoch').textContent = epoch.toLocaleString();
+  document.getElementById('statEntropy').textContent = stats.entropy.toFixed(3);
+  document.getElementById('statUnique').textContent = stats.unique.toLocaleString();
+  document.getElementById('statRepl').textContent = (stats.replFrac * 100).toFixed(1) + '%';
+
+  entropyHistory.push(stats.entropy);
+  replHistory.push(stats.replFrac);
+  if (entropyHistory.length > maxHistory) {
+    entropyHistory.shift();
+    replHistory.shift();
+  }
+
+  // Phase label
+  const label = document.getElementById('phaseLabel');
+  if (stats.replFrac > 0.5) {
+    label.textContent = 'Dominated';
+    label.className = 'phase-marker phase-dominated';
+  } else if (stats.replFrac > 0.02) {
+    label.textContent = 'Transition';
+    label.className = 'phase-marker phase-transition';
+  } else {
+    label.textContent = 'Random';
+    label.className = 'phase-marker phase-random';
+  }
+}
+
+// ============================================================
+// Animation loop
+// ============================================================
+
+let lastFrame = 0;
+const statInterval = 50; // compute stats every N epochs within a batch
+
+function animate(ts) {
+  requestAnimationFrame(animate);
+
+  if (!running) return;
+
+  // Run a batch of epochs
+  prevSoup.set(soup);
+  const batchSize = Math.min(epochsPerFrame, 25000);
+  for (let i = 0; i < batchSize; i++) {
+    runEpoch();
+  }
+
+  const stats = computeStats();
+  updateUI(stats);
+  draw();
+}
+
+// ============================================================
+// Init
+// ============================================================
+
+function showReplicator() {
+  const el = document.getElementById('replDisplay');
+  el.innerHTML = REPLICATOR.map(t =>
+    `<div class="trit trit-${t}">${t}</div>`
+  ).join('');
+}
+
+window.addEventListener('resize', () => {
+  resizeCanvases();
+  draw();
+});
+
+// Boot
+rngSeed(42);
+initSoup();
+updateSpeed();
+updateMutLabel();
+resizeCanvases();
+updateLegend();
+showReplicator();
+const stats = computeStats();
+updateUI(stats);
+draw();
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>
