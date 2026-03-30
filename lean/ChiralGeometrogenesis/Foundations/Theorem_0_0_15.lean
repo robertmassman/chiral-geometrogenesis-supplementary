@@ -1,7 +1,7 @@
 /-
   Foundations/Theorem_0_0_15.lean
 
-  Theorem 0.0.15: Topological Derivation of SU(3) from Stella Octangula
+  Theorem 0.0.15: Topological Determination of SU(3) from Stella Octangula
 
   This theorem proves that SU(3) is the UNIQUE compact simple Lie group
   compatible with the stella octangula structure and D = 4 spacetime.
@@ -52,7 +52,7 @@
   - ✅ Lemma 0.0.2a (Affine Independence) — Justifies maxRank = 2 from D_space = 3
   - ✅ Standard Lie group theory (Cartan classification, center structure)
 
-  Reference: docs/proofs/foundations/Theorem-0.0.15-Topological-Derivation-SU3.md
+  Reference: docs/proofs/foundations/Theorem-0.0.15-Topological-Determination-SU3.md
 
   Last reviewed: 2026-01-20 (adversarial review completed)
   Changes made:
@@ -85,7 +85,7 @@ open ChiralGeometrogenesis.PureMath.Polyhedra
 The stella octangula possesses 3-fold rotational symmetry about each body diagonal.
 This Z₃ structure is derived from pure geometry, independent of SU(3).
 
-Reference: §3.0 of Theorem-0.0.15-Topological-Derivation-SU3.md
+Reference: §3.0 of Theorem-0.0.15-Topological-Determination-SU3.md
 -/
 
 /-- The cyclic group Z₃ represented as ZMod 3 -/
@@ -135,7 +135,7 @@ theorem cube_roots_correspond_to_phases :
 
 The Z₃ phase structure must be (a subgroup of) the center of the gauge group G.
 
-Reference: §3.2 of Theorem-0.0.15-Topological-Derivation-SU3.md
+Reference: §3.2 of Theorem-0.0.15-Topological-Determination-SU3.md
 -/
 
 /-- For a gauge group G with Z₃ color phases, Z₃ must embed in Z(G).
@@ -187,7 +187,7 @@ axiom SU_center_is_cyclic (N : ℕ) (hN : N ≥ 2) :
 
 /-! ## Section 3: Classification of Compact Simple Lie Groups by Center
 
-Reference: §3.3 of Theorem-0.0.15-Topological-Derivation-SU3.md
+Reference: §3.3 of Theorem-0.0.15-Topological-Determination-SU3.md
 -/
 
 /-- Enumeration of compact simple Lie group series -/
@@ -334,7 +334,7 @@ theorem G2_no_Z3_center : LieGroupSeries.centerContainsZ3 .G2 = false := rfl
 From Theorem 0.0.1, D = 4, so D_space = 3.
 The rank constraint rank(G) ≤ 2 follows from geometric realizability.
 
-Reference: §3.4 of Theorem-0.0.15-Topological-Derivation-SU3.md
+Reference: §3.4 of Theorem-0.0.15-Topological-Determination-SU3.md
 -/
 
 /-- Spacetime dimension from Theorem 0.0.1 -/
@@ -531,7 +531,7 @@ Intersection of constraints:
 - Groups with rank ≤ 2: {SU(2), SU(3), SO(5), G_2}
 - Intersection: {SU(3)}
 
-Reference: §3.5 of Theorem-0.0.15-Topological-Derivation-SU3.md
+Reference: §3.5 of Theorem-0.0.15-Topological-Determination-SU3.md
 -/
 
 /-- SU(3) is represented as A_2 in the Lie classification -/
@@ -632,7 +632,7 @@ theorem D4_necessary_for_uniqueness :
 
 /-! ## Section 7: Connection to Homotopy Groups
 
-Reference: §5 of Theorem-0.0.15-Topological-Derivation-SU3.md
+Reference: §5 of Theorem-0.0.15-Topological-Determination-SU3.md
 -/
 
 /-- **Literature Citation (Algebraic Topology): π₁(PSU(3)) ≅ Z₃**

@@ -31,6 +31,7 @@ import ChiralGeometrogenesis.ColorFields.Basic
 -- Phase 0: Boundary Topology and Time Emergence
 import ChiralGeometrogenesis.Phase0.Definition_0_1_1  -- Stella Octangula Boundary Topology
 import ChiralGeometrogenesis.Phase0.Definition_0_1_2  -- Three Color Fields with Relative Phases
+import ChiralGeometrogenesis.Phase0.Proposition_0_1_3a  -- Pressure Function Form-Independence
 -- Theorem 0.2.1 is now split into modular subfiles
 import ChiralGeometrogenesis.Phase0.Theorem_0_2_1.Main
 import ChiralGeometrogenesis.Phase0.Theorem_0_2_2
@@ -44,14 +45,23 @@ import ChiralGeometrogenesis.Phase4.Theorem_4_1_4  -- Dynamic Suspension Equilib
 import ChiralGeometrogenesis.Phase4.Theorem_4_2_1  -- Chiral Bias in Soliton Formation
 import ChiralGeometrogenesis.Phase4.Theorem_4_2_2  -- Baryon Asymmetry from Chiral Bias
 import ChiralGeometrogenesis.Phase4.Theorem_4_2_3  -- First-Order Electroweak Phase Transition
+import ChiralGeometrogenesis.Phase4.Proposition_4_3_5  -- Skyrme Parameter from Pressure-Kurtosis Geometry
 
 -- Phase 5: Emergent Spacetime and Gravity
 import ChiralGeometrogenesis.Phase5.Theorem_5_1_1  -- Stress-Energy Tensor from L_CG
 import ChiralGeometrogenesis.Phase5.Proposition_5_2_4c  -- Tensor Rank from Derivative Structure
+import ChiralGeometrogenesis.Phase5.Lemma_5_4_1a  -- Maximum Curvature Bound from FCC Lattice
 
 -- Phase 6: Scattering Theory
 import ChiralGeometrogenesis.Phase6.Theorem_6_1_1  -- Complete Feynman Rules
 import ChiralGeometrogenesis.Phase6.Theorem_6_2_1  -- Tree-Level Scattering Amplitudes
+
+-- Phase 7: Renormalization, Unitarity, Consistency
+import ChiralGeometrogenesis.Phase7.Theorem_7_4_1  -- Reflection Positivity on FCC Lattice
+import ChiralGeometrogenesis.Phase7.Theorem_7_4_2  -- Mass Gap Survival in Thermodynamic Limit
+import ChiralGeometrogenesis.Phase7.Proposition_7_8_3  -- Bethe-Salpeter Glueball Mass Ratio
+import ChiralGeometrogenesis.Phase7.Proposition_7_8_5  -- Explicit Crossover Mass Gap Computation
+import ChiralGeometrogenesis.Phase7.Proposition_7_9_1  -- Mass Gap Persistence with Dynamical Fermions
 
 -- Information-Geometry Duality
 import ChiralGeometrogenesis.Foundations.Theorem_0_0_33  -- Information-Geometry Duality
@@ -59,6 +69,7 @@ import ChiralGeometrogenesis.Foundations.Theorem_0_0_33  -- Information-Geometry
 -- Phase 8: Predictions and Tests
 import ChiralGeometrogenesis.Phase8.Proposition_8_4_4  -- Atmospheric Angle θ₂₃ Correction
 import ChiralGeometrogenesis.Phase8.Proposition_8_5_1  -- Lattice QCD and Heavy-Ion Predictions
+import ChiralGeometrogenesis.Phase8.Prediction_8_2_4  -- W-Sector GW from Phase Transition
 import ChiralGeometrogenesis.Phase8.Prediction_8_3_1  -- W Condensate Dark Matter
 
 /-!

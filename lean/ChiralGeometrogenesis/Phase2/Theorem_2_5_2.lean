@@ -134,20 +134,24 @@ structure ConfinementParams where
 /-- Standard confinement parameters from lattice QCD and phenomenology.
 
     From §2 (Symbol Table) of the markdown:
-    - σ = (440 MeV)² = 193600 MeV²
+    - σ = (ℏc/R_stella)² MeV² (exact geometric expression)
     - αs ≈ 0.3 at 1 GeV (strong coupling)
-    - R_stella = 0.448 fm (fitted to √σ)
+    - R_stella = 0.44847 fm (fitted to √σ ≈ 440 MeV)
     - B = (145 MeV)⁴ ≈ 4.4 × 10⁸ MeV⁴ (MIT bag model)
+
+    **Note:** string_tension uses exact (ℏc/R_stella)² rather than
+    approximate 193600 = 440² to maintain algebraic consistency with
+    sigma_MeV_sq (Proposition 0.0.17j).
 
     **Citation:** PDG 2024, lattice QCD -/
 noncomputable def standardConfinementParams : ConfinementParams where
-  string_tension := 193600  -- MeV² = (440 MeV)²
+  string_tension := sigma_MeV_sq  -- (ℏc/R_stella)² MeV² (exact)
   alpha_s := 0.3
-  R_stella := 0.44847
+  R_stella := R_stella_fm
   bag_constant := 145^4  -- MeV⁴
-  sigma_pos := by norm_num
+  sigma_pos := sigma_pos
   alpha_s_pos := by norm_num
-  R_stella_pos := by norm_num
+  R_stella_pos := R_stella_pos
   bag_pos := by norm_num
 
 /-! ## Section 3: The Cornell Potential (Claim b)

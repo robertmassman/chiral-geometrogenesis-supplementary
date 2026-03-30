@@ -130,8 +130,8 @@ Reference: §3.3 of Lemma-0.0.2a-Confinement-Dimension.md
 Reference: Grünbaum, "Convex Polytopes" (2003), Ch. 2
 -/
 theorem affine_independence_requires_dimension (N : ℕ) (hN : N ≥ 2) :
-    ∀ D : ℕ, (∃ r : GeometricRealizationSUN N D, True) → D ≥ N - 1 := by
-  intro D ⟨r, _⟩
+    ∀ D : ℕ, Nonempty (GeometricRealizationSUN N D) → D ≥ N - 1 := by
+  intro D ⟨r⟩
   -- The vectorSpan of the weight points has dimension at most D
   -- But for affinely independent points, it has dimension N - 1
   -- Therefore D ≥ N - 1
@@ -239,12 +239,12 @@ which requires affine independence.
 Reference: §3.3 of markdown
 -/
 theorem faithful_action_requires_affine_independence (N : ℕ) (hN : N ≥ 2) :
-    ∀ D : ℕ, D < N - 1 → ¬∃ r : GeometricRealizationSUN N D, True := by
+    ∀ D : ℕ, D < N - 1 → ¬Nonempty (GeometricRealizationSUN N D) := by
   -- If D < N - 1, then N points cannot be affinely independent
   -- Therefore, the Weyl group cannot act faithfully
-  intro D hD ⟨r, _⟩
+  intro D hD ⟨r⟩
   -- Contradiction: affine independence requires D ≥ N - 1
-  have h := affine_independence_requires_dimension N hN D ⟨r, trivial⟩
+  have h := affine_independence_requires_dimension N hN D ⟨r⟩
   omega
 
 /-! ## Part 3: Main Lemma - Dimension Constraint for SU(N)
@@ -274,7 +274,7 @@ Standard quantum field theory places no such constraint on gauge groups.
 Reference: §1 of Lemma-0.0.2a-Confinement-Dimension.md
 -/
 theorem geometric_realization_dimension_constraint (N : ℕ) (hN : N ≥ 2) :
-    ∀ D_space : ℕ, (∃ _ : GeometricRealizationSUN N D_space, True) → D_space ≥ N - 1 :=
+    ∀ D_space : ℕ, Nonempty (GeometricRealizationSUN N D_space) → D_space ≥ N - 1 :=
   affine_independence_requires_dimension N hN
 
 /--
@@ -286,7 +286,7 @@ at least 2 spatial dimensions.
 Reference: §1, §3.3 of markdown
 -/
 theorem SU3_requires_Dspace_ge_2 :
-    ∀ D_space : ℕ, (∃ _ : GeometricRealizationSUN 3 D_space, True) → D_space ≥ 2 := by
+    ∀ D_space : ℕ, Nonempty (GeometricRealizationSUN 3 D_space) → D_space ≥ 2 := by
   intro D_space h
   have := geometric_realization_dimension_constraint 3 (by norm_num) D_space h
   omega

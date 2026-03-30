@@ -43,7 +43,7 @@
 
   **Implications:**
   - Axiom A0' (information metric) now implies field existence
-  - The framework achieves 0 irreducible structural axioms
+  - The framework reduces to 1 irreducible structural axiom (A0') plus phenomenological scales
   - Fields are not "added to" geometry—they are *necessary for geometry to be geometry*
 
   **FORMALIZATION NOTES:**

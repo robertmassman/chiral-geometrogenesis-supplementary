@@ -41,6 +41,11 @@
   Reference: docs/proofs/foundations/Theorem-0.0.3-Stella-Uniqueness.md
   Supplements: lean/ChiralGeometrogenesis/Foundations/Theorem_0_0_3_Supplements.lean
 
+  **Python Verification:**
+  - `verification/foundations/fc3_stella_uniqueness_verification.py` — FC3 falsification condition
+    Tests: GR/MIN criteria, Euler characteristic χ=4, A₂ root encoding, candidate
+    elimination, 6+2 decomposition, Weyl group transitivity
+
 -/
 
 import ChiralGeometrogenesis.Foundations.Lemma_0_0_3a

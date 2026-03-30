@@ -218,15 +218,15 @@ theorem LZ_bound_pos : LZ_bound_cm2 > 0 := by unfold LZ_bound_cm2; norm_num
     Reference: §2 (Theoretical Foundation)
 -/
 
-/-- W vertex coordinates: x_W = (-1, -1, 1)/√3.
+/-- W vertex coordinates: x_W = (1, 1, 1)/√3.
 
-    From Definition 0.1.1, the stella octangula has vertices at:
-    - x_R = (1, 1, 1)/√3 (red)
-    - x_G = (1, -1, -1)/√3 (green)
-    - x_B = (-1, 1, -1)/√3 (blue)
-    - x_W = (-1, -1, 1)/√3 (white/singlet)
+    From Definition 0.1.1 (Convention A), the stella octangula has vertices at:
+    - x_R = (1, -1, -1)/√3 (red)
+    - x_G = (-1, 1, -1)/√3 (green)
+    - x_B = (-1, -1, 1)/√3 (blue)
+    - x_W = (1, 1, 1)/√3 (white/singlet)
 
-    The W vertex is the fourth vertex, projecting to the color singlet.
+    The W vertex is the fourth vertex (singlet apex), projecting to the color singlet.
 
     Reference: §2.1 -/
 structure WVertex where
@@ -236,8 +236,8 @@ structure WVertex where
 
 /-- The canonical W vertex position -/
 noncomputable def w_vertex : WVertex := {
-  x := -1 / Real.sqrt 3,
-  y := -1 / Real.sqrt 3,
+  x := 1 / Real.sqrt 3,
+  y := 1 / Real.sqrt 3,
   z := 1 / Real.sqrt 3
 }
 
@@ -326,8 +326,8 @@ theorem vev_ratio_sq : (v_W_GeV / v_H_GeV)^2 = 1/3 := by
 
     **Proof (from §14.1):**
     The stella octangula has a natural antipodal symmetry. Under inversion x → -x:
-    - RGB centroid: (x_R + x_G + x_B)/3 = (1, 1, -1)/(3√3)
-    - W vertex: x_W = (-1, -1, 1)/√3
+    - RGB centroid: (x_R + x_G + x_B)/3 = (-1, -1, -1)/(3√3)
+    - W vertex: x_W = (1, 1, 1)/√3
 
     The geometric opposition (antipodal relationship) implies:
     e^{iφ_W} = -e^{i(φ_R + φ_G + φ_B)/3} = -1

@@ -88,6 +88,11 @@ from the axiom base. The remaining axioms are in foundational topology
 - `Theorem_0_0_1.lean` (this file) → `StabilityTheorems.lean` → `PhysicalAxioms.lean`
 - `PhysicalAxioms.lean` → `KnotTheory.lean`, `WaveEquation.lean`
 - All axioms documented with literature references in their source files
+
+**Python Verification:**
+- `verification/foundations/fc1_d4_consistency_verification.py` — FC1 falsification condition
+  Tests: orbital stability, atomic stability, Huygens principle, knot existence,
+  Rydberg degeneracy, combined constraint intersection → D_space = 3 unique
 -/
 
 namespace ChiralGeometrogenesis.Foundations

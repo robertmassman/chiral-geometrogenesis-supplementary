@@ -54,9 +54,7 @@ this framework. It should not be confused with:
 
 ## References
 
-* docs/proofs/Phase-Minus-1/Definition-0.0.0-Minimal-Geometric-Realization.md
-* docs/Chiral-Geometrogenesis.md (main theory document)
-* docs/Lean-Formalization-Plan.md (implementation roadmap)
+* docs/proofs/foundations/Definition-0.0.0-Minimal-Geometric-Realization.md
 
 ## Authors
 
